@@ -1,49 +1,116 @@
-/* Type Selector (line 1) */
+/* General Styling */
 body {
     font-family: Arial, sans-serif;
-    line-height: 1.6;
+    line-height: 1.3;
     background-color: #f4f4f4;
     color: #333333;
     margin-left: 2rem;
 }
 
-/* ID Selector (line 9) */
-#steps-to-qualify {
-    margin: 20px;
-    padding: 10px;
-    border: 2px solid #ccc;
+/* Navigation */
+nav ul {
+    padding: 0;
+    list-style: none;
 }
 
-/* Class Selector (line 15) */
-.intro {
-    font-size: 1.2rem;
-    color: #666666;
+nav ul li {
+    display: inline;
+    margin-right: 1rem;
 }
 
-/* Relational Selector (line 21) */
+nav ul li a {
+    color: #3e2723; /* Darker brown for better contrast */
+    text-decoration: none;
+}
+
 nav ul li a:hover {
-    color: #ff5733;
+    color: #ff6f61; /* Bright accent color for hover effect */
     text-decoration: underline;
 }
 
-/* Combination Selector (line 26) */
+/* Header */
 header h1 {
-    color: #444444;
+    color: #3e2723; /* Dark brown */
     font-size: 2rem;
+    margin-bottom: 20px; /* Added margin for spacing */
 }
 
-/* Attribute Selector (line 31) */
-a[href^="https"] {
-    color: #ff5733;
+/* Links */
+a {
+    color: #6d4c41; /* Earthy dark brown color */
+    text-decoration: none; /* Removes underline from the links */
 }
 
+a:hover {
+    color: #3e2723; /* Darker brown color for hover effect */
+    text-decoration: underline; /* Underline on hover for emphasis */
+}
+
+/* Image Styling */
 img {
     float: left;
     margin-right: 2rem;
 }
 
-/* Font Styling (lines 36 & 37) */
+/* Headings */
 h2 {
     font-size: 1.8rem;
     font-weight: bold;
+    color: #5d4037; /* Medium brown */
+}
+
+h3 {
+    margin-left: 2rem; /* Indent heading 3 by 2rem */
+    padding: 0.5rem 0; /* Optional: Add vertical padding for better spacing */
+    color: #4e342e; /* Optional: Slightly darker color for contrast */
+}
+
+/* Introduction Section */
+.intro {
+    font-size: 1.2rem;
+    color: #6d4c41; /* Slightly lighter brown */
+    margin-bottom: 20px; /* Added margin for spacing */
+    padding: 10px; /* Added padding for consistency */
+    border-left: 4px solid #8d6e63; /* Earthy brown border */
+}
+
+/* Steps to Qualify Section */
+#steps-to-qualify {
+    margin: 20px;
+    padding: 15px; /* Increased padding for better spacing */
+    border: 2px solid #d7ccc8; /* Light beige border */
+    background: linear-gradient(to bottom right, #f5f5f5, #e0d7c7); /* Earthy beige gradient */
+}
+
+/* Footer Styling */
+footer {
+    margin-top: 30px; /* Added margin for spacing */
+    padding: 10px; /* Added padding for better spacing */
+    text-align: center;
+    background-color: #d7ccc8; /* Light beige to match theme */
+    border-top: 2px solid #c4bba4; /* Earthy beige border */
+}
+
+/* 2-Column Layout */
+.columns {
+    display: flex;
+    gap: 2rem; /* Space between columns */
+    margin-bottom: 30px; /* Space below the columns */
+}
+
+.column {
+    flex: 1; /* Each column takes equal space */
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background: linear-gradient(to bottom right, #f5f5f5, #e0d7c7); /* Default gradient */
+}
+
+/* Specific Gradient for Each Column */
+.column:nth-child(1) {
+    background: linear-gradient(to bottom right, #f5f5f5, #e0d7c7); /* Light beige gradient */
+}
+
+.column:nth-child(2) {
+    background: linear-gradient(to bottom right, #f5f5f5, #d0bfae); /* Slightly darker beige gradient */
 }
