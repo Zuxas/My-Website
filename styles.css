@@ -65,7 +65,7 @@ nav ul li a:hover {
     top: 0;
     left: 0;
     width: 100%;
-    background-color: #f4f4f4; /* Background color of the navbar */
+    background-color: #f4f4f4;
     border-bottom: 2px solid #c4bba4;
     z-index: 1000; /* Ensures the navbar stays above other content */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -101,7 +101,7 @@ footer {
     border-top: 2px solid #c4bba4;
 }
 
-/* Columns Layout */
+/* Layout Styles */
 .columns {
     display: flex;
     flex-wrap: wrap;
@@ -170,7 +170,24 @@ img {
     height: auto;
     margin-right: 2rem;
     float: left;
-    max-width: 90px;
+}
+/* Grid Layout for Intro Section */
+.intro-section {
+    display: grid;
+    grid-template-columns: 1fr 10fr; /* Adjust the proportions as needed */
+    gap: 10px;
+    align-items: center; /* Center the items vertically */
+    margin-bottom: 20px;
+}
+
+.intro-section img {
+    max-width: 90%; /* Ensure image fits within its grid cell */
+    height: auto;
+}
+
+.intro-section p {
+    font-size: 1.2rem;
+    color: #6d4c41;
 }
 
 /* Media Queries for Responsive Design */
