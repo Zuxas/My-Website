@@ -6,13 +6,14 @@ body {
     color: #333333;
     margin: 0 2rem;
     padding: 0;
+    padding-top: 60px;
+    /* Adjust to match the height of the main navbar */
     max-width: 100%;
-    padding-top: 60px; /* Adjust to match the height of the main navbar */
 }
 
 main {
     width: 100%;
-    max-width: 1800px;
+    max-width: 1000px;
     margin: 0 auto;
     padding: 20px;
     box-sizing: border-box;
@@ -38,7 +39,8 @@ nav ul {
     list-style: none;
     display: flex;
     flex-wrap: wrap;
-    justify-content: center; /* Centers the navigation items */
+    justify-content: center;
+    /* Centers the navigation items */
 }
 
 nav ul li {
@@ -55,8 +57,10 @@ nav ul li a {
 }
 
 nav ul li a:hover {
-    background-color: #5d4037; /* Background color on hover */
-    color: #ff6f61; /* Text color on hover */
+    background-color: #5d4037;
+    /* Background color on hover */
+    color: #ff6f61;
+    /* Text color on hover */
 }
 
 /* Main Navigation Bar (Fixed at Top) */
@@ -67,21 +71,18 @@ nav ul li a:hover {
     width: 100%;
     background-color: #f4f4f4;
     border-bottom: 2px solid #c4bba4;
-    z-index: 1000; /* Ensures the navbar stays above other content */
+    z-index: 1000;
+    /* Ensures the navbar stays above other content */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Deck Navigation Bar */
-.deck-nav ul {
-    justify-content: center;
-}
-
 /* Section Styling */
-.intro {
-    font-size: 1.2rem;
+.intro,
+.intro-section p {
+    font-size: .9rem;
     color: #6d4c41;
     margin-bottom: 20px;
-    max-width: 1600px;
+    max-width: 1000px;
     padding: 10px;
 }
 
@@ -110,12 +111,11 @@ footer {
     margin: 0 auto;
     max-width: 100%;
     padding: 0 20px;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
 }
 
 .column {
     flex: 1 1 calc(33.333% - 40px);
-    min-width: 400px;
     padding: 10px;
     box-sizing: border-box;
     border-radius: 8px;
@@ -133,14 +133,17 @@ footer {
     display: flex;
     justify-content: space-between;
     margin-left: 1rem;
+
 }
 
 .deck-description {
     flex: 2;
     margin-right: 1rem;
+
 }
 
 .deck-list {
+    min-width: 250px;
     flex: 0.4;
 }
 
@@ -171,27 +174,28 @@ img {
     margin-right: 2rem;
     float: left;
 }
+
 /* Grid Layout for Intro Section */
 .intro-section {
     display: grid;
-    grid-template-columns: 1fr 10fr; /* Adjust the proportions as needed */
+    grid-template-columns: 2fr 7fr;
+    /* Adjusted proportions for balance */
     gap: 10px;
-    align-items: center; /* Center the items vertically */
-    margin-bottom: 20px;
+    align-items: center;
+    /* Center the items vertically */
+    margin-bottom: 15px;
+    padding: 1px 0;
+    /* Simplified padding */
 }
 
 .intro-section img {
-    max-width: 90%; /* Ensure image fits within its grid cell */
+    max-width: 60%;
+    /* Ensure image fits within its grid cell */
     height: auto;
 }
 
-.intro-section p {
-    font-size: 1.2rem;
-    color: #6d4c41;
-}
-
 /* Media Queries for Responsive Design */
-@media (max-width: 768px) {
+@media (max-width: 575px) {
     .columns {
         flex-direction: column;
         gap: 1rem;
@@ -219,14 +223,55 @@ img {
     }
 
     .intro-section {
-        display: flex;
         flex-direction: column;
         align-items: center;
+        padding: 0;
+        /* Remove padding for smaller screens */
     }
 
     .responsive-img {
         margin-bottom: 20px;
         max-width: 100%;
+    }
+
+    body {
+        font-size: 0.6rem;
+        /* Adjust as needed to reduce text size */
+    }
+
+    header h1 {
+        font-size: 1rem;
+        /* Adjust the header font size */
+    }
+
+    h2 {
+        font-size: 0.8rem;
+        /* Adjust the h2 font size */
+    }
+
+    h3 {
+        font-size: 0.7rem;
+        /* Adjust the h3 font size */
+    }
+
+    .intro,
+    .intro-section p {
+        font-size: 0.6rem;
+        /* Adjust the introduction text size */
+    }
+
+    .deck-description,
+    .deck-list,
+    p {
+        font-size: 0.6rem;
+        /* General paragraph text size */
+    }
+
+    nav ul li a {
+        font-size: 0.6rem;
+        /* Navigation link size */
+        padding: 8px 10px;
+        /* Adjust padding to make links smaller */
     }
 }
 
@@ -254,8 +299,10 @@ img {
     bottom: 10px;
     left: 10px;
     padding: 10px 20px;
-    background-color: #3e2723; /* Button background color */
-    color: #ffffff; /* Button text color */
+    background-color: #3e2723;
+    /* Button background color */
+    color: #ffffff;
+    /* Button text color */
     border: none;
     border-radius: 5px;
     text-align: center;
@@ -265,7 +312,9 @@ img {
 }
 
 .back-to-top:hover {
-    background-color: #5d4037; /* Hover background color */
+    background-color: #5d4037;
+    /* Hover background color */
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
-    color: #ff6f61; /* Hover text color */
+    color: #ff6f61;
+    /* Hover text color */
 }
