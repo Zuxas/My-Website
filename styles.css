@@ -2,24 +2,17 @@
 body {
     font-family: Arial, sans-serif;
     line-height: 1.3;
-    background-color: #f4f4f4;
-    color: #333333;
+    background-color: #3b3c4d; /* Background color */
+    color: #f0f0f0; /* Lightened text color */
     margin: 0;
     padding: 0;
-    padding-top: 40px;
-    /* Matches the height of the fixed nav bar */
+    padding-top: 40px; /* Matches the height of the fixed nav bar */
     max-width: 100%;
-
-    /* Background Image */
     background-image: url('images/main-background.png');
-    background-size: 100% 100%;
-    /* Ensures the image covers the entire background */
+    background-size: cover;
     background-repeat: no-repeat;
-    /* Prevents the image from repeating */
     background-position: center calc(40px);
-    /* Moves the image down by 40px + nav height */
     background-attachment: fixed;
-    /* Keeps the image fixed while scrolling */
 }
 
 main {
@@ -32,13 +25,13 @@ main {
 
 /* Header Styling */
 header {
-    background-color: #f4f4f4;
+    background-color: #39465c; /* Header background color */
     padding: 20px;
     text-align: center;
 }
 
 h1 {
-    color: #3e2723;
+    color: #65bcd5; /* Header text color */
     font-size: 2rem;
     margin-bottom: 20px;
     text-align: center;
@@ -52,7 +45,6 @@ nav ul {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    /* Centers the navigation items */
 }
 
 nav ul li {
@@ -60,7 +52,7 @@ nav ul li {
 }
 
 nav ul li a {
-    color: #3e2723;
+    color: #65bcd5; /* Default link color */
     text-decoration: none;
     padding: 10px 15px;
     display: block;
@@ -69,10 +61,8 @@ nav ul li a {
 }
 
 nav ul li a:hover {
-    background-color: #5d4037;
-    /* Background color on hover */
-    color: #ff6f61;
-    /* Text color on hover */
+    background-color: #6c838b; /* Background color on hover */
+    color: #f0f0f0; /* Text color on hover */
 }
 
 /* Main Navigation Bar (Fixed at Top) */
@@ -81,20 +71,18 @@ nav ul li a:hover {
     top: 0;
     left: 0;
     width: 100%;
-    height: 40px;
-    /* Explicitly setting the height */
-    background-color: #f4f4f4;
-    border-bottom: 2px solid #c4bba4;
-    z-index: 1000;
-    /* Ensures the navbar stays above other content */
+    height: 40px; /* Explicitly setting the height */
+    background-color: #39465c; /* Background color */
+    border-bottom: 2px solid #444453; /* Border color */
+    z-index: 1000; /* Ensures the navbar stays above other content */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 /* Section Styling */
 .intro,
 .intro-section p {
-    font-size: .9rem;
-    color: #6d4c41;
+    font-size: 0.9rem;
+    color: #f0f0f0; /* Lightened text color */
     margin-bottom: 20px;
     max-width: 1000px;
     padding: 10px;
@@ -103,8 +91,8 @@ nav ul li a:hover {
 #steps-to-qualify {
     margin: 20px 0;
     padding: 15px;
-    border: 2px solid #d7ccc8;
-    background: linear-gradient(to bottom right, #f5f5f5, #e0d7c7);
+    border: 2px solid #6c838b; /* Border color */
+    background: linear-gradient(to bottom right, #3b3c4d, #444453); /* Gradient */
 }
 
 /* Footer Styling */
@@ -112,8 +100,8 @@ footer {
     margin-top: 30px;
     padding: 10px;
     text-align: center;
-    background-color: #d7ccc8;
-    border-top: 2px solid #c4bba4;
+    background-color: #444453; /* Footer background color */
+    border-top: 2px solid #3b3c4d; /* Border color */
 }
 
 /* Layout Styles */
@@ -134,12 +122,12 @@ footer {
     box-sizing: border-box;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    background: linear-gradient(to bottom right, #f5f5f5, #e0d7c7);
+    background: linear-gradient(to bottom right, #3b3c4d, #444453); /* Gradient */
     margin-bottom: 2rem;
 }
 
 .column:nth-child(2) {
-    background: linear-gradient(to bottom right, #f5f5f5, #d0bfae);
+    background: linear-gradient(to bottom right, #3b3c4d, #333345); /* Gradient */
 }
 
 /* Deck Container and List */
@@ -147,13 +135,11 @@ footer {
     display: flex;
     justify-content: space-between;
     margin-left: 1rem;
-
 }
 
 .deck-description {
     flex: 2;
     margin-right: 1rem;
-
 }
 
 .deck-list {
@@ -171,41 +157,38 @@ footer {
 h2 {
     font-size: 1.8rem;
     font-weight: bold;
-    color: #5d4037;
+    color: #6c8c94; /* Heading color */
     margin-top: 0;
 }
 
 h3 {
     padding: 0.5rem 0;
-    color: #4e342e;
+    color: #65bcd5; /* Subheading color */
     margin-top: 0;
 }
 
 /* Image Styling */
 img {
-    max-width: 90%;
+    max-width: 100%;
     height: auto;
     margin-right: 2rem;
     margin-left: 2rem;
-    float: left;
+    display: block;
+    margin: 0 auto;
 }
 
 /* Grid Layout for Intro Section */
 .intro-section {
     display: grid;
     grid-template-columns: 2fr 7fr;
-    /* Adjusted proportions for balance */
     gap: 10px;
     align-items: center;
-    /* Center the items vertically */
     margin-bottom: 15px;
     padding: 1px 0;
-    /* Simplified padding */
 }
 
 .intro-section img {
     max-width: 60%;
-    /* Ensure image fits within its grid cell */
     height: auto;
 }
 
@@ -233,6 +216,7 @@ img {
     img {
         max-width: 80%;
         margin-right: 0;
+        margin-left: 0;
         display: block;
         margin: 0 auto;
     }
@@ -241,7 +225,6 @@ img {
         flex-direction: column;
         align-items: center;
         padding: 0;
-        /* Remove padding for smaller screens */
     }
 
     .responsive-img {
@@ -251,43 +234,35 @@ img {
 
     body {
         font-size: 0.6rem;
-        /* Adjust as needed to reduce text size */
     }
 
     h1 {
         font-size: 1rem;
         text-align: center;
-        /* Adjust the header font size */
     }
 
     h2 {
         font-size: 0.8rem;
-        /* Adjust the h2 font size */
     }
 
     h3 {
         font-size: 0.7rem;
-        /* Adjust the h3 font size */
     }
 
     .intro,
     .intro-section p {
         font-size: 0.6rem;
-        /* Adjust the introduction text size */
     }
 
     .deck-description,
     .deck-list,
     p {
         font-size: 0.6rem;
-        /* General paragraph text size */
     }
 
     nav ul li a {
         font-size: 0.6rem;
-        /* Navigation link size */
         padding: 8px 10px;
-        /* Adjust padding to make links smaller */
     }
 }
 
@@ -315,10 +290,8 @@ img {
     bottom: 10px;
     left: 10px;
     padding: 10px 20px;
-    background-color: #3e2723;
-    /* Button background color */
-    color: #ffffff;
-    /* Button text color */
+    background-color: #65bcd5; /* Button background color matches h1 */
+    color: #ffffff; /* Button text color */
     border: none;
     border-radius: 5px;
     text-align: center;
@@ -328,9 +301,8 @@ img {
 }
 
 .back-to-top:hover {
-    background-color: #5d4037;
-    /* Hover background color */
+    background-color: #4f8296; /* Darker shade for hover effect */
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
-    color: #ff6f61;
-    /* Hover text color */
+    color: #ffffff; /* Hover text color */
 }
+
