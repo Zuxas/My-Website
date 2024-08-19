@@ -7,7 +7,6 @@ body {
     margin: 0;
     padding: 0;
     padding-top: 40px; /* Matches the height of the fixed nav bar */
-    max-width: 100%;
     background-image: url('images/main-background.png');
     background-size: cover;
     background-repeat: no-repeat;
@@ -40,7 +39,7 @@ h1 {
 /* Navigation Styling */
 nav ul {
     padding: 0;
-    margin: 0 auto;
+    margin: 0;
     list-style: none;
     display: flex;
     flex-wrap: wrap;
@@ -171,8 +170,6 @@ h3 {
 img {
     max-width: 100%;
     height: auto;
-    margin-right: 2rem;
-    margin-left: 2rem;
     display: block;
     margin: 0 auto;
 }
@@ -190,6 +187,31 @@ img {
 .intro-section img {
     max-width: 60%;
     height: auto;
+}
+
+/* Table Styling */
+.table-container {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0; /* Optional: Adjust the margin as needed */
+}
+
+table {
+    border-collapse: collapse;
+    width: 80%; /* Adjust width as necessary */
+    max-width: 800px; /* Optional: Limit the max-width of the table */
+    margin: 0 auto; /* This centers the table */
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+    font-weight: bold;
 }
 
 /* Media Queries for Responsive Design */
@@ -215,10 +237,6 @@ img {
 
     img {
         max-width: 80%;
-        margin-right: 0;
-        margin-left: 0;
-        display: block;
-        margin: 0 auto;
     }
 
     .intro-section {
@@ -238,7 +256,6 @@ img {
 
     h1 {
         font-size: 1rem;
-        text-align: center;
     }
 
     h2 {
@@ -250,10 +267,7 @@ img {
     }
 
     .intro,
-    .intro-section p {
-        font-size: 0.6rem;
-    }
-
+    .intro-section p,
     .deck-description,
     .deck-list,
     p {
@@ -316,3 +330,37 @@ a:hover {
     text-decoration: underline; /* Optional: Adds underline on hover */
 }
 
+/* Media Query for 1080p Displays and Larger Screens */
+@media (min-width: 1080px) {
+    /* Adjustments for larger screens */
+    
+    body {
+        font-size: 1rem; /* Default font size for readability */
+    }
+
+    .columns {
+        gap: 2rem; /* Increased gap between columns */
+    }
+
+    .column {
+        flex: 1 1 calc(33.333% - 40px); /* Ensure columns take full width */
+        padding: 20px; /* Adjust padding for better spacing */
+    }
+
+    .deck-container {
+        margin-left: 2rem; /* Increased margin for deck container */
+    }
+
+    .intro-section {
+        grid-template-columns: 1fr 2fr; /* Adjust grid layout for larger screens */
+    }
+
+    .table-container {
+        width: 90%; /* Adjust table width for better fit */
+    }
+
+    table {
+        width: 100%; /* Ensure the table takes full width */
+        max-width: none; /* Remove max-width limit */
+    }
+}
