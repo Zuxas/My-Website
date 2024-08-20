@@ -247,7 +247,7 @@ th {
 }
 
 /* Media Queries for Responsive Design */
-@media (max-width: 575px) {
+@media (max-width: 375px) {
     .columns {
         flex-direction: column;
         gap: 1rem;
@@ -255,7 +255,7 @@ th {
 
     nav ul li {
         display: block;
-        margin-bottom: 1rem;
+        margin-bottom: .5rem;
     }
 
     .deck-container {
@@ -343,21 +343,134 @@ th {
     text-align: center;
     text-decoration: none;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    transition: background-color 0.3s, color 0.3s;
-    z-index: 1000;
+    transition: background-color 0.3s, box-shadow 0.3s;
 }
 
 .back-to-top:hover {
-    background-color: #6c838b; /* Darker button color on hover */
-    color: #ffffff; /* Text color on hover */
+    background-color: #4f8296; /* Darker shade for hover effect */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    color: #ffffff; /* Hover text color */
 }
 
-/* Additional Custom Styles */
-h4 {
+a {
+    color: #65bcd5; /* Matches the color of h1 */
+    text-decoration: none; /* Optional: Removes underline */
+}
+
+a:hover {
+    color: #4f8296; /* Slightly darker shade for hover effect */
+    text-decoration: underline; /* Optional: Adds underline on hover */
+}
+
+/* Media Query for 1080p Displays and Larger Screens */
+@media (min-width: 1080px) {
+    /* Adjustments for larger screens */
+    
+    body {
+        font-size: 1rem; /* Default font size for readability */
+    }
+
+    .columns {
+        gap: 2rem; /* Increased gap between columns */
+    }
+
+    .column {
+        flex: 1 1 calc(33.333% - 40px); /* Ensure columns take full width */
+        padding: 20px; /* Adjust padding for better spacing */
+}
+
+    .deck-container {
+        margin-left: 2rem; /* Increased margin for deck container */
+    }
+
+    .intro-section {
+        grid-template-columns: 1fr 2fr; /* Adjust grid layout for larger screens */
+    }
+
+    .table-container {
+        width: 90%; /* Adjust table width for better fit */
+    }
+
+    table {
+        width: 100%; /* Ensure the table takes full width */
+        max-width: none; /* Remove max-width limit */
+    }
+}
+details {
+    margin-bottom: 1em;
+}
+
+summary {
+    cursor: pointer;
+    font-weight: bold;
+    margin-bottom: 0.5em;
+}
+
+details[open] summary {
     color: #65bcd5;
+    /* Change color when expanded */
+}
+.expandable-content {
+    margin-bottom: 1em; /* Optional: Space between each expandable section */
 }
 
-h5 {
-    color: #f0f0f0;
+.expandable-toggle {
+    cursor: pointer;
+    font-weight: bold;
+    margin-bottom: 0.5em;
+    border-bottom: 1px solid #ccc; /* Optional: Adds a border below the summary for clarity */
+    padding-bottom: 0.5em; /* Optional: Adds padding below the summary for spacing */
 }
 
+.main-container {
+    display: flex;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem; /* Adjust spacing between sections as needed */
+    flex-wrap: wrap; /* Allows wrapping on smaller screens */
+}
+
+.strategy-section {
+    flex: 1; /* Adjust width proportionally */
+    padding: 1em;
+    box-sizing: border-box;
+}
+
+.metagame-section {
+    flex: 1; /* Adjust width proportionally */
+    padding: 1em;
+    box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+    .main-container {
+        flex-direction: column;
+        gap: 1rem;
+    }
+}
+
+/* Fade-in effect from top to bottom */
+@keyframes fadeInTopToBottom {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+}
+    to {
+        opacity: .9;
+        transform: translateY(0);
+    }
+}
+
+/* Apply the fade-in effect */
+.fade-in-top-to-bottom {
+    animation: fadeInTopToBottom 1.5s ease-in-out;
+    opacity: 0.9; /* Ensures the element remains at 80% opacity after the animation */
+}
+
+.expandable-toggle::after {
+    content: " ▼";
+    float: right;
+}
+
+.deck-container:target ~ .expandable-toggle::after {
+    content: " ▲";
+}
