@@ -36,7 +36,6 @@ main {
     margin: 0 auto;
     padding: 20px;
     box-sizing: border-box;
-    
 }
 
 /* Header Styling */
@@ -127,13 +126,11 @@ footer {
 .columns {
     display: flex;
     flex-wrap: wrap;
-    flex-direction: column;
-    justify-content: space-between;
     gap: 1rem;
     margin: 0 auto;
     max-width: 100%;
     padding: 0 20px;
-    margin-bottom: 1rem
+    margin-bottom: 1rem;
 }
 
 .column {
@@ -215,7 +212,7 @@ img {
 .table-container {
     display: flex;
     justify-content: center;
-    margin: 20px 0; /* Optional: Adjust the margin as needed */
+    margin: 0; /* Optional: Adjust the margin as needed */
 }
 
 table {
@@ -232,9 +229,10 @@ th, td {
 }
 
 th {
-    background-color: #f2f2f2;
+    background-color: #3b3c4d;
     font-weight: bold;
 }
+
 .header-grid {
     display: grid;
     grid-template-columns: auto 2fr;
@@ -397,6 +395,20 @@ a:hover {
         max-width: none; /* Remove max-width limit */
     }
 }
+details {
+    margin-bottom: 1em;
+}
+
+summary {
+    cursor: pointer;
+    font-weight: bold;
+    margin-bottom: 0.5em;
+}
+
+details[open] summary {
+    color: #65bcd5;
+    /* Change color when expanded */
+}
 .expandable-content {
     margin-bottom: 1em; /* Optional: Space between each expandable section */
 }
@@ -408,6 +420,7 @@ a:hover {
     border-bottom: 1px solid #ccc; /* Optional: Adds a border below the summary for clarity */
     padding-bottom: 0.5em; /* Optional: Adds padding below the summary for spacing */
 }
+
 .main-container {
     display: flex;
     grid-template-columns: 1fr 1fr;
@@ -426,6 +439,7 @@ a:hover {
     padding: 1em;
     box-sizing: border-box;
 }
+
 @media (max-width: 768px) {
     .main-container {
         flex-direction: column;
@@ -451,3 +465,11 @@ a:hover {
     opacity: 0.9; /* Ensures the element remains at 80% opacity after the animation */
 }
 
+.expandable-toggle::after {
+    content: " ▼";
+    float: right;
+}
+
+.deck-container:target ~ .expandable-toggle::after {
+    content: " ▲";
+}
