@@ -431,15 +431,20 @@ a:hover {
         gap: 1rem;
     }
 }
-@keyframes fadeIn {
+
+/* Fade-in effect from top to bottom */
+@keyframes fadeInTopToBottom {
     from {
         opacity: 0;
+        transform: translateY(-20px);
     }
     to {
         opacity: 1;
+        transform: translateY(0);
     }
 }
 
-.intro, .conclusion-section, h2, .table-container {
-    animation: fadeIn 1.5s ease-in;
+/* Apply the fade-in effect */
+.fade-in-top-to-bottom {
+    animation: fadeInTopToBottom 1.5s ease-in-out;
 }
