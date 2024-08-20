@@ -32,7 +32,7 @@ body {
 
 main {
     width: 100%;
-    max-width: 1000px;
+    max-width: 1300px;
     margin: 0 auto;
     padding: 20px;
     box-sizing: border-box;
@@ -98,8 +98,10 @@ nav ul li a:hover {
 .intro,
 .intro-section p {
     font-size: 0.9rem;
+    text-align: center;
+    margin-left: 2rem;
     color: #f0f0f0; /* Lightened text color */
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     max-width: 1000px;
     padding: 10px;
 }
@@ -124,16 +126,17 @@ footer {
 .columns {
     display: flex;
     flex-wrap: wrap;
+    flex-direction: column;
     justify-content: space-between;
-    gap: 20px;
+    gap: 1rem;
     margin: 0 auto;
     max-width: 100%;
     padding: 0 20px;
-    margin-bottom: 20px;
+    margin-bottom: 1rem
 }
 
 .column {
-    flex: 1 1 calc(33.333% - 40px);
+    flex: 2;
     padding: 10px;
     box-sizing: border-box;
     border-radius: 8px;
@@ -380,5 +383,40 @@ a:hover {
     table {
         width: 100%; /* Ensure the table takes full width */
         max-width: none; /* Remove max-width limit */
+    }
+}
+.expandable-content {
+    margin-bottom: 1em; /* Optional: Space between each expandable section */
+}
+
+.expandable-toggle {
+    cursor: pointer;
+    font-weight: bold;
+    margin-bottom: 0.5em;
+    border-bottom: 1px solid #ccc; /* Optional: Adds a border below the summary for clarity */
+    padding-bottom: 0.5em; /* Optional: Adds padding below the summary for spacing */
+}
+.main-container {
+    display: flex;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem; /* Adjust spacing between sections as needed */
+    flex-wrap: wrap; /* Allows wrapping on smaller screens */
+}
+
+.strategy-section {
+    flex: 1; /* Adjust width proportionally */
+    padding: 1em;
+    box-sizing: border-box;
+}
+
+.metagame-section {
+    flex: 1; /* Adjust width proportionally */
+    padding: 1em;
+    box-sizing: border-box;
+}
+@media (max-width: 768px) {
+    .main-container {
+        flex-direction: column;
+        gap: 1rem;
     }
 }
