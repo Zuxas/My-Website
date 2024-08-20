@@ -1,16 +1,16 @@
 /* Font Face Declarations */
 @font-face {
     font-family: 'gamecubendualset';
-    src: url('/fonts/gamecube.woff2') format('woff2'),
-         url('/fonts/gamecube.woff') format('woff');
+    src: url('fonts/gamecube.woff2') format('woff2'),
+         url('fonts/gamecube.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'pirulen';
-    src: url('/fonts/pirulen_rg-webfont.woff2') format('woff2'),
-         url('/fonts/pirulen_rg-webfont.woff') format('woff');
+    src: url('fonts/pirulen_rg-webfont.woff2') format('woff2'),
+         url('fonts/pirulen_rg-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 }
@@ -93,8 +93,14 @@ nav ul li a:hover {
     border-bottom: 2px solid #444453; /* Border color */
     z-index: 1000; /* Ensures the navbar stays above other content */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow-x: hidden; /* Allows horizontal scrolling if content overflows */ 
 }
-
+.nav-wrapper {
+    display: flex;
+    overflow-x: auto; /* Enable horizontal scrolling */
+    white-space: nowrap; /* Prevent wrapping of nav items */
+    height: 100%;
+}
 /* Section Styling */
 .intro,
 .intro-section p {
