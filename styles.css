@@ -10,7 +10,7 @@
 @font-face {
     font-family: 'pirulen';
     src: url('fonts/pirulen_rg-webfont.woff2') format('woff2'),
-         url('fonts/pirulen_rg-webfont.woff') format('woff');
+         url('/fonts/pirulen_rg-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 }
@@ -471,12 +471,20 @@ details[open] summary {
     animation: fadeInTopToBottom 1.5s ease-in-out;
     opacity: 0.9; /* Ensures the element remains at 80% opacity after the animation */
 }
-
-.expandable-toggle::after {
-    content: " ▼";
-    float: right;
+.image-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    grid-gap: 10px;
+    margin: 20px 0;
 }
 
-.deck-container:target ~ .expandable-toggle::after {
-    content: " ▲";
+.image-grid img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+.image-grid img:hover {
+    transform: scale(1.05);
 }
