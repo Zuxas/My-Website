@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UW Control — Team Resolve Playbook</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+  :root { --ink:#0e0e0e; --paper:#f2ede6; --paper-dark:#e8e1d6; --rule:#c8bfb0; --accent:#1a3a8f; --accent-light:#d6e0f7; --gold:#8f6a1a; --gold-light:#f7ead6; --mid:#5a5248; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:var(--paper); color:var(--ink); font-family:'Crimson Pro',Georgia,serif; font-size:17px; line-height:1.6; }
+  .header-band { background:var(--ink); border-bottom:3px solid #5b7fd4; }
+  .header-inner { max-width:1100px; margin:0 auto; padding:32px 80px; display:flex; justify-content:space-between; align-items:flex-end; gap:40px; }
+  .header-eyebrow { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:rgba(242,237,230,0.35); margin-bottom:8px; }
+  .header-title { font-family:'Bebas Neue',sans-serif; font-size:56px; line-height:0.9; color:var(--paper); letter-spacing:0.02em; }
+  .header-title span { color:#5b7fd4; }
+  .header-mantra { font-family:'Crimson Pro',serif; font-style:italic; font-size:15px; color:rgba(242,237,230,0.4); margin-top:8px; }
+  .header-right { display:flex; flex-direction:column; gap:8px; }
+  .header-stat { display:flex; gap:16px; align-items:baseline; }
+  .hs-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; color:rgba(242,237,230,0.35); min-width:90px; }
+  .hs-val { font-family:'DM Mono',monospace; font-size:13px; color:rgba(242,237,230,0.8); }
+  nav { background:#1a1a1a; border-bottom:1px solid #333; padding:0 80px; display:flex; align-items:center; gap:4px; position:sticky; top:0; z-index:100; }
+  .nav-brand { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:#5b7fd4; margin-right:24px; padding:14px 0; white-space:nowrap; }
+  .nav-link { background:none; border:none; color:rgba(242,237,230,0.45); font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.12em; text-transform:uppercase; padding:14px 16px; cursor:pointer; transition:color 0.2s; border-bottom:2px solid transparent; }
+  .nav-link:hover,.nav-link.active { color:var(--paper); border-bottom-color:#5b7fd4; }
+  .page { max-width:1100px; margin:0 auto; padding:60px 80px 120px; }
+  .section { display:none; } .section.active { display:block; }
+  .section-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.25em; text-transform:uppercase; color:rgba(14,14,14,0.3); margin-bottom:12px; }
+  h1 { font-family:'Bebas Neue',sans-serif; font-size:64px; line-height:0.9; letter-spacing:0.02em; margin-bottom:40px; }
+  h2 { font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.2em; text-transform:uppercase; color:var(--mid); margin:40px 0 16px; padding-bottom:8px; border-bottom:1px solid var(--rule); }
+  h3 { font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:var(--accent); margin:24px 0 10px; }
+  p { margin-bottom:16px; font-weight:300; } strong { font-weight:600; }
+  .mantra { background:var(--paper-dark); border-left:3px solid #5b7fd4; padding:20px 28px; margin:32px 0; font-style:italic; font-size:18px; color:var(--mid); }
+  .mantra cite { display:block; font-size:12px; letter-spacing:0.1em; text-transform:uppercase; color:rgba(90,82,72,0.5); margin-top:8px; font-style:normal; }
+  .card-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:1px; background:var(--rule); margin:16px 0 32px; border:1px solid var(--rule); }
+  .card { background:var(--paper); padding:20px; } .card:hover { background:var(--paper-dark); }
+  .card-label { font-family:'DM Mono',monospace; font-size:9px; letter-spacing:0.2em; text-transform:uppercase; color:rgba(14,14,14,0.3); margin-bottom:6px; }
+  .card-title { font-family:'DM Mono',monospace; font-size:12px; letter-spacing:0.08em; color:var(--accent); margin-bottom:8px; }
+  .card-body { font-size:14px; color:var(--mid); line-height:1.5; font-weight:300; }
+  .dl-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:0; }
+  .dl-section { margin-bottom:28px; }
+  .dl-section-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; color:var(--mid); padding-bottom:8px; border-bottom:1px solid var(--rule); margin-bottom:12px; }
+  .dl-entry { display:flex; justify-content:space-between; padding:4px 0; border-bottom:1px solid rgba(200,191,176,0.3); font-size:15px; }
+  .dl-count { font-family:'DM Mono',monospace; font-size:12px; color:var(--accent); min-width:20px; }
+  .dl-name { color:var(--ink); font-weight:300; }
+  .matchup-table { width:100%; border-collapse:collapse; margin-bottom:2px; cursor:pointer; }
+  .matchup-table thead tr { background:var(--paper-dark); }
+  .matchup-table th { font-family:'DM Mono',monospace; font-size:9px; letter-spacing:0.15em; text-transform:uppercase; padding:10px 14px; text-align:left; font-weight:400; color:var(--mid); border-bottom:1px solid var(--rule); }
+  .matchup-table td { padding:10px 14px; border-bottom:1px solid var(--rule); font-size:15px; background:var(--paper); transition:background 0.1s; }
+  .matchup-table tr:hover td { background:var(--paper-dark); }
+  .matchup-table tr.selected td { background:var(--accent-light); }
+  .verdict { font-family:'DM Mono',monospace; font-size:11px; padding:2px 8px; border-radius:2px; }
+  .v-good { background:#d4f0d4; color:#1a6b1a; border:1px solid #a0d4a0; }
+  .v-hard { background:#f7d6d6; color:#8f1a1a; border:1px solid #e8b0b0; }
+  .v-even { background:var(--gold-light); color:var(--gold); border:1px solid #e8c880; }
+  .matchup-detail { display:none; background:var(--paper-dark); border:1px solid var(--rule); border-top:3px solid #5b7fd4; padding:28px 32px; margin-bottom:24px; }
+  .matchup-detail.open { display:block; }
+  .if-then { background:var(--paper); border:1px solid var(--rule); padding:16px 20px; margin:12px 0; font-size:14px; }
+  .if-then .if { font-family:'DM Mono',monospace; font-size:10px; color:var(--accent); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:4px; }
+<div id="decklist" class="section"><div class="section-label">Chapter 02</div><h1>The 75</h1><div class="dl-section"><div class="dl-section-label">Main Deck · 60 Cards</div>
+<div class="dl-grid">
+<div><div class="dl-entry"><span class="dl-count">4</span><span class="dl-name">Counterspell</span></div><div class="dl-entry"><span class="dl-count">4</span><span class="dl-name">Snapcaster Mage</span></div><div class="dl-entry"><span class="dl-count">4</span><span class="dl-name">Solitude</span></div><div class="dl-entry"><span class="dl-count">4</span><span class="dl-name">Prismatic Ending</span></div><div class="dl-entry"><span class="dl-count">2</span><span class="dl-name">Supreme Verdict</span></div></div>
+<div><div class="dl-entry"><span class="dl-count">2</span><span class="dl-name">Teferi, Hero of Dominaria</span></div><div class="dl-entry"><span class="dl-count">2</span><span class="dl-name">Teferi, Time Raveler</span></div><div class="dl-entry"><span class="dl-count">2</span><span class="dl-name">Force of Negation</span></div><div class="dl-entry"><span class="dl-count">2</span><span class="dl-name">Memory Deluge</span></div><div class="dl-entry"><span class="dl-count">2</span><span class="dl-name">Dress Down</span></div><div class="dl-entry"><span class="dl-count">4</span><span class="dl-name">Flooded Strand</span></div></div>
+<div><div class="dl-entry"><span class="dl-count">4</span><span class="dl-name">Hallowed Fountain</span></div><div class="dl-entry"><span class="dl-count">4</span><span class="dl-name">Mystic Gate</span></div><div class="dl-entry"><span class="dl-count">4</span><span class="dl-name">Island</span></div><div class="dl-entry"><span class="dl-count">2</span><span class="dl-name">Plains</span></div><div class="dl-entry"><span class="dl-count">2</span><span class="dl-name">Arid Mesa</span></div><div class="dl-entry"><span class="dl-count">4</span><span class="dl-name">[Flex lands/spells]</span></div></div>
+</div></div>
+<div class="dl-section"><div class="dl-section-label">Sideboard · 15 Cards</div>
+<div class="dl-grid">
+<div><div class="dl-entry"><span class="dl-count">3</span><span class="dl-name">Consign to Memory</span></div><div class="dl-entry"><span class="dl-count">2</span><span class="dl-name">Rest in Peace</span></div><div class="dl-entry"><span class="dl-count">2</span><span class="dl-name">Stony Silence</span></div></div>
+<div><div class="dl-entry"><span class="dl-count">2</span><span class="dl-name">Dovin's Veto</span></div><div class="dl-entry"><span class="dl-count">2</span><span class="dl-name">Path to Exile</span></div><div class="dl-entry"><span class="dl-count">2</span><span class="dl-name">Wrath of the Skies</span></div><div class="dl-entry"><span class="dl-count">2</span><span class="dl-name">[Meta flex]</span></div></div>
+</div></div></div><div id="gameplan" class="section"><div class="section-label">Chapter 03</div><h1>The Game Plan</h1>
+<div class="mantra">"Never tap out in the early turns unless the play is Teferi TRav. Every tapped turn is a free combo turn."<cite>— Key Principle</cite></div>
+<h2>Phase 1 — Survive (Turns 1–3)</h2>
+<p>Your only goal is not to fall behind. Prismatic Ending on their one-drop. Counterspell their two-drop. Do not tap out unless the play is Teferi, Time Raveler to lock their instant-speed interaction. Every tapped turn is a turn where combo decks go unchallenged.</p>
+<h2>Phase 2 — Establish (Turns 4–6)</h2>
+<p>Supreme Verdict clears any board you couldn't answer one-for-one. Snapcaster into interaction generates card advantage while keeping mana up. Start using Memory Deluge to find Teferi Hero or more answers.</p>
+<h2>Phase 3 — Close (Turn 7+)</h2>
+<p>Teferi, Hero of Dominaria with Counterspell backup. Generate cards, untap lands, answer everything they play. A single Celestial Colonnade or Shark token closes from here — you don't need pressure because their hand is empty.</p>
+<h2>Mulligan</h2>
+<p><strong>Keep:</strong> 3–4 lands, one Counterspell or Solitude, either draw or a second interaction piece.</p>
+<p><strong>Mulligan:</strong> One-land hands, no interaction, more than 5 lands, all reactive with no clock.</p></div><div id="roles" class="section"><div class="section-label">Chapter 04</div><h1>Role Assignment</h1>
+<p>UW Control has one role in almost every matchup: control. The rare exception is when Teferi, Time Raveler resolves — briefly you become the beatdown with a 2/4 body while locking them out of instant-speed play.</p>
+<div class="card-grid"><div class="card"><div class="card-label">vs Aggro</div><div class="card-title">Survive Then Close</div><div class="card-body">You're behind on board until Verdict. Every Prismatic Ending and Solitude buys a turn. Don't tap out without Verdict mana. Get to 5 lands and stabilize.</div></div><div class="card"><div class="card-label">vs Combo</div><div class="card-title">Counter Everything</div><div class="card-body">Hold Counterspell for the key piece. Teferi TRav locks them out of instant-speed interaction. Consign to Memory answers Persist, cascade, and free spells. Force of Negation is your safety net.</div></div><div class="card"><div class="card-label">vs Midrange</div><div class="card-title">Answer + Outvalue</div><div class="card-body">Answer their threats efficiently, generate card advantage, close with Teferi Hero. This is your best matchup category — you out-value every midrange deck in the format.</div></div><div class="card"><div class="card-label">vs Control</div><div class="card-title">Teferi Wars</div><div class="card-body">Whoever resolves Teferi, Hero first has a significant advantage. Prioritize countering their Teferi over almost anything else. Dovin's Veto answers theirs when they have their own Veto backup.</div></div></div></div><div id="matchups" class="section"><div class="section-label">Chapter 05</div><h1>Matchup Guide</h1><table class="matchup-table" data-deck="Azorius Control" data-vs="Boros Energy" onclick="toggle('vs_aggro',this)">
+<thead><tr><th>Matchup</th><th>Role</th><th>G1 WR</th><th>Overall</th></tr></thead>
+<tbody><tr><td>Boros Energy / Prowess</td><td>Survive</td><td>~35–40%</td><td><span class="verdict v-hard">Hard</span></td></tr></tbody>
+</table><div id="vs_aggro" class="matchup-detail"><p>Their clock is faster than your setup. Supreme Verdict is your best card — do not tap out without it available on turn 4. Solitude stops critical early threats but costs life you need for the race.</p><div class="sb-row"><div class="sb-in"><div class="sb-label">In</div><div class="sb-card"><span>Path to Exile</span><span class="sb-n">2</span></div><div class="sb-card"><span>Wrath of the Skies</span><span class="sb-n">2</span></div></div><div class="sb-out"><div class="sb-label">Out</div><div class="sb-card"><span>Teferi, Hero of Dominaria</span><span class="sb-n">1</span></div><div class="sb-card"><span>Memory Deluge</span><span class="sb-n">1</span></div><div class="sb-card"><span>Force of Negation</span><span class="sb-n">2</span></div></div></div><div class="if-then"><div class="if">If Ajani resolves with 3+ cats on Boros</div>→ Supreme Verdict immediately. Ajani can close from 20 life in one attack. Don't wait for a better board state.</div></div><table class="matchup-table" data-deck="Azorius Control" data-vs="Grixis Reanimator" onclick="toggle('vs_glock',this)">
+<thead><tr><th>Matchup</th><th>Role</th><th>G1 WR</th><th>Overall</th></tr></thead>
+<tbody><tr><td>Grixis Reanimator</td><td>Counter the Combo</td><td>~60%</td><td><span class="verdict v-good">Favored</span></td></tr></tbody>
+</table><div id="vs_glock" class="matchup-detail"><p>You have the best matchup of any deck against Glockulous. Counterspell answers Persist cleanly. Consign to Memory answers it for free. Teferi, Time Raveler locks them into sorcery speed — Persist cannot be cast at instant speed under Teferi. Rest in Peace removes Archon from the graveyard permanently.</p><div class="sb-row"><div class="sb-in"><div class="sb-label">In</div><div class="sb-card"><span>Consign to Memory</span><span class="sb-n">3</span></div><div class="sb-card"><span>Rest in Peace</span><span class="sb-n">2</span></div></div><div class="sb-out"><div class="sb-label">Out</div><div class="sb-card"><span>Supreme Verdict</span><span class="sb-n">2</span></div><div class="sb-card"><span>Prismatic Ending</span><span class="sb-n">2</span></div><div class="sb-card"><span>Dress Down</span><span class="sb-n">1</span></div></div></div><div class="if-then"><div class="if">If Teferi TRav resolves</div>→ They cannot Persist at instant speed. Take your time — they must answer Teferi at sorcery speed with limited options.</div></div><table class="matchup-table" data-deck="Azorius Control" data-vs="Jeskai Blink" onclick="toggle('vs_blink',this)">
+<thead><tr><th>Matchup</th><th>Role</th><th>G1 WR</th><th>Overall</th></tr></thead>
+<tbody><tr><td>UW / Esper Blink</td><td>Answer Engines</td><td>~50%</td><td><span class="verdict v-even">Even — Teferi Wars</span></td></tr></tbody>
+</table><div id="vs_blink" class="matchup-detail"><p>Mirror-adjacent. Both decks generate card advantage with blue interaction. You need Teferi Hero to close before they go wide enough that Verdict is too slow.</p><div class="if-then"><div class="if">If they resolve Ocelot Pride</div>→ Prismatic Ending immediately. Higher priority than answering any other threat.</div><div class="if-then"><div class="if">If Teferi, Hero resolves on either side</div>→ The Teferi player is heavily favored. Dovin's Veto counters theirs uncounterably.</div></div></div><div id="sideboard" class="section"><div class="section-label">Chapter 06</div><h1>Sideboard Guide</h1>
+<div class='sb-guide-card'><div class='sb-guide-name'>Consign to Memory — 3 copies</div><div class='sb-guide-body'>Counters Persist, Goryo's Vengeance, Living End, and Cascade triggers. The main reason UW Control is the best anti-combo deck in the format. Board all 3 against any combo matchup.</div></div>
+<div class='sb-guide-card'><div class='sb-guide-name'>Rest in Peace — 2 copies</div><div class='sb-guide-body'>Graveyard hate that also shuts off Snapcaster in the mirror. Note: RIP shuts off YOUR Snapcaster — evaluate before boarding. Worth the downside against Glockulous. Not worth it against fair blue decks with Snap.</div></div>
+<div class='sb-guide-card'><div class='sb-guide-name'>Dovin's Veto — 2 copies</div><div class='sb-guide-body'>Uncounterable counterspell. Board in against any blue deck where Counterspell wars are expected. The Teferi wars in blue mirrors often come down to who has Veto backup.</div></div>
+<div class='sb-guide-card'><div class='sb-guide-name'>Wrath of the Skies — 2 copies</div><div class='sb-guide-body'>X-cost sweeper. Boards in vs Boros Energy, Prowess, Blink token strategies. Cast it when the board is threatening — don't wait for a "perfect" Verdict moment.</div></div></div><div id="heuristics" class="section"><div class="section-label">Chapter 07</div><h1>Heuristics &amp;<br>Quick Rules</h1><ol class="heuristic-list">
+<li>Never tap out T1–T3 unless the play is Teferi, Time Raveler. Every tapped turn is a free turn for combo decks.</li>
+<li>Counter their Teferi, Hero of Dominaria before anything else in blue matchups. A resolved Teferi Hero is the single hardest permanent to answer in the format.</li>
+<li>Verdict is cast when the board is threatening — not when it's "perfect." Waiting for a perfect Verdict means losing to the board you could have cleared.</li>
+<li>Snapcaster always flashes back the highest-impact spell. Don't reflexively flash Counterspell if Prismatic Ending answers the threat more cleanly.</li>
+<li>Rest in Peace shuts off your own Snapcaster Mage. Evaluate this before boarding — in some matchups the graveyard hate is worth more than Snap recursion, in others it isn't.</li>
+<li>Force of Negation costs two cards (pitched blue + spell). Don't use it to counter something Counterspell handles. Save it for uncounterable threats or turns where you're tapped out.</li>
+<li>Dovin's Veto is uncounterable — hold it specifically for situations where they have Veto backup on their own Teferi. Otherwise Counterspell is cleaner.</li>
+<li>In long RC tournaments, UW Control is one of the slowest decks in Modern. Play briskly. Know your lines before casting each spell. Losing to the clock in rounds 8+ is a real risk.</li>
+<li>Choose this deck for an RC only when midrange and combo are the primary expected archetypes. Against aggro-heavy fields, UW Blink or Boros Energy is the better call.</li>
+<li>Dress Down is your most underrated card. Stopping Solitude ETBs, Guide of Souls lifegain, and White Orchid Phantom land denial — know the timing before you cast it.</li>
+</ol></div><div id="prep" class="section"><div class="section-label">Chapter 08</div><h1>Event Day Prep</h1><button class="print-btn" onclick="window.print()">Print This Sheet</button>
+<div class="prep-grid">
+<div class="prep-block"><div class="prep-block-title">Matchup Quick Reference</div>
+<div class="prep-line"><span>Boros Energy / Prowess</span><span class="prep-verdict" style="color:#8f1a1a">Hard — Verdict or lose</span></div>
+<div class="prep-line"><span>UW / Esper Blink</span><span class="prep-verdict" style="color:#8f6a1a">Even — Teferi wars</span></div>
+<div class="prep-line"><span>Grixis Reanimator</span><span class="prep-verdict" style="color:#1a6b1a">Favored — Consign wins</span></div>
+<div class="prep-line"><span>Amulet Titan</span><span class="prep-verdict" style="color:#1a6b1a">Favored — Consign kills it</span></div>
+<div class="prep-line"><span>Any Midrange</span><span class="prep-verdict" style="color:#1a6b1a">Favored — Best matchup category</span></div>
+</div>
+<div class="prep-block"><div class="prep-block-title">Key SB Plans</div>
+<div class="prep-line"><span>vs Aggro</span><span class="prep-verdict">+2 Path, +2 Wrath / −Teferi Hero, −FoN ×2</span></div>
+<div class="prep-line"><span>vs Combo</span><span class="prep-verdict">+3 Consign, +2 RIP / −2 Verdict, −2 Ending, −1 Dress</span></div>
+<div class="prep-line"><span>vs Artifacts</span><span class="prep-verdict">+2 Stony / −2 Prismatic Ending</span></div>
+<div class="prep-line"><span>vs Blue</span><span class="prep-verdict">+2 Dovin's Veto / −2 FoN</span></div>
+</div>
+<div class="prep-block"><div class="prep-block-title">Non-Negotiable Rules</div>
+<div class="prep-line"><span>Never tap out T1–T3</span><span class="prep-verdict">Unless it's Teferi TRav</span></div>
+<div class="prep-line"><span>Counter their Teferi Hero</span><span class="prep-verdict">Before anything else in blue mirrors</span></div>
+<div class="prep-line"><span>Verdict when threatening</span><span class="prep-verdict">Not "perfect" — now</span></div>
+<div class="prep-line"><span>Play briskly</span><span class="prep-verdict">Clock is a real concern at RC</span></div>
+</div>
+<div class="prep-block"><div class="prep-block-title">When to Pick This Deck</div>
+<div class="prep-line"><span>Field</span><span class="prep-verdict">Midrange + combo heavy, low aggro</span></div>
+<div class="prep-line"><span>Meta signal</span><span class="prep-verdict">Snapcaster is best card in format</span></div>
+<div class="prep-line"><span>Avoid if</span><span class="prep-verdict">Boros + Prowess &gt;35% of field</span></div>
+</div>
+</div></div></div><footer><span>Team Resolve · Modern · UW Control Playbook</span><span>Zuxas · 2026 RC Season</span></footer><script>
+function show(id){document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));document.querySelectorAll('.nav-link').forEach(l=>l.classList.remove('active'));document.getElementById(id).classList.add('active');event.target.classList.add('active');}
+function toggle(id,t){const d=document.getElementById(id);const o=d.classList.contains('open');document.querySelectorAll('.matchup-detail').forEach(d=>d.classList.remove('open'));document.querySelectorAll('.matchup-table tr').forEach(r=>r.classList.remove('selected'));if(!o){d.classList.add('open');t.querySelector('tbody tr').classList.add('selected');}}
+</script>
+<script src="matchup-data-loader.js"></script>
+</body></html>
+  .sb-row { display:grid; grid-template-columns:1fr 1fr; gap:24px; margin:16px 0; }
+  .sb-in,.sb-out { background:var(--paper); border:1px solid var(--rule); padding:16px; }
+  .sb-label { font-family:'DM Mono',monospace; font-size:9px; letter-spacing:0.2em; text-transform:uppercase; margin-bottom:8px; }
+  .sb-in .sb-label { color:#1a6b1a; } .sb-out .sb-label { color:#8f1a1a; }
+  .sb-card { display:flex; justify-content:space-between; padding:3px 0; font-size:14px; border-bottom:1px solid rgba(200,191,176,0.3); }
+  .sb-n { font-family:'DM Mono',monospace; font-size:11px; color:var(--mid); }
+  .sb-guide-card { background:var(--paper-dark); border:1px solid var(--rule); padding:16px 20px; margin-bottom:12px; }
+  .sb-guide-name { font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.08em; color:var(--ink); margin-bottom:4px; }
+  .sb-guide-body { font-size:14px; color:var(--mid); font-weight:300; }
+  .heuristic-list { list-style:none; counter-reset:h; }
+  .heuristic-list li { counter-increment:h; display:flex; gap:20px; padding:14px 0; border-bottom:1px solid var(--rule); font-size:16px; font-weight:300; }
+  .heuristic-list li::before { content:counter(h,decimal-leading-zero); font-family:'DM Mono',monospace; font-size:18px; color:rgba(91,127,212,0.25); flex-shrink:0; width:28px; }
+  .print-btn { display:inline-block; background:var(--ink); color:var(--paper); font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; padding:10px 20px; border:none; cursor:pointer; margin-bottom:32px; }
+  .prep-grid { display:grid; grid-template-columns:1fr 1fr; gap:24px; }
+  .prep-block { background:var(--paper-dark); border:1px solid var(--rule); padding:20px; }
+  .prep-block-title { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--mid); margin-bottom:12px; padding-bottom:8px; border-bottom:1px solid var(--rule); }
+  .prep-line { display:flex; justify-content:space-between; padding:4px 0; font-size:14px; border-bottom:1px solid rgba(200,191,176,0.3); }
+  .prep-verdict { font-family:'DM Mono',monospace; font-size:10px; }
+  footer { background:var(--ink); color:rgba(242,237,230,0.25); font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.12em; text-transform:uppercase; padding:24px 80px; display:flex; justify-content:space-between; }
+  @media print { nav,.header-band,footer,.print-btn,.section:not(#prep) { display:none !important; } .section#prep { display:block !important; } body { font-size:12px; } .page { padding:20px; } }</style>
+</head>
+<body><div class="header-band"><div class="header-inner">
+<div class="header-left">
+  <div class="header-eyebrow">Team Resolve · Modern · Archetype Playbook</div>
+  <div class="header-title">UW <span>Control</span></div>
+  <div class="header-mantra">"Answer everything. Win with the last card in hand."</div>
+</div>
+<div class="header-right"><div class="header-stat"><span class="hs-label">Identity</span><span class="hs-val">Reactive Control</span></div><div class="header-stat"><span class="hs-label">Complexity</span><span class="hs-val">★★★★☆</span></div><div class="header-stat"><span class="hs-label">Status</span><span class="hs-val">Meta-Dependent Pick</span></div></div>
+</div></div><nav><span class="nav-brand">UW CONTROL</span><button class="nav-link active" onclick="show('identity')">Identity</button><button class="nav-link" onclick="show('decklist')">Decklist</button><button class="nav-link" onclick="show('gameplan')">Gameplan</button><button class="nav-link" onclick="show('roles')">Roles</button><button class="nav-link" onclick="show('matchups')">Matchups</button><button class="nav-link" onclick="show('sideboard')">SB Guide</button><button class="nav-link" onclick="show('heuristics')">Heuristics</button><button class="nav-link" onclick="show('prep')">Prep</button></nav><div class="page"><div id="identity" class="section active"><div class="section-label">Chapter 01</div><h1>Identity &amp;<br>Philosophy</h1>
+<div class="mantra">"Answer everything. Win with the last card in hand."<cite>— Core Mantra</cite></div>
+<p>UW Control is the correct pick when you can predict a field heavy on midrange and combo. It does not apply pressure. It survives, answers, and generates card advantage through Snapcaster Mage loops until the opponent is out of resources — then closes with a protected finisher.</p>
+<p>The key meta signal: when Snapcaster Mage is clearly the best card in the format and the RC field skews midrange and combo. Against Boros Energy and Prowess, UW Control's reactive plan is too slow. Against Blink mirrors, Titan, and Goryo's variants — it's the best-positioned deck in the room.</p>
+<div class="card-grid"><div class="card"><div class="card-label">Axis 01</div><div class="card-title">Answer Everything</div><div class="card-body">Counterspell, Solitude, Prismatic Ending, and Supreme Verdict cover virtually every permanent type. The opponent cannot resolve a threat that sticks unless you let them.</div></div><div class="card"><div class="card-label">Axis 02</div><div class="card-title">Snapcaster Engine</div><div class="card-body">Snapcaster + any instant is a two-for-one. Snap + Counterspell is a 3-mana counter that replaces itself. Protect Snapcaster — it's the primary advantage engine.</div></div><div class="card"><div class="card-label">Axis 03</div><div class="card-title">Teferi Inevitability</div><div class="card-body">Teferi, Hero of Dominaria generates one card per turn and protects itself. A resolved Teferi with counterspell backup is effectively unbeatable for most fair decks.</div></div><div class="card"><div class="card-label">Axis 04</div><div class="card-title">Hard Counters</div><div class="card-body">Counterspell and Force of Negation give the ability to say no to anything at instant speed. Consign to Memory from the sideboard answers free spells, cascades, and Persist at instant speed.</div></div></div>
+<div class="card-grid"><div class="card"><div class="card-label">Strengths</div><div class="card-title">What You Do Well</div><div class="card-body">Best deck against combo — hard counters answer anything.<br><br>Snap + interaction generates card advantage all game.<br><br>Verdict is the cleanest answer to wide boards.<br><br>Deep format knowledge pays off — every interaction matters.</div></div><div class="card"><div class="card-label">Weaknesses</div><div class="card-title">What Beats You</div><div class="card-body">Boros Energy and Prowess apply pressure before setup is established.<br><br>Tournament clock — slow play in long RC days is a real concern.<br><br>Counterspell wars against other blue decks are skill-intensive.<br><br>Mana base painful — fetch/shock hits add up in aggro matchups.</div></div></div>
+<p><strong>When to pick this:</strong> RC field skewed toward midrange and combo, low aggro. When Snapcaster is the best card in the format. When the field has heavily prepared against Blink.</p></div><div id="decklist" class="section"><div class="section-label">Chapter 02</div><h1>The 75</h1><div class="dl-section"><div class="dl-section-label">Main Deck · 60 Cards</div>
+<div class="dl-grid">
+<div><div class="dl-entry"><span class="dl-count">4</span><span class="dl-name">Counterspell</span></div><div class="dl-entry"><span class="dl-count">4</span><span class="dl-name">Snapcaster Mage</span></div><div class="dl-entry"><span class="dl-count">4</span><span class="dl-name">Solitude</span></div><div class="dl-entry"><span class="dl-count">4</span><span class="dl-name">Prismatic Ending</span></div><div class="dl-entry"><span class="dl-count">2</span><span class="dl-name">Supreme Verdict</span></div></div>
+<div><div class="dl-entry"><span class="dl-count">2</span><span class="dl-name">Teferi, Hero of Dominaria</span></div><div class="dl-entry"><span class="dl-count">2</span><span class="dl-name">Teferi, Time Raveler</span></div><div class="dl-entry"><span class="dl-count">2</span><span class="dl-name">Force of Negation</span></div><div class="dl-entry"><span class="dl-count">2</span><span class="dl-name">Memory Deluge</span></div><div class="dl-entry"><span class="dl-count">2</span><span class="dl-name">Dress Down</span></div><div class="dl-entry"><span class="dl-count">4</span><span class="dl-name">Flooded Strand</span></div></div>
+<div><div class="dl-entry"><span class="dl-count">4</span><span class="dl-name">Hallowed Fountain</span></div><div class="dl-entry"><span class="dl-count">4</span><span class="dl-name">Mystic Gate</span></div><div class="dl-entry"><span class="dl-count">4</span><span class="dl-name">Island</span></div><div class="dl-entry"><span class="dl-count">2</span><span class="dl-name">Plains</span></div><div class="dl-entry"><span class="dl-count">2</span><span class="dl-name">Arid Mesa</span></div><div class="dl-entry"><span class="dl-count">4</span><span class="dl-name">[Flex]</span></div></div>
+</div></div>
+<div class="dl-section"><div class="dl-section-label">Sideboard · 15 Cards</div>
+<div class="dl-grid">
+<div><div class="dl-entry"><span class="dl-count">3</span><span class="dl-name">Consign to Memory</span></div><div class="dl-entry"><span class="dl-count">2</span><span class="dl-name">Rest in Peace</span></div><div class="dl-entry"><span class="dl-count">2</span><span class="dl-name">Stony Silence</span></div></div>
+<div><div class="dl-entry"><span class="dl-count">2</span><span class="dl-name">Dovin's Veto</span></div><div class="dl-entry"><span class="dl-count">2</span><span class="dl-name">Path to Exile</span></div><div class="dl-entry"><span class="dl-count">2</span><span class="dl-name">Wrath of the Skies</span></div><div class="dl-entry"><span class="dl-count">2</span><span class="dl-name">[Meta flex]</span></div></div>
+</div></div></div><div id="gameplan" class="section"><div class="section-label">Chapter 03</div><h1>The Game Plan</h1>
+<div class="mantra">"Never tap out in the early turns unless the play is Teferi TRav. Every tapped turn is a free combo turn."<cite>— Key Principle</cite></div>
+<h2>Phase 1 — Survive (Turns 1–3)</h2>
+<p>Your only goal is not to fall behind. Prismatic Ending on their one-drop. Counterspell their two-drop. Do not tap out unless the play is Teferi, Time Raveler to lock their instant-speed interaction.</p>
+<h2>Phase 2 — Establish (Turns 4–6)</h2>
+<p>Supreme Verdict clears any board you couldn't answer one-for-one. Snapcaster into interaction generates card advantage while keeping mana up. Memory Deluge finds Teferi Hero or more answers.</p>
+<h2>Phase 3 — Close (Turn 7+)</h2>
+<p>Teferi, Hero of Dominaria with Counterspell backup. Generate cards, untap lands, answer everything they play. A single Celestial Colonnade or Shark token closes from here — their hand is empty.</p>
+<h2>Mulligan</h2>
+<p><strong>Keep:</strong> 3–4 lands, one Counterspell or Solitude, either draw or a second interaction piece.</p>
+<p><strong>Mulligan:</strong> One-land hands, no interaction, more than 5 lands.</p></div><div id="roles" class="section"><div class="section-label">Chapter 04</div><h1>Role Assignment</h1>
+<p>UW Control has one role in almost every matchup: control. The rare exception is when Teferi, Time Raveler resolves — briefly you become the beatdown while locking them out of instant-speed play.</p>
+<div class="card-grid"><div class="card"><div class="card-label">vs Aggro</div><div class="card-title">Survive Then Close</div><div class="card-body">You're behind on board until Verdict. Every Prismatic Ending and Solitude buys a turn. Don't tap out without Verdict mana. Get to 5 lands and stabilize.</div></div><div class="card"><div class="card-label">vs Combo</div><div class="card-title">Counter Everything</div><div class="card-body">Hold Counterspell for the key piece. Teferi TRav locks them out of instant-speed interaction. Consign to Memory answers Persist, cascade, and free spells.</div></div><div class="card"><div class="card-label">vs Midrange</div><div class="card-title">Answer + Outvalue</div><div class="card-body">Answer their threats efficiently, generate card advantage, close with Teferi Hero. This is your best matchup category — you out-value every midrange deck in the format.</div></div><div class="card"><div class="card-label">vs Control</div><div class="card-title">Teferi Wars</div><div class="card-body">Whoever resolves Teferi, Hero first has a significant advantage. Prioritize countering their Teferi. Dovin's Veto answers theirs uncounterably — hold it specifically for this.</div></div></div></div><div id="matchups" class="section"><div class="section-label">Chapter 05</div><h1>Matchup Guide</h1><table class="matchup-table" onclick="toggle('vs_aggro',this)">
+<thead><tr><th>Matchup</th><th>Role</th><th>G1 WR</th><th>Overall</th></tr></thead>
+<tbody><tr><td>Boros Energy / Prowess</td><td>Survive</td><td>~35–40%</td><td><span class="verdict v-hard">Hard</span></td></tr></tbody>
+</table><div id="vs_aggro" class="matchup-detail"><p>Their clock is faster than your setup. Supreme Verdict is your best card — do not tap out without it on turn 4. Post-board bring Path to Exile and Wrath of the Skies.</p><div class="sb-row"><div class="sb-in"><div class="sb-label">In</div><div class="sb-card"><span>Path to Exile</span><span class="sb-n">2</span></div><div class="sb-card"><span>Wrath of the Skies</span><span class="sb-n">2</span></div></div><div class="sb-out"><div class="sb-label">Out</div><div class="sb-card"><span>Teferi, Hero of Dominaria</span><span class="sb-n">1</span></div><div class="sb-card"><span>Memory Deluge</span><span class="sb-n">1</span></div><div class="sb-card"><span>Force of Negation</span><span class="sb-n">2</span></div></div></div><div class="if-then"><div class="if">If Ajani resolves with 3+ cats</div>→ Supreme Verdict immediately. Ajani closes from 20 life in one attack. Don't wait for a better board state.</div></div><table class="matchup-table" onclick="toggle('vs_glock',this)">
+<thead><tr><th>Matchup</th><th>Role</th><th>G1 WR</th><th>Overall</th></tr></thead>
+<tbody><tr><td>Grixis Reanimator</td><td>Counter the Combo</td><td>~60%</td><td><span class="verdict v-good">Favored</span></td></tr></tbody>
+</table><div id="vs_glock" class="matchup-detail"><p>You have the best matchup of any deck against Glockulous. Counterspell answers Persist. Consign to Memory answers it for free. Teferi TRav locks them into sorcery speed — Persist cannot be cast at instant speed under Teferi. Rest in Peace removes Archon permanently.</p><div class="sb-row"><div class="sb-in"><div class="sb-label">In</div><div class="sb-card"><span>Consign to Memory</span><span class="sb-n">3</span></div><div class="sb-card"><span>Rest in Peace</span><span class="sb-n">2</span></div></div><div class="sb-out"><div class="sb-label">Out</div><div class="sb-card"><span>Supreme Verdict</span><span class="sb-n">2</span></div><div class="sb-card"><span>Prismatic Ending</span><span class="sb-n">2</span></div><div class="sb-card"><span>Dress Down</span><span class="sb-n">1</span></div></div></div><div class="if-then"><div class="if">If Teferi TRav resolves</div>→ They cannot Persist at instant speed. Take your time building your board — they must answer Teferi at sorcery speed.</div></div><table class="matchup-table" onclick="toggle('vs_blink',this)">
+<thead><tr><th>Matchup</th><th>Role</th><th>G1 WR</th><th>Overall</th></tr></thead>
+<tbody><tr><td>UW / Esper Blink</td><td>Answer Engines</td><td>~50%</td><td><span class="verdict v-even">Even — Teferi Wars</span></td></tr></tbody>
+</table><div id="vs_blink" class="matchup-detail"><p>Both decks generate card advantage with blue interaction. They apply pressure with Phelia and Ocelot Pride; you don't apply pressure at all. You need Teferi Hero to close before they go wide enough that Verdict is too slow.</p><div class="if-then"><div class="if">If they resolve Ocelot Pride</div>→ Prismatic Ending immediately. Higher priority than answering any other threat.</div><div class="if-then"><div class="if">If Teferi, Hero resolves</div>→ The Teferi player is heavily favored. Dovin's Veto counters their Teferi uncounterably.</div></div></div><div id="sideboard" class="section"><div class="section-label">Chapter 06</div><h1>Sideboard Guide</h1>
+<div class='sb-guide-card'><div class='sb-guide-name'>Consign to Memory — 3 copies</div><div class='sb-guide-body'>The premier answer to free spells. Counters Persist, Goryo's Vengeance, Living End, and Cascade triggers. This is the main reason UW Control is the best anti-combo deck in the format. Board all 3 against any combo matchup.</div></div>

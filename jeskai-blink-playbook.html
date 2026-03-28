@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jeskai Blink — Team Resolve Playbook</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+  :root { --ink:#0e0e0e; --paper:#f2ede6; --paper-dark:#e8e1d6; --rule:#c8bfb0; --accent:#7a2a1a; --accent-light:#f7ddd6; --gold:#8f6a1a; --gold-light:#f7ead6; --mid:#5a5248; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:var(--paper); color:var(--ink); font-family:'Crimson Pro',Georgia,serif; font-size:17px; line-height:1.6; }
+  .header-band { background:var(--ink); border-bottom:3px solid #d45a2a; }
+  .header-inner { max-width:1100px; margin:0 auto; padding:32px 80px; display:flex; justify-content:space-between; align-items:flex-end; gap:40px; }
+  .header-eyebrow { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:rgba(242,237,230,0.35); margin-bottom:8px; }
+  .header-title { font-family:'Bebas Neue',sans-serif; font-size:56px; line-height:0.9; color:var(--paper); letter-spacing:0.02em; }
+  .header-title span { color:#d45a2a; }
+  .header-mantra { font-family:'Crimson Pro',serif; font-style:italic; font-size:15px; color:rgba(242,237,230,0.4); margin-top:8px; }
+  .header-right { display:flex; flex-direction:column; gap:8px; }
+  .header-stat { display:flex; gap:16px; align-items:baseline; }
+  .hs-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; color:rgba(242,237,230,0.35); min-width:90px; }
+  .hs-val { font-family:'DM Mono',monospace; font-size:13px; color:rgba(242,237,230,0.8); }
+  nav { background:#1a1a1a; border-bottom:1px solid #333; padding:0 80px; display:flex; align-items:center; gap:4px; position:sticky; top:0; z-index:100; }
+  .nav-brand { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:#d45a2a; margin-right:24px; padding:14px 0; white-space:nowrap; }
+  .nav-link { background:none; border:none; color:rgba(242,237,230,0.45); font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.12em; text-transform:uppercase; padding:14px 16px; cursor:pointer; transition:color 0.2s; border-bottom:2px solid transparent; }
+  .nav-link:hover,.nav-link.active { color:var(--paper); border-bottom-color:#d45a2a; }
+  .page { max-width:1100px; margin:0 auto; padding:60px 80px 120px; }
+  .section { display:none; } .section.active { display:block; }
+  .section-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.25em; text-transform:uppercase; color:rgba(14,14,14,0.3); margin-bottom:12px; }
+  h1 { font-family:'Bebas Neue',sans-serif; font-size:64px; line-height:0.9; letter-spacing:0.02em; margin-bottom:40px; }
+  h2 { font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.2em; text-transform:uppercase; color:var(--mid); margin:40px 0 16px; padding-bottom:8px; border-bottom:1px solid var(--rule); }
+  h3 { font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:var(--accent); margin:24px 0 10px; }
+  p { margin-bottom:16px; font-weight:300; } strong { font-weight:600; }
+  .mantra { background:var(--paper-dark); border-left:3px solid #d45a2a; padding:20px 28px; margin:32px 0; font-style:italic; font-size:18px; color:var(--mid); }
+  .mantra cite { display:block; font-size:12px; letter-spacing:0.1em; text-transform:uppercase; color:rgba(90,82,72,0.5); margin-top:8px; font-style:normal; }
+  .card-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:1px; background:var(--rule); margin:16px 0 32px; border:1px solid var(--rule); }
+  .card { background:var(--paper); padding:20px; } .card:hover { background:var(--paper-dark); }
+  .card-label { font-family:'DM Mono',monospace; font-size:9px; letter-spacing:0.2em; text-transform:uppercase; color:rgba(14,14,14,0.3); margin-bottom:6px; }
+  .card-title { font-family:'DM Mono',monospace; font-size:12px; letter-spacing:0.08em; color:var(--accent); margin-bottom:8px; }
+  .card-body { font-size:14px; color:var(--mid); line-height:1.5; font-weight:300; }
+  .dl-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:0; }
+  .dl-section { margin-bottom:28px; }
+  .dl-section-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; color:var(--mid); padding-bottom:8px; border-bottom:1px solid var(--rule); margin-bottom:12px; }
+  .dl-entry { display:flex; justify-content:space-between; padding:4px 0; border-bottom:1px solid rgba(200,191,176,0.3); font-size:15px; }
+  .dl-count { font-family:'DM Mono',monospace; font-size:12px; color:var(--accent); min-width:20px; }
+  .dl-name { color:var(--ink); font-weight:300; }
+  .matchup-table { width:100%; border-collapse:collapse; margin-bottom:2px; cursor:pointer; }
+  .matchup-table thead tr { background:var(--paper-dark); }
+  .matchup-table th { font-family:'DM Mono',monospace; font-size:9px; letter-spacing:0.15em; text-transform:uppercase; padding:10px 14px; text-align:left; font-weight:400; color:var(--mid); border-bottom:1px solid var(--rule); }
+  .matchup-table td { padding:10px 14px; border-bottom:1px solid var(--rule); font-size:15px; background:var(--paper); transition:background 0.1s; }
+  .matchup-table tr:hover td { background:var(--paper-dark); }
+  .matchup-table tr.selected td { background:var(--accent-light); }
+  .verdict { font-family:'DM Mono',monospace; font-size:11px; padding:2px 8px; border-radius:2px; }
+  .v-good { background:#d4f0d4; color:#1a6b1a; border:1px solid #a0d4a0; }
+  .v-hard { background:#f7d6d6; color:#8f1a1a; border:1px solid #e8b0b0; }
+  .v-even { background:var(--gold-light); color:var(--gold); border:1px solid #e8c880; }
+  .matchup-detail { display:none; background:var(--paper-dark); border:1px solid var(--rule); border-top:3px solid #d45a2a; padding:28px 32px; margin-bottom:24px; }
+  .matchup-detail.open { display:block; }
+  .if-then { background:var(--paper); border:1px solid var(--rule); padding:16px 20px; margin:12px 0; font-size:14px; }
+  .if-then .if { font-family:'DM Mono',monospace; font-size:10px; color:var(--accent); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:4px; }
+  .sb-row { display:grid; grid-template-columns:1fr 1fr; gap:24px; margin:16px 0; }
+  .sb-in,.sb-out { background:var(--paper); border:1px solid var(--rule); padding:16px; }
+  .sb-label { font-family:'DM Mono',monospace; font-size:9px; letter-spacing:0.2em; text-transform:uppercase; margin-bottom:8px; }
+  .sb-in .sb-label { color:#1a6b1a; } .sb-out .sb-label { color:#8f1a1a; }
+  .sb-card { display:flex; justify-content:space-between; padding:3px 0; font-size:14px; border-bottom:1px solid rgba(200,191,176,0.3); }
+  .sb-n { font-family:'DM Mono',monospace; font-size:11px; color:var(--mid); }
+  .sb-guide-card { background:var(--paper-dark); border:1px solid var(--rule); padding:16px 20px; margin-bottom:12px; }
+  .sb-guide-name { font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.08em; color:var(--ink); margin-bottom:4px; }
+  .sb-guide-body { font-size:14px; color:var(--mid); font-weight:300; }
+  .heuristic-list { list-style:none; counter-reset:h; }
+  .heuristic-list li { counter-increment:h; display:flex; gap:20px; padding:14px 0; border-bottom:1px solid var(--rule); font-size:16px; font-weight:300; }
+  .heuristic-list li::before { content:counter(h,decimal-leading-zero); font-family:'DM Mono',monospace; font-size:18px; color:rgba(212,90,42,0.25); flex-shrink:0; width:28px; }
+  .print-btn { display:inline-block; background:var(--ink); color:var(--paper); font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; padding:10px 20px; border:none; cursor:pointer; margin-bottom:32px; }
+  .prep-grid { display:grid; grid-template-columns:1fr 1fr; gap:24px; }
+  .prep-block { background:var(--paper-dark); border:1px solid var(--rule); padding:20px; }
+  .prep-block-title { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--mid); margin-bottom:12px; padding-bottom:8px; border-bottom:1px solid var(--rule); }
+  .prep-line { display:flex; justify-content:space-between; padding:4px 0; font-size:14px; border-bottom:1px solid rgba(200,191,176,0.3); }
+  .prep-verdict { font-family:'DM Mono',monospace; font-size:10px; }
+  footer { background:var(--ink); color:rgba(242,237,230,0.25); font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.12em; text-transform:uppercase; padding:24px 80px; display:flex; justify-content:space-between; }
+  @media print { nav,.header-band,footer,.print-btn,.section:not(#prep) { display:none !important; } .section#prep { display:block !important; } body { font-size:12px; } .page { padding:20px; } }</style>
+</head>
+<body><div class="header-band"><div class="header-inner">
+<div class="header-left">
+  <div class="header-eyebrow">Team Resolve · Modern · Archetype Playbook</div>
+  <div class="header-title">Jeskai <span>Blink</span></div>
+  <div class="header-mantra">"The UW engine. The red angle."</div>
+</div>
+<div class="header-right"><div class="header-stat"><span class="hs-label">Identity</span><span class="hs-val">Tempo-Control + Red</span></div><div class="header-stat"><span class="hs-label">Complexity</span><span class="hs-val">★★★★★</span></div><div class="header-stat"><span class="hs-label">Status</span><span class="hs-val">Evaluating the Splash</span></div></div>
+</div></div><nav><span class="nav-brand">JESKAI BLINK</span><button class="nav-link active" onclick="show('identity')">Identity</button><button class="nav-link" onclick="show('decklist')">Decklist</button><button class="nav-link" onclick="show('gameplan')">Gameplan</button><button class="nav-link" onclick="show('roles')">Roles</button><button class="nav-link" onclick="show('matchups')">Matchups</button><button class="nav-link" onclick="show('sideboard')">SB Guide</button><button class="nav-link" onclick="show('heuristics')">Heuristics</button><button class="nav-link" onclick="show('prep')">Prep</button></nav><div class="page">
+<div id="identity" class="section active"><div class="section-label">Chapter 01</div><h1>Identity &amp;<br>Philosophy</h1>
+<div class="mantra">"The UW engine. The red angle. Better when they're not ready for the third color."<cite>— Core Mantra</cite></div>
+<p>Jeskai Blink is <strong>UW Blink with a red splash</strong>. The core engine is identical — Ephemerate, Phelia, White Orchid Phantom, Solitude, Guide of Souls, Ocelot Pride — but the red splash adds Lightning Bolt and Orim's Chant to the main deck. Teferi, Time Raveler (2 main, 1 SB across the 75) is the key card bridging the colors.</p>
+<p>The Team Resolve working verdict: <strong>UW is better in open and aggro-heavy fields. Jeskai is correct when the expected field is combo-heavy</strong> (Belcher, Neoform, Titan). Orim's Chant is the card that separates the two shells — it's a full-turn Time Walk against combo decks that cannot be replicated in UW.</p>
+<div class="card-grid"><div class="card"><div class="card-label">What Red Adds (1)</div><div class="card-title">Orim's Chant</div><div class="card-body">Full-turn Time Walk against combo. Cast at the start of their main phase — they get zero plays. Best against Belcher, Amulet (taps mana in response to Pact), and Neoform. This is the primary reason to choose Jeskai over UW.</div></div><div class="card"><div class="card-label">What Red Adds (2)</div><div class="card-title">Lightning Bolt</div><div class="card-body">One-mana instant answer to Ragavan, Guide of Souls, and DRC specifically. Goes to the face in races. UW doesn't have this — Bolt closes matchup gaps that Prismatic Ending can't fill at one mana.</div></div><div class="card"><div class="card-label">What Red Adds (3)</div><div class="card-title">Teferi TRav (2 main)</div><div class="card-body">2 main vs 1 in the UW build. Against combo this is a free win condition — it locks opponents into sorcery speed. Against Glockulous: they cannot Persist at instant speed under Teferi.</div></div><div class="card"><div class="card-label">The Cost</div><div class="card-title">Mana Consistency</div><div class="card-body">Three-color mana means more shock damage and occasional openers that don't produce the right colors. Against Boros Energy and Prowess, this matters. Evaluate the expected field before choosing Jeskai.</div></div></div>
+<div class="card-grid"><div class="card"><div class="card-label">Choose Jeskai When</div><div class="card-title">Combo-Heavy Field</div><div class="card-body">Orim's Chant main is a free win against Belcher, Neoform, Amulet Titan, and stack-based combo. If the RC field is more than 20% combo, Jeskai is the correct call.</div></div><div class="card"><div class="card-label">Choose UW When</div><div class="card-title">Open or Aggro Field</div><div class="card-body">Cleaner mana, more consistent openers, no tempo hits from shock damage. Against Boros + Prowess + open field — take UW's mana consistency.</div></div></div></div>
+<div id="decklist" class="section"><div class="section-label">Chapter 02</div><h1>The 75</h1><div class="dl-section"><div class="dl-section-label">Main Deck · 60 Cards</div>
+<div class="dl-grid">
+<div><div class="dl-entry"><span class="dl-count">4</span><span class="dl-name">Ephemerate</span></div><div class="dl-entry"><span class="dl-count">4</span><span class="dl-name">Phelia, Exuberant Shepherd</span></div><div class="dl-entry"><span class="dl-count">4</span><span class="dl-name">White Orchid Phantom</span></div><div class="dl-entry"><span class="dl-count">4</span><span class="dl-name">Guide of Souls</span></div><div class="dl-entry"><span class="dl-count">4</span><span class="dl-name">Ocelot Pride</span></div><div class="dl-entry"><span class="dl-count">4</span><span class="dl-name">Solitude</span></div></div>
+<div><div class="dl-entry"><span class="dl-count">3</span><span class="dl-name">Lightning Bolt</span></div><div class="dl-entry"><span class="dl-count">2</span><span class="dl-name">Teferi, Time Raveler</span></div><div class="dl-entry"><span class="dl-count">2</span><span class="dl-name">Orim's Chant</span></div><div class="dl-entry"><span class="dl-count">2</span><span class="dl-name">Prismatic Ending</span></div><div class="dl-entry"><span class="dl-count">2</span><span class="dl-name">Consign to Memory</span></div><div class="dl-entry"><span class="dl-count">1</span><span class="dl-name">Mockingbird</span></div></div>
+<div><div class="dl-entry"><span class="dl-count">4</span><span class="dl-name">Flagstones of Trokair</span></div><div class="dl-entry"><span class="dl-count">3</span><span class="dl-name">Flooded Strand</span></div><div class="dl-entry"><span class="dl-count">2</span><span class="dl-name">Sacred Foundry</span></div><div class="dl-entry"><span class="dl-count">2</span><span class="dl-name">Hallowed Fountain</span></div><div class="dl-entry"><span class="dl-count">2</span><span class="dl-name">Arid Mesa</span></div><div class="dl-entry"><span class="dl-count">1</span><span class="dl-name">Inspiring Vantage</span></div><div class="dl-entry"><span class="dl-count">1</span><span class="dl-name">Gemstone Caverns</span></div><div class="dl-entry"><span class="dl-count">2</span><span class="dl-name">Plains</span></div><div class="dl-entry"><span class="dl-count">1</span><span class="dl-name">Island</span></div></div>
+</div></div>
+<div class="dl-section"><div class="dl-section-label">Sideboard · 15 Cards</div>
+<div class="dl-grid">
+<div><div class="dl-entry"><span class="dl-count">2</span><span class="dl-name">Consign to Memory</span></div><div class="dl-entry"><span class="dl-count">2</span><span class="dl-name">Sanctifier en-Vec</span></div><div class="dl-entry"><span class="dl-count">2</span><span class="dl-name">Stony Silence</span></div><div class="dl-entry"><span class="dl-count">1</span><span class="dl-name">Kataki, War's Wage</span></div></div>
+<div><div class="dl-entry"><span class="dl-count">1</span><span class="dl-name">Disruptor Flute</span></div><div class="dl-entry"><span class="dl-count">1</span><span class="dl-name">Teferi, Time Raveler</span></div><div class="dl-entry"><span class="dl-count">1</span><span class="dl-name">Orim's Chant</span></div><div class="dl-entry"><span class="dl-count">1</span><span class="dl-name">Lavinia, Azorius Renegade</span></div><div class="dl-entry"><span class="dl-count">2</span><span class="dl-name">Wrath of the Skies</span></div><div class="dl-entry"><span class="dl-count">2</span><span class="dl-name">[Meta flex]</span></div></div>
+</div></div></div>
+<div id="decklist" class="section"><div class="section-label">Chapter 02</div><h1>The 75</h1>
+<div class="dl-section"><div class="dl-section-label">Main Deck · 60 Cards</div>
+<div class="dl-grid">
+<div><div class="dl-entry"><span class="dl-count">4</span><span class="dl-name">Ephemerate</span></div><div class="dl-entry"><span class="dl-count">4</span><span class="dl-name">Phelia, Exuberant Shepherd</span></div><div class="dl-entry"><span class="dl-count">4</span><span class="dl-name">White Orchid Phantom</span></div><div class="dl-entry"><span class="dl-count">4</span><span class="dl-name">Guide of Souls</span></div><div class="dl-entry"><span class="dl-count">4</span><span class="dl-name">Ocelot Pride</span></div><div class="dl-entry"><span class="dl-count">4</span><span class="dl-name">Solitude</span></div></div>
+<div><div class="dl-entry"><span class="dl-count">3</span><span class="dl-name">Lightning Bolt</span></div><div class="dl-entry"><span class="dl-count">2</span><span class="dl-name">Teferi, Time Raveler</span></div><div class="dl-entry"><span class="dl-count">2</span><span class="dl-name">Orim's Chant</span></div><div class="dl-entry"><span class="dl-count">2</span><span class="dl-name">Prismatic Ending</span></div><div class="dl-entry"><span class="dl-count">2</span><span class="dl-name">Consign to Memory</span></div><div class="dl-entry"><span class="dl-count">1</span><span class="dl-name">Mockingbird</span></div></div>
+<div><div class="dl-entry"><span class="dl-count">4</span><span class="dl-name">Flagstones of Trokair</span></div><div class="dl-entry"><span class="dl-count">3</span><span class="dl-name">Flooded Strand</span></div><div class="dl-entry"><span class="dl-count">2</span><span class="dl-name">Sacred Foundry</span></div><div class="dl-entry"><span class="dl-count">2</span><span class="dl-name">Hallowed Fountain</span></div><div class="dl-entry"><span class="dl-count">2</span><span class="dl-name">Arid Mesa</span></div><div class="dl-entry"><span class="dl-count">1</span><span class="dl-name">Inspiring Vantage</span></div><div class="dl-entry"><span class="dl-count">1</span><span class="dl-name">Gemstone Caverns</span></div><div class="dl-entry"><span class="dl-count">2</span><span class="dl-name">Plains</span></div><div class="dl-entry"><span class="dl-count">1</span><span class="dl-name">Island</span></div></div>
+</div></div>
+<div class="dl-section"><div class="dl-section-label">Sideboard · 15 Cards</div>
+<div class="dl-grid">
+<div><div class="dl-entry"><span class="dl-count">2</span><span class="dl-name">Consign to Memory</span></div><div class="dl-entry"><span class="dl-count">2</span><span class="dl-name">Sanctifier en-Vec</span></div><div class="dl-entry"><span class="dl-count">2</span><span class="dl-name">Stony Silence</span></div><div class="dl-entry"><span class="dl-count">1</span><span class="dl-name">Kataki, War's Wage</span></div></div>
+<div><div class="dl-entry"><span class="dl-count">1</span><span class="dl-name">Disruptor Flute</span></div><div class="dl-entry"><span class="dl-count">1</span><span class="dl-name">Teferi, Time Raveler</span></div><div class="dl-entry"><span class="dl-count">1</span><span class="dl-name">Orim's Chant</span></div><div class="dl-entry"><span class="dl-count">1</span><span class="dl-name">Lavinia, Azorius Renegade</span></div><div class="dl-entry"><span class="dl-count">2</span><span class="dl-name">Wrath of the Skies</span></div><div class="dl-entry"><span class="dl-count">2</span><span class="dl-name">[Meta flex]</span></div></div>
+</div></div></div>
+<div id="gameplan" class="section"><div class="section-label">Chapter 03</div><h1>The Game Plan</h1>
+<div class="mantra">"Teferi first. Then execute. Never the other way around."<cite>— Key Principle</cite></div>
+<p>The UW Blink engine is identical to the UW Blink playbook — see that guide for full detail on Ephemerate sequencing, White Orchid Phantom lines, and Ocelot Pride + Guide inevitability. This section covers what changes with the red splash.</p>
+<h2>The Teferi Rule</h2>
+<p>Against any deck with instant-speed interaction, the sequencing is: <strong>Teferi, Time Raveler on turn 3 → execute the plan on turn 4+</strong>. Never the other way around. Teferi shuts off Goryo's Vengeance, Consign to Memory, Force of Negation, and Counterspell all at once. Ephemerate on Teferi is almost always wrong — his value is the static ability, not loyalty. Blink Solitude, Phantom, or Guide instead.</p>
+<h2>Orim's Chant Rules</h2>
+<p>Cast at the <strong>start of their main phase</strong> — before they have priority to declare any actions. Against Belcher: tap mana before they can activate Charbelcher. Against Amulet: tap mana in response to Summoner's Pact or Amulet trigger. Against Neoform: tap mana before they can cast it. You get a free turn — use it to set up the Ephemerate chain or assemble your engine.</p>
+<h2>Lightning Bolt Priority</h2>
+<p>Bolt goes to the face in most matchups. The exceptions where killing a creature is worth more than 3 face damage: Ragavan before its first connection, DRC before delirium is online, and Ocelot Pride on their side (kills the Pride and the token immediately).</p>
+<h2>Mana Reality</h2>
+<p>Accept 2–4 life of shock damage per game. Track life carefully — the Boros Energy matchup is often decided at 6–8 life. Don't fetch Sacred Foundry unless you specifically need red mana that turn.</p></div>
+<div id="roles" class="section"><div class="section-label">Chapter 04</div><h1>Role Assignment</h1>
+<p>Same as UW Blink — control against aggro, beatdown against control — with one addition: Teferi creates a third mode where you lock opponents into sorcery speed and play as the proactive deck even against interactive opponents.</p>
+<div class="card-grid"><div class="card"><div class="card-label">vs Aggro</div><div class="card-title">Control</div><div class="card-body">Solitude + Ephemerate stabilizes. Bolt kills early threats for one mana. Wrath resets. Accept slightly more shock damage than UW — Bolt compensates in the race.</div></div><div class="card"><div class="card-label">vs Combo</div><div class="card-title">Teferi Lock + Chant</div><div class="card-body">Teferi on T3, then assemble the engine. Orim's Chant buys a full turn if Teferi is answered. Consign + FoN protect the lock once established.</div></div><div class="card"><div class="card-label">vs Control</div><div class="card-title">Beatdown + Teferi</div><div class="card-body">Teferi shuts off their instant-speed Counterspell. Ocelot Pride + Guide of Souls under Teferi is very hard for control to answer in one turn.</div></div><div class="card"><div class="card-label">vs Midrange</div><div class="card-title">Tempo</div><div class="card-body">Bolt efficiency plus Ephemerate value. Identical to UW but with an additional answer that goes to the face and kills Ragavan cleanly.</div></div></div></div>
+<div id="matchups" class="section"><div class="section-label">Chapter 05</div><h1>Matchup Guide</h1>
+<table class="matchup-table" data-deck="Jeskai Blink" data-vs="Grixis Reanimator" onclick="toggle('vs_glock',this)">
+<thead><tr><th>Matchup</th><th>Role</th><th>G1 WR</th><th>Overall</th></tr></thead>
+<tbody><tr><td>Grixis Reanimator</td><td>Teferi Lock</td><td>~60%</td><td><span class="verdict v-good">Favored — Teferi Wins</span></td></tr></tbody>
+</table><div id="vs_glock" class="matchup-detail"><p>This is the primary reason to play Jeskai over UW. Teferi locks Glockulous into sorcery speed — they cannot Persist at instant speed under Teferi. Orim's Chant buys an additional turn if Teferi is answered. Compare to UW which has no main-deck hard lock on their plan.</p><div class="sb-row"><div class="sb-in"><div class="sb-label">In</div><div class="sb-card"><span>Consign to Memory</span><span class="sb-n">2</span></div><div class="sb-card"><span>Disruptor Flute</span><span class="sb-n">1</span></div><div class="sb-card"><span>Lavinia, Azorius Renegade</span><span class="sb-n">1</span></div></div><div class="sb-out"><div class="sb-label">Out</div><div class="sb-card"><span>Mockingbird</span><span class="sb-n">1</span></div><div class="sb-card"><span>Wrath of the Skies</span><span class="sb-n">1</span></div><div class="sb-card"><span>Sanctifier en-Vec</span><span class="sb-n">1</span></div></div></div><div class="if-then"><div class="if">If Teferi resolves</div>→ Execute immediately. They cannot Persist at instant speed. Any Archon that enters still ETBs — but they can't surprise you at end of turn.</div><div class="if-then"><div class="if">If they Thoughtseize Teferi</div>→ Hold Consign for the Persist. Orim's Chant buys the turn you need to develop your board enough to race through an Archon ETB.</div></div>
+<table class="matchup-table" data-deck="Jeskai Blink" data-vs="Boros Energy" onclick="toggle('vs_boros',this)">
+<thead><tr><th>Matchup</th><th>Role</th><th>G1 WR</th><th>Overall</th></tr></thead>
+<tbody><tr><td>Boros Energy</td><td>Control → Value</td><td>~50%</td><td><span class="verdict v-even">Even — Bolt Helps</span></td></tr></tbody>
+</table><div id="vs_boros" class="matchup-detail"><p>Bolt kills Ragavan for one mana — an improvement over UW. The mana hit from three-color lands means you sometimes take 4+ shock damage before you've interacted. In the race, every shock point matters. From the Team Resolve UW Blink guide: trade early, respect pump math, Wrath to reset, then win on value with Phelia/Ephemerate chains.</p><div class="sb-row"><div class="sb-in"><div class="sb-label">In</div><div class="sb-card"><span>Wrath of the Skies</span><span class="sb-n">2</span></div><div class="sb-card"><span>Sanctifier en-Vec</span><span class="sb-n">2</span></div></div><div class="sb-out"><div class="sb-label">Out</div><div class="sb-card"><span>Orim's Chant</span><span class="sb-n">1</span></div><div class="sb-card"><span>Mockingbird</span><span class="sb-n">1</span></div><div class="sb-card"><span>Consign to Memory</span><span class="sb-n">1</span></div><div class="sb-card"><span>[flex]</span><span class="sb-n">1</span></div></div></div><div class="if-then"><div class="if">If you have red mana open</div>→ Hold Bolt for Ragavan specifically. Killing it before the first connection is worth more than any 3 face damage.</div></div>
+<table class="matchup-table" data-deck="Jeskai Blink" data-vs="Amulet Titan" onclick="toggle('vs_titan',this)">
+<thead><tr><th>Matchup</th><th>Role</th><th>G1 WR</th><th>Overall</th></tr></thead>
+<tbody><tr><td>Amulet Titan / Belcher</td><td>Teferi + Chant</td><td>~55%</td><td><span class="verdict v-good">Favored — Chant Shines</span></td></tr></tbody>
+</table><div id="vs_titan" class="matchup-detail"><p>Orim's Chant and Teferi make this matchup category significantly better than UW. Tax Pact and Amulet turns with Teferi/Chant/Consign. Flute naming Summoner's Pact against Amulet is often backbreaking. White Orchid Phantom denies their bounce lands — deploy Phantom before they can respond with Amulet triggers.</p><div class="sb-row"><div class="sb-in"><div class="sb-label">In</div><div class="sb-card"><span>Consign to Memory</span><span class="sb-n">2</span></div><div class="sb-card"><span>Disruptor Flute</span><span class="sb-n">1</span></div><div class="sb-card"><span>Lavinia, Azorius Renegade</span><span class="sb-n">1</span></div><div class="sb-card"><span>Teferi, Time Raveler</span><span class="sb-n">1</span></div><div class="sb-card"><span>Stony Silence</span><span class="sb-n">2</span></div></div><div class="sb-out"><div class="sb-label">Out</div><div class="sb-card"><span>Mockingbird</span><span class="sb-n">1</span></div><div class="sb-card"><span>Wrath of the Skies</span><span class="sb-n">1</span></div><div class="sb-card"><span>Sanctifier en-Vec</span><span class="sb-n">1</span></div><div class="sb-card"><span>Lightning Bolt</span><span class="sb-n">2</span></div><div class="sb-card"><span>[flex]</span><span class="sb-n">1</span></div></div></div></div></div>
+<div id="sideboard" class="section"><div class="section-label">Chapter 06</div><h1>Sideboard Guide</h1>
+<p>See the UW Blink playbook for full notes on Consign to Memory, Sanctifier en-Vec, Stony Silence, Kataki, Wrath of the Skies, Disruptor Flute, and Lavinia — these are identical between both shells. Jeskai-specific notes below:</p>
+<div class='sb-guide-card'><div class='sb-guide-name'>Orim's Chant — 1 main + 1 SB (2 total)</div><div class='sb-guide-body'>Two total across the 75. Main deck copy for any unknown field since combo is always possible. SB copy boards in explicitly against combo-heavy expected matchups. Never boards out in combo matchups — if you're in Jeskai it's because you expected to need Chant. Always cast at the start of their main phase, not reactively.</div></div>
+<div class='sb-guide-card'><div class='sb-guide-name'>Teferi, Time Raveler — 2 main + 1 SB (3 total)</div><div class='sb-guide-body'>From the TR RC Houston guide: "You want to draw one, not multiples; protects engines and forces sorcery speed through their stack." Board the third copy in for combo/stack-heavy matchups. Never Ephemerate Teferi — blink other targets and let his static ability do work.</div></div>
+<div class='sb-guide-card'><div class='sb-guide-name'>Disruptor Flute — 1 copy</div><div class='sb-guide-body'>From the TR guide: "Broad combo hedge for one-axis decks — Neoform, Summoner's Pact, Charbelcher, Crashing Footfalls, The One Ring." Name the key card that makes their combo work. Flute naming Summoner's Pact against Amulet is often backbreaking.</div></div>
+<div class='sb-guide-card'><div class='sb-guide-name'>Lavinia, Azorius Renegade — 1 copy</div><div class='sb-guide-body'>Stops free spells (Living End, Cascade, Persist) and taxes non-land plays when they've cast more spells than mana paid. Niche card that's backbreaking in the right matchup — specifically Glockulous, Belcher, and any cascade deck.</div></div></div>
+<div id="heuristics" class="section"><div class="section-label">Chapter 07</div><h1>Heuristics &amp;<br>Quick Rules</h1><ol class="heuristic-list">
+<li>Teferi resolves before you execute the combo plan against any deck with instant-speed interaction. Sequence: Teferi on T3 → Ephemerate chains on T4+.</li>
+<li>Orim's Chant is cast at the START of their main phase — before they have priority. Don't wait for them to start acting. Tap everything before they can.</li>
+<li>Lightning Bolt goes to the face except against Ragavan, DRC (before delirium), and Ocelot Pride on their side. These three specific cards are worth killing over dealing 3 to the dome.</li>
+<li>Track shock damage carefully. The Boros Energy matchup is often decided at 6–8 life. Every fetch of Sacred Foundry is a tax on those games.</li>
+<li>Never Ephemerate Teferi. His value is the static ability — sorcery speed lock. Blink Solitude, Phantom, or Guide instead and let Teferi do his job.</li>
+<li>Choose Jeskai when you expect &gt;20% combo in the RC field. Against open fields with heavy aggro, UW's cleaner mana is the better call. Don't pay the mana tax if you won't use Chant enough to justify it.</li>
+<li>Disruptor Flute naming the key combo card is often backbreaking. Know what to name before the tournament: Summoner's Pact (Amulet), Charbelcher (Belcher), Neoform (Neoform).</li>
+<li>Lavinia, Azorius Renegade stops free spells and cascade. It's a niche card that's backbreaking in the right matchup — specifically Glockulous (stops Persist under certain conditions) and Belcher.</li>
+<li>White Orchid Phantom + Flagstones interaction is identical to UW — deploy Phantom before they can fetch to deny their key land. The mana denial core of both shells works the same way.</li>
+<li>If the field ends up Boros Energy + Prowess heavy and you chose Jeskai — sideboard heavily into Wrath + Sanctifier and accept you're playing a slightly worse UW in those matchups.</li>
+</ol></div>
+<div id="prep" class="section"><div class="section-label">Chapter 08</div><h1>Event Day Prep</h1><button class="print-btn" onclick="window.print()">Print This Sheet</button>
+<div class="prep-grid">
+<div class="prep-block"><div class="prep-block-title">vs UW Blink: Key Differences</div>
+<div class="prep-line"><span>Combo matchups</span><span class="prep-verdict">+15% — Teferi + Chant lock</span></div>
+<div class="prep-line"><span>Aggro matchups</span><span class="prep-verdict">−5% — mana tax</span></div>
+<div class="prep-line"><span>Grixis Reanimator</span><span class="prep-verdict">Significantly better — Teferi locks Persist</span></div>
+<div class="prep-line"><span>Midrange</span><span class="prep-verdict">Similar — Bolt helps some</span></div>
+</div>
+<div class="prep-block"><div class="prep-block-title">Teferi + Chant Rules</div>
+<div class="prep-line"><span>Always</span><span class="prep-verdict">Teferi before executing plan</span></div>
+<div class="prep-line"><span>Orim's Chant</span><span class="prep-verdict">Start of their main phase — not reactive</span></div>
+<div class="prep-line"><span>vs Grixis</span><span class="prep-verdict">No instant-speed Persist under Teferi</span></div>
+<div class="prep-line"><span>vs Amulet</span><span class="prep-verdict">Tap before Pact window opens</span></div>
+</div>
+<div class="prep-block"><div class="prep-block-title">Bolt Priority Order</div>
+<div class="prep-line"><span>1st</span><span class="prep-verdict">Ragavan — deny first connection</span></div>
+<div class="prep-line"><span>2nd</span><span class="prep-verdict">Their Ocelot Pride</span></div>
+<div class="prep-line"><span>3rd</span><span class="prep-verdict">DRC before delirium</span></div>
+<div class="prep-line"><span>Otherwise</span><span class="prep-verdict">Face — close the game</span></div>
+</div>
+<div class="prep-block"><div class="prep-block-title">When to Pick This Deck</div>
+<div class="prep-line"><span>Field is</span><span class="prep-verdict">&gt;20% combo — Chant earns its slot</span></div>
+<div class="prep-line"><span>Avoid if</span><span class="prep-verdict">Heavy aggro — take UW instead</span></div>
+<div class="prep-line"><span>Key signal</span><span class="prep-verdict">Glockulous showing up at local RCQs</span></div>
+</div>
+</div></div></div>
+<footer><span>Team Resolve · Modern · Jeskai Blink Playbook</span><span>Zuxas · 2026 RC Season</span></footer>
+<script>
+function show(id){document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));document.querySelectorAll('.nav-link').forEach(l=>l.classList.remove('active'));document.getElementById(id).classList.add('active');event.target.classList.add('active');}
+function toggle(id,t){const d=document.getElementById(id);const o=d.classList.contains('open');document.querySelectorAll('.matchup-detail').forEach(d=>d.classList.remove('open'));document.querySelectorAll('.matchup-table tr').forEach(r=>r.classList.remove('selected'));if(!o){d.classList.add('open');t.querySelector('tbody tr').classList.add('selected');}}
+</script>
+<script src="matchup-data-loader.js"></script>
+</body></html>
+<div id="gameplan" class="section"><div class="section-label">Chapter 03</div><h1>The Game Plan</h1>
+<div class="mantra">"Teferi first. Then execute. Never the other way around."<cite>— Key Principle</cite></div>
+<p>The UW Blink engine is identical — see the <a href="uw-blink-2025-10-07.html">UW Blink Playbook</a> for full detail on Ephemerate sequencing, White Orchid Phantom lines, and Ocelot Pride + Guide inevitability. This section covers <strong>what changes with the red splash</strong>.</p>
+<h2>The Teferi Rule</h2>
+<p>Against any deck with instant-speed interaction: <strong>Teferi, Time Raveler on turn 3 → execute your plan on turn 4+</strong>. Never the other way around. Teferi shuts off Goryo's Vengeance, Consign to Memory, Force of Negation, and Counterspell all at once. Ephemerate on Teferi is almost always wrong — Teferi's value is his static ability, not loyalty. Blink other targets.</p>
+<h2>Orim's Chant Rules</h2>
+<p>Cast at the start of their main phase (before they declare any actions) to tap all their mana. Against Belcher: tap mana before they can activate Charbelcher. Against Amulet: tap mana in response to Summoner's Pact. Against Neoform: tap mana before they can cast it. You get a free turn — use it to set up your engine or assemble the Ephemerate chain.</p>
+<h2>Bolt Priority</h2>
+<p>Lightning Bolt goes to the face in most matchups. The exceptions: Ragavan before its first connection, DRC before delirium, and Ocelot Pride on their side must die to Bolt immediately — their Pride token army counters your own clock.</p>
+<h2>Mana Reality</h2>
+<p>Accept 2–4 life of shock damage per game. Track life carefully — the Boros Energy matchup is often decided at 6–8 life. Don't fetch Sacred Foundry unless you specifically need red mana that turn.</p></div>
+<div id="roles" class="section"><div class="section-label">Chapter 04</div><h1>Role Assignment</h1>
+<p>Same as UW Blink — control against aggro, beatdown against control — with one addition: Teferi creates a third mode where you lock opponents into sorcery speed and play as the proactive deck even against interactive decks.</p>
+<div class="card-grid"><div class="card"><div class="card-label">vs Aggro</div><div class="card-title">Control</div><div class="card-body">Solitude + Ephemerate stabilizes. Bolt kills early threats. Wrath resets. Accept slightly more shock damage than UW — you have Bolt to compensate.</div></div><div class="card"><div class="card-label">vs Combo</div><div class="card-title">Teferi Lock + Chant</div><div class="card-body">Teferi on T3, then assemble the engine. Orim's Chant buys a full turn if Teferi is answered. Consign protects the lock once established.</div></div><div class="card"><div class="card-label">vs Control</div><div class="card-title">Beatdown + Teferi</div><div class="card-body">Teferi shuts off their instant-speed Counterspell. A resolved Teferi into Ocelot Pride with Guide of Souls is very hard for control to answer in one turn.</div></div><div class="card"><div class="card-label">vs Midrange</div><div class="card-title">Tempo</div><div class="card-body">Bolt efficiency plus Ephemerate value. Identical to UW but with an additional answer that goes to the face.</div></div></div></div>
+<div id="matchups" class="section"><div class="section-label">Chapter 05</div><h1>Matchup Guide</h1><table class="matchup-table" onclick="toggle('vs_glock',this)">
+<thead><tr><th>Matchup</th><th>Role</th><th>G1 WR</th><th>Overall</th></tr></thead>
+<tbody><tr><td>Grixis Reanimator</td><td>Teferi Lock</td><td>~60%</td><td><span class="verdict v-good">Favored — Teferi Wins</span></td></tr></tbody>
+</table><div id="vs_glock" class="matchup-detail"><p>This is the primary reason to play Jeskai over UW. Teferi, Time Raveler locks Glockulous into sorcery speed — they cannot Persist at instant speed under Teferi. Orim's Chant buys an additional turn if Teferi is answered. G1: Apply Guide + Ocelot pressure while holding Consign for their pivotal Persist turn. If Teferi is in hand, lead Teferi on T3 — Persist cannot be cast at instant speed.</p><div class="sb-row"><div class="sb-in"><div class="sb-label">In</div><div class="sb-card"><span>Consign to Memory</span><span class="sb-n">2</span></div><div class="sb-card"><span>Disruptor Flute</span><span class="sb-n">1</span></div><div class="sb-card"><span>Lavinia, Azorius Renegade</span><span class="sb-n">1</span></div></div><div class="sb-out"><div class="sb-label">Out</div><div class="sb-card"><span>Mockingbird</span><span class="sb-n">1</span></div><div class="sb-card"><span>Wrath of the Skies</span><span class="sb-n">1</span></div><div class="sb-card"><span>Sanctifier</span><span class="sb-n">1</span></div></div></div><div class="if-then"><div class="if">If Teferi resolves</div>→ Execute immediately. They cannot Persist at instant speed.</div><div class="if-then"><div class="if">If they Thoughtseize Teferi</div>→ Hold Consign for the Persist. Orim's Chant buys the turn you need to develop enough to race an Archon ETB.</div></div><table class="matchup-table" onclick="toggle('vs_boros',this)">
+<thead><tr><th>Matchup</th><th>Role</th><th>G1 WR</th><th>Overall</th></tr></thead>
+<tbody><tr><td>Boros Energy</td><td>Control → Value</td><td>~50%</td><td><span class="verdict v-even">Even — Bolt Helps</span></td></tr></tbody>
+</table><div id="vs_boros" class="matchup-detail"><p>Bolt kills Ragavan for one mana — an improvement over UW. The mana hit from three-color lands means you sometimes take 4+ shock damage before you've interacted. From the TR UW Blink guide: trade early, respect pump math, Wrath to reset, then win on value with Phelia/Ephemerate chains.</p><div class="sb-row"><div class="sb-in"><div class="sb-label">In</div><div class="sb-card"><span>Wrath of the Skies</span><span class="sb-n">2</span></div><div class="sb-card"><span>Sanctifier en-Vec</span><span class="sb-n">2</span></div></div><div class="sb-out"><div class="sb-label">Out</div><div class="sb-card"><span>Orim's Chant</span><span class="sb-n">1</span></div><div class="sb-card"><span>Mockingbird</span><span class="sb-n">1</span></div><div class="sb-card"><span>Consign (1)</span><span class="sb-n">1</span></div><div class="sb-card"><span>Flex</span><span class="sb-n">1</span></div></div></div><div class="if-then"><div class="if">If you have red mana open</div>→ Hold Bolt for Ragavan. Killing it before the first connection is worth more than any 3 face damage.</div></div><table class="matchup-table" onclick="toggle('vs_titan',this)">
+<thead><tr><th>Matchup</th><th>Role</th><th>G1 WR</th><th>Overall</th></tr></thead>
+<tbody><tr><td>Amulet Titan / Belcher</td><td>Teferi + Chant</td><td>~55%</td><td><span class="verdict v-good">Favored — Chant Shines</span></td></tr></tbody>
+</table><div id="vs_titan" class="matchup-detail"><p>Orim's Chant and Teferi make this matchup category significantly better than UW. From the TR RC Houston guide: Tax Pact and Amulet turns with Teferi/Chant/Consign; Flute naming Summoner's Pact is often backbreaking. The red splash adds the second Orim's Chant and the ability to buy full turns the UW shell cannot.</p><div class="sb-row"><div class="sb-in"><div class="sb-label">In</div><div class="sb-card"><span>Consign to Memory</span><span class="sb-n">2</span></div><div class="sb-card"><span>Disruptor Flute</span><span class="sb-n">1</span></div><div class="sb-card"><span>Lavinia, Azorius Renegade</span><span class="sb-n">1</span></div><div class="sb-card"><span>Teferi, Time Raveler</span><span class="sb-n">1</span></div><div class="sb-card"><span>Stony Silence</span><span class="sb-n">2</span></div></div><div class="sb-out"><div class="sb-label">Out</div><div class="sb-card"><span>Mockingbird</span><span class="sb-n">1</span></div><div class="sb-card"><span>Wrath of the Skies</span><span class="sb-n">1</span></div><div class="sb-card"><span>Sanctifier</span><span class="sb-n">1</span></div><div class="sb-card"><span>Bolt ×2</span><span class="sb-n">2</span></div></div></div><div class="if-then"><div class="if">Against Amulet</div>→ White Orchid Phantom denies their bounce lands. Deploy Phantom before they can respond with Amulet triggers.</div><div class="if-then"><div class="if">Against Belcher</div>→ Orim's Chant before they tap for Charbelcher activation. Stony Silence shuts Belcher off permanently.</div></div></div>
+<div id="sideboard" class="section"><div class="section-label">Chapter 06</div><h1>Sideboard Guide</h1>
+<p>See the <a href="uw-blink-2025-10-07.html">UW Blink Playbook</a> for full notes on Consign to Memory, Sanctifier en-Vec, Stony Silence, Kataki, Wrath of the Skies, Disruptor Flute, and Lavinia. These are identical between both shells. Jeskai-specific notes:</p>
+<div class='sb-guide-card'><div class='sb-guide-name'>Orim's Chant — 1 main + 1 SB (2 total)</div><div class='sb-guide-body'>Two total across the 75. Main deck copy vs any unknown field since combo is always possible. SB copy boards in explicitly against combo-heavy matchups. Never boards out in combo matchups — if you're in Jeskai it's because you expected to need Chant. Use at start of main phase, not reactively.</div></div>
+<div class='sb-guide-card'><div class='sb-guide-name'>Teferi, Time Raveler — 2 main + 1 SB (3 total)</div><div class='sb-guide-body'>From the TR RC Houston guide: you want to draw one, not multiples; it protects engines and forces sorcery speed. Board the third copy in for combo/stack-heavy matchups. Never Ephemerate Teferi — blink other targets and let his static ability do work.</div></div>
+<div class='sb-guide-card'><div class='sb-guide-name'>Disruptor Flute — 1 copy</div><div class='sb-guide-body'>From the TR guide: broad combo hedge for one-axis decks — Neoform, Summoner's Pact, Charbelcher, Crashing Footfalls, The One Ring, etc. Naming the key card turns off their entire plan. Flute naming Summoner's Pact against Amulet is often backbreaking.</div></div></div>
+<div id="heuristics" class="section"><div class="section-label">Chapter 07</div><h1>Heuristics &amp;<br>Quick Rules</h1><ol class="heuristic-list">
+<li>Teferi resolves before you execute the combo plan against any deck with instant-speed interaction. Sequence: Teferi on T3 → Ephemerate chains on T4+.</li>
+<li>Orim's Chant is cast at the START of their main phase — before they have priority to cast anything. Don't wait for them to start acting.</li>
+<li>Lightning Bolt goes to the face except against Ragavan, DRC, and Ocelot Pride (on their side). These three specific cards are worth killing over dealing 3 to the dome.</li>
+<li>Track shock damage carefully. The Boros Energy matchup is often decided at 6–8 life. Every fetch of Sacred Foundry is a tax on those games.</li>
+<li>Never Ephemerate Teferi. His value is the static ability — sorcery speed lock. Blink Solitude, Phantom, or Guide instead.</li>
+<li>Choose Jeskai when you expect 20%+ combo in the RC field. Against open fields with heavy aggro, UW's cleaner mana is the better call.</li>
+<li>Disruptor Flute naming the key combo card is often backbreaking. Know what to name: Summoner's Pact (Amulet), Charbelcher (Belcher), Neoform (Neoform).</li>
+<li>Lavinia, Azorius Renegade stops free spells (Living End, Cascade, Persist) and taxes non-land plays with more spells than mana paid. Niche but backbreaking in the right matchup.</li>
+<li>White Orchid Phantom + Flagstones denial works identically to UW — deploy Phantom before they can fetch to deny their key land.</li>
+<li>If the field ends up Boros + Prowess heavy and you chose Jeskai, sideboard heavily into Wrath + Sanctifier and accept you're playing a slightly worse UW in those matchups.</li>
+</ol></div>
+<div id="prep" class="section"><div class="section-label">Chapter 08</div><h1>Event Day Prep</h1><button class="print-btn" onclick="window.print()">Print This Sheet</button>
+<div class="prep-grid">
+<div class="prep-block"><div class="prep-block-title">vs UW Blink: Key Differences</div>
+<div class="prep-line"><span>Combo matchups</span><span class="prep-verdict">+15% — Teferi + Chant lock</span></div>
+<div class="prep-line"><span>Aggro matchups</span><span class="prep-verdict">−5% — mana tax</span></div>
+<div class="prep-line"><span>Midrange</span><span class="prep-verdict">Similar — Bolt helps some</span></div>
+<div class="prep-line"><span>Grixis Reanimator</span><span class="prep-verdict">Significantly better — Teferi locks Persist</span></div>
+</div>
+<div class="prep-block"><div class="prep-block-title">Teferi + Chant Rules</div>
+<div class="prep-line"><span>Always</span><span class="prep-verdict">Teferi before executing plan</span></div>
+<div class="prep-line"><span>Orim's Chant</span><span class="prep-verdict">Start of their main phase — not reactive</span></div>
+<div class="prep-line"><span>vs Grixis</span><span class="prep-verdict">No instant-speed Persist under Teferi</span></div>
+<div class="prep-line"><span>vs Amulet</span><span class="prep-verdict">Tap before Pact window</span></div>
+</div>
+<div class="prep-block"><div class="prep-block-title">Bolt Priority Order</div>
+<div class="prep-line"><span>1st</span><span class="prep-verdict">Ragavan (deny first connection)</span></div>
+<div class="prep-line"><span>2nd</span><span class="prep-verdict">Their Ocelot Pride (kills cats + Pride)</span></div>
+<div class="prep-line"><span>3rd</span><span class="prep-verdict">DRC (before delirium)</span></div>
+<div class="prep-line"><span>Otherwise</span><span class="prep-verdict">Face — close the game</span></div>
+</div>
+<div class="prep-block"><div class="prep-block-title">When to Pick This Deck</div>
+<div class="prep-line"><span>Field is</span><span class="prep-verdict">20%+ combo — Chant earns its slot</span></div>
+<div class="prep-line"><span>Avoid if</span><span class="prep-verdict">Heavy aggro — take UW instead</span></div>
+<div class="prep-line"><span>Key signal</span><span class="prep-verdict">Glockulous showing up at RCQs</span></div>
+</div>
+</div></div></div><footer><span>Team Resolve · Modern · Jeskai Blink Playbook</span><span>Zuxas · 2026 RC Season</span></footer><script>
+function show(id){document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));document.querySelectorAll('.nav-link').forEach(l=>l.classList.remove('active'));document.getElementById(id).classList.add('active');event.target.classList.add('active');}
+function toggle(id,t){const d=document.getElementById(id);const o=d.classList.contains('open');document.querySelectorAll('.matchup-detail').forEach(d=>d.classList.remove('open'));document.querySelectorAll('.matchup-table tr').forEach(r=>r.classList.remove('selected'));if(!o){d.classList.add('open');t.querySelector('tbody tr').classList.add('selected');}}
+</script></body></html>

@@ -1,16 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Join me as I try and qualify for the Magic: The Gathering Pro Tour!" />
-    <title>Analyzing Deck Lists</title>
+    <meta name="description" content="How Team Resolve analyzes competitive deck lists — the methodology behind consistent RCQ results." />
+    <title>Analyzing Deck Lists — Team Resolve</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" href="images/tab32.png" type="image/png">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
-
 <body>
     <nav class="main-nav">
         <ul>
@@ -18,64 +17,109 @@
             <li><a href="meta.html"><i class="fas fa-chart-line"></i> Strategies</a></li>
             <li><a href="planning.html"><i class="fas fa-lightbulb"></i> Deck Ideas</a></li>
             <li><a href="deckbuilding.html"><i class="fas fa-cogs"></i> Deck Building</a></li>
-            <li><a href="analyze.html"><i class="fas fa-search"></i> Analyze Deck Lists</a></li>
+            <li><a href="analyze.html" class="active"><i class="fas fa-search"></i> Analyze Deck Lists</a></li>
+            <li><a href="journey/index.html"><i class="fas fa-book-open"></i> Journey</a></li>
+            <li><a href="deck-guides.html"><i class="fas fa-book"></i> Guides</a></li>
             <li><a href="bio.html"><i class="fas fa-user"></i> About Me</a></li>
         </ul>
     </nav>
+    <main id="top" class="fade-in-top-to-bottom">
+        <section class="column">
+            <span class="section-label">Team Resolve · Methodology</span>
+            <h1>analyzing deck lists</h1>
+            <p class="intro">Looking at a top 8 decklist and copying it is not analysis. Analysis is understanding <em>why</em> each card is there, what the flex slots tell you about the expected field, and what the sideboard reveals about the pilot's matchup assumptions.</p>
+            <div class="mantra">"A decklist is a hypothesis. The pilot is arguing these 75 cards are the best answer to the expected field at that event. Your job is to figure out what they were expecting — and whether they were right."</div>
+            <h2>the analysis framework</h2>
+            <div class="card-grid">
+                <div class="card"><div class="card-label">Step 01</div><div class="card-title">Identify the Game Plan</div><div class="card-body">What is this deck trying to do? Not the archetype label — the specific sequence of plays that wins the game. "Reanimate Atraxa" is a game plan. "Play midrange" is not.</div></div>
+                <div class="card"><div class="card-label">Step 02</div><div class="card-title">Find the Core Cards</div><div class="card-body">Which cards are 4-ofs? These define what the deck cannot function without. Attack the thing it needs — don't waste interaction on the redundant parts.</div></div>
+                <div class="card"><div class="card-label">Step 03</div><div class="card-title">Read the Flex Slots</div><div class="card-body">The 1-ofs and 2-ofs in the main deck are signal. They reveal what the pilot was hedging against in the expected field.</div></div>
+                <div class="card"><div class="card-label">Step 04</div><div class="card-title">Decode the Sideboard</div><div class="card-body">The sideboard tells you what the deck is afraid of. The hate pieces, quantities, and what's absent all carry information about expected matchups.</div></div>
+                <div class="card"><div class="card-label">Step 05</div><div class="card-title">Map the Matchups</div><div class="card-body">Which matchups does this list beat cleanly? Which is it hoping to dodge? A deck 70/30 in six matchups but losing badly to two is a liability in a diverse RC field.</div></div>
+                <div class="card"><div class="card-label">Step 06</div><div class="card-title">Evaluate Tournament Context</div><div class="card-body">A deck winning a 40-player RCQ is not the same data point as winning a 300-player RC. Context determines how much weight to give the result.</div></div>
+            </div>
+            <h2>each step in depth</h2>
 
-    <main class="fade-in-top-to-bottom">
-        <section id="analyzing-deck-lists" class="column">
-            <h1>Analyzing Deck Lists</h1>
+            <details>
+                <summary><h2>1. Identify the Game Plan</h2></summary>
+                <div>
+                    <p>Before looking at individual card choices, establish what the deck is trying to accomplish. Not the archetype — the specific win condition and the sequence of plays that gets there.</p>
+                    <p>Boros Energy's game plan: apply pressure from turn one with Ragavan or Guide of Souls, develop the energy/lifegain synergy through Ocelot Pride, and close with Ajani's pump before the opponent stabilizes. Every card in the 75 should execute that plan or protect it from being disrupted. If you can't articulate the game plan in two sentences, you don't understand the deck well enough to evaluate the card choices correctly.</p>
+                </div>
+            </details>
+            <details>
+                <summary><h2>2. Find the Core Cards</h2></summary>
+                <div>
+                    <p>Core cards are the 4-ofs. Identify them and ask: what does the deck do when it doesn't draw this card? If the answer is "very little," that tells you how to beat the deck. Attack the thing the deck needs.</p>
+                    <p>In the blink shell, Ephemerate is the core card. The deck functions without any individual creature but not at full power without Ephemerate. That's why the correct plan against blink always involves answering threats at instant speed before Ephemerate resolves — not after.</p>
+                    <p>In Prowess, both DRC and Swiftspear are core. The deck has redundancy at the threat level — which is why the hate targets the spells (Leyline of Sanctity) rather than the creatures.</p>
+                </div>
+            </details>
+            <details>
+                <summary><h2>3. Read the Flex Slots</h2></summary>
+                <div>
+                    <p>The most information-dense part of any decklist is the flex slots. A singleton or two-of in the main is almost always a meta call — the pilot expected something specific and included that card as an answer.</p>
+                    <ul>
+                        <li><strong>One copy of a removal spell</strong> handling a specific threat — tells you what the pilot was afraid of in the expected field.</li>
+                        <li><strong>A utility land in the 23rd slot</strong> — tells you about the mana count and what the deck is willing to trade for the utility effect.</li>
+                        <li><strong>An off-archetype card</strong> providing a specific angle — tells you the pilot expected that matchup to be common.</li>
+                    </ul>
+                    <p>A singleton Consign to Memory in the main of a blink list tells us the pilot expected combo to show up. That's a piece of intel about the expected field at that specific event.</p>
+                </div>
+            </details>
+            <details>
+                <summary><h2>4. Decode the Sideboard</h2></summary>
+                <div>
+                    <p>The sideboard is the most honest part of a decklist. Hard choices were made about which matchups to shore up and which to leave vulnerable. Reading those choices tells you what was expected.</p>
+                    <h3>What to look for</h3>
+                    <ul>
+                        <li><strong>Volume of graveyard hate</strong> — how concerned is the pilot about Reanimator or Phoenix variants?</li>
+                        <li><strong>Combo disruption quantities</strong> — Consign, Orim's Chant, Force of Negation counts indicate how much the pilot respects combo in the expected field.</li>
+                        <li><strong>Sweeper count</strong> — more sweepers means expecting aggressive fields.</li>
+                        <li><strong>What's absent</strong> is as important as what's present. No graveyard hate in a field with Reanimator at 17% is a mistake or a deliberate gamble. Figure out which.</li>
+                    </ul>
+                    <p>3–4 copies of a sideboard card means the pilot considers that matchup critical. 1 copy means access without dedicating slots. 0 means they either didn't expect the matchup or have a different plan.</p>
+                </div>
+            </details>
 
-            <p>Understanding and analyzing competitive winning deck lists is key to mastering Magic: The Gathering. This
-                guide will help you break down various components of a deck, understand the decisions behind card
-                choices, and see how these choices fit into the broader metagame.</p>
-
-            <h2>1. Understanding the Meta</h2>
-            <p>The metagame, or "meta," refers to the current competitive landscape, including the most popular decks,
-                strategies, and card choices. Grasping the meta is the foundation of analyzing any deck list, as it
-                provides context for why certain decks succeed.</p>
-            <p>Identify Tier 1 decks and analyze why they consistently perform well in tournaments. Recognize meta
-                shifts, influenced by new set releases, bannings, and player preferences, to predict future trends and
-                understand a deck’s performance.</p>
-
-            <h2>2. Card Choices</h2>
-            <p>Every competitive deck has a set of core cards that define its strategy. These cards form the backbone of
-                the deck. Analyzing these core cards helps you understand the deck's primary game plan.</p>
-            <p>Additionally, evaluate flex slots and tech cards. Flex slots are adjusted based on the meta, revealing
-                how the deck plans to counter specific threats. Tech cards are specialized to counter certain
-                strategies, providing insight into the player's anticipation of matchups.</p>
-
-            <h2>3. Sideboard Analysis</h2>
-            <p>The sideboard is a critical tool for adapting to different matchups after the first game. Analyze how it
-                addresses the deck’s weaknesses and specific threats it anticipates facing. Effective sideboarding is
-                essential for tournament success.</p>
-
-            <h2>4. Matchup Analysis</h2>
-            <p>Identify favorable and unfavorable matchups. Understanding why a deck performs well or poorly against
-                certain archetypes helps in strategizing and sideboarding effectively.</p>
-            <p>In mirror matches, where both players use the same deck, analyzing performance adjustments is key to
-                gaining an edge in the competition.</p>
-
-            <h2>5. Adaptability</h2>
-            <p>Evaluate how the deck adapts to changes in the meta. Decks that can integrate new tech cards or
-                strategies tend to remain competitive longer. Analyzing innovation within the deck provides insights
-                into its flexibility and long-term viability.</p>
-
-            <h2>6. Tournament Context</h2>
-            <p>The context of a deck's success matters. Consider the size and structure of the tournaments where the
-                deck has performed well. A deck that succeeds in a large, competitive field may differ from one
-                excelling in smaller, more controlled environments.</p>
-            <p>Also, analyze the level of competition. A deck that wins in a field of highly skilled players or diverse
-                archetypes is likely stronger than one that wins in a less competitive environment.</p>
+            <details>
+                <summary><h2>5. Map the Matchups</h2></summary>
+                <div>
+                    <p>Once you understand the list, map out which matchups it's built to beat and which it's hoping to dodge. Every deck in Modern has bad matchups. The question is whether those bad matchups overlap with the expected field at your event.</p>
+                    <p>A deck that's 70/30 against six of the top eight matchups but loses badly to the other two is still strong if those two don't show up at your RCQ. It's a liability at an RC where the field is diverse and prepared.</p>
+                    <p>At Team Resolve we track win/loss records by matchup across gauntlet sessions and tournament results. After enough data, the noise filters out and you see whether the deck holds up against the full field or just the favorable half.</p>
+                </div>
+            </details>
+            <details>
+                <summary><h2>6. Evaluate Tournament Context</h2></summary>
+                <div>
+                    <p>Not all results are equal. Before drawing conclusions from a top 8, evaluate:</p>
+                    <ul>
+                        <li><strong>Event size:</strong> A 40-player RCQ has a very different field than a 500-player open.</li>
+                        <li><strong>Format:</strong> A result at a Modern RCQ doesn't necessarily transfer to RC Modern, where the field is more prepared.</li>
+                        <li><strong>Pilot:</strong> A world-class pilot top-8ing with a fringe deck is signal. A solid local player with a tier-one deck in a field with no hate is much weaker signal.</li>
+                        <li><strong>Field composition:</strong> A deck that won by going 6-0 against aggro in a field that was 70% aggro is not positioned well for a diverse RC field.</li>
+                    </ul>
+                </div>
+            </details>
+            <h2>a worked example — evaluating boros energy</h2>
+            <p>When we evaluated whether to run back Boros Energy for this Modern season, we went through the full framework:</p>
+            <ul>
+                <li><strong>Game plan:</strong> Clear. Pressure turn one, advantage engine through Guide + Ocelot, close with Ajani.</li>
+                <li><strong>Core cards:</strong> Ragavan, Guide, Ocelot, Ajani. All 4-ofs. Non-negotiable.</li>
+                <li><strong>Flex slots:</strong> One or two copies of Searing Blood vs Wild Slash tell us how the pilot weighted creature-heavy vs burn-heavy matchups.</li>
+                <li><strong>Sideboard read:</strong> Sanctifier en-Vec in opponent lists is now universal. The field knows what the deck does and is ready for it.</li>
+                <li><strong>Matchup map:</strong> Still beats unfocused decks cleanly. Struggles against prepared opponents with clean hate — which is exactly what an RC field looks like.</li>
+                <li><strong>Context:</strong> Last season it was underplayed and underrespected. This season it's the known quantity. Margins are tighter.</li>
+            </ul>
+            <p>That analysis is why we're investing testing time in the blink shell rather than just running the deck back — the conditions that made it correct last season have partially changed.</p>
         </section>
-
-        <a href="#top" class="back-to-top">Back to Top</a>
+        <a href="#top" class="back-to-top"><i class="fas fa-arrow-up"></i> Top</a>
     </main>
-
     <footer>
-        <p>Created by Jermey Wallace &copy; 2024. All rights reserved.</p>
+        <span>Road to Pro Tour</span>
+        <span>Jermey Wallace · Zuxas · Team Resolve</span>
+        <span>&copy; 2025</span>
     </footer>
 </body>
-
 </html>

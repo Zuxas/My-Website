@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Grixis Reanimator (Glockulous) — Team Resolve Playbook</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+  :root { --ink:#0e0e0e; --paper:#f2ede6; --paper-dark:#e8e1d6; --rule:#c8bfb0; --accent:#1a1a8f; --accent-light:#d6d6f7; --gold:#8f6a1a; --gold-light:#f7ead6; --mid:#5a5248; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:var(--paper); color:var(--ink); font-family:'Crimson Pro',Georgia,serif; font-size:17px; line-height:1.6; }
+  .header-band { background:var(--ink); border-bottom:3px solid #3a3ab0; }
+  .header-inner { max-width:1100px; margin:0 auto; padding:32px 80px; display:flex; justify-content:space-between; align-items:flex-end; gap:40px; }
+  .header-eyebrow { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:rgba(242,237,230,0.35); margin-bottom:8px; }
+  .header-title { font-family:'Bebas Neue',sans-serif; font-size:56px; line-height:0.9; color:var(--paper); letter-spacing:0.02em; }
+  .header-title span { color:#3a3ab0; }
+  .header-mantra { font-family:'Crimson Pro',serif; font-style:italic; font-size:15px; color:rgba(242,237,230,0.4); margin-top:8px; }
+  .header-right { display:flex; flex-direction:column; gap:8px; }
+  .header-stat { display:flex; gap:16px; align-items:baseline; }
+  .hs-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; color:rgba(242,237,230,0.35); min-width:90px; }
+  .hs-val { font-family:'DM Mono',monospace; font-size:13px; color:rgba(242,237,230,0.8); }
+  nav { background:#1a1a1a; border-bottom:1px solid #333; padding:0 80px; display:flex; align-items:center; gap:4px; position:sticky; top:0; z-index:100; }
+  .nav-brand { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:#3a3ab0; margin-right:24px; padding:14px 0; white-space:nowrap; }
+  .nav-link { background:none; border:none; color:rgba(242,237,230,0.45); font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.12em; text-transform:uppercase; padding:14px 16px; cursor:pointer; transition:color 0.2s; border-bottom:2px solid transparent; }
+  .nav-link:hover,.nav-link.active { color:var(--paper); border-bottom-color:#3a3ab0; }
+  .page { max-width:1100px; margin:0 auto; padding:60px 80px 120px; }
+  .section { display:none; } .section.active { display:block; }
+  .section-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.25em; text-transform:uppercase; color:rgba(14,14,14,0.3); margin-bottom:12px; }
+  h1 { font-family:'Bebas Neue',sans-serif; font-size:64px; line-height:0.9; letter-spacing:0.02em; margin-bottom:40px; }
+  h2 { font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.2em; text-transform:uppercase; color:var(--mid); margin:40px 0 16px; padding-bottom:8px; border-bottom:1px solid var(--rule); }
+  h3 { font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:var(--accent); margin:24px 0 10px; }
+  p { margin-bottom:16px; font-weight:300; } strong { font-weight:600; }
+  .mantra { background:var(--paper-dark); border-left:3px solid #3a3ab0; padding:20px 28px; margin:32px 0; font-style:italic; font-size:18px; color:var(--mid); }
+  .mantra cite { display:block; font-size:12px; letter-spacing:0.1em; text-transform:uppercase; color:rgba(90,82,72,0.5); margin-top:8px; font-style:normal; }
+  .card-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:1px; background:var(--rule); margin:16px 0 32px; border:1px solid var(--rule); }
+  .card { background:var(--paper); padding:20px; } .card:hover { background:var(--paper-dark); }
+  .card-label { font-family:'DM Mono',monospace; font-size:9px; letter-spacing:0.2em; text-transform:uppercase; color:rgba(14,14,14,0.3); margin-bottom:6px; }
+  .card-title { font-family:'DM Mono',monospace; font-size:12px; letter-spacing:0.08em; color:var(--accent); margin-bottom:8px; }
+  .card-body { font-size:14px; color:var(--mid); line-height:1.5; font-weight:300; }
+  .dl-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:0; }
+  .dl-section { margin-bottom:28px; }
+  .dl-section-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; color:var(--mid); padding-bottom:8px; border-bottom:1px solid var(--rule); margin-bottom:12px; }
+  .dl-entry { display:flex; justify-content:space-between; padding:4px 0; border-bottom:1px solid rgba(200,191,176,0.3); font-size:15px; }
+  .dl-count { font-family:'DM Mono',monospace; font-size:12px; color:var(--accent); min-width:20px; }
+  .dl-name { color:var(--ink); font-weight:300; }
+  .matchup-table { width:100%; border-collapse:collapse; margin-bottom:2px; cursor:pointer; }
+  .matchup-table thead tr { background:var(--paper-dark); }
+  .matchup-table th { font-family:'DM Mono',monospace; font-size:9px; letter-spacing:0.15em; text-transform:uppercase; padding:10px 14px; text-align:left; font-weight:400; color:var(--mid); border-bottom:1px solid var(--rule); }
+  .matchup-table td { padding:10px 14px; border-bottom:1px solid var(--rule); font-size:15px; background:var(--paper); transition:background 0.1s; }
+  .matchup-table tr:hover td { background:var(--paper-dark); }
+  .matchup-table tr.selected td { background:var(--accent-light); }
+  .verdict { font-family:'DM Mono',monospace; font-size:11px; padding:2px 8px; border-radius:2px; }
+  .v-good { background:#d4f0d4; color:#1a6b1a; border:1px solid #a0d4a0; }
+  .v-hard { background:#f7d6d6; color:#8f1a1a; border:1px solid #e8b0b0; }
+  .v-even { background:var(--gold-light); color:var(--gold); border:1px solid #e8c880; }
+  .matchup-detail { display:none; background:var(--paper-dark); border:1px solid var(--rule); border-top:3px solid #3a3ab0; padding:28px 32px; margin-bottom:24px; }
+  .matchup-detail.open { display:block; }
+  .if-then { background:var(--paper); border:1px solid var(--rule); padding:16px 20px; margin:12px 0; font-size:14px; }
+  .if-then .if { font-family:'DM Mono',monospace; font-size:10px; color:var(--accent); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:4px; }
+  .sb-row { display:grid; grid-template-columns:1fr 1fr; gap:24px; margin:16px 0; }
+  .sb-in,.sb-out { background:var(--paper); border:1px solid var(--rule); padding:16px; }
+  .sb-label { font-family:'DM Mono',monospace; font-size:9px; letter-spacing:0.2em; text-transform:uppercase; margin-bottom:8px; }
+  .sb-in .sb-label { color:#1a6b1a; } .sb-out .sb-label { color:#8f1a1a; }
+  .sb-card { display:flex; justify-content:space-between; padding:3px 0; font-size:14px; border-bottom:1px solid rgba(200,191,176,0.3); }
+  .sb-n { font-family:'DM Mono',monospace; font-size:11px; color:var(--mid); }
+  .sb-guide-card { background:var(--paper-dark); border:1px solid var(--rule); padding:16px 20px; margin-bottom:12px; }
+  .sb-guide-name { font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.08em; color:var(--ink); margin-bottom:4px; }
+  .sb-guide-body { font-size:14px; color:var(--mid); font-weight:300; }
+  .heuristic-list { list-style:none; counter-reset:h; }
+  .heuristic-list li { counter-increment:h; display:flex; gap:20px; padding:14px 0; border-bottom:1px solid var(--rule); font-size:16px; font-weight:300; }
+  .heuristic-list li::before { content:counter(h,decimal-leading-zero); font-family:'DM Mono',monospace; font-size:18px; color:rgba(58,58,176,0.25); flex-shrink:0; width:28px; }
+  .print-btn { display:inline-block; background:var(--ink); color:var(--paper); font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; padding:10px 20px; border:none; cursor:pointer; margin-bottom:32px; }
+  .prep-grid { display:grid; grid-template-columns:1fr 1fr; gap:24px; }
+  .prep-block { background:var(--paper-dark); border:1px solid var(--rule); padding:20px; }
+  .prep-block-title { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--mid); margin-bottom:12px; padding-bottom:8px; border-bottom:1px solid var(--rule); }
+  .prep-line { display:flex; justify-content:space-between; padding:4px 0; font-size:14px; border-bottom:1px solid rgba(200,191,176,0.3); }
+  .prep-verdict { font-family:'DM Mono',monospace; font-size:10px; }
+  footer { background:var(--ink); color:rgba(242,237,230,0.25); font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.12em; text-transform:uppercase; padding:24px 80px; display:flex; justify-content:space-between; }
+  @media print { nav,.header-band,footer,.print-btn,.section:not(#prep) { display:none !important; } .section#prep { display:block !important; } body { font-size:12px; } .page { padding:20px; } }</style>
+</head>
+<body><div class="header-band"><div class="header-inner">
+<div class="header-left">
+  <div class="header-eyebrow">Team Resolve · Modern · Archetype Playbook</div>
+  <div class="header-title">Grixis <span>Reanimator</span></div>
+  <div class="header-mantra">"The field fights fair. We don't."</div>
+</div>
+<div class="header-right"><div class="header-stat"><span class="hs-label">Identity</span><span class="hs-val">Midrange-Combo</span></div><div class="header-stat"><span class="hs-label">Alias</span><span class="hs-val">Glockulous</span></div><div class="header-stat"><span class="hs-label">Complexity</span><span class="hs-val">★★★★☆</span></div><div class="header-stat"><span class="hs-label">Status</span><span class="hs-val">Active Testing</span></div></div>
+</div></div><nav><span class="nav-brand">GLOCKULOUS</span><button class="nav-link active" onclick="show('identity')">Identity</button><button class="nav-link" onclick="show('decklist')">Decklist</button><button class="nav-link" onclick="show('gameplan')">Gameplan</button><button class="nav-link" onclick="show('roles')">Roles</button><button class="nav-link" onclick="show('matchups')">Matchups</button><button class="nav-link" onclick="show('sideboard')">SB Guide</button><button class="nav-link" onclick="show('heuristics')">Heuristics</button><button class="nav-link" onclick="show('prep')">Prep</button></nav><div class="page"><div id="identity" class="section active"><div class="section-label">Chapter 01</div><h1>Identity &amp;<br>Philosophy</h1>
+<div class="mantra">"The field is built to fight fair. We don't fight fair."<cite>— Core Mantra</cite></div>
+<div style="background:#fff3cd;border:1px solid #ffc107;border-left:4px solid #ffc107;padding:16px 20px;margin:20px 0;font-size:14px"><strong style="color:#8f6a1a">Know the deck before you play it:</strong> Grixis Reanimator is NOT a glass-cannon one-trick. It is a midrange-combo hybrid. You don't always rush to reanimate Archon — timing depends on what the opponent can interact with. Mulligan discipline and read-dependent sequencing are the highest-skill elements.</div>
+<p>Grixis Reanimator — Team Resolve's pet name "Glockulous" — is a <strong>midrange-combo hybrid</strong> that wins through three overlapping engines: Psychic Frog as a filtering threat, Abhorrent Oculus as a token army and Emperor of Bones combo enabler, and Archon of Cruelty as the game-winning reanimate target accessed through Persist, Unearth, and Emperor.</p>
+<p>The meta read: Modern is stocked with creature removal — Fatal Push, Lightning Bolt, Searing Blood. None of it answers Archon of Cruelty entering off Persist at instant speed. The field's interaction is calibrated for creatures on the board. This deck punishes that calibration.</p>
+<p>Unlike Goryo's Vengeance builds, this deck does not need to assemble a specific two-card combination on turn 2. Psychic Frog provides a real clock and discard outlet. Abhorrent Oculus creates multiple threats from one card. You can win through <em>pressure and inevitability</em> even when the combo is disrupted.</p>
+<div class="card-grid">
+<div class="card"><div class="card-label">Axis 01</div><div class="card-title">Psychic Frog</div><div class="card-body">A real standalone threat that grows while filtering your hand. Discard outlet for Archon and Oculus. Protects itself from burn via the lifelink clause. Every turn it's alive it's sculpting your next kill window.</div></div><div class="card"><div class="card-label">Axis 02</div><div class="card-title">Abhorrent Oculus</div><div class="card-body">Creates tokens immediately and chains into Emperor of Bones reanimates. A resolved Oculus generates a board that demands an answer — and if they answer it, Emperor reburies it. The engine is recursive.</div></div><div class="card"><div class="card-label">Axis 03</div><div class="card-title">Emperor of Bones</div><div class="card-body">The combo piece. When Emperor of Bones dies or is sacrificed, it reanimates an Archon of Cruelty from the graveyard. Paired with Oculus triggers, even a single dead Oculus can chain into Archon.</div></div><div class="card"><div class="card-label">Axis 04</div><div class="card-title">Archon of Cruelty</div><div class="card-body">The reanimate target. ETB: opponent sacrifices a permanent, discards a card, loses 3 life, you draw a card and gain 3 life. That's a 7-point life swing plus card advantage before combat. Most boards cannot recover.</div></div>
+</div>
+<div class="card-grid"><div class="card"><div class="card-label">Strengths</div><div class="card-title">What You Do Well</div><div class="card-body">Archon ETB generates immediate value even through removal.<br><br>Multiple redundant reanimation paths — Persist, Unearth, Emperor.<br><br>Psychic Frog is a real clock they must answer before combo matters.<br><br>Field's removal is calibrated for different axis than you operate on.</div></div><div class="card"><div class="card-label">Weaknesses</div><div class="card-title">What Beats You</div><div class="card-body">Nihil Spellbomb, Rest in Peace, Leyline of the Void — graveyard hate slows all three engines.<br><br>Fast combo decks race under your setup.<br><br>Requires reads on sequencing — rushing Archon into open mana is often wrong.<br><br>Consign to Memory counters Persist at instant speed.</div></div>
+</div>
+<p><strong>When to choose this for an RC:</strong> When the expected field is creature-removal heavy and light on dedicated graveyard hate. When Boros Energy and Prowess are &gt;35% of the field. When the meta data shows low Consign to Memory density in sideboards.</p></div><div id="decklist" class="section"><div class="section-label">Chapter 02</div><h1>The 75</h1>
+<div class="dl-section"><div class="dl-section-label">Main Deck · 60 Cards</div>
+<div class="dl-grid">
+<div><div class="dl-entry"><span class="dl-count">4</span><span class="dl-name">Psychic Frog</span></div><div class="dl-entry"><span class="dl-count">4</span><span class="dl-name">Abhorrent Oculus</span></div><div class="dl-entry"><span class="dl-count">4</span><span class="dl-name">Archon of Cruelty</span></div><div class="dl-entry"><span class="dl-count">4</span><span class="dl-name">Emperor of Bones</span></div><div class="dl-entry"><span class="dl-count">1</span><span class="dl-name">Troll of Khazad-dûm</span></div></div>
+<div><div class="dl-entry"><span class="dl-count">4</span><span class="dl-name">Faithless Looting</span></div><div class="dl-entry"><span class="dl-count">4</span><span class="dl-name">Thought Scour</span></div><div class="dl-entry"><span class="dl-count">4</span><span class="dl-name">Thoughtseize</span></div><div class="dl-entry"><span class="dl-count">4</span><span class="dl-name">Fatal Push</span></div><div class="dl-entry"><span class="dl-count">4</span><span class="dl-name">Persist</span></div><div class="dl-entry"><span class="dl-count">4</span><span class="dl-name">Unearth</span></div><div class="dl-entry"><span class="dl-count">1</span><span class="dl-name">Spell Pierce</span></div></div>
+<div><div class="dl-entry"><span class="dl-count">4</span><span class="dl-name">Bloodstained Mire</span></div><div class="dl-entry"><span class="dl-count">4</span><span class="dl-name">Polluted Delta</span></div><div class="dl-entry"><span class="dl-count">2</span><span class="dl-name">Watery Grave</span></div><div class="dl-entry"><span class="dl-count">1</span><span class="dl-name">Blood Crypt</span></div><div class="dl-entry"><span class="dl-count">1</span><span class="dl-name">Raucous Theater</span></div><div class="dl-entry"><span class="dl-count">1</span><span class="dl-name">Scalding Tarn</span></div><div class="dl-entry"><span class="dl-count">1</span><span class="dl-name">Steam Vents</span></div><div class="dl-entry"><span class="dl-count">1</span><span class="dl-name">Undercity Sewers</span></div><div class="dl-entry"><span class="dl-count">1</span><span class="dl-name">Island</span></div><div class="dl-entry"><span class="dl-count">2</span><span class="dl-name">Swamp</span></div></div>
+</div></div>
+<div class="dl-section"><div class="dl-section-label">Sideboard · 15 Cards</div>
+<div class="dl-grid">
+<div><div class="dl-entry"><span class="dl-count">4</span><span class="dl-name">Consign to Memory</span></div><div class="dl-entry"><span class="dl-count">2</span><span class="dl-name">Harbinger of the Seas</span></div><div class="dl-entry"><span class="dl-count">2</span><span class="dl-name">Meltdown</span></div></div>
+<div><div class="dl-entry"><span class="dl-count">2</span><span class="dl-name">Mystical Dispute</span></div><div class="dl-entry"><span class="dl-count">2</span><span class="dl-name">Nihil Spellbomb</span></div><div class="dl-entry"><span class="dl-count">1</span><span class="dl-name">Pyroclasm</span></div><div class="dl-entry"><span class="dl-count">1</span><span class="dl-name">Harvester of Misery</span></div><div class="dl-entry"><span class="dl-count">1</span><span class="dl-name">Surgical Extraction</span></div></div>
+</div></div></div><div id="gameplan" class="section"><div class="section-label">Chapter 03</div><h1>The Game Plan</h1>
+<div class="mantra">"You don't always rush the Archon. The correct timing depends on what they can interact with."<cite>— Key Principle</cite></div>
+<h2>The Three Engines</h2>
+<div class="card-grid"><div class="card"><div class="card-label">Engine 1</div><div class="card-title">Frog into Grind</div><div class="card-body">Psychic Frog applies immediate pressure and discards Archon/Oculus as needed. Don't over-rely on Frog as a discard outlet — it's a real threat that needs to attack. Manage your hand size proactively.</div></div><div class="card"><div class="card-label">Engine 2</div><div class="card-title">Oculus into Emperor</div><div class="card-body">Abhorrent Oculus creates tokens on entry. When Emperor of Bones dies, it reanimates Archon. An Oculus trigger chains into Emperor trigger chains into Archon. One card becomes three threats.</div></div><div class="card"><div class="card-label">Engine 3</div><div class="card-title">Persist / Unearth</div><div class="card-body">Persist reanimates Archon from graveyard as an instant at end of their turn. Unearth reanimates at sorcery speed but synergizes with Emperor of Bones. Both paths are disrupted by Consign.</div></div></div>
+<h2>When to Rush the Archon vs Wait</h2>
+<p><strong>Rush immediately</strong> when: they have no interaction visible, they've tapped out, you have Thoughtseize confirming their hand is empty, or they're on Boros Energy (can't interact with the stack).</p>
+<p><strong>Wait</strong> when: they're holding up mana with blue available (Consign), they've shown Force of Negation, or you have a Frog or Oculus building value — let those threats force interaction before committing the Persist.</p>
+<p><strong>Never cast Faithless Looting on turn 1</strong> into Boros Energy — they have Emperor of Bones which can exile your Archon from the graveyard. This forces you into killing their Emperor instead of developing your board, losing tempo for the rest of the game.</p>
+<h2>Mulligan Philosophy</h2>
+<p><strong>Keep:</strong> Any hand with Psychic Frog or Faithless Looting + 2 lands + a reanimation piece (Persist/Unearth/Emperor) or a path to find one. Hands with Thoughtseize protect themselves from disruption.</p>
+<p><strong>Mulligan:</strong> Hands with only Archon and no way to get it in the graveyard. Hands with 0-1 lands. Hands with no pressure and no reanimation.</p></div><div id="roles" class="section"><div class="section-label">Chapter 04</div><h1>Role Assignment</h1>
+<p>Unlike pure combo decks, Glockulous has genuine flexibility. Read the matchup before assigning your role each game.</p>
+<div class="card-grid"><div class="card"><div class="card-label">vs Aggro</div><div class="card-title">Combo Clock</div><div class="card-body">Apply Frog pressure while holding Persist for the window when their mana is committed to attacking. They can't interact with the stack — reanimate at instant speed at their end step when they're tapped out.</div></div><div class="card"><div class="card-label">vs Midrange</div><div class="card-title">Midrange Value</div><div class="card-body">Psychic Frog and Oculus are real threats that must be answered. Let them trade removal, then follow up with a Persist into Archon when they're down on interaction.</div></div><div class="card"><div class="card-label">vs Control</div><div class="card-title">Read Their Mana</div><div class="card-body">Teferi, Time Raveler from your sideboard (G2+) is the key. Under Teferi they can't Consign at instant speed. Resolve Teferi, then resolve the Persist next turn.</div></div><div class="card"><div class="card-label">vs Combo</div><div class="card-title">Force Their Turn</div><div class="card-body">Thoughtseize their key piece. Apply Frog pressure so they must act on schedule. Harbinger of the Seas post-board shuts off nonbasic-dependent combo (Amulet, Belcher).</div></div></div></div><div id="matchups" class="section"><div class="section-label">Chapter 05</div><h1>Matchup Guide</h1>
+<p>Click any matchup to expand. Post-board win rates assume correct sideboarding.</p><table class="matchup-table" data-deck="Grixis Reanimator" data-vs="Boros Energy" onclick="toggle('vs_boros',this)">
+<thead><tr><th>Matchup</th><th>Role</th><th>G1 WR</th><th>Overall</th></tr></thead>
+<tbody><tr><td>Boros Energy</td><td>Combo Clock</td><td>~65%</td><td><span class="verdict v-good">Favored</span></td></tr></tbody>
+</table><div id="vs_boros" class="matchup-detail"><p>Their interaction is all creature removal — Galvanic Discharge, Searing Blood, Lightning Bolt. None of it interacts with Persist at instant speed. Apply Frog pressure, force them to tap out attacking, then reanimate Archon at their end step.</p>
+<p><strong>Don't cast Faithless Looting T1</strong> — they can have Emperor of Bones, which exiles your Archon before you can reanimate it. Develop your board normally.</p><div class="sb-row"><div class="sb-in"><div class="sb-label">In</div><div class="sb-card"><span>Harbinger of the Seas</span><span class="sb-n">2</span></div><div class="sb-card"><span>Pyroclasm</span><span class="sb-n">1</span></div></div><div class="sb-out"><div class="sb-label">Out</div><div class="sb-card"><span>Fatal Push</span><span class="sb-n">2</span></div><div class="sb-card"><span>Spell Pierce</span><span class="sb-n">1</span></div></div></div><div class="if-then"><div class="if">If they have Galvanic Discharge up</div>→ Persist at their end step, not your main phase. Discharge at instant speed during combat is their only real answer — take it away from them.</div><div class="if-then"><div class="if">If they resolve Sanctifier en-Vec</div>→ Meltdown kills it. Shuts off your Fatal Push and some looting lines — highest priority answer.</div></div><table class="matchup-table" data-deck="Grixis Reanimator" data-vs="Izzet Prowess" onclick="toggle('vs_prowess',this)">
+<thead><tr><th>Matchup</th><th>Role</th><th>G1 WR</th><th>Overall</th></tr></thead>
+<tbody><tr><td>Izzet Prowess</td><td>Combo Clock</td><td>~60%</td><td><span class="verdict v-good">Favored</span></td></tr></tbody>
+</table><div id="vs_prowess" class="matchup-detail"><p>Similar to Boros — their interaction doesn't touch the stack. Cori-Steel Cutter tokens don't block flying Oculus tokens effectively. You race under their burn clock with Archon's ETB gaining you 3 life and disrupting their hand. Post-board they can bring Mystical Dispute — Harbinger bounces their nonbasic lands and slows their blue mana.</p><div class="sb-row"><div class="sb-in"><div class="sb-label">In</div><div class="sb-card"><span>Harbinger of the Seas</span><span class="sb-n">2</span></div><div class="sb-card"><span>Mystical Dispute</span><span class="sb-n">2</span></div></div><div class="sb-out"><div class="sb-label">Out</div><div class="sb-card"><span>Fatal Push</span><span class="sb-n">2</span></div><div class="sb-card"><span>Spell Pierce</span><span class="sb-n">1</span></div><div class="sb-card"><span>Troll of Khazad-dûm</span><span class="sb-n">1</span></div></div></div><div class="if-then"><div class="if">If they have Mystical Dispute mana up</div>→ Probe with Thoughtseize first. If Dispute is in hand, develop Frog rather than Persist into open blue.</div></div><table class="matchup-table" data-deck="Grixis Reanimator" data-vs="Esper Blink" onclick="toggle('vs_blink',this)">
+<thead><tr><th>Matchup</th><th>Role</th><th>G1 WR</th><th>Overall</th></tr></thead>
+<tbody><tr><td>UW / Esper Blink</td><td>Navigate Consign</td><td>~45%</td><td><span class="verdict v-even">Challenging</span></td></tr></tbody>
+</table><div id="vs_blink" class="matchup-detail"><p>They have Consign to Memory which counters Persist for free. Teferi, Time Raveler from your sideboard locks them into sorcery speed — under Teferi they cannot Consign at instant speed, meaning your Persist resolves cleanly. Psychic Frog is your best G1 card here.</p><div class="sb-row"><div class="sb-in"><div class="sb-label">In</div><div class="sb-card"><span>Consign to Memory</span><span class="sb-n">4</span></div><div class="sb-card"><span>Mystical Dispute</span><span class="sb-n">2</span></div></div><div class="sb-out"><div class="sb-label">Out</div><div class="sb-card"><span>Fatal Push</span><span class="sb-n">2</span></div><div class="sb-card"><span>Pyroclasm</span><span class="sb-n">1</span></div><div class="sb-card"><span>Harvester of Misery</span><span class="sb-n">1</span></div><div class="sb-card"><span>Troll</span><span class="sb-n">1</span></div><div class="sb-card"><span>Surgical Extraction</span><span class="sb-n">1</span></div></div></div><div class="if-then"><div class="if">If they hold up 3 mana</div>→ That's Consign mana. Don't Persist into it. Develop your Frog/Oculus plan until they spend it.</div><div class="if-then"><div class="if">If your Teferi resolves</div>→ Execute immediately. They can't Consign at sorcery speed.</div></div><table class="matchup-table" data-deck="Grixis Reanimator" data-vs="Azorius Control" onclick="toggle('vs_control',this)">
+<thead><tr><th>Matchup</th><th>Role</th><th>G1 WR</th><th>Overall</th></tr></thead>
+<tbody><tr><td>UW Control</td><td>Stack Navigation</td><td>~40%</td><td><span class="verdict v-hard">Tough</span></td></tr></tbody>
+</table><div id="vs_control" class="matchup-detail"><p>Counterspell and Consign both answer your combo. Post-board Teferi locks them into sorcery speed — once Teferi is on the table, Persist is uncounterable. G1 lean into Frog + Oculus as legitimate threats rather than rushing Archon through open mana.</p><div class="sb-row"><div class="sb-in"><div class="sb-label">In</div><div class="sb-card"><span>Consign to Memory</span><span class="sb-n">4</span></div><div class="sb-card"><span>Mystical Dispute</span><span class="sb-n">2</span></div><div class="sb-card"><span>Harbinger of the Seas</span><span class="sb-n">2</span></div></div><div class="sb-out"><div class="sb-label">Out</div><div class="sb-card"><span>Fatal Push</span><span class="sb-n">4</span></div><div class="sb-card"><span>Pyroclasm</span><span class="sb-n">1</span></div><div class="sb-card"><span>Harvester of Misery</span><span class="sb-n">1</span></div><div class="sb-card"><span>Surgical Extraction</span><span class="sb-n">1</span></div><div class="sb-card"><span>Nihil Spellbomb</span><span class="sb-n">1</span></div></div></div><div class="if-then"><div class="if">If they have Counterspell up</div>→ Apply Frog pressure. Thoughtseize to clear the counter before committing the Persist.</div></div></div><div id="sideboard" class="section"><div class="section-label">Chapter 06</div><h1>Sideboard Guide</h1>
+<div class='sb-guide-card'><div class='sb-guide-name'>Consign to Memory — 4 copies</div><div class='sb-guide-body'>Counter their stack interaction: Consign, Force of Negation, Counterspell, cascade triggers. Don't board against pure creature matchups where they don't interact on the stack.</div></div>
+<div class='sb-guide-card'><div class='sb-guide-name'>Harbinger of the Seas — 2 copies</div><div class='sb-guide-body'>Makes all nonbasic lands enter tapped. Crushes Amulet Titan, slows Blink fetching, disrupts Belcher. A reanimated Harbinger is a continuous lock. Board in wherever nonbasic disruption matters.</div></div>
+<div class='sb-guide-card'><div class='sb-guide-name'>Meltdown — 2 copies</div><div class='sb-guide-body'>X=0: Leyline of the Void. X=1: Sanctifier en-Vec, Amulet of Vigor, Nihil Spellbomb. Know the CMC of the hate piece before boarding.</div></div>
+<div class='sb-guide-card'><div class='sb-guide-name'>Mystical Dispute — 2 copies</div><div class='sb-guide-body'>One-mana counter vs blue spells: Counterspell, Consign, Force of Negation. Board in against any blue deck threatening your Persist / Unearth lines.</div></div>
+<div class='sb-guide-card'><div class='sb-guide-name'>Nihil Spellbomb — 2 copies</div><div class='sb-guide-body'>Graveyard hate for mirrors and Goryo's / Grinding Breach decks. Cantrips so you don't fall behind. Board in mirror matches specifically.</div></div>
+</div><div id="heuristics" class="section"><div class="section-label">Chapter 07</div><h1>Heuristics &amp;<br>Quick Rules</h1><ol class="heuristic-list">
+<li>Never cast Faithless Looting T1 into Boros Energy — Emperor of Bones can exile your Archon before you can reanimate it.</li>
+<li>Psychic Frog is a real threat, not just a discard outlet. Let it attack. The pressure forces interaction that opens Persist windows.</li>
+<li>Don't Persist into open blue mana. Consign counters it for free. Probe with Thoughtseize or wait until they tap out.</li>
+<li>Abhorrent Oculus → tokens → Emperor of Bones → Archon is your primary non-Persist path. Know the chain before starting it.</li>
+<li>Archon ETB gains you 3 life and draws a card even if they answer it. Don't concede to a Solitude — the ETB already happened.</li>
+<li>Harbinger of the Seas is a legitimate reanimate target post-board. Emperor-reanimated Harbinger locks their nonbasic lands continuously.</li>
+<li>Rush Archon if they have no open blue mana. Develop Frog/Oculus if they do. This is the highest-skill decision in the deck.</li>
+<li>Thoughtseize on T1 is your best play in most matchups. Seeing their hand tells you which reanimation line to take.</li>
+<li>If graveyard hate appears in &gt;30% of expected sideboards, Frog/Oculus value becomes the primary plan — not Archon combo.</li>
+<li>This deck's power level is highest when the field is Boros Energy and Prowess heavy. Against Blink + Control heavy fields, reconsider the pick.</li>
+</ol></div><div id="prep" class="section"><div class="section-label">Chapter 08</div><h1>Event Day Prep</h1><button class="print-btn" onclick="window.print()">Print This Sheet</button>
+<div class="prep-grid">
+<div class="prep-block"><div class="prep-block-title">Matchup Quick Reference</div>
+<div class="prep-line"><span>Boros Energy</span><span class="prep-verdict" style="color:#1a6b1a">Favored — no stack interaction</span></div>
+<div class="prep-line"><span>Izzet Prowess</span><span class="prep-verdict" style="color:#1a6b1a">Favored — same reason</span></div>
+<div class="prep-line"><span>UW / Esper Blink</span><span class="prep-verdict" style="color:#8f6a1a">Challenging — Consign is the issue</span></div>
+<div class="prep-line"><span>UW Control</span><span class="prep-verdict" style="color:#8f1a1a">Tough — Teferi is your answer</span></div>
+<div class="prep-line"><span>Amulet Titan</span><span class="prep-verdict" style="color:#1a6b1a">Favored — Harbinger is backbreaking</span></div>
+</div>
+<div class="prep-block"><div class="prep-block-title">The Three Reanimate Paths</div>
+<div class="prep-line"><span>Persist</span><span class="prep-verdict">Instant speed — use at their end step</span></div>
+<div class="prep-line"><span>Unearth</span><span class="prep-verdict">Sorcery speed — chains with Emperor</span></div>
+<div class="prep-line"><span>Emperor of Bones</span><span class="prep-verdict">When Emperor dies → Archon enters</span></div>
+<div class="prep-line"><span>Oculus chain</span><span class="prep-verdict">Oculus → tokens → Emperor trigger</span></div>
+</div>
+<div class="prep-block"><div class="prep-block-title">Hate Answers</div>
+<div class="prep-line"><span>Leyline of the Void</span><span class="prep-verdict">Meltdown at X=0</span></div>
+<div class="prep-line"><span>Nihil Spellbomb</span><span class="prep-verdict">Respond to it; Mystical Dispute</span></div>
+<div class="prep-line"><span>Consign to Memory</span><span class="prep-verdict">Your own Consign / Dispute / Teferi</span></div>
+<div class="prep-line"><span>Rest in Peace</span><span class="prep-verdict">Harbinger bounces their lands, buys time</span></div>
+</div>
+<div class="prep-block"><div class="prep-block-title">Mulligan Rules</div>
+<div class="prep-line"><span>Keep</span><span class="prep-verdict">Frog or Looting + 2 lands + reanimate path</span></div>
+<div class="prep-line"><span>Mull</span><span class="prep-verdict">Archon only / 0-1 land / no reanimation</span></div>
+<div class="prep-line"><span>Don't rush</span><span class="prep-verdict">Into open blue — Consign is waiting</span></div>
+</div>
+</div></div></div><footer><span>Team Resolve · Modern · Grixis Reanimator (Glockulous) Playbook</span><span>Zuxas · 2026 RC Season</span></footer><script>
+function show(id){document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));document.querySelectorAll('.nav-link').forEach(l=>l.classList.remove('active'));document.getElementById(id).classList.add('active');event.target.classList.add('active');}
+function toggle(id,t){const d=document.getElementById(id);const o=d.classList.contains('open');document.querySelectorAll('.matchup-detail').forEach(d=>d.classList.remove('open'));document.querySelectorAll('.matchup-table tr').forEach(r=>r.classList.remove('selected'));if(!o){d.classList.add('open');t.querySelector('tbody tr').classList.add('selected');}}
+</script><script src="matchup-data-loader.js"></script>
+</body></html>

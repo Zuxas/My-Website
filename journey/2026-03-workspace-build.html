@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Building the workspace — site overhaul, workspace organization, and MTG Meta Analyzer updates. March 2026." />
+    <title>Building the Workspace — March 2026 | Zuxas</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="icon" href="../images/tab32.png" type="image/png">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <nav class="main-nav">
+        <ul>
+            <li><a href="../index.html"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="../meta.html"><i class="fas fa-chart-line"></i> Strategies</a></li>
+            <li><a href="../planning.html"><i class="fas fa-lightbulb"></i> Deck Ideas</a></li>
+            <li><a href="../deckbuilding.html"><i class="fas fa-cogs"></i> Deck Building</a></li>
+            <li><a href="../analyze.html"><i class="fas fa-search"></i> Analyze Deck Lists</a></li>
+            <li><a href="../journey/index.html"><i class="fas fa-book-open"></i> Journey</a></li>
+            <li><a href="../deck-guides.html"><i class="fas fa-book"></i> Guides</a></li>
+            <li><a href="../bio.html"><i class="fas fa-user"></i> About Me</a></li>
+        </ul>
+    </nav>
+    <main id="top" class="fade-in-top-to-bottom">
+        <section class="column">
+            <span class="section-label">Entry 002 · March 2026 · Infrastructure</span>
+            <h1>building the workspace</h1>
+
+            <p>Before you can run a serious RC prep cycle, the infrastructure needs to work. This entry covers the work we did this week to get everything organized — the site, the Team Resolve workspace, and the MTG Meta Analyzer — so that the actual competitive work has a solid foundation under it.</p>
+
+            <p>Not glamorous. But it matters. Disorganized prep is a tax on every decision you make during a season.</p>
+
+            <h2>what got built</h2>
+
+            <div class="card-grid">
+                <div class="card">
+                    <div class="card-label">Website</div>
+                    <div class="card-title">Full Content Rewrite</div>
+                    <div class="card-body">Every page rewritten with accurate content — Modern focus, current results (23+17 RCQ Top 8s, 5 RC qualifications), Team Resolve philosophy, and actual decks being tested. The old site had Pioneer meta data from 2024. Now it reflects what we're actually doing.</div>
+                </div>
+                <div class="card">
+                    <div class="card-label">Website</div>
+                    <div class="card-title">Design System</div>
+                    <div class="card-body">Rebuilt styles.css with CSS variables, DM Mono font, card grid layouts, expandable detail sections, and the blink guide design patterns applied throughout. Consistent across all pages now.</div>
+                </div>
+                <div class="card">
+                    <div class="card-label">Team Resolve</div>
+                    <div class="card-title">Workspace Organized</div>
+                    <div class="card-body">95 files moved from a flat root folder into organized subfolders: guides/, data/, prep/, media/, decks/, tools/. CLAUDE.md workspace map written. Each folder has a context.md explaining what belongs there and the naming convention.</div>
+                </div>
+                <div class="card">
+                    <div class="card-label">MTG Meta Analyzer</div>
+                    <div class="card-title">User Preferences Wired</div>
+                    <div class="card-body">Format selection now lives in preferences.json and drives all scrapers. The setup wizard has a format selection page before Scryfall download. background_fill.bat reads preferences instead of hardcoded format lists. Documentation updated across CLAUDE.md, NEXT_STEPS.md, and ROADMAP.md.</div>
+                </div>
+            </div>
+
+            <h2>why this matters for the rc grind</h2>
+
+            <p>The MTG Meta Analyzer is a core part of how Team Resolve prepares. It pulls real match data from melee.gg — 262,000+ match records across formats — and surfaces which archetypes are actually winning, not just which ones are popular. The Field Optimizer runs the expected field composition through win rate data to tell us which deck has the best weighted win percentage against what we'll face at the RC.</p>
+
+            <p>That tool only works if it's actually running. Organizing the infrastructure — getting the daily scrapes working reliably, preferences wired correctly, documentation accurate — is what makes it usable across a long season. A tool you have to babysit every week is a tool you'll stop using.</p>
+
+            <div class="mantra">"Preparation infrastructure is as important as the preparation itself. If your systems are broken, your prep is broken."</div>
+
+            <h2>current testing status</h2>
+
+            <p>The gauntlet work continues in parallel. UW Blink is still the primary focus. Here's where each deck stands:</p>
+
+            <ul>
+                <li><strong>UW Blink:</strong> Most reps. Feeling strong against the midrange half of the field. The Prowess matchup is the main concern — they can close before Ephemerate comes online if you keep a medium hand.</li>
+                <li><strong>Boros Energy:</strong> Monitoring the hate density. Sanctifier en-Vec is now in a lot of sideboards. Still powerful but the margins are tighter than last season.</li>
+                <li><strong>Grixis Reanimator (Glockulous):</strong> Had two strong gauntlet runs. The melee.gg data shows the field is not heavily prepared with dedicated graveyard hate for this specific season — which is the key read we needed.</li>
+                <li><strong>Jeskai Blink:</strong> Still evaluating. The mana hit is real. We'll make the call based on how much combo shows up in the expected RC field.</li>
+                <li><strong>UW Control / Prowess:</strong> Both monitoring. Neither is the primary right now.</li>
+            </ul>
+
+            <h2>next steps</h2>
+            <ul>
+                <li>Continue gauntlet reps — need more data on UW Blink vs Prowess specifically</li>
+                <li>Pull current MTGMelee data on graveyard hate density in recent Modern RCQs</li>
+                <li>Make deck decision and build the full sideboard guide before the next event block</li>
+            </ul>
+
+            <p style="margin-top: 24px;"><a href="index.html">← Back to the journey</a></p>
+        </section>
+        <a href="#top" class="back-to-top"><i class="fas fa-arrow-up"></i> Top</a>
+    </main>
+    <footer>
+        <span>Road to Pro Tour</span>
+        <span>Jermey Wallace · Zuxas · Team Resolve</span>
+        <span>&copy; 2026</span>
+    </footer>
+</body>
+</html>

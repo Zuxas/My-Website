@@ -1,622 +1,243 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description"
-        content="Explore the different Magic: The Gathering decks I'm considering for the upcoming qualifiers." />
-    <title>Decks I'm Considering</title>
+    <meta name="description" content="Modern decks Team Resolve is currently testing for RC qualification — Boros Energy, UW Blink, Jeskai Blink, Grixis Reanimator, UW Control, Prowess." />
+    <title>Decks We're Testing — Team Resolve Modern</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" href="images/tab32.png" type="image/png">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
-
 <body>
     <nav class="main-nav">
         <ul>
             <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
             <li><a href="meta.html"><i class="fas fa-chart-line"></i> Strategies</a></li>
-            <li><a href="planning.html"><i class="fas fa-lightbulb"></i> Deck Ideas</a></li>
+            <li><a href="planning.html" class="active"><i class="fas fa-lightbulb"></i> Deck Ideas</a></li>
             <li><a href="deckbuilding.html"><i class="fas fa-cogs"></i> Deck Building</a></li>
             <li><a href="analyze.html"><i class="fas fa-search"></i> Analyze Deck Lists</a></li>
+            <li><a href="journey/index.html"><i class="fas fa-book-open"></i> Journey</a></li>
+            <li><a href="deck-guides.html"><i class="fas fa-book"></i> Guides</a></li>
             <li><a href="bio.html"><i class="fas fa-user"></i> About Me</a></li>
         </ul>
     </nav>
+    <main id="top" class="fade-in-top-to-bottom">
+        <section class="column">
+            <span class="section-label">Team Resolve · Modern · Active Testing</span>
+            <h1>decks we're testing</h1>
+            <p class="intro">These are the Modern decks Team Resolve is actively evaluating for this RC season. Each one gets run through our gauntlet before we commit — win rates against the expected field, sideboard plans, and play-tested lines. Nothing here is just theory.</p>
 
-    <main class="fade-in-top-to-bottom">
-        <section id="steps-to-qualify" class="column">
-            <!-- Main Heading -->
-
-            <h1>decks i'm considering</h1>
-
-
-            <!-- Introduction Paragraph -->
-            <p class="intro">As I gear up for the upcoming qualifiers, I’m diving into a selection of decks that I
-                believe
-                will give me a competitive edge. Each deck has its unique strengths and strategies, and I’m excited to
-                explore their potential. Here’s a detailed look at the decks I'm evaluating:</p>
-
-            <!-- Deck Details -->
-            <div id="boros-burn" class="column">
-                <details class="expandable-content">
-                    <summary class="expandable-toggle">
-                        <h2>boros burn</h2>
-                        <div class="image-grid">
-                            <img src="images/deckimg/boros-burn/sch-27-monastery-swiftspear.png" alt="Monastery Swiftspear">
-                            <img src="images/deckimg/boros-burn/otj-335-slickshot-show-off.png" alt="Slickshot Show-Off">
-                            <img src="images/deckimg/boros-burn/woe-142-monstrous-rage.png" alt="Monstrous Rage">
-                            <img src="images/deckimg/boros-burn/sld-217-boros-charm.png" alt="Boros Charm">
-                            <img src="images/deckimg/boros-burn/2x2-243-lightning-helix.png" alt="Lightning Helix">
-                            <!-- Add more images as needed -->
-                        </div>
-                    </summary>
+            <details id="boros-energy">
+                <summary><h2>Boros Energy</h2></summary>
+                <div>
+                    <p><strong>Status: Known quantity — evaluating whether to run back.</strong></p>
+                    <p>I qualified on this deck last Modern season — 17 RCQ Top 8s. The question isn't whether it's good; it is. The question is whether the hate has caught up and whether the field is prepared for it in a way that cuts into the margins we need at the RC level.</p>
+                    <p>Boros Energy wins through efficient threats and energy synergies that generate card advantage faster than most decks can answer. Ragavan generates resources on attack, Guide of Souls and Ocelot Pride create inevitability, and Ajani closes the game with a single activation. Punishes stumbles immediately.</p>
+                    <h3>What it does well</h3>
+                    <ul>
+                        <li>Closes games extremely fast when the opponent stumbles</li>
+                        <li>Generates advantage while applying pressure — not just a linear aggro deck</li>
+                        <li>Sideboard is deep and well-understood after a full season of reps</li>
+                        <li>Rewards familiarity — every percentage point of efficiency matters at an RC</li>
+                    </ul>
+                    <h3>What we're watching</h3>
+                    <ul>
+                        <li>Sanctifier en-Vec is a hard lock that the field is prepared to deploy now</li>
+                        <li>Opponents have refined their Wrath sequencing against the deck</li>
+                        <li>The mirror is decided heavily by who has the better sideboard plan</li>
+                    </ul>
                     <div class="deck-container">
-                        <div class="deck-description">
-                            <p>Boros Burn is an aggressive deck focused on dealing direct damage to opponents through a
-                                combination of efficient spells and high-tempo creatures. This deck thrives on applying
-                                consistent pressure and leveraging its spells to quickly reduce an opponent’s life
-                                total.
-                            </p>
-                            <p>The deck's core strategy revolves around efficient, low-cost spells that can deal damage
-                                directly
-                                to opponents or their creatures. <i>Kumano Faces Kakkazan // Etching of Kumano</i>
-                                provides
-                                early pressure and damage through its Saga effects, while <i>Monastery Swiftspear</i>
-                                and
-                                <i>Soul-Scar Mage</i> capitalize on the numerous instants and sorceries to deal
-                                additional
-                                damage. These creatures are enhanced by spells like <i>Play with Fire</i> and <i>Searing
-                                    Blood</i>, which further contribute to the damage output.
-                            </p>
-                            <p>For additional burn and card advantage, the deck includes <i>Light Up the Stage</i>,
-                                which
-                                helps
-                                to refill your hand and maintain momentum. <i>Monstrous Rage</i> is a powerful spell for
-                                pumping
-                                up your creatures and dealing damage, and <i>Boros Charm</i> provides versatile options
-                                for
-                                dealing damage or protecting your creatures from removal. <i>Lightning Helix</i> offers
-                                both
-                                damage and life gain, which can be crucial in tight matches.</p>
-                            <p>The land base supports the aggressive strategy with a mix of fast lands and utility
-                                lands.
-                                <i>Battlefield Forge</i>, <i>Inspiring Vantage</i>, and <i>Sacred Foundry</i> provide
-                                consistent
-                                access to red and white mana, while <i>Den of the Bugbear</i> and <i>Sokenzan, Crucible
-                                    of
-                                    Defiance</i> offer additional utility by providing creature options or extra damage.
-                                <i>Needleverge Pathway // Pillarverge Pathway</i> ensures flexibility in mana
-                                production.
-                            </p>
-                            <p>The sideboard contains several tools to handle a variety of matchups. <i>End the
-                                    Festivities</i>
-                                offers an additional way to deal with multiple small creatures, while <i>Deflecting
-                                    Palm</i>
-                                can
-                                be crucial against other burn strategies by redirecting damage. <i>Get Lost</i> provides
-                                additional disruption and answers to certain threats. <i>Kari Zev's Expertise</i> and
-                                <i>Rampaging Ferocidon</i> offer versatile answers to various strategies, and <i>Roiling
-                                    Vortex</i> can be used to further pressure opponents or mitigate life gain.
-                            </p>
-                            <p>Boros Burn excels in metagames where speed and direct damage are crucial. Its ability to
-                                apply
-                                constant pressure and finish games quickly makes it a formidable choice in aggressive
-                                and
-                                control-oriented matchups alike.</p>
-                        </div>
-                        <!-- Main Deck -->
-
                         <div class="deck-list">
-                            <a href="https://flexslot.gg/sideboards/3752" target="_blank">Sideboard Guide</a>
-                            <h3>Main Deck</h3>
+                            <h3>Core Cards</h3>
                             <ul>
-                                <li>4 Battlefield Forge</li>
-                                <li>2 Den of the Bugbear</li>
+                                <li>4 Ragavan, Nimble Pilferer</li>
+                                <li>4 Guide of Souls</li>
+                                <li>4 Ocelot Pride</li>
+                                <li>4 Ajani, Nacatl War-Pride</li>
+                                <li>4 Lightning Bolt</li>
+                                <li>4 Searing Blood / Shard Volley</li>
                                 <li>4 Inspiring Vantage</li>
-                                <li>2 Mountain</li>
-                                <li>1 Needleverge Pathway // Pillarverge Pathway</li>
-                                <li>2 Ramunap Ruins</li>
                                 <li>4 Sacred Foundry</li>
-                                <li>1 Sokenzan, Crucible of Defiance</li>
-                                <li>4 Kumano Faces Kakkazan // Etching of Kumano</li>
-                                <li>4 Monastery Swiftspear</li>
-                                <li>4 Soul-Scar Mage</li>
-                                <li>4 Slickshot Show-Off</li>
-                                <li>4 Play with Fire</li>
-                                <li>4 Light Up the Stage</li>
-                                <li>4 Monstrous Rage</li>
-                                <li>4 Boros Charm</li>
-                                <li>4 Searing Blood</li>
-                                <li>2 Wild Slash</li>
-                                <li>2 Lightning Helix</li>
                             </ul>
-
-
-                            <!-- Sideboard -->
-                            <div class="deck-list">
-                                <h3>Sideboard</h3>
-                                <ul>
-                                    <li>2 End the Festivities</li>
-                                    <li>2 Deflecting Palm</li>
-                                    <li>2 Get Lost</li>
-                                    <li>2 Lightning Helix</li>
-                                    <li>2 Case of the Crimson Pulse</li>
-                                    <li>2 Kari Zev's Expertise</li>
-                                    <li>2 Rampaging Ferocidon</li>
-                                    <li>1 Roiling Vortex</li>
-                                </ul>
-                            </div>
                         </div>
-                    </div>
-            </div>
-
-
-
-            <div id="mono-green-ramp" class="column">
-                <details class="expandable-content">
-                    <summary class="expandable-toggle">
-                        <h2>mono green ramp</h2>
-                        <div class="image-grid">
-                            <img src="images/deckimg/mono-g/pdom-168-llanowar-elves.png" alt="Llanowar Elf">
-                            <img src="images/deckimg/mono-g/ppro-2022-3-nykthos-shrine-to-nyx.png"
-                                alt="Nykthos Shrine to Nyx">
-                            <img src="images/deckimg/mono-g/sld-532-kiora-behemoth-beckoner.png"
-                                alt="Kiora Behemoth Beconer">
-                            <img src="images/deckimg/mono-g/mid-364-storm-the-festival.png" alt="Storm the Festival">
-                            <img src="images/deckimg/mono-g/m20-167-cavalier-of-thorns.png" alt="Cavalier of Thorns">
-                            <!-- Add more images as needed -->
-                        </div>
-
-                    </summary>
-                    <div class="deck-container">
-                        <div class="deck-description">
-                            <p>Mono Green Ramp is a robust deck designed to accelerate mana production and unleash
-                                powerful
-                                threats early in the game. This deck focuses on generating a large amount of green mana
-                                to
-                                cast
-                                high-impact creatures and spells, leveraging the synergy between ramping effects and
-                                powerful,
-                                game-changing threats.</p>
-                            <p>The core of the deck includes efficient mana ramp cards such as <i>Elvish Mystic</i> and
-                                <i>Llanowar Elves</i>, which provide a steady flow of green mana to support the deck’s
-                                high
-                                mana
-                                demands. <i>Cavalier of Thorns</i> and <i>Old-Growth Troll</i> offer both ramp and
-                                substantial
-                                creature presence, while <i>Storm the Festival</i> allows for impactful plays by casting
-                                multiple permanents from the top of your library.
-                            </p>
-                            <p>The deck also features powerful threats such as <i>Elesh Norn, Mother of Machines</i>,
-                                which
-                                can
-                                significantly impact the game with its ability to double triggers and hinder opponents'
-                                strategies. <i>Polukranos Reborn // Polukranos, Engine of Ruin</i> and <i>Ulvenwald
-                                    Oddity
-                                    //
-                                    Ulvenwald Behemoth</i> provide versatility and massive power, making them formidable
-                                additions to the deck. <i>Kiora, Behemoth Beckoner</i> helps further accelerate mana
-                                production
-                                and provides card draw by interacting with your large creatures.</p>
-                            <p>The land base is structured to support the deck’s needs with a mix of utility lands and
-                                ramp
-                                sources. <i>Nykthos, Shrine to Nyx</i> plays a crucial role in boosting your mana
-                                production,
-                                while <i>Boseiju, Who Endures</i> offers a way to deal with problematic nonland
-                                permanents.
-                                The
-                                inclusion of <i>Temple Garden</i> and <i>Sunken Citadel</i> ensures you have access to
-                                different
-                                types of mana sources, and <i>Hostile Hostel // Creeping Inn</i> provides a versatile
-                                land
-                                with
-                                additional utility.</p>
-                            <p>The sideboard contains a variety of tools to address different matchups. <i>Deafening
-                                    Silence</i>
-                                is useful against decks that rely on spells, while additional copies of <i>Elesh Norn,
-                                    Mother of
-                                    Machines</i> and <i>Polukranos Reborn // Polukranos, Engine of Ruin</i> provide more
-                                flexibility for different scenarios. <i>Obstinate Baloth</i> is included for its
-                                resilience
-                                against discard and its life gain ability. <i>Pick Your Poison</i> and <i>Tail Swipe</i>
-                                offer
-                                additional removal and interaction options, and <i>The Stone Brain</i> provides a tool
-                                for
-                                dealing with specific strategies by exiling cards from an opponent's deck.</p>
-                            <p>Mono Green Ramp excels in metagames where accelerating mana and deploying large threats
-                                quickly
-                                can outpace opponents. The deck’s ability to generate substantial mana and cast powerful
-                                creatures makes it a formidable choice against a variety of strategies.</p>
-                        </div>
-
-                        <!-- Main Deck -->
                         <div class="deck-list">
-                            <a href="https://flexslot.gg/sideboards/3989" target="_blank">Sideboard Guide</a>
-                            <h3>Main Deck</h3>
+                            <h3>Key Sideboard Pieces</h3>
                             <ul>
-                                <li>2 Invasion of Ixalan // Belligerent Regisaur</li>
-                                <li>4 Cavalier of Thorns</li>
-                                <li>1 Elesh Norn, Mother of Machines</li>
-                                <li>4 Elvish Mystic</li>
-                                <li>4 Llanowar Elves</li>
-                                <li>4 Old-Growth Troll</li>
-                                <li>4 Outcaster Trailblazer</li>
-                                <li>1 Polukranos Reborn // Polukranos, Engine of Ruin</li>
-                                <li>1 Ulvenwald Oddity // Ulvenwald Behemoth</li>
-                                <li>4 Leyline of the Guildpact</li>
-                                <li>2 Oath of Nissa</li>
-                                <li>2 Boseiju, Who Endures</li>
-                                <li>6 Forest</li>
-                                <li>1 Hostile Hostel // Creeping Inn</li>
-                                <li>2 Lair of the Hydra</li>
-                                <li>4 Storm the Festival</li>
-                                <li>4 Nykthos, Shrine to Nyx</li>
-                                <li>4 Kiora, Behemoth Beckoner</li>
-                                <li>4 Temple Garden</li>
-                                <li>2 Sunken Citadel</li>
+                                <li>Sanctifier en-Vec (mirror and Dimir)</li>
+                                <li>Wear // Tear (artifacts and enchantments)</li>
+                                <li>Rest in Peace (graveyard matchups)</li>
+                                <li>Deflecting Palm (burn mirrors)</li>
+                                <li>Leyline of the Void</li>
                             </ul>
-
-
-                            <!-- Sideboard -->
-                            <div class="deck-list">
-                                <h3>Sideboard</h3>
-                                <ul>
-                                    <li>3 Deafening Silence</li>
-                                    <li>1 Elesh Norn, Mother of Machines</li>
-                                    <li>1 Polukranos Reborn // Polukranos, Engine of Ruin</li>
-                                    <li>1 Forest</li>
-                                    <li>2 Obstinate Baloth</li>
-                                    <li>3 Pick Your Poison</li>
-                                    <li>2 Tail Swipe</li>
-                                    <li>2 The Stone Brain</li>
-                                </ul>
-                            </div>
                         </div>
                     </div>
-            </div>
+                    <p style="margin-top:16px"><a href="boros-energy-playbook.html">Open Playbook →</a></p>
+                </div>
             </details>
-            </div>
-            <div id="izzet-phoenx" class="column">
-                <details class="expandable-content">
-                    <summary class="expandable-toggle">
-                        <h2>izzet phoenix</h2>
-                        <div class="image-grid">
-                            <img src="images/deckimg/izzet-phoenix/rvr-427-arclight-phoenix.png" alt="Arclight Phoenix">
-                            <img src="images/deckimg/izzet-phoenix/spg-55-ledger-shredder.png" alt="Ledger Shredder">
-                            <img src="images/deckimg/izzet-phoenix/woe-64-picklock-prankster.png"
-                                alt="Picklock Prankster">
-                            <img src="images/deckimg/izzet-phoenix/tsr-319-treasure-cruise.png" alt="Treasue Cruise">
-                            <img src="images/deckimg/izzet-phoenix/mkm-396-proft-s-eidetic-memory.png"
-                                alt="Proft's Eidetic Memory">
-                            <!-- Add more images as needed -->
-                        </div>
 
-                    </summary>
+            <details id="uw-blink">
+                <summary><h2>UW Blink</h2></summary>
+                <div>
+                    <p><strong>Status: Primary focus — most testing hours this season.</strong></p>
+                    <p>Ephemerate is one of the best cards in Modern — at its floor it's a cantrip that resets an ETB, at its ceiling it's a counterspell, Time Walk, and 4-for-1 in the same card. White Orchid Phantom is underrated against greedy three-color mana bases. Solitude + Ephemerate is three removals and nine life for two mana. The deck shifts roles cleanly — control against aggro, beatdown against control.</p>
+                    <h3>What it does well</h3>
+                    <ul>
+                        <li>Extremely high skill ceiling — reps compound into a meaningful edge</li>
+                        <li>Difficult to hate out — pivots into fair midrange when hate sticks</li>
+                        <li>White Orchid Phantom creates free wins against greedy mana bases</li>
+                        <li>Ocelot Pride generates inevitability in any long game</li>
+                    </ul>
+                    <h3>What we're watching</h3>
+                    <ul>
+                        <li>Very fast aggro can close before engines come online</li>
+                        <li>Decision density is high — mental stamina matters across a long event</li>
+                        <li>Round clock is a real concern; brisk play is required</li>
+                    </ul>
                     <div class="deck-container">
-                        <div class="deck-description">
-                            <p>Izzet Phoenix is a powerful and spell-centric deck renowned for its explosive potential
-                                and
-                                graveyard recursion. At the heart of this strategy is the <i>Arclight Phoenix</i>, a
-                                recurring
-                                threat that can swiftly return to the battlefield with the help of a suite of instants
-                                and
-                                sorceries. The deck is designed to maximize the value of these spells, leveraging card
-                                draw
-                                and
-                                efficient removal to maintain pressure on opponents.</p>
-                            <p>The core of the deck revolves around key card-drawing spells like <i>Treasure Cruise</i>,
-                                <i>Consider</i>, <i>Opt</i>, and <i>Sleight of Hand</i>, which not only help find and
-                                recur
-                                <i>Arclight Phoenix</i> but also ensure a steady flow of resources. <i>Ledger
-                                    Shredder</i>
-                                and
-                                <i>Picklock Prankster</i> offer synergy by filtering through the deck and filling the
-                                graveyard
-                                with valuable cards to fuel the Phoenix’s return. Early removal options such as
-                                <i>Lightning
-                                    Axe</i> and <i>Fiery Impulse</i> help manage threats and clear the path for your
-                                attacks.
-                            </p>
-                            <p>Utility cards like <i>Prismari Command</i> and <i>Spikefield Hazard</i> provide
-                                additional
-                                versatility, offering both damage and useful effects. The land base is well-constructed
-                                with
-                                a
-                                combination of shock lands and fast lands including <i>Riverglide Pathway</i>,
-                                <i>Spirebluff
-                                    Canal</i>, and <i>Steam Vents</i>, ensuring reliable mana sources. <i>Hall of Storm
-                                    Giants</i> and <i>Otawara, Soaring City</i> serve as dual-purpose lands that can
-                                also
-                                act as
-                                threats or answers when needed.
-                            </p>
-                            <p>The sideboard features a range of options to tackle various matchups. <i>Aether Gust</i>
-                                and
-                                <i>Mystical Dispute</i> offer valuable counterspells and disruption, while <i>Beacon
-                                    Bolt</i>
-                                and <i>Anger of the Gods</i> provide additional removal and board wipe capabilities.
-                                <i>Crackling Drake</i> serves as an additional threat to put pressure on opponents, and
-                                <i>Ashiok, Dream Render</i> is included for graveyard disruption. The sideboard also
-                                contains
-                                <i>Thing in the Ice</i> for transforming and resetting the board state, and
-                                <i>Unlicensed
-                                    Hearse</i> for further graveyard control.
-                            </p>
-                            <p>Izzet Phoenix excels in metagames where efficient spell play, graveyard recursion, and
-                                powerful
-                                threats can dominate. The deck's combination of card advantage, robust threats, and
-                                versatile
-                                answers makes it a strong contender in both aggressive and control-oriented matchups.
-                            </p>
-                        </div>
-
-                        <!-- Main Deck -->
                         <div class="deck-list">
-
-                            <h3>Main Deck</h3>
+                            <h3>Core Cards</h3>
                             <ul>
-                                <li>4 Arclight Phoenix</li>
-                                <li>4 Ledger Shredder</li>
-                                <li>1 Brazen Borrower</li>
-                                <li>4 Lightning Axe</li>
-                                <li>4 Picklock Prankster</li>
-                                <li>4 Treasure Cruise</li>
-                                <li>4 Consider</li>
-                                <li>4 Opt</li>
-                                <li>1 Prof's Eidetic Memory</li>
-                                <li>4 Fiery Impulse</li>
-                                <li>3 Island</li>
-                                <li>1 Hall of Storm Giants</li>
-                                <li>4 Riverglide Pathway</li>
-                                <li>4 Spirebluff Canal</li>
-                                <li>4 Steam Vents</li>
-                                <li>1 Stormcarved Coast</li>
-                                <li>2 Spell Pierce</li>
-                                <li>1 Otawara, Soaring City</li>
-                                <li>4 Sleight of Hand</li>
-                                <li>1 Prismari Command</li>
-                                <li>1 Spikefield Hazard</li>
+                                <li>4 Ephemerate</li>
+                                <li>4 Phelia, Exuberant Shepherd</li>
+                                <li>4 White Orchid Phantom</li>
+                                <li>4 Guide of Souls</li>
+                                <li>4 Ocelot Pride</li>
+                                <li>4 Solitude</li>
+                                <li>3 Starfield Shepherd</li>
                             </ul>
-
-
-                            <!-- Sideboard -->
-                            <div class="deck-list">
-                                <h3>Sideboard</h3>
-                                <ul>
-                                    <li>1 Aether Gust</li>
-                                    <li>2 Mystical Dispute</li>
-                                    <li>1 Beacon Bolt</li>
-                                    <li>1 Disdainful Stroke</li>
-                                    <li>1 Brotherhood's End</li>
-                                    <li>1 Negate</li>
-                                    <li>2 Crackling Drake</li>
-                                    <li>1 Ashiok, Dream Render</li>
-                                    <li>2 Young Pyromancer</li>
-                                    <li>1 Anger of the Gods</li>
-                                    <li>1 Unlicensed Hearse</li>
-                                    <li>1 Thing in the Ice</li>
-                                </ul>
-                            </div>
+                        </div>
+                        <div class="deck-list">
+                            <h3>Key Sideboard Pieces</h3>
+                            <ul>
+                                <li>Consign to Memory (combo matchups)</li>
+                                <li>Teferi, Time Raveler (stack control)</li>
+                                <li>Sanctifier en-Vec (graveyard + red hate)</li>
+                                <li>Stony Silence (artifacts)</li>
+                                <li>Wrath of the Skies (aggro reset)</li>
+                            </ul>
                         </div>
                     </div>
-            </div>
+                    <p>Full matchup guide and sideboard breakdown: <a href="uw-blink-2025-10-07.html">UW Blink Playbook</a>.</p>
+                </div>
             </details>
-            </div>
-            <div id="mono-white-humans" class="column">
-                <details class="expandable-content">
-                    <summary class="expandable-toggle">
-                        <h2>mono white humans</h2>
-                        <div class="image-grid">
-                            <img src="images/deckimg/mono-white-humans/wmc-2015-thalia-guardian-of-thraben.png"
-                                alt="Thalia Guardian of Thraben">
-                            <img src="images/deckimg/mono-white-humans/mat-51-coppercoat-vanguard.png"
-                                alt="Coppercoat Vanguard">
-                            <img src="images/deckimg/mono-white-humans/soi-43-thalia-s-lieutenant.png"
-                                alt="Thalia's Lieutenant">
-                            <img src="images/deckimg/mono-white-humans/dbl-1-adeline-resplendent-cathar.png"
-                                alt="Adeline resplendant Cathar">
-                            <img src="images/deckimg/mono-white-humans/m14-10-brave-the-elements.png"
-                                alt="Brave the Elements">
-                            <!-- Add more images as needed -->
-                        </div>
 
-                    </summary>
-                    <div class="deck-container">
-                        <div class="deck-description">
-
-                            <p>White Aggro is a fast-paced and aggressive deck known for its powerful synergy among
-                                human
-                                creatures and its ability to quickly build a formidable board presence. Central to this
-                                deck’s strategy is the combination of efficient creatures and protective spells that can
-                                quickly
-                                overwhelm opponents with a barrage of attacks. This deck excels at leveraging the
-                                strengths of
-                                its white creatures and utilizing various utility cards to maintain pressure and disrupt
-                                opponents.</p>
-                            <p>The deck's core features key human creatures like <i>Thalia's Lieutenant</i> and
-                                <i>Adeline,
-                                    Resplendent Cathar</i>, which synergize to grow your board and provide consistent
-                                threats.
-                                Cards such as <i>Hopeful Initiate</i> and <i>Coppercoat Vanguard</i> offer aggressive
-                                early
-                                plays and help in quickly building a strong presence on the battlefield. <i>Thalia,
-                                    Guardian of
-                                    Thraben</i> adds disruptive value by taxing non-creature spells, making it harder
-                                for
-                                opponents to execute their strategies.
-                            </p>
-                            <p>Protection and utility are crucial with cards like <i>Brave the Elements</i>, which can
-                                protect
-                                your team from removal spells and ensure that your creatures can safely attack.
-                                <i>Containment Priest</i> provides disruption against decks relying on graveyard
-                                strategies or
-                                reanimation, while <i>Recruitment Officer</i> offers card advantage by digging through
-                                the deck to find
-                                more crucial pieces of the deck's strategy.
-                            </p>
-                            <p>The land base includes a mix of utility lands like <i>Castle Ardenvale</i> for generating
-                                tokens
-                                and <i>Eiganjo, Seat of the Empire</i> for versatile effects. The inclusion of <i>Cavern
-                                    of Souls</i>
-                                ensures that your key creatures are protected from being countered, adding a layer of
-                                resilience against control decks. The use of <i>Mutavault</i> further enhances the
-                                deck's ability to activate creature abilities and synergize with creature-based
-                                strategies.</p>
-                            <p>The sideboard is tailored to address a variety of matchups and includes cards such as
-                                <i>Portable Hole</i> for dealing with artifacts and enchantments, and <i>Rest in
-                                    Peace</i> to counter graveyard-based strategies. Additional options like <i>Brutal
-                                    Cathar // Moonrage Brute</i> offer further removal and threats, while <i>Reidane,
-                                    God of the Worthy // Valkmira, Protector's Shield</i> provides valuable utility
-                                against specific strategies and ramp decks.
-                            </p>
-                            <p>White Aggro thrives in metagames where quick, efficient attacks and strong creature
-                                synergies can dominate. The deck's combination of aggressive creatures, protective
-                                spells, and versatile answers makes it a formidable choice for both aggressive and
-                                midrange matchups.</p>
-                        </div>
-                        <!-- Main Deck -->
-                        <div class="deck-list">
-                            <a href="https://flexslot.gg/sideboards/3726" target="_blank">Sideboard Guide</a>
-                            <h3>Main Deck</h3>
-                            <ul>
-                                <li>2 Castle Ardenvale</li>
-                                <li>2 Cavern of Souls</li>
-                                <li>2 Eiganjo, Seat of the Empire</li>
-                                <li>4 Mutavault</li>
-                                <li>12 Plains</li>
-                                <li>4 Brave the Elements</li>
-                                <li>3 Dauntless Bodyguard</li>
-                                <li>4 Hopeful Initiate</li>
-                                <li>2 Kytheon, Hero of Akros // Gideon, Battle-Forged</li>
-                                <li>3 Recruitment Officer</li>
-                                <li>3 Containment Priest</li>
-                                <li>4 Coppercoat Vanguard</li>
-                                <li>3 Get Lost</li>
-                                <li>4 Thalia's Lieutenant</li>
-                                <li>4 Thalia, Guardian of Thraben</li>
-                                <li>4 Adeline, Resplendent Cathar</li>
-                            </ul>
-
-                            <!-- Sideboard -->
-                            <div class="deck-list">
-                                <h3>Sideboard</h3>
-                                <ul>
-                                    <li>3 Portable Hole</li>
-                                    <li>2 Divine Smite</li>
-                                    <li>1 Get Lost</li>
-                                    <li>3 Invasion of Gobakhan // Lightshield Array</li>
-                                    <li>2 Rest in Peace</li>
-                                    <li>2 Brutal Cathar // Moonrage Brute</li>
-                                    <li>2 Reidane, God of the Worthy // Valkmira, Protector's Shield</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </details>
-            </div>
-            <div id="5c-humans" class="column">
-                <details class="expandable-content">
-                    <summary class="expandable-toggle">
-                        <h2>5C Humans</h2>
-                        <div class="image-grid">
-                            <img src="images/deckimg/5c-humans/pw21-2-collected-company.png" alt="Collected Company">
-                            <img src="images/deckimg/5c-humans/zne-22-cavern-of-souls.png" alt="Cavern of Souls">
-                            <img src="images/deckimg/5c-humans/afr-387-werewolf-pack-leader.png"
-                                alt="Werewolf Packleader">
-                            <img src="images/deckimg/5c-humans/xln-110-kitesail-freebooter.png"
-                                alt="Kitesail Freebooter"><img
-                                src="images/deckimg/5c-humans/ktk-184-mantis-rider.png"
-                                alt="Mantis Rider">
-                            <!-- Add more images as needed -->
-                        </div>
-
-                    </summary>
-                    <div class="deck-container">
-                        <div class="deck-description">
-                            <p>5C Humans is a versatile and aggressive deck that utilizes a wide range of Human
-                                creatures to apply pressure on opponents. This deck aims to take advantage of Collected
-                                Company to bring multiple creatures onto the battlefield, often resulting in
-                                overwhelming board presence.</p>
-                            <p>The core strategy involves deploying a variety of Humans with different abilities to
-                                synergize and overwhelm opponents. <i>Thalia's Lieutenant</i> boosts the power of your
-                                Humans as they enter the battlefield, while <i>Adeline, Resplendent Cathar</i> and
-                                <i>Mantis Rider</i> provide strong offensive options with their attacking prowess.
-                            </p>
-                            <p>Utilizing <i>Cavern of Souls</i> and <i>Unclaimed Territory</i> ensures your Human
-                                creatures are protected from counterspells, making your aggression more reliable.
-                                <i>Collected Company</i> serves as a critical tool for maintaining momentum by putting
-                                multiple creatures directly onto the battlefield, further amplifying your board
-                                presence.
-                            </p>
-                            <p>The deck's mana base includes a variety of lands like <i>Temple Garden</i> and
-                                <i>Secluded Courtyard</i> to ensure smooth color fixing, while <i>Mana Confluence</i>
-                                provides flexibility in casting spells. The inclusion of lands such as <i>Cavern of
-                                    Souls</i> and <i>Unclaimed Territory</i> is crucial for avoiding counterspells and
-                                enhancing the deck’s consistency.
-                            </p>
-                            <p>In the sideboard, cards like <i>Jirina, Dauntless General</i> and <i>Brutal Cathar</i>
-                                offer additional flexibility and answers to various threats, while <i>Anointed
-                                    Peacekeeper</i> provides disruption against specific strategies. The sideboard is
-                                designed to help the deck adapt to different matchups and improve its performance
-                                against various archetypes.</p>
-                            <p>5C Humans excels in creating a strong board presence and leveraging the synergy between
-                                its creatures to maintain pressure throughout the game. Its adaptability and power make
-                                it a competitive choice in the Pioneer format.</p>
-                        </div>
-                        <!-- Main Deck -->
-                        <div class="deck-list">
-                            <a href="https://flexslot.gg/sideboards/3658" target="_blank">Sideboard Guide</a>
-                            <h3>Main Deck</h3>
-                            <ul>
-                                <li>4 Cavern of Souls</li>
-                                <li>4 Collected Company</li>
-                                <li>4 Coppercoat Vanguard</li>
-                                <li>3 Experiment One</li>
-                                <li>3 Hopeful Initiate</li>
-                                <li>3 Kitesail Freebooter</li>
-                                <li>2 Mana Confluence</li>
-                                <li>4 Mantis Rider</li>
-                                <li>1 Plains</li>
-                                <li>3 Razorverge Thicket</li>
-                                <li>4 Reflector Mage</li>
-                                <li>4 Secluded Courtyard</li>
-                                <li>4 Temple Garden</li>
-                                <li>3 Thalia, Guardian of Thraben</li>
-                                <li>4 Thalia's Lieutenant</li>
-                                <li>4 Unclaimed Territory</li>
-                                <li>3 Werewolf Pack Leader</li>
-                            </ul>
-
-
-
-                            <!-- Sideboard -->
-                            <div class="deck-list">
-                                <h3>Sideboard</h3>
-                                <ul>
-                                    <li>2 Anointed Peacekeeper</li>
-                                    <li>2 Brutal Cathar // Moonrage Brute</li>
-                                    <li>2 Extraction Specialist</li>
-                                    <li>3 Jirina, Dauntless General</li>
-                                    <li>2 Kambal, Consul of Allocation</li>
-                                    <li>3 Knight of Dusk's Shadow</li>
-                                    <li>1 Reidane, God of the Worthy // Valkmira, Protector's Shield</li>
-                                </ul>
-                            </div>
-
-                        </div>
-                    </div>
-            </div>
+            <details id="jeskai-blink">
+                <summary><h2>Jeskai Blink</h2></summary>
+                <div>
+                    <p><strong>Status: Evaluating the splash — is red worth the cost?</strong></p>
+                    <p>Jeskai adds Teferi, Time Raveler and Lightning Bolt to the UW blink shell. Teferi locks opponents into sorcery speed — massive in combo matchups. The cost is mana consistency in aggro matchups where clean openers matter most.</p>
+                    <h3>Vs. UW Blink — the tradeoffs</h3>
+                    <ul>
+                        <li><strong>Jeskai gains:</strong> Teferi main, Lightning Bolt, better combo matchups, Orim's Chant access</li>
+                        <li><strong>Jeskai loses:</strong> Mana consistency, cleaner openers against fast aggro, simpler sideboard</li>
+                        <li><strong>Working verdict:</strong> UW is better in open fields. Jeskai is better if the expected field skews combo-heavy.</li>
+                    </ul>
+                    <p style="margin-top:16px"><a href="jeskai-blink-playbook.html">Open Playbook →</a></p>
+                </div>
             </details>
-            </div>
+
+            <details id="grixis-reanimator">
+                <summary><h2>Grixis Reanimator ("Glockulous")</h2></summary>
+                <div>
+                    <p><strong>Status: Active testing — high ceiling, high variance.</strong></p>
+                    <p>Fill the graveyard with Atraxa or Griselbrand through Faithful Mending, Persist, or Goryo's Vengeance, reanimate it, and close before the opponent answers. The field is largely built to interact with creatures on the board — not to stop a turn-two combo kill from the graveyard.</p>
+                    <h3>What it does well</h3>
+                    <ul>
+                        <li>Fastest potential kill in the format — can win on turn two on the play</li>
+                        <li>Punishes creature-interaction-heavy decks that can't answer the combo</li>
+                        <li>Atraxa's ETB refuels even through disruption — one answer isn't enough</li>
+                        <li>Griselbrand draws seven cards immediately into more threats or protection</li>
+                    </ul>
+                    <h3>What we're watching</h3>
+                    <ul>
+                        <li>Hard stops: Sanctifier en-Vec, Leyline of the Void, Rest in Peace — cheap and available</li>
+                        <li>Inconsistent openers lose immediately with no path back — lowest floor of anything we're testing</li>
+                        <li>Post-board games are significantly harder — opponents board heavily against this strategy</li>
+                    </ul>
+                    <div class="deck-container">
+                        <div class="deck-list">
+                            <h3>Core Cards</h3>
+                            <ul>
+                                <li>4 Atraxa, Praetor's Voice</li>
+                                <li>4 Faithful Mending</li>
+                                <li>4 Goryo's Vengeance</li>
+                                <li>4 Persist</li>
+                                <li>2–3 Griselbrand</li>
+                                <li>4 Thoughtseize / Inquisition</li>
+                            </ul>
+                        </div>
+                        <div class="deck-list">
+                            <h3>Key Sideboard Pieces</h3>
+                            <ul>
+                                <li>Teferi, Time Raveler (protect the combo)</li>
+                                <li>Consign to Memory (mirror / stack)</li>
+                                <li>Engineered Explosives (answer hate pieces)</li>
+                                <li>Force of Negation (protect through disruption)</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <p style="margin-top:16px"><a href="glockulous-playbook.html">Open Playbook →</a></p>
+                </div>
+            </details>
+
+            <details id="uw-control">
+                <summary><h2>UW Control</h2></summary>
+                <div>
+                    <p><strong>Status: In the conversation — dependent on meta read.</strong></p>
+                    <p>Best in fields skewed toward midrange and combo. Against Blink mirrors, Amulet Titan, and Reanimator variants, UW Control's card advantage engine and hard counterspells are better positioned than the blink shell's tempo approach.</p>
+                    <h3>When we'd choose this</h3>
+                    <ul>
+                        <li>Expected field is skewed toward midrange and combo with less aggro</li>
+                        <li>RC field where slower strategies show up more than at RCQs</li>
+                        <li>When Snapcaster Mage is clearly the best card in the format</li>
+                    </ul>
+                    <div class="deck-container">
+                        <div class="deck-list">
+                            <h3>Core Cards</h3>
+                            <ul>
+                                <li>4 Counterspell</li>
+                                <li>4 Snapcaster Mage</li>
+                                <li>4 Solitude</li>
+                                <li>2–3 Teferi, Hero of Dominaria</li>
+                                <li>2 Supreme Verdict</li>
+                                <li>4 Prismatic Ending</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <p style="margin-top:16px"><a href="uw-control-playbook.html">Open Playbook →</a></p>
+                </div>
+            </details>
+
+            <details id="prowess">
+                <summary><h2>Prowess (Izzet / Mono-Red)</h2></summary>
+                <div>
+                    <p><strong>Status: Monitoring — not the primary focus but keeping it on the table.</strong></p>
+                    <p>Highest ceiling of any aggro deck when it's on. Swiftspear, DRC, and cheap instants create explosive turns that other decks can't race. Lava Dart flashback pumps all prowess creatures for zero mana — ends games from nowhere.</p>
+                    <h3>What it does well</h3>
+                    <ul>
+                        <li>Highest damage ceiling in the format — wins from nowhere</li>
+                        <li>Light Up the Stage provides card velocity through disruption</li>
+                        <li>Lava Dart creates free pump effects that end games on turn 3–4</li>
+                    </ul>
+                    <h3>What we're watching</h3>
+                    <ul>
+                        <li>Sanctifier en-Vec is a hard stop — needs a dedicated answer</li>
+                        <li>Inconsistent hands lose fast with no recovery path</li>
+                        <li>Requires the most tournament clock awareness of any deck we're testing</li>
+                    </ul>
+                    <p style="margin-top:16px"><a href="prowess-playbook.html">Open Playbook →</a></p>
+                </div>
+            </details>
+
         </section>
+        <a href="#top" class="back-to-top"><i class="fas fa-arrow-up"></i> Top</a>
     </main>
-    <div style="position: relative;">
-        <a href="#top" class="back-to-top">Back to Top</a>
-    </div>
     <footer>
-        <p>Created by Jermey Wallace &copy; 2024. All rights reserved.</p>
+        <span>Road to Pro Tour</span>
+        <span>Jermey Wallace · Zuxas · Team Resolve</span>
+        <span>&copy; 2026</span>
     </footer>
 </body>
-
 </html>

@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Izzet Prowess — Team Resolve Playbook</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+  :root { --ink:#0e0e0e; --paper:#f2ede6; --paper-dark:#e8e1d6; --rule:#c8bfb0; --accent:#8f1a1a; --accent-light:#f7d6d6; --gold:#8f6a1a; --gold-light:#f7ead6; --mid:#5a5248; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:var(--paper); color:var(--ink); font-family:'Crimson Pro',Georgia,serif; font-size:17px; line-height:1.6; }
+  .header-band { background:var(--ink); border-bottom:3px solid #e05a3a; }
+  .header-inner { max-width:1100px; margin:0 auto; padding:32px 80px; display:flex; justify-content:space-between; align-items:flex-end; gap:40px; }
+  .header-eyebrow { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:rgba(242,237,230,0.35); margin-bottom:8px; }
+  .header-title { font-family:'Bebas Neue',sans-serif; font-size:56px; line-height:0.9; color:var(--paper); letter-spacing:0.02em; }
+  .header-title span { color:#e05a3a; }
+  .header-mantra { font-family:'Crimson Pro',serif; font-style:italic; font-size:15px; color:rgba(242,237,230,0.4); margin-top:8px; }
+  .header-right { display:flex; flex-direction:column; gap:8px; }
+  .header-stat { display:flex; gap:16px; align-items:baseline; }
+  .hs-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; color:rgba(242,237,230,0.35); min-width:90px; }
+  .hs-val { font-family:'DM Mono',monospace; font-size:13px; color:rgba(242,237,230,0.8); }
+  nav { background:#1a1a1a; border-bottom:1px solid #333; padding:0 80px; display:flex; align-items:center; gap:4px; position:sticky; top:0; z-index:100; }
+  .nav-brand { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:#e05a3a; margin-right:24px; padding:14px 0; white-space:nowrap; }
+  .nav-link { background:none; border:none; color:rgba(242,237,230,0.45); font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.12em; text-transform:uppercase; padding:14px 16px; cursor:pointer; transition:color 0.2s; border-bottom:2px solid transparent; }
+  .nav-link:hover,.nav-link.active { color:var(--paper); border-bottom-color:#e05a3a; }
+  .page { max-width:1100px; margin:0 auto; padding:60px 80px 120px; }
+  .section { display:none; } .section.active { display:block; }
+  .section-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.25em; text-transform:uppercase; color:rgba(14,14,14,0.3); margin-bottom:12px; }
+  h1 { font-family:'Bebas Neue',sans-serif; font-size:64px; line-height:0.9; letter-spacing:0.02em; margin-bottom:40px; }
+  h2 { font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.2em; text-transform:uppercase; color:var(--mid); margin:40px 0 16px; padding-bottom:8px; border-bottom:1px solid var(--rule); }
+  h3 { font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:var(--accent); margin:24px 0 10px; }
+  p { margin-bottom:16px; font-weight:300; } strong { font-weight:600; }
+  .mantra { background:var(--paper-dark); border-left:3px solid #e05a3a; padding:20px 28px; margin:32px 0; font-style:italic; font-size:18px; color:var(--mid); }
+  .mantra cite { display:block; font-size:12px; letter-spacing:0.1em; text-transform:uppercase; color:rgba(90,82,72,0.5); margin-top:8px; font-style:normal; }
+  .card-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:1px; background:var(--rule); margin:16px 0 32px; border:1px solid var(--rule); }
+  .card { background:var(--paper); padding:20px; } .card:hover { background:var(--paper-dark); }
+  .card-label { font-family:'DM Mono',monospace; font-size:9px; letter-spacing:0.2em; text-transform:uppercase; color:rgba(14,14,14,0.3); margin-bottom:6px; }
+  .card-title { font-family:'DM Mono',monospace; font-size:12px; letter-spacing:0.08em; color:var(--accent); margin-bottom:8px; }
+  .card-body { font-size:14px; color:var(--mid); line-height:1.5; font-weight:300; }
+  .dl-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:0; }
+  .dl-section { margin-bottom:28px; }
+  .dl-section-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; color:var(--mid); padding-bottom:8px; border-bottom:1px solid var(--rule); margin-bottom:12px; }
+  .dl-entry { display:flex; justify-content:space-between; padding:4px 0; border-bottom:1px solid rgba(200,191,176,0.3); font-size:15px; }
+  .dl-count { font-family:'DM Mono',monospace; font-size:12px; color:var(--accent); min-width:20px; }
+  .dl-name { color:var(--ink); font-weight:300; }
+  .matchup-table { width:100%; border-collapse:collapse; margin-bottom:2px; cursor:pointer; }
+  .matchup-table thead tr { background:var(--paper-dark); }
+  .matchup-table th { font-family:'DM Mono',monospace; font-size:9px; letter-spacing:0.15em; text-transform:uppercase; padding:10px 14px; text-align:left; font-weight:400; color:var(--mid); border-bottom:1px solid var(--rule); }
+  .matchup-table td { padding:10px 14px; border-bottom:1px solid var(--rule); font-size:15px; background:var(--paper); transition:background 0.1s; }
+  .matchup-table tr:hover td { background:var(--paper-dark); }
+  .matchup-table tr.selected td { background:var(--accent-light); }
+  .verdict { font-family:'DM Mono',monospace; font-size:11px; padding:2px 8px; border-radius:2px; }
+  .v-good { background:#d4f0d4; color:#1a6b1a; border:1px solid #a0d4a0; }
+  .v-hard { background:#f7d6d6; color:#8f1a1a; border:1px solid #e8b0b0; }
+  .v-even { background:var(--gold-light); color:var(--gold); border:1px solid #e8c880; }
+  .matchup-detail { display:none; background:var(--paper-dark); border:1px solid var(--rule); border-top:3px solid #e05a3a; padding:28px 32px; margin-bottom:24px; }
+  .matchup-detail.open { display:block; }
+  .if-then { background:var(--paper); border:1px solid var(--rule); padding:16px 20px; margin:12px 0; font-size:14px; }
+  .if-then .if { font-family:'DM Mono',monospace; font-size:10px; color:var(--accent); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:4px; }
+  .sb-row { display:grid; grid-template-columns:1fr 1fr; gap:24px; margin:16px 0; }
+  .sb-in,.sb-out { background:var(--paper); border:1px solid var(--rule); padding:16px; }
+  .sb-label { font-family:'DM Mono',monospace; font-size:9px; letter-spacing:0.2em; text-transform:uppercase; margin-bottom:8px; }
+  .sb-in .sb-label { color:#1a6b1a; } .sb-out .sb-label { color:#8f1a1a; }
+  .sb-card { display:flex; justify-content:space-between; padding:3px 0; font-size:14px; border-bottom:1px solid rgba(200,191,176,0.3); }
+  .sb-n { font-family:'DM Mono',monospace; font-size:11px; color:var(--mid); }
+  .sb-guide-card { background:var(--paper-dark); border:1px solid var(--rule); padding:16px 20px; margin-bottom:12px; }
+  .sb-guide-name { font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.08em; color:var(--ink); margin-bottom:4px; }
+  .sb-guide-body { font-size:14px; color:var(--mid); font-weight:300; }
+  .heuristic-list { list-style:none; counter-reset:h; }
+  .heuristic-list li { counter-increment:h; display:flex; gap:20px; padding:14px 0; border-bottom:1px solid var(--rule); font-size:16px; font-weight:300; }
+  .heuristic-list li::before { content:counter(h,decimal-leading-zero); font-family:'DM Mono',monospace; font-size:18px; color:rgba(224,90,58,0.25); flex-shrink:0; width:28px; }
+  .print-btn { display:inline-block; background:var(--ink); color:var(--paper); font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; padding:10px 20px; border:none; cursor:pointer; margin-bottom:32px; }
+  .prep-grid { display:grid; grid-template-columns:1fr 1fr; gap:24px; }
+  .prep-block { background:var(--paper-dark); border:1px solid var(--rule); padding:20px; }
+  .prep-block-title { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--mid); margin-bottom:12px; padding-bottom:8px; border-bottom:1px solid var(--rule); }
+  .prep-line { display:flex; justify-content:space-between; padding:4px 0; font-size:14px; border-bottom:1px solid rgba(200,191,176,0.3); }
+  .prep-verdict { font-family:'DM Mono',monospace; font-size:10px; }
+  footer { background:var(--ink); color:rgba(242,237,230,0.25); font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.12em; text-transform:uppercase; padding:24px 80px; display:flex; justify-content:space-between; }
+  @media print { nav,.header-band,footer,.print-btn,.section:not(#prep) { display:none !important; } .section#prep { display:block !important; } body { font-size:12px; } .page { padding:20px; } }</style>
+</head>
+<body><div class="header-band"><div class="header-inner">
+<div class="header-left">
+  <div class="header-eyebrow">Team Resolve · Modern · Archetype Playbook</div>
+  <div class="header-title">Izzet <span>Prowess</span></div>
+  <div class="header-mantra">"Cast spells. All of them. In the right order."</div>
+</div>
+<div class="header-right"><div class="header-stat"><span class="hs-label">Identity</span><span class="hs-val">Spell-Based Aggro</span></div><div class="header-stat"><span class="hs-label">Key Card</span><span class="hs-val">Cori-Steel Cutter</span></div><div class="header-stat"><span class="hs-label">Complexity</span><span class="hs-val">★★★☆☆</span></div><div class="header-stat"><span class="hs-label">Status</span><span class="hs-val">Monitoring — High Ceiling</span></div></div>
+</div></div><nav><span class="nav-brand">PROWESS</span><button class="nav-link active" onclick="show('identity')">Identity</button><button class="nav-link" onclick="show('decklist')">Decklist</button><button class="nav-link" onclick="show('gameplan')">Gameplan</button><button class="nav-link" onclick="show('roles')">Roles</button><button class="nav-link" onclick="show('matchups')">Matchups</button><button class="nav-link" onclick="show('sideboard')">SB Guide</button><button class="nav-link" onclick="show('heuristics')">Heuristics</button><button class="nav-link" onclick="show('prep')">Prep</button></nav><div class="page">
+<div id="identity" class="section active"><div class="section-label">Chapter 01</div><h1>Identity &amp;<br>Philosophy</h1>
+<div class="mantra">"Cast spells. All of them. In the right order."<cite>— Core Mantra</cite></div>
+<p>Izzet Prowess is the <strong>highest damage ceiling</strong> of any fair deck in Modern. The combination of Monastery Swiftspear, Dragon's Rage Channeler, Slickshot Show-Off, and Cori-Steel Cutter creates explosive turns that other decks simply cannot race. Lava Dart flashing back from the graveyard for free pumps all prowess creatures — creating lethal damage out of nowhere.</p>
+<p>The key card to understand entering 2026: <strong>Cori-Steel Cutter</strong> is the centerpiece two-drop. It creates a 1/1 prowess creature with haste and trample every turn cycle (including the opponent's turn), and the creature can be equipped for trample and extra damage. Described as "an unkillable two-mana Monastery Mentor that's on color." It doesn't require deckbuilding changes — it slots into the existing creature suite.</p>
+<div class="card-grid"><div class="card"><div class="card-label">Axis 01</div><div class="card-title">DRC &gt; Swiftspear (T1 Priority)</div><div class="card-body">Always lead DRC over Swiftspear when you have the choice. You want your non-haste threat attacking as soon as possible. DRC with delirium becomes a 3/3 flying surveiller — close games 2 turns faster than a 1/1.</div></div><div class="card"><div class="card-label">Axis 02</div><div class="card-title">Cori-Steel Cutter</div><div class="card-body">Creates a 1/1 prowess creature with haste and trample on your turn AND their turn. Equipping to a freshly summoned creature gives surprise haste attackers. Treat it as an unkillable threat generator.</div></div><div class="card"><div class="card-label">Axis 03</div><div class="card-title">Lava Dart Engine</div><div class="card-body">Lava Dart flashback costs zero mana, triggers prowess on all creatures, and sacrifices a land already used. On the kill turn, flashback after every other spell for maximum pump. Never cast it early for damage.</div></div><div class="card"><div class="card-label">Axis 04</div><div class="card-title">The Kill Turn</div><div class="card-body">The whole deck is built around one explosive turn. Sequence: filter spells first → free spells (Gut Shot, Lava Dart) → pump → burn. Prowess triggers stack — all creatures get +1/+1 per spell cast.</div></div></div>
+<div class="card-grid"><div class="card"><div class="card-label">Strengths</div><div class="card-title">What You Do Well</div><div class="card-body">Highest damage ceiling — wins from nowhere.<br><br>Cori-Steel Cutter creates threats every turn cycle, can't easily be answered.<br><br>DRC with delirium generates card selection while applying pressure.<br><br>Unstoppable through most creature removal.</div></div><div class="card"><div class="card-label">Weaknesses</div><div class="card-title">What Beats You</div><div class="card-body">Deafening Silence, High Noon, Trinisphere — hate pieces shut off the spell chain.<br><br>Solitude at instant speed removes your best threat freely.<br><br>Inconsistent hands lose fast with no recovery path.<br><br>Tournament clock awareness is critical — sequencing must be automatic.</div></div></div>
+<p><strong>When to pick this:</strong> When the RC field is unprepared for the Cori-Steel Cutter angle. When Deafening Silence is not appearing in more than 20% of sideboards. Best in fields with fair creature matchups where your speed advantage compounds.</p></div>
+<div id="decklist" class="section"><div class="section-label">Chapter 02</div><h1>The 75</h1><div class="dl-section"><div class="dl-section-label">Main Deck · 60 Cards</div>
+<div class="dl-grid">
+<div><div class="dl-entry"><span class="dl-count">4</span><span class="dl-name">Monastery Swiftspear</span></div><div class="dl-entry"><span class="dl-count">4</span><span class="dl-name">Dragon's Rage Channeler</span></div><div class="dl-entry"><span class="dl-count">4</span><span class="dl-name">Slickshot Show-Off</span></div><div class="dl-entry"><span class="dl-count">4</span><span class="dl-name">Cori-Steel Cutter</span></div><div class="dl-entry"><span class="dl-count">4</span><span class="dl-name">Lightning Bolt</span></div></div>
+<div><div class="dl-entry"><span class="dl-count">4</span><span class="dl-name">Lava Dart</span></div><div class="dl-entry"><span class="dl-count">4</span><span class="dl-name">Mutagenic Growth</span></div><div class="dl-entry"><span class="dl-count">4</span><span class="dl-name">Mishra's Bauble</span></div><div class="dl-entry"><span class="dl-count">4</span><span class="dl-name">Expressive Iteration</span></div><div class="dl-entry"><span class="dl-count">2</span><span class="dl-name">Gut Shot</span></div><div class="dl-entry"><span class="dl-count">2</span><span class="dl-name">Violent Urge</span></div></div>
+<div><div class="dl-entry"><span class="dl-count">4</span><span class="dl-name">Spirebluff Canal</span></div><div class="dl-entry"><span class="dl-count">4</span><span class="dl-name">Steam Vents</span></div><div class="dl-entry"><span class="dl-count">4</span><span class="dl-name">Scalding Tarn</span></div><div class="dl-entry"><span class="dl-count">2</span><span class="dl-name">Fiery Islet</span></div><div class="dl-entry"><span class="dl-count">3</span><span class="dl-name">Mountain</span></div><div class="dl-entry"><span class="dl-count">1</span><span class="dl-name">Island</span></div><div class="dl-entry"><span class="dl-count">2</span><span class="dl-name">Thundering Falls</span></div></div>
+</div></div>
+<div class="dl-section"><div class="dl-section-label">Sideboard · 15 Cards</div>
+<div class="dl-grid">
+<div><div class="dl-entry"><span class="dl-count">4</span><span class="dl-name">Consign to Memory</span></div><div class="dl-entry"><span class="dl-count">2</span><span class="dl-name">Mystical Dispute</span></div><div class="dl-entry"><span class="dl-count">2</span><span class="dl-name">Flusterstorm</span></div></div>
+<div><div class="dl-entry"><span class="dl-count">2</span><span class="dl-name">Into the Flood Maw</span></div><div class="dl-entry"><span class="dl-count">2</span><span class="dl-name">Surgical Extraction</span></div><div class="dl-entry"><span class="dl-count">2</span><span class="dl-name">Spell Pierce</span></div><div class="dl-entry"><span class="dl-count">1</span><span class="dl-name">[Flex]</span></div></div>
+</div></div>
+<p style="font-size:13px;color:var(--mid);font-style:italic;margin-top:12px">Note: Consign to Memory is described as "the best sideboard tool for any blue deck in the format" by multiple Prowess primers — boards in against all Eldrazi decks, combo decks, and anything that needs stack interaction.</p></div>
+<div id="decklist" class="section"><div class="section-label">Chapter 02</div><h1>The 75</h1>
+<div class="dl-section"><div class="dl-section-label">Main Deck · 60 Cards</div>
+<div class="dl-grid">
+<div><div class="dl-entry"><span class="dl-count">4</span><span class="dl-name">Monastery Swiftspear</span></div><div class="dl-entry"><span class="dl-count">4</span><span class="dl-name">Dragon's Rage Channeler</span></div><div class="dl-entry"><span class="dl-count">4</span><span class="dl-name">Slickshot Show-Off</span></div><div class="dl-entry"><span class="dl-count">4</span><span class="dl-name">Cori-Steel Cutter</span></div><div class="dl-entry"><span class="dl-count">4</span><span class="dl-name">Lightning Bolt</span></div></div>
+<div><div class="dl-entry"><span class="dl-count">4</span><span class="dl-name">Lava Dart</span></div><div class="dl-entry"><span class="dl-count">4</span><span class="dl-name">Mutagenic Growth</span></div><div class="dl-entry"><span class="dl-count">4</span><span class="dl-name">Mishra's Bauble</span></div><div class="dl-entry"><span class="dl-count">4</span><span class="dl-name">Expressive Iteration</span></div><div class="dl-entry"><span class="dl-count">2</span><span class="dl-name">Gut Shot</span></div><div class="dl-entry"><span class="dl-count">2</span><span class="dl-name">Violent Urge</span></div></div>
+<div><div class="dl-entry"><span class="dl-count">4</span><span class="dl-name">Spirebluff Canal</span></div><div class="dl-entry"><span class="dl-count">4</span><span class="dl-name">Steam Vents</span></div><div class="dl-entry"><span class="dl-count">4</span><span class="dl-name">Scalding Tarn</span></div><div class="dl-entry"><span class="dl-count">2</span><span class="dl-name">Fiery Islet</span></div><div class="dl-entry"><span class="dl-count">3</span><span class="dl-name">Mountain</span></div><div class="dl-entry"><span class="dl-count">1</span><span class="dl-name">Island</span></div><div class="dl-entry"><span class="dl-count">2</span><span class="dl-name">Thundering Falls</span></div></div>
+</div></div>
+<div class="dl-section"><div class="dl-section-label">Sideboard · 15 Cards</div>
+<div class="dl-grid">
+<div><div class="dl-entry"><span class="dl-count">4</span><span class="dl-name">Consign to Memory</span></div><div class="dl-entry"><span class="dl-count">2</span><span class="dl-name">Mystical Dispute</span></div><div class="dl-entry"><span class="dl-count">2</span><span class="dl-name">Flusterstorm</span></div></div>
+<div><div class="dl-entry"><span class="dl-count">2</span><span class="dl-name">Into the Flood Maw</span></div><div class="dl-entry"><span class="dl-count">2</span><span class="dl-name">Surgical Extraction</span></div><div class="dl-entry"><span class="dl-count">2</span><span class="dl-name">Spell Pierce</span></div><div class="dl-entry"><span class="dl-count">1</span><span class="dl-name">[Flex]</span></div></div>
+</div></div>
+<p style="font-size:13px;color:var(--mid);font-style:italic;margin-top:12px">Consign to Memory: "the best sideboard tool for any blue deck in the format" — boards in against all Eldrazi decks, combo decks, and anything that needs to be answered on the stack.</p></div>
+<div id="gameplan" class="section"><div class="section-label">Chapter 03</div><h1>The Game Plan</h1>
+<div class="mantra">"Know the kill math before declaring attackers. Never attack without knowing if you can close."<cite>— Key Principle</cite></div>
+<h2>Getting to Delirium</h2>
+<p>DRC with delirium is a 3/3 flying surveiller. Getting to 4 card types fast is the priority: land + instant + creature + artifact (Bauble). Use DRC's upkeep surveil ability to set up your draw. Cast noncreature spells in your upkeep to surveil towards whatever you need for the turn.</p>
+<p><strong>Violent Urge timing:</strong> Checks delirium on resolution — if you cast it without delirium but DRC is in play, you can turn on delirium after cast but before resolution with a free spell. Conversely, if they disrupt the stack and you lose delirium, the creature won't get double strike.</p>
+<h2>Lava Dart Rules</h2>
+<p>Lava Dart is <strong>never cast early for damage</strong> unless you need to bin it to enable delirium. It's held for the kill turn where flashback costs zero mana and pumps every prowess creature. Cast all other spells first, then flashback Dart at the end for the final pump. Remember: the opponent can respond to Dart on the stack before you flashback — if they exile your graveyard, Dart won't have a flashback available.</p>
+<h2>Cori-Steel Cutter Sequencing</h2>
+<p>You don't always have to equip the new Monk. Sometimes the currently equipped creature having trample is more important than equipping the hasty Monk. Double-spelling at your opponent's end step to create an additional Monk is often game-winning. Plot Slickshot on one turn, cast on the next to dodge interaction.</p>
+<h2>Mulligan</h2>
+<p><strong>Keep:</strong> Any hand with a prowess creature + 2 lands + 2+ spells including at least one free or one-mana spell. 1-land hands with DRC + Bauble are keepable — Bauble finds the second land and enables delirium.</p>
+<p><strong>Mulligan:</strong> No creatures, 3+ lands, hands without T2 damage potential.</p></div>
+<div id="roles" class="section"><div class="section-label">Chapter 04</div><h1>Role Assignment</h1>
+<p>Prowess is always the beatdown. No exceptions. Even against faster aggro, your plan is to race.</p>
+<div class="card-grid"><div class="card"><div class="card-label">vs Everything</div><div class="card-title">Beatdown</div><div class="card-body">Apply pressure from turn 1. Every turn they don't take damage they're stabilizing. Force them to have removal — don't slow down to play around it.</div></div><div class="card"><div class="card-label">vs Aggro Mirrors</div><div class="card-title">Race, Don't Trade</div><div class="card-body">Don't trade creatures in aggro mirrors. Your reach through burn and Lava Dart is better than theirs. Race through damage rather than managing the board.</div></div><div class="card"><div class="card-label">vs Control</div><div class="card-title">Go Under</div><div class="card-body">Apply pressure before Verdict mana is online. Cori-Steel Cutter on an empty board after a Verdict creates threats faster than they can answer them.</div></div><div class="card"><div class="card-label">vs Combo</div><div class="card-title">Your Clock = Their Pressure</div><div class="card-body">You don't need to interact with most combo decks — just kill them first. Consign to Memory is your interaction piece where you can't race.</div></div></div></div>
+<div id="matchups" class="section"><div class="section-label">Chapter 05</div><h1>Matchup Guide</h1>
+<table class="matchup-table" data-deck="Izzet Prowess" data-vs="Jeskai Blink" onclick="toggle('vs_blink',this)">
+<thead><tr><th>Matchup</th><th>Role</th><th>G1 WR</th><th>Overall</th></tr></thead>
+<tbody><tr><td>UW / Esper Blink</td><td>Beatdown</td><td>~45%</td><td><span class="verdict v-even">Slight Dog</span></td></tr></tbody>
+</table><div id="vs_blink" class="matchup-detail"><p>They have Solitude at instant speed and Wrath of the Skies. Your best draws can close before they stabilize. Ocelot Pride on their side generates blockers and requires Bolt to answer — don't let it resolve unchecked. Post-board they bring Sanctifier en-Vec, which shuts off Lava Dart's flashback and Lightning Bolt. Into the Flood Maw bounces it at instant speed.</p><div class="sb-row"><div class="sb-in"><div class="sb-label">In</div><div class="sb-card"><span>Consign to Memory</span><span class="sb-n">4</span></div><div class="sb-card"><span>Into the Flood Maw</span><span class="sb-n">2</span></div><div class="sb-card"><span>Mystical Dispute</span><span class="sb-n">2</span></div></div><div class="sb-out"><div class="sb-label">Out</div><div class="sb-card"><span>Lava Dart</span><span class="sb-n">3</span></div><div class="sb-card"><span>Violent Urge</span><span class="sb-n">2</span></div><div class="sb-card"><span>Expressive Iteration</span><span class="sb-n">1</span></div></div></div><div class="if-then"><div class="if">If they resolve Ocelot Pride T2</div>→ Bolt immediately. Their Pride token army blocks Swiftspear and generates lifegain that counters your clock.</div><div class="if-then"><div class="if">If they resolve Sanctifier en-Vec</div>→ Into the Flood Maw at instant speed. Then continue the aggro plan.</div></div>
+<table class="matchup-table" data-deck="Izzet Prowess" data-vs="Azorius Control" onclick="toggle('vs_control',this)">
+<thead><tr><th>Matchup</th><th>Role</th><th>G1 WR</th><th>Overall</th></tr></thead>
+<tbody><tr><td>UW Control</td><td>Go Under</td><td>~55%</td><td><span class="verdict v-good">Favored G1</span></td></tr></tbody>
+</table><div id="vs_control" class="matchup-detail"><p>G1 you go under their setup before Verdict mana is online. Apply pressure on turns 1–2 before they have 4 mana. Cori-Steel Cutter after a Verdict generates threats faster than they can answer them. Post-board they bring Spell Pierce and more removal.</p><div class="sb-row"><div class="sb-in"><div class="sb-label">In</div><div class="sb-card"><span>Mystical Dispute</span><span class="sb-n">2</span></div><div class="sb-card"><span>Flusterstorm</span><span class="sb-n">2</span></div></div><div class="sb-out"><div class="sb-label">Out</div><div class="sb-card"><span>Lava Dart</span><span class="sb-n">2</span></div><div class="sb-card"><span>Violent Urge</span><span class="sb-n">2</span></div></div></div><div class="if-then"><div class="if">If they tap out for Verdict T4</div>→ Rebuild immediately. Cori-Steel Cutter on an empty board — the Monk has haste, attack for 2 while creating another Monk at their end step.</div></div>
+<table class="matchup-table" data-deck="Izzet Prowess" data-vs="Boros Energy" onclick="toggle('vs_boros',this)">
+<thead><tr><th>Matchup</th><th>Role</th><th>G1 WR</th><th>Overall</th></tr></thead>
+<tbody><tr><td>Boros Energy</td><td>Race</td><td>~50%</td><td><span class="verdict v-even">Even — Race</span></td></tr></tbody>
+</table><div id="vs_boros" class="matchup-detail"><p>Pure race. Their Ragavan generates resources while racing; your DRC generates selection. First player to land a two-drop that survives has an advantage. Lava Dart kills Ragavan for zero mana — denying the first Ragavan attack is often the game-deciding play.</p><div class="if-then"><div class="if">If they play Ragavan T1</div>→ Gut Shot or Lava Dart kills it for zero mana while triggering prowess. Never let it connect if you can help it.</div></div></div>
+<div id="sideboard" class="section"><div class="section-label">Chapter 06</div><h1>Sideboard Guide</h1>
+<div class='sb-guide-card'><div class='sb-guide-name'>Consign to Memory — 4 copies</div><div class='sb-guide-body'>The best sideboard tool for any blue deck in the format. Provides game against all Eldrazi decks (stops cast triggers), combo decks, and stack-based interaction that can't be raced. This is the reason Izzet splashes blue. Board in liberally against anything that requires stack interaction.</div></div>
+<div class='sb-guide-card'><div class='sb-guide-name'>Into the Flood Maw — 2 copies</div><div class='sb-guide-body'>Bounces a permanent at instant speed. Primary use: Sanctifier en-Vec (shuts off Lava Dart flashback and Lightning Bolt) and Trinisphere. Bounce Sanctifier after they tap to cast it — take the turn back and continue the aggro plan.</div></div>
+<div class='sb-guide-card'><div class='sb-guide-name'>Mystical Dispute / Flusterstorm — 2 each</div><div class='sb-guide-body'>Blue counterspells for blue matchups. Dispute answers anything blue for U in the control matchup. Flusterstorm stops storm counts, Cascade triggers, and counterspell wars for one mana. Board both in against any blue deck with counterspells.</div></div>
+<div class='sb-guide-card'><div class='sb-guide-name'>Surgical Extraction — 2 copies</div><div class='sb-guide-body'>Boards in against graveyard decks (Glockulous, Goryo's) and can hit key combo pieces. Lower priority than Consign. Don't bring in speculatively — know what you're extracting before boarding.</div></div></div>
+<div id="heuristics" class="section"><div class="section-label">Chapter 07</div><h1>Heuristics &amp;<br>Quick Rules</h1><ol class="heuristic-list">
+<li>Always lead DRC over Swiftspear on turn 1. You want your non-haste threat attacking as soon as possible.</li>
+<li>Lava Dart is never cast for damage. It is held for the kill turn to flashback for zero mana. Only exception: casting to bin it for delirium.</li>
+<li>Know the kill math before declaring attackers. With DRC delirium + Swiftspear + 4 spells in hand, calculate exactly how much damage you can represent before going to combat.</li>
+<li>Cori-Steel Cutter creates a Monk on their turn too. Double-spelling at their end step to create an extra Monk before your untap is often game-winning.</li>
+<li>Gut Shot and Mutagenic Growth trigger prowess for free. Cast them proactively on your turn rather than holding as reactive cards — they're offense tools, not defense.</li>
+<li>Mishra's Bauble replaces itself and enables delirium. Cast it proactively. 1-land hands with DRC + Bauble are keepable because Bauble finds the second land.</li>
+<li>Sanctifier en-Vec shuts off Lava Dart flashback and Lightning Bolt. Into the Flood Maw is your cleanest answer. Know it's in the sideboard and board it for any white matchup that brings Sanctifier.</li>
+<li>Deafening Silence, High Noon, and Trinisphere shut off your entire game plan. Your only answers are Spell Pierce and Into the Flood Maw — both conditional. In fields with heavy hate density, consider whether Prowess is the right pick.</li>
+<li>The RC clock is your biggest enemy. Know your lines before casting spells. Prowess decisions look complex but should be automatic after sufficient reps.</li>
+<li>Violent Urge checks delirium on resolution, not on cast. With DRC in play, you can cast Violent Urge without delirium and then cast a free spell to enable delirium before Urge resolves.</li>
+</ol></div>
+<div id="prep" class="section"><div class="section-label">Chapter 08</div><h1>Event Day Prep</h1><button class="print-btn" onclick="window.print()">Print This Sheet</button>
+<div class="prep-grid">
+<div class="prep-block"><div class="prep-block-title">Matchup Quick Reference</div>
+<div class="prep-line"><span>UW / Esper Blink</span><span class="prep-verdict" style="color:#8f1a1a">Slight Dog — Into Flood Maw for Sanctifier</span></div>
+<div class="prep-line"><span>UW Control</span><span class="prep-verdict" style="color:#1a6b1a">Favored G1 — go under Verdict</span></div>
+<div class="prep-line"><span>Boros Energy</span><span class="prep-verdict" style="color:#8f6a1a">Even — pure race, Dart kills Ragavan</span></div>
+<div class="prep-line"><span>Grixis Reanimator</span><span class="prep-verdict" style="color:#1a6b1a">Favored — faster clock, Consign backup</span></div>
+<div class="prep-line"><span>Deafening Silence</span><span class="prep-verdict" style="color:#8f1a1a">Hard stop — Spell Pierce only answer</span></div>
+</div>
+<div class="prep-block"><div class="prep-block-title">Lava Dart Rules</div>
+<div class="prep-line"><span>When to hold</span><span class="prep-verdict">Always — save for kill turn FB</span></div>
+<div class="prep-line"><span>Only cast early</span><span class="prep-verdict">To bin for delirium</span></div>
+<div class="prep-line"><span>Flashback</span><span class="prep-verdict">0 mana — last spell in sequence</span></div>
+<div class="prep-line"><span>Remember</span><span class="prep-verdict">They can respond before FB — don't bin prematurely</span></div>
+</div>
+<div class="prep-block"><div class="prep-block-title">T1 Priority Order</div>
+<div class="prep-line"><span>1st</span><span class="prep-verdict">DRC — attacks next turn, generates selection</span></div>
+<div class="prep-line"><span>2nd</span><span class="prep-verdict">Swiftspear — haste, immediate damage</span></div>
+<div class="prep-line"><span>T2</span><span class="prep-verdict">Cori-Steel Cutter — Monks every turn cycle</span></div>
+</div>
+<div class="prep-block"><div class="prep-block-title">Mulligan Rules</div>
+<div class="prep-line"><span>Keep</span><span class="prep-verdict">Prowess creature + 2 lands + 2+ spells</span></div>
+<div class="prep-line"><span>1-land keep</span><span class="prep-verdict">DRC + Bauble makes it fine</span></div>
+<div class="prep-line"><span>Mull</span><span class="prep-verdict">No creatures / 3+ lands / no T2 damage</span></div>
+</div>
+</div></div></div>
+<footer><span>Team Resolve · Modern · Izzet Prowess Playbook</span><span>Zuxas · 2026 RC Season</span></footer>
+<script>
+function show(id){document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));document.querySelectorAll('.nav-link').forEach(l=>l.classList.remove('active'));document.getElementById(id).classList.add('active');event.target.classList.add('active');}
+function toggle(id,t){const d=document.getElementById(id);const o=d.classList.contains('open');document.querySelectorAll('.matchup-detail').forEach(d=>d.classList.remove('open'));document.querySelectorAll('.matchup-table tr').forEach(r=>r.classList.remove('selected'));if(!o){d.classList.add('open');t.querySelector('tbody tr').classList.add('selected');}}
+</script>
+<script src="matchup-data-loader.js"></script>
+</body></html>
+<div id="gameplan" class="section"><div class="section-label">Chapter 03</div><h1>The Game Plan</h1>
+<div class="mantra">"Know the kill math before declaring attackers. Never attack without knowing if you can close."<cite>— Key Principle</cite></div>
+<h2>Getting to Delirium</h2>
+<p>DRC with delirium is a 3/3 flying surveil-every-turn closer. Getting to 4 card types fast is a priority: land + instant + creature + artifact (Bauble). Cast noncreature spells in your upkeep to surveil towards whatever you need for the turn.</p>
+<p><strong>Critical timing:</strong> Violent Urge checks for delirium on resolution. If you cast it without delirium but DRC is in play, you can turn on delirium after cast but before resolution with a free spell. Conversely, if they disrupt the stack after you've cast Urge with delirium, the creature won't get double strike.</p>
+<h2>Lava Dart Rules</h2>
+<p>Lava Dart is <strong>never cast early for damage</strong> unless you need to bin it to enable delirium. Hold it for the kill turn where flashback costs zero mana and pumps every prowess creature. On the kill turn: cast all your other spells, then flashback Lava Dart last for one final pump of everything. Remember: the opponent can respond to Dart on the stack before you flashback — if they exile your graveyard in response, Dart won't be available.</p>
+<h2>Cori-Steel Cutter Sequencing</h2>
+<p>Cori-Steel Cutter creates a Monk on your turn and their turn. You don't always have to equip the new Monk — sometimes the currently equipped creature having trample is more important than equipping the hasty Monk. Double-spelling at your opponent's end step to create an additional Monk before your untap is often game-winning. Plot Slickshot on one turn, cast on the next to dodge interaction.</p>
+<h2>Mulligan</h2>
+<p><strong>Keep:</strong> Any hand with a prowess creature + 2 lands + 2+ spells including at least one free/one-mana spell. 1-land hands with DRC + Bauble are keepable — Bauble finds the second land and enables delirium.</p>
+<p><strong>Mulligan:</strong> No creatures, 3+ lands, hands without T2 damage potential.</p></div>
+<div id="roles" class="section"><div class="section-label">Chapter 04</div><h1>Role Assignment</h1>
+<p>Prowess is always the beatdown. No exceptions. Even against faster aggro, your plan is to race. The only concession to the opponent's plan is holding free spells for creatures that would block your lethal attacker.</p>
+<div class="card-grid"><div class="card"><div class="card-label">vs Everything</div><div class="card-title">Beatdown</div><div class="card-body">Apply pressure from turn 1. Every turn they don't take damage they're stabilizing. Force them to have removal — don't slow down to play around it.</div></div><div class="card"><div class="card-label">vs Aggro Mirrors</div><div class="card-title">Race, Don't Trade</div><div class="card-body">Don't trade creatures. Your reach through burn spells and Lava Dart is better than theirs. Race through damage rather than managing the board.</div></div><div class="card"><div class="card-label">vs Control</div><div class="card-title">Go Under</div><div class="card-body">Apply pressure before Verdict mana is online. Cori-Steel Cutter on an empty board after a Verdict creates threats faster than they can answer.</div></div><div class="card"><div class="card-label">vs Combo</div><div class="card-title">Your Clock is Their Pressure</div><div class="card-body">You don't need to interact with most combo decks — just kill them first. Consign to Memory is your interaction piece where you can't race.</div></div></div></div>
+<div id="matchups" class="section"><div class="section-label">Chapter 05</div><h1>Matchup Guide</h1><table class="matchup-table" onclick="toggle('vs_blink',this)">
+<thead><tr><th>Matchup</th><th>Role</th><th>G1 WR</th><th>Overall</th></tr></thead>
+<tbody><tr><td>UW / Esper Blink</td><td>Beatdown</td><td>~45%</td><td><span class="verdict v-even">Slight Dog</span></td></tr></tbody>
+</table><div id="vs_blink" class="matchup-detail"><p>They have Solitude at instant speed and Wrath of the Skies. Your best draws can close before they stabilize. Ocelot Pride on their side requires Bolt immediately — don't let it resolve unchecked. Post-board they bring Sanctifier en-Vec which shuts off Lava Dart's flashback and Lightning Bolt. Into the Flood Maw bounces it at instant speed.</p><div class="sb-row"><div class="sb-in"><div class="sb-label">In</div><div class="sb-card"><span>Consign to Memory</span><span class="sb-n">4</span></div><div class="sb-card"><span>Into the Flood Maw</span><span class="sb-n">2</span></div><div class="sb-card"><span>Mystical Dispute</span><span class="sb-n">2</span></div></div><div class="sb-out"><div class="sb-label">Out</div><div class="sb-card"><span>Lava Dart</span><span class="sb-n">3</span></div><div class="sb-card"><span>Violent Urge</span><span class="sb-n">2</span></div><div class="sb-card"><span>Expressive Iteration</span><span class="sb-n">1</span></div></div></div><div class="if-then"><div class="if">If they resolve Ocelot Pride T2</div>→ Bolt immediately. Their Pride token army blocks Swiftspear and generates lifegain that counters your clock.</div><div class="if-then"><div class="if">If they resolve Sanctifier en-Vec</div>→ Into the Flood Maw bounces it at instant speed, then continue the aggro plan.</div></div><table class="matchup-table" onclick="toggle('vs_control',this)">
+<thead><tr><th>Matchup</th><th>Role</th><th>G1 WR</th><th>Overall</th></tr></thead>
+<tbody><tr><td>UW Control</td><td>Go Under</td><td>~55%</td><td><span class="verdict v-good">Favored G1</span></td></tr></tbody>
+</table><div id="vs_control" class="matchup-detail"><p>G1 you go under their setup before Verdict mana is online. Apply pressure on turns 1–2 before they have 4 mana. Cori-Steel Cutter after a Verdict generates threats faster than they can answer them.</p><div class="sb-row"><div class="sb-in"><div class="sb-label">In</div><div class="sb-card"><span>Mystical Dispute</span><span class="sb-n">2</span></div><div class="sb-card"><span>Flusterstorm</span><span class="sb-n">2</span></div></div><div class="sb-out"><div class="sb-label">Out</div><div class="sb-card"><span>Lava Dart</span><span class="sb-n">2</span></div><div class="sb-card"><span>Violent Urge</span><span class="sb-n">2</span></div></div></div><div class="if-then"><div class="if">If they tap out for Verdict T4</div>→ Rebuild immediately. Cori-Steel Cutter on an empty board — the Monk token has haste, attack for 2 while creating another Monk at their end step.</div></div><table class="matchup-table" onclick="toggle('vs_boros',this)">
+<thead><tr><th>Matchup</th><th>Role</th><th>G1 WR</th><th>Overall</th></tr></thead>
+<tbody><tr><td>Boros Energy</td><td>Race</td><td>~50%</td><td><span class="verdict v-even">Even — Race</span></td></tr></tbody>
+</table><div id="vs_boros" class="matchup-detail"><p>Pure race. Their Ragavan generates resources while racing; your DRC generates selection. Lava Dart kills Ragavan for zero mana. Gut Shot kills Guide of Souls and young cats before they generate energy.</p><div class="if-then"><div class="if">If they play Ragavan T1</div>→ Gut Shot or Lava Dart kills it for zero mana while triggering prowess. Denying the first Ragavan attack is often the game-deciding play.</div></div></div>
+<div id="sideboard" class="section"><div class="section-label">Chapter 06</div><h1>Sideboard Guide</h1>
+<div class='sb-guide-card'><div class='sb-guide-name'>Consign to Memory — 4 copies</div><div class='sb-guide-body'>Described by multiple Prowess primers as "the best sideboard tool for any blue deck in the format." Provides game against all Eldrazi decks (stops cast triggers), combo decks, and stack-based interaction that can't be raced. This is the reason Izzet splashes blue. Board in liberally against anything requiring stack interaction.</div></div>
+<div class='sb-guide-card'><div class='sb-guide-name'>Into the Flood Maw — 2 copies</div><div class='sb-guide-body'>Bounces a permanent at instant speed. Primary use: returning Sanctifier en-Vec (shuts off your Lava Darts and Bolts) and Trinisphere. Bounce Sanctifier after they tap to cast it — the ETB won't trigger on recast and you've bought a turn.</div></div>
+<div class='sb-guide-card'><div class='sb-guide-name'>Mystical Dispute — 2 / Flusterstorm — 2</div><div class='sb-guide-body'>Blue counterspells for blue matchups. Dispute answers anything blue for U. Flusterstorm stops storm counts, Cascade triggers, and counterspell wars for one mana. Board both in against any blue deck with counterspells.</div></div>
+<div class='sb-guide-card'><div class='sb-guide-name'>Surgical Extraction — 2 copies</div><div class='sb-guide-body'>Boards in against graveyard decks (Goryo's, Glockulous) and can hit key combo pieces. Lower priority than Consign. Don't bring in speculatively — know what you're extracting before boarding.</div></div></div>
+<div id="heuristics" class="section"><div class="section-label">Chapter 07</div><h1>Heuristics &amp;<br>Quick Rules</h1><ol class="heuristic-list">
+<li>Always lead DRC over Swiftspear on turn 1. You want your non-haste threat attacking as soon as possible.</li>
+<li>Lava Dart is never cast for damage. Hold it for the kill turn flashback at zero mana. Only exception: bin it for delirium.</li>
+<li>Know the kill math before declaring attackers. Calculate exactly how much damage you can represent. Never attack blind.</li>
+<li>Cori-Steel Cutter creates a Monk on their turn too. Double-spelling at their end step to create an extra Monk before your untap is often game-winning.</li>
+<li>Gut Shot and Mutagenic Growth trigger prowess for free. Cast them proactively on your turn — they're offense tools, not defense.</li>
+<li>Mishra's Bauble replaces itself and enables delirium. Cast it proactively. 1-land hands with DRC + Bauble are keepable because Bauble finds the second land.</li>
+<li>Sanctifier en-Vec shuts off Lava Dart flashback and Lightning Bolt. Into the Flood Maw is your cleanest answer. Board it for any white matchup that brings Sanctifier.</li>
+<li>Deafening Silence, High Noon, and Trinisphere shut off your entire game plan. Your only answers are Spell Pierce and Into the Flood Maw — both conditional. In heavy-hate fields, consider whether Prowess is the right pick.</li>
+<li>The round clock is your biggest enemy at a long RC. Know your lines before casting spells. Prowess sequencing should be automatic after sufficient reps.</li>
+<li>Violent Urge checks delirium on resolution, not on cast. With DRC in play, cast Violent Urge without delirium and then cast a free spell to enable it before Urge resolves.</li>
+</ol></div>
+<div id="prep" class="section"><div class="section-label">Chapter 08</div><h1>Event Day Prep</h1><button class="print-btn" onclick="window.print()">Print This Sheet</button>
+<div class="prep-grid">
+<div class="prep-block"><div class="prep-block-title">Matchup Quick Reference</div>
+<div class="prep-line"><span>UW / Esper Blink</span><span class="prep-verdict" style="color:#8f1a1a">Slight Dog — Into Flood Maw for Sanctifier</span></div>
+<div class="prep-line"><span>UW Control</span><span class="prep-verdict" style="color:#1a6b1a">Favored G1 — go under Verdict</span></div>
+<div class="prep-line"><span>Boros Energy</span><span class="prep-verdict" style="color:#8f6a1a">Even — pure race, Dart kills Ragavan</span></div>
+<div class="prep-line"><span>Grixis Reanimator</span><span class="prep-verdict" style="color:#1a6b1a">Favored — faster clock, Consign backup</span></div>
+<div class="prep-line"><span>Deafening Silence</span><span class="prep-verdict" style="color:#8f1a1a">Hard stop — Spell Pierce only answer</span></div>
+</div>
+<div class="prep-block"><div class="prep-block-title">Lava Dart Rules</div>
+<div class="prep-line"><span>When to hold</span><span class="prep-verdict">Always — save for kill turn FB</span></div>
+<div class="prep-line"><span>When to cast</span><span class="prep-verdict">To bin for delirium only</span></div>
+<div class="prep-line"><span>Flashback</span><span class="prep-verdict">0 mana, pumps all — last in sequence</span></div>
+<div class="prep-line"><span>Remember</span><span class="prep-verdict">They can respond before FB — careful</span></div>
+</div>
+<div class="prep-block"><div class="prep-block-title">T1 Priority Order</div>
+<div class="prep-line"><span>1st</span><span class="prep-verdict">DRC (attacks next turn, no haste)</span></div>
+<div class="prep-line"><span>2nd</span><span class="prep-verdict">Swiftspear (haste, immediate damage)</span></div>
+<div class="prep-line"><span>Cori-Steel Cutter</span><span class="prep-verdict">T2 — creates Monks every turn cycle</span></div>
+</div>
+<div class="prep-block"><div class="prep-block-title">Mulligan Rules</div>
+<div class="prep-line"><span>Keep</span><span class="prep-verdict">Prowess creature + 2 lands + 2+ spells</span></div>
+<div class="prep-line"><span>1-land keep</span><span class="prep-verdict">DRC + Bauble makes 1-landers fine</span></div>
+<div class="prep-line"><span>Mull</span><span class="prep-verdict">No creatures / 3+ lands / no T2 damage</span></div>
+</div>
+</div></div></div><footer><span>Team Resolve · Modern · Izzet Prowess Playbook</span><span>Zuxas · 2026 RC Season</span></footer><script>
+function show(id){document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));document.querySelectorAll('.nav-link').forEach(l=>l.classList.remove('active'));document.getElementById(id).classList.add('active');event.target.classList.add('active');}
+function toggle(id,t){const d=document.getElementById(id);const o=d.classList.contains('open');document.querySelectorAll('.matchup-detail').forEach(d=>d.classList.remove('open'));document.querySelectorAll('.matchup-table tr').forEach(r=>r.classList.remove('selected'));if(!o){d.classList.add('open');t.querySelector('tbody tr').classList.add('selected');}}
+</script></body></html>

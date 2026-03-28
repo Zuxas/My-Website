@@ -1,282 +1,221 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description"
-        content="Discussion on decks to play and the current metagame for the Magic: The Gathering Pro Tour." />
-    <title>Decks and Metagame</title>
+    <meta name="description" content="Modern metagame analysis from Zuxas and Team Resolve — current archetypes, deck selection, and competitive strategy." />
+    <title>Modern Metagame — Strategies</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" href="images/tab32.png" type="image/png">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-
+    <style>
+        .meta-table { width:100%; border-collapse:collapse; margin:16px 0 32px; }
+        .meta-table th { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em;
+            text-transform:uppercase; padding:8px 12px; text-align:left; color:#65bcd5;
+            border-bottom:1px solid #39465c; }
+        .meta-table td { padding:8px 12px; border-bottom:1px solid rgba(57,70,92,0.5);
+            font-size:14px; }
+        .meta-table tr:hover td { background:rgba(57,70,92,0.3); }
+        .meta-rank { font-family:'DM Mono',monospace; font-size:11px; color:#65bcd5; min-width:28px; }
+        .meta-share { font-family:'DM Mono',monospace; font-size:12px; }
+        .meta-bar-wrap { width:140px; background:rgba(57,70,92,0.4); height:4px; border-radius:2px; }
+        .meta-bar { height:4px; border-radius:2px; background:#65bcd5; }
+        .meta-playbook { font-family:'DM Mono',monospace; font-size:10px; padding:2px 8px;
+            background:rgba(101,188,213,0.15); color:#65bcd5; border:1px solid rgba(101,188,213,0.3);
+            border-radius:2px; white-space:nowrap; }
+        .meta-loading { font-family:'DM Mono',monospace; font-size:11px;
+            color:rgba(240,240,240,0.4); padding:16px 0; letter-spacing:0.1em; }
+        .meta-generated { font-family:'DM Mono',monospace; font-size:10px;
+            color:rgba(240,240,240,0.3); letter-spacing:0.1em; margin-bottom:12px; }
+    </style>
 </head>
-
 <body>
     <nav class="main-nav">
         <ul>
             <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
-            <li><a href="meta.html"><i class="fas fa-chart-line"></i> Strategies</a></li>
+            <li><a href="meta.html" class="active"><i class="fas fa-chart-line"></i> Strategies</a></li>
             <li><a href="planning.html"><i class="fas fa-lightbulb"></i> Deck Ideas</a></li>
             <li><a href="deckbuilding.html"><i class="fas fa-cogs"></i> Deck Building</a></li>
             <li><a href="analyze.html"><i class="fas fa-search"></i> Analyze Deck Lists</a></li>
+            <li><a href="journey/index.html"><i class="fas fa-book-open"></i> Journey</a></li>
+            <li><a href="deck-guides.html"><i class="fas fa-book"></i> Guides</a></li>
             <li><a href="bio.html"><i class="fas fa-user"></i> About Me</a></li>
         </ul>
     </nav>
+    <main id="top" class="fade-in-top-to-bottom">
+        <section class="column">
+            <span class="section-label">Team Resolve · Modern · Current Season</span>
+            <h1>metagame &amp; strategies</h1>
+            <p class="intro">This is how we think about the Modern metagame at Team Resolve. Not just which decks are popular — but why they're winning, what they're weak to, and how we're approaching deck selection for this RC season. Win rates and meta share are pulled live from the MTG Meta Analyzer database, sourced from 260k+ real match results.</p>
 
-    <main class="fade-in-top-to-bottom">
-        <section id="steps-to-qualify" class="column">
-            <!-- Main Heading -->
-            <h1>Metagame Analysis</h1>
-            <!-- Introduction Paragraph -->
-            <p class="intro">Let's look at some common deck strategies and the current metagame for Magic: The
-                Gathering. In this section, we'll delve into the major archetypes that shape competitive play and
-                explore how the current Pioneer metagame influences deck selection and strategy. Whether you're looking
-                to refine your current deck or gain insights into the evolving competitive landscape, this guide will
-                help you understand the key elements and trends that can impact your success in the Pro Tour and other
-                high-level tournaments.</p>
+            <h2>the current modern meta</h2>
+            <div class="meta-generated" id="meta-generated">Loading tournament data...</div>
+            <table class="meta-table" id="meta-table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Archetype</th>
+                        <th>Meta Share</th>
+                        <th>Decks</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody id="meta-tbody">
+                    <tr><td colspan="5" class="meta-loading">⌁ Fetching live tournament data...</td></tr>
+                </tbody>
+            </table>
 
-            <!-- 3-Column Layout -->
-            <section class="main-container">
-                <!-- Column 1: Major Strategy Archetypes -->
+            <h2>the four archetypes — how we frame every deck</h2>
+            <p>Every deck in Modern fits somewhere on this grid. Understanding where a deck sits — and where it sits in each <em>matchup</em> — is the foundation of role assignment and sideboard construction.</p>
+            <div class="card-grid">
+                <div class="card"><div class="card-label">Archetype 01</div><div class="card-title">Aggro</div><div class="card-body">Win through speed. Low-cost threats, direct damage, and momentum. End the game before the opponent's plan comes online. Prowess is the current best example in Modern — Cori-Steel Cutter added a new dimension.</div></div>
+                <div class="card"><div class="card-label">Archetype 02</div><div class="card-title">Control</div><div class="card-body">Survive, answer threats, close with a few powerful win conditions. Counterspells, removal, and card advantage. UW Control is the shell we're testing — best in combo-heavy fields.</div></div>
+                <div class="card"><div class="card-label">Archetype 03</div><div class="card-title">Combo</div><div class="card-body">Assemble a specific sequence to win. Requires protection and setup. Grixis Reanimator (Glockulous) is our active combo test — midrange-combo hybrid, NOT a glass cannon.</div></div>
+                <div class="card"><div class="card-label">Archetype 04</div><div class="card-title">Midrange / Tempo</div><div class="card-body">Efficient threats plus efficient answers. UW Blink and Jeskai Blink live here — tempo-control hybrids that shift roles by matchup. Most of our testing hours right now.</div></div>
+            </div>
+
+            <div class="main-container">
                 <div class="strategy-section">
-                    <h2>Major Strategy Archetypes</h2>
-                    <p>Competitive Magic: The Gathering decks often fall into one of four broad archetypes, each with
-                        its own unique approach to winning the game. Understanding these archetypes can help players
-                        tailor their strategies and deck-building choices to better suit their play style and
-                        competitive environment.</p>
-
-                    <section class="columns">
-                        <!-- Aggro Section -->
-
-                        <details class="expandable-content">
-                            <summary class="expandable-toggle">
-                                <div class="header-grid">
-                                    <h3>Aggro</h3>
-                                    <span class="right-text">Aggro (short for "aggressive") decks are designed to win
-                                        the game as quickly as
-                                        possible
-                                        by applying relentless pressure on the opponent.</span>
-                                </div>
-
-                            </summary>
-                            <p> They typically feature a high
-                                density
-                                of low-cost creatures and direct damage spells to quickly reduce the opponent's life
-                                total. Key elements of aggro decks include:</p>
+                    <h2>current meta read</h2>
+                    <p>Modern is wide open. The format rewards preparation and familiarity over raw deck power — which is why we invest in the gauntlet system.</p>
+                    <details>
+                        <summary><h2>Tier 1 — Boros Energy</h2></summary>
+                        <div>
+                            <p>Still the most consistent threat in the format. I qualified on this deck last Modern season — 17 RCQ Top 8s. Fast clock, resilient threats, efficient interaction. The core is Ragavan, Guide of Souls, Ocelot Pride, Ajani Nacatl Pariah, Phlage, and Goblin Bombardment. Punishes stumbles immediately.</p>
                             <ul>
-                                <li><strong>Low-Cost Creatures:</strong> Aggro decks prioritize creatures that can
-                                    be
-                                    played early in the game to establish a board presence quickly.</li>
-                                <li><strong>Direct Damage:</strong> Spells that deal damage directly to the opponent
-                                    or
-                                    their creatures help to accelerate the win condition and deal with blockers.
-                                </li>
-                                <li><strong>Speed:</strong> The goal is to finish the game before the opponent can
-                                    stabilize or develop their own strategy. Aggro decks often focus on the early
-                                    game
-                                    to maintain momentum.</li>
+                                <li><strong>Key cards:</strong> Ragavan; Guide of Souls; Ocelot Pride; Phlage, Titan of Fire's Fury; Goblin Bombardment; Ajani, Nacatl Pariah</li>
+                                <li><strong>Wins by:</strong> Efficient threats + converting tokens into reach via Bombardment</li>
+                                <li><strong>Loses to:</strong> Deafening Silence, Wrath effects at the right moment, stabilizing life total</li>
                             </ul>
-                        </details>
-
-
-
-                        <!-- Control Section -->
-
-                        <details class="expandable-content">
-                            <summary class="expandable-toggle">
-                                <div class="header-grid">
-                                    <h3>Control</h3>
-                                    <span class="right-text">Dominate the game by managing
-                                        threats and gaining card advantage over time</span>
-                                </div>
-                            </summary>
-                            <p>Control decks take a more reactive strategy that revolves around
-                                surviving
-                                the early game and establishing a dominant position in the late game. Key elements
-                                of
-                                control decks include:</p>
+                            <a href="boros-energy-playbook.html" class="btn">Open Playbook →</a>
+                        </div>
+                    </details>
+                    <details>
+                        <summary><h2>Tier 1 — Prowess (Izzet)</h2></summary>
+                        <div>
+                            <p>Fastest deck in the format. DRC, Swiftspear, Slickshot Show-Off, and Cori-Steel Cutter create explosive turns. Cori-Steel Cutter is the key two-drop — creates a 1/1 prowess creature with haste and trample every turn cycle, functions as an unkillable Monastery Mentor. Higher ceiling than Boros Energy, lower floor.</p>
                             <ul>
-                                <li><strong>Counterspells:</strong> Control decks use spells that counter or negate
-                                    the
-                                    opponent's spells to prevent them from executing their strategy.</li>
-                                <li><strong>Removal:</strong> Effective removal spells are used to deal with threats
-                                    on
-                                    the board, including both creatures and enchantments.</li>
-                                <li><strong>Card Draw:</strong> Drawing additional cards helps control players find
-                                    their key spells and maintain a steady flow of resources.</li>
-                                <li><strong>Finishers:</strong> Once the opponent's threats have been dealt with,
-                                    control decks use powerful finishers or win conditions to close out the game.
-                                </li>
+                                <li><strong>Key cards:</strong> Monastery Swiftspear; Dragon's Rage Channeler; Cori-Steel Cutter; Slickshot Show-Off; Lava Dart</li>
+                                <li><strong>Wins by:</strong> Explosive spell-dense turns pumping multiple creatures simultaneously</li>
+                                <li><strong>Loses to:</strong> Deafening Silence; High Noon; Trinisphere; Solitude at instant speed</li>
                             </ul>
-                        </details>
-
-
-                        <!-- Combo Section -->
-
-                        <details class="expandable-content">
-                            <summary class="expandable-toggle">
-                                <div class="header-grid">
-                                    <h3>Combo</h3>
-                                    <span class="right-text">Assemble specific combinations of cards that create a
-                                        powerful
-                                        effect or lead to an instant win</span>
-                                </div>
-                            </summary>
-                            <p>Combo decks require careful setup and protection
-                                to
-                                execute their combos successfully. Key elements of combo decks include:</p>
+                            <a href="prowess-playbook.html" class="btn">Open Playbook →</a>
+                        </div>
+                    </details>
+                    <details>
+                        <summary><h2>Tier 1–2 — Jeskai / UW Blink</h2></summary>
+                        <div>
+                            <p>Most of our testing hours. The blink shell is powerful and hard to hate out cleanly. Complexity ceiling is high — reps matter. Jeskai adds Teferi TRav and Lightning Bolt at the cost of mana consistency. Correct when the field is 20%+ combo. UW is correct in aggro-heavy open fields.</p>
                             <ul>
-                                <li><strong>Combo Pieces:</strong> The deck includes cards that work together to
-                                    achieve
-                                    the desired result, whether it's an infinite loop, an instant win, or a massive
-                                    advantage.</li>
-                                <li><strong>Protection:</strong> Combo decks often include spells or creatures that
-                                    protect their key combo pieces from disruption by the opponent.</li>
-                                <li><strong>Setup Time:</strong> Many combo decks need time to assemble their combo
-                                    pieces and may require a combination of draw spells and tutors to find the
-                                    necessary
-                                    cards.</li>
+                                <li><strong>Key cards:</strong> Ephemerate; Phelia; White Orchid Phantom; Solitude; Ocelot Pride; Guide of Souls</li>
+                                <li><strong>Wins by:</strong> Recursive ETB value, mana denial, Guide + Ocelot inevitability</li>
+                                <li><strong>Loses to:</strong> Very fast aggro before engines come online</li>
                             </ul>
-                        </details>
-
-
-                        <!-- Midrange Section -->
-
-                        <details class="expandable-content">
-                            <summary class="expandable-toggle">
-                                <div class="header-grid">
-                                    <h3>Midrange</h3>
-                                    <span class="right-text">Balance between early-game aggression and late-game
-                                        power</span>
-                                </div>
-                            </summary>
-                            <p>Midrange decks aim to balance between early-game aggression and late-game power. They
-                                focus on efficient, versatile threats and answers that can adapt to different
-                                situations. Key elements of midrange decks include:</p>
+                            <a href="uw-blink-2025-10-07.html" class="btn">UW Blink Playbook →</a>
+                            <a href="jeskai-blink-playbook.html" class="btn">Jeskai Blink Playbook →</a>
+                        </div>
+                    </details>
+                    <details>
+                        <summary><h2>Tier 1–2 — Grixis Reanimator (Glockulous)</h2></summary>
+                        <div>
+                            <p>Active combo test this season. Team Resolve pet name: Glockulous. This is NOT Goryo's Vengeance — it's a midrange-combo hybrid built around Psychic Frog, Abhorrent Oculus, Archon of Cruelty, and Emperor of Bones. The key insight: Archon entering off Persist at instant speed cannot be answered by the creature removal the field is calibrated for.</p>
                             <ul>
-                                <li><strong>Efficient Threats:</strong> Midrange decks use creatures and spells that
-                                    offer good value for their cost, often having abilities that are relevant in
-                                    multiple stages of the game.</li>
-                                <li><strong>Versatility:</strong> The deck includes a mix of cards that can handle
-                                    various situations, providing answers to both aggressive and controlling
-                                    strategies.
-                                </li>
-                                <li><strong>Card Advantage:</strong> Midrange decks focus on generating card
-                                    advantage
-                                    through powerful plays and recursion to outvalue the opponent over time.</li>
-                                <li><strong>Board Presence:</strong> Maintaining a strong board presence helps
-                                    midrange
-                                    decks to apply pressure and respond to threats effectively.</li>
+                                <li><strong>Key cards:</strong> Psychic Frog; Abhorrent Oculus; Archon of Cruelty; Emperor of Bones; Persist; Faithless Looting</li>
+                                <li><strong>Wins by:</strong> Reanimating Archon at instant speed through Persist — the field's removal doesn't interact with the stack</li>
+                                <li><strong>Loses to:</strong> Consign to Memory; Teferi, Time Raveler; graveyard hate</li>
                             </ul>
-                        </details>
-
-                    </section>
+                            <a href="glockulous-playbook.html" class="btn">Open Playbook →</a>
+                        </div>
+                    </details>
+                    <details>
+                        <summary><h2>Tier 2 — UW Control</h2></summary>
+                        <div>
+                            <p>Classic shell, rewards deep format knowledge. Best in fields skewed toward midrange and combo. The challenge is Boros Energy and Prowess both play under its interaction — don't pick this if the field is aggro-heavy.</p>
+                            <ul>
+                                <li><strong>Key cards:</strong> Counterspell; Snapcaster Mage; Solitude; Teferi, Hero of Dominaria; Supreme Verdict; Consign to Memory</li>
+                                <li><strong>Wins by:</strong> Answering everything, generating card advantage, closing with protected Teferi Hero</li>
+                                <li><strong>Loses to:</strong> Decks that go under interaction; aggressive starts before Verdict mana</li>
+                            </ul>
+                            <a href="uw-control-playbook.html" class="btn">Open Playbook →</a>
+                        </div>
+                    </details>
                 </div>
-
-                <!-- Column 2: The Current Metagame -->
                 <div class="metagame-section">
-                    <h2>The Current Pioneer Metagame</h2>
-                    <p>Understanding the current metagame is crucial for selecting the right deck and strategy. The
-                        Pioneer format is dynamic, with different decks rising and falling in popularity. Here’s a
-                        snapshot of the most popular decks in the Pioneer format, including their strengths and typical
-                        strategies:</p>
-
-                    <details class="expandable-content">
-                        <summary class="expandable-toggle">
-                            <h3>1. Rakdos Vampires (30.98%)</h3>
-                        </summary>
-                        <p>Rakdos Vampires stands out as the most dominant deck in the current meta. It leverages the
-                            synergies of the vampire tribe to build a resilient and aggressive strategy. Key features
-                            include:</p>
-                        <ul>
-                            <li><strong>Vampire Synergy:</strong> The deck utilizes various vampire tribal synergies,
-                                enhancing the power of its creatures and spells.</li>
-                            <li><strong>Strong Removal:</strong> Rakdos Vampires includes efficient removal spells that
-                                help control the board and disrupt opponents.</li>
-                            <li><strong>Resilience:</strong> With access to a mix of life gain and aggressive threats,
-                                the deck can recover from board wipes and prolonged games.</li>
-                        </ul>
+                    <h2>how we approach deck selection</h2>
+                    <p>At Team Resolve, we don't pick decks based on meta share alone. We run gauntlets.</p>
+                    <details>
+                        <summary><h2>Step 1 — Identify the Field</h2></summary>
+                        <div><p>What does the expected metagame look like for the specific RC or RCQ we're preparing for? Local trends, recent large event results, and what qualified players in our region tend to play all factor in. We pull archetype frequency data through the MTG Meta Analyzer before building any prep package.</p></div>
                     </details>
-
-                    <details class="expandable-content">
-                        <summary class="expandable-toggle">
-                            <h3>2. Abzan Amalia (14.02%)</h3>
-                        </summary>
-                        <p>Abzan Amalia offers a blend of value and control, making it a versatile choice in the current
-                            meta. This deck combines elements of midrange and control to perform well against a variety
-                            of opponents. Key features include:</p>
-                        <ul>
-                            <li><strong>Midrange Value:</strong> Abzan Amalia focuses on value plays and efficient
-                                threats, often utilizing card draw and recursion to maintain pressure.</li>
-                            <li><strong>Control Elements:</strong> The deck includes control elements like removal and
-                                disruption to handle threats and gain an edge in longer games.</li>
-                            <li><strong>Versatility:</strong> Its ability to adapt to different strategies makes it a
-                                strong choice in the ever-changing Pioneer meta.</li>
-                        </ul>
+                    <details>
+                        <summary><h2>Step 2 — Run the Gauntlet</h2></summary>
+                        <div><p>Structured gauntlets against the top 6–8 archetypes in the expected field — both pre- and post-board. Win rates are tracked against real match data, not estimated. If a deck can't hit acceptable numbers against the field we expect, it's not the right call regardless of how powerful it feels in isolation.</p></div>
                     </details>
-
-                    <details class="expandable-content">
-                        <summary class="expandable-toggle">
-                            <h3>3. Mono Green Devotion (10.50%)</h3>
-                        </summary>
-                        <p>Mono Green Devotion is known for its powerful ramp and high-impact creatures. This deck
-                            focuses on building a large mana base to cast its most potent spells and creatures. Key
-                            features include:</p>
-                        <ul>
-                            <li><strong>Mana Ramp:</strong> The deck uses various ramp spells and creatures to
-                                accelerate its mana production and play large threats earlier.</li>
-                            <li><strong>Big Threats:</strong> With access to high-impact creatures and spells, Mono
-                                Green Devotion can overwhelm opponents with sheer power and size.</li>
-                            <li><strong>Consistency:</strong> The deck’s ability to consistently ramp and deploy threats
-                                makes it a formidable opponent in the Pioneer format.</li>
-                        </ul>
+                    <details>
+                        <summary><h2>Step 3 — Lock the 75</h2></summary>
+                        <div><p>Once a deck passes the gauntlet, we lock the 75. Not 73 with two flex slots undecided the morning of — 75, committed, with clear reasoning for every card. We build a full matchup guide before the event, not during. This process drove the consistency behind 17 and 23 RCQ Top 8 results last season.</p></div>
                     </details>
-
-                    <details class="expandable-content">
-                        <summary class="expandable-toggle">
-                            <h3>4. Rakdos Midrange (7.32%)</h3>
-                        </summary>
-                        <p>Rakdos Midrange strikes a balance between aggressive plays and controlling elements. It
-                            combines the best of both worlds to adapt to different situations. Key features include:</p>
-                        <ul>
-                            <li><strong>Versatile Threats:</strong> The deck includes a mix of aggressive and
-                                value-oriented creatures to apply pressure while also handling threats.</li>
-                            <li><strong>Removal and Disruption:</strong> Rakdos Midrange utilizes efficient removal and
-                                disruption spells to control the board and gain card advantage.</li>
-                            <li><strong>Adaptability:</strong> Its flexibility allows it to handle various strategies
-                                effectively, making it a strong choice in the current meta.</li>
-                        </ul>
-                    </details>
-
-                    <details class="expandable-content">
-                        <summary class="expandable-toggle">
-                            <h3>5. Izzet Phoenix (5.52%)</h3>
-                        </summary>
-                        <p>Izzet Phoenix is known for its powerful spellcasting and the ability to quickly bring back
-                            Phoenix creatures. This deck leverages card draw and spell synergies to gain advantage. Key
-                            features include:</p>
-                        <ul>
-                            <li><strong>Spell Synergy:</strong> The deck utilizes spells to draw cards and trigger the
-                                return of Phoenix creatures from the graveyard.</li>
-                            <li><strong>Fast and Aggressive:</strong> With a focus on quick and powerful plays, Izzet
-                                Phoenix aims to end games swiftly and efficiently.</li>
-                            <li><strong>Card Draw and Recursion:</strong> The ability to draw and recur key creatures
-                                helps maintain pressure and sustain its strategy.</li>
-                        </ul>
+                    <details>
+                        <summary><h2>Role Assignment</h2></summary>
+                        <div><p>Before the first spell is cast, know your role: beatdown or control? Against Prowess you're control — stabilize, then close. Against Azorius Control you're beatdown — pressure early, force answers ahead of curve. Getting this wrong costs games. Getting it right consistently separates 4–1 from 3–2.</p></div>
                     </details>
                 </div>
-
-                <!-- Column 3: Decks to Play -->
-
-            </section>
+            </div>
         </section>
     </main>
-    <a href="#top" class="back-to-top">Back to Top</a>
+    <a href="#top" class="back-to-top"><i class="fas fa-arrow-up"></i> Top</a>
     <footer>
-        <p>Created by Jermey Wallace &copy; 2024. All rights reserved.</p>
+        <span>Road to Pro Tour</span>
+        <span>Jermey Wallace · Zuxas · Team Resolve</span>
+        <span>&copy; 2026</span>
     </footer>
-</body>
 
+    <script>
+    // Load live meta share from MTG Meta Analyzer DB export
+    fetch('data/modern-meta.json')
+        .then(r => r.json())
+        .then(data => {
+            const tbody = document.getElementById('meta-tbody');
+            const gen = document.getElementById('meta-generated');
+            const total = data.total_decks;
+            const events = data.total_events;
+            const dateMax = data.event_range.max || '';
+            gen.textContent = `Live data · ${total.toLocaleString()} decklists · ${events} events · through ${dateMax} · source: MTG Meta Analyzer DB`;
+
+            const maxShare = data.archetypes[0]?.share || 1;
+            tbody.innerHTML = data.archetypes.map(a => {
+                const barW = Math.round((a.share / maxShare) * 100);
+                const playbookLink = a.has_playbook
+                    ? `<a href="${playbookFile(a.name)}" class="meta-playbook">Playbook ↗</a>`
+                    : '';
+                return `<tr>
+                    <td class="meta-rank">${a.rank}</td>
+                    <td>${a.name}</td>
+                    <td>
+                        <span class="meta-share">${a.share}%</span>&nbsp;
+                        <span class="meta-bar-wrap"><span class="meta-bar" style="width:${barW}%;background:${a.color}"></span></span>
+                    </td>
+                    <td class="meta-rank">${a.decks.toLocaleString()}</td>
+                    <td>${playbookLink}</td>
+                </tr>`;
+            }).join('');
+        })
+        .catch(() => {
+            document.getElementById('meta-tbody').innerHTML =
+                '<tr><td colspan="5" class="meta-loading">Data unavailable — run generate_site_data.py</td></tr>';
+        });
+
+    function playbookFile(name) {
+        const map = {
+            'Boros Energy':      'boros-energy-playbook.html',
+            'Izzet Prowess':     'prowess-playbook.html',
+            'Jeskai Blink':      'jeskai-blink-playbook.html',
+            'Grixis Reanimator': 'glockulous-playbook.html',
+            'Azorius Control':   'uw-control-playbook.html',
+        };
+        return map[name] || '#';
+    }
+    </script>
+</body>
 </html>
