@@ -1,0 +1,1189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Izzet Affinity — Team Resolve Playbook</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+  :root { --ink:#0e0e0e; --paper:#f2ede6; --paper-dark:#e8e1d6; --rule:#c8bfb0; --accent:#1a6b8f; --accent-light:#d0e8f2; --danger:#8f1a1a; --danger-light:#f7d6d6; --gold:#8f6a1a; --gold-light:#f7ead6; --mid:#5a5248; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:var(--paper); color:var(--ink); font-family:'Crimson Pro',Georgia,serif; font-size:17px; line-height:1.6; }
+  .header-band { background:var(--ink); border-bottom:3px solid #1a6b8f; }
+  .header-inner { max-width:1100px; margin:0 auto; padding:32px 80px; display:flex; justify-content:space-between; align-items:flex-end; gap:40px; }
+  .header-eyebrow { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:rgba(242,237,230,0.35); margin-bottom:8px; }
+  .header-title { font-family:'Bebas Neue',sans-serif; font-size:56px; line-height:0.9; color:var(--paper); letter-spacing:0.02em; }
+  .header-title span { color:#3ab0e0; }
+  .header-mantra { font-family:'Crimson Pro',serif; font-style:italic; font-size:15px; color:rgba(242,237,230,0.4); margin-top:8px; }
+  .header-right { display:flex; flex-direction:column; gap:8px; text-align:right; padding-bottom:4px; }
+  .header-stat { display:flex; gap:12px; align-items:center; justify-content:flex-end; }
+  .hs-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; color:rgba(242,237,230,0.3); }
+  .hs-val { font-family:'DM Mono',monospace; font-size:12px; color:var(--paper); }
+  nav { position:sticky; top:0; z-index:100; background:var(--ink); border-bottom:1px solid rgba(242,237,230,0.1); padding:0 80px; display:flex; align-items:center; gap:0; overflow-x:auto; scrollbar-width:none; }
+  nav::-webkit-scrollbar { display:none; }
+  .nav-brand { font-family:'Bebas Neue',sans-serif; font-size:18px; color:#3ab0e0; letter-spacing:0.05em; margin-right:40px; white-space:nowrap; padding:16px 0; }
+  .nav-link { font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:rgba(242,237,230,0.4); padding:20px 16px; cursor:pointer; white-space:nowrap; border-bottom:2px solid transparent; transition:all 0.2s; background:none; border-top:none; border-left:none; border-right:none; }
+  .nav-link:hover, .nav-link.active { color:var(--paper); border-bottom-color:#1a6b8f; }
+  .page { max-width:1100px; margin:0 auto; padding:80px 80px; }
+  .section { display:none; animation:fadeIn 0.3s ease; }
+  .section.active { display:block; }
+  @keyframes fadeIn { from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:translateY(0);} }
+  .section-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.25em; text-transform:uppercase; color:var(--mid); margin-bottom:8px; }
+  h1 { font-family:'Bebas Neue',sans-serif; font-size:64px; line-height:0.9; letter-spacing:0.01em; color:var(--ink); margin-bottom:40px; }
+  h2 { font-family:'Bebas Neue',sans-serif; font-size:36px; letter-spacing:0.02em; color:var(--ink); margin:56px 0 20px; padding-bottom:8px; border-bottom:2px solid var(--ink); }
+  h3 { font-family:'DM Mono',monospace; font-size:12px; letter-spacing:0.15em; text-transform:uppercase; color:var(--accent); margin:32px 0 12px; }
+  p { margin-bottom:16px; color:var(--ink); font-weight:300; }
+  strong { font-weight:600; }
+  em { font-style:italic; color:var(--mid); }
+  .mantra { border-left:4px solid var(--accent); padding:24px 32px; background:var(--accent-light); margin:32px 0; font-style:italic; font-size:20px; color:var(--accent); line-height:1.5; }
+  .card-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); gap:1px; background:var(--rule); border:1px solid var(--rule); margin:24px 0; }
+  .card-grid-2 { grid-template-columns:repeat(2,1fr) !important; }
+  .card { background:var(--paper); padding:24px; }
+  .card:hover { background:var(--paper-dark); }
+  .card-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--mid); margin-bottom:8px; }
+  .card-title { font-family:'Bebas Neue',sans-serif; font-size:22px; letter-spacing:0.03em; color:var(--ink); margin-bottom:8px; }
+  .card-body { font-size:15px; font-weight:300; color:var(--mid); line-height:1.5; }
+  .decklist { display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--rule); border:1px solid var(--rule); margin:24px 0; }
+  .dl-section { background:var(--paper); padding:24px; }
+  .dl-section-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--mid); margin-bottom:16px; }
+  .dl-group { margin-bottom:20px; }
+  .dl-group-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; color:var(--ink); background:var(--paper-dark); padding:4px 8px; margin-bottom:8px; display:inline-block; }
+  .dl-card-row { display:flex; justify-content:space-between; padding:4px 0; border-bottom:1px solid rgba(200,191,176,0.3); font-size:15px; font-weight:300; }
+  .dl-qty { font-family:'DM Mono',monospace; font-size:12px; color:var(--accent); }
+  .role-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--rule); border:1px solid var(--rule); margin:24px 0; }
+  .role-card { background:var(--paper); padding:24px; }
+  .role-card:hover { background:var(--paper-dark); }
+  .role-name { font-family:'Bebas Neue',sans-serif; font-size:26px; letter-spacing:0.03em; margin-bottom:8px; }
+  .role-name-primary { color:#1a6b8f; }
+  .role-name-secondary { color:#8f6a1a; }
+  .role-name-tertiary { color:#8f1a1a; }
+  .role-desc { font-size:15px; font-weight:300; color:var(--mid); line-height:1.5; margin-bottom:12px; }
+  .role-matchups { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.08em; color:rgba(14,14,14,0.4); }
+  .matchup-table { width:100%; border-collapse:collapse; margin:24px 0; font-size:15px; }
+  .matchup-table thead tr { background:var(--ink); color:var(--paper); }
+  .matchup-table th { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; padding:12px 16px; text-align:left; font-weight:400; }
+  .matchup-table td { padding:12px 16px; border-bottom:1px solid var(--rule); font-weight:300; vertical-align:top; }
+  .matchup-table tr:hover td { background:var(--paper-dark); cursor:pointer; }
+  .matchup-table tr.selected td { background:var(--accent-light); }
+  .diff-hard { font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.08em; text-transform:uppercase; color:var(--danger); background:var(--danger-light); padding:2px 8px; border-radius:2px; }
+  .diff-medium { font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.08em; text-transform:uppercase; color:var(--gold); background:var(--gold-light); padding:2px 8px; border-radius:2px; }
+  .diff-even { font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.08em; text-transform:uppercase; color:#1a3a8f; background:#d6e0f7; padding:2px 8px; border-radius:2px; }
+  .diff-good { font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.08em; text-transform:uppercase; color:#1a6b1a; background:#d4f0d4; padding:2px 8px; border-radius:2px; border:1px solid #a0d4a0; }
+  .matchup-detail { display:none; border:1px solid var(--rule); background:var(--paper-dark); padding:40px; margin:0 0 24px; animation:fadeIn 0.2s ease; border-top:3px solid var(--accent); }
+  .matchup-detail.open { display:block; }
+  .sb-table { display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--rule); border:1px solid var(--rule); margin:16px 0; }
+  .sb-col { background:var(--paper); padding:20px; }
+  .sb-col-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--mid); margin-bottom:12px; }
+  .sb-item { font-size:14px; font-weight:400; padding:4px 0; border-bottom:1px solid var(--rule); display:flex; justify-content:space-between; align-items:center; }
+  .sb-item:last-child { border-bottom:none; }
+  .sb-qty { font-family:'DM Mono',monospace; font-size:12px; color:var(--mid); }
+  .ifthen-list { list-style:none; margin:12px 0; }
+  .ifthen-list li { padding:10px 0; border-bottom:1px solid var(--rule); display:flex; flex-direction:row; gap:12px; align-items:flex-start; font-size:15px; font-weight:300; line-height:1.6; }
+  .ifthen-list li span { flex:1; min-width:0; }
+  .ifthen-list li:last-child { border-bottom:none; }
+  .if-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.1em; text-transform:uppercase; color:var(--danger); background:var(--danger-light); padding:2px 6px; white-space:nowrap; margin-top:2px; flex-shrink:0; }
+  .sb-card-guide { border:1px solid var(--rule); margin:24px 0; }
+  .sb-guide-row { display:flex; gap:0; border-bottom:1px solid var(--rule); }
+  .sb-guide-row:last-child { border-bottom:none; }
+  .sb-guide-name { font-family:'DM Mono',monospace; font-size:12px; font-weight:500; letter-spacing:0.05em; color:var(--ink); background:var(--paper-dark); padding:14px 20px; min-width:220px; width:220px; flex-shrink:0; border-right:1px solid var(--rule); display:flex; align-items:center; }
+  .sb-guide-body { padding:14px 20px; font-size:15px; font-weight:300; line-height:1.5; flex:1; }
+  .heuristic-list { list-style:none; counter-reset:h; }
+  .heuristic-list li { counter-increment:h; display:block; overflow:hidden; padding:14px 0; border-bottom:1px solid var(--rule); font-size:16px; font-weight:300; line-height:1.6; }
+  .heuristic-list li::before { content:counter(h,decimal-leading-zero); font-family:'DM Mono',monospace; font-size:20px; line-height:1.6; color:rgba(26,107,143,0.2); float:left; width:48px; margin-right:0; }
+  .engine-block { border:1px solid var(--rule); margin:32px 0; }
+  .engine-header { background:var(--ink); color:var(--paper); padding:16px 24px; display:flex; align-items:center; gap:16px; }
+  .engine-letter { font-family:'Bebas Neue',sans-serif; font-size:40px; line-height:1; color:#3ab0e0; }
+  .engine-name { font-family:'Bebas Neue',sans-serif; font-size:24px; letter-spacing:0.03em; }
+  .engine-body { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--rule); }
+  .engine-step { background:var(--paper); padding:24px; }
+  .engine-step-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--mid); margin-bottom:8px; }
+  .engine-step-title { font-family:'Bebas Neue',sans-serif; font-size:20px; color:var(--ink); margin-bottom:8px; }
+  .engine-step-body { font-size:14px; font-weight:300; color:var(--mid); line-height:1.5; }
+  .tricks-list { list-style:none; margin:12px 0; }
+  .tricks-list li { padding:12px 0; border-bottom:1px solid var(--rule); font-size:15px; font-weight:300; line-height:1.6; display:flex; gap:12px; }
+  .tricks-list li:last-child { border-bottom:none; }
+  .trick-tag { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.1em; text-transform:uppercase; background:var(--paper-dark); border:1px solid var(--rule); padding:2px 6px; white-space:nowrap; margin-top:2px; flex-shrink:0; color:var(--mid); }
+  .tuning-grid { display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--rule); border:1px solid var(--rule); margin:24px 0; }
+  .tuning-cell { background:var(--paper); padding:24px; }
+  .tuning-cell:hover { background:var(--paper-dark); }
+  .tuning-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--mid); margin-bottom:8px; }
+  .tuning-condition { font-family:'Bebas Neue',sans-serif; font-size:20px; color:var(--ink); margin-bottom:12px; }
+  .tuning-up { font-size:14px; font-weight:300; margin-bottom:6px; }
+  .tuning-up::before { content:"▲ "; color:#1a6b1a; font-size:12px; }
+  .tuning-down { font-size:14px; font-weight:300; margin-bottom:6px; }
+  .tuning-down::before { content:"▼ "; color:var(--danger); font-size:12px; }
+  .pd-grid { display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--rule); border:1px solid var(--rule); margin:16px 0; }
+  .pd-col { background:var(--paper); padding:20px; }
+  .pd-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--mid); margin-bottom:6px; }
+  .pd-title { font-family:'Bebas Neue',sans-serif; font-size:18px; color:var(--ink); margin-bottom:8px; }
+  .pd-body { font-size:14px; font-weight:300; color:var(--mid); line-height:1.5; }
+  .print-btn { display:inline-flex; align-items:center; gap:8px; font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.12em; text-transform:uppercase; background:var(--ink); color:var(--paper); border:none; padding:10px 20px; cursor:pointer; margin-bottom:32px; transition:background 0.15s; }
+  .print-btn:hover { background:var(--accent); }
+  .print-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--rule); border:1px solid var(--rule); }
+  .print-mu { background:var(--paper); padding:16px; }
+  .print-mu-name { font-family:'Bebas Neue',sans-serif; font-size:16px; letter-spacing:0.03em; color:var(--ink); margin-bottom:4px; }
+  .print-mu-role { font-family:'DM Mono',monospace; font-size:9px; letter-spacing:0.1em; text-transform:uppercase; color:var(--mid); margin-bottom:10px; }
+  .print-cols { display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+  .print-col-label { font-family:'DM Mono',monospace; font-size:9px; letter-spacing:0.15em; text-transform:uppercase; color:var(--mid); margin-bottom:4px; }
+  .print-row { font-size:12px; font-weight:300; display:flex; justify-content:space-between; padding:1px 0; border-bottom:1px solid rgba(200,191,176,0.4); line-height:1.5; }
+  .print-row:last-child { border-bottom:none; }
+  .print-qty { font-family:'DM Mono',monospace; font-size:11px; color:var(--mid); flex-shrink:0; margin-left:4px; }
+  .print-needle { font-family:'DM Mono',monospace; font-size:9px; letter-spacing:0.06em; color:var(--danger); margin-top:6px; text-transform:uppercase; }
+  .tag { display:inline-block; font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.08em; background:var(--paper-dark); border:1px solid var(--rule); padding:3px 8px; margin:2px; }
+  .c { color:var(--accent); font-weight:400; }
+  footer { background:var(--ink); color:rgba(242,237,230,0.3); padding:40px 80px; margin-top:80px; display:flex; justify-content:space-between; align-items:center; }
+  footer span { font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.1em; text-transform:uppercase; }
+  @media (max-width:768px) { .header-inner,nav,.page,footer { padding-left:24px; padding-right:24px; } .header-title { font-size:40px; } .header-right { display:none; } .decklist,.role-grid,.sb-table,.engine-body,.tuning-grid,.pd-grid { grid-template-columns:1fr; } nav { padding:0 24px; } }
+  @media print { nav,.print-btn,footer { display:none; } .section { display:block !important; } }
+</style>
+</head>
+<body>
+
+<div class="header-band">
+  <div class="header-inner">
+    <div>
+      <div class="header-eyebrow">Team Resolve · Modern · March 30, 2026</div>
+      <div class="header-title">Izzet<br><span>Affinity</span></div>
+      <div class="header-mantra">"Flood the board. Ward everything. Kill from nowhere."</div>
+    </div>
+    <div class="header-right">
+      <div class="header-stat"><span class="hs-label">Meta Share</span><span class="hs-val">7.1%</span></div>
+      <div class="header-stat"><span class="hs-label">Role</span><span class="hs-val">Artifact Aggro-Combo</span></div>
+      <div class="header-stat"><span class="hs-label">Colors</span><span class="hs-val">Izzet (U/R)</span></div>
+      <div class="header-stat"><span class="hs-label">Kill Turn</span><span class="hs-val">2-4</span></div>
+    </div>
+  </div>
+</div>
+
+<nav>
+  <div class="nav-brand">Izzet Affinity</div>
+  <button class="nav-link active" onclick="show('identity')">Overview</button>
+  <button class="nav-link" onclick="show('decklist')">Decklist</button>
+  <button class="nav-link" onclick="show('gameplan')">Game Flow</button>
+  <button class="nav-link" onclick="show('engines')">Engines</button>
+  <button class="nav-link" onclick="show('roles')">Roles</button>
+  <button class="nav-link" onclick="show('matchups')">Matchups</button>
+  <button class="nav-link" onclick="show('sideboard')">Sideboard</button>
+  <button class="nav-link" onclick="show('heuristics')">Heuristics</button>
+  <button class="nav-link" onclick="show('tuning')">Tuning</button>
+  <button class="nav-link" onclick="show('prep')">Prep</button>
+</nav>
+
+<div class="page">
+
+<!-- OVERVIEW -->
+<div id="identity" class="section active">
+  <div class="section-label">Chapter 01</div>
+  <h1>Izzet<br>Affinity</h1>
+
+  <div class="mantra">Pinnacle Emissary changed what Affinity is allowed to do. One card on turn 1 or 2 floods the board with Drone tokens that enable Metalcraft, pay for Improvise, fuel Kappa Cannoneer triggers, and convert into 2-damage Munitions explosions. You are not playing a linear creature deck. You are building a critical mass of artifacts that converts into an unstoppable threat on the same turn it assembles.</div>
+
+  <p><strong>Izzet Affinity is the highest meta-share deck in Modern at 7.1%</strong> and posted a 54.7% win rate across the fall 2025 Regional Championships. The deck won the MIT Championship, top-8'd the Japan/South Korea RC, and placed multiple finalists in MTGO Challenges through March 2026. It is not a rogue pick — it is the defining aggro-combo deck of the current format.</p>
+
+  <p>The core identity: exploit the critical mass rule. When you control three artifacts, <span class="c">Mox Opal</span> taps for mana. When you control eight artifacts, <span class="c">Thoughtcast</span> costs U. When you control twelve artifacts, <span class="c">Kappa Cannoneer</span> has been countered for three mana and is 8/8. The deck rewards density. Every card either generates artifacts, costs artifacts, or cares about artifact count. There are no passengers.</p>
+
+  <p>The Weapons Manufacturing package (Japanese innovation, Pro Tour Edge of Eternities 2025) added a second axis: every nontoken artifact entering creates a Munitions bomb token that deals 2 damage when it leaves. <span class="c">Engineered Explosives</span> at X=0 sacrifices itself and destroys all MV-0 permanents including all your Munitions tokens — converting them into a burst of uncounterable damage that ends games from nowhere. This is not a linear beatdown deck. It wins three different ways: Ward-4 Kappa Cannoneer pressure, Urza's Saga Construct army, and Weapons Manufacturing EE finish.</p>
+
+  <h2>When to Register</h2>
+  <div class="card-grid card-grid-2">
+    <div class="card">
+      <div class="card-label">Register Izzet Affinity When</div>
+      <div class="card-title">The Field Is Open</div>
+      <div class="card-body">Izzet Affinity rewards tight play and punishes unprepared opponents. In open fields where people aren't specifically packing Meltdown, Shatterstorm, or Collector Ouphe, this deck wins through raw speed. It's the best choice when the expected field is creature decks, midrange, and combo — anything that can't answer a Ward-4 threat or a 10-damage EE burst in time.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Consider Other Options When</div>
+      <div class="card-title">Artifact Hate is Expected</div>
+      <div class="card-body">Izzet Affinity is glass when hit by mass artifact removal. Stony Silence locks Mox Opal and Springleaf Drum. Collector Ouphe disables all activated artifact abilities. Meltdown at X=2 destroys the entire board for 2 mana. If the expected field includes dedicated artifact hate, the deck's ceiling drops substantially. Jeskai Blink specifically is a hard matchup — Solitude evokes your Emissary for free and Wrath of the Skies nukes the board.</div>
+    </div>
+  </div>
+
+  <h2>The Three Versions</h2>
+  <p>Three distinct builds compete in the current meta. Know which you're facing and which you're registering:</p>
+  <div class="card-grid">
+    <div class="card">
+      <div class="card-label">Build 1 — Current Standard</div>
+      <div class="card-title">Weapons Manufacturing Shell</div>
+      <div class="card-body"><span class="c">Weapons Manufacturing</span> + <span class="c">Engineered Explosives</span> is the combo finish. Every nontoken artifact creates a Munitions bomb. EE at 0 clears all MV-0 permanents including Munitions, dealing 2 damage per token. Fastest kill, most explosive. Japanese innovation from Pro Tour EOE. This guide is built around this version.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Build 2 — Classic</div>
+      <div class="card-title">Thoughtcast / Thought Monitor Shell</div>
+      <div class="card-body"><span class="c">Thoughtcast</span> and <span class="c">Thought Monitor</span> provide pure card draw. Slower but more resilient. Less explosive ceiling but grinds better through disruption. Still runs <span class="c">Pinnacle Emissary</span> and <span class="c">Kappa Cannoneer</span> as core win conditions. Less combo-reliant — wins purely on artifact pressure.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Build 3 — Hybrid</div>
+      <div class="card-title">Ravenous Robots Shell</div>
+      <div class="card-body"><span class="c">Ravenous Robots</span> ({1}{R}, 2/1) creates a 1/1 Robot token whenever you cast an artifact spell. Doubles token production with Pinnacle Emissary — each artifact spell creates both a Drone (from Emissary) and a Robot (from Robots). Higher token count, faster Improvise payoffs. Some Mar 2026 lists run 4 Robots over other slots.</div>
+    </div>
+  </div>
+
+  <h2>Oracle Accuracy — Critical Interactions</h2>
+  <div class="card-grid">
+    <div class="card">
+      <div class="card-label">Pinnacle Emissary</div>
+      <div class="card-title">{1}{U}{R} · 3/3 Artifact Creature</div>
+      <div class="card-body">Whenever you cast an artifact spell, create a 1/1 colorless Drone with flying that can only block creatures with flying. Warp {U/R} (cast for 2 mana, exiled at next end step, can be recast from exile). The Drone trigger fires on CAST — before the spell resolves. This means if the spell gets countered, you still get the Drone.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Kappa Cannoneer</div>
+      <div class="card-title">{5}{U} · 4/4 Artifact Creature</div>
+      <div class="card-body">Improvise — each tapped artifact pays {1}. Ward {4}. Whenever this or another artifact you control enters, put a +1/+1 counter on it and it can't be blocked this turn. The Ward means targeted removal costs 4 extra — opponents spend 5-6 mana to kill it. The enters trigger fires on ALL artifacts: creatures, tokens, equipment, enchantments, Urza's Saga Constructs, Drones. Every artifact that enters grows Kappa and makes it unblockable.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Weapons Manufacturing</div>
+      <div class="card-title">{1}{R} · Enchantment</div>
+      <div class="card-body">Whenever a NONtoken artifact you control enters, create a colorless Munitions artifact token with "When this token leaves the battlefield, it deals 2 damage to any target." The trigger is nontoken only — Drone tokens and Robot tokens do not trigger it. Your Memnites, Baubles, Mox Opals, Engineered Explosives all trigger it. Each triggers creates one Munitions bomb.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Engineered Explosives</div>
+      <div class="card-title">{X} · Artifact · Sunburst</div>
+      <div class="card-body">Enters with charge counters equal to the number of COLORS of mana spent to cast it. {2}, Sacrifice: Destroy each nonland permanent with mana value equal to the number of charge counters. At X=0 with colorless mana: 0 charge counters, destroys all MV-0 permanents. Munitions tokens have MV 0 (no mana cost) — they're destroyed, each dealing 2 damage. Your own Memnites and Ornithopters (MV 0) also die. Time this correctly.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Sink into Stupor</div>
+      <div class="card-title">{1}{U}{U} // Land · MDFC</div>
+      <div class="card-body">Front: Instant — return target spell or nonland permanent an opponent controls to its owner's hand. Back (Soporific Springs): land that ETBs tapped unless you pay 3 life. This is both bounce spell AND land. The flexibility is immense — it's interaction that doesn't cost you a land drop. The 3 life payment is real; track your life total carefully when taking Soporific Springs tapped vs paying 3.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Urza's Saga</div>
+      <div class="card-title">Enchantment Land · 3 chapters</div>
+      <div class="card-body">Ch I: gains "{T}: Add {C}." Ch II: gains "{2}{T}: Create 0/0 Construct that gets +1/+1 for each artifact you control." Ch III: Search library for artifact with MV 0 or 1, put it onto the battlefield, shuffle. The Construct scales with your artifact count — with 12 artifacts, it's a 12/12 the turn it enters. Ch III tutors MV 0-1 artifacts: Mox Opal, Mishra's Bauble, Claws of Gix, Tormod's Crypt, Springleaf Drum.</div>
+    </div>
+  </div>
+</div>
+
+<!-- DECKLIST -->
+<div id="decklist" class="section">
+  <div class="section-label">Chapter 02</div>
+  <h1>The 75</h1>
+  <p>The Weapons Manufacturing aggregate build (Mar 2026 RCQ reference). This list represents the consensus of recent MTGO Challenge finishes and RC results. Flex slots vary between builds — see Tuning for adjustments.</p>
+
+  <div class="decklist">
+    <div class="dl-section">
+      <div class="dl-section-label">Maindeck — 60 cards</div>
+
+      <div class="dl-group">
+        <div class="dl-group-label">Win Conditions</div>
+        <div class="dl-card-row"><span><span class="c">Kappa Cannoneer</span></span><span class="dl-qty">4</span></div>
+        <div class="dl-card-row"><span><span class="c">Pinnacle Emissary</span></span><span class="dl-qty">4</span></div>
+      </div>
+
+      <div class="dl-group">
+        <div class="dl-group-label">Engine</div>
+        <div class="dl-card-row"><span><span class="c">Weapons Manufacturing</span></span><span class="dl-qty">4</span></div>
+        <div class="dl-card-row"><span><span class="c">Engineered Explosives</span></span><span class="dl-qty">4</span></div>
+        <div class="dl-card-row"><span><span class="c">Mox Opal</span></span><span class="dl-qty">4</span></div>
+        <div class="dl-card-row"><span><span class="c">Mishra's Bauble</span></span><span class="dl-qty">4</span></div>
+        <div class="dl-card-row"><span><span class="c">Emry, Lurker of the Loch</span></span><span class="dl-qty">2</span></div>
+        <div class="dl-card-row"><span><span class="c">Arcbound Ravager</span></span><span class="dl-qty">2</span></div>
+      </div>
+
+      <div class="dl-group">
+        <div class="dl-group-label">Interaction</div>
+        <div class="dl-card-row"><span><span class="c">Sink into Stupor</span> // Soporific Springs</span><span class="dl-qty">3</span></div>
+        <div class="dl-card-row"><span><span class="c">Metallic Rebuke</span></span><span class="dl-qty">3</span></div>
+      </div>
+
+      <div class="dl-group">
+        <div class="dl-group-label">Utility / Free Artifacts</div>
+        <div class="dl-card-row"><span><span class="c">Tormod's Crypt</span></span><span class="dl-qty">3</span></div>
+        <div class="dl-card-row"><span><span class="c">Claws of Gix</span></span><span class="dl-qty">3</span></div>
+        <div class="dl-card-row"><span><span class="c">Shadowspear</span></span><span class="dl-qty">1</span></div>
+        <div class="dl-card-row"><span><span class="c">Pithing Needle</span></span><span class="dl-qty">1</span></div>
+        <div class="dl-card-row"><span><span class="c">Welding Jar</span></span><span class="dl-qty">1</span></div>
+        <div class="dl-card-row"><span><span class="c">Aether Spellbomb</span></span><span class="dl-qty">1</span></div>
+        <div class="dl-card-row"><span>Skateboard</span><span class="dl-qty">1</span></div>
+      </div>
+
+      <div class="dl-group">
+        <div class="dl-group-label">Lands — 15</div>
+        <div class="dl-card-row"><span><span class="c">Urza's Saga</span></span><span class="dl-qty">4</span></div>
+        <div class="dl-card-row"><span>Fiery Islet</span><span class="dl-qty">4</span></div>
+        <div class="dl-card-row"><span>Spirebluff Canal</span><span class="dl-qty">4</span></div>
+        <div class="dl-card-row"><span>Island</span><span class="dl-qty">1</span></div>
+        <div class="dl-card-row"><span>Steam Vents</span><span class="dl-qty">1</span></div>
+        <div class="dl-card-row"><span>Shivan Reef</span><span class="dl-qty">1</span></div>
+      </div>
+    </div>
+
+    <div class="dl-section">
+      <div class="dl-section-label">Sideboard — 15 cards</div>
+
+      <div class="dl-group">
+        <div class="dl-group-label">Combo / Storm Hate</div>
+        <div class="dl-card-row"><span><span class="c">Damping Sphere</span></span><span class="dl-qty">3</span></div>
+        <div class="dl-card-row"><span><span class="c">Consign to Memory</span></span><span class="dl-qty">2</span></div>
+        <div class="dl-card-row"><span>Grafdigger's Cage</span><span class="dl-qty">1</span></div>
+      </div>
+
+      <div class="dl-group">
+        <div class="dl-group-label">Sweeper / Board Control</div>
+        <div class="dl-card-row"><span><span class="c">Whipflare</span></span><span class="dl-qty">2</span></div>
+        <div class="dl-card-row"><span><span class="c">Galvanic Blast</span></span><span class="dl-qty">2</span></div>
+      </div>
+
+      <div class="dl-group">
+        <div class="dl-group-label">Counter Package</div>
+        <div class="dl-card-row"><span><span class="c">Mystical Dispute</span></span><span class="dl-qty">2</span></div>
+        <div class="dl-card-row"><span><span class="c">Force of Negation</span></span><span class="dl-qty">1</span></div>
+        <div class="dl-card-row"><span>Vexing Bauble</span><span class="dl-qty">1</span></div>
+      </div>
+
+      <div class="dl-group">
+        <div class="dl-group-label">Graveyard Utility</div>
+        <div class="dl-card-row"><span><span class="c">Emry, Lurker of the Loch</span></span><span class="dl-qty">1</span></div>
+      </div>
+
+      <h3>Key Card Notes</h3>
+      <div class="sb-card-guide">
+        <div class="sb-guide-row"><div class="sb-guide-name">Kappa Cannoneer</div><div class="sb-guide-body">Primary win condition. Ward 4 makes it essentially unkillable with single spells. Every artifact entering gives it a +1/+1 counter and unblockability for the turn. With 4 Drones entering off Emissary after turn-1 Emissary, Kappa is easily a 8/8+ by the time it attacks. The Ward means targeted removal requires 4 extra mana — Solitude (evoke) bypasses Ward entirely since it exiles rather than targets (it does target, but pays the Ward cost via life and card). This is the matchup-defining thing to understand against Blink decks.</div></div>
+        <div class="sb-guide-row"><div class="sb-guide-name">Mox Opal</div><div class="sb-guide-body">Metalcraft {T}: add one mana of any color. Three artifacts = active. With Emissary in play, every artifact spell generates a Drone — the third artifact is usually already in play by turn 1. Mox Opal enables casting Kappa Cannoneer through Improvise + Mox. Active on the vast majority of turn-1 hands. Critical: Stony Silence shuts off Mox. Karn, the Great Creator shuts off Mox (artifact activated abilities on opponent's side are shut off, but you're the controller — check wording: Karn prevents opponents from activating abilities of artifacts they don't control. So Mox works fine under Karn if you control it). Wait — re-read: "Opponents can't activate abilities of artifacts they don't control." So Karn doesn't affect your own Mox. The issue with Karn is the -2 that fetches sideboard artifacts as a catch-all.</div></div>
+        <div class="sb-guide-row"><div class="sb-guide-name">Claws of Gix</div><div class="sb-guide-body">{0} artifact — {1}: sacrifice a permanent, gain 1 life. This is in the deck for two purposes: (1) Sacrificing Munitions tokens deliberately to trigger their "deal 2 damage" ability without needing EE — you can ping 1 damage per Munitions sacrifice for {1} mana each. (2) Sacrificing your own artifacts in response to Stony Silence (the silence doesn't prevent sacrifice, it prevents activated abilities — check: Claws of Gix activates an ability to sacrifice, so under Stony Silence, Claws of Gix cannot activate). Actually Stony Silence shuts down Claws entirely. Note: Welding Jar ({0}, tap, sacrifice: regenerate target artifact) is the GY-recursion tool for key artifacts.</div></div>
+        <div class="sb-guide-row"><div class="sb-guide-name">Sink into Stupor</div><div class="sb-guide-body">Modal DFC. Bounce spell OR land. The bounce mode (instant, {1}{U}{U}) returns any spell or nonland permanent to hand — this hits Teferi, Time Raveler (critical), Rest in Peace, Stony Silence, Solitude already on board. The land side (Soporific Springs) ETBs tapped unless you pay 3 life. The life payment is real — in races, 3 life matters. The correct mode is heavily matchup dependent. Against combo decks it's a land that doesn't bounce. Against control it might be the only bounce you have for a problematic permanent.</div></div>
+        <div class="sb-guide-row"><div class="sb-guide-name">Damping Sphere</div><div class="sb-guide-body">Each spell costs {1} more for each spell cast this turn. Against Ruby Storm, this prevents chaining multiple spells per turn — each ritual, cantrip, and spell costs 1 more for each prior spell. On their third spell, they're paying 2 extra. On their eighth spell, they're paying 7 extra. Storm chains collapse entirely. Against Tron: "if a land is tapped for 2+ mana, it produces C instead." Tron lands (Urza's Mine, Power Plant, Tower) produce colorless but multiple mana — under Sphere they produce only one colorless. Sphere shuts off Tron mana production while also taxing their spells.</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- GAME FLOW -->
+<div id="gameplan" class="section">
+  <div class="section-label">Chapter 03</div>
+  <h1>Game<br>Flow</h1>
+
+  <p>Izzet Affinity plays two kinds of turns: setup turns where you flood the board with artifacts, and explosion turns where that board converts into an unkillable threat or a lethal damage burst. The skill of the deck is identifying which turn is the explosion turn and setting it up correctly.</p>
+
+  <h2>Turn Sequence</h2>
+  <div class="card-grid">
+    <div class="card">
+      <div class="card-label">Turn 1</div>
+      <div class="card-title">Flood the Board</div>
+      <div class="card-body">Ideal T1: Island → Mox Opal (Metalcraft not active) → Memnite (free) → Pinnacle Emissary (U/R from Mox). Emissary enters. Now every artifact you cast creates a Drone. Cast another free artifact (Mishra's Bauble, Claws of Gix, Tormod's Crypt) → Drone enters. 3 artifacts on board → Mox Opal is now active for Metalcraft. Kappa Cannoneer can come down T1 if you have enough Improvise fodder.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Turn 2</div>
+      <div class="card-title">Kappa or Saga</div>
+      <div class="card-body">With the T1 Emissary board, Kappa Cannoneer drops on T2 tapping Drones for Improvise. It enters as a 5/5+ (counter from entering + the Drones entering). Immediately unblockable this turn. Alternatively: <span class="c">Urza's Saga</span> on T2 means Chapter II Construct production by T3-4, and Chapter III tutors a 0-1 MV artifact. The Saga line is slower but more resilient — Kappa can be countered, Constructs just sit there growing.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Turn 3-4</div>
+      <div class="card-title">Weapons Manufacturing Burst</div>
+      <div class="card-body">Once <span class="c">Weapons Manufacturing</span> is active: every nontoken artifact entering creates a Munitions bomb. By T3-4 with a healthy board, you have 4-8 Munitions tokens. <span class="c">Engineered Explosives</span> at X=0 (cost: {0}, cast with colorless mana from Mox, Fiery Islet, or Claws sacrifice) destroys all MV-0 permanents — including all Munitions tokens, each dealing 2 damage. 6 Munitions = 12 damage. Often lethal from nowhere.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Late Game</div>
+      <div class="card-title">Emry Recursion Loop</div>
+      <div class="card-body"><span class="c">Emry, Lurker of the Loch</span> mills 4 on entry and taps to cast an artifact card from your GY. With a deep GY and Emry recurring artifacts every turn, the board replenishes through removal. Emry + Weapons Manufacturing = every recurred artifact creates another Munitions. The late game is not about topdecking — it's about using the GY as a second hand.</div>
+    </div>
+  </div>
+
+  <h2>Two Mulligan Frameworks</h2>
+  <p>Izzet Affinity mulligans more aggressively than almost any deck in Modern. You need a functional hand that can exploit Metalcraft or generate an Emissary board. Bad hands lose immediately with no recovery path.</p>
+
+  <div class="card-grid card-grid-2">
+    <div class="card">
+      <div class="card-label">Framework 1 — Emissary Hand</div>
+      <div class="card-title">Snap Keep</div>
+      <div class="card-body">Any hand with <span class="c">Pinnacle Emissary</span> + at least two 0-mana artifacts + a way to cast Emissary (Island/Steam Vents/Spirebluff + Mox Opal or Fiery Islet). This hand floods Drones on turn 2-3 and can drop Kappa Cannoneer by turn 2. The hand wins on its own if not disrupted — it does not need draws.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Framework 2 — Saga Setup</div>
+      <div class="card-title">Keep</div>
+      <div class="card-body"><span class="c">Urza's Saga</span> + a second land + either Springleaf Drum + 0-cost artifact, OR Mox Opal + other artifacts. This generates Construct tokens starting turn 3, creates a growing threat that scales with artifact count, and tutors a key 0-1 MV artifact on chapter III. Slower but self-sufficient — the Constructs win games that get disrupted in the early turns.</div>
+    </div>
+  </div>
+
+  <p>The crucial tension: the fewer cards you mulligan to, the more dangerous each card becomes. A 5-card hand of Emissary + Kappa + dual land + two 0-drops can win if you draw any functional card. Take the risk. This deck rewards calculated gambling on mulligans more than almost any other deck in the format.</p>
+
+  <h2>Snap Mulligans</h2>
+  <p>Always mulligan these:</p>
+  <ul style="margin-left:20px;margin-bottom:16px;font-weight:300;">
+    <li>Any hand with zero 0-cost artifacts and no <span class="c">Pinnacle Emissary</span> — you can't enable Metalcraft or generate Drones</li>
+    <li>Any hand with two or more copies of <span class="c">Kappa Cannoneer</span> and no way to cast one early — stuck holding expensive cards</li>
+    <li>Any hand with all lands and <span class="c">Weapons Manufacturing</span> but no artifacts — enchantment that does nothing without artifact density</li>
+    <li>Any hand that can't produce colored mana by turn 2 — 15 lands is very low, mana-screw hands are unkeepable</li>
+  </ul>
+
+  <h2>Phase-by-Phase Decision Making</h2>
+  <div class="sb-card-guide">
+    <div class="sb-guide-row"><div class="sb-guide-name">Opening Hand Decision</div><div class="sb-guide-body">Ask in order: (1) Can I cast Emissary or Saga on turns 1-2? (2) Do I have 3+ artifacts to enable Metalcraft? (3) Will I have mana for Kappa by turn 2? If yes to any two, keep. If no to all three, mulligan. At 5 cards or fewer, keep any hand with Emissary + a mana source — single draws can complete the line.</div></div>
+    <div class="sb-guide-row"><div class="sb-guide-name">Pre-Combat Main Phase</div><div class="sb-guide-body">Decide: do you deploy <span class="c">Weapons Manufacturing</span> now or hold for a better moment? Manufacturing is most impactful before a turn where you plan to cast multiple artifacts — each new artifact entering creates a Munitions bomb. Deploying Manufacturing on turn 3 then casting 4 artifacts on turn 4 generates 4 Munitions, primed for EE. Don't deploy Manufacturing then immediately EE — give it a turn to stack Munitions.</div></div>
+    <div class="sb-guide-row"><div class="sb-guide-name">EE Timing</div><div class="sb-guide-body"><span class="c">Engineered Explosives</span> at X=0: you need (1) Weapons Manufacturing active, (2) at least 4 Munitions tokens for meaningful damage, (3) opponent in kill range from 8+ damage. EE at 0 costs {0} to cast (just a colorless mana source) — Mox Opal, tapped Fiery Islet, sacrifice Claws of Gix for life, etc. The {2} sacrifice cost is the mana you need to hold. Total kill sequence: build Munitions → hold {2} mana → sacrifice EE at instant speed if needed, or main phase for sorcery-speed Wrath effects.</div></div>
+    <div class="sb-guide-row"><div class="sb-guide-name">When Kappa Is Under Pressure</div><div class="sb-guide-body">Ward 4 means they spend 4+ extra mana to target Kappa. If they spend 6-10 mana killing your Kappa, you've tempo-won the exchange — you spent 2 Improvise mana, they spent 10. Don't overvalue protecting Kappa at the cost of tempo. Let it die to Solitude evoke (which bypasses Ward by paying the cost with life/card) — that's the correct play for them. Rebuild with Emry or a second Kappa.</div></div>
+  </div>
+</div>
+
+<!-- ENGINES -->
+<div id="engines" class="section">
+  <div class="section-label">Chapter 04</div>
+  <h1>Core<br>Engines</h1>
+  <p>Three engines drive Izzet Affinity wins. They work simultaneously and stack — the best turns activate all three in the same sequence.</p>
+
+  <div class="engine-block">
+    <div class="engine-header"><div class="engine-letter">A</div>
+      <div><div class="engine-name">Pinnacle Emissary Token Flood Engine</div>
+      <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(242,237,230,0.4);margin-top:4px;">Every artifact cast after Emissary enters is a free 1/1 flying Drone. Kappa Cannoneer converts each one into a +1/+1 counter and a turn of unblockability.</div></div>
+    </div>
+    <div class="engine-body">
+      <div class="engine-step"><div class="engine-step-label">Setup</div><div class="engine-step-title">Emissary on T1 or T2</div>
+      <div class="engine-step-body">Cast <span class="c">Pinnacle Emissary</span> with colored mana (Spirebluff Canal, Steam Vents, Mox Opal with Metalcraft). Every artifact spell you cast while Emissary is in play creates a 1/1 Drone with flying (can only block creatures with flying — so it doesn't block ground threats, it only attacks). The Drone trigger fires on CAST, not resolution — a countered artifact still makes a Drone.</div></div>
+      <div class="engine-step"><div class="engine-step-label">Execution</div><div class="engine-step-title">Cast Free Artifacts Into Drones</div>
+      <div class="engine-step-body">Each zero-cost artifact (Memnite, Mishra's Bauble, Tormod's Crypt, Claws of Gix, Ornithopter) cast after Emissary creates a free Drone. Cast four free artifacts = four 1/1 Drones immediately. Those Drones tap for Improvise on Kappa Cannoneer, enable Metalcraft for Mox Opal and Galvanic Blast, and trigger Kappa's counter + unblockable ability when they enter. Emissary's Warp cost ({U/R}) lets you deploy it for 2 mana to get the trigger engine online faster.</div></div>
+      <div class="engine-step"><div class="engine-step-label">Result</div><div class="engine-step-title">T1-T2 Kappa Cannoneer</div>
+      <div class="engine-step-body">With Emissary active and five 0-cost artifacts in hand: tap Mox Opal for {U}, cast Kappa via Improvise (tapping Drones and free artifacts for the {5} portion). Kappa enters as a 5/5+ (entry counter + Drone entry counters). It's unblockable on the turn it enters. Opponents have four turns to find 9 mana (6 to cast + 4 Ward to target) or they die. This is the fastest consistent kill in Modern.</div></div>
+    </div>
+  </div>
+
+  <div class="engine-block">
+    <div class="engine-header"><div class="engine-letter">B</div>
+      <div><div class="engine-name">Weapons Manufacturing + Engineered Explosives Burst</div>
+      <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(242,237,230,0.4);margin-top:4px;">Every nontoken artifact entering creates a Munitions bomb. EE at X=0 detonates them all simultaneously. The damage is uncounterable and bypasses hexproof.</div></div>
+    </div>
+    <div class="engine-body">
+      <div class="engine-step"><div class="engine-step-label">Setup</div><div class="engine-step-title">Weapons Manufacturing Active</div>
+      <div class="engine-step-body">Cast <span class="c">Weapons Manufacturing</span> on turn 2 or 3. Once active, every nontoken artifact you control entering creates a Munitions token — a colorless artifact with "when this token leaves the battlefield, it deals 2 damage to any target." These tokens stack up passively while you play your normal game. Each artifact you cast after Manufacturing is a 2-damage bomb primed to fire.</div></div>
+      <div class="engine-step"><div class="engine-step-label">Execution</div><div class="engine-step-title">Build Munitions, Then EE at 0</div>
+      <div class="engine-step-body">Cast multiple nontoken artifacts over turns 2-4: each creates a Munitions token. When you have 4-8 Munitions and opponent is at 8-16 life, cast <span class="c">Engineered Explosives</span> for X=0 (any colorless source pays {0}). Hold {2} mana open. When ready: sacrifice EE — it destroys all MV-0 nonland permanents. Munitions tokens have MV 0 (no mana cost = MV 0) — they're destroyed, each dealing 2 damage. 6 Munitions = 12 damage split however you like.</div></div>
+      <div class="engine-step"><div class="engine-step-label">Result</div><div class="engine-step-title">Uncounterable Lethal Burst</div>
+      <div class="engine-step-body">The Munitions damage triggers fire when tokens leave the battlefield — this is a triggered ability on the tokens, not a targeted effect. Protection from red doesn't stop it (the tokens are colorless, dealing colorless damage). Hexproof doesn't stop it (triggered abilities don't target unless they say "target"). Indestructible doesn't stop it (damage is still dealt). This burst is essentially unavoidable once set up. Even Teferi TRav (sorcery lock) doesn't stop the EE sacrifice since you activate it as an activated ability at any time.</div></div>
+    </div>
+  </div>
+
+  <div class="engine-block">
+    <div class="engine-header"><div class="engine-letter">C</div>
+      <div><div class="engine-name">Urza's Saga + Emry Recursion Engine</div>
+      <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(242,237,230,0.4);margin-top:4px;">Urza's Saga creates Constructs that scale with artifact count and tutors zero-drops on chapter III. Emry recycles artifacts from the GY every turn — your graveyard is a second hand.</div></div>
+    </div>
+    <div class="engine-body">
+      <div class="engine-step"><div class="engine-step-label">Setup</div><div class="engine-step-title">Saga on Turn 2, Emry When Deep</div>
+      <div class="engine-step-body"><span class="c">Urza's Saga</span> enters as a land — play it on any turn as your land drop. Chapter I (same turn): gains "{T}: Add {C}." Chapter II (next turn): gains "{2}{T}: Create 0/0 Construct that gets +1/+1 for each artifact you control." A Construct entering with 10 artifacts controlled is a 10/10. Chapter III: search library for MV 0-1 artifact, put it onto the battlefield. Priority targets: Mox Opal (if you don't have one), Pithing Needle (name a problem card), Shadowspear (steal trample/lifelink).</div></div>
+      <div class="engine-step"><div class="engine-step-label">Execution</div><div class="engine-step-title">Emry + GY Artifact Loop</div>
+      <div class="engine-step-body"><span class="c">Emry, Lurker of the Loch</span> has Affinity for artifacts (costs 1 less per artifact, often 1 or free). ETB mills 4. Tap: choose an artifact in your GY, cast it this turn. With Emry active: Mishra's Bauble from GY (draw a card at next upkeep), Engineered Explosives from GY (reusable burst), Tormod's Crypt from GY (exile GY again). The GY is a second hand when Emry is in play. Claws of Gix in the GY lets you sacrifice permanents repeatedly for life padding.</div></div>
+      <div class="engine-step"><div class="engine-step-label">Result</div><div class="engine-step-title">Inevitability Through Recursion</div>
+      <div class="engine-step-body">Games that go long favor Emry. Opponents exhaust their removal killing your threats; Emry brings them back from the GY. A single Emry makes every artifact you've ever played a live card again. This is why Izzet Affinity wins games after sweepers — other artifact decks lose to Wrath of God, Affinity recurses through it. The Saga Chapter III tutor also finds the exact artifact you need for the board state: Shadowspear for lifelink in aggressive races, Welding Jar to regenerate Kappa, Pithing Needle on opponent's key activated ability.</div></div>
+    </div>
+  </div>
+
+  <h2>Lines &amp; Tricks</h2>
+  <ul class="tricks-list">
+    <li><span class="trick-tag">Stack</span><span><strong>Cast EE for X=0 at instant speed to pop Munitions after blockers are declared:</strong> During combat, after they declare blockers, sacrifice EE in the second main phase OR hold priority after attacks — actually: EE sacrifice is an activated ability ({2}, Sacrifice: ...) which you can activate at any time you could cast an instant. Sacrifice EE after they declare blockers but before damage — Munitions tokens are destroyed, dealing 2 damage each to any target. You can split this damage: some to their creatures (finishing off blocked attackers), some to their face. This is the combat sequence to master.</span></li>
+    <li><span class="trick-tag">Stack</span><span><strong>Drone trigger fires on CAST, not resolution:</strong> Cast an artifact. Pinnacle Emissary trigger goes on the stack — Drone enters. Opponent counters the artifact spell. The Drone is still in play because the trigger already resolved. Each countered artifact still generates a Drone. This means against heavy countermagic decks, your free artifacts are free Drones even when countered.</span></li>
+    <li><span class="trick-tag">Sequence</span><span><strong>Shadowspear before attacking into lifelink threats:</strong> Equip <span class="c">Shadowspear</span> for {2} to a Kappa Cannoneer or Construct. The equipped creature gets +1/+1, trample, and lifelink. More critically: Shadowspear's {1} activated ability removes hexproof and indestructible from all opponent permanents until end of turn. This makes Scion of Draco targetable (loses hexproof), Teferi Hero killable (loses indestructible if somehow relevant). Always check if Shadowspear {1} activates before targeting anything.</span></li>
+    <li><span class="trick-tag">Sequence</span><span><strong>Arcbound Ravager + Munitions sacrifice loop:</strong> <span class="c">Arcbound Ravager</span> sacrifices artifacts to put +1/+1 counters on itself. Sacrificing a Munitions token to Ravager (not to EE) triggers the Munitions "when this token leaves the battlefield" ability — dealing 2 damage. Ravager grows by 1 per sacrifice. You can sacrifice multiple Munitions tokens to Ravager during combat to: (1) grow Ravager, (2) deal 2 damage per Munitions sacrificed, (3) build Ravager's modular counters for transfer to another artifact creature when Ravager dies.</span></li>
+    <li><span class="trick-tag">Avoid</span><span><strong>Don't EE at 0 when you have Mox Opals you still need:</strong> EE at 0 destroys all MV-0 nonland permanents — including your Mox Opals (MV 0), Memnites (MV 0), Ornithopters (MV 0), Mishra's Baubles (MV 0). This is intended in the kill sequence, but destructive if you need that Mox Opal for mana. Calculate: do I still need my MV-0 artifacts after this EE? If yes, hold EE or cast it at X=1 with one color mana (1 charge counter, destroys MV-1 permanents instead).</span></li>
+  </ul>
+</div>
+
+<!-- ROLES -->
+<div id="roles" class="section">
+  <div class="section-label">Chapter 05</div>
+  <h1>Role<br>Assignment</h1>
+  <p>Izzet Affinity has one role: apply overwhelming pressure. The deck does not pivot to a pure control or pure combo role. What changes is which win condition you prioritize based on what they can and cannot answer.</p>
+  <div class="role-grid">
+    <div class="role-card">
+      <div class="role-name role-name-primary">Kappa Beatdown</div>
+      <div class="role-desc">The default role. Deploy <span class="c">Pinnacle Emissary</span>, flood Drones, land Kappa Cannoneer with Ward 4, attack every turn. Their removal is expensive (Ward 4 taxes), their blockers are outclassed (growing +1/+1 counters), and their life total drains in 3-4 attacks. This role wins most games in the format.</div>
+      <div class="role-matchups">vs Boros · vs Prowess · vs Zoo · vs Midrange</div>
+    </div>
+    <div class="role-card">
+      <div class="role-name role-name-secondary">Weapons Burst</div>
+      <div class="role-desc">When they can answer Kappa (Solitude evoke, mass removal), pivot to the Weapons Manufacturing finish. Stack Munitions over multiple turns, then EE at 0 for burst damage. This role wins games where combat is locked down by a stable ground board or where your creatures keep dying.</div>
+      <div class="role-matchups">vs Control · vs Jeskai Blink · vs Slow Midrange</div>
+    </div>
+    <div class="role-card">
+      <div class="role-name role-name-tertiary">Saga Inevitability</div>
+      <div class="role-desc">When both Kappa and EE are disrupted, <span class="c">Urza's Saga</span> Constructs scale infinitely. A 15/15 Construct is not answered by most removal. Chapter III tutors the exact artifact needed for the board state. This role wins attrition games and grinds down fair decks that run out of answers.</div>
+      <div class="role-matchups">vs Attrition Decks · vs GY Midrange · vs Slow Control</div>
+    </div>
+  </div>
+
+  <h2>Role Signals</h2>
+  <div class="sb-card-guide">
+    <div class="sb-guide-row"><div class="sb-guide-name">Switch to Weapons Burst when</div><div class="sb-guide-body">They've demonstrated Solitude (bypasses Ward) or Wrath of the Skies (board clear). Now Kappa won't stick. Deploy Weapons Manufacturing as your priority and accumulate Munitions passively. Every artifact you play after Manufacturing is a 2-damage bomb they can't see coming. Hold EE until you have 4+ Munitions and they're at 8-12 life.</div></div>
+    <div class="sb-guide-row"><div class="sb-guide-name">Switch to Saga Inevitability when</div><div class="sb-guide-body">Both Kappa and your EE burst have been answered. Your GY is deep, Emry is or can be in play, and the game is going long. Stop racing, start grinding. Emry recurring Bauble every turn draws a card per turn. Saga creates an ever-growing Construct. A 20/20 Construct that was tutored with Shadowspear (for lifelink + trample) isn't answered by conventional removal.</div></div>
+    <div class="sb-guide-row"><div class="sb-guide-name">Never switch to pure control</div><div class="sb-guide-body">This is not a control deck. Even when holding Metallic Rebuke and Sink into Stupor, you are the aggressor. The counterspells protect your threats — they don't win the game alone. Don't get caught holding interaction while your threats sit in hand. Deploy threats first, hold counters for their answers, not vice versa.</div></div>
+  </div>
+</div>
+
+<!-- MATCHUPS -->
+<div id="matchups" class="section">
+  <div class="section-label">Chapter 06</div>
+  <h1>Matchup<br>Deep Dives</h1>
+  <p>Live meta data: Feb–Mar 2026, 103 tournaments, 3,787 players. Win rates sourced from matchup matrix. Click any row to expand the deep dive.</p>
+
+  <table class="matchup-table">
+    <thead><tr><th>Matchup</th><th>Meta Share</th><th>Assessment</th><th>Key Tension</th></tr></thead>
+    <tbody>
+      <tr onclick="toggleMatchup('mu_boros_a')"><td><strong>Boros Energy</strong></td><td>15.6%</td><td><span class="diff-good">Favored</span></td><td>Ward 4 Kappa and Construct tokens they can't handle</td></tr>
+      <tr onclick="toggleMatchup('mu_jeskai_a')"><td><strong>Jeskai Blink</strong></td><td>6.7%</td><td><span class="diff-hard">Hard</span></td><td>Solitude bypasses Ward, Wrath clears board, Phelia bounces</td></tr>
+      <tr onclick="toggleMatchup('mu_prowess_a')"><td><strong>Izzet Prowess</strong></td><td>3.3%</td><td><span class="diff-even">Even</span></td><td>Speed race — both kill turns 3-4, their burn ignores Ward</td></tr>
+      <tr onclick="toggleMatchup('mu_glock_a')"><td><strong>Grixis Reanimator</strong></td><td>1.3%</td><td><span class="diff-even">Even</span></td><td>Thoughtseize strips key pieces, Dismember post-board answers</td></tr>
+      <tr onclick="toggleMatchup('mu_titan_a')"><td><strong>Amulet Titan</strong></td><td>3.1%</td><td><span class="diff-even">Even</span></td><td>Race Tron assembly — Consign counters Saga and Titan triggers</td></tr>
+      <tr onclick="toggleMatchup('mu_mirror_a')"><td><strong>Izzet Affinity Mirror</strong></td><td>7.1%</td><td><span class="diff-even">Even</span></td><td>First Kappa wins — Emissary speed and Ward order matters</td></tr>
+      <tr onclick="toggleMatchup('mu_storm_a')"><td><strong>Ruby Storm</strong></td><td>6.2%</td><td><span class="diff-even">Even</span></td><td>Your speed vs their chain — Damping Sphere and FoN postboard</td></tr>
+      <tr onclick="toggleMatchup('mu_etron_a')"><td><strong>Eldrazi Tron</strong></td><td>5.5%</td><td><span class="diff-hard">Hard</span></td><td>Karn locks artifacts, All is Dust clears board, Chalice at 1</td></tr>
+      <tr onclick="toggleMatchup('mu_zoo_a')"><td><strong>Domain Aggro</strong></td><td>2.6%</td><td><span class="diff-good">Favored</span></td><td>Kappa unblockable, Construct army, Saga tokens + Shadowspear</td></tr>
+      <tr onclick="toggleMatchup('mu_esper_a')"><td><strong>Esper Reanimator</strong></td><td>1.8%</td><td><span class="diff-good">Favored</span></td><td>Fast Kappa + Saga faster than their combo; Thoughtseize hurts</td></tr>
+      <tr onclick="toggleMatchup('mu_control_a')"><td><strong>Azorius Control</strong></td><td>1.4%</td><td><span class="diff-medium">Slight Dog</span></td><td>Supreme Verdict clears board; Weapons burst through their sweepers</td></tr>
+    </tbody>
+  </table>
+
+  <!-- BOROS ENERGY -->
+  <div id="mu_boros_a" class="matchup-detail">
+    <h3>Boros Energy — Favored: Your Threats Are Unanswerable</h3>
+    <p>Boros Energy's removal suite is <span class="c">Galvanic Discharge</span> (energy scaled) and Lightning Bolt variants — all targeted, all stopped by Ward 4 on <span class="c">Kappa Cannoneer</span> unless they have 4 extra mana. Their Goblin Bombardment reach (sacrifice → 1 damage) bypasses Ward but requires a critical mass of creatures — by the time they've built enough tokens to Bombardment you out, you've already killed them with Kappa. Their Urza's Saga interacts with yours (both generate large Constructs) but yours scales faster due to Pinnacle Emissary Drone production boosting artifact count. This is a favorable matchup because their interactive tools are too slow or too expensive against your Ward-4 threat.</p>
+    <h3>Play vs Draw</h3>
+    <div class="pd-grid">
+      <div class="pd-col"><div class="pd-label">On the Play</div><div class="pd-title">Emissary T1 → Kappa T2</div>
+      <div class="pd-body">Priority sequence: Island → Mox Opal → Emissary → free artifacts → Kappa turn 2 off Improvise. They have no turn-1 interaction. Their removal (Galvanic Discharge, Bolt) costs 3+ to matter against Ward 4. You kill them on turn 3-4 while they're still building energy counters.</div></div>
+      <div class="pd-col"><div class="pd-label">On the Draw</div><div class="pd-title">Race Goblin Bombardment</div>
+      <div class="pd-body">On the draw they can have Ocelot Pride + tokens + Goblin Bombardment by turn 4 with 8-10 damage ready. Your Kappa must be attacking by turn 3 on the draw. Don't develop slowly — deploy threats aggressively even into their board. Their Bombardment deals 1 per sacrifice — Kappa gaining Ward 4 means they need 5 sacrifices just to target it.</div></div>
+    </div>
+    <h3>Sideboard</h3>
+    <div class="sb-table">
+      <div class="sb-col"><div class="sb-col-label">In</div>
+        <div class="sb-item"><span>Whipflare</span><span class="sb-qty">+2</span></div>
+      </div>
+      <div class="sb-col"><div class="sb-col-label">Out</div>
+        <div class="sb-item"><span>Tormod's Crypt</span><span class="sb-qty">&minus;2</span></div>
+      </div>
+    </div>
+    <h3>If X &rarr; Do Y</h3>
+    <ul class="ifthen-list">
+      <li><span class="if-label">If</span><span><strong>Goblin Bombardment is in play and they have 10+ creature sacrifices available:</strong> Calculate exactly — 10 sacrifices at 1 damage each + any face damage from attackers. If that's lethal, you need to win NOW. Sacrifice all your Munitions tokens with <span class="c">Claws of Gix</span> first (2 damage each directed to face), deploy EE at 0 if Manufacturing is active, and close through Kappa. The race is turn-by-turn math.</span></li>
+      <li><span class="if-label">If</span><span><strong>Galvanic Discharge is aimed at Kappa (they have 4 energy + paying Ward):</strong> They're spending 4 mana + 4 energy on Kappa. That's a massive tempo advantage for you. Let it die — you've generated so much value from Kappa's entry trigger and attacks that losing it is fine. Deploy your second Kappa or switch to the Weapons Manufacturing burst plan.</span></li>
+      <li><span class="if-label">If</span><span><strong>Their Urza's Saga generates a large Construct and your Saga does too:</strong> The larger Construct wins combat. Your Construct scales with YOUR artifact count, theirs with THEIR artifact count. With Emissary flooding Drones, your artifact count is almost certainly higher. Attack with your Construct — theirs likely can't profitably block.</span></li>
+      <li><span class="if-label">If</span><span><strong>Whipflare is in your hand and they have a wide board of small creatures:</strong> Whipflare deals 2 to each NONartifact creature. Ocelot Pride tokens (1/1 cats — not artifacts), Guide of Souls, Swiftspear-level creatures all die. Your artifact creatures survive. This swings the board state dramatically on the turn you play it.</span></li>
+    </ul>
+  </div>
+
+  <!-- JESKAI BLINK -->
+  <div id="mu_jeskai_a" class="matchup-detail">
+    <h3>Jeskai Blink — Hard: Solitude Bypasses Ward, Phelia Loops Your Board</h3>
+    <p>Jeskai Blink is the hardest matchup for Izzet Affinity. <span class="c">Solitude</span> evoked (pay 1 life + exile a white card from hand) exiles <span class="c">Pinnacle Emissary</span> for zero mana on turn 0 and completely bypasses Ward 4 on Kappa Cannoneer — Solitude is a targeted effect and pays the Ward cost with life (Ward says "counter unless they pay 4 mana" — Solitude's evoke cost is not mana, but Ward's trigger asks "pay {4}" — actually Ward {4} says "counter this spell or ability unless its controller pays {4}." Solitude evoke exile resolves, then the Ward trigger goes on the stack. They pay 4 with life? No — Ward costs mana specifically. So they need to pay 4 mana OR the Solitude is countered. But Solitude already resolved when evoked... Actually let me clarify: Evoke means Solitude enters, the ETB trigger fires (exile creature), then Solitude is sacrificed. Ward fires when Solitude is cast and targets Kappa. They must pay 4 mana or the Ward trigger counters the Solitude spell. So against Kappa with Ward 4, Solitude costs {W} evoke + {4} Ward = 5 mana. Against Emissary (MV 3, no Ward), Solitude is free. This is the key distinction — Solitude is free against Emissary, expensive against Kappa. Their Ephemerate on Phelia also bounces your Emissary or Kappa for additional enters-the-battlefield value. Wrath of the Skies (destroy all creatures with power 3 or less? No — Wrath of the Skies is a White sorcery that destroys all creatures — check: "Destroy all creatures." Yes, board wipe) clears your entire board. This matchup is genuinely hard.</p>
+    <h3>Play vs Draw</h3>
+    <div class="pd-grid">
+      <div class="pd-col"><div class="pd-label">On the Play</div><div class="pd-title">Blood Moon on T2 Is Your Best Play</div>
+      <div class="pd-body">Blood Moon makes all nonbasic lands Mountains. Jeskai Blink has almost no basics — their Hallowed Fountains, Steam Vents, Sacred Foundries all become Mountains. Under Blood Moon they can't cast Wrath of the Skies (WW), Solitude (WWWW evoke), or Consign to Memory (U). Blood Moon on turn 2 (from your basic Island + Shivan Reef) can lock them out entirely. This is the highest-impact play in the matchup.</div></div>
+      <div class="pd-col"><div class="pd-label">On the Draw</div><div class="pd-title">Fast Kappa Is Your Only Path</div>
+      <div class="pd-body">On the draw they may have Solitude available by turn 3 to exile your Emissary immediately. Your only path is deploying Kappa Cannoneer before they have Solitude + {4} Ward mana available. If you can get Kappa attacking before turn 4, the Ward tax makes their interaction too expensive. Prioritize speed over everything.</div></div>
+    </div>
+    <h3>Sideboard</h3>
+    <div class="sb-table">
+      <div class="sb-col"><div class="sb-col-label">In</div>
+        <div class="sb-item"><span>Blood Moon</span><span class="sb-qty">+3</span></div>
+        <div class="sb-item"><span>Mystical Dispute</span><span class="sb-qty">+2</span></div>
+      </div>
+      <div class="sb-col"><div class="sb-col-label">Out</div>
+        <div class="sb-item"><span>Tormod's Crypt</span><span class="sb-qty">&minus;3</span></div>
+        <div class="sb-item"><span>Claws of Gix</span><span class="sb-qty">&minus;2</span></div>
+      </div>
+    </div>
+    <h3>If X &rarr; Do Y</h3>
+    <ul class="ifthen-list">
+      <li><span class="if-label">If</span><span><strong>Solitude is aimed at Pinnacle Emissary (free evoke):</strong> Emissary has no Ward — Solitude exiles it for free. You've lost your token engine for this turn. Counter Solitude with <span class="c">Metallic Rebuke</span> (Improvise makes it cheap) or <span class="c">Mystical Dispute</span> (1 mana against blue spells — Solitude is white, so Dispute doesn't get the discount). Rebuke is your correct counter here. Otherwise, accept the loss and shift to Saga or Weapons Manufacturing win condition.</span></li>
+      <li><span class="if-label">If</span><span><strong>Wrath of the Skies resolves (destroys all creatures):</strong> All your Kappa, Emissary, Emry die. Drones and Constructs (artifact creatures) also die. But Weapons Manufacturing enchantment stays. Munitions tokens stay (they're not creatures). Urza's Saga stays (enchantment land). Mox Opal stays (artifact). The EE burst plan survives a Wrath. Rebuild around Manufacturing and EE burst rather than restocking creatures.</span></li>
+      <li><span class="if-label">If</span><span><strong>Blood Moon is in play under a hand full of nonbasics:</strong> Check what your Jeskai opponent can cast. Hallowed Fountain, Steam Vents, Sacred Foundry all produce only R under Blood Moon. They can't cast Counterspell (UU), Wrath of the Skies (3WW), or Solitude (WWWW evoke / {4}WWW cast) if their only source is R. This is when you deploy threats without interruption.</span></li>
+      <li><span class="if-label">If</span><span><strong>Phelia, Exuberant Shepherd attacks and targets one of your permanents:</strong> Phelia's trigger exiles a nonland permanent you control until their next end step. If she targets your Emissary — Emissary returns at your end step and re-enters (triggering ETB if it had one, but Emissary has no ETB). If she targets your Kappa — Kappa returns at end step. This is annoying but not devastating. Block Phelia in combat if profitable (3/2 flying — can be blocked by Drones since Drones can only block flyers and Phelia flies).</span></li>
+    </ul>
+  </div>
+
+  <!-- IZZET PROWESS -->
+  <div id="mu_prowess_a" class="matchup-detail">
+    <h3>Izzet Prowess — Even: Speed Race, Ward Doesn't Matter</h3>
+    <p>Izzet Prowess kills on turns 3-4 with a chain of spells. You kill on turns 2-3. The race is extremely close. The critical difference: your damage ignores their board (Kappa is unblockable from Ward triggers; Constructs from Saga are large enough to attack through their creatures), while their Lightning Bolt can hit your Emissary (MV 3, no Ward) freely. Ward 4 on Kappa costs them 4 mana to target — they won't pay it in a speed race. But their Lava Dart + Mutagenic Growth burn chain can close the gap regardless of your board size.</p>
+    <h3>Play vs Draw</h3>
+    <div class="pd-grid">
+      <div class="pd-col"><div class="pd-label">On the Play</div><div class="pd-title">Kappa T2 Is Faster Than Their Kill</div>
+      <div class="pd-body">A Kappa Cannoneer on turn 2 attacking for 5+ starting turn 3 means they need to kill you in exactly 2 more turns (16 life after two attacks from 5/5 Kappa). Their chain takes 3-4 turns to set up fully. On the play you are faster — don't play around their interaction, just race.</div></div>
+      <div class="pd-col"><div class="pd-label">On the Draw</div><div class="pd-title">Hold Metallic Rebuke</div>
+      <div class="pd-body">On the draw their turn-3 kill is possible before you've deployed Kappa. Hold <span class="c">Metallic Rebuke</span> open for their Cori-Steel Cutter (MV 2 — Rebuke for {U} with Improvise). Countering Cutter denies their Flurry engine. Without Cutter, their kill is 1-2 turns slower. Don't use Rebuke on cantrips — save it for their engine card.</div></div>
+    </div>
+    <h3>Sideboard</h3>
+    <div class="sb-table">
+      <div class="sb-col"><div class="sb-col-label">In</div>
+        <div class="sb-item"><span>Galvanic Blast</span><span class="sb-qty">+2</span></div>
+        <div class="sb-item"><span>Whipflare</span><span class="sb-qty">+2</span></div>
+      </div>
+      <div class="sb-col"><div class="sb-col-label">Out</div>
+        <div class="sb-item"><span>Tormod's Crypt</span><span class="sb-qty">&minus;2</span></div>
+        <div class="sb-item"><span>Claws of Gix</span><span class="sb-qty">&minus;2</span></div>
+      </div>
+    </div>
+    <h3>If X &rarr; Do Y</h3>
+    <ul class="ifthen-list">
+      <li><span class="if-label">If</span><span><strong>Dragon's Rage Channeler has delirium (3/3 flying must-attack):</strong> DRC with delirium attacks every turn dealing 3. You can't profitably block it with Drones (Drones can block flyers — DRC flies — but Drones are 1/1 and DRC is 3/3 so your Drone dies). Let DRC through and race. Your Kappa deals more than DRC per turn. The race math: their 3/3 DRC kills you in ~7 turns, your 6/6+ Kappa kills them in 3-4 turns. Race it.</span></li>
+      <li><span class="if-label">If</span><span><strong>Mutagenic Growth is cast on an attacking creature during your block:</strong> Mutagenic Growth gives +2/+2 until EOT for 2 life — no mana cost. Cast in response to your block declaration. If a 2/2 Swiftspear becomes a 4/4 after you blocked with a 3/3 Kappa, Kappa dies. This is the trick to watch — don't block smaller prowess creatures if they have mana free and a hand size to pay 2 life. Let Kappa through and take the damage instead; it's still a 4+ power attacker that kills them faster.</span></li>
+      <li><span class="if-label">If</span><span><strong>Galvanic Blast is aimed at your Emissary (Metalcraft active — 4 damage):</strong> Emissary is a 3/3. Galvanic Blast with Metalcraft deals 4 — kills Emissary. You can sacrifice Emissary to <span class="c">Claws of Gix</span> in response (gaining 1 life, saving the Emissary from the Blast by removing it from combat before damage). Or just let it die — Emissary's value was in generating Drones, which are already in play.</span></li>
+    </ul>
+  </div>
+
+  <!-- GRIXIS REANIMATOR -->
+  <div id="mu_glock_a" class="matchup-detail">
+    <h3>Grixis Reanimator — Even: Thoughtseize Strips Your Hand, Archon ETB Devastating</h3>
+    <p>Grixis Reanimator is an even matchup decided by whether they can disrupt your key pieces and whether they can resolve Archon of Cruelty before you close. Their <span class="c">Thoughtseize</span> on turn 1 strips your best card — if that's <span class="c">Pinnacle Emissary</span>, your entire token engine is delayed. Archon of Cruelty's ETB makes you sacrifice a permanent, discard a card, and lose 3 life — against a 12-artifact board you're sacrificing a Drone and discarding a land, but that's recoverable. Your fast clock is your best asset here. A turn-2 Kappa kills before they've assembled Persist + Archon.</p>
+    <h3>Play vs Draw</h3>
+    <div class="pd-grid">
+      <div class="pd-col"><div class="pd-label">On the Play</div><div class="pd-title">Kill Before Persist</div>
+      <div class="pd-body">Persist costs {1}{B} on turn 2. If your Kappa is attacking by turn 3, they need to Persist on their turn 2 and get Archon's ETB before you kill them. Your turn-2 Kappa attacking on turn 3 is faster than their turn-2 Persist + Archon attacking on turn 3. Race. Don't slow down to set up Manufacturing — just deploy the fastest Kappa possible.</div></div>
+      <div class="pd-col"><div class="pd-label">On the Draw</div><div class="pd-title">Metallic Rebuke for Persist</div>
+      <div class="pd-body"><span class="c">Metallic Rebuke</span> with Improvise counters Persist (MV 2 — Rebuke with Improvise taps your artifacts to pay the {2}{U} cost, leaving the {3} tax for them). If they Persist on turn 2 and you have 3+ artifacts (usual with Emissary), Rebuke costs effectively {U}. Countering Persist is their entire turn 2 plan — losing it sets them back a full turn. Deploy Emissary on turn 1, hold Rebuke for their turn 2.</div></div>
+    </div>
+    <h3>Sideboard</h3>
+    <div class="sb-table">
+      <div class="sb-col"><div class="sb-col-label">In</div>
+        <div class="sb-item"><span>Galvanic Blast</span><span class="sb-qty">+2</span></div>
+        <div class="sb-item"><span>Grafdigger's Cage</span><span class="sb-qty">+1</span></div>
+      </div>
+      <div class="sb-col"><div class="sb-col-label">Out</div>
+        <div class="sb-item"><span>Claws of Gix</span><span class="sb-qty">&minus;2</span></div>
+        <div class="sb-item"><span>Welding Jar</span><span class="sb-qty">&minus;1</span></div>
+      </div>
+    </div>
+    <h3>If X &rarr; Do Y</h3>
+    <ul class="ifthen-list">
+      <li><span class="if-label">If</span><span><strong>Archon of Cruelty resolves via Persist and its ETB fires:</strong> You sacrifice a permanent or planeswalker — sacrifice your worst Drone. You discard a card — discard a land or a duplicate artifact. You lose 3 life. Archon is an 8/8 flying lifelink that attacks next turn. Calculate: can you kill them before Archon's next attack? If Kappa is in play and attacking, plus your other Drones/Constructs, can you deal 20+ damage before their end step? If yes, race it.</span></li>
+      <li><span class="if-label">If</span><span><strong>Grafdigger's Cage is in play:</strong> Cage prevents creature cards in graveyards or libraries from being cast. Persist specifically reads "return target nonlegendary creature card from your graveyard to the battlefield" — this is NOT casting, it's putting onto the battlefield. Grafdigger's Cage does NOT stop Persist! Cage stops Emry from casting artifacts from the GY and stops Emperor of Bones from putting exiled cards onto the battlefield (Emperor's trigger puts the card "onto the battlefield" — not casting, so Cage doesn't apply to Emperor either). Cage is still useful for stopping Faithless Looting + Emry recursion, but it doesn't stop their main combo.</span></li>
+      <li><span class="if-label">If</span><span><strong>Psychic Frog is their backup plan and has grown to 5/5+ with flying:</strong> A 5/5 flying lifelink creature that draws on connect is a real clock. Your <span class="c">Galvanic Blast</span> at Metalcraft deals 4 — not enough. Kappa Cannoneer as a large attacker races it. <span class="c">Sink into Stupor</span> bounces Frog to their hand, resetting its counters and buying you the turn. Prioritize bouncing Frog over other plays when they've pivoted to the Frog plan.</span></li>
+    </ul>
+  </div>
+
+  <!-- AMULET TITAN -->
+  <div id="mu_titan_a" class="matchup-detail">
+    <h3>Amulet Titan — Even: Race Tron, Consign Counters Key Triggers</h3>
+    <p>Amulet Titan assembles <span class="c">Amulet of Vigor</span> + bounce lands to generate massive mana, then casts Primeval Titan for a lethal attack on the turn it enters (fetching Slayers' Stronghold for haste + power boost). The race: their kill is turn 3-4 with a good draw; your kill is turn 2-3. You are faster in most draws. The post-board <span class="c">Consign to Memory</span> counters Titan's triggered ability (Primeval Titan ETB and attack triggers are triggered abilities — Consign counters them). Without the land fetches, Titan is just a 6/6 with trample.</p>
+    <h3>Play vs Draw</h3>
+    <div class="pd-grid">
+      <div class="pd-col"><div class="pd-label">On the Play</div><div class="pd-title">Kill Before Titan Resolves</div>
+      <div class="pd-body">They need turns 1-3 to assemble Amulet + bounce land + ramp. Your turn-2 Kappa attacking turn 3 plus Drones dealing 1 each may kill before their turn 3. Apply maximum pressure. <span class="c">Tormod's Crypt</span> can exile their GY if they're using Cultivator Colossus or other GY-dependent lines, but the primary plan is just killing them faster.</div></div>
+      <div class="pd-col"><div class="pd-label">On the Draw</div><div class="pd-title">Consign on Titan ETB</div>
+      <div class="pd-body">On the draw they may have Titan by their turn 3. Hold <span class="c">Consign to Memory</span> specifically for Primeval Titan's ETB trigger ("when this creature enters or attacks, search your library for up to two land cards" — triggered ability, Consign counters it). Without the land fetch, Titan is a 6/6 with no built-in haste. You can race a vanilla 6/6. Counter the ETB, then kill them before Titan attacks twice.</div></div>
+    </div>
+    <h3>Sideboard</h3>
+    <div class="sb-table">
+      <div class="sb-col"><div class="sb-col-label">In</div>
+        <div class="sb-item"><span>Consign to Memory</span><span class="sb-qty">+2</span></div>
+        <div class="sb-item"><span>Damping Sphere</span><span class="sb-qty">+1</span></div>
+      </div>
+      <div class="sb-col"><div class="sb-col-label">Out</div>
+        <div class="sb-item"><span>Tormod's Crypt</span><span class="sb-qty">&minus;2</span></div>
+        <div class="sb-item"><span>Welding Jar</span><span class="sb-qty">&minus;1</span></div>
+      </div>
+    </div>
+    <h3>If X &rarr; Do Y</h3>
+    <ul class="ifthen-list">
+      <li><span class="if-label">If</span><span><strong>Primeval Titan resolves and ETB trigger is on the stack:</strong> Consign to Memory counters the triggered ability — they don't search for any lands. Titan is now a 6/6 trample with no immediate impact. You can race a 6/6 with your Kappa and Drones. If you don't have Consign, calculate: their fetched Slayers' Stronghold (haste + power boost to Titan) plus Tolaria West for Pact means Titan attacks for 10+ with haste immediately. If they get that, you likely need to kill them this turn.</span></li>
+      <li><span class="if-label">If</span><span><strong>Summoner's Pact is cast (search for green creature including Titan):</strong> Summoner's Pact creates a delayed trigger at upkeep: "pay {2}{G}{G} or lose the game." Consign to Memory can counter the upkeep trigger — they don't pay, they don't lose the game, but they also don't have the creature. This is the play when they cast Pact and you want to stop the Titan line permanently. The Pact trigger is a triggered ability targeting their own game state — Consign counters it, causing them to lose the game at upkeep instead of paying. Wait — that creates a lost game, not a canceled search. Actually: if you counter the "pay or lose" trigger, the entire thing doesn't happen — they don't have to pay AND they don't lose. The Titan they searched for is still in their hand from the Pact resolution. Hmm — re-read: Summoner's Pact says "at the beginning of your next upkeep, pay {2}{G}{G}. If you don't, you lose the game." That "if you don't, you lose" clause fires if the trigger resolves and they don't pay. If you Consign the upkeep trigger, it's countered, it doesn't resolve, so the "pay or lose" never applies. They just got a free Titan off Pact. This is nuanced — in most cases don't Consign the Pact trigger, because it just gives them a free Titan. Instead counter the Titan's ETB trigger after it's cast.</span></li>
+      <li><span class="if-label">If</span><span><strong>Damping Sphere is in play:</strong> Their bounce land + Amulet of Vigor combo produces extra mana (bounce land enters untapped due to Amulet, produce extra mana). Under Damping Sphere, if a land is tapped for 2+ mana, it produces only {C} instead. This cripples the bounce land mana engine. Their entire combo relies on getting WUBRG from specific land combinations — Damping Sphere collapses that to colorless only.</span></li>
+    </ul>
+  </div>
+
+  <!-- MIRROR -->
+  <div id="mu_mirror_a" class="matchup-detail">
+    <h3>Izzet Affinity Mirror — First Kappa Cannoneer Wins</h3>
+    <p>The mirror is decided by who deploys <span class="c">Kappa Cannoneer</span> first. Kappa grows with every artifact entering — in the mirror, both players flood artifacts rapidly, making each player's Kappa enormous. The first Kappa to attack is often a 10+ power unblockable creature. <span class="c">Pinnacle Emissary</span> is the most critical turn-1 play — without it, your artifact count lags and Kappa comes out smaller or later. Urza's Saga tokens with Shadowspear (lifelink) can also win if Kappa stalls.</p>
+    <h3>Play vs Draw</h3>
+    <div class="pd-grid">
+      <div class="pd-col"><div class="pd-label">On the Play</div><div class="pd-title">Prioritize Emissary Over Everything</div>
+      <div class="pd-body">Your T1 priority: Island → Mox Opal → Emissary. Their T1 mirror: same. First Emissary in play generates more Drones from every subsequent artifact. First Kappa with those extra Drones is 2-3 counters bigger and attacks first. The entire mirror hinges on who goes Emissary first.</div></div>
+      <div class="pd-col"><div class="pd-label">On the Draw</div><div class="pd-title">Removal on Their Emissary</div>
+      <div class="pd-body">On the draw they're ahead on Emissary deployment. Use <span class="c">Galvanic Blast</span> at Metalcraft (4 damage) — Emissary is 3/3, Blast kills it for R. This denies their Drone generation for a turn cycle. You catch up by deploying your own Emissary. <span class="c">Sink into Stupor</span> bounces their Emissary (instant, {1}{U}{U}) — buys a full turn.</div></div>
+    </div>
+    <h3>Sideboard</h3>
+    <div class="sb-table">
+      <div class="sb-col"><div class="sb-col-label">In</div>
+        <div class="sb-item"><span>Galvanic Blast</span><span class="sb-qty">+2</span></div>
+        <div class="sb-item"><span>Mystical Dispute</span><span class="sb-qty">+2</span></div>
+      </div>
+      <div class="sb-col"><div class="sb-col-label">Out</div>
+        <div class="sb-item"><span>Tormod's Crypt</span><span class="sb-qty">&minus;2</span></div>
+        <div class="sb-item"><span>Damping Sphere</span><span class="sb-qty">&minus;2</span></div>
+      </div>
+    </div>
+    <h3>If X &rarr; Do Y</h3>
+    <ul class="ifthen-list">
+      <li><span class="if-label">If</span><span><strong>Both players have Kappa Cannoneer in play at similar sizes:</strong> Kappa has Ward 4 — targeting it costs 4 extra mana. In the mirror, neither player wants to spend 6-10 mana targeting the opponent's Kappa. The board stalls until someone finds Shadowspear (lifelink + trample on Kappa = massive swings) or Urza's Saga generates an enormous Construct that attacks profitably. Shadowspear is the mirror-breaker — tutor it with Saga chapter III.</span></li>
+      <li><span class="if-label">If</span><span><strong>Opponent casts Kappa Cannoneer with more Drones than you:</strong> Their Kappa enters as a 6/6+ while yours is 4/4. Counter their Kappa with <span class="c">Metallic Rebuke</span> (Improvise makes this cheap) or <span class="c">Mystical Dispute</span> (blue spell, discount applies — Kappa is {5}{U} — Dispute counters for {U} + 2-less = {3}{U} unless they pay {3} additional). Denying their Kappa when you're behind on artifacts is critical.</span></li>
+      <li><span class="if-label">If</span><span><strong>Weapons Manufacturing is active on your side but not theirs:</strong> You have a Munitions advantage. Every artifact you cast creates a bomb they don't have. Play conservatively — don't EE your Munitions immediately. Let them build up to 8+ then EE for 16+ damage while Kappa attacks simultaneously. This is often lethal from a stable board state.</span></li>
+    </ul>
+  </div>
+
+  <!-- RUBY STORM -->
+  <div id="mu_storm_a" class="matchup-detail">
+    <h3>Ruby Storm — Even: Speed Race, Both Kill Turns 3-4</h3>
+    <p>Ruby Storm chains cost reducers (<span class="c">Ruby Medallion</span>, Ral, Monsoon Mage) and rituals (Desperate Ritual, Pyretic Ritual, Manamorphose) to generate a lethal Grapeshot or Empty the Warrens storm count. Both decks kill on turns 3-4 — the race is tight. Your advantage: they have essentially zero interaction in game 1 (no removal, no blockers). Your board applies pressure they cannot answer. Their advantage: they can kill from a completely empty board with no warning. The matchup is decided by whether their first kill attempt hits your counterspells.</p>
+    <h3>Play vs Draw</h3>
+    <div class="pd-grid">
+      <div class="pd-col"><div class="pd-label">On the Play</div><div class="pd-title">Threaten Lethal by Turn 3</div>
+      <div class="pd-body">They can't interact with your board at all game 1. Deploy Emissary T1, Kappa T2, attack. If they try to go off turn 3 before you kill them, hold <span class="c">Force of Negation</span> (exile a blue card, free on their turn, counter noncreature) for Grapeshot or <span class="c">Metallic Rebuke</span> for cost-reduction spells. Pressure plus one piece of countermagic wins game 1.</div></div>
+      <div class="pd-col"><div class="pd-label">On the Draw</div><div class="pd-title">Damping Sphere T2 Changes Everything</div>
+      <div class="pd-body">Damping Sphere makes each additional spell cost {1} more. Their turn-3 chain involves casting 8-15 spells — each one costs more than the last. Under Sphere, their turn-3 kill is pushed to turn 5-6. Deploy Sphere on turn 2, then apply pressure normally. With Sphere in play, the race is completely in your favor.</div></div>
+    </div>
+    <h3>Sideboard</h3>
+    <div class="sb-table">
+      <div class="sb-col"><div class="sb-col-label">In</div>
+        <div class="sb-item"><span>Damping Sphere</span><span class="sb-qty">+3</span></div>
+        <div class="sb-item"><span>Force of Negation</span><span class="sb-qty">+1</span></div>
+        <div class="sb-item"><span>Consign to Memory</span><span class="sb-qty">+2</span></div>
+      </div>
+      <div class="sb-col"><div class="sb-col-label">Out</div>
+        <div class="sb-item"><span>Tormod's Crypt</span><span class="sb-qty">&minus;3</span></div>
+        <div class="sb-item"><span>Claws of Gix</span><span class="sb-qty">&minus;2</span></div>
+        <div class="sb-item"><span>Welding Jar</span><span class="sb-qty">&minus;1</span></div>
+      </div>
+    </div>
+    <h3>If X &rarr; Do Y</h3>
+    <ul class="ifthen-list">
+      <li><span class="if-label">If</span><span><strong>Ruby Medallion resolves on turn 1:</strong> Medallion reduces every red spell by {1}. This is the highest-priority target for <span class="c">Consign to Memory</span> — wait, Consign counters triggered abilities and colorless spells only. Ruby Medallion is a {2} (colorless) artifact. {2} is colorless mana cost, and Medallion is colorless in terms of color identity. But actually the mana cost is {2} which means 2 generic mana — this IS colorless. Consign to Memory can counter colorless spells — does Ruby Medallion count as a colorless spell? The spell's color is determined by its mana cost's colored symbols. {2} has no colored symbols = colorless spell. Yes, Consign counters Ruby Medallion since it's a colorless spell. This is the most impactful Consign use in the matchup — counter Medallion on turn 1.</span></li>
+      <li><span class="if-label">If</span><span><strong>Past in Flames resolves (all instants/sorceries in GY gain flashback):</strong> FoN exiles Past in Flames on their turn (free, counter noncreature). This is the highest priority Force of Negation target. Without Past in Flames backup, their storm chain needs to succeed on the first try. If Past in Flames is already resolved, their kill attempt is imminent — deploy every piece of interaction simultaneously.</span></li>
+      <li><span class="if-label">If</span><span><strong>Empty the Warrens creates 16+ tokens:</strong> Their 1/1 Goblin tokens block your Drones (Drones can only block flyers, Goblins are ground — so Drones attack over the tokens). Kappa is unblockable each turn it enters or when another artifact enters. Race with Kappa over the token army — it can't be blocked. Attack Kappa every turn while you take their Goblin hits. Calculate if you can kill them before they attack with 16+ for lethal.</span></li>
+    </ul>
+  </div>
+
+  <!-- ELDRAZI TRON -->
+  <div id="mu_etron_a" class="matchup-detail">
+    <h3>Eldrazi Tron — Hard: Karn Locks Your Artifacts, Chalice Shuts Key Spells</h3>
+    <p>Eldrazi Tron is a genuinely hard matchup. <span class="c">Karn, the Great Creator</span> has a static ability: "Opponent's artifacts lose all abilities." This shuts off Mox Opal (can't tap for mana), Claws of Gix (can't sacrifice), Emry (can't tap), and effectively freezes your board. Additionally, Karn's -2 fetches any artifact from outside the game or their sideboard — they often fetch Ensnaring Bridge (preventing attacks if hand size exceeds board size) or Tormod's Crypt for GY hate. <span class="c">Chalice of the Void</span> at X=1 shuts off Metallic Rebuke and Galvanic Blast if they have it. Your best path is a fast Urza's Saga start before Tron is assembled, Blood Moon locking their mana, or racing with Emissary → Kappa before Karn.</p>
+    <h3>Play vs Draw</h3>
+    <div class="pd-grid">
+      <div class="pd-col"><div class="pd-label">On the Play</div><div class="pd-title">Fast Saga Start</div>
+      <div class="pd-body">Urza's Saga on turn 1-2 generates a Construct before Tron is assembled (turn 3 with ideal draw). A 12/12 Construct from Saga is unaffected by Karn's static (it's a creature, not using artifact activated abilities — actually Karn shuts off "artifact abilities" not just activated abilities — but "abilities" on the Construct are just +1/+1 scaling, not an activated ability. The Construct has no abilities to shut off). Race with Constructs.</div></div>
+      <div class="pd-col"><div class="pd-label">On the Draw</div><div class="pd-title">Blood Moon Changes Everything</div>
+      <div class="pd-body">Blood Moon on turn 2 (from Island + any source of R) makes all their Tron lands (nonbasic) Mountains. Under Blood Moon they produce only R, capping at 3 mana total. Karn costs {4} — still castable with 4 Mountains but much slower. Realistically Blood Moon on T2 pushes their first threat to turn 5+. Deploy Emissary → Kappa in the time you buy.</div></div>
+    </div>
+    <h3>Sideboard</h3>
+    <div class="sb-table">
+      <div class="sb-col"><div class="sb-col-label">In</div>
+        <div class="sb-item"><span>Blood Moon</span><span class="sb-qty">+3</span></div>
+        <div class="sb-item"><span>Damping Sphere</span><span class="sb-qty">+2</span></div>
+      </div>
+      <div class="sb-col"><div class="sb-col-label">Out</div>
+        <div class="sb-item"><span>Tormod's Crypt</span><span class="sb-qty">&minus;3</span></div>
+        <div class="sb-item"><span>Claws of Gix</span><span class="sb-qty">&minus;2</span></div>
+      </div>
+    </div>
+    <h3>If X &rarr; Do Y</h3>
+    <ul class="ifthen-list">
+      <li><span class="if-label">If</span><span><strong>Karn, the Great Creator resolves:</strong> Karn's static shuts off all activated abilities of artifacts opponents control — that means YOUR artifacts can't activate. Mox Opal tapping for mana is gone. Emry tapping to cast from GY is gone. Claws of Gix sacrificing is gone. Your only functional artifacts are those with no activated abilities: Memnite, Ornithopter, Pinnacle Emissary (just a creature now), Kappa Cannoneer (creature — Ward is a triggered ability when targeted, not activated). Kappa still has Ward and its counter/unblockable trigger. Attack with Kappa. It's your only functional win condition under Karn.</span></li>
+      <li><span class="if-label">If</span><span><strong>Karn fetches Ensnaring Bridge (hand size = max attackers):</strong> Ensnaring Bridge prevents attacking with creatures with power greater than the number of cards in hand. With Affinity depleting your hand quickly, you often have 0-2 cards — meaning only 0-2 power creatures can attack. Kappa at 8/8 cannot attack. Your only clean answer: Haywire Mite ({G}: sac, exile target noncreature artifact or noncreature enchantment — Bridge is an artifact, Mite exiles it). Urza's Saga chapter III tutors Haywire Mite. This is the exact scenario Mite exists for.</span></li>
+      <li><span class="if-label">If</span><span><strong>Chalice of the Void is at X=1:</strong> Shut off: Galvanic Blast (MV 1), Metallic Rebuke (MV 3 but...) wait Chalice at 1 counters spells with MV 1. Metallic Rebuke has MV 3, not affected. Galvanic Blast is MV 1, countered. Memnite is MV 0, not affected. Springleaf Drum is MV 1, countered. Your key MV-1 cards: Welding Jar (MV 0), Claws of Gix (MV 0), Mishra's Bauble (MV 0), Pithing Needle (MV 1 — countered), Haywire Mite (MV 1 — countered). Adjust by prioritizing MV 0 artifacts for your main engine.</span></li>
+    </ul>
+  </div>
+
+  <!-- DOMAIN AGGRO -->
+  <div id="mu_zoo_a" class="matchup-detail">
+    <h3>Domain Aggro — Favored: Constructs Outscale Their Threats</h3>
+    <p>Domain Aggro deploys fast threats through domain scaling: Territorial Kavu (2/2 base, +1/+1 per basic land type opponents control — often 3-5/3-5), Scion of Draco (gets hexproof, flying, lifelink, first strike with full domain), Wild Nacatl (3/3 for G with W and R land). Their threats are large for their mana cost. Your Constructs from Urza's Saga scale with YOUR artifact count and become larger than anything they play. Your Kappa Cannoneer is unblockable from its entering trigger chain. Shadowspear with Saga tutor provides lifelink and removes Scion's hexproof for targeting.</p>
+    <h3>Play vs Draw</h3>
+    <div class="pd-grid">
+      <div class="pd-col"><div class="pd-label">On the Play</div><div class="pd-title">Saga + Shadowspear Beats Scion</div>
+      <div class="pd-body">Scion of Draco with hexproof can't be targeted. But Shadowspear's {1} activated ability removes hexproof from all opponent permanents until end of turn. Saga chapter III tutors Shadowspear. Equip Shadowspear to your Kappa or Construct — activate {1} to remove Scion's hexproof, then use removal. Saga tokens with Shadowspear lifelink outrace their Scion damage.</div></div>
+      <div class="pd-col"><div class="pd-label">On the Draw</div><div class="pd-title">Whipflare Clears Their Small Creatures</div>
+      <div class="pd-body"><span class="c">Whipflare</span> deals 2 to each nonartifact creature. Wild Nacatl (3/3), Hierarchs (1/1), and smaller creatures all die. Scion (4/4) and Territorial Kavu survive, but losing their mana creatures and small attackers collapses their pressure. Your artifact creatures are unaffected. Whipflare on turn 2 into Kappa turn 3 is often the correct sequence on the draw.</div></div>
+    </div>
+    <h3>Sideboard</h3>
+    <div class="sb-table">
+      <div class="sb-col"><div class="sb-col-label">In</div>
+        <div class="sb-item"><span>Whipflare</span><span class="sb-qty">+2</span></div>
+        <div class="sb-item"><span>Galvanic Blast</span><span class="sb-qty">+2</span></div>
+      </div>
+      <div class="sb-col"><div class="sb-col-label">Out</div>
+        <div class="sb-item"><span>Tormod's Crypt</span><span class="sb-qty">&minus;2</span></div>
+        <div class="sb-item"><span>Damping Sphere</span><span class="sb-qty">&minus;2</span></div>
+      </div>
+    </div>
+    <h3>If X &rarr; Do Y</h3>
+    <ul class="ifthen-list">
+      <li><span class="if-label">If</span><span><strong>Scion of Draco has hexproof (full domain active):</strong> You cannot target Scion with any spell while hexproof is active. Shadowspear's {1}: "permanents your opponents control lose hexproof and indestructible until end of turn." Activate it in your main phase, then use targeted removal. Or: don't bother removing Scion — race it with Kappa. Kappa unblockable + Saga Constructs deals more per turn than Scion. If you're racing, Scion's lifelink heals them — so kill them before Scion deals enough to stabilize.</span></li>
+      <li><span class="if-label">If</span><span><strong>They have Tribal Flames at full domain (deals 5 damage):</strong> Five damage from nowhere at any time they have 2 mana available. Track their open mana carefully. At 5 life or below against Domain Zoo, play as if their next spell kills you. Don't tap out at 5 life — hold blockers and your own life-gaining tools (Shadowspear lifelink, Claws of Gix gain-1).</span></li>
+    </ul>
+  </div>
+
+  <!-- ESPER REANIMATOR -->
+  <div id="mu_esper_a" class="matchup-detail">
+    <h3>Esper Reanimator — Favored: Your Clock Is Faster Than Their Combo</h3>
+    <p>Esper Reanimator uses Goryo's Vengeance (instant, reanimate a legendary creature from GY with haste, exile at next end step) to put Atraxa, Grand Unifier into play. Their fastest kill is turn 2-3. Your fastest kill is turn 2. On average you kill faster. Their Grief + Ephemerate (strip two cards from your hand turn 1) is disruptive but doesn't stop a Kappa that's already in play. <span class="c">Metallic Rebuke</span> counters Goryo's Vengeance (MV 2 — Rebuke with Improvise costs {U}) cleanly. Their plan requires assembling two specific cards (Atraxa in GY + Goryo's) while yours requires one (any hand with Emissary + artifacts).</p>
+    <h3>Play vs Draw</h3>
+    <div class="pd-grid">
+      <div class="pd-col"><div class="pd-label">On the Play</div><div class="pd-title">Race — Kill Before Goryo's</div>
+      <div class="pd-body">Apply maximum pressure. Kappa attacking turn 3 means they need to Goryo's on their turn 2 or 3 AND survive one Kappa attack to matter. Hold <span class="c">Metallic Rebuke</span> for Goryo's. If you kill them before they Goryo's, you win with no interaction needed.</div></div>
+      <div class="pd-col"><div class="pd-label">On the Draw</div><div class="pd-title">Rebuke Goryo's</div>
+      <div class="pd-body">On the draw they can Goryo's their turn 2 before you've deployed significant threats. Hold Rebuke specifically for Goryo's Vengeance. With your artifact count by turn 2, Rebuke costs {U} via Improvise. A countered Goryo's leaves them with a creature in the GY and no way to reanimate it this turn. Race while they rebuild.</div></div>
+    </div>
+    <h3>Sideboard</h3>
+    <div class="sb-table">
+      <div class="sb-col"><div class="sb-col-label">In</div>
+        <div class="sb-item"><span>Grafdigger's Cage</span><span class="sb-qty">+1</span></div>
+        <div class="sb-item"><span>Consign to Memory</span><span class="sb-qty">+2</span></div>
+      </div>
+      <div class="sb-col"><div class="sb-col-label">Out</div>
+        <div class="sb-item"><span>Claws of Gix</span><span class="sb-qty">&minus;2</span></div>
+        <div class="sb-item"><span>Welding Jar</span><span class="sb-qty">&minus;1</span></div>
+      </div>
+    </div>
+    <h3>If X &rarr; Do Y</h3>
+    <ul class="ifthen-list">
+      <li><span class="if-label">If</span><span><strong>Atraxa, Grand Unifier enters via Goryo's (7/7 flying vigilance lifelink haste):</strong> Atraxa ETB: look at top 10, put one of each card type into hand. Then she attacks as 7/7 with haste. She's exiled at end of turn anyway. Calculate: can you kill them this turn with Kappa + Drones + any remaining burn? If yes, do it. Atraxa gaining them 7 life per attack and refueling their hand makes the race very difficult if she survives. Close immediately if possible.</span></li>
+      <li><span class="if-label">If</span><span><strong>Consign to Memory counters Atraxa's ETB trigger:</strong> Atraxa enters — her ETB fires (triggered ability: "look at top 10, put one of each card type into hand"). Consign to Memory counters the triggered ability. They don't draw 7 cards. Atraxa is still a 7/7 haste flying vigilance lifelink creature. Sink into Stupor bounces Atraxa to their hand in response or on the next attack — they lose the creature and it goes back to their hand rather than being exiled (Goryo's would exile at end of turn anyway, so bouncing before the end step exile trigger means she just returns to hand, uncountered, live for another Goryo's). This is complicated — usually just race it.</span></li>
+    </ul>
+  </div>
+
+  <!-- AZORIUS CONTROL -->
+  <div id="mu_control_a" class="matchup-detail">
+    <h3>Azorius Control — Slight Dog: Supreme Verdict Clears Board, Weapons Burst Wins</h3>
+    <p>Azorius Control has the tools to answer everything: <span class="c">Counterspell</span> for Kappa (they pay Ward with the counter spell's cost), Solitude for Emissary (free evoke bypasses Ward on Emissary since Emissary has no Ward), Supreme Verdict (cannot be countered, destroys all creatures). However, Weapons Manufacturing enchantment survives all of their removal. Munitions tokens survive Verdict (not creatures). EE burst through all their defenses since the damage is from triggered abilities on tokens, not spells. The matchup is winnable; it requires patience building Munitions and striking when they're tapped out.</p>
+    <h3>Play vs Draw</h3>
+    <div class="pd-grid">
+      <div class="pd-col"><div class="pd-label">On the Play</div><div class="pd-title">Deploy Manufacturing Early</div>
+      <div class="pd-body">Get <span class="c">Weapons Manufacturing</span> in play before they establish countermagic. Manufacturing resolves through Counterspell (it's a 2-mana enchantment, not the most high-priority counter target). Once Manufacturing is active, every artifact you cast builds toward the EE burst. They Verdict your creatures — fine, Manufacturing and Munitions tokens survive. EE burst them when they tap out for a planeswalker.</div></div>
+      <div class="pd-col"><div class="pd-label">On the Draw</div><div class="pd-title">Bait Counterspells With Cheap Threats</div>
+      <div class="pd-body">Play Emissary on turn 2 — they may or may not counter it. If they counter Emissary, they've spent 2+ mana while you've lost 3 mana. Cast Manufacturing next — lower priority for them. Once both stick, you're set up. If they let Emissary through, you're flooding Drones and can likely Kappa before they have Verdict mana. Make them choose which threat to answer.</div></div>
+    </div>
+    <h3>Sideboard</h3>
+    <div class="sb-table">
+      <div class="sb-col"><div class="sb-col-label">In</div>
+        <div class="sb-item"><span>Mystical Dispute</span><span class="sb-qty">+2</span></div>
+        <div class="sb-item"><span>Force of Negation</span><span class="sb-qty">+1</span></div>
+        <div class="sb-item"><span>Blood Moon</span><span class="sb-qty">+2</span></div>
+      </div>
+      <div class="sb-col"><div class="sb-col-label">Out</div>
+        <div class="sb-item"><span>Tormod's Crypt</span><span class="sb-qty">&minus;3</span></div>
+        <div class="sb-item"><span>Damping Sphere</span><span class="sb-qty">&minus;2</span></div>
+      </div>
+    </div>
+    <h3>If X &rarr; Do Y</h3>
+    <ul class="ifthen-list">
+      <li><span class="if-label">If</span><span><strong>Supreme Verdict resolves (destroys all creatures):</strong> Your Kappa, Emissary, Emry, and Constructs die. But Manufacturing enchantment lives. Munitions tokens live. Your artifact (noncreature) permanents live. The EE burst plan is completely intact after a Verdict. Immediately assess: how many Munitions tokens do you have? Do you have EE in hand or GY (Emry can recast it)? Can you burst them from 20 this turn or next?</span></li>
+      <li><span class="if-label">If</span><span><strong>Teferi, Hero of Dominaria resolves (their win condition):</strong> Teferi's +1 draws a card and untaps two lands at their next end step. He doesn't lock your Weapons Manufacturing or Munitions tokens — he just draws them cards and builds toward a slow win. Use <span class="c">Sink into Stupor</span> to bounce Teferi (instant speed, {1}{U}{U} — cast in their main phase at their upkeep when they plan to activate). This resets him without spending a turn. Repeat bouncing until you have the EE burst ready.</span></li>
+    </ul>
+  </div>
+
+</div><!-- end matchups -->
+
+<!-- SIDEBOARD GUIDE -->
+<div id="sideboard" class="section">
+  <div class="section-label">Chapter 07</div>
+  <h1>Sideboard<br>Guide</h1>
+  <p>Sideboard decisions for Izzet Affinity follow one rule: identify whether the opponent answers threats (bring in countermagic and Blood Moon) or locks artifacts (bring in nothing useful and race faster). Never over-sideboard — your main deck is already explosive, cutting too many artifacts weakens your Metalcraft and Improvise thresholds.</p>
+
+  <h2>Full Sideboard Reference</h2>
+  <div class="sb-card-guide">
+    <div class="sb-guide-row"><div class="sb-guide-name">Damping Sphere ×3</div><div class="sb-guide-body">In vs: Ruby Storm (primary), Amulet Titan, any deck that chains spells per turn or uses lands for 2+ mana. Sphere shuts Storm chains cold and collapses Tron mana production. Three copies means you can often draw one naturally while developing your board. Cast early — turn 2 Sphere into turn 3 Kappa wins both matchups cleanly.</div></div>
+    <div class="sb-guide-row"><div class="sb-guide-name">Whipflare ×2</div><div class="sb-guide-body">In vs: Boros Energy (kills cats, Hierarchs), Izzet Prowess (kills Swiftspear, DRC), Domain Aggro (kills small creatures), Golgari Yawgmoth (kills undying creatures). Deals 2 to each nonartifact creature — your artifact creatures are unaffected. In the mirror, Whipflare kills 0-power Drones (wait — Drones are 1/1, Whipflare deals 2, Drones die). Actually this nukes your own Drones too. In aggro matchups with nonartifact creature boards, it's one-sided. Careful in the mirror — your Drones die to Whipflare too.</div></div>
+    <div class="sb-guide-row"><div class="sb-guide-name">Galvanic Blast ×2</div><div class="sb-guide-body">In vs: Izzet Prowess (kills DRC, Swiftspear), Boros mirror (kills Ocelot Pride turn 1), Grixis Reanimator (kills Emperor of Bones turn 2). Metalcraft gives it 4 damage — with your artifact density, Metalcraft is almost always active. Hits creatures or players. In the mirror, hits Emissary (3/3, dies to 4-damage Blast). The reach option (hit face for 4) is relevant in close races.</div></div>
+    <div class="sb-guide-row"><div class="sb-guide-name">Mystical Dispute ×2</div><div class="sb-guide-body">In vs: Jeskai Blink, Azorius Control, any blue deck. Counters any blue spell for {U} if they control a blue permanent (they almost always do). Counters Solitude (white, not blue — Dispute costs full {2}{U} for Solitude), Teferi TRav (blue — Dispute for {U}), Supreme Verdict (white — costs full). Best against blue-heavy decks. Note: against Jeskai Blink, Solitude is white, not blue, so Dispute doesn't discount.</div></div>
+    <div class="sb-guide-row"><div class="sb-guide-name">Consign to Memory ×2</div><div class="sb-guide-body">In vs: Amulet Titan (counter Titan triggers), Ruby Storm (counter storm trigger, counter Medallion), Esper Reanimator (counter Atraxa ETB), any combo with triggered abilities. Counters triggered abilities and colorless spells. Replicate {1} lets you copy it — two Consigns for {U}{1}. The Replicate copies can counter different triggers on the same stack. One Consign counters the storm trigger, the Replicate copy counters Past in Flames flashback trigger simultaneously.</div></div>
+    <div class="sb-guide-row"><div class="sb-guide-name">Grafdigger's Cage ×1</div><div class="sb-guide-body">In vs: Living End (Cascade spell resolves, Living End resolves, but Cage prevents putting GY creatures onto battlefield? Check: Living End reads "exile all creature cards from all graveyards" then put cards onto the battlefield. Cage says "creature cards can't enter the battlefield from graveyards" — this stops Living End's primary effect entirely. Yes, Cage shuts off Living End), Simic Ritual (Allosaurus Rider combo — Neoform sacrifices Rider to put Griselbrand into play from library — Cage prevents "enter the battlefield from library"? Actually Cage says "cards in graveyards and libraries can't be cast" — Neoform puts from library into play, not casting. Cage may not stop Neoform/Neobrand. Check oracle: "Creature cards in graveyards and libraries can't enter the battlefield." Yes, Cage does stop Neoform's creature-entering effect). Versatile 0-mana artifact that enables Metalcraft while providing hate.</div></div>
+    <div class="sb-guide-row"><div class="sb-guide-name">Force of Negation ×1</div><div class="sb-guide-body">In vs: Ruby Storm (free on their turn, counter Grapeshot or Past in Flames), Amulet Titan (counter Titan for free on their turn), any critical combo piece on their turn. Free on opponent's turn by exiling a blue card from hand. Only counters noncreature spells. Against Ruby Storm: free counter for Grapeshot or PIF is the highest value play in the matchup. Hold in hand until their kill turn.</div></div>
+    <div class="sb-guide-row"><div class="sb-guide-name">Vexing Bauble ×1</div><div class="sb-guide-body">Vexing Bauble is a {0} artifact — if an opponent casts a spell with no mana paid, Vexing Bauble taps: counter that spell unless they pay {2}. Against Solitude evoke (0 mana paid), against Force of Negation (0 mana paid on opponent's turn), against any pitch-cost interaction. This is specifically a Jeskai Blink and Blink mirror tool — evoke Solitude is stopped by Bauble unless they pay {2} extra. The {0} cost means it's always in play for Metalcraft/Improvise.</div></div>
+  </div>
+
+  <h2>Quick Sideboard Reference</h2>
+  <div class="sb-card-guide">
+    <div class="sb-guide-row"><div class="sb-guide-name">vs Boros Energy</div><div class="sb-guide-body">In: +2 Whipflare, +2 Galvanic Blast. Out: -3 Tormod's Crypt, -1 Welding Jar.</div></div>
+    <div class="sb-guide-row"><div class="sb-guide-name">vs Jeskai Blink</div><div class="sb-guide-body">In: +3 Blood Moon (on play only), +2 Mystical Dispute, +1 Vexing Bauble. Out: -3 Tormod's Crypt, -2 Claws of Gix, -1 Welding Jar.</div></div>
+    <div class="sb-guide-row"><div class="sb-guide-name">vs Izzet Prowess</div><div class="sb-guide-body">In: +2 Whipflare, +2 Galvanic Blast. Out: -3 Tormod's Crypt, -1 Claws of Gix.</div></div>
+    <div class="sb-guide-row"><div class="sb-guide-name">vs Grixis Reanimator</div><div class="sb-guide-body">In: +2 Galvanic Blast, +1 Grafdigger's Cage. Out: -2 Claws of Gix, -1 Welding Jar.</div></div>
+    <div class="sb-guide-row"><div class="sb-guide-name">vs Amulet Titan</div><div class="sb-guide-body">In: +2 Consign to Memory, +1 Damping Sphere. Out: -2 Tormod's Crypt, -1 Welding Jar.</div></div>
+    <div class="sb-guide-row"><div class="sb-guide-name">vs Mirror</div><div class="sb-guide-body">In: +2 Galvanic Blast, +2 Mystical Dispute. Out: -2 Tormod's Crypt, -2 Damping Sphere.</div></div>
+    <div class="sb-guide-row"><div class="sb-guide-name">vs Ruby Storm</div><div class="sb-guide-body">In: +3 Damping Sphere, +2 Consign to Memory, +1 Force of Negation. Out: -3 Tormod's Crypt, -2 Claws of Gix, -1 Welding Jar.</div></div>
+    <div class="sb-guide-row"><div class="sb-guide-name">vs Eldrazi Tron</div><div class="sb-guide-body">In: +3 Blood Moon, +2 Damping Sphere. Out: -3 Tormod's Crypt, -2 Claws of Gix.</div></div>
+    <div class="sb-guide-row"><div class="sb-guide-name">vs Domain Aggro</div><div class="sb-guide-body">In: +2 Whipflare, +2 Galvanic Blast. Out: -2 Tormod's Crypt, -2 Damping Sphere.</div></div>
+    <div class="sb-guide-row"><div class="sb-guide-name">vs Esper Reanimator</div><div class="sb-guide-body">In: +1 Grafdigger's Cage, +2 Consign to Memory. Out: -2 Claws of Gix, -1 Welding Jar.</div></div>
+    <div class="sb-guide-row"><div class="sb-guide-name">vs Azorius Control</div><div class="sb-guide-body">In: +2 Mystical Dispute, +1 Force of Negation, +2 Blood Moon. Out: -3 Tormod's Crypt, -2 Damping Sphere.</div></div>
+  </div>
+
+  <h2>Needle Targets</h2>
+  <span class="tag">Karn, the Great Creator (Eldrazi Tron)</span>
+  <span class="tag">Walking Ballista (Yawgmoth)</span>
+  <span class="tag">Amulet of Vigor (Amulet Titan)</span>
+  <span class="tag">Phelia, Exuberant Shepherd (Jeskai Blink)</span>
+  <span class="tag">Goblin Bombardment (Boros Energy)</span>
+</div>
+
+<!-- HEURISTICS -->
+<div id="heuristics" class="section">
+  <div class="section-label">Chapter 08</div>
+  <h1>Heuristics</h1>
+  <p>Rules that pay off across thousands of games with Izzet Affinity. Some feel counterintuitive until they become automatic.</p>
+  <ol class="heuristic-list">
+    <li><strong>The Drone trigger fires on cast, not resolution.</strong> If you cast an artifact and it gets countered, you still get the Drone from Pinnacle Emissary because the trigger resolved before the counter hit the spell. This means you should sometimes cast artifacts into countermagic intentionally — the Drone is free even if the artifact is countered. Use this knowledge when deploying against Jeskai Blink's open countermagic.</li>
+    <li><strong>Mulligan to an Emissary or Saga hand, nothing else.</strong> Any hand without either Pinnacle Emissary + colored mana, or Urza's Saga + a second land + ramp, is a mulligan. This is the hardest habit to build — hands with Kappa + multiple artifacts LOOK keepable but often aren't because they can't generate the colored mana or critical mass needed to deploy Kappa efficiently. Keep asks: "how does this hand win by turn 3?" If the answer requires multiple specific draws, throw it back.</li>
+    <li><strong>Ward 4 is a tax, not immunity.</strong> Opponents with 6+ mana can pay Ward and kill Kappa. Don't assume Kappa is unkillable — plan around the lines where it dies. Solitude evoke bypasses Ward entirely (it targets but pays the 4 life for Ward). Always have a backup plan: Weapons Manufacturing burst or Saga Constructs when Kappa dies.</li>
+    <li><strong>Don't EE at 0 unless you're closing the game or accepting significant board loss.</strong> Engineered Explosives at 0 destroys your Mox Opals, Memnites, Ornithopters, and Drones. This is the correct play when you have 6+ Munitions tokens and they're at 12 or less life. It's the wrong play when you need those MV-0 artifacts for continued Metalcraft or Improvise. Calculate the board state before sacrificing.</li>
+    <li><strong>Weapons Manufacturing is your highest-priority turn-2 play in control matchups.</strong> Control decks have Supreme Verdict for creatures but can't interact with an enchantment efficiently. Manufacturing resolves through most countermagic (2 mana, not a high-priority counter target). Once Manufacturing is in play, every artifact builds toward the burst. Deploy it early, before they establish full countermagic with enough open mana.</li>
+    <li><strong>Emry is your best card in long games — protect her.</strong> A Emry, Lurker of the Loch with a deep GY is card advantage every turn. She recasts Mishra's Bauble (upkeep draw), Engineered Explosives (reusable burst), Tormod's Crypt (GY hate), anything you've lost. In control matchups where the game goes to turns 6-8, Emry generates more value per turn than any single threat. Keep her alive, or plan to find and recast her.</li>
+    <li><strong>Sink into Stupor — cast mode vs land mode is a game-defining choice.</strong> When you need colored mana urgently and have no other blue sources, Soporific Springs as a land (paying 3 life) is correct. When you're ahead on mana and need to interact, the instant bounce mode is correct. Never spend Stupor carelessly on small threats when you need the colored mana later. Track your life total against 3-life payments — in aggressive matchups, paying 3 life twice is a meaningful percentage of the race.</li>
+    <li><strong>Against Eldrazi Tron, Blood Moon is your best card, not Kappa.</strong> Kappa under Karn has no activated abilities (Ward is triggered, still works) but the rest of your board is locked. Blood Moon on turn 2 prevents Karn entirely — they can't assemble Tron under Moon. Prioritize Shivan Reef + Island as your mana base in this matchup to ensure turn-2 Blood Moon access. Don't use Fiery Islet if it means Blood Moon comes a turn late.</li>
+    <li><strong>Common mistake: over-deploying artifacts before Weapons Manufacturing.</strong> Each artifact you deploy before Manufacturing misses its Munitions trigger. If you have Manufacturing in hand and artifacts to play, deploy Manufacturing FIRST, then deploy artifacts. A hand of 4 artifacts + Manufacturing: cast Manufacturing turn 2, then cast all 4 artifacts on turn 3 → 4 Munitions tokens. Vs casting 4 artifacts turn 1-2 then Manufacturing → 0 Munitions from those artifacts.</li>
+    <li><strong>Common mistake: using Metallic Rebuke on the wrong spell.</strong> Rebuke with Improvise counters any spell for {U} effectively. Prioritize: Karn, the Great Creator (the most important spell to counter in the format), Primeval Titan ETB trigger (only Consign), Solitude evoke targeting Emissary. Do NOT use Rebuke on cantrips, 1-drop creatures, or spells that don't matter. You have 3 Rebukes — they're precious. Rebuke earns its slot by hitting their game-ending threat, not their setup.</li>
+    <li><strong>Track your Metalcraft state constantly.</strong> Mox Opal is only active at 3+ artifacts. Galvanic Blast deals 4 only with Metalcraft. Thoughtcast costs U only with Metalcraft. At the start of each turn, count your artifacts. You need to know this immediately, not after thinking for 10 seconds — it creates errors in the clock and telegraphs your hand to observant opponents.</li>
+  </ol>
+</div>
+
+<!-- TUNING -->
+<div id="tuning" class="section">
+  <div class="section-label">Chapter 09</div>
+  <h1>Tuning<br>Notes</h1>
+  <p>Concrete card swaps triggered by metagame shifts. Check live meta data before each RC and adjust. The core (4 Emissary, 4 Kappa, 4 Mox Opal, 4 Urza's Saga, 4 EE, 4 Weapons Manufacturing) is non-negotiable. Flex slots are everything else.</p>
+  <div class="tuning-grid">
+    <div class="tuning-cell"><div class="tuning-label">If This Rises</div><div class="tuning-condition">Control and Blue Midrange</div>
+      <p class="tuning-up"><span class="c">Mystical Dispute</span> main 1-2 — {U} to counter any blue spell</p>
+      <p class="tuning-up">Vexing Bauble main +1 — taxes Solitude evoke ({0} mana cost → Bauble triggers)</p>
+      <p class="tuning-down">Tormod's Crypt main — less relevant vs non-GY decks</p>
+      <p class="tuning-down">Damping Sphere SB — less needed when combo is light</p>
+      <p style="font-size:14px;font-weight:300;margin-top:8px;">Against Jeskai Blink specifically: their Solitude evoke is {0} mana paid — Vexing Bauble forces them to pay {2} extra or the Solitude is countered. This changes the matchup fundamentally. Vexing Bauble main in Jeskai-heavy metas is correct.</p>
+    </div>
+    <div class="tuning-cell"><div class="tuning-label">If This Rises</div><div class="tuning-condition">Combo and Storm Decks</div>
+      <p class="tuning-up"><span class="c">Damping Sphere</span> main 1-2 — always relevant, also counts as artifact</p>
+      <p class="tuning-up"><span class="c">Force of Negation</span> SB +1 — free interaction on their kill turn</p>
+      <p class="tuning-down">Whipflare SB -1 — less relevant when field is non-creature</p>
+      <p class="tuning-down">Galvanic Blast SB -1 — less removal needed vs combo</p>
+      <p style="font-size:14px;font-weight:300;margin-top:8px;">Damping Sphere in the main deck is correct when Storm, Neoform, and Amulet are all in the top 4 decks. It's still an artifact for Metalcraft and Improvise. The 0-cost opportunity cost is low — you cut a Tormod's Crypt or Claws of Gix instead.</p>
+    </div>
+    <div class="tuning-cell"><div class="tuning-label">If This Rises</div><div class="tuning-condition">Aggro and Creature Decks</div>
+      <p class="tuning-up">Whipflare main 1 — one-sided 2-damage sweeper for nonartifact creatures</p>
+      <p class="tuning-up"><span class="c">Galvanic Blast</span> SB +2 — Metalcraft 4-damage removal hits most relevant creatures</p>
+      <p class="tuning-down">Mystical Dispute SB -1 — less relevant vs aggro</p>
+      <p class="tuning-down">Blood Moon SB -1 — aggro often plays enough basics</p>
+      <p style="font-size:14px;font-weight:300;margin-top:8px;">Against Prowess-heavy metas specifically: Whipflare main is extremely high value. Hits DRC, Swiftspear, Monastery Monks — all nonartifact creatures — while your Drones and Constructs survive. This should be automatic if Prowess is top 3 in the expected field.</p>
+    </div>
+    <div class="tuning-cell"><div class="tuning-label">If This Rises</div><div class="tuning-condition">Artifact Hate in Sideboards</div>
+      <p class="tuning-up"><span class="c">Emry, Lurker of the Loch</span> main +1 — more recursion against Stony Silence and Shatter effects</p>
+      <p class="tuning-up">Arcbound Ravager main +1 — saves artifacts from removal by sacrificing into counters</p>
+      <p class="tuning-down">Claws of Gix main -1 — less utility when artifact abilities are shut off anyway</p>
+      <p style="font-size:14px;font-weight:300;margin-top:8px;">When the field boards heavily into artifact hate (Stony Silence, Null Rod, Collector Ouphe), Arcbound Ravager becomes critical. Ravager can sacrifice artifacts before Ouphe enters tapped out, preserving value as +1/+1 counters on Ravager itself. More Ravagers = more resilience against hate.</p>
+    </div>
+    <div class="tuning-cell"><div class="tuning-label">If This Rises</div><div class="tuning-condition">Graveyard Decks</div>
+      <p class="tuning-up">Tormod's Crypt main +1 — more GY hate maindeck for favorable game 1</p>
+      <p class="tuning-up">Grafdigger's Cage SB +1 — Living End, Neoform hate</p>
+      <p class="tuning-down">Welding Jar -1 — less regeneration needed in GY-heavy meta</p>
+      <p style="font-size:14px;font-weight:300;margin-top:8px;">Tormod's Crypt is already main deck. In a GY-heavy meta (Grixis Reanimator, Living End, Dredge all tier 1), adding a fourth Crypt or substituting Nihil Spellbomb ({1}: sacrifice to exile target player's GY + draw a card on ETB) as a 1-of is correct. Nihil draws a card on entering the battlefield — strictly better for the GY hate, also enables Metalcraft, also triggers Weapons Manufacturing since it's a nontoken artifact.</p>
+    </div>
+    <div class="tuning-cell"><div class="tuning-label">Testing / Flex</div><div class="tuning-condition">Flex Slots Under Evaluation</div>
+      <p class="tuning-up">Ravenous Robots {1}{R} — creates 1/1 Robot per artifact spell cast (on top of Drones from Emissary)</p>
+      <p class="tuning-up">Krang, Master Mind — Affinity creature, refuels hand when below 4 cards, scales with artifacts</p>
+      <p class="tuning-up">Thoughtcast vs Sink into Stupor — split currently testing</p>
+      <p style="font-size:14px;font-weight:300;margin-top:8px;">Ravenous Robots generates Robots alongside Emissary's Drones — both trigger off artifact spells cast, doubling token production for Kappa Cannoneer. Testing 2-of as a Claws of Gix replacement. Krang as a 1-of is appearing in March 2026 Challenge lists as a late-game refuel tool in longer games.</p>
+    </div>
+  </div>
+</div>
+
+<!-- PREP SHEET -->
+<div id="prep" class="section">
+  <div class="section-label">Chapter 10</div>
+  <h1>Event<br>Prep Sheet</h1>
+  <button class="print-btn" onclick="window.print()">&#9112; Print This Sheet</button>
+
+  <div class="print-grid">
+    <div class="print-mu">
+      <div class="print-mu-name">Boros Energy <span class="diff-good" style="font-size:10px;">Favored</span></div>
+      <div class="print-mu-role">Race Bombardment — Ward buys turns</div>
+      <div class="print-cols">
+        <div><div class="print-col-label">In</div>
+          <div class="print-row"><span>Whipflare</span><span class="print-qty">+2</span></div>
+          <div class="print-row"><span>Galvanic Blast</span><span class="print-qty">+2</span></div>
+        </div>
+        <div><div class="print-col-label">Out</div>
+          <div class="print-row"><span>Tormod's Crypt</span><span class="print-qty">&minus;3</span></div>
+          <div class="print-row"><span>Welding Jar</span><span class="print-qty">&minus;1</span></div>
+        </div>
+      </div>
+      <div class="print-needle">Key: Kill with Kappa. EE if needed.</div>
+    </div>
+    <div class="print-mu">
+      <div class="print-mu-name">Jeskai Blink <span class="diff-hard" style="font-size:10px;">Hard</span></div>
+      <div class="print-mu-role">Blood Moon T2 on play — Kappa + Ward vs Solitude</div>
+      <div class="print-cols">
+        <div><div class="print-col-label">In</div>
+          <div class="print-row"><span>Blood Moon</span><span class="print-qty">+3</span></div>
+          <div class="print-row"><span>Mystical Dispute</span><span class="print-qty">+2</span></div>
+        </div>
+        <div><div class="print-col-label">Out</div>
+          <div class="print-row"><span>Tormod's Crypt</span><span class="print-qty">&minus;3</span></div>
+          <div class="print-row"><span>Claws of Gix</span><span class="print-qty">&minus;2</span></div>
+        </div>
+      </div>
+      <div class="print-needle">Key: Moon T2. Weapons burst after Wrath.</div>
+    </div>
+    <div class="print-mu">
+      <div class="print-mu-name">Izzet Prowess <span class="diff-even" style="font-size:10px;">Even</span></div>
+      <div class="print-mu-role">Speed race — Rebuke for Cori-Steel Cutter</div>
+      <div class="print-cols">
+        <div><div class="print-col-label">In</div>
+          <div class="print-row"><span>Galvanic Blast</span><span class="print-qty">+2</span></div>
+          <div class="print-row"><span>Whipflare</span><span class="print-qty">+2</span></div>
+        </div>
+        <div><div class="print-col-label">Out</div>
+          <div class="print-row"><span>Tormod's Crypt</span><span class="print-qty">&minus;2</span></div>
+          <div class="print-row"><span>Claws of Gix</span><span class="print-qty">&minus;2</span></div>
+        </div>
+      </div>
+      <div class="print-needle">Key: Don't block DRC. Race it.</div>
+    </div>
+    <div class="print-mu">
+      <div class="print-mu-name">Grixis Reanimator <span class="diff-even" style="font-size:10px;">Even</span></div>
+      <div class="print-mu-role">Rebuke Persist. Race before Archon.</div>
+      <div class="print-cols">
+        <div><div class="print-col-label">In</div>
+          <div class="print-row"><span>Galvanic Blast</span><span class="print-qty">+2</span></div>
+          <div class="print-row"><span>Grafdigger's Cage</span><span class="print-qty">+1</span></div>
+        </div>
+        <div><div class="print-col-label">Out</div>
+          <div class="print-row"><span>Claws of Gix</span><span class="print-qty">&minus;2</span></div>
+          <div class="print-row"><span>Welding Jar</span><span class="print-qty">&minus;1</span></div>
+        </div>
+      </div>
+      <div class="print-needle">Cage does NOT stop Persist (puts, not casts).</div>
+    </div>
+    <div class="print-mu">
+      <div class="print-mu-name">Amulet Titan <span class="diff-even" style="font-size:10px;">Even</span></div>
+      <div class="print-mu-role">Consign Titan ETB. Race with Kappa.</div>
+      <div class="print-cols">
+        <div><div class="print-col-label">In</div>
+          <div class="print-row"><span>Consign to Memory</span><span class="print-qty">+2</span></div>
+          <div class="print-row"><span>Damping Sphere</span><span class="print-qty">+1</span></div>
+        </div>
+        <div><div class="print-col-label">Out</div>
+          <div class="print-row"><span>Tormod's Crypt</span><span class="print-qty">&minus;2</span></div>
+          <div class="print-row"><span>Welding Jar</span><span class="print-qty">&minus;1</span></div>
+        </div>
+      </div>
+      <div class="print-needle">Needle: Amulet of Vigor. Don't Consign Pact upkeep.</div>
+    </div>
+    <div class="print-mu">
+      <div class="print-mu-name">Mirror <span class="diff-even" style="font-size:10px;">Even</span></div>
+      <div class="print-mu-role">First Kappa wins. Dispute their Kappa.</div>
+      <div class="print-cols">
+        <div><div class="print-col-label">In</div>
+          <div class="print-row"><span>Galvanic Blast</span><span class="print-qty">+2</span></div>
+          <div class="print-row"><span>Mystical Dispute</span><span class="print-qty">+2</span></div>
+        </div>
+        <div><div class="print-col-label">Out</div>
+          <div class="print-row"><span>Tormod's Crypt</span><span class="print-qty">&minus;2</span></div>
+          <div class="print-row"><span>Damping Sphere</span><span class="print-qty">&minus;2</span></div>
+        </div>
+      </div>
+      <div class="print-needle">Saga + Shadowspear lifelink wins stalled mirrors.</div>
+    </div>
+    <div class="print-mu">
+      <div class="print-mu-name">Ruby Storm <span class="diff-even" style="font-size:10px;">Even</span></div>
+      <div class="print-mu-role">Damping Sphere T2 wins the race</div>
+      <div class="print-cols">
+        <div><div class="print-col-label">In</div>
+          <div class="print-row"><span>Damping Sphere</span><span class="print-qty">+3</span></div>
+          <div class="print-row"><span>Consign to Memory</span><span class="print-qty">+2</span></div>
+          <div class="print-row"><span>Force of Negation</span><span class="print-qty">+1</span></div>
+        </div>
+        <div><div class="print-col-label">Out</div>
+          <div class="print-row"><span>Tormod's Crypt</span><span class="print-qty">&minus;3</span></div>
+          <div class="print-row"><span>Claws of Gix</span><span class="print-qty">&minus;2</span></div>
+          <div class="print-row"><span>Welding Jar</span><span class="print-qty">&minus;1</span></div>
+        </div>
+      </div>
+      <div class="print-needle">Consign counters Ruby Medallion (colorless spell).</div>
+    </div>
+    <div class="print-mu">
+      <div class="print-mu-name">Eldrazi Tron <span class="diff-hard" style="font-size:10px;">Hard</span></div>
+      <div class="print-mu-role">Blood Moon T2. Haywire Mite finds Bridge.</div>
+      <div class="print-cols">
+        <div><div class="print-col-label">In</div>
+          <div class="print-row"><span>Blood Moon</span><span class="print-qty">+3</span></div>
+          <div class="print-row"><span>Damping Sphere</span><span class="print-qty">+2</span></div>
+        </div>
+        <div><div class="print-col-label">Out</div>
+          <div class="print-row"><span>Tormod's Crypt</span><span class="print-qty">&minus;3</span></div>
+          <div class="print-row"><span>Claws of Gix</span><span class="print-qty">&minus;2</span></div>
+        </div>
+      </div>
+      <div class="print-needle">Needle: Karn. Saga Ch III tutors Haywire Mite vs Bridge.</div>
+    </div>
+    <div class="print-mu">
+      <div class="print-mu-name">Domain Aggro <span class="diff-good" style="font-size:10px;">Favored</span></div>
+      <div class="print-mu-role">Constructs > their threats. Shadowspear removes Scion hexproof.</div>
+      <div class="print-cols">
+        <div><div class="print-col-label">In</div>
+          <div class="print-row"><span>Whipflare</span><span class="print-qty">+2</span></div>
+          <div class="print-row"><span>Galvanic Blast</span><span class="print-qty">+2</span></div>
+        </div>
+        <div><div class="print-col-label">Out</div>
+          <div class="print-row"><span>Tormod's Crypt</span><span class="print-qty">&minus;2</span></div>
+          <div class="print-row"><span>Damping Sphere</span><span class="print-qty">&minus;2</span></div>
+        </div>
+      </div>
+      <div class="print-needle">Shadowspear {1} removes hexproof before targeting Scion.</div>
+    </div>
+    <div class="print-mu">
+      <div class="print-mu-name">Esper Reanimator <span class="diff-good" style="font-size:10px;">Favored</span></div>
+      <div class="print-mu-role">Rebuke Goryo's. Race before Atraxa.</div>
+      <div class="print-cols">
+        <div><div class="print-col-label">In</div>
+          <div class="print-row"><span>Consign to Memory</span><span class="print-qty">+2</span></div>
+          <div class="print-row"><span>Grafdigger's Cage</span><span class="print-qty">+1</span></div>
+        </div>
+        <div><div class="print-col-label">Out</div>
+          <div class="print-row"><span>Claws of Gix</span><span class="print-qty">&minus;2</span></div>
+          <div class="print-row"><span>Welding Jar</span><span class="print-qty">&minus;1</span></div>
+        </div>
+      </div>
+      <div class="print-needle">Consign Atraxa ETB trigger.</div>
+    </div>
+    <div class="print-mu">
+      <div class="print-mu-name">Azorius Control <span class="diff-medium" style="font-size:10px;">Slight Dog</span></div>
+      <div class="print-mu-role">Weapons Manufacturing survives Verdict.</div>
+      <div class="print-cols">
+        <div><div class="print-col-label">In</div>
+          <div class="print-row"><span>Mystical Dispute</span><span class="print-qty">+2</span></div>
+          <div class="print-row"><span>Force of Negation</span><span class="print-qty">+1</span></div>
+          <div class="print-row"><span>Blood Moon</span><span class="print-qty">+2</span></div>
+        </div>
+        <div><div class="print-col-label">Out</div>
+          <div class="print-row"><span>Tormod's Crypt</span><span class="print-qty">&minus;3</span></div>
+          <div class="print-row"><span>Damping Sphere</span><span class="print-qty">&minus;2</span></div>
+        </div>
+      </div>
+      <div class="print-needle">EE burst after Verdict. Bounce Teferi with Stupor.</div>
+    </div>
+  </div>
+</div>
+
+</div><!-- end .page -->
+
+<footer>
+  <span>Team Resolve · Izzet Affinity Playbook</span>
+  <span>March 30, 2026 · 7.1% Meta Share</span>
+  <span>&copy; 2026 Team Resolve</span>
+</footer>
+
+<script>
+function show(id) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.nav-link').forEach(b => b.classList.remove('active'));
+  const section = document.getElementById(id);
+  if (section) section.classList.add('active');
+  const btn = document.querySelector(`[onclick="show('${id}')"]`);
+  if (btn) btn.classList.add('active');
+  window.scrollTo(0, 0);
+}
+
+function toggleMatchup(id) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  const isOpen = el.classList.contains('open');
+  document.querySelectorAll('.matchup-detail').forEach(d => d.classList.remove('open'));
+  document.querySelectorAll('.matchup-table tr').forEach(r => r.classList.remove('selected'));
+  if (!isOpen) {
+    el.classList.add('open');
+    el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    const row = document.querySelector(`[onclick="toggleMatchup('${id}')"]`);
+    if (row) row.classList.add('selected');
+  }
+}
+
+// Auto-load live matchup data if available
+if (typeof loadMatchupData === 'function') loadMatchupData('izzet-affinity');
+</script>
+
+</body>
+</html>

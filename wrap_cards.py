@@ -123,10 +123,39 @@ CARDS = [
     "Path to Exile",
     "Slickshot Show-Off",
     "Murktide Regent",
+    # Izzet Affinity core
+    "Pinnacle Emissary",
+    "Kappa Cannoneer",
+    "Weapons Manufacturing",
+    "Engineered Explosives",
+    "Mox Opal",
+    "Mishra's Bauble",
+    "Emry, Lurker of the Loch",
+    "Arcbound Ravager",
+    "Metallic Rebuke",
+    "Thoughtcast",
+    "Sink into Stupor",
+    "Claws of Gix",
+    "Tormod's Crypt",
+    "Springleaf Drum",
+    "Thought Monitor",
+    "Ravenous Robots",
+    "Krang, Master Mind",
+    "Haywire Mite",
+    "Shadowspear",
+    "Damping Sphere",
+    "Whipflare",
+    "Galvanic Blast",
+    "Welding Jar",
+    "Urza's Saga",
+    "Skateboard",
     # General
     "Force of Negation",
     "Chalice of the Void",
     "Leyline of the Void",
+    "Consign to Memory",
+    "Mystical Dispute",
+    "Blood Moon",
 ]
 
 # Sort longest first so "Ragavan, Nimble Pilferer" matches before "Ragavan"
@@ -138,6 +167,7 @@ PLAYBOOKS = [
     "prowess-playbook.html",
     "glockulous-playbook.html",
     "uw-control-playbook.html",
+    "izzet-affinity-playbook.html",
 ]
 
 def wrap_cards_in_html(html):
