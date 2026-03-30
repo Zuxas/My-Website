@@ -116,6 +116,28 @@
   .print-qty { font-family:'DM Mono',monospace; font-size:11px; color:var(--mid); flex-shrink:0; margin-left:4px; }
   .print-needle { font-family:'DM Mono',monospace; font-size:9px; letter-spacing:0.06em; color:var(--danger); margin-top:6px; text-transform:uppercase; }
   .print-note { font-size:11px; font-style:italic; color:var(--mid); margin-top:6px; border-top:1px solid var(--rule); padding-top:4px; line-height:1.4; }
+  .engine-block { border:1px solid var(--rule); margin:32px 0; }
+  .engine-header { background:var(--ink); color:var(--paper); padding:16px 24px; display:flex; align-items:center; gap:16px; }
+  .engine-letter { font-family:'Bebas Neue',sans-serif; font-size:40px; line-height:1; color:#5a5adf; }
+  .engine-name { font-family:'Bebas Neue',sans-serif; font-size:24px; letter-spacing:0.03em; }
+  .engine-body { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--rule); }
+  .engine-step { background:var(--paper); padding:24px; }
+  .engine-step-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--mid); margin-bottom:8px; }
+  .engine-step-title { font-family:'Bebas Neue',sans-serif; font-size:20px; color:var(--ink); margin-bottom:8px; }
+  .engine-step-body { font-size:14px; font-weight:300; color:var(--mid); line-height:1.5; }
+  .tricks-list { list-style:none; margin:12px 0; }
+  .tricks-list li { padding:12px 0; border-bottom:1px solid var(--rule); font-size:15px; font-weight:300; line-height:1.6; display:flex; gap:12px; }
+  .tricks-list li:last-child { border-bottom:none; }
+  .trick-tag { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.1em; text-transform:uppercase; background:var(--paper-dark); border:1px solid var(--rule); padding:2px 6px; white-space:nowrap; margin-top:2px; flex-shrink:0; color:var(--mid); }
+  .tuning-grid { display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--rule); border:1px solid var(--rule); margin:24px 0; }
+  .tuning-cell { background:var(--paper); padding:24px; }
+  .tuning-cell:hover { background:var(--paper-dark); }
+  .tuning-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--mid); margin-bottom:8px; }
+  .tuning-condition { font-family:'Bebas Neue',sans-serif; font-size:20px; color:var(--ink); margin-bottom:12px; }
+  .tuning-up { font-size:14px; font-weight:300; margin-bottom:6px; }
+  .tuning-up::before { content:"▲ "; color:#1a6b1a; font-size:12px; }
+  .tuning-down { font-size:14px; font-weight:300; margin-bottom:6px; }
+  .tuning-down::before { content:"▼ "; color:var(--danger); font-size:12px; }
   footer { background:var(--ink); color:rgba(242,237,230,0.3); padding:40px 80px; margin-top:80px; display:flex; justify-content:space-between; align-items:center; }
   footer span { font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.1em; text-transform:uppercase; }
   @media (max-width:768px) { .header-inner,nav,.page,footer { padding-left:24px; padding-right:24px; } .header-title { font-size:40px; } .header-right { display:none; } .decklist,.role-grid,.sb-table,.sb-deep-grid { grid-template-columns:1fr; } nav { padding:0 24px; } }
@@ -154,14 +176,14 @@
 <nav>
   <span class="nav-brand">GLOCKULOUS</span>
   <a class="nav-link" href="deck-guides.html" style="text-decoration:none;">&#8592; Guides</a>
-  <button class="nav-link active" onclick="show('identity')">Identity</button>
+  <button class="nav-link active" onclick="show('identity')">Overview</button>
   <button class="nav-link" onclick="show('decklist')">Decklist</button>
-  <button class="nav-link" onclick="show('gameplan')">Gameplan</button>
-  <button class="nav-link" onclick="show('roles')">Roles</button>
+  <button class="nav-link" onclick="show('gameplan')">Game Flow</button>
+  <button class="nav-link" onclick="show('engines')">Engines</button><button class="nav-link" onclick="show('roles')">Roles</button>
   <button class="nav-link" onclick="show('matchups')">Matchups</button>
-  <button class="nav-link" onclick="show('sideboard')">SB Guide</button>
+  <button class="nav-link" onclick="show('sideboard')">Sideboard</button>
   <button class="nav-link" onclick="show('heuristics')">Heuristics</button>
-  <button class="nav-link" onclick="show('prep')">Prep</button>
+  <button class="nav-link" onclick="show('tuning')">Tuning</button><button class="nav-link" onclick="show('prep')">Prep</button>
 </nav>
 
 <div class="page">
@@ -377,8 +399,67 @@
 </div>
 
 <!-- ROLES -->
-<div id="roles" class="section">
+<div id="engines" class="section">
   <div class="section-label">Chapter 04</div>
+  <h1>Core<br>Engines</h1>
+  <p>Three engines win games with Glockulous. Engine A is the primary plan. Engine B is the advanced line that turns Engine A into a permanent threat. Engine C is the backup plan when the GY plan is shut off.</p>
+
+  <div class="engine-block">
+    <div class="engine-header"><div class="engine-letter">A</div>
+      <div><div class="engine-name">Faithless Looting → Persist → Archon ETB</div>
+      <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(242,237,230,0.4);margin-top:4px;">The primary combo. Draw, pitch Archon, reanimate next turn. One trigger often wins.</div></div>
+    </div>
+    <div class="engine-body">
+      <div class="engine-step"><div class="engine-step-label">Setup</div><div class="engine-step-title">Archon in the Graveyard</div>
+      <div class="engine-step-body"><span class="c">Faithless Looting</span> draws two cards then discards two. Cast on turn 1 — discard <span class="c">Archon of Cruelty</span> (MV 8, impossible to hardcast) and one other card. Archon is now in the GY as a Persist target. <span class="c">Thought Scour</span> mills 2 cards — if Archon is in those 2, it goes directly to the GY without spending a card from hand. Both cards set up turn 2 Persist.</div></div>
+      <div class="engine-step"><div class="engine-step-label">Execution</div><div class="engine-step-title">Persist on Turn 2</div>
+      <div class="engine-step-body"><span class="c">Persist</span> (MV 2, black sorcery): return target nonlegendary creature card from your GY to the battlefield with a finality counter. Archon enters — ETB triggers: target opponent sacrifices a permanent or planeswalker, discards a card, loses 3 life. You draw a card and gain 3 life. This single trigger swings the game state by 6 life and removes their best card and permanent simultaneously. Archon is also an 8/8 flying lifelink attacking next turn.</div></div>
+      <div class="engine-step"><div class="engine-step-label">Result</div><div class="engine-step-title">One Trigger = Winning Position</div>
+      <div class="engine-step-body">A single Archon ETB from Persist puts you so far ahead that most decks cannot recover. You gained 3 life, drew a card, they lost 3 life, discarded their best card, and sacrificed a permanent — all for 2 mana. If Archon attacks next turn (8/8 flying lifelink, gains you 8 more life), the game is effectively over. The finality counter means if Archon dies it goes to exile — not back to the GY for a second Persist.</div></div>
+    </div>
+  </div>
+
+  <div class="engine-block">
+    <div class="engine-header"><div class="engine-letter">B</div>
+      <div><div class="engine-name">Emperor Adapt → Consign the Sacrifice Trigger → Permanent Archon</div>
+      <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(242,237,230,0.4);margin-top:4px;">The advanced line. Archon enters with haste, ETB fires, attacks — then Consign counters the sacrifice trigger in your end step. Archon stays permanently.</div></div>
+    </div>
+    <div class="engine-body">
+      <div class="engine-step"><div class="engine-step-label">Setup</div><div class="engine-step-title">Emperor + Archon in Exile</div>
+      <div class="engine-step-body"><span class="c">Emperor of Bones</span> has two relevant abilities: (1) At beginning of combat, exile up to one target card from any GY. (2) {1}{B}: Adapt 2 — put two +1/+1 counters on Emperor if it has none. Whenever counters are placed on Emperor, put the exiled creature card onto the battlefield with a finality counter — it gains haste and is sacrificed at beginning of next end step. The sacrifice clause is a delayed triggered ability that fires in your end step.</div></div>
+      <div class="engine-step"><div class="engine-step-label">Execution</div><div class="engine-step-title">Consign the End Step Sacrifice Trigger</div>
+      <div class="engine-step-body">Emperor exiles Archon at combat. You Adapt — counters placed, trigger fires, Archon enters with haste + finality counter. Archon ETB fires (they sacrifice, discard, lose 3 — you draw, gain 3). Archon attacks for 8 flying lifelink. In your end step, the delayed sacrifice trigger fires: "sacrifice Archon at the beginning of the next end step." This sacrifice trigger is a triggered ability. Fire <span class="c">Consign to Memory</span> at your own sacrifice trigger. It resolves. Archon is never sacrificed.</div></div>
+      <div class="engine-step"><div class="engine-step-label">Result</div><div class="engine-step-title">Permanent 8/8 Flying Lifelink for {1}{B}</div>
+      <div class="engine-step-body">Total cost: {1}{B} for Adapt plus {U} for Consign = 3 mana. Result: a permanent 8/8 flying lifelink with a finality counter (if it dies to removal later, it goes to exile — cannot be Persisted back against you). This is the primary reason Consign to Memory is in the main deck. You are not just protecting — you are creating an unstoppable threat for 3 mana total.</div></div>
+    </div>
+  </div>
+
+  <div class="engine-block">
+    <div class="engine-header"><div class="engine-letter">C</div>
+      <div><div class="engine-name">Psychic Frog Backup Finisher</div>
+      <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(242,237,230,0.4);margin-top:4px;">When the GY plan is shut off, Frog is not a consolation prize — it is a legitimate primary win condition. Recognize the signal and pivot immediately.</div></div>
+    </div>
+    <div class="engine-body">
+      <div class="engine-step"><div class="engine-step-label">Setup</div><div class="engine-step-title">Recognize When to Pivot</div>
+      <div class="engine-step-body">When you see <span class="c">Rest in Peace</span>, <span class="c">Leyline of the Void</span>, or <span class="c">Surgical Extraction</span> on all copies of Archon — stop trying to fight through graveyard hate with a graveyard deck. The pivot signal is immediate. Stop treating your hand as Archon fuel. Start treating every card in hand as Frog growth. Every discard goes toward growing Frog's power and enabling its flying ability.</div></div>
+      <div class="engine-step"><div class="engine-step-label">Execution</div><div class="engine-step-title">Discard to Grow, Exile to Fly</div>
+      <div class="engine-step-body"><span class="c">Psychic Frog</span>: {1}{B}, 2/2. Whenever it deals combat damage, draw a card. Discard a card: put a +1/+1 counter on it. Exile three cards from your GY: gains flying until end of turn. Discard your lands, redundant <span class="c">Thoughtseize</span> copies, excess removal — anything that grows Frog. Exile your own GY cards (now useless under RiP anyway) to enable flying. By turn 4-5, Frog is commonly a 5/5 or 6/6 flying creature.</div></div>
+      <div class="engine-step"><div class="engine-step-label">Result</div><div class="engine-step-title">Self-Sustaining Card Engine</div>
+      <div class="engine-step-body">A 6/6 flying Frog that connects for a card every attack is a better threat than most decks' primary win conditions. The drawn card is often discarded back to grow Frog further — the engine is self-sustaining. Protect Frog with <span class="c">Mystical Dispute</span> and <span class="c">Thoughtseize</span> exactly as you would protect Archon. Frog backed by disruption wins games that Archon cannot win once the GY is locked.</div></div>
+    </div>
+  </div>
+
+  <h2>Lines &amp; Tricks</h2>
+  <ul class="tricks-list">
+    <li><span class="trick-tag">Stack</span><span><strong>Consign to Memory — the two offensive lines:</strong> (1) Emperor sacrifice trigger in your end step: fire Consign at the "sacrifice Archon" delayed triggered ability to keep it permanently. (2) Future testing — Quantum Riddler Warp exile trigger: Warp creates a delayed triggered ability (exile at next end step). Consign can counter it, keeping the permanent. The Warp bait line (cast Persist with Riddler, Consign your own Warp copy trigger to force their counter) may enter the 75 once testing is complete.</span></li>
+    <li><span class="trick-tag">Stack</span><span><strong>Thoughtseize before Persist, always:</strong> If they're holding up UU and you cannot see their hand, assume <span class="c">Counterspell</span>. Thoughtseize the turn before Persist. If you can't Thoughtseize first, use <span class="c">Mystical Dispute</span> to fight through their counter on the chain. One Persist countered with no follow-up is close to a game loss.</span></li>
+    <li><span class="trick-tag">Sequence</span><span><strong>Faithless Looting draws THEN discards — full information discard:</strong> You draw two new cards before making your discard decision. You see your entire new hand before choosing what to pitch. This means you always have perfect information on the discard — never pitch a card you just drew unless it's worse than what you're keeping. Common mistake: treating Looting like a blind discard and pitching incorrectly.</span></li>
+    <li><span class="trick-tag">Avoid</span><span><strong>Don't exile GY cards for Frog flying when you still need those cards for Persist:</strong> Frog's flying cost is three GY cards — those might be the Archon, a Persist target, and your Emperor. Evaluate: is connecting with Frog this turn (drawing one card) worth permanently removing three key GY resources? Only grant flying when the combat result is more valuable than the three cards you're exiling.</span></li>
+  </ul>
+</div>
+
+<div id="roles" class="section">
+  <div class="section-label">Chapter 05</div>
   <h1>Role Assignment</h1>
 
   <p>Glockulous has three modes. The biggest mistake is staying in Reanimate mode when the game has shifted to requiring Midrange or Disrupt. Read the board state before committing every turn.</p>
@@ -417,7 +498,7 @@
 
 <!-- MATCHUPS -->
 <div id="matchups" class="section">
-  <div class="section-label">Chapter 05</div>
+  <div class="section-label">Chapter 06</div>
   <h1>Matchup<br>Matrix</h1>
   <p>Click any matchup to expand. Win rates from Team Resolve gauntlet data + 262k-match DB.</p>
 
@@ -865,7 +946,7 @@
 
 <!-- SIDEBOARD GUIDE -->
 <div id="sideboard" class="section">
-  <div class="section-label">Chapter 06</div>
+  <div class="section-label">Chapter 07</div>
   <h1>Sideboard<br>Guide</h1>
 
   <h2>Card-by-Card Notes</h2>
@@ -951,7 +1032,7 @@
 
 <!-- HEURISTICS -->
 <div id="heuristics" class="section">
-  <div class="section-label">Chapter 07</div>
+  <div class="section-label">Chapter 08</div>
   <h1>Heuristics &amp;<br>Quick Rules</h1>
 
   <p>Automatic decisions drilled before the event. Glockulous has many layers of sequencing — these rules prevent the most common errors.</p>
@@ -977,8 +1058,53 @@
 </div>
 
 <!-- PREP -->
+<div id="tuning" class="section">
+  <div class="section-label">Chapter 09</div>
+  <h1>Tuning<br>Notes</h1>
+  <p>Concrete card swaps triggered by metagame shifts. Check live meta data before each RC.</p>
+  <div class="tuning-grid">
+    <div class="tuning-cell"><div class="tuning-label">If This Rises</div><div class="tuning-condition">Graveyard Hate Heavy Meta</div>
+      <p class="tuning-up"><span class="c">Psychic Frog</span> becomes primary — build around it not Archon</p>
+      <p class="tuning-up"><span class="c">Mystical Dispute</span> SB +1 — protect Frog from blue removal</p>
+      <p class="tuning-down"><span class="c">Unearth</span> — less relevant when Frog is the plan</p>
+      <p class="tuning-down">Emperor of Bones — cut 1 when GY plan is unreliable</p>
+      <p style="font-size:14px;font-weight:300;margin-top:8px;">When RiP or Leyline is expected game 1, consider moving to a Frog-primary configuration in the SB. Your discard package (<span class="c">Thoughtseize</span>, <span class="c">Faithless Looting</span>) strips their hate piece before it resolves, and Frog grows from the discards. The GY hate helps you grow Frog faster.</p>
+    </div>
+    <div class="tuning-cell"><div class="tuning-label">If This Rises</div><div class="tuning-condition">Control and Blue Midrange</div>
+      <p class="tuning-up"><span class="c">Consign to Memory</span> becomes highest priority — bait counters aggressively</p>
+      <p class="tuning-up"><span class="c">Spell Pierce</span> SB +1 — tax their Counterspell window</p>
+      <p class="tuning-down"><span class="c">Fatal Push</span> main -1 — fewer targets in control mirrors</p>
+      <p style="font-size:14px;font-weight:300;margin-top:8px;">The Warp bait line (Quantum Riddler + Consign to force their countermagic) is under testing as a main deck configuration against control-heavy metas. The line forces them to counter your Consign or let Archon enter — neither option is clean for them. Testing 2 Riddler + 2 Consign as a package.</p>
+    </div>
+    <div class="tuning-cell"><div class="tuning-label">If This Rises</div><div class="tuning-condition">Aggro and Fast Clocks</div>
+      <p class="tuning-up"><span class="c">Fatal Push</span> main +1 — more cheap removal</p>
+      <p class="tuning-up"><span class="c">Harvester of Misery</span> SB — each opponent sacrifices a creature on entry</p>
+      <p class="tuning-down">Troll of Khazad-dum — too slow, Swampcycling is the only relevant mode</p>
+      <p class="tuning-down">Emperor of Bones -1 — 2 mana 2/2 is too vulnerable in aggro races</p>
+      <p style="font-size:14px;font-weight:300;margin-top:8px;">Against Boros Energy and Prowess, your primary goal is surviving to turn 3 for Persist. <span class="c">Fatal Push</span> revolt (triggered by any fetchland crack) kills Ragavan, Swiftspear, DRC, and Ocelot Pride. <span class="c">Psychic Frog</span> blocking a 3/3 and dying while exiling GY cards for flying is still card-positive if you need the blocks.</p>
+    </div>
+    <div class="tuning-cell"><div class="tuning-label">If This Rises</div><div class="tuning-condition">Land-Based or Mana-Sensitive Decks</div>
+      <p class="tuning-up"><span class="c">Harbinger of the Seas</span> main +1 — static nonbasic-to-Island effect</p>
+      <p class="tuning-up"><span class="c">Blood Moon</span> SB — converts all nonbasics to Mountains</p>
+      <p class="tuning-down"><span class="c">Nihil Spellbomb</span> SB -1 — less GY hate needed vs non-GY decks</p>
+      <p style="font-size:14px;font-weight:300;margin-top:8px;">Harbinger is best against Amulet Titan (nonbasic Tron lands all become Islands), Domain Zoo (loses all domain from nonbasic lands), and Jeskai Blink (they rely on specific color sources from nonbasics). One Harbinger collapses three-color mana bases entirely — it's the most efficient land hate piece in the format.</p>
+    </div>
+    <div class="tuning-cell"><div class="tuning-label">If This Rises</div><div class="tuning-condition">Mirror and Reanimator Decks</div>
+      <p class="tuning-up"><span class="c">Surgical Extraction</span> SB — exile their Archon after discard</p>
+      <p class="tuning-up"><span class="c">Nihil Spellbomb</span> SB +1 — exile their GY on entry, draw a card</p>
+      <p class="tuning-down"><span class="c">Blood Moon</span> SB -1 — less relevant in Grixis mirrors</p>
+      <p style="font-size:14px;font-weight:300;margin-top:8px;">In GY mirrors, the fastest GY hate wins. <span class="c">Nihil Spellbomb</span> at {1} colorless exiles their entire GY the moment it enters — the {T} sacrifice is free. Surgical after they discard Archon to Looting removes all four copies from the game permanently, making their entire Persist and Emperor plan irrelevant.</p>
+    </div>
+    <div class="tuning-cell"><div class="tuning-label">Future Testing</div><div class="tuning-condition">Quantum Riddler + Consign Package</div>
+      <p class="tuning-up">Quantum Riddler — Warp {1}{U}: 4/6 flier that draws extra cards when hellbent</p>
+      <p class="tuning-up"><span class="c">Consign to Memory</span> main — counter Emperor sacrifice trigger + Riddler Warp bait</p>
+      <p style="font-size:14px;font-weight:300;margin-top:8px;">Current 75 does not include Riddler or Consign main. Under evaluation: 2 Quantum Riddler + 2 Consign to Memory main as a counter-war package against control. The Riddler Warp bait line (cast Persist → Riddler copies it via Warp → Consign your Warp copy trigger → opponent must counter Consign or let Archon in) forces a no-win interaction for them. Testing begins next RC cycle.</p>
+    </div>
+  </div>
+</div>
+
 <div id="prep" class="section">
-  <div class="section-label">Chapter 08</div>
+  <div class="section-label">Chapter 10</div>
   <h1>Event Day<br>Prep</h1>
   <button class="print-btn" onclick="window.print()">⎙ Print This Sheet</button>
 

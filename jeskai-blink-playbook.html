@@ -130,6 +130,28 @@
   .print-qty { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--mid); flex-shrink: 0; margin-left: 4px; }
   .print-needle { font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 0.06em; color: var(--danger); margin-top: 6px; text-transform: uppercase; }
   .print-note { font-size: 11px; font-style: italic; color: var(--mid); margin-top: 6px; border-top: 1px solid var(--rule); padding-top: 4px; line-height: 1.4; }
+  .engine-block { border:1px solid var(--rule); margin:32px 0; }
+  .engine-header { background:var(--ink); color:var(--paper); padding:16px 24px; display:flex; align-items:center; gap:16px; }
+  .engine-letter { font-family:'Bebas Neue',sans-serif; font-size:40px; line-height:1; color:#c0622b; }
+  .engine-name { font-family:'Bebas Neue',sans-serif; font-size:24px; letter-spacing:0.03em; }
+  .engine-body { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--rule); }
+  .engine-step { background:var(--paper); padding:24px; }
+  .engine-step-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--mid); margin-bottom:8px; }
+  .engine-step-title { font-family:'Bebas Neue',sans-serif; font-size:20px; color:var(--ink); margin-bottom:8px; }
+  .engine-step-body { font-size:14px; font-weight:300; color:var(--mid); line-height:1.5; }
+  .tricks-list { list-style:none; margin:12px 0; }
+  .tricks-list li { padding:12px 0; border-bottom:1px solid var(--rule); font-size:15px; font-weight:300; line-height:1.6; display:flex; gap:12px; }
+  .tricks-list li:last-child { border-bottom:none; }
+  .trick-tag { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.1em; text-transform:uppercase; background:var(--paper-dark); border:1px solid var(--rule); padding:2px 6px; white-space:nowrap; margin-top:2px; flex-shrink:0; color:var(--mid); }
+  .tuning-grid { display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--rule); border:1px solid var(--rule); margin:24px 0; }
+  .tuning-cell { background:var(--paper); padding:24px; }
+  .tuning-cell:hover { background:var(--paper-dark); }
+  .tuning-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--mid); margin-bottom:8px; }
+  .tuning-condition { font-family:'Bebas Neue',sans-serif; font-size:20px; color:var(--ink); margin-bottom:12px; }
+  .tuning-up { font-size:14px; font-weight:300; margin-bottom:6px; }
+  .tuning-up::before { content:"▲ "; color:#1a6b1a; font-size:12px; }
+  .tuning-down { font-size:14px; font-weight:300; margin-bottom:6px; }
+  .tuning-down::before { content:"▼ "; color:var(--danger); font-size:12px; }
   footer { background: var(--ink); color: rgba(242,237,230,0.3); padding: 40px 80px; margin-top: 80px; display: flex; justify-content: space-between; align-items: center; }
   footer span { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; }
   @media (max-width: 768px) { .header-inner, nav, .page, footer { padding-left: 24px; padding-right: 24px; } .header-title { font-size: 40px; } .header-right { display: none; } .decklist, .role-grid, .sb-table, .sb-deep-grid { grid-template-columns: 1fr; } nav { padding: 0 24px; } }
@@ -168,14 +190,14 @@
 <nav>
   <span class="nav-brand">JESKAI BLINK</span>
   <a class="nav-link" href="deck-guides.html" style="text-decoration:none;">&#8592; Guides</a>
-  <button class="nav-link active" onclick="show('identity')">Identity</button>
+  <button class="nav-link active" onclick="show('identity')">Overview</button>
   <button class="nav-link" onclick="show('decklist')">Decklist</button>
-  <button class="nav-link" onclick="show('gameplan')">Gameplan</button>
-  <button class="nav-link" onclick="show('roles')">Roles</button>
+  <button class="nav-link" onclick="show('gameplan')">Game Flow</button>
+  <button class="nav-link" onclick="show('engines')">Engines</button><button class="nav-link" onclick="show('roles')">Roles</button>
   <button class="nav-link" onclick="show('matchups')">Matchups</button>
-  <button class="nav-link" onclick="show('sideboard')">SB Guide</button>
+  <button class="nav-link" onclick="show('sideboard')">Sideboard</button>
   <button class="nav-link" onclick="show('heuristics')">Heuristics</button>
-  <button class="nav-link" onclick="show('prep')">Prep</button>
+  <button class="nav-link" onclick="show('tuning')">Tuning</button><button class="nav-link" onclick="show('prep')">Prep</button>
 </nav>
 
 <div class="page">
@@ -413,8 +435,67 @@
 </div>
 
 <!-- ── ROLES ── -->
-<div id="roles" class="section">
+<div id="engines" class="section">
   <div class="section-label">Chapter 04</div>
+  <h1>Core<br>Engines</h1>
+  <p>Three engines define Jeskai Blink. Understand how each one generates value independently, then learn how they stack simultaneously.</p>
+
+  <div class="engine-block">
+    <div class="engine-header"><div class="engine-letter">A</div>
+      <div><div class="engine-name">Phelia Attack Loop</div>
+      <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(242,237,230,0.4);margin-top:4px;">Every Phelia attack generates a free ETB trigger from your best creature — at instant speed.</div></div>
+    </div>
+    <div class="engine-body">
+      <div class="engine-step"><div class="engine-step-label">Setup</div><div class="engine-step-title">Phelia + Any ETB Creature</div>
+      <div class="engine-step-body"><span class="c">Phelia, Exuberant Shepherd</span> has a triggered ability on attack: exile target nonland permanent you control, then return it at the beginning of the next end step. The returned permanent enters the battlefield again — triggering ETB effects. Any creature with an ETB trigger becomes a repeatable engine once Phelia attacks each turn.</div></div>
+      <div class="engine-step"><div class="engine-step-label">Execution</div><div class="engine-step-title">Choose the Best Target</div>
+      <div class="engine-step-body">Priority ETB targets for Phelia's attack trigger: (1) <span class="c">Guide of Souls</span> — enters and generates energy while having a different power than other attackers. (2) White Orchid Phantom — each re-entry destroys another nonbasic land. (3) <span class="c">Ocelot Pride</span> — the re-entry itself triggers its own ability if you've cast noncreature spells. (4) Any creature with a meaningful enters trigger. Phelia can also target your Phelia (flicker herself) if no better target exists.</div></div>
+      <div class="engine-step"><div class="engine-step-label">Result</div><div class="engine-step-title">Free Value Every Turn</div>
+      <div class="engine-step-body">Phelia generates a free ETB effect every turn she attacks with zero additional mana investment. Over 4 turns, that is 4 White Orchid Phantom land destructions, or 4 Guide of Souls energy pings, or 4 extra Ocelot Pride triggers. The cumulative advantage is often more impactful than any single spell you could cast instead.</div></div>
+    </div>
+  </div>
+
+  <div class="engine-block">
+    <div class="engine-header"><div class="engine-letter">B</div>
+      <div><div class="engine-name">White Orchid Phantom + Ephemerate Land Denial</div>
+      <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(242,237,230,0.4);margin-top:4px;">One Phantom + one Ephemerate destroys two lands and tutors two basics for you.</div></div>
+    </div>
+    <div class="engine-body">
+      <div class="engine-step"><div class="engine-step-label">Setup</div><div class="engine-step-title">White Orchid Phantom ETB</div>
+      <div class="engine-step-body">White Orchid Phantom's ETB: destroy target nonbasic land an opponent controls. That opponent searches for a basic land and puts it onto the battlefield tapped. This removes one of their colored sources while giving you a basic. The core line: cast Phantom, ETB triggers destroying their Hallowed Fountain or Watery Grave. Their mana base becomes more basic and less functional.</div></div>
+      <div class="engine-step"><div class="engine-step-label">Execution</div><div class="engine-step-title">Ephemerate for Double Value</div>
+      <div class="engine-step-body">Cast <span class="c">Ephemerate</span> on White Orchid Phantom the same turn it enters. Ephemerate blinks Phantom — it enters again immediately, ETB triggers again, destroys a second nonbasic land. The Rebound clause means Ephemerate returns at the beginning of your next upkeep as a free cast — you can blink Phantom a third time next turn for a third land destruction.</div></div>
+      <div class="engine-step"><div class="engine-step-label">Result</div><div class="engine-step-title">Mana Base Collapse</div>
+      <div class="engine-step-body">A single Phantom + Ephemerate sequence: two nonbasic lands destroyed across two turns, two basics tutored into play for you. Against three-color decks (Domain Zoo, Jeskai Blink mirrors, Grixis Reanimator), removing two specific nonbasics collapses their color access. Against Amulet Titan, removing Simic Growth Chamber and Tolaria West dismantles the Tron plan entirely.</div></div>
+    </div>
+  </div>
+
+  <div class="engine-block">
+    <div class="engine-header"><div class="engine-letter">C</div>
+      <div><div class="engine-name">Ocelot Pride + Consign to Memory Denial Package</div>
+      <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(242,237,230,0.4);margin-top:4px;">Tokens provide a clock. Consign protects the clock and counters opponent combo pieces.</div></div>
+    </div>
+    <div class="engine-body">
+      <div class="engine-step"><div class="engine-step-label">Setup</div><div class="engine-step-title">Ocelot Pride Token Generation</div>
+      <div class="engine-step-body"><span class="c">Ocelot Pride</span> creates a 1/1 white Cat whenever you cast a noncreature spell. Jeskai Blink has a high noncreature spell density — Ephemerate, Consign to Memory, White Orchid Phantom's triggers. Cats accumulate rapidly. Combined with Guide of Souls energy generation and Phelia's attack loop, the board fills faster than any single-target removal deck can answer.</div></div>
+      <div class="engine-step"><div class="engine-step-label">Execution</div><div class="engine-step-title">Consign Protects and Disrupts</div>
+      <div class="engine-step-body"><span class="c">Consign to Memory</span> at {U} with Replicate {1} counters triggered abilities. Primary targets: Archon of Cruelty's ETB trigger (saving you from sacrifice/discard/life loss), opponent's Snapcaster Mage ETB trigger (denying flashback), Urza's Saga chapter III (denying the Construct token and tutor). Each Consign spent protecting your board or disrupting theirs generates more value than the mana invested.</div></div>
+      <div class="engine-step"><div class="engine-step-label">Result</div><div class="engine-step-title">Tempo + Disruption Together</div>
+      <div class="engine-step-body">The combination of wide token production and instant-speed triggered ability denial makes Jeskai Blink the hardest deck to interact with. Your tokens apply pressure while your interaction neutralizes their triggers. Opponents cannot efficiently answer 8 cats, a 2/2 Phelia, and open Consign mana simultaneously. One of these threats always gets through.</div></div>
+    </div>
+  </div>
+
+  <h2>Lines &amp; Tricks</h2>
+  <ul class="tricks-list">
+    <li><span class="trick-tag">Stack</span><span><strong>Phelia blinks Ephemerate target mid-Rebound:</strong> Phelia's attack trigger can exile a creature your Ephemerate already targeted — but the Rebound copy fires at your upkeep independently. The Rebound still resolves, so you get the blink effect twice. Use this to re-trigger White Orchid Phantom on Phelia's attack and again at upkeep, destroying two lands from one Phantom.</span></li>
+    <li><span class="trick-tag">Stack</span><span><strong>Consign to Memory the opponent's Snapcaster Mage ETB during your turn:</strong> <span class="c">Consign to Memory</span> is Replicate — pay {1} to copy it. If they flash in Snapcaster targeting Counterspell in your main phase, Consign the ETB trigger (give flashback is a triggered ability). They spent 2 mana for a 2/1 body with no flashback. Now your threat resolves cleanly.</span></li>
+    <li><span class="trick-tag">Combat</span><span><strong>Phelia on their creature during attacks denies their combat trigger:</strong> Phelia's attack trigger can exile opponent permanents too. If they attack with a creature that has a combat damage trigger (Ragavan, DRC), exile it with Phelia before it deals damage. It returns at end of turn — they lose the combat step entirely and the trigger never fires.</span></li>
+    <li><span class="trick-tag">Sequence</span><span><strong>White Orchid Phantom target priority:</strong> Against multicolor decks, destroy their most painful nonbasic: their only source of a specific color, or the land that enables their combo. Against Amulet Titan: Simic Growth Chamber (they lose a bounce land). Against Glockulous: Watery Grave (removes black source, stranding Persist). Against mirrors: their Hallowed Fountain (reduces their ability to hold Counterspell mana).</span></li>
+  </ul>
+</div>
+
+<div id="roles" class="section">
+  <div class="section-label">Chapter 05</div>
   <h1>Role Assignment</h1>
 
   <p>Jeskai Blink is the format's most role-flexible archetype. It can legitimately play control, tempo, or beatdown in different matchups and different game states. The highest skill expression is correctly identifying which role you are — and switching immediately when the game state demands it.</p>
@@ -486,7 +567,7 @@
 
 <!-- ── MATCHUPS ── -->
 <div id="matchups" class="section">
-  <div class="section-label">Chapter 05</div>
+  <div class="section-label">Chapter 06</div>
   <h1>Matchup<br>Matrix</h1>
   <p>Click any matchup to expand the full game plan, sideboard, and If X → Do Y guide. Win rates from Team Resolve gauntlet data + 262k-match DB.</p>
 
@@ -1009,7 +1090,7 @@
 
 <!-- ── SIDEBOARD GUIDE ── -->
 <div id="sideboard" class="section">
-  <div class="section-label">Chapter 06</div>
+  <div class="section-label">Chapter 07</div>
   <h1>Sideboard<br>Guide</h1>
 
   <p>Per-card notes on what each sideboard card does and when it belongs in the deck. Commit to the boarding plan before games 2 and 3. The biggest mistake in the Jeskai Blink sideboard is over-boarding — bringing in too many reactive pieces dilutes the proactive engine that makes the deck function.</p>
@@ -1113,7 +1194,7 @@
 
 <!-- ── HEURISTICS ── -->
 <div id="heuristics" class="section">
-  <div class="section-label">Chapter 07</div>
+  <div class="section-label">Chapter 08</div>
   <h1>Heuristics &amp;<br>Quick Rules</h1>
 
   <p>These are the decisions made before the game starts so you don't have to think about them mid-match. Jeskai Blink has the highest decision density of any deck in this playbook library. Internalizing these rules converts decision points from 10-second pauses into reflexes.</p>
@@ -1139,8 +1220,54 @@
 </div>
 
 <!-- ── PREP SHEET ── -->
+<div id="tuning" class="section">
+  <div class="section-label">Chapter 09</div>
+  <h1>Tuning<br>Notes</h1>
+  <p>Concrete card swaps triggered by metagame shifts. Check live meta data before each RC.</p>
+  <div class="tuning-grid">
+    <div class="tuning-cell"><div class="tuning-label">If This Rises</div><div class="tuning-condition">Graveyard Combo</div>
+      <p class="tuning-up"><span class="c">Rest in Peace</span> main 1 — game 1 surprise vs Glockulous/Esper</p>
+      <p class="tuning-up"><span class="c">Consign to Memory</span> SB +1 — counter Archon ETB, Goryo's trigger</p>
+      <p class="tuning-down"><span class="c">Quantum Riddler</span> — too slow for fast combo races</p>
+      <p class="tuning-down"><span class="c">Mockingbird</span> — less relevant when their creatures die to combo setup</p>
+      <p style="font-size:14px;font-weight:300;margin-top:8px;">RiP main against Glockulous is a known edge. They have very little game 1 graveyard hate themselves. A turn-2 RiP shuts Persist, Emperor, and Psychic Frog's exile-for-flying ability simultaneously. Game 1 surprise is worth more than the sideboard slot.</p>
+    </div>
+    <div class="tuning-cell"><div class="tuning-label">If This Rises</div><div class="tuning-condition">Aggro and Burn</div>
+      <p class="tuning-up"><span class="c">Solitude</span> SB — free exile for extra creature removal</p>
+      <p class="tuning-up">Wrath of the Skies SB +1 — additional sweeper</p>
+      <p class="tuning-down">White Orchid Phantom main — too slow vs fast aggro</p>
+      <p class="tuning-down"><span class="c">Quantum Riddler</span> — too expensive for aggro race</p>
+      <p style="font-size:14px;font-weight:300;margin-top:8px;">Against Boros Energy: the matchup is close to even. Phelia's blink loop generates card advantage while your life total stays stable. Sanctifier en-Vec postboard blocks Bombardment pings (protection from red). Wrath of the Skies hits their token army cleanly.</p>
+    </div>
+    <div class="tuning-cell"><div class="tuning-label">If This Rises</div><div class="tuning-condition">Control Mirrors</div>
+      <p class="tuning-up">Dovin's Veto SB +1 — uncounterable Teferi answer</p>
+      <p class="tuning-up"><span class="c">Mystical Dispute</span> SB — {U} to counter any blue spell</p>
+      <p class="tuning-down">Wrath of the Skies — fewer creatures to sweep in control</p>
+      <p class="tuning-down"><span class="c">Pithing Needle</span> — less relevant vs spell-based control</p>
+      <p style="font-size:14px;font-weight:300;margin-top:8px;">Against UW Control mirrors: Dovin's Veto is the critical card — hold it for their Teferi Hero. Your Phelia + White Orchid Phantom clock applies pressure that forces them to tap before they want to. Mystical Dispute wins counter wars for 1 blue when they tap for Teferi.</p>
+    </div>
+    <div class="tuning-cell"><div class="tuning-label">If This Rises</div><div class="tuning-condition">Artifact-Based Decks</div>
+      <p class="tuning-up"><span class="c">Stony Silence</span> SB +1 — shuts Mox Opal and all artifact activations</p>
+      <p class="tuning-up"><span class="c">Consign to Memory</span> SB — counter Urza's Saga chapter III trigger</p>
+      <p class="tuning-down"><span class="c">Orim's Chant</span> — less relevant vs noncreature artifacts</p>
+      <p style="font-size:14px;font-weight:300;margin-top:8px;">Against Izzet Affinity: Stony Silence is the most disruptive card. White Orchid Phantom destroys their Darksteel Citadel or other nonbasic artifact lands. Phelia's attack loop exiles their Arcbound Ravager at critical moments — killing it before modular counters transfer.</p>
+    </div>
+    <div class="tuning-cell"><div class="tuning-label">If This Rises</div><div class="tuning-condition">Land-Light / Big Mana</div>
+      <p class="tuning-up">White Orchid Phantom main +1 — more land destruction reps</p>
+      <p class="tuning-up"><span class="c">Consign to Memory</span> SB — counter Summoner's Pact upkeep trigger</p>
+      <p class="tuning-down"><span class="c">Mockingbird</span> — copying their threats isn't correct vs big mana</p>
+      <p style="font-size:14px;font-weight:300;margin-top:8px;">Against Amulet Titan: White Orchid Phantom + Ephemerate destroys Simic Growth Chamber and Tolaria West in one turn, which dismantles their Tron assembly. Consign countering the Summoner's Pact upkeep trigger is an instant game loss for them if they can't pay 2GG.</p>
+    </div>
+    <div class="tuning-cell"><div class="tuning-label">Currently Testing</div><div class="tuning-condition">Flex Slots</div>
+      <p class="tuning-up"><span class="c">Starfield Shepherd</span> — Warp cost enables early deployment, tutors creatures</p>
+      <p class="tuning-up"><span class="c">Quantum Riddler</span> — Warp {1}{U} for a 4/6 flier that draws cards when you're hellbent</p>
+      <p style="font-size:14px;font-weight:300;margin-top:8px;">Quantum Riddler under evaluation: cast for Warp {1}{U} as a 4/6 flier for 2 mana this turn. Its replacement effect (draw an extra card when you have one or fewer cards in hand) synergizes with Faithless Looting-style discard effects. The Warp exile trigger can be countered by Consign to Memory to keep it permanently.</p>
+    </div>
+  </div>
+</div>
+
 <div id="prep" class="section">
-  <div class="section-label">Chapter 08</div>
+  <div class="section-label">Chapter 10</div>
   <h1>Event Day<br>Prep</h1>
   <button class="print-btn" onclick="window.print()">⎙ Print This Sheet</button>
 

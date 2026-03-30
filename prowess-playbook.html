@@ -122,6 +122,28 @@
   .print-qty { font-family:'DM Mono',monospace; font-size:11px; color:var(--mid); flex-shrink:0; margin-left:4px; }
   .print-needle { font-family:'DM Mono',monospace; font-size:9px; letter-spacing:0.06em; color:var(--danger); margin-top:6px; text-transform:uppercase; }
   .print-note { font-size:11px; font-style:italic; color:var(--mid); margin-top:6px; border-top:1px solid var(--rule); padding-top:4px; line-height:1.4; }
+  .engine-block { border:1px solid var(--rule); margin:32px 0; }
+  .engine-header { background:var(--ink); color:var(--paper); padding:16px 24px; display:flex; align-items:center; gap:16px; }
+  .engine-letter { font-family:'Bebas Neue',sans-serif; font-size:40px; line-height:1; color:#b03a1a; }
+  .engine-name { font-family:'Bebas Neue',sans-serif; font-size:24px; letter-spacing:0.03em; }
+  .engine-body { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--rule); }
+  .engine-step { background:var(--paper); padding:24px; }
+  .engine-step-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--mid); margin-bottom:8px; }
+  .engine-step-title { font-family:'Bebas Neue',sans-serif; font-size:20px; color:var(--ink); margin-bottom:8px; }
+  .engine-step-body { font-size:14px; font-weight:300; color:var(--mid); line-height:1.5; }
+  .tricks-list { list-style:none; margin:12px 0; }
+  .tricks-list li { padding:12px 0; border-bottom:1px solid var(--rule); font-size:15px; font-weight:300; line-height:1.6; display:flex; gap:12px; }
+  .tricks-list li:last-child { border-bottom:none; }
+  .trick-tag { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.1em; text-transform:uppercase; background:var(--paper-dark); border:1px solid var(--rule); padding:2px 6px; white-space:nowrap; margin-top:2px; flex-shrink:0; color:var(--mid); }
+  .tuning-grid { display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--rule); border:1px solid var(--rule); margin:24px 0; }
+  .tuning-cell { background:var(--paper); padding:24px; }
+  .tuning-cell:hover { background:var(--paper-dark); }
+  .tuning-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--mid); margin-bottom:8px; }
+  .tuning-condition { font-family:'Bebas Neue',sans-serif; font-size:20px; color:var(--ink); margin-bottom:12px; }
+  .tuning-up { font-size:14px; font-weight:300; margin-bottom:6px; }
+  .tuning-up::before { content:"▲ "; color:#1a6b1a; font-size:12px; }
+  .tuning-down { font-size:14px; font-weight:300; margin-bottom:6px; }
+  .tuning-down::before { content:"▼ "; color:var(--danger); font-size:12px; }
   footer { background:var(--ink); color:rgba(242,237,230,0.3); padding:40px 80px; margin-top:80px; display:flex; justify-content:space-between; align-items:center; }
   footer span { font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.1em; text-transform:uppercase; }
   @media (max-width:768px) { .header-inner,nav,.page,footer { padding-left:24px; padding-right:24px; } .header-title { font-size:40px; } .header-right { display:none; } .decklist,.role-grid,.sb-table,.sb-deep-grid { grid-template-columns:1fr; } nav { padding:0 24px; } }
@@ -160,14 +182,14 @@
 <nav>
   <span class="nav-brand">IZZET PROWESS</span>
   <a class="nav-link" href="deck-guides.html" style="text-decoration:none;">&#8592; Guides</a>
-  <button class="nav-link active" onclick="show('identity')">Identity</button>
+  <button class="nav-link active" onclick="show('identity')">Overview</button>
   <button class="nav-link" onclick="show('decklist')">Decklist</button>
-  <button class="nav-link" onclick="show('gameplan')">Gameplan</button>
-  <button class="nav-link" onclick="show('roles')">Roles</button>
+  <button class="nav-link" onclick="show('gameplan')">Game Flow</button>
+  <button class="nav-link" onclick="show('engines')">Engines</button><button class="nav-link" onclick="show('roles')">Roles</button>
   <button class="nav-link" onclick="show('matchups')">Matchups</button>
-  <button class="nav-link" onclick="show('sideboard')">SB Guide</button>
+  <button class="nav-link" onclick="show('sideboard')">Sideboard</button>
   <button class="nav-link" onclick="show('heuristics')">Heuristics</button>
-  <button class="nav-link" onclick="show('prep')">Prep</button>
+  <button class="nav-link" onclick="show('tuning')">Tuning</button><button class="nav-link" onclick="show('prep')">Prep</button>
 </nav>
 
 <div class="page">
@@ -389,8 +411,67 @@
 </div>
 
 <!-- ROLES -->
-<div id="roles" class="section">
+<div id="engines" class="section">
   <div class="section-label">Chapter 04</div>
+  <h1>Core<br>Engines</h1>
+  <p>Three engines make Izzet Prowess the fastest consistent kill in Modern. Each spell you cast advances all three simultaneously.</p>
+
+  <div class="engine-block">
+    <div class="engine-header"><div class="engine-letter">A</div>
+      <div><div class="engine-name">Dragon's Rage Channeler Delirium Engine</div>
+      <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(242,237,230,0.4);margin-top:4px;">DRC becomes a 3/3 flying must-attack creature with delirium. Once active it attacks every turn whether you want it to or not.</div></div>
+    </div>
+    <div class="engine-body">
+      <div class="engine-step"><div class="engine-step-label">Setup</div><div class="engine-step-title">4 Card Types in GY</div>
+      <div class="engine-step-body">Delirium requires four or more card types in your graveyard. Your typical type spread: <span class="c">Lightning Bolt</span> (instant), <span class="c">Sleight of Hand</span> (sorcery), a land drop (land), and DRC itself if it dies (creature). <span class="c">Mishra's Bauble</span> is an artifact — it enters the GY immediately when cracked and provides the artifact type for delirium in one card. <span class="c">Cori-Steel Cutter</span> in the GY covers equipment. Four types by turn 2 is consistently achievable.</div></div>
+      <div class="engine-step"><div class="engine-step-label">Execution</div><div class="engine-step-title">DRC Becomes the Clock</div>
+      <div class="engine-step-body">DRC with delirium: 3/3 flying, must attack each turn if able. The must-attack clause is a feature, not a drawback — it guarantees 3 damage per turn in the air, ignoring ground blockers. DRC's surveil 1 triggers on each cast, fueling deeper delirium and finding your best spells. A turn-1 DRC that hits delirium on turn 2 deals 3 damage on turn 2 and every turn thereafter.</div></div>
+      <div class="engine-step"><div class="engine-step-label">Result</div><div class="engine-step-title">Guaranteed 3 Damage Per Turn</div>
+      <div class="engine-step-body">DRC with delirium plus any other attacker is often 6+ damage per turn. At 20 life with a turn-2 delirium activation, they have 6 turns before DRC alone kills them. Your burn spells shorten that clock dramatically. Against control decks that stabilize on life but can't profitably block a 3/3 flier, DRC is often the primary win condition after their sweeper lands.</div></div>
+    </div>
+  </div>
+
+  <div class="engine-block">
+    <div class="engine-header"><div class="engine-letter">B</div>
+      <div><div class="engine-name">Cori-Steel Cutter Flurry Chain</div>
+      <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(242,237,230,0.4);margin-top:4px;">The second spell you cast each turn creates a 1/1 Monk with prowess and haste. Chain into infinite Monks.</div></div>
+    </div>
+    <div class="engine-body">
+      <div class="engine-step"><div class="engine-step-label">Setup</div><div class="engine-step-title">Cori-Steel Cutter Resolves</div>
+      <div class="engine-step-body"><span class="c">Cori-Steel Cutter</span> (MV 2, equipment): equipped creature gets +1/+1, trample, haste. Flurry ability: whenever you cast your second spell in a turn, create a 1/1 white Monk token with prowess and haste. The Monk enters immediately — you can attack with it this turn. Each subsequent spell after the second in a turn triggers Flurry again if Cutter is equipped and the Monk is the equipped creature.</div></div>
+      <div class="engine-step"><div class="engine-step-label">Execution</div><div class="engine-step-title">Chain Spells, Attack With Monks</div>
+      <div class="engine-step-body">Cast two spells — Monk 1 enters with prowess and haste. Cast a third spell — the Monk grows. Cast a fourth spell — another Monk from Flurry if Cutter moved to the first Monk. Each Monk has prowess (gets +1/+1 until EOT for each noncreature spell). A turn with 4 spells and one Monk creates a 4/4 haste attacker that attacks immediately for free. Chain <span class="c">Lava Dart</span> (flashback a Mountain) and <span class="c">Mishra's Bauble</span> (draw at next upkeep) for zero-mana spell triggers.</div></div>
+      <div class="engine-step"><div class="engine-step-label">Result</div><div class="engine-step-title">Explosive Burst Turns</div>
+      <div class="engine-step-body">Turns 3-4 with Cutter active: a hand of 4 spells casts for 4 mana total, generates 2 Monk tokens, both with prowess triggers, both attacking with haste. Combined with DRC's 3/3 flying attack and a Swiftspear hitting for 3-4 after triggers, a single burst turn deals 15-20 damage from a stable-seeming board position. This is why Prowess kills on turn 3 consistently.</div></div>
+    </div>
+  </div>
+
+  <div class="engine-block">
+    <div class="engine-header"><div class="engine-letter">C</div>
+      <div><div class="engine-name">Lava Dart + Mishra's Bauble Free Trigger Engine</div>
+      <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(242,237,230,0.4);margin-top:4px;">Zero-mana spells trigger prowess, Flurry, and DRC surveil for free. They are not just utility — they are engine components.</div></div>
+    </div>
+    <div class="engine-body">
+      <div class="engine-step"><div class="engine-step-label">Setup</div><div class="engine-step-title">Lava Dart + Mountain in GY</div>
+      <div class="engine-step-body"><span class="c">Lava Dart</span> costs {R}: deal 1 damage to any target. Flashback: sacrifice a Mountain. The flashback cast is a separate spell for zero mana beyond sacrificing a basic Mountain. <span class="c">Mishra's Bauble</span> costs {0}: tap and sacrifice to look at the top card of a player's library; draw a card at the beginning of the next upkeep. Both are zero or near-zero mana spell casts that count as spells for prowess, Flurry, and DRC surveil.</div></div>
+      <div class="engine-step"><div class="engine-step-label">Execution</div><div class="engine-step-title">Stack Triggers Efficiently</div>
+      <div class="engine-step-body">The correct sequence on a burst turn: (1) cast <span class="c">Monastery Swiftspear</span> — prowess creature enters (0/0 + no triggers yet). (2) Cast <span class="c">Mishra's Bauble</span> for 0 — prowess triggers, Swiftspear is 1/2. (3) Cast <span class="c">Lava Dart</span> — prowess triggers again, Swiftspear is 2/3, Dart deals 1 somewhere. (4) Flashback Lava Dart (sacrifice Mountain) — prowess triggers again, Swiftspear is 3/4. Four spells for {R}+{0}+{R}+{land sacrifice}, Swiftspear attacks as 3/4 haste. Add DRC surveil and Flurry Monks to this framework.</div></div>
+      <div class="engine-step"><div class="engine-step-label">Result</div><div class="engine-step-title">Mana-Efficient Storm</div>
+      <div class="engine-step-body">Lava Dart flashback and Mishra's Bauble are not support cards — they are the engine. They let you cast 4-6 spells on turns where you only have 2-3 mana, compressing your damage output into a single turn. This is why Prowess sequences feel like Storm. The "free" spells extend your chain far beyond what your land count suggests is possible.</div></div>
+    </div>
+  </div>
+
+  <h2>Lines &amp; Tricks</h2>
+  <ul class="tricks-list">
+    <li><span class="trick-tag">Stack</span><span><strong><span class="c">Mutagenic Growth</span> on an attacking creature in response to a block:</strong> They declare a blocker — their 3/3 blocks your 2/2 Swiftspear. Cast <span class="c">Mutagenic Growth</span> paying 2 life (not mana). Swiftspear is now 4/4. Their blocker dies, your Swiftspear survives, and Mutagenic also triggers prowess for +1/+1 more. The 2 life is almost always worth the exchange.</span></li>
+    <li><span class="trick-tag">Sequence</span><span><strong>Save <span class="c">Lava Dart</span> flashback for a burst turn rather than shooting early:</strong> Lava Dart flashback sacrifices a Mountain permanently — it is a one-time resource. Spending it on turn 1 to deal 1 damage to a creature is weak. Saving it for turn 3 as the 4th spell on a burst turn grows your whole board by +1/+1 from prowess and generates a Flurry Monk. Always evaluate burst turns before spending Dart flashback.</span></li>
+    <li><span class="trick-tag">Sequence</span><span><strong>DRC surveil order matters:</strong> DRC's surveil 1 triggers when you cast any spell. If you're about to draw a card (from Bauble, Sleight), surveil first — put the card you want on top, then draw it. If you need to hit delirium, surveil to put a non-land card in the GY. Plan the surveil destination before the spell resolves.</span></li>
+    <li><span class="trick-tag">Avoid</span><span><strong>Don't overcommit to the board against sweepers:</strong> Prowess is a burst deck, not a go-wide deck. Casting your entire hand onto the board over multiple turns and losing everything to Supreme Verdict is the wrong line. Deploy one or two threats at a time, keep burn for face rather than removal, and burst-kill them before the sweeper becomes relevant.</span></li>
+  </ul>
+</div>
+
+<div id="roles" class="section">
+  <div class="section-label">Chapter 05</div>
   <h1>Role Assignment</h1>
 
   <p>Izzet Prowess has three distinct modes. The mistake most pilots make is staying in Burn mode when the game requires Tempo, or playing Tempo when the game required closing. Reading the mode is the highest-skill expression in this deck.</p>
@@ -424,7 +505,7 @@
 
 <!-- MATCHUPS -->
 <div id="matchups" class="section">
-  <div class="section-label">Chapter 05</div>
+  <div class="section-label">Chapter 06</div>
   <h1>Matchup<br>Matrix</h1>
   <p>Click any matchup to expand. Win rates from Team Resolve gauntlet data + 262k-match DB.</p>
 
@@ -877,7 +958,7 @@
 
 <!-- SIDEBOARD GUIDE -->
 <div id="sideboard" class="section">
-  <div class="section-label">Chapter 06</div>
+  <div class="section-label">Chapter 07</div>
   <h1>Sideboard<br>Guide</h1>
 
   <p>Every sideboard card has a specific role and specific matchups. Bringing in the wrong cards is worse than not boarding at all — diluting your spell density with mediocre cards is how you lose game 2.</p>
@@ -965,7 +1046,7 @@
 
 <!-- HEURISTICS -->
 <div id="heuristics" class="section">
-  <div class="section-label">Chapter 07</div>
+  <div class="section-label">Chapter 08</div>
   <h1>Heuristics &amp;<br>Quick Rules</h1>
 
   <p>Automatic decisions made before the game starts. Prowess rewards pilots who've internalized these as reflexes — the spell chaining happens too fast for deliberate calculation every time.</p>
@@ -991,8 +1072,52 @@
 </div>
 
 <!-- PREP -->
+<div id="tuning" class="section">
+  <div class="section-label">Chapter 09</div>
+  <h1>Tuning<br>Notes</h1>
+  <p>Concrete card swaps triggered by metagame shifts. Check live meta data before each RC.</p>
+  <div class="tuning-grid">
+    <div class="tuning-cell"><div class="tuning-label">If This Rises</div><div class="tuning-condition">Control and Blue Midrange</div>
+      <p class="tuning-up">Murktide Regent main +1 — 8/8 that ignores blockers late game</p>
+      <p class="tuning-up"><span class="c">Spell Snare</span> SB +1 — counters Counterspell for U</p>
+      <p class="tuning-down"><span class="c">Gut Shot</span> — less relevant vs noncreature control</p>
+      <p class="tuning-down"><span class="c">Consider</span> — cut one for more threat density</p>
+      <p style="font-size:14px;font-weight:300;margin-top:8px;">Against UW Control: your clock must be faster than their sweeper. Keep hands with DRC + Swiftspear and burn. Don't play around Supreme Verdict — burst-kill them before turn 4. Murktide as a 8/8 that costs 2 mana after GY depth is often unkillable once it resolves.</p>
+    </div>
+    <div class="tuning-cell"><div class="tuning-label">If This Rises</div><div class="tuning-condition">Aggro Mirrors</div>
+      <p class="tuning-up"><span class="c">Sanctifier en-Vec</span> SB — protection from black and red blocks Archon and dodges Galvanic Discharge</p>
+      <p class="tuning-up">Dress Down SB — removes Sanctifier's protection, kills Cori-Steel Cutter</p>
+      <p class="tuning-down"><span class="c">Sleight of Hand</span> — cut one for more interactive elements</p>
+      <p style="font-size:14px;font-weight:300;margin-top:8px;">Boros mirror specifically: Sanctifier has protection from red — <span class="c">Lightning Bolt</span>, <span class="c">Galvanic Discharge</span>, and <span class="c">Lava Dart</span> cannot damage it. Dress Down removes protection, making Sanctifier targetable again. Board both Sanctifier and Dress Down — they counter each other in the mirror.</p>
+    </div>
+    <div class="tuning-cell"><div class="tuning-label">If This Rises</div><div class="tuning-condition">Eldrazi and Big Mana</div>
+      <p class="tuning-up">Dress Down main 1-2 — removes Chalice text, blank Eldrazi abilities</p>
+      <p class="tuning-up"><span class="c">Blood Moon</span> SB +1 — Tron lands become Mountains</p>
+      <p class="tuning-down"><span class="c">Gut Shot</span> SB — Eldrazi have more than 1 toughness</p>
+      <p style="font-size:14px;font-weight:300;margin-top:8px;">Chalice of the Void at 1 shuts over half your deck. Dress Down (MV 2) removes Chalice's text, giving you one full turn to chain spells freely. Blood Moon prevents Tron assembly entirely — Tron lands become Mountains and can't tap for their special mana. Deploy Blood Moon before they have colored mana to respond.</p>
+    </div>
+    <div class="tuning-cell"><div class="tuning-label">If This Rises</div><div class="tuning-condition">Graveyard Combo</div>
+      <p class="tuning-up"><span class="c">Surgical Extraction</span> SB +1 — exile Archon after they discard it</p>
+      <p class="tuning-up"><span class="c">Spell Snare</span> SB — counters Persist (MV 2)</p>
+      <p class="tuning-down"><span class="c">Blood Moon</span> SB — less relevant vs Grixis mana base</p>
+      <p style="font-size:14px;font-weight:300;margin-top:8px;">Your kill is faster than their combo in most games — DRC + Swiftspear apply lethal pressure by turn 3-4. Surgical Extraction after they discard Archon removes all copies from hand, library, and GY simultaneously. Spell Snare at U counters Persist (MV 2) for one mana — the most efficient counter in the format for this specific threat.</p>
+    </div>
+    <div class="tuning-cell"><div class="tuning-label">If This Rises</div><div class="tuning-condition">Domain Zoo</div>
+      <p class="tuning-up">Dress Down SB +2 — removes Scion of Draco hexproof, first strike, lifelink</p>
+      <p class="tuning-up"><span class="c">Surgical Extraction</span> SB — exile Noble Hierarchs after one dies</p>
+      <p class="tuning-down"><span class="c">Blood Moon</span> SB — they fetch basics, Moon is less impactful</p>
+      <p style="font-size:14px;font-weight:300;margin-top:8px;">Scion of Draco at full domain has hexproof — you cannot target it with any of your red damage spells. Dress Down removes hexproof, first strike, and lifelink — Scion becomes a vanilla 4/4 that your Bolt and Discharge can kill cleanly. Always board Dress Down against Zoo in games 2 and 3.</p>
+    </div>
+    <div class="tuning-cell"><div class="tuning-label">Currently Testing</div><div class="tuning-condition">Flex Slots</div>
+      <p class="tuning-up">Slickshot Show-Off — 2/2 flying, Plot lets you cast for free next turn, go-spell pumps it</p>
+      <p class="tuning-up"><span class="c">Consider</span> vs <span class="c">Sleight of Hand</span> — Consider is instant-speed, Sleight sees more cards</p>
+      <p style="font-size:14px;font-weight:300;margin-top:8px;">Slickshot Show-Off at 2 mana is a 2/2 flier with Plot — pay 1R to cast it for free from exile later. As a go-spell (cast after another spell this turn) it gets an additional +1/+1 counter. The question is whether 2 mana up front for a delayed 5/5 flier is better than another DRC or Swiftspear at 1 mana. Currently testing a 2-2 split.</p>
+    </div>
+  </div>
+</div>
+
 <div id="prep" class="section">
-  <div class="section-label">Chapter 08</div>
+  <div class="section-label">Chapter 10</div>
   <h1>Event Day<br>Prep</h1>
   <button class="print-btn" onclick="window.print()">⎙ Print This Sheet</button>
 
