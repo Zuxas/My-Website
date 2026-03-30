@@ -156,6 +156,24 @@ CARDS = [
     "Consign to Memory",
     "Mystical Dispute",
     "Blood Moon",
+    # Ruby Storm core
+    "Ruby Medallion",
+    "Ral, Monsoon Mage",
+    "Desperate Ritual",
+    "Pyretic Ritual",
+    "Manamorphose",
+    "Past in Flames",
+    "Reckless Impulse",
+    "Wrenn's Resolve",
+    "Glimpse the Impossible",
+    "Wish",
+    "Grapeshot",
+    "Empty the Warrens",
+    "Strike It Rich",
+    "Orim's Chant",
+    "Valakut Awakening",
+    "Galvanic Relay",
+    "Gemstone Caverns",
 ]
 
 # Sort longest first so "Ragavan, Nimble Pilferer" matches before "Ragavan"
@@ -168,6 +186,7 @@ PLAYBOOKS = [
     "glockulous-playbook.html",
     "uw-control-playbook.html",
     "izzet-affinity-playbook.html",
+    "ruby-storm-playbook.html",
 ]
 
 def wrap_cards_in_html(html):
