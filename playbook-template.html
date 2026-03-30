@@ -1,0 +1,1319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>[DECK NAME] — Team Resolve Playbook Template</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+  /* ============================================================
+     TEAM RESOLVE PLAYBOOK TEMPLATE
+     Covers every line item from Template Style 1 and Style 2.
+     Replace all [BRACKET] placeholders with deck-specific content.
+     Nav tabs: Overview · Decklist · Game Flow · Engines ·
+               Roles · Matchups · Sideboard · Heuristics · Tuning · Prep
+     ============================================================ */
+  :root {
+    --ink:#0e0e0e; --paper:#f2ede6; --paper-dark:#e8e1d6; --rule:#c8bfb0;
+    --accent:#7a2020; /* ← CHANGE PER DECK */
+    --accent-light:#f5e0e0; /* ← CHANGE PER DECK */
+    --danger:#8f1a1a; --danger-light:#f7d6d6;
+    --gold:#8f6a1a; --gold-light:#f7ead6; --mid:#5a5248;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:var(--paper); color:var(--ink); font-family:'Crimson Pro',Georgia,serif; font-size:17px; line-height:1.6; }
+
+  /* HEADER */
+  .header-band { background:var(--ink); border-bottom:3px solid var(--accent); }
+  .header-inner { max-width:1100px; margin:0 auto; padding:32px 80px; display:flex; justify-content:space-between; align-items:flex-end; gap:40px; }
+  .header-eyebrow { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:rgba(242,237,230,0.35); margin-bottom:8px; }
+  .header-title { font-family:'Bebas Neue',sans-serif; font-size:56px; line-height:0.9; color:var(--paper); letter-spacing:0.02em; }
+  .header-title span { color:var(--accent); filter:brightness(1.6); }
+  .header-mantra { font-family:'Crimson Pro',serif; font-style:italic; font-size:15px; color:rgba(242,237,230,0.4); margin-top:8px; }
+  .header-right { display:flex; flex-direction:column; gap:8px; text-align:right; padding-bottom:4px; }
+  .header-stat { display:flex; gap:12px; align-items:center; justify-content:flex-end; }
+  .hs-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; color:rgba(242,237,230,0.3); }
+  .hs-val { font-family:'DM Mono',monospace; font-size:12px; color:var(--paper); }
+
+  /* NAV */
+  nav { position:sticky; top:0; z-index:100; background:var(--ink); border-bottom:1px solid rgba(242,237,230,0.1); padding:0 80px; display:flex; align-items:center; overflow-x:auto; scrollbar-width:none; }
+  nav::-webkit-scrollbar { display:none; }
+  .nav-brand { font-family:'Bebas Neue',sans-serif; font-size:18px; color:var(--accent); filter:brightness(1.6); letter-spacing:0.05em; margin-right:32px; white-space:nowrap; padding:16px 0; }
+  .nav-link { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.12em; text-transform:uppercase; color:rgba(242,237,230,0.4); padding:20px 14px; cursor:pointer; white-space:nowrap; border-bottom:2px solid transparent; transition:all 0.2s; background:none; border-top:none; border-left:none; border-right:none; }
+  .nav-link:hover, .nav-link.active { color:var(--paper); border-bottom-color:var(--accent); }
+
+  /* PAGE */
+  .page { max-width:1100px; margin:0 auto; padding:80px 80px; }
+  .section { display:none; animation:fadeIn 0.3s ease; }
+  .section.active { display:block; }
+  @keyframes fadeIn { from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:translateY(0);} }
+  .section-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.25em; text-transform:uppercase; color:var(--mid); margin-bottom:8px; }
+  h1 { font-family:'Bebas Neue',sans-serif; font-size:64px; line-height:0.9; letter-spacing:0.01em; color:var(--ink); margin-bottom:40px; }
+  h2 { font-family:'Bebas Neue',sans-serif; font-size:36px; letter-spacing:0.02em; color:var(--ink); margin:56px 0 20px; padding-bottom:8px; border-bottom:2px solid var(--ink); }
+  h3 { font-family:'DM Mono',monospace; font-size:12px; letter-spacing:0.15em; text-transform:uppercase; color:var(--accent); margin:32px 0 12px; }
+  p { margin-bottom:16px; font-weight:300; }
+  strong { font-weight:600; }
+  em { font-style:italic; color:var(--mid); }
+  .rule { border:none; border-top:1px solid var(--rule); margin:40px 0; }
+
+  /* MANTRA / CALLOUT */
+  .mantra { border-left:4px solid var(--accent); padding:24px 32px; background:var(--accent-light); margin:32px 0; font-style:italic; font-size:20px; color:var(--accent); line-height:1.5; }
+  .mantra cite { display:block; font-family:'DM Mono',monospace; font-size:11px; font-style:normal; letter-spacing:0.1em; text-transform:uppercase; color:var(--mid); margin-top:12px; }
+  .callout { background:var(--paper-dark); border:1px solid var(--rule); padding:20px 24px; margin:24px 0; font-size:15px; font-weight:300; }
+  .callout strong { display:block; font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; color:var(--accent); margin-bottom:8px; }
+
+  /* CARD GRID */
+  .card-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); gap:1px; background:var(--rule); border:1px solid var(--rule); margin:24px 0; }
+  .card { background:var(--paper); padding:24px; }
+  .card:hover { background:var(--paper-dark); }
+  .card-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--mid); margin-bottom:8px; }
+  .card-title { font-family:'Bebas Neue',sans-serif; font-size:22px; letter-spacing:0.03em; color:var(--ink); margin-bottom:8px; }
+  .card-body { font-size:15px; font-weight:300; color:var(--mid); line-height:1.5; }
+
+  /* DECKLIST */
+  .decklist { display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--rule); border:1px solid var(--rule); margin:24px 0; }
+  .dl-section { background:var(--paper); padding:24px; }
+  .dl-section-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--mid); margin-bottom:16px; }
+  .dl-group { margin-bottom:20px; }
+  .dl-group-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; color:var(--ink); background:var(--paper-dark); padding:4px 8px; margin-bottom:8px; display:inline-block; }
+  .dl-card-row { display:flex; justify-content:space-between; padding:4px 0; border-bottom:1px solid rgba(200,191,176,0.3); font-size:15px; font-weight:300; }
+  .dl-qty { font-family:'DM Mono',monospace; font-size:12px; color:var(--accent); }
+
+  /* GAME FLOW STRIP */
+  .flow-strip { display:flex; gap:1px; background:var(--rule); border:1px solid var(--rule); margin:24px 0; }
+  .flow-slot { flex:1; background:var(--paper); padding:20px 16px; }
+  .flow-slot:hover { background:var(--paper-dark); }
+  .flow-num { font-family:'Bebas Neue',sans-serif; font-size:48px; color:var(--accent); line-height:1; opacity:0.25; }
+  .flow-label { font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.15em; text-transform:uppercase; color:var(--accent); margin:4px 0 8px; }
+  .flow-body { font-size:14px; font-weight:300; color:var(--mid); line-height:1.5; }
+
+  /* ENGINE BLOCK */
+  .engine-block { border:1px solid var(--rule); margin:32px 0; }
+  .engine-header { background:var(--ink); color:var(--paper); padding:16px 24px; display:flex; align-items:center; gap:16px; }
+  .engine-letter { font-family:'Bebas Neue',sans-serif; font-size:40px; line-height:1; color:var(--accent); filter:brightness(1.6); }
+  .engine-name { font-family:'Bebas Neue',sans-serif; font-size:24px; letter-spacing:0.03em; }
+  .engine-body { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--rule); }
+  .engine-step { background:var(--paper); padding:24px; }
+  .engine-step-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--mid); margin-bottom:8px; }
+  .engine-step-title { font-family:'Bebas Neue',sans-serif; font-size:20px; color:var(--ink); margin-bottom:8px; }
+  .engine-step-body { font-size:14px; font-weight:300; color:var(--mid); line-height:1.5; }
+
+  /* SEQUENCE BLOCK */
+  .sequence-block { border:1px solid var(--rule); margin:24px 0; }
+  .sequence-header { background:var(--paper-dark); padding:12px 20px; border-bottom:1px solid var(--rule); font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:var(--ink); }
+  .sequence-body { padding:20px; }
+  .sequence-turn { display:flex; gap:16px; padding:8px 0; border-bottom:1px solid rgba(200,191,176,0.3); font-size:15px; font-weight:300; }
+  .sequence-turn:last-child { border-bottom:none; }
+  .turn-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.1em; text-transform:uppercase; color:var(--accent); white-space:nowrap; padding-top:2px; min-width:48px; }
+  .sequence-result { background:var(--accent-light); padding:10px 16px; margin-top:8px; font-size:14px; font-weight:400; color:var(--accent); border-left:3px solid var(--accent); }
+
+  /* ROLE GRID */
+  .role-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--rule); border:1px solid var(--rule); margin:24px 0; }
+  .role-card { background:var(--paper); padding:24px; }
+  .role-card:hover { background:var(--paper-dark); }
+  .role-name { font-family:'Bebas Neue',sans-serif; font-size:26px; letter-spacing:0.03em; margin-bottom:8px; color:var(--accent); }
+  .role-desc { font-size:15px; font-weight:300; color:var(--mid); line-height:1.5; margin-bottom:12px; }
+  .role-matchups { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.08em; color:rgba(14,14,14,0.4); }
+
+  /* MATCHUP TABLE */
+  .matchup-table { width:100%; border-collapse:collapse; margin:24px 0; font-size:15px; }
+  .matchup-table thead tr { background:var(--ink); color:var(--paper); }
+  .matchup-table th { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; padding:12px 16px; text-align:left; font-weight:400; }
+  .matchup-table td { padding:12px 16px; border-bottom:1px solid var(--rule); font-weight:300; vertical-align:top; }
+  .matchup-table tr:hover td { background:var(--paper-dark); cursor:pointer; }
+  .matchup-table tr.selected td { background:var(--accent-light); }
+  .diff-hard { font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.08em; text-transform:uppercase; color:var(--danger); background:var(--danger-light); padding:2px 8px; border-radius:2px; }
+  .diff-medium { font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.08em; text-transform:uppercase; color:var(--gold); background:var(--gold-light); padding:2px 8px; border-radius:2px; }
+  .diff-even { font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.08em; text-transform:uppercase; color:#1a3a8f; background:#d6e0f7; padding:2px 8px; border-radius:2px; }
+  .diff-good { font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.08em; text-transform:uppercase; color:#1a6b1a; background:#d4f0d4; padding:2px 8px; border-radius:2px; border:1px solid #a0d4a0; }
+
+  /* MATCHUP DETAIL */
+  .matchup-detail { display:none; border:1px solid var(--rule); background:var(--paper-dark); padding:40px; margin:0 0 24px; animation:fadeIn 0.2s ease; border-top:3px solid var(--accent); }
+  .matchup-detail.open { display:block; }
+
+  /* PLAY/DRAW GRID */
+  .pd-grid { display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--rule); border:1px solid var(--rule); margin:16px 0; }
+  .pd-col { background:var(--paper); padding:20px; }
+  .pd-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--mid); margin-bottom:8px; }
+  .pd-title { font-family:'Bebas Neue',sans-serif; font-size:20px; color:var(--ink); margin-bottom:8px; }
+  .pd-body { font-size:14px; font-weight:300; color:var(--mid); line-height:1.5; }
+
+  /* SB TABLE */
+  .sb-table { display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--rule); border:1px solid var(--rule); margin:16px 0; }
+  .sb-col { background:var(--paper); padding:20px; }
+  .sb-col-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--mid); margin-bottom:12px; }
+  .sb-item { font-size:14px; font-weight:400; padding:4px 0; border-bottom:1px solid var(--rule); display:flex; justify-content:space-between; align-items:center; }
+  .sb-item:last-child { border-bottom:none; }
+  .sb-qty { font-family:'DM Mono',monospace; font-size:12px; color:var(--mid); }
+
+  /* IF-THEN LIST */
+  .ifthen-list { list-style:none; margin:12px 0; }
+  .ifthen-list li { padding:10px 0; border-bottom:1px solid var(--rule); display:flex; gap:12px; align-items:flex-start; font-size:15px; font-weight:300; line-height:1.6; }
+  .ifthen-list li span { flex:1; min-width:0; }
+  .ifthen-list li:last-child { border-bottom:none; }
+  .if-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.1em; text-transform:uppercase; color:var(--danger); background:var(--danger-light); padding:2px 6px; white-space:nowrap; margin-top:2px; flex-shrink:0; }
+
+  /* SB CARD GUIDE */
+  .sb-card-guide { border:1px solid var(--rule); margin:24px 0; }
+  .sb-guide-row { display:flex; border-bottom:1px solid var(--rule); }
+  .sb-guide-row:last-child { border-bottom:none; }
+  .sb-guide-name { font-family:'DM Mono',monospace; font-size:12px; font-weight:500; letter-spacing:0.05em; color:var(--ink); background:var(--paper-dark); padding:14px 20px; min-width:220px; width:220px; flex-shrink:0; border-right:1px solid var(--rule); display:flex; align-items:center; }
+  .sb-guide-body { padding:14px 20px; font-size:15px; font-weight:300; line-height:1.5; flex:1; }
+
+  /* SB DEEP DIVES */
+  .sb-deep { border:1px solid var(--rule); margin:12px 0; }
+  .sb-deep-header { display:flex; justify-content:space-between; align-items:center; padding:16px 24px; background:var(--paper-dark); cursor:pointer; user-select:none; transition:background 0.15s; }
+  .sb-deep-header:hover { background:var(--rule); }
+  .sb-deep-title { display:flex; align-items:center; gap:12px; flex-wrap:wrap; }
+  .sb-deep-name { font-family:'Bebas Neue',sans-serif; font-size:20px; letter-spacing:0.03em; color:var(--ink); }
+  .sb-deep-meta { font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.08em; text-transform:uppercase; color:var(--mid); }
+  .sb-deep-toggle { font-family:'DM Mono',monospace; font-size:18px; color:var(--mid); transition:transform 0.2s; line-height:1; }
+  .sb-deep.open .sb-deep-toggle { transform:rotate(45deg); }
+  .sb-deep-body { display:none; padding:32px; border-top:1px solid var(--rule); animation:fadeIn 0.2s ease; }
+  .sb-deep.open .sb-deep-body { display:block; }
+  .sb-deep-mantra { font-family:'Crimson Pro',serif; font-style:italic; font-size:17px; color:var(--accent); border-left:3px solid var(--accent); padding:8px 16px; background:var(--accent-light); margin-bottom:24px; }
+  .sb-deep-grid { display:grid; grid-template-columns:1fr 1fr; gap:32px; }
+
+  /* HEURISTIC LIST */
+  .heuristic-list { list-style:none; counter-reset:h; }
+  .heuristic-list li { counter-increment:h; display:flex; gap:20px; padding:14px 0; border-bottom:1px solid var(--rule); font-size:16px; font-weight:300; line-height:1.6; }
+  .heuristic-list li::before { content:counter(h,decimal-leading-zero); font-family:'DM Mono',monospace; font-size:20px; color:rgba(122,32,32,0.2); flex-shrink:0; width:32px; }
+
+  /* TRICKS LIST */
+  .tricks-list { list-style:none; margin:12px 0; }
+  .tricks-list li { padding:12px 0; border-bottom:1px solid var(--rule); font-size:15px; font-weight:300; line-height:1.6; display:flex; gap:12px; }
+  .tricks-list li:last-child { border-bottom:none; }
+  .trick-tag { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.1em; text-transform:uppercase; background:var(--paper-dark); border:1px solid var(--rule); padding:2px 6px; white-space:nowrap; margin-top:2px; flex-shrink:0; color:var(--mid); }
+
+  /* TUNING GRID */
+  .tuning-grid { display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--rule); border:1px solid var(--rule); margin:24px 0; }
+  .tuning-cell { background:var(--paper); padding:24px; }
+  .tuning-cell:hover { background:var(--paper-dark); }
+  .tuning-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--mid); margin-bottom:8px; }
+  .tuning-condition { font-family:'Bebas Neue',sans-serif; font-size:20px; color:var(--ink); margin-bottom:12px; }
+  .tuning-up { font-size:14px; font-weight:300; margin-bottom:8px; }
+  .tuning-up::before { content:"▲ "; color:#1a6b1a; font-size:12px; }
+  .tuning-down { font-size:14px; font-weight:300; }
+  .tuning-down::before { content:"▼ "; color:var(--danger); font-size:12px; }
+
+  /* QUICK REF TABLE */
+  .qr-table { width:100%; border-collapse:collapse; margin:24px 0; font-size:14px; }
+  .qr-table thead tr { background:var(--ink); color:var(--paper); }
+  .qr-table th { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; padding:12px 16px; text-align:left; font-weight:400; }
+  .qr-table td { padding:12px 16px; border-bottom:1px solid var(--rule); font-weight:300; vertical-align:top; }
+  .qr-table tr:nth-child(even) td { background:var(--paper-dark); }
+
+  /* PRINT PREP */
+  .print-btn { display:inline-flex; align-items:center; gap:8px; font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.12em; text-transform:uppercase; background:var(--ink); color:var(--paper); border:none; padding:10px 20px; cursor:pointer; margin-bottom:32px; transition:background 0.15s; }
+  .print-btn:hover { background:var(--accent); }
+  .print-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--rule); border:1px solid var(--rule); }
+  .print-mu { background:var(--paper); padding:16px; }
+  .print-mu-name { font-family:'Bebas Neue',sans-serif; font-size:16px; color:var(--ink); margin-bottom:4px; display:flex; align-items:center; gap:8px; }
+  .print-mu-role { font-family:'DM Mono',monospace; font-size:9px; letter-spacing:0.1em; text-transform:uppercase; color:var(--mid); margin-bottom:10px; }
+  .print-cols { display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+  .print-col-label { font-family:'DM Mono',monospace; font-size:9px; letter-spacing:0.15em; text-transform:uppercase; color:var(--mid); margin-bottom:4px; }
+  .print-row { font-size:12px; font-weight:300; display:flex; justify-content:space-between; padding:1px 0; border-bottom:1px solid rgba(200,191,176,0.4); line-height:1.5; }
+  .print-row:last-child { border-bottom:none; }
+  .print-qty { font-family:'DM Mono',monospace; font-size:11px; color:var(--mid); flex-shrink:0; margin-left:4px; }
+  .print-needle { font-family:'DM Mono',monospace; font-size:9px; letter-spacing:0.06em; color:var(--danger); margin-top:6px; text-transform:uppercase; }
+  .print-note { font-size:11px; font-style:italic; color:var(--mid); margin-top:6px; border-top:1px solid var(--rule); padding-top:4px; line-height:1.4; }
+
+  /* CONDENSED REFERENCE */
+  .ref-block { border:1px solid var(--rule); margin:24px 0; }
+  .ref-block-header { background:var(--ink); color:var(--paper); padding:10px 20px; font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.15em; text-transform:uppercase; }
+  .ref-row { display:flex; border-bottom:1px solid var(--rule); }
+  .ref-row:last-child { border-bottom:none; }
+  .ref-key { font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.08em; text-transform:uppercase; background:var(--paper-dark); padding:10px 16px; min-width:140px; flex-shrink:0; border-right:1px solid var(--rule); display:flex; align-items:center; color:var(--mid); }
+  .ref-val { padding:10px 16px; font-size:14px; font-weight:300; flex:1; }
+  .always-tag { color:#1a6b1a; font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.08em; text-transform:uppercase; }
+  .never-tag { color:var(--danger); font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.08em; text-transform:uppercase; }
+  .watch-tag { color:var(--gold); font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.08em; text-transform:uppercase; }
+
+  /* FOOTER */
+  footer { background:var(--ink); color:rgba(242,237,230,0.3); padding:40px 80px; margin-top:80px; display:flex; justify-content:space-between; align-items:center; }
+  footer span { font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.1em; text-transform:uppercase; }
+
+  /* RESPONSIVE */
+  @media (max-width:768px) { .header-inner,nav,.page,footer { padding-left:24px; padding-right:24px; } .header-title { font-size:40px; } .header-right { display:none; } .decklist,.role-grid,.pd-grid,.sb-table,.sb-deep-grid,.tuning-grid { grid-template-columns:1fr; } .engine-body { grid-template-columns:1fr; } .flow-strip { flex-direction:column; } nav { padding:0 24px; } }
+  @media print { nav,.header-band,footer,.print-btn,.section:not(#prep) { display:none !important; } #prep { display:block !important; } body { background:white; font-size:11px; } .page { padding:0; max-width:100%; } .print-grid { grid-template-columns:repeat(3,1fr); } }
+</style>
+</head>
+<body>
+
+<!-- ============================================================ HEADER -->
+<div class="header-band">
+  <div class="header-inner">
+    <div class="header-left">
+      <div class="header-eyebrow">Team Resolve · Modern · Archetype Playbook</div>
+      <div class="header-title">[Deck <span>Name]</span></div>
+      <div class="header-mantra">"[Core mantra — one sentence that captures the deck's identity]"</div>
+    </div>
+    <div class="header-right">
+      <div class="header-stat"><span class="hs-label">Identity</span><span class="hs-val">[e.g. Aggro / Midrange / Combo]</span></div>
+      <div class="header-stat"><span class="hs-label">Complexity</span><span class="hs-val">★★★☆☆</span></div>
+      <div class="header-stat"><span class="hs-label">Author</span><span class="hs-val">Zuxas</span></div>
+      <div class="header-stat"><span class="hs-label">Colors</span><span class="hs-val">[e.g. Blue · Red]</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================ NAV -->
+<nav>
+  <span class="nav-brand">[DECK NAME]</span>
+  <button class="nav-link active" onclick="show('overview')">Overview</button>
+  <button class="nav-link" onclick="show('decklist')">Decklist</button>
+  <button class="nav-link" onclick="show('gameflow')">Game Flow</button>
+  <button class="nav-link" onclick="show('engines')">Engines</button>
+  <button class="nav-link" onclick="show('roles')">Roles</button>
+  <button class="nav-link" onclick="show('matchups')">Matchups</button>
+  <button class="nav-link" onclick="show('sideboard')">Sideboard</button>
+  <button class="nav-link" onclick="show('heuristics')">Heuristics</button>
+  <button class="nav-link" onclick="show('tuning')">Tuning</button>
+  <button class="nav-link" onclick="show('prep')">Prep</button>
+</nav>
+
+<div class="page">
+
+<!-- ============================================================
+     TAB 1: OVERVIEW
+     Covers: Template 1 § Overview & Philosophy
+             Template 2 § Title Page, Core Philosophy, Summary
+     ============================================================ -->
+<div id="overview" class="section active">
+  <div class="section-label">Chapter 01</div>
+  <h1>Overview &amp;<br>Philosophy</h1>
+
+  <div class="mantra">
+    "[Core mantra — repeat the one sentence from the header here.]"
+    <cite>— [Source / Context]</cite>
+  </div>
+
+  <!-- Template 1: Overview & Philosophy -->
+  <p>[Short overview of what the deck is doing in the format. What problem does it solve? What does it attack?]</p>
+  <p>[What role does the deck usually take: aggro, tempo, midrange, control, combo, or hybrid? When does it shift?]</p>
+  <p>[Why is the deck good right now? What metagame condition makes it well-positioned?]</p>
+  <p>[Optional: what metagame shift or card package makes this build different from stock versions?]</p>
+
+  <h2>Core Philosophy</h2>
+  <!-- Template 2: Core Philosophy -->
+  <div class="card-grid">
+    <div class="card">
+      <div class="card-label">Primary Win Condition</div>
+      <div class="card-title">[Win Con A]</div>
+      <div class="card-body">[Explain what the primary win condition is and how it is executed.]</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Secondary Win Condition</div>
+      <div class="card-title">[Win Con B]</div>
+      <div class="card-body">[What happens when the primary plan is disrupted? How does the deck pivot?]</div>
+    </div>
+    <div class="card">
+      <div class="card-label">How It Gains Advantage</div>
+      <div class="card-title">[Advantage Type]</div>
+      <div class="card-body">[Cards / tempo / mana / life — what resource does this deck generate more efficiently than opponents?]</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Preferred Role</div>
+      <div class="card-title">[Aggro / Control / Hybrid]</div>
+      <div class="card-body">[What role does the deck prefer and when does it willingly take the other role?]</div>
+    </div>
+  </div>
+
+  <h2>Strengths &amp; Weaknesses</h2>
+  <div class="card-grid">
+    <div class="card">
+      <div class="card-label">Strengths</div>
+      <div class="card-title">What You Do Well</div>
+      <div class="card-body">
+        [Strength 1]<br><br>
+        [Strength 2]<br><br>
+        [Strength 3]<br><br>
+        [Strength 4]
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-label">Weaknesses</div>
+      <div class="card-title">What Beats You</div>
+      <div class="card-body">
+        [Weakness 1]<br><br>
+        [Weakness 2]<br><br>
+        [Weakness 3]<br><br>
+        [Weakness 4]
+      </div>
+    </div>
+  </div>
+
+  <!-- Template 2: Summary (closing paragraph) -->
+  <h2>Summary</h2>
+  <div class="callout">
+    <strong>Why Register This Deck</strong>
+    [Short final paragraph about why you'd register the deck, what kind of tournament room it is best for, and what you still want to test. This is the equivalent of Template 1's "Optional Closing Notes" and Template 2's "Summary" section.]
+  </div>
+</div>
+
+<!-- ============================================================
+     TAB 2: DECKLIST
+     Covers: Template 1 § Decklist, Card Choices & Core Concepts
+             Template 2 § Key Card Roles
+     ============================================================ -->
+<div id="decklist" class="section">
+  <div class="section-label">Chapter 02</div>
+  <h1>The 75</h1>
+  <p style="font-style:italic;color:var(--mid);font-size:15px;margin-bottom:24px;">Reference shell — verify your exact 75 and update before each RC.</p>
+
+  <div class="decklist">
+    <div class="dl-section">
+      <div class="dl-section-label">Main Deck · 60 Cards</div>
+      <div class="dl-group">
+        <div class="dl-group-label">Creatures ([#])</div>
+        <div class="dl-card-row"><span>[Card Name]</span><span class="dl-qty">4</span></div>
+        <div class="dl-card-row"><span>[Card Name]</span><span class="dl-qty">4</span></div>
+        <div class="dl-card-row"><span>[Card Name]</span><span class="dl-qty">2</span></div>
+      </div>
+      <div class="dl-group">
+        <div class="dl-group-label">Artifacts ([#])</div>
+        <div class="dl-card-row"><span>[Card Name]</span><span class="dl-qty">4</span></div>
+      </div>
+      <div class="dl-group">
+        <div class="dl-group-label">Instants ([#])</div>
+        <div class="dl-card-row"><span>[Card Name]</span><span class="dl-qty">4</span></div>
+        <div class="dl-card-row"><span>[Card Name]</span><span class="dl-qty">4</span></div>
+      </div>
+      <div class="dl-group">
+        <div class="dl-group-label">Sorceries ([#])</div>
+        <div class="dl-card-row"><span>[Card Name]</span><span class="dl-qty">4</span></div>
+        <div class="dl-card-row"><span>[Card Name]</span><span class="dl-qty">4</span></div>
+      </div>
+      <div class="dl-group">
+        <div class="dl-group-label">Lands ([#])</div>
+        <div class="dl-card-row"><span>[Fetchland]</span><span class="dl-qty">4</span></div>
+        <div class="dl-card-row"><span>[Shockland]</span><span class="dl-qty">3</span></div>
+        <div class="dl-card-row"><span>[Utility Land]</span><span class="dl-qty">1</span></div>
+        <div class="dl-card-row"><span>[Basic]</span><span class="dl-qty">3</span></div>
+      </div>
+    </div>
+    <div class="dl-section">
+      <div class="dl-section-label">Sideboard · 15 Cards</div>
+      <div class="dl-group">
+        <div class="dl-group-label">[Category 1]</div>
+        <div class="dl-card-row"><span>[Card Name]</span><span class="dl-qty">3</span></div>
+        <div class="dl-card-row"><span>[Card Name]</span><span class="dl-qty">2</span></div>
+      </div>
+      <div class="dl-group">
+        <div class="dl-group-label">[Category 2]</div>
+        <div class="dl-card-row"><span>[Card Name]</span><span class="dl-qty">4</span></div>
+      </div>
+      <div class="dl-group">
+        <div class="dl-group-label">[Category 3]</div>
+        <div class="dl-card-row"><span>[Card Name]</span><span class="dl-qty">2</span></div>
+        <div class="dl-card-row"><span>[Card Name]</span><span class="dl-qty">2</span></div>
+        <div class="dl-card-row"><span>[Card Name]</span><span class="dl-qty">2</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Template 1: Card Choices & Core Concepts / Template 2: Key Card Roles -->
+  <h2>Card Choices &amp; Key Card Roles</h2>
+  <p>[Template 1 § Card Choices: explain your flex slot decisions, why specific numbers were chosen, and what cards are interchangeable. Template 2 § Key Card Roles: role + when it's strongest + synergy + pivot usage.]</p>
+  <div class="card-grid">
+    <div class="card">
+      <div class="card-label">Core Package 1</div>
+      <div class="card-title">[Card / Package Name]</div>
+      <div class="card-body">[Why this card or package matters. What role it fills. What matchups it helps. Include exact oracle text behavior that matters.]</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Core Package 2</div>
+      <div class="card-title">[Card / Package Name]</div>
+      <div class="card-body">[What role it fills. Synergies. Why this count was chosen over alternatives.]</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Core Package 3</div>
+      <div class="card-title">[Card / Package Name]</div>
+      <div class="card-body">[Synergy, tension, or why this number was chosen. What it enables in combination with other cards.]</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Flex Slot</div>
+      <div class="card-title">[Flex Card]</div>
+      <div class="card-body">[Cards that can change depending on metagame. What are the alternatives and when do you make the swap?]</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Sideboard Identity</div>
+      <div class="card-title">[SB Plan Summary]</div>
+      <div class="card-body">[What the sideboard is trying to cover overall. Broad strokes — hate pieces, protection, removal axis, answer to your weakness.]</div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
+     TAB 3: GAME FLOW
+     Covers: Template 2 § Game Flow (Stabilize→Transition→Snowball→Close)
+             Template 2 § Offensive Gameplan
+             Template 2 § Sample Sequences
+             Template 1 § Lines & Tricks (sample lines)
+     ============================================================ -->
+<div id="gameflow" class="section">
+  <div class="section-label">Chapter 03</div>
+  <h1>Game Flow</h1>
+
+  <div class="mantra">
+    "[Turn-specific mantra — e.g. 'T1 fill. T2 threaten. T3 close.']"
+    <cite>— Execution Principle</cite>
+  </div>
+
+  <!-- Template 2: Game Flow -->
+  <h2>The Four Phases</h2>
+  <div class="flow-strip">
+    <div class="flow-slot">
+      <div class="flow-num">01</div>
+      <div class="flow-label">Stabilize</div>
+      <div class="flow-body">[What does stabilizing look like for this deck? What resources do you need in place? What's the threat you're setting up?]</div>
+    </div>
+    <div class="flow-slot">
+      <div class="flow-num">02</div>
+      <div class="flow-label">Transition</div>
+      <div class="flow-body">[When and how do you shift from setup to attack? What's the signal that it's time to stop developing and start pressing?]</div>
+    </div>
+    <div class="flow-slot">
+      <div class="flow-num">03</div>
+      <div class="flow-label">Snowball</div>
+      <div class="flow-body">[How does the deck compound advantages? What engine or threat gets out of control if they don't immediately answer it?]</div>
+    </div>
+    <div class="flow-slot">
+      <div class="flow-num">04</div>
+      <div class="flow-label">Close</div>
+      <div class="flow-body">[How do you end games? What's the final threat or burn sequence? When do you stop playing for tempo and go for the win?]</div>
+    </div>
+  </div>
+
+  <!-- Template 2: Offensive Gameplan -->
+  <h2>Offensive Gameplan</h2>
+  <p>[How does this deck actually win games? What triggers pressure?]</p>
+  <p>[When do you pivot from defense to offense? What does a "winning position" look like for this deck specifically?]</p>
+
+  <h2>Turn-by-Turn Framework</h2>
+  <div class="card-grid">
+    <div class="card">
+      <div class="card-label">Turn 1</div>
+      <div class="card-title">[Turn 1 Priority]</div>
+      <div class="card-body">[What is the highest-priority action on turn 1? What cards are you looking for? What's the ideal setup?]</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Turn 2</div>
+      <div class="card-title">[Turn 2 Priority]</div>
+      <div class="card-body">[What should be happening on turn 2? How does this develop the game plan established on turn 1?]</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Turn 3</div>
+      <div class="card-title">[Turn 3 Priority]</div>
+      <div class="card-body">[The pivotal turn for most Modern decks. What is the ideal turn 3 action and what does it threaten?]</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Turn 4+</div>
+      <div class="card-title">[Late Game]</div>
+      <div class="card-body">[If the game goes late, what is the plan? What is the top-end threat or refill mechanism?]</div>
+    </div>
+  </div>
+
+  <!-- Template 2: Sample Sequences — "Goldfish but realistic" -->
+  <h2>Sample Sequences</h2>
+  <p>Goldfish but realistic. These represent ideal or common lines — not what always happens, but what you're aiming for.</p>
+
+  <div class="sequence-block">
+    <div class="sequence-header">Sequence 1 — [Name: e.g. "Nut Draw / Fastest Kill"]</div>
+    <div class="sequence-body">
+      <div class="sequence-turn"><span class="turn-label">T1</span><span>[Action on turn 1 — land, spell, result]</span></div>
+      <div class="sequence-turn"><span class="turn-label">T2</span><span>[Action on turn 2 — what entered, what was cast]</span></div>
+      <div class="sequence-turn"><span class="turn-label">T3</span><span>[The key play — what resolved, what triggered]</span></div>
+      <div class="sequence-turn"><span class="turn-label">T4</span><span>[Close out / follow up]</span></div>
+      <div class="sequence-result">Result: [What state is the game in? Life totals, board state, why this usually wins]</div>
+    </div>
+  </div>
+
+  <div class="sequence-block">
+    <div class="sequence-header">Sequence 2 — [Name: e.g. "Grind / Fair Backup Line"]</div>
+    <div class="sequence-body">
+      <div class="sequence-turn"><span class="turn-label">T1</span><span>[Action]</span></div>
+      <div class="sequence-turn"><span class="turn-label">T2</span><span>[Action]</span></div>
+      <div class="sequence-turn"><span class="turn-label">T3</span><span>[Action]</span></div>
+      <div class="sequence-result">Result: [What this line achieves and when to use it over Sequence 1]</div>
+    </div>
+  </div>
+
+  <div class="sequence-block">
+    <div class="sequence-header">Sequence 3 — [Name: e.g. "Disrupted / Recovery Line"]</div>
+    <div class="sequence-body">
+      <div class="sequence-turn"><span class="turn-label">T1</span><span>[Action]</span></div>
+      <div class="sequence-turn"><span class="turn-label">T2</span><span>[They do X, you respond with Y]</span></div>
+      <div class="sequence-turn"><span class="turn-label">T3</span><span>[Rebuild or pivot action]</span></div>
+      <div class="sequence-result">Result: [How you recover from disruption and what resource you need to do so]</div>
+    </div>
+  </div>
+
+  <!-- Template 1: Mulligan philosophy -->
+  <h2>Mulligan Philosophy</h2>
+  <p><strong>Snap keep:</strong> [Describe what an automatic keep looks like — the minimum hand condition.]</p>
+  <p><strong>Snap mulligan:</strong> [What hands are always mulligans regardless of individual card quality?]</p>
+  <p><strong>On the draw:</strong> [How does being on the draw change your mulligan calculus?]</p>
+  <p><strong>Borderline hands:</strong> [What's the heuristic for borderline 2-land hands, cantrip-heavy hands, etc.?]</p>
+</div>
+
+<!-- ============================================================
+     TAB 4: ENGINES
+     Covers: Template 2 § Core Engines (Lines A/B/C)
+             Template 2 § Key Interactions
+             Template 1 § Lines & Tricks (stack/combat tricks)
+     ============================================================ -->
+<div id="engines" class="section">
+  <div class="section-label">Chapter 04</div>
+  <h1>Core<br>Engines</h1>
+  <p>The heart of the system. Every Line has a Setup (when it's available), Execution (exact sequence), and Result (what advantage it creates). If a Line feels vague, you don't understand it yet.</p>
+
+  <!-- Template 2: Line A -->
+  <div class="engine-block">
+    <div class="engine-header">
+      <div class="engine-letter">A</div>
+      <div><div class="engine-name">[Engine Name — e.g. "The Primary Kill / Reanimate Loop"]</div><div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(242,237,230,0.4);margin-top:4px;">[One line description of what this engine does]</div></div>
+    </div>
+    <div class="engine-body">
+      <div class="engine-step">
+        <div class="engine-step-label">Setup</div>
+        <div class="engine-step-title">When Available</div>
+        <div class="engine-step-body">[When is this line available? What turns, board state, or matchup context enable it? What do you need in hand or in play?]</div>
+      </div>
+      <div class="engine-step">
+        <div class="engine-step-label">Execution</div>
+        <div class="engine-step-title">Exact Sequence</div>
+        <div class="engine-step-body">
+          Step 1: [First action]<br><br>
+          Step 2: [Second action]<br><br>
+          Step 3: [Third action]<br><br>
+          [Key interaction: what rule / trigger / ability matters here?]
+        </div>
+      </div>
+      <div class="engine-step">
+        <div class="engine-step-label">Result</div>
+        <div class="engine-step-title">Advantage Created</div>
+        <div class="engine-step-body">[What advantage this creates — tempo, card advantage, damage, lock, or positional dominance. What state is the game in when this resolves successfully?]</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Template 2: Line B -->
+  <div class="engine-block">
+    <div class="engine-header">
+      <div class="engine-letter">B</div>
+      <div><div class="engine-name">[Engine Name — e.g. "The Midrange / Fair Backup"]</div><div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(242,237,230,0.4);margin-top:4px;">[One line description]</div></div>
+    </div>
+    <div class="engine-body">
+      <div class="engine-step">
+        <div class="engine-step-label">Setup</div>
+        <div class="engine-step-title">When Available</div>
+        <div class="engine-step-body">[Setup conditions]</div>
+      </div>
+      <div class="engine-step">
+        <div class="engine-step-label">Execution</div>
+        <div class="engine-step-title">Exact Sequence</div>
+        <div class="engine-step-body">Step 1: [Action]<br><br>Step 2: [Action]<br><br>Step 3: [Action]</div>
+      </div>
+      <div class="engine-step">
+        <div class="engine-step-label">Result</div>
+        <div class="engine-step-title">Advantage Created</div>
+        <div class="engine-step-body">[Result and game state after execution]</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Template 2: Line C -->
+  <div class="engine-block">
+    <div class="engine-header">
+      <div class="engine-letter">C</div>
+      <div><div class="engine-name">[Engine Name — e.g. "The Disrupted / Recovery Line"]</div><div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(242,237,230,0.4);margin-top:4px;">[One line description]</div></div>
+    </div>
+    <div class="engine-body">
+      <div class="engine-step">
+        <div class="engine-step-label">Setup</div>
+        <div class="engine-step-title">When Available</div>
+        <div class="engine-step-body">[Setup conditions — what triggers this being the correct line?]</div>
+      </div>
+      <div class="engine-step">
+        <div class="engine-step-label">Execution</div>
+        <div class="engine-step-title">Exact Sequence</div>
+        <div class="engine-step-body">Step 1: [Action]<br><br>Step 2: [Action]<br><br>Step 3: [Action]</div>
+      </div>
+      <div class="engine-step">
+        <div class="engine-step-label">Result</div>
+        <div class="engine-step-title">Advantage Created</div>
+        <div class="engine-step-body">[Result]</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Template 1: Lines & Tricks -->
+  <h2>Lines &amp; Tricks</h2>
+  <p>Stack interactions, combat tricks, and niche interactions that give edges at RC level play.</p>
+  <ul class="tricks-list">
+    <li><span class="trick-tag">Stack</span><span><strong>[Trick Name]:</strong> [Describe the stack or triggered ability interaction. Be specific about what's on the stack, in what order, and what the result is.]</span></li>
+    <li><span class="trick-tag">Combat</span><span><strong>[Trick Name]:</strong> [Describe the combat trick — what spells are cast when, in what order, and what the damage/survival math works out to.]</span></li>
+    <li><span class="trick-tag">Sequence</span><span><strong>[Trick Name]:</strong> [Describe a non-obvious sequencing trick that most pilots get wrong.]</span></li>
+    <li><span class="trick-tag">Avoid</span><span><strong>[Common Mistake]:</strong> [Name and describe the most common sequencing or resource error pilots make with this deck.]</span></li>
+    <li><span class="trick-tag">Advanced</span><span><strong>[Advanced Line]:</strong> [An advanced line or niche interaction that requires deeper rules knowledge. Include the specific rule that enables it.]</span></li>
+    <li><span class="trick-tag">Break Rule</span><span><strong>When to Break Your Own Rules:</strong> [Describe the specific game state where a standard heuristic should be violated and why.]</span></li>
+  </ul>
+</div>
+
+<!-- ============================================================
+     TAB 5: ROLES
+     Covers: Template 1 § Pilot Principles (role-related)
+             Template 2 § What role it prefers + when to switch
+     ============================================================ -->
+<div id="roles" class="section">
+  <div class="section-label">Chapter 05</div>
+  <h1>Role<br>Assignment</h1>
+
+  <p>[Introduction: explain that this deck has multiple modes, and the primary skill expression is reading which mode the game requires. Give the one-sentence philosophy of role assignment for this deck.]</p>
+
+  <div class="role-grid">
+    <div class="role-card">
+      <div class="role-name">[Role A Name — e.g. "Aggressor"]</div>
+      <div class="role-desc">[Default mode description. When is this the correct role? What decisions does this mode favor? How do you evaluate each action when in this mode?]</div>
+      <div class="role-matchups">vs: [Matchup 1] · [Matchup 2] · [Matchup 3]</div>
+    </div>
+    <div class="role-card">
+      <div class="role-name">[Role B Name — e.g. "Tempo Control"]</div>
+      <div class="role-desc">[Second mode description. What triggers the switch to this mode? What does prioritizing in this mode look like?]</div>
+      <div class="role-matchups">vs: [Matchup 1] · [Matchup 2]</div>
+    </div>
+    <div class="role-card">
+      <div class="role-name">[Role C Name — e.g. "Disrupt + Execute"]</div>
+      <div class="role-desc">[Third mode. When is this the right call? What specific board or hand conditions signal this mode?]</div>
+      <div class="role-matchups">vs: [Matchup 1] · [Matchup 2]</div>
+    </div>
+  </div>
+
+  <h2>Role Mistakes to Avoid</h2>
+  <!-- Template 2: Common Mistakes (role-related) -->
+  <ol class="heuristic-list">
+    <li><strong>[Mistake 1].</strong> [Describe what the wrong action is, why pilots default to it, and what the correct action is instead. Be specific.]</li>
+    <li><strong>[Mistake 2].</strong> [Same pattern — name the error, explain the psychology, give the correct response.]</li>
+    <li><strong>[Mistake 3].</strong> [Another common role-assignment error.]</li>
+    <li><strong>[Mistake 4].</strong> [A resource management mistake related to role misreading.]</li>
+  </ol>
+</div>
+
+<!-- ============================================================
+     TAB 6: MATCHUPS
+     Covers: Template 1 § Matchup Guide (Narrative)
+             Template 2 § Matchup Play Patterns (Gameplan / What Matters / Key Lines / Example Sequence)
+     ============================================================ -->
+<div id="matchups" class="section">
+  <div class="section-label">Chapter 06</div>
+  <h1>Matchup<br>Matrix</h1>
+  <p>Click any matchup row to expand the full guide. Win rates from Team Resolve gauntlet data + 262k-match DB.</p>
+
+  <table class="matchup-table" id="mu-overview-table">
+    <thead>
+      <tr>
+        <th>Matchup</th>
+        <th>Meta Share</th>
+        <th>Difficulty</th>
+        <th>Your Role</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr onclick="toggleMatchup('mu_1')"><td><strong>[Matchup 1 Name]</strong></td><td>~[X]%</td><td><span class="diff-medium">Slight Dog</span></td><td>[One-sentence role description]</td></tr>
+      <tr onclick="toggleMatchup('mu_2')"><td><strong>[Matchup 2 Name]</strong></td><td>~[X]%</td><td><span class="diff-hard">Hard</span></td><td>[One-sentence role description]</td></tr>
+      <tr onclick="toggleMatchup('mu_3')"><td><strong>[Matchup 3 Name]</strong></td><td>~[X]%</td><td><span class="diff-good">Favored</span></td><td>[One-sentence role description]</td></tr>
+      <tr onclick="toggleMatchup('mu_4')"><td><strong>[Matchup 4 Name]</strong></td><td>~[X]%</td><td><span class="diff-even">Even</span></td><td>[One-sentence role description]</td></tr>
+      <tr onclick="toggleMatchup('mu_5')"><td><strong>[Matchup 5 Name]</strong></td><td>~[X]%</td><td><span class="diff-good">Favored</span></td><td>[One-sentence role description]</td></tr>
+      <tr onclick="toggleMatchup('mu_6')"><td><strong>[Matchup 6 Name]</strong></td><td>~[X]%</td><td><span class="diff-even">Even</span></td><td>[One-sentence role description]</td></tr>
+    </tbody>
+  </table>
+
+  <!-- MATCHUP 1 DETAIL -->
+  <div id="mu_1" class="matchup-detail">
+    <!-- Template 1: Matchup narrative / Template 2: Gameplan + What Matters Most -->
+    <h3>[Matchup 1 Name] — [Dynamic Title: Why It's Hard / Why You Win / The Race]</h3>
+    <p>[Template 1: General plan — what matters in this matchup, what role you are taking. Template 2: What resource you are attacking — their life / mana / hand / board. What cards matter most on both sides.]</p>
+    <p>[Second paragraph: what the key lines are for this matchup. What must resolve for you to win?]</p>
+
+    <!-- Template 2: Key Lines -->
+    <h3>Key Lines This Matchup</h3>
+    <p><strong>Line A works here because:</strong> [Explain why your Engine A is particularly effective or ineffective in this matchup.]</p>
+    <p><strong>Line B works here because:</strong> [Same for Engine B.]</p>
+
+    <!-- Play/Draw -->
+    <h3>Play vs Draw</h3>
+    <div class="pd-grid">
+      <div class="pd-col">
+        <div class="pd-label">On the Play</div>
+        <div class="pd-title">[Play Strategy Title]</div>
+        <div class="pd-body">[Specific play-on strategy. What does going first let you do that you can't do on the draw? What's your T1-T3 line?]</div>
+      </div>
+      <div class="pd-col">
+        <div class="pd-label">On the Draw</div>
+        <div class="pd-title">[Draw Strategy Title]</div>
+        <div class="pd-body">[Specific draw strategy. What changes? What do you need to hold? What threat do they develop first that you must handle?]</div>
+      </div>
+    </div>
+
+    <!-- Template 2: Example Sequence -->
+    <h3>Example Sequence</h3>
+    <div class="sequence-block">
+      <div class="sequence-header">Ideal Line vs [Matchup 1]</div>
+      <div class="sequence-body">
+        <div class="sequence-turn"><span class="turn-label">T1</span><span>[Action]</span></div>
+        <div class="sequence-turn"><span class="turn-label">T2</span><span>[Action]</span></div>
+        <div class="sequence-turn"><span class="turn-label">T3</span><span>[Key play]</span></div>
+        <div class="sequence-result">Result: [Why this line wins the game and what life total / board state you're creating]</div>
+      </div>
+    </div>
+
+    <!-- SB -->
+    <h3>Sideboard</h3>
+    <div class="sb-table">
+      <div class="sb-col">
+        <div class="sb-col-label">In</div>
+        <div class="sb-item"><span>[Card]</span><span class="sb-qty">+[#]</span></div>
+        <div class="sb-item"><span>[Card]</span><span class="sb-qty">+[#]</span></div>
+      </div>
+      <div class="sb-col">
+        <div class="sb-col-label">Out</div>
+        <div class="sb-item"><span>[Card]</span><span class="sb-qty">−[#]</span></div>
+        <div class="sb-item"><span>[Card]</span><span class="sb-qty">−[#]</span></div>
+      </div>
+    </div>
+
+    <!-- Template 1/2: If X → Do Y (5-6 entries minimum) -->
+    <h3>If X → Do Y</h3>
+    <ul class="ifthen-list">
+      <li><span class="if-label">If</span><span><strong>[Opponent does X]:</strong> [What you do in response. Be specific — what card do you play, what trigger do you fire, what attack do you make. Explain the rule or oracle text behind the decision if non-obvious.]</span></li>
+      <li><span class="if-label">If</span><span><strong>[Opponent does X]:</strong> [Response]</span></li>
+      <li><span class="if-label">If</span><span><strong>[Opponent does X]:</strong> [Response]</span></li>
+      <li><span class="if-label">If</span><span><strong>[Opponent does X]:</strong> [Response]</span></li>
+      <li><span class="if-label">If</span><span><strong>[Opponent does X]:</strong> [Response]</span></li>
+      <li><span class="if-label">If</span><span><strong>[Opponent does X]:</strong> [Response]</span></li>
+    </ul>
+  </div>
+
+  <!-- Repeat pattern for matchups 2-6 (abbreviated for template clarity) -->
+  <div id="mu_2" class="matchup-detail">
+    <h3>[Matchup 2] — [Dynamic Title]</h3>
+    <p>[Narrative: general plan, what matters, key cards, what role you are.]</p>
+    <h3>Play vs Draw</h3>
+    <div class="pd-grid">
+      <div class="pd-col"><div class="pd-label">On the Play</div><div class="pd-title">[Strategy]</div><div class="pd-body">[Details]</div></div>
+      <div class="pd-col"><div class="pd-label">On the Draw</div><div class="pd-title">[Strategy]</div><div class="pd-body">[Details]</div></div>
+    </div>
+    <h3>Sideboard</h3>
+    <div class="sb-table">
+      <div class="sb-col"><div class="sb-col-label">In</div><div class="sb-item"><span>[Card]</span><span class="sb-qty">+[#]</span></div></div>
+      <div class="sb-col"><div class="sb-col-label">Out</div><div class="sb-item"><span>[Card]</span><span class="sb-qty">−[#]</span></div></div>
+    </div>
+    <h3>If X → Do Y</h3>
+    <ul class="ifthen-list">
+      <li><span class="if-label">If</span><span><strong>[X]:</strong> [Y]</span></li>
+      <li><span class="if-label">If</span><span><strong>[X]:</strong> [Y]</span></li>
+      <li><span class="if-label">If</span><span><strong>[X]:</strong> [Y]</span></li>
+      <li><span class="if-label">If</span><span><strong>[X]:</strong> [Y]</span></li>
+      <li><span class="if-label">If</span><span><strong>[X]:</strong> [Y]</span></li>
+    </ul>
+  </div>
+
+  <div id="mu_3" class="matchup-detail">
+    <h3>[Matchup 3] — [Dynamic Title]</h3>
+    <p>[Narrative]</p>
+    <h3>Play vs Draw</h3>
+    <div class="pd-grid">
+      <div class="pd-col"><div class="pd-label">On the Play</div><div class="pd-title">[Strategy]</div><div class="pd-body">[Details]</div></div>
+      <div class="pd-col"><div class="pd-label">On the Draw</div><div class="pd-title">[Strategy]</div><div class="pd-body">[Details]</div></div>
+    </div>
+    <h3>Sideboard</h3>
+    <div class="sb-table">
+      <div class="sb-col"><div class="sb-col-label">In</div><div class="sb-item"><span>[Card]</span><span class="sb-qty">+[#]</span></div></div>
+      <div class="sb-col"><div class="sb-col-label">Out</div><div class="sb-item"><span>[Card]</span><span class="sb-qty">−[#]</span></div></div>
+    </div>
+    <h3>If X → Do Y</h3>
+    <ul class="ifthen-list">
+      <li><span class="if-label">If</span><span><strong>[X]:</strong> [Y]</span></li>
+      <li><span class="if-label">If</span><span><strong>[X]:</strong> [Y]</span></li>
+      <li><span class="if-label">If</span><span><strong>[X]:</strong> [Y]</span></li>
+      <li><span class="if-label">If</span><span><strong>[X]:</strong> [Y]</span></li>
+      <li><span class="if-label">If</span><span><strong>[X]:</strong> [Y]</span></li>
+    </ul>
+  </div>
+
+  <div id="mu_4" class="matchup-detail">
+    <h3>[Matchup 4] — [Dynamic Title]</h3>
+    <p>[Narrative]</p>
+    <h3>Play vs Draw</h3>
+    <div class="pd-grid">
+      <div class="pd-col"><div class="pd-label">On the Play</div><div class="pd-title">[Strategy]</div><div class="pd-body">[Details]</div></div>
+      <div class="pd-col"><div class="pd-label">On the Draw</div><div class="pd-title">[Strategy]</div><div class="pd-body">[Details]</div></div>
+    </div>
+    <h3>Sideboard</h3>
+    <div class="sb-table">
+      <div class="sb-col"><div class="sb-col-label">In</div><div class="sb-item"><span>[Card]</span><span class="sb-qty">+[#]</span></div></div>
+      <div class="sb-col"><div class="sb-col-label">Out</div><div class="sb-item"><span>[Card]</span><span class="sb-qty">−[#]</span></div></div>
+    </div>
+    <h3>If X → Do Y</h3>
+    <ul class="ifthen-list">
+      <li><span class="if-label">If</span><span><strong>[X]:</strong> [Y]</span></li>
+      <li><span class="if-label">If</span><span><strong>[X]:</strong> [Y]</span></li>
+      <li><span class="if-label">If</span><span><strong>[X]:</strong> [Y]</span></li>
+      <li><span class="if-label">If</span><span><strong>[X]:</strong> [Y]</span></li>
+      <li><span class="if-label">If</span><span><strong>[X]:</strong> [Y]</span></li>
+    </ul>
+  </div>
+
+  <div id="mu_5" class="matchup-detail">
+    <h3>[Matchup 5] — [Dynamic Title]</h3>
+    <p>[Narrative]</p>
+    <h3>Play vs Draw</h3>
+    <div class="pd-grid">
+      <div class="pd-col"><div class="pd-label">On the Play</div><div class="pd-title">[Strategy]</div><div class="pd-body">[Details]</div></div>
+      <div class="pd-col"><div class="pd-label">On the Draw</div><div class="pd-title">[Strategy]</div><div class="pd-body">[Details]</div></div>
+    </div>
+    <h3>Sideboard</h3>
+    <div class="sb-table">
+      <div class="sb-col"><div class="sb-col-label">In</div><div class="sb-item"><span>[Card]</span><span class="sb-qty">+[#]</span></div></div>
+      <div class="sb-col"><div class="sb-col-label">Out</div><div class="sb-item"><span>[Card]</span><span class="sb-qty">−[#]</span></div></div>
+    </div>
+    <h3>If X → Do Y</h3>
+    <ul class="ifthen-list">
+      <li><span class="if-label">If</span><span><strong>[X]:</strong> [Y]</span></li>
+      <li><span class="if-label">If</span><span><strong>[X]:</strong> [Y]</span></li>
+      <li><span class="if-label">If</span><span><strong>[X]:</strong> [Y]</span></li>
+      <li><span class="if-label">If</span><span><strong>[X]:</strong> [Y]</span></li>
+      <li><span class="if-label">If</span><span><strong>[X]:</strong> [Y]</span></li>
+    </ul>
+  </div>
+
+  <div id="mu_6" class="matchup-detail">
+    <h3>[Matchup 6] — [Dynamic Title]</h3>
+    <p>[Narrative]</p>
+    <h3>Play vs Draw</h3>
+    <div class="pd-grid">
+      <div class="pd-col"><div class="pd-label">On the Play</div><div class="pd-title">[Strategy]</div><div class="pd-body">[Details]</div></div>
+      <div class="pd-col"><div class="pd-label">On the Draw</div><div class="pd-title">[Strategy]</div><div class="pd-body">[Details]</div></div>
+    </div>
+    <h3>Sideboard</h3>
+    <div class="sb-table">
+      <div class="sb-col"><div class="sb-col-label">In</div><div class="sb-item"><span>[Card]</span><span class="sb-qty">+[#]</span></div></div>
+      <div class="sb-col"><div class="sb-col-label">Out</div><div class="sb-item"><span>[Card]</span><span class="sb-qty">−[#]</span></div></div>
+    </div>
+    <h3>If X → Do Y</h3>
+    <ul class="ifthen-list">
+      <li><span class="if-label">If</span><span><strong>[X]:</strong> [Y]</span></li>
+      <li><span class="if-label">If</span><span><strong>[X]:</strong> [Y]</span></li>
+      <li><span class="if-label">If</span><span><strong>[X]:</strong> [Y]</span></li>
+      <li><span class="if-label">If</span><span><strong>[X]:</strong> [Y]</span></li>
+      <li><span class="if-label">If</span><span><strong>[X]:</strong> [Y]</span></li>
+    </ul>
+  </div>
+
+</div><!-- end matchups -->
+
+<!-- ============================================================
+     TAB 7: SIDEBOARD
+     Covers: Template 1 § Quick Reference (two-column)
+             Template 2 § Sideboard Plan (per matchup IN/OUT/Post-board)
+             Card-by-card SB guide
+     ============================================================ -->
+<div id="sideboard" class="section">
+  <div class="section-label">Chapter 07</div>
+  <h1>Sideboard<br>Guide</h1>
+
+  <!-- Card-by-card reference -->
+  <h2>Card-by-Card Notes</h2>
+  <div class="sb-card-guide">
+    <div class="sb-guide-row">
+      <div class="sb-guide-name">[SB Card 1]</div>
+      <div class="sb-guide-body"><strong>[# copies].</strong> [Full explanation: what it does (include exact oracle text behavior), what matchups it comes in, exactly what it answers, and what mistake pilots make when boarding it.] Board in vs: [matchup list]. Board out: [what you cut].</div>
+    </div>
+    <div class="sb-guide-row">
+      <div class="sb-guide-name">[SB Card 2]</div>
+      <div class="sb-guide-body"><strong>[# copies].</strong> [Same pattern — full oracle text note, primary use case, board in vs which matchups, and what common error to avoid.]</div>
+    </div>
+    <div class="sb-guide-row">
+      <div class="sb-guide-name">[SB Card 3]</div>
+      <div class="sb-guide-body"><strong>[# copies].</strong> [Full note]</div>
+    </div>
+    <div class="sb-guide-row">
+      <div class="sb-guide-name">[SB Card 4]</div>
+      <div class="sb-guide-body"><strong>[# copies].</strong> [Full note]</div>
+    </div>
+    <div class="sb-guide-row">
+      <div class="sb-guide-name">[SB Card 5]</div>
+      <div class="sb-guide-body"><strong>[# copies].</strong> [Full note]</div>
+    </div>
+  </div>
+
+  <!-- Template 1: Quick Reference (two-column style) -->
+  <h2>Quick Reference Table</h2>
+  <table class="qr-table">
+    <thead><tr><th>Matchup</th><th>In</th><th>Out</th><th>Post-Board Plan</th></tr></thead>
+    <tbody>
+      <tr><td><strong>[Matchup 1]</strong></td><td>[Cards In]</td><td>[Cards Out]</td><td>[One sentence plan change post-board]</td></tr>
+      <tr><td><strong>[Matchup 2]</strong></td><td>[Cards In]</td><td>[Cards Out]</td><td>[Plan]</td></tr>
+      <tr><td><strong>[Matchup 3]</strong></td><td>[Cards In]</td><td>[Cards Out]</td><td>[Plan]</td></tr>
+      <tr><td><strong>[Matchup 4]</strong></td><td>[Cards In]</td><td>[Cards Out]</td><td>[Plan]</td></tr>
+      <tr><td><strong>[Matchup 5]</strong></td><td>[Cards In]</td><td>[Cards Out]</td><td>[Plan]</td></tr>
+      <tr><td><strong>[Matchup 6]</strong></td><td>[Cards In]</td><td>[Cards Out]</td><td>[Plan]</td></tr>
+    </tbody>
+  </table>
+
+  <!-- Template 2: Sideboard Plan per matchup with post-board plan -->
+  <h2>Matchup Deep Dives</h2>
+
+  <div class="sb-deep">
+    <div class="sb-deep-header" onclick="toggleDeep(this)">
+      <div class="sb-deep-title">
+        <div class="sb-deep-name">vs [Matchup 1]</div>
+        <div class="sb-deep-meta">+[Cards] / −[Cards]</div>
+      </div>
+      <div class="sb-deep-toggle">+</div>
+    </div>
+    <div class="sb-deep-body">
+      <div class="sb-deep-mantra">[One sentence summary of the post-board plan change]</div>
+      <div class="sb-deep-grid">
+        <div>
+          <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--mid);margin-bottom:10px;">Why These Cards Come In</div>
+          <p style="font-size:15px;font-weight:300;">[Template 2 post-board plan: what changes in how you play? What does the SB transformation accomplish? Why are the cards you're cutting weak here?]</p>
+        </div>
+        <div>
+          <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--mid);margin-bottom:10px;">Why These Cards Come Out</div>
+          <p style="font-size:15px;font-weight:300;">[Why are the cards you're cutting underperforming in this matchup? What do they fail to answer or enable that makes them dead weight post-board?]</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sb-deep">
+    <div class="sb-deep-header" onclick="toggleDeep(this)">
+      <div class="sb-deep-title">
+        <div class="sb-deep-name">vs [Matchup 2]</div>
+        <div class="sb-deep-meta">+[Cards] / −[Cards]</div>
+      </div>
+      <div class="sb-deep-toggle">+</div>
+    </div>
+    <div class="sb-deep-body">
+      <div class="sb-deep-mantra">[Post-board plan mantra]</div>
+      <div class="sb-deep-grid">
+        <div>
+          <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--mid);margin-bottom:10px;">Why These Cards Come In</div>
+          <p style="font-size:15px;font-weight:300;">[Explanation]</p>
+        </div>
+        <div>
+          <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--mid);margin-bottom:10px;">Why These Cards Come Out</div>
+          <p style="font-size:15px;font-weight:300;">[Explanation]</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ============================================================
+     TAB 8: HEURISTICS
+     Covers: Template 1 § Pilot Principles
+             Template 2 § Common Mistakes
+             Template 2 § Advanced Play / Edge Cases
+     ============================================================ -->
+<div id="heuristics" class="section">
+  <div class="section-label">Chapter 08</div>
+  <h1>Heuristics,<br>Mistakes &amp; Edge Cases</h1>
+
+  <p>Automatic decisions drilled before the event. These rules are reflexes for RC-level play — the game moves too fast for deliberate calculation every time. If you can't recite these from memory, you're not ready to register this deck.</p>
+
+  <!-- Template 1: Pilot Principles / Template 2: Rules of thumb -->
+  <h2>Pilot Principles</h2>
+  <ol class="heuristic-list">
+    <li><strong>[Principle 1 — Mulligan philosophy].</strong> [Describe the specific hand conditions for a keep vs mulligan. What is the minimum requirement? What role does the draw/play distinction play?]</li>
+    <li><strong>[Principle 2 — Early turn priorities].</strong> [What should turns 1-2 accomplish? What is the priority order when you have multiple options?]</li>
+    <li><strong>[Principle 3 — Key sequencing rule].</strong> [What is the most important sequencing heuristic? Describe the exact order of operations and why it matters.]</li>
+    <li><strong>[Principle 4 — Resource management].</strong> [What resources matter most in close games? When do you spend life, cards, or permanents and when do you hold?]</li>
+    <li><strong>[Principle 5 — Role-shifting].</strong> [How do you sideboard and shift role post-board? What's the guiding principle?]</li>
+    <li><strong>[Principle 6].</strong> [Additional heuristic specific to this deck's mechanics.]</li>
+    <li><strong>[Principle 7].</strong> [Oracle text rule or trigger sequence that must be memorized.]</li>
+    <li><strong>[Principle 8].</strong> [Interaction-specific heuristic.]</li>
+    <li><strong>[Principle 9].</strong> [Sideboard or post-board principle.]</li>
+    <li><strong>[Principle 10].</strong> [End-game or close-out rule.]</li>
+    <li><strong>[Principle 11].</strong> [Advanced pilot rule — something that distinguishes 60% pilots from 70% pilots.]</li>
+    <li><strong>[Principle 12].</strong> [Final heuristic.]</li>
+  </ol>
+
+  <!-- Template 2: Common Mistakes -->
+  <h2>Common Mistakes</h2>
+  <p>These are not hypothetical — they are errors that have lost games at RC level. Knowing them explicitly is a significant edge.</p>
+  <ul class="tricks-list">
+    <li><span class="trick-tag">Mistake</span><span><strong>[Mistake 1]:</strong> [Describe what the mistake is, why it happens, and what the correct action is. Be specific enough that a player can recognize themselves making this error mid-game.]</span></li>
+    <li><span class="trick-tag">Mistake</span><span><strong>[Mistake 2]:</strong> [Same pattern]</span></li>
+    <li><span class="trick-tag">Mistake</span><span><strong>[Mistake 3]:</strong> [Same pattern]</span></li>
+    <li><span class="trick-tag">Mistake</span><span><strong>[Mistake 4]:</strong> [Same pattern]</span></li>
+  </ul>
+
+  <!-- Template 2: Advanced Play / Edge Cases -->
+  <h2>Advanced Play &amp; Edge Cases</h2>
+  <ul class="tricks-list">
+    <li><span class="trick-tag">Niche</span><span><strong>[Niche Interaction]:</strong> [Specific oracle text or rules interaction that creates an unexpected result. Name the cards, the rule, and the outcome.]</span></li>
+    <li><span class="trick-tag">Thread Needle</span><span><strong>[Thread-the-Needle Line]:</strong> [A line that is technically correct but non-obvious. Explain the conditions that make it correct and the conditions that make it wrong.]</span></li>
+    <li><span class="trick-tag">Stack</span><span><strong>[Stack Interaction]:</strong> [A specific stack trick involving triggers, split-second, priority passing, or response windows.]</span></li>
+    <li><span class="trick-tag">Break Rule</span><span><strong>When to Break Your Own Heuristics:</strong> [The specific game state where one of the heuristics above should be violated. What condition overrides the rule?]</span></li>
+  </ul>
+</div>
+
+<!-- ============================================================
+     TAB 9: TUNING
+     Covers: Template 1 § Tuning Notes (if combo/aggro/control/GY rises)
+     ============================================================ -->
+<div id="tuning" class="section">
+  <div class="section-label">Chapter 09</div>
+  <h1>Tuning<br>Notes</h1>
+
+  <p>How the 75 should shift as the metagame moves. These are not hypothetical — they are concrete card swaps triggered by specific meta conditions. Update this section after each RC cycle.</p>
+
+  <div class="tuning-grid">
+    <div class="tuning-cell">
+      <div class="tuning-label">If This Rises</div>
+      <div class="tuning-condition">Combo Decks Rise</div>
+      <p class="tuning-up">[Cards that go up: e.g. Consign to Memory, Spell Pierce, faster clock]</p>
+      <p class="tuning-down">[Cards that go down: e.g. creature removal, slower interactive pieces]</p>
+      <p style="font-size:14px;font-weight:300;margin-top:8px;">[Context: which specific combo decks are you targeting? What is the primary axis you're attacking?]</p>
+    </div>
+    <div class="tuning-cell">
+      <div class="tuning-label">If This Rises</div>
+      <div class="tuning-condition">Aggro Rises</div>
+      <p class="tuning-up">[Cards that go up: sweepers, lifegain, cheap removal]</p>
+      <p class="tuning-down">[Cards that go down: slow threats, late-game pieces, excess card draw]</p>
+      <p style="font-size:14px;font-weight:300;margin-top:8px;">[Which aggro decks specifically? Prowess, Boros Energy, something else? What's the threshold that triggers the swap?]</p>
+    </div>
+    <div class="tuning-cell">
+      <div class="tuning-label">If This Rises</div>
+      <div class="tuning-condition">Midrange / Control Rises</div>
+      <p class="tuning-up">[Cards that go up: card advantage engines, resilient threats, counters]</p>
+      <p class="tuning-down">[Cards that go down: narrow hate pieces, linear combo pieces]</p>
+      <p style="font-size:14px;font-weight:300;margin-top:8px;">[Which control or midrange decks? What does more of them mean for your primary engine?]</p>
+    </div>
+    <div class="tuning-cell">
+      <div class="tuning-label">If This Rises</div>
+      <div class="tuning-condition">Graveyard Decks Rise</div>
+      <p class="tuning-up">[Cards that go up: Nihil Spellbomb, Surgical Extraction, Leyline of the Void]</p>
+      <p class="tuning-down">[Cards that go down: matchup-specific hate, narrow answers]</p>
+      <p style="font-size:14px;font-weight:300;margin-top:8px;">[Which GY decks? Reanimator, Glockulous, Living End? How many SB slots is it worth?]</p>
+    </div>
+    <div class="tuning-cell">
+      <div class="tuning-label">If This Rises</div>
+      <div class="tuning-condition">Big Mana / Artifacts Rise</div>
+      <p class="tuning-up">[Cards that go up: Blood Moon, Harbinger of the Seas, artifact hate]</p>
+      <p class="tuning-down">[Cards that go down: creature-oriented removal, graveyard hate]</p>
+      <p style="font-size:14px;font-weight:300;margin-top:8px;">[Amulet Titan, Affinity, Eldrazi? What does the mana disruption package look like?]</p>
+    </div>
+    <div class="tuning-cell">
+      <div class="tuning-label">If This Rises</div>
+      <div class="tuning-condition">Mirror / Same Archetype Rises</div>
+      <p class="tuning-up">[Cards that go up: cards that are better in the mirror specifically]</p>
+      <p class="tuning-down">[Cards that go down: cards that are symmetric or weak in the mirror]</p>
+      <p style="font-size:14px;font-weight:300;margin-top:8px;">[What is the key mirror dynamic? What card or sequence wins the mirror when both players execute their game plan correctly?]</p>
+    </div>
+  </div>
+
+  <h2>Flex Slots — Current Recommendations</h2>
+  <div class="card-grid">
+    <div class="card">
+      <div class="card-label">Main Deck Flex</div>
+      <div class="card-title">[Flex Card(s)]</div>
+      <div class="card-body">[What are the 1-3 flex slots in the main? What alternatives exist and when do you make the swap? What metagame condition triggers each alternative?]</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Sideboard Flex</div>
+      <div class="card-title">[SB Flex Slots]</div>
+      <div class="card-body">[Which SB slots are meta-dependent? What's the decision tree for filling them — if X is popular, you want Y; if Z is popular, you want W?]</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Still Testing</div>
+      <div class="card-title">[Cards Under Evaluation]</div>
+      <div class="card-body">[What cards are you actively testing and evaluating? What hypothesis are you testing? What would confirm or deny the hypothesis?]</div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
+     TAB 10: PREP
+     Covers: Template 2 § Condensed Tournament Reference (PRINT THIS)
+             Template 1 § Quick Reference
+             Always / Never / Watch For rules
+             Print-ready SB grid
+     ============================================================ -->
+<div id="prep" class="section">
+  <div class="section-label">Chapter 10</div>
+  <h1>Event Day<br>Prep</h1>
+  <button class="print-btn" onclick="window.print()">⎙ Print This Sheet</button>
+
+  <!-- Template 2: Condensed Tournament Reference -->
+  <h2>Engines — One Line Each</h2>
+  <div class="ref-block">
+    <div class="ref-block-header">Core Engines — Memorize These</div>
+    <div class="ref-row"><div class="ref-key">Line A</div><div class="ref-val">[Engine A described in one sentence: setup condition → action → result]</div></div>
+    <div class="ref-row"><div class="ref-key">Line B</div><div class="ref-val">[Engine B in one sentence]</div></div>
+    <div class="ref-row"><div class="ref-key">Line C</div><div class="ref-val">[Engine C in one sentence]</div></div>
+  </div>
+
+  <!-- Template 2: Rules of thumb — Always / Never / Watch For -->
+  <h2>Rules of Thumb</h2>
+  <div class="ref-block">
+    <div class="ref-block-header">Always · Never · Watch For</div>
+    <div class="ref-row"><div class="ref-key"><span class="always-tag">Always</span></div><div class="ref-val">[Always do X — the most important unconditional rule for this deck]</div></div>
+    <div class="ref-row"><div class="ref-key"><span class="always-tag">Always</span></div><div class="ref-val">[Second always rule]</div></div>
+    <div class="ref-row"><div class="ref-key"><span class="always-tag">Always</span></div><div class="ref-val">[Third always rule]</div></div>
+    <div class="ref-row"><div class="ref-key"><span class="never-tag">Never</span></div><div class="ref-val">[Never do X — the biggest unconditional mistake]</div></div>
+    <div class="ref-row"><div class="ref-key"><span class="never-tag">Never</span></div><div class="ref-val">[Second never rule]</div></div>
+    <div class="ref-row"><div class="ref-key"><span class="never-tag">Never</span></div><div class="ref-val">[Third never rule]</div></div>
+    <div class="ref-row"><div class="ref-key"><span class="watch-tag">Watch For</span></div><div class="ref-val">[Watch for X from opponents — the most commonly missed threat or trigger]</div></div>
+    <div class="ref-row"><div class="ref-key"><span class="watch-tag">Watch For</span></div><div class="ref-val">[Second watch for]</div></div>
+    <div class="ref-row"><div class="ref-key"><span class="watch-tag">Watch For</span></div><div class="ref-val">[Third watch for]</div></div>
+  </div>
+
+  <!-- Template 1: Quick Reference + Template 2: Matchup one-liners -->
+  <h2>Matchup Plans — One Sentence Each</h2>
+  <div class="ref-block">
+    <div class="ref-block-header">Matchup → Plan in One Sentence</div>
+    <div class="ref-row"><div class="ref-key">[Matchup 1]</div><div class="ref-val">[The entire game plan in one sentence: role + key card/play + win condition]</div></div>
+    <div class="ref-row"><div class="ref-key">[Matchup 2]</div><div class="ref-val">[One sentence plan]</div></div>
+    <div class="ref-row"><div class="ref-key">[Matchup 3]</div><div class="ref-val">[One sentence plan]</div></div>
+    <div class="ref-row"><div class="ref-key">[Matchup 4]</div><div class="ref-val">[One sentence plan]</div></div>
+    <div class="ref-row"><div class="ref-key">[Matchup 5]</div><div class="ref-val">[One sentence plan]</div></div>
+    <div class="ref-row"><div class="ref-key">[Matchup 6]</div><div class="ref-val">[One sentence plan]</div></div>
+  </div>
+
+  <!-- Print-ready SB grid -->
+  <h2>Sideboard Grid — Print &amp; Carry</h2>
+  <div class="print-grid">
+    <div class="print-mu">
+      <div class="print-mu-name">[Matchup 1] <span class="diff-medium" style="font-size:10px;">[Diff]</span></div>
+      <div class="print-mu-role">Role: [one phrase]</div>
+      <div class="print-cols">
+        <div>
+          <div class="print-col-label">In</div>
+          <div class="print-row"><span>[Card]</span><span class="print-qty">+[#]</span></div>
+          <div class="print-row"><span>[Card]</span><span class="print-qty">+[#]</span></div>
+        </div>
+        <div>
+          <div class="print-col-label">Out</div>
+          <div class="print-row"><span>[Card]</span><span class="print-qty">−[#]</span></div>
+          <div class="print-row"><span>[Card]</span><span class="print-qty">−[#]</span></div>
+        </div>
+      </div>
+      <div class="print-needle">[Most important rule for this matchup in under 10 words]</div>
+      <div class="print-note">[One sentence reminder about the key post-board shift]</div>
+    </div>
+    <div class="print-mu">
+      <div class="print-mu-name">[Matchup 2] <span class="diff-hard" style="font-size:10px;">[Diff]</span></div>
+      <div class="print-mu-role">Role: [one phrase]</div>
+      <div class="print-cols">
+        <div><div class="print-col-label">In</div><div class="print-row"><span>[Card]</span><span class="print-qty">+[#]</span></div></div>
+        <div><div class="print-col-label">Out</div><div class="print-row"><span>[Card]</span><span class="print-qty">−[#]</span></div></div>
+      </div>
+      <div class="print-needle">[Key rule]</div>
+      <div class="print-note">[Post-board note]</div>
+    </div>
+    <div class="print-mu">
+      <div class="print-mu-name">[Matchup 3] <span class="diff-good" style="font-size:10px;">[Diff]</span></div>
+      <div class="print-mu-role">Role: [one phrase]</div>
+      <div class="print-cols">
+        <div><div class="print-col-label">In</div><div class="print-row"><span>[Card]</span><span class="print-qty">+[#]</span></div></div>
+        <div><div class="print-col-label">Out</div><div class="print-row"><span>[Card]</span><span class="print-qty">−[#]</span></div></div>
+      </div>
+      <div class="print-needle">[Key rule]</div>
+      <div class="print-note">[Post-board note]</div>
+    </div>
+    <div class="print-mu">
+      <div class="print-mu-name">[Matchup 4] <span class="diff-even" style="font-size:10px;">[Diff]</span></div>
+      <div class="print-mu-role">Role: [one phrase]</div>
+      <div class="print-cols">
+        <div><div class="print-col-label">In</div><div class="print-row"><span>[Card]</span><span class="print-qty">+[#]</span></div></div>
+        <div><div class="print-col-label">Out</div><div class="print-row"><span>[Card]</span><span class="print-qty">−[#]</span></div></div>
+      </div>
+      <div class="print-needle">[Key rule]</div>
+      <div class="print-note">[Post-board note]</div>
+    </div>
+    <div class="print-mu">
+      <div class="print-mu-name">[Matchup 5] <span class="diff-good" style="font-size:10px;">[Diff]</span></div>
+      <div class="print-mu-role">Role: [one phrase]</div>
+      <div class="print-cols">
+        <div><div class="print-col-label">In</div><div class="print-row"><span>[Card]</span><span class="print-qty">+[#]</span></div></div>
+        <div><div class="print-col-label">Out</div><div class="print-row"><span>[Card]</span><span class="print-qty">−[#]</span></div></div>
+      </div>
+      <div class="print-needle">[Key rule]</div>
+      <div class="print-note">[Post-board note]</div>
+    </div>
+    <div class="print-mu">
+      <div class="print-mu-name">[Matchup 6] <span class="diff-even" style="font-size:10px;">[Diff]</span></div>
+      <div class="print-mu-role">Role: [one phrase]</div>
+      <div class="print-cols">
+        <div><div class="print-col-label">In</div><div class="print-row"><span>[Card]</span><span class="print-qty">+[#]</span></div></div>
+        <div><div class="print-col-label">Out</div><div class="print-row"><span>[Card]</span><span class="print-qty">−[#]</span></div></div>
+      </div>
+      <div class="print-needle">[Key rule]</div>
+      <div class="print-note">[Post-board note]</div>
+    </div>
+  </div>
+
+  <!-- Non-negotiables -->
+  <h2>Non-Negotiable Rules</h2>
+  <div class="card-grid">
+    <div class="card">
+      <div class="card-label">Rule 01</div>
+      <div class="card-title">[Rule Title]</div>
+      <div class="card-body">[The most important unconditional rule — the one thing you must do or never do that is non-negotiable regardless of game state.]</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Rule 02</div>
+      <div class="card-title">[Rule Title]</div>
+      <div class="card-body">[Second non-negotiable rule.]</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Rule 03</div>
+      <div class="card-title">[Rule Title]</div>
+      <div class="card-body">[Third non-negotiable rule.]</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Rule 04</div>
+      <div class="card-title">[Rule Title]</div>
+      <div class="card-body">[Fourth non-negotiable rule.]</div>
+    </div>
+  </div>
+
+</div><!-- end prep -->
+
+</div><!-- end .page -->
+
+<footer>
+  <span>Team Resolve · Modern · [Deck Name] Playbook</span>
+  <span>Endure · Adapt · Delve · 2026 RC Season</span>
+</footer>
+
+<script>
+function show(id) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  event.target.classList.add('active');
+}
+function toggleMatchup(id) {
+  const el = document.getElementById(id);
+  const isOpen = el.classList.contains('open');
+  document.querySelectorAll('.matchup-detail').forEach(d => d.classList.remove('open'));
+  document.querySelectorAll('.matchup-table tr').forEach(r => r.classList.remove('selected'));
+  if (!isOpen) {
+    el.classList.add('open');
+    event.currentTarget.classList.add('selected');
+  }
+}
+function toggleDeep(header) {
+  header.parentElement.classList.toggle('open');
+}
+</script>
+<script src="matchup-data-loader.js"></script>
+<script src="card-tooltips.js"></script>
+</body>
+</html>

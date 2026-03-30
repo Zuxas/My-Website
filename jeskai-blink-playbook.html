@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -6,260 +6,1334 @@
 <title>Jeskai Blink — Team Resolve Playbook</title>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
 <style>
-  :root { --ink:#0e0e0e; --paper:#f2ede6; --paper-dark:#e8e1d6; --rule:#c8bfb0; --accent:#7a2a1a; --accent-light:#f7ddd6; --gold:#8f6a1a; --gold-light:#f7ead6; --mid:#5a5248; }
-  * { margin:0; padding:0; box-sizing:border-box; }
-  body { background:var(--paper); color:var(--ink); font-family:'Crimson Pro',Georgia,serif; font-size:17px; line-height:1.6; }
-  .header-band { background:var(--ink); border-bottom:3px solid #d45a2a; }
-  .header-inner { max-width:1100px; margin:0 auto; padding:32px 80px; display:flex; justify-content:space-between; align-items:flex-end; gap:40px; }
-  .header-eyebrow { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:rgba(242,237,230,0.35); margin-bottom:8px; }
-  .header-title { font-family:'Bebas Neue',sans-serif; font-size:56px; line-height:0.9; color:var(--paper); letter-spacing:0.02em; }
-  .header-title span { color:#d45a2a; }
-  .header-mantra { font-family:'Crimson Pro',serif; font-style:italic; font-size:15px; color:rgba(242,237,230,0.4); margin-top:8px; }
-  .header-right { display:flex; flex-direction:column; gap:8px; }
-  .header-stat { display:flex; gap:16px; align-items:baseline; }
-  .hs-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; color:rgba(242,237,230,0.35); min-width:90px; }
-  .hs-val { font-family:'DM Mono',monospace; font-size:13px; color:rgba(242,237,230,0.8); }
-  nav { background:#1a1a1a; border-bottom:1px solid #333; padding:0 80px; display:flex; align-items:center; gap:4px; position:sticky; top:0; z-index:100; }
-  .nav-brand { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:#d45a2a; margin-right:24px; padding:14px 0; white-space:nowrap; }
-  .nav-link { background:none; border:none; color:rgba(242,237,230,0.45); font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.12em; text-transform:uppercase; padding:14px 16px; cursor:pointer; transition:color 0.2s; border-bottom:2px solid transparent; }
-  .nav-link:hover,.nav-link.active { color:var(--paper); border-bottom-color:#d45a2a; }
-  .page { max-width:1100px; margin:0 auto; padding:60px 80px 120px; }
-  .section { display:none; } .section.active { display:block; }
-  .section-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.25em; text-transform:uppercase; color:rgba(14,14,14,0.3); margin-bottom:12px; }
-  h1 { font-family:'Bebas Neue',sans-serif; font-size:64px; line-height:0.9; letter-spacing:0.02em; margin-bottom:40px; }
-  h2 { font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.2em; text-transform:uppercase; color:var(--mid); margin:40px 0 16px; padding-bottom:8px; border-bottom:1px solid var(--rule); }
-  h3 { font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:var(--accent); margin:24px 0 10px; }
-  p { margin-bottom:16px; font-weight:300; } strong { font-weight:600; }
-  .mantra { background:var(--paper-dark); border-left:3px solid #d45a2a; padding:20px 28px; margin:32px 0; font-style:italic; font-size:18px; color:var(--mid); }
-  .mantra cite { display:block; font-size:12px; letter-spacing:0.1em; text-transform:uppercase; color:rgba(90,82,72,0.5); margin-top:8px; font-style:normal; }
-  .card-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:1px; background:var(--rule); margin:16px 0 32px; border:1px solid var(--rule); }
-  .card { background:var(--paper); padding:20px; } .card:hover { background:var(--paper-dark); }
-  .card-label { font-family:'DM Mono',monospace; font-size:9px; letter-spacing:0.2em; text-transform:uppercase; color:rgba(14,14,14,0.3); margin-bottom:6px; }
-  .card-title { font-family:'DM Mono',monospace; font-size:12px; letter-spacing:0.08em; color:var(--accent); margin-bottom:8px; }
-  .card-body { font-size:14px; color:var(--mid); line-height:1.5; font-weight:300; }
-  .dl-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:0; }
-  .dl-section { margin-bottom:28px; }
-  .dl-section-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; color:var(--mid); padding-bottom:8px; border-bottom:1px solid var(--rule); margin-bottom:12px; }
-  .dl-entry { display:flex; justify-content:space-between; padding:4px 0; border-bottom:1px solid rgba(200,191,176,0.3); font-size:15px; }
-  .dl-count { font-family:'DM Mono',monospace; font-size:12px; color:var(--accent); min-width:20px; }
-  .dl-name { color:var(--ink); font-weight:300; }
-  .matchup-table { width:100%; border-collapse:collapse; margin-bottom:2px; cursor:pointer; }
-  .matchup-table thead tr { background:var(--paper-dark); }
-  .matchup-table th { font-family:'DM Mono',monospace; font-size:9px; letter-spacing:0.15em; text-transform:uppercase; padding:10px 14px; text-align:left; font-weight:400; color:var(--mid); border-bottom:1px solid var(--rule); }
-  .matchup-table td { padding:10px 14px; border-bottom:1px solid var(--rule); font-size:15px; background:var(--paper); transition:background 0.1s; }
-  .matchup-table tr:hover td { background:var(--paper-dark); }
-  .matchup-table tr.selected td { background:var(--accent-light); }
-  .verdict { font-family:'DM Mono',monospace; font-size:11px; padding:2px 8px; border-radius:2px; }
-  .v-good { background:#d4f0d4; color:#1a6b1a; border:1px solid #a0d4a0; }
-  .v-hard { background:#f7d6d6; color:#8f1a1a; border:1px solid #e8b0b0; }
-  .v-even { background:var(--gold-light); color:var(--gold); border:1px solid #e8c880; }
-  .matchup-detail { display:none; background:var(--paper-dark); border:1px solid var(--rule); border-top:3px solid #d45a2a; padding:28px 32px; margin-bottom:24px; }
-  .matchup-detail.open { display:block; }
-  .if-then { background:var(--paper); border:1px solid var(--rule); padding:16px 20px; margin:12px 0; font-size:14px; }
-  .if-then .if { font-family:'DM Mono',monospace; font-size:10px; color:var(--accent); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:4px; }
-  .sb-row { display:grid; grid-template-columns:1fr 1fr; gap:24px; margin:16px 0; }
-  .sb-in,.sb-out { background:var(--paper); border:1px solid var(--rule); padding:16px; }
-  .sb-label { font-family:'DM Mono',monospace; font-size:9px; letter-spacing:0.2em; text-transform:uppercase; margin-bottom:8px; }
-  .sb-in .sb-label { color:#1a6b1a; } .sb-out .sb-label { color:#8f1a1a; }
-  .sb-card { display:flex; justify-content:space-between; padding:3px 0; font-size:14px; border-bottom:1px solid rgba(200,191,176,0.3); }
-  .sb-n { font-family:'DM Mono',monospace; font-size:11px; color:var(--mid); }
-  .sb-guide-card { background:var(--paper-dark); border:1px solid var(--rule); padding:16px 20px; margin-bottom:12px; }
-  .sb-guide-name { font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.08em; color:var(--ink); margin-bottom:4px; }
-  .sb-guide-body { font-size:14px; color:var(--mid); font-weight:300; }
-  .heuristic-list { list-style:none; counter-reset:h; }
-  .heuristic-list li { counter-increment:h; display:flex; gap:20px; padding:14px 0; border-bottom:1px solid var(--rule); font-size:16px; font-weight:300; }
-  .heuristic-list li::before { content:counter(h,decimal-leading-zero); font-family:'DM Mono',monospace; font-size:18px; color:rgba(212,90,42,0.25); flex-shrink:0; width:28px; }
-  .print-btn { display:inline-block; background:var(--ink); color:var(--paper); font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; padding:10px 20px; border:none; cursor:pointer; margin-bottom:32px; }
-  .prep-grid { display:grid; grid-template-columns:1fr 1fr; gap:24px; }
-  .prep-block { background:var(--paper-dark); border:1px solid var(--rule); padding:20px; }
-  .prep-block-title { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--mid); margin-bottom:12px; padding-bottom:8px; border-bottom:1px solid var(--rule); }
-  .prep-line { display:flex; justify-content:space-between; padding:4px 0; font-size:14px; border-bottom:1px solid rgba(200,191,176,0.3); }
-  .prep-verdict { font-family:'DM Mono',monospace; font-size:10px; }
-  footer { background:var(--ink); color:rgba(242,237,230,0.25); font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.12em; text-transform:uppercase; padding:24px 80px; display:flex; justify-content:space-between; }
-  @media print { nav,.header-band,footer,.print-btn,.section:not(#prep) { display:none !important; } .section#prep { display:block !important; } body { font-size:12px; } .page { padding:20px; } }</style>
+  :root {
+    --ink: #0e0e0e; --paper: #f2ede6; --paper-dark: #e8e1d6; --rule: #c8bfb0;
+    --accent: #c0622b; --accent-light: #fbe4d6;
+    --danger: #8f1a1a; --danger-light: #f7d6d6;
+    --gold: #8f6a1a; --gold-light: #f7ead6;
+    --mid: #5a5248;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: var(--paper); color: var(--ink); font-family: 'Crimson Pro', Georgia, serif; font-size: 17px; line-height: 1.6; }
+  .header-band { background: var(--ink); border-bottom: 3px solid #c0622b; }
+  .header-inner { max-width: 1100px; margin: 0 auto; padding: 32px 80px; display: flex; justify-content: space-between; align-items: flex-end; gap: 40px; }
+  .header-eyebrow { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(242,237,230,0.35); margin-bottom: 8px; }
+  .header-title { font-family: 'Bebas Neue', sans-serif; font-size: 56px; line-height: 0.9; color: var(--paper); letter-spacing: 0.02em; }
+  .header-title span { color: #c0622b; }
+  .header-mantra { font-family: 'Crimson Pro', serif; font-style: italic; font-size: 15px; color: rgba(242,237,230,0.4); margin-top: 8px; }
+  .header-right { display: flex; flex-direction: column; gap: 8px; text-align: right; padding-bottom: 4px; }
+  .header-stat { display: flex; gap: 12px; align-items: center; justify-content: flex-end; }
+  .hs-label { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(242,237,230,0.3); }
+  .hs-val { font-family: 'DM Mono', monospace; font-size: 12px; color: var(--paper); }
+  nav { position: sticky; top: 0; z-index: 100; background: var(--ink); border-bottom: 1px solid rgba(242,237,230,0.1); padding: 0 80px; display: flex; align-items: center; gap: 0; overflow-x: auto; scrollbar-width: none; }
+  nav::-webkit-scrollbar { display: none; }
+  .nav-brand { font-family: 'Bebas Neue', sans-serif; font-size: 18px; color: #c0622b; letter-spacing: 0.05em; margin-right: 40px; white-space: nowrap; padding: 16px 0; }
+  .nav-link { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(242,237,230,0.4); padding: 20px 16px; cursor: pointer; white-space: nowrap; border-bottom: 2px solid transparent; transition: all 0.2s; background: none; border-top: none; border-left: none; border-right: none; }
+  .nav-link:hover, .nav-link.active { color: var(--paper); border-bottom-color: #c0622b; }
+  .page { max-width: 1100px; margin: 0 auto; padding: 80px 80px; }
+  .section { display: none; animation: fadeIn 0.3s ease; }
+  .section.active { display: block; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+  .section-label { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--mid); margin-bottom: 8px; }
+  h1 { font-family: 'Bebas Neue', sans-serif; font-size: 64px; line-height: 0.9; letter-spacing: 0.01em; color: var(--ink); margin-bottom: 40px; }
+  h2 { font-family: 'Bebas Neue', sans-serif; font-size: 36px; letter-spacing: 0.02em; color: var(--ink); margin: 56px 0 20px; padding-bottom: 8px; border-bottom: 2px solid var(--ink); }
+  h3 { font-family: 'DM Mono', monospace; font-size: 12px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); margin: 32px 0 12px; }
+  p { margin-bottom: 16px; color: var(--ink); font-weight: 300; }
+  strong { font-weight: 600; }
+  em { font-style: italic; color: var(--mid); }
+  .rule { border: none; border-top: 1px solid var(--rule); margin: 40px 0; }
+  .mantra { border-left: 4px solid var(--accent); padding: 24px 32px; background: var(--accent-light); margin: 32px 0; font-style: italic; font-size: 20px; color: var(--accent); line-height: 1.5; }
+  .mantra cite { display: block; font-family: 'DM Mono', monospace; font-size: 11px; font-style: normal; letter-spacing: 0.1em; text-transform: uppercase; color: var(--mid); margin-top: 12px; }
+  .card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 1px; background: var(--rule); border: 1px solid var(--rule); margin: 24px 0; }
+  .card-grid-2 { grid-template-columns:repeat(2,1fr) !important; }
+  .card { background: var(--paper); padding: 24px; }
+  .card:hover { background: var(--paper-dark); }
+  .card-label { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--mid); margin-bottom: 8px; }
+  .card-title { font-family: 'Bebas Neue', sans-serif; font-size: 22px; letter-spacing: 0.03em; color: var(--ink); margin-bottom: 8px; }
+  .card-body { font-size: 15px; font-weight: 300; color: var(--mid); line-height: 1.5; }
+  .decklist { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--rule); border: 1px solid var(--rule); margin: 24px 0; }
+  .dl-section { background: var(--paper); padding: 24px; }
+  .dl-section-label { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--mid); margin-bottom: 16px; }
+  .dl-group { margin-bottom: 20px; }
+  .dl-group-label { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--ink); background: var(--paper-dark); padding: 4px 8px; margin-bottom: 8px; display: inline-block; }
+  .dl-card-row { display: flex; justify-content: space-between; padding: 4px 0; border-bottom: 1px solid rgba(200,191,176,0.3); font-size: 15px; font-weight: 300; }
+  .dl-qty { font-family: 'DM Mono', monospace; font-size: 12px; color: var(--accent); }
+  .curve-strip { display: flex; gap: 1px; background: var(--rule); border: 1px solid var(--rule); margin: 24px 0; }
+  .curve-slot { flex: 1; background: var(--paper); padding: 16px 12px; text-align: center; }
+  .curve-cmc { font-family: 'Bebas Neue', sans-serif; font-size: 32px; color: var(--accent); line-height: 1; }
+  .curve-count { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--mid); letter-spacing: 0.1em; margin-top: 4px; }
+  .curve-bar { height: 4px; background: var(--accent); margin: 8px auto 0; border-radius: 2px; opacity: 0.5; }
+  .role-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--rule); border: 1px solid var(--rule); margin: 24px 0; }
+  .role-card { background: var(--paper); padding: 24px; }
+  .role-card:hover { background: var(--paper-dark); }
+  .role-name { font-family: 'Bebas Neue', sans-serif; font-size: 26px; letter-spacing: 0.03em; margin-bottom: 8px; }
+  .role-name-control { color: #1a3a8f; }
+  .role-name-tempo { color: #8f6a1a; }
+  .role-name-beatdown { color: #8f1a1a; }
+  .role-desc { font-size: 15px; font-weight: 300; color: var(--mid); line-height: 1.5; margin-bottom: 12px; }
+  .role-matchups { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.08em; color: rgba(14,14,14,0.4); }
+  .matchup-table { width: 100%; border-collapse: collapse; margin: 24px 0; font-size: 15px; }
+  .matchup-table thead tr { background: var(--ink); color: var(--paper); }
+  .matchup-table th { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; padding: 12px 16px; text-align: left; font-weight: 400; }
+  .matchup-table td { padding: 12px 16px; border-bottom: 1px solid var(--rule); font-weight: 300; vertical-align: top; }
+  .matchup-table tr:hover td { background: var(--paper-dark); cursor: pointer; }
+  .matchup-table tr.selected td { background: var(--accent-light); }
+  .diff-hard { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--danger); background: var(--danger-light); padding: 2px 8px; border-radius: 2px; }
+  .diff-medium { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gold); background: var(--gold-light); padding: 2px 8px; border-radius: 2px; }
+  .diff-even { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: #1a3a8f; background: #d6e0f7; padding: 2px 8px; border-radius: 2px; }
+  .diff-good { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: #1a6b1a; background: #d4f0d4; padding: 2px 8px; border-radius: 2px; border: 1px solid #a0d4a0; }
+  .matchup-detail { display: none; border: 1px solid var(--rule); background: var(--paper-dark); padding: 40px; margin: 0 0 24px; animation: fadeIn 0.2s ease; border-top: 3px solid var(--accent); }
+  .matchup-detail.open { display: block; }
+  .sb-table { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--rule); border: 1px solid var(--rule); margin: 16px 0; }
+  .sb-col { background: var(--paper); padding: 20px; }
+  .sb-col-label { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--mid); margin-bottom: 12px; }
+  .sb-item { font-size: 14px; font-weight: 400; padding: 4px 0; border-bottom: 1px solid var(--rule); display: flex; justify-content: space-between; align-items: center; }
+  .sb-item:last-child { border-bottom: none; }
+  .sb-qty { font-family: 'DM Mono', monospace; font-size: 12px; color: var(--mid); }
+  .ifthen-list { list-style: none; margin: 12px 0; }
+  .ifthen-list li { padding: 10px 0; border-bottom: 1px solid var(--rule); display: flex; flex-direction: row; gap: 12px; align-items: flex-start; font-size: 15px; font-weight: 300; line-height: 1.6; }
+  .ifthen-list li span { flex: 1; min-width: 0; }
+  .ifthen-list li:last-child { border-bottom: none; }
+  .if-label { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--danger); background: var(--danger-light); padding: 2px 6px; white-space: nowrap; margin-top: 2px; flex-shrink: 0; }
+  .tag { display: inline-block; font-family: 'DM Mono', monospace; font-size: 11px; background: var(--paper); border: 1px solid var(--rule); padding: 3px 10px; margin: 4px 4px 4px 0; color: var(--mid); letter-spacing: 0.05em; }
+  .sb-card-guide { border: 1px solid var(--rule); margin: 24px 0; }
+  .sb-guide-row { display: flex; gap: 0; border-bottom: 1px solid var(--rule); }
+  .sb-guide-row:last-child { border-bottom: none; }
+  .sb-guide-name { font-family: 'DM Mono', monospace; font-size: 12px; font-weight: 500; letter-spacing: 0.05em; color: var(--ink); background: var(--paper-dark); padding: 14px 20px; min-width: 220px; width: 220px; flex-shrink: 0; border-right: 1px solid var(--rule); display: flex; align-items: center; }
+  .sb-guide-body { padding: 14px 20px; font-size: 15px; font-weight: 300; line-height: 1.5; flex: 1; }
+  .sb-deep { border: 1px solid var(--rule); margin: 12px 0; }
+  .sb-deep-header { display: flex; justify-content: space-between; align-items: center; padding: 16px 24px; background: var(--paper-dark); cursor: pointer; user-select: none; transition: background 0.15s; }
+  .sb-deep-header:hover { background: var(--rule); }
+  .sb-deep-title { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+  .sb-deep-name { font-family: 'Bebas Neue', sans-serif; font-size: 20px; letter-spacing: 0.03em; color: var(--ink); }
+  .sb-deep-meta { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--mid); }
+  .sb-deep-toggle { font-family: 'DM Mono', monospace; font-size: 18px; color: var(--mid); transition: transform 0.2s; line-height: 1; }
+  .sb-deep.open .sb-deep-toggle { transform: rotate(45deg); }
+  .sb-deep-body { display: none; padding: 32px; border-top: 1px solid var(--rule); animation: fadeIn 0.2s ease; }
+  .sb-deep.open .sb-deep-body { display: block; }
+  .sb-deep-mantra { font-family: 'Crimson Pro', serif; font-style: italic; font-size: 17px; color: var(--accent); border-left: 3px solid var(--accent); padding: 8px 16px; background: var(--accent-light); margin-bottom: 24px; }
+  .sb-deep-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+  .sb-deep-section-label { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--mid); margin-bottom: 10px; margin-top: 4px; }
+  .heuristic-list { list-style: none; counter-reset: h; }
+  .heuristic-list li { counter-increment:h; display:block; overflow:hidden; padding:14px 0; border-bottom:1px solid var(--rule); font-size:16px; font-weight:300; line-height:1.6; }
+  .heuristic-list li::before { content:counter(h,decimal-leading-zero); font-family:'DM Mono',monospace; font-size:20px; line-height:1.6; color:rgba(192,98,43,0.2); float:left; width:48px; }
+  .print-btn { display: inline-flex; align-items: center; gap: 8px; font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; background: var(--ink); color: var(--paper); border: none; padding: 10px 20px; cursor: pointer; margin-bottom: 32px; transition: background 0.15s; }
+  .print-btn:hover { background: var(--accent); }
+  .print-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--rule); border: 1px solid var(--rule); }
+  .print-mu { background: var(--paper); padding: 16px; }
+  .print-mu-name { font-family: 'Bebas Neue', sans-serif; font-size: 16px; letter-spacing: 0.03em; color: var(--ink); margin-bottom: 4px; display: flex; align-items: center; gap: 8px; }
+  .print-mu-role { font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--mid); margin-bottom: 10px; }
+  .print-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .print-col-label { font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--mid); margin-bottom: 4px; }
+  .print-row { font-size: 12px; font-weight: 300; display: flex; justify-content: space-between; padding: 1px 0; border-bottom: 1px solid rgba(200,191,176,0.4); line-height: 1.5; }
+  .print-row:last-child { border-bottom: none; }
+  .print-qty { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--mid); flex-shrink: 0; margin-left: 4px; }
+  .print-needle { font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 0.06em; color: var(--danger); margin-top: 6px; text-transform: uppercase; }
+  .print-note { font-size: 11px; font-style: italic; color: var(--mid); margin-top: 6px; border-top: 1px solid var(--rule); padding-top: 4px; line-height: 1.4; }
+  footer { background: var(--ink); color: rgba(242,237,230,0.3); padding: 40px 80px; margin-top: 80px; display: flex; justify-content: space-between; align-items: center; }
+  footer span { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; }
+  @media (max-width: 768px) { .header-inner, nav, .page, footer { padding-left: 24px; padding-right: 24px; } .header-title { font-size: 40px; } .header-right { display: none; } .decklist, .role-grid, .sb-table, .sb-deep-grid { grid-template-columns: 1fr; } nav { padding: 0 24px; } }
+  @media print {
+    * { visibility:hidden !important; }
+    .print-grid, .print-grid * { visibility:visible !important; }
+    .print-grid {
+      position:fixed !important; top:0 !important; left:0 !important;
+      width:100vw !important; height:auto !important;
+      background:#c8bfb0 !important; border:none !important;
+      display:grid !important; grid-template-columns:repeat(3,1fr) !important;
+      gap:1px !important;
+    }
+    .print-mu { background:#f2ede6 !important; padding:14px !important; }
+  }
+</style>
 </head>
-<body><div class="header-band"><div class="header-inner">
-<div class="header-left">
-  <div class="header-eyebrow">Team Resolve · Modern · Archetype Playbook</div>
-  <div class="header-title">Jeskai <span>Blink</span></div>
-  <div class="header-mantra">"The UW engine. The red angle."</div>
+<body>
+
+<div class="header-band">
+  <div class="header-inner">
+    <div class="header-left">
+      <div class="header-eyebrow">Team Resolve · Modern · Archetype Playbook · March 30, 2026</div>
+      <div class="header-title">Jeskai <span>Blink</span></div>
+      <div class="header-mantra">"Don't just answer their threats — answer their turns."</div>
+    </div>
+    <div class="header-right">
+      <div class="header-stat"><span class="hs-label">Identity</span><span class="hs-val">Tempo–Control Hybrid</span></div>
+      <div class="header-stat"><span class="hs-label">Complexity</span><span class="hs-val">★★★★★</span></div>
+      <div class="header-stat"><span class="hs-label">Captain</span><span class="hs-val">Zuxas</span></div>
+      <div class="header-stat"><span class="hs-label">Colors</span><span class="hs-val">White · Blue · Red</span></div>
+    </div>
+  </div>
 </div>
-<div class="header-right"><div class="header-stat"><span class="hs-label">Identity</span><span class="hs-val">Tempo-Control + Red</span></div><div class="header-stat"><span class="hs-label">Complexity</span><span class="hs-val">★★★★★</span></div><div class="header-stat"><span class="hs-label">Status</span><span class="hs-val">Evaluating the Splash</span></div></div>
-</div></div><nav><span class="nav-brand">JESKAI BLINK</span><button class="nav-link active" onclick="show('identity')">Identity</button><button class="nav-link" onclick="show('decklist')">Decklist</button><button class="nav-link" onclick="show('gameplan')">Gameplan</button><button class="nav-link" onclick="show('roles')">Roles</button><button class="nav-link" onclick="show('matchups')">Matchups</button><button class="nav-link" onclick="show('sideboard')">SB Guide</button><button class="nav-link" onclick="show('heuristics')">Heuristics</button><button class="nav-link" onclick="show('prep')">Prep</button></nav><div class="page">
-<div id="identity" class="section active"><div class="section-label">Chapter 01</div><h1>Identity &amp;<br>Philosophy</h1>
-<div class="mantra">"The UW engine. The red angle. Better when they're not ready for the third color."<cite>— Core Mantra</cite></div>
-<p>Jeskai Blink is <strong>UW Blink with a red splash</strong>. The core engine is identical — Ephemerate, Phelia, White Orchid Phantom, Solitude, Guide of Souls, Ocelot Pride — but the red splash adds Lightning Bolt and Orim's Chant to the main deck. Teferi, Time Raveler (2 main, 1 SB across the 75) is the key card bridging the colors.</p>
-<p>The Team Resolve working verdict: <strong>UW is better in open and aggro-heavy fields. Jeskai is correct when the expected field is combo-heavy</strong> (Belcher, Neoform, Titan). Orim's Chant is the card that separates the two shells — it's a full-turn Time Walk against combo decks that cannot be replicated in UW.</p>
-<div class="card-grid"><div class="card"><div class="card-label">What Red Adds (1)</div><div class="card-title">Orim's Chant</div><div class="card-body">Full-turn Time Walk against combo. Cast at the start of their main phase — they get zero plays. Best against Belcher, Amulet (taps mana in response to Pact), and Neoform. This is the primary reason to choose Jeskai over UW.</div></div><div class="card"><div class="card-label">What Red Adds (2)</div><div class="card-title">Lightning Bolt</div><div class="card-body">One-mana instant answer to Ragavan, Guide of Souls, and DRC specifically. Goes to the face in races. UW doesn't have this — Bolt closes matchup gaps that Prismatic Ending can't fill at one mana.</div></div><div class="card"><div class="card-label">What Red Adds (3)</div><div class="card-title">Teferi TRav (2 main)</div><div class="card-body">2 main vs 1 in the UW build. Against combo this is a free win condition — it locks opponents into sorcery speed. Against Glockulous: they cannot Persist at instant speed under Teferi.</div></div><div class="card"><div class="card-label">The Cost</div><div class="card-title">Mana Consistency</div><div class="card-body">Three-color mana means more shock damage and occasional openers that don't produce the right colors. Against Boros Energy and Prowess, this matters. Evaluate the expected field before choosing Jeskai.</div></div></div>
-<div class="card-grid"><div class="card"><div class="card-label">Choose Jeskai When</div><div class="card-title">Combo-Heavy Field</div><div class="card-body">Orim's Chant main is a free win against Belcher, Neoform, Amulet Titan, and stack-based combo. If the RC field is more than 20% combo, Jeskai is the correct call.</div></div><div class="card"><div class="card-label">Choose UW When</div><div class="card-title">Open or Aggro Field</div><div class="card-body">Cleaner mana, more consistent openers, no tempo hits from shock damage. Against Boros + Prowess + open field — take UW's mana consistency.</div></div></div></div>
-<div id="decklist" class="section"><div class="section-label">Chapter 02</div><h1>The 75</h1><div class="dl-section"><div class="dl-section-label">Main Deck · 60 Cards</div>
-<div class="dl-grid">
-<div><div class="dl-entry"><span class="dl-count">4</span><span class="dl-name">Ephemerate</span></div><div class="dl-entry"><span class="dl-count">4</span><span class="dl-name">Phelia, Exuberant Shepherd</span></div><div class="dl-entry"><span class="dl-count">4</span><span class="dl-name">White Orchid Phantom</span></div><div class="dl-entry"><span class="dl-count">4</span><span class="dl-name">Guide of Souls</span></div><div class="dl-entry"><span class="dl-count">4</span><span class="dl-name">Ocelot Pride</span></div><div class="dl-entry"><span class="dl-count">4</span><span class="dl-name">Solitude</span></div></div>
-<div><div class="dl-entry"><span class="dl-count">3</span><span class="dl-name">Lightning Bolt</span></div><div class="dl-entry"><span class="dl-count">2</span><span class="dl-name">Teferi, Time Raveler</span></div><div class="dl-entry"><span class="dl-count">2</span><span class="dl-name">Orim's Chant</span></div><div class="dl-entry"><span class="dl-count">2</span><span class="dl-name">Prismatic Ending</span></div><div class="dl-entry"><span class="dl-count">2</span><span class="dl-name">Consign to Memory</span></div><div class="dl-entry"><span class="dl-count">1</span><span class="dl-name">Mockingbird</span></div></div>
-<div><div class="dl-entry"><span class="dl-count">4</span><span class="dl-name">Flagstones of Trokair</span></div><div class="dl-entry"><span class="dl-count">3</span><span class="dl-name">Flooded Strand</span></div><div class="dl-entry"><span class="dl-count">2</span><span class="dl-name">Sacred Foundry</span></div><div class="dl-entry"><span class="dl-count">2</span><span class="dl-name">Hallowed Fountain</span></div><div class="dl-entry"><span class="dl-count">2</span><span class="dl-name">Arid Mesa</span></div><div class="dl-entry"><span class="dl-count">1</span><span class="dl-name">Inspiring Vantage</span></div><div class="dl-entry"><span class="dl-count">1</span><span class="dl-name">Gemstone Caverns</span></div><div class="dl-entry"><span class="dl-count">2</span><span class="dl-name">Plains</span></div><div class="dl-entry"><span class="dl-count">1</span><span class="dl-name">Island</span></div></div>
-</div></div>
-<div class="dl-section"><div class="dl-section-label">Sideboard · 15 Cards</div>
-<div class="dl-grid">
-<div><div class="dl-entry"><span class="dl-count">2</span><span class="dl-name">Consign to Memory</span></div><div class="dl-entry"><span class="dl-count">2</span><span class="dl-name">Sanctifier en-Vec</span></div><div class="dl-entry"><span class="dl-count">2</span><span class="dl-name">Stony Silence</span></div><div class="dl-entry"><span class="dl-count">1</span><span class="dl-name">Kataki, War's Wage</span></div></div>
-<div><div class="dl-entry"><span class="dl-count">1</span><span class="dl-name">Disruptor Flute</span></div><div class="dl-entry"><span class="dl-count">1</span><span class="dl-name">Teferi, Time Raveler</span></div><div class="dl-entry"><span class="dl-count">1</span><span class="dl-name">Orim's Chant</span></div><div class="dl-entry"><span class="dl-count">1</span><span class="dl-name">Lavinia, Azorius Renegade</span></div><div class="dl-entry"><span class="dl-count">2</span><span class="dl-name">Wrath of the Skies</span></div><div class="dl-entry"><span class="dl-count">2</span><span class="dl-name">[Meta flex]</span></div></div>
-</div></div></div>
-<div id="decklist" class="section"><div class="section-label">Chapter 02</div><h1>The 75</h1>
-<div class="dl-section"><div class="dl-section-label">Main Deck · 60 Cards</div>
-<div class="dl-grid">
-<div><div class="dl-entry"><span class="dl-count">4</span><span class="dl-name">Ephemerate</span></div><div class="dl-entry"><span class="dl-count">4</span><span class="dl-name">Phelia, Exuberant Shepherd</span></div><div class="dl-entry"><span class="dl-count">4</span><span class="dl-name">White Orchid Phantom</span></div><div class="dl-entry"><span class="dl-count">4</span><span class="dl-name">Guide of Souls</span></div><div class="dl-entry"><span class="dl-count">4</span><span class="dl-name">Ocelot Pride</span></div><div class="dl-entry"><span class="dl-count">4</span><span class="dl-name">Solitude</span></div></div>
-<div><div class="dl-entry"><span class="dl-count">3</span><span class="dl-name">Lightning Bolt</span></div><div class="dl-entry"><span class="dl-count">2</span><span class="dl-name">Teferi, Time Raveler</span></div><div class="dl-entry"><span class="dl-count">2</span><span class="dl-name">Orim's Chant</span></div><div class="dl-entry"><span class="dl-count">2</span><span class="dl-name">Prismatic Ending</span></div><div class="dl-entry"><span class="dl-count">2</span><span class="dl-name">Consign to Memory</span></div><div class="dl-entry"><span class="dl-count">1</span><span class="dl-name">Mockingbird</span></div></div>
-<div><div class="dl-entry"><span class="dl-count">4</span><span class="dl-name">Flagstones of Trokair</span></div><div class="dl-entry"><span class="dl-count">3</span><span class="dl-name">Flooded Strand</span></div><div class="dl-entry"><span class="dl-count">2</span><span class="dl-name">Sacred Foundry</span></div><div class="dl-entry"><span class="dl-count">2</span><span class="dl-name">Hallowed Fountain</span></div><div class="dl-entry"><span class="dl-count">2</span><span class="dl-name">Arid Mesa</span></div><div class="dl-entry"><span class="dl-count">1</span><span class="dl-name">Inspiring Vantage</span></div><div class="dl-entry"><span class="dl-count">1</span><span class="dl-name">Gemstone Caverns</span></div><div class="dl-entry"><span class="dl-count">2</span><span class="dl-name">Plains</span></div><div class="dl-entry"><span class="dl-count">1</span><span class="dl-name">Island</span></div></div>
-</div></div>
-<div class="dl-section"><div class="dl-section-label">Sideboard · 15 Cards</div>
-<div class="dl-grid">
-<div><div class="dl-entry"><span class="dl-count">2</span><span class="dl-name">Consign to Memory</span></div><div class="dl-entry"><span class="dl-count">2</span><span class="dl-name">Sanctifier en-Vec</span></div><div class="dl-entry"><span class="dl-count">2</span><span class="dl-name">Stony Silence</span></div><div class="dl-entry"><span class="dl-count">1</span><span class="dl-name">Kataki, War's Wage</span></div></div>
-<div><div class="dl-entry"><span class="dl-count">1</span><span class="dl-name">Disruptor Flute</span></div><div class="dl-entry"><span class="dl-count">1</span><span class="dl-name">Teferi, Time Raveler</span></div><div class="dl-entry"><span class="dl-count">1</span><span class="dl-name">Orim's Chant</span></div><div class="dl-entry"><span class="dl-count">1</span><span class="dl-name">Lavinia, Azorius Renegade</span></div><div class="dl-entry"><span class="dl-count">2</span><span class="dl-name">Wrath of the Skies</span></div><div class="dl-entry"><span class="dl-count">2</span><span class="dl-name">[Meta flex]</span></div></div>
-</div></div></div>
-<div id="gameplan" class="section"><div class="section-label">Chapter 03</div><h1>The Game Plan</h1>
-<div class="mantra">"Teferi first. Then execute. Never the other way around."<cite>— Key Principle</cite></div>
-<p>The UW Blink engine is identical to the UW Blink playbook — see that guide for full detail on Ephemerate sequencing, White Orchid Phantom lines, and Ocelot Pride + Guide inevitability. This section covers what changes with the red splash.</p>
-<h2>The Teferi Rule</h2>
-<p>Against any deck with instant-speed interaction, the sequencing is: <strong>Teferi, Time Raveler on turn 3 → execute the plan on turn 4+</strong>. Never the other way around. Teferi shuts off Goryo's Vengeance, Consign to Memory, Force of Negation, and Counterspell all at once. Ephemerate on Teferi is almost always wrong — his value is the static ability, not loyalty. Blink Solitude, Phantom, or Guide instead.</p>
-<h2>Orim's Chant Rules</h2>
-<p>Cast at the <strong>start of their main phase</strong> — before they have priority to declare any actions. Against Belcher: tap mana before they can activate Charbelcher. Against Amulet: tap mana in response to Summoner's Pact or Amulet trigger. Against Neoform: tap mana before they can cast it. You get a free turn — use it to set up the Ephemerate chain or assemble your engine.</p>
-<h2>Lightning Bolt Priority</h2>
-<p>Bolt goes to the face in most matchups. The exceptions where killing a creature is worth more than 3 face damage: Ragavan before its first connection, DRC before delirium is online, and Ocelot Pride on their side (kills the Pride and the token immediately).</p>
-<h2>Mana Reality</h2>
-<p>Accept 2–4 life of shock damage per game. Track life carefully — the Boros Energy matchup is often decided at 6–8 life. Don't fetch Sacred Foundry unless you specifically need red mana that turn.</p></div>
-<div id="roles" class="section"><div class="section-label">Chapter 04</div><h1>Role Assignment</h1>
-<p>Same as UW Blink — control against aggro, beatdown against control — with one addition: Teferi creates a third mode where you lock opponents into sorcery speed and play as the proactive deck even against interactive opponents.</p>
-<div class="card-grid"><div class="card"><div class="card-label">vs Aggro</div><div class="card-title">Control</div><div class="card-body">Solitude + Ephemerate stabilizes. Bolt kills early threats for one mana. Wrath resets. Accept slightly more shock damage than UW — Bolt compensates in the race.</div></div><div class="card"><div class="card-label">vs Combo</div><div class="card-title">Teferi Lock + Chant</div><div class="card-body">Teferi on T3, then assemble the engine. Orim's Chant buys a full turn if Teferi is answered. Consign + FoN protect the lock once established.</div></div><div class="card"><div class="card-label">vs Control</div><div class="card-title">Beatdown + Teferi</div><div class="card-body">Teferi shuts off their instant-speed Counterspell. Ocelot Pride + Guide of Souls under Teferi is very hard for control to answer in one turn.</div></div><div class="card"><div class="card-label">vs Midrange</div><div class="card-title">Tempo</div><div class="card-body">Bolt efficiency plus Ephemerate value. Identical to UW but with an additional answer that goes to the face and kills Ragavan cleanly.</div></div></div></div>
-<div id="matchups" class="section"><div class="section-label">Chapter 05</div><h1>Matchup Guide</h1>
-<table class="matchup-table" data-deck="Jeskai Blink" data-vs="Grixis Reanimator" onclick="toggle('vs_glock',this)">
-<thead><tr><th>Matchup</th><th>Role</th><th>G1 WR</th><th>Overall</th></tr></thead>
-<tbody><tr><td>Grixis Reanimator</td><td>Teferi Lock</td><td>~60%</td><td><span class="verdict v-good">Favored — Teferi Wins</span></td></tr></tbody>
-</table><div id="vs_glock" class="matchup-detail"><p>This is the primary reason to play Jeskai over UW. Teferi locks Glockulous into sorcery speed — they cannot Persist at instant speed under Teferi. Orim's Chant buys an additional turn if Teferi is answered. Compare to UW which has no main-deck hard lock on their plan.</p><div class="sb-row"><div class="sb-in"><div class="sb-label">In</div><div class="sb-card"><span>Consign to Memory</span><span class="sb-n">2</span></div><div class="sb-card"><span>Disruptor Flute</span><span class="sb-n">1</span></div><div class="sb-card"><span>Lavinia, Azorius Renegade</span><span class="sb-n">1</span></div></div><div class="sb-out"><div class="sb-label">Out</div><div class="sb-card"><span>Mockingbird</span><span class="sb-n">1</span></div><div class="sb-card"><span>Wrath of the Skies</span><span class="sb-n">1</span></div><div class="sb-card"><span>Sanctifier en-Vec</span><span class="sb-n">1</span></div></div></div><div class="if-then"><div class="if">If Teferi resolves</div>→ Execute immediately. They cannot Persist at instant speed. Any Archon that enters still ETBs — but they can't surprise you at end of turn.</div><div class="if-then"><div class="if">If they Thoughtseize Teferi</div>→ Hold Consign for the Persist. Orim's Chant buys the turn you need to develop your board enough to race through an Archon ETB.</div></div>
-<table class="matchup-table" data-deck="Jeskai Blink" data-vs="Boros Energy" onclick="toggle('vs_boros',this)">
-<thead><tr><th>Matchup</th><th>Role</th><th>G1 WR</th><th>Overall</th></tr></thead>
-<tbody><tr><td>Boros Energy</td><td>Control → Value</td><td>~50%</td><td><span class="verdict v-even">Even — Bolt Helps</span></td></tr></tbody>
-</table><div id="vs_boros" class="matchup-detail"><p>Bolt kills Ragavan for one mana — an improvement over UW. The mana hit from three-color lands means you sometimes take 4+ shock damage before you've interacted. In the race, every shock point matters. From the Team Resolve UW Blink guide: trade early, respect pump math, Wrath to reset, then win on value with Phelia/Ephemerate chains.</p><div class="sb-row"><div class="sb-in"><div class="sb-label">In</div><div class="sb-card"><span>Wrath of the Skies</span><span class="sb-n">2</span></div><div class="sb-card"><span>Sanctifier en-Vec</span><span class="sb-n">2</span></div></div><div class="sb-out"><div class="sb-label">Out</div><div class="sb-card"><span>Orim's Chant</span><span class="sb-n">1</span></div><div class="sb-card"><span>Mockingbird</span><span class="sb-n">1</span></div><div class="sb-card"><span>Consign to Memory</span><span class="sb-n">1</span></div><div class="sb-card"><span>[flex]</span><span class="sb-n">1</span></div></div></div><div class="if-then"><div class="if">If you have red mana open</div>→ Hold Bolt for Ragavan specifically. Killing it before the first connection is worth more than any 3 face damage.</div></div>
-<table class="matchup-table" data-deck="Jeskai Blink" data-vs="Amulet Titan" onclick="toggle('vs_titan',this)">
-<thead><tr><th>Matchup</th><th>Role</th><th>G1 WR</th><th>Overall</th></tr></thead>
-<tbody><tr><td>Amulet Titan / Belcher</td><td>Teferi + Chant</td><td>~55%</td><td><span class="verdict v-good">Favored — Chant Shines</span></td></tr></tbody>
-</table><div id="vs_titan" class="matchup-detail"><p>Orim's Chant and Teferi make this matchup category significantly better than UW. Tax Pact and Amulet turns with Teferi/Chant/Consign. Flute naming Summoner's Pact against Amulet is often backbreaking. White Orchid Phantom denies their bounce lands — deploy Phantom before they can respond with Amulet triggers.</p><div class="sb-row"><div class="sb-in"><div class="sb-label">In</div><div class="sb-card"><span>Consign to Memory</span><span class="sb-n">2</span></div><div class="sb-card"><span>Disruptor Flute</span><span class="sb-n">1</span></div><div class="sb-card"><span>Lavinia, Azorius Renegade</span><span class="sb-n">1</span></div><div class="sb-card"><span>Teferi, Time Raveler</span><span class="sb-n">1</span></div><div class="sb-card"><span>Stony Silence</span><span class="sb-n">2</span></div></div><div class="sb-out"><div class="sb-label">Out</div><div class="sb-card"><span>Mockingbird</span><span class="sb-n">1</span></div><div class="sb-card"><span>Wrath of the Skies</span><span class="sb-n">1</span></div><div class="sb-card"><span>Sanctifier en-Vec</span><span class="sb-n">1</span></div><div class="sb-card"><span>Lightning Bolt</span><span class="sb-n">2</span></div><div class="sb-card"><span>[flex]</span><span class="sb-n">1</span></div></div></div></div></div>
-<div id="sideboard" class="section"><div class="section-label">Chapter 06</div><h1>Sideboard Guide</h1>
-<p>See the UW Blink playbook for full notes on Consign to Memory, Sanctifier en-Vec, Stony Silence, Kataki, Wrath of the Skies, Disruptor Flute, and Lavinia — these are identical between both shells. Jeskai-specific notes below:</p>
-<div class='sb-guide-card'><div class='sb-guide-name'>Orim's Chant — 1 main + 1 SB (2 total)</div><div class='sb-guide-body'>Two total across the 75. Main deck copy for any unknown field since combo is always possible. SB copy boards in explicitly against combo-heavy expected matchups. Never boards out in combo matchups — if you're in Jeskai it's because you expected to need Chant. Always cast at the start of their main phase, not reactively.</div></div>
-<div class='sb-guide-card'><div class='sb-guide-name'>Teferi, Time Raveler — 2 main + 1 SB (3 total)</div><div class='sb-guide-body'>From the TR RC Houston guide: "You want to draw one, not multiples; protects engines and forces sorcery speed through their stack." Board the third copy in for combo/stack-heavy matchups. Never Ephemerate Teferi — blink other targets and let his static ability do work.</div></div>
-<div class='sb-guide-card'><div class='sb-guide-name'>Disruptor Flute — 1 copy</div><div class='sb-guide-body'>From the TR guide: "Broad combo hedge for one-axis decks — Neoform, Summoner's Pact, Charbelcher, Crashing Footfalls, The One Ring." Name the key card that makes their combo work. Flute naming Summoner's Pact against Amulet is often backbreaking.</div></div>
-<div class='sb-guide-card'><div class='sb-guide-name'>Lavinia, Azorius Renegade — 1 copy</div><div class='sb-guide-body'>Stops free spells (Living End, Cascade, Persist) and taxes non-land plays when they've cast more spells than mana paid. Niche card that's backbreaking in the right matchup — specifically Glockulous, Belcher, and any cascade deck.</div></div></div>
-<div id="heuristics" class="section"><div class="section-label">Chapter 07</div><h1>Heuristics &amp;<br>Quick Rules</h1><ol class="heuristic-list">
-<li>Teferi resolves before you execute the combo plan against any deck with instant-speed interaction. Sequence: Teferi on T3 → Ephemerate chains on T4+.</li>
-<li>Orim's Chant is cast at the START of their main phase — before they have priority. Don't wait for them to start acting. Tap everything before they can.</li>
-<li>Lightning Bolt goes to the face except against Ragavan, DRC (before delirium), and Ocelot Pride on their side. These three specific cards are worth killing over dealing 3 to the dome.</li>
-<li>Track shock damage carefully. The Boros Energy matchup is often decided at 6–8 life. Every fetch of Sacred Foundry is a tax on those games.</li>
-<li>Never Ephemerate Teferi. His value is the static ability — sorcery speed lock. Blink Solitude, Phantom, or Guide instead and let Teferi do his job.</li>
-<li>Choose Jeskai when you expect &gt;20% combo in the RC field. Against open fields with heavy aggro, UW's cleaner mana is the better call. Don't pay the mana tax if you won't use Chant enough to justify it.</li>
-<li>Disruptor Flute naming the key combo card is often backbreaking. Know what to name before the tournament: Summoner's Pact (Amulet), Charbelcher (Belcher), Neoform (Neoform).</li>
-<li>Lavinia, Azorius Renegade stops free spells and cascade. It's a niche card that's backbreaking in the right matchup — specifically Glockulous (stops Persist under certain conditions) and Belcher.</li>
-<li>White Orchid Phantom + Flagstones interaction is identical to UW — deploy Phantom before they can fetch to deny their key land. The mana denial core of both shells works the same way.</li>
-<li>If the field ends up Boros Energy + Prowess heavy and you chose Jeskai — sideboard heavily into Wrath + Sanctifier and accept you're playing a slightly worse UW in those matchups.</li>
-</ol></div>
-<div id="prep" class="section"><div class="section-label">Chapter 08</div><h1>Event Day Prep</h1><button class="print-btn" onclick="window.print()">Print This Sheet</button>
-<div class="prep-grid">
-<div class="prep-block"><div class="prep-block-title">vs UW Blink: Key Differences</div>
-<div class="prep-line"><span>Combo matchups</span><span class="prep-verdict">+15% — Teferi + Chant lock</span></div>
-<div class="prep-line"><span>Aggro matchups</span><span class="prep-verdict">−5% — mana tax</span></div>
-<div class="prep-line"><span>Grixis Reanimator</span><span class="prep-verdict">Significantly better — Teferi locks Persist</span></div>
-<div class="prep-line"><span>Midrange</span><span class="prep-verdict">Similar — Bolt helps some</span></div>
+
+<nav>
+  <span class="nav-brand">JESKAI BLINK</span>
+  <a class="nav-link" href="deck-guides.html" style="text-decoration:none;">&#8592; Guides</a>
+  <button class="nav-link active" onclick="show('identity')">Identity</button>
+  <button class="nav-link" onclick="show('decklist')">Decklist</button>
+  <button class="nav-link" onclick="show('gameplan')">Gameplan</button>
+  <button class="nav-link" onclick="show('roles')">Roles</button>
+  <button class="nav-link" onclick="show('matchups')">Matchups</button>
+  <button class="nav-link" onclick="show('sideboard')">SB Guide</button>
+  <button class="nav-link" onclick="show('heuristics')">Heuristics</button>
+  <button class="nav-link" onclick="show('prep')">Prep</button>
+</nav>
+
+<div class="page">
+
+<!-- ── IDENTITY ── -->
+<div id="identity" class="section active">
+  <div class="section-label">Chapter 01</div>
+  <h1>Identity &amp;<br>Philosophy</h1>
+
+  <div class="mantra">
+    "Don't just answer their threats — answer their turns. Every Consign, every Phantom bounce, every Phelia blink steals a turn they never get back."
+    <cite>— Core Mantra</cite>
+  </div>
+
+  <p>Jeskai Blink is a <strong>tempo-control hybrid</strong> that wins by accruing incremental advantages until the opponent runs out of resources — then closing with a board that has quietly outgrown everything they can produce. It is not a combo deck. It is not pure control. It occupies the intersection: proactive enough to pressure combo decks, disruptive enough to grind aggro decks out, and resilient enough to out-value control.</p>
+
+  <p>The Red splash over straight UW is not cosmetic. Jeskai Blink gains access to a third axis of disruption that pure UW cannot access — <span class="c">Consign to Memory</span> counters triggered abilities and colorless spells — Summoner's Pact upkeep triggers, cascade triggers, Archon ETB triggers, Emperor of Bones adapt triggers. Crucially, it cannot counter colored spells like Force of Negation, Fury, or Persist the card, and the Jeskai shell creates different role-assignment opportunities in the mirror. Red also opens the sideboard to a wider range of hate for specific metagame positions.</p>
+
+  <p>The deck's highest-skill expression is <strong>role identification and Consign timing</strong>. Knowing when to play the control role versus the aggressor, and knowing exactly when to fire Consign versus hold it, separates 55% pilots from 70% pilots on this archetype. Everything else — Phelia blinks, Phantom sequencing, <span class="c">Ephemerate</span> rebounding — compounds on top of getting those two decisions right.</p>
+
+  <h2>Core Axes</h2>
+  <div class="card-grid">
+    <div class="card">
+      <div class="card-label">Axis 01</div>
+      <div class="card-title">Tempo Denial</div>
+      <div class="card-body"><span class="c">White Orchid Phantom</span> denies land drops on entry and reblinks to lock mana. <span class="c">Phelia, Exuberant Shepherd</span> exiles a nonland permanent when she attacks — it returns at end of turn, denying it for that combat. <span class="c">Consign to Memory</span> counters triggered abilities and colorless spells — Summoner’s Pact upkeep triggers, cascade triggers, Archon ETB triggers — buying decisive tempo at zero mana cost. You reach into the opponent's next turn and steal it.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Axis 02</div>
+      <div class="card-title">Flexible Interaction</div>
+      <div class="card-body"><span class="c">Solitude</span>, <span class="c">Prismatic Ending</span>, and <span class="c">Wrath of the Skies</span> answer almost everything in Modern. <span class="c">Solitude</span> + <span class="c">Ephemerate</span> is the premier 2-for-1 — exile two creatures for one card. The interaction suite is never locked into a single axis and can answer any permanent type the format produces.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Axis 03</div>
+      <div class="card-title">Resilient Engines</div>
+      <div class="card-body"><span class="c">Guide of Souls</span> + <span class="c">Ocelot Pride</span> generates inevitability that grinds past removal suites. <span class="c">Quantum Riddler</span> and <span class="c">Starfield Shepherd</span> refill the hand. Once engines are live, the deck is extremely difficult to exhaust — they need an answer to the threat and an answer to the refill, simultaneously.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Axis 04</div>
+      <div class="card-title">Role Flexibility</div>
+      <div class="card-body">Acts as control vs Aggro (stabilize, then engine), tempo vs Combo (one critical disruption turn then clock), and proactive pressure vs Control (jam threats, force answers). No other archetype in Modern shifts roles this cleanly within a single game state.</div>
+    </div>
+  </div>
+
+  <h2>Strengths &amp; Weaknesses</h2>
+  <div class="card-grid card-grid-2">
+    <div class="card">
+      <div class="card-label">Strengths</div>
+      <div class="card-title">What You Do Well</div>
+      <div class="card-body">
+        High skill ceiling — reps compound into percentage points.<br><br>
+        Resilient to hate — pivots into fair midrange when graveyard hate lands.<br><br>
+        <span class="c">Consign to Memory</span> is the most versatile counter in the format.<br><br>
+        Inevitability in every long game through engine redundancy.
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-label">Weaknesses</div>
+      <div class="card-title">What Beats You</div>
+      <div class="card-body">
+        Decision density punishes hesitation and over-thinking.<br><br>
+        Very fast aggro on stumbles — Prowess can kill before you stabilize.<br><br>
+        Torpor Orb and Void Mirror shut off ETB engines entirely.<br><br>
+        Tournament clock — brisk play is mandatory, not optional.
+      </div>
+    </div>
+  </div>
+
+  <h2>Why Jeskai Over UW</h2>
+  <p>The Red splash provides three things UW cannot replicate: <span class="c">Consign to Memory</span>'s free-spell interaction, additional sideboard angles against aggressive decks, and a different threat profile in the mirror that demands different answers. The mana cost is real — three-color fetching in the early turns costs life — but the gain in flexibility and disruption density exceeds that cost in the current metagame.</p>
 </div>
-<div class="prep-block"><div class="prep-block-title">Teferi + Chant Rules</div>
-<div class="prep-line"><span>Always</span><span class="prep-verdict">Teferi before executing plan</span></div>
-<div class="prep-line"><span>Orim's Chant</span><span class="prep-verdict">Start of their main phase — not reactive</span></div>
-<div class="prep-line"><span>vs Grixis</span><span class="prep-verdict">No instant-speed Persist under Teferi</span></div>
-<div class="prep-line"><span>vs Amulet</span><span class="prep-verdict">Tap before Pact window opens</span></div>
+
+<!-- ── DECKLIST ── -->
+<div id="decklist" class="section">
+  <div class="section-label">Chapter 02</div>
+  <h1>The 75</h1>
+
+  <div class="decklist">
+    <div class="dl-section">
+      <div class="dl-section-label">Main Deck · 60 Cards</div>
+      <div class="dl-group">
+        <div class="dl-group-label">Creatures</div>
+        <div class="dl-card-row"><span><span class="c">Guide of Souls</span></span><span class="dl-qty">4</span></div>
+        <div class="dl-card-row"><span><span class="c">Ocelot Pride</span></span><span class="dl-qty">4</span></div>
+        <div class="dl-card-row"><span><span class="c">Phelia, Exuberant Shepherd</span></span><span class="dl-qty">4</span></div>
+        <div class="dl-card-row"><span><span class="c">White Orchid Phantom</span></span><span class="dl-qty">4</span></div>
+        <div class="dl-card-row"><span><span class="c">Starfield Shepherd</span></span><span class="dl-qty">3</span></div>
+        <div class="dl-card-row"><span><span class="c">Quantum Riddler</span></span><span class="dl-qty">3</span></div>
+        <div class="dl-card-row"><span><span class="c">Sanctifier en-Vec</span></span><span class="dl-qty">1</span></div>
+        <div class="dl-card-row"><span><span class="c">Witch Enchanter</span></span><span class="dl-qty">2</span></div>
+      </div>
+      <div class="dl-group">
+        <div class="dl-group-label">Spells</div>
+        <div class="dl-card-row"><span><span class="c">Solitude</span></span><span class="dl-qty">4</span></div>
+        <div class="dl-card-row"><span><span class="c">Ephemerate</span></span><span class="dl-qty">4</span></div>
+        <div class="dl-card-row"><span><span class="c">Consign to Memory</span></span><span class="dl-qty">3</span></div>
+        <div class="dl-card-row"><span><span class="c">Prismatic Ending</span></span><span class="dl-qty">2</span></div>
+      </div>
+      <div class="dl-group">
+        <div class="dl-group-label">Lands</div>
+        <div class="dl-card-row"><span><span class="c">Flooded Strand</span></span><span class="dl-qty">4</span></div>
+        <div class="dl-card-row"><span><span class="c">Arid Mesa</span></span><span class="dl-qty">4</span></div>
+        <div class="dl-card-row"><span><span class="c">Sacred Foundry</span></span><span class="dl-qty">1</span></div>
+        <div class="dl-card-row"><span><span class="c">Hallowed Fountain</span></span><span class="dl-qty">2</span></div>
+        <div class="dl-card-row"><span><span class="c">Steam Vents</span></span><span class="dl-qty">1</span></div>
+        <div class="dl-card-row"><span><span class="c">Meticulous Archive</span></span><span class="dl-qty">2</span></div>
+        <div class="dl-card-row"><span>Plains</span><span class="dl-qty">3</span></div>
+        <div class="dl-card-row"><span>Island</span><span class="dl-qty">1</span></div>
+      </div>
+    </div>
+    <div class="dl-section">
+      <div class="dl-section-label">Sideboard · 15 Cards</div>
+      <div class="dl-group">
+        <div class="dl-group-label">Stack Interaction</div>
+        <div class="dl-card-row"><span><span class="c">Consign to Memory</span></span><span class="dl-qty">1</span></div>
+        <div class="dl-card-row"><span><span class="c">Orim's Chant</span></span><span class="dl-qty">1</span></div>
+      </div>
+      <div class="dl-group">
+        <div class="dl-group-label">Tempo</div>
+        <div class="dl-card-row"><span><span class="c">Teferi, Time Raveler</span></span><span class="dl-qty">2</span></div>
+        <div class="dl-card-row"><span><span class="c">Mistcaller</span></span><span class="dl-qty">1</span></div>
+      </div>
+      <div class="dl-group">
+        <div class="dl-group-label">Hate</div>
+        <div class="dl-card-row"><span><span class="c">Sanctifier en-Vec</span></span><span class="dl-qty">2</span></div>
+        <div class="dl-card-row"><span><span class="c">Rest in Peace</span></span><span class="dl-qty">2</span></div>
+        <div class="dl-card-row"><span><span class="c">Pithing Needle</span></span><span class="dl-qty">1</span></div>
+        <div class="dl-card-row"><span><span class="c">Stony Silence</span></span><span class="dl-qty">1</span></div>
+      </div>
+      <div class="dl-group">
+        <div class="dl-group-label">Sweepers</div>
+        <div class="dl-card-row"><span><span class="c">Wrath of the Skies</span></span><span class="dl-qty">2</span></div>
+      </div>
+      <div class="dl-group">
+        <div class="dl-group-label">Flex</div>
+        <div class="dl-card-row"><span><span class="c">Vexing Bauble</span></span><span class="dl-qty">1</span></div>
+        <div class="dl-card-row"><span><span class="c">Mockingbird</span></span><span class="dl-qty">1</span></div>
+      </div>
+    </div>
+  </div>
+
+  <h2>Mana Curve</h2>
+  <div class="curve-strip">
+    <div class="curve-slot"><div class="curve-cmc">1</div><div class="curve-count">4 spells</div><div class="curve-bar" style="width:40%;"></div></div>
+    <div class="curve-slot"><div class="curve-cmc">2</div><div class="curve-count">14 spells</div><div class="curve-bar" style="width:100%;"></div></div>
+    <div class="curve-slot"><div class="curve-cmc">3</div><div class="curve-count">9 spells</div><div class="curve-bar" style="width:65%;"></div></div>
+    <div class="curve-slot"><div class="curve-cmc">4+</div><div class="curve-count">7 spells</div><div class="curve-bar" style="width:50%;"></div></div>
+  </div>
+
+  <h2>Key Card Notes</h2>
+  <div class="card-grid">
+    <div class="card">
+      <div class="card-label">The Engine Piece</div>
+      <div class="card-title"><span class="c">Phelia, Exuberant Shepherd</span></div>
+      <div class="card-body">Phelia time-walks opponents by blinking their own nonland permanents. Blink an opponent's creature during attacks to deny combat. Blink Phantom on your own side to deny another land. Blink <span class="c">Guide of Souls</span> to retrigger energy. Phelia + <span class="c">Ephemerate</span> rebound is one of the highest-value lines in the deck — two blink triggers for one mana on the rebound.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">The Tempo Lock</div>
+      <div class="card-title"><span class="c">White Orchid Phantom</span></div>
+      <div class="card-body">ETB: destroy up to one target nonbasic land — its controller may search for a basic land (enters tapped) as replacement. This does NOT reduce their land count — it forces basics. Repeatedly blinking Phantom strips every fetchland and shockland from their board, leaving them on basics only. Against Amulet Titan this collapses the combo. Against 3-color decks it cuts off fixing. The 2/2 flying first strike body is relevant in combat — not just the ETB.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">The Stack Answer</div>
+      <div class="card-title"><span class="c">Consign to Memory</span></div>
+      <div class="card-body">{U} instant with Replicate {1}. Counters <strong>triggered abilities or colorless spells only</strong> — NOT colored spells. Cannot counter <span class="c">Force of Negation</span> (blue instant), Fury (red), <span class="c">Solitude</span> (white), or Persist the card (black sorcery). Valid targets: <span class="c">Summoner's Pact</span> upkeep trigger (counter it = they lose the game), cascade triggers (Living End), Archon of Cruelty ETB trigger, Emperor of Bones adapt trigger, keyword Persist/undying creature triggers. Replicate {1} lets you copy it to hit multiple triggers simultaneously. 3 main + 1 SB for matchups where triggers are central.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">The 2-for-1</div>
+      <div class="card-title"><span class="c">Solitude</span> + <span class="c">Ephemerate</span></div>
+      <div class="card-body">Pitch a white card to cast <span class="c">Solitude</span> for free, exile their best creature. <span class="c">Ephemerate</span> it — exile a second creature on rebound. Two removal spells for zero mana spent, one card pitched, one card spent. This sequence answers two threats for one card at instant speed and is why the deck can stabilize against aggro from almost any life total.</div>
+    </div>
+  </div>
 </div>
-<div class="prep-block"><div class="prep-block-title">Bolt Priority Order</div>
-<div class="prep-line"><span>1st</span><span class="prep-verdict">Ragavan — deny first connection</span></div>
-<div class="prep-line"><span>2nd</span><span class="prep-verdict">Their Ocelot Pride</span></div>
-<div class="prep-line"><span>3rd</span><span class="prep-verdict">DRC before delirium</span></div>
-<div class="prep-line"><span>Otherwise</span><span class="prep-verdict">Face — close the game</span></div>
+
+<!-- ── GAMEPLAN ── -->
+<div id="gameplan" class="section">
+  <div class="section-label">Chapter 03</div>
+  <h1>The Game Plan</h1>
+
+  <div class="mantra">
+    "Every <span class="c">Ephemerate</span> rebound is a free turn. Every Phantom bounce is stolen mana. You are not playing spells — you are playing time."
+    <cite>— Execution Principle</cite>
+  </div>
+
+  <h2>Turn-by-Turn Framework</h2>
+  <div class="card-grid">
+    <div class="card">
+      <div class="card-label">Turn 1–2</div>
+      <div class="card-title">Deploy Pressure</div>
+      <div class="card-body"><span class="c">Guide of Souls</span> or <span class="c">Ocelot Pride</span> on turn 1 or 2. These are not just threats — they are energy and token generators that make every subsequent turn better. Never hold them to "protect" them. Deploy and start accruing. Even a Pride that generates two cats before dying has done its job.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Turn 2–3</div>
+      <div class="card-title">Establish the Lock</div>
+      <div class="card-body"><span class="c">White Orchid Phantom</span> on turn 2 or 3 destroys their best nonbasic land on entry — their controller may search for a tapped basic as replacement. Repeatedly blinking Phantom strips every fetchland and shockland, forcing them onto basics. Against Amulet Titan this collapses their bounce-land mana. Against 3-color decks it cuts off color fixing. If they’re already on basics, use Phantom as a 2/2 flying first striker instead. Against aggro, Phelia blinking their attacker buys a full turn of safety.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Turn 3–4</div>
+      <div class="card-title">Deploy Engines</div>
+      <div class="card-body"><span class="c">Quantum Riddler</span> and <span class="c">Starfield Shepherd</span> go here. Riddler starts generating card advantage the turn it enters. Shepherd generates Shepherd tokens and refills on blink. The more engines in play simultaneously, the more overwhelming the value generation becomes — they cannot answer all of them.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Turn 4+</div>
+      <div class="card-title">Convert to Inevitability</div>
+      <div class="card-body">Your engines are now out-generating their answers. Teferi postboard locks them into sorcery speed. Consign holds up as the trump to any free spell or combo piece. At this point in the game, you are winning — the only question is whether you've correctly identified what they need to win and held the right answer for it.</div>
+    </div>
+  </div>
+
+  <h2>Critical Decision Points</h2>
+
+  <h3><span class="c">Consign to Memory</span> — When to Hold vs Fire</h3>
+  <p><span class="c">Consign to Memory</span> counters triggered abilities and colorless spells — not colored spells. <strong>Always ask before holding it: what specific free spell am I protecting against?</strong> If the answer is "nothing specific," fire it on whatever disrupts them most. If the answer is "Force of Negation" or "Summoner's Pact trigger," then hold it. The most common mistake is holding Consign indefinitely against decks that never present a target worthy of it, effectively making it a dead card for the game.</p>
+  <p>Against Grixis Reanimator, Consign counters <span class="c">Persist</span> at instant speed — that's the hold trigger. Against Amulet Titan, Consign on <span class="c">Summoner's Pact</span>'s upkeep trigger kills them. Against Boros Energy and Prowess, there are no valid Consign targets — board it out entirely.</p>
+
+  <h3><span class="c">Ephemerate</span> Timing — Blink vs Hold</h3>
+  <p><span class="c">Ephemerate</span> on your own <span class="c">Solitude</span> resets it for another free exile. <span class="c">Ephemerate</span> on Phantom during an opponent's attack denies their combat step. <span class="c">Ephemerate</span> on Phelia triggers a second blink of any target. The rebound on <span class="c">Ephemerate</span> is often more valuable than the initial cast — plan two turns ahead when you spend <span class="c">Ephemerate</span>, not one. Never cast <span class="c">Ephemerate</span> just to reblink a creature that doesn't generate a meaningful ETB trigger.</p>
+
+  <h3>Phantom Sequencing — When to Lock vs When to Develop</h3>
+  <p><span class="c">White Orchid Phantom</span> enters and denies a land drop. If you repeatedly reblink it, the opponent never reaches their key mana threshold. This is correct against combo and big-mana decks. Against aggro, forcing them onto basics is less impactful — they’re already killing you with existing mana — they're killing you with existing mana, not future mana. Read the matchup before defaulting to the lock.</p>
+
+  <h2>Mulligan Philosophy</h2>
+  <p><strong>Snap keep:</strong> Any hand with <span class="c">Guide of Souls</span> or <span class="c">Ocelot Pride</span> + 2 mana sources including white + one relevant interaction piece (<span class="c">Solitude</span>, Consign, <span class="c">Ephemerate</span>).</p>
+  <p><strong>Snap mulligan:</strong> No white source, no early pressure, or hands that rely on a single card to function. Any hand that is purely reactive with no threat is a mulligan.</p>
+  <p><strong>Borderline:</strong> Phantom + <span class="c">Ephemerate</span> + 3 lands is a keep on the play, marginal on the draw — you need to be ahead on tempo for the lock to matter. Guide hands without interaction are keeps against slower decks, mulligans against fast combo.</p>
+  <p><strong>On the draw:</strong> Prioritize interaction over threats. You're one tempo behind — having <span class="c">Solitude</span> or Consign available on their key turn is more valuable than an extra threat you can't deploy in time.</p>
+
+  <h2>Sequencing Priority Order</h2>
+  <ul class="ifthen-list">
+    <li><span class="if-label">Priority 1</span><span><strong>White source by turn 1.</strong> <span class="c">Solitude</span>, <span class="c">Ocelot Pride</span>, and Sanctifier all require white. Fetching white first is almost always correct — red can wait.</span></li>
+    <li><span class="if-label">Priority 2</span><span><strong>Establish engine pressure on turns 1–2.</strong> <span class="c">Guide of Souls</span> or <span class="c">Ocelot Pride</span>. Don't durdle on early turns setting up a lock that isn't needed — deploy threats that force them to answer you.</span></li>
+    <li><span class="if-label">Priority 3</span><span><strong>Deploy <span class="c">White Orchid Phantom</span> when they have a nonbasic worth stripping.</strong> Turn 2 Phantom destroys their best nonbasic and forces a tapped basic — then repeated blinking destroys more nonbasics each time. Against multi-color decks and Amulet Titan this is the primary game plan. Against basic-heavy decks, Phantom&rsquo;s ETB is less impactful and the 2/2 flier with first strike is the value.</span></li>
+    <li><span class="if-label">Priority 4</span><span><strong>Hold Consign for the right target.</strong> Know what you're protecting against before the game starts. Make the Consign plan during deck selection, not at the table.</span></li>
+    <li><span class="if-label">Priority 5</span><span><strong>Engines over interaction once ahead.</strong> Once you've stabilized, deploy Riddler and Shepherd over holding mana for interaction. The card advantage they generate is your win condition, not your removal suite.</span></li>
+  </ul>
 </div>
-<div class="prep-block"><div class="prep-block-title">When to Pick This Deck</div>
-<div class="prep-line"><span>Field is</span><span class="prep-verdict">&gt;20% combo — Chant earns its slot</span></div>
-<div class="prep-line"><span>Avoid if</span><span class="prep-verdict">Heavy aggro — take UW instead</span></div>
-<div class="prep-line"><span>Key signal</span><span class="prep-verdict">Glockulous showing up at local RCQs</span></div>
+
+<!-- ── ROLES ── -->
+<div id="roles" class="section">
+  <div class="section-label">Chapter 04</div>
+  <h1>Role Assignment</h1>
+
+  <p>Jeskai Blink is the format's most role-flexible archetype. It can legitimately play control, tempo, or beatdown in different matchups and different game states. The highest skill expression is correctly identifying which role you are — and switching immediately when the game state demands it.</p>
+
+  <div class="role-grid">
+    <div class="role-card">
+      <div class="role-name role-name-control">Control</div>
+      <div class="role-desc">You are the stabilizer. Opponent is faster — your job is to reach turn 4 where your engines come online. <span class="c">Solitude</span>, Wrath, and <span class="c">Ephemerate</span> are used defensively. Life total management is active, not passive.</div>
+      <div class="role-matchups">vs: Boros Energy · Izzet Prowess · Zoo · Burn</div>
+    </div>
+    <div class="role-card">
+      <div class="role-name role-name-tempo">Tempo</div>
+      <div class="role-desc">Buy one critical turn with Consign, Phantom, or Phelia — just enough to force a stumble — then close before they reset. You are not trying to grind; you are creating one decisive moment and winning off it.</div>
+      <div class="role-matchups">vs: Grixis Reanimator · Amulet Titan · Neoform · Living End</div>
+    </div>
+    <div class="role-card">
+      <div class="role-name role-name-beatdown">Beatdown</div>
+      <div class="role-desc">You are the aggressor. Opponent is slower but more powerful long-term. Get under them and close before their engine comes online. <span class="c">Ephemerate</span> is used offensively to push damage. Don't durdle — be proactive.</div>
+      <div class="role-matchups">vs: UW Control · Tron · Eldrazi · Blink Mirror</div>
+    </div>
+  </div>
+
+  <h2>How to Identify Your Role</h2>
+  <div class="card-grid">
+    <div class="card">
+      <div class="card-label">Question 01</div>
+      <div class="card-title">Are They Faster?</div>
+      <div class="card-body">If yes → you are Control. Stabilize first. Every life point matters. Don't develop your engine until you've stopped bleeding. <span class="c">Solitude</span> + <span class="c">Ephemerate</span> is your stabilization engine — use it reactively, not proactively.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Question 02</div>
+      <div class="card-title">Do They Have a Specific Kill Window?</div>
+      <div class="card-body">If yes → you are Tempo. Identify the window. Identify the card that creates it. Hold Consign or <span class="c">Orim's Chant</span> for that exact moment. Don't trade resources before it — stay full so you can blow them out at the key turn.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Question 03</div>
+      <div class="card-title">Do They Take Longer Than You?</div>
+      <div class="card-body">If yes → you are Beatdown. Jam Guide + Pride + Phantom aggressively. Use <span class="c">Ephemerate</span> on your own <span class="c">Solitude</span> to exile their blockers. Close before they reach their power level. Do not let the game go to turn 7.</div>
+    </div>
+  </div>
+
+  <h2>Role Mistakes to Avoid</h2>
+  <ul class="heuristic-list">
+    <li><strong>Playing Control vs Control.</strong> Against UW or Tron, you have inevitability only if you pressure them early. Staying in pure control mode while they set up <span class="c">Supreme Verdict</span> locks means you'll lose to their superior long game.</li>
+    <li><strong>Playing Tempo vs Aggro.</strong> Against Boros Energy or Prowess, you don't have time to "buy one turn." You need to stabilize the board completely. Tempo plays that don't end the game are wasted resources.</li>
+    <li><strong>Over-durdling with engines.</strong> Looping Shepherd value without developing a clock against combo. You're not winning by accruing value — you're losing by not presenting a threat they must answer while you set up Consign.</li>
+    <li><strong>Refusing to switch roles mid-game.</strong> You identified Control at game start. Their Ragavan dies, they're at 8 life with no cards. You are now Beatdown. Swing with everything. Don't continue playing defensively because the first role was "correct."</li>
+  </ul>
+
+  <h2>Role-Switching Signals</h2>
+  <div class="card-grid">
+    <div class="card">
+      <div class="card-label">Shift to Beatdown</div>
+      <div class="card-title">You're the aggressor when:</div>
+      <div class="card-body">You've stabilized vs aggro at 10+ life. You've disrupted combo once and have 4 turns of clock. They're hellbent. They've spent their sweepers and have no answer to your token army.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Stay Control</div>
+      <div class="card-title">Hold the line when:</div>
+      <div class="card-body">Life total is still in danger. They have payoffs in hand you haven't answered. You don't have a clock established and they still have lands to develop. One attack without a clock is wasted damage.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Activate Tempo</div>
+      <div class="card-title">Go for the jugular when:</div>
+      <div class="card-body">You've identified their key turn. Consign or <span class="c">Orim's Chant</span> is in hand. You have 2–3 turns of pressure ready. Fire the disruption and immediately convert — don't wait for a "better" window.</div>
+    </div>
+  </div>
 </div>
-</div></div></div>
-<footer><span>Team Resolve · Modern · Jeskai Blink Playbook</span><span>Zuxas · 2026 RC Season</span></footer>
+
+<!-- ── MATCHUPS ── -->
+<div id="matchups" class="section">
+  <div class="section-label">Chapter 05</div>
+  <h1>Matchup<br>Matrix</h1>
+  <p>Click any matchup to expand the full game plan, sideboard, and If X → Do Y guide. Win rates from Team Resolve gauntlet data + 262k-match DB.</p>
+
+  <table class="matchup-table">
+    <thead><tr><th>Matchup</th><th>Meta Share</th><th>Difficulty</th><th>Your Role</th></tr></thead>
+    <tbody>
+      <tr onclick="toggleMatchup('mu_boros')"><td><strong>Boros Energy</strong></td><td>~20%</td><td><span class="diff-medium">Even</span></td><td>Control → Beatdown after stabilize</td></tr>
+      <tr onclick="toggleMatchup('mu_prowess')"><td><strong>Izzet Prowess</strong></td><td>~18%</td><td><span class="diff-good">Favored</span></td><td>Control — stabilize, then bury them</td></tr>
+      <tr onclick="toggleMatchup('mu_reanimator')"><td><strong>Grixis Reanimator</strong></td><td>~8%</td><td><span class="diff-medium">Even</span></td><td>Tempo — Consign on <span class="c">Persist</span></td></tr>
+      <tr onclick="toggleMatchup('mu_control')"><td><strong>Azorius Control</strong></td><td>~10%</td><td><span class="diff-hard">Tough</span></td><td>Beatdown — clock before Verdict</td></tr>
+      <tr onclick="toggleMatchup('mu_titan')"><td><strong>Amulet Titan</strong></td><td>~9%</td><td><span class="diff-even">Slight Edge</span></td><td>Tempo — Phantom lock + Consign</td></tr>
+      <tr onclick="toggleMatchup('mu_mirror')"><td><strong>Blink Mirror</strong></td><td>~10%</td><td><span class="diff-even">Even</span></td><td>Beatdown — Teferi is the trump</td></tr>
+          <tr onclick="toggleMatchup('mu_affinity_j')"><td><strong>Izzet Affinity</strong></td><td>6.1%</td><td><span class="diff-good">Favored</span></td><td>Solitude exiles threats — Stony kills the engine</td></tr>
+      <tr onclick="toggleMatchup('mu_etron_j')"><td><strong>Eldrazi Tron</strong></td><td>5.0%</td><td><span class="diff-good">Favored</span></td><td>Phelia bounces Chalice — counter their payoffs</td></tr>
+      <tr onclick="toggleMatchup('mu_zoo_j')"><td><strong>Domain Zoo</strong></td><td>4.3%</td><td><span class="diff-hard">Hard</span></td><td>Scion hexproof + fast clock — WOP destroys lands</td></tr>
+      <tr onclick="toggleMatchup('mu_esper_j')"><td><strong>Esper Reanimator</strong></td><td>3.5%</td><td><span class="diff-good">Favored</span></td><td>Consign counters Atraxa ETB — TRav locks Goryo's</td></tr>
+      <tr onclick="toggleMatchup('mu_storm_j')"><td><strong>Ruby Storm</strong></td><td>6.5%</td><td><span class="diff-medium">Slight Dog</span></td><td>TRav doesn't help — hold Consign for payoff</td></tr>
+    </tbody>
+  </table>
+
+  <!-- BOROS ENERGY -->
+  <div id="mu_boros" class="matchup-detail">
+    <h3>Boros Energy — The Dynamic</h3>
+    <p>Boros applies pressure faster than your engines come online. Their one-drops attack through your early development and <span class="c">Galvanic Discharge</span> kills your low-toughness threats cleanly. The game plan is to survive the early turns with <span class="c">Solitude</span> + <span class="c">Ephemerate</span>, then flip into Beatdown mode once your engine has outgrown their removal suite. <span class="c">Ocelot Pride</span> on your side — with your Blink triggers — generates cats faster than they can kill them.</p>
+    <p>G1 is genuinely even. You have more powerful cards but they're faster. The matchup often comes down to whether <span class="c">White Orchid Phantom</span> lands before their board gets too large — Phantom denies their fourth land, which is when Phlage and Ajani come online.</p>
+
+    <h3>Play vs Draw</h3>
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-label">On the Play</div>
+        <div class="card-title">Phantom on Turn 2</div>
+        <div class="card-body">T1 <span class="c">Guide of Souls</span>, T2 <span class="c">White Orchid Phantom</span>. Destroying their <span class="c">Sacred Foundry</span> or <span class="c">Inspiring Vantage</span> and replacing with a tapped basic delays their ability to double-spell before Phlage or Ajani comes online. Repeatedly blinking Phantom forces them further onto basics, cutting their energy generation and Discharge efficiency.</div>
+      </div>
+      <div class="card">
+        <div class="card-label">On the Draw</div>
+        <div class="card-title">Prioritize <span class="c">Solitude</span></div>
+        <div class="card-body">On the draw they're one threat ahead. <span class="c">Solitude</span> pitch on their key threat (Ragavan T1 connection is devastating) buys the tempo needed to stabilize. Mulligan for <span class="c">Solitude</span> access — hands without it on the draw are risky into Boros.</div>
+      </div>
+    </div>
+
+    <h3>Sideboard</h3>
+    <div class="sb-table">
+      <div class="sb-col">
+        <div class="sb-col-label">In</div>
+        <div class="sb-item"><span><span class="c">Sanctifier en-Vec</span></span><span class="sb-qty">+2</span></div>
+        <div class="sb-item"><span><span class="c">Wrath of the Skies</span></span><span class="sb-qty">+2</span></div>
+        <div class="sb-item"><span><span class="c">Teferi, Time Raveler</span></span><span class="sb-qty">+1</span></div>
+      </div>
+      <div class="sb-col">
+        <div class="sb-col-label">Out</div>
+        <div class="sb-item"><span><span class="c">Consign to Memory</span></span><span class="sb-qty">−2</span></div>
+        <div class="sb-item"><span><span class="c">Quantum Riddler</span></span><span class="sb-qty">−2</span></div>
+        <div class="sb-item"><span><span class="c">Witch Enchanter</span></span><span class="sb-qty">−1</span></div>
+      </div>
+    </div>
+
+    <h3>Needle Targets</h3>
+    <span class="tag"><span class="c">Goblin Bombardment</span></span><span class="tag"><span class="c">Ajani, Nacatl Pariah</span></span><span class="tag">Phlage</span>
+
+    <h3>If X → Do Y</h3>
+    <ul class="ifthen-list">
+      <li><span class="if-label">If</span><span><strong>Ragavan connects turn 1:</strong> That stolen Gold and spell is a real material advantage. <span class="c">Solitude</span> Ragavan immediately — it generates compounding value every turn it lives. Do not wait for a more efficient moment.</span></li>
+      <li><span class="if-label">If</span><span><strong><span class="c">Goblin Bombardment</span> resolves:</strong> Their whole board now has reach. Do not let your life total drift into Bombardment range. Count their creatures × 1 damage every turn. Stay above that number or kill them faster.</span></li>
+      <li><span class="if-label">If</span><span><strong><span class="c">Sanctifier en-Vec</span> resolves:</strong> This is your biggest trump. Their <span class="c">Galvanic Discharge</span> is offline (red card), their <span class="c">Goblin Bombardment</span> is offline (red card). From here, your white creatures trade very favorably and their removal suite is crippled.</span></li>
+      <li><span class="if-label">If</span><span><strong>They have Ajani on board with 3+ cats:</strong> This is a lethal threat next turn. <span class="c">Solitude</span> or <span class="c">Prismatic Ending</span> it immediately — don't let it flip. A flipped Ajani with three cats in play represents lethal with one activation.</span></li>
+      <li><span class="if-label">If</span><span><strong><span class="c">White Orchid Phantom</span> is stuck at 2 mana and they're flooding:</strong> Phantom's lock is less relevant now — they have enough mana. Switch to engine development. Deploy Riddler and Shepherd to out-value them rather than trying to maintain a mana lock they've already broken.</span></li>
+      <li><span class="if-label">If</span><span><strong>You've stabilized at 10+ life with engines online:</strong> Switch to Beatdown immediately. Your Pride token army with Blink triggers generates faster than theirs. Push — don't hold back for "safety."</span></li>
+    </ul>
+  </div>
+
+  <!-- IZZET PROWESS -->
+  <div id="mu_prowess" class="matchup-detail">
+    <h3>Izzet Prowess — Why You Win</h3>
+    <p>You are favored because <span class="c">Sanctifier en-Vec</span> shuts off their entire damage-dealing suite — <span class="c">Galvanic Discharge</span> (red), <span class="c">Lava Dart</span> (red), and Searing Blood are all turned off by Sanctifier. Once Sanctifier is in play, they must kill it with a creature attack before they can damage you again, and your <span class="c">Solitude</span> + <span class="c">Ephemerate</span> answers that cleanly. Mulligan aggressively for Sanctifier in games 2 and 3 — it's the most impactful single card in the matchup.</p>
+    <p>G1 is genuinely dangerous. They can kill you by turn 4 on a fast draw before your engines come online. Respect the burn clock — stay above 8 life aggressively. Every life point below 8 is meaningful because <span class="c">Lava Dart</span> flashback gives them reach you don't see coming.</p>
+
+    <h3>Play vs Draw</h3>
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-label">On the Play</div>
+        <div class="card-title">Race to Sanctifier</div>
+        <div class="card-body">T1 <span class="c">Guide of Souls</span>, T2 Sanctifier or Phantom. Sanctifier on T2 shuts off their entire damage suite before they've connected enough to matter. You win from here unless they draw into multiple creature attacks that dodge Sanctifier's protection.</div>
+      </div>
+      <div class="card">
+        <div class="card-label">On the Draw</div>
+        <div class="card-title">Mulligan Harder</div>
+        <div class="card-body">Mulligan to Sanctifier more aggressively on the draw. They get T1 Swiftspear, T2 <span class="c">Cori-Steel Cutter</span> while you're one step behind. Without Sanctifier early, respect the burn clock — <span class="c">Solitude</span> their biggest threats, not the 1/1 tokens. Stabilize life total first.</div>
+      </div>
+    </div>
+
+    <h3>Sideboard</h3>
+    <div class="sb-table">
+      <div class="sb-col">
+        <div class="sb-col-label">In</div>
+        <div class="sb-item"><span><span class="c">Sanctifier en-Vec</span></span><span class="sb-qty">+2</span></div>
+        <div class="sb-item"><span><span class="c">Wrath of the Skies</span></span><span class="sb-qty">+2</span></div>
+        <div class="sb-item"><span><span class="c">Orim's Chant</span></span><span class="sb-qty">+1</span></div>
+        <div class="sb-item"><span><span class="c">Teferi, Time Raveler</span></span><span class="sb-qty">+1</span></div>
+      </div>
+      <div class="sb-col">
+        <div class="sb-col-label">Out</div>
+        <div class="sb-item"><span><span class="c">Consign to Memory</span></span><span class="sb-qty">−2</span></div>
+        <div class="sb-item"><span><span class="c">Quantum Riddler</span></span><span class="sb-qty">−2</span></div>
+        <div class="sb-item"><span><span class="c">Witch Enchanter</span></span><span class="sb-qty">−1</span></div>
+        <div class="sb-item"><span><span class="c">Starfield Shepherd</span></span><span class="sb-qty">−1</span></div>
+      </div>
+    </div>
+
+    <h3>If X → Do Y</h3>
+    <ul class="ifthen-list">
+      <li><span class="if-label">If</span><span><strong><span class="c">Sanctifier en-Vec</span> resolves:</strong> Protect it at all costs. Their whole damage suite is offline. <span class="c">Ephemerate</span> Sanctifier if they try to <span class="c">Solitude</span> it. Blink Sanctifier with Phelia to deny their attacks. This is your win condition in the matchup — keep it alive.</span></li>
+      <li><span class="if-label">If</span><span><strong><span class="c">Cori-Steel Cutter</span> resolves without Sanctifier up:</strong> Kill it immediately with <span class="c">Solitude</span>. Every turn it attacks generates a 1/1 haste Monk token — the snowball gets out of hand within 2–3 turns. <span class="c">Prismatic Ending</span> also answers it cleanly.</span></li>
+      <li><span class="if-label">If</span><span><strong>You're at 8 life or less without Sanctifier:</strong> Full control mode. Do not develop. Use all interaction defensively. <span class="c">Wrath of the Skies</span> at X=1 clears their whole board — cast it when they overextend, not before.</span></li>
+      <li><span class="if-label">If</span><span><strong><span class="c">Orim's Chant</span> is in hand:</strong> Hold it for their "go-off" turn — the turn they try to chain 4+ spells and kill you from 12 life. Chant on their upkeep prevents that entire turn from happening. Don't fire it early on a two-spell turn.</span></li>
+      <li><span class="if-label">If</span><span><strong>They have <span class="c">Lava Dart</span> in the graveyard:</strong> Any 1-toughness creature you deploy is at risk of Dart flashback. Lead with <span class="c">Guide of Souls</span> (2 toughness) and Phelia (2 toughness) over 1-toughness token generators when Dart is confirmed available.</span></li>
+      <li><span class="if-label">If</span><span><strong>You've stabilized with Sanctifier at 12+ life:</strong> Switch to Beatdown. Your engine generates more than their top-deck. Push with tokens, use <span class="c">Ephemerate</span> offensively to create pressure, and close before they draw out of it.</span></li>
+    </ul>
+  </div>
+
+  <!-- GRIXIS REANIMATOR -->
+  <div id="mu_reanimator" class="matchup-detail">
+    <h3>Grixis Reanimator — The Problem</h3>
+    <p><span class="c">Archon of Cruelty</span>'s ETB is a 7-point life swing that most boards cannot recover from. <span class="c">Persist</span> at instant speed means they can reanimate at your end step when you're tapped out. Your answer is <strong><span class="c">Consign to Memory</span></strong> — it counters <span class="c">Persist</span> for free by exiling a card from your hand. G1, your plan is to apply Phantom pressure to lock their mana, then hold Consign for the moment they go for <span class="c">Persist</span>. The matchup is even because you're faster than their average draw and Consign can counter Archon of Cruelty’s ETB triggered ability — though it cannot counter Persist the card (black sorcery) or Goryo’s Vengeance (black instant).</p>
+    <p><span class="c">Psychic Frog</span> is their backup threat — a 1/1 that grows and filters their hand. Don't let it scale. Kill it with <span class="c">Solitude</span> early while it's still small. A large <span class="c">Psychic Frog</span> with 5+ counters is very hard to answer profitably.</p>
+
+    <h3>Play vs Draw</h3>
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-label">On the Play</div>
+        <div class="card-title">Lock + Hold Consign</div>
+        <div class="card-body">T2 <span class="c">White Orchid Phantom</span> destroys their best nonbasic land and forces a tapped basic, reducing their mana quality. Hold Consign for Archon of Cruelty’s ETB triggered ability — when Archon enters, its sacrifice/discard/lose 3 life is a triggered ability that Consign can counter. Important: Consign cannot counter Persist the card itself (black sorcery).</div>
+      </div>
+      <div class="card">
+        <div class="card-label">On the Draw</div>
+        <div class="card-title">Respect <span class="c">Thoughtseize</span> T1</div>
+        <div class="card-body">They <span class="c">Thoughtseize</span> you T1 and take Consign — now you're exposed. Keep hands with 2+ interaction pieces. <span class="c">Solitude</span> answers <span class="c">Psychic Frog</span> and Archon in play. <span class="c">Rest in Peace</span> postboard shuts their entire engine off.</div>
+      </div>
+    </div>
+
+    <h3>Sideboard</h3>
+    <div class="sb-table">
+      <div class="sb-col">
+        <div class="sb-col-label">In</div>
+        <div class="sb-item"><span><span class="c">Consign to Memory</span></span><span class="sb-qty">+1</span></div>
+        <div class="sb-item"><span><span class="c">Rest in Peace</span></span><span class="sb-qty">+2</span></div>
+        <div class="sb-item"><span><span class="c">Sanctifier en-Vec</span></span><span class="sb-qty">+2</span></div>
+        <div class="sb-item"><span><span class="c">Teferi, Time Raveler</span></span><span class="sb-qty">+2</span></div>
+        <div class="sb-item"><span><span class="c">Mistcaller</span></span><span class="sb-qty">+1</span></div>
+      </div>
+      <div class="sb-col">
+        <div class="sb-col-label">Out</div>
+        <div class="sb-item"><span><span class="c">Witch Enchanter</span></span><span class="sb-qty">−2</span></div>
+        <div class="sb-item"><span><span class="c">Quantum Riddler</span></span><span class="sb-qty">−2</span></div>
+        <div class="sb-item"><span><span class="c">Starfield Shepherd</span></span><span class="sb-qty">−2</span></div>
+        <div class="sb-item"><span><span class="c">Ocelot Pride</span></span><span class="sb-qty">−2</span></div>
+      </div>
+    </div>
+
+    <h3>Needle Targets</h3>
+    <span class="tag"><span class="c">Persist</span></span><span class="tag"><span class="c">Archon of Cruelty</span></span><span class="tag"><span class="c">Emperor of Bones</span></span>
+
+    <h3>If X → Do Y</h3>
+    <ul class="ifthen-list">
+      <li><span class="if-label">If</span><span><strong>They tap out at end of turn and you suspect <span class="c">Persist</span>:</strong> Hold open Consign mana — one card exiled from hand counters <span class="c">Persist</span> for free. This is the entire G1 plan: develop your board, hold Consign, fire it the moment <span class="c">Persist</span> resolves on the stack.</span></li>
+      <li><span class="if-label">If</span><span><strong>Archon ETB resolves:</strong> You sacrificed a permanent, discarded a card, lost 3 life. Don't concede. <span class="c">Solitude</span> Archon immediately — exile it so it can't be reanimated again. Then assess how many turns you have left and whether your clock can still close.</span></li>
+      <li><span class="if-label">If</span><span><strong><span class="c">Psychic Frog</span> resolves before you can answer it:</strong> Kill it with <span class="c">Solitude</span> before it grows past 3 counters. A 4+ counter Frog is very hard to answer profitably and it's filtering their entire hand simultaneously.</span></li>
+      <li><span class="if-label">If</span><span><strong><span class="c">Rest in Peace</span> resolves:</strong> Their entire engine is offline. Archon cannot be reanimated from a graveyard that doesn't exist. Develop your board aggressively and close — they're now a fair <span class="c">Thoughtseize</span> deck with no combo.</span></li>
+      <li><span class="if-label">If</span><span><strong>Teferi resolves postboard:</strong> They cannot <span class="c">Persist</span> at instant speed — bouncing back to hand is sorcery speed only under Teferi. Your <span class="c">Persist</span> window is now open every main phase. Develop and close.</span></li>
+      <li><span class="if-label">If</span><span><strong>They <span class="c">Faithless Looting</span> on turn 1:</strong> Archon is now in the graveyard or will be soon. Your clock matters — apply Phantom pressure to lock their mana and deny them the 4 mana needed for <span class="c">Persist</span> targets.</span></li>
+    </ul>
+  </div>
+
+  <!-- AZORIUS CONTROL -->
+  <div id="mu_control" class="matchup-detail">
+    <h3>Azorius Control — Why It's Hard</h3>
+    <p>They have <span class="c">Counterspell</span> + Snapcaster to answer every spell you cast, <span class="c">Supreme Verdict</span> to reset your board, and Teferi to lock you into sorcery speed. Your engines are individually powerful but they can answer them one by one with raw card advantage. The matchup requires you to play Beatdown — jam threats early, use <span class="c">Ephemerate</span> offensively to push damage, and close before they reach the Verdict + Snapcaster + Teferi configuration that makes them unkillable.</p>
+    <p>Postboard Teferi on your side is the trump card. Under your Teferi, they cannot cast Verdict at instant speed and they can't hold up <span class="c">Counterspell</span> without tapping out on their turn. Resolve Teferi and the matchup flips.</p>
+
+    <h3>Play vs Draw</h3>
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-label">On the Play</div>
+        <div class="card-title">Maximum Aggression</div>
+        <div class="card-body">T1 Guide, T2 <span class="c">Ocelot Pride</span> + attack, T3 Phantom or Phelia. Deploy as many threats as possible before they reach 3 mana for Verdict. On the play you have a full turn ahead of their <span class="c">Counterspell</span> mana — use it.</div>
+      </div>
+      <div class="card">
+        <div class="card-label">On the Draw</div>
+        <div class="card-title">Stagger into Counterspells</div>
+        <div class="card-body">Deploy one threat per turn. They will <span class="c">Counterspell</span> your best card — bait it with the second best card first. Force them to tap out to answer each threat individually. Your Phantom generating card advantage every turn is harder for them to answer than raw combat threats.</div>
+      </div>
+    </div>
+
+    <h3>Sideboard</h3>
+    <div class="sb-table">
+      <div class="sb-col">
+        <div class="sb-col-label">In</div>
+        <div class="sb-item"><span><span class="c">Teferi, Time Raveler</span></span><span class="sb-qty">+2</span></div>
+        <div class="sb-item"><span><span class="c">Vexing Bauble</span></span><span class="sb-qty">+1</span></div>
+        <div class="sb-item"><span><span class="c">Pithing Needle</span></span><span class="sb-qty">+1</span></div>
+      </div>
+      <div class="sb-col">
+        <div class="sb-col-label">Out</div>
+        <div class="sb-item"><span><span class="c">Rest in Peace</span></span><span class="sb-qty">−2</span></div>
+        <div class="sb-item"><span><span class="c">Sanctifier en-Vec</span> (main)</span><span class="sb-qty">−1</span></div>
+        <div class="sb-item"><span><span class="c">Witch Enchanter</span></span><span class="sb-qty">−1</span></div>
+      </div>
+    </div>
+
+    <h3>Needle Targets</h3>
+    <span class="tag"><span class="c">Teferi, Hero of Dominaria</span></span><span class="tag"><span class="c">Snapcaster Mage</span></span><span class="tag"><span class="c">Jace, the Mind Sculptor</span></span>
+
+    <h3>If X → Do Y</h3>
+    <ul class="ifthen-list">
+      <li><span class="if-label">If</span><span><strong><span class="c">Supreme Verdict</span> resolves:</strong> Rebuild with one threat at a time. Don't flood the board again immediately. Deploy one creature, bait their next Verdict or <span class="c">Counterspell</span>, then deploy the second. Your engines generate more threats than they have answers if you don't give them clean sweepers.</span></li>
+      <li><span class="if-label">If</span><span><strong>Their Teferi resolves:</strong> He bounces one permanent and locks you into sorcery speed. Immediately answer him — <span class="c">Solitude</span>, <span class="c">Prismatic Ending</span>, or attack him down. Teferi + <span class="c">Counterspell</span> backup is an almost unbreakable lock if you let it establish.</span></li>
+      <li><span class="if-label">If</span><span><strong>Your Teferi resolves:</strong> They cannot cast <span class="c">Supreme Verdict</span> at instant speed. Deploy threats aggressively — they must tap mana on their turn to develop or they sit doing nothing. This is the game-flipping moment in the matchup.</span></li>
+      <li><span class="if-label">If</span><span><strong><span class="c">Vexing Bauble</span> is in hand:</strong> Deploy it before casting your best threat. They must pay 1 extra to counter through Bauble or you draw a card. Either they're paying for interaction or you're ahead on cards. Both outcomes are favorable.</span></li>
+      <li><span class="if-label">If</span><span><strong>They're at 10+ life with 5+ mana open:</strong> Don't overcommit. Deploy Phantom to generate value through land denial even if they can Verdict the rest of your board. Phantom's ETB already happened — the land was denied.</span></li>
+      <li><span class="if-label">If</span><span><strong>The game goes to turn 8+:</strong> You're likely losing. Shift to a desperation close — deploy everything you have, use <span class="c">Ephemerate</span> offensively to push damage, and go for the kill before they untap with Jace or a fully established Teferi lock.</span></li>
+    </ul>
+  </div>
+
+  <!-- AMULET TITAN -->
+  <div id="mu_titan" class="matchup-detail">
+    <h3>Amulet Titan — Your Line</h3>
+    <p><span class="c">White Orchid Phantom</span> plus repeated blinking is the primary game plan. Every time Phantom enters the battlefield, they lose a land drop. With Phelia or <span class="c">Ephemerate</span> to reblink, Phantom creates a soft lock that denies them the bounce lands needed to make <span class="c">Amulet of Vigor</span> generate double mana. <span class="c">Consign to Memory</span> on <span class="c">Summoner's Pact</span> at upkeep — they must pay or die — is the instant-win line when it's available.</p>
+    <p>G1 is a race. Their fast draws kill on turn 3 before Phantom can lock them. On a normal draw you have time. Prioritize Phantom on turn 2 over any other play — it buys every subsequent turn that your engine needs to develop.</p>
+
+    <h3>Play vs Draw</h3>
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-label">On the Play</div>
+        <div class="card-title">Phantom T2 Into Lock</div>
+        <div class="card-body">T2 Phantom, T3 Phelia to reblink Phantom. They're stuck at 2 lands with no Amulet acceleration. Your engine develops over the next 3 turns while they're locked. This is often a clean win — their deck cannot function without bounce land access.</div>
+      </div>
+      <div class="card">
+        <div class="card-label">On the Draw</div>
+        <div class="card-title">Respect T3 Kill</div>
+        <div class="card-body">Their fast nut draw (Amulet T1, bounce land T2, Pact T3) kills before Phantom matters. Hold Consign for <span class="c">Summoner's Pact</span> — if you can fire it on upkeep when they can't pay, they die to the Pact trigger. Otherwise, play fastest hand and hope for a normal draw.</div>
+      </div>
+    </div>
+
+    <h3>Sideboard</h3>
+    <div class="sb-table">
+      <div class="sb-col">
+        <div class="sb-col-label">In</div>
+        <div class="sb-item"><span><span class="c">Consign to Memory</span></span><span class="sb-qty">+1</span></div>
+        <div class="sb-item"><span><span class="c">Teferi, Time Raveler</span></span><span class="sb-qty">+2</span></div>
+        <div class="sb-item"><span><span class="c">Pithing Needle</span></span><span class="sb-qty">+1</span></div>
+        <div class="sb-item"><span><span class="c">Stony Silence</span></span><span class="sb-qty">+1</span></div>
+      </div>
+      <div class="sb-col">
+        <div class="sb-col-label">Out</div>
+        <div class="sb-item"><span><span class="c">Rest in Peace</span></span><span class="sb-qty">−2</span></div>
+        <div class="sb-item"><span><span class="c">Sanctifier en-Vec</span> (main)</span><span class="sb-qty">−1</span></div>
+        <div class="sb-item"><span><span class="c">Ocelot Pride</span></span><span class="sb-qty">−2</span></div>
+      </div>
+    </div>
+
+    <h3>Needle Targets</h3>
+    <span class="tag"><span class="c">Slayers' Stronghold</span></span><span class="tag"><span class="c">Tolaria West</span></span><span class="tag"><span class="c">Amulet of Vigor</span></span>
+
+    <h3>If X → Do Y</h3>
+    <ul class="ifthen-list">
+      <li><span class="if-label">If</span><span><strong>They cast <span class="c">Summoner's Pact</span> and pass:</strong> Titan is coming next upkeep. Hold <span class="c">Consign to Memory</span> — Summoner&rsquo;s Pact creates a triggered ability on their upkeep: &ldquo;pay 2GG or lose the game.&rdquo; That upkeep trigger is a triggered ability, so Consign can counter it. If Consign counters it, they lose the game since they don&rsquo;t get to pay. This is the cleanest win condition in the matchup. This is the cleanest win condition in the matchup.</span></li>
+      <li><span class="if-label">If</span><span><strong>Phantom lock is established:</strong> They cannot reach 6 mana for Titan. Develop your engine patiently — you're winning as long as the lock holds. Reblink Phantom every turn, generate value with everything else.</span></li>
+      <li><span class="if-label">If</span><span><strong><span class="c">Stony Silence</span> resolves:</strong> <span class="c">Amulet of Vigor</span> is shut off. Their bounce lands enter tapped — the whole combo is dramatically slower. This is often a game-winner on its own. Protect <span class="c">Stony Silence</span> at all costs.</span></li>
+      <li><span class="if-label">If</span><span><strong><span class="c">Primeval Titan</span> resolves without Consign:</strong> They fetch <span class="c">Slayers' Stronghold</span> (gives Titan haste) and another land. You likely lose unless you can kill them in response. <span class="c">Solitude</span> Titan immediately — don't let combat happen.</span></li>
+      <li><span class="if-label">If</span><span><strong>Teferi resolves:</strong> They cannot use Pact at instant speed. Your Phantom bounces deny mana they can't recover from. This is the most powerful postboard configuration in the matchup.</span></li>
+    </ul>
+  </div>
+
+  <!-- MIRROR -->
+  <div id="mu_mirror" class="matchup-detail">
+    <h3>Blink Mirror — What Decides It</h3>
+    <p><span class="c">Teferi, Time Raveler</span> is the trump in the Blink mirror. Whoever resolves it first usually wins — it locks the opponent into sorcery speed, which means no instant-speed <span class="c">Solitude</span>, no Consign at instant speed, no <span class="c">Ephemerate</span> during attacks. It breaks the symmetry entirely. The second most important card is <span class="c">Pithing Needle</span> on Phelia — Phelia blinking your permanents is extremely punishing in the mirror.</p>
+    <p>Never cast <span class="c">Ephemerate</span> first in stack wars. Let them spend their <span class="c">Ephemerate</span>, then respond with yours. Sandbagging Riddler until your hand is nearly empty maximizes its trigger value. The mirror is won by card advantage engines, not by raw tempo.</p>
+
+    <h3>Play vs Draw</h3>
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-label">On the Play</div>
+        <div class="card-title">Teferi on Curve</div>
+        <div class="card-body">Race to Teferi on turn 3. On the play you can resolve it before they have open mana to Consign it. Teferi locking them out of instant-speed plays is the game-deciding asymmetry. Protect it — don't jam other spells into open blue mana after Teferi resolves.</div>
+      </div>
+      <div class="card">
+        <div class="card-label">On the Draw</div>
+        <div class="card-title">Hold Consign for Their Teferi</div>
+        <div class="card-body">They're racing to Teferi on the play. Hold Consign for their Teferi specifically — counter it and the game resets to parity. Don't spend Consign on anything else before Teferi resolves. One Consign used on <span class="c">Solitude</span> is one fewer counter for their trump card.</div>
+      </div>
+    </div>
+
+    <h3>Sideboard</h3>
+    <div class="sb-table">
+      <div class="sb-col">
+        <div class="sb-col-label">In</div>
+        <div class="sb-item"><span><span class="c">Teferi, Time Raveler</span></span><span class="sb-qty">+2</span></div>
+        <div class="sb-item"><span><span class="c">Consign to Memory</span></span><span class="sb-qty">+1</span></div>
+        <div class="sb-item"><span><span class="c">Pithing Needle</span></span><span class="sb-qty">+1</span></div>
+        <div class="sb-item"><span><span class="c">Mockingbird</span></span><span class="sb-qty">+1</span></div>
+      </div>
+      <div class="sb-col">
+        <div class="sb-col-label">Out</div>
+        <div class="sb-item"><span><span class="c">Rest in Peace</span></span><span class="sb-qty">−2</span></div>
+        <div class="sb-item"><span><span class="c">Sanctifier en-Vec</span> (main)</span><span class="sb-qty">−1</span></div>
+        <div class="sb-item"><span><span class="c">Witch Enchanter</span></span><span class="sb-qty">−1</span></div>
+        <div class="sb-item"><span><span class="c">Ocelot Pride</span></span><span class="sb-qty">−1</span></div>
+      </div>
+    </div>
+
+    <h3>Needle Targets</h3>
+    <span class="tag">Phelia</span><span class="tag"><span class="c">Teferi, Time Raveler</span></span><span class="tag"><span class="c">White Orchid Phantom</span></span>
+
+    <h3>If X → Do Y</h3>
+    <ul class="ifthen-list">
+      <li><span class="if-label">If</span><span><strong>They resolve Teferi before you:</strong> This is the game-defining moment. Consign counters it for free — if you have it, fire immediately. If you don't, you're locked into sorcery speed. Your response: deploy threats that don't require instant-speed interaction to function.</span></li>
+      <li><span class="if-label">If</span><span><strong>Phelia targets your permanent:</strong> This is brutal in the mirror — they blink your Phantom, Riddler, or <span class="c">Solitude</span> to reset it. <span class="c">Pithing Needle</span> on Phelia postboard is the cleanest answer. In G1, accept the loss and develop around it.</span></li>
+      <li><span class="if-label">If</span><span><strong>Stack war develops over a <span class="c">Solitude</span>:</strong> Never cast <span class="c">Ephemerate</span> first. Wait for them to respond to your <span class="c">Solitude</span> with their <span class="c">Ephemerate</span>, then respond to their <span class="c">Ephemerate</span> with yours. Stack order matters — your <span class="c">Ephemerate</span> resolves first, which means your <span class="c">Solitude</span> gets the blink trigger first.</span></li>
+      <li><span class="if-label">If</span><span><strong>Both players are in topdeck mode:</strong> Your Riddler is better than their Riddler in this state — it draws on entry. Whatever you topdeck, always ask whether deploying it this turn or holding it one more turn changes the value it generates. Riddler held until you're hellbent draws the maximum cards.</span></li>
+      <li><span class="if-label">If</span><span><strong><span class="c">Mockingbird</span> copies their best creature:</strong> This is often a copy of Phelia or <span class="c">Quantum Riddler</span> — both generate value the moment they enter. <span class="c">Mockingbird</span> as a Riddler copy draws cards immediately. Prioritize copying whichever creature gives the most immediate ETB value.</span></li>
+    </ul>
+  </div>
+</div>
+  <!-- IZZET AFFINITY vs JESKAI -->
+  <div id="mu_affinity_j" class="matchup-detail">
+    <h3>Izzet Affinity — Solitude + Stony Silence Dismantles Them</h3>
+    <p>Izzet Affinity relies on <span class="c">Mox Opal</span> for free mana, <span class="c">Cranial Plating</span> for one-shot attackers, and <span class="c">Arcbound Ravager</span> to redistribute counters. Your toolkit answers every piece: <span class="c">Solitude</span> (evoke) exiles <span class="c">Arcbound Ravager</span> for zero mana before it accumulates counters. <span class="c">Consign to Memory</span> counters the <span class="c">Urza's Saga</span> chapter III tutoring trigger. White Orchid Phantom destroys one of their nonbasic artifact lands when it enters. Postboard, <span class="c">Stony Silence</span> shuts off every artifact activated ability — <span class="c">Mox Opal</span> cannot tap for mana, <span class="c">Cranial Plating</span> cannot equip, Ravager cannot sacrifice.</p>
+    <h3>Play vs Draw</h3>
+    <div class="pd-grid">
+      <div class="pd-col">
+        <div class="pd-label">On the Play</div>
+        <div class="pd-title">Solitude Their T2 Threat</div>
+        <div class="pd-body"><span class="c">Arcbound Ravager</span> on turn 2 with open artifacts is their most dangerous play. <span class="c">Solitude</span> via evoke exiles it immediately — free. A turn 3 <span class="c">Phelia, Exuberant Shepherd</span> attacking then triggers White Orchid Phantom on the attack, potentially destroying their <span class="c">Darksteel Citadel</span> or other nonbasic.</div>
+      </div>
+      <div class="pd-col">
+        <div class="pd-label">On the Draw</div>
+        <div class="pd-title">Hold Consign for Saga</div>
+        <div class="pd-body"><span class="c">Urza's Saga</span> chapter III is their most powerful threat generator. Hold <span class="c">Consign to Memory</span> specifically for the triggered ability when Saga reaches chapter III — this prevents the Construct token AND the tutor. Don't spend Consign on earlier Saga chapter triggers.</div>
+      </div>
+    </div>
+    <h3>Sideboard</h3>
+    <div class="sb-table">
+      <div class="sb-col">
+        <div class="sb-col-label">In</div>
+        <div class="sb-item"><span>Stony Silence</span><span class="sb-qty">+2</span></div>
+        <div class="sb-item"><span>Consign to Memory</span><span class="sb-qty">+2</span></div>
+      </div>
+      <div class="sb-col">
+        <div class="sb-col-label">Out</div>
+        <div class="sb-item"><span>Quantum Riddler</span><span class="sb-qty">&minus;2</span></div>
+        <div class="sb-item"><span>Mockingbird</span><span class="sb-qty">&minus;2</span></div>
+      </div>
+    </div>
+    <h3>If X &rarr; Do Y</h3>
+    <ul class="ifthen-list">
+      <li><span class="if-label">If</span><span><strong><span class="c">Stony Silence</span> resolves:</strong> Their <span class="c">Mox Opal</span> cannot tap for mana (activated ability of an artifact). <span class="c">Cranial Plating</span> cannot equip (activated ability). <span class="c">Arcbound Ravager</span> cannot sacrifice (activated ability). Their board is frozen. Play your threats freely — they have almost no interactive ability once Stony is in play.</span></li>
+      <li><span class="if-label">If</span><span><strong><span class="c">Arcbound Ravager</span> has 4+ counters and they sacrifice to it:</strong> <span class="c">Solitude</span> exiles Ravager in response — the modular trigger is a triggered ability that fires when Ravager dies, putting counters on another artifact creature. If Solitude exiles it before it dies, there's no death trigger and no counter transfer. Timing: exile before they sacrifice the last artifact.</span></li>
+      <li><span class="if-label">If</span><span><strong>Inkmoth Nexus attacks with infect:</strong> Ten infect kills regardless of life total. <span class="c">Phelia, Exuberant Shepherd</span>'s attack trigger can exile Inkmoth and return it next end step — but Inkmoth is a land that becomes a creature, not a permanent you want to bounce. Instead, block Inkmoth with a token to absorb infect damage on something you don't care about.</span></li>
+      <li><span class="if-label">If</span><span><strong>White Orchid Phantom destroys one of their artifact dual lands:</strong> This removes a colored source from their mana base. If their mana is crippled, they may not be able to activate <span class="c">Cranial Plating</span>'s instant-equip cost (BB). Check their remaining mana before deciding whether to hold Phantom for a more impactful land destroy target.</span></li>
+    </ul>
+  </div>
+
+  <!-- ELDRAZI TRON vs JESKAI -->
+  <div id="mu_etron_j" class="matchup-detail">
+    <h3>Eldrazi Tron — Bounce Chalice, Counter Their Threats</h3>
+    <p>Eldrazi Tron's primary game plan against Jeskai is to land <span class="c">Chalice of the Void</span> at X=1 to shut off your entire interaction suite (most of your spells cost 1 mana). <span class="c">Phelia, Exuberant Shepherd</span> can exile and bounce Chalice as a permanent on her attack trigger — this is your cleanest in-game answer. Once Tron is assembled, <span class="c">Thought-Knot Seer</span> exiles your key disruption card and <span class="c">Reality Smasher</span> haste attacks immediately. Your creatures apply pressure while you hold countermagic for their key threats. This is a favorable matchup because your counter suite is more consistent than their threat suite.</p>
+    <h3>Play vs Draw</h3>
+    <div class="pd-grid">
+      <div class="pd-col">
+        <div class="pd-label">On the Play</div>
+        <div class="pd-title">Pressure + Counter Tron Assembly</div>
+        <div class="pd-body">Develop <span class="c">Ocelot Pride</span> and <span class="c">Guide of Souls</span> for early pressure. Hold <span class="c">Counterspell</span> or <span class="c">Consign to Memory</span> for <span class="c">Expedition Map</span>'s activation trigger — countering Map's "search for Tron land" delays assembly. Each turn without Tron assembled is a turn your creatures are attacking freely.</div>
+      </div>
+      <div class="pd-col">
+        <div class="pd-label">On the Draw</div>
+        <div class="pd-title">Phelia Bounces Chalice</div>
+        <div class="pd-body">If they resolve Chalice at 1 on turn 1, your priority is getting <span class="c">Phelia</span> on board. Phelia attacks, trigger fires — exile Chalice. Chalice returns at their next end step but you've restored your instant-speed interaction for a full turn cycle. Repeat this every turn you attack with Phelia.</div>
+      </div>
+    </div>
+    <h3>Sideboard</h3>
+    <div class="sb-table">
+      <div class="sb-col">
+        <div class="sb-col-label">In</div>
+        <div class="sb-item"><span>Consign to Memory</span><span class="sb-qty">+2</span></div>
+        <div class="sb-item"><span>Pithing Needle</span><span class="sb-qty">+1</span></div>
+      </div>
+      <div class="sb-col">
+        <div class="sb-col-label">Out</div>
+        <div class="sb-item"><span>Quantum Riddler</span><span class="sb-qty">&minus;2</span></div>
+        <div class="sb-item"><span>Mockingbird</span><span class="sb-qty">&minus;1</span></div>
+      </div>
+    </div>
+    <h3>If X &rarr; Do Y</h3>
+    <ul class="ifthen-list">
+      <li><span class="if-label">If</span><span><strong><span class="c">Chalice of the Void</span> at 1 is in play and Phelia isn't:</strong> Your MV-1 spells (Ephemerate, most one-drops) are countered automatically. Play around it by deploying MV-2+ threats. <span class="c">Solitude</span> via evoke costs no mana but is still MV 5 — Chalice at 1 doesn't counter it. <span class="c">Phelia</span> herself is MV 2 — resolves fine through Chalice. Priority: get Phelia in play to bounce Chalice next attack.</span></li>
+      <li><span class="if-label">If</span><span><strong><span class="c">Thought-Knot Seer</span> ETB exiles your key disruption:</strong> TKS removes what they fear most — usually your <span class="c">Counterspell</span> or <span class="c">Consign to Memory</span>. After losing that card, reassess: what's your next line? Their TKS is a 4/4 — <span class="c">Solitude</span> exiles it cleanly.</span></li>
+      <li><span class="if-label">If</span><span><strong><span class="c">Pithing Needle</span> names <span class="c">Phelia, Exuberant Shepherd</span> (their postboard hate):</strong> They name Phelia to prevent the Chalice bounce loop. Your Needle names their <span class="c">Walking Ballista</span> — prevents the ping-for-0 death clock. Without Ballista pinging, their board is just big blockers with no reach.</span></li>
+      <li><span class="if-label">If</span><span><strong>Their board has <span class="c">Wurmcoil Engine</span>:</strong> Wurmcoil creates two 3/3 tokens when it dies — one lifelink, one deathtouch. Do not use <span class="c">Solitude</span> (that exiles, no death trigger). Use a board wipe that bypasses or use <span class="c">Phelia</span> to exile and bounce it repeatedly until you can race the 6/6.</span></li>
+    </ul>
+  </div>
+
+  <!-- DOMAIN ZOO vs JESKAI -->
+  <div id="mu_zoo_j" class="matchup-detail">
+    <h3>Domain Zoo — Hard Matchup: Scion Hexproof Blanks Your Removal</h3>
+    <p>Domain Zoo applies fast pressure with domain-scaling threats. The biggest problem: Scion of Draco gains hexproof with full domain. Your primary removal (<span class="c">Solitude</span>, <span class="c">Prismatic Ending</span>) both target — Scion is immune. Your answers: White Orchid Phantom destroys one of their fetch/shock lands when it enters, reducing their domain count from 5 potentially to 4, which removes Scion's hexproof (hexproof requires domain 5). <span class="c">Ephemerate</span> on White Orchid Phantom ETBs it again, destroying a second land. <span class="c">Consign to Memory</span> can counter a triggered ability — but Zoo has no key triggered abilities. This matchup requires racing more than interacting.</p>
+    <h3>Play vs Draw</h3>
+    <div class="pd-grid">
+      <div class="pd-col">
+        <div class="pd-label">On the Play</div>
+        <div class="pd-title">White Orchid Phantom Destroys Domain</div>
+        <div class="pd-body">White Orchid Phantom destroys a nonbasic land of your choice and tutors a basic for you. Target their Overgrown Tomb or Breeding Pool — removing a basic land type from their nonbasics reduces their domain. If they drop to 4 domain types, Scion loses hexproof and becomes targetable. Deploy Phantom + Ephemerate for two land destructions.</div>
+      </div>
+      <div class="pd-col">
+        <div class="pd-label">On the Draw</div>
+        <div class="pd-title">Race — Don't Try to Answer Scion</div>
+        <div class="pd-body">If Scion has hexproof, ignore it and race. Attack with everything, calculate lethal via <span class="c">Ocelot Pride</span> tokens plus Scion damage you're taking. If you can kill them before Scion's lifelink and first strike generate too much life gain, the hexproof is irrelevant. Scion is exiled by its own end step anyway with Goryo's lines but not in Zoo.</div>
+      </div>
+    </div>
+    <h3>Sideboard</h3>
+    <div class="sb-table">
+      <div class="sb-col">
+        <div class="sb-col-label">In</div>
+        <div class="sb-item"><span>Consign to Memory</span><span class="sb-qty">+2</span></div>
+        <div class="sb-item"><span>Stony Silence</span><span class="sb-qty">+1</span></div>
+      </div>
+      <div class="sb-col">
+        <div class="sb-col-label">Out</div>
+        <div class="sb-item"><span>Quantum Riddler</span><span class="sb-qty">&minus;2</span></div>
+        <div class="sb-item"><span>Mockingbird</span><span class="sb-qty">&minus;1</span></div>
+      </div>
+    </div>
+    <h3>If X &rarr; Do Y</h3>
+    <ul class="ifthen-list">
+      <li><span class="if-label">If</span><span><strong>Scion of Draco resolves with full domain (hexproof active):</strong> White Orchid Phantom destroys a nonbasic land — if you reduce their domain below 5, Scion loses hexproof and becomes targetable. Phantom + Ephemerate destroys two lands. But if they have basics covering all 5 types, domain reduction may not work. Race instead — kill them before Scion's flying lifelink first strike stabilizes the board.</span></li>
+      <li><span class="if-label">If</span><span><strong><span class="c">Territorial Kavu</span> is a 5/5 or larger:</strong> Do not block with <span class="c">Phelia</span> or <span class="c">Guide of Souls</span>. <span class="c">Solitude</span> exiles Kavu — it's a creature with no protection, MV 2 (Prismatic Ending for WU kills it too). Kill it immediately before it deals 5+ damage per attack.</span></li>
+      <li><span class="if-label">If</span><span><strong>They have Tribal Flames available at full domain (5 damage) and you're at 8 or less life:</strong> You are in kill range. 5 damage from nowhere plus a creature attack is 8+ damage. Either win this turn or hold all blockers. Do not tap out. Tribal Flames is an instant — it fires in their main phase or in response to your spells.</span></li>
+      <li><span class="if-label">If</span><span><strong>Ignoble Hierarch or Noble Hierarch is on board:</strong> <span class="c">Prismatic Ending</span> for W kills it (MV 1). Removing their mana accelerant pushes their Scion from turn 2 to turn 3. Every tempo gain matters in this matchup. Also: Hierarchs grant exalted — if they're attacking alone, their creature has +1/+1. Keep this in mind for combat math.</span></li>
+    </ul>
+  </div>
+
+  <!-- ESPER REANIMATOR vs JESKAI -->
+  <div id="mu_esper_j" class="matchup-detail">
+    <h3>Esper Reanimator — TRav Locks Goryo's, Consign Answers Atraxa</h3>
+    <p>Esper Reanimator uses Goryo's Vengeance (instant — return target legendary creature from GY to battlefield with haste, exile at next end step) to put <span class="c">Atraxa, Grand Unifier</span> or <span class="c">Griselbrand</span> into play and win on the spot. Your suite answers every part: <span class="c">Teferi, Time Raveler</span> static locks them to sorcery speed — Goryo's Vengeance cannot be cast at instant speed under TRav. <span class="c">Consign to Memory</span> counters Atraxa's ETB trigger (triggered ability). Grief + Ephemerate on their turn 1 is their best disruption — accept losing one card and rebuild with your redundancy.</p>
+    <h3>Play vs Draw</h3>
+    <div class="pd-grid">
+      <div class="pd-col">
+        <div class="pd-label">On the Play</div>
+        <div class="pd-title">TRav Turn 3 Shuts Goryo's</div>
+        <div class="pd-body"><span class="c">Teferi, Time Raveler</span> on turn 3 prevents all instant-speed plays. Goryo's Vengeance is an instant — under TRav, they cannot cast it in response to anything, cannot flash it at end of turn, and cannot use it as a combat trick. They must wait for their main phase with your countermagic open. This alone wins games 2-3.</div>
+      </div>
+      <div class="pd-col">
+        <div class="pd-label">On the Draw</div>
+        <div class="pd-title">Hold Consign for Atraxa ETB</div>
+        <div class="pd-body">Hold <span class="c">Consign to Memory</span> specifically for Atraxa's ETB trigger (look at top 10, put one of each card type into hand). Countering this denies their 7-card refuel. Atraxa is still a 7/7 flying vigilance lifelink — <span class="c">Solitude</span> exiles it. Don't wait for their end step to act.</div>
+      </div>
+    </div>
+    <h3>Sideboard</h3>
+    <div class="sb-table">
+      <div class="sb-col">
+        <div class="sb-col-label">In</div>
+        <div class="sb-item"><span>Rest in Peace</span><span class="sb-qty">+2</span></div>
+        <div class="sb-item"><span>Consign to Memory</span><span class="sb-qty">+2</span></div>
+      </div>
+      <div class="sb-col">
+        <div class="sb-col-label">Out</div>
+        <div class="sb-item"><span>Quantum Riddler</span><span class="sb-qty">&minus;2</span></div>
+        <div class="sb-item"><span>Mockingbird</span><span class="sb-qty">&minus;2</span></div>
+      </div>
+    </div>
+    <h3>If X &rarr; Do Y</h3>
+    <ul class="ifthen-list">
+      <li><span class="if-label">If</span><span><strong>Grief + Ephemerate on turn 1 exiles your TRav:</strong> They specifically took TRav to enable instant-speed Goryo's later. Prioritize deploying the second TRav from hand or finding it through White Orchid Phantom's tutor. Without TRav, you're back to countering Goryo's at instant speed — hold <span class="c">Consign to Memory</span> or Spell Pierce specifically for this.</span></li>
+      <li><span class="if-label">If</span><span><strong><span class="c">Rest in Peace</span> resolves:</strong> Every graveyard is exiled. Goryo's Vengeance targets a card in a graveyard — under RiP, no graveyards exist. Their entire plan collapses to hardcasting <span class="c">Atraxa</span> for WWUBB + 3, which costs 8+ mana they don't have. RiP wins this matchup on the spot if it sticks.</span></li>
+      <li><span class="if-label">If</span><span><strong><span class="c">Griselbrand</span> resolves and they activate the 7-life draw ability:</strong> <span class="c">Phelia, Exuberant Shepherd</span>'s attack trigger can exile and bounce Griselbrand on your turn. Griselbrand returns at the beginning of your next end step — exile it again. Each bounce denies one attack step from a 6/6 lifelink flier and resets the life situation. Race while bouncing repeatedly.</span></li>
+      <li><span class="if-label">If</span><span><strong>They Faithful Mending on turn 2 and put <span class="c">Atraxa</span> in the GY:</strong> Goryo's Vengeance is live next turn. This is the critical window. TRav must be deployed by your turn 3 (before their turn 3) or you need <span class="c">Consign to Memory</span>/<span class="c">Counterspell</span> open on their turn 3. Don't deploy TRav on your turn 3 tapped out — hold mana for the counter if TRav isn't already in play.</span></li>
+    </ul>
+  </div>
+
+  <!-- RUBY STORM vs JESKAI -->
+  <div id="mu_storm_j" class="matchup-detail">
+    <h3>Ruby Storm — Slight Dog: TRav Doesn't Help, Consign Does</h3>
+    <p>Ruby Storm chains red cantrips and rituals through <span class="c">Ruby Medallion</span> to generate storm count, winning with Grapeshot or Empty the Warrens. The key realization for Jeskai: <span class="c">Teferi, Time Raveler</span>'s sorcery lock is largely irrelevant — Storm already plays everything at sorcery speed. TRav wastes a turn 3 deployment that could be counter mana. Instead: hold <span class="c">Consign to Memory</span> for the storm trigger itself (triggered ability — counter it before copies are generated), or Spell Pierce to tax their payoff spell. Your creatures applying pressure does matter — they must win or die, and a 3/2 Phelia or 2/2 Guide actively attacks their life total.</p>
+    <h3>Play vs Draw</h3>
+    <div class="pd-grid">
+      <div class="pd-col">
+        <div class="pd-label">On the Play</div>
+        <div class="pd-title">Pressure + Hold Counter</div>
+        <div class="pd-body">Apply creatures early to threaten lethal while holding Spell Pierce or <span class="c">Consign to Memory</span> for their payoff. If you're at 7+ power and they haven't gone off, their window is closing. Do not tap out for TRav — open mana threatening a counter is worth more than the sorcery lock that doesn't matter.</div>
+      </div>
+      <div class="pd-col">
+        <div class="pd-label">On the Draw</div>
+        <div class="pd-title">Turn 3 Kill Window</div>
+        <div class="pd-body">Ruby Storm can win on turn 3 with a good hand. You're on the draw — your turn 3 counter must be available before they have the mana to execute. Keep any hand that has a 1-mana interaction piece (Spell Pierce) available by turn 3. FoN free on their turn counters their noncreature payoffs.</div>
+      </div>
+    </div>
+    <h3>Sideboard</h3>
+    <div class="sb-table">
+      <div class="sb-col">
+        <div class="sb-col-label">In</div>
+        <div class="sb-item"><span>Consign to Memory</span><span class="sb-qty">+3</span></div>
+        <div class="sb-item"><span>Rest in Peace</span><span class="sb-qty">+1</span></div>
+      </div>
+      <div class="sb-col">
+        <div class="sb-col-label">Out</div>
+        <div class="sb-item"><span>Quantum Riddler</span><span class="sb-qty">&minus;2</span></div>
+        <div class="sb-item"><span>Mockingbird</span><span class="sb-qty">&minus;2</span></div>
+      </div>
+    </div>
+    <h3>If X &rarr; Do Y</h3>
+    <ul class="ifthen-list">
+      <li><span class="if-label">If</span><span><strong>They cast Grapeshot and storm trigger fires:</strong> <span class="c">Consign to Memory</span> counters the storm trigger (triggered ability — "when you cast this spell, copy it for each spell cast before it"). Counter the trigger before any copies are generated. This leaves them with just the original Grapeshot dealing 1 damage. Countering the trigger after copies are on the stack is too late.</span></li>
+      <li><span class="if-label">If</span><span><strong><span class="c">Ruby Medallion</span> resolves on turn 1:</strong> <span class="c">Prismatic Ending</span> for WU kills it (MV 2). This is the highest priority removal target. Medallion reduces every red spell by 1 — without it they need full mana for each ritual and can't chain efficiently. Removing it pushes their kill turn from 3 to 5+.</span></li>
+      <li><span class="if-label">If</span><span><strong><span class="c">Rest in Peace</span> is in play:</strong> <span class="c">Past in Flames</span> flashback requires cards in the graveyard — under RiP, no cards go to graveyards. This cuts off their main recovery engine. Their storm chain must succeed on the first try without RiP backup. Much harder to execute through your counters now.</span></li>
+      <li><span class="if-label">If</span><span><strong>They resolve Empty the Warrens with high storm (10+ tokens):</strong> <span class="c">Phelia, Exuberant Shepherd</span>'s attack trigger cannot exile token creatures (they're created by the spell, not permanents with mana cost). White Orchid Phantom doesn't help. You need <span class="c">Solitude</span> via evoke to exile individual tokens, or race — your board applying pressure may still kill them before 20+ tokens do.</span></li>
+    </ul>
+  </div>
+
+<!-- end matchups section -->
+
+<!-- ── SIDEBOARD GUIDE ── -->
+<div id="sideboard" class="section">
+  <div class="section-label">Chapter 06</div>
+  <h1>Sideboard<br>Guide</h1>
+
+  <p>Per-card notes on what each sideboard card does and when it belongs in the deck. Commit to the boarding plan before games 2 and 3. The biggest mistake in the Jeskai Blink sideboard is over-boarding — bringing in too many reactive pieces dilutes the proactive engine that makes the deck function.</p>
+
+  <h2>Card-by-Card Notes</h2>
+  <div class="sb-card-guide">
+    <div class="sb-guide-row">
+      <div class="sb-guide-name"><span class="c">Teferi, Time Raveler</span></div>
+      <div class="sb-guide-body"><strong>2 copies.</strong> The trump card in control, mirror, and reanimator matchups. Under Teferi, opponents cannot use instant-speed spells — no Consign, no pitch <span class="c">Solitude</span>, no <span class="c">Persist</span>. Resolve Teferi and the matchup often flips completely. In the mirror, whoever resolves Teferi first usually wins. In control, Teferi makes their Counterspells sorcery-speed only. Board in vs Control, Mirror, Reanimator, Titan. Do not board in vs Aggro — Teferi doesn't help you stabilize and costs 3 mana you don't have.</div>
+    </div>
+    <div class="sb-guide-row">
+      <div class="sb-guide-name"><span class="c">Sanctifier en-Vec</span></div>
+      <div class="sb-guide-body"><strong>2 copies (SB) + 1 main.</strong> Protection from black and red turns off <span class="c">Galvanic Discharge</span>, <span class="c">Lava Dart</span>, <span class="c">Fatal Push</span>, and <span class="c">Thoughtseize</span> simultaneously. In Prowess, this single card wins games — their damage suite is entirely red and their disruption is black. In Boros, it shuts off Discharge. Board in vs Prowess, Boros Energy, Burn, and any deck with significant black or red removal. Never board it in against decks without black or red interaction.</div>
+    </div>
+    <div class="sb-guide-row">
+      <div class="sb-guide-name"><span class="c">Consign to Memory</span></div>
+      <div class="sb-guide-body"><strong>3 main + 1 SB.</strong> The 4th copy comes in against any deck where Consign has multiple relevant targets. Against Reanimator, you want maximum Archon ETB trigger counters and Emperor adapt trigger counters. Against Titan, maximum Pact counters. Against Living End and cascade, maximum cascade counters. The 4th copy in matchups where Consign is central raises your consistency on finding it in the critical turn window. Do not board in the 4th copy against matchups where Consign has no targets (aggro, creature mirrors).</div>
+    </div>
+    <div class="sb-guide-row">
+      <div class="sb-guide-name"><span class="c">Rest in Peace</span></div>
+      <div class="sb-guide-body"><strong>2 copies.</strong> Hard shutdown of graveyard decks. Against Grixis Reanimator, RIP makes their Archon unreanimatable — it's not in the graveyard, it's in exile. Against Grinding Breach, Dredge, and any graveyard combo, RIP wins on resolution. The downside is it also shuts off your own <span class="c">Meticulous Archive</span> — account for this when boarding. Board in vs Reanimator, Dredge, Grinding Breach, Living End.</div>
+    </div>
+    <div class="sb-guide-row">
+      <div class="sb-guide-name"><span class="c">Wrath of the Skies</span></div>
+      <div class="sb-guide-body"><strong>2 copies.</strong> X-cost sweeper that clears your own creatures too — only use it when the trade is clearly favorable. At X=1 it kills Swiftspears, Monks, and 1/1 tokens. At X=2 it kills <span class="c">Guide of Souls</span> and most 2-toughness threats. At X=3 it's a full board clear in most creature matchups. Board in vs Prowess, Boros Energy, Zoo, and any wide creature deck. Do not board in against control or combo where there are no boards to sweep.</div>
+    </div>
+    <div class="sb-guide-row">
+      <div class="sb-guide-name"><span class="c">Pithing Needle</span></div>
+      <div class="sb-guide-body"><strong>1 copy.</strong> Shuts off a named activated ability. In the mirror, name Phelia — stops them from blinking your permanents. Against Titan, name <span class="c">Slayers' Stronghold</span> — prevents Titan from gaining haste. Against Control, name Teferi or Jace. Against Amulet, name <span class="c">Amulet of Vigor</span>. This is the most versatile single card in the board — know the target before you board it in, not after.</div>
+    </div>
+    <div class="sb-guide-row">
+      <div class="sb-guide-name"><span class="c">Stony Silence</span></div>
+      <div class="sb-guide-body"><strong>1 copy.</strong> Shuts off activated abilities of artifacts. Primary use: vs Amulet Titan (<span class="c">Amulet of Vigor</span> becomes blank), Affinity/Hammer (equipment equip costs offline), and Grinding Breach (Breach requires activating an artifact). Boards in against any deck where artifact activated abilities are central to the game plan. Narrow but game-winning in the right matchup.</div>
+    </div>
+    <div class="sb-guide-row">
+      <div class="sb-guide-name"><span class="c">Orim's Chant</span></div>
+      <div class="sb-guide-body"><strong>1 copy.</strong> Prevents a player from casting spells that turn. Against Prowess, fire it on their "chain turn" — when they try to go for the kill with 4+ spells. Against Storm, fire it on their Storm turn. Against Living End, fire it in response to Cascade. This is the "one free turn" card — used correctly it ends the game, used incorrectly it does nothing. Never fire it on a normal development turn.</div>
+    </div>
+    <div class="sb-guide-row">
+      <div class="sb-guide-name"><span class="c">Mistcaller</span></div>
+      <div class="sb-guide-body"><strong>1 copy.</strong> Counters the first creature put onto the battlefield from outside the game or library each turn. Primary use: vs Grixis Reanimator (Archon enters from graveyard, <span class="c">Mistcaller</span> counters it), Neoform (the combo payoff enters from library), Goryo's Vengeance. A 1/1 for 1 that wins games in specific matchups. Do not board it in against fair creature decks — it does nothing.</div>
+    </div>
+    <div class="sb-guide-row">
+      <div class="sb-guide-name"><span class="c">Vexing Bauble</span></div>
+      <div class="sb-guide-body"><strong>1 copy.</strong> Taxes free spells — opponent pays 1 or you draw a card. Against Blink mirrors with <span class="c">Force of Negation</span>, Bauble taxes their free interaction. Against Living End with free cascade, Bauble taxes the cascade trigger. Against any deck relying on free spells, this converts their free efficiency into your card advantage. Boards in vs control (<span class="c">Force of Negation</span>), mirror (Force), Living End.</div>
+    </div>
+    <div class="sb-guide-row">
+      <div class="sb-guide-name"><span class="c">Mockingbird</span></div>
+      <div class="sb-guide-body"><strong>1 copy.</strong> Copies the best creature on the battlefield. In the mirror, copies their Phelia or Riddler for maximum ETB value. Against Boros, copies their <span class="c">Guide of Souls</span> for energy generation. Against any creature-based deck, <span class="c">Mockingbird</span> at 2 mana copies the best thing in play. Most valuable in the mirror and against midrange decks with powerful ETB creatures.</div>
+    </div>
+  </div>
+
+  <h2>Matchup-by-Matchup Deep Dives</h2>
+
+  <div class="sb-deep">
+    <div class="sb-deep-header" onclick="toggleDeep(this)">
+      <div class="sb-deep-title">
+        <div class="sb-deep-name">Grixis Reanimator</div>
+        <div class="sb-deep-meta">+1 Consign · +2 RIP · +2 Sanctifier · +2 Teferi · +1 <span class="c">Mistcaller</span> / −2 Witch · −2 Riddler · −2 Shepherd · −2 Pride</div>
+      </div>
+      <div class="sb-deep-toggle">+</div>
+    </div>
+    <div class="sb-deep-body">
+      <div class="sb-deep-mantra">Deny the graveyard. Counter the <span class="c">Persist</span>. Let RIP do the rest.</div>
+      <div class="sb-deep-grid">
+        <div>
+          <div class="sb-deep-section-label">Why These Cards</div>
+          <p style="font-size:15px;font-weight:300;"><span class="c">Rest in Peace</span> makes Archon unreanimatable — the graveyard doesn't exist. <span class="c">Sanctifier en-Vec</span> protects from <span class="c">Thoughtseize</span> (black) and any <span class="c">Fatal Push</span> they run. Teferi locks them into sorcery speed so <span class="c">Persist</span> can't be cast at instant speed. <span class="c">Mistcaller</span> counters Archon entering from the graveyard entirely. The 4th Consign ensures you find it in the critical turn.</p>
+        </div>
+        <div>
+          <div class="sb-deep-section-label">Why Those Cards Come Out</div>
+          <p style="font-size:15px;font-weight:300;"><span class="c">Witch Enchanter</span> has no relevant enchantments to destroy. <span class="c">Quantum Riddler</span> is slow — you want proactive disruption, not value generation, in this matchup. <span class="c">Starfield Shepherd</span> is too expensive for what you're trying to do. <span class="c">Ocelot Pride</span> tokens don't matter when your game plan is disruption and denial, not board presence.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sb-deep">
+    <div class="sb-deep-header" onclick="toggleDeep(this)">
+      <div class="sb-deep-title">
+        <div class="sb-deep-name">Blink Mirror</div>
+        <div class="sb-deep-meta">+2 Teferi · +1 Consign · +1 Needle · +1 <span class="c">Mockingbird</span> / −2 RIP · −1 Sanctifier · −1 Witch · −1 Pride</div>
+      </div>
+      <div class="sb-deep-toggle">+</div>
+    </div>
+    <div class="sb-deep-body">
+      <div class="sb-deep-mantra">Resolve Teferi first. Everything else is secondary.</div>
+      <div class="sb-deep-grid">
+        <div>
+          <div class="sb-deep-section-label">Teferi as the Game Plan</div>
+          <p style="font-size:15px;font-weight:300;">The entire mirror sideboard is structured around resolving and protecting Teferi. The 4th Consign counters their Teferi on the play if you're on the draw. <span class="c">Pithing Needle</span> on Phelia stops their most punishing interaction with your permanents. <span class="c">Mockingbird</span> copies whichever engine creature they have that generates the most immediate value.</p>
+        </div>
+        <div>
+          <div class="sb-deep-section-label">Stack War Principles</div>
+          <p style="font-size:15px;font-weight:300;">Never fire <span class="c">Ephemerate</span> first in a stack war. Let them commit their <span class="c">Ephemerate</span> or Consign, then respond with yours. Sandbag Riddler until your hand has 2 or fewer cards — it draws cards equal to the number you don't have, so being nearly empty-handed maximizes the draw trigger.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── HEURISTICS ── -->
+<div id="heuristics" class="section">
+  <div class="section-label">Chapter 07</div>
+  <h1>Heuristics &amp;<br>Quick Rules</h1>
+
+  <p>These are the decisions made before the game starts so you don't have to think about them mid-match. Jeskai Blink has the highest decision density of any deck in this playbook library. Internalizing these rules converts decision points from 10-second pauses into reflexes.</p>
+
+  <ol class="heuristic-list">
+    <li><strong>Know your Consign target before the game starts.</strong> Against Reanimator: Archon's ETB trigger and Emperor adapt trigger (Consign cannot counter Persist the black sorcery). Against Titan, it's <span class="c">Summoner's Pact</span> trigger. Against Living End, it's the cascade trigger. Against Aggro, there may be no target — board it out. Never figure this out at the table.</li>
+    <li><strong>Never cast <span class="c">Ephemerate</span> first in a stack war.</strong> Let them commit their response, then respond with yours. Stack order means the last <span class="c">Ephemerate</span> on the stack resolves first — you always want your blink trigger to resolve last, applying the highest-value state.</li>
+    <li><strong>Teferi is the trump in the mirror — never tap out when you're about to resolve it.</strong> Wait until they're committed on their turn, then resolve Teferi on your turn into their depleted mana. They can't Consign it if they have no cards to exile.</li>
+    <li><strong>Sandbag <span class="c">Quantum Riddler</span> until your hand is 2 or fewer cards.</strong> Riddler draws cards equal to the number of creatures you don't have in hand. An empty-handed Riddler is a full grip. A 7-card-hand Riddler draws one or two. Time it correctly.</li>
+    <li><strong>Always fetch white first — blue and red can wait.</strong> <span class="c">Solitude</span>, <span class="c">Ocelot Pride</span>, Sanctifier, and <span class="c">Wrath of the Skies</span> all require white. Missing white on turns 1–2 is catastrophic. The fetchland choice at the start of the game should almost always produce a white source unless you have a specific reason for blue or red.</li>
+    <li><strong>Phelia blinking an opponent's creature during attacks denies their combat step.</strong> This is one of the highest-value uses of Phelia and players miss it constantly. Their attacking creature phases out mid-combat — they lose that attack entirely. Use this when the combat damage would kill you or generate a crucial ETB trigger for them.</li>
+    <li><strong><span class="c">White Orchid Phantom</span>'s lock is only valuable against decks that need 4+ mana.</strong> Against Boros Energy or Prowess, they're killing you with existing mana. The Phantom lock is largely irrelevant. Prioritize developing your own engine over maintaining a mana lock that doesn't slow their kill.</li>
+    <li><strong><span class="c">Solitude</span> + <span class="c">Ephemerate</span> answers two creatures for one card — always look for this line before casting either piece separately.</strong> <span class="c">Solitude</span> exiles creature 1. <span class="c">Ephemerate</span> blinks <span class="c">Solitude</span> on rebound — exile creature 2. Two removal spells, zero mana, one card pitched, one <span class="c">Ephemerate</span> spent. This is the stabilization line against aggro.</li>
+    <li><strong><span class="c">Pithing Needle</span> target must be decided before boarding, not after.</strong> Know whether you're naming Phelia, Teferi, Amulet, <span class="c">Slayers' Stronghold</span>, or something else before the game starts. Needle is useless if you spend 30 seconds at the table deciding what to name.</li>
+    <li><strong><span class="c">Sanctifier en-Vec</span> is your highest-priority play against Prowess — mulligan for it.</strong> Their damage suite is 100% black and red. Sanctifier online means they cannot damage you. Aggressively mulligan to hands containing Sanctifier in games 2 and 3. A 5-card hand with Sanctifier beats a 7-card hand without it in this matchup.</li>
+    <li><strong>Against combo, your clock matters as much as your disruption.</strong> You are not just "the disruption deck" — you must also be threatening to kill them. Holding Consign with no board pressure means they can play around it forever. Apply Phantom + Pride pressure simultaneously with holding disruption.</li>
+    <li><strong>Teferi's +1 bounces a permanent — use it proactively, not just defensively.</strong> Bounce their <span class="c">Sanctifier en-Vec</span>, their <span class="c">Amulet of Vigor</span>, their <span class="c">Pithing Needle</span>. Teferi's +1 is a pseudo-removal spell, not just a protection tool. Don't spend Teferi turns doing nothing — generate value with every activation.</li>
+    <li><strong>Role identification happens before turn 1, not on turn 3.</strong> You must know whether you're Control, Tempo, or Beatdown from the matchup — not from how the game develops. Adjustments happen mid-game, but the starting role is locked at game start. Hesitating on role in the opening turns costs tempo you cannot recover.</li>
+    <li><strong><span class="c">Mockingbird</span> copies the ETB creature with the highest immediate value, not the biggest body.</strong> Copying Phelia creates a blink. Copying Riddler draws cards. Copying <span class="c">Guide of Souls</span> generates energy. Copying a <span class="c">Solitude</span> exiles something. Biggest body is almost never the right copy target.</li>
+    <li><strong><span class="c">Orim's Chant</span> is a one-time "skip their turn" effect — hold it for their kill turn, not their setup turn.</strong> Against Prowess, fire it when they have 6+ spells in hand and are threatening lethal. Against Storm, fire it on their Storm turn. Using it on a normal 2-spell turn wastes its potential entirely.</li>
+    <li><strong>The tournament clock is your real constraint in this deck.</strong> Jeskai Blink generates so many decisions per turn that games go long if you let them. Identify your win condition early and move toward it efficiently. Every board state has a fastest line to closing — find it and execute. Drawing in round 7 because you ran out of time is a loss.</li>
+  </ol>
+</div>
+
+<!-- ── PREP SHEET ── -->
+<div id="prep" class="section">
+  <div class="section-label">Chapter 08</div>
+  <h1>Event Day<br>Prep</h1>
+  <button class="print-btn" onclick="window.print()">⎙ Print This Sheet</button>
+
+  <div class="print-grid">
+    <div class="print-mu">
+      <div class="print-mu-name">Boros Energy <span class="diff-medium" style="font-size:10px;">Even</span></div>
+      <div class="print-mu-role">Role: Control → Beatdown after stabilize</div>
+      <div class="print-cols">
+        <div>
+          <div class="print-col-label">In</div>
+          <div class="print-row"><span><span class="c">Sanctifier en-Vec</span></span><span class="print-qty">+2</span></div>
+          <div class="print-row"><span><span class="c">Wrath of the Skies</span></span><span class="print-qty">+2</span></div>
+          <div class="print-row"><span>Teferi</span><span class="print-qty">+1</span></div>
+        </div>
+        <div>
+          <div class="print-col-label">Out</div>
+          <div class="print-row"><span><span class="c">Consign to Memory</span></span><span class="print-qty">−2</span></div>
+          <div class="print-row"><span><span class="c">Quantum Riddler</span></span><span class="print-qty">−2</span></div>
+          <div class="print-row"><span><span class="c">Witch Enchanter</span></span><span class="print-qty">−1</span></div>
+        </div>
+      </div>
+      <div class="print-needle">Consign has no targets vs Boros — board it out</div>
+      <div class="print-note">T2 Phantom locks their 4-mana. Sanctifier shuts off Discharge + Bombardment.</div>
+    </div>
+
+    <div class="print-mu">
+      <div class="print-mu-name">Izzet Prowess <span class="diff-good" style="font-size:10px;">Favored</span></div>
+      <div class="print-mu-role">Role: Control — stabilize with Sanctifier</div>
+      <div class="print-cols">
+        <div>
+          <div class="print-col-label">In</div>
+          <div class="print-row"><span><span class="c">Sanctifier en-Vec</span></span><span class="print-qty">+2</span></div>
+          <div class="print-row"><span><span class="c">Wrath of the Skies</span></span><span class="print-qty">+2</span></div>
+          <div class="print-row"><span><span class="c">Orim's Chant</span></span><span class="print-qty">+1</span></div>
+          <div class="print-row"><span>Teferi</span><span class="print-qty">+1</span></div>
+        </div>
+        <div>
+          <div class="print-col-label">Out</div>
+          <div class="print-row"><span><span class="c">Consign to Memory</span></span><span class="print-qty">−2</span></div>
+          <div class="print-row"><span><span class="c">Quantum Riddler</span></span><span class="print-qty">−2</span></div>
+          <div class="print-row"><span><span class="c">Witch Enchanter</span></span><span class="print-qty">−1</span></div>
+          <div class="print-row"><span><span class="c">Starfield Shepherd</span></span><span class="print-qty">−1</span></div>
+        </div>
+      </div>
+      <div class="print-needle">Mulligan to Sanctifier in G2/G3</div>
+      <div class="print-note">Chant on their kill turn. Below 8 life = full control mode. Wrath at X=1.</div>
+    </div>
+
+    <div class="print-mu">
+      <div class="print-mu-name">Grixis Reanimator <span class="diff-even" style="font-size:10px;">Even</span></div>
+      <div class="print-mu-role">Role: Tempo — Consign on <span class="c">Persist</span></div>
+      <div class="print-cols">
+        <div>
+          <div class="print-col-label">In</div>
+          <div class="print-row"><span><span class="c">Consign to Memory</span></span><span class="print-qty">+1</span></div>
+          <div class="print-row"><span><span class="c">Rest in Peace</span></span><span class="print-qty">+2</span></div>
+          <div class="print-row"><span><span class="c">Sanctifier en-Vec</span></span><span class="print-qty">+2</span></div>
+          <div class="print-row"><span>Teferi</span><span class="print-qty">+2</span></div>
+          <div class="print-row"><span><span class="c">Mistcaller</span></span><span class="print-qty">+1</span></div>
+        </div>
+        <div>
+          <div class="print-col-label">Out</div>
+          <div class="print-row"><span><span class="c">Witch Enchanter</span></span><span class="print-qty">−2</span></div>
+          <div class="print-row"><span><span class="c">Quantum Riddler</span></span><span class="print-qty">−2</span></div>
+          <div class="print-row"><span><span class="c">Starfield Shepherd</span></span><span class="print-qty">−2</span></div>
+          <div class="print-row"><span><span class="c">Ocelot Pride</span></span><span class="print-qty">−2</span></div>
+        </div>
+      </div>
+      <div class="print-needle">RIP makes Archon unreanimatable</div>
+      <div class="print-note">Teferi locks sorcery speed — <span class="c">Persist</span> can't be instant. Kill <span class="c">Psychic Frog</span> early.</div>
+    </div>
+
+    <div class="print-mu">
+      <div class="print-mu-name">Azorius Control <span class="diff-hard" style="font-size:10px;">Tough</span></div>
+      <div class="print-mu-role">Role: Beatdown — clock before Verdict</div>
+      <div class="print-cols">
+        <div>
+          <div class="print-col-label">In</div>
+          <div class="print-row"><span>Teferi</span><span class="print-qty">+2</span></div>
+          <div class="print-row"><span><span class="c">Vexing Bauble</span></span><span class="print-qty">+1</span></div>
+          <div class="print-row"><span><span class="c">Pithing Needle</span></span><span class="print-qty">+1</span></div>
+        </div>
+        <div>
+          <div class="print-col-label">Out</div>
+          <div class="print-row"><span><span class="c">Rest in Peace</span></span><span class="print-qty">−2</span></div>
+          <div class="print-row"><span>Sanctifier (main)</span><span class="print-qty">−1</span></div>
+          <div class="print-row"><span><span class="c">Witch Enchanter</span></span><span class="print-qty">−1</span></div>
+        </div>
+      </div>
+      <div class="print-needle">Needle: Teferi Hero or Jace</div>
+      <div class="print-note">One threat/turn into counter mana. Resolve your Teferi — matchup flips.</div>
+    </div>
+
+    <div class="print-mu">
+      <div class="print-mu-name">Amulet Titan <span class="diff-even" style="font-size:10px;">Slight Edge</span></div>
+      <div class="print-mu-role">Role: Tempo — Phantom lock + Consign</div>
+      <div class="print-cols">
+        <div>
+          <div class="print-col-label">In</div>
+          <div class="print-row"><span><span class="c">Consign to Memory</span></span><span class="print-qty">+1</span></div>
+          <div class="print-row"><span>Teferi</span><span class="print-qty">+2</span></div>
+          <div class="print-row"><span><span class="c">Pithing Needle</span></span><span class="print-qty">+1</span></div>
+          <div class="print-row"><span><span class="c">Stony Silence</span></span><span class="print-qty">+1</span></div>
+        </div>
+        <div>
+          <div class="print-col-label">Out</div>
+          <div class="print-row"><span><span class="c">Rest in Peace</span></span><span class="print-qty">−2</span></div>
+          <div class="print-row"><span>Sanctifier (main)</span><span class="print-qty">−1</span></div>
+          <div class="print-row"><span><span class="c">Ocelot Pride</span></span><span class="print-qty">−2</span></div>
+        </div>
+      </div>
+      <div class="print-needle">Needle: <span class="c">Slayers' Stronghold</span> · Consign on Pact trigger = win</div>
+      <div class="print-note"><span class="c">Stony Silence</span> blanks Amulet. Phantom lock denies bounce land access.</div>
+    </div>
+
+    <div class="print-mu">
+      <div class="print-mu-name">Blink Mirror <span class="diff-even" style="font-size:10px;">Even</span></div>
+      <div class="print-mu-role">Role: Beatdown — resolve Teferi first</div>
+      <div class="print-cols">
+        <div>
+          <div class="print-col-label">In</div>
+          <div class="print-row"><span>Teferi</span><span class="print-qty">+2</span></div>
+          <div class="print-row"><span><span class="c">Consign to Memory</span></span><span class="print-qty">+1</span></div>
+          <div class="print-row"><span><span class="c">Pithing Needle</span></span><span class="print-qty">+1</span></div>
+          <div class="print-row"><span><span class="c">Mockingbird</span></span><span class="print-qty">+1</span></div>
+        </div>
+        <div>
+          <div class="print-col-label">Out</div>
+          <div class="print-row"><span><span class="c">Rest in Peace</span></span><span class="print-qty">−2</span></div>
+          <div class="print-row"><span>Sanctifier (main)</span><span class="print-qty">−1</span></div>
+          <div class="print-row"><span><span class="c">Witch Enchanter</span></span><span class="print-qty">−1</span></div>
+          <div class="print-row"><span><span class="c">Ocelot Pride</span></span><span class="print-qty">−1</span></div>
+        </div>
+      </div>
+      <div class="print-needle">Needle: Phelia · Never <span class="c">Ephemerate</span> first in stack wars</div>
+      <div class="print-note">Hold Consign for their Teferi. Sandbag Riddler until hand is 2 cards.</div>
+    </div>
+  </div>
+
+  <h2>Non-Negotiable Rules</h2>
+  <div class="card-grid">
+    <div class="card">
+      <div class="card-label">Rule 01</div>
+      <div class="card-title">Consign Target Pre-Game</div>
+      <div class="card-body">Know what you're holding Consign for before the game starts. Reanimator: <span class="c">Persist</span>. Titan: Pact trigger. Aggro: board it out. Never figure this out at the table.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Rule 02</div>
+      <div class="card-title"><span class="c">Ephemerate</span> Stack Order</div>
+      <div class="card-body">Never cast <span class="c">Ephemerate</span> first in a stack war. Wait for their response, then respond to theirs. Your <span class="c">Ephemerate</span> resolving last means your blink triggers resolve first.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Rule 03</div>
+      <div class="card-title">Fetch White First</div>
+      <div class="card-body"><span class="c">Solitude</span>, Pride, Sanctifier, Wrath all require white. Miss it turns 1–2 and the game is lost before it starts. Almost always fetch white on your opening fetchland.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Rule 04</div>
+      <div class="card-title">Tournament Clock</div>
+      <div class="card-body">Find the fastest line to closing in every game state. Jeskai Blink draws matches by generating too many decisions. Identify your win condition by turn 4 and execute toward it.</div>
+    </div>
+  </div>
+</div>
+
+</div><!-- end .page -->
+
+<footer>
+  <span>Team Resolve · Modern · Jeskai Blink Playbook</span>
+  <span>Zuxas · 2026 RC Season</span>
+</footer>
+
 <script>
-function show(id){document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));document.querySelectorAll('.nav-link').forEach(l=>l.classList.remove('active'));document.getElementById(id).classList.add('active');event.target.classList.add('active');}
-function toggle(id,t){const d=document.getElementById(id);const o=d.classList.contains('open');document.querySelectorAll('.matchup-detail').forEach(d=>d.classList.remove('open'));document.querySelectorAll('.matchup-table tr').forEach(r=>r.classList.remove('selected'));if(!o){d.classList.add('open');t.querySelector('tbody tr').classList.add('selected');}}
+function show(id) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  event.target.classList.add('active');
+}
+function toggleMatchup(id) {
+  const el = document.getElementById(id);
+  const isOpen = el.classList.contains('open');
+  document.querySelectorAll('.matchup-detail').forEach(d => d.classList.remove('open'));
+  document.querySelectorAll('.matchup-table tr').forEach(r => r.classList.remove('selected'));
+  if (!isOpen) {
+    el.classList.add('open');
+    event.currentTarget.classList.add('selected');
+  }
+}
+function toggleDeep(header) {
+  header.parentElement.classList.toggle('open');
+}
 </script>
 <script src="matchup-data-loader.js"></script>
-</body></html>
-<div id="gameplan" class="section"><div class="section-label">Chapter 03</div><h1>The Game Plan</h1>
-<div class="mantra">"Teferi first. Then execute. Never the other way around."<cite>— Key Principle</cite></div>
-<p>The UW Blink engine is identical — see the <a href="uw-blink-2025-10-07.html">UW Blink Playbook</a> for full detail on Ephemerate sequencing, White Orchid Phantom lines, and Ocelot Pride + Guide inevitability. This section covers <strong>what changes with the red splash</strong>.</p>
-<h2>The Teferi Rule</h2>
-<p>Against any deck with instant-speed interaction: <strong>Teferi, Time Raveler on turn 3 → execute your plan on turn 4+</strong>. Never the other way around. Teferi shuts off Goryo's Vengeance, Consign to Memory, Force of Negation, and Counterspell all at once. Ephemerate on Teferi is almost always wrong — Teferi's value is his static ability, not loyalty. Blink other targets.</p>
-<h2>Orim's Chant Rules</h2>
-<p>Cast at the start of their main phase (before they declare any actions) to tap all their mana. Against Belcher: tap mana before they can activate Charbelcher. Against Amulet: tap mana in response to Summoner's Pact. Against Neoform: tap mana before they can cast it. You get a free turn — use it to set up your engine or assemble the Ephemerate chain.</p>
-<h2>Bolt Priority</h2>
-<p>Lightning Bolt goes to the face in most matchups. The exceptions: Ragavan before its first connection, DRC before delirium, and Ocelot Pride on their side must die to Bolt immediately — their Pride token army counters your own clock.</p>
-<h2>Mana Reality</h2>
-<p>Accept 2–4 life of shock damage per game. Track life carefully — the Boros Energy matchup is often decided at 6–8 life. Don't fetch Sacred Foundry unless you specifically need red mana that turn.</p></div>
-<div id="roles" class="section"><div class="section-label">Chapter 04</div><h1>Role Assignment</h1>
-<p>Same as UW Blink — control against aggro, beatdown against control — with one addition: Teferi creates a third mode where you lock opponents into sorcery speed and play as the proactive deck even against interactive decks.</p>
-<div class="card-grid"><div class="card"><div class="card-label">vs Aggro</div><div class="card-title">Control</div><div class="card-body">Solitude + Ephemerate stabilizes. Bolt kills early threats. Wrath resets. Accept slightly more shock damage than UW — you have Bolt to compensate.</div></div><div class="card"><div class="card-label">vs Combo</div><div class="card-title">Teferi Lock + Chant</div><div class="card-body">Teferi on T3, then assemble the engine. Orim's Chant buys a full turn if Teferi is answered. Consign protects the lock once established.</div></div><div class="card"><div class="card-label">vs Control</div><div class="card-title">Beatdown + Teferi</div><div class="card-body">Teferi shuts off their instant-speed Counterspell. A resolved Teferi into Ocelot Pride with Guide of Souls is very hard for control to answer in one turn.</div></div><div class="card"><div class="card-label">vs Midrange</div><div class="card-title">Tempo</div><div class="card-body">Bolt efficiency plus Ephemerate value. Identical to UW but with an additional answer that goes to the face.</div></div></div></div>
-<div id="matchups" class="section"><div class="section-label">Chapter 05</div><h1>Matchup Guide</h1><table class="matchup-table" onclick="toggle('vs_glock',this)">
-<thead><tr><th>Matchup</th><th>Role</th><th>G1 WR</th><th>Overall</th></tr></thead>
-<tbody><tr><td>Grixis Reanimator</td><td>Teferi Lock</td><td>~60%</td><td><span class="verdict v-good">Favored — Teferi Wins</span></td></tr></tbody>
-</table><div id="vs_glock" class="matchup-detail"><p>This is the primary reason to play Jeskai over UW. Teferi, Time Raveler locks Glockulous into sorcery speed — they cannot Persist at instant speed under Teferi. Orim's Chant buys an additional turn if Teferi is answered. G1: Apply Guide + Ocelot pressure while holding Consign for their pivotal Persist turn. If Teferi is in hand, lead Teferi on T3 — Persist cannot be cast at instant speed.</p><div class="sb-row"><div class="sb-in"><div class="sb-label">In</div><div class="sb-card"><span>Consign to Memory</span><span class="sb-n">2</span></div><div class="sb-card"><span>Disruptor Flute</span><span class="sb-n">1</span></div><div class="sb-card"><span>Lavinia, Azorius Renegade</span><span class="sb-n">1</span></div></div><div class="sb-out"><div class="sb-label">Out</div><div class="sb-card"><span>Mockingbird</span><span class="sb-n">1</span></div><div class="sb-card"><span>Wrath of the Skies</span><span class="sb-n">1</span></div><div class="sb-card"><span>Sanctifier</span><span class="sb-n">1</span></div></div></div><div class="if-then"><div class="if">If Teferi resolves</div>→ Execute immediately. They cannot Persist at instant speed.</div><div class="if-then"><div class="if">If they Thoughtseize Teferi</div>→ Hold Consign for the Persist. Orim's Chant buys the turn you need to develop enough to race an Archon ETB.</div></div><table class="matchup-table" onclick="toggle('vs_boros',this)">
-<thead><tr><th>Matchup</th><th>Role</th><th>G1 WR</th><th>Overall</th></tr></thead>
-<tbody><tr><td>Boros Energy</td><td>Control → Value</td><td>~50%</td><td><span class="verdict v-even">Even — Bolt Helps</span></td></tr></tbody>
-</table><div id="vs_boros" class="matchup-detail"><p>Bolt kills Ragavan for one mana — an improvement over UW. The mana hit from three-color lands means you sometimes take 4+ shock damage before you've interacted. From the TR UW Blink guide: trade early, respect pump math, Wrath to reset, then win on value with Phelia/Ephemerate chains.</p><div class="sb-row"><div class="sb-in"><div class="sb-label">In</div><div class="sb-card"><span>Wrath of the Skies</span><span class="sb-n">2</span></div><div class="sb-card"><span>Sanctifier en-Vec</span><span class="sb-n">2</span></div></div><div class="sb-out"><div class="sb-label">Out</div><div class="sb-card"><span>Orim's Chant</span><span class="sb-n">1</span></div><div class="sb-card"><span>Mockingbird</span><span class="sb-n">1</span></div><div class="sb-card"><span>Consign (1)</span><span class="sb-n">1</span></div><div class="sb-card"><span>Flex</span><span class="sb-n">1</span></div></div></div><div class="if-then"><div class="if">If you have red mana open</div>→ Hold Bolt for Ragavan. Killing it before the first connection is worth more than any 3 face damage.</div></div><table class="matchup-table" onclick="toggle('vs_titan',this)">
-<thead><tr><th>Matchup</th><th>Role</th><th>G1 WR</th><th>Overall</th></tr></thead>
-<tbody><tr><td>Amulet Titan / Belcher</td><td>Teferi + Chant</td><td>~55%</td><td><span class="verdict v-good">Favored — Chant Shines</span></td></tr></tbody>
-</table><div id="vs_titan" class="matchup-detail"><p>Orim's Chant and Teferi make this matchup category significantly better than UW. From the TR RC Houston guide: Tax Pact and Amulet turns with Teferi/Chant/Consign; Flute naming Summoner's Pact is often backbreaking. The red splash adds the second Orim's Chant and the ability to buy full turns the UW shell cannot.</p><div class="sb-row"><div class="sb-in"><div class="sb-label">In</div><div class="sb-card"><span>Consign to Memory</span><span class="sb-n">2</span></div><div class="sb-card"><span>Disruptor Flute</span><span class="sb-n">1</span></div><div class="sb-card"><span>Lavinia, Azorius Renegade</span><span class="sb-n">1</span></div><div class="sb-card"><span>Teferi, Time Raveler</span><span class="sb-n">1</span></div><div class="sb-card"><span>Stony Silence</span><span class="sb-n">2</span></div></div><div class="sb-out"><div class="sb-label">Out</div><div class="sb-card"><span>Mockingbird</span><span class="sb-n">1</span></div><div class="sb-card"><span>Wrath of the Skies</span><span class="sb-n">1</span></div><div class="sb-card"><span>Sanctifier</span><span class="sb-n">1</span></div><div class="sb-card"><span>Bolt ×2</span><span class="sb-n">2</span></div></div></div><div class="if-then"><div class="if">Against Amulet</div>→ White Orchid Phantom denies their bounce lands. Deploy Phantom before they can respond with Amulet triggers.</div><div class="if-then"><div class="if">Against Belcher</div>→ Orim's Chant before they tap for Charbelcher activation. Stony Silence shuts Belcher off permanently.</div></div></div>
-<div id="sideboard" class="section"><div class="section-label">Chapter 06</div><h1>Sideboard Guide</h1>
-<p>See the <a href="uw-blink-2025-10-07.html">UW Blink Playbook</a> for full notes on Consign to Memory, Sanctifier en-Vec, Stony Silence, Kataki, Wrath of the Skies, Disruptor Flute, and Lavinia. These are identical between both shells. Jeskai-specific notes:</p>
-<div class='sb-guide-card'><div class='sb-guide-name'>Orim's Chant — 1 main + 1 SB (2 total)</div><div class='sb-guide-body'>Two total across the 75. Main deck copy vs any unknown field since combo is always possible. SB copy boards in explicitly against combo-heavy matchups. Never boards out in combo matchups — if you're in Jeskai it's because you expected to need Chant. Use at start of main phase, not reactively.</div></div>
-<div class='sb-guide-card'><div class='sb-guide-name'>Teferi, Time Raveler — 2 main + 1 SB (3 total)</div><div class='sb-guide-body'>From the TR RC Houston guide: you want to draw one, not multiples; it protects engines and forces sorcery speed. Board the third copy in for combo/stack-heavy matchups. Never Ephemerate Teferi — blink other targets and let his static ability do work.</div></div>
-<div class='sb-guide-card'><div class='sb-guide-name'>Disruptor Flute — 1 copy</div><div class='sb-guide-body'>From the TR guide: broad combo hedge for one-axis decks — Neoform, Summoner's Pact, Charbelcher, Crashing Footfalls, The One Ring, etc. Naming the key card turns off their entire plan. Flute naming Summoner's Pact against Amulet is often backbreaking.</div></div></div>
-<div id="heuristics" class="section"><div class="section-label">Chapter 07</div><h1>Heuristics &amp;<br>Quick Rules</h1><ol class="heuristic-list">
-<li>Teferi resolves before you execute the combo plan against any deck with instant-speed interaction. Sequence: Teferi on T3 → Ephemerate chains on T4+.</li>
-<li>Orim's Chant is cast at the START of their main phase — before they have priority to cast anything. Don't wait for them to start acting.</li>
-<li>Lightning Bolt goes to the face except against Ragavan, DRC, and Ocelot Pride (on their side). These three specific cards are worth killing over dealing 3 to the dome.</li>
-<li>Track shock damage carefully. The Boros Energy matchup is often decided at 6–8 life. Every fetch of Sacred Foundry is a tax on those games.</li>
-<li>Never Ephemerate Teferi. His value is the static ability — sorcery speed lock. Blink Solitude, Phantom, or Guide instead.</li>
-<li>Choose Jeskai when you expect 20%+ combo in the RC field. Against open fields with heavy aggro, UW's cleaner mana is the better call.</li>
-<li>Disruptor Flute naming the key combo card is often backbreaking. Know what to name: Summoner's Pact (Amulet), Charbelcher (Belcher), Neoform (Neoform).</li>
-<li>Lavinia, Azorius Renegade stops free spells (Living End, Cascade, Persist) and taxes non-land plays with more spells than mana paid. Niche but backbreaking in the right matchup.</li>
-<li>White Orchid Phantom + Flagstones denial works identically to UW — deploy Phantom before they can fetch to deny their key land.</li>
-<li>If the field ends up Boros + Prowess heavy and you chose Jeskai, sideboard heavily into Wrath + Sanctifier and accept you're playing a slightly worse UW in those matchups.</li>
-</ol></div>
-<div id="prep" class="section"><div class="section-label">Chapter 08</div><h1>Event Day Prep</h1><button class="print-btn" onclick="window.print()">Print This Sheet</button>
-<div class="prep-grid">
-<div class="prep-block"><div class="prep-block-title">vs UW Blink: Key Differences</div>
-<div class="prep-line"><span>Combo matchups</span><span class="prep-verdict">+15% — Teferi + Chant lock</span></div>
-<div class="prep-line"><span>Aggro matchups</span><span class="prep-verdict">−5% — mana tax</span></div>
-<div class="prep-line"><span>Midrange</span><span class="prep-verdict">Similar — Bolt helps some</span></div>
-<div class="prep-line"><span>Grixis Reanimator</span><span class="prep-verdict">Significantly better — Teferi locks Persist</span></div>
-</div>
-<div class="prep-block"><div class="prep-block-title">Teferi + Chant Rules</div>
-<div class="prep-line"><span>Always</span><span class="prep-verdict">Teferi before executing plan</span></div>
-<div class="prep-line"><span>Orim's Chant</span><span class="prep-verdict">Start of their main phase — not reactive</span></div>
-<div class="prep-line"><span>vs Grixis</span><span class="prep-verdict">No instant-speed Persist under Teferi</span></div>
-<div class="prep-line"><span>vs Amulet</span><span class="prep-verdict">Tap before Pact window</span></div>
-</div>
-<div class="prep-block"><div class="prep-block-title">Bolt Priority Order</div>
-<div class="prep-line"><span>1st</span><span class="prep-verdict">Ragavan (deny first connection)</span></div>
-<div class="prep-line"><span>2nd</span><span class="prep-verdict">Their Ocelot Pride (kills cats + Pride)</span></div>
-<div class="prep-line"><span>3rd</span><span class="prep-verdict">DRC (before delirium)</span></div>
-<div class="prep-line"><span>Otherwise</span><span class="prep-verdict">Face — close the game</span></div>
-</div>
-<div class="prep-block"><div class="prep-block-title">When to Pick This Deck</div>
-<div class="prep-line"><span>Field is</span><span class="prep-verdict">20%+ combo — Chant earns its slot</span></div>
-<div class="prep-line"><span>Avoid if</span><span class="prep-verdict">Heavy aggro — take UW instead</span></div>
-<div class="prep-line"><span>Key signal</span><span class="prep-verdict">Glockulous showing up at RCQs</span></div>
-</div>
-</div></div></div><footer><span>Team Resolve · Modern · Jeskai Blink Playbook</span><span>Zuxas · 2026 RC Season</span></footer><script>
-function show(id){document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));document.querySelectorAll('.nav-link').forEach(l=>l.classList.remove('active'));document.getElementById(id).classList.add('active');event.target.classList.add('active');}
-function toggle(id,t){const d=document.getElementById(id);const o=d.classList.contains('open');document.querySelectorAll('.matchup-detail').forEach(d=>d.classList.remove('open'));document.querySelectorAll('.matchup-table tr').forEach(r=>r.classList.remove('selected'));if(!o){d.classList.add('open');t.querySelector('tbody tr').classList.add('selected');}}
-</script></body></html>
+<script src="card-tooltips.js"></script>
+</body>
+</html>
