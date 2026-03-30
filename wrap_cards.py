@@ -194,6 +194,19 @@ CARDS = [
     "Torpor Orb",
     "Warping Wail",
     "Talisman of Resilience",
+    # Amulet Titan core
+    "Amulet of Vigor",
+    "Primeval Titan",
+    "Arboreal Grazer",
+    "Dryad of the Ilysian Grove",
+    "Summoner's Pact",
+    "Cultivator Colossus",
+    "Spelunking",
+    "Valakut, the Molten Pinnacle",
+    "Force of Vigor",
+    "Defense Grid",
+    "Cursed Totem",
+    "Bojuka Bog",
 ]
 
 # Sort longest first so "Ragavan, Nimble Pilferer" matches before "Ragavan"
@@ -208,6 +221,7 @@ PLAYBOOKS = [
     "izzet-affinity-playbook.html",
     "ruby-storm-playbook.html",
     "eldrazi-tron-playbook.html",
+    "amulet-titan-playbook.html",
 ]
 
 def wrap_cards_in_html(html):
