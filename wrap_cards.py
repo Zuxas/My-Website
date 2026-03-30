@@ -174,6 +174,26 @@ CARDS = [
     "Valakut Awakening",
     "Galvanic Relay",
     "Gemstone Caverns",
+    # Eldrazi Tron core
+    "Karn, the Great Creator",
+    "Ugin, Eye of the Storms",
+    "Thought-Knot Seer",
+    "Sowing Mycospawn",
+    "Devourer of Destiny",
+    "Ulamog, the Ceaseless Hunger",
+    "Ugin's Labyrinth",
+    "Expedition Map",
+    "Kozilek's Command",
+    "Dismember",
+    "Relic of Progenitus",
+    "All Is Dust",
+    "Ensnaring Bridge",
+    "Chalice of the Void",
+    "Trinisphere",
+    "Walking Ballista",
+    "Torpor Orb",
+    "Warping Wail",
+    "Talisman of Resilience",
 ]
 
 # Sort longest first so "Ragavan, Nimble Pilferer" matches before "Ragavan"
@@ -187,6 +207,7 @@ PLAYBOOKS = [
     "uw-control-playbook.html",
     "izzet-affinity-playbook.html",
     "ruby-storm-playbook.html",
+    "eldrazi-tron-playbook.html",
 ]
 
 def wrap_cards_in_html(html):
