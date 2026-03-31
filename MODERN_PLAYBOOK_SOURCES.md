@@ -1,9 +1,11 @@
 # MODERN PLAYBOOK SOURCES — Team Resolve
 # Master reference for all remaining archetypes (Claude Code handoff)
-# Updated: 2026-03-30 | Current meta from MTGDecks.net snapshot
+# Updated: 2026-03-31 | Current meta from MTGDecks.net snapshot
+# Reference event: LDXP SEA26 (Mar 27-29 2026)
 # 
-# STATUS:   BUILT = playbook complete
-#           NEXT  = current build queue, priority order
+# STATUS:   BUILT    = playbook complete
+#           TESTING  = active testing, reference list identified
+#           NEXT     = current build queue, priority order
 #
 # FORMAT:
 #   [★★★] = Deep primer/guide, 3000+ words, highly current, oracle-accurate
@@ -14,12 +16,18 @@
 # SECTION 0: ALREADY BUILT (for reference / update tracking)
 # ════════════════════════════════════════════════════════════════════════════
 
-# Boros Energy    ~16% meta | accent: #DC2626 | BUILT ✅
-# Jeskai Blink    ~7%  meta | accent: #7C3AED | BUILT ✅
+# Boros Energy    ~16% meta | accent: #DC2626 | BUILT ✅ (Mardu variant under eval)
+# Jeskai Blink    ~7%  meta | accent: #7C3AED | BUILT ✅ | TESTING: Connor Mackenzie 9-0-4 list w/ Casey Jones
 # Izzet Prowess   ~4%  meta | accent: #EF4444 | BUILT ✅
 # Glockulous      ~1.5% meta| accent: #7B1FA2 | BUILT ✅ (Grixis Reanimator)
-# UW Control      ~2%  meta | accent: #1E40AF | BUILT ✅
-# Izzet Affinity  ~8%  meta | accent: #2563EB | BUILT ✅ (rebuilt 2026-03-30)
+# UW Control      ~2%  meta | accent: #1E40AF | BUILT ✅ (updated to Evariel 8-0-2 Scepter-Chant, Mar 27 2026)
+# Izzet Affinity  ~8%  meta | accent: #2563EB | BUILT ✅
+
+# Currently testing (reference lists from LDXP SEA26, no playbook yet):
+# Esper Blink     | robert seder 11-2-2 (rank 3) — https://melee.gg/Decklist/View/103cafd4-e5f3-4015-8d70-b41b008a10d9
+# Dimir Midrange  | Roy Yang 10-1-3 (rank 5)     — https://melee.gg/Decklist/View/c5c9869a-7727-4589-aba5-b419009c2148
+# Mono-U Belcher  | Tiendav1s 4-0-3 (note: SB Mountain > Island for Charbelcher damage)
+#                   https://melee.gg/Decklist/View/fc766c7d-61af-43fa-8735-b41c004b9bd5
 
 # ════════════════════════════════════════════════════════════════════════════
 # SECTION 1: BUILD QUEUE — Priority ordered by meta share
@@ -40,6 +48,10 @@
 # Identity: Mono-red linear combo. Ruby Medallion + Ral, Monsoon Mage reduce
 # red spells to 1 mana. Chain rituals + draw spells → Past in Flames → 
 # Grapeshot for 20+. Fastest theoretical kill: turn 2.
+# Reference list: Chance McDougal 9-0-4, LDXP SEA26 10k, Mar 28 2026
+#   https://melee.gg/Decklist/View/5b97bdff-bc1f-4e37-8255-b419010af481
+#   Key cards: Ral Monsoon Mage x4, Ruby Medallion x4, Artist's Talent x2 (new!)
+#   Heroes' Hangout x1, Romantic Rendezvous x1. SB: Orim's Chant x2, Untimely Malfunction x3.
 # Key oracle notes: Ruby Medallion does NOT reduce Ral's cost (Ral reduces Ruby's).
 # Consign to Memory CAN counter Ruby Medallion (colorless spell MV 2).
 # Force of Negation exiles Past in Flames (removing it from the GY entirely).
@@ -117,6 +129,14 @@ Notes: Aggregate current 75. Recent Challenge top finishes for list comparison.
 # Identity: Combo-ramp. Amulet of Vigor untaps bounce lands, generating extra
 # mana with each land drop. Primeval Titan fetches Slayer's Stronghold + 
 # Sunhome, giving haste + double strike for same-turn kill. Highly technical.
+# Reference lists (LDXP SEA26):
+#   Option A: Devon Straub (PTQ Mar 27)  — https://melee.gg/Decklist/View/3f63eb45-ce53-47fc-b221-b41a010d5291
+#     Malevolent Rumble x4, Scapeshift x3, Aftermath Analyst x2, Vexing Bauble x1
+#     SB: Insidious Fungus, Dosan the Falling Leaf (lock pieces)
+#   Option B: aljce (10k Winner, 13-1-2) — https://melee.gg/Decklist/View/2a4efd5e-3fcd-45d1-86bf-b41a0128ba82
+#     Scapeshift x4, Green Sun's Zenith x3, Malevolent Rumble x3, Dryad Arbor x1
+#     SB: Fire Magic x3, Force of Vigor x3, Trinisphere x2
+#   → Use aljce (winner) as primary reference.
 # Key oracle notes: Multiple Amulets stack (each untap trigger resolves separately).
 # Amulet + bounce land = effectively ETB untapped + tap for mana immediately.
 # Bounce land with 2 Amulets = 4 mana from a single land drop.
