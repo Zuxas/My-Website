@@ -293,6 +293,7 @@ PLAYBOOKS = [
     "living-end-playbook.html",
     "yawgmoth-playbook.html",
     "neoform-playbook.html",
+    "domain-zoo-playbook.html",
 ]
 
 def wrap_cards_in_html(html):

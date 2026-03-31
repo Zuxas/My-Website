@@ -1,0 +1,931 @@
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Domain Zoo — Team Resolve Playbook</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+  :root { --ink:#0e0e0e; --paper:#f2ede6; --paper-dark:#e8e1d6; --rule:#c8bfb0; --accent:#B45309; --accent-light:#fef3c7; --danger:#8f1a1a; --danger-light:#f7d6d6; --gold:#8f6a1a; --gold-light:#f7ead6; --mid:#5a5248; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:var(--paper); color:var(--ink); font-family:'Crimson Pro',Georgia,serif; font-size:17px; line-height:1.6; }
+  .header-band { background:var(--ink); border-bottom:3px solid #B45309; }
+  .header-inner { max-width:1100px; margin:0 auto; padding:32px 80px; display:flex; justify-content:space-between; align-items:flex-end; gap:40px; }
+  .header-eyebrow { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:rgba(242,237,230,0.35); margin-bottom:8px; }
+  .header-title { font-family:'Bebas Neue',sans-serif; font-size:56px; line-height:0.9; color:var(--paper); letter-spacing:0.02em; }
+  .header-title span { color:#fcd34d; }
+  .header-mantra { font-family:'Crimson Pro',serif; font-style:italic; font-size:15px; color:rgba(242,237,230,0.4); margin-top:8px; }
+  .header-right { display:flex; flex-direction:column; gap:8px; text-align:right; padding-bottom:4px; }
+  .header-stat { display:flex; gap:12px; align-items:center; justify-content:flex-end; }
+  .hs-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; color:rgba(242,237,230,0.3); }
+  .hs-val { font-family:'DM Mono',monospace; font-size:12px; color:var(--paper); }
+  nav { position:sticky; top:0; z-index:100; background:var(--ink); border-bottom:1px solid rgba(242,237,230,0.1); padding:0 80px; display:flex; align-items:center; gap:0; overflow-x:auto; scrollbar-width:none; }
+  nav::-webkit-scrollbar { display:none; }
+  .nav-brand { font-family:'Bebas Neue',sans-serif; font-size:18px; color:#fcd34d; letter-spacing:0.05em; margin-right:40px; white-space:nowrap; padding:16px 0; }
+  .nav-link { font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:rgba(242,237,230,0.4); padding:20px 16px; cursor:pointer; white-space:nowrap; border-bottom:2px solid transparent; transition:all 0.2s; background:none; border-top:none; border-left:none; border-right:none; }
+  .nav-link:hover, .nav-link.active { color:var(--paper); border-bottom-color:#B45309; }
+  .page { max-width:1100px; margin:0 auto; padding:80px 80px; }
+  .section { display:none; animation:fadeIn 0.3s ease; }
+  .section.active { display:block; }
+  @keyframes fadeIn { from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:translateY(0);} }
+  .section-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.25em; text-transform:uppercase; color:var(--mid); margin-bottom:8px; }
+  h1 { font-family:'Bebas Neue',sans-serif; font-size:64px; line-height:0.9; letter-spacing:0.01em; color:var(--ink); margin-bottom:40px; }
+  h2 { font-family:'Bebas Neue',sans-serif; font-size:36px; letter-spacing:0.02em; color:var(--ink); margin:56px 0 20px; padding-bottom:8px; border-bottom:2px solid var(--ink); }
+  h3 { font-family:'DM Mono',monospace; font-size:12px; letter-spacing:0.15em; text-transform:uppercase; color:var(--accent); margin:32px 0 12px; }
+  p { margin-bottom:16px; color:var(--ink); font-weight:300; }
+  strong { font-weight:600; }
+  .mantra { border-left:4px solid var(--accent); padding:24px 32px; background:var(--accent-light); margin:32px 0; font-style:italic; font-size:20px; color:var(--accent); line-height:1.5; }
+  .card-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); gap:1px; background:var(--rule); border:1px solid var(--rule); margin:24px 0; }
+  .card-grid-2 { grid-template-columns:repeat(2,1fr) !important; }
+  .card-grid-3 { grid-template-columns:repeat(3,1fr) !important; }
+  .card { background:var(--paper); padding:24px; }
+  .card:hover { background:var(--paper-dark); }
+  .card-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--mid); margin-bottom:8px; }
+  .card-title { font-family:'Bebas Neue',sans-serif; font-size:22px; letter-spacing:0.03em; color:var(--ink); margin-bottom:8px; }
+  .card-body { font-size:15px; font-weight:300; color:var(--mid); line-height:1.5; }
+</style>
+  .decklist { display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--rule); border:1px solid var(--rule); margin:24px 0; }
+  .dl-section { background:var(--paper); padding:24px; }
+  .dl-section-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--mid); margin-bottom:16px; }
+  .dl-group { margin-bottom:20px; }
+  .dl-group-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; color:var(--ink); background:var(--paper-dark); padding:4px 8px; margin-bottom:8px; display:inline-block; }
+  .dl-card-row { display:flex; justify-content:space-between; align-items:baseline; padding:3px 0; border-bottom:1px solid rgba(200,191,176,0.3); font-size:15px; font-weight:300; }
+  .dl-card-row:last-child { border-bottom:none; }
+  .dl-qty { font-family:'DM Mono',monospace; font-size:12px; color:var(--mid); flex-shrink:0; margin-left:8px; }
+  .matchup-table { width:100%; border-collapse:collapse; margin:24px 0; }
+  .matchup-table th { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; padding:10px 16px; background:var(--ink); color:rgba(242,237,230,0.6); text-align:left; }
+  .matchup-table td { padding:12px 16px; border-bottom:1px solid var(--rule); font-size:15px; font-weight:300; }
+  .matchup-table tr:hover td { background:var(--paper-dark); }
+  .matchup-detail { display:none; background:var(--accent-light); border-left:4px solid #B45309; padding:24px 32px; margin:0; }
+  .matchup-detail.open { display:block; }
+  .verdict { display:inline-block; font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; padding:4px 10px; border:1px solid; }
+  .verdict-dog { background:var(--danger-light); color:var(--danger); border-color:var(--danger); }
+  .verdict-even { background:var(--gold-light); color:var(--gold); border-color:var(--gold); }
+  .verdict-favor { background:#d1fae5; color:#065f46; border-color:#065f46; }
+  .sb-table { width:100%; border-collapse:collapse; margin:16px 0; }
+  .sb-table th { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; padding:8px 12px; background:var(--paper-dark); color:var(--mid); text-align:left; border-bottom:2px solid var(--rule); }
+  .sb-table td { padding:10px 12px; border-bottom:1px solid var(--rule); font-size:14px; font-weight:300; }
+  .sb-out { color:var(--danger); font-family:'DM Mono',monospace; font-size:12px; }
+  .sb-in { color:#065f46; font-family:'DM Mono',monospace; font-size:12px; }
+  .sb-note { font-size:13px; font-weight:300; color:var(--mid); font-style:italic; margin-top:6px; }
+  .sb-card-guide { border:1px solid var(--rule); margin:24px 0; }
+  .sb-guide-row { display:grid; grid-template-columns:180px 1fr; gap:0; border-bottom:1px solid var(--rule); }
+  .sb-guide-row:last-child { border-bottom:none; }
+  .sb-guide-name { font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.08em; text-transform:uppercase; padding:16px; background:var(--paper-dark); color:var(--ink); border-right:1px solid var(--rule); display:flex; align-items:flex-start; }
+  .sb-guide-body { padding:16px; font-size:14px; font-weight:300; line-height:1.6; color:var(--mid); }
+  .role-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--rule); border:1px solid var(--rule); margin:24px 0; }
+  .role-card { background:var(--paper); padding:24px; }
+  .role-name { font-family:'Bebas Neue',sans-serif; font-size:28px; letter-spacing:0.02em; margin-bottom:8px; }
+  .role-name-primary { color:var(--accent); }
+  .role-name-secondary { color:var(--gold); }
+  .role-name-tertiary { color:var(--mid); }
+  .role-body { font-size:15px; font-weight:300; color:var(--mid); line-height:1.5; }
+  .heuristic-list { list-style:none; counter-reset:heuristic; margin:24px 0; }
+  .heuristic-list li { counter-increment:heuristic; display:flex; gap:20px; padding:16px 0; border-bottom:1px solid var(--rule); }
+  .heuristic-list li:last-child { border-bottom:none; }
+  .heuristic-num { font-family:'Bebas Neue',sans-serif; font-size:36px; color:var(--accent); line-height:1; flex-shrink:0; width:40px; }
+  .heuristic-body { font-size:16px; font-weight:300; color:var(--ink); line-height:1.6; }
+  .heuristic-body strong { display:block; font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:var(--ink); margin-bottom:4px; font-weight:500; }
+  .tuning-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--rule); border:1px solid var(--rule); margin:24px 0; }
+  .tuning-cell { background:var(--paper); padding:24px; }
+  .tuning-cell-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--mid); margin-bottom:8px; }
+  .tuning-cell-title { font-family:'Bebas Neue',sans-serif; font-size:22px; letter-spacing:0.03em; color:var(--ink); margin-bottom:8px; }
+  .tuning-cell-body { font-size:14px; font-weight:300; color:var(--mid); line-height:1.5; }
+  .print-section { background:var(--ink); color:var(--paper); padding:40px; }
+  .print-title { font-family:'Bebas Neue',sans-serif; font-size:48px; letter-spacing:0.02em; color:#fcd34d; margin-bottom:4px; }
+  .print-sub { font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:rgba(242,237,230,0.4); margin-bottom:32px; }
+  .print-grid { display:grid; grid-template-columns:1fr 1fr; gap:32px; }
+  .print-col-title { font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:#fcd34d; margin-bottom:12px; border-bottom:1px solid rgba(252,211,77,0.3); padding-bottom:6px; }
+  .print-line { display:flex; justify-content:space-between; padding:3px 0; font-size:12px; border-bottom:1px solid rgba(242,237,230,0.07); }
+  .print-line:last-child { border-bottom:none; }
+  .print-needle { font-size:11px; color:rgba(242,237,230,0.5); font-style:italic; margin-top:4px; }
+  .print-mu { margin-bottom:16px; padding-bottom:16px; border-bottom:1px solid rgba(242,237,230,0.1); }
+  .print-mu:last-child { border-bottom:none; margin-bottom:0; }
+  .print-mu-name { font-size:13px; letter-spacing:0.08em; text-transform:uppercase; color:var(--paper); margin-bottom:2px; }
+  .print-mu-role { font-size:11px; color:rgba(242,237,230,0.4); margin-bottom:6px; }
+  .print-cols { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+  .print-col-label { font-size:10px; letter-spacing:0.15em; text-transform:uppercase; color:#fcd34d; margin-bottom:4px; }
+  .print-row { display:flex; justify-content:space-between; font-size:12px; padding:1px 0; }
+  .print-qty { color:#fcd34d; }
+  .oracle-box { background:var(--paper-dark); border:1px solid var(--rule); border-left:4px solid var(--accent); padding:16px 20px; margin:12px 0; font-size:14px; font-weight:300; color:var(--mid); line-height:1.6; }
+  .oracle-box .oracle-name { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; color:var(--ink); margin-bottom:6px; font-weight:500; }
+  .engine-block { border:1px solid var(--rule); margin:24px 0; }
+  .engine-header { background:var(--ink); color:var(--paper); padding:16px 24px; font-family:'Bebas Neue',sans-serif; font-size:24px; letter-spacing:0.05em; }
+  .engine-row { display:grid; grid-template-columns:120px 1fr; gap:0; border-bottom:1px solid var(--rule); }
+  .engine-row:last-child { border-bottom:none; }
+  .engine-step { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; padding:16px; background:var(--paper-dark); color:var(--accent); border-right:1px solid var(--rule); display:flex; align-items:flex-start; font-weight:500; }
+  .engine-body { padding:16px 20px; font-size:15px; font-weight:300; line-height:1.6; color:var(--ink); }
+  .c { border-bottom:1px solid var(--accent); cursor:default; }
+</style>
+</head>
+<body>
+<div class="header-band">
+  <div class="header-inner">
+    <div>
+      <div class="header-eyebrow">Team Resolve · Modern Playbook</div>
+      <div class="header-title">Domain <span>Zoo</span></div>
+      <div class="header-mantra">Five colors. Turn zero Leyline. Free Scion. All five keywords. Swing.</div>
+    </div>
+    <div class="header-right">
+      <div class="header-stat"><span class="hs-label">Meta Share</span><span class="hs-val">2.6%</span></div>
+      <div class="header-stat"><span class="hs-label">Kill Turn</span><span class="hs-val">Turn 3–4</span></div>
+      <div class="header-stat"><span class="hs-label">Colors</span><span class="hs-val">5-Color</span></div>
+      <div class="header-stat"><span class="hs-label">Role</span><span class="hs-val">Aggro-Tempo</span></div>
+    </div>
+  </div>
+</div>
+<nav>
+  <div class="nav-brand">Domain Zoo</div>
+  <button class="nav-link active" onclick="show('identity',event)">Overview</button>
+  <button class="nav-link" onclick="show('decklist',event)">Decklist</button>
+  <button class="nav-link" onclick="show('gameplan',event)">Game Flow</button>
+  <button class="nav-link" onclick="show('engines',event)">Engines</button>
+  <button class="nav-link" onclick="show('roles',event)">Roles</button>
+  <button class="nav-link" onclick="show('matchups',event)">Matchups</button>
+  <button class="nav-link" onclick="show('sideboard',event)">Sideboard</button>
+  <button class="nav-link" onclick="show('heuristics',event)">Heuristics</button>
+  <button class="nav-link" onclick="show('tuning',event)">Tuning</button>
+  <button class="nav-link" onclick="show('prep',event)">Prep</button>
+</nav>
+<div class="page">
+<!-- IDENTITY -->
+<div id="identity" class="section active">
+  <div class="section-label">Chapter 01</div>
+  <h1>Deck Identity</h1>
+  <div class="mantra">Domain Zoo is Modern's best aggro deck when it draws <span class="c">Leyline of the Guildpact</span>. It's still a solid aggro deck when it doesn't. That's the whole advantage.</div>
+  <p>Domain Zoo plays the longest continuous history of any aggro archetype in Modern — creatures, burn, and land synergies dating back to the format's beginning. What makes the 2025–26 version dangerous is the <span class="c">Leyline of the Guildpact</span> package: a zero-mana enchantment that, when in your opening hand, enters the battlefield before the game begins, instantly giving your lands all five basic land types and making every nonland permanent you control all five colors.</p>
+  <p>The payoffs are immediate and compounding. <span class="c">Scion of Draco</span> reduces to free (costs {2} less per basic land type — five types = {10} off its {12} base cost, leaving {2}, then with Leyline it's free as your permanents are already all colors). <span class="c">Territorial Kavu</span> becomes a 5/5 on turn two. <span class="c">Leyline Binding</span> exiles any nonland permanent for {W}. <span class="c">Tribal Flames</span> deals 5 damage for {1}{R}. All before turn two, all for almost no mana.</p>
+  <p>The deck's identity is aggressively slanted: you want to kill by turn four through a combination of large creatures backed by burn and soft counterspells. <span class="c">Stubborn Denial</span> and <span class="c">Spectral Denial</span> protect your threats from removal and counterspells. <span class="c">Doorkeeper Thrull</span> shuts down ETB-dependent decks entirely — landing it against Esper Blink or Jeskai Blink is frequently a free win.</p>
+
+  <h2>Oracle Accuracy — Critical Interactions</h2>
+  <div class="oracle-box">
+    <div class="oracle-name"><span class="c">Leyline of the Guildpact</span> — The Engine</div>
+    "If this card is in your opening hand, you may begin the game with it on the battlefield. Each nonland permanent you control is all colors. Lands you control are every basic land type in addition to their other types." With Leyline in play before the game starts: (1) All your lands are Forest/Island/Swamp/Mountain/Plains simultaneously — full Domain from land drops alone. (2) All your nonland permanents are all five colors — including <span class="c">Scion of Draco</span>, making all his abilities active immediately. You do not need to cast Leyline for it to enter — it's a replacement effect in your opening hand.
+  </div>
+  <div class="oracle-box">
+    <div class="oracle-name"><span class="c">Scion of Draco</span> — Domain Payoff</div>
+    "Domain — This spell costs {2} less to cast for each basic land type among lands you control." Base cost {12}. With full domain (5 basic land types) = costs {2}. With Leyline in opening hand, your lands already have all five types on turn one — Scion on turn two for {2} (pay {1}{G} or similar). Scion then gives each creature you control: white = vigilance, blue = hexproof, black = lifelink, red = first strike, green = trample. <strong>Hexproof is applied to each creature individually</strong> — Kavu with hexproof cannot be targeted by <span class="c">Fatal Push</span>, <span class="c">Path to Exile</span>, or <span class="c">Thoughtseize</span> while Scion is in play.
+  </div>
+  <div class="oracle-box">
+    <div class="oracle-name"><span class="c">Territorial Kavu</span> — The Flagship</div>
+    "Domain — <span class="c">Territorial Kavu</span>'s power and toughness are each equal to the number of basic land types among lands you control." With full domain = 5/5 for {R}{G}. On attack: choose rummage (discard, draw) or exile a card from a graveyard. With Leyline in opening hand, Kavu is a 5/5 on turn one before either player has cast a land. <strong>Kavu attacks trigger a choice — you must choose one.</strong> You cannot decline both without targeting.
+  </div>
+  <div class="oracle-box">
+    <div class="oracle-name"><span class="c">Leyline Binding</span> — Instant Exile</div>
+    "Flash. Domain — This spell costs {1} less to cast for each basic land type among lands you control." Base cost {5}{W}. With full domain = {W}. Flash — cast on any turn at any time. Exiles any nonland permanent until Binding leaves the battlefield. This is how Zoo answers <span class="c">Primeval Titan</span>, Yawgmoth, Griselbrand, and any other threat that would otherwise dominate the board. <strong>If <span class="c">Leyline Binding</span> leaves the battlefield, the exiled permanent returns.</strong> Destroying Binding (<span class="c">Nature's Claim</span>, <span class="c">Wear // Tear</span>) returns their permanent.
+  </div>
+  <div class="oracle-box">
+    <div class="oracle-name"><span class="c">Stubborn Denial</span> + <span class="c">Spectral Denial</span> — Ferocious Counterspells</div>
+    <span class="c">Stubborn Denial</span> ({U}): counter noncreature spell unless pay {1}. With ferocious (4+ power creature you control) — hard counter instead. <span class="c">Territorial Kavu</span> (5/5) and <span class="c">Scion of Draco</span> (4/4) both enable ferocious. <span class="c">Spectral Denial</span> ({X}{U}): costs {1} less per creature you control with power 4+. With two 4-power creatures, effectively {X-2}{U}. Counter spell unless pay {X}. Unlike <span class="c">Stubborn Denial</span>, <span class="c">Spectral Denial</span> <strong>can counter creature spells</strong>. The combination gives Zoo soft-to-hard counterspells that frequently cost zero mana.
+  </div>
+  <div class="oracle-box">
+    <div class="oracle-name"><span class="c">Doorkeeper Thrull</span> — ETB Shutdown</div>
+    "Flash. Flying. Artifacts and creatures entering don't cause abilities to trigger." Flash — deploy at instant speed in response to an opponent casting a creature. Thrull prevents: <span class="c">Solitude</span>'s exile trigger, <span class="c">Overlord of the Balemurk</span>'s mill trigger, <span class="c">Kappa Cannoneer</span>'s token trigger, Yawgmoth's enter trigger, and all ETB effects on artifacts and creatures. <strong>This does NOT affect spells — <span class="c">Ephemerate</span> still blinks, and the creature still enters. The entry just doesn't trigger anything.</strong> Thrull is a 1/2 flying body, dies to <span class="c">Lightning Bolt</span> (3 damage kills it).
+  </div>
+  <div class="oracle-box">
+    <div class="oracle-name"><span class="c">Tribal Flames</span> — Domain Finisher</div>
+    "Domain — <span class="c">Tribal Flames</span> deals X damage to any target, where X is the number of basic land types among lands you control." With full domain = 5 damage for {1}{R}. Can target players, creatures, or planeswalkers. At sorcery speed only. With Leyline, <span class="c">Tribal Flames</span> on turn two deals 5 — enough to kill most creatures or put any opponent on a lethal clock. Some lists cut <span class="c">Tribal Flames</span> in favor of more creatures; others keep it as the primary burn finisher.
+  </div>
+
+  <h2>Matchup Overview</h2>
+  <table class="matchup-table">
+    <thead><tr><th>Matchup</th><th>Meta%</th><th>Verdict</th><th>Key Factor</th></tr></thead>
+    <tbody>
+      <tr><td>Boros Energy</td><td>15.8%</td><td><span class="verdict verdict-even">Even</span></td><td>Mirror aggro race; Leyline edge</td></tr>
+      <tr><td>Tameshi Belcher</td><td>11.1%</td><td><span class="verdict verdict-dog">Unfavorable</span></td><td>Belcher faster; <span class="c">Stubborn Denial</span> only hope</td></tr>
+      <tr><td>Eldrazi Tron</td><td>10.5%</td><td><span class="verdict verdict-favor">Favorable</span></td><td><span class="c">Leyline Binding</span> handles Tron threats</td></tr>
+      <tr><td>Esper Goryo's</td><td>5.7%</td><td><span class="verdict verdict-favor">Favorable</span></td><td>Kavu exiles GY; Doorkeeper shuts Atraxa</td></tr>
+      <tr><td>Izzet Affinity</td><td>5.7%</td><td><span class="verdict verdict-even">Even</span></td><td>Both fast; Doorkeeper key post-board</td></tr>
+      <tr><td>Esper Blink</td><td>5.7%</td><td><span class="verdict verdict-favor">Favorable</span></td><td>Hexproof protects threats; Doorkeeper shuts ETBs</td></tr>
+      <tr><td>Izzet Prowess</td><td>5.2%</td><td><span class="verdict verdict-favor">Favorable</span></td><td>5/5 Kavu outclasses their threats</td></tr>
+      <tr><td>Domain Zoo (Mirror)</td><td>2.6%</td><td><span class="verdict verdict-even">Even</span></td><td>Leyline count and on-play advantage</td></tr>
+      <tr><td>Ruby Storm</td><td>3.9%</td><td><span class="verdict verdict-dog">Unfavorable</span></td><td>Storm faster; <span class="c">Stubborn Denial</span> only interaction</td></tr>
+      <tr><td>Amulet Titan</td><td>2.7%</td><td><span class="verdict verdict-favor">Favorable</span></td><td>Fast clock vs their setup turns</td></tr>
+      <tr><td>Dimir Frog / Control</td><td>2.3%</td><td><span class="verdict verdict-even">Even</span></td><td>Leyline hexproof; <span class="c">Psychic Frog</span> dismantles hand</td></tr>
+    </tbody>
+  </table>
+</div>
+<!-- DECKLIST -->
+<div id="decklist" class="section">
+  <div class="section-label">Chapter 02</div>
+  <h1>Decklist</h1>
+  <div class="decklist">
+    <div class="dl-section">
+      <div class="dl-section-label">Main Deck — 60 Cards</div>
+      <div class="dl-group">
+        <div class="dl-group-label">Creatures</div>
+        <div class="dl-card-row"><span><span class="c">Ragavan, Nimble Pilferer</span></span><span class="dl-qty">4</span></div>
+        <div class="dl-card-row"><span><span class="c">Territorial Kavu</span></span><span class="dl-qty">4</span></div>
+        <div class="dl-card-row"><span><span class="c">Doorkeeper Thrull</span></span><span class="dl-qty">3</span></div>
+        <div class="dl-card-row"><span><span class="c">Nishoba Brawler</span></span><span class="dl-qty">3</span></div>
+        <div class="dl-card-row"><span><span class="c">Kraven, Proud Predator</span></span><span class="dl-qty">2</span></div>
+        <div class="dl-card-row"><span><span class="c">Scion of Draco</span></span><span class="dl-qty">4</span></div>
+        <div class="dl-card-row"><span><span class="c">Phlage, Titan of Fire's Fury</span></span><span class="dl-qty">4</span></div>
+      </div>
+      <div class="dl-group">
+        <div class="dl-group-label">Spells</div>
+        <div class="dl-card-row"><span><span class="c">Lightning Bolt</span></span><span class="dl-qty">4</span></div>
+        <div class="dl-card-row"><span><span class="c">Leyline Binding</span></span><span class="dl-qty">4</span></div>
+        <div class="dl-card-row"><span><span class="c">Stubborn Denial</span></span><span class="dl-qty">3</span></div>
+        <div class="dl-card-row"><span><span class="c">Spectral Denial</span></span><span class="dl-qty">2</span></div>
+        <div class="dl-card-row"><span><span class="c">Consign to Memory</span></span><span class="dl-qty">2</span></div>
+      </div>
+      <div class="dl-group">
+        <div class="dl-group-label">Leylines</div>
+        <div class="dl-card-row"><span><span class="c">Leyline of the Guildpact</span></span><span class="dl-qty">4</span></div>
+      </div>
+    </div>
+    <div class="dl-section">
+      <div class="dl-section-label">Lands — 17</div>
+      <div class="dl-group">
+        <div class="dl-group-label">Fetchlands</div>
+        <div class="dl-card-row"><span>Wooded Foothills</span><span class="dl-qty">4</span></div>
+        <div class="dl-card-row"><span>Flooded Strand</span><span class="dl-qty">4</span></div>
+        <div class="dl-card-row"><span>Arid Mesa</span><span class="dl-qty">4</span></div>
+      </div>
+      <div class="dl-group">
+        <div class="dl-group-label">Duals / Triomes</div>
+        <div class="dl-card-row"><span>Steam Vents</span><span class="dl-qty">1</span></div>
+        <div class="dl-card-row"><span><span class="c">Xander's Lounge</span></span><span class="dl-qty">1</span></div>
+        <div class="dl-card-row"><span><span class="c">Thundering Falls</span></span><span class="dl-qty">1</span></div>
+        <div class="dl-card-row"><span><span class="c">Lush Portico</span></span><span class="dl-qty">1</span></div>
+        <div class="dl-card-row"><span><span class="c">Arena of Glory</span></span><span class="dl-qty">2</span></div>
+      </div>
+      <div class="dl-group">
+        <div class="dl-group-label">Basics</div>
+        <div class="dl-card-row"><span>Mountain</span><span class="dl-qty">1</span></div>
+        <div class="dl-card-row"><span>Plains</span><span class="dl-qty">1</span></div>
+      </div>
+      <div class="dl-section-label" style="margin-top:32px;">Sideboard — 15 Cards</div>
+      <div class="dl-group">
+        <div class="dl-group-label">GY Hate</div>
+        <div class="dl-card-row"><span><span class="c">Soul-Guide Lantern</span></span><span class="dl-qty">3</span></div>
+        <div class="dl-card-row"><span><span class="c">Endurance</span></span><span class="dl-qty">1</span></div>
+      </div>
+      <div class="dl-group">
+        <div class="dl-group-label">Counterspells</div>
+        <div class="dl-card-row"><span><span class="c">Stubborn Denial</span></span><span class="dl-qty">1</span></div>
+        <div class="dl-card-row"><span><span class="c">Mystical Dispute</span></span><span class="dl-qty">2</span></div>
+      </div>
+      <div class="dl-group">
+        <div class="dl-group-label">Removal / Hate</div>
+        <div class="dl-card-row"><span><span class="c">Wear // Tear</span></span><span class="dl-qty">2</span></div>
+        <div class="dl-card-row"><span><span class="c">Wrath of the Skies</span></span><span class="dl-qty">2</span></div>
+        <div class="dl-card-row"><span><span class="c">Pest Control</span></span><span class="dl-qty">2</span></div>
+        <div class="dl-card-row"><span><span class="c">Celestial Purge</span></span><span class="dl-qty">1</span></div>
+        <div class="dl-card-row"><span><span class="c">Doorkeeper Thrull</span></span><span class="dl-qty">1</span></div>
+      </div>
+    </div>
+  </div>
+
+  <h2>Card Notes</h2>
+  <div class="card-grid card-grid-3">
+    <div class="card">
+      <div class="card-label">The Flagship</div>
+      <div class="card-title"><span class="c">Territorial Kavu</span></div>
+      <div class="card-body">MV 2, P/T = basic land types you control. With Leyline in opening hand: 5/5 before you've played a land. On attack: must choose — rummage (discard+draw) or exile a GY card. With <span class="c">Scion of Draco</span>: gains hexproof (can't be targeted), lifelink, first strike, trample, vigilance simultaneously.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">The Engine</div>
+      <div class="card-title"><span class="c">Scion of Draco</span></div>
+      <div class="card-body">MV 12, costs {2} less per basic land type. With Leyline: costs {2} (5 types × {2} off = {10} reduction). 4/4 flying. Each of your creatures gets all five keywords when you control all five land types: white=vigilance, blue=hexproof, black=lifelink, red=first strike, green=trample. Hexproof protects all your creatures from targeted removal.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">ETB Shutdown</div>
+      <div class="card-title"><span class="c">Doorkeeper Thrull</span></div>
+      <div class="card-body">MV 2, flash 1/2 flying. Artifacts and creatures entering don't cause abilities to trigger. Shuts off: <span class="c">Solitude</span> exile, <span class="c">Overlord of the Balemurk</span> mill, <span class="c">Kappa Cannoneer</span> token, Yawgmoth ETB, Atraxa card-draw ETB. Does NOT stop <span class="c">Ephemerate</span> from blinking — only the triggered ETB ability is silenced. Dies to <span class="c">Lightning Bolt</span>.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Flash Exile</div>
+      <div class="card-title"><span class="c">Leyline Binding</span></div>
+      <div class="card-body">MV 6 base, flash. Domain: costs {1} less per basic land type. With full domain: {W}. Exiles any nonland permanent until Binding leaves. If Binding is destroyed (<span class="c">Nature's Claim</span>, Wear//Tear), the exiled permanent returns. Use to answer <span class="c">Primeval Titan</span>, <span class="c">Murktide Regent</span>, Yawgmoth, anything you can't fight through otherwise.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Free Ferocious Counter</div>
+      <div class="card-title"><span class="c">Stubborn Denial</span></div>
+      <div class="card-body">MV 1 ({U}). Counter noncreature spell unless pay {1}. With ferocious (4+ power creature): hard counter instead. <span class="c">Territorial Kavu</span> (5/5) and <span class="c">Scion of Draco</span> (4/4) both enable ferocious permanently. Cannot counter creature spells regardless of ferocious. Use to protect Scion or Kavu from removal spells.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Creature Counter</div>
+      <div class="card-title"><span class="c">Spectral Denial</span></div>
+      <div class="card-body">{X}{U}. Costs {1} less per creature with 4+ power you control. With two such creatures: costs {X-2}{U}. Counter spell unless pay {X}. Unlike <span class="c">Stubborn Denial</span>, <span class="c">Spectral Denial</span> CAN counter creature spells — hits <span class="c">Solitude</span> (evoked), any creature being played. Often effectively free with your board.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Resilient Threat</div>
+      <div class="card-title"><span class="c">Phlage, Titan of Fire's Fury</span></div>
+      <div class="card-body">MV 3, 6/6. When enters: {1}{R}{W} cost deal 3 damage to any target and gain 3 life. Escape: exile 5 cards from GY, pay {1}{R}{W}, return from GY. Nearly impossible to permanently answer — recurs from the graveyard. With Scion active: has all five keywords on a 6/6 body.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Domain Burn</div>
+      <div class="card-title"><span class="c">Tribal Flames</span></div>
+      <div class="card-body">MV 2 ({1}{R}), sorcery. Deals X damage where X = basic land types you control. With full domain: 5 damage for 2 mana. Kills most creatures, puts opponents on a 4-turn clock. Some lists cut this for additional creatures; include it when you want more direct damage reach.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Scaling Threat</div>
+      <div class="card-title"><span class="c">Kraven, Proud Predator</span></div>
+      <div class="card-body">MV 3, */4, vigilance. Power equals the greatest MV among permanents you control. With Scion in play (MV 12): Kraven becomes a 12/4 vigilance. With Leyline on the battlefield before the game (MV 4): Kraven enters as a 4/4 on turn three if Leyline is your highest-MV permanent. Extremely scalable threat.</div>
+    </div>
+  </div>
+</div>
+<!-- GAME FLOW -->
+<div id="gameplan" class="section">
+  <div class="section-label">Chapter 03</div>
+  <h1>Game Flow</h1>
+  <div class="mantra">Every game starts the same question: did I draw Leyline? The answer changes how you sequence, but not what you're trying to do — put 5-power bodies on the board and protect them long enough to win.</div>
+
+  <h2>With <span class="c">Leyline of the Guildpact</span> (Optimal)</h2>
+  <div class="card-grid card-grid-2">
+    <div class="card">
+      <div class="card-label">Turn 0 / Pregame</div>
+      <div class="card-body"><span class="c">Leyline of the Guildpact</span> enters the battlefield before the game begins. All your lands immediately have every basic land type. All your nonland permanents are all five colors. Full domain is already online before either player has taken a turn.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Turn 1</div>
+      <div class="card-body">Fetch a dual (Steam Vents, <span class="c">Lush Portico</span>) or play <span class="c">Xander's Lounge</span>. Drop <span class="c">Ragavan, Nimble Pilferer</span> or hold up a land. Ragavan on T1 pressures immediately and generates Treasure + exile draw when it connects. With Leyline already active, Ragavan can attack into any 1/1 token and live.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Turn 2</div>
+      <div class="card-body">Cast <span class="c">Territorial Kavu</span> for {R}{G} — enters as a 5/5 (Leyline gives full domain). Or cast <span class="c">Scion of Draco</span> for {2} (full domain reduces it by {10}). With Scion in play, all your creatures gain hexproof, lifelink, first strike, trample, and vigilance. Kavu as a 5/5 with all five keywords is essentially unbeatable at this mana cost.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Turn 3–4</div>
+      <div class="card-body">Apply lethal pressure. <span class="c">Phlage, Titan of Fire's Fury</span> closes. <span class="c">Leyline Binding</span> answers any blocker for {W}. <span class="c">Stubborn Denial</span> with ferocious protects your threats for {U}. If they've stabilized: <span class="c">Tribal Flames</span> (if in list) deals 5 for {1}{R}. A single untapped land usually represents <span class="c">Leyline Binding</span> for zero.</div>
+    </div>
+  </div>
+
+  <h2>Without Leyline (Fair Mode)</h2>
+  <p>Domain Zoo is still a solid deck without Leyline — it just requires a slightly slower ramp to full domain. The optimal two-land sequence to reach full domain is: <strong><span class="c">Xander's Lounge</span></strong> (Island/Swamp/Mountain) → <strong><span class="c">Lush Portico</span></strong> (Forest/Plains). Two lands gives you all five land types, putting <span class="c">Territorial Kavu</span> at 5/5 and <span class="c">Leyline Binding</span> at {W} by turn two with a fetch in hand.</p>
+  <p>Alternatively: Fetch into Temple Garden (Forest/Plains) → fetch into Steam Vents (Island/Mountain) → one more land for the fifth type (Swamp). You can also sequence fetch into Breeding Pool, then Arid Mesa into Sacred Foundry or similar. The key principle: <strong>you need at least one Island, Swamp, Mountain, Forest, and Plains among your lands simultaneously for full domain.</strong> Triomes (<span class="c">Xander's Lounge</span>, <span class="c">Lush Portico</span>) give three types per card — they're the most efficient path to domain without Leyline.</p>
+
+  <h2>Mulligan Framework</h2>
+  <p>Keep hands that have: at least two lands that together provide multiple land types, and at least two creatures (or one creature + Leyline). Leyline in the opening hand is an automatic keep regardless of the other six cards — it provides so much free value that even a mediocre six-card hand with Leyline beats a good seven without it.</p>
+  <p>Be wary of: hands with five or more lands (flood risk), hands with three or more Leylines (active liability — you only need one on the battlefield), and hands with no creatures and no Ragavan to apply early pressure. <span class="c">Territorial Kavu</span> without domain is just a 0/0 that dies on ETB — make sure you have a land plan before keeping a Kavu hand.</p>
+
+  <h2>Lines and Tricks</h2>
+  <div class="card-grid card-grid-2">
+    <div class="card">
+      <div class="card-label">Two Leylines in Hand</div>
+      <div class="card-body">If you have two Leylines in your opening hand and your opponent can't destroy enchantments, put only one into play and use the second as a discard target for <span class="c">Territorial Kavu</span>'s rummage on attack. If they can destroy enchantments (<span class="c">Nature's Claim</span>, Wear//Tear), put both in — redundancy protects against the first being destroyed.</div>
+    </div>
+    <div class="card">
+      <div class="card-label"><span class="c">Doorkeeper Thrull</span> Timing</div>
+      <div class="card-body">Flash Doorkeeper in response to an opponent casting a creature they want to ETB-trigger. They still pay the mana and the creature resolves — it just enters without triggering anything. Against Esper Blink: cast Doorkeeper in response to <span class="c">Solitude</span> being cast (not evoked — evoke means paying the evoke cost to cast it). The ETB exile trigger is silenced.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Scion + Hexproof Sequencing</div>
+      <div class="card-body">Cast <span class="c">Scion of Draco</span> before casting your other creatures. Once Scion is in play, every subsequent creature you play enters with hexproof immediately. If you cast Kavu first, it's briefly targetable before Scion hits. The correct order: Scion → then all other threats under the hexproof umbrella.</div>
+    </div>
+    <div class="card">
+      <div class="card-label"><span class="c">Consign to Memory</span> vs <span class="c">Leyline Binding</span> Return</div>
+      <div class="card-body">When your <span class="c">Leyline Binding</span> is destroyed and a dangerous permanent returns (Atraxa, <span class="c">Primeval Titan</span>), you can use <span class="c">Consign to Memory</span> to counter the triggered ability that returns it. Wait — the return isn't a triggered ability, it's part of Binding's own "until Binding leaves" clause. It resolves automatically. Counter the permanent before it becomes a problem instead — use <span class="c">Spectral Denial</span> or <span class="c">Stubborn Denial</span> in response to the opponent's destroy spell targeting Binding.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Kraven's Power Scaling</div>
+      <div class="card-body">Kraven's power = greatest MV among permanents you control. <span class="c">Leyline of the Guildpact</span> has MV 4 (even in play). <span class="c">Scion of Draco</span> has MV 12. Phlage has MV 3. With Scion on the battlefield, Kraven is a 12/4 vigilance. With only Leyline: 4/4. Always check your highest-MV permanent before swinging — Kraven's attack math changes significantly.</div>
+    </div>
+    <div class="card">
+      <div class="card-label"><span class="c">Arena of Glory</span> Haste Grant</div>
+      <div class="card-body"><span class="c">Arena of Glory</span>: {R}, {T}, exert this land — add {R}{R}. If that mana is spent on a creature spell, it gains haste. Use to cast Phlage or <span class="c">Territorial Kavu</span> with haste, letting them attack the turn they enter without summoning sickness. Exert means Arena can't tap for mana again until your next untap step — plan around this.</div>
+    </div>
+  </div>
+</div>
+<!-- ENGINES -->
+<div id="engines" class="section">
+  <div class="section-label">Chapter 04</div>
+  <h1>Core Engines</h1>
+
+  <div class="engine-block">
+    <div class="engine-header">Engine 01 — The Leyline Combo (Turn 0 → Turn 2 Win Condition)</div>
+    <div class="engine-row">
+      <div class="engine-step">Setup</div>
+      <div class="engine-body">Opening hand contains <span class="c">Leyline of the Guildpact</span>. It enters the battlefield before the game begins. All lands immediately have all five basic land types. All nonland permanents are all five colors. Full domain is established before turn one.</div>
+    </div>
+    <div class="engine-row">
+      <div class="engine-step">Execution</div>
+      <div class="engine-body">Turn 1: play a fetch or dual, drop <span class="c">Ragavan, Nimble Pilferer</span>. Turn 2: fetch a second color, cast <span class="c">Territorial Kavu</span> for {R}{G} — enters as 5/5 with full domain active. Or cast <span class="c">Scion of Draco</span> for {2} (full domain reduces its {12} cost by {10}). Scion's ETB gives all creatures hexproof, lifelink, first strike, trample, vigilance.</div>
+    </div>
+    <div class="engine-row">
+      <div class="engine-step">Result</div>
+      <div class="engine-body">Turn two: 2/1 Ragavan + 5/5 Kavu with five keywords, or Ragavan + 4/4 Scion making Ragavan have hexproof and lifelink. Either board state demands two or more answers simultaneously. With <span class="c">Stubborn Denial</span> or <span class="c">Spectral Denial</span> holding up: your threats are effectively uncounterable and removal-proof.</div>
+    </div>
+  </div>
+
+  <div class="engine-block">
+    <div class="engine-header">Engine 02 — The Ferocious Counter Wall</div>
+    <div class="engine-row">
+      <div class="engine-step">Setup</div>
+      <div class="engine-body"><span class="c">Territorial Kavu</span> (5/5) or <span class="c">Scion of Draco</span> (4/4) is in play. You have {U} or {1}{U} available. Ferocious is enabled — either creature qualifies as a 4+ power permanent.</div>
+    </div>
+    <div class="engine-row">
+      <div class="engine-step">Execution</div>
+      <div class="engine-body"><span class="c">Stubborn Denial</span> ({U}): counter any noncreature spell (removal, sweepers, counterspells) for one blue mana — hard counter with ferocious, no pay-{1} escape clause. <span class="c">Spectral Denial</span> ({X}{U}, reduces by {1} per 4-power creature): counter any spell including creature spells. With two 4-power creatures = costs {X-2}{U}, often just {U} for a hard counter on any spell.</div>
+    </div>
+    <div class="engine-row">
+      <div class="engine-step">Result</div>
+      <div class="engine-body">Your opponent must fight through {U} countermagic on every removal spell they cast while you have ferocious active. Combined with Scion's hexproof grant, targeted removal becomes effectively impossible. The counter wall protects your threats, advances your clock, and costs only incidental mana.</div>
+    </div>
+  </div>
+
+  <div class="engine-block">
+    <div class="engine-header">Engine 03 — Phlage Recursion Loop</div>
+    <div class="engine-row">
+      <div class="engine-step">Setup</div>
+      <div class="engine-body"><span class="c">Phlage, Titan of Fire's Fury</span> has died and is in the graveyard. You have 5 cards to exile from your graveyard and {1}{R}{W} available. The game has gone long — your initial threats have been answered.</div>
+    </div>
+    <div class="engine-row">
+      <div class="engine-step">Execution</div>
+      <div class="engine-body">Cast Phlage via Escape: exile 5 GY cards, pay {1}{R}{W}. Phlage's ETB deals 3 damage to any target and gains you 3 life. With Scion in play: Phlage enters as a 6/6 with hexproof, lifelink, first strike, trample, vigilance. A 6/6 first-striking trampling lifelinker is nearly impossible to profitably block.</div>
+    </div>
+    <div class="engine-row">
+      <div class="engine-step">Result</div>
+      <div class="engine-body">Phlage can be escaped repeatedly as long as you have graveyard cards to exile. Each recurrence triggers 3 damage + 3 life. In long games, Phlage is the engine that prevents opponents from ever stabilizing — they answer it, it comes back, they answer it again, and eventually run out of answers. With hexproof from Scion, they can't even target it.</div>
+    </div>
+  </div>
+</div>
+<!-- ROLES -->
+<div id="roles" class="section">
+  <div class="section-label">Chapter 05</div>
+  <h1>Roles</h1>
+  <div class="mantra">Zoo wants to be the aggressor. But the ferocious counter-wall and <span class="c">Leyline Binding</span>'s flash exile give you a tempo game that most pure aggro decks can't access.</div>
+  <div class="role-grid">
+    <div class="role-card">
+      <div class="role-name role-name-primary">Stompy Aggressor</div>
+      <div class="role-body"><strong>Primary role — Leyline draw, most matchups.</strong> Deploy large domain creatures with absurd efficiency. Kavu at 5/5 for {R}{G}, Scion for {2} flying. Apply a clock that demands immediate answers. Hold <span class="c">Stubborn Denial</span> to protect threats. Win before they can stabilize. This is the Leyline game — most opponents have no realistic line of play against a T2 5/5 with hexproof.</div>
+    </div>
+    <div class="role-card">
+      <div class="role-name role-name-secondary">Tempo Disruptor</div>
+      <div class="role-body"><strong>Secondary role — vs. combo and ETB decks.</strong> Flash <span class="c">Doorkeeper Thrull</span> to silence key ETB triggers. Use <span class="c">Leyline Binding</span> at flash speed to exile threats on their turn. Counter key spells with Stubborn/<span class="c">Spectral Denial</span>. This mode slows their game while yours continues advancing. Against Esper Blink, Jeskai, Goryo's: your flash-speed disruption is more valuable than raw speed.</div>
+    </div>
+    <div class="role-card">
+      <div class="role-name role-name-tertiary">Burn Finisher</div>
+      <div class="role-body"><strong>Tertiary role — Phlage escape + <span class="c">Lightning Bolt</span> + <span class="c">Tribal Flames</span>.</strong> When the board has stalled and creatures can't attack profitably, shift to direct damage. Phlage's escape ETB deals 3 damage. <span class="c">Lightning Bolt</span> deals 3. <span class="c">Tribal Flames</span> deals 5 with domain. Combined: 11 damage from non-combat sources at relatively low mana. Closes games where combat is stalemated.</div>
+    </div>
+  </div>
+
+  <h2>When to Shift Roles</h2>
+  <p>Against aggro (Boros Energy, Prowess): stay stompy. Your 5/5 Kavu with all five keywords wins combat against almost everything they can field by turn three. Don't try to be clever — apply pressure and hold up one Denial for their key removal.</p>
+  <p>Against ETB combo (Esper Blink, Jeskai Blink, Goryo's): shift to tempo disruptor. <span class="c">Doorkeeper Thrull</span> is a first-round pick from your sideboard if it isn't already in your main. Deploy Thrull on their turn to silence the ETB they're telegraphing. Use <span class="c">Leyline Binding</span> as a flash exile on their key permanent before it threatens.</p>
+  <p>Against control (Dimir, Azorius): the burn finisher role is most relevant. Pressure with hexproof threats they can't target, then burn them out when they find ways to stop combat. <span class="c">Consign to Memory</span> is relevant here — counters their triggered abilities.</p>
+</div>
+<!-- MATCHUPS -->
+<div id="matchups" class="section">
+  <div class="section-label">Chapter 06</div>
+  <h1>Matchup Deep Dives</h1>
+  <div class="mantra">Your Leyline hand is a near-auto-win in most matchups. Your non-Leyline hand is a solid aggro deck that needs a plan.</div>
+
+  <!-- BOROS ENERGY -->
+  <h2>Boros Energy <span style="font-size:18px;font-weight:300;font-family:'Crimson Pro',serif"> — 15.8% meta · <span class="verdict verdict-even">Even</span></span></h2>
+  <p>The most-played deck in the format. Boros Energy operates on a similar aggro axis but with a different engine: <span class="c">Guide of Souls</span> energy generation + <span class="c">Galvanic Discharge</span> + <span class="c">Ocelot Pride</span> token flooding. Their removal (<span class="c">Galvanic Discharge</span>, Thraben Charm) is energy-costed and hits your smaller creatures efficiently. The critical difference: <span class="c">Scion of Draco</span> gives your creatures hexproof — <span class="c">Galvanic Discharge</span>, <span class="c">Fatal Push</span>, and removal spells can't target Kavu or other creatures under Scion's protection. <span class="c">Goblin Bombardment</span> is their kill condition that bypasses this hexproof (sacrifice doesn't target). Post-board they bring <span class="c">Wrath of the Skies</span> (an energy sweeper) and Clarion Conqueror (shuts activated abilities — stops Phlage's escape? No — Escape is a casting alternative cost, not an activated ability. Clarion doesn't stop Phlage from escaping).</p>
+  <div class="matchup-detail open">
+    <table class="sb-table">
+      <thead><tr><th>Out</th><th>In</th></tr></thead>
+      <tbody>
+        <tr><td class="sb-out">−2 <span class="c">Consign to Memory</span></td><td class="sb-in">+2 <span class="c">Wrath of the Skies</span></td></tr>
+        <tr><td class="sb-out">−2 <span class="c">Spectral Denial</span></td><td class="sb-in">+2 <span class="c">Pest Control</span></td></tr>
+      </tbody>
+    </table>
+    <p class="sb-note"><span class="c">Wrath of the Skies</span> sweeps their 1/1 Cat tokens and small energy creatures. <span class="c">Pest Control</span> destroys all permanents with MV ≤ 1 (hits Ragavan, <span class="c">Ocelot Pride</span>, <span class="c">Guide of Souls</span>, <span class="c">Goblin Bombardment</span>). Consign and <span class="c">Spectral Denial</span> are weak — Boros has few triggered abilities or relevant counters to interact with.</p>
+    <p class="sb-note"><strong>Key needle:</strong> <span class="c">Goblin Bombardment</span> (sacrifice a creature → deal 1 damage) can't be stopped by hexproof — it doesn't target. <span class="c">Pest Control</span> from the sideboard or <span class="c">Leyline Binding</span> (exiling Bombardment for {W}) is the answer. Always Bind <span class="c">Goblin Bombardment</span> before it can chain kills.</p>
+  </div>
+
+  <!-- TAMESHI BELCHER -->
+  <h2>Tameshi Belcher <span style="font-size:18px;font-weight:300;font-family:'Crimson Pro',serif"> — 11.1% meta · <span class="verdict verdict-dog">Unfavorable</span></span></h2>
+  <p>Your hardest matchup. Tameshi Belcher wins on turn four with a Charbelcher activation dealing 40+ damage. You can't race a turn-four kill with an aggro clock that often takes five or six turns to finish. Game one is poor — your only interaction is <span class="c">Stubborn Denial</span> (counters <span class="c">Whir of Invention</span> or Charbelcher activation? No — Charbelcher's activation is an activated ability, not a spell, and can't be countered). <span class="c">Stubborn Denial</span> can counter <span class="c">Whir of Invention</span> (instant, not a creature spell) or Disrupting Shoal. Post-board: <span class="c">Mystical Dispute</span> counters their blue spells (<span class="c">Whir of Invention</span> costs {X}{U}{U}{U}, Dispute makes it cost {1}{U}{U}{U} more). Wear//Tear destroys <span class="c">Goblin Charbelcher</span>.</p>
+  <div class="matchup-detail open">
+    <table class="sb-table">
+      <thead><tr><th>Out</th><th>In</th></tr></thead>
+      <tbody>
+        <tr><td class="sb-out">−3 <span class="c">Doorkeeper Thrull</span></td><td class="sb-in">+2 <span class="c">Mystical Dispute</span></td></tr>
+        <tr><td class="sb-out">−1 <span class="c">Nishoba Brawler</span></td><td class="sb-in">+2 <span class="c">Wear // Tear</span></td></tr>
+      </tbody>
+    </table>
+    <p class="sb-note">Wear//Tear destroys <span class="c">Goblin Charbelcher</span> (artifact) or Lotus Bloom (artifact). <span class="c">Mystical Dispute</span> counters <span class="c">Whir of Invention</span> at reduced cost. <span class="c">Doorkeeper Thrull</span> is useless — they have almost no ETB creatures. Aggress hard and hope they stumble.</p>
+    <p class="sb-note"><strong>Key needle:</strong> <span class="c">Stubborn Denial</span> cannot counter Charbelcher's activated ability. Your best interaction is destroying Charbelcher before they activate it (Wear//Tear) or countering <span class="c">Whir of Invention</span> (the tutor that finds it). Be as aggressive as possible — every turn they don't have Charbelcher is a turn you can take their life total lower.</p>
+  </div>
+
+  <!-- ELDRAZI TRON -->
+  <h2>Eldrazi Tron <span style="font-size:18px;font-weight:300;font-family:'Crimson Pro',serif"> — 10.5% meta · <span class="verdict verdict-favor">Favorable</span></span></h2>
+  <p>Eldrazi Tron is slow and colorless. Their threats (<span class="c">Thought-Knot Seer</span>, Devourer of Destiny, Sire of Seven Deaths) come down on turn three or four at the earliest. You're attacking with a 5/5 hexproof on turn two. <span class="c">Leyline Binding</span> exiles any of their threats for {W}. <span class="c">Thought-Knot Seer</span>'s ETB exiles a card from your hand — <span class="c">Doorkeeper Thrull</span> silences this ETB if you flash it in response. Karn, the Great Creator's static ability shuts off activated abilities of artifacts — irrelevant to you since your creatures aren't artifacts. <span class="c">Chalice of the Void</span> at 2 counters: <span class="c">Lightning Bolt</span> (MV 1 — not hit at 2), Kavu (MV 2 — hit). Chalice at 1 hits Ragavan, <span class="c">Lightning Bolt</span>.</p>
+  <div class="matchup-detail open">
+    <table class="sb-table">
+      <thead><tr><th>Out</th><th>In</th></tr></thead>
+      <tbody>
+        <tr><td class="sb-out">−2 <span class="c">Consign to Memory</span></td><td class="sb-in">+2 <span class="c">Wear // Tear</span></td></tr>
+        <tr><td class="sb-out">−2 <span class="c">Spectral Denial</span></td><td class="sb-in">+1 <span class="c">Doorkeeper Thrull</span></td></tr>
+        <tr><td class="sb-out">−1 <span class="c">Stubborn Denial</span></td><td class="sb-in">+2 <span class="c">Celestial Purge</span></td></tr>
+      </tbody>
+    </table>
+    <p class="sb-note">Wear//Tear destroys <span class="c">Chalice of the Void</span> (artifact) or <span class="c">Ensnaring Bridge</span>. <span class="c">Doorkeeper Thrull</span> silences <span class="c">Thought-Knot Seer</span>'s exile ETB. <span class="c">Celestial Purge</span> exiles a black or red permanent (Kozilek's Command is black? No — colorless. Purge doesn't hit Eldrazi.) Use Purge mainly for escape value. <span class="c">Leyline Binding</span> is your best card here — exiles any Eldrazi for one white mana.</p>
+    <p class="sb-note"><strong>Key needle:</strong> Flash <span class="c">Doorkeeper Thrull</span> in response to <span class="c">Thought-Knot Seer</span> being cast. TKS resolves, enters without its ETB triggering — you don't exile a card. A 4/4 that just eats your creatures isn't as dangerous as one that also strips your hand.</p>
+  </div>
+
+  <!-- ESPER GORYO'S -->
+  <h2>Esper Goryo's <span style="font-size:18px;font-weight:300;font-family:'Crimson Pro',serif"> — 5.7% meta · <span class="verdict verdict-favor">Favorable</span></span></h2>
+  <p>Esper Goryo's depends on ETB triggers: <span class="c">Atraxa, Grand Unifier</span> drawing 8+ cards on ETB, <span class="c">Ephemerate</span> blinking for value. <span class="c">Doorkeeper Thrull</span> shuts off Atraxa's ETB — Atraxa enters as a 7/7 flying body with no card draw. This is frequently a free win. Their disruption (<span class="c">Thoughtseize</span>, <span class="c">Force of Negation</span>, <span class="c">Solitude</span>) can stop your threats, but <span class="c">Scion of Draco</span>'s hexproof grant means <span class="c">Solitude</span> can't target your creatures and <span class="c">Thoughtseize</span> takes from hand before Scion is in play. <span class="c">Territorial Kavu</span>'s attack rummage lets you exile their Atraxa from the graveyard — remove the reanimation target entirely.</p>
+  <div class="matchup-detail open">
+    <table class="sb-table">
+      <thead><tr><th>Out</th><th>In</th></tr></thead>
+      <tbody>
+        <tr><td class="sb-out">−2 <span class="c">Lightning Bolt</span></td><td class="sb-in">+1 <span class="c">Doorkeeper Thrull</span></td></tr>
+        <tr><td class="sb-out">−1 <span class="c">Nishoba Brawler</span></td><td class="sb-in">+2 <span class="c">Soul-Guide Lantern</span></td></tr>
+        <tr><td class="sb-out"></td><td class="sb-in">+1 <span class="c">Endurance</span></td></tr>
+      </tbody>
+    </table>
+    <p class="sb-note"><span class="c">Soul-Guide Lantern</span> exiles their GY on ETB (remove Atraxa/Griselbrand targets) and can be sacrificed to exile target card anytime. <span class="c">Endurance</span> flashes in to exile their entire GY at instant speed. <span class="c">Doorkeeper Thrull</span> silences Atraxa's card-draw ETB. <span class="c">Lightning Bolt</span> is weak — their threats are 7+ power.</p>
+    <p class="sb-note"><strong>Key needle:</strong> <span class="c">Territorial Kavu</span>'s attack trigger can exile Atraxa from their graveyard before they reanimate it. Attack with Kavu early even if not profitable for damage — use the trigger to exile their graveyard. Remove Atraxa and the deck has no engine.</p>
+  </div>
+
+  <!-- IZZET AFFINITY -->
+  <h2>Izzet Affinity <span style="font-size:18px;font-weight:300;font-family:'Crimson Pro',serif"> — 5.7% meta · <span class="verdict verdict-even">Even</span></span></h2>
+  <p>Izzet Affinity goldfishes quickly with <span class="c">Kappa Cannoneer</span> growing into a massive unblockable threat. <span class="c">Doorkeeper Thrull</span> shuts off Kappa's "whenever an artifact enters" counter trigger — Kappa enters but generates no counters from artifacts. <span class="c">Pinnacle Emissary</span>'s ETB token also gets silenced. Without Thrull, you need to race — your 5/5 Kavu with first strike and trample can't be profitably blocked by most affinity creatures. Post-board they bring <span class="c">Blood Moon</span> (converts your fetchable duals to Mountains — you can't make blue/green) and <span class="c">Force of Negation</span>.</p>
+  <div class="matchup-detail open">
+    <table class="sb-table">
+      <thead><tr><th>Out</th><th>In</th></tr></thead>
+      <tbody>
+        <tr><td class="sb-out">−2 <span class="c">Consign to Memory</span></td><td class="sb-in">+2 <span class="c">Wear // Tear</span></td></tr>
+        <tr><td class="sb-out">−1 <span class="c">Spectral Denial</span></td><td class="sb-in">+1 <span class="c">Doorkeeper Thrull</span></td></tr>
+        <tr><td class="sb-out">−1 <span class="c">Nishoba Brawler</span></td><td class="sb-in">+2 <span class="c">Mystical Dispute</span></td></tr>
+      </tbody>
+    </table>
+    <p class="sb-note">Wear//Tear destroys <span class="c">Blood Moon</span> (enchantment) and key artifacts. <span class="c">Doorkeeper Thrull</span> shuts <span class="c">Kappa Cannoneer</span>'s counter engine and <span class="c">Pinnacle Emissary</span> tokens. <span class="c">Mystical Dispute</span> counters <span class="c">Force of Negation</span> and any blue interaction for {U}.</p>
+    <p class="sb-note"><strong>Key needle:</strong> Flash <span class="c">Doorkeeper Thrull</span> in response to any artifact creature entering the battlefield. <span class="c">Kappa Cannoneer</span>'s counter trigger fires on artifacts entering — Thrull silences it immediately. Without the counter engine, Kappa is just a 1/1 that costs 4 mana.</p>
+  </div>
+
+  <!-- ESPER BLINK -->
+  <h2>Esper Blink <span style="font-size:18px;font-weight:300;font-family:'Crimson Pro',serif"> — 5.7% meta · <span class="verdict verdict-favor">Favorable</span></span></h2>
+  <p>Your best structured matchup post-board. Esper Blink's entire engine runs on ETB triggers: <span class="c">Solitude</span> exile, <span class="c">Overlord of the Balemurk</span> mill, Phelia bounce, <span class="c">Quantum Riddler</span> card draw. <span class="c">Doorkeeper Thrull</span> silences all of them. <span class="c">Solitude</span> can't exile creatures — it enters, does nothing, just sits as a 3/2. Overlord enters without milling. The deck's interaction collapses. Your hexproof creatures from Scion can't be targeted by <span class="c">Thoughtseize</span> (black sorcery, targets a player not a permanent — <span class="c">Thoughtseize</span> still works) or <span class="c">Solitude</span> (targets a creature — can't target hexproof creatures). Note: <span class="c">Thoughtseize</span> targets a player, not a creature, so it still strips combo pieces from hand even under hexproof.</p>
+  <div class="matchup-detail open">
+    <table class="sb-table">
+      <thead><tr><th>Out</th><th>In</th></tr></thead>
+      <tbody>
+        <tr><td class="sb-out">−2 <span class="c">Spectral Denial</span></td><td class="sb-in">+1 <span class="c">Doorkeeper Thrull</span></td></tr>
+        <tr><td class="sb-out">−1 <span class="c">Lightning Bolt</span></td><td class="sb-in">+2 <span class="c">Wrath of the Skies</span></td></tr>
+        <tr><td class="sb-out">−1 <span class="c">Nishoba Brawler</span></td><td class="sb-in">+1 <span class="c">Pest Control</span></td></tr>
+      </tbody>
+    </table>
+    <p class="sb-note"><span class="c">Doorkeeper Thrull</span> is your MVP — flash it in response to any ETB creature they cast. <span class="c">Wrath of the Skies</span> sweeps on a chosen energy level — you get the energy and choose MV threshold, which helps clear their smaller blink targets without hitting your own threats. <span class="c">Lightning Bolt</span> is weak — their threats have higher toughness.</p>
+    <p class="sb-note"><strong>Key needle:</strong> Scion's hexproof grant means <span class="c">Solitude</span> (target another creature) and <span class="c">Prismatic Ending</span> (exile target permanent with MV ≤ X) cannot target your hexproof creatures. But <span class="c">Ephemerate</span> can still blink their own creatures — Doorkeeper only stops the ETB trigger, not the blink itself.</p>
+  </div>
+
+  <!-- IZZET PROWESS -->
+  <h2>Izzet Prowess <span style="font-size:18px;font-weight:300;font-family:'Crimson Pro',serif"> — 5.2% meta · <span class="verdict verdict-favor">Favorable</span></span></h2>
+  <p>Prowess kills by buffing <span class="c">Dragon's Rage Channeler</span> and <span class="c">Monastery Swiftspear</span> with cheap spells. Their 3/3 or 4/4 pumped creatures lose races to your 5/5 Kavu with first strike — first strike means Kavu deals damage before their 4/4 deals back, killing their attacker without dying. <span class="c">Mutagenic Growth</span> (pay 2 life for +2/+2) can make their creatures survive first strike math — always be aware of the +2 life payment trick when attacking with Kavu. <span class="c">Lava Dart</span> flashback (sacrifice a Mountain, deal 1 damage) can finish off Ragavan or a 1-toughness creature. With Scion: your creatures have hexproof, making their DRC and Swiftspear's go-wide strategy irrelevant.</p>
+  <div class="matchup-detail open">
+    <table class="sb-table">
+      <thead><tr><th>Out</th><th>In</th></tr></thead>
+      <tbody>
+        <tr><td class="sb-out">−2 <span class="c">Consign to Memory</span></td><td class="sb-in">+2 <span class="c">Pest Control</span></td></tr>
+        <tr><td class="sb-out">−1 <span class="c">Doorkeeper Thrull</span></td><td class="sb-in">+1 <span class="c">Wrath of the Skies</span></td></tr>
+      </tbody>
+    </table>
+    <p class="sb-note"><span class="c">Pest Control</span> destroys all permanents with MV 1 or less — kills Ragavan, <span class="c">Monastery Swiftspear</span>, and any 1-drop threats they have. <span class="c">Wrath of the Skies</span> sweeps at the right energy threshold. <span class="c">Consign to Memory</span> is weak — Prowess has almost no triggered abilities. <span class="c">Doorkeeper Thrull</span> is marginal — Prowess has no key ETB triggers.</p>
+    <p class="sb-note"><strong>Key needle:</strong> <span class="c">Mutagenic Growth</span> costs 2 life, not mana — they can cast it at any time to save a creature from first strike damage. When attacking with Kavu into a 3/3, assume they have <span class="c">Mutagenic Growth</span> and plan combat math for a 5/5 blocker rather than a 3/3.</p>
+  </div>
+
+  <!-- DOMAIN MIRROR -->
+  <h2>Domain Zoo Mirror <span style="font-size:18px;font-weight:300;font-family:'Crimson Pro',serif"> — 2.6% meta · <span class="verdict verdict-even">Even</span></span></h2>
+  <p>The mirror comes down to two things: who has <span class="c">Leyline of the Guildpact</span> and who is on the play. With Leyline in play, both players have hexproof creatures — targeted removal is irrelevant. <span class="c">Leyline Binding</span> for {W} is the key interaction — exile their <span class="c">Scion of Draco</span>, their <span class="c">Territorial Kavu</span>, before they can attack. First player to resolve Scion gets the first hexproof grant, but both players' Scions give hexproof to their own creatures. Note: Scion gives YOUR creatures hexproof, not their creatures — it's not a symmetrical effect. With both players on Leyline, combat is determined by sequencing and attack ordering with first strike.</p>
+  <div class="matchup-detail open">
+    <table class="sb-table">
+      <thead><tr><th>Out</th><th>In</th></tr></thead>
+      <tbody>
+        <tr><td class="sb-out">−2 <span class="c">Consign to Memory</span></td><td class="sb-in">+2 <span class="c">Wear // Tear</span></td></tr>
+        <tr><td class="sb-out">−1 <span class="c">Nishoba Brawler</span></td><td class="sb-in">+1 <span class="c">Celestial Purge</span></td></tr>
+      </tbody>
+    </table>
+    <p class="sb-note">Wear//Tear destroys your opponent's <span class="c">Leyline Binding</span> (enchantment) at instant speed in response to them targeting your permanent. <span class="c">Celestial Purge</span> exiles a red permanent (Ragavan, Phlage, <span class="c">Territorial Kavu</span> — red with Leyline). If you can exile their Leyline with Binding and they've already cast their own creatures, they lose their domain and their creatures shrink dramatically.</p>
+    <p class="sb-note"><strong>Key needle:</strong> In the mirror, two Leylines in your opening hand: put both into play if you think they have Wear//Tear. One Leyline destroyed still leaves the second. If they don't have enchantment removal, put only one in play and use the second as Kavu rummage fodder.</p>
+  </div>
+
+  <!-- RUBY STORM -->
+  <h2>Ruby Storm <span style="font-size:18px;font-weight:300;font-family:'Crimson Pro',serif"> — 3.9% meta · <span class="verdict verdict-dog">Unfavorable</span></span></h2>
+  <p>Like Tameshi Belcher, Ruby Storm can kill faster than your aggro clock. They combo off with <span class="c">Desperate Ritual</span> + Pyretic Ritual chains into <span class="c">Grapeshot</span> or Empty the Warrens around turn three or four. Your clock is four to five turns. <span class="c">Stubborn Denial</span> can counter <span class="c">Past in Flames</span> (sorcery, not a creature spell) with ferocious — this slows their combo significantly. <span class="c">Spectral Denial</span> can also counter <span class="c">Past in Flames</span>. Apply aggression AND hold disruption. Your interaction is thin but meaningful — one Denial on <span class="c">Past in Flames</span> can break their Storm turn.</p>
+  <div class="matchup-detail open">
+    <table class="sb-table">
+      <thead><tr><th>Out</th><th>In</th></tr></thead>
+      <tbody>
+        <tr><td class="sb-out">−3 <span class="c">Doorkeeper Thrull</span></td><td class="sb-in">+3 <span class="c">Soul-Guide Lantern</span></td></tr>
+        <tr><td class="sb-out">−1 <span class="c">Nishoba Brawler</span></td><td class="sb-in">+1 <span class="c">Endurance</span></td></tr>
+      </tbody>
+    </table>
+    <p class="sb-note"><span class="c">Soul-Guide Lantern</span> exiles their graveyard, cutting off <span class="c">Past in Flames</span> (which requires cards in GY to cast at reduced cost). <span class="c">Endurance</span> flashes in at instant speed to exile their entire graveyard — devastating against a Storm turn. <span class="c">Doorkeeper Thrull</span> is useless — Storm has no ETB creatures.</p>
+    <p class="sb-note"><strong>Key needle:</strong> <span class="c">Soul-Guide Lantern</span> ETB exiles target opponent's graveyard. Activate it in response to <span class="c">Past in Flames</span> being cast — their flashback source disappears. Don't wait — if they have enough mana to <span class="c">Past in Flames</span>, exile the GY immediately before they get to cast it.</p>
+  </div>
+
+  <!-- AMULET TITAN -->
+  <h2>Amulet Titan <span style="font-size:18px;font-weight:300;font-family:'Crimson Pro',serif"> — 2.7% meta · <span class="verdict verdict-favor">Favorable</span></span></h2>
+  <p>Amulet Titan needs three to four turns to assemble <span class="c">Amulet of Vigor</span> + bounce lands + <span class="c">Primeval Titan</span>. You're attacking with a 5/5 on turn two. <span class="c">Leyline Binding</span> exiles <span class="c">Primeval Titan</span> for {W}. <span class="c">Leyline Binding</span> exiles <span class="c">Amulet of Vigor</span> for {W}. <span class="c">Territorial Kavu</span>'s attack exile ability removes their graveyard cards (disrupting Spelunking or Titan rebuys). Their main deck has no interaction for your early creatures — no removal, no counters. Summoner's Pact can find <span class="c">Endurance</span> or Arboreal Grazer — not threats you care about. Easily one of your best matchups.</p>
+  <div class="matchup-detail open">
+    <table class="sb-table">
+      <thead><tr><th>Out</th><th>In</th></tr></thead>
+      <tbody>
+        <tr><td class="sb-out">−2 <span class="c">Spectral Denial</span></td><td class="sb-in">+2 <span class="c">Wear // Tear</span></td></tr>
+      </tbody>
+    </table>
+    <p class="sb-note">Wear//Tear destroys <span class="c">Amulet of Vigor</span> (artifact) or other key artifacts. <span class="c">Spectral Denial</span> is weak — they cast almost no noncreature spells worth countering early. <span class="c">Leyline Binding</span> is your best card: keep mana available for flash exile of any Titan that resolves.</p>
+    <p class="sb-note"><strong>Key needle:</strong> Exile <span class="c">Amulet of Vigor</span> with <span class="c">Leyline Binding</span> or destroy with Wear//Tear before they assemble the Titan combo. Without Amulet, bounce lands enter tapped and their mana advantage collapses. Titan without Amulet is a 6/6 that fetches two lands — still large, but much slower.</p>
+  </div>
+
+  <!-- DIMIR FROG -->
+  <h2>Dimir Frog / Control <span style="font-size:18px;font-weight:300;font-family:'Crimson Pro',serif"> — 2.3% meta · <span class="verdict verdict-even">Even</span></span></h2>
+  <p>Dimir Frog operates through <span class="c">Psychic Frog</span> (grows as you discard, evasive) + <span class="c">Thoughtseize</span> + <span class="c">Counterspell</span>. Your hexproof creatures from Scion can't be targeted by <span class="c">Fatal Push</span> or <span class="c">Murktide Regent</span>'s block (well — Murktide blocks but can't be Fatal Pushed either). <span class="c">Thoughtseize</span> targets you (the player) not a creature — it strips your hand despite hexproof. <span class="c">Psychic Frog</span> discards your hand to pump itself, but with hexproof creatures you can race it. Key: <span class="c">Leyline Binding</span> exiles <span class="c">Psychic Frog</span> or <span class="c">Murktide Regent</span> at flash speed for {W}. <span class="c">Stubborn Denial</span> counters their <span class="c">Counterspell</span> (a noncreature spell) with ferocious. The matchup is winnable but requires careful sequencing.</p>
+  <div class="matchup-detail open">
+    <table class="sb-table">
+      <thead><tr><th>Out</th><th>In</th></tr></thead>
+      <tbody>
+        <tr><td class="sb-out">−3 <span class="c">Doorkeeper Thrull</span></td><td class="sb-in">+2 <span class="c">Mystical Dispute</span></td></tr>
+        <tr><td class="sb-out">−1 <span class="c">Nishoba Brawler</span></td><td class="sb-in">+1 <span class="c">Celestial Purge</span></td></tr>
+        <tr><td class="sb-out">−1 <span class="c">Consign to Memory</span></td><td class="sb-in">+2 <span class="c">Soul-Guide Lantern</span></td></tr>
+      </tbody>
+    </table>
+    <p class="sb-note"><span class="c">Mystical Dispute</span> counters any blue spell for {U} (<span class="c">Counterspell</span>, <span class="c">Force of Negation</span>, <span class="c">Consign to Memory</span>). <span class="c">Celestial Purge</span> exiles <span class="c">Murktide Regent</span> (blue, permanent) or <span class="c">Psychic Frog</span> (blue with Leyline active — wait, Frog is black). <span class="c">Celestial Purge</span> exiles black or red permanents. <span class="c">Psychic Frog</span> is black — Purge exiles it. <span class="c">Soul-Guide Lantern</span> disrupts their GY-based plans.</p>
+    <p class="sb-note"><strong>Key needle:</strong> <span class="c">Leyline Binding</span> for {W} exiles <span class="c">Psychic Frog</span> or Murktide at flash speed during their attack or in response to pump. This is the cleanest answer. Keep mana open on their turn — blank the Frog mid-swing before it deals damage and discards a key card from your hand.</p>
+  </div>
+
+</div>
+<!-- SIDEBOARD -->
+<div id="sideboard" class="section">
+  <div class="section-label">Chapter 07</div>
+  <h1>Sideboard Guide</h1>
+  <div class="mantra">The sideboard solves three problems: graveyard decks, combo decks, and mirror enchantment hate. Everything else is gravy.</div>
+
+  <h2>Sideboard Card-by-Card</h2>
+  <div class="sb-card-guide">
+    <div class="sb-guide-row">
+      <div class="sb-guide-name"><span class="c">Soul-Guide Lantern</span> ×3</div>
+      <div class="sb-guide-body">ETB: exile target player's graveyard. {0}, sacrifice: exile target card from any GY. Instant-speed GY hate that also has a body. The ETB exile comes in against Esper Goryo's (exile Atraxa), Ruby Storm (exile <span class="c">Past in Flames</span> targets), Living End (exile their cycling creatures). Activate in response to <span class="c">Past in Flames</span> being cast to deny flashback. Comes in vs any GY-dependent deck.</div>
+    </div>
+    <div class="sb-guide-row">
+      <div class="sb-guide-name"><span class="c">Wear // Tear</span> ×2</div>
+      <div class="sb-guide-body">Wear: destroy target artifact ({1}{R}). Tear: destroy target enchantment ({W}). Fuse both for {1}{R}{W}: destroy an artifact AND an enchantment. Answers: <span class="c">Goblin Charbelcher</span> (artifact), <span class="c">Amulet of Vigor</span> (artifact), <span class="c">Blood Moon</span> (enchantment), <span class="c">Leyline Binding</span> in the mirror (enchantment), <span class="c">Chalice of the Void</span> (artifact). Instant speed. Versatile enough to earn spots against almost any non-creature problem.</div>
+    </div>
+    <div class="sb-guide-row">
+      <div class="sb-guide-name"><span class="c">Wrath of the Skies</span> ×2</div>
+      <div class="sb-guide-body">{X}{W}{W} sorcery: get X energy, pay any amount of energy, destroy each artifact/creature/enchantment with MV ≤ that amount. You control the threshold — pay 2 energy to destroy everything MV 2 or less (hits Ragavan, <span class="c">Ocelot Pride</span>, tokens, <span class="c">Guide of Souls</span>). Pay 3 to include their MV 3 creatures. You keep your Scion (MV 12) and Phlage (MV 3 — hits at threshold ≥ 3). Use when they've flooded with small threats.</div>
+    </div>
+    <div class="sb-guide-row">
+      <div class="sb-guide-name"><span class="c">Pest Control</span> ×2</div>
+      <div class="sb-guide-body">{W}{B} sorcery, cycling {2}: destroy all nonland permanents with MV 1 or less. Hits: Ragavan (MV 1), <span class="c">Ocelot Pride</span> (MV 1), <span class="c">Guide of Souls</span> (MV 1), <span class="c">Goblin Bombardment</span> (MV 2 — not hit), <span class="c">Monastery Swiftspear</span> (MV 1), <span class="c">Dragon's Rage Channeler</span> (MV 1). A surgical sweep against the one-mana threat packages of Boros Energy and Prowess. Also has cycling {2} for when the sweeper isn't needed.</div>
+    </div>
+    <div class="sb-guide-row">
+      <div class="sb-guide-name"><span class="c">Mystical Dispute</span> ×2</div>
+      <div class="sb-guide-body">Counter any blue spell: costs {U} if target controller has an Island, {1}{U} otherwise. Hits: <span class="c">Counterspell</span>, <span class="c">Force of Negation</span>, <span class="c">Consign to Memory</span>, <span class="c">Goryo's Vengeance</span>, <span class="c">Whir of Invention</span>. Your best answer to blue control and blue combo post-board. Comes in vs Dimir Frog, Esper Goryo's, Tameshi Belcher, any blue-heavy interaction deck.</div>
+    </div>
+    <div class="sb-guide-row">
+      <div class="sb-guide-name"><span class="c">Celestial Purge</span> ×1</div>
+      <div class="sb-guide-body">Exile target black or red permanent — opponent can't respond to save it. Hits: <span class="c">Psychic Frog</span> (black), <span class="c">Murktide Regent</span> (blue — not hit), Ragavan (red — hits in mirror), Phlage (red — hits in mirror), <span class="c">Goblin Bombardment</span> (red). Instant speed, uncounterable removal that bypasses hexproof (it exiles, doesn't target a creature in the traditional "can't be targeted" sense — wait, it does say "target permanent." Hexproof from opponents means you can't TARGET it. <span class="c">Celestial Purge</span> targets. Scion's hexproof applies — Purge CAN'T exile a hexproof permanent you control. But it CAN exile your opponent's non-hexproof permanents.</div>
+    </div>
+    <div class="sb-guide-row">
+      <div class="sb-guide-name"><span class="c">Endurance</span> ×1</div>
+      <div class="sb-guide-body">Flash 3/4 {2}{G}. ETB: exile all cards from target player's GY, shuffle them into library. Instant-speed GY reset. Better than Lantern when you need to exile a full graveyard in response to a combo turn (Living End cascade, Goryo's with Atraxa ready). Can also be found via combat trick — flash it in as a surprise blocker. Comes in vs any GY-dependent combo deck as the premium Lantern upgrade.</div>
+    </div>
+    <div class="sb-guide-row">
+      <div class="sb-guide-name"><span class="c">Doorkeeper Thrull</span> ×1 (SB)</div>
+      <div class="sb-guide-body">A fourth Thrull for matchups where ETB shutdown is critical (Esper Blink, Esper Goryo's, Izzet Affinity). Bringing four total Thrulls into heavy ETB matchups maximizes your chance of having it when needed. The main deck runs three; the fourth in the board is specifically for matchups where Thrull's effect is a near-auto-win.</div>
+    </div>
+    <div class="sb-guide-row">
+      <div class="sb-guide-name"><span class="c">Stubborn Denial</span> ×1 (SB)</div>
+      <div class="sb-guide-body">A fourth <span class="c">Stubborn Denial</span> for matchups where you need maximum ferocious counter coverage. Against heavy spell-based interaction (Dimir Control, any blue deck), four hard counters with ferocious provides almost impenetrable coverage for your threats. Bring in when you're cutting <span class="c">Spectral Denial</span> and need the extra Denial count.</div>
+    </div>
+  </div>
+
+  <h2>What Never Comes Out</h2>
+  <div class="card-grid card-grid-3">
+    <div class="card">
+      <div class="card-label">Always Stays In</div>
+      <div class="card-title"><span class="c">Leyline of the Guildpact</span> ×4</div>
+      <div class="card-body">Never sideboard out Leylines. The card that makes your deck from "good aggro" to "best aggro" doesn't leave for any matchup. Even in the mirror where both players have Leyline, yours is still symmetrically powering your side.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Almost Always Stays In</div>
+      <div class="card-title"><span class="c">Territorial Kavu</span> ×4</div>
+      <div class="card-body">Your best creature in almost every matchup — 5/5 for {R}{G} that also handles graveyard hate on attack. The only matchup where you might trim one is a pure combo matchup where its attack trigger is irrelevant and you need more interaction.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">First Cuts</div>
+      <div class="card-title"><span class="c">Doorkeeper Thrull</span> / <span class="c">Consign to Memory</span></div>
+      <div class="card-body">These come out against matchups with no ETBs to counter. Vs Eldrazi Tron, Ruby Storm, or Tameshi Belcher: Thrull does nothing. <span class="c">Consign to Memory</span> counters triggered abilities — weak when there are none. Cut these first and bring in relevant sideboard pieces.</div>
+    </div>
+  </div>
+</div>
+<!-- HEURISTICS -->
+<div id="heuristics" class="section">
+  <div class="section-label">Chapter 08</div>
+  <h1>Heuristics</h1>
+  <div class="mantra">Sixteen rules to carry into every round.</div>
+  <ol class="heuristic-list">
+    <li><span class="heuristic-num">01</span><div class="heuristic-body"><strong>Leyline in hand = automatic keep, always.</strong> Even a weak six-card hand with Leyline outperforms a strong seven without it. The free domain engine is worth a card. You can win off five cards if Leyline is one of them.</div></li>
+    <li><span class="heuristic-num">02</span><div class="heuristic-body"><strong>Cast <span class="c">Scion of Draco</span> before your other creatures.</strong> Scion gives every creature you control hexproof, lifelink, first strike, trample, and vigilance. Creatures cast after Scion enter under this protection immediately. Casting Kavu before Scion means it's briefly targetable. Sequence Scion first, then deploy all threats under the hexproof umbrella.</div></li>
+    <li><span class="heuristic-num">03</span><div class="heuristic-body"><strong><span class="c">Leyline Binding</span> exiles the most dangerous permanent, not the most convenient one.</strong> Binding is your cleanest removal at {W}. Use it on <span class="c">Goblin Charbelcher</span>, <span class="c">Amulet of Vigor</span>, <span class="c">Psychic Frog</span>, <span class="c">Primeval Titan</span> — the cards that win the game if unanswered. Don't waste Binding on a 2/2 token when a game-ending threat is in play.</div></li>
+    <li><span class="heuristic-num">04</span><div class="heuristic-body"><strong><span class="c">Stubborn Denial</span> cannot counter creature spells. <span class="c">Spectral Denial</span> can.</strong> Keep this distinction when deciding which counter to hold. Ferocious <span class="c">Stubborn Denial</span> hard counters any noncreature spell. <span class="c">Spectral Denial</span> handles anything. Use Stubborn vs. removal/sweepers; Spectral vs. creature ETBs your Doorkeeper couldn't answer in time.</div></li>
+    <li><span class="heuristic-num">05</span><div class="heuristic-body"><strong><span class="c">Doorkeeper Thrull</span> must be in play when the creature enters, not before it's cast.</strong> Flash Thrull in response to the creature spell after it's been cast (on the stack) but before it resolves. Thrull's ability is a static effect — "while Thrull is in play, creatures entering don't trigger abilities." The window is between casting and resolution.</div></li>
+    <li><span class="heuristic-num">06</span><div class="heuristic-body"><strong><span class="c">Territorial Kavu</span>'s attack trigger is mandatory — choose carefully.</strong> On attack, you must choose: rummage (discard, draw) or exile a GY card. Against graveyard decks, always exile their key creature. Against non-GY decks, rummage to dig for missing pieces. You cannot decline both choices — pick the relevant one.</div></li>
+    <li><span class="heuristic-num">07</span><div class="heuristic-body"><strong>Two Leylines in hand: play one, use the other as Kavu rummage fuel, unless they have enchantment removal.</strong> One Leyline establishes full domain. The second is redundant on the battlefield and better used as a discard card for Kavu's rummage to draw into threats. Exception: if you know they board in Wear//Tear or <span class="c">Nature's Claim</span>, put both in for redundancy.</div></li>
+    <li><span class="heuristic-num">08</span><div class="heuristic-body"><strong>Kraven's power scales with your highest-MV permanent.</strong> With Leyline (MV 4) and no other permanents: Kraven is 4/4. With Scion (MV 12): Kraven is 12/4. Check your board before combat — Kraven's first-strike damage calculation changes dramatically based on what's in play. A 12/4 first striker kills almost anything.</div></li>
+    <li><span class="heuristic-num">09</span><div class="heuristic-body"><strong>Scion's hexproof protects YOUR creatures, not THEIR creatures.</strong> "Each creature you control has hexproof if it's blue." Hexproof means opponents can't target those creatures. Your own targeting spells (<span class="c">Leyline Binding</span> exiling your own creature? Doesn't happen normally) still work. Your opponent's Scion doesn't protect your creatures from their removal.</div></li>
+    <li><span class="heuristic-num">10</span><div class="heuristic-body"><strong><span class="c">Mutagenic Growth</span> costs 2 life, not mana — Prowess opponents can cast it at zero mana.</strong> When attacking with Kavu into a 3/3, assume <span class="c">Mutagenic Growth</span> can make it a 5/5. That means Kavu's 5/5 first strike trades instead of winning. Calculate worst-case combat math before committing to attacks where the opponent can pay life to survive.</div></li>
+    <li><span class="heuristic-num">11</span><div class="heuristic-body"><strong><span class="c">Pest Control</span> hits MV 1 or less — don't cast it on turn two if you have your own Ragavan in play.</strong> <span class="c">Pest Control</span> destroys ALL nonland permanents with MV 1, including your own Ragavan. Cast it before deploying your own 1-drops, or accept that Ragavan dies to clear their board. <span class="c">Wrath of the Skies</span> gives you more control over the threshold.</div></li>
+    <li><span class="heuristic-num">12</span><div class="heuristic-body"><strong>Wear//Tear at instant speed in response to opponent targeting your <span class="c">Leyline Binding</span>.</strong> If they cast <span class="c">Nature's Claim</span> or Wear//Tear targeting your Binding (which would return the exiled permanent), respond by casting your own Wear//Tear targeting their key artifact or enchantment. Get value on the way out — don't let them trade one removal for one binding without cost.</div></li>
+    <li><span class="heuristic-num">13</span><div class="heuristic-body"><strong>Against Eldrazi Tron: flash <span class="c">Doorkeeper Thrull</span> in response to <span class="c">Thought-Knot Seer</span> being cast.</strong> Thrull silences TKS's ETB exile effect. TKS resolves as a 4/4 with no hand disruption. This single interaction frequently wins the matchup — an unanswered TKS that strips your combo piece is devastating; a muted TKS is just a large body.</div></li>
+    <li><span class="heuristic-num">14</span><div class="heuristic-body"><strong>Against Goryo's: attack with Kavu before casting threats, even into blocks.</strong> <span class="c">Territorial Kavu</span>'s attack exile can remove Atraxa or Griselbrand from their graveyard before they reanimate it. It's often correct to attack Kavu into a 2/2 chump blocker to exile their combo piece from the GY — losing Kavu to a block is worth it if you exile their win condition.</div></li>
+    <li><span class="heuristic-num">15</span><div class="heuristic-body"><strong><span class="c">Soul-Guide Lantern</span>: ETB exiles GY immediately — use it the turn you cast it against Storm or Living End.</strong> Against Ruby Storm: cast Lantern in response to <span class="c">Past in Flames</span> being cast — the ETB triggers on the stack above <span class="c">Past in Flames</span>. <span class="c">Past in Flames</span> resolves into an empty graveyard. The flashback source is gone. Timing is critical; don't let <span class="c">Past in Flames</span> resolve first.</div></li>
+    <li><span class="heuristic-num">16</span><div class="heuristic-body"><strong><span class="c">Leyline Binding</span> can be cast at any time including your opponent's turn — use it as flash exile.</strong> Flash on Binding means you can exile their threat on their attack step, in response to them casting something, or at any point you have {W} available. Don't telegraph by casting it on your main phase. The best Binding is the one that blanks their key action, cast in response.</div></li>
+  </ol>
+</div>
+<!-- TUNING -->
+<div id="tuning" class="section">
+  <div class="section-label">Chapter 09</div>
+  <h1>Tuning Notes</h1>
+  <div class="mantra">The core 20 (4 Leyline, 4 Kavu, 4 Scion, 4 <span class="c">Leyline Binding</span>, 4 <span class="c">Lightning Bolt</span>) is locked. Everything else is meta-dependent.</div>
+  <div class="tuning-grid">
+    <div class="tuning-cell">
+      <div class="tuning-cell-label">If Combo Is Dominant (Belcher, Storm, Neoform)</div>
+      <div class="tuning-cell-title">+2 <span class="c">Mystical Dispute</span> MD</div>
+      <div class="tuning-cell-body">When three or more fast combo decks make up 15%+ of the field, main-decking 1–2 <span class="c">Mystical Dispute</span> is correct. Trim <span class="c">Consign to Memory</span> (1–2 copies) and possibly <span class="c">Doorkeeper Thrull</span> (1 copy). Dispute hits <span class="c">Whir of Invention</span>, <span class="c">Goryo's Vengeance</span>, and any blue combo piece for {U}.</div>
+    </div>
+    <div class="tuning-cell">
+      <div class="tuning-cell-label">If GY Decks Are Prevalent (Goryo's, Living End, Storm)</div>
+      <div class="tuning-cell-title">+1 <span class="c">Soul-Guide Lantern</span> MD</div>
+      <div class="tuning-cell-body">Moving one or two Soul-Guide Lanterns main deck makes sense when GY decks are concentrated in the field. The Lantern ETB exiles their GY on entry — proactive hate that costs {0} to cast. Trim <span class="c">Nishoba Brawler</span> (it's the weakest creature slot) for Lanterns.</div>
+    </div>
+    <div class="tuning-cell">
+      <div class="tuning-cell-label"><span class="c">Nishoba Brawler</span> vs <span class="c">Doorkeeper Thrull</span> Count</div>
+      <div class="tuning-cell-title">3 Thrull / 2 Brawler or 2 Thrull / 3 Brawler</div>
+      <div class="tuning-cell-body"><span class="c">Nishoba Brawler</span> (*/3 trample, domain power) is a redundant domain threat. <span class="c">Doorkeeper Thrull</span> (flash ETB shutdown) is format-dependent hate. Against ETB-heavy metas (Esper Blink dominant), run 4 Thrull (3 MD + 1 SB). Against aggro-heavy metas with few ETBs, cut Thrull to 2 and run more Brawlers for body count.</div>
+    </div>
+    <div class="tuning-cell">
+      <div class="tuning-cell-label"><span class="c">Tribal Flames</span> — Include or Exclude</div>
+      <div class="tuning-cell-title">0 or 2-3 copies</div>
+      <div class="tuning-cell-body">Some lists cut <span class="c">Tribal Flames</span> entirely for more creatures; others run 2–3. Include <span class="c">Tribal Flames</span> when: (1) the meta has lots of life-gain making burn necessary, (2) you face many stall-based strategies, (3) you want more reach to close games without attacking. Exclude when creature redundancy is more important than direct damage.</div>
+    </div>
+    <div class="tuning-cell">
+      <div class="tuning-cell-label"><span class="c">Kraven, Proud Predator</span> Count</div>
+      <div class="tuning-cell-title">0, 2, or 4 copies</div>
+      <div class="tuning-cell-body">Kraven is a scaling threat that rewards having high-MV permanents. With Scion (MV 12) in play, Kraven is a 12/4 vigilance. Excellent in slower metas. Cut Kraven against extremely fast aggro where you need bodies that are relevant before Scion resolves. Run 0 in very aggressive fields, 4 in slower midrange-heavy environments.</div>
+    </div>
+    <div class="tuning-cell">
+      <div class="tuning-cell-label"><span class="c">Spectral Denial</span> vs <span class="c">Consign to Memory</span></div>
+      <div class="tuning-cell-title">Meta-dependent split</div>
+      <div class="tuning-cell-body"><span class="c">Spectral Denial</span> (counters creatures and spells) vs <span class="c">Consign to Memory</span> (counters triggered abilities and colorless spells). Spectral is better against ETB creature-heavy decks. Consign is better against Eldrazi Tron (colorless spells) and pure combo. In a balanced meta: 2 Spectral, 2 Consign. In an ETB meta: 3 Spectral, 1 Consign. In an Eldrazi/combo meta: 1 Spectral, 3 Consign.</div>
+    </div>
+  </div>
+</div>
+<!-- PREP SHEET -->
+<div id="prep" class="section">
+  <div class="section-label">Chapter 10</div>
+  <h1>Tournament Prep Sheet</h1>
+  <div class="print-section">
+    <div class="print-title">Domain Zoo</div>
+    <div class="print-sub">Team Resolve · Tournament Reference · 2026</div>
+    <div class="print-grid">
+      <div>
+        <div class="print-col-title">Core Oracle Reminders</div>
+        <div class="print-line"><span>Leyline in opening hand → enters before game; lands get all types</span></div>
+        <div class="print-line"><span><span class="c">Scion of Draco</span>: 5 land types = {2} cost; gives creatures all 5 keywords</span></div>
+        <div class="print-line"><span>Scion hexproof: opponents can't target YOUR creatures (not theirs)</span></div>
+        <div class="print-line"><span><span class="c">Territorial Kavu</span> attack: MUST choose rummage or exile GY (mandatory)</span></div>
+        <div class="print-line"><span><span class="c">Doorkeeper Thrull</span>: ETBs silenced; doesn't stop the creature entering</span></div>
+        <div class="print-line"><span><span class="c">Leyline Binding</span>: exiles until Binding leaves; destroy = permanent returns</span></div>
+        <div class="print-line"><span><span class="c">Stubborn Denial</span>: ferocious = hard counter noncreature (NOT creatures)</span></div>
+        <div class="print-line"><span><span class="c">Spectral Denial</span>: CAN counter creatures; costs {1} less per 4+ power creature</span></div>
+        <div class="print-line"><span>Kraven power = highest MV permanent you control (Scion = 12)</span></div>
+        <div class="print-line"><span><span class="c">Pest Control</span>: destroys your own MV≤1 permanents too — cast before Ragavan</span></div>
+        <div class="print-line"><span><span class="c">Goblin Bombardment</span>: sacrifice doesn't target — hexproof doesn't protect</span></div>
+        <div class="print-line"><span><span class="c">Thoughtseize</span>: targets a PLAYER, not a creature — hexproof doesn't apply</span></div>
+
+        <div class="print-col-title" style="margin-top:16px;">Domain Thresholds</div>
+        <div class="print-line"><span>Full Domain (5 types): Kavu 5/5, Scion {2}, Binding {W}, Flames 5 dmg</span></div>
+        <div class="print-line"><span>4 types: Kavu 4/4, Scion {4}, Binding {1}{W}, Flames 4 dmg</span></div>
+        <div class="print-line"><span>Triome alone = 3 basic types (Island/Swamp/Mountain for <span class="c">Xander's Lounge</span>)</span></div>
+        <div class="print-line"><span>Fastest 2-land domain: <span class="c">Xander's Lounge</span> + <span class="c">Lush Portico</span></span></div>
+      </div>
+
+      <div>
+        <div class="print-col-title">Matchup Sideboard Quick-Reference</div>
+
+        <div class="print-mu">
+          <div class="print-mu-name">Boros Energy</div>
+          <div class="print-mu-role">Even · Watch <span class="c">Goblin Bombardment</span></div>
+          <div class="print-cols">
+            <div><div class="print-col-label">Out</div>
+              <div class="print-row"><span><span class="c">Consign to Memory</span> ×2</span><span class="print-qty">−2</span></div>
+              <div class="print-row"><span><span class="c">Spectral Denial</span> ×2</span><span class="print-qty">−2</span></div>
+            </div>
+            <div><div class="print-col-label">In</div>
+              <div class="print-row"><span><span class="c">Wrath of the Skies</span> ×2</span><span class="print-qty">+2</span></div>
+              <div class="print-row"><span><span class="c">Pest Control</span> ×2</span><span class="print-qty">+2</span></div>
+            </div>
+          </div>
+          <div class="print-needle">Binding <span class="c">Goblin Bombardment</span> ASAP — sacrifice bypasses hexproof</div>
+        </div>
+
+        <div class="print-mu">
+          <div class="print-mu-name">Esper Blink</div>
+          <div class="print-mu-role">Favorable · Thrull shuts ETBs</div>
+          <div class="print-cols">
+            <div><div class="print-col-label">Out</div>
+              <div class="print-row"><span><span class="c">Spectral Denial</span> ×2</span><span class="print-qty">−2</span></div>
+              <div class="print-row"><span><span class="c">Lightning Bolt</span></span><span class="print-qty">−1</span></div>
+              <div class="print-row"><span><span class="c">Nishoba Brawler</span></span><span class="print-qty">−1</span></div>
+            </div>
+            <div><div class="print-col-label">In</div>
+              <div class="print-row"><span><span class="c">Doorkeeper Thrull</span></span><span class="print-qty">+1</span></div>
+              <div class="print-row"><span><span class="c">Wrath of the Skies</span> ×2</span><span class="print-qty">+2</span></div>
+              <div class="print-row"><span><span class="c">Pest Control</span></span><span class="print-qty">+1</span></div>
+            </div>
+          </div>
+          <div class="print-needle">Flash Thrull in response to any ETB creature — <span class="c">Solitude</span> enters silently</div>
+        </div>
+
+        <div class="print-mu">
+          <div class="print-mu-name">Esper Goryo's</div>
+          <div class="print-mu-role">Favorable · Exile their GY</div>
+          <div class="print-cols">
+            <div><div class="print-col-label">Out</div>
+              <div class="print-row"><span><span class="c">Lightning Bolt</span> ×2</span><span class="print-qty">−2</span></div>
+              <div class="print-row"><span><span class="c">Nishoba Brawler</span></span><span class="print-qty">−1</span></div>
+            </div>
+            <div><div class="print-col-label">In</div>
+              <div class="print-row"><span><span class="c">Doorkeeper Thrull</span></span><span class="print-qty">+1</span></div>
+              <div class="print-row"><span><span class="c">Soul-Guide Lantern</span> ×2</span><span class="print-qty">+2</span></div>
+              <div class="print-row"><span><span class="c">Endurance</span></span><span class="print-qty">+1</span></div>
+            </div>
+          </div>
+          <div class="print-needle">Attack Kavu into chump blocks to exile Atraxa from their GY</div>
+        </div>
+
+        <div class="print-mu">
+          <div class="print-mu-name">Ruby Storm / Living End</div>
+          <div class="print-mu-role">Unfavorable / Even · GY hate key</div>
+          <div class="print-cols">
+            <div><div class="print-col-label">Out</div>
+              <div class="print-row"><span><span class="c">Doorkeeper Thrull</span> ×3</span><span class="print-qty">−3</span></div>
+              <div class="print-row"><span><span class="c">Nishoba Brawler</span></span><span class="print-qty">−1</span></div>
+            </div>
+            <div><div class="print-col-label">In</div>
+              <div class="print-row"><span><span class="c">Soul-Guide Lantern</span> ×3</span><span class="print-qty">+3</span></div>
+              <div class="print-row"><span><span class="c">Endurance</span></span><span class="print-qty">+1</span></div>
+            </div>
+          </div>
+          <div class="print-needle">Lantern ETB in response to <span class="c">Past in Flames</span> — exile GY before it resolves</div>
+        </div>
+
+        <div class="print-mu">
+          <div class="print-mu-name">Tameshi Belcher</div>
+          <div class="print-mu-role">Unfavorable · Race + Wear//Tear</div>
+          <div class="print-cols">
+            <div><div class="print-col-label">Out</div>
+              <div class="print-row"><span><span class="c">Doorkeeper Thrull</span> ×3</span><span class="print-qty">−3</span></div>
+              <div class="print-row"><span><span class="c">Nishoba Brawler</span></span><span class="print-qty">−1</span></div>
+            </div>
+            <div><div class="print-col-label">In</div>
+              <div class="print-row"><span><span class="c">Mystical Dispute</span> ×2</span><span class="print-qty">+2</span></div>
+              <div class="print-row"><span><span class="c">Wear // Tear</span> ×2</span><span class="print-qty">+2</span></div>
+            </div>
+          </div>
+          <div class="print-needle">Destroy Charbelcher with Wear before they activate. <span class="c">Stubborn Denial</span> hits <span class="c">Whir of Invention</span>.</div>
+        </div>
+
+        <div class="print-mu">
+          <div class="print-mu-name">Dimir Frog</div>
+          <div class="print-mu-role">Even · Hexproof + Binding key</div>
+          <div class="print-cols">
+            <div><div class="print-col-label">Out</div>
+              <div class="print-row"><span><span class="c">Doorkeeper Thrull</span> ×3</span><span class="print-qty">−3</span></div>
+              <div class="print-row"><span><span class="c">Consign to Memory</span></span><span class="print-qty">−1</span></div>
+              <div class="print-row"><span><span class="c">Nishoba Brawler</span></span><span class="print-qty">−1</span></div>
+            </div>
+            <div><div class="print-col-label">In</div>
+              <div class="print-row"><span><span class="c">Mystical Dispute</span> ×2</span><span class="print-qty">+2</span></div>
+              <div class="print-row"><span><span class="c">Celestial Purge</span></span><span class="print-qty">+1</span></div>
+              <div class="print-row"><span><span class="c">Soul-Guide Lantern</span> ×2</span><span class="print-qty">+2</span></div>
+            </div>
+          </div>
+          <div class="print-needle">Binding exiles <span class="c">Psychic Frog</span> on their attack — flash it mid-swing</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div><!-- end .page -->
+<footer>
+  <span>Team Resolve · Modern · 2026</span>
+  <span>Domain Zoo — 2.6% Meta Share</span>
+  <span>Last Updated: March 30, 2026</span>
+</footer>
+
+<script>
+function show(id, e) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.nav-link').forEach(b => b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  if(e && e.target) e.target.classList.add('active');
+  window.scrollTo(0, 0);
+}
+function toggle(id) {
+  const el = document.getElementById(id);
+  if (el) el.classList.toggle('open');
+}
+</script>
+</body>
+</html>
