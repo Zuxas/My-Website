@@ -12,6 +12,10 @@ __pycache__/
 venv/
 .venv/
 
+# ── Permanent tools folder (always tracked) ──────────────────
+!tools/
+!tools/*.py
+
 # ── Claude Code (session/cache only) ─────────────────────────
 .claude/*
 !.claude/settings.json
@@ -37,7 +41,8 @@ _show_*.py
 _oracle_*.py
 
 # ── One-off fixer / patcher scripts ──────────────────────────
-# Generated during playbook builds; not part of the site itself
+# All session-temp .py files have been removed from root.
+# Permanent tools live in tools/ and ARE tracked.
 _*.py
 fix_*.py
 add_*.py
@@ -45,12 +50,6 @@ check_*.py
 patch_*.py
 upgrade_*.py
 force_wrap_*.py
-wrap_dive_cards.py
-wrap_new_cards.py
-audit_dives.py
-audit_tabs.py
-meta_priority.py
-write_playbooks.py
 
 # ── Scratch / log output files ────────────────────────────────
 audit_out*.txt
