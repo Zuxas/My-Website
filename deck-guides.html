@@ -3,104 +3,198 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Deck Guides — Team Resolve Modern</title>
+<title>Deck Playbooks — Team Resolve</title>
 <link rel="stylesheet" href="styles.css">
 <link rel="icon" href="images/tab32.png" type="image/png">
 <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<style>
+  .format-tabs { display:flex; gap:0; border-bottom:2px solid var(--border-color, #e0e0e0); margin:0 0 40px; overflow-x:auto; scrollbar-width:none; }
+  .format-tabs::-webkit-scrollbar { display:none; }
+  .format-tab { font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.12em; text-transform:uppercase; padding:14px 24px; cursor:pointer; white-space:nowrap; border:none; background:none; color:#999; border-bottom:3px solid transparent; margin-bottom:-2px; transition:all 0.2s; }
+  .format-tab:hover { color:#333; }
+  .format-tab.active { color:#333; border-bottom-color:#333; font-weight:500; }
+  .format-tab .tab-count { font-size:10px; opacity:0.5; margin-left:6px; }
+  .format-section { display:none; }
+  .format-section.active { display:block; }
+  .format-badge { display:inline-block; font-family:'DM Mono',monospace; font-size:9px; letter-spacing:0.15em; text-transform:uppercase; padding:3px 8px; border:1px solid currentColor; margin-bottom:24px; opacity:0.5; }
+  .coming-soon-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:24px; margin:32px 0; }
+  .coming-soon-card { border:1px dashed #ccc; padding:32px 24px; text-align:center; }
+  .coming-soon-card .cs-icon { font-size:32px; margin-bottom:12px; opacity:0.2; }
+  .coming-soon-card .cs-title { font-family:'DM Mono',monospace; font-size:12px; letter-spacing:0.1em; text-transform:uppercase; color:#999; margin-bottom:8px; }
+  .coming-soon-card .cs-body { font-size:14px; color:#bbb; line-height:1.5; }
+  .guide-count-badge { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.1em; text-transform:uppercase; color:#999; margin-bottom:32px; }
+  .guide-count-badge strong { color:#333; }
+</style>
 </head>
 <body>
     <nav class="main-nav">
         <ul>
             <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
             <li><a href="meta.html"><i class="fas fa-chart-line"></i> Strategies</a></li>
-            
             <li><a href="deckbuilding.html"><i class="fas fa-cogs"></i> Deck Building</a></li>
             <li><a href="analyze.html"><i class="fas fa-search"></i> Analyze Deck Lists</a></li>
             <li><a href="journey/index.html"><i class="fas fa-book-open"></i> Journey</a></li>
+            <li><a href="deck-guides.html" class="active"><i class="fas fa-book"></i> Guides</a></li>
             <li><a href="bio.html"><i class="fas fa-user"></i> About Me</a></li>
         </ul>
     </nav>
     <main id="top" class="fade-in-top-to-bottom">
         <section class="column">
-            <span class="section-label">Team Resolve · Modern · 2026 RC Season</span>
+            <span class="section-label">Team Resolve · Competitive Playbooks</span>
             <h1>deck playbooks</h1>
-            <p class="intro">Full competitive playbooks for every deck Team Resolve is testing this Modern season. Each guide covers Identity, Decklist, Gameplan, Role Assignment, Matchup Guide, Sideboard Guide, Heuristics, and a printable Prep Sheet. These are living documents updated as the meta evolves.</p>
-            <h2>active testing — 2026 modern season</h2>
-            <div class="card-grid">
-                <div class="card">
-                    <div class="card-label">Primary Focus</div>
-                    <div class="card-title">UW Blink</div>
-                    <div class="card-body">Most testing hours. Tempo-control hybrid, highest skill ceiling in the format. 8 chapters including all 10 major matchups.<br><br><a href="uw-blink-playbook.html">Open Playbook →</a></div>
+            <p class="intro">Full competitive playbooks for every format Team Resolve is actively testing. Each guide covers deck identity, full decklist, game flow, engines, role assignment, matchup deep dives, sideboard guide, heuristics, tuning notes, and a printable prep sheet.</p>
+
+            <!-- FORMAT TABS -->
+            <div class="format-tabs">
+                <button class="format-tab active" onclick="showFormat('modern')">Modern <span class="tab-count">14</span></button>
+                <button class="format-tab" onclick="showFormat('standard')">Standard <span class="tab-count">0</span></button>
+                <button class="format-tab" onclick="showFormat('pioneer')">Pioneer <span class="tab-count">0</span></button>
+                <button class="format-tab" onclick="showFormat('legacy')">Legacy <span class="tab-count">0</span></button>
+                <button class="format-tab" onclick="showFormat('limited')">Limited <span class="tab-count">0</span></button>
+            </div>
+
+
+            <!-- ═══ MODERN ═══════════════════════════════════════════ -->
+            <div id="format-modern" class="format-section active">
+                <div class="format-badge">Modern · 2026 RC Season</div>
+                <div class="guide-count-badge"><strong>14 playbooks</strong> · Updated March 2026 · LDXP SEA26 reference lists</div>
+
+                <h2>active testing</h2>
+                <div class="card-grid">
+                    <div class="card">
+                        <div class="card-label">Primary Focus</div>
+                        <div class="card-title">UW Blink</div>
+                        <div class="card-body">Tempo-control hybrid. Phelia + Ephemerate + Solitude engine. Highest decision density of the Blink variants. Full 10-chapter guide.<br><br><a href="uw-blink-playbook.html">Open Playbook →</a></div>
+                    </div>
+                    <div class="card">
+                        <div class="card-label">Known Quantity</div>
+                        <div class="card-title">Boros Energy</div>
+                        <div class="card-body">The format baseline. Ragavan + Guide of Souls + Ocelot Pride generates advantage while applying pressure. Evaluating whether the field is now too prepared.<br><br><a href="boros-energy-playbook.html">Open Playbook →</a></div>
+                    </div>
+                    <div class="card">
+                        <div class="card-label">Active Testing</div>
+                        <div class="card-title">Grixis Reanimator</div>
+                        <div class="card-body">"Glockulous." Archon of Cruelty via Persist or Emperor of Bones. Different axis than the rest of the field. Full hate navigation guide.<br><br><a href="glockulous-playbook.html">Open Playbook →</a></div>
+                    </div>
+                    <div class="card">
+                        <div class="card-label">Evaluating the Splash</div>
+                        <div class="card-title">Jeskai Blink</div>
+                        <div class="card-body">UW Blink shell with red for Phlage and Ragavan. Casey Jones (LDXP SEA26 reference, Connor Mackenzie 9-0-4). Better against combo, slightly worse vs aggro.<br><br><a href="jeskai-blink-playbook.html">Open Playbook →</a></div>
+                    </div>
+                    <div class="card">
+                        <div class="card-label">Meta-Dependent</div>
+                        <div class="card-title">UW Control</div>
+                        <div class="card-body">Scepter-Chant lock + Narset draw engine. Updated to Evariel's 8-0-2 LDXP PTQ list. Reactive control with multiple overlapping lock engines.<br><br><a href="uw-control-playbook.html">Open Playbook →</a></div>
+                    </div>
+                    <div class="card">
+                        <div class="card-label">Monitoring</div>
+                        <div class="card-title">Izzet Prowess</div>
+                        <div class="card-body">Highest damage ceiling in the format. Lava Dart flashback creates free pump. Full guide including kill turn sequencing and DRC delirium management.<br><br><a href="prowess-playbook.html">Open Playbook →</a></div>
+                    </div>
                 </div>
-                <div class="card">
-                    <div class="card-label">Known Quantity · Run Back?</div>
-                    <div class="card-title">Boros Energy</div>
-                    <div class="card-body">The format baseline. Ragavan + Guide of Souls + Ocelot Pride generates advantage while applying pressure. Evaluating whether the field is now too prepared. Full 8-chapter guide.<br><br><a href="boros-energy-playbook.html">Open Playbook →</a></div>
+
+                <h2>full playbooks</h2>
+                <div class="card-grid">
+                    <div class="card">
+                        <div class="card-label">Tier 1 · 8% Meta Share</div>
+                        <div class="card-title">Izzet Affinity</div>
+                        <div class="card-body">Weapons Manufacturing shell. Pinnacle Emissary + Kappa Cannoneer. EE burst kills from nowhere. 11 matchup deep dives.<br><br><a href="izzet-affinity-playbook.html">Open Playbook →</a></div>
+                    </div>
+                    <div class="card">
+                        <div class="card-label">Tier 1 · 6.2% Meta Share</div>
+                        <div class="card-title">Ruby Storm</div>
+                        <div class="card-body">Ruby Medallion + Ral, Monsoon Mage. Chain rituals, Wish for Grapeshot. LDXP SEA26 reference (McDougal 9-0-4). Full SB guide.<br><br><a href="ruby-storm-playbook.html">Open Playbook →</a></div>
+                    </div>
+                    <div class="card">
+                        <div class="card-label">Tier 1 · 5.5% Meta Share</div>
+                        <div class="card-title">Eldrazi Tron</div>
+                        <div class="card-body">Karn toolbox + Tron mana. Thought-Knot Seer disrupts, Ugin exiles boards. 12 matchup deep dives, full Karn wish package guide.<br><br><a href="eldrazi-tron-playbook.html">Open Playbook →</a></div>
+                    </div>
+                    <div class="card">
+                        <div class="card-label">Tier 2 · 3.1% Meta Share</div>
+                        <div class="card-title">Amulet Titan</div>
+                        <div class="card-body">Two LDXP SEA26 lists — aljce's 10k-winning build and Devon Straub's PTQ list. Highest decision density in Modern. 11 deep dives.<br><br><a href="amulet-titan-playbook.html">Open Playbook →</a></div>
+                    </div>
+                    <div class="card">
+                        <div class="card-label">Tier 2 · 2.8% Meta Share</div>
+                        <div class="card-title">Living End</div>
+                        <div class="card-body">Cascade combo. Cycle threats turns 1–2, Violent Outburst at instant speed, board wipe and full refill. Zero spells MV≤2 main deck. 11 deep dives.<br><br><a href="living-end-playbook.html">Open Playbook →</a></div>
+                    </div>
+                    <div class="card">
+                        <div class="card-label">Tier 2 · 2.0% Meta Share</div>
+                        <div class="card-title">Golgari Yawgmoth</div>
+                        <div class="card-body">Creature combo. Yawgmoth + undying creatures + Blood Artist = infinite loop. 12 tutors (Chord, Evolution). Fair backup plan included. 11 deep dives.<br><br><a href="yawgmoth-playbook.html">Open Playbook →</a></div>
+                    </div>
+                    <div class="card">
+                        <div class="card-label">Tier 2 · 2.7% Meta Share</div>
+                        <div class="card-title">Simic Neoform</div>
+                        <div class="card-body">All-in combo. Allosaurus Rider free off green exile, Neoform into Ghalta, Xenagos gives haste — 26/26 trample turn 2. Full protection package. 11 deep dives.<br><br><a href="neoform-playbook.html">Open Playbook →</a></div>
+                    </div>
+                    <div class="card">
+                        <div class="card-label">Tier 2 · 2.6% Meta Share</div>
+                        <div class="card-title">Domain Zoo</div>
+                        <div class="card-body">Five-color aggro. Turn-zero Leyline of the Guildpact gives instant full domain — Scion of Draco free, Territorial Kavu as a 5/5. 11 deep dives.<br><br><a href="domain-zoo-playbook.html">Open Playbook →</a></div>
+                    </div>
                 </div>
-                <div class="card">
-                    <div class="card-label">Active Testing · High Variance</div>
-                    <div class="card-title">Grixis Reanimator</div>
-                    <div class="card-body">"Glockulous." Fastest kill in Modern. Different axis than the rest of the field. Combo guide with full hate navigation.<br><br><a href="glockulous-playbook.html">Open Playbook →</a></div>
-                </div>
-                <div class="card">
-                    <div class="card-label">Evaluating the Splash</div>
-                    <div class="card-title">Jeskai Blink</div>
-                    <div class="card-body">UW Blink + Teferi TRav + Lightning Bolt. Better against combo, slightly worse against aggro. When to choose this over UW.<br><br><a href="jeskai-blink-playbook.html">Open Playbook →</a></div>
-                </div>
-                <div class="card">
-                    <div class="card-label">Meta-Dependent</div>
-                    <div class="card-title">UW Control</div>
-                    <div class="card-body">Scepter-Chant lock + Narset draw engine. Updated to Evariel's 8-0-2 LDXP PTQ list. Reactive control with multiple overlapping lock engines. Full matchup guide.<br><br><a href="uw-control-playbook.html">Open Playbook →</a></div>
-                </div>
-                <div class="card">
-                    <div class="card-label">Monitoring</div>
-                    <div class="card-title">Izzet Prowess</div>
-                    <div class="card-body">Highest damage ceiling in the format. Lava Dart flashback creates free damage. Full guide including kill turn sequencing.<br><br><a href="prowess-playbook.html">Open Playbook →</a></div>
-                </div>
-                <div class="card">
-                    <div class="card-label">Tier 1 · 8% Meta Share</div>
-                    <div class="card-title">Izzet Affinity</div>
-                    <div class="card-body">Weapons Manufacturing shell. Pinnacle Emissary + Kappa Cannoneer for T2 unblockable threats. EE burst kills from nowhere. 11 deep dives.<br><br><a href="izzet-affinity-playbook.html">Open Playbook →</a></div>
-                </div>
-                <div class="card">
-                    <div class="card-label">Tier 1 · 6.2% Meta Share</div>
-                    <div class="card-title">Ruby Storm</div>
-                    <div class="card-body">Ruby Medallion + Ral combo. Chain rituals to 20 storm, Wish for Grapeshot. Fastest kill in Modern. Full SB guide with Orim's Chant lines.<br><br><a href="ruby-storm-playbook.html">Open Playbook →</a></div>
-                </div>
-                <div class="card">
-                    <div class="card-label">Tier 1 · 5.5% Meta Share</div>
-                    <div class="card-title">Eldrazi Tron</div>
-                    <div class="card-body">Karn toolbox + Tron mana. Thought-Knot Seer disrupts, Ugin exiles boards, Ulamog closes games. 12 deep dives, full Karn SB guide.<br><br><a href="eldrazi-tron-playbook.html">Open Playbook →</a></div>
-                </div>
-                <div class="card">
-                    <div class="card-label">Tier 2 · 3.1% Meta Share</div>
-                    <div class="card-title">Amulet Titan</div>
-                    <div class="card-body">Amulet of Vigor + bounce land mana engine. Two LDXP SEA26 reference lists — aljce's 10k-winning build (Scapeshift + Fire Magic SB) and Devon Straub's PTQ list (Malevolent Rumble package). Highest decision density in Modern. 11 deep dives.<br><br><a href="amulet-titan-playbook.html">Open Playbook →</a></div>
-                </div>
-                <div class="card">
-                    <div class="card-label">Tier 2 · 2.8% Meta Share</div>
-                    <div class="card-title">Living End</div>
-                    <div class="card-body">Cascade combo deck. Cycle creatures turns 1–2, Violent Outburst at EOT turn 3, board wipe and refill. Zero MV≤2 spells main deck. 11 deep dives.<br><br><a href="living-end-playbook.html">Open Playbook →</a></div>
-                </div>
-                <div class="card">
-                    <div class="card-label">Tier 2 · 2.0% Meta Share</div>
-                    <div class="card-title">Golgari Yawgmoth</div>
-                    <div class="card-body">Creature combo deck. Yawgmoth + Melira + undying + Blood Artist = infinite loop kill. 12 creature tutors (Chord, Evolution, CoCo). 11 deep dives.<br><br><a href="yawgmoth-playbook.html">Open Playbook →</a></div>
-                </div>
-                <div class="card">
-                    <div class="card-label">Tier 2 · 2.7% Meta Share</div>
-                    <div class="card-title">Simic Neoform</div>
-                    <div class="card-body">All-in combo. Exile two green cards, deploy Allosaurus Rider free, Neoform into Ghalta, Xenagos gives haste — 26/26 trample turn two. Full protection package (Veil, Pact, Dispute). 11 deep dives.<br><br><a href="neoform-playbook.html">Open Playbook →</a></div>
-                </div>
-                <div class="card">
-                    <div class="card-label">Tier 2 · 2.6% Meta Share</div>
-                    <div class="card-title">Domain Zoo</div>
-                    <div class="card-body">Five-color aggro-tempo. Turn-zero Leyline of the Guildpact gives instant full domain — Scion of Draco for free, Territorial Kavu as a 5/5, Leyline Binding for one white mana. Doorkeeper Thrull shuts all ETBs. 11 deep dives.<br><br><a href="domain-zoo-playbook.html">Open Playbook →</a></div>
+
+                <h2>how to use these guides</h2>
+                <p>Each playbook works offline. The <strong>Prep</strong> tab is printable — Ctrl+P prints the event-day quick reference sheet without navigation. Read the heuristics the night before an event, not during rounds.</p>
+            </div>
+
+
+            <!-- ═══ STANDARD ══════════════════════════════════════════ -->
+            <div id="format-standard" class="format-section">
+                <div class="format-badge">Standard · 2026</div>
+                <p class="intro">No Standard playbooks yet. When Team Resolve adds a Standard testing rotation, guides will appear here.</p>
+                <div class="coming-soon-grid">
+                    <div class="coming-soon-card">
+                        <div class="cs-icon"><i class="fas fa-book"></i></div>
+                        <div class="cs-title">Playbook Coming Soon</div>
+                        <div class="cs-body">Standard guides will be added here as Team Resolve expands into the format.</div>
+                    </div>
                 </div>
             </div>
-            <h2>how to use these guides</h2>
-            <p>Each playbook works offline. The <strong>Prep</strong> tab is printable — Ctrl+P prints the event-day quick reference sheet without navigation. Read the heuristics the night before an event, not during rounds.</p>
+
+            <!-- ═══ PIONEER ═══════════════════════════════════════════ -->
+            <div id="format-pioneer" class="format-section">
+                <div class="format-badge">Pioneer · 2026</div>
+                <p class="intro">No Pioneer playbooks yet. Framework ready — guides will appear here when the format is in active testing rotation.</p>
+                <div class="coming-soon-grid">
+                    <div class="coming-soon-card">
+                        <div class="cs-icon"><i class="fas fa-book"></i></div>
+                        <div class="cs-title">Playbook Coming Soon</div>
+                        <div class="cs-body">Pioneer guides will be added here as Team Resolve expands into the format.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ═══ LEGACY ════════════════════════════════════════════ -->
+            <div id="format-legacy" class="format-section">
+                <div class="format-badge">Legacy · 2026</div>
+                <p class="intro">No Legacy playbooks yet. Framework ready — guides will appear here when the format is in active testing rotation.</p>
+                <div class="coming-soon-grid">
+                    <div class="coming-soon-card">
+                        <div class="cs-icon"><i class="fas fa-book"></i></div>
+                        <div class="cs-title">Playbook Coming Soon</div>
+                        <div class="cs-body">Legacy guides will be added here as Team Resolve expands into the format.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ═══ LIMITED ═══════════════════════════════════════════ -->
+            <div id="format-limited" class="format-section">
+                <div class="format-badge">Limited · Draft &amp; Sealed</div>
+                <p class="intro">No Limited guides yet. Framework ready — archetype guides and format primers will appear here when in active rotation.</p>
+                <div class="coming-soon-grid">
+                    <div class="coming-soon-card">
+                        <div class="cs-icon"><i class="fas fa-book"></i></div>
+                        <div class="cs-title">Playbook Coming Soon</div>
+                        <div class="cs-body">Limited guides will be added here as Team Resolve expands into the format.</div>
+                    </div>
+                </div>
+            </div>
+
         </section>
         <a href="#top" class="back-to-top"><i class="fas fa-arrow-up"></i> Top</a>
     </main>
@@ -109,5 +203,14 @@
         <span>Jermey Wallace · Zuxas · Team Resolve</span>
         <span>&copy; 2026</span>
     </footer>
+    <script>
+    function showFormat(format) {
+        document.querySelectorAll('.format-section').forEach(s => s.classList.remove('active'));
+        document.querySelectorAll('.format-tab').forEach(t => t.classList.remove('active'));
+        document.getElementById('format-' + format).classList.add('active');
+        event.target.classList.add('active');
+        window.scrollTo(0, 0);
+    }
+    </script>
 </body>
 </html>
