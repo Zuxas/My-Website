@@ -1,0 +1,75 @@
+# ============================================================
+#  My-Website — .gitignore
+#  Keep: playbooks, site pages, CSS/JS, build tools, docs
+#  Ignore: DB scripts, exports, scratch files, old drafts
+# ============================================================
+
+# ── Python cache ─────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*.pyo
+.env
+venv/
+.venv/
+
+# ── Claude Code (session/cache only) ─────────────────────────
+.claude/*
+!.claude/settings.json
+
+# ── Windows junk ─────────────────────────────────────────────
+Thumbs.db
+Desktop.ini
+
+# ── Guide exports (canonical copies live in guides/exports/) ─
+ALL_GUIDES_EXPORT.json
+ALL_GUIDES_EXPORT.md
+ALL_GUIDES_EXPORT.tsv
+
+# ── DB insert / export / audit scripts ───────────────────────
+# These manipulate the guide DB and have no role in the website
+_insert_*.py
+_export_*.py
+_db_*.py
+_check_*.py
+_audit_*.py
+_compare_*.py
+_show_*.py
+_oracle_*.py
+
+# ── One-off fixer / patcher scripts ──────────────────────────
+# Generated during playbook builds; not part of the site itself
+fix_*.py
+add_*.py
+check_*.py
+patch_*.py
+upgrade_*.py
+force_wrap_*.py
+wrap_dive_cards.py
+wrap_new_cards.py
+audit_dives.py
+audit_tabs.py
+meta_priority.py
+write_playbooks.py
+
+# ── Scratch / log output files ────────────────────────────────
+audit_out*.txt
+peer-response.txt
+guides_list.txt
+_read_all.txt
+
+# ── Archives ─────────────────────────────────────────────────
+files.zip
+
+# ── Old drafts / superseded files ────────────────────────────
+uw-blink-2025-10-07.html
+bio_updated_current.html
+
+# ── Internal planning docs (not public-facing content) ───────
+planning.html
+deck-guide-intake.md
+
+# ── Generated data folder (runtime JSON, not source) ─────────
+data/
+
+# ── Journey folder (internal / exploratory) ──────────────────
+journey/
