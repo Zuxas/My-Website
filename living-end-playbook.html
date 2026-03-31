@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Living End — Team Resolve Playbook</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+  :root { --ink:#0e0e0e; --paper:#f2ede6; --paper-dark:#e8e1d6; --rule:#c8bfb0; --accent:#1D4ED8; --accent-light:#dbeafe; --danger:#8f1a1a; --danger-light:#f7d6d6; --gold:#8f6a1a; --gold-light:#f7ead6; --mid:#5a5248; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:var(--paper); color:var(--ink); font-family:'Crimson Pro',Georgia,serif; font-size:17px; line-height:1.6; }
+  .header-band { background:var(--ink); border-bottom:3px solid #1D4ED8; }
+  .header-inner { max-width:1100px; margin:0 auto; padding:32px 80px; display:flex; justify-content:space-between; align-items:flex-end; gap:40px; }
+  .header-eyebrow { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:rgba(242,237,230,0.35); margin-bottom:8px; }
+  .header-title { font-family:'Bebas Neue',sans-serif; font-size:56px; line-height:0.9; color:var(--paper); letter-spacing:0.02em; }
+  .header-title span { color:#60a5fa; }
+  .header-mantra { font-family:'Crimson Pro',serif; font-style:italic; font-size:15px; color:rgba(242,237,230,0.4); margin-top:8px; }
+  .header-right { display:flex; flex-direction:column; gap:8px; text-align:right; padding-bottom:4px; }
+  .header-stat { display:flex; gap:12px; align-items:center; justify-content:flex-end; }
+  .hs-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; color:rgba(242,237,230,0.3); }
+  .hs-val { font-family:'DM Mono',monospace; font-size:12px; color:var(--paper); }
+  nav { position:sticky; top:0; z-index:100; background:var(--ink); border-bottom:1px solid rgba(242,237,230,0.1); padding:0 80px; display:flex; align-items:center; gap:0; overflow-x:auto; scrollbar-width:none; }
+  nav::-webkit-scrollbar { display:none; }
+  .nav-brand { font-family:'Bebas Neue',sans-serif; font-size:18px; color:#60a5fa; letter-spacing:0.05em; margin-right:40px; white-space:nowrap; padding:16px 0; }
+  .nav-link { font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:rgba(242,237,230,0.4); padding:20px 16px; cursor:pointer; white-space:nowrap; border-bottom:2px solid transparent; transition:all 0.2s; background:none; border-top:none; border-left:none; border-right:none; }
+  .nav-link:hover, .nav-link.active { color:var(--paper); border-bottom-color:#1D4ED8; }
+  .page { max-width:1100px; margin:0 auto; padding:80px 80px; }
+  .section { display:none; animation:fadeIn 0.3s ease; }
+  .section.active { display:block; }
+  @keyframes fadeIn { from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:translateY(0);} }
+  .section-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.25em; text-transform:uppercase; color:var(--mid); margin-bottom:8px; }
+  h1 { font-family:'Bebas Neue',sans-serif; font-size:64px; line-height:0.9; letter-spacing:0.01em; color:var(--ink); margin-bottom:40px; }
+  h2 { font-family:'Bebas Neue',sans-serif; font-size:36px; letter-spacing:0.02em; color:var(--ink); margin:56px 0 20px; padding-bottom:8px; border-bottom:2px solid var(--ink); }
+  h3 { font-family:'DM Mono',monospace; font-size:12px; letter-spacing:0.15em; text-transform:uppercase; color:var(--accent); margin:32px 0 12px; }
+  p { margin-bottom:16px; color:var(--ink); font-weight:300; }
+  strong { font-weight:600; }
+  .mantra { border-left:4px solid var(--accent); padding:24px 32px; background:var(--accent-light); margin:32px 0; font-style:italic; font-size:20px; color:var(--accent); line-height:1.5; }
+  .card-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); gap:1px; background:var(--rule); border:1px solid var(--rule); margin:24px 0; }
+  .card-grid-2 { grid-template-columns:repeat(2,1fr) !important; }
+  .card-grid-3 { grid-template-columns:repeat(3,1fr) !important; }
+  .card { background:var(--paper); padding:24px; }
+  .card:hover { background:var(--paper-dark); }
+  .card-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--mid); margin-bottom:8px; }
+  .card-title { font-family:'Bebas Neue',sans-serif; font-size:22px; letter-spacing:0.03em; color:var(--ink); margin-bottom:8px; }
+  .card-body { font-size:15px; font-weight:300; color:var(--mid); line-height:1.5; }
+  .decklist { display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--rule); border:1px solid var(--rule); margin:24px 0; }
+  .dl-section { background:var(--paper); padding:24px; }
+  .dl-section-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--mid); margin-bottom:16px; }
+  .dl-group { margin-bottom:20px; }
+  .dl-group-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; color:var(--ink); background:var(--paper-dark); padding:4px 8px; margin-bottom:8px; display:inline-block; }
+  .dl-card-row { display:flex; justify-content:space-between; align-items:baseline; padding:3px 0; border-bottom:1px solid rgba(200,191,176,0.3); font-size:15px; font-weight:300; }
+  .dl-card-row:last-child { border-bottom:none; }
+  .dl-qty { font-family:'DM Mono',monospace; font-size:12px; color:var(--mid); flex-shrink:0; margin-left:8px; }
+  .matchup-table { width:100%; border-collapse:collapse; margin:24px 0; }
+  .matchup-table th { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; padding:10px 16px; background:var(--ink); color:rgba(242,237,230,0.6); text-align:left; }
+  .matchup-table td { padding:12px 16px; border-bottom:1px solid var(--rule); font-size:15px; font-weight:300; }
+  .matchup-table tr:hover td { background:var(--paper-dark); cursor:pointer; }
+  .matchup-detail { display:none; background:var(--accent-light); border-left:4px solid var(--accent); padding:24px 32px; margin:0; }
+  .matchup-detail.open { display:block; }
+  .verdict { display:inline-block; font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; padding:4px 10px; border:1px solid; }
+  .verdict-dog { background:var(--danger-light); color:var(--danger); border-color:var(--danger); }
+  .verdict-even { background:var(--gold-light); color:var(--gold); border-color:var(--gold); }
+  .verdict-favor { background:#d1fae5; color:#065f46; border-color:#065f46; }
+  .verdict-hard { background:var(--danger-light); color:var(--danger); border-color:var(--danger); }
+  .sb-table { width:100%; border-collapse:collapse; margin:16px 0; }
+  .sb-table th { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; padding:8px 12px; background:var(--paper-dark); color:var(--mid); text-align:left; border-bottom:2px solid var(--rule); }
+  .sb-table td { padding:10px 12px; border-bottom:1px solid var(--rule); font-size:14px; font-weight:300; }
+  .sb-out { color:var(--danger); font-family:'DM Mono',monospace; font-size:12px; }
+  .sb-in { color:#065f46; font-family:'DM Mono',monospace; font-size:12px; }
+  .sb-note { font-size:13px; font-weight:300; color:var(--mid); font-style:italic; margin-top:6px; }
+  .sb-card-guide { border:1px solid var(--rule); margin:24px 0; }
+  .sb-guide-row { display:grid; grid-template-columns:180px 1fr; gap:0; border-bottom:1px solid var(--rule); }
+  .sb-guide-row:last-child { border-bottom:none; }
+  .sb-guide-name { font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.08em; text-transform:uppercase; padding:16px; background:var(--paper-dark); color:var(--ink); border-right:1px solid var(--rule); display:flex; align-items:flex-start; }
+  .sb-guide-body { padding:16px; font-size:14px; font-weight:300; line-height:1.6; color:var(--mid); }
+  .role-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--rule); border:1px solid var(--rule); margin:24px 0; }
+  .role-card { background:var(--paper); padding:24px; }
+  .role-name { font-family:'Bebas Neue',sans-serif; font-size:28px; letter-spacing:0.02em; margin-bottom:8px; }
+  .role-name-primary { color:var(--accent); }
+  .role-name-secondary { color:var(--gold); }
+  .role-name-tertiary { color:var(--mid); }
+  .role-desc { font-size:14px; font-weight:300; color:var(--mid); line-height:1.5; margin-bottom:12px; }
+  .role-matchups { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.1em; text-transform:uppercase; color:var(--mid); }
+  .engine-block { border:1px solid var(--rule); margin:32px 0; }
+  .engine-header { background:var(--ink); padding:20px 24px; display:flex; align-items:center; gap:16px; }
+  .engine-letter { font-family:'Bebas Neue',sans-serif; font-size:40px; color:#60a5fa; line-height:1; }
+  .engine-name { font-family:'Bebas Neue',sans-serif; font-size:24px; color:var(--paper); letter-spacing:0.03em; }
+  .engine-body { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--rule); }
+  .engine-step { background:var(--paper); padding:20px; }
+  .engine-step-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--mid); margin-bottom:6px; }
+  .engine-step-title { font-family:'Bebas Neue',sans-serif; font-size:20px; color:var(--ink); margin-bottom:8px; }
+  .engine-step-body { font-size:14px; font-weight:300; color:var(--mid); line-height:1.5; }
+  .tricks-list { list-style:none; margin:0; padding:0; border:1px solid var(--rule); }
+  .tricks-list li { padding:14px 20px 14px 36px; border-bottom:1px solid var(--rule); font-size:15px; font-weight:300; position:relative; }
+  .tricks-list li:last-child { border-bottom:none; }
+  .tricks-list li::before { content:"▸"; position:absolute; left:14px; color:var(--accent); }
+  .tuning-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--rule); border:1px solid var(--rule); margin:24px 0; }
+  .tuning-card { background:var(--paper); padding:20px; }
+  .tuning-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--mid); margin-bottom:8px; }
+  .tuning-condition { font-family:'Bebas Neue',sans-serif; font-size:18px; color:var(--ink); margin-bottom:12px; }
+  .tuning-up { font-size:14px; font-weight:300; margin-bottom:6px; }
+  .tuning-up::before { content:"▲ "; color:#065f46; font-size:12px; }
+  .tuning-down { font-size:14px; font-weight:300; margin-bottom:6px; }
+  .tuning-down::before { content:"▼ "; color:var(--danger); font-size:12px; }
+  .heuristic-list { list-style:none; margin:0; padding:0; counter-reset:heuristic; }
+  .heuristic-list li { counter-increment:heuristic; display:grid; grid-template-columns:48px 1fr; gap:16px; padding:20px 0; border-bottom:1px solid var(--rule); align-items:start; }
+  .heuristic-list li:last-child { border-bottom:none; }
+  .heuristic-list li::before { content:counter(heuristic,decimal-leading-zero); font-family:'DM Mono',monospace; font-size:22px; color:var(--rule); font-weight:500; }
+  .heuristic-text strong { display:block; font-size:16px; font-weight:600; margin-bottom:4px; color:var(--ink); }
+  .heuristic-text span { font-size:14px; font-weight:300; color:var(--mid); line-height:1.5; }
+  .print-btn { display:inline-flex; align-items:center; gap:8px; font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.12em; text-transform:uppercase; background:var(--ink); color:var(--paper); border:none; padding:10px 20px; cursor:pointer; margin-bottom:32px; }
+  .print-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--rule); border:1px solid var(--rule); }
+  .print-mu { background:var(--paper); padding:16px; }
+  .print-mu-name { font-family:'Bebas Neue',sans-serif; font-size:16px; color:var(--ink); margin-bottom:4px; }
+  .print-mu-role { font-family:'DM Mono',monospace; font-size:9px; letter-spacing:0.1em; text-transform:uppercase; color:var(--mid); margin-bottom:10px; }
+  .print-cols { display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+  .print-col-label { font-family:'DM Mono',monospace; font-size:9px; letter-spacing:0.15em; text-transform:uppercase; color:var(--mid); margin-bottom:4px; }
+  .print-row { font-size:12px; font-weight:300; display:flex; justify-content:space-between; padding:1px 0; border-bottom:1px solid rgba(200,191,176,0.4); }
+  .print-qty { font-family:'DM Mono',monospace; font-size:11px; color:var(--mid); flex-shrink:0; margin-left:4px; }
+  .print-needle { font-family:'DM Mono',monospace; font-size:9px; letter-spacing:0.06em; color:var(--danger); margin-top:6px; text-transform:uppercase; }
+  .c { color:var(--accent); font-weight:400; }
+  footer { background:var(--ink); color:rgba(242,237,230,0.3); padding:40px 80px; margin-top:80px; display:flex; justify-content:space-between; align-items:center; }
+  footer span { font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.1em; text-transform:uppercase; }
+  @media (max-width:768px) { .header-inner,nav,.page,footer { padding-left:24px; padding-right:24px; } .header-title { font-size:40px; } .header-right { display:none; } .decklist,.role-grid,.engine-body,.tuning-grid { grid-template-columns:1fr; } nav { padding:0 24px; } }
+  @media print { nav,.print-btn,footer { display:none; } .section { display:block !important; } }
+</style>
+</head>
+<body>
+
+<div class="header-band">
+  <div class="header-inner">
+    <div>
+      <div class="header-eyebrow">Team Resolve · Modern · March 30, 2026</div>
+      <div class="header-title">Living<br><span>End</span></div>
+      <div class="header-mantra">"Every creature you cycle is a threat. Every cascade is a board wipe and a refill."</div>
+    </div>
+    <div class="header-right">
+      <div class="header-stat"><span class="hs-label">Meta Share</span><span class="hs-val">2.8%</span></div>
+      <div class="header-stat"><span class="hs-label">Role</span><span class="hs-val">Cascade Combo</span></div>
+      <div class="header-stat"><span class="hs-label">Colors</span><span class="hs-val">Sultai / Temur</span></div>
+      <div class="header-stat"><span class="hs-label">Kill Turn</span><span class="hs-val">3–4</span></div>
+    </div>
+  </div>
+</div>
+
+<nav>
+  <div class="nav-brand">Living End</div>
+  <button class="nav-link active" onclick="show('identity',event)">Overview</button>
+  <button class="nav-link" onclick="show('decklist',event)">Decklist</button>
+  <button class="nav-link" onclick="show('gameplan',event)">Game Flow</button>
+  <button class="nav-link" onclick="show('engines',event)">Engines</button>
+  <button class="nav-link" onclick="show('roles',event)">Roles</button>
+  <button class="nav-link" onclick="show('matchups',event)">Matchups</button>
+  <button class="nav-link" onclick="show('sideboard',event)">Sideboard</button>
+  <button class="nav-link" onclick="show('heuristics',event)">Heuristics</button>
+  <button class="nav-link" onclick="show('tuning',event)">Tuning</button>
+  <button class="nav-link" onclick="show('prep',event)">Prep</button>
+</nav>
+
+<div class="page">
+
+<!-- CH01: OVERVIEW -->
+<div id="identity" class="section active">
+  <div class="section-label">Chapter 01</div>
+  <h1>Overview</h1>
+
+  <div class="mantra">"Living End is the perfect weapon for anyone who wants to play a true combo deck while keeping the ability to interact. When it's working, nothing in Modern feels as clean or as devastating as a turn-3 cascade into a full board wipe and immediate rebuild." — BtB Jericho</div>
+
+  <p>Living End is a cascade combo deck built around one card: <span class="c">Living End</span>, a sorcery with Suspend 3 and no mana cost. Because it has no mana cost, cascade spells (which look for "a nonland card that costs less" than themselves) will always find and cast it for free. You spend turns 1–2 cycling large creatures into your graveyard, then cascade on turn 3 via <span class="c">Violent Outburst</span> (instant-speed) or <span class="c">Ardent Plea</span>. Living End resolves: all creatures are exiled and sacrificed, then all your GY creatures enter the battlefield. Your opponent loses their board. You gain 3–6 large creatures.</p>
+
+  <p>The deck has evolved significantly from its original "easy win" form. The printed elements include interaction (Force of Negation, Subtlety, Grief), a resilient payoff in <span class="c">Overlord of the Balemurk</span> (mills 4 each trigger, filling the GY faster), and <span class="c">Violent Outburst</span> as an instant-speed cascade at end of opponent's turn. This protects against sorcery-speed hate like Relic of Progenitus activations and Rest in Peace at your combat step.</p>
+
+  <h2>Deck Identity</h2>
+  <div class="card-grid">
+    <div class="card">
+      <div class="card-label">The Kill Mechanism</div>
+      <div class="card-title">Cascade → Living End</div>
+      <div class="card-body">Cast Violent Outburst or Ardent Plea (MV 3). Cascade exiles cards until it finds a nonland card costing less than MV 3. Living End has no mana cost — MV 0 — so cascade finds it immediately. Cast Living End for free. Board wipe + graveyard refill.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Why MV 0?</div>
+      <div class="card-title">No Mana Cost = No MV</div>
+      <div class="card-body">Living End has "Suspend 3—{2}{B}{B}" but no printed mana cost at all. Cards with no mana cost have MV 0. The cascade rule says "exile cards until you exile a nonland card that costs less." Less than MV 3 = MV 0, 1, or 2. Living End at MV 0 qualifies. This is why the deck runs ZERO other nonland spells with MV 0, 1, or 2 in the main deck — any such spell could be hit by cascade instead.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Instant Speed</div>
+      <div class="card-title">Violent Outburst EOT</div>
+      <div class="card-body">Violent Outburst is an INSTANT. Cast it at end of opponent's turn to dodge sorcery-speed hate. Rest in Peace, Relic of Progenitus activations, Grafdigger's Cage — many GY hate pieces can only be deployed at sorcery speed. Casting Violent Outburst at end step also means you hold up mana for Subtlety or Force of Negation on the same turn.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Free Cycling</div>
+      <div class="card-title">Street Wraith — Pay 2 Life</div>
+      <div class="card-body">Street Wraith cycles for "pay 2 life" — zero mana. On turn 1 with no lands, you can cycle Street Wraith freely if you started at 20 life. Four copies means 8 free life spent cycling by turn 3. This is how the deck fills the GY while still playing on curve. Monstrous Carabid cycles for {B/R} (one mana), Horror for {B}.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Modern Constraint</div>
+      <div class="card-title">Zero Sub-3-MV Spells</div>
+      <div class="card-body">The deck cannot run any nonland spell with MV 2 or less in the main deck — cascade would hit it instead of Living End, wasting the cascade trigger. This shapes every card choice: every noncreature interaction piece (Force of Negation, Subtlety, Grief, Endurance) is either a creature with cycling or a "free" spell that doesn't go in the main cascade sequence.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Meta Position</div>
+      <div class="card-title">2.8% · Consistent Threat</div>
+      <div class="card-body">BtB Jericho: "A rewarding experience for those players who like graveyard and combo strategies alike." Living End is a strong metagame choice when opponents haven't prepared GY hate. The sideboard is heavily tailored to beat GY hate since every opponent brings it in. Expert pilots routinely top8 Modern challenges with the deck.</div>
+    </div>
+  </div>
+
+  <h2>Oracle Accuracy — Critical Interactions</h2>
+  <div class="card-grid">
+    <div class="card">
+      <div class="card-label">Living End</div>
+      <div class="card-title">No Mana Cost · Sorcery</div>
+      <div class="card-body">Suspend 3—{2}{B}{B}. Each player exiles all creature cards from their graveyard, then sacrifices all creatures they control, then puts all cards exiled this way onto the battlefield. The exile and sacrifice happen simultaneously — tokens die, indestructible creatures are sacrificed. The enter triggers (ETBs of returned creatures) all go on the stack after resolution. Note: Grafdigger's Cage stops Living End because "creatures can't enter the battlefield from graveyards or libraries" — but they ARE exiled first, so the exiling happens. It's the re-entering that's stopped.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Violent Outburst</div>
+      <div class="card-title">{1}{R}{G} · Instant MV 3</div>
+      <div class="card-body">Cascade. Creatures you control get +1/+0 until end of turn. The cascade trigger goes on the stack when you CAST this spell. Cascade exiles from library until it finds a nonland card costing less than MV 3. Casts it free. At end of opponent's turn: Violent Outburst resolves, +1/+0 buff applies to your entering creatures (relevant in combat races). The cascade clause is the reason — cast it at end of opponent's turn to protect against sorcery-speed GY hate responses.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Foundation Breaker</div>
+      <div class="card-title">{3}{G} · Elemental MV 4</div>
+      <div class="card-body">When this creature enters, you may destroy target artifact or enchantment. Cycling {G}. Foundation Breaker enters FROM HAND (cast normally) — Grafdigger's Cage does NOT stop it entering or triggering. Even with Cage on board, Foundation Breaker can destroy the Cage on ETB. This is the primary answer to Cage. Cycling it also fills the GY for the Living End (you're cycling a 4-MV creature, which comes back with Living End).</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Subtlety</div>
+      <div class="card-title">{2}{U}{U} · 3/3 Flash Flying</div>
+      <div class="card-body">Evoke — exile a blue card. ETB: choose up to one target creature spell or planeswalker spell. Its owner puts it on top or bottom of library. Subtlety counters creature spells and planeswalker spells — NOT instants or sorceries. Can't counter Living End (it's a sorcery). CAN counter Subtlety, Endurance, Grief cast by opponents. After evoke, Subtlety dies but the ETB trigger already resolved. In Living End GY: comes back with your cascade for a 3/3 flying blocker/attacker.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Force of Negation</div>
+      <div class="card-title">{1}{U}{U} · Instant MV 3</div>
+      <div class="card-body">If it's not your turn: exile a blue card from your hand, counter target noncreature spell. On your own turn: must pay {1}{U}{U}. Force of Negation CANNOT counter creature spells — relevant because Endurance (which shuffles GYs) is a creature spell. You can't Force of Negation an opposing Endurance trying to shuffle your GY. Use Subtlety instead to put Endurance on top/bottom of library before it ETBs.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Overlord of the Balemurk</div>
+      <div class="card-title">{3}{B}{B} · 5/5 Avatar</div>
+      <div class="card-body">Impending 5—{1}{B}: enters with 5 time counters, isn't a creature until last is removed (end step removes one per turn). When this permanent enters OR attacks: mill 4, then return a creature card from your GY to your hand. Impending means you play it for {1}{B} early, it sits as an enchantment, mills 4 on entry, then becomes a 5/5 creature when counters run out (5 turns later). Mill 4 on entry = 4 more cards in GY for Living End. Also recurs a key creature if Living End has been countered.</div>
+    </div>
+  </div>
+</div>
+
+<!-- CH02: DECKLIST -->
+<div id="decklist" class="section">
+  <div class="section-label">Chapter 02</div>
+  <h1>The 75</h1>
+  <p>Current Sultai build (March 2026). The Blue splash adds Curator of Mysteries (free {U} cycle + scry), Subtlety, and Force of Negation. Some builds splash white for Ardent Plea as additional cascade. Zero nonland spells with MV ≤ 2 in the main deck.</p>
+
+  <div class="decklist">
+    <div class="dl-section">
+      <div class="dl-section-label">Maindeck — 60 cards</div>
+      <div class="dl-group">
+        <div class="dl-group-label">The Combo</div>
+        <div class="dl-card-row"><span><span class="c">Living End</span></span><span class="dl-qty">4</span></div>
+      </div>
+      <div class="dl-group">
+        <div class="dl-group-label">Cascaders (All MV 3)</div>
+        <div class="dl-card-row"><span><span class="c">Violent Outburst</span></span><span class="dl-qty">4</span></div>
+        <div class="dl-card-row"><span><span class="c">Ardent Plea</span></span><span class="dl-qty">3</span></div>
+        <div class="dl-card-row"><span>Shardless Agent</span><span class="dl-qty">1</span></div>
+      </div>
+      <div class="dl-group">
+        <div class="dl-group-label">Free / Near-Free Cyclers</div>
+        <div class="dl-card-row"><span><span class="c">Street Wraith</span></span><span class="dl-qty">4</span></div>
+        <div class="dl-card-row"><span>Monstrous Carabid</span><span class="dl-qty">4</span></div>
+        <div class="dl-card-row"><span>Horror of the Broken Lands</span><span class="dl-qty">4</span></div>
+        <div class="dl-card-row"><span>Curator of Mysteries</span><span class="dl-qty">4</span></div>
+        <div class="dl-card-row"><span>Waker of Waves</span><span class="dl-qty">2</span></div>
+      </div>
+      <div class="dl-group">
+        <div class="dl-group-label">Payoffs / Interaction</div>
+        <div class="dl-card-row"><span><span class="c">Overlord of the Balemurk</span></span><span class="dl-qty">4</span></div>
+        <div class="dl-card-row"><span><span class="c">Subtlety</span></span><span class="dl-qty">4</span></div>
+        <div class="dl-card-row"><span>Force of Negation</span><span class="dl-qty">4</span></div>
+        <div class="dl-card-row"><span>Grief</span><span class="dl-qty">2</span></div>
+      </div>
+      <div class="dl-group">
+        <div class="dl-group-label">Lands — 17</div>
+        <div class="dl-card-row"><span>Zagoth Triome</span><span class="dl-qty">4</span></div>
+        <div class="dl-card-row"><span>Verdant Catacombs</span><span class="dl-qty">4</span></div>
+        <div class="dl-card-row"><span>Boseiju, Who Endures</span><span class="dl-qty">3</span></div>
+        <div class="dl-card-row"><span>Swamp</span><span class="dl-qty">2</span></div>
+        <div class="dl-card-row"><span>Forest</span><span class="dl-qty">1</span></div>
+        <div class="dl-card-row"><span>Otawara, Soaring City</span><span class="dl-qty">1</span></div>
+        <div class="dl-card-row"><span>Island</span><span class="dl-qty">1</span></div>
+        <div class="dl-card-row"><span>Sink into Stupor // Soporific Springs</span><span class="dl-qty">1</span></div>
+      </div>
+    </div>
+    <div class="dl-section">
+      <div class="dl-section-label">Sideboard — 15 cards</div>
+      <div class="dl-group">
+        <div class="dl-group-label">GY Hate Answers</div>
+        <div class="dl-card-row"><span><span class="c">Foundation Breaker</span></span><span class="dl-qty">3</span></div>
+        <div class="dl-card-row"><span>Force of Vigor</span><span class="dl-qty">2</span></div>
+      </div>
+      <div class="dl-group">
+        <div class="dl-group-label">Activated Ability Hate</div>
+        <div class="dl-card-row"><span>Clarion Conqueror</span><span class="dl-qty">2</span></div>
+      </div>
+      <div class="dl-group">
+        <div class="dl-group-label">vs Tron / Control</div>
+        <div class="dl-card-row"><span>Inevitable Betrayal</span><span class="dl-qty">2</span></div>
+        <div class="dl-card-row"><span>Commandeer</span><span class="dl-qty">2</span></div>
+      </div>
+      <div class="dl-group">
+        <div class="dl-group-label">Disruption / Tempo</div>
+        <div class="dl-card-row"><span>Endurance</span><span class="dl-qty">2</span></div>
+        <div class="dl-card-row"><span>Grief (extra)</span><span class="dl-qty">1</span></div>
+        <div class="dl-card-row"><span>Wear // Tear</span><span class="dl-qty">1</span></div>
+      </div>
+
+      <h3>The Zero-MV Constraint</h3>
+      <p style="font-size:14px;font-weight:300;color:var(--mid);">Every nonland spell in the main deck must have MV 3 or higher. Cascade exiles from the top until it finds a nonland card costing <em>less</em> than the cascade spell's MV. For Violent Outburst (MV 3), that means any MV 0–2 nonland spell would be hit. This is why interaction like Force of Negation (MV 3) and Subtlety (MV 4) live here — they're above the threshold. Never put a 1-drop or 2-drop spell in this deck's main. Ever.</p>
+    </div>
+  </div>
+</div>
+
+<!-- CH03: GAME FLOW -->
+<div id="gameplan" class="section">
+  <div class="section-label">Chapter 03</div>
+  <h1>Game<br>Flow</h1>
+
+  <p>Every Living End game has the same structure: spend turns 1–2 cycling, cascade on turn 3 at end of opponent's turn, resolve Living End. The variance is in how many creatures you cycle, whether your opponent has disruption, and how many creatures you're bringing back.</p>
+
+  <h2>The Standard Line</h2>
+  <div class="sb-card-guide">
+    <div class="sb-guide-row"><div class="sb-guide-name">Turn 1</div><div class="sb-guide-body">Cycle freely. <span class="c">Street Wraith</span> — pay 2 life, cycle (put Wraith in GY, draw a card). Find a land or another cycler. Monstrous Carabid cycles for {B/R} = one mana. With any land and a cycler, always cycle on turn 1. Priority: cycle as many creatures as possible. Each creature in the GY is a creature you get back with Living End. Overlord of the Balemurk: play it early for its impending cost {1}{B} — mills 4 on entry even before it becomes a creature.</div></div>
+    <div class="sb-guide-row"><div class="sb-guide-name">Turn 2</div><div class="sb-guide-body">Continue cycling. Horror of the Broken Lands ({B} cycle): cycles cheaply and gets larger when you cycle other cards (irrelevant since it's going to the GY anyway — you want it there). Curator of Mysteries ({U} cycle): scries 1 whenever you cycle or discard. Stack Curator cycling last to get maximum scry benefit. With Subtlety or Grief in hand: hold them until needed for protection on turn 3.</div></div>
+    <div class="sb-guide-row"><div class="sb-guide-name">Turn 3 — Kill</div><div class="sb-guide-body">At END OF OPPONENT'S TURN: cast <span class="c">Violent Outburst</span>. Cascade triggers — exile from library until you find Living End (MV 0, always first nonland hit since the main deck has no MV 0–2 nonland cards). Cast Living End for free: all creatures from all GYs enter your battlefield (plus opponents' if they have any), all creatures on the battlefield are sacrificed/exiled first. Board wipe complete. Your cycled creatures enter. With 5–7 creatures in GY: immediate board of attackers.</div></div>
+    <div class="sb-guide-row"><div class="sb-guide-name">The Hat Trick</div><div class="sb-guide-body">Cycle creatures with Living End on the stack. Once you've cast Living End via cascade, its resolution is on the stack. Before it resolves, cycle more creatures — they go to the GY. When Living End resolves, it picks up ALL creatures in your GY at that moment, including the ones just cycled. This can add 2–3 more creatures to the board. This is an advanced play for maximizing the Living End trigger.</div></div>
+  </div>
+
+  <h2>Protecting the Combo</h2>
+  <div class="card-grid card-grid-2">
+    <div class="card">
+      <div class="card-label">Before Cascading</div>
+      <div class="card-title">Grief Disruption</div>
+      <div class="card-body">Cast Grief (evoke — exile a black card) before cascading to strip the opponent's counter or GY hate piece. Grief ETB: each opponent reveals their hand, you choose a nonland, nonblack card to discard. Stripping a Force of Negation, Rest in Peace, or Teferi before your cascade is often game-winning. Grief dies from evoke but the discard effect already resolved.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">On the Cascade Trigger</div>
+      <div class="card-title">Hold Up Force / Subtlety</div>
+      <div class="card-body">Cast Violent Outburst and cascade into Living End. Before Living End resolves, opponents can respond. Hold Force of Negation to counter opposing responses. Subtlety can be cast in response to an opponent's Endurance (trying to shuffle your GY) — Subtlety puts Endurance back on top/bottom of library, protecting your GY before Living End resolves.</div>
+    </div>
+  </div>
+
+  <h2>When to Play Ardent Plea vs Violent Outburst</h2>
+  <div class="card-grid card-grid-3">
+    <div class="card">
+      <div class="card-label">Violent Outburst</div>
+      <div class="card-title">Instant — Default</div>
+      <div class="card-body">Always prefer Violent Outburst when possible. Cast at end of opponent's turn — they must hold up interaction during their own turn, can't tap out, can't play sorceries in response. The instant speed is the strongest protection the deck has against sorcery-speed hate.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Ardent Plea</div>
+      <div class="card-title">Sorcery — Redundancy</div>
+      <div class="card-body">Ardent Plea is sorcery speed. Cast on your main phase turn 3 when you have 3 mana. Useful when Violent Outburst is countered or unavailable. The exalted trigger is irrelevant — you're cascading into a mass resurrection, not attacking alone. Running 3 copies ensures consistency.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Stack Management</div>
+      <div class="card-title">Which Cascade Finds What</div>
+      <div class="card-body">Both cascades into Living End (the only legal hit in the deck). If you have both, hold Violent Outburst for instant speed. After Living End resolves and you have a second cascade spell: the second cascade finds… Living End again if it's still in the library. If Living End was already cast (it goes to exile via cascade), the second cascade finds nothing above MV 0 and whiffs.</div>
+    </div>
+  </div>
+</div>
+
+<!-- CH04: ENGINES -->
+<div id="engines" class="section">
+  <div class="section-label">Chapter 04</div>
+  <h1>Core<br>Engines</h1>
+
+  <div class="engine-block">
+    <div class="engine-header">
+      <div class="engine-letter">1</div>
+      <div><div class="engine-name">Cascade Combo Engine</div><div style="font-family:'DM Mono',monospace;font-size:11px;color:rgba(242,237,230,0.4);letter-spacing:0.1em;text-transform:uppercase;">Primary Win Engine</div></div>
+    </div>
+    <div class="engine-body">
+      <div class="engine-step"><div class="engine-step-label">Setup</div><div class="engine-step-title">Cycle T1–T2</div><div class="engine-step-body">Turns 1–2: cycle every creature possible. Street Wraith (free), Monstrous Carabid ({B/R}), Horror of the Broken Lands ({B}), Curator of Mysteries ({U}). Target: 4–6 creatures in GY before turn 3. Overlord of the Balemurk played early (impending {1}{B}) mills 4 more. With 6 creatures in GY, Living End returns a 6-creature board immediately.</div></div>
+      <div class="engine-step"><div class="engine-step-label">Execution</div><div class="engine-step-title">EOT Cascade</div><div class="engine-step-body">At end of opponent's turn 2 (or whenever you have 3 mana): cast Violent Outburst. Cascade trigger exiles cards until it hits Living End (always first nonland hit — deck has no MV 0–2 nonland spells). Living End is cast for free. Before it resolves, cycle any remaining creatures from hand onto the stack above Living End — they reach GY before LE resolves.</div></div>
+      <div class="engine-step"><div class="engine-step-label">Result</div><div class="engine-step-title">Board Wipe + Refill</div><div class="engine-step-body">Living End resolves: (1) ALL creatures in ALL GYs are exiled, (2) ALL creatures on battlefield are sacrificed, (3) ALL cards exiled this way enter the battlefield. Your creatures enter under your control. Opponents' creatures enter under their control — but you board-wiped their board first. Net: their creatures gone, your 4–6 large bodies in play. Usually lethal in 1–2 attacks.</div></div>
+    </div>
+  </div>
+
+  <div class="engine-block">
+    <div class="engine-header">
+      <div class="engine-letter">2</div>
+      <div><div class="engine-name">Graveyard Rebuild Engine</div><div style="font-family:'DM Mono',monospace;font-size:11px;color:rgba(242,237,230,0.4);letter-spacing:0.1em;text-transform:uppercase;">Resilience Engine</div></div>
+    </div>
+    <div class="engine-body">
+      <div class="engine-step"><div class="engine-step-label">Setup</div><div class="engine-step-title">After a Countered LE</div><div class="engine-step-body">If Living End is countered: it goes to the graveyard (countered spells go to GY unless exiled). Cascade "cast for free" means if countered, it goes to GY, not exile. This matters — you can recur Living End from GY with specific effects, but more relevantly, your cycled creatures are still in GY. The next cascade spell finds Living End in GY? No — cascade finds from library, not GY. Next cascade whiffs unless you have a 4th Living End in library.</div></div>
+      <div class="engine-step"><div class="engine-step-label">Execution</div><div class="engine-step-title">Overlord Recursion</div><div class="engine-step-body">Overlord of the Balemurk: when it enters or attacks (once it becomes a creature after impending resolves), mill 4 and return a creature from GY to hand. Recur a cycled creature to hand → cycle it again → back in GY. If all 4 Living Ends are in GY, you need an alternate plan: attack with the board you built from the first cascade, or use Commandeer to steal opponent's spell.</div></div>
+      <div class="engine-step"><div class="engine-step-label">Result</div><div class="engine-step-title">Creatures Already in GY</div><div class="engine-step-body">Even if Living End is countered once, your 4–6 cycled creatures are still in GY. Find the next cascade spell and cast again. If no cascade spells left: the cycled creatures are a GY threat that opponents must handle with additional hate. Overlord + cycled creatures = persistent pressure even without the instant kill.</div></div>
+    </div>
+  </div>
+
+  <div class="engine-block">
+    <div class="engine-header">
+      <div class="engine-letter">3</div>
+      <div><div class="engine-name">Free-Spell Interaction Engine</div><div style="font-family:'DM Mono',monospace;font-size:11px;color:rgba(242,237,230,0.4);letter-spacing:0.1em;text-transform:uppercase;">Protection Engine</div></div>
+    </div>
+    <div class="engine-body">
+      <div class="engine-step"><div class="engine-step-label">Setup</div><div class="engine-step-title">Free Pitch Spells</div><div class="engine-step-body">Force of Negation (pitch blue, counter noncreature spell on opponent's turn), Subtlety (pitch blue, put creature/PW spell on top/bottom), Grief (pitch black, opponent discards), Endurance (pitch green, shuffle GY). All can be cast for free on opponent's turn by pitching a colored card. This gives the deck interaction without tapping mana, critical when you need mana for your own cascade on the same turn.</div></div>
+      <div class="engine-step"><div class="engine-step-label">Execution</div><div class="engine-step-title">Evoke Leaves the GY</div><div class="engine-step-body">When you evoke Subtlety or Grief (die immediately after ETB), they go to GY. Living End picks them up! Evoke Subtlety to put an opposing creature spell on top of library → Subtlety dies → GY. Living End returns Subtlety as a 3/3 flying body. This is the "Subtlety from GY" line: cascade in response to opponent's big creature → Living End returns Subtlety → ETB puts their creature on top/bottom → you get a free 3/3.</div></div>
+      <div class="engine-step"><div class="engine-step-label">Result</div><div class="engine-step-title">Both Modes Matter</div><div class="engine-step-body">The pitch spells serve dual purpose: protect your combo AND become creatures in your GY for Living End to return. Grief stripping a counter from opponent's hand → dying to evoke → returning as a 3/2 with "enter: opponent discards" again. Your interaction is also your win condition. This is the design elegance of the deck: every free spell is a future attacker.</div></div>
+    </div>
+  </div>
+
+  <h2>Lines &amp; Tricks</h2>
+  <ul class="tricks-list">
+    <li><strong>The Hat Trick — cycle on the stack:</strong> After cascading into Living End, Living End is on the stack and awaiting resolution. Before it resolves, cycle creatures from your hand. They hit the GY. When Living End resolves, it picks them up. Net: extra 2–3 creatures added to your board without spending extra mana. This is the highest-skill play in the deck.</li>
+    <li><strong>Foundation Breaker enters from hand — Cage doesn't stop it:</strong> Grafdigger's Cage says creatures can't enter from GYs or libraries. Foundation Breaker is cast normally (from your hand), not from GY. It enters from hand. Its ETB "destroy target artifact or enchantment" fires and destroys Cage. Then Foundation Breaker itself is in play — it cycles: discard it to GY, draw a card. Now it's in GY for Living End to return.</li>
+    <li><strong>Force of Negation can't counter Endurance:</strong> FoN counters noncreature spells only. Endurance is a creature. An opponent casting Endurance to shuffle your GY cannot be stopped by Force of Negation. Use Subtlety instead — Subtlety puts creature spells (including Endurance) on top or bottom of library before they resolve.</li>
+    <li><strong>Commandeer steals their spell for free:</strong> Commandeer — {5}{U}{U}, or "pitch 2 blue cards" for free — gains control of target noncreature spell. Used against Kozilek's Command (which exiles GYs), sweepers, or any spell that would ruin your board. Pitching 2 blue cycling creatures is free — Curator of Mysteries goes to GY and comes back with Living End.</li>
+    <li><strong>Clarion Conqueror shuts Yawgmoth activated abilities:</strong> Clarion Conqueror (3/3 for {2}{W}) — activated abilities of artifacts, creatures, AND planeswalkers can't be activated. Yawgmoth's sacrifice ability is an activated ability. Clarion Conqueror = Yawgmoth becomes a 2/4 with no text. Living End brings it back as a resilient threat.</li>
+    <li><strong>Inevitable Betrayal — steal their Titan for free:</strong> Inevitable Betrayal — {4}{U}, or "pitch 3 blue cards" — search opponent's library for a creature card and put it onto the battlefield under YOUR control, then shuffle. Against Amulet Titan (steal their Primeval Titan), Eldrazi Tron (steal Ulamog), or any creature-based combo. Pitching 3 blue cards costs: 3 cyclers in GY for Living End to return later.</li>
+    <li><strong>At low land counts, triomes cycle too:</strong> Zagoth Triome, Ketria Triome — these lands have cycling. When facing a GY wipe and needing to rebuild: cycle a triome to dig for cyclers. The triome goes to GY (it's a land, so Living End ignores it — Living End only returns creature cards).</li>
+    <li><strong>Living End in cascade goes to exile:</strong> When cascaded into, Living End is "cast" from exile (cascade puts it there). If countered, it goes to GY. If resolved, it goes to... wait — Living End has no mana cost. Cards cast via cascade go to normal zones on resolution. Living End resolves → it goes to the graveyard (sorceries go to GY after resolving). The next cascade CAN hit Living End again if it went to GY after resolving and then somehow got back to library — but normally once resolved, it's in GY. Plan for 4 copies: run them all.</li>
+  </ul>
+</div>
+
+<!-- CH05: ROLES -->
+<div id="roles" class="section">
+  <div class="section-label">Chapter 05</div>
+  <h1>Role<br>Assignment</h1>
+
+  <div class="role-grid">
+    <div class="role-card">
+      <div class="role-name role-name-primary">SPEED COMBO</div>
+      <div class="role-desc">Default role. Cycle, cascade turn 3, win. Don't interact unless opponent has specific game-breaking hate. The fastest builds of Living End can kill turn 3 from hand without needing any mana acceleration beyond the 3 lands for Violent Outburst. Speed beats most midrange and aggro strategies completely unprepared.</div>
+      <div class="role-matchups">vs Aggro, Midrange, Unprepared Opponents</div>
+    </div>
+    <div class="role-card">
+      <div class="role-name role-name-secondary">DISRUPT + COMBO</div>
+      <div class="role-desc">Against interactive decks: Grief strips their counter, Subtlety handles their creature threats, Force of Negation protects the cascade. You're still winning via Living End but protecting the lane. Pre-sideboard Grief into Violent Outburst is often enough to beat most control decks' entire hand of interaction in one sequence.</div>
+      <div class="role-matchups">vs Control, Jeskai, Blue-based Decks</div>
+    </div>
+    <div class="role-card">
+      <div class="role-name role-name-tertiary">GRINDY RECURSION</div>
+      <div class="role-desc">When Living End gets countered and the game extends: Overlord of the Balemurk mills 4 and recurs creatures each turn. The cycled creatures that are already in GY present a persistent threat. Use Foundation Breaker (SB) to destroy GY hate, reset the GY, and cascade again. This role requires recognizing when the fast line is gone and switching to attrition.</div>
+      <div class="role-matchups">vs Prepared Opponents, Games 2–3 with Heavy GY Hate</div>
+    </div>
+  </div>
+</div>
+
+<!-- CH06: MATCHUPS -->
+<div id="matchups" class="section">
+  <div class="section-label">Chapter 06</div>
+  <h1>Matchup<br>Deep Dives</h1>
+  <p>Source: BtB Jericho primer (May 2025, 16,064 chars) + Zen Miyaji-Thorne Three for One Trading primer + current March 2026 meta data. Living End's matchup equity is heavily GY-hate dependent — favorable vs anything that doesn't interact with graveyards, difficult vs anything that does.</p>
+
+  <table class="matchup-table">
+    <tr><th>Opponent</th><th>Share</th><th>Assessment</th><th>G1</th><th>Post-Board</th></tr>
+
+    <tr onclick="toggle('mu-boros')"><td>Boros Energy</td><td>16%</td><td><span class="verdict verdict-favor">Favorable</span></td><td>Favor</td><td>Favor</td></tr>
+    <tr><td colspan="5" class="matchup-detail" id="mu-boros">
+      <strong>The Matchup:</strong> Boros Energy has minimal GY interaction and can't stop a turn-3 cascade. Their removal (Lightning Bolt, Lightning Helix, Galvanic Discharge) deals with small creatures but Living End returns bodies that are too large for Bolt to kill — Street Wraith (3/4), Horror of the Broken Lands (4/4), Curator of Mysteries (4/4 flying). A living end board of 4 large creatures attacks past whatever Boros built on turns 1–3.<br><br>
+      <strong>Aggro Race:</strong> On the draw against a fast Boros hand (Ragavan T1 → Cori-Steel Cutter T2), you may be at 8–10 life before you cascade on T3. Street Wraith cycling costs 2 life per cycle — don't cycle all 4 Street Wraiths against a burn plan. Board-wipe their creatures with Living End and your 3/4 blockers survive.<br><br>
+      <strong>Post-Board:</strong> Boros may bring Relic of Progenitus or Rest in Peace. Foundation Breaker from SB handles both. Clarion Conqueror SB shuts their Kappa Cannoneer and Ragavan activated abilities as a bonus.<br><br>
+      <table class="sb-table"><tr><th>OUT</th><th>IN</th></tr>
+      <tr><td class="sb-out">−2 Overlord of the Balemurk (too slow for the race)</td><td class="sb-in">+2 Foundation Breaker (answers RIP / Relic)</td></tr>
+      <tr><td class="sb-out">−1 Ardent Plea (enough cascade)</td><td class="sb-in">+2 Endurance (battlefield size, blocks Ragavan)</td></tr>
+      </table>
+    </td></tr>
+
+    <tr onclick="toggle('mu-jeskai')"><td>Jeskai Blink</td><td>7%</td><td><span class="verdict verdict-dog">Dog</span></td><td>Dog</td><td>Hard</td></tr>
+    <tr><td colspan="5" class="matchup-detail" id="mu-jeskai">
+      <strong>The Matchup:</strong> Jeskai Blink is one of the harder matchups. Consign to Memory counters spells with no colored mana in their cost — Living End has NO mana cost, making it colorless for this purpose. Consign to Memory CAN counter Living End. Force of Negation can counter it too. Teferi, Time Raveler removes your ability to cascade at instant speed (you can't cast spells at instant speed with Teferi), forcing you to cascade on your main phase where they have full access to interaction.<br><br>
+      <strong>Consign Note:</strong> Living End is a sorcery with no mana cost. Consign to Memory counters spells that are "colorless" (no colored mana costs). Living End qualifies — it's a valid Consign target. This is unique — most decks can't hit Living End with interaction this clean.<br><br>
+      <strong>Grief Pre-Cascade:</strong> Strip their Consign or Force of Negation before cascading. If they have 2 counters, you may need two Grief triggers or Force of Negation backup. The matchup is winnable with Grief → Force protection on cascade but they have density of interaction.<br><br>
+      <table class="sb-table"><tr><th>OUT</th><th>IN</th></tr>
+      <tr><td class="sb-out">−2 Waker of Waves (too slow)</td><td class="sb-in">+2 Commandeer (steal their Teferi)</td></tr>
+      <tr><td class="sb-out">−1 Ardent Plea</td><td class="sb-in">+2 Inevitable Betrayal (steal their threats)</td></tr>
+      </table>
+      <div class="sb-note">Consign to Memory CAN counter Living End — it has no colored mana in its cost. Know this going in and plan around it with Grief strips.</div>
+    </td></tr>
+
+    <tr onclick="toggle('mu-affinity')"><td>Izzet Affinity</td><td>8%</td><td><span class="verdict verdict-even">Even</span></td><td>Favor</td><td>Dog</td></tr>
+    <tr><td colspan="5" class="matchup-detail" id="mu-affinity">
+      <strong>The Matchup:</strong> G1 is favorable — Affinity can't stop the cascade and Living End board-wipes their artifact creatures plus their Construct tokens from Urza's Saga. Post-board, Affinity has Leyline of the Void (GY exile continuously) and Grafdigger's Cage (creatures can't enter from GY). Leyline of the Void on turn 0 is game over — your cycling creatures can't even reach the GY.<br><br>
+      <strong>Leyline of the Void:</strong> If they have Leyline out, cycling is now pointless for the Living End plan — each cycled creature is immediately exiled, not put to GY. Your cascade still hits Living End but Living End finds no creatures in GY (they're all exiled). Foundation Breaker: played from hand, ETB destroys Leyline. This MUST be the first priority against Leyline — don't cascade until it's gone.<br><br>
+      <strong>Clarion Conqueror SB:</strong> Shuts off their Kappa Cannoneer activated ability and their artifact creature activated abilities (relevant for Izzet's mana dorks).<br><br>
+      <table class="sb-table"><tr><th>OUT</th><th>IN</th></tr>
+      <tr><td class="sb-out">−2 Grief (poor vs artifacts)</td><td class="sb-in">+3 Foundation Breaker (Cage/Leyline)</td></tr>
+      <tr><td class="sb-out">−1 Waker of Waves</td><td class="sb-in">+2 Force of Vigor (destroys Leyline FoV)</td></tr>
+      </table>
+      <div class="sb-note">Leyline of the Void on T0 = don't cycle, answer it first. Foundation Breaker from hand destroys Leyline even with Grafdigger's Cage in play.</div>
+    </td></tr>
+
+    <tr onclick="toggle('mu-storm')"><td>Ruby Storm</td><td>6.2%</td><td><span class="verdict verdict-even">Even</span></td><td>Favor</td><td>Even</td></tr>
+    <tr><td colspan="5" class="matchup-detail" id="mu-storm">
+      <strong>The Matchup:</strong> Speed race G1 — both kill turn 3. On the play: cascade turn 3 before they can combo. On the draw: they may kill turn 2–3 before you can cascade. Force of Negation protects your cascade. They have Orim's Chant post-board which says "target player can't cast spells this turn" — if they Orim's Chant you on your cascade turn, you can't cascade. This is their key post-board tool.<br><br>
+      <strong>Force of Negation vs Orim's Chant:</strong> Orim's Chant targeting you prevents you from casting spells including Violent Outburst. You can cast FoN in response to Orim's Chant before it resolves to counter it — but if they play Ral's +1 (which copies the next instant/sorcery), Chant gets copied and both must be countered. This is why running multiple FoNs matters.<br><br>
+      <table class="sb-table"><tr><th>OUT</th><th>IN</th></tr>
+      <tr><td class="sb-out">−2 Overlord of the Balemurk (too slow)</td><td class="sb-in">+2 Endurance (protects vs Past in Flames flashback)</td></tr>
+      <tr><td class="sb-out">−1 Ardent Plea</td><td class="sb-in">+1 Grief (strips their Orim's Chant pre-combat)</td></tr>
+      </table>
+    </td></tr>
+
+    <tr onclick="toggle('mu-etron')"><td>Eldrazi Tron</td><td>5.5%</td><td><span class="verdict verdict-dog">Dog</span></td><td>Even</td><td>Dog</td></tr>
+    <tr><td colspan="5" class="matchup-detail" id="mu-etron">
+      <strong>The Matchup:</strong> Thought-Knot Seer strips your Violent Outburst or Force of Negation from hand on turn 2, setting up a turn-3 cascade with no protection. Kozilek's Command exiles your GY (the {2}{B}{B} mode). Relic of Progenitus ticks up until it exiles all GYs. The combination of hand disruption + GY exile is exactly what breaks the Living End gameplan. Post-board, Inevitable Betrayal steals their Ulamog or Emrakul for free.<br><br>
+      <strong>Inevitable Betrayal:</strong> Pitch 3 blue cards, search their library for a creature, put it under your control. Stealing Ulamog from Eldrazi Tron is a blowout. The 3 blue cards pitched are 3 cyclers in your GY for a future Living End. This is one of the best silver bullets in the SB specifically for Tron.<br><br>
+      <strong>Commandeer:</strong> Steal Kozilek's Command before it exiles your GY. Pitch 2 blue cards — you now control their GY exile effect. The 2 pitched blue cards go to GY.<br><br>
+      <table class="sb-table"><tr><th>OUT</th><th>IN</th></tr>
+      <tr><td class="sb-out">−2 Ardent Plea (low need for redundancy)</td><td class="sb-in">+2 Inevitable Betrayal (steal their fatties)</td></tr>
+      <tr><td class="sb-out">−2 Grief (less useful vs colorless threats)</td><td class="sb-in">+2 Commandeer (steal Kozilek's Command)</td></tr>
+      </table>
+    </td></tr>
+
+    <tr onclick="toggle('mu-yawg')"><td>Golgari Yawgmoth</td><td>2%</td><td><span class="verdict verdict-even">Even</span></td><td>Favor</td><td>Even</td></tr>
+    <tr><td colspan="5" class="matchup-detail" id="mu-yawg">
+      <strong>The Matchup:</strong> G1 is favorable — Yawgmoth has minimal GY hate and you can board-wipe their creature-heavy setup on turn 3. Living End wipes Yawgmoth himself (protection from Humans means nothing when everyone is sacrificed simultaneously — Living End makes all creatures leave regardless). Post-board, Yawgmoth brings Force of Vigor (destroys Clarion Conqueror) and sometimes Leyline of the Void.<br><br>
+      <strong>Clarion Conqueror:</strong> Shuts off Yawgmoth's activated sacrifice ability completely. Living End returns Clarion Conqueror as a 3/3 flyer. Even if they Force of Vigor it, you've forced them to use their SB piece and slowed their combo by at least one turn.<br><br>
+      <table class="sb-table"><tr><th>OUT</th><th>IN</th></tr>
+      <tr><td class="sb-out">−1 Waker of Waves</td><td class="sb-in">+2 Clarion Conqueror (shuts Yawgmoth ability)</td></tr>
+      <tr><td class="sb-out">−1 Overlord of the Balemurk</td><td class="sb-in">+2 Foundation Breaker (vs their Leyline post-board)</td></tr>
+      </table>
+    </td></tr>
+
+    <tr onclick="toggle('mu-amulet')"><td>Amulet Titan</td><td>3.1%</td><td><span class="verdict verdict-even">Even</span></td><td>Favor</td><td>Even</td></tr>
+    <tr><td colspan="5" class="matchup-detail" id="mu-amulet">
+      <strong>The Matchup:</strong> Pure speed race. Amulet Titan can kill turn 3, Living End kills turn 3. The key interaction points: Endurance (they have it SB) shuffles your GY before Living End resolves — answer it with Subtlety. Their Defense Grid (post-board) makes your free spells cost {3} more on their turn: Force of Negation costs {4}{U}{U} on their turn, effectively uncastable free. Don't rely on FoN vs Defense Grid.<br><br>
+      <strong>Bojuka Bog:</strong> Amulet Titan runs Bojuka Bog as a mainboard land they can fetch with Primeval Titan. If they cascade-fetch Bojuka Bog while your Living End is on the stack, your GY is exiled. Prioritize making sure Living End resolves before they can find Bojuka. Casting at EOT of their turn prevents them from having a combat step to fetch Bog.<br><br>
+      <table class="sb-table"><tr><th>OUT</th><th>IN</th></tr>
+      <tr><td class="sb-out">−2 Overlord of the Balemurk</td><td class="sb-in">+2 Endurance (protect your GY from their Bog)</td></tr>
+      <tr><td class="sb-out">−1 Grief</td><td class="sb-in">+1 Foundation Breaker (vs Cursed Totem SB)</td></tr>
+      </table>
+    </td></tr>
+
+    <tr onclick="toggle('mu-uwc')"><td>UW Control</td><td>2%</td><td><span class="verdict verdict-dog">Dog</span></td><td>Dog</td><td>Hard</td></tr>
+    <tr><td colspan="5" class="matchup-detail" id="mu-uwc">
+      <strong>The Matchup:</strong> UW Control has the full counter-suite: Counterspell, Force of Negation (also can't be used on Living End on their turn if they want it free — it's a noncreature spell), and most critically, Teferi, Time Raveler. Teferi's +1 and static ability means you can only cast spells on your main phase — no instant-speed cascade at EOT. Cascade on your main phase while they have full mana and full interaction is extremely difficult.<br><br>
+      <strong>Grief First, Always:</strong> Strip Teferi from their hand before cascading. Without Teferi, you regain the instant-speed advantage. Grief + Violent Outburst on the same turn (Grief resolves, strip Teferi from hand, EOT cast Violent Outburst) is the cleanest game plan. But if they have backup counters, this still fails.<br><br>
+      <strong>Commandeer vs Their Spells:</strong> Commandeer steals a Teferi on the stack (it's a noncreature spell). Gain control of their Teferi. Pitch 2 blue cyclers.<br><br>
+      <table class="sb-table"><tr><th>OUT</th><th>IN</th></tr>
+      <tr><td class="sb-out">−2 Overlord of the Balemurk</td><td class="sb-in">+2 Commandeer (steal Teferi)</td></tr>
+      <tr><td class="sb-out">−2 Waker of Waves</td><td class="sb-in">+2 Inevitable Betrayal (steal their threat)</td></tr>
+      </table>
+    </td></tr>
+
+    <tr onclick="toggle('mu-reanimator')"><td>Grixis Reanimator</td><td>1.5%</td><td><span class="verdict verdict-favor">Favorable</span></td><td>Favor</td><td>Favor</td></tr>
+    <tr><td colspan="5" class="matchup-detail" id="mu-reanimator">
+      <strong>The Matchup:</strong> Grixis Reanimator runs Grief (shared card!) for hand disruption. But your deck is more redundant — 4 Living End, 8 cascade spells. Losing one Violent Outburst to Grief still leaves plenty of lines. Living End wipes their reanimated Archon of Cruelty (6/6 with trample and triggers — all removed). Endurance from your SB can shuffle their GY when they try to reanimate, clearing their target.<br><br>
+      <strong>Speed:</strong> You're both trying to win on turn 2–3. On the play, cascade before they can reanimate. On the draw, their T2 Archon into Grief EOT hitting your Violent Outburst can be disruptive — keep more than one cascade in hand when possible.<br><br>
+      <table class="sb-table"><tr><th>OUT</th><th>IN</th></tr>
+      <tr><td class="sb-out">−2 Overlord of the Balemurk</td><td class="sb-in">+2 Endurance (shuffle their Archon GY)</td></tr>
+      <tr><td class="sb-out">−1 Waker of Waves</td><td class="sb-in">+1 Foundation Breaker (vs Cage)</td></tr>
+      </table>
+    </td></tr>
+
+    <tr onclick="toggle('mu-domain')"><td>Domain Aggro</td><td>2.6%</td><td><span class="verdict verdict-even">Even</span></td><td>Favor</td><td>Even</td></tr>
+    <tr><td colspan="5" class="matchup-detail" id="mu-domain">
+      <strong>The Matchup:</strong> Domain Aggro is fast but has no GY interaction. Their hexproof Scion of Draco is in danger from Living End's "sacrifice all creatures" clause — it doesn't target, so hexproof doesn't protect it. Post-board, Domain brings Damping Sphere or some disruption. Their main pressure: killing you before turn 3. Street Wraith cycling costs life, and Scion with double-strike can kill fast. Board-wipe with Living End resets the board state cleanly.<br><br>
+      <strong>Endurance SB:</strong> Endurance as a blocker (3/4 reach, flash) can stop Scion of Draco in combat. Endurance from hand (not evoke) = a 3/4 reach that stays on board.<br><br>
+      <table class="sb-table"><tr><th>OUT</th><th>IN</th></tr>
+      <tr><td class="sb-out">−2 Overlord of the Balemurk</td><td class="sb-in">+2 Endurance (3/4 reach blocks fliers)</td></tr>
+      <tr><td class="sb-out">−1 Waker of Waves</td><td class="sb-in">+2 Foundation Breaker (vs potential RIP)</td></tr>
+      </table>
+    </td></tr>
+
+    <tr onclick="toggle('mu-mirror')"><td>Living End Mirror</td><td>2.8%</td><td><span class="verdict verdict-even">Even</span></td><td>Even</td><td>Even</td></tr>
+    <tr><td colspan="5" class="matchup-detail" id="mu-mirror">
+      <strong>The Matchup:</strong> Whoever resolves Living End first usually wins — their cascade wipes your board too, and they get all their creatures back. Key tech: cascade in response to their cascade. When they cast Violent Outburst and cascade trigger is on stack, you cascade with your own spell → your Living End resolves first (it's on top of the stack), wiping your GY and theirs, putting creatures in play. Then their Living End resolves with nothing in GY.<br><br>
+      <strong>Force of Negation Wars:</strong> Counter their Living End, they Force yours. Whoever runs out of FoNs first loses. Sideboard: extra Grief to strip their FoN from hand before your cascade.<br><br>
+      <table class="sb-table"><tr><th>OUT</th><th>IN</th></tr>
+      <tr><td class="sb-out">−2 Overlord of the Balemurk</td><td class="sb-in">+2 Endurance (shuffle their GY before LE resolves)</td></tr>
+      <tr><td class="sb-out">−1 Waker of Waves</td><td class="sb-in">+1 Grief (strips their FoN)</td></tr>
+      </table>
+      <div class="sb-note">Cascade in response to their cascade. Your Living End resolves first, you get all GY creatures. Then their Living End resolves with nothing left to return.</div>
+    </td></tr>
+  </table>
+</div>
+
+<!-- CH07: SIDEBOARD -->
+<div id="sideboard" class="section">
+  <div class="section-label">Chapter 07</div>
+  <h1>Sideboard<br>Guide</h1>
+  <p>BtB Jericho: "Your sideboard and the graveyard game plan are what make this deck weak in the overall meta. Every strategy can easily bring in GY harassment against us. This means the sideboard can be heavily aimed towards dealing with whatever answers your opponent could bring in to beat you."</p>
+
+  <div class="sb-card-guide">
+    <div class="sb-guide-row"><div class="sb-guide-name">Foundation Breaker ×3</div><div class="sb-guide-body">{3}{G} 2/2 Elemental. ETB: destroy target artifact or enchantment. Cycle {G}. The #1 answer to GY hate. Foundation Breaker enters FROM HAND — not from GY — so Grafdigger's Cage does NOT stop it. Cast Foundation Breaker → ETB destroys Cage/Rest in Peace/Leyline → cycle Foundation Breaker (discards to GY) → Foundation Breaker is now in GY for Living End to return. One card that (1) answers hate, (2) cycles into your GY, (3) becomes a 2/2 body. BtB Jericho: "I prefer him at 2–3 normally."</div></div>
+    <div class="sb-guide-row"><div class="sb-guide-name">Force of Vigor ×2</div><div class="sb-guide-body">{2}{G}{G} instant. If not your turn: exile a green card, cast free. Destroy up to 2 target artifacts/enchantments. Free instant-speed answer to Leyline of the Void or Rest in Peace. Important: you need enough green cards in hand to pitch. After cycling Monstrous Carabid, Horror of the Broken Lands, and Foundation Breaker, your hand may be light on green cards. Don't over-cycle before checking if you need FoV. BtB Jericho: "Watch out with the number of green sources you take out. This card likes green cards."</div></div>
+    <div class="sb-guide-row"><div class="sb-guide-name">Clarion Conqueror ×2</div><div class="sb-guide-body">{2}{W} 3/3 Dragon. Flying. Activated abilities of artifacts, creatures, AND planeswalkers can't be activated. Primary target: Yawgmoth's sacrifice ability (activated). Also hits Kappa Cannoneer, Ragavan (activated ability), planeswalkers' activated abilities. BtB Jericho: "Do you see yourself losing to Yawg a bit too much? Me too. Running at 2 is worth it." Living End returns Clarion as a flying 3/3 blocker. BONUS: also denies Karn, the Great Creator's "artifact activated ability" lockout and mana dork taps.</div></div>
+    <div class="sb-guide-row"><div class="sb-guide-name">Inevitable Betrayal ×2</div><div class="sb-guide-body">Pitch 3 blue cards, or pay {4}{U}: search opponent's library for a creature, put it onto battlefield under your control. Against Eldrazi Tron: steal Ulamog, Sowing Mycospawn, or Thought-Knot Seer. Against Amulet Titan: steal Primeval Titan. Against control: steal their Snapcaster. The 3 pitched blue cards go to GY — they come back with Living End. BtB Jericho: "1 or 2 depending on local meta."</div></div>
+    <div class="sb-guide-row"><div class="sb-guide-name">Commandeer ×2</div><div class="sb-guide-body">Pitch 2 blue cards, or {5}{U}{U}: gain control of target noncreature spell. Free steal of Teferi planeswalker (wait — Teferi is a planeswalker spell when on stack, which IS a noncreature spell). Steal Kozilek's Command (exiles GYs) before it resolves. Steal a sweeper. Steal any sorcery or instant that would ruin your board. Pitch 2 blue cyclers — they go to GY. BtB Jericho: "Good for tempo. Also instant-speed Living End" — if they have Living End in GY somehow and cast a spell you can steal it. More practically: steal high-impact noncreature spells.</div></div>
+    <div class="sb-guide-row"><div class="sb-guide-name">Endurance ×2</div><div class="sb-guide-body">{1}{G}{G} 3/4 Flash Reach. Evoke: exile a green card. ETB: up to one target player shuffles all GY cards to bottom of library. Used offensively (shuffle opponent's GY) or defensively (prevent Living End mirror from returning their creatures). 3/4 reach — blocks fliers. Evoke Endurance onto opponent's GY before their Living End resolves in the mirror = they get nothing back. Or cast it from hand as a 3/4 flash blocker. After evoke, Endurance dies and goes to your GY — Living End returns it as a 3/4.</div></div>
+    <div class="sb-guide-row"><div class="sb-guide-name">Grief Extra ×1</div><div class="sb-guide-body">Extra Grief copy for matchups requiring maximum hand disruption. Main deck runs 2; this gives 3 total. Against UW Control or Jeskai Blink — boards where stripping counters pre-cascade is critical, a third Grief provides more opportunities to strip their protection before you cascade.</div></div>
+    <div class="sb-guide-row"><div class="sb-guide-name">Wear // Tear ×1</div><div class="sb-guide-body">{R} destroys artifact; {W} destroys enchantment; fused {R}{W} destroys both. Flexible answer. At MV 1 — wait, Wear // Tear has MV 1/1 for individual halves, but as a split card in hand it counts as MV 1 for cascade purposes? Actually: split cards in hand/stack have MV = sum of both halves = MV 2. Still under the threshold. This goes in the SB specifically, not main, because it would be hit by cascade if in the main deck.</div></div>
+  </div>
+</div>
+
+<!-- CH08: HEURISTICS -->
+<div id="heuristics" class="section">
+  <div class="section-label">Chapter 08</div>
+  <h1>Heuristics</h1>
+
+  <ol class="heuristic-list">
+    <li><div class="heuristic-text"><strong>Never put a nonland spell with MV ≤ 2 in the main deck. Ever.</strong> <span>Cascade exiles cards until it finds a nonland card costing less than MV 3. Any MV 0–2 nonland would be hit before Living End (MV 0). Zero exceptions. This includes "harmless" cyclers, cantrips, and removal spells. The entire deck construction principle is built on this constraint. Violation = failed cascade = lost game.</span></div></li>
+    <li><div class="heuristic-text"><strong>Violent Outburst at end of opponent's turn — always prefer instant speed.</strong> <span>Casting cascade as an instant protects against sorcery-speed GY hate (Rest in Peace, Relic of Progenitus activation). Opponents must hold up mana during their own turn, can't tap out, can't respond freely. The single biggest mechanical advantage the deck has is instant-speed cascade.</span></div></li>
+    <li><div class="heuristic-text"><strong>Foundation Breaker enters from hand — Grafdigger's Cage doesn't stop it.</strong> <span>Cage says creatures can't enter from GYs or libraries. Foundation Breaker is cast from your hand normally. Its ETB triggers on entering and destroys an artifact or enchantment — including Cage itself. After ETB resolves (Cage gone), cycle Foundation Breaker to put it in GY for Living End to return.</span></div></li>
+    <li><div class="heuristic-text"><strong>Force of Negation cannot counter Endurance — it's a creature.</strong> <span>FoN counters noncreature spells only. When an opponent casts Endurance to shuffle your GY before Living End resolves, FoN doesn't stop it. Use Subtlety (counters creature spells) — evoke Subtlety in response to Endurance, put Endurance on top of library. Or don't let them reach it: cascade at EOT when they have to tap for Endurance, then FoN their response if it's noncreature.</span></div></li>
+    <li><div class="heuristic-text"><strong>The hat trick: cycle on Living End's stack before it resolves.</strong> <span>After cascading into Living End, it's on the stack waiting to resolve. Cycle additional creatures from your hand before Living End resolves. They reach the GY. When Living End resolves, they enter the battlefield. This adds 2–3 extra bodies to your board for free. The sequence: cascade → Living End on stack → cycle Street Wraith (pay 2 life) → cycle Monstrous Carabid ({B/R}) → Living End resolves → all creatures including freshly cycled ones enter.</span></div></li>
+    <li><div class="heuristic-text"><strong>Consign to Memory can counter Living End — it has no colored mana.</strong> <span>Living End has no mana cost. Consign to Memory counters spells that have no colored mana in their mana costs. Living End qualifies. Jeskai Blink players know this — pre-strip their Consign with Grief before cascading, or hold Force of Negation to protect Living End from Consign.</span></div></li>
+    <li><div class="heuristic-text"><strong>Grief before cascade — strip their counter, then chain into Violent Outburst.</strong> <span>On your cascade turn: evoke Grief first (exile a black card, opponent reveals hand, discard a nonblack nonland card). Strip Force of Negation or Consign. Then cast Violent Outburst for the cascade. With their counter gone, Living End resolves cleanly. The sequence is: Grief evoke → Grief ETB → discard their counter → Grief dies → now cascade.</span></div></li>
+    <li><div class="heuristic-text"><strong>Living End resolves → exile happens simultaneously for all players.</strong> <span>All players exile all creatures from their GYs simultaneously, then all sacrifice all creatures simultaneously, then all enter simultaneously. If both you and an opponent have creatures in GY, both sets enter. This is relevant in the mirror: Living End returns YOUR creatures and THEIR creatures. If they have more creatures in GY, it might benefit them. Counter their cascade before it resolves, or cascade yourself first to clear GYs.</span></div></li>
+    <li><div class="heuristic-text"><strong>Street Wraith cycles for paying 2 life — track your life total when cycling.</strong> <span>Four Street Wraiths = 8 life paid if all cycled. Against Boros Energy or Domain Aggro (burn-heavy), don't cycle all four Street Wraiths if you're at risk of being in range of burn lethality. Preserve life intelligently. Against combo or control, cycle freely — life totals don't matter until they do.</span></div></li>
+    <li><div class="heuristic-text"><strong>Subtlety from GY: cascade in response to opponent's creature spell.</strong> <span>If Subtlety was evoked earlier (now in GY), and opponent casts a creature spell, cascade in response: Living End resolves, Subtlety ETBs and puts their creature spell on top/bottom of library. You stop their creature and get a 3/3 flying. This is a powerful line vs Endurance — their Endurance never ETBs, and you have a 3/3 flier.</span></div></li>
+    <li><div class="heuristic-text"><strong>Don't over-cycle green sources if you need Force of Vigor.</strong> <span>Force of Vigor requires exiling a green card from hand to cast for free. If you've cycled all your green creatures (Monstrous Carabid, Foundation Breaker) and hold no green cards, FoV costs its full {2}{G}{G}. Against decks with Leyline of the Void, keep at least one green card in hand until you know you can handle the Leyline.</span></div></li>
+    <li><div class="heuristic-text"><strong>Overlord of the Balemurk mills 4 on entry even as an enchantment (impending).</strong> <span>Play Overlord early via impending ({1}{B}). It enters as an enchantment with 5 time counters — not a creature yet. But "when this permanent enters or attacks" still fires on entry. You mill 4 on turn 2 and return a creature from GY to hand. That creature goes back to hand to cycle again. This doubles your GY filling rate when Overlord is out early.</span></div></li>
+    <li><div class="heuristic-text"><strong>Cascade in response to opponent's cascade (mirror).</strong> <span>When your Living End mirror opponent casts Violent Outburst, their cascade trigger goes on the stack. In response, cast your own Violent Outburst. Your cascade trigger goes on stack first, resolves first. Your Living End resolves first — exile both GYs, enter your creatures. Then their Living End resolves — both GYs are already empty. You win the mirror by being faster on the stack.</span></div></li>
+    <li><div class="heuristic-text"><strong>Living End goes to GY after resolving — it can't be re-cast from GY by cascade.</strong> <span>After Living End resolves, it goes to the graveyard (normal sorcery destination). The next cascade spell will exile cards looking for another nonland MV 0–2 card. If all 4 Living Ends are in GY (not library), cascade finds nothing. Don't cascade a second time if no Living Ends remain in library. Instead, attack with your board.</span></div></li>
+    <li><div class="heuristic-text"><strong>Teferi, Time Raveler means you cascade on your main phase — plan accordingly.</strong> <span>Teferi's static ability stops you from casting spells at instant speed. Violent Outburst at EOT becomes impossible. You must cascade on your main phase, where opponents have full mana and full access to interaction. Grief to strip Teferi first, or Commandeer to steal it. Otherwise, cast Ardent Plea (also sorcery speed) at main phase and accept the worse conditions.</span></div></li>
+    <li><div class="heuristic-text"><strong>Clarion Conqueror shuts ALL activated abilities of creatures — yours too.</strong> <span>Clarion Conqueror's ability shuts activated abilities of artifacts, creatures, AND planeswalkers — indiscriminately. This includes your own creatures' activated abilities. Confirm you have no creatures with important activated abilities before bringing Clarion. Your cyclers have cycling as activated abilities — but you can still cycle by paying the cost as a special action, not an activated ability. Actually, cycling IS an activated ability. With Clarion, you can't cycle. Only bring Clarion in matchups where the tradeoff is worth it (Yawgmoth).</span></div></li>
+    <li><div class="heuristic-text"><strong>Inevitable Betrayal can only be cast for free on your turn by pitching blues.</strong> <span>Inevitable Betrayal's alternate cost is "exile three blue cards from your hand." This is a cost, not a timing restriction — you can cast it any time you could cast a sorcery (your main phase). The pitched blue cards go to exile (not GY). They won't come back with Living End. Only pitch blue cards you don't need back, or that you've already cycled to GY copies.</span></div></li>
+  </ol>
+</div>
+
+<!-- CH09: TUNING -->
+<div id="tuning" class="section">
+  <div class="section-label">Chapter 09</div>
+  <h1>Tuning<br>Notes</h1>
+  <p>Core (4 Living End, 4 Violent Outburst, 4 Street Wraith, 4 Curator of Mysteries, 4 Subtlety, 4 FoN, 4 Overlord) is fixed. Flex: Ardent Plea vs Shardless Agent counts, Grief counts, Waker of Waves cuts, GY hate answer density.</p>
+
+  <div class="tuning-grid">
+    <div class="tuning-card">
+      <div class="tuning-label">Condition</div>
+      <div class="tuning-condition">GY Hate Heavy Field</div>
+      <div class="tuning-up">+3 Foundation Breaker SB (full 3)</div>
+      <div class="tuning-up">+2 Force of Vigor SB (full 2)</div>
+      <div class="tuning-down">−1 Inevitable Betrayal SB (less needed)</div>
+      <div class="tuning-down">−1 Commandeer SB (save slots)</div>
+    </div>
+    <div class="tuning-card">
+      <div class="tuning-label">Condition</div>
+      <div class="tuning-condition">Counter-Heavy Field</div>
+      <div class="tuning-up">+3 Grief main (max disruption)</div>
+      <div class="tuning-up">+2 Commandeer SB (steal their counters)</div>
+      <div class="tuning-down">−1 Waker of Waves (slowest cycler)</div>
+      <div class="tuning-down">−1 Ardent Plea (enough cascade redundancy)</div>
+    </div>
+    <div class="tuning-card">
+      <div class="tuning-label">Condition</div>
+      <div class="tuning-condition">Aggro-Heavy Field</div>
+      <div class="tuning-up">+2 Endurance SB (3/4 reach, blocking)</div>
+      <div class="tuning-up">+1 Foundation Breaker SB (vs RIP)</div>
+      <div class="tuning-down">−2 Overlord of the Balemurk main (too slow)</div>
+      <div class="tuning-down">−1 Inevitable Betrayal SB (wrong meta)</div>
+    </div>
+    <div class="tuning-card">
+      <div class="tuning-label">Condition</div>
+      <div class="tuning-condition">Tron-Heavy Field</div>
+      <div class="tuning-up">+2 Inevitable Betrayal SB (steal Ulamog)</div>
+      <div class="tuning-up">+2 Commandeer SB (steal Kozilek's Command)</div>
+      <div class="tuning-down">−2 Clarion Conqueror SB (wrong matchup)</div>
+      <div class="tuning-down">−1 Endurance SB (less GY focus)</div>
+    </div>
+    <div class="tuning-card">
+      <div class="tuning-label">Condition</div>
+      <div class="tuning-condition">Yawgmoth Popular</div>
+      <div class="tuning-up">+2 Clarion Conqueror SB (shuts Yawgmoth)</div>
+      <div class="tuning-up">+2 Foundation Breaker SB (vs their FoV on Clarion)</div>
+      <div class="tuning-down">−2 Inevitable Betrayal SB</div>
+      <div class="tuning-down">−1 Commandeer SB</div>
+    </div>
+    <div class="tuning-card">
+      <div class="tuning-label">Condition</div>
+      <div class="tuning-condition">Speed Max — Best vs Aggro/Midrange</div>
+      <div class="tuning-up">+4 Street Wraith (already at 4)</div>
+      <div class="tuning-up">+1 Shardless Agent main (10th cascade spell)</div>
+      <div class="tuning-down">−1 Waker of Waves (slowest cycler, cut first)</div>
+      <div class="tuning-down">−1 Grief main (less disruption needed)</div>
+    </div>
+  </div>
+</div>
+
+<!-- CH10: PREP SHEET -->
+<div id="prep" class="section">
+  <div class="section-label">Chapter 10</div>
+  <h1>Prep<br>Sheet</h1>
+  <button class="print-btn" onclick="window.print()">⎙ Print This Sheet</button>
+
+  <h3>The Cascade Constraint — Print and Never Forget</h3>
+  <div class="card-grid card-grid-2" style="margin-bottom:40px;">
+    <div class="card">
+      <div class="card-label">Main Deck Rule</div>
+      <div class="card-title">Zero MV ≤ 2 Nonland Spells</div>
+      <div class="card-body">Cascade finds the first nonland card costing less than MV 3. Living End (MV 0) must always be that card. Any MV 0–2 nonland spell = cascade hits it instead. Zero exceptions. Cycling creatures cost ≥ 3 to cast (not cycle cost — cast cost). Force of Negation is MV 3. Subtlety is MV 4. All legal.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Standard Kill Line</div>
+      <div class="card-title">T1–T2 Cycle → T3 EOT Cascade</div>
+      <div class="card-body">Turns 1–2: cycle Street Wraith (free), Horror ({B}), Monstrous Carabid ({B/R}), Curator ({U}), Waker of Waves (cost). T3 EOT: Violent Outburst (instant) → cascade → Living End → hat trick (cycle more on stack) → resolve → 5–7 creature board. Attack for lethal T4.</div>
+    </div>
+  </div>
+
+  <h3>Tournament Day Quick Reference</h3>
+  <div class="print-grid">
+    <div class="print-mu">
+      <div class="print-mu-name">Boros Energy</div>
+      <div class="print-mu-role">Favorable · Board wipe wins</div>
+      <div class="print-cols">
+        <div><div class="print-col-label">Out</div>
+          <div class="print-row"><span>Overlord ×2</span><span class="print-qty">−2</span></div>
+          <div class="print-row"><span>Ardent Plea</span><span class="print-qty">−1</span></div>
+        </div>
+        <div><div class="print-col-label">In</div>
+          <div class="print-row"><span>Foundation Breaker</span><span class="print-qty">+2</span></div>
+          <div class="print-row"><span>Endurance</span><span class="print-qty">+2</span></div>
+        </div>
+      </div>
+      <div class="print-needle">Track Street Wraith life loss vs burn</div>
+    </div>
+    <div class="print-mu">
+      <div class="print-mu-name">Jeskai Blink</div>
+      <div class="print-mu-role">Dog · Consign hits LE</div>
+      <div class="print-cols">
+        <div><div class="print-col-label">Out</div>
+          <div class="print-row"><span>Waker of Waves ×2</span><span class="print-qty">−2</span></div>
+          <div class="print-row"><span>Ardent Plea</span><span class="print-qty">−1</span></div>
+        </div>
+        <div><div class="print-col-label">In</div>
+          <div class="print-row"><span>Commandeer</span><span class="print-qty">+2</span></div>
+          <div class="print-row"><span>Inevitable Betrayal</span><span class="print-qty">+2</span></div>
+        </div>
+      </div>
+      <div class="print-needle">CONSIGN CAN COUNTER LIVING END!</div>
+    </div>
+    <div class="print-mu">
+      <div class="print-mu-name">Izzet Affinity</div>
+      <div class="print-mu-role">Even · Leyline is game over</div>
+      <div class="print-cols">
+        <div><div class="print-col-label">Out</div>
+          <div class="print-row"><span>Grief ×2</span><span class="print-qty">−2</span></div>
+          <div class="print-row"><span>Waker of Waves</span><span class="print-qty">−1</span></div>
+        </div>
+        <div><div class="print-col-label">In</div>
+          <div class="print-row"><span>Foundation Breaker</span><span class="print-qty">+3</span></div>
+          <div class="print-row"><span>Force of Vigor</span><span class="print-qty">+2</span></div>
+        </div>
+      </div>
+      <div class="print-needle">Leyline T0 = answer before cycling</div>
+    </div>
+    <div class="print-mu">
+      <div class="print-mu-name">Eldrazi Tron</div>
+      <div class="print-mu-role">Dog · TKS strips cascade</div>
+      <div class="print-cols">
+        <div><div class="print-col-label">Out</div>
+          <div class="print-row"><span>Ardent Plea ×2</span><span class="print-qty">−2</span></div>
+          <div class="print-row"><span>Grief ×2</span><span class="print-qty">−2</span></div>
+        </div>
+        <div><div class="print-col-label">In</div>
+          <div class="print-row"><span>Inevitable Betrayal</span><span class="print-qty">+2</span></div>
+          <div class="print-row"><span>Commandeer</span><span class="print-qty">+2</span></div>
+        </div>
+      </div>
+      <div class="print-needle">Commandeer steals Kozilek's Command</div>
+    </div>
+    <div class="print-mu">
+      <div class="print-mu-name">Golgari Yawgmoth</div>
+      <div class="print-mu-role">Even · Clarion shuts Yawg</div>
+      <div class="print-cols">
+        <div><div class="print-col-label">Out</div>
+          <div class="print-row"><span>Waker of Waves</span><span class="print-qty">−1</span></div>
+          <div class="print-row"><span>Overlord</span><span class="print-qty">−1</span></div>
+        </div>
+        <div><div class="print-col-label">In</div>
+          <div class="print-row"><span>Clarion Conqueror</span><span class="print-qty">+2</span></div>
+          <div class="print-row"><span>Foundation Breaker</span><span class="print-qty">+2</span></div>
+        </div>
+      </div>
+      <div class="print-needle">Clarion also shuts your own cycling!</div>
+    </div>
+    <div class="print-mu">
+      <div class="print-mu-name">UW Control</div>
+      <div class="print-mu-role">Dog · Strip Teferi first</div>
+      <div class="print-cols">
+        <div><div class="print-col-label">Out</div>
+          <div class="print-row"><span>Overlord ×2</span><span class="print-qty">−2</span></div>
+          <div class="print-row"><span>Waker of Waves ×2</span><span class="print-qty">−2</span></div>
+        </div>
+        <div><div class="print-col-label">In</div>
+          <div class="print-row"><span>Commandeer</span><span class="print-qty">+2</span></div>
+          <div class="print-row"><span>Inevitable Betrayal</span><span class="print-qty">+2</span></div>
+        </div>
+      </div>
+      <div class="print-needle">Teferi = sorcery cascade only. Grief it first.</div>
+    </div>
+    <div class="print-mu">
+      <div class="print-mu-name">Grixis Reanimator</div>
+      <div class="print-mu-role">Favorable · Faster combo</div>
+      <div class="print-cols">
+        <div><div class="print-col-label">Out</div>
+          <div class="print-row"><span>Overlord ×2</span><span class="print-qty">−2</span></div>
+          <div class="print-row"><span>Waker of Waves</span><span class="print-qty">−1</span></div>
+        </div>
+        <div><div class="print-col-label">In</div>
+          <div class="print-row"><span>Endurance</span><span class="print-qty">+2</span></div>
+          <div class="print-row"><span>Foundation Breaker</span><span class="print-qty">+1</span></div>
+        </div>
+      </div>
+      <div class="print-needle">Endurance on their GY before Persist resolves</div>
+    </div>
+    <div class="print-mu">
+      <div class="print-mu-name">Amulet Titan</div>
+      <div class="print-mu-role">Even · Speed race</div>
+      <div class="print-cols">
+        <div><div class="print-col-label">Out</div>
+          <div class="print-row"><span>Overlord ×2</span><span class="print-qty">−2</span></div>
+          <div class="print-row"><span>Grief</span><span class="print-qty">−1</span></div>
+        </div>
+        <div><div class="print-col-label">In</div>
+          <div class="print-row"><span>Endurance</span><span class="print-qty">+2</span></div>
+          <div class="print-row"><span>Foundation Breaker</span><span class="print-qty">+1</span></div>
+        </div>
+      </div>
+      <div class="print-needle">Bojuka Bog ETB exiles GY — cascade EOT!</div>
+    </div>
+    <div class="print-mu">
+      <div class="print-mu-name">Living End Mirror</div>
+      <div class="print-mu-role">Even · Stack speed wins</div>
+      <div class="print-cols">
+        <div><div class="print-col-label">Out</div>
+          <div class="print-row"><span>Overlord ×2</span><span class="print-qty">−2</span></div>
+          <div class="print-row"><span>Waker of Waves</span><span class="print-qty">−1</span></div>
+        </div>
+        <div><div class="print-col-label">In</div>
+          <div class="print-row"><span>Endurance</span><span class="print-qty">+2</span></div>
+          <div class="print-row"><span>Grief (extra)</span><span class="print-qty">+1</span></div>
+        </div>
+      </div>
+      <div class="print-needle">Cascade in response to their cascade. Go first.</div>
+    </div>
+  </div>
+</div>
+
+</div><!-- end .page -->
+<footer>
+  <span>Team Resolve · Modern · 2026</span>
+  <span>Living End — 2.8% Meta Share</span>
+  <span>Last Updated: March 30, 2026</span>
+</footer>
+
+<script>
+function show(id, e) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.nav-link').forEach(b => b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  if(e && e.target) e.target.classList.add('active');
+  window.scrollTo(0, 0);
+}
+function toggle(id) {
+  const el = document.getElementById(id);
+  if (el) el.classList.toggle('open');
+}
+</script>
+</body>
+</html>
