@@ -228,6 +228,30 @@ CARDS = [
     "Fury",
     "Grief",
     "Solitude",
+    # Simic Neoform core
+    "Allosaurus Rider",
+    "Neoform",
+    "Eldritch Evolution",
+    "Planar Genesis",
+    "Disciple of Freyalise",
+    "Ghalta, Stampede Tyrant",
+    "Generous Ent",
+    "Xenagos, God of Revels",
+    "Griselbrand",
+    "Atraxa, Grand Unifier",
+    "Hooting Mandrills",
+    "Ureni, the Song Unending",
+    "Nourishing Shoal",
+    "Summoner's Pact",
+    "Pact of Negation",
+    "Veil of Summer",
+    "Bridgeworks Battle",
+    "Hedge Maze",
+    "Mystical Dispute",
+    "Into the Flood Maw",
+    "Elesh Norn, Grand Cenobite",
+    "Hexdrinker",
+    "Koma, World-Eater",
     # Golgari Yawgmoth core
     "Yawgmoth, Thran Physician",
     "Melira, Sylvok Outcast",
@@ -268,6 +292,7 @@ PLAYBOOKS = [
     "amulet-titan-playbook.html",
     "living-end-playbook.html",
     "yawgmoth-playbook.html",
+    "neoform-playbook.html",
 ]
 
 def wrap_cards_in_html(html):
