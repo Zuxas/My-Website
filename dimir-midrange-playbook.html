@@ -289,6 +289,41 @@
     </div>
   </div>
 
+  <h2>Live Performance Data</h2>
+  <p style="font-size:14px;color:var(--mid);margin-bottom:16px;">Win rate impact data from Untapped.gg Premium, Platinum through Mythic, BO3. <em>In Hand WR Difference</em> = how much better your win rate is when you draw this card vs. when you don't. The clearest mulligan and sequencing priority signal available.</p>
+  <div class="card-grid card-grid-3">
+    <div class="card">
+      <div class="card-label">Most Impactful Card · +10.3 pts</div>
+      <div class="card-title">Kaito, Bane of Nightmares</div>
+      <div class="card-body">In Hand WR: 56.2% · Not In Hand: 45.9%. The largest gap in the deck by a wide margin — without Kaito you're below 50%. Mulligan hardest for this card on the play. Played WR 53.3% is lower than In Hand WR because the games where you play him late are already harder games.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">SB Insight · Side-out WR 64.1%</div>
+      <div class="card-title">The Unagi of Kyoshi Island</div>
+      <div class="card-body">In Hand WR: 60.2% — but Side-out WR (64.1%) is higher than Side-in WR (57.6%). You win MORE when you take it back out post-board than when you bring it in. Bring Unagi in selectively vs. control only, not speculatively. The field is siding it in against the wrong matchups.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Overperformer · +6.6 pts</div>
+      <div class="card-title">Cecil, Dark Knight</div>
+      <div class="card-body">In Hand WR: 56.6% — higher impact than Enduring Curiosity (+5.6) and Floodpits Drowner (+5.2). Cecil is not a flex slot. His 2/3 deathtouch body plus lifelink transformation carries more measurable weight than the Darkness drain cost suggests. The data confirms keeping 2 copies.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Warning · Side-out WR 61%</div>
+      <div class="card-title">Requiting Hex</div>
+      <div class="card-body">Strong In Hand impact (+3.4 pts) but the field wins 61% of games when they remove it post-board — highest side-out WR in the dataset. Clear signal it's being kept in against the wrong matchups. Take it out aggressively in G2/G3 against any non-aggro opponent. It's an aggro card, not a midrange card.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Not In This List · 73.4% MD</div>
+      <div class="card-title">Deep-Cavern Bat</div>
+      <div class="card-body">73.4% of Dimir Midrange main decks run Deep-Cavern Bat (+3.9 pts). {1}{B} 1/1 flying — ETB: target opponent reveals hand, you choose a nonland card, that card gains Disguise. Strong hand disruption + evasive threat that the broader field has widely adopted. Zuxas's list skips it — a meaningful departure from the field consensus worth testing.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Weakest SB Slot · +0.8 pts</div>
+      <div class="card-title">Essence Scatter</div>
+      <div class="card-body">Side-in WR 51.6%, Side-out WR 55.9% — you win more when it stays out than when it comes in. Lowest differential of any card in the dataset. The matchups it targets either don't come up enough at the RC level or there are better answers. Primary candidate for replacement in the sideboard.</div>
+    </div>
+  </div>
+
   <h2>Mana Curve</h2>
   <div class="curve-strip">
     <div class="curve-slot"><div class="curve-cmc">1</div><div class="curve-count">13 spells</div><div class="curve-bar" style="width:100%"></div></div>
@@ -846,6 +881,20 @@
         The most common Dimir loss condition is drawing the wrong half of the deck: too much removal against control, too many counters against aggro. Sideboard principle: remove only what's completely dead in the matchup, bring in only what has a clear target. Don't board in 8 cards against control because "more options is better" — you dilute your threat density and draw too many answers to nothing. One focused swap beats three speculative ones.
       </div>
     </li>
+    <li>
+      <div class="heuristic-num">17</div>
+      <div class="heuristic-body">
+        <strong>Without Kaito in hand you win less than 46% of games. Mulligan harder for him on the play than any other card.</strong>
+        Untapped.gg data: Kaito's Not In Hand WR is 45.9% — below 50%. No other card in the list has this kind of gap (+10.3 pts differential). A 6-card hand with Kaito beats a 7-card hand without him in most non-aggro matchups on the play. The data makes the keep/mull decision for you: if you have Kaito and reasonable mana, keep.
+      </div>
+    </li>
+    <li>
+      <div class="heuristic-num">18</div>
+      <div class="heuristic-body">
+        <strong>Requiting Hex has a 61% side-out win rate — take it out against non-aggro opponents, not just the obvious ones.</strong>
+        Across thousands of games, the field wins 61% when they remove Requiting Hex post-board. It's a pure aggro card: {B} that destroys MV ≤ 2 creatures. In G2/G3 vs. midrange, control, or mirrors where their threats are MV 3+, Hex is a dead card. The data says players are leaving it in too long. When uncertain whether to take it out — take it out.
+      </div>
+    </li>
   </ol>
 </div>
 
@@ -883,9 +932,19 @@
       <div class="tuning-cell-body">{1}{U} 4/5 with 3 counters (effectively 1/2 → 4/5 over time). Remove a counter for {1}{U}: draw. Remove 2 for {2}{U}: tap + stun. Excellent in long games and control matchups — provides repeated draw engine and disruption. The synergy with Requiting Hex's blight cost (blight Loch Mare to remove a counter while removing their 2-drop) is key tech.</div>
     </div>
     <div class="tuning-cell">
-      <div class="tuning-cell-label">Spell Snare — Meta Call</div>
-      <div class="tuning-cell-title">0 or 1 copies</div>
-      <div class="tuning-cell-body">Spell Snare is extremely metagame-dependent. Strong when MV 2 spells are the format's key interaction or threats. Cut entirely in metas where the relevant spells are 3+ MV. Currently: 1-of is correct given the variety of MV 2 key pieces across Mono-Green Cub, Izzet Elementals, and various aggro builds. In a meta without critical MV 2 pieces: replace with a second Bitter Triumph.</div>
+      <div class="tuning-cell-label">Deep-Cavern Bat — The Missing Piece</div>
+      <div class="tuning-cell-title">73% of builds run it. You don't.</div>
+      <div class="tuning-cell-body">Deep-Cavern Bat ({1}{B} 1/1 flying, ETB hand disruption via Disguise) appears in 73.4% of Dimir Midrange main decks with +3.9 pts impact. It provides turn-2 hand disruption plus an evasive body that triggers Enduring Curiosity on damage. If testing shows the list is light on early interaction or evasion, this is the first card to try. Cut 1 Loch Mare or 1 Phantom Interference to test 1-2 copies.</div>
+    </div>
+    <div class="tuning-cell">
+      <div class="tuning-cell-label">Requiting Hex — Sideboard More of It Out</div>
+      <div class="tuning-cell-title">Side-out WR: 61% — take it out more</div>
+      <div class="tuning-cell-body">Requiting Hex has the highest side-out win rate in the dataset (61%). Across the field, players who remove it post-board win significantly more. It's an aggro-matchup card — in G2/G3 vs. midrange or control it becomes a liability. The current playbook already recommends removing it vs. control and mirrors, but the data confirms: err toward taking it out rather than keeping it in when uncertain.</div>
+    </div>
+    <div class="tuning-cell">
+      <div class="tuning-cell-label">Essence Scatter — Evaluate the Slot</div>
+      <div class="tuning-cell-title">Weakest SB card by every metric</div>
+      <div class="tuning-cell-body">Essence Scatter has a +0.8 pt differential, Side-in WR of 51.6%, and Side-out WR of 55.9%. Every metric says it underperforms. Replacement candidates from the data: Negate (+6.9 pts, 58.7% In Hand WR) answers noncreature threats more broadly and performs significantly better when drawn. Ghost Vacuum (41.3% SB adoption, +4.8 pts) is another option not currently in the 75.</div>
     </div>
   </div>
 </div>
