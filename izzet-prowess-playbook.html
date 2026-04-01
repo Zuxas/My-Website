@@ -141,6 +141,7 @@
   <button class="nav-link active" onclick="show('overview')">Overview</button>
   <button class="nav-link" onclick="show('decklist')">Decklist</button>
   <button class="nav-link" onclick="show('gameflow')">Game Flow</button>
+  <button class="nav-link" onclick="show('lines')">Lines</button>
   <button class="nav-link" onclick="show('engines')">Engines</button>
   <button class="nav-link" onclick="show('roles')">Roles</button>
   <button class="nav-link" onclick="show('matchups')">Matchups</button>
@@ -155,27 +156,29 @@
 <div id="overview" class="section active">
   <div class="section-label">Chapter 01</div>
   <h1>Deck<br>Overview</h1>
-  <div class="mantra">"Even after the bans of Cori-Steel Cutter, Proft's Eidetic Memory, and Vivi Ornitier, an Izzet deck is still this strong in Standard. Prowess has resilience, aggression, and the ability to shift its game plan." — LucasG1ggs, Mar 2026</div>
-  <p>Izzet Prowess is Tier B at <strong>59.2% win rate</strong> across 18,000 BO3 games (Plat–Mythic), the second-most popular deck in the format at 9% meta share. The plan is simple and brutally efficient: play cheap creatures with prowess-like abilities, cast cheap draw spells to pump them, and kill on turn 3–5 before the opponent stabilizes. The deck generates more damage per mana than almost anything in the format.</p>
-  <p>The two damage vectors: <span class="c">Slickshot Show-Off</span> is a 1/2 flier that gets +2/+0 per noncreature spell and can be plotted for {1}{R} to deploy without warning. <span class="c">Elusive Otter</span> is a 1/1 that grows with every spell and becomes unblockable by lower-power creatures. <span class="c">Stormchaser's Talent</span> is the engine — it creates prowess Otter tokens at each level and eventually generates a token per spell. <span class="c">Ral, Crackling Wit</span> gains loyalty from every noncreature spell and backs up the creature plan with more Otter tokens and card selection.</p>
-  <p>The deck's defining characteristic is its cantrip density. Four each of Opt, Sleight of Hand, Stock Up, and Boomerang Basics means approximately 16 spells that replace themselves. This makes the deck resistant to individual card removal — killing a creature doesn't address the remaining hand of 4 cantrips that will continue to pump replacements.</p>
+  <div class="mantra">"Cast spells. Pump creatures. Kill before they stabilize. Every cantrip is a free attack boost — cast them all before you declare attackers."</div>
+  <p>You are playing the second most powerful deck in Standard at <strong>59.2% win rate</strong> across 18,000 BO3 games. Your plan is simple and your execution needs to be tight: deploy a threat on T1, build your engine on T2, and start killing on T3 before opponents find their footing. You generate more damage per mana than almost anything in the format and you punish any opponent who gives you a free turn.</p>
+  <p>Your two primary threats operate differently and you need both. <span class="c">Slickshot Show-Off</span> flies — it dodges every ground blocker in the format, gets +2/+0 per noncreature spell (a 7/2 flier after three cantrips), and its Plot ability lets you preload it into exile and drop it with haste at the exact moment the opponent taps out. <span class="c">Elusive Otter</span> is your evasive threat on the ground — prowess makes it grow, and creatures with lower power can't block it, which in practice means it becomes unblockable once it reaches 2+ power since most 1-drops have power 1. Between the two, you have a flying threat and an evasive ground threat that together demand two different forms of interaction.</p>
+  <p><span class="c">Stormchaser's Talent</span> is the engine that turns your cantrips into a board. Level 1 creates an Otter immediately. Level 3 creates an Otter every time you cast an instant or sorcery. With Level 3 active and three cantrips in hand, you're creating three prowess Otters in one turn. Your 16 cantrips (Opt, Sleight of Hand, Stock Up, Boomerang Basics × 4 each) are what powers all of this — they're not just card selection, they're the fuel that makes every threat you control into a threat worth killing immediately.</p>
 
-  <h2>Why Study This Deck</h2>
-  <p>You face Izzet Prowess in 9% of games at Cincinnati — about 2-3 rounds. Your Dimir Midrange rates this matchup at 44% (Unfavorable). Understanding their turn structure, what their nut draw looks like, and when they're dead on board helps you make better decisions about when to hold up interaction vs deploy threats.</p>
-
+  <h2>Your Three Kill Speeds</h2>
   <div class="card-grid card-grid-3">
     <div class="card">
-      <div class="card-label">Their Fastest Kill</div>
-      <div class="card-title">Turn 3 Blowout</div>
-      <div class="card-body">T1 Otter, T2 Stormchaser's Talent (creates another Otter), T3 cast 4 cantrips. Each cantrip pumps both Otters for +1/+1 until EOT, Talent creates another Otter per spell at level 3. A 5/5 and 4/4 connecting for 9+ on turn 3 is achievable from this sequence.</div>
+      <div class="card-label">Fastest — Turn 3</div>
+      <div class="card-title">Talent Level 3 + Cantrip Chain</div>
+      <div class="card-body">T1 Otter. T2 Stormchaser's Talent (Level 1 creates a second Otter immediately). T3 Level up Talent to 3, cast 3 cantrips — each creates a third Otter + pumps all prowess creatures +1/+1. You now have 4 creatures that are all 4/4+. This sequence requires holding Talent leveling for T3 and having 3 cantrips available. Wins before removal can line up.</div>
     </div>
     <div class="card">
-      <div class="card-label">Their Slowest Threat</div>
-      <div class="card-title">Eddymurk Crab</div>
-      <div class="card-body">5/5 flash, costs {1} less per instant/sorcery in GY — with 4+ spells in GY it's effectively free. Enters tapped if not your turn. Taps up to 2 creatures on entry. Their late-game closer that stabilizes a board and provides a 5/5 clock that's nearly uncounterable with enough spells in yard.</div>
+      <div class="card-label">Standard — Turns 4–5</div>
+      <div class="card-title">Slickshot Plot + Burn Finish</div>
+      <div class="card-body">T1 Otter or Slickshot (plot). T2 Talent. T3 cast plotted Slickshot with haste, chain 2-3 cantrips. Slickshot becomes a 5-7/2 flier on T3. Attack for 5-7 flying. T4 they're at 11-13, Burst Lightning + Sear closes it. The Plot line is specifically designed for the moment they tap out to cast their T3 play — drop Slickshot hasted right over their defenses.</div>
     </div>
     <div class="card">
-      <div class="card-label">Their Kill Switch</div>
+      <div class="card-label">Grind — Turns 6–8</div>
+      <div class="card-title">Eddymurk Crab + Ral</div>
+      <div class="card-body">When the game goes long, you flip to a different gear. With 5+ spells in your GY, Eddymurk Crab costs {U} — a free 5/5 that taps their two biggest blockers on entry. Ral, Crackling Wit from the SB gains loyalty from every cantrip you cast — with 3 cantrips he goes from 4 to 7 loyalty in one turn, generates Otters, and approaches his -10 storm emblem fast. The grind plan is very real.</div>
+    </div>
+  </div>
       <div class="card-title">Slickshot Plot</div>
       <div class="card-body">Plot {1}{R} exiles Slickshot from hand — it can be cast for free on a later turn (sorcery speed). A Slickshot plotted on turn 2 comes down turn 3 with haste, gets +2/+0 per cantrip, and flies over your blockers. This is the "out of nowhere" sequence Dimir players lose to when tapped out.</div>
     </div>
@@ -365,67 +368,180 @@
 <div id="matchups" class="section">
   <div class="section-label">Chapter 06</div>
   <h1>Matchup Guide</h1>
+  <p style="font-style:italic;color:var(--mid);font-size:15px;margin-bottom:24px;">Written from the Izzet Prowess pilot's seat. Every matchup is how you win — not how they beat you.</p>
+
   <table class="matchup-table">
-    <thead><tr><th>Matchup</th><th>Role</th><th>Verdict</th><th>Key Note</th></tr></thead>
+    <thead><tr><th>Matchup</th><th>Your Role</th><th>Verdict</th><th>Your Key Weapon</th></tr></thead>
     <tbody>
-      <tr onclick="toggle('mu-monogreen')"><td><strong>Mono-Green Landfall</strong></td><td>Race</td><td><span class="verdict verdict-favor">Favorable</span></td><td>Fast enough to kill before Nursery stabilizes. Slickshot flies over their board.</td></tr>
+      <tr onclick="toggle('mu-monogreen')"><td><strong>Mono-Green Landfall</strong></td><td>Race</td><td><span class="verdict verdict-favor">Favorable</span></td><td>Slickshot flies over every creature they make. Kill before Sapling Nursery stabilizes.</td></tr>
       <tr><td colspan="4" class="matchup-detail" id="mu-monogreen">
-        <p>This is a favorable matchup. Mono-Green's larger bodies can't block Slickshot Show-Off effectively (it has flying), and their ramp-heavy draw is inherently slower than your spell chain. Sapling Nursery tokens have reach but they need to connect, and a 7/2 Slickshot flying over their board kills before they generate enough tokens. The Harmonizer combo is their fastest kill — disrupt it with Get Out or Into the Flood Maw bouncing their key piece.</p>
+        <p>You are faster. Mono-Green needs 4-5 turns to assemble their engine (Icetill + Nursery + Harmonizer). You can kill on turn 3-4 before that board exists. Slickshot Show-Off with flying bypasses every Treefolk, Badgermole Cub, and earthbent land-creature they deploy. Your burn also goes face — a Burst Lightning to their face on T4 when they're at 8 life ends it without combat at all.</p>
+        <p><strong>What you're afraid of:</strong> A resolved Sapling Nursery flooding the board with 3/4 reach Treefolk that block Slickshot (reach). If Nursery is active and generating tokens, even a flying Slickshot can't get through. Kill or counter Nursery before it produces tokens. Also watch for the Escape Tunnel + Harmonizer combo — if Icetill Explorer is on the board and they have 4+ lands in hand, assume they can one-shot you.</p>
+        <p><strong>Turn-by-turn plan:</strong> T1 Slickshot (plot) or Otter. T2 Stormchaser's Talent + hold {U} for Annul. T3 if they attempt Sapling Nursery — Annul it for {U}. If they don't — drop plotted Slickshot with haste, cast 3 cantrips. They're at 11 life. T4 Burst Lightning to face + Sear or another swing. You want to end the game before turn 5 when Nursery comes online.</p>
+        <p><strong>Key interactions:</strong> Burst Lightning at 2 damage kills Badgermole Cub (2/2) and Llanowar Elves (1/1). Do it. Denying their mana acceleration on T2 buys a full extra turn. Into the Flood Maw at no-gift bounces the earthbent land-creature back to their hand as a plain land — their earthbend accomplished nothing and the land disappears. Annul from SB counters Earthbender Ascension and Sapling Nursery at {U}. Torch the Tower exiles their key creatures — Harmonizer, Leatherhead — preventing them from being recurred.</p>
         <table class="sb-table"><thead><tr><th>Out</th><th>In</th></tr></thead><tbody>
           <tr><td class="sb-out">−1 <span class="c">Into the Flood Maw</span></td><td class="sb-in">+1 <span class="c">Annul</span></td></tr>
           <tr><td class="sb-out">−1 <span class="c">Roaring Furnace</span></td><td class="sb-in">+1 <span class="c">Torch the Tower</span></td></tr>
         </tbody></table>
-        <p class="sb-note">Annul counters Sapling Nursery and Earthbender Ascension. Torch the Tower exiles — important vs Mightform Harmonizer and Icetill Explorer (if it dies, the Harmonizer combo can't function). Keep all burn for their small creatures and face damage.</p>
-        <p class="sb-note"><strong>Key needle:</strong> Keep Badgermole Cub under control — it's their primary ramp engine. Kill it with Burst Lightning before the earthbend triggers. If they earthbend onto a fetch, Into the Flood Maw bouncing the earthbent land is a Time Walk equivalent — they lose a turn of mana and the landfall triggers.</p>
+        <p class="sb-note"><strong>Needle:</strong> Kill Badgermole Cub with Burst Lightning on sight — every mana dork they lose is a full turn delayed on their engine. If Icetill Explorer is in play and they have 4+ lands in their GY, assume the one-shot is available: hold Get Out to bounce the earthbent creature-land during the combo attempt (no gift, targets creature), or Spell Pierce to counter Escape Tunnel's activated ability after they sacrifice it.</p>
       </td></tr>
 
-      <tr onclick="toggle('mu-dimir')"><td><strong>Dimir Midrange</strong></td><td>Race</td><td><span class="verdict verdict-favor">Favorable (56%)</span></td><td>Stormchaser's Talent is their best card and they can't answer it well. Apply pressure before Kaito lands.</td></tr>
+      <tr onclick="toggle('mu-dimir')"><td><strong>Dimir Midrange</strong></td><td>Race</td><td><span class="verdict verdict-favor">Favorable (56%)</span></td><td>Stormchaser's Talent is unkillable for them main deck. Land it and they're on a losing game plan.</td></tr>
       <tr><td colspan="4" class="matchup-detail" id="mu-dimir">
-        <p>Dimir's flash creatures can block your Otters, but Slickshot flies over all of them. Their removal suite (Requiting Hex MV ≤ 2, Shoot the Sheriff anti-non-outlaw) struggles with your threats — Slickshot is a Bird Wizard (not an outlaw), and Hex can kill a 1/1 Otter but the replacements keep coming from Talent. Stormchaser's Talent is their hardest card to answer since they run minimal enchantment removal main. Their Kaito hexproof on your turn means you need to apply pressure before T3. LucasG1ggs: "Against Dimir, Stormchaser's Talent is a card they do not answer well."</p>
+        <p>Your best midrange matchup. Dimir runs minimal enchantment removal main — their suite is Requiting Hex (MV ≤ 2 creatures only), Shoot the Sheriff (non-outlaws for 3 damage + exile), and Bitter Triumph (requires paying life). None of these answer Stormchaser's Talent. Once you land Talent, they're playing against a token factory they cannot efficiently dismantle. Slickshot Show-Off is also specifically difficult for them — Slickshot is a Bird Wizard (not an outlaw), so Sheriff doesn't work on it, and Hex at MV ≤ 2 doesn't hit Slickshot at MV 1... actually Slickshot is {R} (MV 1) so Hex could hit it if they hold it. The key: plot Slickshot into exile early, which protects it from both Hex and Deep-Cavern Bat hand disruption.</p>
+        <p><strong>The Bat threat:</strong> Deep-Cavern Bat strips a card from your hand when it enters. If you have Slickshot in hand when Bat lands, it's gone. Solution: plot Slickshot to exile on the turn Bat is likely (T3 — they ninjutsu Bat into Kaito). Exiled cards can't be stripped by Bat. The moment they tap for Kaito, you drop Slickshot with haste for free and attack before they can block.</p>
+        <p><strong>Turn-by-turn plan:</strong> T1 Otter — it's hard for them to block (Siren is 1/1, they need a 2-power creature to match it). T2 Stormchaser's Talent. Hold {U} for Spell Pierce. T3 — if they attempt Kaito, Spell Pierce it for {U}. If they have Siren in play and are setting up ninjutsu, don't attack into it carelessly. Use Boomerang Basics to bounce their Enduring Curiosity enchantment if it resolves — disrupts their draw engine and you get a card back. T4 Eddymurk Crab flashed in on their end step taps their two biggest creatures, your Slickshot attacks for lethal.</p>
+        <p><strong>What beats you here:</strong> Floodpits Drowner flashed in during your attack step taps all your attackers. Plan for this — don't overcommit into their open mana. Cast Opt during their upkeep to see if they flash in Drowner before you declare attackers. If they have {2}{U} open and you're planning to go wide, consider a smaller attack rather than all-in.</p>
         <table class="sb-table"><thead><tr><th>Out</th><th>In</th></tr></thead><tbody>
           <tr><td class="sb-out">−2 <span class="c">Into the Flood Maw</span></td><td class="sb-in">+2 <span class="c">Spell Pierce</span></td></tr>
           <tr><td class="sb-out">−1 <span class="c">Wild Ride</span></td><td class="sb-in">+1 <span class="c">Annul</span></td></tr>
         </tbody></table>
-        <p class="sb-note">Spell Pierce counters their key 3-drops (Kaito, Tidebinder, Enduring Curiosity) when they tap out for them. Annul hits Enduring Curiosity before it becomes an enchantment draw engine. Trim Into the Flood Maw — it's a Lesson with limited targets in this matchup. Keep all burn for their creatures.</p>
-        <p class="sb-note"><strong>Key needle:</strong> Elusive Otter is a low-impact card here — their creatures block it profitably. Prioritize Slickshot (flying) and the burn + spell chain plan. When they tap out for Kaito on their turn, respond with a plotted Slickshot next turn — it has haste, flies over their Kaito 3/4, and their removal is sorcery speed.</p>
+        <p class="sb-note"><strong>Needle:</strong> Plot Slickshot the turn before Bat arrives (T2 plot, T3 Bat gets nothing). Spell Pierce counters Kaito ({3} to pay through is too expensive on their T3 when they're tapping for the 3-drop). Annul hits Enduring Curiosity before it resolves — their draw engine never starts. Land Stormchaser's Talent and keep it — they have no main deck enchantment removal.</p>
       </td></tr>
 
-      <tr onclick="toggle('mu-mirror')"><td><strong>Izzet Prowess Mirror</strong></td><td>Tempo</td><td><span class="verdict verdict-even">Even</span></td><td>Take as little damage as possible. Eddymurk Crab is the mirror breaker. Bounce Talent tokens to lower their clock.</td></tr>
+      <tr onclick="toggle('mu-mirror')"><td><strong>Izzet Prowess Mirror</strong></td><td>Tempo</td><td><span class="verdict verdict-even">Even</span></td><td>Take less damage than you deal. Eddymurk Crab is your mirror breaker. Bounce your own Talent tokens to cut their clock.</td></tr>
       <tr><td colspan="4" class="matchup-detail" id="mu-mirror">
-        <p>The mirror is a life total management game. Both players deal damage efficiently, so the player who takes less damage while dealing more wins. LucasG1ggs: "Take as little damage as possible. It is completely reasonable to bounce a Stormchaser's Talent token if it lowers the opponent's clock and they do not have other threats." Eddymurk Crab is the mirror-breaker — a 5/5 that doesn't die to Burst Lightning or Sear and taps their two best creatures on entry.</p>
+        <p>The mirror is pure life total management. Both players kill at approximately the same speed. The player who takes more damage loses. This sounds simple but the decision density is high: every time you consider attacking, calculate if you'll be at a lower life total than them if they attack back equivalently. The player who blinks and goes wide first usually dies first.</p>
+        <p><strong>The Crab advantage:</strong> Eddymurk Crab is the most important card in the mirror. A 5/5 that doesn't die to Burst Lightning (4 damage) or Sear (4 damage) and taps their two biggest creatures on entry changes the board state completely. Flash it in on their end step after they've committed to casting cantrips — they've added spells to their GY (making your Crab cheaper) and now their board is tapped. Your T5 attack with Crab + Slickshot is nearly unblockable.</p>
+        <p><strong>The Boomerang Basics bounce:</strong> You can bounce your own Stormchaser's Talent token with Boomerang Basics — draw a card, remove one of their clock targets. This is correct when they have a large board and you need to reduce their attack math. The Otter re-enters from exile when you re-cast it, triggering Talent Level 3 again for a fresh 1/1. Net result: you drew a card and generated a new token that hasn't taken damage.</p>
+        <p><strong>Turn-by-turn plan:</strong> T1 Otter or Slickshot (don't plot T1 — deploy the threat immediately). T2 Talent. T3 cast cantrips before attacking — track their life total carefully. Never attack if doing so puts you at a life total where their next swing kills you. Hold Burst Lightning for their Slickshot before it attacks (2 damage is enough), not for face damage. T4-5 Eddymurk Crab — this is when you win the mirror.</p>
         <table class="sb-table"><thead><tr><th>Out</th><th>In</th></tr></thead><tbody>
           <tr><td class="sb-out">−2 <span class="c">Elusive Otter</span></td><td class="sb-in">+2 <span class="c">Spell Pierce</span></td></tr>
           <tr><td class="sb-out">−1 <span class="c">Wild Ride</span></td><td class="sb-in">+1 <span class="c">Sear</span></td></tr>
           <tr><td class="sb-out">−1 <span class="c">Into the Flood Maw</span></td><td class="sb-in">+1 <span class="c">Fire Magic</span></td></tr>
         </tbody></table>
-        <p class="sb-note">Fire Magic as a sweeper removes all their small Otter tokens simultaneously — {2} to each creature. Sear at 4 damage is the floor for killing Eddymurk Crab. Spell Pierce forces them to think twice before tapping out for their key spells. Trim Elusive Otter — it dies too easily to Burst Lightning and Sear in the mirror.</p>
-        <p class="sb-note"><strong>Key needle:</strong> Bounce your own Talent token with Boomerang Basics — draw a card, remove one of their clock targets from the board. This is often correct when they have a large board and you need to defuse their attack. Replaying the Otter from exile re-triggers Talent Level 3 for another token while drawing a card.</p>
+        <p class="sb-note"><strong>Needle:</strong> Otter is a weak topdeck in the mirror (dies to Burst Lightning and Sear immediately). Crab survives both. Spell Pierce is strong — it forces them to think before every spell when you have {U} open. Fire Magic ({R} + {2} = Fira) deals 2 damage to every creature simultaneously — sweeps all their 1/1 Otter tokens in one spell while also triggering your own prowess.</p>
       </td></tr>
 
-      <tr onclick="toggle('mu-monowhite')"><td><strong>Mono-White Aggro</strong></td><td>Survival</td><td><span class="verdict verdict-dog">Unfavorable</span></td><td>Their fliers + lifelink bodies outrace you. Drake Hatcher generates tokens. More removal needed.</td></tr>
+      <tr onclick="toggle('mu-monowhite')"><td><strong>Mono-White Aggro</strong></td><td>Race + Remove</td><td><span class="verdict verdict-dog">Unfavorable</span></td><td>Kill Haliya and Sage before they connect. Fire Magic sweeps their token flood. Pyroclasm from SB handles everything with 2 toughness.</td></tr>
       <tr><td colspan="4" class="matchup-detail" id="mu-monowhite">
-        <p>LucasG1ggs: "This deck feels like it was built to beat Prowess. The combination of flying creatures and lifegain creatures makes racing very difficult, and it also has answers to Stormchaser's Talent." Their flying lifelinkers gain life while dealing damage, and their removal for Talent (Seam Rip, Sheltered by Ghosts) removes your primary engine. This is your hardest matchup. More removal for their key creatures is essential.</p>
+        <p>This is your hardest matchup. Their flying lifelinkers gain life while dealing damage, and their Seam Rip and Sheltered by Ghosts answer Stormchaser's Talent directly — two-thirds of your game plan gone. Sage of the Skies (2/3 lifelink flying draw trigger) and Haliya, Guided by Light (1/1 lifelink flying triggers on attack) are the specific threats that make the race nearly impossible — they gain 2-4 life per turn from combat damage alone, which means your burn that should be closing the game has to deal with their padded life total instead.</p>
+        <p><strong>Your priority kill list:</strong> 1. Haliya, Guided by Light — kill immediately. 2. Sage of the Skies — kill immediately. These two generate life faster than you deal damage. Everything else is secondary. Burst Lightning (2 damage) kills Haliya (1/1). Sear (4 damage) kills Sage (2/3... wait Sage is 2/3 so Sear hits it exactly). Use Burst Lightning on face only when they're at 4 or below.</p>
+        <p><strong>Turn-by-turn plan:</strong> T1 Otter — hold {R} for Burst Lightning on their T2 creature. T2 Talent — they'll try to remove it with Seam Rip. Hold Spell Pierce to protect it. T3 — if Haliya is on board, kill her with Burst Lightning before you attack. Cast all cantrips first (prowess pump), then attack. T4 — if they resolved a Caretaker's Talent, it's buffing all their creatures. Pyroclasm from SB hits everything at 2 toughness. Fire Magic at Fira (+{2}) deals 2 damage to every creature — sweeps their 1/1 lifelinker tokens.</p>
+        <p><strong>What you cannot let resolve:</strong> Caretaker's Talent (buffs all their creatures + generates Monk tokens each turn — Annul it). Sheltered by Ghosts (aura that exiles your Talent piece when it dies — Get Out bounces the aura before damage).</p>
         <table class="sb-table"><thead><tr><th>Out</th><th>In</th></tr></thead><tbody>
           <tr><td class="sb-out">−2 <span class="c">Boomerang Basics</span></td><td class="sb-in">+2 <span class="c">Fire Magic</span></td></tr>
           <tr><td class="sb-out">−1 <span class="c">Stock Up</span></td><td class="sb-in">+2 <span class="c">Spell Pierce</span></td></tr>
           <tr><td class="sb-out">−1 <span class="c">Roaring Furnace</span></td><td class="sb-in">+1 <span class="c">Torch the Tower</span></td></tr>
         </tbody></table>
-        <p class="sb-note">Fire Magic at {2} hits all their 1/1 lifelinker tokens simultaneously. Torch the Tower exiles (stops recursion). Spell Pierce counters their key enchantments (Caretaker's Talent, Sheltered by Ghosts). LucasG1ggs: "I still prefer Drake Hatcher [over Slickshot] because even though it dies to the same removal, a more controlled game gives us better chances." In more interactive post-board games, stabilizing with a token-generating 4-drop is better than a glass cannon flier.</p>
-        <p class="sb-note"><strong>Key needle:</strong> Kill Haliya, Guided by Light and Sage of the Skies immediately — their lifelink flying makes the race impossible once they connect. Keep Burst Lightning + Sear open specifically for these threats. Don't tap out for Talent if they have removal to answer it.</p>
+        <p class="sb-note"><strong>Needle:</strong> Kill Haliya and Sage of the Skies on sight — they make the damage race unwinnable if they connect. Spell Pierce protects Stormchaser's Talent from Seam Rip and Sheltered by Ghosts for {U}. Fire Magic ({R}) sweeps all their 1/1 lifelinkers in one cheap spell while triggering your prowess. Don't use Slickshot early — you need it as the finishing blow once they're at 6-8 life, not as a T2 2/2 attacker that trades into their board.</p>
       </td></tr>
 
-      <tr onclick="toggle('mu-control')"><td><strong>Jeskai Control</strong></td><td>Tempo</td><td><span class="verdict verdict-favor">Favorable</span></td><td>Stormchaser's Talent is their hardest permanent to answer. Plot Slickshot to punish when they tap out.</td></tr>
+      <tr onclick="toggle('mu-control')"><td><strong>Jeskai Control</strong></td><td>Tempo</td><td><span class="verdict verdict-favor">Favorable</span></td><td>Stormchaser's Talent wins this matchup. Deploy it EOT when they tap out. Ral charges faster than they can sweep.</td></tr>
       <tr><td colspan="4" class="matchup-detail" id="mu-control">
-        <p>Control has answers to individual threats but struggles against Talent generating tokens continuously. Keep representing threats — holding a plotted Slickshot means you can deploy an uncontested 1/2 flier with haste the moment they tap out for a counterspell. Their sweepers kill your creatures but not Talent itself. Go wider than they can sweep, then close with Slickshot and burn.</p>
+        <p>You are favored. Control has answers to individual threats but cannot efficiently handle Stormchaser's Talent generating tokens continuously. Day of Judgment kills your creatures but not Talent — Level 3 Talent just creates new Otter tokens the next time you cast a spell. Inevitable Defeat can exile Talent (it's a nonland permanent) but it costs 4 mana, is sorcery speed... wait, Inevitable Defeat is an instant. Still, at {2}{B}{W} they need specific mana open. Your goal: put them in a position where they must answer Talent but can't afford to leave up {2}{B}{W} every turn while you're generating damage.</p>
+        <p><strong>Plot Slickshot on their tapped turns:</strong> When they tap out for No More Lies, Consult the Star Charts kicked, or any expensive spell — drop your plotted Slickshot with haste immediately. It enters before they untap, attacks for damage, and triggers prowess on all your Otters. They had a turn of interaction, you spent it building a board and dealing damage.</p>
+        <p><strong>Ral into cantrip chain:</strong> Ral, Crackling Wit (SB) gains loyalty from every noncreature spell you cast — with a hand of 4 cantrips, Ral goes from 4 loyalty to 8 in one turn. His +1 creates an Otter. By the time they can handle Ral, he's at 7-8 loyalty and their hand has been drained trying to answer your other threats. Control can't efficiently handle a planeswalker that charges itself and generates tokens simultaneously while you're casting free card draw spells.</p>
+        <p><strong>Timing rule:</strong> Deploy Stormchaser's Talent EOT when they're tapped, not during your main phase when they have {U}{W} up for No More Lies. Never walk Talent into open blue-white mana. Level it up EOT or during their end step after they pass. Cast Opt during their upkeep at instant speed to see how they respond before you make your T3 play.</p>
         <table class="sb-table"><thead><tr><th>Out</th><th>In</th></tr></thead><tbody>
-          <tr><td class="sb-out">−2 <span class="c">Burst Lightning</span></td><td class="sb-in">+2 <span class="c">Spell Pierce</span></td></tr>
-          <tr><td class="sb-out">−1 <span class="c">Sear</span></td><td class="sb-in">+2 <span class="c">Ral, Crackling Wit</span></td></tr>
+          <tr><td class="sb-out">−2 <span class="c">Burst Lightning</span></td><td class="sb-in">+2 <span class="c">Ral, Crackling Wit</span></td></tr>
+          <tr><td class="sb-out">−1 <span class="c">Sear</span></td><td class="sb-in">+2 <span class="c">Spell Pierce</span></td></tr>
         </tbody></table>
-        <p class="sb-note">Ral, Crackling Wit gains loyalty from every noncreature spell — he grows faster than control can remove him because every cantrip adds a counter. His +1 creates an Otter that blocks and generates more pressure. Spell Pierce counters their key sweepers and counterspells. Trim pure creature removal (Burst Lightning, Sear) since they have few creatures to kill.</p>
-        <p class="sb-note"><strong>Key needle:</strong> Plot Slickshot on T2 when they're tapped for a counterspell — it comes down T3 with haste, which they can't respond to with a sorcery-speed sweeper. Deploy Stormchaser's Talent EOT or when they're tapped. Never cast Talent into open {U}{U}.</div>
+        <p class="sb-note"><strong>Needle:</strong> Mistrise Village in their land base lets their next spell be uncounterable — don't Spell Pierce Inevitable Defeat cast off Mistrise Village (it'll fail). Watch for Mistrise activation ({U}{T}) during their main phase before they cast a key spell — that signals the uncounterable window. Trim burn spells (they have few creatures to kill). Ral is the correct threat here — it wins in long games where your creature threats keep dying to sweepers.</p>
+      </td></tr>
+
+      <tr onclick="toggle('mu-boros')"><td><strong>Boros Aggro</strong></td><td>Race</td><td><span class="verdict verdict-even">Even</span></td><td>Your noncombat damage bypasses their Ojer math. Kill Ojer Axonil before he doubles all their pings.</td></tr>
+      <tr><td colspan="4" class="matchup-detail" id="mu-boros">
+        <p>A close race where both players are trying to deal 20 damage first. Boros generates noncombat damage through Shocking Sharpshooter (1 per ETB) and Warleader's Call (1 per ETB) amplified by Ojer Axonil (minimum 4 damage per ETB). You generate damage through flying prowess creatures and burn. Your Slickshot flying over their ground army is the primary advantage — they can't block it with their Warriors or Goblins.</p>
+        <p><strong>Kill Ojer immediately:</strong> Ojer Axonil at 4 power means every Sharpshooter ping to your face is now 4. Every Warleader's Call trigger is 4. A single attack creating 3 tokens hits you for 12 noncombat before any combat damage. Sear (4 damage) kills Ojer exactly. Burst Lightning kicked (4 damage) kills Ojer. Do not let Ojer sit in play for even one attack step.</p>
+        <p><strong>Turn-by-turn plan:</strong> T1 Slickshot (plot) — you want to keep Slickshot in exile to protect it from their removal and get it with haste on T3. T2 Stormchaser's Talent. Hold {R} for Burst Lightning on their creatures. T3 — if Ojer is on the board, Sear it before any other play. If they have Sharpshooter, kill it with Burst Lightning (1/3 — Burst Lightning does 2 damage, doesn't kill it... Burst Lightning is 2 or kicked 4. Sharpshooter is 1/3 so Burst Lightning doesn't kill it unless kicked). Sear handles Sharpshooter (1/3, Sear does 4 damage). T4 drop plotted Slickshot with haste — they're at 12 life, Slickshot + 2 cantrips is 5+ flying damage + burn to close.</p>
+        <p><strong>What kills you:</strong> Ojer + Raphael + Warleader's Call all in play simultaneously — any creature entering is 12+ noncombat damage. If this board state resolves, you need to close immediately through flying or burn. Eddymurk Crab from your SB flashed in taps their Sharpshooter and Ojer before they can use them this combat.</p>
+        <table class="sb-table"><thead><tr><th>Out</th><th>In</th></tr></thead><tbody>
+          <tr><td class="sb-out">−1 <span class="c">Roaring Furnace</span></td><td class="sb-in">+1 <span class="c">Torch the Tower</span></td></tr>
+          <tr><td class="sb-out">−1 <span class="c">Wild Ride</span></td><td class="sb-in">+1 <span class="c">Sear</span></td></tr>
+        </tbody></table>
+        <p class="sb-note"><strong>Needle:</strong> Sear at 4 damage is your Ojer removal — use it immediately on sight. Burst Lightning at 2 damage doesn't kill Sharpshooter (1/3) — need Sear or kicked Burst for that. Your additional Sear from SB gives you more Ojer removal. Torch the Tower exiles — when Ojer is exiled, he doesn't transform into Temple of Power. He's just gone. Prioritize Torch over Sear for Ojer specifically because of the exile clause.</p>
       </td></tr>
     </tbody>
   </table>
+</div>
+
+<!-- CH06b LINES -->
+<div id="lines" class="section">
+  <div class="section-label">Chapter 06b</div>
+  <h1>Disruption<br>Lines</h1>
+
+  <div class="mantra">"Know your timing windows. Cast spells before attacking. Plot when they have countermagic. Every decision has a correct sequence."</div>
+
+  <h2>The Pre-Attack Cantrip Rule</h2>
+  <p>This is the single most important execution point in the deck and the most common mistake. <strong>Every noncreature spell you cast pumps prowess creatures until end of turn.</strong> That pump only matters during combat — which means you must cast all your cantrips in your main phase BEFORE declaring attackers. A 1/1 Otter that attacks as a 4/4 after three cantrips deals 4 damage instead of 1. If you cast those same cantrips after combat, the Otter dealt 1.</p>
+  <div class="card-grid card-grid-2">
+    <div class="card">
+      <div class="card-label">Correct Sequence</div>
+      <div class="card-title">Main → Cantrips → Attack</div>
+      <div class="card-body">Main phase: Cast Opt (Otter +1/+1 until EOT), cast Sleight of Hand (Otter +1/+1), cast Burst Lightning on their blocker (Otter +1/+1 + removes blocker). Now Otter is 4/4. Declare Otter as attacker — it can't be blocked by anything with 3 or less power. Deal 4 damage. Post-combat: cast anything left.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Correct Exception</div>
+      <div class="card-title">Hold Opt for Their End Step</div>
+      <div class="card-body">Opt at instant speed on THEIR end step pumps your creatures for blocks on their attack — or more importantly, it's sometimes correct to pass your turn with mana open, let them declare attackers, and then cast Opt during their attack step to pump your blocker to survive a trade. The flexibility of instant-speed cantrips is a real tool — use it deliberately, not just as reflexive draw.</div>
+    </div>
+  </div>
+
+  <h2>The Plot Timing Window</h2>
+  <p>Slickshot Show-Off's Plot ability ({1}{R}: exile from hand, cast for free on a later turn, sorcery speed) is your primary way around countermagic and hand disruption. The decision of WHEN to plot is matchup-dependent:</p>
+  <div class="card-grid card-grid-3">
+    <div class="card">
+      <div class="card-label">vs Dimir</div>
+      <div class="card-title">Plot T2, Drop T3 on Bat</div>
+      <div class="card-body">Deep-Cavern Bat strips a card from your hand when it enters. Plot Slickshot on T2 before they can Bat it — exiled cards can't be stripped. When they tap for Kaito T3 and Bat enters, your hand is safe and Slickshot is ready. The moment they tap for any play, drop Slickshot with haste before they can respond with sorcery-speed removal.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">vs Control</div>
+      <div class="card-title">Plot, Then Wait for Their Tap-Out</div>
+      <div class="card-body">Control holds {U}{W} for No More Lies every turn. Plot Slickshot T2. Then wait. When they spend their mana on Consult the Star Charts, Lightning Helix, or Inevitable Defeat — that's your window. Drop Slickshot with haste before they untap. It enters, attacks, and they're answering a 1/2 flier instead of developing their game plan.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">vs Aggro</div>
+      <div class="card-title">Deploy Immediately, Don't Plot</div>
+      <div class="card-body">Against Boros Aggro and Mono-White, the game is decided by turns 4-5. You don't have time to wait for the perfect window — plot costs a full turn of not applying pressure. Against aggro, cast Slickshot normally ({R}) and attack immediately. The one exception: plot if you're on the draw and they're at T3 already threatening lethal — then preserve the burst option for T4.</div>
+    </div>
+  </div>
+
+  <h2>Eddymurk Crab Flash Timing</h2>
+  <p>Eddymurk Crab is a 5/5 that enters tapped on your opponent's turn, but costs {1} less per instant/sorcery in your GY. With 4+ spells in GY it's {U}. With 6+ spells it's free. The ETB taps up to two targets. The timing windows matter:</p>
+  <div class="card-grid card-grid-2">
+    <div class="card">
+      <div class="card-label">Best Window: Their End Step</div>
+      <div class="card-title">Tap Their Board, Attack Free</div>
+      <div class="card-body">Flash Crab on their end step after they've passed priority and can't respond with another flash creature. ETB taps their two biggest creatures. You untap with Crab (which untaps on your turn since it only enters tapped on their turn) + your full board. Attack for free — their board is tapped. This sequence on T5 when Crab is free or near-free is often your kill in the matchups that go long.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Defensive Window: Their Attack Step</div>
+      <div class="card-title">After Attackers Declared, Tap Non-Attackers</div>
+      <div class="card-body">After they declare attackers, flash Crab. ETB taps their non-attackers — they can't add more blockers on this attack, can't tap mana from non-land sources, and their board is compromised for the counterattack. In the Dimir matchup this taps Floodpits Drowner before it can tap your attackers. In Boros this taps Ojer Axonil and Sharpshooter simultaneously, cutting off their noncombat damage.</div>
+    </div>
+  </div>
+
+  <h2>Boomerang Basics — Both Modes</h2>
+  <p>Boomerang Basics (Lesson sorcery: return target nonland permanent to owner's hand; if you controlled it, draw a card) has an offensive mode and a self-bounce mode that are both essential:</p>
+  <div class="card-grid card-grid-2">
+    <div class="card">
+      <div class="card-label">Offensive Mode</div>
+      <div class="card-title">Bounce Their Key Permanent</div>
+      <div class="card-body">Bounce Sapling Nursery (enchantment — they spent 4+ mana, it goes back to hand, no tokens this turn). Bounce Earthbender Ascension (resets quest counters to 0). Bounce Stormchaser's Talent in the mirror (removes a token generator AND draws you a card). Bounce Enduring Curiosity (stops their draw engine). The timing: bounce EOT when they're tapped and can't recast immediately.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Self-Bounce Mode</div>
+      <div class="card-title">Return Your Own Otter, Draw a Card</div>
+      <div class="card-body">Return your own Elusive Otter that has +1/+1 counters — draw a card, exile Otter, re-cast it from exile (which triggers Talent Level 3 for a new 1/1 Otter), then adventure Grove's Bounty for permanent counters. This sequence: costs 1 card (Boomerang Basics), generates 1 new Otter token (Talent Level 3), produces permanent counters on your creatures, and draws you a card. Net: one card in, two permanents out, hand size maintained.</div>
+    </div>
+  </div>
+
+  <h2>Get Out — Full Application Map</h2>
+  <p>Get Out ({1}{U} instant) has two modes: counter target creature or enchantment spell, OR return 1-2 target creatures/enchantments you own to your hand. Both modes are strong in different situations:</p>
+  <div class="card-grid card-grid-2">
+    <div class="card">
+      <div class="card-label">Counter Mode</div>
+      <div class="card-title">Stop the Key Spell</div>
+      <div class="card-body">Counter targets: Stormchaser's Talent in the mirror (they don't get Level 1 Otter), Sapling Nursery vs Mono-Green, Caretaker's Talent vs Mono-White, Enduring Curiosity vs Dimir, Ojer Axonil vs Boros. The {1}{U} cost is efficient for a hard counter on creatures and enchantments specifically — most of the deck-defining spells in Standard are enchantments or key creatures.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Return Mode</div>
+      <div class="card-title">Save Your Permanents or Bounce Theirs</div>
+      <div class="card-body">Return YOUR permanents: save a Stormchaser's Talent from being exiled by Seam Rip (bounce it before Seam Rip exiles it), save an Otter from being killed (bounce in response to removal). Return THEIR permanents: bounce their Earthbender Ascension (resets quest counters), bounce their key creature during combat (they lose a blocker). Remember: return mode says "1-2 target creatures/enchantments you own" — only your permanents for the return-to-hand mode.</div>
+    </div>
+  </div>
 </div>
 
 <!-- CH07 SIDEBOARD -->

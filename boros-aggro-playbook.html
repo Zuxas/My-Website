@@ -131,6 +131,7 @@
   <button class="nav-link active" onclick="show('overview')">Overview</button>
   <button class="nav-link" onclick="show('decklist')">Decklist</button>
   <button class="nav-link" onclick="show('gameflow')">Game Flow</button>
+  <button class="nav-link" onclick="show('lines')">Lines</button>
   <button class="nav-link" onclick="show('engines')">Engines</button>
   <button class="nav-link" onclick="show('roles')">Roles</button>
   <button class="nav-link" onclick="show('matchups')">Matchups</button>
@@ -288,52 +289,169 @@
 <div id="matchups" class="section">
   <div class="section-label">Chapter 06</div>
   <h1>Matchup Guide</h1>
+  <p style="font-style:italic;color:var(--mid);font-size:15px;margin-bottom:24px;">Written from the Boros Aggro pilot's seat. You are always the beatdown deck. Every matchup is how you win.</p>
+
   <table class="matchup-table">
-    <thead><tr><th>Matchup</th><th>Role</th><th>Verdict</th><th>Key Note</th></tr></thead>
+    <thead><tr><th>Matchup</th><th>Your Role</th><th>Verdict</th><th>Your Key Weapon</th></tr></thead>
     <tbody>
-      <tr onclick="toggle('mu-dimir')"><td><strong>Dimir Midrange</strong></td><td>Race</td><td><span class="verdict verdict-even">Even (44% for Dimir)</span></td><td>Kill Ojer before it doubles all pings. Hex answers their 1-2 drops. Cecil stops their attacks.</td></tr>
+      <tr onclick="toggle('mu-dimir')"><td><strong>Dimir Midrange</strong></td><td>Noncombat Damage Race</td><td><span class="verdict verdict-favor">Favorable (56%)</span></td><td>Your pings bypass their flash package. Voice of Victory locks them out of removal during your attack step.</td></tr>
       <tr><td colspan="4" class="matchup-detail" id="mu-dimir">
-        <p>Boros Aggro rates 56% favorable against Dimir — their 44% WR confirms this is a tough matchup for you. Their early clock is faster than your flash package can answer. Fanatical Firebrand pings for 1 on entry (Sharpshooter trigger), then haste attacks for 1, then dies sacrificing for 1 more — 3 damage from one 1-mana card before you can deploy a blocker. Warleader's Call as a {1}{R}{W} enchantment is their hardest permanent for you to answer (Requiting Hex doesn't hit enchantments). Ojer Axonil must die — Long Goodbye, Shoot the Sheriff with exile, or Bitter Triumph. Leaving Ojer alive turns the matchup into near-unwinnable territory.</p>
-        <table class="sb-table"><thead><tr><th>Out (as Dimir)</th><th>In (as Dimir)</th></tr></thead><tbody>
-          <tr><td class="sb-out">−1 <span class="c">Into the Flood Maw</span></td><td class="sb-in">+1 <span class="c">Strategic Betrayal</span></td></tr>
-          <tr><td class="sb-out">−1 <span class="c">Enduring Curiosity</span></td><td class="sb-in">+1 <span class="c">Day of Black Sun</span></td></tr>
+        <p>You win this matchup because your damage goes around combat entirely. Shocking Sharpshooter, Warleader's Call, and Raphael, Tough Turtle all deal damage when creatures enter the battlefield — their flash blockers (Floodpits Drowner, Tidebinder, Drowner) don't stop those pings because the pings happen on entry, before combat. Dimir's entire defensive plan is built around blocking profitably with efficient flash creatures. Your plan makes blocking irrelevant.</p>
+        <p><strong>The Voice of Victory lock:</strong> Voice of Victory reads "your opponents can't cast spells during your turn." When Voice attacks, they cannot cast Lightning Helix, Requiting Hex, Floodpits Drowner — anything — during your attack step. This means your attack with Ojer + Sharpshooter creating Mobilize Warriors deals noncombat damage that they literally cannot respond to. Sequence: activate Dalkovan Encampment ({2}{W}{T}) before Voice attacks to create two more Warriors. They enter, Sharpshooter pings, Call pings — all during your turn, all while they sit with hands full and can't respond.</p>
+        <p><strong>Priority targets for their removal:</strong> They will attempt to kill Shocking Sharpshooter first (stops all ETB pings), then Ojer Axonil (stops 4x amplification). Get these threats resolved when their mana is split. Deploy Sharpshooter on T2. If they respond with Requiting Hex ({1}{B}{W}, exile MV ≤ 2), that costs them their entire T3 mana. You untap and deploy Ojer Axonil on T4 into their empty hands.</p>
+        <p><strong>Turn-by-turn plan:</strong> T1 Fanatical Firebrand (haste 1/1 — attacks immediately, pings for 1 from Sharpshooter trigger on T2). T2 Shocking Sharpshooter. T3 Voice of Victory + Warleader's Call — now every attack generates Warriors that ping. T4 Ojer Axonil — now every ping is 4. T5 attack: Voice creates 2 Warriors (8 noncombat damage with Sharpshooter + Call + Ojer), all before combat damage resolves.</p>
+        <table class="sb-table"><thead><tr><th>Out</th><th>In</th></tr></thead><tbody>
+          <tr><td class="sb-out">−2 <span class="c">Raphael, Tough Turtle</span></td><td class="sb-in">+2 <span class="c">Battle Menu</span></td></tr>
+          <tr><td class="sb-out">−2 <span class="c">Seam Rip</span></td><td class="sb-in">+2 <span class="c">Sear</span></td></tr>
         </tbody></table>
-        <p class="sb-note">Day of Black Sun as a sweeper handles their token flood. Strategic Betrayal exiles enchantments — hits Warleader's Call and Seam Rip. Key targets for your removal: Shocking Sharpshooter first (stops all ETB pings), then Ojer Axonil (stops damage amplification), then Voice of Victory (stops token flood). Cecil, Dark Knight's lifelink combat damage negates several turns of their noncombat pings.</p>
-        <p class="sb-note"><strong>Key needle:</strong> Shoot the Sheriff deals 3 damage to any non-outlaw AND exiles. Ojer Axonil is a God (not an outlaw), so Sheriff doesn't work. Use Bitter Triumph (sacrifice a card) or Long Goodbye (exile ≤ 3 MV) for Ojer. Don't waste Sheriff on Sharpshooter when Requiting Hex exiles ≤ 2 MV creatures for {2}{B}.</p>
+        <p class="sb-note"><strong>Needle:</strong> Deploy Sharpshooter before Ojer — if they Hex Sharpshooter, Ojer lands into a board where his amplification has fewer triggers. But if Sharpshooter sticks and you deploy Ojer on T4, the game state is near-unwinnable for them. Sear (4 damage) handles Cecil, Dark Knight (3/3 deathtouch after flip — if you let Cecil attack and deal damage to Ojer, Ojer dies to deathtouch and Cecil doesn't die). Kill Cecil before he attacks into Ojer. Strategic Betrayal from SB exiles enchantments — hits Enduring Curiosity and Warleader's Call... wait you're running Warleader's Call, not them. Battle Menu is the flex answer: Attack mode creates a 2/2 Knight ETB (triggers Sharpshooter + Call), Magic mode destroys power 4+ creatures (kills Cecil after flip).</p>
       </td></tr>
 
-      <tr onclick="toggle('mu-monogreen')"><td><strong>Mono-Green Landfall</strong></td><td>Race</td><td><span class="verdict verdict-even">Even (44% vs Green)</span></td><td>Kill fast before Nursery stabilizes. Their reach tokens block your ground attacks.</td></tr>
+      <tr onclick="toggle('mu-monogreen')"><td><strong>Mono-Green Landfall</strong></td><td>Outrace Nursery</td><td><span class="verdict verdict-dog">Unfavorable (44%)</span></td><td>Your pings must accumulate 20 damage before their board stabilizes. Exorcise their enchantments and large threats.</td></tr>
       <tr><td colspan="4" class="matchup-detail" id="mu-monogreen">
-        <p>Mono-Green Landfall rates 56% against Boros. Their Sapling Nursery 3/4 reach tokens block your 1/1 and 2/2 bodies effectively, and their combo kill via Icetill + Harmonizer bypasses your pinger setup entirely. The race is: can you accumulate enough noncombat ping damage (Sharpshooter + Ojer) before they land Nursery? The answer is usually turn 4-5 for Nursery; your pings can deal significant damage before that if Ojer is in play by turn 4. Their Leatherhead, Swamp Stalker with hexproof is resilient — she can attack through your blockers with trample and destroy your Warleader's Call on damage.</p>
+        <p>You lose if you let Sapling Nursery generate Treefolk tokens. A 3/4 reach token blocks your 1/1 and 2/2 Warriors cleanly, and once they have 4+ Treefolk, your attack math is negative — you're trading 1/1 Warriors into 3/4 reach that hits you back for 3 when you block. Your window to win: deal 20 damage via noncombat pings before Nursery resolves on their T3-4, or exile Nursery as fast as possible with Exorcise.</p>
+        <p><strong>Your plan is noncombat first:</strong> Sharpshooter + Call pings happen on every creature ETB — including your own Mobilize Warriors. A Voice of Victory attack creating 2 Warriors while Sharpshooter + Call + Raphael + Ojer are all in play = 2 Warriors × 4 triggers × 4 damage (Ojer) = 32 noncombat damage in one attack step. They cannot survive that if Ojer is live. Get Ojer down on T4 and attack immediately.</p>
+        <p><strong>Exorcise handles everything:</strong> Exorcise ({1}{W} sorcery) exiles target artifact, enchantment, or creature with power 4 or greater. This hits: Sapling Nursery (enchantment), Mightform Harmonizer (4/4 power), Leatherhead, Swamp Stalker (5/4 power), Mossborn Hydra (power 4+). Bring in both copies G2/G3.</p>
+        <p><strong>Turn-by-turn plan:</strong> T1 Firebrand. T2 Sharpshooter — they're likely playing Llanowar Elves T1 and Badgermole Cub T2. Their Cub ETB triggers Sharpshooter (1 ping). T3 Warleader's Call — Cub still on board, pings on every ETB. T4 Ojer Axonil — if Nursery resolved, immediately Exorcise it on your T4 before it generates tokens. Then attack. With Ojer + Sharpshooter + Call, their Elves entering means they take 8 damage from your pings when it entered.</p>
         <table class="sb-table"><thead><tr><th>Out</th><th>In</th></tr></thead><tbody>
           <tr><td class="sb-out">−2 <span class="c">Seam Rip</span></td><td class="sb-in">+2 <span class="c">Exorcise</span></td></tr>
           <tr><td class="sb-out">−2 <span class="c">Raphael, Tough Turtle</span></td><td class="sb-in">+2 <span class="c">Battle Menu</span></td></tr>
         </tbody></table>
-        <p class="sb-note">Exorcise (exile artifact/enchantment/power 4+) handles Sapling Nursery (enchantment), Mightform Harmonizer (power 4+), Leatherhead (power 5), and Mossborn Hydra (power 4+). Battle Menu's Magic mode destroys power 4+ creatures. Trim Seam Rip (their few ≤ 2 MV key pieces don't justify it here) and Raphael (weaker with their large bodies blocking).</p>
-        <p class="sb-note"><strong>Key needle:</strong> Sequence your first 3 turns around deploying pings BEFORE Nursery resolves. If Nursery lands on T3-4 and your pings haven't dealt 10+ damage yet, you're likely losing the race. Against a Nursery board that generates blockers, switch to the Stadium Headliner sacrifice kill — with 8 creatures + Ojer, sacrifice Stadium for 32 damage to one creature, clearing the biggest blocker.</p>
+        <p class="sb-note"><strong>Needle:</strong> Their Archdruid's Charm fight mode kills your key creature AND grows their fighter — don't leave Ojer in a situation where they can Charm-fight it with a creature that has accumulated +1/+1 counters. Ojer has 4 toughness — their Mightform Harmonizer as 4/4 trades equally in a Charm fight. Keep Ojer away from combat damage where possible; his value is the noncombat damage amplification, not as an attacker. Stadium Headliner's sacrifice ability: with Ojer active and 8 creatures, sacrifice Stadium to deal 8 × 4 = 32 damage to their Mossborn Hydra (any size) or directly to their face.</p>
       </td></tr>
 
-      <tr onclick="toggle('mu-izzet')"><td><strong>Izzet Prowess</strong></td><td>Race</td><td><span class="verdict verdict-favor">Favorable</span></td><td>Your noncombat damage outpaces their creatures. Magebane Lizard from SB punishes their spell-heavy turns.</td></tr>
-      <tr><td colspan="4" class="matchup-detail" id="mu-izzet">
-        <p>This matchup favors you — your noncombat damage from Sharpshooter + Call + Raphael deals damage without entering combat, bypassing their prowess blockers and Eddymurk Crab's tapping ability. Their 1/2 Slickshot can't profitably block your 2/2+ ground threats, and your token flood overwhelms their board management. Magebane Lizard from the SB is devastating — every spell they cast deals its count to them, turning their cantrip chain into a liability.</p>
+      <tr onclick="toggle('mu-prowess')"><td><strong>Izzet Prowess</strong></td><td>Noncombat Race</td><td><span class="verdict verdict-favor">Favorable</span></td><td>Magebane Lizard turns their cantrip chain into 10+ damage against themselves. Your noncombat damage ignores their prowess blockers.</td></tr>
+      <tr><td colspan="4" class="matchup-detail" id="mu-prowess">
+        <p>You win this matchup cleanly when Magebane Lizard (SB) resolves. Their plan requires casting 4+ cantrips per turn — Magebane deals cumulative damage to them equal to the cantrip count: first cantrip deals 1, second deals 2, third deals 3, fourth deals 4. Total: 10 damage to themselves from their own cantrip chain. With Ojer in play, each of those 1-damage Magebane triggers becomes 4 — four cantrips deals 4+8+12+16 = 40 damage. Their entire game plan kills them.</p>
+        <p><strong>Without Magebane (G1):</strong> Your noncombat damage from Sharpshooter + Call still bypasses their prowess blockers entirely. Their Eddymurk Crab taps your board on entry — but it enters tapped on your turn, so it can't block. Flash Crab in on their end step taps their creatures, which is a problem — but Ojer's 4/4 body doesn't get tapped by Crab's "tap up to two target creatures" unless they target it. Ojer keeps attacking regardless.</p>
+        <p><strong>Turn-by-turn plan:</strong> T1 Firebrand. T2 Sharpshooter. T3 Warleader's Call. T4 Ojer Axonil — now your setup is live. T5 attack: their Slickshot is a 1/2 that gets +2/+0 from spells — with Ojer active, every noncombat damage trigger from Sharpshooter goes to their face, not their Slickshot. Their 7/2 Slickshot attacking you is a concern: Burst Lightning (2 damage) doesn't kill it (2 toughness — actually Burst Lightning does 2 which exactly kills the 1/2). Yes, kill Slickshot with Burst Lightning before it attacks.</p>
         <table class="sb-table"><thead><tr><th>Out</th><th>In</th></tr></thead><tbody>
           <tr><td class="sb-out">−2 <span class="c">Seam Rip</span></td><td class="sb-in">+4 <span class="c">Magebane Lizard</span></td></tr>
           <tr><td class="sb-out">−2 <span class="c">Torch the Tower</span></td><td class="sb-in"></td></tr>
         </tbody></table>
-        <p class="sb-note">Magebane Lizard: {2}{R} 1/4 — whenever a player casts a noncreature spell, deals damage = the number of noncreature spells that player has cast this turn. Their first cantrip deals 1. Second deals 2. Third deals 3. Four cantrips in one turn (a normal sequence) deals 1+2+3+4 = 10 damage. With Ojer in play: 4+8+12+16 = 40. Trim Seam Rip (their few ≤ 2 MV permanents don't justify the slots) and Torch the Tower (their creatures are smaller and Sear in the SB handles those).</p>
+        <p class="sb-note"><strong>Needle:</strong> Burst Lightning (2 damage) kills Slickshot Show-Off exactly (1/2 toughness). Do it before they attack. Magebane Lizard resolving means their T3-4 cantrip chain deals 10+ damage to themselves — they must kill Magebane before casting spells. But killing Magebane requires spending a removal spell that they normally use for your threats. The tempo trade is your win condition. Trim Seam Rip and Torch (their few ≤ 2 MV permanents aren't worth the slot here).</p>
       </td></tr>
 
-      <tr onclick="toggle('mu-jeskai')"><td><strong>Jeskai Control</strong></td><td>Race</td><td><span class="verdict verdict-dog">Unfavorable</span></td><td>Day of Judgment wipes your board. Inevitable Defeat answers Ojer uncounterable. Lightning Helix gains life.</td></tr>
-      <tr><td colspan="4" class="matchup-detail" id="mu-jeskai">
-        <p>Control has sweepers (Day of Judgment, Ultima) that immediately nullify your token flood, and Inevitable Defeat that exiles Ojer uncounterable. Their Lightning Helix life gain negates several turns of pings. This is your worst matchup — they have an answer for every angle of your plan. Go wide with tokens to make sweepers cost more, but recognize that Ultima ends the turn, destroying all artifacts and creatures simultaneously. Your noncombat damage via Ojer + Sharpshooter is your best path — they can't counter pings once they're on the stack.</p>
+      <tr onclick="toggle('mu-control')"><td><strong>Jeskai Control</strong></td><td>Noncombat Pressure</td><td><span class="verdict verdict-dog">Unfavorable</span></td><td>Ojer + Sharpshooter generates damage they can't counter. But Inevitable Defeat exiles Ojer uncounterable and Day of Judgment wipes your board.</td></tr>
+      <tr><td colspan="4" class="matchup-detail" id="mu-control">
+        <p>Control has the answers. Day of Judgment destroys your entire board of 1/1 Warriors and key creatures. Inevitable Defeat (uncounterable, instant) exiles Ojer Axonil before he amplifies your pings. Lightning Helix at 4 copies generates 24-point life swings against your early damage. Your path to winning: don't overextend into Day of Judgment, keep 2-3 key pieces rather than flooding the board, and close via Ojer + Sharpshooter noncombat damage that they cannot counter individually — pings resolve on the stack without requiring any spell to be on the stack themselves once Sharpshooter and ETBs are declared.</p>
+        <p><strong>Voice of Victory is critical here:</strong> Voice prevents them from casting spells during your turn. When Voice attacks and creates Mobilize Warriors, they cannot cast Lightning Helix or Inevitable Defeat during your attack step. They must deploy all interaction before Voice attacks. Force them to either tap their mana before your attack step (leaving them with nothing for your pings) or hold their mana and take the damage.</p>
+        <p><strong>What they can't stop:</strong> Your pings are triggered abilities, not spells. Once Sharpshooter is in play and a creature enters under your control, the ping trigger goes on the stack — they can't counter it with No More Lies or Spell Snare (those counter spells, not triggered abilities). They can kill Sharpshooter in response, but that costs them a card and your creature already entered. Keep the ping engine alive and the noncombat damage accumulates whether they like it or not.</p>
         <table class="sb-table"><thead><tr><th>Out</th><th>In</th></tr></thead><tbody>
           <tr><td class="sb-out">−2 <span class="c">Raphael, Tough Turtle</span></td><td class="sb-in">+2 <span class="c">Battle Menu</span></td></tr>
           <tr><td class="sb-out">−2 <span class="c">Seam Rip</span></td><td class="sb-in">+2 <span class="c">Exorcise</span></td></tr>
         </tbody></table>
-        <p class="sb-note">Battle Menu: Attack mode creates a 2/2 Knight token. Magic mode destroys power 4+ creature (hits North Wind Avatar, Marang River Regent). Item mode gains 4 life. The modal flexibility earns its slot against a deck with many different threat types. Exorcise handles their enchantments and large creatures. Trim Raphael (weaker in control games without board floods) and Seam Rip (their ≤ 2 MV permanents aren't their threats).</p>
+        <p class="sb-note"><strong>Needle:</strong> They have Mistrise Village ({U}{T}: next spell you cast this turn can't be countered). This means their Inevitable Defeat is occasionally uncounterable even beyond its printed text. Track when they activate Mistrise. Battle Menu's Magic mode destroys power 4+ creatures, which hits their Revelation Monk tokens (1/1 — doesn't trigger Magic mode, they're 1/1). Battle Menu's Attack mode creates a 2/2 Knight ETB trigger for your pingers. Hold 2-3 creatures in hand and don't commit the full board before their sweep resolves — play around Day of Judgment by keeping one good creature in reserve at all times.</p>
+      </td></tr>
+
+      <tr onclick="toggle('mu-mirror')"><td><strong>Boros Mirror</strong></td><td>Speed Race</td><td><span class="verdict verdict-even">Even</span></td><td>First Ojer + Sharpshooter stack wins. Warleader's Call as the first anthem doubles all your Warriors while halving theirs' effectiveness.</td></tr>
+      <tr><td colspan="4" class="matchup-detail" id="mu-mirror">
+        <p>Both players are assembling the same engine. The game goes to whoever establishes Ojer + Sharpshooter + Warleader's Call first. Their Sharpshooter triggers YOUR Call (both players' creatures entering deal damage to both players). Be aware: when their creature enters and your Sharpshooter triggers targeting YOU — their Sharpshooter also triggers, targeting THEM. The ping engine runs in both directions once both players have Sharpshooter in play.</p>
+        <p><strong>The race within the race:</strong> Kill their Ojer Axonil before he amplifies their pings — Burst Lightning (2 damage) doesn't kill him (4 toughness), need Sear (4 damage) exactly. Stadium Headliner's sacrifice ability deals damage equal to your creature count — with 8 creatures and Ojer, sacrifice Stadium for 32 damage to their Ojer (kills it) or their Sharpshooter (way overkill for a 1/3).</p>
+        <table class="sb-table"><thead><tr><th>Out</th><th>In</th></tr></thead><tbody>
+          <tr><td class="sb-out">−2 <span class="c">Seam Rip</span></td><td class="sb-in">+4 <span class="c">Sear</span></td></tr>
+          <tr><td class="sb-out">−2 <span class="c">Torch the Tower</span></td><td class="sb-in"></td></div>
+        </tbody></table>
+        <p class="sb-note"><strong>Needle:</strong> Sear kills Ojer (4/4) exactly at 4 damage. Keep it for Ojer specifically. Your Stadium Headliner sacrifice ability with 8+ creatures and Ojer in play deals 32+ damage to any single target — use it to kill their Ojer uncounterable, without entering combat, at instant speed.</p>
       </td></tr>
     </tbody>
   </table>
+</div>
+
+<!-- CH06b LINES -->
+<div id="lines" class="section">
+  <div class="section-label">Chapter 06b</div>
+  <h1>Disruption<br>Lines</h1>
+
+  <div class="mantra">"Your damage goes around combat. Their blockers don't matter when every creature entering your battlefield deals 4 damage to their face."</div>
+
+  <h2>The Ojer Stack — Damage Per ETB</h2>
+  <p>The entire deck functions around layering ETB ping triggers. Each trigger source is independent — they all fire separately and can all be amplified by Ojer Axonil simultaneously. Building up to the full stack is the game plan:</p>
+  <div style="border:1px solid var(--rule);margin:24px 0;">
+    <div style="background:var(--ink);padding:16px 24px;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(242,237,230,0.5);">Damage Per Creature ETB (noncombat, all to face)</div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--rule);">
+      <div style="background:var(--paper);padding:16px;text-align:center;">
+        <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--mid);margin-bottom:8px;">1 Source</div>
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:40px;color:var(--accent);line-height:1;">1<br><span style="font-size:24px;">→4</span></div>
+        <div style="font-size:13px;font-weight:300;color:var(--mid);">Sharpshooter alone<br>→ with Ojer</div>
+      </div>
+      <div style="background:var(--paper);padding:16px;text-align:center;">
+        <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--mid);margin-bottom:8px;">2 Sources</div>
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:40px;color:var(--accent);line-height:1;">2<br><span style="font-size:24px;">→8</span></div>
+        <div style="font-size:13px;font-weight:300;color:var(--mid);">Sharpshooter + Call<br>→ with Ojer</div>
+      </div>
+      <div style="background:var(--paper);padding:16px;text-align:center;">
+        <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--mid);margin-bottom:8px;">3 Sources</div>
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:40px;color:var(--accent);line-height:1;">3<br><span style="font-size:24px;">→12</span></div>
+        <div style="font-size:13px;font-weight:300;color:var(--mid);">+ Raphael<br>→ with Ojer</div>
+      </div>
+      <div style="background:var(--paper);padding:16px;text-align:center;">
+        <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--mid);margin-bottom:8px;">2 Sharpshooters + others</div>
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:40px;color:var(--accent);line-height:1;">4<br><span style="font-size:24px;">→16</span></div>
+        <div style="font-size:13px;font-weight:300;color:var(--mid);">2 Sharpshooters + Call + Raphael<br>→ with Ojer</div>
+      </div>
+    </div>
+  </div>
+
+  <h2>Voice of Victory — The Lock Window</h2>
+  <p>Voice of Victory reads "your opponents can't cast spells during your turn." This is not "during combat" — it's during your ENTIRE turn. Once Voice attacks (creating Mobilize tokens), they cannot cast anything for the rest of your turn. The lock only activates when Voice attacks, so you need to sequence correctly:</p>
+  <div class="card-grid card-grid-2">
+    <div class="card">
+      <div class="card-label">Correct Sequence</div>
+      <div class="card-title">Activate Encampment → Declare Attackers (Voice)</div>
+      <div class="card-body">Activate Dalkovan Encampment BEFORE declaring attackers — its activation creates Warriors "whenever you attack this turn," but the activation itself happens before the attack step. Then declare Voice + all attackers. Voice creates 2 Warriors (they can't respond). Encampment creates 2 more Warriors (they still can't respond). That's 4 total ETBs generating 12-16 noncombat damage all while they sit with removal in hand unable to cast it.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">What They Can Do</div>
+      <div class="card-title">Their Response Windows</div>
+      <div class="card-body">They must use all removal BEFORE your attack step begins. If they held Floodpits Drowner specifically to tap your board, they need to do it before Voice attacks — once Voice attacks, they can't flash it in. Smart opponents will try to flash in Drowner during your pre-combat main phase (after you've deployed Ojer but before you attack). If you see them leave {2}{U} open, consider not attacking with Voice that turn — let them waste the mana, then attack next turn.</div>
+    </div>
+  </div>
+
+  <h2>Howlsquad Heavy — Beginning of Combat Timing</h2>
+  <p>Howlsquad Heavy's "at the beginning of combat on your turn" trigger creates a 1/1 Goblin that attacks this combat. This triggers BEFORE you declare attackers. The sequence:</p>
+  <div class="card-grid card-grid-2">
+    <div class="card">
+      <div class="card-label">The Sequence</div>
+      <div class="card-title">Heavy Creates Goblin → ETB Pings → Declare Attackers</div>
+      <div class="card-body">Beginning of combat: Heavy's trigger goes on the stack. Goblin enters. Sharpshooter, Call, and Raphael all trigger (ETB pings). Resolve all triggers. THEN you declare attackers including the Goblin (it has haste from Heavy's "other Goblins have haste"). The Goblin is already in play, already dealt noncombat damage, and it attacks in the same step. This is one ETB trigger PLUS an attacker all from one triggered ability.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Max Speed Mana</div>
+      <div class="card-title">Heavy's Mana Tap</div>
+      <div class="card-body">Heavy's Max Speed ability: {T}: add {R} for each Goblin you control. With 4 Goblins in play (including tokens from previous turns), Heavy taps for {R}{R}{R}{R}. This mana is available on the same turn — use it to cast Burst Lightning (kills a blocker) before attacking, or hold it for a post-combat Stadium Headliner sacrifice. The tokens from previous turns that survived count for this, making Heavy a legitimate mana source in the mid-game.</div>
+    </div>
+  </div>
+
+  <h2>Stadium Headliner — The Finisher</h2>
+  <p>Stadium Headliner's sacrifice ability ({1}{R}, sacrifice: deal damage equal to creatures you control to target creature) is the uncounterable finisher. Calculate it every turn in the mid-to-late game:</p>
+  <div class="card-grid card-grid-2">
+    <div class="card">
+      <div class="card-label">Killing Their Ojer Axonil</div>
+      <div class="card-title">Sacrifice Stadium When You Have 4+ Creatures</div>
+      <div class="card-body">Ojer is 4/4. You need to deal 5+ damage to kill him (4 toughness + kill threshold). With 5 creatures + Ojer active: sacrifice Stadium for 5 damage × 4 (Ojer) = 20 damage to their Ojer... wait. Stadium's ability targets a creature — it deals damage equal to the number of creatures YOU control. With Ojer in play on YOUR side, the damage dealt is noncombat and goes through Ojer's "minimum 4" check only if the source is red. The ability IS a red source. So with 1 creature: deal max(1, Ojer's power=4) = 4 damage. With 5 creatures: 5 × 1 but through Ojer = 5... actually Ojer's ability says damage less than his power becomes his power, applying per-instance. Stadium's ability deals X damage as a single instance — if X ≥ Ojer's power (4), it deals X normally. If X < 4, it becomes 4. So with 3 creatures: deal 4 (minimum). With 8 creatures: deal 8. The 4-floor applies to each noncombat red damage instance individually.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Face Lethal Calculation</div>
+      <div class="card-title">Know When Stadium Closes It</div>
+      <div class="card-body">If they're at N life and you have C creatures, Stadium deals max(C, 4) damage to their face (through Ojer's floor). They're at 8 life, you have 7 creatures + Ojer: Stadium deals 7 damage = they die. They're at 12 life, you have 4 creatures + Ojer: Stadium deals max(4, 4) = 4 damage. Need more creatures or a different finisher. Track this number every turn — knowing when Stadium closes the game means you don't have to attack into their defenses at all.</div>
+    </div>
+  </div>
+
+  <h2>Dalkovan Encampment — Correct Activation Timing</h2>
+  <p>Dalkovan Encampment: {2}{W}{T}: Whenever you attack this turn, create two 1/1 red Warrior tokens tapped and attacking. This is an activated ability, not a triggered one — you must activate it before declaring attackers but during the beginning of combat step (or earlier in your main phase). The Warriors enter tapped and attacking simultaneously with your other attackers.</p>
+  <div class="card-grid card-grid-2">
+    <div class="card">
+      <div class="card-label">When to Activate</div>
+      <div class="card-title">Main Phase or Beginning of Combat</div>
+      <div class="card-body">The safest activation is during your main phase — you tap Encampment and {2}{W} before entering combat at all. This means even if they flash in a blocker or use instant-speed interaction during combat, the Encampment ability is already locked in. Warriors enter as declared attackers when you move to attack. They cannot be countered because the ability has already resolved.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">The ETB Timing</div>
+      <div class="card-title">Warriors Enter on Attack Declaration</div>
+      <div class="card-body">The Warriors enter the battlefield when you attack — they don't enter during your main phase when you activate the ability. The "whenever you attack" clause means they enter during your attack step, which means Sharpshooter, Warleader's Call, and Raphael all see them entering. With the full ping stack + Ojer: 2 Warriors entering = 2 × 16 = 32 noncombat damage from one Encampment activation on one attack step.</div>
+    </div>
+  </div>
 </div>
 
 <!-- CH07 SIDEBOARD -->

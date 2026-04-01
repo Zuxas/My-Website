@@ -151,6 +151,7 @@
   <button class="nav-link active" onclick="show('overview')">Overview</button>
   <button class="nav-link" onclick="show('decklist')">Decklist</button>
   <button class="nav-link" onclick="show('gameflow')">Game Flow</button>
+  <button class="nav-link" onclick="show('lines')">Lines</button>
   <button class="nav-link" onclick="show('engines')">Engines</button>
   <button class="nav-link" onclick="show('roles')">Roles</button>
   <button class="nav-link" onclick="show('matchups')">Matchups</button>
@@ -381,6 +382,156 @@
       <div class="card-label">When Earthbending is Wrong</div>
       <div class="card-title">Earthbend Caution</div>
       <div class="card-body">Earthbending is strong but creates vulnerability: an earthbent land can be stunned (Floodpits Drowner), bounced (Into the Flood Maw), or killed before returning. In those cases you lose mana temporarily. Against Dimir: be careful earthbending when they have {1}{U} open — they can stun your earthbent land in response, leaving it as a dead permanent. Against control with open mana: earthbending is telegraphed. Sometimes holding the earthbend for combat or end step is better.</div>
+    </div>
+  </div>
+</div>
+
+<!-- CH05b LINES -->
+<div id="lines" class="section">
+  <div class="section-label">Chapter 05b</div>
+  <h1>Disruption<br>Lines</h1>
+
+  <div class="mantra">"Every land drop is a decision. Earthbend onto the fetch, not the basic. Sequence Escape Tunnel before Harmonizer fires. Know your doubling math before you go to combat."</div>
+
+  <h2>The Earthbend-onto-Fetch Rule</h2>
+  <p>Badgermole Cub's ETB earthbends 1. Earthbender Ascension ETBs earthbend 2. The target is a land you control. The single most common Mono-Green mistake: earthbending onto a basic Forest instead of a fetch land. A basic Forest earthbent gives you one landfall trigger. A Fabled Passage earthbent gives you <strong>two</strong> — the Passage entering, then you sacrifice it to fetch a basic (second trigger). The difference is one extra Treefolk token, one extra Harmonizer doubling, one extra Ascension quest counter, one extra Chocobo counter. Over a game that compounds significantly.</p>
+  <div class="card-grid card-grid-2">
+    <div class="card">
+      <div class="card-label">Earthbend Onto</div>
+      <div class="card-title">Fetch Land (Fabled Passage / Escape Tunnel)</div>
+      <div class="card-body">
+        Sequence: earthbend targets Fabled Passage → Passage becomes 0/0 creature with +1/+1 counter + haste (trigger 1: all your landfall sources fire). When it dies / next upkeep it returns as Fabled Passage → you can then sacrifice it to fetch a basic (trigger 2: all sources fire again). Two triggers from one earthbend. Escape Tunnel works identically as the earthbend target — earthbend it, it becomes a creature, when it returns as Escape Tunnel you have its full functionality available (sacrifice for unblockable, sacrifice to fetch basic).
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-label">Earthbend Onto</div>
+      <div class="card-title">Promising Vein (Situational Double)</div>
+      <div class="card-body">
+        Promising Vein: {T} add {C}, {1}{T} sacrifice to fetch basic tapped. Earthbend onto Vein → it becomes a creature (trigger 1). When it returns as Vein → sacrifice it {1}{T} to fetch a basic (trigger 2). Same double-trigger as a fetch. Use this when you've already used your Fabled Passages and Escape Tunnels — Promising Vein is your backup double-trigger earthbend target in the mid-to-late game.
+      </div>
+    </div>
+  </div>
+
+  <h2>The Combo Kill Sequence — Full Mapping</h2>
+  <p>The Icetill Explorer + Mightform Harmonizer + Escape Tunnel combo is your fastest kill. Mapping every decision point:</p>
+  <div class="card-grid card-grid-2">
+    <div class="card">
+      <div class="card-label">Step 1 — Establish the Requirements</div>
+      <div class="card-title">What You Need in Play</div>
+      <div class="card-body">
+        Mandatory: Icetill Explorer (extra land plays, lands from GY). Mandatory: Mightform Harmonizer (doubles a creature's power on each landfall). Mandatory: A creature with power ≤ 2 at the moment Escape Tunnel activates. Mandatory: Escape Tunnel in play (or multiple other land plays available for the doubling chain even without unblockable — use trample from Ascension instead).<br><br>
+        <strong>The power-2 check is critical:</strong> Escape Tunnel gives unblockable to a creature with power ≤ 2 <em>at the time of activation</em>. If your target creature already has 3+ power from counters, Tunnel cannot target it. You must activate Tunnel BEFORE any Harmonizer doublings happen.
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-label">Step 2 — Execute in Order</div>
+      <div class="card-title">The Mandatory Sequence</div>
+      <div class="card-body">
+        <ol style="margin:0 0 0 16px;font-size:14px;font-weight:300;color:var(--mid);line-height:2.2;">
+          <li><strong>Escape Tunnel activation first</strong> — sacrifice Tunnel targeting your 2-power creature (unblockable). Do this before any land drops that would trigger Harmonizer.</li>
+          <li>Play land 1 → Harmonizer trigger: double target creature (2 → 4). Now it has 4 power.</li>
+          <li>Play land 2 (fetch or GY land via Icetill) → Harmonizer trigger: double (4 → 8).</li>
+          <li>Play land 3 → double (8 → 16).</li>
+          <li>Play land 4 → double (16 → 32). Attack with 32-power unblockable for lethal.</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <div class="card-grid card-grid-2" style="margin-top:1px;">
+    <div class="card">
+      <div class="card-label">The Doubling Math</div>
+      <div class="card-title">Power Required vs Land Drops Available</div>
+      <div class="card-body">
+        Starting power determines how many doublings you need:<br><br>
+        <strong>Start at 2 power</strong> (bare minimum): 2→4→8→16→32 = 4 doublings = 4 land drops needed.<br>
+        <strong>Start at 4 power</strong> (Harmonizer itself at 4/4): 4→8→16→32 = 3 doublings = 3 land drops.<br>
+        <strong>Start at 8 power</strong> (Chocobo with 8 counters): 8→16→32 = 2 doublings = 2 land drops.<br><br>
+        Count your available land plays before committing to the combo line — Icetill gives 1 extra, each fetch in GY gives 1 more. If you don't have enough land drops for lethal, wait a turn.
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-label">Leatherhead as Combo Piece</div>
+      <div class="card-title">Hexproof + Trample Instead of Escape Tunnel</div>
+      <div class="card-body">
+        Leatherhead, Swamp Stalker (5/4, trample, enters with hexproof counter) is the Harmonizer combo piece that doesn't need Escape Tunnel. Leatherhead already has trample — no need for unblockable. She has a hexproof counter — targeted removal can't stop the combo attempt mid-sequence. Start the Harmonizer chain with Leatherhead: 5→10→20→40 with only 3 doublings. The opponent cannot target her to break the combo (they must use non-targeting effects or Archdruid's Charm fight mode on her hexproof counter first).
+      </div>
+    </div>
+  </div>
+
+  <h2>Sapling Nursery — Indestructible Activation Timing</h2>
+  <p>Sapling Nursery has an activated ability: {1}{G}, exile Nursery → Treefolk and Forests you control gain indestructible until end of turn. This is your sweeper protection button. The critical timing rule: activate it <strong>in response</strong> to the sweeper being cast — not after it resolves.</p>
+  <div class="card-grid card-grid-2">
+    <div class="card">
+      <div class="card-label">Correct Sequence</div>
+      <div class="card-title">Respond to the Sweeper on the Stack</div>
+      <div class="card-body">
+        They cast Day of Judgment (destroy all creatures). Before it resolves, activate Nursery: exile Nursery, all Treefolk and Forests gain indestructible until EOT. Day of Judgment resolves — tries to destroy all creatures. Your Treefolk have indestructible — they are not destroyed. Day of Judgment is wasted.<br><br>
+        <strong>The two-Nursery bonus:</strong> If you have two Nurseries in play, activate one to protect your board, then replay the other next turn to continue generating tokens. You sacrifice one Nursery for protection but the second keeps the engine running.
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-label">What Gets Protected</div>
+      <div class="card-title">Treefolk AND Forests</div>
+      <div class="card-body">
+        The ability grants indestructible to two categories: Treefolk (your tokens) AND Forests (your lands). This means: your earthbent Forest that's currently a creature also gains indestructible — it won't die to mass removal even in its creature form. But note: Forests as lands still get indestructible, which is mostly irrelevant against creature sweepers but matters against Destroy target land effects. The Treefolk protection is the primary use case.
+      </div>
+    </div>
+  </div>
+
+  <h2>Archdruid's Charm — Three Modes, When to Use Each</h2>
+  <p>Archdruid's Charm ({G}{G}{G} instant) has three modes. The {G}{G}{G} cost means you need three Forests accessible — plan your earthbends around keeping basic Forests available (Ba Sing Se and Promising Vein are not Forests):</p>
+  <div class="card-grid card-grid-3">
+    <div class="card">
+      <div class="card-label">Mode 1 — Tutor</div>
+      <div class="card-title">Search Your Library</div>
+      <div class="card-body">Find any creature or land. Put land into play tapped or creature into hand. Use this to: tutor Mightform Harmonizer for the combo kill when you have the other pieces assembled, tutor Leatherhead as a hexproof trample combo piece, tutor Fecund Greenshell as the 10-land anthem trigger, tutor Icetill Explorer as the engine piece. The tutoring mode effectively makes your deck have more copies of your key pieces.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Mode 2 — Fight</div>
+      <div class="card-title">+1/+1 Counter + Fight</div>
+      <div class="card-body">Put a +1/+1 counter on your creature, it fights (deals power damage to, takes power damage from) target creature an opponent controls. Your creature gets the counter first, then the fight damage uses the new power. Use to: kill their Ojer Axonil (your creature gets the counter, fights Ojer — if your creature has 5+ power, Ojer dies), kill their Shocking Sharpshooter (1/3 — any creature with 3+ power kills it in the fight). Don't use it when your creature would die in the fight unless that removes their key piece.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Mode 3 — Exile</div>
+      <div class="card-title">Exile Target Artifact or Enchantment</div>
+      <div class="card-body">Your only main-deck answer to Stormchaser's Talent, Warleader's Call, Earthbender Ascension (in the mirror), and any other enchantment. Exile is permanent — no returning. Use fight mode on their creatures, exile mode on their enchantments. Don't use the exile mode on a creature when fight mode would handle it — the fight mode also gives your creature a permanent +1/+1 counter as a bonus.</div>
+    </div>
+  </div>
+
+  <h2>Icetill Explorer — Playing Lands From the Graveyard</h2>
+  <p>Icetill Explorer gives you "you may play lands from your graveyard" — this is a static ability, not a triggered one. As long as Icetill is in play, any land in your GY is playable as your land play for the turn (or extra land play from Icetill's other ability). The mill trigger (landfall → mill 1) puts cards into your GY — treat every mill as a potential free land play:</p>
+  <div class="card-grid card-grid-2">
+    <div class="card">
+      <div class="card-label">The Loop</div>
+      <div class="card-title">Fabled Passage Recycling</div>
+      <div class="card-body">Icetill mills a Fabled Passage into GY. Next turn: play Passage from GY (landfall trigger 1), sacrifice Passage to fetch a basic (landfall trigger 2), basic enters (landfall trigger 3 — wait, fetched basics don't trigger separately, just the basic entering as one event). Actually: Passage's sacrifice + fetch = one landfall event (the basic entering). So replaying Passage from GY = 2 landfall events total (Passage entering from GY, then the basic it fetches entering). Each Passage in GY is worth 2 Treefolk tokens, 2 Harmonizer doublings, 2 Ascension quest counters.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Sequencing Icetill</div>
+      <div class="card-title">Deploy When You Have a Fetch in Hand or GY</div>
+      <div class="card-body">A "naked" Icetill with no fetches in hand or GY is just a 2/4 for 4 with no immediate value. The correct deployment: T4 Icetill when you can immediately play a land and mill — even milling one card gives you a chance of hitting a fetch. Or deploy when you already have a Fabled Passage in GY (from a previous turn's normal play) — deploy Icetill, play your land for the turn, and immediately replay the GY Passage. The engine starts the same turn Icetill enters.</div>
+    </div>
+  </div>
+
+  <h2>Torpor Orb — Sequencing Your Own ETBs First</h2>
+  <p>When you bring in Torpor Orb from the sideboard (vs Dimir ETB package), deploying it requires care — Orb also blanks your own Badgermole Cub's ETB earthbend:</p>
+  <div class="card-grid card-grid-2">
+    <div class="card">
+      <div class="card-label">Correct Sequence</div>
+      <div class="card-title">Your ETBs First, Then Orb</div>
+      <div class="card-body">
+        Turn 2: cast Badgermole Cub. ETB triggers — earthbend 1. Choose a fetch land to earthbend. Two landfall triggers (earthbend fires, then you sacrifice the earthbent fetch later). All your ETB value is extracted.<br>
+        Turn 3: cast Torpor Orb. Now all creature ETBs (including future Badgermole Cubs) do nothing. But Dimir's Tidebinder, Drowner, Bat are also blanked.<br><br>
+        Never deploy Orb before your own key ETBs unless you're certain the Dimir ETBs are more dangerous than your own.
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-label">What Orb Doesn't Blank</div>
+      <div class="card-title">Static Abilities and Activated Abilities Are Fine</div>
+      <div class="card-body">
+        Torpor Orb stops triggered abilities that trigger when creatures enter. It does NOT stop: Icetill Explorer's static abilities (play extra land, play from GY — those are continuous), Badgermole Cub's "tap creature for mana, add {G}" (that's triggered by tapping for mana, not by entering), Earthbender Ascension's landfall triggered ability (triggered by land entering, not creature entering). Orb is narrower than it appears — most of your engine remains intact.
+      </div>
     </div>
   </div>
 </div>

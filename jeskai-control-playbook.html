@@ -132,6 +132,7 @@
   <button class="nav-link" onclick="show('decklist')">Decklist</button>
   <button class="nav-link" onclick="show('gameflow')">Game Flow</button>
   <button class="nav-link" onclick="show('answers')">Answer Suite</button>
+  <button class="nav-link" onclick="show('lines')">Lines</button>
   <button class="nav-link" onclick="show('roles')">Roles</button>
   <button class="nav-link" onclick="show('matchups')">Matchups</button>
   <button class="nav-link" onclick="show('sideboard')">Sideboard</button>
@@ -288,52 +289,192 @@
 <div id="matchups" class="section">
   <div class="section-label">Chapter 06</div>
   <h1>Matchup Guide</h1>
+  <p style="font-style:italic;color:var(--mid);font-size:15px;margin-bottom:24px;">Written from the Jeskai Control pilot's seat. You are the reactive deck. Every matchup is about surviving long enough to execute Revelation + Monks.</p>
+
   <table class="matchup-table">
-    <thead><tr><th>Matchup</th><th>Role</th><th>Verdict</th><th>Key Note</th></tr></thead>
+    <thead><tr><th>Matchup</th><th>Your Role</th><th>Verdict</th><th>Your Key Weapon</th></tr></thead>
     <tbody>
-      <tr onclick="toggle('mu-dimir')"><td><strong>Dimir Midrange</strong></td><td>Answer</td><td><span class="verdict verdict-dog">Unfavorable (36%)</span></td><td>Their flash package operates at instant speed on your turn. Kaito hexproof is hard to answer.</td></tr>
+      <tr onclick="toggle('mu-dimir')"><td><strong>Dimir Midrange</strong></td><td>Attrition</td><td><span class="verdict verdict-dog">Unfavorable (36%)</span></td><td>Inevitable Defeat handles Kaito uncounterable. Torpor Orb from SB blanks their entire ETB disruption suite.</td></tr>
       <tr><td colspan="4" class="matchup-detail" id="mu-dimir">
-        <p>Dimir Midrange is favored 64% against Jeskai Control. Their flash creatures answer your plan before you can execute it — Tidebinder and Drowner react to your sweeper timing, Kaito has hexproof on your turn preventing you from targeting him. Your Inevitable Defeat is uncounterable and handles Kaito, but they'll have rebuilt by the time Revelation comes online. Surrak, Elusive Hunter (Dimir SB card) can't be countered and draws when you target their spells — it's a nightmare to answer.</p>
+        <p>You are the underdog at 36% — their flash creatures react to your sweeper timing and Kaito has hexproof on your turn. But you have the tools to fight back if you sequence correctly. The matchup is decided by whether you can land Revelation + Monks before they rebuild their hand via Enduring Curiosity. One successful Revelation — bounce their Kaito, deal 4 to their face, create two 1/1 prowess Monks, draw 2, gain 4 — sets you ahead on every axis: card parity, life, and board.</p>
+        <p><strong>Kaito is uncounterable on their turn:</strong> Kaito has hexproof during your turn. But on their turn, when they attack with Kaito's minus ability or when Kaito first resolves, you can Inevitable Defeat it — Inevitable Defeat is an instant and doesn't require targeting during your turn. You're exiling "target nonland permanent" which doesn't have the hexproof restriction. Get Kaito off the board with Inevitable Defeat the turn it resolves or the turn after they use his +2 ability.</p>
+        <p><strong>Torpor Orb is your game-winner:</strong> Their disruption package is entirely ETB-based: Floodpits Drowner taps your board, Tishana's Tidebinder counters your abilities, Deep-Cavern Bat strips your hand. Torpor Orb ({2} artifact) makes all entering creatures' ETBs do nothing. With Orb in play: Drowner enters as a vanilla 2/5. Tidebinder enters as a 3/3 that does nothing. Bat is a 1/1 flier. Their disruption suite is completely blank.</p>
+        <p><strong>Turn-by-turn plan:</strong> T1-T2: play lands, hold mana. T3: Spell Snare their Kaito ({U} counters MV 2 — wait, Kaito is MV 3). Spell Snare counters MV 2 exactly. Kaito is {1}{U}{B} = MV 3. Spell Snare doesn't hit Kaito. No More Lies ({U}{W}) counters Kaito unless they pay {3} — on T3 with only 3 lands, they can't pay {3} extra. Counter Kaito with No More Lies on T3 if they tap for it. T4: if they deployed a creature suite, hold up Inevitable Defeat for Enduring Curiosity (enchantment — Defeat exiles it). T5+: Revelation EOT after they tap for a spell.</p>
         <table class="sb-table"><thead><tr><th>Out</th><th>In</th></tr></thead><tbody>
-          <tr><td class="sb-out">−2 <span class="c">Day of Judgment</span></td><td class="sb-in">+1 <span class="c">Torpor Orb</span></td></tr>
-          <tr><td class="sb-out">−1 <span class="c">Ultima</span></td><td class="sb-in">+1 <span class="c">Tishana's Tidebinder</span></td></tr>
-          <tr><td class="sb-out">−1 <span class="c">Spell Snare</span></td><td class="sb-in">+2 <span class="c">Wan Shi Tong</span></td></tr>
+          <tr><td class="sb-out">−2 <span class="c">Day of Judgment</span></td><td class="sb-in">+2 <span class="c">Torpor Orb</span></td></tr>
+          <tr><td class="sb-out">−1 <span class="c">Ultima</span></td><td class="sb-in">+2 <span class="c">Wan Shi Tong</span></td></tr>
+          <tr><td class="sb-out">−1 <span class="c">Spell Snare</span></td><td class="sb-in">+1 <span class="c">Tishana's Tidebinder</span></td></tr>
         </tbody></table>
-        <p class="sb-note">Torpor Orb blanks Tidebinder's ETB (can't counter your abilities), Floodpits Drowner's ETB (no stun), and Kaito's ninjutsu trigger. This dramatically reduces their disruption package. Tishana's Tidebinder counters their key triggered abilities. Wan Shi Tong generates card advantage in the longer game. Trim Day of Judgment (their few creatures don't justify mass removal) and Ultima (they don't have artifacts).</p>
+        <p class="sb-note"><strong>Needle:</strong> Torpor Orb is your best sideboard card in this matchup — deploy it before they can develop their flash package. Wan Shi Tong (3/3 that lets you put cards from hand to bottom of library when you draw) provides a threat that generates card quality in the long game — their attrition plan runs out before your library does. Trim Day of Judgment (they have few creatures) and Ultima (no artifacts to destroy). Keep Inevitable Defeat at 4 — it's your unconditional answer to Kaito and Enduring Curiosity.</p>
       </td></tr>
 
-      <tr onclick="toggle('mu-prowess')"><td><strong>Izzet Prowess</strong></td><td>Survival</td><td><span class="verdict verdict-dog">Unfavorable</span></td><td>Stormchaser's Talent Level 3 generates tokens faster than Inevitable Defeat can answer. Helix buys time.</td></tr>
+      <tr onclick="toggle('mu-prowess')"><td><strong>Izzet Prowess</strong></td><td>Counter + Sweep</td><td><span class="verdict verdict-dog">Unfavorable</span></td><td>Annul on Stormchaser's Talent is your only efficient answer. Pyroclasm sweeps their 1/1 Otter token board.</td></tr>
       <tr><td colspan="4" class="matchup-detail" id="mu-prowess">
-        <p>Izzet Prowess is favored against Jeskai Control — their token flood generates threats faster than your one-for-one answers can handle, and Stormchaser's Talent as an enchantment survives your main-deck answers (Day of Judgment, Ultima don't hit enchantments). Lightning Helix clears their individual creatures but Talent at Level 3 replaces them every spell. Annul must counter Talent on the way in.</p>
+        <p>You are the unfavorable deck here. Stormchaser's Talent at Level 3 generates a 1/1 Otter every time they cast an instant or sorcery — and they cast 10-12 spells per game. Day of Judgment kills the Otters but Talent is still in play generating new ones. Ultima kills the Otters and Talent (as a nonland permanent — wait, Ultima destroys artifacts AND creatures, not enchantments). Ultima does NOT destroy Stormchaser's Talent, which is an enchantment. Your only reliable main deck answer to Talent is Inevitable Defeat — exile it as a nonland permanent.</p>
+        <p><strong>Your kill order:</strong> 1. Counter Stormchaser's Talent on entry with Annul ({U}, SB). 2. If Talent resolves, Inevitable Defeat it immediately — don't wait for Level 3. 3. Lightning Helix kills their individual creatures (Slickshot 1/2, Otter 1/1, any 1-3 toughness threat). 4. No More Lies counters Slickshot if they try to deploy it normally (Plot bypasses this — you can't counter a spell cast from exile via Plot... actually you can counter any spell that was cast, including from exile via Plot. No More Lies works on plotted Slickshot).</p>
+        <p><strong>High Noon wins long games:</strong> High Noon ({2}{W} enchantment, SB) limits each player to one spell per turn. Their cantrip chain requires casting 4-5 spells in one turn. High Noon makes that illegal. With High Noon in play, they can cast one Opt per turn. Their Stormchaser's Talent Level 3 only generates one Otter per turn instead of four. Pyroclasm sweeps all the accumulated 1/1 Otters for {1}{R} — 2 damage to each creature wipes every 1/1 token on the board while your Revelation Monks (1/1 prowess) also die, which is acceptable if you then recast Revelation.</p>
+        <p><strong>Turn-by-turn plan:</strong> T1: land. T2: Lightning Helix on their T1 Otter — 3 damage, gain 3 life, clear the clock. T3: Annul in hand waiting for Talent. If they cast Talent, Annul it for {U}. If they deploy Slickshot instead, hold Helix for it at their attack step. T4: Revelation EOT if they're tapped — bounce their key threat, create two 1/1 prowess Monks (which get +1/+1 when you cast Helix next turn).</p>
         <table class="sb-table"><thead><tr><th>Out</th><th>In</th></tr></thead><tbody>
           <tr><td class="sb-out">−2 <span class="c">Get Lost</span></td><td class="sb-in">+2 <span class="c">Annul</span></td></tr>
           <tr><td class="sb-out">−1 <span class="c">Spell Snare</span></td><td class="sb-in">+1 <span class="c">Pyroclasm</span></td></tr>
           <tr><td class="sb-out">−1 <span class="c">Ultima</span></td><td class="sb-in">+1 <span class="c">High Noon</span></td></tr>
         </tbody></table>
-        <p class="sb-note">Annul counters Stormchaser's Talent for {U} — their cheapest and most important enchantment. Pyroclasm ({1}{R}) deals 2 damage to each creature — kills all their 1/1 Otter tokens and prowess 1/1 creatures. High Noon limits them to one spell per turn, slowing their cantrip chain. Trim Get Lost (their few key permanents are covered by Defeat) and Ultima (its "end the turn" clause doesn't help here).</p>
+        <p class="sb-note"><strong>Needle:</strong> Annul is your best card in this matchup — hard counter on Stormchaser's Talent for {U}. Keep {U} open every turn on T2+. Pyroclasm at {1}{R} kills all 1/1 tokens and 2/2 creatures simultaneously. Your Revelation Monks die too but that's fine — Revelation immediately recasts for new ones. Trim Get Lost (your only enchantment target is Talent, and Annul is better) and Ultima (doesn't hit enchantments).</p>
       </td></tr>
 
-      <tr onclick="toggle('mu-boros')"><td><strong>Boros Aggro</strong></td><td>Survival</td><td><span class="verdict verdict-favor">Favorable</span></td><td>Lightning Helix + gain 3 life = 6-point swing per cast. 4 Helixes = stabilized against their pings.</td></tr>
+      <tr onclick="toggle('mu-boros')"><td><strong>Boros Aggro</strong></td><td>Stabilize + Close</td><td><span class="verdict verdict-favor">Favorable</span></td><td>Lightning Helix × 4 = 12 damage dealt + 12 life gained = 24-point swing. They cannot outrace your life gain.</td></tr>
       <tr><td colspan="4" class="matchup-detail" id="mu-boros">
-        <p>Favorable matchup — your instant-speed removal suite answers their creature plan efficiently, and Lightning Helix at 4 copies generates a 24-point life swing against their pings. Inevitable Defeat (uncounterable) handles Ojer Axonil before he amplifies their damage. Day of Judgment clears their token flood. The key: don't let Warleader's Call stay in play — Get Lost exiles it at instant speed. Voice of Victory prevents you from casting spells during their turn, so all responses must be pre-planned before their attack step.</p>
+        <p>You are favored. Lightning Helix at instant speed deals damage and gains life simultaneously — 4 copies mean up to 24-point life swings over the course of the game. Inevitable Defeat (uncounterable, instant) exiles Ojer Axonil before he amplifies their pings. Day of Judgment wipes their token board entirely. The keys: manage your life total carefully in the early game (they deal noncombat damage that bypasses combat — Sharpshooter pings go face), and use Get Lost on Warleader's Call immediately when it resolves (it's an enchantment, instant speed, destroy it before they generate even one attack step with it active).</p>
+        <p><strong>Voice of Victory timing:</strong> Voice prevents opponents from casting spells during Boros's turn. You must deploy all your interaction BEFORE their attack step begins. If you plan to Helix their Sharpshooter, do it during their main phase — not during combat when Voice is attacking and you can't cast anything. Hold your mana during their main phase and wait for them to finalize their board before attacking.</p>
+        <p><strong>Your removal priority order:</strong> 1. Ojer Axonil — Inevitable Defeat immediately on entry, uncounterable and can't be responded to with Voice (Inevitable Defeat is instant, you can cast it during your turn before their next attack step, or during their main phase before Voice attacks). 2. Shocking Sharpshooter — Helix for 3 (kills the 1/3 exactly with 3 damage). 3. Warleader's Call — Get Lost (destroys enchantment at instant speed). 4. Everything else — Day of Judgment when they overextend.</p>
+        <p><strong>Turn-by-turn plan:</strong> T1: land, hold {R}{W}. T2: if they deployed Sharpshooter, Helix it on their end step (3 damage kills 1/3, you gain 3 life). T3: Inevitable Defeat on their Warleader's Call if it resolved. T4: Get Lost on any remaining enchantment OR No More Lies their Ojer if you held up {U}{W}. T5: Day of Judgment on their token flood. T6+: Revelation EOT — bounce their best threat, create two prowess Monks, draw 2, gain 4. You're now ahead on every axis.</p>
         <table class="sb-table"><thead><tr><th>Out</th><th>In</th></tr></thead><tbody>
           <tr><td class="sb-out">−2 <span class="c">Spell Snare</span></td><td class="sb-in">+2 <span class="c">High Noon</span></td></tr>
           <tr><td class="sb-out">−1 <span class="c">No More Lies</span></td><td class="sb-in">+1 <span class="c">Pyroclasm</span></td></tr>
         </tbody></table>
-        <p class="sb-note">High Noon limits them to 1 spell per turn — their entire plan requires chaining Mobilize tokens (which are free from creatures attacking, not casting spells), so High Noon's main effect is stopping their burn chains. Pyroclasm at {1}{R} kills all their 1/1 Warriors and Goblins before they trigger Sharpshooter ETBs. Trim Spell Snare (their key threats cost 3-4 mana) and one No More Lies (you have enough interaction without it).</p>
+        <p class="sb-note"><strong>Needle:</strong> Inevitable Defeat exiles Ojer — when exiled, he doesn't transform into Temple of Power (the death trigger doesn't fire on exile). Get Lost destroys Warleader's Call at instant speed during their main phase before Voice attacks. High Noon limits them to one spell per turn — their attack-step token chain is ETB triggered abilities (not spells), so High Noon doesn't stop Mobilize tokens entering. But it does stop them casting Burst Lightning + Torch the Tower + Seam Rip in one turn to clear your defenders. Pyroclasm sweeps all their 1/1 Warriors for {1}{R}.</p>
       </td></tr>
 
-      <tr onclick="toggle('mu-monogreen')"><td><strong>Mono-Green Landfall</strong></td><td>Answer</td><td><span class="verdict verdict-dog">Unfavorable</span></td><td>Sapling Nursery generates threats faster than your answers. Their combo kill bypasses your blockers.</td></tr>
+      <tr onclick="toggle('mu-monogreen')"><td><strong>Mono-Green Landfall</strong></td><td>Counter + Answer</td><td><span class="verdict verdict-dog">Unfavorable</span></td><td>Inevitable Defeat exiles Sapling Nursery. Annul counters it on entry for {U}. Day of Judgment handles their Treefolk board.</td></tr>
       <tr><td colspan="4" class="matchup-detail" id="mu-monogreen">
-        <p>Mono-Green Landfall is unfavorable — they generate threats from an enchantment your main deck can barely answer efficiently, and the Icetill + Harmonizer combo kills you through Monks. Inevitable Defeat handles Sapling Nursery as an enchantment (4 mana instant, uncounterable, exile). Annul from SB counters Nursery on entry for {U}.</p>
+        <p>Mono-Green is unfavorable — Sapling Nursery generates Treefolk tokens faster than you can sweep them, and their combo kill via Icetill Explorer + Mightform Harmonizer + Escape Tunnel creates a one-shot threat you have to respect every turn they have 4+ lands. Your plan: counter or exile Sapling Nursery before it generates tokens, answer the combo pieces individually, and close with Revelation Monks before their board overwhelms your sweepers.</p>
+        <p><strong>The Nursery problem:</strong> Sapling Nursery is an enchantment. Day of Judgment doesn't kill it. Ultima doesn't kill it. Your main-deck answers are: Inevitable Defeat ({2}{B}{W} instant, exile any nonland permanent — hits Nursery), Get Lost ({1}{G} instant destroy enchantment — wait, Get Lost is {1}{G}... confirming: Get Lost destroys creature, enchantment, or planeswalker, controller gets 2 Map tokens). Yes, Get Lost destroys Nursery at instant speed. Annul from SB counters it on entry for {U}.</p>
+        <p><strong>The combo threat:</strong> Icetill Explorer in play + 4 available land plays + Mightform Harmonizer + Escape Tunnel = one-shot kill. When Icetill is on the board and they have 3+ untapped lands, assume the combo is live. Hold No More Lies for the Escape Tunnel activation (Escape Tunnel's unblockable mode is an activated ability — No More Lies doesn't counter activated abilities, that's Tishana's Tidebinder. No More Lies counters spells. Use Tidebinder from SB to counter the Escape Tunnel activation).</p>
+        <p><strong>Turn-by-turn plan:</strong> T1: land + hold {U} for Annul. T2: Helix their Llanowar Elves (1/1, Helix hits creatures — 3 damage kills it, you gain 3 life). T3: if they try Sapling Nursery, Annul it for {U}. T4: if Nursery resolved, Inevitable Defeat it — but recognize this costs 4 mana and puts you behind. Better to Annul it on entry. T5: Day of Judgment on their accumulated Treefolk. T6: Revelation EOT for recovery and Monk clock.</p>
         <table class="sb-table"><thead><tr><th>Out</th><th>In</th></tr></thead><tbody>
           <tr><td class="sb-out">−2 <span class="c">Spell Snare</span></td><td class="sb-in">+2 <span class="c">Annul</span></td></tr>
           <tr><td class="sb-out">−1 <span class="c">Ultima</span></td><td class="sb-in">+1 <span class="c">Torpor Orb</span></td></tr>
         </tbody></table>
-        <p class="sb-note">Annul counters Sapling Nursery and Earthbender Ascension for {U}. Torpor Orb blanks Badgermole Cub's ETB (no mana acceleration), Icetill Explorer's milling ETB stops — wait, Torpor Orb stops all ETBs but Icetill's static "play extra land" and "play from GY" are static abilities, not triggered. Orb stops Cub's earthbend, Fecund Greenshell's ETB, and Leatherhead's hexproof counter entering. Day of Judgment handles their creatures; Defeat handles Leatherhead.</p>
+        <p class="sb-note"><strong>Needle:</strong> Annul counters Sapling Nursery and Earthbender Ascension on entry for {U}. Keep {U} open every turn from T3 onward. Torpor Orb blanks Badgermole Cub's ETB (no earthbend), Fecund Greenshell's ETB (no land), and Leatherhead's hexproof counter entering — but Torpor Orb also blanks your own Revelation Monks' prowess. Your Monks enter as plain 1/1 Monks with no prowess. Factor this in — against Mono-Green the faster clock from Orb blanking their engine is worth losing the Monk prowess.</p>
+      </td></tr>
+
+      <tr onclick="toggle('mu-mirror')"><td><strong>Jeskai Control Mirror</strong></td><td>Resource War</td><td><span class="verdict verdict-even">Even</span></td><td>Mistrise Village makes your Inevitable Defeat uncounterable. Revelation at instant speed at their end step wins the card parity war.</td></tr>
+      <tr><td colspan="4" class="matchup-detail" id="mu-mirror">
+        <p>The mirror is pure resource management. Both players hold counterspells and avoid walking into them. The player who makes the first mistake (tapping out when the opponent has countermagic) loses a key permanent and falls behind. Revelation cast EOT when they're tapped out is the single most important play — it draws 2 cards, creates two threats, gains 4 life, and bounces their best permanent simultaneously, all at instant speed while they have nothing open.</p>
+        <p><strong>Mistrise Village is your edge:</strong> Mistrise Village ({U}{T}: next spell you cast this turn can't be countered). Activate it before casting Inevitable Defeat to make it uncounterable even beyond its printed text. Against their No More Lies, their Spell Snare, their Get Out — your Defeat resolves regardless. This is the key play to set up in the mirror: Mistrise activation + Inevitable Defeat on their key permanent or their Revelation Monks.</p>
+        <p><strong>Consult the Star Charts at instant speed:</strong> Consult ({1}{W} instant, look at top X lands you control, put 1 or 2 kicked) — use this on THEIR end step after they pass priority. You're using their turn to dig for your key cards without tapping out during your own turn. With 6 lands, unkicked Consult looks at 6 cards. Kicked for {1}{U} looks at 6 picks 2. The highest-value use: activate Consult on their end step, find Inevitable Defeat or Revelation for your upcoming turn.</p>
+        <table class="sb-table"><thead><tr><th>Out</th><th>In</th></tr></thead><tbody>
+          <tr><td class="sb-out">−1 <span class="c">Day of Judgment</span></td><td class="sb-in">+2 <span class="c">Wan Shi Tong</span></td></tr>
+          <tr><td class="sb-out">−1 <span class="c">Get Lost</span></td><td class="sb-in"></td></tr>
+        </tbody></table>
+        <p class="sb-note"><strong>Needle:</strong> Wan Shi Tong (3/3 that filters your draws — put any card from hand to bottom when you draw) is your threat in the mirror. Control can't efficiently kill a 3/3 without spending valuable removal that they need for Revelation Monks. Trim Day of Judgment (they have few creatures) and Get Lost (no enchantments to destroy — wait, they're running the same deck so they do have enchantments... they have none in the main. Keep Get Lost for their SB Torpor Orbs and enchantment answers).</p>
       </td></tr>
     </tbody>
   </table>
+</div>
+
+<!-- CH06b LINES -->
+<div id="lines" class="section">
+  <div class="section-label">Chapter 06b</div>
+  <h1>Disruption<br>Lines</h1>
+
+  <div class="mantra">"Hold mana every turn. Answer on their end step. Never tap out when they can attack."</div>
+
+  <h2>The Mana Hold Rule</h2>
+  <p>Control loses games in one specific way: tapping out during your own main phase when the opponent then untaps and attacks or resolves an uncounterable threat. <strong>Every turn, before you decide what to cast, ask: what is the worst thing they can do if I tap out right now?</strong> If the answer is "kill me" or "resolve something I can't answer," hold the mana.</p>
+  <div class="card-grid card-grid-2">
+    <div class="card">
+      <div class="card-label">What to Hold Mana For</div>
+      <div class="card-title">Priority Response Mana</div>
+      <div class="card-body">
+        {R}{W} = Lightning Helix — hold vs any aggro opponent with open attack mana. One Helix per turn is 6-point swing ({R}{W} mana + 3 damage + 3 life).<br><br>
+        {2}{B}{W} = Inevitable Defeat — hold whenever their key permanent could resolve. Against Dimir: Kaito. Against Boros: Ojer Axonil. Against Mono-Green: Sapling Nursery.<br><br>
+        {U}{W} = No More Lies — hold vs any key 3-drop you can't let resolve. Counters unless they pay {3} — on T3 with exactly 3 lands they almost never can.
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-label">When to Spend Mana</div>
+      <div class="card-title">Safe Windows to Tap Out</div>
+      <div class="card-body">
+        Their end step is your safest window — they've declared no blocks, used their mana, and can't respond to your sorcery-speed cards until their next turn. Use their end step for: Consult the Star Charts (instant — dig for the key card you need), Stock Up on T4+ (sorcery but you're already in their end step... wait, Stock Up is sorcery, you can't cast it at instant speed). Correct: use end step for Consult. Cast Stock Up only when you have nothing else to do on your own main phase with mana open.
+      </div>
+    </div>
+  </div>
+
+  <h2>Consult the Star Charts — Instant Speed Dig</h2>
+  <p>Consult ({1}{W} instant, kicker {1}{U}: look at top X lands you control, put 1 or 2 into hand) is your most efficient card selection tool because it's at instant speed. Use it <strong>on their end step</strong>, not on your main phase, so you untap with full mana available:</p>
+  <div class="card-grid card-grid-2">
+    <div class="card">
+      <div class="card-label">Correct Timing</div>
+      <div class="card-title">Their End Step (After They Pass)</div>
+      <div class="card-body">They pass priority in their end step. You respond: cast Consult kicked ({1}{U}{1}{W} = {2}{U}{W}). Look at top (lands you control) cards, put 2 in hand. Now you untap with a full hand and full mana. They get no response because it's still their end step — they're not untapping yet. This is the cleanest dig cycle in the deck.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Critical Oracle Rule</div>
+      <div class="card-title">X = Lands You Control at Cast Time</div>
+      <div class="card-body">You look at the top X cards where X is the number of lands you control at the time you cast Consult. With 6 lands = look at 6. With 8 lands = look at 8. This gets dramatically better as the game goes on — by turn 8 you're looking at 8 cards for {2}{U}{W}. Always wait until you have maximum lands before casting Consult for full dig depth.</div>
+    </div>
+  </div>
+
+  <h2>Revelation — When and What to Bounce</h2>
+  <p>Jeskai Revelation is your most powerful card but it costs {2}{U}{R}{W}. The five effects (bounce + 4 damage + 2 Monks + draw 2 + gain 4) all happen simultaneously. The bounce target is the highest-leverage decision:</p>
+  <div class="card-grid card-grid-3">
+    <div class="card">
+      <div class="card-label">Best Bounce Target</div>
+      <div class="card-title">Their Key Permanent When They're Tapped</div>
+      <div class="card-body">Cast Revelation on their end step when they've spent all their mana. Bounce their most dangerous permanent — not any permanent, the one they relied on most this turn. Sapling Nursery (back to hand, no tokens next turn unless they recast it). Kaito (loses all loyalty counters going back to hand). Enduring Curiosity (stops their draw engine). Time the bounce to the moment they can't immediately recast it.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">The Monk Clock</div>
+      <div class="card-title">Two Prowess 1/1s That Grow With Your Spells</div>
+      <div class="card-body">Your Revelation Monks have prowess — every spell you cast makes them +1/+1 until EOT. Lightning Helix cast while Monks are attacking = both Monks are 2/2. Consult while they're attacking = 2/2. Stock Up + Consult = 3/3. Your instants that you were going to cast anyway are free combat pump on the Monks. Revelation creates a clock that accelerates with your existing game plan.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">The Life Swing</div>
+      <div class="card-title">+4 Life at Instant Speed</div>
+      <div class="card-body">Against any aggro deck, the 4 life from Revelation plus the 3 life from a Lightning Helix in the same turn = 7 life at instant speed. That's often the turn you stabilize from "dead to their next attack" to "comfortable." Don't hold Revelation looking for the perfect bounce target — casting it purely for the life + draw + Monks is often correct against aggressive opponents.</div>
+    </div>
+  </div>
+
+  <h2>Inevitable Defeat vs Kaito Hexproof</h2>
+  <p>Kaito, Bane of Nightmares has "hexproof during your turn" — you cannot target him with spells or abilities you control during your own turn. But Inevitable Defeat is an <strong>instant</strong>. You can cast it during their turn (when Kaito's hexproof is inactive) or during their end step. The correct line:</p>
+  <div class="card-grid card-grid-2">
+    <div class="card">
+      <div class="card-label">The Timing Window</div>
+      <div class="card-title">Cast Inevitable Defeat During Their Turn</div>
+      <div class="card-body">Their main phase — after they deploy Kaito but before they end their turn. Or their end step. During their turn Kaito has NO hexproof. Inevitable Defeat: exile him. He's uncounterable (Inevitable Defeat's own text) and instant speed. They can't protect Kaito during their own turn because his hexproof only applies during YOUR turn. This is the single most important interaction rule vs Dimir.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Mistrise Village Setup</div>
+      <div class="card-title">Make Defeat Doubly Uncounterable</div>
+      <div class="card-body">Inevitable Defeat is already uncounterable by its own text. But Mistrise Village ({U}{T}: your next spell this turn can't be countered) adds a second layer. In the control mirror where they might try to counter your Defeat anyway — activate Mistrise first, then cast Defeat. It's now protected by both its own text AND the Village trigger. Use this against any opponent running countermagic who might try to get cute.</div>
+    </div>
+  </div>
+
+  <h2>Ultima — The End Turn Timing</h2>
+  <p>Ultima destroys all artifacts and creatures then ends the turn. "Ending the turn" means: exile all spells and abilities from the stack (including Ultima), the current player discards to max hand size, damage wears off, and "this turn" / "until end of turn" effects end. Critical timing implications:</p>
+  <div class="card-grid card-grid-2">
+    <div class="card">
+      <div class="card-label">Correct Use: Their Combat Step</div>
+      <div class="card-title">Cast Ultima When They Attack</div>
+      <div class="card-body">They declare attackers. You cast Ultima. Their attacking creatures die (destroyed). Their non-attackers die. The turn ends — their attack step is over, they go to their end step with an empty board and no damage dealt. This is the only sweeper in the format that also stops the attack that triggered it. Critical: they don't get to deal combat damage because the turn ending cancels the combat damage step.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">What Ultima Does NOT Hit</div>
+      <div class="card-title">Enchantments Survive Ultima</div>
+      <div class="card-body">Ultima destroys artifacts AND creatures. It does not destroy enchantments. Sapling Nursery survives. Stormchaser's Talent survives. Warleader's Call survives. Earthbender Ascension survives. After Ultima, their enchantments are still in play and will resume generating value next turn. Plan for what survives — if Nursery is in play when you cast Ultima, you've swept their board but Nursery immediately starts making tokens on their next land drop.</div>
+    </div>
+  </div>
+
+  <h2>Voice of Victory — They Cannot Cast Spells During Your Turn</h2>
+  <p>Boros Aggro runs Voice of Victory whose text includes "your opponents can't cast spells during your turn." This is <strong>their turn ability on your turn</strong> — during the Boros player's turn after Voice attacks, you cannot cast anything. All interaction must happen during Boros's main phase BEFORE Voice attacks. The specific windows:</p>
+  <div style="border:1px solid var(--rule);margin:24px 0;">
+    <div style="background:var(--ink);padding:16px 24px;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(242,237,230,0.5);">Your Response Windows vs Voice of Victory</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:var(--rule);">
+      <div style="background:var(--paper);padding:20px;">
+        <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--mid);margin-bottom:8px;">Their Main Phase (OPEN)</div>
+        <div style="font-size:14px;font-weight:300;color:var(--mid);line-height:2;">You can cast any spell. Helix kills Sharpshooter here. Inevitable Defeat hits Ojer here. This is your last chance before Voice attacks and shuts you out.</div>
+      </div>
+      <div style="background:var(--paper);padding:20px;">
+        <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--mid);margin-bottom:8px;">After Voice Attacks (LOCKED)</div>
+        <div style="font-size:14px;font-weight:300;color:var(--mid);line-height:2;">You cannot cast spells at all. Warrior tokens enter, Sharpshooter pings, Ojer amplifies — all without response. Sit and take the damage.</div>
+      </div>
+      <div style="background:var(--paper);padding:20px;">
+        <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--mid);margin-bottom:8px;">Their End Step (OPEN)</div>
+        <div style="font-size:14px;font-weight:300;color:var(--mid);line-height:2;">Voice's "your turn" restriction ends. You can now cast Helix on their end step. But any damage from this turn's combat and ETBs has already been dealt.</div>
+      </div>
+    </div>
+  </div>
 </div>
 
 <!-- CH07 SIDEBOARD -->
