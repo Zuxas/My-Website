@@ -1,6 +1,6 @@
 # CLAUDE.md — Team Resolve MTG Playbook Project
 # Handoff document for continuing sessions
-# Last updated: 2026-03-31 | Commit: 6572487
+# Last updated: 2026-03-31 | Commit: cb70208
 
 ---
 
@@ -32,7 +32,7 @@ E:\vscode ai project\My-Website\
 |---|---|---|
 | Amulet Titan | https://melee.gg/Decklist/View/2a4efd5e (aljce) | 13-1-2, 1st |
 | Boros Energy | https://melee.gg/Decklist/View/02cc5e0e (Pfenning) | 10-3-0, 9th |
-| Domain Zoo | — (needs audit) | — |
+| Domain Zoo | https://melee.gg/Decklist/View/51023674 (MasT1) | 9-4-0, 19th |
 | Eldrazi Tron | — (needs audit) | — |
 | Glockulous (Grixis Reanimator) | — (needs audit) | — |
 | Izzet Affinity | https://melee.gg/Decklist/View/f8e13375 (Jeffrey Chang) | 10-0-4 |
@@ -46,8 +46,13 @@ E:\vscode ai project\My-Website\
 | UW Control | https://melee.gg/Decklist/View/a6a4917b (Evariel) | 8-0-2 |
 
 ### 📋 NEXT IN QUEUE (alphabetical)
-1. **Domain Zoo** ← next target
-2. Eldrazi Tron
+1. **Eldrazi Tron** ← next target
+2. Glockulous
+3. Jeskai Blink
+4. Living End
+5. Neoform
+6. Izzet Prowess
+7. Golgari Yawgmoth
 3. Glockulous
 4. Jeskai Blink
 5. Living End
@@ -274,6 +279,24 @@ Key changes across all 10 chapters:
 - Secondary win: Valakut/Dryad → **Scapeshift + Amulet Burst**
 - Oracle entries: Dryad of the Ilysian Grove → **Scapeshift + Malevolent Rumble + Green Sun's Zenith**
 - SB 15: Defense Grid/Endurance/Cursed Totem/EE/Haywire → **Fire Magic ×3, Force of Vigor ×3, Dismember ×2, Trinisphere ×2, Bojuka Bog, Collector Ouphe, Icetill Explorer, Six, The Wandering Minstrel**
+
+### Domain Zoo full audit (commit cb70208)
+Reference: MasT1 LDXP SEA26 10k, 19th (9-4-0)
+https://melee.gg/Decklist/View/51023674-0659-459c-b917-b41b0018e03b
+Key maindeck changes: -Nishoba Brawler x3, -Kraven x2, -Spectral Denial x2,
+-Consign x2 main, Ragavan/Phlage 4->3; +Psychic Frog x3, +Tribal Flames x3,
++Thraben Charm x1 main, lands 17->21 (Indatha Triome, Spara's HQ, Blood Crypt etc)
+SB completely replaced: old (Soul-Guide, Endurance, Mystical Dispute, Wear//Tear,
+Wrath, Celestial Purge) → new (Consign x4, Pyroclasm x2, Pest Control x2,
+Magebane Lizard x2, Clarion Conqueror x2, Thraben Charm x2, Stubborn Denial x1)
+All 10 chapters updated.
+
+### Domain Zoo important notes for future reference
+- Spectral Denial is NOT in this list — all references purged
+- Nishoba Brawler and Kraven are NOT in this list
+- Consign to Memory is SB only (x4), not main
+- Triomes: Spara's Headquarters + Indatha Triome (not Xander's Lounge/Lush Portico)
+- Psychic Frog combos with Territorial Kavu rummage: discard triggers Frog +1/+1 + flying
 
 ### Boros Energy full audit (commit 6572487)
 Reference: Reese Pfenning LDXP SEA26 10k, 9th (10-3-0)
