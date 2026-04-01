@@ -21,7 +21,7 @@
   .hs-val { font-family:'DM Mono',monospace; font-size:12px; color:var(--paper); }
   nav { position:sticky; top:0; z-index:100; background:var(--ink); border-bottom:1px solid rgba(242,237,230,0.1); padding:0 80px; display:flex; align-items:center; gap:0; overflow-x:auto; scrollbar-width:none; }
   nav::-webkit-scrollbar { display:none; }
-  .nav-brand { font-family:'Bebas Neue',sans-serif; font-size:18px; color:#C2851F; letter-spacing:0.05em; margin-right:40px; white-space:nowrap; padding:16px 0; }
+  .nav-brand { font-family:'Bebas Neue',sans-serif; font-size:18px; color:#C2851F; letter-spacing:0.05em; margin-right:40px; white-space:nowrap; padding:16px 0; text-decoration:none; }
   .nav-link { font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:rgba(242,237,230,0.4); padding:20px 16px; cursor:pointer; white-space:nowrap; border-bottom:2px solid transparent; transition:all 0.2s; background:none; border-top:none; border-left:none; border-right:none; }
   .nav-link:hover, .nav-link.active { color:var(--paper); border-bottom-color:#C2851F; }
   .page { max-width:1100px; margin:0 auto; padding:80px 80px; }
@@ -34,6 +34,7 @@
   h3 { font-family:'DM Mono',monospace; font-size:12px; letter-spacing:0.15em; text-transform:uppercase; color:var(--accent); margin:32px 0 12px; }
   p { margin-bottom:16px; color:var(--ink); font-weight:300; }
   strong { font-weight:600; }
+  .c { color:var(--accent); font-weight:400; }
   .mantra { border-left:4px solid var(--accent); padding:24px 32px; background:var(--accent-light); margin:32px 0; font-style:italic; font-size:20px; color:var(--accent); line-height:1.5; }
   .card-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); gap:1px; background:var(--rule); border:1px solid var(--rule); margin:24px 0; }
   .card-grid-2 { grid-template-columns:repeat(2,1fr) !important; }
@@ -61,18 +62,12 @@
   .verdict-dog { background:var(--danger-light); color:var(--danger); border-color:var(--danger); }
   .verdict-even { background:var(--gold-light); color:var(--gold); border-color:var(--gold); }
   .verdict-favor { background:#d1fae5; color:#065f46; border-color:#065f46; }
-  .verdict-hard { background:var(--danger-light); color:var(--danger); border-color:var(--danger); }
   .sb-table { width:100%; border-collapse:collapse; margin:16px 0; }
   .sb-table th { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; padding:8px 12px; background:var(--paper-dark); color:var(--mid); text-align:left; border-bottom:2px solid var(--rule); }
   .sb-table td { padding:10px 12px; border-bottom:1px solid var(--rule); font-size:14px; font-weight:300; }
   .sb-out { color:var(--danger); font-family:'DM Mono',monospace; font-size:12px; }
   .sb-in { color:#065f46; font-family:'DM Mono',monospace; font-size:12px; }
   .sb-note { font-size:13px; font-weight:300; color:var(--mid); font-style:italic; margin-top:6px; }
-  .sb-card-guide { border:1px solid var(--rule); margin:24px 0; }
-  .sb-guide-row { display:grid; grid-template-columns:180px 1fr; gap:0; border-bottom:1px solid var(--rule); }
-  .sb-guide-row:last-child { border-bottom:none; }
-  .sb-guide-name { font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.08em; text-transform:uppercase; padding:16px; background:var(--paper-dark); color:var(--ink); border-right:1px solid var(--rule); display:flex; align-items:flex-start; }
-  .sb-guide-body { padding:16px; font-size:14px; font-weight:300; line-height:1.6; color:var(--mid); }
   .role-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--rule); border:1px solid var(--rule); margin:24px 0; }
   .role-card { background:var(--paper); padding:24px; }
   .role-name { font-family:'Bebas Neue',sans-serif; font-size:28px; letter-spacing:0.02em; margin-bottom:8px; }
@@ -90,43 +85,39 @@
   .engine-step-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--mid); margin-bottom:6px; }
   .engine-step-title { font-family:'Bebas Neue',sans-serif; font-size:20px; color:var(--ink); margin-bottom:8px; }
   .engine-step-body { font-size:14px; font-weight:300; color:var(--mid); line-height:1.5; }
-  .tricks-list { list-style:none; margin:0; padding:0; border:1px solid var(--rule); }
-  .tricks-list li { padding:14px 20px 14px 36px; border-bottom:1px solid var(--rule); font-size:15px; font-weight:300; position:relative; }
-  .tricks-list li:last-child { border-bottom:none; }
-  .tricks-list li::before { content:"▸"; position:absolute; left:14px; color:var(--accent); }
-  .tuning-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--rule); border:1px solid var(--rule); margin:24px 0; }
-  .tuning-card { background:var(--paper); padding:20px; }
-  .tuning-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--mid); margin-bottom:8px; }
-  .tuning-condition { font-family:'Bebas Neue',sans-serif; font-size:18px; color:var(--ink); margin-bottom:12px; }
-  .tuning-up { font-size:14px; font-weight:300; margin-bottom:6px; }
-  .tuning-up::before { content:"▲ "; color:#065f46; font-size:12px; }
-  .tuning-down { font-size:14px; font-weight:300; margin-bottom:6px; }
-  .tuning-down::before { content:"▼ "; color:var(--danger); font-size:12px; }
   .heuristic-list { list-style:none; margin:0; padding:0; counter-reset:heuristic; }
   .heuristic-list li { counter-increment:heuristic; display:grid; grid-template-columns:48px 1fr; gap:16px; padding:20px 0; border-bottom:1px solid var(--rule); align-items:start; }
   .heuristic-list li:last-child { border-bottom:none; }
-  .heuristic-list li::before { content:counter(heuristic,decimal-leading-zero); font-family:'DM Mono',monospace; font-size:22px; color:var(--rule); font-weight:500; }
-  .heuristic-text strong { display:block; font-size:16px; font-weight:600; margin-bottom:4px; color:var(--ink); }
-  .heuristic-text span { font-size:14px; font-weight:300; color:var(--mid); line-height:1.5; }
-  .print-btn { display:inline-flex; align-items:center; gap:8px; font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.12em; text-transform:uppercase; background:var(--ink); color:var(--paper); border:none; padding:10px 20px; cursor:pointer; margin-bottom:32px; }
-  .print-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--rule); border:1px solid var(--rule); }
-  .print-mu { background:var(--paper); padding:16px; }
-  .print-mu-name { font-family:'Bebas Neue',sans-serif; font-size:16px; color:var(--ink); margin-bottom:4px; }
-  .print-mu-role { font-family:'DM Mono',monospace; font-size:9px; letter-spacing:0.1em; text-transform:uppercase; color:var(--mid); margin-bottom:10px; }
-  .print-cols { display:grid; grid-template-columns:1fr 1fr; gap:8px; }
-  .print-col-label { font-family:'DM Mono',monospace; font-size:9px; letter-spacing:0.15em; text-transform:uppercase; color:var(--mid); margin-bottom:4px; }
-  .print-row { font-size:12px; font-weight:300; display:flex; justify-content:space-between; padding:1px 0; border-bottom:1px solid rgba(200,191,176,0.4); }
-  .print-qty { font-family:'DM Mono',monospace; font-size:11px; color:var(--mid); flex-shrink:0; margin-left:4px; }
-  .print-needle { font-family:'DM Mono',monospace; font-size:9px; letter-spacing:0.06em; color:var(--danger); margin-top:6px; text-transform:uppercase; }
-  .c { color:var(--accent); font-weight:400; }
+  .heuristic-num { font-family:'DM Mono',monospace; font-size:22px; color:var(--rule); font-weight:500; }
+  .heuristic-body strong { display:block; font-size:16px; font-weight:600; margin-bottom:4px; color:var(--ink); }
+  .heuristic-body { font-size:14px; font-weight:300; color:var(--mid); line-height:1.5; }
+  .tuning-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--rule); border:1px solid var(--rule); margin:24px 0; }
+  .tuning-cell { background:var(--paper); padding:20px; }
+  .tuning-cell-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; color:var(--mid); margin-bottom:8px; }
+  .tuning-cell-title { font-family:'Bebas Neue',sans-serif; font-size:20px; color:var(--ink); margin-bottom:8px; }
+  .tuning-cell-body { font-size:14px; font-weight:300; color:var(--mid); line-height:1.5; }
   .curve-strip { display:flex; gap:1px; background:var(--rule); border:1px solid var(--rule); margin:24px 0; }
   .curve-slot { flex:1; background:var(--paper); padding:16px 12px; text-align:center; }
   .curve-cmc { font-family:'Bebas Neue',sans-serif; font-size:32px; color:var(--accent); line-height:1; }
   .curve-count { font-family:'DM Mono',monospace; font-size:11px; color:var(--mid); letter-spacing:0.1em; margin-top:4px; }
   .curve-bar { height:4px; background:var(--accent); margin:8px auto 0; border-radius:2px; opacity:0.5; }
+  .print-btn { display:inline-flex; align-items:center; gap:8px; font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.12em; text-transform:uppercase; background:var(--ink); color:var(--paper); border:none; padding:10px 20px; cursor:pointer; margin-bottom:32px; }
+  .print-section { border:1px solid var(--rule); padding:32px; margin:24px 0; }
+  .print-title { font-family:'Bebas Neue',sans-serif; font-size:48px; color:var(--ink); }
+  .print-sub { font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.15em; text-transform:uppercase; color:var(--mid); margin-bottom:24px; }
+  .print-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+  .print-col-title { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--mid); margin-bottom:8px; padding-bottom:4px; border-bottom:1px solid var(--rule); }
+  .print-mu { margin-bottom:16px; }
+  .print-mu-name { font-family:'Bebas Neue',sans-serif; font-size:18px; color:var(--ink); }
+  .print-mu-role { font-family:'DM Mono',monospace; font-size:9px; letter-spacing:0.1em; text-transform:uppercase; color:var(--mid); margin-bottom:6px; }
+  .print-cols { display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+  .print-col-label { font-family:'DM Mono',monospace; font-size:9px; letter-spacing:0.15em; text-transform:uppercase; color:var(--mid); margin-bottom:4px; }
+  .print-row { font-size:12px; font-weight:300; display:flex; justify-content:space-between; padding:1px 0; border-bottom:1px solid rgba(200,191,176,0.4); }
+  .print-qty { font-family:'DM Mono',monospace; font-size:11px; color:var(--mid); }
+  .print-needle { font-family:'DM Mono',monospace; font-size:9px; letter-spacing:0.06em; color:var(--danger); margin-top:6px; text-transform:uppercase; }
   footer { background:var(--ink); color:rgba(242,237,230,0.3); padding:40px 80px; margin-top:80px; display:flex; justify-content:space-between; align-items:center; }
   footer span { font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.1em; text-transform:uppercase; }
-  @media (max-width:768px) { .header-inner,nav,.page,footer { padding-left:24px; padding-right:24px; } .header-title { font-size:40px; } .header-right { display:none; } .decklist,.role-grid,.engine-body,.tuning-grid { grid-template-columns:1fr; } nav { padding:0 24px; } }
+  @media (max-width:768px) { .header-inner,nav,.page,footer { padding-left:24px; padding-right:24px; } .header-title { font-size:40px; } .header-right { display:none; } .decklist,.role-grid,.engine-body,.tuning-grid,.print-grid { grid-template-columns:1fr; } nav { padding:0 24px; } }
   @media print { nav,.print-btn,footer { display:none; } .section { display:block !important; } }
 </style>
 </head>
@@ -135,26 +126,27 @@
 <div class="header-band">
   <div class="header-inner">
     <div>
-      <div class="header-eyebrow">Team Resolve · Modern · March 31, 2026</div>
+      <div class="header-eyebrow">Team Resolve · Modern · April 2026</div>
       <div class="header-title">5-Color<br><span>Humans</span></div>
-      <div class="header-mantra">"Every creature is a question they have to answer. You have 37 of them."</div>
+      <div class="header-mantra">"Every creature is a question they have to answer. You have 36 of them."</div>
     </div>
     <div class="header-right">
-      <div class="header-stat"><span class="hs-label">Meta Share</span><span class="hs-val">~1.5%</span></div>
+      <div class="header-stat"><span class="hs-label">Meta Share</span><span class="hs-val">~0.5% (Rogue)</span></div>
       <div class="header-stat"><span class="hs-label">Role</span><span class="hs-val">Tribal Aggro-Disruption</span></div>
       <div class="header-stat"><span class="hs-label">Colors</span><span class="hs-val">W U B R G</span></div>
       <div class="header-stat"><span class="hs-label">Kill Turn</span><span class="hs-val">3–5</span></div>
+      <div class="header-stat"><span class="hs-label">Author</span><span class="hs-val">Zuxas</span></div>
     </div>
   </div>
 </div>
 
 <nav>
-  <div class="nav-brand">5-Color Humans</div>
-  <a class="nav-link" href="zuxas.html" style="text-decoration:none;">&#8592; Zuxas</a>
-  <button class="nav-link active" onclick="show('identity')">Overview</button>
+  <a class="nav-brand" href="deck-guides.html">Team Resolve</a>
+  <button class="nav-link active" onclick="show('identity')">Identity</button>
   <button class="nav-link" onclick="show('decklist')">Decklist</button>
-  <button class="nav-link" onclick="show('gameplan')">Game Flow</button>
+  <button class="nav-link" onclick="show('gameplan')">Gameplan</button>
   <button class="nav-link" onclick="show('engines')">Engines</button>
+  <button class="nav-link" onclick="show('lines')">Lines</button>
   <button class="nav-link" onclick="show('roles')">Roles</button>
   <button class="nav-link" onclick="show('matchups')">Matchups</button>
   <button class="nav-link" onclick="show('sideboard')">Sideboard</button>
@@ -165,741 +157,716 @@
 
 <div class="page">
 
-<!-- CH01: OVERVIEW -->
+<!-- ══════════════════════════════════════════════════════════ CH01 IDENTITY -->
 <div id="identity" class="section active">
   <div class="section-label">Chapter 01</div>
-  <h1>Overview</h1>
+  <h1>Deck<br>Identity</h1>
 
-  <div class="mantra">"Aether Vial flashes in a Meddling Mage naming their win condition at the end of their turn. Then it flashes in Thalia's Lieutenant pumping your whole board. Then it flashes in Norin who blinks in and out all game triggering Champion again and again. This is the most interactive aggro deck in Modern."</div>
+  <div class="mantra">"Aether Vial at 2. Meddling Mage naming their win condition. Thalia's Lieutenant pumping the whole board. Coppercoat Vanguard giving everything ward. You're deploying threats AND hate pieces simultaneously — no other aggro deck in Modern does this."</div>
 
-  <p>5-Color Humans is Modern's premier tribal aggro-disruption deck. It does something no other aggro deck can claim: it applies serious pressure while simultaneously deploying hate pieces that break the opponent's game plan. <span class="c">Meddling Mage</span> names their win condition. <span class="c">Lavinia, Azorius Renegade</span> stops free spells. <span class="c">Unsettled Mariner</span> taxes all their targeted interaction. All while <span class="c">Champion of the Parish</span> and <span class="c">Thalia's Lieutenant</span> grow larger with every Human that enters.</p>
+  <p>5-Color Humans is Modern's original tribal aggro-disruption deck. It applies serious pressure through <span class="c">Champion of the Parish</span> and <span class="c">Thalia's Lieutenant</span> snowball counters while simultaneously deploying hate pieces that break the opponent's game plan. <span class="c">Meddling Mage</span> names their win condition. <span class="c">Thalia, Guardian of Thraben</span> taxes all their noncreature spells. <span class="c">Unsettled Mariner</span> taxes all their targeted interaction. All of this at instant speed through <span class="c">Aether Vial</span>, which cheats everything into play uncountably and without spending mana.</p>
 
-  <p>The deck is not tier 1 — and that's not a criticism, it's a feature. It doesn't demand you know every card in the format, but it heavily rewards deep knowledge of <em>your own</em> deck's interactions. The pilot who understands Norin's blink loop, who knows when to Vial at instant speed, and who identifies the right Meddling Mage name in each matchup outperforms the pilot who doesn't by a massive margin. High skill ceiling. Real racing power. Genuine game plan.</p>
+  <p>This build leans into the classic Humans shell — <span class="c">Noble Hierarch</span> for acceleration and exalted, <span class="c">Coppercoat Vanguard</span> for the lord effect + ward {1} blanket, <span class="c">Mantis Rider</span> as the 3-mana hasty closer. It trades the newer tech cards (Aang, Mai, Safekeeper) for the proven, resilient core that has been putting up results for years. The deck is not tier 1 — it sits around 0.5% meta share — and that's not a criticism, it's a feature. It rewards deep knowledge of YOUR interactions over raw card power.</p>
 
-  <p><strong>This is a pet deck. Play it because it's yours.</strong></p>
+  <p><strong>This is a pet deck built to perfection. Play it because it's yours.</strong></p>
 
-  <h2>Hidden Synergy Map</h2>
-  <div class="card-grid">
+  <h2>What This Deck Does</h2>
+  <div class="card-grid card-grid-3">
     <div class="card">
-      <div class="card-label">Draw + Deploy Loop</div>
-      <div class="card-title">Satoru + Vial + Any 2-Drop</div>
-      <div class="card-body">Vial puts creatures onto the battlefield without casting — Satoru triggers on "no mana spent." At their end step: tap Vial at 2 counters, flash in Meddling Mage. Satoru draws a card. The Mage naming their key card resolves. You replaced the card, deployed uncounterable disruption, and didn't spend your main phase. Repeat every turn.</div>
+      <div class="card-label">Primary Plan</div>
+      <div class="card-title">Snowball Aggro</div>
+      <div class="card-body">T1 <span class="c">Noble Hierarch</span> or <span class="c">Champion of the Parish</span> or <span class="c">Aether Vial</span>. T2 <span class="c">Thalia's Lieutenant</span> pumping everything. T3 <span class="c">Mantis Rider</span> or <span class="c">Adeline</span> closing with haste/vigilance. Every Human entering grows your board. By T4 you're swinging with 12+ power across 4 creatures.</div>
     </div>
     <div class="card">
-      <div class="card-label">Free Energy Engine</div>
-      <div class="card-title">Norin + <span class="c">Guide of Souls</span></div>
-      <div class="card-body">Each time Norin returns from exile, Guide triggers: gain 1 life, get {E}. With Norin blinking twice per round (their cast + your cast), you accumulate energy passively without spending cards or mana. By turn 4: 6+ energy stored — enough for Guide's attack pump. Norin's free triggers convert into a flying +2/+2 counter on your biggest attacker every turn cycle.</div>
+      <div class="card-label">Secondary Plan</div>
+      <div class="card-title">Disruption While Attacking</div>
+      <div class="card-body"><span class="c">Meddling Mage</span> names their key spell. <span class="c">Thalia</span> taxes their interaction. <span class="c">Coppercoat Vanguard</span> gives every Human ward {1}, meaning every removal spell costs 1 more. The opponent has to fight through a tax AND answer your clock simultaneously — and you're doing both with the same cards.</div>
     </div>
     <div class="card">
-      <div class="card-label">Token Doubling</div>
-      <div class="card-title">Adeline → Champion + Lieutenant</div>
-      <div class="card-body">Adeline creates attacking Human Soldier tokens on attack. Each token entering triggers Champion (+1/+1) and Lieutenant (+1/+1 each creature + Lieutenant grows). With 5 other creatures, Adeline attacks as a 6/4, creates 1 token — Champion and each Lieutenant gain +1/+1 on entry. With 2 Lieutenants in play: that single Adeline attack pumps your whole board twice. She's a multiplier, not just a threat.</div>
-    </div>
-    <div class="card">
-      <div class="card-label">Tax Stack</div>
-      <div class="card-title"><span class="c">Unsettled Mariner</span> ×2</div>
-      <div class="card-body">With 2 Mariners in play: every removal spell costs {2} extra to target you or your permanents. Galvanic Discharge ({1}{R}) becomes {3}{R}. Swords to Plowshares ({W}) becomes {1}{W}. On turns 2-3 when their mana is constrained, double-Mariner makes a turn-2 removal play impossible for many decks. Each Mariner is also a Human that pumps Champion and Lieutenant on entry.</div>
-    </div>
-    <div class="card">
-      <div class="card-label">Sweeper Counter Window</div>
-      <div class="card-title">Jirina Sacrifice Timing</div>
-      <div class="card-body">They cast Supreme Verdict → immediately sacrifice Jirina in response → your Humans gain hexproof and indestructible until end of turn → Verdict resolves and does nothing → untap with your full board. Works on any non-exile sweeper. The key: never sacrifice Jirina proactively for the ETB GY exile value. Hold her specifically for the sweeper window. One Jirina can win the entire Control matchup.</div>
-    </div>
-    <div class="card">
-      <div class="card-label">Two-Layer Protection</div>
-      <div class="card-title">Safekeeper + Mariner</div>
-      <div class="card-body">Mariner taxes targeting by {1}. Safekeeper grants shroud (full immunity, not just tax). Opponents can't bring in hate for both simultaneously — anti-shroud effects don't help vs tax, anti-tax effects don't help vs shroud. Against three removal spells: Mariner makes the first two expensive, Safekeeper blocks the third outright. Different protection keywords mean different answers required.</div>
-    </div>
-    <div class="card">
-      <div class="card-label">Blood Moon Plan</div>
-      <div class="card-title">Vial at 4 = Instant-Speed Destroy</div>
-      <div class="card-body">Against red decks: deliberately tick Vial to 4 instead of staying at 2 in early turns. When Blood Moon resolves, tap Vial at instant speed — Witch Enchanter enters (flash doesn't matter, Vial bypasses timing), destroys Blood Moon. Colored mana returns. Witch Enchanter also triggers Champion and Lieutenant on entry. Pre-plan the count: if Moon is expected by turn 3, you need Vial at 4 by turn 3.</div>
-    </div>
-    <div class="card">
-      <div class="card-label">Passive Burn</div>
-      <div class="card-title">Razorkin Draw Trigger</div>
-      <div class="card-body">Razorkin Needlehead deals 1 damage per opponent draw — any draw, including upkeep draws. Against draw-heavy decks (Satoru mirrors, UW Control, Izzet Affinity): Razorkin contributes 3-6 free damage per game passively. First strike during your turn means he also kills most 2/2s in combat without dying. A creature that damages them for free AND wins most combat trades is worth the {R}{R} color requirement.</div>
-    </div>
-    <div class="card">
-      <div class="card-label">Free-Spell Lock</div>
-      <div class="card-title">Lavinia via Vial</div>
-      <div class="card-body">Vial-deployed Lavinia is uncounterable — she's not cast. Once in play: Force of Negation countered (no mana spent), Evoke Solitude countered (no mana spent on the {0} path), Living End via Cascade countered, Summoner's Pact countered. Flash her at their end step before their key turn via Vial at 2 — she's already in play before their upkeep. This is the deck's combo-hate mode that costs exactly zero interaction mana.</div>
+      <div class="card-label">Win Condition</div>
+      <div class="card-title">Critical Mass of Bodies</div>
+      <div class="card-body">You win through combat damage. <span class="c">Champion</span> with 5+ counters, <span class="c">Adeline</span> creating tokens every attack, <span class="c">Guide of Souls</span> converting energy into +1/+1 and flying on your biggest threat. <span class="c">Mockingbird</span> copies their best creature. There's no combo finish — you out-board them and punch through.</div>
     </div>
   </div>
 
-  <h2>Deck Identity</h2>
-  <div class="card-grid">
+  <h2>Why Play This Deck</h2>
+  <div class="card-grid card-grid-2">
     <div class="card">
-      <div class="card-label">The Engine</div>
-      <div class="card-title">Aether Vial</div>
-      <div class="card-body">Every other decision in this deck flows from Vial. It lets you hold mana open for interaction (that you don't have) while still deploying threats. It makes your creatures uncounterable. It lets you flash in hate pieces at instant speed on their turn. It's the glue that holds 5 colors together on 19 lands. Every game that doesn't start with a T1 Vial is a harder game.</div>
+      <div class="card-label">Play This If</div>
+      <div class="card-title">You Want Proactive Disruption</div>
+      <div class="card-body">You like applying pressure while deploying hate. You enjoy naming the right card with Meddling Mage and watching them squirm. You want Aether Vial instant-speed tricks on their turn. You like growing a board that gets harder to answer every turn. High skill ceiling with real racing power.</div>
     </div>
     <div class="card">
-      <div class="card-label">The Payoffs</div>
-      <div class="card-title">Champion + Lieutenant</div>
-      <div class="card-body">Champion of the Parish grows with every Human entering. Thalia's Lieutenant enters and pumps everything, then grows with every subsequent Human. Together they create a snowball effect where every Vial activation at instant speed on their turn represents free +1/+1 counters. A mid-game board of five Humans with two Lieutenants in play is often presenting 15+ power.</div>
-    </div>
-    <div class="card">
-      <div class="card-label">The Secret Weapon</div>
-      <div class="card-title">Norin the Wary</div>
-      <div class="card-body">{R} 1/1 Legendary Human. Whenever any player casts a spell OR when any opponent attacks, Norin exiles himself. He returns at the beginning of the next end step. This triggers Champion of the Parish and Thalia's Lieutenant <em>every single turn</em> — both yours and theirs. A resolved Norin with Champion and Lieutenant in play is a +2/+2 pump per turn cycle. For free.</div>
-    </div>
-    <div class="card">
-      <div class="card-label">The Disruption Suite</div>
-      <div class="card-title">Hate Bears</div>
-      <div class="card-body">Meddling Mage names their win condition. Lavinia stops noncreature spells beyond their land count and counters free spells. Unsettled Mariner taxes everything targeting you or your permanents. Jirina sacrifices to give the whole team hexproof and indestructible. The opponent has to fight through creatures AND disruption simultaneously — this is the deck's core tension advantage.</div>
-    </div>
-    <div class="card">
-      <div class="card-label">New Additions</div>
-      <div class="card-title">Satoru + Guide of Souls</div>
-      <div class="card-body">Satoru draws a card whenever Vial cheats in a nontoken creature — since no mana was spent to cast them. Every Vial activation replaces itself. Guide of Souls generates energy and life whenever Humans enter, then converts that energy into +1/+1 counters and flying on attacking creatures. Both dramatically improve the deck's late game staying power.</div>
-    </div>
-    <div class="card">
-      <div class="card-label">The Trade-Off</div>
-      <div class="card-title">Not Tier 1, Still Real</div>
-      <div class="card-body">The deck's weakness is the manabase — 19 lands across 5 colors, no fetches, dependent on Cavern/Unclaimed/Courtyard/Ziggurat. Blood Moon shuts you down hard. It's slower than the fastest decks in the format. But it has a real clock, real disruption, and real resiliency. Expert pilots win tournaments with it. Know your deck. Play your deck.</div>
+      <div class="card-label">Skip This If</div>
+      <div class="card-title">You Want Tier 1 Consistency</div>
+      <div class="card-body">The manabase is fragile — 19 lands across 5 colors with no fetches. Blood Moon can end you on the spot without <span class="c">Witch Enchanter</span>. You're slower than Boros Energy and less resilient than Jeskai Blink. If you want the highest win rate in an open field, this isn't it. But if you know the deck cold, it punches well above its weight class.</div>
     </div>
   </div>
 
-  <h2>Oracle Accuracy — Critical Interactions</h2>
-  <div class="card-grid">
-    <div class="card">
-      <div class="card-label">Aether Vial</div>
-      <div class="card-title">{1} · Artifact</div>
-      <div class="card-body">At beginning of your upkeep: put a charge counter on it. {T}: put a creature card from your hand onto the battlefield if its mana value equals the number of charge counters. The key: this is NOT casting. The creature enters from the hand bypassing counterspells (except Cavern of Souls naming the type, but Vial doesn't need Cavern — it's already uncounterable). Creatures entering via Vial trigger Satoru (no mana spent to cast). Vial at 2 is the sweet spot — most Humans cost 2.</div>
-    </div>
-    <div class="card">
-      <div class="card-label">Norin the Wary</div>
-      <div class="card-title">{R} · 1/1 Human Warrior</div>
-      <div class="card-body">When you cast a spell or when an opponent attacks, exile Norin. Return him at the beginning of the next end step. Critical: he triggers on CAST, not resolve. If an opponent counters your spell, Norin still exiles and returns. During their turn: they cast a spell (Norin exiles, returns at their end step) → triggers Champion and Lieutenant at end step. Then during your turn: you cast a spell (Norin exiles again, returns at your end step) → more triggers. Two pump cycles per full round.</div>
-    </div>
-    <div class="card">
-      <div class="card-label">Satoru, the Infiltrator</div>
-      <div class="card-title">{U}{B} · 2/3 Menace Human Ninja Rogue</div>
-      <div class="card-body">Whenever Satoru and/or one or more other nontoken creatures enter, if none of them were cast OR no mana was spent to cast them, draw a card. The "no mana spent" clause is the key: creatures put onto the battlefield via Aether Vial cost no mana. Every Vial activation with Satoru in play draws a card. This turns every late-game Vial activation into card advantage, solving the deck's traditional gas problem. One Satoru + active Vial = the most efficient draw engine available in the 75.</div>
-    </div>
-    <div class="card">
-      <div class="card-label">Guide of Souls</div>
-      <div class="card-title">{W} · 1/2 Human Cleric</div>
-      <div class="card-body">Whenever another creature you control enters: gain 1 life and get {E}. Whenever you attack: pay {E}{E}{E}, put two +1/+1 counters and a flying counter on target attacking creature — it becomes an Angel. The life gain is real vs burn decks. The flying pump converts a Champion or Lieutenant that's grown large into an aerial threat that closes games. Energy accumulates fast with a wide board — each Norin return trigger, each Vial activation generates energy.</div>
-    </div>
-    <div class="card">
-      <div class="card-label">Jirina, Dauntless General</div>
-      <div class="card-title">{W}{B} · 2/2 Human Soldier</div>
-      <div class="card-body">When Jirina enters: exile target player's graveyard. Sacrifice Jirina: Humans you control gain hexproof and indestructible until end of turn. The ETB is free GY hate that triggers Champion/Lieutenant. The sacrifice ability is the real gem: in response to a Supreme Verdict or Wrathful Annex, sacrifice Jirina — your entire team becomes indestructible and hexproof. The sweeper does nothing. This single ability shifts the matchup against Control from unfavorable to even.</div>
-    </div>
-    <div class="card">
-      <div class="card-label">Lavinia, Azorius Renegade</div>
-      <div class="card-title">{W}{U} · 2/2 Human Soldier</div>
-      <div class="card-body">Each opponent can't cast noncreature spells with mana value greater than the number of lands they control. Each opponent can't cast spells with {X} in their mana costs unless they pay {X}. Additionally: whenever an opponent casts a spell, if no mana was spent to cast it, counter that spell. This blanket-counters Force of Negation, Evoke Solitude (evoke cost is 0 additional mana), Cascade spells into Living End, and any other free spell. Game-ending against specific matchups.</div>
-    </div>
-    <div class="card">
-      <div class="card-label">Witch Enchanter</div>
-      <div class="card-title">{3}{W} · 2/2 Human Warlock // Land</div>
-      <div class="card-body">Double-faced card: front face is a {3}{W} 2/2 Human Warlock. ETB: destroy target artifact or enchantment an opponent controls. Back face enters as a tapped land that pays 3 life if you want it untapped, producing {W}. The 4-mana front is your primary use — it's your maindeck answer to Blood Moon, Leyline of the Void, Sanctifier en-Vec, Stony Silence, and Damping Sphere. Two copies main ensures you find it in matchups where Blood Moon would otherwise end the game immediately. Can be vial-deployed at 4 counters.</div>
-    </div>
-    <div class="card">
-      <div class="card-label">Razorkin Needlehead</div>
-      <div class="card-title">{R}{R} · 2/2 Human Assassin</div>
-      <div class="card-body">First strike during your turn. Whenever an opponent draws a card, this creature deals 1 damage to them. The passive ping is surprisingly relevant: against Looting effects (Jeskai Blink, UW Control's Snapcaster, Izzet Affinity's draw engine), Razorkin deals 1 damage per draw. In card-draw-heavy matchups it can contribute 3-5 damage over the game for free. First strike during your turn makes it an excellent blocker against aggressive 2/2s — it deals damage before they can. The {R}{R} cost requires managing colors carefully.</div>
-    </div>
-  </div>
+  <h2>Meta Position — April 2026</h2>
+  <p>Humans sits in the "rogue" tier at roughly 0.5% of the Modern metagame — below the radar of most sideboards. The current top of the format is dominated by Boros Energy (18.8%), Jeskai Blink (9.0%), Ruby Storm (7.6%), Izzet Affinity (5.8%), and Eldrazi Tron (5.3%). Humans' natural matchup spread is solid against combo (Meddling Mage + Thalia + Lavinia), reasonable against midrange (your clock + disruption outpaces their value), and tough against Boros Energy (their removal is too efficient and cheap).</p>
+  <p>Recent results: Zannty took 10th at a Modern Challenge (5-2) with a newer build featuring Aang and Safekeeper. The SCG CON Milwaukee $1K saw Humans at 16th place (5-2). Someone unironically registered Humans at the LDXP SEA26 Modern 10k (211 players). The deck keeps showing up because experienced pilots know how to exploit the metagame's blind spots.</p>
 </div>
 
-<!-- CH02: DECKLIST -->
+<!-- ══════════════════════════════════════════════════════════ CH02 DECKLIST -->
 <div id="decklist" class="section">
   <div class="section-label">Chapter 02</div>
-  <h1>The 75</h1>
-  <p style="font-style:italic;color:var(--mid);font-size:15px;margin-bottom:24px;">Zuxas's list — a pet deck build tuned for Aether Vial efficiency, Norin synergy, and the Satoru card draw package. Not tier 1. Absolutely tier fun.</p>
+  <h1>Decklist</h1>
+  <p style="font-style:italic;color:var(--mid);font-size:15px;margin-bottom:24px;">Classic Shell — 5-Color Humans · Modern 2026</p>
 
   <div class="decklist">
     <div class="dl-section">
-      <div class="dl-section-label">Maindeck — 60 cards</div>
+      <div class="dl-section-label">Maindeck (60)</div>
+
       <div class="dl-group">
-        <div class="dl-group-label">Creatures (37)</div>
+        <div class="dl-group-label">1-Drops (12)</div>
         <div class="dl-card-row"><span><span class="c">Champion of the Parish</span></span><span class="dl-qty">4</span></div>
+        <div class="dl-card-row"><span><span class="c">Noble Hierarch</span></span><span class="dl-qty">4</span></div>
         <div class="dl-card-row"><span><span class="c">Guide of Souls</span></span><span class="dl-qty">4</span></div>
-        <div class="dl-card-row"><span><span class="c">Thalia's Lieutenant</span></span><span class="dl-qty">4</span></div>
-        <div class="dl-card-row"><span><span class="c">Norin the Wary</span></span><span class="dl-qty">3</span></div>
-        <div class="dl-card-row"><span><span class="c">Meddling Mage</span></span><span class="dl-qty">3</span></div>
-        <div class="dl-card-row"><span><span class="c">Razorkin Needlehead</span></span><span class="dl-qty">3</span></div>
-        <div class="dl-card-row"><span><span class="c">Satoru, the Infiltrator</span></span><span class="dl-qty">3</span></div>
-        <div class="dl-card-row"><span>Jirina, Dauntless General</span><span class="dl-qty">3</span></div>
-        <div class="dl-card-row"><span><span class="c">Adeline, Resplendent Cathar</span></span><span class="dl-qty">2</span></div>
-        <div class="dl-card-row"><span>Lavinia, Azorius Renegade</span><span class="dl-qty">2</span></div>
-        <div class="dl-card-row"><span>Sylvan Safekeeper</span><span class="dl-qty">2</span></div>
-        <div class="dl-card-row"><span><span class="c">Unsettled Mariner</span></span><span class="dl-qty">2</span></div>
-        <div class="dl-card-row"><span>Witch Enchanter</span><span class="dl-qty">2</span></div>
       </div>
+
+      <div class="dl-group">
+        <div class="dl-group-label">2-Drops (20)</div>
+        <div class="dl-card-row"><span><span class="c">Thalia's Lieutenant</span></span><span class="dl-qty">4</span></div>
+        <div class="dl-card-row"><span><span class="c">Coppercoat Vanguard</span></span><span class="dl-qty">4</span></div>
+        <div class="dl-card-row"><span><span class="c">Meddling Mage</span></span><span class="dl-qty">4</span></div>
+        <div class="dl-card-row"><span><span class="c">Thalia, Guardian of Thraben</span></span><span class="dl-qty">2</span></div>
+        <div class="dl-card-row"><span><span class="c">Unsettled Mariner</span></span><span class="dl-qty">2</span></div>
+        <div class="dl-card-row"><span><span class="c">Jirina, Dauntless General</span></span><span class="dl-qty">2</span></div>
+        <div class="dl-card-row"><span><span class="c">Mantis Rider</span></span><span class="dl-qty">2</span></div>
+      </div>
+
+      <div class="dl-group">
+        <div class="dl-group-label">3+ Drops (4)</div>
+        <div class="dl-card-row"><span><span class="c">Adeline, Resplendent Cathar</span></span><span class="dl-qty">2</span></div>
+        <div class="dl-card-row"><span><span class="c">Witch Enchanter</span> // Witch-Blessed Meadow</span><span class="dl-qty">2</span></div>
+      </div>
+
+      <div class="dl-group">
+        <div class="dl-group-label">Flex (1)</div>
+        <div class="dl-card-row"><span><span class="c">Mockingbird</span></span><span class="dl-qty">1</span></div>
+      </div>
+
       <div class="dl-group">
         <div class="dl-group-label">Artifacts (4)</div>
         <div class="dl-card-row"><span><span class="c">Aether Vial</span></span><span class="dl-qty">4</span></div>
       </div>
+    </div>
+
+    <div class="dl-section">
+      <div class="dl-section-label">Lands (19)</div>
       <div class="dl-group">
-        <div class="dl-group-label">Lands (19)</div>
         <div class="dl-card-row"><span><span class="c">Cavern of Souls</span></span><span class="dl-qty">4</span></div>
         <div class="dl-card-row"><span><span class="c">Secluded Courtyard</span></span><span class="dl-qty">4</span></div>
         <div class="dl-card-row"><span><span class="c">Unclaimed Territory</span></span><span class="dl-qty">4</span></div>
-        <div class="dl-card-row"><span>Ancient Ziggurat</span><span class="dl-qty">2</span></div>
-        <div class="dl-card-row"><span>Silent Clearing</span><span class="dl-qty">2</span></div>
+        <div class="dl-card-row"><span><span class="c">Ancient Ziggurat</span></span><span class="dl-qty">3</span></div>
         <div class="dl-card-row"><span>Plains</span><span class="dl-qty">2</span></div>
         <div class="dl-card-row"><span>Island</span><span class="dl-qty">1</span></div>
+        <div class="dl-card-row"><span><span class="c">Seachrome Coast</span></span><span class="dl-qty">1</span></div>
       </div>
-    </div>
-    <div class="dl-section">
-      <div class="dl-section-label">Sideboard — 15 cards</div>
+
+      <div class="dl-section-label" style="margin-top:24px;">Sideboard (15)</div>
       <div class="dl-group">
-        <div class="dl-group-label">Combo Hate</div>
-        <div class="dl-card-row"><span>Drannith Magistrate</span><span class="dl-qty">2</span></div>
-        <div class="dl-card-row"><span>Damping Sphere</span><span class="dl-qty">2</span></div>
-        <div class="dl-card-row"><span>Gaddock Teeg</span><span class="dl-qty">1</span></div>
-        <div class="dl-card-row"><span>Vexing Bauble</span><span class="dl-qty">1</span></div>
+        <div class="dl-card-row"><span><span class="c">Kataki, War's Wage</span></span><span class="dl-qty">2</span></div>
+        <div class="dl-card-row"><span><span class="c">Sanctifier en-Vec</span></span><span class="dl-qty">2</span></div>
+        <div class="dl-card-row"><span><span class="c">Plague Engineer</span></span><span class="dl-qty">2</span></div>
+        <div class="dl-card-row"><span><span class="c">Dismember</span></span><span class="dl-qty">2</span></div>
+        <div class="dl-card-row"><span><span class="c">Reflector Mage</span></span><span class="dl-qty">2</span></div>
+        <div class="dl-card-row"><span><span class="c">Lavinia, Azorius Renegade</span></span><span class="dl-qty">1</span></div>
+        <div class="dl-card-row"><span><span class="c">Gaddock Teeg</span></span><span class="dl-qty">1</span></div>
+        <div class="dl-card-row"><span><span class="c">Drannith Magistrate</span></span><span class="dl-qty">1</span></div>
+        <div class="dl-card-row"><span><span class="c">Clarion Conqueror</span></span><span class="dl-qty">1</span></div>
+        <div class="dl-card-row"><span><span class="c">Vexing Bauble</span></span><span class="dl-qty">1</span></div>
       </div>
-      <div class="dl-group">
-        <div class="dl-group-label">Graveyard Hate</div>
-        <div class="dl-card-row"><span>Sanctifier en-Vec</span><span class="dl-qty">2</span></div>
-        <div class="dl-card-row"><span>Unlicensed Hearse</span><span class="dl-qty">1</span></div>
-      </div>
-      <div class="dl-group">
-        <div class="dl-group-label">Disruption / Tempo</div>
-        <div class="dl-card-row"><span>Reflector Mage</span><span class="dl-qty">2</span></div>
-        <div class="dl-card-row"><span>Dawnbringer Cleric</span><span class="dl-qty">2</span></div>
-        <div class="dl-card-row"><span>Clarion Conqueror</span><span class="dl-qty">1</span></div>
-        <div class="dl-card-row"><span>Kataki, War's Wage</span><span class="dl-qty">1</span></div>
-      </div>
-      <p style="font-size:13px;font-weight:300;color:var(--mid);line-height:1.5;margin-top:12px;">Zuxas personal list — built around maximum Vial efficiency and Satoru card draw synergy. Tune the flex slots (Adeline, Razorkin, Witch Enchanter counts) based on your local meta.</p>
     </div>
   </div>
 
   <h2>Mana Curve</h2>
   <div class="curve-strip">
-    <div class="curve-slot"><div class="curve-cmc">1</div><div class="curve-count">15 spells</div><div class="curve-bar" style="width:90%;"></div></div>
-    <div class="curve-slot"><div class="curve-cmc">2</div><div class="curve-count">17 spells</div><div class="curve-bar" style="width:100%;"></div></div>
-    <div class="curve-slot"><div class="curve-cmc">3</div><div class="curve-count">3 spells</div><div class="curve-bar" style="width:18%;"></div></div>
-    <div class="curve-slot"><div class="curve-cmc">4+</div><div class="curve-count">2 spells</div><div class="curve-bar" style="width:12%;"></div></div>
+    <div class="curve-slot"><div class="curve-cmc">1</div><div class="curve-count">16 spells</div><div class="curve-bar" style="width:100%"></div></div>
+    <div class="curve-slot"><div class="curve-cmc">2</div><div class="curve-count">20 spells</div><div class="curve-bar" style="width:100%"></div></div>
+    <div class="curve-slot"><div class="curve-cmc">3</div><div class="curve-count">4 spells</div><div class="curve-bar" style="width:25%"></div></div>
+    <div class="curve-slot"><div class="curve-cmc">4+</div><div class="curve-count">0 spells</div><div class="curve-bar" style="width:0%"></div></div>
   </div>
-  <p style="font-size:14px;font-weight:300;color:var(--mid);">Breakdown: 1-drops: Champion ×4, Aether Vial ×4, Norin ×3, Sylvan Safekeeper ×2, Guide of Souls ×4 (white one-drop). 2-drops: Thalia's Lieutenant ×4, Meddling Mage ×3, Lavinia ×2, Unsettled Mariner ×2, Razorkin ×3, Satoru ×3. 3-drops: Jirina ×3. 4-drops: Witch Enchanter ×2, Adeline ×2 (Adeline is technically {1}{W}{W} = 3 CMC — adjust curve above accordingly for Adeline as 3-drop).</p>
+  <p style="font-size:14px;color:var(--mid);">Extremely low curve — 36 creatures at MV 1-3, plus 4 Aether Vial at MV 1. The deck operates on 2-3 lands. Witch Enchanter's front face is MV 4 but primarily enters as the Witch-Blessed Meadow land back. Mockingbird at {X}{U} is flexible — cast at X=1 to copy a 1-drop or X=2 for their best 2-drop. Noble Hierarch makes every opening explosive: T1 Hierarch → T2 Lieutenant + exalted = already swinging for 4.</p>
 </div>
 
-<!-- CH03: GAME FLOW -->
+<!-- ══════════════════════════════════════════════════════════ CH03 GAMEPLAN -->
 <div id="gameplan" class="section">
   <div class="section-label">Chapter 03</div>
-  <h1>Game<br>Flow</h1>
+  <h1>Gameplan</h1>
 
-  <div class="mantra">"Vial on turn 1 changes every decision in the game. Suddenly every end step of theirs is a threat. Every counter they hold could be irrelevant. Every path of play — yours and theirs — runs through that one artifact."</div>
+  <div class="mantra">"T1 accelerant. T2 lord + disruption. T3 close the door. Every creature that enters grows the board AND does something to the opponent."</div>
 
-  <h2>Turn-by-Turn Framework</h2>
-  <div class="sb-card-guide">
-    <div class="sb-guide-row"><div class="sb-guide-name">Turn 1</div><div class="sb-guide-body"><strong>Ideal: Aether Vial.</strong> Play it and pass. If you don't have Vial, deploy Champion of the Parish or Norin the Wary. If you have both Vial and a one-drop, consider which is more impactful: Vial on T1 unlocks every subsequent turn, but Champion pumped immediately also snowballs. Generally: Vial first unless your hand has multiple one-drops and Vial can go on T2 without losing a counter cycle.</div></div>
-    <div class="sb-guide-row"><div class="sb-guide-name">Turn 2</div><div class="sb-guide-body"><strong>Vial ticks to 1.</strong> Deploy a two-drop normally. Or hold the two-drop and deploy it at instant speed at their end step on turn 2 — this is the Vial move. With Vial at 1: flash in a one-drop (Champion, Norin) at their end step for free counter triggers. With Satoru already in play: every Vial deployment at instant speed now draws a card. Prioritize getting Satoru into play if Vial is active.</div></div>
-    <div class="sb-guide-row"><div class="sb-guide-name">Turn 3</div><div class="sb-guide-body"><strong>Vial at 2 — your engine is online.</strong> Two-drops via Vial at instant speed are the backbone of the deck. End of their turn: flash in Meddling Mage naming their key card, or Thalia's Lieutenant to pump your board before untapping and attacking. This is the turn where you want both Vial firing AND a normal land-based deployment happening simultaneously. Two threats deployed in one turn cycle.</div></div>
-    <div class="sb-guide-row"><div class="sb-guide-name">Turn 4+</div><div class="sb-guide-body"><strong>Vial at 3-4 for silver bullets.</strong> Vial at 3 hits Jirina — flash her in at their end step to exile their GY and trigger Champion/Lieutenant. Vial at 4 hits Witch Enchanter — instant-speed artifact/enchantment removal. The key mid-game skill: keep Vial at 2 for longer if your hand is full of two-drops. Tick it once more intentionally when you need to deploy a higher-cost silver bullet from hand.</div></div>
-    <div class="sb-guide-row"><div class="sb-guide-name">Norin Loop</div><div class="sb-guide-body"><strong>Once Norin resolves, every turn is free value.</strong> Their turn: they cast a spell → Norin exiles → Norin returns at their end step → Champion and Lieutenant trigger. Your turn: you cast any spell → Norin exiles → returns at your end step → another trigger. With Champion + Lieutenant + Norin in play: you're gaining 2 counters per turn cycle for zero mana. This is the deck's hidden engine and why the deck can win games that feel impossible to close.</div></div>
-  </div>
-
-  <h2>Mulligan Framework</h2>
+  <h2>Turn-by-Turn Ideal Sequences</h2>
   <div class="card-grid card-grid-2">
     <div class="card">
-      <div class="card-label">Keep</div>
-      <div class="card-title">Vial + 2 Lands + Any 2-Drop</div>
-      <div class="card-body">Any hand with Aether Vial + 2 lands is a keep. The rest doesn't matter much — you'll deploy Vial, hit land drops 2-3, and start Vial-cheating creatures from turn 2 onward. This hand doesn't need Champion or Lieutenant specifically; Vial is the engine that makes everything else work.</div>
+      <div class="card-label">The God Draw</div>
+      <div class="card-title">T1 Vial, T2 Double Deploy</div>
+      <div class="card-body">T1: <span class="c">Aether Vial</span>. T2: Tick Vial to 1, cast <span class="c">Thalia's Lieutenant</span> from hand (0 Humans to pump, but she enters). Vial in <span class="c">Champion of the Parish</span> at their end step — Champion gets a counter from Lieutenant entering, Lieutenant gets a counter from Champion entering. T3: Tick to 2. Cast <span class="c">Meddling Mage</span> naming their removal, Vial in <span class="c">Coppercoat Vanguard</span>. Now: Champion is 3/3, Lieutenant is 4/4, Mage has ward {1}, Vanguard lords everything +1/+0. Swing 12.</div>
     </div>
     <div class="card">
-      <div class="card-label">Keep</div>
-      <div class="card-title">Champion + Norin + 2 Lands</div>
-      <div class="card-body">Without Vial but with Champion + Norin + any white/red land source, you have the core engine. Cast Champion T1, cast Norin T2. Now Champion triggers every time any spell is cast or opponent attacks. Even without Vial this hand generates snowball counters and creates a real racing clock by turn 4.</div>
+      <div class="card-label">The Hierarch Draw</div>
+      <div class="card-title">T1 Hierarch, T2 Three-Drop</div>
+      <div class="card-body">T1: <span class="c">Noble Hierarch</span>. T2: Tap Hierarch for mana, cast <span class="c">Mantis Rider</span> (flying, vigilance, haste) — attack for 4 immediately (3 power + 1 exalted). Or T2: <span class="c">Adeline, Resplendent Cathar</span> — she has vigilance, her power = number of creatures you control (2), and she creates a 1/1 Human token tapped and attacking when you swing. T3: deploy 2-drop + attack = Adeline is now a 4/4 making tokens. Snowball.</div>
     </div>
     <div class="card">
-      <div class="card-label">Marginal Keep</div>
-      <div class="card-title">2 Lands + Disruption Heavy</div>
-      <div class="card-body">A hand heavy on Meddling Mage + Lavinia + Unsettled Mariner but light on Champions is borderline. Keep on the play when you know the opponent's game plan well enough to name the right cards. Mulligan on the draw unless the disruption is perfectly matched to the matchup — you need a clock to back up the disruption.</div>
+      <div class="card-label">The Disruption Draw</div>
+      <div class="card-title">T1 Champion, T2 Mage + Thalia</div>
+      <div class="card-body">T1: <span class="c">Champion of the Parish</span> (1/1). T2: <span class="c">Meddling Mage</span> naming their best spell (Champion → 2/2). If you have a second land or Hierarch: also cast <span class="c">Thalia, Guardian of Thraben</span> (Champion → 3/3). Now their noncreature spells cost {1} more AND one specific spell can't be cast at all. They're attacking through both a tax and a lock while a growing Champion threatens lethal by T4.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">The Grindy Draw</div>
+      <div class="card-title">T1 Guide, T2 Coppercoat</div>
+      <div class="card-body">T1: <span class="c">Guide of Souls</span> (1/2). T2: <span class="c">Coppercoat Vanguard</span> — Guide triggers, gain 1 life + {E}. Now every Human entering generates energy + life. T3: Deploy 2 more Humans — Guide now has {E}{E}{E}. Attack, pay 3 energy: put two +1/+1 counters and flying on your best attacker. A 5/5 flying Champion closes games through any ground stall.</div>
+    </div>
+  </div>
+
+  <h2>Mulligan Guide</h2>
+  <p>The most important card to see in your opener is <span class="c">Aether Vial</span> or <span class="c">Noble Hierarch</span>. A hand without either needs two lands and a strong curve (1-drop into 2-drop). Mulligan any hand that can't deploy a creature on T1 or T2. The deck's power scales with board presence — a slow start against the current Modern meta means death.</p>
+  <div class="card-grid card-grid-3">
+    <div class="card">
+      <div class="card-label">Always Keep</div>
+      <div class="card-title">Vial + 2 Humans + Land</div>
+      <div class="card-body">Any hand with T1 Vial and at least 2 creatures to deploy is a keep regardless of what else is in the hand. Vial makes your creatures uncounterable and generates instant-speed tricks. The rest of the deck is all 1-2 drops — you'll draw into a curve.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Usually Keep</div>
+      <div class="card-title">Hierarch + 3-Drop + Land</div>
+      <div class="card-body">T1 Hierarch → T2 Mantis Rider (swing 4) or Adeline is a strong opening. Also keep Hierarch + Lieutenant + Coppercoat — the T2 double-deploy off Hierarch mana is excellent. Any Hierarch hand with a follow-up is keepable.</div>
     </div>
     <div class="card">
       <div class="card-label">Mulligan</div>
-      <div class="card-title">0-1 Lands or No Vial + All Expensive</div>
-      <div class="card-body">Without Vial and with a hand of Adeline + Witch Enchanter + 1 land, you're looking at a turn 4-5 first play with zero mana. Mulligan aggressively. This deck is built around the first 3 turns — a hand that can't do anything before turn 3 is a loss in most matchups.</div>
-    </div>
-  </div>
-
-  <h2>Key Decision Points</h2>
-  <div class="card-grid card-grid-3">
-    <div class="card">
-      <div class="card-label">Vial Timing</div>
-      <div class="card-title">End Step vs Main Phase</div>
-      <div class="card-body">Default: flash in the threat at their end step, not your main phase. This forces them to react during their next upkeep, not yours. They can't do anything between your deploy and your attack. Exception: if the ETB trigger is time-sensitive (Jirina's GY exile, Meddling Mage naming before they draw), deploy immediately.</div>
-    </div>
-    <div class="card">
-      <div class="card-label">Meddling Mage</div>
-      <div class="card-title">Name the Right Card</div>
-      <div class="card-body">The most skill-expressive decision in the deck. Name their primary win condition in game 1, not their answer. Against Amulet Titan: name Primeval Titan. Against Ruby Storm: name Past in Flames. Against Living End: name Living End. Against Neoform: name Neoform. Against Control: name their sweeper (Supreme Verdict). Every matchup section below has the correct name listed.</div>
-    </div>
-    <div class="card">
-      <div class="card-label">Jirina Sacrifice</div>
-      <div class="card-title">Hold for Sweepers</div>
-      <div class="card-body">Don't sacrifice Jirina proactively. Hold her sacrifice ability until they cast a sweeper (Supreme Verdict, Wrath of the Skies, Anger of the Gods). Sacrifice Jirina in response — your entire board gains hexproof and indestructible until end of turn. The sweeper resolves and does nothing. This window only exists if you've kept Jirina alive, so protect her carefully.</div>
+      <div class="card-title">No Accelerant, No T1 Play</div>
+      <div class="card-body">A hand with 3 lands, 2 Meddling Mages, Adeline, and Witch Enchanter is a mulligan — you can't deploy until T2 and your best cards arrive T3+. Against Boros Energy or Storm, that's too slow. Mulligan to 6 and look for Vial or Hierarch.</div>
     </div>
   </div>
 </div>
 
-<!-- CH04: ENGINES -->
+<!-- ══════════════════════════════════════════════════════════ CH04 ENGINES -->
 <div id="engines" class="section">
   <div class="section-label">Chapter 04</div>
-  <h1>Core<br>Engines</h1>
+  <h1>Core Engines</h1>
 
   <div class="engine-block">
-    <div class="engine-header"><div class="engine-letter">1</div><div><div class="engine-name">Aether Vial + Satoru Draw Engine</div><div style="font-family:'DM Mono',monospace;font-size:11px;color:rgba(242,237,230,0.4);letter-spacing:0.1em;text-transform:uppercase;">Primary Advantage Engine</div></div></div>
+    <div class="engine-header">
+      <div class="engine-letter">A</div>
+      <div class="engine-name">The Vial Advantage Engine</div>
+    </div>
     <div class="engine-body">
-      <div class="engine-step"><div class="engine-step-label">Setup</div><div class="engine-step-title">Vial T1, Satoru T3</div><div class="engine-step-body">Play Aether Vial on turn 1. Tick to 2. On turn 3 or via Vial (Satoru costs {U}{B} = 2), deploy Satoru, the Infiltrator. Now every subsequent Vial activation draws a card. Satoru triggers when nontoken creatures enter if no mana was spent to cast them — Vial cheats creatures in for free. One Satoru + Vial = card draw on demand.</div></div>
-      <div class="engine-step"><div class="engine-step-label">Execution</div><div class="engine-step-title">Instant-Speed Draw</div><div class="engine-step-body">During their turn at end step: tap Vial to flash in any two-drop. With Satoru in play: draw a card. The creature enters, Champion/Lieutenant trigger if relevant, and you replace the card spent. Your hand never depletes. Against control decks with Counterspell up: you're spending no mana and replacing your card — there is nothing to counter. This is the late-game inevitability engine the deck previously lacked.</div></div>
-      <div class="engine-step"><div class="engine-step-label">Result</div><div class="engine-step-title">Inexhaustible Threats</div><div class="engine-step-body">A Satoru + Vial mid-game means you draw into more threats every turn cycle. Each drawn card is likely another Human, which pumps Champion and Lieutenant further. Against fair decks that trade removal for your threats, this engine refuels faster than they can deplete your hand. Three Vial activations over three turns = three draws, three enters triggers, three Counter pumps.</div></div>
+      <div class="engine-step">
+        <div class="engine-step-label">Deploy</div>
+        <div class="engine-step-title">T1 Aether Vial</div>
+        <div class="engine-step-body">Vial on T1 is the most important play in the deck. It ticks up each upkeep (1 → 2 → 3). At 2 counters it hits 18 of your 36 creatures. Every activation: creature enters from hand, bypasses counterspells, triggers Champion/Lieutenant/Guide, and you keep your mana open for a second creature from hand. Vial effectively doubles your mana every turn.</div>
+      </div>
+      <div class="engine-step">
+        <div class="engine-step-label">Flash</div>
+        <div class="engine-step-title">Instant-Speed Hate</div>
+        <div class="engine-step-body">End of their turn: Vial in Meddling Mage naming whatever they revealed or tutored. Main phase response: Vial in Thalia before they cast their critical noncreature spell. Block step: Vial in Jirina, then sacrifice her for hexproof+indestructible in response to their removal. Every Vial activation is a gotcha moment the opponent has to respect.</div>
+      </div>
+      <div class="engine-step">
+        <div class="engine-step-label">Snowball</div>
+        <div class="engine-step-title">Free +1/+1 Counters</div>
+        <div class="engine-step-body">Every Vial activation triggers Champion (+1/+1 counter) and Lieutenant (gets a counter, already pumped everything on ETB). Guide of Souls triggers: gain 1 life, gain {E}. At 3 energy: pay to put two +1/+1 and flying on an attacker. A single Vial activation at their end step can represent +3/+3 across the board and a flying threat.</div>
+      </div>
     </div>
   </div>
 
   <div class="engine-block">
-    <div class="engine-header"><div class="engine-letter">2</div><div><div class="engine-name">Champion + Lieutenant Pump Engine</div><div style="font-family:'DM Mono',monospace;font-size:11px;color:rgba(242,237,230,0.4);letter-spacing:0.1em;text-transform:uppercase;">Primary Damage Engine</div></div></div>
+    <div class="engine-header">
+      <div class="engine-letter">B</div>
+      <div class="engine-name">The Coppercoat Ward Blanket</div>
+    </div>
     <div class="engine-body">
-      <div class="engine-step"><div class="engine-step-label">Setup</div><div class="engine-step-title">T1 Champion, T2 Lieutenant</div><div class="engine-step-body">Champion of the Parish enters as a 1/1 and gains +1/+1 every time a Human enters under your control. Thalia's Lieutenant enters, immediately pumps every other Human +1/+1, then gains counters whenever another Human enters. T1 Champion + T2 Lieutenant: on Lieutenant's entry, Champion gains +1/+1 (now 2/2). Every subsequent Human pumps both.</div></div>
-      <div class="engine-step"><div class="engine-step-label">Execution</div><div class="engine-step-title">Stack the Triggers</div><div class="engine-step-body">When multiple Humans enter simultaneously (via Adeline's attack trigger creating tokens, or multiple Vial + cast in the same turn): each Human entering is a separate trigger for both Champion and Lieutenant. Order them correctly — each Human entering triggers Champion once and Lieutenant once. With 4 Humans entering on one turn: Champion grows by 4 and Lieutenant grows by 4.</div></div>
-      <div class="engine-step"><div class="engine-step-label">Result</div><div class="engine-step-title">Unmanageable Threats</div><div class="engine-step-body">By turn 4-5, Champion and Lieutenant are often 5/5+ or 6/6+. They outgrow Galvanic Discharge (3 damage cap), they outgrow Lightning Bolt, and they outgrow most one-for-one removal the format offers. Guide of Souls can pump one of them further with energy for flying. A turn-5 8/8 Champion with flying via Guide of Souls closes games in two swings.</div></div>
+      <div class="engine-step">
+        <div class="engine-step-label">Lord</div>
+        <div class="engine-step-title">+1/+0 to Every Human</div>
+        <div class="engine-step-body"><span class="c">Coppercoat Vanguard</span> gives each other Human you control +1/+0 and ward {1}. This is a lord effect that doesn't just pump — it taxes every piece of removal the opponent aims at your creatures. A 2/2 for {1}{W} that makes your entire board harder to interact with. Multiple Vanguards stack: 2 Coppercoats = +2/+0 and ward {2} on everything.</div>
+      </div>
+      <div class="engine-step">
+        <div class="engine-step-label">Tax Stack</div>
+        <div class="engine-step-title">Ward + Thalia + Mariner</div>
+        <div class="engine-step-body">Coppercoat's ward {1} stacks with Unsettled Mariner's "counter unless pay {1}" and Thalia's noncreature tax. With all three in play: their Lightning Bolt targeting your creature costs {R} + {1} (Thalia) + {1} (Coppercoat ward) + {1} (Mariner) = {3}{R} for a Bolt. Their Fatal Push costs {B} + {1} + {1} + {1} = {3}{B}. Their removal suite becomes effectively uncastable on curve.</div>
+      </div>
+      <div class="engine-step">
+        <div class="engine-step-label">Resilience</div>
+        <div class="engine-step-title">Survives What Others Don't</div>
+        <div class="engine-step-body">The ward blanket means opponents can't efficiently one-for-one your creatures. They need excess mana to answer each threat. This buys you time to deploy more creatures and grow your board. Against sweepers: <span class="c">Jirina</span> sacrifices for hexproof+indestructible, protecting the entire board. The combination of ward + Jirina insurance gives Humans resilience that other aggro decks lack.</div>
+      </div>
     </div>
   </div>
 
   <div class="engine-block">
-    <div class="engine-header"><div class="engine-letter">3</div><div><div class="engine-name">Norin the Wary Loop</div><div style="font-family:'DM Mono',monospace;font-size:11px;color:rgba(242,237,230,0.4);letter-spacing:0.1em;text-transform:uppercase;">Free Value Engine</div></div></div>
+    <div class="engine-header">
+      <div class="engine-letter">C</div>
+      <div class="engine-name">The Guide of Souls Energy Loop</div>
+    </div>
     <div class="engine-body">
-      <div class="engine-step"><div class="engine-step-label">Setup</div><div class="engine-step-title">Norin + Champion/Lieutenant</div><div class="engine-step-body">Norin the Wary costs {R}. He exiles himself whenever any player casts a spell OR when any opponent attacks, then returns at the beginning of the next end step. In a game where spells are being cast every turn and opponents are attacking, Norin blinks in and out constantly — triggering Champion and Lieutenant every time he returns.</div></div>
-      <div class="engine-step"><div class="engine-step-label">Execution</div><div class="engine-step-title">Two Triggers Per Round</div><div class="engine-step-body">Their turn: opponent casts a spell → Norin exiles → Norin returns at their end step → Champion and Lieutenant trigger (+1/+1 each). Your turn: you cast any spell → Norin exiles → Norin returns at your end step → Champion and Lieutenant trigger again (+1/+1 each). Net: +2/+2 on Champion, +2/+2 on Lieutenant per complete round, for zero additional mana investment.</div></div>
-      <div class="engine-step"><div class="engine-step-label">Result</div><div class="engine-step-title">Inevitable Snowball</div><div class="engine-step-body">A Norin + Champion + Lieutenant board that survives to turn 5 has often generated 6-8 free +1/+1 counters total. With Guide of Souls generating energy from each Norin return, you're also accumulating flying counters. The opponent must answer Norin because ignoring him costs them 2-4 damage per round from the passive pump — even though Norin himself is a 1/1 that never attacks.</div></div>
+      <div class="engine-step">
+        <div class="engine-step-label">Accumulate</div>
+        <div class="engine-step-title">Every ETB = Energy</div>
+        <div class="engine-step-body">Guide of Souls: whenever another creature you control enters, gain 1 life and get {E}. Every Vial activation, every creature cast, every Adeline token entering — all generate energy. In a typical game you accumulate 3-6 energy by T3-T4 without any special effort. The life gain is incidental but real against burn-based decks.</div>
+      </div>
+      <div class="engine-step">
+        <div class="engine-step-label">Convert</div>
+        <div class="engine-step-title">Pay 3 → Flying Threat</div>
+        <div class="engine-step-body">Whenever you attack: pay {E}{E}{E}, put two +1/+1 counters and a flying counter on target attacking creature — it becomes an Angel in addition to its other types. Target your biggest Champion or Lieutenant. A 5/5 flying Champion closes over any ground stall. The flying is permanent — the counter stays.</div>
+      </div>
+      <div class="engine-step">
+        <div class="engine-step-label">Repeat</div>
+        <div class="engine-step-title">Every Attack Step</div>
+        <div class="engine-step-body">If you have 6+ energy, you can pump two creatures in one attack step. Guide's energy generation continues every turn as long as creatures keep entering. With Vial active, you're generating 1-2 energy per turn cycle passively. The deck never runs out of energy sources because every creature is a Human that triggers Guide.</div>
+      </div>
     </div>
   </div>
-
-  <h2>Tricks &amp; Interactions</h2>
-  <ul class="tricks-list">
-    <li><strong>Vial bypasses Counterspell entirely.</strong> Creatures deployed via Aether Vial are not cast — they are put directly onto the battlefield. Counterspell, Force of Negation, Remand, Mana Leak, and all other counterspells have zero interaction with Vial. Against blue decks: Vial every critical creature, never tap mana to cast them into open countermagic.</li>
-    <li><strong>Cavern of Souls + Vial = true zero-counter insurance.</strong> Cavern names "Human" and makes Human spells uncounterable when cast. Vial makes creatures uncounterable by not casting at all. Together: they provide two completely different routes to deploy threats that cannot be countered. Use whichever route is appropriate based on what you need to deploy.</li>
-    <li><strong>Norin triggers on the CAST, not the resolve.</strong> If they counter your spell, Norin still exiles (because you cast a spell) and still returns (triggering Champion). Their counter doesn't stop the Norin loop — it only stops the spell.</li>
-    <li><strong>Jirina's sacrifice ability is an instant-speed sweeper counter.</strong> In response to Supreme Verdict (or any sweeper): sacrifice Jirina. All your Humans gain hexproof and indestructible until end of turn. The sweeper resolves and does absolutely nothing. You retain your entire board. This is the single most important combat/interaction trick in the deck.</li>
-    <li><strong>Sylvan Safekeeper gives targeted shroud.</strong> Sacrifice a land: target creature gains shroud until end of turn. Against Path to Exile, Swords to Plowshares, Fatal Push, Abrupt Decay — sacrifice a land to protect your most important creature. The land is a real cost but protecting a 6/6 Champion from a removal spell is often worth it. Keep Safekeeper alive for the matchups where targeted removal is their primary answer.</li>
-    <li><strong>Adeline's power = number of creatures you control.</strong> Adeline's power scales with board size and she creates attacking tokens equal to opponents attacked. With 5 other creatures and Adeline attacking: she's a 6/4, and she creates an additional 1/1 Human Soldier token also attacking. These tokens trigger Champion and Lieutenant. Adeline works best when your board is already developed — don't deploy her into an empty battlefield.</li>
-    <li><strong>Ancient Ziggurat and Unclaimed Territory only cast creatures.</strong> These lands produce mana only for casting creature spells. You cannot use them for Aether Vial's {1} activation cost — Vial's activation is not casting a creature spell. Keep Plains or Island for non-creature spell costs (Vial activation, etc.). The basics are critical.</li>
-    <li><strong>Witch Enchanter via Vial at 4 is instant-speed artifact/enchantment removal.</strong> If you've ticked Vial to 4 (takes 4 upkeeps), you can flash in Witch Enchanter during their turn to destroy their Blood Moon, Leyline of the Void, or Damping Sphere in response to it resolving or at their end step. Plan your Vial counter count accordingly in matchups where you expect these.</li>
-  </ul>
 </div>
 
-<!-- CH05: ROLES -->
-<div id="roles" class="section">
+<!-- ══════════════════════════════════════════════════════════ CH05 LINES -->
+<div id="lines" class="section">
   <div class="section-label">Chapter 05</div>
-  <h1>Role<br>Assignment</h1>
+  <h1>Lines &<br>Tactics</h1>
+
+  <h2>Meddling Mage Naming Guide</h2>
+  <p>The single highest-skill-cap card in the deck. Naming correctly wins games; naming wrong wastes a 2/2 body. These are the default names by matchup — adjust based on information from their plays and your read of the game state.</p>
+  <div class="card-grid card-grid-2">
+    <div class="card">
+      <div class="card-label">vs Boros Energy</div>
+      <div class="card-title">Name: Galvanic Discharge</div>
+      <div class="card-body">Their most efficient removal spell. Stopping Discharge means your board survives longer. Secondary name: Ajani, Nacatl Pariah (stops their best 1-drop from flipping). If you've seen their hand via information: name whatever kills you fastest.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">vs Ruby Storm</div>
+      <div class="card-title">Name: Past in Flames</div>
+      <div class="card-body">Without Past in Flames, their combo is far less reliable. They can still win through Rite of Flame chains, but Past in Flames is the card that lets them rebuild from a disrupted hand. Secondary: Grapeshot (stops the kill itself). Thalia taxing is your primary disruption — Mage is insurance.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">vs Jeskai Blink</div>
+      <div class="card-title">Name: Ephemerate</div>
+      <div class="card-body">Ephemerate is their engine — rebuy Solitude, Stoneforge, value creatures. Without it their deck is fair Magic. Secondary: Solitude (stops their free removal). If you have Thalia in play, naming Ephemerate + Thalia tax = they can't blink efficiently at all.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">vs Living End</div>
+      <div class="card-title">Name: Living End</div>
+      <div class="card-body">They literally cannot win without resolving Living End (or the very rare Grief beatdown). Name it G1 and they need to find Force of Negation or bounce your Mage. With Lavinia from SB: cascade into a free spell = Lavinia counters it. Double lock.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">vs Izzet Affinity</div>
+      <div class="card-title">Name: Thought Monitor</div>
+      <div class="card-body">Their draw engine. Without Monitor their deck runs out of gas. Secondary: Sojourner's Companion (stops their biggest free body). Kataki from SB is your primary answer — Mage is supplementary disruption.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">vs Eldrazi Tron</div>
+      <div class="card-title">Name: All Is Dust</div>
+      <div class="card-body">The sweeper that ignores your entire board. All Is Dust destroys all colored permanents — your Humans, your Vials, everything. Naming it forces them to beat you through creature combat where your disruption and lords shine. Secondary: Karn, the Great Creator.</div>
+    </div>
+  </div>
+
+<!-- ══════════════════════════════════════════════════════════ CH06 ROLES -->
+<div id="roles" class="section">
+  <div class="section-label">Chapter 06</div>
+  <h1>Role Assignment</h1>
+
+  <div class="mantra">"You're always the beatdown. The question is how much disruption you weave in while killing them."</div>
 
   <div class="role-grid">
     <div class="role-card">
-      <div class="role-name role-name-primary">AGGRO DISRUPTOR</div>
-      <div class="role-desc">Default role in most games. You're applying a fast clock while simultaneously deploying hate pieces that break their game plan. Champion and Lieutenant threaten to close by turn 4-5. Meddling Mage stops their key spell. Lavinia stops their free spells. They have to fight through your board AND your disruption simultaneously — and they can't do both.</div>
-      <div class="role-matchups">vs Combo, Control, most fair decks</div>
+      <div class="role-name role-name-primary">Aggro-First</div>
+      <div class="role-desc">Full speed. Deploy every creature on curve, pump with Lieutenant, swing wide. Meddling Mage names their removal rather than their threats because you're faster. Win by T4-5 before they set up.</div>
+      <div class="role-matchups">vs Storm · vs Living End · vs Tron · vs Amulet Titan</div>
     </div>
     <div class="role-card">
-      <div class="role-name role-name-secondary">TEMPO BEATDOWN</div>
-      <div class="role-desc">In aggro mirrors (Boros Energy, Prowess), drop the disruption package and maximize the clock. Reflector Mage from the sideboard bounces their best creature and prevents re-cast for a turn. Unsettled Mariner taxes their targeted removal making their damage math wrong. Adeline creates tokens that flood their blocking lanes. You win by being wider faster.</div>
-      <div class="role-matchups">vs Boros Energy, Domain Zoo, aggro mirrors</div>
+      <div class="role-name role-name-secondary">Disruptive Aggro</div>
+      <div class="role-desc">Your default mode. Clock plus hate pieces. Thalia taxes their spells, Mage names their key card, Coppercoat makes your board sticky. You pressure while they stumble through your disruption.</div>
+      <div class="role-matchups">vs Jeskai Blink · vs Affinity · vs Dimir Control · vs Prowess</div>
     </div>
     <div class="role-card">
-      <div class="role-name role-name-tertiary">RESILIENT GRINDER</div>
-      <div class="role-desc">Against removal-heavy midrange decks, lean on Satoru + Vial to grind card advantage, Jirina to survive sweepers, and Sylvan Safekeeper to protect individual threats. Norin provides free counters regardless of what they do. The game goes long but your threats keep growing while theirs are one-for-ones. You win by refusing to run out of threats.</div>
-      <div class="role-matchups">vs Jeskai Blink, UW Control, midrange</div>
+      <div class="role-name role-name-tertiary">Grind Mode</div>
+      <div class="role-desc">They have more removal than you have threats. Lean on Adeline's token generation, Guide's energy conversion to flying, and Jirina's sacrifice as sweeper insurance. Win through attrition and resilience.</div>
+      <div class="role-matchups">vs Boros Energy · vs Midrange Mirrors · vs Removal-Heavy Decks</div>
     </div>
   </div>
 </div>
 
-<!-- CH06: MATCHUPS -->
+<!-- ══════════════════════════════════════════════════════════ CH07 MATCHUPS -->
 <div id="matchups" class="section">
-  <div class="section-label">Chapter 06</div>
-  <h1>Matchup<br>Deep Dives</h1>
-  <p>Humans is a deck where knowing your opponent's key card names — for Meddling Mage — is half the battle. Each entry below includes the correct Mage target for game 1.</p>
+  <div class="section-label">Chapter 07</div>
+  <h1>Matchup Guide</h1>
 
   <table class="matchup-table">
-    <tr><th>Opponent</th><th>Mage Names</th><th>Assessment</th><th>G1</th><th>Post-SB</th></tr>
+    <thead><tr><th>Matchup</th><th>Role</th><th>Verdict</th><th>Key Card</th></tr></thead>
+    <tbody>
 
-    <tr onclick="toggle('mu-boros')"><td>Boros Energy</td><td>Galvanic Discharge</td><td><span class="verdict verdict-dog">Dog</span></td><td>Dog</td><td>Even</td></tr>
-    <tr><td colspan="5" class="matchup-detail" id="mu-boros">
-      <strong>Why It's Hard G1:</strong> Galvanic Discharge kills Champion, Lieutenant, Norin, and Guide of Souls at instant speed. Ragavan steals your spells. Their clock is faster and cleaner than yours with better removal. Blood Moon from their SB ends the game immediately — your 5-color manabase collapses.<br><br>
-      <strong>Meddling Mage:</strong> Name <em>Galvanic Discharge</em> — their primary removal spell. This forces them to deploy other answers, buying your Champions time to grow.<br><br>
-      <strong>Post-Board Plan:</strong> Reflector Mage bounces Ocelot Pride and stops Guide of Souls re-entry. Sanctifier en-Vec has protection from red — Galvanic Discharge cannot target it. Sanctifier attacking every turn is immune to their entire removal suite. Dawnbringer Cleric answers Blood Moon (enchantment).<br><br>
-      <table class="sb-table"><tr><th>OUT</th><th>IN</th></tr>
-      <tr><td class="sb-out">−2 Lavinia (stops free spells — they have none)</td><td class="sb-in">+2 Reflector Mage (bounces key threats)</td></tr>
-      <tr><td class="sb-out">−2 Witch Enchanter (too slow at 4 mana)</td><td class="sb-in">+2 Sanctifier en-Vec (immune to red removal)</td></tr>
-      <tr><td class="sb-out">−1 Razorkin Needlehead (they don't draw much)</td><td class="sb-in">+1 Dawnbringer Cleric (answers Blood Moon)</td></tr>
-      </table>
-    </td></tr>
+      <tr onclick="toggle('mu-boros')"><td><strong>Boros Energy</strong></td><td>Grind</td><td><span class="verdict verdict-dog">Unfavorable</span></td><td>Coppercoat Vanguard — ward {1} taxes their cheap removal</td></tr>
+      <tr><td colspan="4" class="matchup-detail" id="mu-boros">
+        <p>Your hardest common matchup. Their removal is efficient and cheap — <span class="c">Galvanic Discharge</span> kills anything for {R}, <span class="c">Lightning Bolt</span> punishes your low-toughness board. The energy package gives them reach you can't interact with. Your path to winning is deploying Coppercoat Vanguard early to tax their removal, then grinding through with Adeline tokens and Guide of Souls energy conversion. Jirina is critical — sacrifice in response to their burn to keep your board alive.</p>
+        <table class="sb-table"><thead><tr><th>Out</th><th>In</th></tr></thead><tbody>
+          <tr><td class="sb-out">−2 Thalia, Guardian of Thraben</td><td class="sb-in">+2 Dismember</td></tr>
+          <tr><td class="sb-out">−1 Mockingbird</td><td class="sb-in">+2 Sanctifier en-Vec</td></tr>
+          <tr><td class="sb-out">−2 Mantis Rider</td><td class="sb-in">+1 Clarion Conqueror</td></tr>
+        </tbody></table>
+        <p class="sb-note">Thalia is weak here — their spells cost 1-2 mana already and the extra {1} doesn't slow them meaningfully. Sanctifier en-Vec has protection from black AND red — it blanks their entire removal suite and can't be blocked by their red creatures. Dismember answers their top threats through any amount of energy.</p>
+        <h3>% Point Edges</h3>
+        <p class="sb-note"><strong>+2–3 pts: Sanctifier en-Vec is your best SB card.</strong> Protection from black and red means they literally cannot target it, block it, or deal damage to it. A 2/2 that attacks every turn unimpeded while carrying Lieutenant counters and Guide of Souls flying closes games they have no answer to.</p>
+        <p class="sb-note"><strong>+1–2 pts: Coppercoat on T2 before they remove your T1 play.</strong> If Vanguard resolves, their Bolts now cost {R} + {1}, which delays their removal by a full turn. That turn is the difference between your Lieutenant resolving or not.</p>
+      </td></tr>
 
-    <tr onclick="toggle('mu-control')"><td>UW Control</td><td>Supreme Verdict</td><td><span class="verdict verdict-even">Even</span></td><td>Even</td><td>Favor</td></tr>
-    <tr><td colspan="5" class="matchup-detail" id="mu-control">
-      <strong>Why It's Winnable:</strong> Vial makes your creatures uncounterable. Cavern of Souls makes casting uncounterable. Their entire interaction suite is counters and Solitude — and both are blanked by your deployment methods. Jirina sacrificed in response to Supreme Verdict saves your board entirely. They have to find Wrath and stick it cleanly while you have Jirina, which is a hard ask.<br><br>
-      <strong>Meddling Mage:</strong> Name <em>Supreme Verdict</em> — their primary sweeper. With Mage on the field naming Verdict, they're locked into Solitude evoke (expensive) and Counterspell for single threats. Note: Lavinia counters Solitude evoke (Solitude evoke pays life + card, the mana cost is {0} — Lavinia counters spells where no mana was spent).<br><br>
-      <strong>Satoru Value:</strong> Every Vial deployment at their end step draws a card. Against a deck with lots of reactable windows, you're generating pure card advantage while they sit on countermagic that can't interact with Vial.<br><br>
-      <table class="sb-table"><tr><th>OUT</th><th>IN</th></tr>
-      <tr><td class="sb-out">−2 Razorkin Needlehead (they do draw cards — actually keep 1)</td><td class="sb-in">+1 Gaddock Teeg (stops Verdict, Verdict is CMC 4)</td></tr>
-      <tr><td class="sb-out">−2 Witch Enchanter (too slow)</td><td class="sb-in">+2 Reflector Mage (bounces Teferi)</td></tr>
-      <tr><td class="sb-out">−1 Adeline (needs board to be good)</td><td class="sb-in">+1 Clarion Conqueror (recurring threat)</td></tr>
-      </table>
-      <div class="sb-note">Gaddock Teeg: "Players can't cast spells with CMC 4 or greater." This blanks Supreme Verdict (CMC 4), Teferi's +2 (not a spell), Cryptic Command (CMC 4). Does NOT stop Solitude (CMC 5, evoke paid) — wait, Gaddock stops CMC 4 OR GREATER, so it stops Cryptic AND Solitude AND Supreme Verdict. Extremely powerful vs Control.</div>
-    </td></tr>
+      <tr onclick="toggle('mu-jeskai')"><td><strong>Jeskai Blink</strong></td><td>Disruption</td><td><span class="verdict verdict-even">Even</span></td><td>Meddling Mage naming Ephemerate</td></tr>
+      <tr><td colspan="4" class="matchup-detail" id="mu-jeskai">
+        <p>Their game plan revolves around Ephemerate loops — blinking Solitude for free removal, Stoneforge for equipment tutoring, Phelia for value. <span class="c">Meddling Mage</span> naming Ephemerate shuts down their primary engine. <span class="c">Thalia</span> taxing their noncreature spells is excellent here — Ephemerate at {W} + {1} tax = {1}{W}, and they're often tight on mana in the early turns. Zannty went 0-2 against Jeskai Blink in his Challenge run, so respect this matchup — they can grind through your disruption if you don't apply enough pressure alongside it.</p>
+        <table class="sb-table"><thead><tr><th>Out</th><th>In</th></tr></thead><tbody>
+          <tr><td class="sb-out">−4 Guide of Souls</td><td class="sb-in">+2 Reflector Mage</td></tr>
+          <tr><td class="sb-out">−1 Mockingbird</td><td class="sb-in">+2 Dismember</td></tr>
+          <tr><td class="sb-out"></td><td class="sb-in">+1 Gaddock Teeg</td></tr>
+        </tbody></table>
+        <p class="sb-note">Guide's energy plan is too slow against their interaction density. Reflector Mage bounces Solitude or Stoneforge and prevents recast for a turn — devastating tempo. Gaddock Teeg stops Wrath of God, Supreme Verdict, and any MV 4+ spell. Dismember kills Solitude through their Ephemerate timing.</p>
+        <h3>% Point Edges</h3>
+        <p class="sb-note"><strong>+3 pts: Jirina sacrifice in response to Solitude evoke.</strong> They evoke Solitude targeting your best creature → sacrifice Jirina → your entire team gains hexproof and indestructible → Solitude's exile fizzles, and their Solitude dies to evoke. You kept everything, they lost their Solitude for nothing.</p>
+        <p class="sb-note"><strong>+2 pts: Vial in Meddling Mage at their end step naming Ephemerate.</strong> They can't respond to the name choice because it happens as Mage enters. Now their entire blink engine is offline and they have to answer a 2/2 before they can resume their gameplan.</p>
+      </td></tr>
 
-    <tr onclick="toggle('mu-affinity')"><td>Izzet Affinity</td><td>Kappa Cannoneer</td><td><span class="verdict verdict-even">Even</span></td><td>Even</td><td>Favor</td></tr>
-    <tr><td colspan="5" class="matchup-detail" id="mu-affinity">
-      <strong>The Matchup:</strong> Affinity's clock is artifact-based — your Kataki, War's Wage from the sideboard makes every artifact cost {1} to keep per turn, draining their mana and collapsing their board. Lavinia stops Consign to Memory (if no mana spent — but Consign costs mana, so Lavinia doesn't help here). Meddling Mage naming their combo piece is the primary game 1 plan.<br><br>
-      <strong>Meddling Mage:</strong> Name <em>Kappa Cannoneer</em> — their primary unblockable threat. Without Cannoneer they're attacking with smaller artifacts and the race goes long, which favors your pump engine.<br><br>
-      <strong>Kataki:</strong> "All artifacts have 'At the beginning of your upkeep, sacrifice this artifact unless you pay {1}.'" Against a deck with 20+ artifacts, Kataki's upkeep costs drain their mana every turn. Fetched via Vial at 2 at instant speed on their upkeep.<br><br>
-      <table class="sb-table"><tr><th>OUT</th><th>IN</th></tr>
-      <tr><td class="sb-out">−2 Lavinia (doesn't help vs their interaction)</td><td class="sb-in">+1 Kataki, War's Wage (drains their artifact mana)</td></tr>
-      <tr><td class="sb-out">−2 Witch Enchanter (too slow)</td><td class="sb-in">+2 Dawnbringer Cleric (answers Urza's Saga)</td></tr>
-      <tr><td class="sb-out">−1 Adeline</td><td class="sb-in">+2 Reflector Mage (bounces Kappa)</td></tr>
-      </table>
-    </td></tr>
+      <tr onclick="toggle('mu-storm')"><td><strong>Ruby Storm</strong></td><td>Aggro-First</td><td><span class="verdict verdict-favor">Favorable</span></td><td>Thalia + Meddling Mage double lock</td></tr>
+      <tr><td colspan="4" class="matchup-detail" id="mu-storm">
+        <p>Your best matchup in the meta. <span class="c">Thalia</span> taxes every ritual and cantrip — their entire deck is noncreature spells. <span class="c">Meddling Mage</span> naming Past in Flames or Grapeshot removes their primary win condition. Even without those two, your clock kills them by T4 while they're still trying to assemble mana through your taxes. Post-board <span class="c">Gaddock Teeg</span> stops all MV 4+ noncreature spells AND X-spells — both Past in Flames and Grapeshot are illegal under Teeg.</p>
+        <table class="sb-table"><thead><tr><th>Out</th><th>In</th></tr></thead><tbody>
+          <tr><td class="sb-out">−2 Adeline, Resplendent Cathar</td><td class="sb-in">+1 Gaddock Teeg</td></tr>
+          <tr><td class="sb-out">−2 Jirina, Dauntless General</td><td class="sb-in">+1 Lavinia, Azorius Renegade</td></tr>
+          <tr><td class="sb-out">−1 Mockingbird</td><td class="sb-in">+1 Vexing Bauble</td></tr>
+        </tbody></table>
+        <p class="sb-note">Adeline is too slow at 3 mana — you need disruption, not more bodies. Lavinia counters any spell cast without paying full mana (counters Manamorphose's {0} net, stops Past in Flames flashback if they can't pay). Vexing Bauble counters any free spell. Teeg locks them out entirely.</p>
+        <h3>% Point Edges</h3>
+        <p class="sb-note"><strong>+5 pts: Thalia + Teeg + Mage = triple lock.</strong> Thalia taxes +{1}, Teeg blocks MV 4+ and X-spells, Mage names their remaining out. They need to find removal for ALL THREE hate pieces before they can combo. Most Storm lists run 0-2 pieces of creature removal.</p>
+      </td></tr>
 
-    <tr onclick="toggle('mu-titan')"><td>Amulet Titan</td><td>Primeval Titan</td><td><span class="verdict verdict-favor">Favorable</span></td><td>Favor</td><td>Favor</td></tr>
-    <tr><td colspan="5" class="matchup-detail" id="mu-titan">
-      <strong>Why You Win:</strong> Meddling Mage naming Primeval Titan stops their entire combo. Lavinia stops Summoner's Pact (no mana spent = Lavinia counters it). You're deploying a coherent aggressive board while they're trying to assemble a combo — your disruption + clock is faster than their setup.<br><br>
-      <strong>Meddling Mage:</strong> Name <em>Primeval Titan</em> first. If they have Summoner's Pact, name <em>Summoner's Pact</em> second Mage — Pact finds Titan and Lavinia already stops free spells. A Lavinia + Meddling Mage naming Titan = their combo is completely locked out with no mana investment.<br><br>
-      <strong>Drannith Magistrate:</strong> "Opponents can't cast spells from outside the game." This directly stops Summoner's Pact (Pact puts a card from outside the game into play — actually Pact searches the library, not outside the game. Magistrate stops Adventure spells, Wish effects, etc. Still solid as a Human that triggers counters).<br><br>
-      <table class="sb-table"><tr><th>OUT</th><th>IN</th></tr>
-      <tr><td class="sb-out">−2 Witch Enchanter (not needed — Jirina already answers their GY)</td><td class="sb-in">+2 Drannith Magistrate (Human that blocks their search patterns)</td></tr>
-      <tr><td class="sb-out">−2 Razorkin Needlehead (they don't draw cards)</td><td class="sb-in">+2 Damping Sphere (Amulet bounce lands produce only colorless)</td></tr>
-      </table>
-      <div class="sb-note">Damping Sphere: "Lands can only produce colorless mana." Wait — Damping Sphere says "If a player taps a land for mana, it produces {C} instead." This completely destroys Amulet Titan's bounce land engine — their Simic Growth Chamber produces {C} instead of {G}{U}, and Amulet of Vigor's untap trigger is useless without colored mana. Often a game-ending card against Titan.</div>
-    </td></tr>
+      <tr onclick="toggle('mu-living')"><td><strong>Living End</strong></td><td>Aggro-First</td><td><span class="verdict verdict-favor">Favorable</span></td><td>Meddling Mage naming Living End</td></tr>
+      <tr><td colspan="4" class="matchup-detail" id="mu-living">
+        <p>Zannty went 2-0 against Living End in his Challenge run. <span class="c">Meddling Mage</span> naming Living End means they literally cannot win without bouncing or killing the Mage first. Post-board <span class="c">Lavinia</span> counters cascade into Living End (it's cast without paying mana). <span class="c">Vexing Bauble</span> counters any spell cast for free. Your clock kills them by T4 while they're cycling creatures that never enter the battlefield.</p>
+        <table class="sb-table"><thead><tr><th>Out</th><th>In</th></tr></thead><tbody>
+          <tr><td class="sb-out">−2 Unsettled Mariner</td><td class="sb-in">+1 Lavinia, Azorius Renegade</td></tr>
+          <tr><td class="sb-out">−2 Coppercoat Vanguard</td><td class="sb-in">+1 Vexing Bauble</td></tr>
+          <tr><td class="sb-out">−1 Mockingbird</td><td class="sb-in">+1 Grafdigger's Cage</td></tr>
+        </tbody></table>
+        <p class="sb-note">Mariner and Coppercoat are defensive cards you don't need — they're not targeting you, they're cascading. Grafdigger's Cage stops creatures entering from graveyards (Living End's entire purpose). With Mage + Lavinia + Cage + Bauble, they need to answer 4 different hate pieces across different card types.</p>
+        <h3>% Point Edges</h3>
+        <p class="sb-note"><strong>+4 pts: Layer redundant hate.</strong> Mage names Living End → they need Force of Negation. Lavinia counters free spells → they need to remove her. Cage stops GY creatures → they need artifact removal. No Living End list can answer all three axes simultaneously.</p>
+      </td></tr>
 
-    <tr onclick="toggle('mu-storm')"><td>Ruby Storm</td><td>Past in Flames</td><td><span class="verdict verdict-dog">Dog</span></td><td>Dog</td><td>Even</td></tr>
-    <tr><td colspan="5" class="matchup-detail" id="mu-storm">
-      <strong>Why It's Hard:</strong> Storm is faster than you and their kill can happen while you're still deploying your board. Your disruption (Meddling Mage, Lavinia, Drannith Magistrate) is the entire game plan. You're not racing their clock — you're trying to lock them out before turn 3.<br><br>
-      <strong>Meddling Mage:</strong> Name <em>Past in Flames</em> — the card that refuels their hand from the GY and enables the second wave. Without PiF they often fizzle their first storm attempt and have nothing in hand. Naming <em>Grapeshot</em> is also strong if you have multiple Mages.<br><br>
-      <strong>Lavinia:</strong> Counter any spell with {X} in the mana cost unless they pay {X}. Doesn't directly stop Storm but taxes their rituals. Also counters any free spells. Name Grapeshot with second Mage for redundancy.<br><br>
-      <table class="sb-table"><tr><th>OUT</th><th>IN</th></tr>
-      <tr><td class="sb-out">−2 Witch Enchanter (4 mana, game over before then)</td><td class="sb-in">+2 Drannith Magistrate (stops certain card types)</td></tr>
-      <tr><td class="sb-out">−2 Adeline (wrong speed)</td><td class="sb-in">+2 Damping Sphere ("If a player has cast 2+ spells this turn, each costs {2} more")</td></tr>
-      <tr><td class="sb-out">−1 Razorkin Needlehead</td><td class="sb-in">+1 Vexing Bauble (taxes 0-mana spells)</td></tr>
-      </table>
-      <div class="sb-note">Damping Sphere's second clause: "If a player has cast 2 or more spells this turn, each additional spell costs {2} more." Against Storm, this makes every spell after the second cost {2} more — their ritual chain quickly runs out of mana to keep chaining. This is the most important SB card in this matchup.</div>
-    </td></tr>
+      <tr onclick="toggle('mu-affinity')"><td><strong>Izzet Affinity</strong></td><td>Disruption</td><td><span class="verdict verdict-even">Even</span></td><td>Kataki, War's Wage from SB</td></tr>
+      <tr><td colspan="4" class="matchup-detail" id="mu-affinity">
+        <p>Affinity dumps cheap artifacts and draws with Thought Monitor. Your disruption suite is relevant: <span class="c">Meddling Mage</span> naming Thought Monitor denies their draw engine. Post-board <span class="c">Kataki, War's Wage</span> forces them to pay {1} per artifact per upkeep — they can't maintain a wide artifact board under Kataki's tax. Your creatures are bigger than their individual artifacts, but their synergy can overwhelm if unchecked.</p>
+        <table class="sb-table"><thead><tr><th>Out</th><th>In</th></tr></thead><tbody>
+          <tr><td class="sb-out">−2 Thalia, Guardian of Thraben</td><td class="sb-in">+2 Kataki, War's Wage</td></tr>
+          <tr><td class="sb-out">−1 Mockingbird</td><td class="sb-in">+2 Dismember</td></tr>
+          <tr><td class="sb-out">−2 Mantis Rider</td><td class="sb-in">+1 Drannith Magistrate</td></tr>
+        </tbody></table>
+        <p class="sb-note">Thalia barely matters — their spells are mostly cheap artifacts. Kataki is your best card: it forces them to sacrifice artifacts or pay {1} each upkeep. If Kataki resolves early, their entire board collapses. Dismember kills their key threats through any toughness.</p>
+        <h3>% Point Edges</h3>
+        <p class="sb-note"><strong>+4 pts: T2 Kataki off Hierarch/Vial = game over.</strong> They typically have 3-4 artifacts in play by T2. Kataki forces them to pay {3-4} on their upkeep or sacrifice. They can't pay AND develop. If they sacrifice, your clock runs unimpeded. If they pay, they can't cast anything else.</p>
+      </td></tr>
 
-    <tr onclick="toggle('mu-living')"><td>Living End</td><td>Living End</td><td><span class="verdict verdict-even">Even</span></td><td>Even</td><td>Favor</td></tr>
-    <tr><td colspan="5" class="matchup-detail" id="mu-living">
-      <strong>The Matchup:</strong> Lavinia is your MVP here — she counters Living End when cast via Cascade (Cascade is a triggered ability, not casting for mana — actually Living End via cascade IS cast with no mana spent, so Lavinia counters it). With Lavinia in play, their cascade spells (Violent Outburst, Shardless Agent) cannot resolve Living End. Meddling Mage naming Living End is the backup.<br><br>
-      <strong>Lavinia Interaction:</strong> When Violent Outburst cascades into Living End, Living End is cast without paying its mana cost — no mana is spent. Lavinia's trigger fires: "Whenever an opponent casts a spell, if no mana was spent to cast it, counter that spell." Living End is countered. This is one of the most powerful Lavinia interactions in the format.<br><br>
-      <strong>Jirina ETB:</strong> Flashing in Jirina at instant speed via Vial exiles their graveyard. Without cycled creatures in the GY, Living End does nothing. This is your instant-speed GY hate that triggers Champion/Lieutenant simultaneously.<br><br>
-      <table class="sb-table"><tr><th>OUT</th><th>IN</th></tr>
-      <tr><td class="sb-out">−2 Razorkin Needlehead (they don't draw cards)</td><td class="sb-in">+2 Sanctifier en-Vec (protection from black, also GY exile)</td></tr>
-      <tr><td class="sb-out">−2 Adeline (too slow for the race)</td><td class="sb-in">+1 Unlicensed Hearse (continuous GY exile)</td></tr>
-      <tr><td class="sb-out">−1 Witch Enchanter</td><td class="sb-in">+2 Drannith Magistrate</td></tr>
-      </table>
-    </td></tr>
+      <tr onclick="toggle('mu-dimir')"><td><strong>Dimir Control</strong></td><td>Disruption</td><td><span class="verdict verdict-favor">Favorable</span></td><td>Cavern of Souls + Vial uncounterability</td></tr>
+      <tr><td colspan="4" class="matchup-detail" id="mu-dimir">
+        <p>Zannty went 2-1 against Dimir Control. Your creatures enter through Cavern of Souls (uncounterable) or Aether Vial (not cast). Their counterspell suite is largely irrelevant. <span class="c">Thalia</span> taxes their removal and draw spells. <span class="c">Meddling Mage</span> names their best removal. <span class="c">Coppercoat</span>'s ward {1} plus Mariner's tax means their Fatal Push costs {3}{B}. They're a control deck that can't control you.</p>
+        <table class="sb-table"><thead><tr><th>Out</th><th>In</th></tr></thead><tbody>
+          <tr><td class="sb-out">−1 Mockingbird</td><td class="sb-in">+2 Sanctifier en-Vec</td></tr>
+          <tr><td class="sb-out">−2 Mantis Rider</td><td class="sb-in">+1 Gaddock Teeg</td></tr>
+        </tbody></table>
+        <p class="sb-note">Sanctifier has protection from black — their entire removal suite misses it. Teeg stops MV 4+ noncreature spells (Cryptic Command, sweepers). Mantis Rider dies to every removal spell they run; Sanctifier doesn't die to any of them.</p>
+        <h3>% Point Edges</h3>
+        <p class="sb-note"><strong>+3 pts: Triple tax stack shuts them down.</strong> Thalia (+{1} noncreature) + Coppercoat (ward {1}) + Mariner (pay {1} to target) = their {1}{B} Fatal Push now costs {4}{B} to resolve targeting your creature. Their interaction becomes uncastable on curve.</p>
+      </td></tr>
 
-    <tr onclick="toggle('mu-yawg')"><td>Golgari Yawgmoth</td><td>Yawgmoth, Thran Physician</td><td><span class="verdict verdict-even">Even</span></td><td>Even</td><td>Favor</td></tr>
-    <tr><td colspan="5" class="matchup-detail" id="mu-yawg">
-      <strong>The Matchup:</strong> Meddling Mage naming Yawgmoth stops their activated ability (they can't cast him when Mage names him — actually Mage stops casting, not activation. Mage names the card preventing it from being cast. They might already have Yawgmoth in play). Name <em>Yawgmoth</em> before they deploy him. Jirina's sacrifice gives indestructible — relevant against Yawgmoth's sacrifice pings.<br><br>
-      <strong>Sanctifier en-Vec:</strong> Protection from black AND green. Cannot be targeted by Yawgmoth's sacrifice ability (the sacrifice pays life to Yawgmoth targeting — Sanctifier has protection from black, can't be targeted by a black permanent's ability). Also has protection from green, stopping all their green spells from targeting it. A nearly untouchable threat in this matchup.<br><br>
-      <table class="sb-table"><tr><th>OUT</th><th>IN</th></tr>
-      <tr><td class="sb-out">−2 Lavinia (stops nothing in this matchup)</td><td class="sb-in">+2 Sanctifier en-Vec (protection from black + green)</td></tr>
-      <tr><td class="sb-out">−2 Razorkin Needlehead (doesn't help)</td><td class="sb-in">+2 Drannith Magistrate (Human that triggers counters)</td></tr>
-      </table>
-    </td></tr>
+      <tr onclick="toggle('mu-etron')"><td><strong>Eldrazi Tron</strong></td><td>Aggro-First</td><td><span class="verdict verdict-even">Even</span></td><td>Meddling Mage naming All Is Dust</td></tr>
+      <tr><td colspan="4" class="matchup-detail" id="mu-etron">
+        <p>Race them. Their Tron assembly is slower than your clock if you deploy efficiently. <span class="c">Meddling Mage</span> naming All Is Dust prevents the sweeper that destroys your entire colored board. <span class="c">Thalia</span> taxes Expedition Map, All Is Dust, and Karn. Without All Is Dust, they're trying to block your 4+ creatures with one Walking Ballista or Reality Smasher at a time — and your lords make your team big enough to push through.</p>
+        <table class="sb-table"><thead><tr><th>Out</th><th>In</th></tr></thead><tbody>
+          <tr><td class="sb-out">−2 Coppercoat Vanguard</td><td class="sb-in">+2 Dismember</td></tr>
+          <tr><td class="sb-out">−1 Mockingbird</td><td class="sb-in">+2 Reflector Mage</td></tr>
+          <tr><td class="sb-out">−2 Unsettled Mariner</td><td class="sb-in">+1 Gaddock Teeg</td></tr>
+        </tbody></table>
+        <p class="sb-note">Ward and Mariner are less useful — E-Tron doesn't target your creatures much, they sweep or go over. Reflector Mage bounces Reality Smasher or a big Eldrazi and buys you a full turn of attacks. Dismember kills anything at instant speed. Teeg stops All Is Dust (MV 7) and Karn (MV 4+).</p>
+        <h3>% Point Edges</h3>
+        <p class="sb-note"><strong>+2–3 pts: Race before Tron assembles.</strong> If you can present lethal by T4, they often haven't assembled Tron yet (T1 Mine, T2 Plant, T3 Tower, T4 All Is Dust). Your clock is faster than their setup. Every turn you delay deploying threats is a turn closer to their inevitability.</p>
+      </td></tr>
 
-    <tr onclick="toggle('mu-prowess')"><td>Izzet Prowess</td><td>Cori-Steel Cutter</td><td><span class="verdict verdict-dog">Dog</span></td><td>Hard</td><td>Dog</td></tr>
-    <tr><td colspan="5" class="matchup-detail" id="mu-prowess">
-      <strong>Why It's Hard:</strong> Lava Dart hits Champion, Lieutenant, Guide of Souls, Norin for zero mana. Their burn targets your key creatures and their clock is very fast. Unsettled Mariner taxes all their targeted spells by {1} — making Lava Dart cost {1} each targeting your creatures is genuinely relevant. A resolved Mariner against Prowess slows them down meaningfully.<br><br>
-      <strong>Meddling Mage:</strong> Name <em>Cori-Steel Cutter</em> — the equipment that gives haste and creates Monk tokens for free each second spell. Without Cutter their clock is purely burn + creatures. Also consider naming <em>Lava Dart</em> if your board has many one-toughness creatures.<br><br>
-      <strong>Sanctifier en-Vec:</strong> Has protection from red. Cannot be Lava Darted. Cannot be hit by any red spell. It's a threat that survives their entire interaction suite — they have to use Swiftspear or Murktide to trade in combat.<br><br>
-      <table class="sb-table"><tr><th>OUT</th><th>IN</th></tr>
-      <tr><td class="sb-out">−2 Lavinia (doesn't help vs their burn)</td><td class="sb-in">+2 Sanctifier en-Vec (immune to red spells)</td></tr>
-      <tr><td class="sb-out">−2 Witch Enchanter (too slow)</td><td class="sb-in">+2 Reflector Mage (bounces Murktide, Swiftspear)</td></tr>
-      <tr><td class="sb-out">−1 Adeline</td><td class="sb-in">+1 Gaddock Teeg (stops Burst Lightning, Pyromancer's Ascension if relevant)</td></tr>
-      </table>
-    </td></tr>
+      <tr onclick="toggle('mu-prowess')"><td><strong>Izzet Prowess</strong></td><td>Disruption</td><td><span class="verdict verdict-dog">Unfavorable</span></td><td>Plague Engineer naming Human (they run Monastery Swiftspear)</td></tr>
+      <tr><td colspan="4" class="matchup-detail" id="mu-prowess">
+        <p>They're faster than you and their burn doubles as removal. <span class="c">Thalia</span> taxing their cantrips is your best G1 disruption — every prowess trigger that costs {1} more is a trigger that doesn't happen. <span class="c">Coppercoat</span>'s ward helps but they can usually pay {1} extra. Post-board <span class="c">Plague Engineer</span> naming a relevant type (depends on their creatures) gives your team a defensive edge. Sanctifier en-Vec blocks all their red creatures indefinitely.</p>
+        <table class="sb-table"><thead><tr><th>Out</th><th>In</th></tr></thead><tbody>
+          <tr><td class="sb-out">−4 Meddling Mage</td><td class="sb-in">+2 Plague Engineer</td></tr>
+          <tr><td class="sb-out">−1 Mockingbird</td><td class="sb-in">+2 Dismember</td></tr>
+          <tr><td class="sb-out"></td><td class="sb-in">+1 Clarion Conqueror</td></tr>
+        </tbody></table>
+        <p class="sb-note">Meddling Mage is weak — they have too many interchangeable spells to name just one. Plague Engineer giving their creatures -1/-1 blanks their 1/1 tokens and makes their base-power-1 prowess creatures fragile. Dismember kills anything at instant speed.</p>
+        <h3>% Point Edges</h3>
+        <p class="sb-note"><strong>+2 pts: Thalia on T1 off Hierarch.</strong> T1 Hierarch → T2 Thalia = their cantrips all cost {1} more starting T2. Their explosive turns depend on chaining 3-4 spells — each costing +{1} means they cast 1-2 fewer spells per turn. That's 2-4 fewer prowess triggers, which is 2-4 less damage.</p>
+      </td></tr>
+
+    </tbody>
   </table>
 </div>
 
-<!-- CH07: SIDEBOARD GUIDE -->
+<!-- ══════════════════════════════════════════════════════════ CH08 SIDEBOARD -->
 <div id="sideboard" class="section">
-  <div class="section-label">Chapter 07</div>
-  <h1>Sideboard<br>Guide</h1>
-  <p>Every sideboard card is a Human (except Damping Sphere, Unlicensed Hearse, and Vexing Bauble) and therefore triggers Champion of the Parish and Thalia's Lieutenant when it enters. Sideboard deployments are never dead — they always grow your board.</p>
+  <div class="section-label">Chapter 08</div>
+  <h1>Sideboard Guide</h1>
 
-  <div class="sb-card-guide">
-    <div class="sb-guide-row"><div class="sb-guide-name">Drannith Magistrate ×2</div><div class="sb-guide-body">{1}{W} 1/3 Human Wizard. "Opponents can't cast spells from anywhere other than their hand." Stops: Adventure creatures being cast from exile, Cascade (Living End / Violent Outburst cascade casts from the library — Magistrate stops this), Flashback spells, Rebound, cards cast from the graveyard. Against Living End: Magistrate + Lavinia is a double lock — Magistrate stops the Cascade cast entirely, Lavinia counters if it somehow sneaks through. Magistrate is also just a Human body that triggers counters. Comes in vs any cascade or GY-cast deck.</div></div>
-    <div class="sb-guide-row"><div class="sb-guide-name">Damping Sphere ×2</div><div class="sb-guide-body">{2} artifact. Two effects: (1) "Lands can only produce colorless mana." (2) "Each spell a player casts costs {2} more for each other spell they've cast this turn." Effect 1 destroys Amulet Titan's bounce land engine — their Gruul Turf and Simic Growth Chamber produce {C} instead of {G}{U}/{G}{R}. Effect 2 taxes Storm to death — after the second spell, each additional ritual/draw costs {2} more. Not a Human, can't be Vial'd, but worth the slot against the right decks. Boards in vs Amulet Titan and Ruby Storm exclusively.</div></div>
-    <div class="sb-guide-row"><div class="sb-guide-name">Dawnbringer Cleric ×2</div><div class="sb-guide-body">{1}{W} 1/3 Human Cleric. ETB: choose one — you gain 3 life, destroy target artifact, destroy target enchantment. The flexibility is the point. Against Blood Moon (enchantment): destroy it on entry. Against Urza's Saga (enchantment): destroy it. Against Amulet of Vigor (artifact): destroy it. Against Damping Sphere opposing your game (artifact): destroy it. One mana cheaper than Witch Enchanter and more flexible in mode selection. The lifegain mode is relevant vs burn-heavy boards. Vial'd at 2 counters.</div></div>
-    <div class="sb-guide-row"><div class="sb-guide-name">Gaddock Teeg ×1</div><div class="sb-guide-body">{G}{W} 2/2 Human Advisor. "Players can't cast noncreature spells with CMC 4 or greater." This single card blanks: Supreme Verdict (CMC 4), Cryptic Command (CMC 4), Solitude (CMC 5), Temporal Mastery (CMC 7), Anger of the Gods (CMC 3 — does NOT stop Anger), Wrath of God (CMC 4). Against UW Control: Teeg resolves and their entire sweeper package is offline. Note: also stops your own Adeline (CMC 3, OK) and Witch Enchanter (CMC 4 — you can't cast it with Teeg in play). Vial'd at 2 counters. One copy because it's legendary and matchup-specific.</div></div>
-    <div class="sb-guide-row"><div class="sb-guide-name">Kataki, War's Wage ×1</div><div class="sb-guide-body">{1}{W} 2/1 Human Spirit. "All artifacts have 'At the beginning of your upkeep, sacrifice this permanent unless you pay {1}.'" Against Izzet Affinity with 20+ artifacts: every upkeep costs them 15-20 mana to keep their board. They can't. Their Mox Opals, Constructs, equipment — all sacrificed unless they can somehow pay the taxes. Vial'd at 2 for instant-speed deployment on their upkeep step, before they can pay. One copy because the matchup is specific but the effect is game-ending when it lands.</div></div>
-    <div class="sb-guide-row"><div class="sb-guide-name">Reflector Mage ×2</div><div class="sb-guide-body">{1}{W}{U} 2/3 Human Wizard. ETB: return target creature an opponent controls to its owner's hand. Until their next turn, the owner can't cast spells with that name. This is tempo + lockout. Bounce Ragavan and prevent re-cast for a full turn cycle. Bounce Kappa Cannoneer. Bounce Teferi, Time Raveler. The can't-recast clause means they can't deploy the same threat next turn — they have to find a different line. Vial'd at 3 counters (takes 3 upkeeps). Three mana human so needs Vial or natural land sequencing. Boards in vs fair creature decks.</div></div>
-    <div class="sb-guide-row"><div class="sb-guide-name">Sanctifier en-Vec ×2</div><div class="sb-guide-body">{1}{W}{W} 2/2 Human Cleric. Protection from black AND protection from green. ETB: exile all cards from all graveyards. The ETB exile is relevant GY hate for any deck. Protection from red+black together: Lava Dart (red) can't target it, Galvanic Discharge (red) can't target it, Fatal Push (black) can't target it, Thoughtseize (black) can't target it. Yawgmoth's activation (black source) can't target it. A 2/2 that's essentially immune to the most played removal in Modern. Boards in vs Prowess, Boros Energy, Yawgmoth, Living End, Grixis Reanimator.</div></div>
-    <div class="sb-guide-row"><div class="sb-guide-name">Unlicensed Hearse ×1</div><div class="sb-guide-body">{2} artifact Vehicle. {X}: exile X cards from any graveyard. Crew 1: becomes an X/X vehicle until end of turn. Continuous GY exile at instant speed. Unlike one-shot hate, Hearse keeps exiling turn after turn — Living End decks can never accumulate enough creatures for a lethal Living End because Hearse removes them faster than they cycle. Not a Human, can't be Vial'd, but the crew-1 means any Human can activate it. Crew it with a Champion or Norin during combat to get a large attacker. Boards in vs Living End and any graveyard-heavy deck.</div></div>
-    <div class="sb-guide-row"><div class="sb-guide-name">Clarion Conqueror ×1</div><div class="sb-guide-body">{2}{W} 3/3 Human Knight. Whenever Clarion Conqueror or another nontoken creature you control deals combat damage to an opponent, create a 1/1 Human Soldier token. Each successful connect creates a Human token, triggering Champion and Lieutenant, creating more attackers for next turn, and growing Adeline's power. In the mirror or vs midrange where the game goes long and you're connecting with multiple creatures each attack: this creates a self-perpetuating token army. Vial'd at 3 counters. One copy as a finisher in grindy matchups.</div></div>
-    <div class="sb-guide-row"><div class="sb-guide-name">Vexing Bauble ×1</div><div class="sb-guide-body">{0} artifact. "Whenever an opponent casts a spell, if no mana was spent to cast it, that player draws a card and you draw a card." — actually: "Whenever an opponent casts a spell, if no mana was spent to cast it, counter that spell. Draw a card." Wait — Vexing Bauble's actual text: when opponent casts a spell with no mana spent, they must pay {1} or you draw a card. The tax effect slows free spells. Against Evoke Solitude (no mana): they pay {1} or you draw. Against Force of Negation (no mana on your turn): they pay {1} or you draw. Against Living End cascade: they pay {1} or you draw — taxing their kill turn. Boards in vs blue decks with Force and vs cascade.</div></div>
+  <div class="mantra">"Every sideboard card is a Human or answers a specific axis. No wasted slots."</div>
+
+  <div class="card-grid card-grid-2">
+    <div class="card">
+      <div class="card-label">Anti-Artifact</div>
+      <div class="card-title">Kataki, War's Wage ×2</div>
+      <div class="card-body">{1}{W} 2/1 Human Spirit. All artifacts have "At the beginning of your upkeep, pay {1} or sacrifice this artifact." Devastating vs Affinity — forces them to sacrifice most of their board or go mana-negative. Also hits Amulet of Vigor, Expedition Map, Sigil of Valor. Vialed in at 2. The Spirit type still triggers Champion/Lieutenant because Kataki is also a Human Spirit.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Anti-Black/Red</div>
+      <div class="card-title">Sanctifier en-Vec ×2</div>
+      <div class="card-body">{1}{W}{W} 2/2 Human Cleric. Protection from black and red. ETB: exile all cards from all graveyards with black or red color identity. Cannot be targeted, damaged, or blocked by anything black or red. Against Boros Energy, Prowess, Dimir, Living End — it's a threat they literally cannot interact with. The GY exile is bonus hate vs recursion. Triple white is castable off Cavern/Courtyard naming Human.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Anti-Tribal / Anti-Tokens</div>
+      <div class="card-title">Plague Engineer ×2</div>
+      <div class="card-body">{2}{B} 2/2 Phyrexian Carrier. Deathtouch. As it enters, choose a creature type — creatures of that type opponents control get -1/-1. NOT a Human (Carrier type) — doesn't trigger Champion/Lieutenant. But the effect is devastating: name Goblin vs Goblins, Elemental vs Elementals, Construct vs Affinity tokens. Against token strategies the -1/-1 blanket wipes their 1/1s immediately.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Universal Removal</div>
+      <div class="card-title">Dismember ×2</div>
+      <div class="card-body">{1}{B/P}{B/P} — pay 4 life to cast for {1}. Target creature gets -5/-5 until EOT. Kills anything with 5 or less toughness at instant speed for 1 mana + 4 life. The life payment is real — against aggro it's dangerous. But against combo and midrange where you need to remove a key blocker or threat, Dismember is the most efficient removal in the format. Castable off any mana source.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Tempo + ETB Denial</div>
+      <div class="card-title">Reflector Mage ×2</div>
+      <div class="card-body">{1}{W}{U} 2/3 Human Wizard. ETB: return target creature to owner's hand — its owner can't cast it again until your next turn. The "can't recast" clause is the key — it's not a bounce, it's a full-turn lockout. Against expensive threats (Solitude, Reality Smasher, Primeval Titan): bounce + deny recast = 2 turns of tempo advantage. Vial at 3 for instant-speed deployment. Human — triggers everything.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Anti-Free Spells</div>
+      <div class="card-title">Lavinia, Azorius Renegade ×1</div>
+      <div class="card-body">{W}{U} 2/2 Human Soldier. Opponents can't cast noncreature spells with MV > lands they control. Whenever an opponent casts a spell with no mana spent, counter it. Blanket-counters: Force of Negation (free), Evoke Solitude/Grief (free), Living End via cascade (free), Manamorphose (net free). Also limits big spells before they have enough lands. Devastating against specific matchups.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Anti-Noncreature</div>
+      <div class="card-title">Gaddock Teeg ×1</div>
+      <div class="card-body">{G}{W} 2/2 Kithkin Advisor. Noncreature spells with MV 4+ can't be cast. Noncreature spells with {X} in mana cost can't be cast. Stops: All Is Dust, Wrath of God, Supreme Verdict, Past in Flames, Grapeshot (X-spell), Karn, any big planeswalker. Not a Human (Kithkin) — doesn't trigger Champion/Lieutenant. But the static effect is so powerful against the right decks that it's worth the non-synergy slot.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Anti-Cast-From-Exile</div>
+      <div class="card-title">Drannith Magistrate ×1</div>
+      <div class="card-body">{1}{W} 1/3 Human Wizard. Your opponents can't cast spells from anywhere other than their hands. Shuts down: cascade (Living End, Rhinos), flashback (Past in Flames), escape, foretell, adventure (from exile), Wish effects. Human Wizard — triggers Champion/Lieutenant and gets Coppercoat ward. The 1/3 body survives most damage-based removal.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Anti-Activated Abilities</div>
+      <div class="card-title">Clarion Conqueror ×1</div>
+      <div class="card-body">{2}{W} 3/3 Dragon. Flying. Activated abilities of artifacts, creatures, and planeswalkers can't be activated. NOT a Human — doesn't trigger Champion/Lieutenant. But shuts down: Aether Vial (in mirrors), Walking Ballista, Agatha's Soul Cauldron, Karn's Wish, equipment activations. The 3/3 flying body is a real clock. Castable off generic mana or Vial at 3. A narrow but devastating silver bullet.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Anti-Free Spells (Artifact)</div>
+      <div class="card-title">Vexing Bauble ×1</div>
+      <div class="card-body">{1} Artifact. Whenever a player casts a spell with no mana spent, counter it. {1}, {T}, Sacrifice: draw a card. Redundancy with Lavinia on a different card type — Lavinia is a creature (removable), Bauble is an artifact (harder to interact with for many decks). The sacrifice-to-draw mode means it's never dead: against non-free-spell decks, cycle it for a card. Perfect for Living End, Neoform, Storm.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Anti-Graveyard</div>
+      <div class="card-title">Grafdigger's Cage ×1</div>
+      <div class="card-body">{1} Artifact. Creature cards in graveyards and libraries can't enter the battlefield. Players can't cast spells from graveyards or libraries. Stops: Living End, Persist, Reanimator, Collected Company (from library), Neoform (from library). Also stops Past in Flames flashback. At {1} it deploys T1 before their combo comes online. Unlike Sanctifier which exiles once, Cage is a permanent lock.</div>
+    </div>
   </div>
 </div>
 
-<!-- CH08: HEURISTICS -->
+<!-- ══════════════════════════════════════════════════════════ CH09 HEURISTICS -->
 <div id="heuristics" class="section">
-  <div class="section-label">Chapter 08</div>
+  <div class="section-label">Chapter 09</div>
   <h1>Heuristics</h1>
 
   <ol class="heuristic-list">
-    <li><div class="heuristic-text"><strong>Aether Vial turn 1 takes priority over everything.</strong> <span>If your opening hand has Vial and any other play, Vial goes down first. The compounding value of Vial — uncounterable deployments, instant-speed threats, Satoru draws — outweighs any single creature you could cast instead. The only exception: if the game is clearly a turn-3 race and you need to deploy an answer immediately.</span></div></li>
-    <li><div class="heuristic-text"><strong>Know your Meddling Mage names before round 1.</strong> <span>Every matchup has a correct name. The list: vs Amulet Titan → Primeval Titan. vs Ruby Storm → Past in Flames. vs Living End → Living End (or Violent Outburst). vs UW Control → Supreme Verdict. vs Boros Energy → Galvanic Discharge. vs Prowess → Cori-Steel Cutter. vs Yawgmoth → Yawgmoth, Thran Physician. Study these between rounds. Misnamed Mage is a wasted two-drop.</span></div></li>
-    <li><div class="heuristic-text"><strong>Hold Jirina's sacrifice ability until they cast a sweeper.</strong> <span>The temptation is to sacrifice Jirina early for the ETB GY exile value, but her sacrifice ability — giving all your Humans hexproof and indestructible — is one of the most powerful responses to sweepers in Modern. A single Jirina can make their Supreme Verdict a complete blank. Don't burn this proactively; wait for the sweeper.</span></div></li>
-    <li><div class="heuristic-text"><strong>Lavinia counters Living End via Cascade — deploy her before their kill turn.</strong> <span>When Violent Outburst cascades into Living End, Living End is cast without spending mana. Lavinia's trigger fires and counters it. This is only active if Lavinia is in play before they cascade. Flash her in via Vial at their end step before their turn 3 or whenever you expect cascade. One Lavinia in play makes this matchup dramatically swing in your favor.</span></div></li>
-    <li><div class="heuristic-text"><strong>Vial at end of their turn, not your main phase.</strong> <span>Default to flashing in threats at their end step. This maximizes the pressure window — the creature attacks the turn it enters (your turn is next), and they can't react between your deployment and your attack. Main phase deployment is correct when the ETB trigger is time-sensitive (Jirina GY exile, Reflector Mage bounce before combat).</span></div></li>
-    <li><div class="heuristic-text"><strong>Norin the Wary triggers on cast — counters still trigger his loop.</strong> <span>If they counter your spell, Norin already exiled when you cast it. He returns at end step regardless of whether the spell resolved. Their counterspell does not stop the Norin loop. Never hesitate to cast spells into countermagic when Norin is in play — you're getting free pump triggers either way.</span></div></li>
-    <li><div class="heuristic-text"><strong>Ancient Ziggurat and Unclaimed Territory can't pay for Vial activations.</strong> <span>These lands produce mana only for casting creature spells. Aether Vial's activated ability is not casting a creature — it's putting one onto the battlefield. Keep at least one Plains or Island available in your land base for non-creature costs. Missing a Vial activation because you tapped your basics for spells is a common mistake.</span></div></li>
-    <li><div class="heuristic-text"><strong>Sylvan Safekeeper protects your key threats — use it proactively in removal-heavy matchups.</strong> <span>Sacrifice a land: target creature you control gains shroud until end of turn. In matchups where Path to Exile or Fatal Push is the primary answer to your Champions, using Safekeeper to blank their removal on your most important creature is correct even at the cost of a land. A 6/6 Champion surviving costs one land — a killed Champion costs the whole game.</span></div></li>
-    <li><div class="heuristic-text"><strong>Satoru draws on every Vial activation — deploy Satoru as early as possible in grindy matchups.</strong> <span>Against decks with lots of removal, Satoru + Vial means you never run out of cards. Every Vial deployment replaces itself. The earlier Satoru enters, the more card draw you accumulate over the game. If you're in a matchup where the game goes beyond turn 5, Satoru is often more valuable than the creature you could deploy instead.</span></div></li>
-    <li><div class="heuristic-text"><strong>Guide of Souls converts energy into flying on your biggest threat.</strong> <span>Energy accumulates passively from every creature entering. With Norin's constant triggers and a wide board, you often have 6+ energy by turn 4 without spending any. At 3 energy during your attack step: put a +1/+1 counter and flying counter on your largest attacker — Champion or Lieutenant becomes a 7/7 flier. This closes games that were otherwise stalled behind ground blockers.</span></div></li>
-    <li><div class="heuristic-text"><strong>Adeline's power = number of creatures you control — deploy her with a board, not into an empty field.</strong> <span>Adeline as a 1/4 into an empty battlefield is near-useless. Adeline as a 5/4 into a board of four Humans creates five attacking tokens on her attack, each triggering Champion and Lieutenant. Build the board first, then deploy Adeline as a board-widening finisher. The tokens she creates are Humans — they feed the entire engine.</span></div></li>
-    <li><div class="heuristic-text"><strong>Cavern of Souls + Vial = two independent routes to uncounterable deployment.</strong> <span>Use both simultaneously in blue matchups. Cavern makes casting uncounterable. Vial makes entering the battlefield without casting. Against a player holding Force of Negation, Counterspell, and Mana Leak: neither Cavern-cast nor Vial-deployed creatures can be stopped. They will waste countermagic on nothing if you deploy via Vial while they expect a Cavern cast.</span></div></li>
-    <li><div class="heuristic-text"><strong>Damping Sphere in the SB is not just for Storm — it also destroys Amulet Titan.</strong> <span>Damping Sphere makes all lands produce only colorless mana. Amulet Titan's entire combo requires colored mana from bounce lands — Simic Growth Chamber produces {G}{U}, Gruul Turf produces {R}{G}. Under Damping Sphere these produce {C}. Amulet of Vigor's untap trigger still fires but the colored mana requirement means their combo produces nothing useful. Board in vs Titan and vs Storm.</span></div></li>
-    <li><div class="heuristic-text"><strong>Reflector Mage from the SB is Vial'd at 3 — plan your Vial count when you know the matchup.</strong> <span>Reflector Mage costs {1}{W}{U} = CMC 3. Vial needs to be at 3 counters to deploy it. That takes 3 upkeep triggers from when Vial entered. If you know you're bringing in Reflector Mage for game 2, consider ticking Vial to 3 instead of keeping it at 2. The decision point: will you need more 2-drops (keep at 2) or do you need Mage deployed this game (tick to 3)?</span></div></li>
-    <li><div class="heuristic-text"><strong>Witch Enchanter is your maindeck answer to Blood Moon — protect her or deploy her immediately.</strong> <span>Two Witch Enchanters main means you have access to instant-speed Blood Moon destruction via Vial at 4. Against decks that might have Blood Moon (Boros Energy, any red deck sideboarding it), tick Vial to 4 deliberately in the early turns. The moment they deploy Blood Moon: tap Vial to flash in Witch Enchanter, destroy it before your colored lands become dead. She's your insurance policy.</span></div></li>
-    <li><div class="heuristic-text"><strong>Gaddock Teeg from the SB also stops YOUR Witch Enchanter — don't deploy both.</strong> <span>Gaddock Teeg prevents casting spells with CMC 4+. Witch Enchanter costs CMC 4. If you deploy Teeg vs Control to stop Supreme Verdict, you also lose the ability to cast Witch Enchanter from hand. Vial can still deploy Witch Enchanter (Vial bypasses casting restrictions). But plan around this interaction — don't strand Witch Enchanters in hand with Teeg in play unless Vial is at 4.</span></div></li>
+    <li><div class="heuristic-num">01</div><div class="heuristic-body"><strong>Vial stays at 2 unless you have a specific reason to tick to 3.</strong> 20 of your 36 creatures cost 2. Tick to 3 only when you have Mantis Rider, Adeline, or Reflector Mage in hand and need instant-speed deployment. Most games, Vial at 2 is your sweet spot for the entire game.</div></li>
+    <li><div class="heuristic-num">02</div><div class="heuristic-body"><strong>Name their best card with Meddling Mage, not their most common card.</strong> Name the spell that beats you, not the spell they cast most. Against Storm: name Past in Flames (enables the whole combo), not Desperate Ritual (they have redundant rituals). Against Boros: name Galvanic Discharge (kills your board), not Lightning Bolt (they can play around it).</div></li>
+    <li><div class="heuristic-num">03</div><div class="heuristic-body"><strong>Noble Hierarch's exalted triggers on EACH creature attacking alone.</strong> If you attack with only Champion and nothing else, Champion gets +1/+1 from Hierarch's exalted. If you have 2 Hierarchs and attack with one creature, it gets +2/+2. But exalted only triggers when exactly one creature attacks — if you attack with Champion AND Lieutenant, nobody gets exalted. Early game: attack with one creature + exalted for maximum damage. Late game: swing wide.</div></li>
+    <li><div class="heuristic-num">04</div><div class="heuristic-body"><strong>Jirina's sacrifice is a one-shot — save it for the right moment.</strong> Don't sacrifice Jirina preemptively. Wait until they cast the sweeper or aim lethal removal at your key creature, THEN sacrifice in response. Hexproof + indestructible until EOT protects everything. If they don't have a sweeper, Jirina is a 2/2 that pumps Champion and exiles a graveyard on entry. She's never wasted.</div></li>
+    <li><div class="heuristic-num">05</div><div class="heuristic-body"><strong>Coppercoat Vanguard does NOT give itself ward — only "each OTHER Human."</strong> Vanguard is your most removal-vulnerable creature precisely because it protects everything except itself. Sequence accordingly: deploy Vanguard second (after your T1 play) so they have to choose between removing your 1-drop or Vanguard. If they remove Vanguard, your 1-drop survived. If they leave Vanguard, your entire team now has ward.</div></li>
+    <li><div class="heuristic-num">06</div><div class="heuristic-body"><strong>Mockingbird at X=2 copies their best creature — or your best creature.</strong> Mockingbird copies any creature with MV ≤ X. At X=2 off Cavern of Souls: copy your own Thalia's Lieutenant (enters, pumps everything again, gets a counter from each Human in play). Or copy their Stoneforge Mystic, Orcish Bowmasters, or any high-value 2-drop. The Bird type is ADDITIONAL — it's a Human Bird if copying a Human. Still triggers Champion.</div></li>
+    <li><div class="heuristic-num">07</div><div class="heuristic-body"><strong>Witch Enchanter is a land on T1, a creature on T4.</strong> If your opener has Witch Enchanter + no other white source: play Meadow (the land back) as your T1 land, pay 3 life if you need it untapped. If you already have white mana from Cavern/Plains/Courtyard: keep Enchanter in hand for T4 as artifact/enchantment removal. A 2/2 Human that destroys Blood Moon on entry is your primary answer to the card that otherwise ends the game.</div></li>
+    <li><div class="heuristic-num">08</div><div class="heuristic-body"><strong>Guide of Souls energy is best spent making a LARGE creature fly, not a small one.</strong> Pay {E}{E}{E}: two +1/+1 counters + flying on target attacker. Target your 5/5 Champion, not your 1/1 Guide. A 7/7 flying Champion is game-ending; a 3/3 flying Guide is a minor annoyance. Exception: if their only blocker is a ground creature and Guide is your only attacker, the flying matters more than the counters.</div></li>
+    <li><div class="heuristic-num">09</div><div class="heuristic-body"><strong>Thalia and Gaddock Teeg tax YOUR noncreature spells too.</strong> Thalia makes your Dismember cost {2} instead of {1} (plus Phyrexian mana). Teeg prevents you from casting Witch Enchanter's front face (MV 4). Be aware of your own taxes before deploying — don't lock yourself out of your own sideboard cards. Sequence: cast Dismember BEFORE deploying Thalia if you need both in the same turn.</div></li>
+    <li><div class="heuristic-num">10</div><div class="heuristic-body"><strong>Aether Vial at their end step, every time.</strong> Holding Vial activations for their end step is almost always correct. It gives you maximum information (you saw their whole turn), denies them the chance to respond during your main phase, and sets up your next turn's attack with fresh pump triggers. The only exception: Vial in a blocker during their attack step when you need to survive.</div></li>
+    <li><div class="heuristic-num">11</div><div class="heuristic-body"><strong>Mantis Rider has haste — deploy it the turn you need to close.</strong> Don't play Mantis Rider into open removal mana. Hold it until the turn where 3 flying damage (+ exalted if attacking alone) represents lethal or near-lethal. The haste means they can't play around it — it deals damage the turn it enters. A surprise Mantis Rider off the top on T5 after they've stabilized at 4 life is the reason this card is in the deck.</div></li>
+    <li><div class="heuristic-num">12</div><div class="heuristic-body"><strong>Against Blood Moon: fetch your basic Plains and Island IMMEDIATELY.</strong> If you suspect Blood Moon (Prowess, Storm, any red deck): lead with your basic lands T1-T2. Seachrome Coast on T1 gives you both colors untapped. Plains T2 ensures {W} for Thalia/Vanguard. Witch Enchanter's back face (Meadow) produces {W}. A resolved Blood Moon with only Ziggurat/Courtyard/Territory in play turns all your lands into Mountains that can't cast Humans.</div></li>
   </ol>
 </div>
 
-<!-- CH09: TUNING -->
+<!-- ══════════════════════════════════════════════════════════ CH10 TUNING -->
 <div id="tuning" class="section">
-  <div class="section-label">Chapter 09</div>
-  <h1>Tuning<br>Notes</h1>
-  <p>The core is fixed: 4 Vial, 4 Champion, 4 Lieutenant, 4 Guide of Souls, 4 Cavern of Souls, 4 Unclaimed Territory, 4 Secluded Courtyard. The flex slots are everything else — tune them based on your meta.</p>
+  <div class="section-label">Chapter 10</div>
+  <h1>Tuning</h1>
 
+  <h2>Classic Shell vs Aang Shell</h2>
+  <p>Two distinct builds are currently putting up results. Your Classic Shell prioritizes acceleration (Hierarch), resilience (Coppercoat ward), and proven disruption (Thalia, Mantis Rider). Zannty's Aang Shell trades that for flash threats (Aang, Swift Savior), hexproof protection (Sylvan Safekeeper), and new tech (Mai, Makdee and Itla). Here's when to run which:</p>
+
+  <div class="card-grid card-grid-2">
+    <div class="card">
+      <div class="card-label">Your Build — Classic Shell</div>
+      <div class="card-title">When the Meta Is Spell-Heavy</div>
+      <div class="card-body"><strong>Run this when:</strong> Storm, Living End, Jeskai Blink, and Dimir Control are prevalent. Noble Hierarch accelerates you past their setup turns. Thalia taxes their noncreature-heavy decks. Coppercoat's ward blanket makes their 1-for-1 removal inefficient. Mantis Rider punishes slow starts. The classic shell excels when the opponent's game plan revolves around noncreature spells you can tax and name with Mage.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Zannty's Build — Aang Shell</div>
+      <div class="card-title">When the Meta Is Creature-Heavy</div>
+      <div class="card-body"><strong>Run this when:</strong> Boros Energy, Prowess, and creature midrange dominate. Aang, Swift Savior ({1}{U/W} 2/3 flash flying, ETB airbend bounce a creature/spell) provides instant-speed interaction + evasion that Mantis Rider can't match. Sylvan Safekeeper ({G} 1/1, sacrifice a land: target creature gains shroud) protects your key threats at the cost of lands. Mai, Scornful Striker adds aggressive 2-drop pressure. This shell trades disruption for protection and flash tricks.</div>
+    </div>
+  </div>
+
+  <h2>Flex Slot Analysis</h2>
   <div class="tuning-grid">
-    <div class="tuning-card">
-      <div class="tuning-label">If This Rises</div>
-      <div class="tuning-condition">Blood Moon Heavy Field</div>
-      <div class="tuning-up">▲ Witch Enchanter main: up to 3 (instant-speed Moon answer)</div>
-      <div class="tuning-up">▲ Dawnbringer Cleric SB: up to 3 (Moon + other enchantments)</div>
-      <div class="tuning-down">▼ Razorkin Needlehead main: down to 2 (less needed)</div>
-      <div class="tuning-down">▼ Ancient Ziggurat: consider swapping 1 for Plains (basics survive Moon)</div>
+    <div class="tuning-cell">
+      <div class="tuning-cell-label">Slot: Mockingbird ×1</div>
+      <div class="tuning-cell-title">The Swiss Army Knife</div>
+      <div class="tuning-cell-body">Currently a 1-of flex. At X=2 copies any 2-drop on the field (yours or theirs). Upgrade to 2 copies if the meta has high-value 2-drops you want to clone (Stoneforge, Bowmasters). Cut entirely for a 3rd Jirina if sweepers are everywhere. The X-cost flexibility is what makes it worth the slot — it's never truly dead.</div>
     </div>
-    <div class="tuning-card">
-      <div class="tuning-label">If This Rises</div>
-      <div class="tuning-condition">Combo / Storm Heavy</div>
-      <div class="tuning-up">▲ Lavinia main: up to 3 (counters free spells and cascade)</div>
-      <div class="tuning-up">▲ Damping Sphere SB: up to 3 (strongest Storm hate in the 75)</div>
-      <div class="tuning-down">▼ Adeline main: down to 1 (wrong speed vs fast combo)</div>
-      <div class="tuning-down">▼ Clarion Conqueror SB: down to 0 (wrong matchup)</div>
+    <div class="tuning-cell">
+      <div class="tuning-cell-label">Slot: Thalia ×2</div>
+      <div class="tuning-cell-title">Meta-Dependent Tax</div>
+      <div class="tuning-cell-body">Thalia is incredible against spell-heavy decks (Storm, Living End, Control) but mediocre against creature decks (Boros Energy, Prowess whose spells cost 1 anyway). If your meta is 60%+ creature decks, cut to 0 and add 2 more aggressive creatures (3rd Mantis Rider, Phantasmal Image). If Storm/Living End are popular, go to 3 copies.</div>
     </div>
-    <div class="tuning-card">
-      <div class="tuning-label">If This Rises</div>
-      <div class="tuning-condition">Control / Counterspell Heavy</div>
-      <div class="tuning-up">▲ Gaddock Teeg SB: up to 2 (stops Supreme Verdict, Cryptic)</div>
-      <div class="tuning-up">▲ Norin main: stays at 3 (uncounterable, triggers Satoru)</div>
-      <div class="tuning-down">▼ Witch Enchanter main: down to 1 (less removal needed)</div>
-      <div class="tuning-down">▼ Damping Sphere SB: down to 1 (less needed vs blue)</div>
+    <div class="tuning-cell">
+      <div class="tuning-cell-label">Slot: Mantis Rider ×2</div>
+      <div class="tuning-cell-title">The Haste Closer</div>
+      <div class="tuning-cell-body">3/3 flying vigilance haste for {U}{R}{W}. The 3-mana slot is tight — you're competing with Adeline and Witch Enchanter. If the meta has lots of ground stalls, Rider's flying closes games nothing else can. If the meta is all go-wide aggro where flying doesn't matter, trim to 1 or cut for a 3rd Adeline (who generates tokens on attack).</div>
     </div>
-    <div class="tuning-card">
-      <div class="tuning-label">If This Rises</div>
-      <div class="tuning-condition">Graveyard Decks</div>
-      <div class="tuning-up">▲ Jirina main: stays at 3 (ETB exiles GY and triggers counters)</div>
-      <div class="tuning-up">▲ Sanctifier en-Vec SB: up to 3 (ETB exiles all GYs)</div>
-      <div class="tuning-down">▼ Razorkin Needlehead main: down to 2 (less relevant)</div>
-      <div class="tuning-down">▼ Gaddock Teeg SB: down to 0 (not needed vs GY decks)</div>
+  </div>
+
+  <h2>Manabase Tuning</h2>
+  <div class="card-grid card-grid-2">
+    <div class="card">
+      <div class="card-label">The Blood Moon Question</div>
+      <div class="card-title">2 Witch Enchanter Is Non-Negotiable</div>
+      <div class="card-body">Without Witch Enchanter, a resolved Blood Moon turns your entire manabase into Mountains that can't cast Humans (Ziggurat, Courtyard, Territory, Cavern all lose their abilities under Moon). 2 copies of Enchanter means you see one roughly 25% of games. The back face being a Plains-type land means you can play it as mana T1 and still have the Enchanter option later — never cut below 2.</div>
     </div>
-    <div class="tuning-card">
-      <div class="tuning-label">If This Rises</div>
-      <div class="tuning-condition">Aggro Mirrors</div>
-      <div class="tuning-up">▲ Reflector Mage SB: up to 3 (bounces their key threat + no recast)</div>
-      <div class="tuning-up">▲ Unsettled Mariner main: up to 3 (taxes all their removal)</div>
-      <div class="tuning-down">▼ Lavinia main: down to 1 (they have no free spells)</div>
-      <div class="tuning-down">▼ Clarion Conqueror SB: down to 0 (wrong speed for mirrors)</div>
-    </div>
-    <div class="tuning-card">
-      <div class="tuning-label">Currently Testing</div>
-      <div class="tuning-condition">Flex Slots to Watch</div>
-      <div class="tuning-up">▲ Thalia, Guardian of Thraben main — taxes all non-creature spells {1} (significant vs Control/Combo), replaces 1 Razorkin</div>
-      <div class="tuning-up">▲ Mayor of Avabruck — lord effect + token generation, scales with board width</div>
-      <div class="tuning-down">▼ Razorkin Needlehead — situational (draw-heavy matchups only), easiest cut</div>
-      <div class="tuning-down">▼ Clarion Conqueror SB — powerful but narrow, cut first when adjusting the 15</div>
+    <div class="card">
+      <div class="card-label">Basic Count</div>
+      <div class="card-title">2 Plains + 1 Island Minimum</div>
+      <div class="card-body">Your basics survive Blood Moon. 2 Plains covers your white-heavy creature base (Champion, Lieutenant, Vanguard, Guide, Thalia all have {W}). The single Island enables Meddling Mage ({W}{U}), Mariner ({W}{U}), Mockingbird ({X}{U}). Seachrome Coast adds a 4th "real" dual land. Don't go below 3 fetchable basics — Blood Moon and Path to Exile both punish greedy manabases.</div>
     </div>
   </div>
 </div>
 
-<!-- CH10: PREP SHEET -->
+<!-- ══════════════════════════════════════════════════════════ CH11 PREP -->
 <div id="prep" class="section">
-  <div class="section-label">Chapter 10</div>
-  <h1>Prep<br>Sheet</h1>
-  <button class="print-btn" onclick="window.print()">⎙ Print This Sheet</button>
+  <div class="section-label">Chapter 11</div>
+  <h1>Prep Sheet</h1>
+  <button class="print-btn" onclick="window.print()">Print This Sheet</button>
 
-  <h3>Meddling Mage Name Reference</h3>
-  <div class="card-grid card-grid-2" style="margin-bottom:40px;">
-    <div class="card">
-      <div class="card-label">Primary Names by Matchup</div>
-      <div class="card-title">Commit These to Memory</div>
-      <div class="card-body">
-        <strong>Amulet Titan:</strong> Primeval Titan (backup: Summoner's Pact)<br>
-        <strong>Ruby Storm:</strong> Past in Flames (backup: Grapeshot)<br>
-        <strong>Living End:</strong> Living End (backup: Violent Outburst)<br>
-        <strong>UW Control:</strong> Supreme Verdict (backup: Counterspell)<br>
-        <strong>Boros Energy:</strong> Galvanic Discharge (backup: Goblin Bombardment)<br>
-        <strong>Prowess:</strong> Cori-Steel Cutter (backup: Lava Dart)<br>
-        <strong>Yawgmoth:</strong> Yawgmoth, Thran Physician<br>
-        <strong>Affinity:</strong> Kappa Cannoneer<br>
-        <strong>Neoform:</strong> Neoform
-      </div>
-    </div>
-    <div class="card">
-      <div class="card-label">Key Lavinia Interactions</div>
-      <div class="card-title">Free Spells She Counters</div>
-      <div class="card-body">
-        <strong>✓ Counters:</strong> Living End via Cascade, Force of Negation, Evoke Solitude ({0} mana), Summoner's Pact ({0}), suspend spells cast for free, any spell with {0} total mana spent<br><br>
-        <strong>✗ Does NOT Counter:</strong> Evoke Grief (you pay life + 1G for the spell), spells cast with alternative costs that still spend mana, Ragavan's gold (that's mana production, not casting)
-      </div>
-    </div>
-  </div>
+  <div class="print-section">
+    <div class="print-title">5-Color Humans</div>
+    <div class="print-sub">Classic Shell · Modern April 2026 · Team Resolve</div>
 
-  <h3>Tournament Day Quick Reference</h3>
-  <div class="print-grid">
-    <div class="print-mu">
-      <div class="print-mu-name">Boros Energy</div>
-      <div class="print-mu-role">Dog G1 · Sanctifier key</div>
-      <div class="print-cols">
-        <div><div class="print-col-label">In</div>
-          <div class="print-row"><span>Reflector Mage</span><span class="print-qty">+2</span></div>
-          <div class="print-row"><span>Sanctifier en-Vec</span><span class="print-qty">+2</span></div>
-          <div class="print-row"><span>Dawnbringer Cleric</span><span class="print-qty">+1</span></div>
+    <div class="print-grid">
+      <div>
+        <div class="print-col-title">Aggro Matchups</div>
+        <div class="print-mu">
+          <div class="print-mu-name">Boros Energy</div>
+          <div class="print-mu-role">Unfavorable · Grind Mode</div>
+          <div class="print-cols">
+            <div><div class="print-col-label">Out</div>
+              <div class="print-row"><span>Thalia ×2</span><span class="print-qty">−2</span></div>
+              <div class="print-row"><span>Mockingbird</span><span class="print-qty">−1</span></div>
+              <div class="print-row"><span>Mantis Rider ×2</span><span class="print-qty">−2</span></div>
+            </div>
+            <div><div class="print-col-label">In</div>
+              <div class="print-row"><span>Dismember ×2</span><span class="print-qty">+2</span></div>
+              <div class="print-row"><span>Sanctifier en-Vec ×2</span><span class="print-qty">+2</span></div>
+              <div class="print-row"><span>Clarion Conqueror</span><span class="print-qty">+1</span></div>
+            </div>
+          </div>
+          <div class="print-needle">Sanctifier = unanswerable threat · Coppercoat T2 before they remove T1</div>
         </div>
-        <div><div class="print-col-label">Out</div>
-          <div class="print-row"><span>Lavinia</span><span class="print-qty">&minus;2</span></div>
-          <div class="print-row"><span>Witch Enchanter</span><span class="print-qty">&minus;2</span></div>
-          <div class="print-row"><span>Razorkin</span><span class="print-qty">&minus;1</span></div>
-        </div>
-      </div>
-      <div class="print-needle">MAGE: Galvanic Discharge | Sanctifier immune to red</div>
-    </div>
-    <div class="print-mu">
-      <div class="print-mu-name">UW Control</div>
-      <div class="print-mu-role">Even · Jirina + Teeg key</div>
-      <div class="print-cols">
-        <div><div class="print-col-label">In</div>
-          <div class="print-row"><span>Gaddock Teeg</span><span class="print-qty">+1</span></div>
-          <div class="print-row"><span>Reflector Mage</span><span class="print-qty">+2</span></div>
-          <div class="print-row"><span>Clarion Conqueror</span><span class="print-qty">+1</span></div>
-        </div>
-        <div><div class="print-col-label">Out</div>
-          <div class="print-row"><span>Razorkin x2</span><span class="print-qty">&minus;2</span></div>
-          <div class="print-row"><span>Witch Enchanter</span><span class="print-qty">&minus;2</span></div>
-        </div>
-      </div>
-      <div class="print-needle">MAGE: Supreme Verdict | Vial beats counters</div>
-    </div>
-    <div class="print-mu">
-      <div class="print-mu-name">Amulet Titan</div>
-      <div class="print-mu-role">Favorable · Lavinia + Sphere</div>
-      <div class="print-cols">
-        <div><div class="print-col-label">In</div>
-          <div class="print-row"><span>Drannith Magistrate</span><span class="print-qty">+2</span></div>
-          <div class="print-row"><span>Damping Sphere</span><span class="print-qty">+2</span></div>
-        </div>
-        <div><div class="print-col-label">Out</div>
-          <div class="print-row"><span>Witch Enchanter</span><span class="print-qty">&minus;2</span></div>
-          <div class="print-row"><span>Razorkin</span><span class="print-qty">&minus;2</span></div>
+        <div class="print-mu">
+          <div class="print-mu-name">Izzet Prowess</div>
+          <div class="print-mu-role">Unfavorable · Disruption</div>
+          <div class="print-cols">
+            <div><div class="print-col-label">Out</div>
+              <div class="print-row"><span>Meddling Mage ×4</span><span class="print-qty">−4</span></div>
+              <div class="print-row"><span>Mockingbird</span><span class="print-qty">−1</span></div>
+            </div>
+            <div><div class="print-col-label">In</div>
+              <div class="print-row"><span>Plague Engineer ×2</span><span class="print-qty">+2</span></div>
+              <div class="print-row"><span>Dismember ×2</span><span class="print-qty">+2</span></div>
+              <div class="print-row"><span>Clarion Conqueror</span><span class="print-qty">+1</span></div>
+            </div>
+          </div>
+          <div class="print-needle">Thalia T1 off Hierarch = cantrips cost +{1} · Plague Engineer -1/-1 blanks tokens</div>
         </div>
       </div>
-      <div class="print-needle">MAGE: Primeval Titan | Lavinia stops Pact</div>
-    </div>
-    <div class="print-mu">
-      <div class="print-mu-name">Ruby Storm</div>
-      <div class="print-mu-role">Dog · Lock them out</div>
-      <div class="print-cols">
-        <div><div class="print-col-label">In</div>
-          <div class="print-row"><span>Drannith Magistrate</span><span class="print-qty">+2</span></div>
-          <div class="print-row"><span>Damping Sphere</span><span class="print-qty">+2</span></div>
-          <div class="print-row"><span>Vexing Bauble</span><span class="print-qty">+1</span></div>
+
+      <div>
+        <div class="print-col-title">Combo Matchups</div>
+        <div class="print-mu">
+          <div class="print-mu-name">Ruby Storm</div>
+          <div class="print-mu-role">Favorable · Aggro-First</div>
+          <div class="print-cols">
+            <div><div class="print-col-label">Out</div>
+              <div class="print-row"><span>Adeline ×2</span><span class="print-qty">−2</span></div>
+              <div class="print-row"><span>Jirina ×2</span><span class="print-qty">−2</span></div>
+              <div class="print-row"><span>Mockingbird</span><span class="print-qty">−1</span></div>
+            </div>
+            <div><div class="print-col-label">In</div>
+              <div class="print-row"><span>Gaddock Teeg</span><span class="print-qty">+1</span></div>
+              <div class="print-row"><span>Lavinia</span><span class="print-qty">+1</span></div>
+              <div class="print-row"><span>Vexing Bauble</span><span class="print-qty">+1</span></div>
+            </div>
+          </div>
+          <div class="print-needle">Thalia + Teeg + Mage = triple lock · Name Past in Flames</div>
         </div>
-        <div><div class="print-col-label">Out</div>
-          <div class="print-row"><span>Witch Enchanter</span><span class="print-qty">&minus;2</span></div>
-          <div class="print-row"><span>Adeline</span><span class="print-qty">&minus;2</span></div>
-          <div class="print-row"><span>Razorkin</span><span class="print-qty">&minus;1</span></div>
-        </div>
-      </div>
-      <div class="print-needle">MAGE: Past in Flames | Sphere taxes chain</div>
-    </div>
-    <div class="print-mu">
-      <div class="print-mu-name">Living End</div>
-      <div class="print-mu-role">Even · Lavinia hard-counters</div>
-      <div class="print-cols">
-        <div><div class="print-col-label">In</div>
-          <div class="print-row"><span>Sanctifier en-Vec</span><span class="print-qty">+2</span></div>
-          <div class="print-row"><span>Unlicensed Hearse</span><span class="print-qty">+1</span></div>
-          <div class="print-row"><span>Drannith Magistrate</span><span class="print-qty">+2</span></div>
-        </div>
-        <div><div class="print-col-label">Out</div>
-          <div class="print-row"><span>Razorkin</span><span class="print-qty">&minus;2</span></div>
-          <div class="print-row"><span>Adeline</span><span class="print-qty">&minus;2</span></div>
-          <div class="print-row"><span>Witch Enchanter</span><span class="print-qty">&minus;1</span></div>
-        </div>
-      </div>
-      <div class="print-needle">MAGE: Living End | Lavinia counters cascade cast</div>
-    </div>
-    <div class="print-mu">
-      <div class="print-mu-name">Golgari Yawgmoth</div>
-      <div class="print-mu-role">Even · Sanctifier untouchable</div>
-      <div class="print-cols">
-        <div><div class="print-col-label">In</div>
-          <div class="print-row"><span>Sanctifier en-Vec</span><span class="print-qty">+2</span></div>
-          <div class="print-row"><span>Drannith Magistrate</span><span class="print-qty">+2</span></div>
-        </div>
-        <div><div class="print-col-label">Out</div>
-          <div class="print-row"><span>Lavinia</span><span class="print-qty">&minus;2</span></div>
-          <div class="print-row"><span>Razorkin</span><span class="print-qty">&minus;2</span></div>
+        <div class="print-mu">
+          <div class="print-mu-name">Living End</div>
+          <div class="print-mu-role">Favorable · Aggro-First</div>
+          <div class="print-cols">
+            <div><div class="print-col-label">Out</div>
+              <div class="print-row"><span>Mariner ×2</span><span class="print-qty">−2</span></div>
+              <div class="print-row"><span>Coppercoat ×2</span><span class="print-qty">−2</span></div>
+              <div class="print-row"><span>Mockingbird</span><span class="print-qty">−1</span></div>
+            </div>
+            <div><div class="print-col-label">In</div>
+              <div class="print-row"><span>Lavinia</span><span class="print-qty">+1</span></div>
+              <div class="print-row"><span>Vexing Bauble</span><span class="print-qty">+1</span></div>
+              <div class="print-row"><span>Grafdigger's Cage</span><span class="print-qty">+1</span></div>
+            </div>
+          </div>
+          <div class="print-needle">Name Living End · Layer 4 hate pieces across card types</div>
         </div>
       </div>
-      <div class="print-needle">MAGE: Yawgmoth | Sanctifier = protection B+G</div>
-    </div>
-    <div class="print-mu">
-      <div class="print-mu-name">Izzet Affinity</div>
-      <div class="print-mu-role">Even · Kataki drains mana</div>
-      <div class="print-cols">
-        <div><div class="print-col-label">In</div>
-          <div class="print-row"><span>Kataki, War's Wage</span><span class="print-qty">+1</span></div>
-          <div class="print-row"><span>Dawnbringer Cleric</span><span class="print-qty">+2</span></div>
-          <div class="print-row"><span>Reflector Mage</span><span class="print-qty">+2</span></div>
+
+      <div>
+        <div class="print-col-title">Midrange / Control</div>
+        <div class="print-mu">
+          <div class="print-mu-name">Jeskai Blink</div>
+          <div class="print-mu-role">Even · Disruption</div>
+          <div class="print-cols">
+            <div><div class="print-col-label">Out</div>
+              <div class="print-row"><span>Guide of Souls ×4</span><span class="print-qty">−4</span></div>
+              <div class="print-row"><span>Mockingbird</span><span class="print-qty">−1</span></div>
+            </div>
+            <div><div class="print-col-label">In</div>
+              <div class="print-row"><span>Reflector Mage ×2</span><span class="print-qty">+2</span></div>
+              <div class="print-row"><span>Dismember ×2</span><span class="print-qty">+2</span></div>
+              <div class="print-row"><span>Gaddock Teeg</span><span class="print-qty">+1</span></div>
+            </div>
+          </div>
+          <div class="print-needle">Name Ephemerate · Jirina sac vs evoke Solitude · Reflector bounces Stoneforge</div>
         </div>
-        <div><div class="print-col-label">Out</div>
-          <div class="print-row"><span>Lavinia</span><span class="print-qty">&minus;2</span></div>
-          <div class="print-row"><span>Witch Enchanter</span><span class="print-qty">&minus;2</span></div>
-          <div class="print-row"><span>Adeline</span><span class="print-qty">&minus;1</span></div>
-        </div>
-      </div>
-      <div class="print-needle">MAGE: Kappa Cannoneer | Kataki on their upkeep</div>
-    </div>
-    <div class="print-mu">
-      <div class="print-mu-name">Izzet Prowess</div>
-      <div class="print-mu-role">Hard · Mariner taxes burn</div>
-      <div class="print-cols">
-        <div><div class="print-col-label">In</div>
-          <div class="print-row"><span>Sanctifier en-Vec</span><span class="print-qty">+2</span></div>
-          <div class="print-row"><span>Reflector Mage</span><span class="print-qty">+2</span></div>
-          <div class="print-row"><span>Gaddock Teeg</span><span class="print-qty">+1</span></div>
-        </div>
-        <div><div class="print-col-label">Out</div>
-          <div class="print-row"><span>Lavinia</span><span class="print-qty">&minus;2</span></div>
-          <div class="print-row"><span>Witch Enchanter</span><span class="print-qty">&minus;2</span></div>
-          <div class="print-row"><span>Adeline</span><span class="print-qty">&minus;1</span></div>
-        </div>
-      </div>
-      <div class="print-needle">MAGE: Cori-Steel Cutter | Sanctifier immune to Lava Dart</div>
-    </div>
-    <div class="print-mu">
-      <div class="print-mu-name">Eldrazi Tron</div>
-      <div class="print-mu-role">Even · Speed race</div>
-      <div class="print-cols">
-        <div><div class="print-col-label">In</div>
-          <div class="print-row"><span>Reflector Mage</span><span class="print-qty">+2</span></div>
-          <div class="print-row"><span>Drannith Magistrate</span><span class="print-qty">+2</span></div>
-        </div>
-        <div><div class="print-col-label">Out</div>
-          <div class="print-row"><span>Razorkin</span><span class="print-qty">&minus;2</span></div>
-          <div class="print-row"><span>Witch Enchanter</span><span class="print-qty">&minus;2</span></div>
+        <div class="print-mu">
+          <div class="print-mu-name">Dimir Control</div>
+          <div class="print-mu-role">Favorable · Disruption</div>
+          <div class="print-cols">
+            <div><div class="print-col-label">Out</div>
+              <div class="print-row"><span>Mockingbird</span><span class="print-qty">−1</span></div>
+              <div class="print-row"><span>Mantis Rider ×2</span><span class="print-qty">−2</span></div>
+            </div>
+            <div><div class="print-col-label">In</div>
+              <div class="print-row"><span>Sanctifier en-Vec ×2</span><span class="print-qty">+2</span></div>
+              <div class="print-row"><span>Gaddock Teeg</span><span class="print-qty">+1</span></div>
+            </div>
+          </div>
+          <div class="print-needle">Cavern + Vial = uncounterable · Triple tax = Fatal Push costs {4}{B}</div>
         </div>
       </div>
-      <div class="print-needle">MAGE: Thought-Knot Seer | Kill before Reality Smasher</div>
     </div>
   </div>
 </div>
@@ -907,8 +874,9 @@
 </div><!-- end .page -->
 
 <footer>
-  <span>Team Resolve · 5-Color Humans · Modern · March 2026</span>
-  <span>Zuxas's Pet Deck</span>
+  <span><a href="zuxas.html" style="color:rgba(242,237,230,0.3);text-decoration:none;">Zuxas</a> · Team Resolve</span>
+  <span>Modern 2026 · 5-Color Humans</span>
+  <span>April 2026</span>
 </footer>
 
 <script>
@@ -917,6 +885,7 @@ function show(id) {
   document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
   document.getElementById(id).classList.add('active');
   event.target.classList.add('active');
+  window.scrollTo(0,0);
 }
 function toggle(id) {
   const el = document.getElementById(id);
