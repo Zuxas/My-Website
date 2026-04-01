@@ -3,26 +3,27 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Urbae — Team Resolve competitive MTG player." />
+<meta name="description" content="Urbae (Garrison) — Team Resolve competitive MTG player. Control Mage · Any Format · Best Stock List." />
 <title>Urbae — Team Resolve</title>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
 <style>
-  :root { --ink:#0e0e0e; --paper:#f2ede6; --paper-dark:#e8e1d6; --rule:#c8bfb0; --accent:#6B3FA0; --accent-light:#e8d4f7; --mid:#5a5248; }
+  :root { --ink:#0e0e0e; --paper:#f2ede6; --paper-dark:#e8e1d6; --rule:#c8bfb0; --accent:#1a3a5c; --accent-light:#d4e4f4; --mid:#5a5248; }
   * { margin:0; padding:0; box-sizing:border-box; }
   body { background:var(--paper); color:var(--ink); font-family:'Crimson Pro',Georgia,serif; font-size:17px; line-height:1.6; }
   .header-band { background:var(--ink); border-bottom:3px solid var(--accent); }
   .header-inner { max-width:1100px; margin:0 auto; padding:40px 80px; display:flex; justify-content:space-between; align-items:flex-end; gap:40px; }
   .header-eyebrow { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:rgba(242,237,230,0.35); margin-bottom:8px; }
-  .header-title { font-family:'Bebas Neue',sans-serif; font-size:72px; line-height:0.9; color:var(--paper); letter-spacing:0.02em; }
+  .header-title { font-family:'Bebas Neue',sans-serif; font-size:72px; line-height:0.9; color:#f2ede6; letter-spacing:0.02em; }
   .header-title span { color:var(--accent); }
   .header-sub { font-family:'Crimson Pro',serif; font-style:italic; font-size:16px; color:rgba(242,237,230,0.45); margin-top:10px; }
   .header-right { text-align:right; padding-bottom:4px; }
+  .header-handle { font-family:'Bebas Neue',sans-serif; font-size:28px; color:var(--accent); letter-spacing:0.05em; }
   .header-role { font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.15em; text-transform:uppercase; color:rgba(242,237,230,0.4); margin-top:4px; }
   nav { position:sticky; top:0; z-index:100; background:var(--ink); border-bottom:1px solid rgba(242,237,230,0.1); padding:0 80px; display:flex; align-items:center; gap:0; overflow-x:auto; scrollbar-width:none; }
   nav::-webkit-scrollbar { display:none; }
   .nav-brand { font-family:'Bebas Neue',sans-serif; font-size:18px; color:var(--accent); letter-spacing:0.05em; margin-right:40px; white-space:nowrap; padding:16px 0; text-decoration:none; }
   .nav-link { font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:rgba(242,237,230,0.4); padding:20px 16px; white-space:nowrap; border-bottom:2px solid transparent; transition:all 0.2s; text-decoration:none; display:inline-block; }
-  .nav-link:hover { color:var(--paper); border-bottom-color:var(--accent); }
+  .nav-link:hover { color:#f2ede6; border-bottom-color:var(--accent); }
   .page { max-width:1100px; margin:0 auto; padding:80px 80px; }
   .section-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.25em; text-transform:uppercase; color:var(--mid); margin-bottom:8px; }
   h1 { font-family:'Bebas Neue',sans-serif; font-size:64px; line-height:0.9; letter-spacing:0.01em; color:var(--ink); margin-bottom:40px; }
@@ -31,23 +32,28 @@
   strong { font-weight:600; }
   a { color:var(--accent); }
   .mantra { border-left:4px solid var(--accent); padding:24px 32px; background:var(--accent-light); margin:32px 0; font-style:italic; font-size:20px; color:var(--accent); line-height:1.5; }
-  .card-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); gap:1px; background:var(--rule); border:1px solid var(--rule); margin:24px 0; }
+  .card-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:1px; background:var(--rule); border:1px solid var(--rule); margin:24px 0; }
   .card { background:var(--paper); padding:24px; }
   .card:hover { background:var(--paper-dark); }
   .card-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--mid); margin-bottom:8px; }
   .card-title { font-family:'Bebas Neue',sans-serif; font-size:22px; letter-spacing:0.03em; color:var(--ink); margin-bottom:8px; }
   .card-body { font-size:15px; font-weight:300; color:var(--mid); line-height:1.5; }
-  .under-construction { border:2px dashed var(--rule); padding:60px; text-align:center; margin:40px 0; }
-  .uc-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.25em; text-transform:uppercase; color:var(--mid); margin-bottom:16px; }
-  .uc-title { font-family:'Bebas Neue',sans-serif; font-size:48px; color:var(--rule); }
-  .team-nav-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(180px,1fr)); gap:1px; background:var(--rule); border:1px solid var(--rule); margin:24px 0; }
-  .team-nav-card { background:var(--paper); padding:20px; text-decoration:none; display:block; }
-  .team-nav-card:hover { background:var(--paper-dark); }
-  .team-nav-handle { font-family:'Bebas Neue',sans-serif; font-size:24px; color:var(--ink); }
-  .team-nav-role { font-family:'DM Mono',monospace; font-size:9px; letter-spacing:0.15em; text-transform:uppercase; color:var(--mid); margin-top:2px; }
-  footer { background:var(--ink); color:rgba(242,237,230,0.3); padding:40px 80px; margin-top:80px; display:flex; justify-content:space-between; align-items:center; }
+  .cards-list { list-style:none; border:1px solid var(--rule); margin:24px 0; }
+  .cards-list li { padding:12px 20px; border-bottom:1px solid var(--rule); font-size:15px; font-weight:300; display:flex; align-items:center; gap:12px; }
+  .cards-list li:last-child { border-bottom:none; }
+  .cards-list li::before { content:"▸"; color:var(--accent); font-size:12px; }
+  .stat-row { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--rule); border:1px solid var(--rule); margin:24px 0; }
+  .stat-cell { background:var(--paper); padding:24px; text-align:center; }
+  .stat-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; color:var(--mid); margin-top:4px; }
+  .stat-val { font-family:'Bebas Neue',sans-serif; font-size:32px; color:var(--accent); line-height:1; }
+  .team-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(180px,1fr)); gap:1px; background:var(--rule); border:1px solid var(--rule); margin:24px 0; }
+  .team-card { background:var(--paper); padding:20px; text-decoration:none; display:block; }
+  .team-card:hover { background:var(--paper-dark); }
+  .team-handle { font-family:'Bebas Neue',sans-serif; font-size:24px; color:var(--ink); }
+  .team-role { font-family:'DM Mono',monospace; font-size:9px; letter-spacing:0.15em; text-transform:uppercase; color:var(--mid); margin-top:2px; }
+  footer { background:var(--ink); color:rgba(242,237,230,0.3); padding:40px 80px; display:flex; justify-content:space-between; align-items:center; }
   footer span { font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.1em; text-transform:uppercase; }
-  @media (max-width:768px) { .header-inner, nav, .page, footer { padding-left:24px; padding-right:24px; } .header-title { font-size:48px; } }
+  @media (max-width:768px) { .header-inner, nav, .page, footer { padding-left:24px; padding-right:24px; } .header-title { font-size:48px; } .stat-row { grid-template-columns:1fr; } }
 </style>
 </head>
 <body>
@@ -56,19 +62,19 @@
   <div class="header-inner">
     <div>
       <div class="header-eyebrow">Team Resolve · Player Profile · 2026</div>
-      <div class="header-title">Urb<span>ae</span></div>
-      <div class="header-sub">Team Resolve · Modern Strategist</div>
+      <div class="header-title">Urbae</div>
+      <div class="header-sub">Control Mage · Any Format · Best Stock List</div>
     </div>
     <div class="header-right">
-      <div style="font-family:'Bebas Neue',sans-serif;font-size:28px;color:var(--accent);">Urbae</div>
-      <div class="header-role">Competitive Player · Modern</div>
+      <div class="header-handle">Garrison</div>
+      <div class="header-role">Control (Best Available)</div>
     </div>
   </div>
 </div>
 
 <nav>
   <a class="nav-brand" href="index.html">Team Resolve</a>
-  <a class="nav-link" href="team.html">← Roster</a>
+  <a class="nav-link" href="team.html">&#8592; Roster</a>
   <a class="nav-link" href="zuxas.html">Zuxas</a>
   <a class="nav-link" href="deck-guides.html">Playbooks</a>
 </nav>
@@ -77,40 +83,54 @@
   <div class="section-label">Player Profile</div>
   <h1>Urbae</h1>
 
-  <div class="mantra">"The team that tests together, levels up together."</div>
+  <div class="mantra">"Tell me what the best stock list is. I'll sleeve it up and beat you with it."</div>
 
-  <p>Urbae is a member of Team Resolve, grinding Modern through the 2026 RC season. Known for deep format reads and willingness to bring unconventional tech to gauntlet sessions — the player who often spots the angle others miss.</p>
+  <p>Garrison — Urbae — is a brick-and-mortar control player who has been grinding local stores and regional events long enough to know one thing: play the best stock list available. No pet decks, no rogue tech, no fancy brews. Find the deck that wins the most, learn it to the ground, and execute.</p>
+  <p>Format doesn't matter much to Garrison — if the best deck in the room is a blue-white control pile in Standard, that's what he's playing. If it's Dimir Midrange in Pioneer, that's the call. The skill is in reading the meta correctly, selecting the optimal 75, and then not deviating from the correct line under pressure. That's what experience at the store level builds.</p>
 
-  <p>More detailed profile information coming as the season progresses and results develop. The grind is ongoing — check back after the next RC.</p>
-
-  <h2>Current Focus</h2>
+  <h2>Playstyle</h2>
   <div class="card-grid">
     <div class="card">
-      <div class="card-label">Format</div>
-      <div class="card-title">Modern 2026</div>
-      <div class="card-body">Actively testing and preparing for the Regional Championship season alongside the full Team Resolve roster. Gauntlet reps are the primary tool for matchup development.</div>
+      <div class="card-label">Identity</div>
+      <div class="card-title">The Best Stock List</div>
+      <div class="card-body">Garrison doesn't fall in love with decks — he falls in love with correct decisions. Whatever archetype has the best overall matchup spread in the current format is the deck he brings. Control is his natural home because the archetype rewards the kind of precise, measured play he's built over years of competitive reps. But he'll play aggro, midrange, or combo if the meta calls for it.</div>
     </div>
     <div class="card">
-      <div class="card-label">Team Role</div>
-      <div class="card-title">Testing Partner</div>
-      <div class="card-body">Contributes to Team Resolve's testing process, sideboard evaluations, and matchup documentation. Every gauntlet session builds the collective data pool.</div>
+      <div class="card-label">Format Preference</div>
+      <div class="card-title">Any Format</div>
+      <div class="card-body">Primary format focus for the 2026 competitive season. The format where the reps are deepest and the results have been strongest.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Play Style</div>
+      <div class="card-title">Profile</div>
+      <div class="card-body">Analytical · Adaptive · Format-Agnostic</div>
     </div>
   </div>
 
-  <h2>Team Roster</h2>
-  <div class="team-nav-grid">
-    <a class="team-nav-card" href="zuxas.html"><div class="team-nav-handle">Zuxas</div><div class="team-nav-role">Captain</div></a>
-    <a class="team-nav-card" href="troubleshot.html"><div class="team-nav-handle">Urbae</div><div class="team-nav-role">You are here</div></a>
-    <a class="team-nav-card" href="urbae.html" style="border-left:3px solid var(--accent);"><div class="team-nav-handle">Urbae</div><div class="team-nav-role">Player</div></a>
-    <a class="team-nav-card" href="tien.html"><div class="team-nav-handle">Tien</div><div class="team-nav-role">Player</div></a>
-    <a class="team-nav-card" href="foxy.html"><div class="team-nav-handle">Foxy</div><div class="team-nav-role">Player</div></a>
+  <h2>The Cards</h2>
+  <p>The cards that define the playstyle — the ones that show up in every list and that represent how Garrison approaches the game.</p>
+  <ul class="cards-list">
+    <li>Counterspell</li>
+    <li>Wrath of God</li>
+    <li>Supreme Verdict</li>
+    <li>Teferi, Hero of Dominaria</li>
+    <li>Snapcaster Mage</li>
+  </ul>
+
+  <h2>Team Resolve</h2>
+  <div class="team-grid">
+    <a class="team-card" href="zuxas.html"><div class="team-handle">Zuxas</div><div class="team-role">Captain</div></a>
+    <a class="team-card" href="troubleshot.html"><div class="team-handle">Troubleshot</div><div class="team-role">Caleb · Mono-Black Control</div></a>
+    <a class="team-card" href="urbae.html"><div class="team-handle">Urbae</div><div class="team-role">Garrison · Control</div></a>
+    <a class="team-card" href="tien.html"><div class="team-handle">Tien</div><div class="team-role">Tien · Combo</div></a>
+    <a class="team-card" href="foxy.html"><div class="team-handle">Foxy</div><div class="team-role">John · Red Aggro</div></a>
   </div>
 </div>
 
 <footer>
   <span>Team Resolve · Urbae</span>
-  <span>Modern · 2026</span>
-  <span>Road to Pro Tour</span>
+  <span>Control (Best Available)</span>
+  <span>Road to Pro Tour · 2026</span>
 </footer>
 </body>
 </html>
