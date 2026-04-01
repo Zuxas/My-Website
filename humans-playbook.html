@@ -51,7 +51,6 @@
   .dl-card-row { display:flex; justify-content:space-between; align-items:baseline; padding:3px 0; border-bottom:1px solid rgba(200,191,176,0.3); font-size:15px; font-weight:300; }
   .dl-card-row:last-child { border-bottom:none; }
   .dl-qty { font-family:'DM Mono',monospace; font-size:12px; color:var(--mid); flex-shrink:0; margin-left:8px; }
-</style>
   .matchup-table { width:100%; border-collapse:collapse; margin:24px 0; }
   .matchup-table th { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; padding:10px 16px; background:var(--ink); color:rgba(242,237,230,0.6); text-align:left; }
   .matchup-table td { padding:12px 16px; border-bottom:1px solid var(--rule); font-size:15px; font-weight:300; }
@@ -151,7 +150,7 @@
 
 <nav>
   <div class="nav-brand">5-Color Humans</div>
-  <a class="nav-link" href="deck-guides.html" style="text-decoration:none;">&#8592; Guides</a>
+  <a class="nav-link" href="zuxas.html" style="text-decoration:none;">&#8592; Zuxas</a>
   <button class="nav-link active" onclick="show('identity')">Overview</button>
   <button class="nav-link" onclick="show('decklist')">Decklist</button>
   <button class="nav-link" onclick="show('gameplan')">Game Flow</button>
@@ -178,6 +177,55 @@
   <p>The deck is not tier 1 — and that's not a criticism, it's a feature. It doesn't demand you know every card in the format, but it heavily rewards deep knowledge of <em>your own</em> deck's interactions. The pilot who understands Norin's blink loop, who knows when to Vial at instant speed, and who identifies the right Meddling Mage name in each matchup outperforms the pilot who doesn't by a massive margin. High skill ceiling. Real racing power. Genuine game plan.</p>
 
   <p><strong>This is a pet deck. Play it because it's yours.</strong></p>
+
+  <h2>Hidden Synergy Map</h2>
+  <div class="card-grid">
+    <div class="card">
+      <div class="card-label">Draw + Deploy Loop</div>
+      <div class="card-title">Satoru + Vial + Any 2-Drop</div>
+      <div class="card-body">Vial puts creatures onto the battlefield without casting — Satoru triggers on "no mana spent." At their end step: tap Vial at 2 counters, flash in Meddling Mage. Satoru draws a card. The Mage naming their key card resolves. You replaced the card, deployed uncounterable disruption, and didn't spend your main phase. Repeat every turn.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Free Energy Engine</div>
+      <div class="card-title">Norin + <span class="c">Guide of Souls</span></div>
+      <div class="card-body">Each time Norin returns from exile, Guide triggers: gain 1 life, get {E}. With Norin blinking twice per round (their cast + your cast), you accumulate energy passively without spending cards or mana. By turn 4: 6+ energy stored — enough for Guide's attack pump. Norin's free triggers convert into a flying +2/+2 counter on your biggest attacker every turn cycle.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Token Doubling</div>
+      <div class="card-title">Adeline → Champion + Lieutenant</div>
+      <div class="card-body">Adeline creates attacking Human Soldier tokens on attack. Each token entering triggers Champion (+1/+1) and Lieutenant (+1/+1 each creature + Lieutenant grows). With 5 other creatures, Adeline attacks as a 6/4, creates 1 token — Champion and each Lieutenant gain +1/+1 on entry. With 2 Lieutenants in play: that single Adeline attack pumps your whole board twice. She's a multiplier, not just a threat.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Tax Stack</div>
+      <div class="card-title"><span class="c">Unsettled Mariner</span> ×2</div>
+      <div class="card-body">With 2 Mariners in play: every removal spell costs {2} extra to target you or your permanents. Galvanic Discharge ({1}{R}) becomes {3}{R}. Swords to Plowshares ({W}) becomes {1}{W}. On turns 2-3 when their mana is constrained, double-Mariner makes a turn-2 removal play impossible for many decks. Each Mariner is also a Human that pumps Champion and Lieutenant on entry.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Sweeper Counter Window</div>
+      <div class="card-title">Jirina Sacrifice Timing</div>
+      <div class="card-body">They cast Supreme Verdict → immediately sacrifice Jirina in response → your Humans gain hexproof and indestructible until end of turn → Verdict resolves and does nothing → untap with your full board. Works on any non-exile sweeper. The key: never sacrifice Jirina proactively for the ETB GY exile value. Hold her specifically for the sweeper window. One Jirina can win the entire Control matchup.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Two-Layer Protection</div>
+      <div class="card-title">Safekeeper + Mariner</div>
+      <div class="card-body">Mariner taxes targeting by {1}. Safekeeper grants shroud (full immunity, not just tax). Opponents can't bring in hate for both simultaneously — anti-shroud effects don't help vs tax, anti-tax effects don't help vs shroud. Against three removal spells: Mariner makes the first two expensive, Safekeeper blocks the third outright. Different protection keywords mean different answers required.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Blood Moon Plan</div>
+      <div class="card-title">Vial at 4 = Instant-Speed Destroy</div>
+      <div class="card-body">Against red decks: deliberately tick Vial to 4 instead of staying at 2 in early turns. When Blood Moon resolves, tap Vial at instant speed — Witch Enchanter enters (flash doesn't matter, Vial bypasses timing), destroys Blood Moon. Colored mana returns. Witch Enchanter also triggers Champion and Lieutenant on entry. Pre-plan the count: if Moon is expected by turn 3, you need Vial at 4 by turn 3.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Passive Burn</div>
+      <div class="card-title">Razorkin Draw Trigger</div>
+      <div class="card-body">Razorkin Needlehead deals 1 damage per opponent draw — any draw, including upkeep draws. Against draw-heavy decks (Satoru mirrors, UW Control, Izzet Affinity): Razorkin contributes 3-6 free damage per game passively. First strike during your turn means he also kills most 2/2s in combat without dying. A creature that damages them for free AND wins most combat trades is worth the {R}{R} color requirement.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Free-Spell Lock</div>
+      <div class="card-title">Lavinia via Vial</div>
+      <div class="card-body">Vial-deployed Lavinia is uncounterable — she's not cast. Once in play: Force of Negation countered (no mana spent), Evoke Solitude countered (no mana spent on the {0} path), Living End via Cascade countered, Summoner's Pact countered. Flash her at their end step before their key turn via Vial at 2 — she's already in play before their upkeep. This is the deck's combo-hate mode that costs exactly zero interaction mana.</div>
+    </div>
+  </div>
 
   <h2>Deck Identity</h2>
   <div class="card-grid">
