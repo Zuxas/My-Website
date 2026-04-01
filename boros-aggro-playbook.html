@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Boros Aggro Standard playbook — Team Resolve. Shocking Sharpshooter, Ojer Axonil, Warleader's Call. RC Cincinnati / DC prep guide." />
+<title>Boros Aggro — Team Resolve Standard Playbook</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+  :root { --ink:#0e0e0e; --paper:#f2ede6; --paper-dark:#e8e1d6; --rule:#c8bfb0; --accent:#6b2a0a; --accent-light:#fde8d8; --danger:#8f1a1a; --danger-light:#f7d6d6; --gold:#8f6a1a; --gold-light:#f7ead6; --mid:#5a5248; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:var(--paper); color:var(--ink); font-family:'Crimson Pro',Georgia,serif; font-size:17px; line-height:1.6; }
+  .header-band { background:var(--ink); border-bottom:3px solid var(--accent); }
+  .header-inner { max-width:1100px; margin:0 auto; padding:32px 80px; display:flex; justify-content:space-between; align-items:flex-end; gap:40px; }
+  .header-eyebrow { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:rgba(242,237,230,0.35); margin-bottom:8px; }
+  .header-title { font-family:'Bebas Neue',sans-serif; font-size:56px; line-height:0.9; color:var(--paper); letter-spacing:0.02em; }
+  .header-title span { color:#f59342; }
+  .header-mantra { font-family:'Crimson Pro',serif; font-style:italic; font-size:15px; color:rgba(242,237,230,0.4); margin-top:8px; }
+  .header-right { display:flex; flex-direction:column; gap:8px; text-align:right; padding-bottom:4px; }
+  .header-stat { display:flex; gap:12px; align-items:center; justify-content:flex-end; }
+  .hs-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; color:rgba(242,237,230,0.3); }
+  .hs-val { font-family:'DM Mono',monospace; font-size:12px; color:var(--paper); }
+  nav { position:sticky; top:0; z-index:100; background:var(--ink); border-bottom:1px solid rgba(242,237,230,0.1); padding:0 80px; display:flex; align-items:center; gap:0; overflow-x:auto; scrollbar-width:none; }
+  nav::-webkit-scrollbar { display:none; }
+  .nav-brand { font-family:'Bebas Neue',sans-serif; font-size:18px; color:#f59342; letter-spacing:0.05em; margin-right:40px; white-space:nowrap; padding:16px 0; text-decoration:none; }
+  .nav-link { font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:rgba(242,237,230,0.4); padding:20px 16px; cursor:pointer; white-space:nowrap; border-bottom:2px solid transparent; transition:all 0.2s; background:none; border-top:none; border-left:none; border-right:none; }
+  .nav-link:hover, .nav-link.active { color:var(--paper); border-bottom-color:#f59342; }
+  .page { max-width:1100px; margin:0 auto; padding:80px 80px; }
+  .section { display:none; animation:fadeIn 0.3s ease; }
+  .section.active { display:block; }
+  @keyframes fadeIn { from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:translateY(0);} }
+  .section-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.25em; text-transform:uppercase; color:var(--mid); margin-bottom:8px; }
+  h1 { font-family:'Bebas Neue',sans-serif; font-size:64px; line-height:0.9; letter-spacing:0.01em; color:var(--ink); margin-bottom:40px; }
+  h2 { font-family:'Bebas Neue',sans-serif; font-size:36px; letter-spacing:0.02em; color:var(--ink); margin:56px 0 20px; padding-bottom:8px; border-bottom:2px solid var(--ink); }
+  p { margin-bottom:16px; color:var(--ink); font-weight:300; }
+  strong { font-weight:600; }
+  .c { color:var(--accent); font-weight:400; }
+  .mantra { border-left:4px solid var(--accent); padding:24px 32px; background:var(--accent-light); margin:32px 0; font-style:italic; font-size:20px; color:var(--accent); line-height:1.5; }
+  .card-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); gap:1px; background:var(--rule); border:1px solid var(--rule); margin:24px 0; }
+  .card-grid-2 { grid-template-columns:repeat(2,1fr) !important; }
+  .card-grid-3 { grid-template-columns:repeat(3,1fr) !important; }
+  .card { background:var(--paper); padding:24px; }
+  .card:hover { background:var(--paper-dark); }
+  .card-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--mid); margin-bottom:8px; }
+  .card-title { font-family:'Bebas Neue',sans-serif; font-size:22px; letter-spacing:0.03em; color:var(--ink); margin-bottom:8px; }
+  .card-body { font-size:15px; font-weight:300; color:var(--mid); line-height:1.5; }
+  .decklist { display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--rule); border:1px solid var(--rule); margin:24px 0; }
+  .dl-section { background:var(--paper); padding:24px; }
+  .dl-section-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--mid); margin-bottom:16px; }
+  .dl-group { margin-bottom:20px; }
+  .dl-group-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; color:var(--ink); background:var(--paper-dark); padding:4px 8px; margin-bottom:8px; display:inline-block; }
+  .dl-card-row { display:flex; justify-content:space-between; align-items:baseline; padding:3px 0; border-bottom:1px solid rgba(200,191,176,0.3); font-size:15px; font-weight:300; }
+  .dl-card-row:last-child { border-bottom:none; }
+  .dl-qty { font-family:'DM Mono',monospace; font-size:12px; color:var(--mid); flex-shrink:0; margin-left:8px; }
+  .matchup-table { width:100%; border-collapse:collapse; margin:24px 0; }
+  .matchup-table th { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; padding:10px 16px; background:var(--ink); color:rgba(242,237,230,0.6); text-align:left; }
+  .matchup-table td { padding:12px 16px; border-bottom:1px solid var(--rule); font-size:15px; font-weight:300; }
+  .matchup-table tr:hover td { background:var(--paper-dark); cursor:pointer; }
+  .matchup-detail { display:none; background:var(--accent-light); border-left:4px solid var(--accent); padding:24px 32px; }
+  .matchup-detail.open { display:block; }
+  .verdict { display:inline-block; font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; padding:4px 10px; border:1px solid; }
+  .verdict-dog { background:var(--danger-light); color:var(--danger); border-color:var(--danger); }
+  .verdict-even { background:var(--gold-light); color:var(--gold); border-color:var(--gold); }
+  .verdict-favor { background:#d1fae5; color:#065f46; border-color:#065f46; }
+  .sb-table { width:100%; border-collapse:collapse; margin:16px 0; }
+  .sb-table th { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; padding:8px 12px; background:var(--paper-dark); color:var(--mid); text-align:left; border-bottom:2px solid var(--rule); }
+  .sb-table td { padding:10px 12px; border-bottom:1px solid var(--rule); font-size:14px; font-weight:300; }
+  .sb-out { color:var(--danger); font-family:'DM Mono',monospace; font-size:12px; }
+  .sb-in { color:#065f46; font-family:'DM Mono',monospace; font-size:12px; }
+  .sb-note { font-size:13px; font-weight:300; color:var(--mid); font-style:italic; margin-top:6px; }
+  .sb-card-guide { border:1px solid var(--rule); margin:24px 0; }
+  .sb-guide-row { display:grid; grid-template-columns:200px 1fr; gap:0; border-bottom:1px solid var(--rule); }
+  .sb-guide-row:last-child { border-bottom:none; }
+  .sb-guide-name { font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.08em; text-transform:uppercase; padding:16px; background:var(--paper-dark); color:var(--ink); border-right:1px solid var(--rule); display:flex; align-items:flex-start; }
+  .sb-guide-body { padding:16px; font-size:14px; font-weight:300; line-height:1.6; color:var(--mid); }
+  .heuristic-list { list-style:none; margin:0; padding:0; }
+  .heuristic-list li { display:grid; grid-template-columns:48px 1fr; gap:16px; padding:20px 0; border-bottom:1px solid var(--rule); align-items:start; }
+  .heuristic-list li:last-child { border-bottom:none; }
+  .heuristic-num { font-family:'DM Mono',monospace; font-size:22px; color:var(--rule); font-weight:500; }
+  .heuristic-body strong { display:block; font-size:16px; font-weight:600; margin-bottom:4px; color:var(--ink); }
+  .heuristic-body { font-size:14px; font-weight:300; color:var(--mid); line-height:1.5; }
+  .tuning-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--rule); border:1px solid var(--rule); margin:24px 0; }
+  .tuning-cell { background:var(--paper); padding:20px; }
+  .tuning-cell-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; color:var(--mid); margin-bottom:8px; }
+  .tuning-cell-title { font-family:'Bebas Neue',sans-serif; font-size:20px; color:var(--ink); margin-bottom:8px; }
+  .tuning-cell-body { font-size:14px; font-weight:300; color:var(--mid); line-height:1.5; }
+  .curve-strip { display:flex; gap:1px; background:var(--rule); border:1px solid var(--rule); margin:24px 0; }
+  .curve-slot { flex:1; background:var(--paper); padding:16px 12px; text-align:center; }
+  .curve-cmc { font-family:'Bebas Neue',sans-serif; font-size:32px; color:var(--accent); line-height:1; }
+  .curve-count { font-family:'DM Mono',monospace; font-size:11px; color:var(--mid); letter-spacing:0.1em; margin-top:4px; }
+  .curve-bar { height:4px; background:var(--accent); margin:8px auto 0; border-radius:2px; opacity:0.5; }
+  .print-btn { display:inline-flex; align-items:center; gap:8px; font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.12em; text-transform:uppercase; background:var(--ink); color:var(--paper); border:none; padding:10px 20px; cursor:pointer; margin-bottom:32px; }
+  .print-section { border:1px solid var(--rule); padding:32px; margin:24px 0; }
+  .print-title { font-family:'Bebas Neue',sans-serif; font-size:48px; color:var(--ink); }
+  .print-sub { font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.15em; text-transform:uppercase; color:var(--mid); margin-bottom:24px; }
+  .print-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+  .print-col-title { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--mid); margin-bottom:8px; padding-bottom:4px; border-bottom:1px solid var(--rule); }
+  .print-line { font-size:13px; font-weight:300; padding:2px 0; }
+  .print-mu { margin-bottom:16px; }
+  .print-mu-name { font-family:'Bebas Neue',sans-serif; font-size:18px; color:var(--ink); }
+  .print-mu-role { font-family:'DM Mono',monospace; font-size:9px; letter-spacing:0.1em; text-transform:uppercase; color:var(--mid); margin-bottom:6px; }
+  .print-cols { display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+  .print-col-label { font-family:'DM Mono',monospace; font-size:9px; letter-spacing:0.15em; text-transform:uppercase; color:var(--mid); margin-bottom:4px; }
+  .print-row { font-size:12px; font-weight:300; display:flex; justify-content:space-between; padding:1px 0; border-bottom:1px solid rgba(200,191,176,0.4); }
+  .print-qty { font-family:'DM Mono',monospace; font-size:11px; color:var(--mid); }
+  .print-needle { font-family:'DM Mono',monospace; font-size:9px; letter-spacing:0.06em; color:var(--danger); margin-top:6px; text-transform:uppercase; }
+  footer { background:var(--ink); color:rgba(242,237,230,0.3); padding:40px 80px; margin-top:80px; display:flex; justify-content:space-between; align-items:center; }
+  footer span { font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.1em; text-transform:uppercase; }
+  @media (max-width:768px) { .header-inner,nav,.page,footer { padding-left:24px; padding-right:24px; } .header-title { font-size:40px; } .header-right { display:none; } .decklist,.tuning-grid,.print-grid { grid-template-columns:1fr; } nav { padding:0 24px; } }
+  @media print { nav,.print-btn,footer { display:none; } .section { display:block !important; } }
+</style>
+</head>
+<body>
+<div class="header-band">
+  <div class="header-inner">
+    <div>
+      <div class="header-eyebrow">Team Resolve · Standard · RC Prep 2026</div>
+      <div class="header-title">Boros<br><span>Aggro</span></div>
+      <div class="header-mantra">"Every creature that enters deals damage. Every attack token doubles it."</div>
+    </div>
+    <div class="header-right">
+      <div class="header-stat"><span class="hs-label">Archetype</span><span class="hs-val">ETB Ping Aggro</span></div>
+      <div class="header-stat"><span class="hs-label">Tier</span><span class="hs-val">B (55.4% WR)</span></div>
+      <div class="header-stat"><span class="hs-label">Kill Turn</span><span class="hs-val">3–5</span></div>
+      <div class="header-stat"><span class="hs-label">Source</span><span class="hs-val">deleon91 1st Mar 23</span></div>
+    </div>
+  </div>
+</div>
+<nav>
+  <a class="nav-brand" href="deck-guides.html">Team Resolve</a>
+  <button class="nav-link active" onclick="show('overview')">Overview</button>
+  <button class="nav-link" onclick="show('decklist')">Decklist</button>
+  <button class="nav-link" onclick="show('gameflow')">Game Flow</button>
+  <button class="nav-link" onclick="show('engines')">Engines</button>
+  <button class="nav-link" onclick="show('roles')">Roles</button>
+  <button class="nav-link" onclick="show('matchups')">Matchups</button>
+  <button class="nav-link" onclick="show('sideboard')">Sideboard</button>
+  <button class="nav-link" onclick="show('heuristics')">Heuristics</button>
+  <button class="nav-link" onclick="show('tuning')">Tuning</button>
+  <button class="nav-link" onclick="show('prep')">Prep</button>
+</nav>
+<div class="page">
+
+<!-- CH01 OVERVIEW -->
+<div id="overview" class="section active">
+  <div class="section-label">Chapter 01</div>
+  <h1>Deck<br>Overview</h1>
+  <div class="mantra">"The core plan: play creatures that ping the opponent when other creatures enter, attach Warleader's Call for a +1/+1 anthem and extra ETB pings, and overwhelm them with Warrior tokens before they can stabilize."</div>
+  <p>Boros Aggro (also called Boros Pingers or Boros Tokens) is Tier B at <strong>55.4% win rate</strong> across 8,800 BO3 games — the 3rd-most popular deck at 7% meta share. It is the 3rd most common opponent you'll face at Cincinnati. The plan is deceptively linear: every creature that enters the battlefield pings the opponent for 1 damage (or 4 with Ojer Axonil active), Warleader's Call amplifies both the creatures' sizes and the ping damage, and Mobilize/Start Your Engines attacks flood the board with Warrior tokens.</p>
+  <p>The deck's key insight: <span class="c">Ojer Axonil, Deepest Might</span> is the game-ending card. His static ability reads "if a red source would deal noncombat damage less than Ojer's power to an opponent, deal Ojer's power instead." Ojer has 4 power. So every Sharpshooter ping (1 damage) becomes 4 damage. Every Warleader's Call trigger (1 damage) becomes 4 damage. Every Stadium Headliner Mobilize token that enters (1 damage via Sharpshooter or Call) becomes 4 damage. With enough creatures entering, Ojer turns a 1-damage-per-creature engine into 4-damage-per-creature — the entire board state is instantly lethal once Ojer resolves against a creature-heavy opponent.</p>
+
+  <h2>The Three Threat Axes</h2>
+  <div class="card-grid card-grid-3">
+    <div class="card">
+      <div class="card-label">Axis 1 — Ping Engine</div>
+      <div class="card-title">ETB Damage</div>
+      <div class="card-body"><span class="c">Shocking Sharpshooter</span> pings opponent for 1 when any creature you control enters. <span class="c">Warleader's Call</span> enchantment does the same (1 damage per creature ETB). Stack both: each creature ETB deals 2 damage (or 8 with Ojer). Fanatical Firebrand entering pings for 2. Then it hasted attacks for 2. Then it dies to trade with a blocker and you {T} sacrifice it to deal 1 more. All noncombat, all going to face.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Axis 2 — Token Flood</div>
+      <div class="card-title">Mobilize + Start Your Engines</div>
+      <div class="card-body"><span class="c">Voice of Victory</span> Mobilize 2: attacking creates two 1/1 Warriors. <span class="c">Stadium Headliner</span> Mobilize 1: attacking creates one 1/1 Warrior. <span class="c">Howlsquad Heavy</span> creates a Goblin token each combat (Start Your Engines). Each token ETB triggers Sharpshooter and Call. A single attack with Voice + Stadium + Heavy can create 4 creature ETBs dealing 4–16 noncombat damage before a single point of combat damage.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Axis 3 — The Amplifier</div>
+      <div class="card-title">Ojer Axonil</div>
+      <div class="card-body"><span class="c">Ojer Axonil, Deepest Might</span>: 4/4 Legendary God with trample. Red noncombat damage you deal becomes at least 4. One Sharpshooter ping with Ojer = 4 damage instead of 1. Warleader's Call trigger = 4 instead of 1. An attack with 4 creatures creating 4 tokens = 8 ETB triggers × 4 damage = 32 noncombat damage in one attack step. Also: when Ojer dies, it returns transformed as Temple of Power — a land that can retransform at sorcery speed once you deal 4+ noncombat damage.</div>
+    </div>
+  </div>
+
+  <h2>Meta Position</h2>
+  <p>Boros Aggro is 7% of the Cincinnati meta — expect to face it 2-3 rounds. Your Dimir Midrange rates this matchup at 44% (Unfavorable). Your removal hits their creatures but can't answer their noncombat damage cleanly — Requiting Hex kills 1-2 drop creatures, but Warleader's Call is an enchantment and Ojer Axonil has trample. The key to winning as Dimir is killing Ojer before he doubles all their ping damage and using Cecil, Dark Knight's +13.9 pts impact to trade into their board while lifelink negates some of their burn.</p>
+</div>
+
+<!-- CH02 DECKLIST -->
+<div id="decklist" class="section">
+  <div class="section-label">Chapter 02</div>
+  <h1>Decklist</h1>
+  <p style="font-style:italic;color:var(--mid);font-size:15px;margin-bottom:24px;">deleon91 — 1st Place MTGO Standard Challenge 64 (84 players, 9-1) — March 23, 2026.</p>
+  <div class="decklist">
+    <div class="dl-section">
+      <div class="dl-section-label">Maindeck (60)</div>
+      <div class="dl-group">
+        <div class="dl-group-label">Creatures (21)</div>
+        <div class="dl-card-row"><span><span class="c">Fanatical Firebrand</span></span><span class="dl-qty">4</span></div>
+        <div class="dl-card-row"><span><span class="c">Shocking Sharpshooter</span></span><span class="dl-qty">4</span></div>
+        <div class="dl-card-row"><span><span class="c">Voice of Victory</span></span><span class="dl-qty">4</span></div>
+        <div class="dl-card-row"><span><span class="c">Howlsquad Heavy</span></span><span class="dl-qty">4</span></div>
+        <div class="dl-card-row"><span><span class="c">Ojer Axonil, Deepest Might</span></span><span class="dl-qty">3</span></div>
+        <div class="dl-card-row"><span><span class="c">Raphael, Tough Turtle</span></span><span class="dl-qty">2</span></div>
+      </div>
+      <div class="dl-group">
+        <div class="dl-group-label">Enchantments (4)</div>
+        <div class="dl-card-row"><span><span class="c">Warleader's Call</span></span><span class="dl-qty">4</span></div>
+      </div>
+      <div class="dl-group">
+        <div class="dl-group-label">Instants / Spells (9)</div>
+        <div class="dl-card-row"><span><span class="c">Burst Lightning</span></span><span class="dl-qty">4</span></div>
+        <div class="dl-card-row"><span><span class="c">Torch the Tower</span></span><span class="dl-qty">2</span></div>
+        <div class="dl-card-row"><span><span class="c">Seam Rip</span></span><span class="dl-qty">2</span></div>
+        <div class="dl-card-row"><span><span class="c">Stadium Headliner</span></span><span class="dl-qty">4</span></div>
+      </div>
+    </div>
+    <div class="dl-section">
+      <div class="dl-section-label">Lands (22)</div>
+      <div class="dl-group">
+        <div class="dl-card-row"><span>Mountain</span><span class="dl-qty">9</span></div>
+        <div class="dl-card-row"><span><span class="c">Sacred Foundry</span></span><span class="dl-qty">4</span></div>
+        <div class="dl-card-row"><span><span class="c">Inspiring Vantage</span></span><span class="dl-qty">4</span></div>
+        <div class="dl-card-row"><span><span class="c">Sunbillow Verge</span></span><span class="dl-qty">3</span></div>
+        <div class="dl-card-row"><span><span class="c">Dalkovan Encampment</span></span><span class="dl-qty">3</span></div>
+      </div>
+      <div class="dl-section-label" style="margin-top:24px;">Sideboard (15)</div>
+      <div class="dl-group">
+        <div class="dl-card-row"><span><span class="c">Magebane Lizard</span></span><span class="dl-qty">4</span></div>
+        <div class="dl-card-row"><span><span class="c">Sear</span></span><span class="dl-qty">4</span></div>
+        <div class="dl-card-row"><span><span class="c">Rest in Peace</span></span><span class="dl-qty">3</span></div>
+        <div class="dl-card-row"><span><span class="c">Exorcise</span></span><span class="dl-qty">2</span></div>
+        <div class="dl-card-row"><span><span class="c">Battle Menu</span></span><span class="dl-qty">2</span></div>
+      </div>
+    </div>
+  </div>
+
+  <h2>Mana Curve</h2>
+  <div class="curve-strip">
+    <div class="curve-slot"><div class="curve-cmc">1</div><div class="curve-count">8 spells</div><div class="curve-bar" style="width:70%"></div></div>
+    <div class="curve-slot"><div class="curve-cmc">2</div><div class="curve-count">14 spells</div><div class="curve-bar" style="width:100%"></div></div>
+    <div class="curve-slot"><div class="curve-cmc">3</div><div class="curve-count">6 spells</div><div class="curve-bar" style="width:43%"></div></div>
+    <div class="curve-slot"><div class="curve-cmc">4</div><div class="curve-count">6 spells</div><div class="curve-bar" style="width:43%"></div></div>
+    <div class="curve-slot"><div class="curve-cmc">5+</div><div class="curve-count">0 spells</div><div class="curve-bar" style="width:0%"></div></div>
+  </div>
+  <p style="font-size:14px;color:var(--mid);">Peaks at 2 mana. The 2-drop slot contains the deck's most impactful cards: Shocking Sharpshooter (the engine), Voice of Victory (token generation), Warleader's Call (amplifier), Stadium Headliner (Mobilize token). The 4-drop Ojer Axonil is the win condition. Never go above 4 mana — every spell above that is too slow for this plan. Only 22 lands because 23 would cause floods that slow the engine.</p>
+
+  <h2>Card Notes</h2>
+  <div class="card-grid">
+    <div class="card"><div class="card-label">The Pinger</div><div class="card-title">Shocking Sharpshooter</div><div class="card-body">{1}{R} 1/3 Human Archer. Reach. Whenever another creature you control enters, this creature deals 1 damage to target opponent. The "target opponent" clause means you choose — direct to face. Every token, every creature ETB pings face. Stack Sharpshooter + Warleader's Call: each creature ETB = 2 damage. Stack with Raphael: 3 damage. Stack Ojer: each of those 1-damage instances becomes 4. Multiple Sharpshooters on board: each creature ETB pings multiple times.</div></div>
+    <div class="card"><div class="card-label">The Anthem</div><div class="card-title">Warleader's Call</div><div class="card-body">{1}{R}{W} Enchantment. Creatures you control get +1/+1. Whenever a creature you control enters, this enchantment deals 1 damage to each opponent. The global +1/+1 makes all your tokens relevant in combat. The ETB ping amplifies with Ojer — each new creature entering with Warleader's Call + Ojer = 4 damage to face. With 2 Sharpshooters + Warleader's Call + Ojer, each creature entering = 12 noncombat damage.</div></div>
+    <div class="card"><div class="card-label">The Amplifier</div><div class="card-title">Ojer Axonil, Deepest Might</div><div class="card-body">{3}{R} 4/4 Legendary God, Trample. Red noncombat damage sources deal at least 4 instead of less. ETB/ping damage of 1 becomes 4. His death trigger: returns transformed as Temple of Power (land that can untransform with {2}{R}{T} after dealing 4+ noncombat). He's nearly impossible to permanently kill. Even when removed, he comes back as a land that re-transforms on the next attack step where your pings trigger again.</div></div>
+    <div class="card"><div class="card-label">The Token Floods</div><div class="card-title">Voice of Victory / Howlsquad Heavy</div><div class="card-body">Voice: {1}{W} 1/3 Human Bard. Mobilize 2: whenever attacks, create 2 tapped attacking 1/1 Warrior tokens. Opponents can't cast spells your turn. Each attack = 2 Warrior ETBs = 2 Sharpshooter pings + 2 Call pings = 4 noncombat damage before combat. Howlsquad Heavy: {2}{R} 2/3 Goblin. Start Your Engines — at beginning of combat, create a 1/1 Goblin token that attacks this combat. Other Goblins have haste. Each combat step = 1 more ETB trigger. Max Speed: {T} add {R} per Goblin.</div></div>
+    <div class="card"><div class="card-label">The Support</div><div class="card-title">Raphael, Tough Turtle</div><div class="card-body">{1}{R} 1/3 Legendary TMNT. Alliance — whenever another creature you control enters, Raphael deals 1 damage to target opponent. Another ping trigger per creature ETB. With Sharpshooter + Call + Raphael: each creature entering = 3 damage. Stack with Ojer: each creature = 12 damage (3 × 4). The 1/3 body also blocks profitably against aggressive decks and the Alliance trigger is creatures you control (includes your own tokens).</div></div>
+    <div class="card"><div class="card-label">The Removal Suite</div><div class="card-title">Burst Lightning / Torch the Tower / Seam Rip</div><div class="card-body">Burst Lightning: 2 damage or 4 kicked. Cheap prowess trigger and removal or reach. Torch the Tower: {R} instant, 2 damage bargained = 3 + scry 1, exile on death. Exiling matters — stops GY recursion and ensures killed creatures don't come back. Seam Rip: {1}{W} enchantment. Exile target nonland permanent with MV ≤ 2 until Seam Rip leaves. The delayed exile that returns when Seam Rip leaves — used primarily on their key 1-2 drop creature or enchantment to buy turns.</div></div>
+    <div class="card"><div class="card-label">The Mobilize Land</div><div class="card-title">Stadium Headliner</div><div class="card-body">{1}{R} 1/1 Goblin Warrior. Mobilize 1: whenever attacks, create 1 tapped attacking 1/1 Warrior token. Sacrifice for {1}{R}: deal damage = number of creatures you control to a creature. The token creation triggers Sharpshooter, Call, and Raphael. The sacrifice ability is a significant source of noncombat damage: with 8 creatures and Ojer active, sacrifice Stadium for 32 damage to one creature (or enough to kill anything). This is an uncounterable finisher that doesn't use the combat step.</div></div>
+    <div class="card"><div class="card-label">The Grind Threat</div><div class="card-title">Dalkovan Encampment</div><div class="card-body">Land: enters tapped unless you control Swamp or Mountain. {T}: {W}. {2}{W}{T}: whenever you attack this turn, create two 1/1 red Warrior tokens tapped and attacking. The activated land provides additional token ETBs that trigger Sharpshooter, Call, and Raphael — all without using a card from hand. In mid-game when your hand is depleted, Dalkovan Encampment generates 2 creature ETB triggers per turn cycle as pure land advantage.</div></div>
+  </div>
+</div>
+
+<!-- CH03 GAME FLOW -->
+<div id="gameflow" class="section">
+  <div class="section-label">Chapter 03</div>
+  <h1>Game Flow</h1>
+  <div class="mantra">"T1 Firebrand. T2 Sharpshooter + Warleader's Call. T3 Ojer Axonil. Attack step: watch the damage pile up."</div>
+  <h2>Turn-by-Turn Framework</h2>
+  <div class="card-grid card-grid-3">
+    <div class="card"><div class="card-label">Turns 1–2: Establish</div><div class="card-title">Ping Engine Online</div><div class="card-body">T1: Fanatical Firebrand (haste 1/1, pings opponent next turn). T2: Shocking Sharpshooter. When Firebrand swings on T2, it pings for 1 (Sharpshooter trigger). Add Warleader's Call on T2 instead for the +1/+1 anthem — now T3 creatures ETB for 2 noncombat damage each. The T2 decision: Sharpshooter (better value with upcoming ETBs) vs Warleader's Call (+1/+1 for faster attacks).</div></div>
+    <div class="card"><div class="card-label">Turn 3: The Engine</div><div class="card-title">Token Generation</div><div class="card-body">Voice of Victory attacking creates 2 Warriors (2 ETBs = 2-4 pings). Howlsquad Heavy creates 1 Goblin at beginning of combat (1 more ETB). Stadium Headliner creates 1 Warrior on attack. On T3 with Sharpshooter + Call + all three attackers: 4 ETB triggers = 8 noncombat damage before combat damage. That's often lethal by T4 without Ojer.</div></div>
+    <div class="card"><div class="card-label">Turn 4: Close</div><div class="card-title">Ojer or Lethal Math</div><div class="card-body">Ojer Axonil on T4: every subsequent ETB ping is now 4 damage minimum. T5 attack with Voice + Stadium + Heavy: 4 ETBs = 16 noncombat damage + combat. Alternatively: at 8 life or less, calculate burn to face. Burst Lightning kicked = 4. Sear = 4. Sacrifice Stadium Headliner: deal damage = creature count. With 8 creatures and Ojer: 8 × 4 = 32 to one creature, or enough to close at face in noncombat.</div></div>
+  </div>
+  <h2>The Ojer Math</h2>
+  <p>Ojer Axonil's static: red sources that deal noncombat damage less than Ojer's power (4) instead deal 4. This applies to ALL your red sources simultaneously. With the full board assembled:</p>
+  <div class="card-grid card-grid-2">
+    <div class="card"><div class="card-label">One Creature Entering (with full board)</div><div class="card-title">Potential Damage Per ETB</div><div class="card-body">Sharpshooter #1: 1→4 damage. Sharpshooter #2: 1→4 damage. Warleader's Call: 1→4 damage. Raphael: 1→4 damage. Total per creature ETB with 2 Sharpshooters + Call + Raphael + Ojer: <strong>16 noncombat damage per creature that enters.</strong> This is why Boros Aggro kills out of nowhere — tokens entering the battlefield on the attack step deal 16 damage each before any combat damage resolves.</div></div>
+    <div class="card"><div class="card-label">Voice of Victory Attack</div><div class="card-title">One Attack Step Math</div><div class="card-body">Voice attacks → Creates 2 Warriors → Each Warrior ETB deals 4 (Sharpshooter) + 4 (Call) = 8 per token → 2 tokens = 16 damage. Simultaneously: Voice deals its combat damage. Howlsquad creates its Goblin → another 8 damage. Stadium creates its Warrior → another 8 damage. Total noncombat damage from one attack step with Ojer active: <strong>32+ noncombat damage, all going to face.</strong></div></div>
+  </div>
+</div>
+
+<!-- CH04 ENGINES -->
+<div id="engines" class="section">
+  <div class="section-label">Chapter 04</div>
+  <h1>Core Engines</h1>
+  <div class="card-grid card-grid-2">
+    <div class="card"><div class="card-label">Engine A — The Ping Stack</div><div class="card-title">Layer Your Triggers</div><div class="card-body">Each trigger source stacks independently. Sharpshooter #1 + Sharpshooter #2 + Warleader's Call + Raphael = 4 separate "1 damage" triggers per creature ETB. With Ojer: 4 triggers × 4 damage = 16 per ETB. The deck plays 4 Sharpshooter and 4 Warleader's Call to ensure multiple trigger sources are in play simultaneously. Even without Ojer, 4 triggers × 1 damage = 4 per ETB is significant across an attack step with 3-4 token ETBs.</div></div>
+    <div class="card"><div class="card-label">Engine B — The Token Loop</div><div class="card-title">Attack-Step ETBs</div><div class="card-body">Tokens trigger on ENTERING — not just on ETB from a spell. Mobilize tokens (Voice, Stadium) enter "tapped and attacking" during your attack step. They trigger all ping sources simultaneously as they enter. Howlsquad's "beginning of combat" trigger creates a Goblin before attackers are declared — that Goblin also triggers pings before attacks are declared. Dalkovan Encampment creates more tokens on the attack step via its activated ability.</div></div>
+  </div>
+</div>
+
+<!-- CH05 ROLES -->
+<div id="roles" class="section">
+  <div class="section-label">Chapter 05</div>
+  <h1>Role Assignment</h1>
+  <p>Boros Aggro is always the beatdown deck — even against other aggro decks, your noncombat damage plan is faster than trading creatures profitably. The exception: against Mono-Green Landfall and any massive-creature deck, you are the fast aggro trying to kill before they assemble enough board to alpha-strike through you.</p>
+  <div class="card-grid card-grid-2">
+    <div class="card"><div class="card-label">vs Midrange/Control</div><div class="card-title">Go Wide + Ping to Face</div><div class="card-body">Their interactive tools (removal, counters) trade one-for-one, but you generate tokens that are inherently two-for-one (a 1/1 token that pings for 4). Deploy the Ojer + pinger + token plan as fast as possible. Force them to spend removal on Ojer and Sharpshooter — their hand empties before you run out of ETBs.</div></div>
+    <div class="card"><div class="card-label">vs Fast Aggro</div><div class="card-title">Race Noncombat Damage</div><div class="card-body">In aggro mirrors, your noncombat damage plan is more consistent than their attack damage plan. Don't overextend into their sweepers — keep 2-3 key pieces rather than flooding the board. A Sharpshooter + Ojer is enough damage output to win the race even if they're trading creatures with you in combat.</div></div>
+  </div>
+</div>
+
+<!-- CH06 MATCHUPS -->
+<div id="matchups" class="section">
+  <div class="section-label">Chapter 06</div>
+  <h1>Matchup Guide</h1>
+  <table class="matchup-table">
+    <thead><tr><th>Matchup</th><th>Role</th><th>Verdict</th><th>Key Note</th></tr></thead>
+    <tbody>
+      <tr onclick="toggle('mu-dimir')"><td><strong>Dimir Midrange</strong></td><td>Race</td><td><span class="verdict verdict-even">Even (44% for Dimir)</span></td><td>Kill Ojer before it doubles all pings. Hex answers their 1-2 drops. Cecil stops their attacks.</td></tr>
+      <tr><td colspan="4" class="matchup-detail" id="mu-dimir">
+        <p>Boros Aggro rates 56% favorable against Dimir — their 44% WR confirms this is a tough matchup for you. Their early clock is faster than your flash package can answer. Fanatical Firebrand pings for 1 on entry (Sharpshooter trigger), then haste attacks for 1, then dies sacrificing for 1 more — 3 damage from one 1-mana card before you can deploy a blocker. Warleader's Call as a {1}{R}{W} enchantment is their hardest permanent for you to answer (Requiting Hex doesn't hit enchantments). Ojer Axonil must die — Long Goodbye, Shoot the Sheriff with exile, or Bitter Triumph. Leaving Ojer alive turns the matchup into near-unwinnable territory.</p>
+        <table class="sb-table"><thead><tr><th>Out (as Dimir)</th><th>In (as Dimir)</th></tr></thead><tbody>
+          <tr><td class="sb-out">−1 <span class="c">Into the Flood Maw</span></td><td class="sb-in">+1 <span class="c">Strategic Betrayal</span></td></tr>
+          <tr><td class="sb-out">−1 <span class="c">Enduring Curiosity</span></td><td class="sb-in">+1 <span class="c">Day of Black Sun</span></td></tr>
+        </tbody></table>
+        <p class="sb-note">Day of Black Sun as a sweeper handles their token flood. Strategic Betrayal exiles enchantments — hits Warleader's Call and Seam Rip. Key targets for your removal: Shocking Sharpshooter first (stops all ETB pings), then Ojer Axonil (stops damage amplification), then Voice of Victory (stops token flood). Cecil, Dark Knight's lifelink combat damage negates several turns of their noncombat pings.</p>
+        <p class="sb-note"><strong>Key needle:</strong> Shoot the Sheriff deals 3 damage to any non-outlaw AND exiles. Ojer Axonil is a God (not an outlaw), so Sheriff doesn't work. Use Bitter Triumph (sacrifice a card) or Long Goodbye (exile ≤ 3 MV) for Ojer. Don't waste Sheriff on Sharpshooter when Requiting Hex exiles ≤ 2 MV creatures for {2}{B}.</p>
+      </td></tr>
+
+      <tr onclick="toggle('mu-monogreen')"><td><strong>Mono-Green Landfall</strong></td><td>Race</td><td><span class="verdict verdict-even">Even (44% vs Green)</span></td><td>Kill fast before Nursery stabilizes. Their reach tokens block your ground attacks.</td></tr>
+      <tr><td colspan="4" class="matchup-detail" id="mu-monogreen">
+        <p>Mono-Green Landfall rates 56% against Boros. Their Sapling Nursery 3/4 reach tokens block your 1/1 and 2/2 bodies effectively, and their combo kill via Icetill + Harmonizer bypasses your pinger setup entirely. The race is: can you accumulate enough noncombat ping damage (Sharpshooter + Ojer) before they land Nursery? The answer is usually turn 4-5 for Nursery; your pings can deal significant damage before that if Ojer is in play by turn 4. Their Leatherhead, Swamp Stalker with hexproof is resilient — she can attack through your blockers with trample and destroy your Warleader's Call on damage.</p>
+        <table class="sb-table"><thead><tr><th>Out</th><th>In</th></tr></thead><tbody>
+          <tr><td class="sb-out">−2 <span class="c">Seam Rip</span></td><td class="sb-in">+2 <span class="c">Exorcise</span></td></tr>
+          <tr><td class="sb-out">−2 <span class="c">Raphael, Tough Turtle</span></td><td class="sb-in">+2 <span class="c">Battle Menu</span></td></tr>
+        </tbody></table>
+        <p class="sb-note">Exorcise (exile artifact/enchantment/power 4+) handles Sapling Nursery (enchantment), Mightform Harmonizer (power 4+), Leatherhead (power 5), and Mossborn Hydra (power 4+). Battle Menu's Magic mode destroys power 4+ creatures. Trim Seam Rip (their few ≤ 2 MV key pieces don't justify it here) and Raphael (weaker with their large bodies blocking).</p>
+        <p class="sb-note"><strong>Key needle:</strong> Sequence your first 3 turns around deploying pings BEFORE Nursery resolves. If Nursery lands on T3-4 and your pings haven't dealt 10+ damage yet, you're likely losing the race. Against a Nursery board that generates blockers, switch to the Stadium Headliner sacrifice kill — with 8 creatures + Ojer, sacrifice Stadium for 32 damage to one creature, clearing the biggest blocker.</p>
+      </td></tr>
+
+      <tr onclick="toggle('mu-izzet')"><td><strong>Izzet Prowess</strong></td><td>Race</td><td><span class="verdict verdict-favor">Favorable</span></td><td>Your noncombat damage outpaces their creatures. Magebane Lizard from SB punishes their spell-heavy turns.</td></tr>
+      <tr><td colspan="4" class="matchup-detail" id="mu-izzet">
+        <p>This matchup favors you — your noncombat damage from Sharpshooter + Call + Raphael deals damage without entering combat, bypassing their prowess blockers and Eddymurk Crab's tapping ability. Their 1/2 Slickshot can't profitably block your 2/2+ ground threats, and your token flood overwhelms their board management. Magebane Lizard from the SB is devastating — every spell they cast deals its count to them, turning their cantrip chain into a liability.</p>
+        <table class="sb-table"><thead><tr><th>Out</th><th>In</th></tr></thead><tbody>
+          <tr><td class="sb-out">−2 <span class="c">Seam Rip</span></td><td class="sb-in">+4 <span class="c">Magebane Lizard</span></td></tr>
+          <tr><td class="sb-out">−2 <span class="c">Torch the Tower</span></td><td class="sb-in"></td></tr>
+        </tbody></table>
+        <p class="sb-note">Magebane Lizard: {2}{R} 1/4 — whenever a player casts a noncreature spell, deals damage = the number of noncreature spells that player has cast this turn. Their first cantrip deals 1. Second deals 2. Third deals 3. Four cantrips in one turn (a normal sequence) deals 1+2+3+4 = 10 damage. With Ojer in play: 4+8+12+16 = 40. Trim Seam Rip (their few ≤ 2 MV permanents don't justify the slots) and Torch the Tower (their creatures are smaller and Sear in the SB handles those).</p>
+      </td></tr>
+
+      <tr onclick="toggle('mu-jeskai')"><td><strong>Jeskai Control</strong></td><td>Race</td><td><span class="verdict verdict-dog">Unfavorable</span></td><td>Day of Judgment wipes your board. Inevitable Defeat answers Ojer uncounterable. Lightning Helix gains life.</td></tr>
+      <tr><td colspan="4" class="matchup-detail" id="mu-jeskai">
+        <p>Control has sweepers (Day of Judgment, Ultima) that immediately nullify your token flood, and Inevitable Defeat that exiles Ojer uncounterable. Their Lightning Helix life gain negates several turns of pings. This is your worst matchup — they have an answer for every angle of your plan. Go wide with tokens to make sweepers cost more, but recognize that Ultima ends the turn, destroying all artifacts and creatures simultaneously. Your noncombat damage via Ojer + Sharpshooter is your best path — they can't counter pings once they're on the stack.</p>
+        <table class="sb-table"><thead><tr><th>Out</th><th>In</th></tr></thead><tbody>
+          <tr><td class="sb-out">−2 <span class="c">Raphael, Tough Turtle</span></td><td class="sb-in">+2 <span class="c">Battle Menu</span></td></tr>
+          <tr><td class="sb-out">−2 <span class="c">Seam Rip</span></td><td class="sb-in">+2 <span class="c">Exorcise</span></td></tr>
+        </tbody></table>
+        <p class="sb-note">Battle Menu: Attack mode creates a 2/2 Knight token. Magic mode destroys power 4+ creature (hits North Wind Avatar, Marang River Regent). Item mode gains 4 life. The modal flexibility earns its slot against a deck with many different threat types. Exorcise handles their enchantments and large creatures. Trim Raphael (weaker in control games without board floods) and Seam Rip (their ≤ 2 MV permanents aren't their threats).</p>
+      </td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- CH07 SIDEBOARD -->
+<div id="sideboard" class="section">
+  <div class="section-label">Chapter 07</div>
+  <h1>Sideboard Guide</h1>
+  <div class="sb-card-guide">
+    <div class="sb-guide-row"><div class="sb-guide-name">Magebane Lizard ×4</div><div class="sb-guide-body">{2}{R} 1/4. Whenever a player casts a noncreature spell, this creature deals damage equal to the number of noncreature spells they've cast this turn to that player. The entire sideboard is built around 4 copies. Against Izzet Prowess, their spell chain of 4+ cantrips deals cumulative 1+2+3+4 = 10 damage per turn. With Ojer in play each of those 1-damage instances becomes 4: 4+8+12+16 = 40 damage from 4 spells. Devastating enough to end games the turn it resolves. Board in: Izzet Prowess, Jeskai Control (they cast multiple spells per turn), any spell-heavy deck.</div></div>
+    <div class="sb-guide-row"><div class="sb-guide-name">Sear ×4</div><div class="sb-guide-body">{1}{R} Instant. 4 damage to creature or planeswalker. Premium removal for anything with 3-4 toughness. Board in whenever their key creatures require 4 damage to kill: Eddymurk Crab (5/5 — doesn't die to Sear, use Exorcise instead), Shocking Sharpshooter (1/3 — Burst Lightning handles it), large Mono-Green bodies (4+). Also solid against planeswalkers at 4 loyalty. The fourth copy of burn enables more reach in aggressive matchups.</div></div>
+    <div class="sb-guide-row"><div class="sb-guide-name">Rest in Peace ×3</div><div class="sb-guide-body">{1}{W} Enchantment. If a card would go to a GY from anywhere, exile it instead. Hard GY hate for Reanimator strategies, Izzet Spellementals GY-based cost reduction, and any recursion engine. Also blanks Ojer Axonil's death trigger — if they exile Ojer, he doesn't return as Temple of Power. Board in: any GY-dependent strategy.</div></div>
+    <div class="sb-guide-row"><div class="sb-guide-name">Exorcise ×2</div><div class="sb-guide-body">{1}{W} Sorcery. Exile target artifact, enchantment, or creature with power 4 or greater. The flexible answer for their key permanents that your burn suite can't handle. Against Mono-Green: exiles Sapling Nursery (enchantment), Mightform Harmonizer (4 power), Leatherhead (5 power). Against control: exiles their planeswalkers (power 4+ creatures) and key enchantments. Board in: Mono-Green, Control, any deck with large creatures or key enchantments.</div></div>
+    <div class="sb-guide-row"><div class="sb-guide-name">Battle Menu ×2</div><div class="sb-guide-body">{2}{W} Instant. Four modes: Attack (create 2/2 Knight token), Ability (+0/+4 to target creature), Magic (destroy power 4+ creature), Item (gain 4 life). The modal flexibility covers multiple situations in a single slot. Knight token generates another ETB trigger (Sharpshooter ping). Life gain gives buffer in aggro mirrors. Power 4+ removal answers their biggest threats. Board in: any matchup where flexibility is valued — Control, Midrange, Mono-Green.</div></div>
+  </div>
+</div>
+
+<!-- CH08 HEURISTICS -->
+<div id="heuristics" class="section">
+  <div class="section-label">Chapter 08</div>
+  <h1>Heuristics</h1>
+  <ol class="heuristic-list">
+    <li><div class="heuristic-num">01</div><div class="heuristic-body"><strong>Ojer Axonil's static applies to ALL your red noncombat damage simultaneously.</strong> Every Sharpshooter, every Warleader's Call trigger, every Raphael Alliance trigger — all become 4 damage minimum with Ojer in play. The triggers are independent: 2 Sharpshooters + 1 Call + 1 Raphael with Ojer = 16 damage per creature ETB. Prioritize resolving Ojer when you have 2+ ping sources in play already.</div></li>
+    <li><div class="heuristic-num">02</div><div class="heuristic-body"><strong>Mobilize tokens enter "tapped and attacking" — they trigger Sharpshooter and Call on entry, not on declare attackers.</strong> Voice of Victory's 2 Warriors, Stadium Headliner's 1 Warrior, and Howlsquad Heavy's beginning-of-combat Goblin all trigger your ping sources when they enter the battlefield during the attack step. Track: how many ETBs will happen this attack? Each is noncombat damage going to face.</div></li>
+    <li><div class="heuristic-num">03</div><div class="heuristic-body"><strong>Howlsquad Heavy's Goblin triggers at "beginning of combat" — before attackers are declared.</strong> The Goblin enters and triggers all ping sources before you declare which creatures attack. This means you get the ETB ping before combat even starts. It also means the Goblin itself can attack (Heavy gives all Goblins haste). Stack the Goblin trigger, then declare attackers including the Goblin.</div></li>
+    <li><div class="heuristic-num">04</div><div class="heuristic-body"><strong>Stadium Headliner's sacrifice ability deals damage = creatures you control, not just attacking creatures.</strong> {1}{R}, sacrifice Stadium: deals damage equal to the number of creatures you control to target creature. With 10 creatures on board, that's 10 damage (or 40 with Ojer) to one creature. This can clear their largest blocker or deal lethal noncombat damage to them directly. Remember: Ojer makes red noncombat damage at least 4, so this kills anything with toughness ≤ 4 × creature-count.</div></li>
+    <li><div class="heuristic-num">05</div><div class="heuristic-body"><strong>Ojer Axonil dies → returns as Temple of Power → transforms back when you deal 4+ noncombat damage in a turn.</strong> Don't overreact when they kill Ojer. He becomes a land that adds {R}. His activation: {2}{R}{T} retransforms him at sorcery speed if your red sources dealt 4+ noncombat damage this turn. With any ping source active (Sharpshooter + incoming creature), Ojer can return to the field the same turn he's killed and they've spent a kill spell for nothing.</div></li>
+    <li><div class="heuristic-num">06</div><div class="heuristic-body"><strong>Voice of Victory prevents opponents from casting spells your turn — protect key attacks with this.</strong> Voice of Victory's text: "Your opponents can't cast spells during your turn." When Voice attacks, they can't respond with instant-speed removal during your attack step. They must have killed your key pieces BEFORE Voice's attack. This is significant: if Ojer is in play and Voice attacks creating Warriors, they cannot flash in a blocker or cast a removal spell during that attack.</div></li>
+    <li><div class="heuristic-num">07</div><div class="heuristic-body"><strong>Warleader's Call's +1/+1 applies to ALL creatures — including tokens at point of entry.</strong> Warleader's Call gives +1/+1 to all creatures you control. Mobilize tokens enter as 1/1s — but with Call in play, they enter as 2/2s. This means their combat damage is 2 rather than 1. In a board state where you have 6 Warriors, they're all 2/2s attacking for 12 combat damage in addition to the noncombat pings. The anthem effect scales significantly with your token count.</div></li>
+    <li><div class="heuristic-num">08</div><div class="heuristic-body"><strong>Dalkovan Encampment's activated ability creates tokens on the attack — use it mid-combat setup.</strong> {2}{W}{T}: Whenever you attack this turn, create two tapped and attacking 1/1 Warriors. Activate this BEFORE declaring attackers but during your beginning of combat step (the activation window). Those Warriors enter and trigger Sharpshooter + Call before regular attackers deal damage. Keep {2}{W} open on lands to maximize Dalkovan Encampment triggers each turn cycle.</div></li>
+  </ol>
+</div>
+
+<!-- CH09 TUNING -->
+<div id="tuning" class="section">
+  <div class="section-label">Chapter 09</div>
+  <h1>Tuning Notes</h1>
+  <div class="tuning-grid">
+    <div class="tuning-cell"><div class="tuning-cell-label">Ojer Axonil: 3 vs 4 copies</div><div class="tuning-cell-title">3 is correct</div><div class="tuning-cell-body">4 Ojer means you draw him early too often — he's a 4-drop in an aggressive deck and dead in hand T1-T3. 3 is the tournament-proven number. The transformation clause means he's effectively immune to removal anyway, so you rarely need redundant copies. Bump to 4 only if your local meta is heavy on control with multiple Inevitable Defeats per game.</div></div>
+    <div class="tuning-cell"><div class="tuning-cell-label">Raphael, Tough Turtle: 2 copies</div><div class="tuning-cell-title">Flex slot, meta dependent</div><div class="tuning-cell-body">Raphael is the weakest link in the main deck — his Alliance trigger only activates when other creatures enter, and his 1/3 body is underwhelming compared to Voice of Victory and Sharpshooter. 2 copies is correct for the meta that includes aggro mirrors where his pings matter. In control-heavy metas, trim to 0 and add more Battle Menu or interaction main deck.</div></div>
+    <div class="tuning-cell"><div class="tuning-cell-label">Seam Rip: 2 main deck</div><div class="tuning-cell-title">Conditional inclusion</div><div class="tuning-cell-body">Seam Rip ({1}{W} enchantment — exile ≤ 2 MV permanent until it leaves) is in 2 copies main to answer early Sapling Nursery and Stormchaser's Talent. In metas without those threats, Seam Rip is a dead draw. Consider replacing with 2 more burn spells (Sear) or a third Battle Menu for meta versatility.</div></div>
+    <div class="tuning-cell"><div class="tuning-cell-label">Magebane Lizard SB: 4 copies</div><div class="tuning-cell-title">Non-negotiable vs Prowess</div><div class="tuning-cell-body">4 Magebane Lizard is non-negotiable in the sideboard. Izzet Prowess is the 2nd-most popular deck at Cincinnati and Magebane single-handedly wins that matchup by punishing their entire game plan (casting cheap cantrips). Never reduce below 4 unless Prowess falls off the meta entirely.</div></div>
+    <div class="tuning-cell"><div class="tuning-cell-label">Dalkovan Encampment vs basic lands</div><div class="tuning-cell-title">3 is the right count</div><div class="tuning-cell-body">Dalkovan Encampment enters tapped unless you control a Swamp or Mountain. With 9 basic Mountains in the main deck, the untapped clause fires frequently by T2-T3. 3 copies ensures you see it mid-game to generate tokens off lands rather than cards. Running 4 causes too many T1 tapped lands that slow your T2 Sharpshooter plan.</div></div>
+    <div class="tuning-cell"><div class="tuning-cell-label">Rest in Peace SB: 3 copies</div><div class="tuning-cell-title">Hard GY hate needed</div><div class="tuning-cell-body">3 Rest in Peace specifically blanks Ojer's death trigger (he can't transform if he's exiled rather than dying), stops Izzet GY cost reduction for Eddymurk Crab, and answers any Reanimator strategy. 3 copies ensures you see it in G2/G3 against GY-based opponents. Note: Rest in Peace exiles your own GY too — this matters if you planned to use Dalkovan Encampment's activated ability recursively.</div></div>
+  </div>
+</div>
+
+<!-- CH10 PREP -->
+<div id="prep" class="section">
+  <div class="section-label">Chapter 10</div>
+  <h1>Prep Sheet</h1>
+  <button class="print-btn" onclick="window.print()">&#9113; Print This Sheet</button>
+  <div class="print-section">
+    <div class="print-title">Boros Aggro</div>
+    <div class="print-sub">Team Resolve · Standard RC Prep 2026 · deleon91 1st Place MTGO Challenge 64 Mar 23</div>
+    <div class="print-grid">
+      <div>
+        <div class="print-col-title">Key Oracle Reminders</div>
+        <div class="print-line">Ojer: red noncombat damage less than power 4 → becomes 4</div>
+        <div class="print-line">Sharpshooter: each OTHER creature you control enters → ping</div>
+        <div class="print-line">Warleader's Call: each creature you control enters → ping + +1/+1 anthem</div>
+        <div class="print-line">Raphael: each other creature you control enters → ping (Alliance)</div>
+        <div class="print-line">Voice: Mobilize 2 (creates 2 tapped attacking Warriors), opponents can't cast spells your turn</div>
+        <div class="print-line">Howlsquad Heavy: Beginning of Combat → 1/1 Goblin token (attacks this combat)</div>
+        <div class="print-line">Stadium Headliner: Mobilize 1 + sacrifice for damage = creature count</div>
+        <div class="print-line">Ojer dies → Temple of Power; retransforms at {2}{R}{T} sorcery if you dealt 4+ noncombat dmg</div>
+        <div class="print-line">Dalkovan Encampment enters tapped unless you control a Mountain or Swamp</div>
+        <div class="print-line">Seam Rip: exile ≤ 2 MV permanent until Seam Rip leaves</div>
+        <div class="print-line">Exorcise: exile artifact, enchantment, or power 4+ creature</div>
+        <div class="print-col-title" style="margin-top:16px;">Ojer Math Quick Reference</div>
+        <div class="print-line">1 Sharpshooter + Ojer: 4 per ETB</div>
+        <div class="print-line">Sharpshooter + Call + Ojer: 8 per ETB</div>
+        <div class="print-line">2 Sharpshooters + Call + Raphael + Ojer: 16 per ETB</div>
+        <div class="print-line">Voice attack (2 Warriors): 8-32 noncombat</div>
+        <div class="print-line">Voice + Heavy + Stadium attack: 4 ETBs = 16-64 noncombat</div>
+      </div>
+      <div>
+        <div class="print-col-title">Matchup Quick Reference</div>
+        <div class="print-mu">
+          <div class="print-mu-name">Dimir Midrange</div>
+          <div class="print-mu-role">56% for Boros · Kill Ojer priority: Bitter Triumph / Long Goodbye</div>
+          <div class="print-cols">
+            <div><div class="print-col-label">Out (as Dimir)</div>
+              <div class="print-row"><span>Into the Flood Maw</span><span class="print-qty">−1</span></div>
+              <div class="print-row"><span>Enduring Curiosity</span><span class="print-qty">−1</span></div>
+            </div>
+            <div><div class="print-col-label">In (as Dimir)</div>
+              <div class="print-row"><span>Strategic Betrayal</span><span class="print-qty">+1</span></div>
+              <div class="print-row"><span>Day of Black Sun</span><span class="print-qty">+1</span></div>
+            </div>
+          </div>
+          <div class="print-needle">Kill Sharpshooter first, then Ojer. Cecil lifelink negates their pings.</div>
+        </div>
+        <div class="print-mu">
+          <div class="print-mu-name">Mono-Green Landfall</div>
+          <div class="print-mu-role">44% for Boros · Kill before Nursery lands</div>
+          <div class="print-cols">
+            <div><div class="print-col-label">Out</div>
+              <div class="print-row"><span>Seam Rip ×2</span><span class="print-qty">−2</span></div>
+              <div class="print-row"><span>Raphael ×2</span><span class="print-qty">−2</span></div>
+            </div>
+            <div><div class="print-col-label">In</div>
+              <div class="print-row"><span>Exorcise ×2</span><span class="print-qty">+2</span></div>
+              <div class="print-row"><span>Battle Menu ×2</span><span class="print-qty">+2</span></div>
+            </div>
+          </div>
+          <div class="print-needle">Exorcise hits Nursery + Harmonizer + Leatherhead. Stadium sacrifice + Ojer = creature-count × 4.</div>
+        </div>
+        <div class="print-mu">
+          <div class="print-mu-name">Izzet Prowess</div>
+          <div class="print-mu-role">Favorable · Magebane Lizard wins</div>
+          <div class="print-cols">
+            <div><div class="print-col-label">Out</div>
+              <div class="print-row"><span>Seam Rip ×2</span><span class="print-qty">−2</span></div>
+              <div class="print-row"><span>Torch the Tower ×2</span><span class="print-qty">−2</span></div>
+            </div>
+            <div><div class="print-col-label">In</div>
+              <div class="print-row"><span>Magebane Lizard ×4</span><span class="print-qty">+4</span></div>
+            </div>
+          </div>
+          <div class="print-needle">4 cantrips + Magebane + Ojer = 40 damage. Their game plan kills them.</div>
+        </div>
+      </div>
+      <div>
+        <div class="print-col-title">Control Matchup</div>
+        <div class="print-mu">
+          <div class="print-mu-name">Jeskai Control</div>
+          <div class="print-mu-role">Unfavorable · Sweepers hurt</div>
+          <div class="print-cols">
+            <div><div class="print-col-label">Out</div>
+              <div class="print-row"><span>Raphael ×2</span><span class="print-qty">−2</span></div>
+              <div class="print-row"><span>Seam Rip ×2</span><span class="print-qty">−2</span></div>
+            </div>
+            <div><div class="print-col-label">In</div>
+              <div class="print-row"><span>Battle Menu ×2</span><span class="print-qty">+2</span></div>
+              <div class="print-row"><span>Exorcise ×2</span><span class="print-qty">+2</span></div>
+            </div>
+          </div>
+          <div class="print-needle">Magebane punishes their cantrips. Ojer + Sharpshooter is uncounterable damage source.</div>
+        </div>
+        <div class="print-col-title" style="margin-top:16px;">Priority Kill Order (as opponent)</div>
+        <div class="print-line">1. Shocking Sharpshooter (stops all ETB pings)</div>
+        <div class="print-line">2. Ojer Axonil (stops 4x amplification)</div>
+        <div class="print-line">3. Warleader's Call (stops anthem + ping)</div>
+        <div class="print-line">4. Voice of Victory (stops token flood)</div>
+        <div class="print-line">Use: Bitter Triumph / Long Goodbye for Ojer</div>
+        <div class="print-line">Use: Strategic Betrayal for Warleader's Call</div>
+        <div class="print-line">Use: Requiting Hex for Sharpshooter (≤ 2 MV)</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div><!-- end .page -->
+<footer>
+  <span><a href="deck-guides.html" style="color:rgba(242,237,230,0.3);text-decoration:none;">Team Resolve</a></span>
+  <span>Standard 2026 · Boros Aggro</span>
+  <span>RC Prep · April 2026</span>
+</footer>
+<script>
+function show(id) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  event.target.classList.add('active');
+  window.scrollTo(0,0);
+}
+function toggle(id) {
+  const el = document.getElementById(id);
+  el.classList.toggle('open');
+}
+</script>
+</body>
+</html>

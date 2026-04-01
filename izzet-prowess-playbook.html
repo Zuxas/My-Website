@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Izzet Prowess Standard playbook — Team Resolve. Slickshot Show-Off, Elusive Otter, Stormchaser's Talent. RC Cincinnati / DC prep guide." />
+<title>Izzet Prowess — Team Resolve Standard Playbook</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+  :root { --ink:#0e0e0e; --paper:#f2ede6; --paper-dark:#e8e1d6; --rule:#c8bfb0; --accent:#5c1a1a; --accent-light:#f7d6d6; --danger:#8f1a1a; --danger-light:#f7d6d6; --gold:#8f6a1a; --gold-light:#f7ead6; --mid:#5a5248; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:var(--paper); color:var(--ink); font-family:'Crimson Pro',Georgia,serif; font-size:17px; line-height:1.6; }
+  .header-band { background:var(--ink); border-bottom:3px solid var(--accent); }
+  .header-inner { max-width:1100px; margin:0 auto; padding:32px 80px; display:flex; justify-content:space-between; align-items:flex-end; gap:40px; }
+  .header-eyebrow { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:rgba(242,237,230,0.35); margin-bottom:8px; }
+  .header-title { font-family:'Bebas Neue',sans-serif; font-size:56px; line-height:0.9; color:var(--paper); letter-spacing:0.02em; }
+  .header-title span { color:#e05a2a; }
+  .header-mantra { font-family:'Crimson Pro',serif; font-style:italic; font-size:15px; color:rgba(242,237,230,0.4); margin-top:8px; }
+  .header-right { display:flex; flex-direction:column; gap:8px; text-align:right; padding-bottom:4px; }
+  .header-stat { display:flex; gap:12px; align-items:center; justify-content:flex-end; }
+  .hs-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; color:rgba(242,237,230,0.3); }
+  .hs-val { font-family:'DM Mono',monospace; font-size:12px; color:var(--paper); }
+  nav { position:sticky; top:0; z-index:100; background:var(--ink); border-bottom:1px solid rgba(242,237,230,0.1); padding:0 80px; display:flex; align-items:center; gap:0; overflow-x:auto; scrollbar-width:none; }
+  nav::-webkit-scrollbar { display:none; }
+  .nav-brand { font-family:'Bebas Neue',sans-serif; font-size:18px; color:#e05a2a; letter-spacing:0.05em; margin-right:40px; white-space:nowrap; padding:16px 0; text-decoration:none; }
+  .nav-link { font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:rgba(242,237,230,0.4); padding:20px 16px; cursor:pointer; white-space:nowrap; border-bottom:2px solid transparent; transition:all 0.2s; background:none; border-top:none; border-left:none; border-right:none; }
+  .nav-link:hover, .nav-link.active { color:var(--paper); border-bottom-color:#e05a2a; }
+  .page { max-width:1100px; margin:0 auto; padding:80px 80px; }
+  .section { display:none; animation:fadeIn 0.3s ease; }
+  .section.active { display:block; }
+  @keyframes fadeIn { from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:translateY(0);} }
+  .section-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.25em; text-transform:uppercase; color:var(--mid); margin-bottom:8px; }
+  h1 { font-family:'Bebas Neue',sans-serif; font-size:64px; line-height:0.9; letter-spacing:0.01em; color:var(--ink); margin-bottom:40px; }
+  h2 { font-family:'Bebas Neue',sans-serif; font-size:36px; letter-spacing:0.02em; color:var(--ink); margin:56px 0 20px; padding-bottom:8px; border-bottom:2px solid var(--ink); }
+  h3 { font-family:'DM Mono',monospace; font-size:12px; letter-spacing:0.15em; text-transform:uppercase; color:var(--accent); margin:32px 0 12px; }
+  p { margin-bottom:16px; color:var(--ink); font-weight:300; }
+  strong { font-weight:600; }
+  .c { color:var(--accent); font-weight:400; }
+  .mantra { border-left:4px solid var(--accent); padding:24px 32px; background:var(--accent-light); margin:32px 0; font-style:italic; font-size:20px; color:var(--accent); line-height:1.5; }
+  .card-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); gap:1px; background:var(--rule); border:1px solid var(--rule); margin:24px 0; }
+  .card-grid-2 { grid-template-columns:repeat(2,1fr) !important; }
+  .card-grid-3 { grid-template-columns:repeat(3,1fr) !important; }
+  .card { background:var(--paper); padding:24px; }
+  .card:hover { background:var(--paper-dark); }
+  .card-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--mid); margin-bottom:8px; }
+  .card-title { font-family:'Bebas Neue',sans-serif; font-size:22px; letter-spacing:0.03em; color:var(--ink); margin-bottom:8px; }
+  .card-body { font-size:15px; font-weight:300; color:var(--mid); line-height:1.5; }
+  .decklist { display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--rule); border:1px solid var(--rule); margin:24px 0; }
+  .dl-section { background:var(--paper); padding:24px; }
+  .dl-section-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--mid); margin-bottom:16px; }
+  .dl-group { margin-bottom:20px; }
+  .dl-group-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; color:var(--ink); background:var(--paper-dark); padding:4px 8px; margin-bottom:8px; display:inline-block; }
+  .dl-card-row { display:flex; justify-content:space-between; align-items:baseline; padding:3px 0; border-bottom:1px solid rgba(200,191,176,0.3); font-size:15px; font-weight:300; }
+  .dl-card-row:last-child { border-bottom:none; }
+  .dl-qty { font-family:'DM Mono',monospace; font-size:12px; color:var(--mid); flex-shrink:0; margin-left:8px; }
+  .matchup-table { width:100%; border-collapse:collapse; margin:24px 0; }
+  .matchup-table th { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; padding:10px 16px; background:var(--ink); color:rgba(242,237,230,0.6); text-align:left; }
+  .matchup-table td { padding:12px 16px; border-bottom:1px solid var(--rule); font-size:15px; font-weight:300; }
+  .matchup-table tr:hover td { background:var(--paper-dark); cursor:pointer; }
+  .matchup-detail { display:none; background:var(--accent-light); border-left:4px solid var(--accent); padding:24px 32px; margin:0; }
+  .matchup-detail.open { display:block; }
+  .verdict { display:inline-block; font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; padding:4px 10px; border:1px solid; }
+  .verdict-dog { background:var(--danger-light); color:var(--danger); border-color:var(--danger); }
+  .verdict-even { background:var(--gold-light); color:var(--gold); border-color:var(--gold); }
+  .verdict-favor { background:#d1fae5; color:#065f46; border-color:#065f46; }
+  .sb-table { width:100%; border-collapse:collapse; margin:16px 0; }
+  .sb-table th { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; padding:8px 12px; background:var(--paper-dark); color:var(--mid); text-align:left; border-bottom:2px solid var(--rule); }
+  .sb-table td { padding:10px 12px; border-bottom:1px solid var(--rule); font-size:14px; font-weight:300; }
+  .sb-out { color:var(--danger); font-family:'DM Mono',monospace; font-size:12px; }
+  .sb-in { color:#065f46; font-family:'DM Mono',monospace; font-size:12px; }
+  .sb-note { font-size:13px; font-weight:300; color:var(--mid); font-style:italic; margin-top:6px; }
+  .sb-card-guide { border:1px solid var(--rule); margin:24px 0; }
+  .sb-guide-row { display:grid; grid-template-columns:200px 1fr; gap:0; border-bottom:1px solid var(--rule); }
+  .sb-guide-row:last-child { border-bottom:none; }
+  .sb-guide-name { font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.08em; text-transform:uppercase; padding:16px; background:var(--paper-dark); color:var(--ink); border-right:1px solid var(--rule); display:flex; align-items:flex-start; }
+  .sb-guide-body { padding:16px; font-size:14px; font-weight:300; line-height:1.6; color:var(--mid); }
+  .engine-block { border:1px solid var(--rule); margin:32px 0; }
+  .engine-header { background:var(--ink); padding:20px 24px; display:flex; align-items:center; gap:16px; }
+  .engine-letter { font-family:'Bebas Neue',sans-serif; font-size:40px; color:#e05a2a; line-height:1; }
+  .engine-name { font-family:'Bebas Neue',sans-serif; font-size:24px; color:var(--paper); letter-spacing:0.03em; }
+  .engine-body { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--rule); }
+  .engine-step { background:var(--paper); padding:20px; }
+  .engine-step-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--mid); margin-bottom:6px; }
+  .engine-step-title { font-family:'Bebas Neue',sans-serif; font-size:20px; color:var(--ink); margin-bottom:8px; }
+  .engine-step-body { font-size:14px; font-weight:300; color:var(--mid); line-height:1.5; }
+  .heuristic-list { list-style:none; margin:0; padding:0; }
+  .heuristic-list li { display:grid; grid-template-columns:48px 1fr; gap:16px; padding:20px 0; border-bottom:1px solid var(--rule); align-items:start; }
+  .heuristic-list li:last-child { border-bottom:none; }
+  .heuristic-num { font-family:'DM Mono',monospace; font-size:22px; color:var(--rule); font-weight:500; }
+  .heuristic-body strong { display:block; font-size:16px; font-weight:600; margin-bottom:4px; color:var(--ink); }
+  .heuristic-body { font-size:14px; font-weight:300; color:var(--mid); line-height:1.5; }
+  .tuning-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--rule); border:1px solid var(--rule); margin:24px 0; }
+  .tuning-cell { background:var(--paper); padding:20px; }
+  .tuning-cell-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; color:var(--mid); margin-bottom:8px; }
+  .tuning-cell-title { font-family:'Bebas Neue',sans-serif; font-size:20px; color:var(--ink); margin-bottom:8px; }
+  .tuning-cell-body { font-size:14px; font-weight:300; color:var(--mid); line-height:1.5; }
+  .curve-strip { display:flex; gap:1px; background:var(--rule); border:1px solid var(--rule); margin:24px 0; }
+  .curve-slot { flex:1; background:var(--paper); padding:16px 12px; text-align:center; }
+  .curve-cmc { font-family:'Bebas Neue',sans-serif; font-size:32px; color:var(--accent); line-height:1; }
+  .curve-count { font-family:'DM Mono',monospace; font-size:11px; color:var(--mid); letter-spacing:0.1em; margin-top:4px; }
+  .curve-bar { height:4px; background:var(--accent); margin:8px auto 0; border-radius:2px; opacity:0.5; }
+  .print-btn { display:inline-flex; align-items:center; gap:8px; font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.12em; text-transform:uppercase; background:var(--ink); color:var(--paper); border:none; padding:10px 20px; cursor:pointer; margin-bottom:32px; }
+  .print-section { border:1px solid var(--rule); padding:32px; margin:24px 0; }
+  .print-title { font-family:'Bebas Neue',sans-serif; font-size:48px; color:var(--ink); }
+  .print-sub { font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.15em; text-transform:uppercase; color:var(--mid); margin-bottom:24px; }
+  .print-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+  .print-col-title { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--mid); margin-bottom:8px; padding-bottom:4px; border-bottom:1px solid var(--rule); }
+  .print-line { font-size:13px; font-weight:300; padding:2px 0; }
+  .print-mu { margin-bottom:16px; }
+  .print-mu-name { font-family:'Bebas Neue',sans-serif; font-size:18px; color:var(--ink); }
+  .print-mu-role { font-family:'DM Mono',monospace; font-size:9px; letter-spacing:0.1em; text-transform:uppercase; color:var(--mid); margin-bottom:6px; }
+  .print-cols { display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+  .print-col-label { font-family:'DM Mono',monospace; font-size:9px; letter-spacing:0.15em; text-transform:uppercase; color:var(--mid); margin-bottom:4px; }
+  .print-row { font-size:12px; font-weight:300; display:flex; justify-content:space-between; padding:1px 0; border-bottom:1px solid rgba(200,191,176,0.4); }
+  .print-qty { font-family:'DM Mono',monospace; font-size:11px; color:var(--mid); }
+  .print-needle { font-family:'DM Mono',monospace; font-size:9px; letter-spacing:0.06em; color:var(--danger); margin-top:6px; text-transform:uppercase; }
+  footer { background:var(--ink); color:rgba(242,237,230,0.3); padding:40px 80px; margin-top:80px; display:flex; justify-content:space-between; align-items:center; }
+  footer span { font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.1em; text-transform:uppercase; }
+  @media (max-width:768px) { .header-inner,nav,.page,footer { padding-left:24px; padding-right:24px; } .header-title { font-size:40px; } .header-right { display:none; } .decklist,.engine-body,.tuning-grid,.print-grid { grid-template-columns:1fr; } nav { padding:0 24px; } }
+  @media print { nav,.print-btn,footer { display:none; } .section { display:block !important; } }
+</style>
+</head>
+<body>
+<div class="header-band">
+  <div class="header-inner">
+    <div>
+      <div class="header-eyebrow">Team Resolve · Standard · RC Prep 2026</div>
+      <div class="header-title">Izzet<br><span>Prowess</span></div>
+      <div class="header-mantra">"Cast spells. Pump creatures. Kill before they stabilize."</div>
+    </div>
+    <div class="header-right">
+      <div class="header-stat"><span class="hs-label">Archetype</span><span class="hs-val">Tempo-Aggro</span></div>
+      <div class="header-stat"><span class="hs-label">Tier</span><span class="hs-val">B (59.2% WR)</span></div>
+      <div class="header-stat"><span class="hs-label">Kill Turn</span><span class="hs-val">3–5</span></div>
+      <div class="header-stat"><span class="hs-label">Source</span><span class="hs-val">LucasG1ggs Mar 2026</span></div>
+    </div>
+  </div>
+</div>
+<nav>
+  <a class="nav-brand" href="deck-guides.html">Team Resolve</a>
+  <button class="nav-link active" onclick="show('overview')">Overview</button>
+  <button class="nav-link" onclick="show('decklist')">Decklist</button>
+  <button class="nav-link" onclick="show('gameflow')">Game Flow</button>
+  <button class="nav-link" onclick="show('engines')">Engines</button>
+  <button class="nav-link" onclick="show('roles')">Roles</button>
+  <button class="nav-link" onclick="show('matchups')">Matchups</button>
+  <button class="nav-link" onclick="show('sideboard')">Sideboard</button>
+  <button class="nav-link" onclick="show('heuristics')">Heuristics</button>
+  <button class="nav-link" onclick="show('tuning')">Tuning</button>
+  <button class="nav-link" onclick="show('prep')">Prep</button>
+</nav>
+<div class="page">
+
+<!-- CH01 OVERVIEW -->
+<div id="overview" class="section active">
+  <div class="section-label">Chapter 01</div>
+  <h1>Deck<br>Overview</h1>
+  <div class="mantra">"Even after the bans of Cori-Steel Cutter, Proft's Eidetic Memory, and Vivi Ornitier, an Izzet deck is still this strong in Standard. Prowess has resilience, aggression, and the ability to shift its game plan." — LucasG1ggs, Mar 2026</div>
+  <p>Izzet Prowess is Tier B at <strong>59.2% win rate</strong> across 18,000 BO3 games (Plat–Mythic), the second-most popular deck in the format at 9% meta share. The plan is simple and brutally efficient: play cheap creatures with prowess-like abilities, cast cheap draw spells to pump them, and kill on turn 3–5 before the opponent stabilizes. The deck generates more damage per mana than almost anything in the format.</p>
+  <p>The two damage vectors: <span class="c">Slickshot Show-Off</span> is a 1/2 flier that gets +2/+0 per noncreature spell and can be plotted for {1}{R} to deploy without warning. <span class="c">Elusive Otter</span> is a 1/1 that grows with every spell and becomes unblockable by lower-power creatures. <span class="c">Stormchaser's Talent</span> is the engine — it creates prowess Otter tokens at each level and eventually generates a token per spell. <span class="c">Ral, Crackling Wit</span> gains loyalty from every noncreature spell and backs up the creature plan with more Otter tokens and card selection.</p>
+  <p>The deck's defining characteristic is its cantrip density. Four each of Opt, Sleight of Hand, Stock Up, and Boomerang Basics means approximately 16 spells that replace themselves. This makes the deck resistant to individual card removal — killing a creature doesn't address the remaining hand of 4 cantrips that will continue to pump replacements.</p>
+
+  <h2>Why Study This Deck</h2>
+  <p>You face Izzet Prowess in 9% of games at Cincinnati — about 2-3 rounds. Your Dimir Midrange rates this matchup at 44% (Unfavorable). Understanding their turn structure, what their nut draw looks like, and when they're dead on board helps you make better decisions about when to hold up interaction vs deploy threats.</p>
+
+  <div class="card-grid card-grid-3">
+    <div class="card">
+      <div class="card-label">Their Fastest Kill</div>
+      <div class="card-title">Turn 3 Blowout</div>
+      <div class="card-body">T1 Otter, T2 Stormchaser's Talent (creates another Otter), T3 cast 4 cantrips. Each cantrip pumps both Otters for +1/+1 until EOT, Talent creates another Otter per spell at level 3. A 5/5 and 4/4 connecting for 9+ on turn 3 is achievable from this sequence.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Their Slowest Threat</div>
+      <div class="card-title">Eddymurk Crab</div>
+      <div class="card-body">5/5 flash, costs {1} less per instant/sorcery in GY — with 4+ spells in GY it's effectively free. Enters tapped if not your turn. Taps up to 2 creatures on entry. Their late-game closer that stabilizes a board and provides a 5/5 clock that's nearly uncounterable with enough spells in yard.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Their Kill Switch</div>
+      <div class="card-title">Slickshot Plot</div>
+      <div class="card-body">Plot {1}{R} exiles Slickshot from hand — it can be cast for free on a later turn (sorcery speed). A Slickshot plotted on turn 2 comes down turn 3 with haste, gets +2/+0 per cantrip, and flies over your blockers. This is the "out of nowhere" sequence Dimir players lose to when tapped out.</div>
+    </div>
+  </div>
+</div>
+
+<!-- CH02 DECKLIST -->
+<div id="decklist" class="section">
+  <div class="section-label">Chapter 02</div>
+  <h1>Decklist</h1>
+  <p style="font-style:italic;color:var(--mid);font-size:15px;margin-bottom:24px;">Canonical March 30 2026 list — from magic.gg Traditional Standard Ranked Decklists. Core 60 is consensus across top players.</p>
+  <div class="decklist">
+    <div class="dl-section">
+      <div class="dl-section-label">Maindeck (60)</div>
+      <div class="dl-group">
+        <div class="dl-group-label">Creatures (10)</div>
+        <div class="dl-card-row"><span><span class="c">Slickshot Show-Off</span></span><span class="dl-qty">4</span></div>
+        <div class="dl-card-row"><span><span class="c">Elusive Otter</span></span><span class="dl-qty">3</span></div>
+        <div class="dl-card-row"><span><span class="c">Eddymurk Crab</span></span><span class="dl-qty">2</span></div>
+      </div>
+      <div class="dl-group">
+        <div class="dl-group-label">Enchantments (4)</div>
+        <div class="dl-card-row"><span><span class="c">Stormchaser's Talent</span></span><span class="dl-qty">4</span></div>
+      </div>
+      <div class="dl-group">
+        <div class="dl-group-label">Planeswalkers (0 main / SB)</div>
+        <div class="dl-card-row"><span style="color:var(--mid);font-size:13px;font-style:italic;">Ral, Crackling Wit in SB (2 copies)</span><span class="dl-qty">—</span></div>
+      </div>
+      <div class="dl-group">
+        <div class="dl-group-label">Instants / Sorceries (25)</div>
+        <div class="dl-card-row"><span><span class="c">Opt</span></span><span class="dl-qty">4</span></div>
+        <div class="dl-card-row"><span><span class="c">Sleight of Hand</span></span><span class="dl-qty">4</span></div>
+        <div class="dl-card-row"><span><span class="c">Stock Up</span></span><span class="dl-qty">4</span></div>
+        <div class="dl-card-row"><span><span class="c">Boomerang Basics</span></span><span class="dl-qty">4</span></div>
+        <div class="dl-card-row"><span><span class="c">Burst Lightning</span></span><span class="dl-qty">4</span></div>
+        <div class="dl-card-row"><span><span class="c">Into the Flood Maw</span></span><span class="dl-qty">2</span></div>
+        <div class="dl-card-row"><span><span class="c">Sear</span></span><span class="dl-qty">1</span></div>
+        <div class="dl-card-row"><span><span class="c">Wild Ride</span></span><span class="dl-qty">1</span></div>
+        <div class="dl-card-row"><span><span class="c">Secret Identity</span></span><span class="dl-qty">1</span></div>
+        <div class="dl-card-row"><span><span class="c">Roaring Furnace</span></span><span class="dl-qty">1</span></div>
+      </div>
+    </div>
+    <div class="dl-section">
+      <div class="dl-section-label">Lands (21)</div>
+      <div class="dl-group">
+        <div class="dl-card-row"><span>Island</span><span class="dl-qty">6</span></div>
+        <div class="dl-card-row"><span><span class="c">Steam Vents</span></span><span class="dl-qty">4</span></div>
+        <div class="dl-card-row"><span><span class="c">Spirebluff Canal</span></span><span class="dl-qty">4</span></div>
+        <div class="dl-card-row"><span><span class="c">Riverpyre Verge</span></span><span class="dl-qty">4</span></div>
+        <div class="dl-card-row"><span><span class="c">Multiversal Passage</span></span><span class="dl-qty">2</span></div>
+        <div class="dl-card-row"><span><span class="c">Willowrush Verge</span></span><span class="dl-qty">1</span></div>
+      </div>
+      <div class="dl-section-label" style="margin-top:24px;">Sideboard (15)</div>
+      <div class="dl-group">
+        <div class="dl-card-row"><span><span class="c">Get Out</span></span><span class="dl-qty">2</span></div>
+        <div class="dl-card-row"><span><span class="c">Fire Magic</span></span><span class="dl-qty">2</span></div>
+        <div class="dl-card-row"><span><span class="c">Ral, Crackling Wit</span></span><span class="dl-qty">2</span></div>
+        <div class="dl-card-row"><span><span class="c">Soul-Guide Lantern</span></span><span class="dl-qty">2</span></div>
+        <div class="dl-card-row"><span><span class="c">Spell Pierce</span></span><span class="dl-qty">2</span></div>
+        <div class="dl-card-row"><span><span class="c">Broadside Barrage</span></span><span class="dl-qty">1</span></div>
+        <div class="dl-card-row"><span><span class="c">Sear</span></span><span class="dl-qty">1</span></div>
+        <div class="dl-card-row"><span><span class="c">Roaring Furnace</span></span><span class="dl-qty">1</span></div>
+        <div class="dl-card-row"><span><span class="c">Annul</span></span><span class="dl-qty">1</span></div>
+        <div class="dl-card-row"><span><span class="c">Torch the Tower</span></span><span class="dl-qty">1</span></div>
+      </div>
+    </div>
+  </div>
+
+  <h2>Mana Curve</h2>
+  <div class="curve-strip">
+    <div class="curve-slot"><div class="curve-cmc">1</div><div class="curve-count">17 spells</div><div class="curve-bar" style="width:100%"></div></div>
+    <div class="curve-slot"><div class="curve-cmc">2</div><div class="curve-count">11 spells</div><div class="curve-bar" style="width:65%"></div></div>
+    <div class="curve-slot"><div class="curve-cmc">3</div><div class="curve-count">5 spells</div><div class="curve-bar" style="width:30%"></div></div>
+    <div class="curve-slot"><div class="curve-cmc">4+</div><div class="curve-count">6 spells</div><div class="curve-bar" style="width:35%"></div></div>
+    <div class="curve-slot"><div class="curve-cmc">Lands</div><div class="curve-count">21</div><div class="curve-bar" style="width:0%"></div></div>
+  </div>
+  <p style="font-size:14px;color:var(--mid);">Crushingly front-loaded. 17 one-mana spells means almost every hand has multiple T1-T2 plays. The 4-drop slot is Eddymurk Crab (often free with GY) and Ral in SB games. Only 21 lands — the cantrip density makes 21 correct. Manlands drawn as spells. Key: never keep a hand with 4+ lands.</p>
+
+  <h2>Card Notes</h2>
+  <div class="card-grid">
+    <div class="card">
+      <div class="card-label">The Primary Threat</div>
+      <div class="card-title">Slickshot Show-Off</div>
+      <div class="card-body">{R} 1/2 Bird Wizard. Flying, haste. Whenever you cast a noncreature spell, this creature gets +2/+0 until EOT. Plot {1}{R}: exile from hand, cast free on a later turn (sorcery speed). The plot ability is the key threat — it converts a hand card into surprise T3 damage. A Slickshot with 3 cantrips in a turn is a 7/2 flier dealing 7 flying damage. Irrelevant unless killed immediately, and it has haste so it attacks the turn it resolves.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">The Evasive Clock</div>
+      <div class="card-title">Elusive Otter</div>
+      <div class="card-body">{U} 1/1 Otter. Prowess. Creatures with power less than this creature's power can't block it. Adventure — Grove's Bounty {X}{G}: distribute X +1/+1 counters among any number of target creatures you control. The prowess pumping makes Otter effectively unblockable once it reaches 2+ power — most creatures in the format have power 1. Multiversal Passage and Willowrush Verge provide {G} access for the adventure mode to permanently buff creatures with counters rather than the temporary prowess pump.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">The Engine</div>
+      <div class="card-title">Stormchaser's Talent</div>
+      <div class="card-body">{U} Enchantment — Class. Level 1 (base): creates 1/1 Otter token with prowess. {3}{U}: Level 2 — returns an instant/sorcery from GY to hand. {5}{U}: Level 3 — creates 1/1 Otter per instant/sorcery you cast. Level 1 on T1 (with an Otter token) into T2 cantrips means every spell pumps two prowess creatures. Level 3 mid-game creates a token factory that's nearly impossible to race. Never tap out to level it when they have countermagic; do it EOT with mana up.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">The Late-Game Closer</div>
+      <div class="card-title">Eddymurk Crab</div>
+      <div class="card-body">{4}{U} 5/5 Flash Elemental Crab. Costs {1} less per instant/sorcery in GY. Enters tapped if not your turn. ETB: tap up to two target creatures. With 4+ spells in GY: free 5/5. With 6+ spells in GY: free 5/5 that taps their two best blockers on entry. Used defensively (flash block on opponent's turn) or offensively (flash in on their end step after clearing blockers). The ETB tapping combos with plotted Slickshot — tap their blockers, then Slickshot comes down with haste and flies for lethal.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">The Cantrip Core</div>
+      <div class="card-title">Opt / Sleight / Stock Up</div>
+      <div class="card-body">Opt: {U} instant scry 1 draw 1. Sleight of Hand: {U} sorcery look at top 2 pick 1. Stock Up: {1}{U} sorcery look at top 5 put 2 in hand rest on bottom. All 12 copies are here primarily as prowess triggers, secondarily as card selection. The key difference: Opt at instant speed can be held for their turn to pump prowess during their attack step, or to counter the damage with Slickshot mid-combat. Cast Opt before attacking to get +1/+1 on all prowess creatures in combat, then let them declare blocks.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">The Burn Package</div>
+      <div class="card-title">Burst Lightning / Sear</div>
+      <div class="card-body">Burst Lightning: {R} instant — 2 damage, or 4 damage with kicker {4}. Sear: {1}{R} instant — 4 damage to creature or planeswalker. Primary role: clear blockers and pump prowess simultaneously. Kill their creature + give Slickshot +2/+0 in one spell. Sear at 4 damage handles most relevant threats. Kicker Burst Lightning on their end step clears a blocker before your attack step. These are reach spells too — when they're at low life, Burst Lightning to face closes games that stall.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">The Lesson Staple</div>
+      <div class="card-title">Boomerang Basics</div>
+      <div class="card-body">{1}{U} Sorcery — Lesson. Return target nonland permanent to owner's hand. If you controlled it, draw a card. When used on your own permanent: bounce your Otter back to hand after it attacked, draw a card, and re-cast it to trigger Talent's level 3 token again. When used on opponents': return their key blocker, enchantment, or threat. The Lesson subtype means it can be fetched from outside the game by Learn effects. Four copies ensures it's always available as both interaction and card advantage.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">The Wild Card</div>
+      <div class="card-title">Wild Ride / Secret Identity</div>
+      <div class="card-body">Wild Ride: {R} sorcery — target creature gets +3/+0 and haste until EOT. Harmonize {4}{R} from GY. Gives Slickshot or Otter a surprise power boost mid-combat or from nowhere. Secret Identity: {U} instant — Conceal mode makes creature 1/1 with hexproof (protect from removal), Reveal mode makes it 3/4 with flying and vigilance (combat threat). Both one-ofs serve as flexible combat tricks that also trigger prowess and fill the GY for Eddymurk Crab cost reduction.</div>
+    </div>
+  </div>
+</div>
+
+<!-- CH03 GAME FLOW -->
+<div id="gameflow" class="section">
+  <div class="section-label">Chapter 03</div>
+  <h1>Game Flow</h1>
+  <div class="mantra">"Cast your noncreature spells BEFORE attacking. Every spell is a free +1/+1 or +2/+0 in combat."</div>
+  <h2>Turn-by-Turn Framework</h2>
+  <div class="card-grid card-grid-3">
+    <div class="card">
+      <div class="card-label">Turns 1–2: Establish</div>
+      <div class="card-title">Creature + Engine</div>
+      <div class="card-body">T1: Elusive Otter or Slickshot Show-Off (plot if you want surprise T3 haste). T2: Stormchaser's Talent (creates immediate 1/1 Otter). Now 2 prowess creatures in play before T3. Or: T1 Otter, T2 3x cantrips — Otter becomes a 4/4 that can't be blocked by most things in the format and swings for 4. The T2 cantrip blitz is one of their fastest openers.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Turns 3–4: Execute</div>
+      <div class="card-title">Spell Chain</div>
+      <div class="card-body">Main phase: cast all cantrips in hand to pump creatures before combat. Opt, Sleight, Boomerang Basics all fire before you declare attackers. Each spell adds +2/+0 to Slickshot, +1/+1 to Otters. Attack. Then post-combat, cast removal to clear remaining blockers for next turn. By T4 they should be at 6-8 life with a Slickshot threatening lethal through any blocker.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Turns 5+: Close</div>
+      <div class="card-title">Burn to Face</div>
+      <div class="card-body">At 8 life or less, all burn spells become face damage. Burst Lightning = 2 to face (or 4 kicked). Sear to face. A hand of 3 burn spells and 1 cantrip is usually 7+ damage from nowhere. Wild Ride targets a creature with trample — +3/+0 then attacks for lethal. Eddymurk Crab at this point taps their blockers so your damaged Slickshot can finish.</div>
+    </div>
+  </div>
+  <h2>The Critical Sequencing Rule</h2>
+  <p><strong>Always cast noncreature spells before combat.</strong> This is the most important rule in the deck and the one players forget most. Prowess triggers happen "until end of turn" — but you want the pumped power for THAT attack. If you cast Opt after attacking, your Otter is a 1/1 when it attacks instead of a 3/3. The sequence: main phase → cast all cheap spells → declare attackers with pumped power. Then in post-combat main, cast anything else.</p>
+  <p><strong>Exception:</strong> Hold one Opt/Sleight for their end step to also pump during their attack if you're on defense. Or hold instant-speed spells for their turn to force through damage from Slickshot if they tap low.</p>
+</div>
+
+<!-- CH04 ENGINES -->
+<div id="engines" class="section">
+  <div class="section-label">Chapter 04</div>
+  <h1>Core Engines</h1>
+  <div class="engine-block">
+    <div class="engine-header"><div class="engine-letter">A</div><div class="engine-name">The Prowess Cascade</div></div>
+    <div class="engine-body">
+      <div class="engine-step"><div class="engine-step-label">Base</div><div class="engine-step-title">Creatures in Play</div><div class="engine-step-body">Otter (prowess: +1/+1 per spell), Talent token (prowess: +1/+1 per spell), Slickshot (+2/+0 per spell, haste, flying). With all three: each cantrip adds +4 power to the board at instant speed. Three cantrips before combat = +12 power spread across fliers and unblockables.</div></div>
+      <div class="engine-step"><div class="engine-step-label">Amplify</div><div class="engine-step-title">Talent Level 3</div><div class="engine-step-body">Each instant/sorcery creates a 1/1 Otter with prowess. With level 3 Talent active: casting Opt creates a 1/1 that gets +1/+1 from Opt itself (2/2) plus triggers all other prowess creatures. One Opt becomes +4-6 power across the board. The board grows geometrically with the Talent active.</div></div>
+      <div class="engine-step"><div class="engine-step-label">Close</div><div class="engine-step-title">Grove's Bounty</div><div class="engine-step-body">Elusive Otter's adventure: distribute X +1/+1 counters among creatures. This makes the prowess power pump permanent. Play Otter as creature, return it with Boomerang Basics (draw a card), re-cast from exile, trigger Talent level 3 again for a free Otter, then adventure Grove's Bounty to lock in all the counters. The bounty converts temporary prowess pump into permanent growth.</div></div>
+    </div>
+  </div>
+  <div class="engine-block">
+    <div class="engine-header"><div class="engine-letter">B</div><div class="engine-name">The GY Acceleration Engine</div></div>
+    <div class="engine-body">
+      <div class="engine-step"><div class="engine-step-label">Fill</div><div class="engine-step-title">Cantrip Chain</div><div class="engine-step-body">Every cantrip cast fills the GY with an instant/sorcery. By turn 3 with a normal draw, you have 3-4 spells in GY. Eddymurk Crab costs {4}{U} − {3} (3 spells in GY) = {U} + tap for a 5/5 flash creature. By T5 with 6+ spells in GY, Crab is literally free.</div></div>
+      <div class="engine-step"><div class="engine-step-label">Recover</div><div class="engine-step-title">Talent Level 2</div><div class="engine-step-body">Stormchaser's Talent level 2: return target instant/sorcery from GY to hand. This refuels the hand with a spent cantrip or burn spell. After using Burst Lightning to kill a blocker, level up Talent to get it back. Combined with Boomerang Basics self-bounce: Boomerang your own permanent → draw → replay → refuel with Talent Level 2 on the best GY spell.</div></div>
+      <div class="engine-step"><div class="engine-step-label">Win</div><div class="engine-step-title">Free Crab Threat</div><div class="engine-step-body">A free 5/5 that ETBs tapping two of their creatures is a complete board reset. Their two largest blockers are tapped, your Slickshot has haste and flies, and their next draw step starts them already behind. The Crab is the catch-up mechanism when the early game stalls — it converts a hand of spells + time into a dominant board position out of nowhere.</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- CH05 ROLES -->
+<div id="roles" class="section">
+  <div class="section-label">Chapter 05</div>
+  <h1>Role Assignment</h1>
+  <div class="mantra">"We are more aggressive than we are controlling. Prioritize applying pressure before they stabilize."</div>
+  <div class="card-grid card-grid-3">
+    <div class="card"><div class="card-label">Primary Role</div><div class="card-title">Aggressor</div><div class="card-body">You are almost always the beatdown player. Apply pressure from T1 and force them to react. Your creatures grow faster than they can remove them when you chain spells. Never give them a free turn to set up their value engine.</div><div class="card-body" style="margin-top:8px;font-style:italic;font-size:13px;">vs All opponents except faster aggro</div></div>
+    <div class="card"><div class="card-label">Secondary Role</div><div class="card-title">Tempo Disruptor</div><div class="card-body">Get Out counter + bounce, Spell Pierce in SB, Into the Flood Maw — disrupt their key spell while maintaining pressure. Don't go fully control; maintain your clock while disrupting theirs. Remove one key piece that enables their plan.</div><div class="card-body" style="margin-top:8px;font-style:italic;font-size:13px;">vs Control, Combo</div></div>
+    <div class="card"><div class="card-label">Desperation Role</div><div class="card-title">Burn Race</div><div class="card-body">When the board is stalled and they're at 8 life, ignore the board entirely. Calculate the burn available (Burst Lightning, Sear, Wild Ride to face) and whether you can lethal without attacking. Prowess triggers on burn spells also pump your creatures for one last attack.</div><div class="card-body" style="margin-top:8px;font-style:italic;font-size:13px;">vs Bloated boards, Late game</div></div>
+  </div>
+</div>
+
+<!-- CH06 MATCHUPS -->
+<div id="matchups" class="section">
+  <div class="section-label">Chapter 06</div>
+  <h1>Matchup Guide</h1>
+  <table class="matchup-table">
+    <thead><tr><th>Matchup</th><th>Role</th><th>Verdict</th><th>Key Note</th></tr></thead>
+    <tbody>
+      <tr onclick="toggle('mu-monogreen')"><td><strong>Mono-Green Landfall</strong></td><td>Race</td><td><span class="verdict verdict-favor">Favorable</span></td><td>Fast enough to kill before Nursery stabilizes. Slickshot flies over their board.</td></tr>
+      <tr><td colspan="4" class="matchup-detail" id="mu-monogreen">
+        <p>This is a favorable matchup. Mono-Green's larger bodies can't block Slickshot Show-Off effectively (it has flying), and their ramp-heavy draw is inherently slower than your spell chain. Sapling Nursery tokens have reach but they need to connect, and a 7/2 Slickshot flying over their board kills before they generate enough tokens. The Harmonizer combo is their fastest kill — disrupt it with Get Out or Into the Flood Maw bouncing their key piece.</p>
+        <table class="sb-table"><thead><tr><th>Out</th><th>In</th></tr></thead><tbody>
+          <tr><td class="sb-out">−1 <span class="c">Into the Flood Maw</span></td><td class="sb-in">+1 <span class="c">Annul</span></td></tr>
+          <tr><td class="sb-out">−1 <span class="c">Roaring Furnace</span></td><td class="sb-in">+1 <span class="c">Torch the Tower</span></td></tr>
+        </tbody></table>
+        <p class="sb-note">Annul counters Sapling Nursery and Earthbender Ascension. Torch the Tower exiles — important vs Mightform Harmonizer and Icetill Explorer (if it dies, the Harmonizer combo can't function). Keep all burn for their small creatures and face damage.</p>
+        <p class="sb-note"><strong>Key needle:</strong> Keep Badgermole Cub under control — it's their primary ramp engine. Kill it with Burst Lightning before the earthbend triggers. If they earthbend onto a fetch, Into the Flood Maw bouncing the earthbent land is a Time Walk equivalent — they lose a turn of mana and the landfall triggers.</p>
+      </td></tr>
+
+      <tr onclick="toggle('mu-dimir')"><td><strong>Dimir Midrange</strong></td><td>Race</td><td><span class="verdict verdict-favor">Favorable (56%)</span></td><td>Stormchaser's Talent is their best card and they can't answer it well. Apply pressure before Kaito lands.</td></tr>
+      <tr><td colspan="4" class="matchup-detail" id="mu-dimir">
+        <p>Dimir's flash creatures can block your Otters, but Slickshot flies over all of them. Their removal suite (Requiting Hex MV ≤ 2, Shoot the Sheriff anti-non-outlaw) struggles with your threats — Slickshot is a Bird Wizard (not an outlaw), and Hex can kill a 1/1 Otter but the replacements keep coming from Talent. Stormchaser's Talent is their hardest card to answer since they run minimal enchantment removal main. Their Kaito hexproof on your turn means you need to apply pressure before T3. LucasG1ggs: "Against Dimir, Stormchaser's Talent is a card they do not answer well."</p>
+        <table class="sb-table"><thead><tr><th>Out</th><th>In</th></tr></thead><tbody>
+          <tr><td class="sb-out">−2 <span class="c">Into the Flood Maw</span></td><td class="sb-in">+2 <span class="c">Spell Pierce</span></td></tr>
+          <tr><td class="sb-out">−1 <span class="c">Wild Ride</span></td><td class="sb-in">+1 <span class="c">Annul</span></td></tr>
+        </tbody></table>
+        <p class="sb-note">Spell Pierce counters their key 3-drops (Kaito, Tidebinder, Enduring Curiosity) when they tap out for them. Annul hits Enduring Curiosity before it becomes an enchantment draw engine. Trim Into the Flood Maw — it's a Lesson with limited targets in this matchup. Keep all burn for their creatures.</p>
+        <p class="sb-note"><strong>Key needle:</strong> Elusive Otter is a low-impact card here — their creatures block it profitably. Prioritize Slickshot (flying) and the burn + spell chain plan. When they tap out for Kaito on their turn, respond with a plotted Slickshot next turn — it has haste, flies over their Kaito 3/4, and their removal is sorcery speed.</p>
+      </td></tr>
+
+      <tr onclick="toggle('mu-mirror')"><td><strong>Izzet Prowess Mirror</strong></td><td>Tempo</td><td><span class="verdict verdict-even">Even</span></td><td>Take as little damage as possible. Eddymurk Crab is the mirror breaker. Bounce Talent tokens to lower their clock.</td></tr>
+      <tr><td colspan="4" class="matchup-detail" id="mu-mirror">
+        <p>The mirror is a life total management game. Both players deal damage efficiently, so the player who takes less damage while dealing more wins. LucasG1ggs: "Take as little damage as possible. It is completely reasonable to bounce a Stormchaser's Talent token if it lowers the opponent's clock and they do not have other threats." Eddymurk Crab is the mirror-breaker — a 5/5 that doesn't die to Burst Lightning or Sear and taps their two best creatures on entry.</p>
+        <table class="sb-table"><thead><tr><th>Out</th><th>In</th></tr></thead><tbody>
+          <tr><td class="sb-out">−2 <span class="c">Elusive Otter</span></td><td class="sb-in">+2 <span class="c">Spell Pierce</span></td></tr>
+          <tr><td class="sb-out">−1 <span class="c">Wild Ride</span></td><td class="sb-in">+1 <span class="c">Sear</span></td></tr>
+          <tr><td class="sb-out">−1 <span class="c">Into the Flood Maw</span></td><td class="sb-in">+1 <span class="c">Fire Magic</span></td></tr>
+        </tbody></table>
+        <p class="sb-note">Fire Magic as a sweeper removes all their small Otter tokens simultaneously — {2} to each creature. Sear at 4 damage is the floor for killing Eddymurk Crab. Spell Pierce forces them to think twice before tapping out for their key spells. Trim Elusive Otter — it dies too easily to Burst Lightning and Sear in the mirror.</p>
+        <p class="sb-note"><strong>Key needle:</strong> Bounce your own Talent token with Boomerang Basics — draw a card, remove one of their clock targets from the board. This is often correct when they have a large board and you need to defuse their attack. Replaying the Otter from exile re-triggers Talent Level 3 for another token while drawing a card.</p>
+      </td></tr>
+
+      <tr onclick="toggle('mu-monowhite')"><td><strong>Mono-White Aggro</strong></td><td>Survival</td><td><span class="verdict verdict-dog">Unfavorable</span></td><td>Their fliers + lifelink bodies outrace you. Drake Hatcher generates tokens. More removal needed.</td></tr>
+      <tr><td colspan="4" class="matchup-detail" id="mu-monowhite">
+        <p>LucasG1ggs: "This deck feels like it was built to beat Prowess. The combination of flying creatures and lifegain creatures makes racing very difficult, and it also has answers to Stormchaser's Talent." Their flying lifelinkers gain life while dealing damage, and their removal for Talent (Seam Rip, Sheltered by Ghosts) removes your primary engine. This is your hardest matchup. More removal for their key creatures is essential.</p>
+        <table class="sb-table"><thead><tr><th>Out</th><th>In</th></tr></thead><tbody>
+          <tr><td class="sb-out">−2 <span class="c">Boomerang Basics</span></td><td class="sb-in">+2 <span class="c">Fire Magic</span></td></tr>
+          <tr><td class="sb-out">−1 <span class="c">Stock Up</span></td><td class="sb-in">+2 <span class="c">Spell Pierce</span></td></tr>
+          <tr><td class="sb-out">−1 <span class="c">Roaring Furnace</span></td><td class="sb-in">+1 <span class="c">Torch the Tower</span></td></tr>
+        </tbody></table>
+        <p class="sb-note">Fire Magic at {2} hits all their 1/1 lifelinker tokens simultaneously. Torch the Tower exiles (stops recursion). Spell Pierce counters their key enchantments (Caretaker's Talent, Sheltered by Ghosts). LucasG1ggs: "I still prefer Drake Hatcher [over Slickshot] because even though it dies to the same removal, a more controlled game gives us better chances." In more interactive post-board games, stabilizing with a token-generating 4-drop is better than a glass cannon flier.</p>
+        <p class="sb-note"><strong>Key needle:</strong> Kill Haliya, Guided by Light and Sage of the Skies immediately — their lifelink flying makes the race impossible once they connect. Keep Burst Lightning + Sear open specifically for these threats. Don't tap out for Talent if they have removal to answer it.</p>
+      </td></tr>
+
+      <tr onclick="toggle('mu-control')"><td><strong>Jeskai Control</strong></td><td>Tempo</td><td><span class="verdict verdict-favor">Favorable</span></td><td>Stormchaser's Talent is their hardest permanent to answer. Plot Slickshot to punish when they tap out.</td></tr>
+      <tr><td colspan="4" class="matchup-detail" id="mu-control">
+        <p>Control has answers to individual threats but struggles against Talent generating tokens continuously. Keep representing threats — holding a plotted Slickshot means you can deploy an uncontested 1/2 flier with haste the moment they tap out for a counterspell. Their sweepers kill your creatures but not Talent itself. Go wider than they can sweep, then close with Slickshot and burn.</p>
+        <table class="sb-table"><thead><tr><th>Out</th><th>In</th></tr></thead><tbody>
+          <tr><td class="sb-out">−2 <span class="c">Burst Lightning</span></td><td class="sb-in">+2 <span class="c">Spell Pierce</span></td></tr>
+          <tr><td class="sb-out">−1 <span class="c">Sear</span></td><td class="sb-in">+2 <span class="c">Ral, Crackling Wit</span></td></tr>
+        </tbody></table>
+        <p class="sb-note">Ral, Crackling Wit gains loyalty from every noncreature spell — he grows faster than control can remove him because every cantrip adds a counter. His +1 creates an Otter that blocks and generates more pressure. Spell Pierce counters their key sweepers and counterspells. Trim pure creature removal (Burst Lightning, Sear) since they have few creatures to kill.</p>
+        <p class="sb-note"><strong>Key needle:</strong> Plot Slickshot on T2 when they're tapped for a counterspell — it comes down T3 with haste, which they can't respond to with a sorcery-speed sweeper. Deploy Stormchaser's Talent EOT or when they're tapped. Never cast Talent into open {U}{U}.</div>
+      </td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- CH07 SIDEBOARD -->
+<div id="sideboard" class="section">
+  <div class="section-label">Chapter 07</div>
+  <h1>Sideboard Guide</h1>
+  <div class="sb-card-guide">
+    <div class="sb-guide-row"><div class="sb-guide-name">Get Out ×2</div><div class="sb-guide-body">{1}{U} Instant. Two modes: counter target creature or enchantment spell, OR return 1-2 target creatures/enchantments you own to hand. The counter mode is hard interaction for key threats. The return mode is self-bounce (replay Otter for Talent Level 3 trigger) or tempo (bounce their key permanent). Board in: vs any deck with key enchantments (Sapling Nursery, Stormchaser's Talent mirror), vs decks where you want flexible tempo plays.</div></div>
+    <div class="sb-guide-row"><div class="sb-guide-name">Fire Magic ×2</div><div class="sb-guide-body">{R} Instant. Tiered — Fire {0}: 1 damage to each creature. Fira {2}: 2 damage to each creature. Firaga {5}: 3 damage to each creature. The sweeper option for token strategies and go-wide decks. Fire mode at {R} clears all 1/1 tokens without spending additional mana — just a red instant that also triggers prowess. Fira mode at {R}{2} kills 2-toughness creatures. Board in: Mono-White Aggro, any token strategy, mirror.</div></div>
+    <div class="sb-guide-row"><div class="sb-guide-name">Ral, Crackling Wit ×2</div><div class="sb-guide-body">{3}{U}{R} Legendary Planeswalker. Gains loyalty from every noncreature spell. +1: create 1/1 Otter with prowess. -3: draw 3 discard 2. -10: storm emblem. The anti-control planeswalker — every cantrip charges him, making him nearly impossible to ultimate against. His +1 generates board presence while his loyalty climbs. Board in: Control, any matchup where you need a resilient threat that isn't a creature.</div></div>
+    <div class="sb-guide-row"><div class="sb-guide-name">Soul-Guide Lantern ×2</div><div class="sb-guide-body">{1} Artifact. ETB exiles one GY card. {T} sacrifice exiles all opponents' GY. {1}{T} sacrifice draws. GY hate for Reanimator strategies and Izzet Spellementals. Cheap and triggers prowess on cast. Board in: any GY-dependent strategy.</div></div>
+    <div class="sb-guide-row"><div class="sb-guide-name">Spell Pierce ×2</div><div class="sb-guide-body">{U} Instant. Counter target noncreature spell unless pay {2}. Soft counter for their key setup spells. Board in: Control (counters their sweepers for {U}), vs any deck where specific noncreature spells are the threat (Sapling Nursery, planeswalkers). Strong turns 1-3 before they have excess mana.</div></div>
+    <div class="sb-guide-row"><div class="sb-guide-name">Broadside Barrage ×1</div><div class="sb-guide-body">{2}{R}{R} Instant. Deals 5 damage to target creature or planeswalker. Draw a card, then discard a card. Premium single-target removal for problematic threats that Sear doesn't reach (toughness 5+). The draw-discard refuels. Board in: vs any deck with high-toughness threats (Eddymurk Crab in mirror, large Mono-Green bodies).</div></div>
+    <div class="sb-guide-row"><div class="sb-guide-name">Annul ×1</div><div class="sb-guide-body">{U} Instant. Counter target artifact or enchantment spell. Hard counter for {U} vs key enchantments. Board in: Mono-Green (Sapling Nursery, Earthbender Ascension), Control (their key enchantments), any Auras strategy.</div></div>
+    <div class="sb-guide-row"><div class="sb-guide-name">Torch the Tower ×1</div><div class="sb-guide-body">{R} Instant. Bargain (sacrifice artifact, enchantment, or token). 2 damage to creature/planeswalker; if bargained, 3 damage + scry 1. Exile on death. The exile clause matters — stops GY recursion on key threats. Bargain a Talent token for 3 damage + scry. Board in: any matchup where exile matters (Harmonizer, key creature with death trigger).</div></div>
+  </div>
+</div>
+
+<!-- CH08 HEURISTICS -->
+<div id="heuristics" class="section">
+  <div class="section-label">Chapter 08</div>
+  <h1>Heuristics</h1>
+  <ol class="heuristic-list">
+    <li><div class="heuristic-num">01</div><div class="heuristic-body"><strong>Cast all noncreature spells before declaring attackers.</strong> Prowess and Slickshot's bonus apply "until end of turn" — but they must be pumped before combat to matter. An Otter that attacks as a 1/1 instead of a 4/4 because you forgot to cast your cantrips first is one of the most common and costly mistakes in this deck.</div></li>
+    <li><div class="heuristic-num">02</div><div class="heuristic-body"><strong>Plot Slickshot when they have counterspell mana open, cast it when they're tapped.</strong> Plot {1}{R} on T2 exiles Slickshot safely. On T3 when they tap for Kaito or Tidebinder, cast Slickshot free with haste — it attacks immediately. The plot ability specifically enables playing around countermagic by decoupling "pay the cost" from "deploy the threat."</div></li>
+    <li><div class="heuristic-num">03</div><div class="heuristic-body"><strong>Stormchaser's Talent is a Class enchantment — leveling up is a sorcery-speed action.</strong> Don't try to level up Talent into open countermagic. Level it on your own turn or EOT in response to their tap-out. Level 1 to 2 and 2 to 3 are both sorcery-speed activations. Many players forget this and try to level mid-combat.</div></li>
+    <li><div class="heuristic-num">04</div><div class="heuristic-body"><strong>Elusive Otter becomes unblockable once it has more power than any potential blocker.</strong> At 2 power: can't be blocked by 1-power creatures (most 1-drops). At 3 power: can't be blocked by 2-power creatures. At 5+ power: effectively unblockable against most boards. Prioritize casting spells before the Otter attacks rather than after — each spell pumps it permanently.</div></li>
+    <li><div class="heuristic-num">05</div><div class="heuristic-body"><strong>Eddymurk Crab ETB taps up to two creatures — use it offensively to clear blockers.</strong> Flash Crab in on their end step when they tap to cast a spell. Tap their two best blockers. Then your Slickshot (already in play with haste from a previous turn) connects for lethal. The ETB trigger resolves before you go to your untap step — their creatures stay tapped through your attack.</div></li>
+    <li><div class="heuristic-num">06</div><div class="heuristic-body"><strong>Boomerang Basics returning your own permanent draws a card — use it on your own Otter.</strong> Return your Otter with 4 counters to hand → draw a card → replay Otter from exile (triggers Talent Level 3 for another 1/1 Otter) → adventure Grove's Bounty for X counters. This sequence generates a card, a body, and permanent counters off one card. Not just for bouncing opponents' permanents.</div></li>
+    <li><div class="heuristic-num">07</div><div class="heuristic-body"><strong>Ral, Crackling Wit gains loyalty from every noncreature spell — deploy him when you have a full hand of cantrips.</strong> A turn-4 Ral into 3 cantrips gives him 3 loyalty from the passive, +1 for one more Otter, and now he's at 5 loyalty. Control can't spend a counterspell on every cantrip that charges him. Deploy Ral when you have 4+ cantrips in hand to immediately make him difficult to remove efficiently.</div></li>
+    <li><div class="heuristic-num">08</div><div class="heuristic-body"><strong>In the mirror, take less damage than you deal — not more damage faster.</strong> Both players kill around turn 4-5. The player at 7 life when the final attack happens loses. Track both life totals every combat and calculate: if they attack for X and you attack for Y, who dies first? Blocking profitably is better than attacking aggressively when you're the one who falls to 0 first.</div></li>
+    <li><div class="heuristic-num">09</div><div class="heuristic-body"><strong>Wild Ride's Harmonize cost {4}{R} from GY — remember it can be used as a second copy.</strong> Wild Ride exiles itself when harmonized. But if you cast it from hand and it goes to GY normally, you can pay {4}{R} tapping a creature to cast it again. In late-game grind scenarios where you need one more pump to close, the Harmonize mode on Wild Ride is an often-forgotten source of extra damage.</div></li>
+  </ol>
+</div>
+
+<!-- CH09 TUNING -->
+<div id="tuning" class="section">
+  <div class="section-label">Chapter 09</div>
+  <h1>Tuning Notes</h1>
+  <div class="tuning-grid">
+    <div class="tuning-cell"><div class="tuning-cell-label">Eddymurk Crab: 2 vs 3 copies</div><div class="tuning-cell-title">Meta dependent</div><div class="tuning-cell-body">2 is standard in the LucasG1ggs list. Run 3 in control-heavy metas where the longer game plays out more — Crab is your best closer against control. Run 2 or trim to 1 in aggro-heavy metas where you need more 1-drops and faster kills. Crab is a dead draw in aggro mirrors early.</div></div>
+    <div class="tuning-cell"><div class="tuning-cell-label">Slickshot vs Elusive Otter ratio</div><div class="tuning-cell-title">4 Slickshot, 3-4 Otter</div><div class="tuning-cell-body">4 Slickshot is locked — flying + haste is irreplaceable. 3 Otter is the proven number; some builds run 4. The 4th Otter competes with Crab for the flex slot. In aggro metas: 4 Otter (more T1 plays). In midrange/control metas: 2 Otter + 2 Crab (better late-game presence).</div></div>
+    <div class="tuning-cell"><div class="tuning-cell-label">Roaring Furnace: 1-2 copies</div><div class="tuning-cell-title">Grind mode access</div><div class="tuning-cell-body">Roaring Furnace (Rooms) provides both a damage mode (deal damage = hand size) and Steaming Sauna (no max hand, draw per EOT). Against control this is an anti-sweep engine — they can't two-for-one you if you never tap out below 4 cards. 1 main + 1 SB is typical; run 2 main in control-heavy metas.</div></div>
+    <div class="tuning-cell"><div class="tuning-cell-label">Into the Flood Maw: 1-2 copies</div><div class="tuning-cell-title">Flex tempo slot</div><div class="tuning-cell-body">2 main in LucasG1ggs' list. Bounce a key enchantment (Sapling Nursery, their Talent), remove a blocker, or Time Walk by bouncing their earthbent land. In metas without key enchantments to bounce, trim to 1. Into the Flood Maw specifically answers Sapling Nursery and Earthbender Ascension that your burn can't remove.</div></div>
+    <div class="tuning-cell"><div class="tuning-cell-label">Willowrush Verge: 1-2 copies</div><div class="tuning-cell-title">Green mana access</div><div class="tuning-cell-body">Provides {G} for Elusive Otter's Grove's Bounty adventure. 1 copy is standard with Multiversal Passage providing additional green. Run 2 only if you're heavily relying on Grove's Bounty to convert prowess pump into permanent counters. The green mana requirement is the main reason this land exists in the 75.</div></div>
+    <div class="tuning-cell"><div class="tuning-cell-label">Ral, Crackling Wit: SB only</div><div class="tuning-cell-title">Anti-control specialist</div><div class="tuning-cell-body">Some players main 2 copies against expected control-heavy metas. The RC meta is control-light (Jeskai Control at ~5% of the field) so SB is correct for Cincinnati. If the meta shifts toward more control post-round-1 scouting, Ral main is an option. {3}{U}{R} is expensive but he wins the game by himself against sweeper-heavy decks.</div></div>
+  </div>
+</div>
+
+<!-- CH10 PREP -->
+<div id="prep" class="section">
+  <div class="section-label">Chapter 10</div>
+  <h1>Prep Sheet</h1>
+  <button class="print-btn" onclick="window.print()">&#9113; Print This Sheet</button>
+  <div class="print-section">
+    <div class="print-title">Izzet Prowess</div>
+    <div class="print-sub">Team Resolve · Standard RC Prep 2026 · LucasG1ggs Mar 30 List</div>
+    <div class="print-grid">
+      <div>
+        <div class="print-col-title">Key Oracle Reminders</div>
+        <div class="print-line">Cast ALL noncreature spells BEFORE attacking</div>
+        <div class="print-line">Slickshot Plot {1}{R}: exile, cast free later (sorcery speed, haste)</div>
+        <div class="print-line">Elusive Otter: unblockable by lower-power creatures</div>
+        <div class="print-line">Stormchaser Talent: leveling up is SORCERY speed</div>
+        <div class="print-line">Eddymurk Crab: 1 less per instant/sorcery in GY; enters tapped not-your-turn</div>
+        <div class="print-line">Eddymurk ETB: tap up to TWO target creatures</div>
+        <div class="print-line">Boomerang Basics: return your OWN permanent → draw a card</div>
+        <div class="print-line">Ral: gains loyalty from EVERY noncreature spell you cast</div>
+        <div class="print-line">Wild Ride Harmonize: {4}{R} from GY, tap creature to reduce cost</div>
+        <div class="print-line">Get Out: counter OR return 1-2 permanents you own to hand</div>
+        <div class="print-line">Fire Magic: Fire={R} 1 dmg each, Fira={R}+{2} 2 dmg each</div>
+        <div class="print-line">Burst Lightning: 2 damage or 4 damage (kicker {4})</div>
+        <div class="print-col-title" style="margin-top:16px;">Play Sequence Priority</div>
+        <div class="print-line">1. Deploy creature (T1 Otter or Slickshot)</div>
+        <div class="print-line">2. Deploy Stormchaser Talent (T2 — creates Otter immediately)</div>
+        <div class="print-line">3. Main phase: cast ALL cantrips before attacking</div>
+        <div class="print-line">4. Attack with pumped creatures</div>
+        <div class="print-line">5. Post-combat: hold burn for their blocker or go face</div>
+      </div>
+      <div>
+        <div class="print-col-title">Matchup Quick Reference</div>
+        <div class="print-mu">
+          <div class="print-mu-name">Mono-Green Landfall</div>
+          <div class="print-mu-role">Favorable · Race Mode</div>
+          <div class="print-cols">
+            <div><div class="print-col-label">Out</div>
+              <div class="print-row"><span>Into the Flood Maw</span><span class="print-qty">−1</span></div>
+              <div class="print-row"><span>Roaring Furnace</span><span class="print-qty">−1</span></div>
+            </div>
+            <div><div class="print-col-label">In</div>
+              <div class="print-row"><span>Annul</span><span class="print-qty">+1</span></div>
+              <div class="print-row"><span>Torch the Tower</span><span class="print-qty">+1</span></div>
+            </div>
+          </div>
+          <div class="print-needle">Kill Badgermole Cub immediately. Bounce earthbent land = Time Walk.</div>
+        </div>
+        <div class="print-mu">
+          <div class="print-mu-name">Dimir Midrange</div>
+          <div class="print-mu-role">Favorable 56% · Race Mode</div>
+          <div class="print-cols">
+            <div><div class="print-col-label">Out</div>
+              <div class="print-row"><span>Into the Flood Maw ×2</span><span class="print-qty">−2</span></div>
+              <div class="print-row"><span>Wild Ride</span><span class="print-qty">−1</span></div>
+            </div>
+            <div><div class="print-col-label">In</div>
+              <div class="print-row"><span>Spell Pierce ×2</span><span class="print-qty">+2</span></div>
+              <div class="print-row"><span>Annul</span><span class="print-qty">+1</span></div>
+            </div>
+          </div>
+          <div class="print-needle">Talent is their hardest card to answer. Plot Slickshot when they tap for Kaito.</div>
+        </div>
+        <div class="print-mu">
+          <div class="print-mu-name">Izzet Mirror</div>
+          <div class="print-mu-role">Even · Tempo Mode</div>
+          <div class="print-cols">
+            <div><div class="print-col-label">Out</div>
+              <div class="print-row"><span>Elusive Otter ×2</span><span class="print-qty">−2</span></div>
+              <div class="print-row"><span>Wild Ride</span><span class="print-qty">−1</span></div>
+              <div class="print-row"><span>Into the Flood Maw</span><span class="print-qty">−1</span></div>
+            </div>
+            <div><div class="print-col-label">In</div>
+              <div class="print-row"><span>Spell Pierce ×2</span><span class="print-qty">+2</span></div>
+              <div class="print-row"><span>Sear</span><span class="print-qty">+1</span></div>
+              <div class="print-row"><span>Fire Magic</span><span class="print-qty">+1</span></div>
+            </div>
+          </div>
+          <div class="print-needle">Take less damage. Crab is the mirror breaker. Bounce Talent tokens to cut their clock.</div>
+        </div>
+      </div>
+      <div>
+        <div class="print-col-title">More Matchups</div>
+        <div class="print-mu">
+          <div class="print-mu-name">Mono-White Aggro</div>
+          <div class="print-mu-role">Unfavorable · Survival</div>
+          <div class="print-cols">
+            <div><div class="print-col-label">Out</div>
+              <div class="print-row"><span>Boomerang Basics ×2</span><span class="print-qty">−2</span></div>
+              <div class="print-row"><span>Stock Up</span><span class="print-qty">−1</span></div>
+              <div class="print-row"><span>Roaring Furnace</span><span class="print-qty">−1</span></div>
+            </div>
+            <div><div class="print-col-label">In</div>
+              <div class="print-row"><span>Fire Magic ×2</span><span class="print-qty">+2</span></div>
+              <div class="print-row"><span>Spell Pierce ×2</span><span class="print-qty">+2</span></div>
+            </div>
+          </div>
+          <div class="print-needle">Kill Haliya and Sage immediately. Fire Magic sweeps their 1/1 tokens.</div>
+        </div>
+        <div class="print-mu">
+          <div class="print-mu-name">Jeskai Control</div>
+          <div class="print-mu-role">Favorable · Tempo Mode</div>
+          <div class="print-cols">
+            <div><div class="print-col-label">Out</div>
+              <div class="print-row"><span>Burst Lightning ×2</span><span class="print-qty">−2</span></div>
+              <div class="print-row"><span>Sear</span><span class="print-qty">−1</span></div>
+            </div>
+            <div><div class="print-col-label">In</div>
+              <div class="print-row"><span>Ral, Crackling Wit ×2</span><span class="print-qty">+2</span></div>
+              <div class="print-row"><span>Spell Pierce ×2</span><span class="print-qty">+2</span></div>
+            </div>
+          </div>
+          <div class="print-needle">Plot Slickshot when they tap out. Talent into their sweeper is GG.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div><!-- end .page -->
+<footer>
+  <span><a href="deck-guides.html" style="color:rgba(242,237,230,0.3);text-decoration:none;">Team Resolve</a></span>
+  <span>Standard 2026 · Izzet Prowess</span>
+  <span>RC Prep · April 2026</span>
+</footer>
+<script>
+function show(id) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  event.target.classList.add('active');
+  window.scrollTo(0,0);
+}
+function toggle(id) {
+  const el = document.getElementById(id);
+  el.classList.toggle('open');
+}
+</script>
+</body>
+</html>
