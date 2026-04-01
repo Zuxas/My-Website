@@ -465,7 +465,26 @@
   <p>This chapter documents the specific instant-speed interaction sequences that define how Zuxas's build plays against creature-based strategies — especially Mono-Green Landfall. The deck's flash package lets you develop your board on their end step while holding mana for disruption on their turn. These lines are the reason you keep mana up even when deploying threats looks more profitable.</p>
 
   <h2>The Cub Trap</h2>
-  <p>Badgermole Cub is Mono-Green's primary ramp engine. Their T2 Cub into T3 Ascension or Sapling Nursery is the nut draw that wins them the game. Disrupting it early shuts down their entire curve. The correct response window is <strong>when the Cub's ETB trigger is on the stack</strong> — after they've cast it but before the earthbend resolves.</p>
+  <p>Badgermole Cub is Mono-Green's primary ramp engine. Their T2 Cub into T3 Ascension or Sapling Nursery is the nut draw that wins them the game. How you handle it depends on whether you're on the play or the draw — these are two completely different plans.</p>
+
+  <div class="card-grid card-grid-2">
+    <div class="card">
+      <div class="card-label">On the Play</div>
+      <div class="card-title">Flash Drowner → Upkeep Stun</div>
+      <div class="card-body">
+        On the play you have tempo — use it proactively. If you can hold {2}{U} during their T3 (when Drowner becomes affordable on your end of T2 into T3), flash Drowner <strong>during their upkeep</strong> before their main phase. Their Llanowar Elves and Badgermole Cub untap at the start of their turn, then immediately get tapped by Drowner before they can use them. They walk into their main phase with zero mana from dorks. Their T3 Ascension or Nursery gets delayed a full turn.
+        <br><br>On the play your Spyglass Siren → Kaito curve is also live. Develop Kaito to apply pressure and let the Drowner follow on their T4-T5 when they try to stabilize.
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-label">On the Draw</div>
+      <div class="card-title">Hold Hex or Spell Snare for Cub</div>
+      <div class="card-body">
+        On the draw you're a step behind — lean reactive. Badgermole Cub costs {1}{G} = MV 2. <span class="c">Spell Snare</span> ({U}) hard counters it as it's being cast. <span class="c">Requiting Hex</span> ({1}{B}{W}) exiles it on ETB before the earthbend resolves. Both answers are available the turn they play Cub on T2 if you kept mana open.
+        <br><br>The key discipline on the draw: don't tap out on your T2. Hold {U} for Snare or {1}{B}{W} for Hex even if it means passing with nothing deployed. Letting Cub resolve unmolested on the draw gives them T3 Ascension for free, which sets up a board state you can't catch up to efficiently.
+      </div>
+    </div>
+  </div>
 
   <div class="card-grid card-grid-2">
     <div class="card">
@@ -477,12 +496,13 @@
       </div>
     </div>
     <div class="card">
-      <div class="card-label">Line B — Tap the Earthbent Land</div>
-      <div class="card-title">Floodpits Drowner on the Land-Creature</div>
+      <div class="card-label">Line B — Bounce the Earthbent Land</div>
+      <div class="card-title">Into the Flood Maw (No Gift) Targets the Creature</div>
       <div class="card-body">
-        <strong>Important oracle rule:</strong> The earthbent land is both a creature AND a land simultaneously. <span class="c">Into the Flood Maw</span> says "return target <em>nonland</em> permanent" — it <strong>cannot target</strong> the earthbent land because it has land type. <span class="c">Floodpits Drowner</span> ETB ("tap any number of target creatures or planeswalkers") <strong>can</strong> tap it — it's a creature.
-        <br><br><strong>Sequence:</strong> Cub ETBs, earthbend resolves (e.g., Fabled Passage becomes a 1/1 creature with haste). Flash in Floodpits Drowner in response to their land drop. ETB: tap the earthbent Passage + any other tapped creatures. Their land-creature is now tapped — it can't attack and its earthbend mana is unavailable this turn.
-        <br><br><strong>Result:</strong> Their Cub ramp is negated for the turn. If they planned to tap the earthbent land for {G}, they can't. Drowner also taps their other creatures.
+        <strong>Oracle ruling:</strong> Into the Flood Maw's no-gift mode says "return target <em>creature</em> an opponent controls to its owner's hand" — no land restriction. The earthbent land is simultaneously a land AND a creature, so it <strong>qualifies as a creature target</strong>. You can bounce it.
+        <br><br><strong>Sequence:</strong> Cub ETBs, earthbend resolves — their Fabled Passage is now a 1/1 creature with haste. Cast <span class="c">Into the Flood Maw</span> (no gift). Target the earthbent Fabled Passage as a creature. It returns to their hand as a plain land — the earthbend effect ends as it leaves the battlefield. They lose the earthbent creature AND their Fabled Passage disappears from play for this turn.
+        <br><br><strong>When to gift vs not gift:</strong> Don't gift if you just want to bounce the earthbent creature — the no-gift creature mode handles it for free. Gift the fish only if you need to hit a non-creature enchantment like Sapling Nursery or Earthbender Ascension instead.
+        <br><br><strong>Result:</strong> Their ramp land is gone. Cub's earthbend generated nothing useful. The 1/1 that was about to attack is back in their hand as a Fabled Passage. You gave them nothing.
       </div>
     </div>
   </div>
@@ -549,23 +569,23 @@
 
   <h2>The Drowner Tap-Out Punish</h2>
 
-  <p>Floodpits Drowner is your most powerful flash creature vs Mono-Green because it can tap <strong>any number</strong> of targets. In a matchup where their entire plan involves deploying a board of creatures and attacking, a flashed Drowner on their end step or in combat creates a full turn of free attacks for you.</p>
+  <p>Floodpits Drowner is your most powerful flash creature vs Mono-Green because it can tap <strong>any number</strong> of targets simultaneously. The earthbent land is a creature — Drowner's ETB can tap it too, which is the correct call when you want to lock it down without bouncing it. Three distinct timing windows, each with a different goal:</p>
 
   <div class="card-grid card-grid-3">
     <div class="card">
+      <div class="card-label">Line: Upkeep Stun</div>
+      <div class="card-title">Flash During Their Upkeep</div>
+      <div class="card-body">On the play, their creatures untap at the start of their turn — then during <strong>upkeep</strong> (before draw, before main phase) you can flash Drowner in. Their Llanowar Elves just untapped. Drowner ETB taps it again before they ever get to use it for mana. They go into their main phase with Elves tapped, Badgermole Cub tapped, anything else tapped. They lose a full turn of mana without being able to respond during their own upkeep. This is the correct play on the play whenever you can afford it — deny their T3 mana acceleration before it happens, not after.</div>
+    </div>
+    <div class="card">
       <div class="card-label">Line: EOT Tap</div>
       <div class="card-title">Their End Step Drowner</div>
-      <div class="card-body">Flash Drowner at their end step (after they've deployed their board). ETB taps: Icetill Explorer, Badgermole Cub, Earthbent Land-Creature, Sazh's Chocobo. They pass to your turn with everything tapped. You attack freely with your full board. They untap into 0 blockers next turn only if they draw more.</div>
+      <div class="card-body">Flash Drowner at their end step after they've deployed their board and passed. ETB taps: Icetill Explorer, Badgermole Cub, the earthbent land-creature, Sazh's Chocobo — everything. They pass to your turn with a full board that can't block. You untap, attack freely. The earthbent land is a creature — it's a valid Drowner tap target and also can't generate mana while tapped, cutting off any mana tricks they planned.</div>
     </div>
     <div class="card">
       <div class="card-label">Line: Combat Tap</div>
       <div class="card-title">Flash During Their Attack Step</div>
-      <div class="card-body">When they declare attackers, flash Drowner after attackers are declared. ETB taps everything in their non-attacking creatures — their non-attackers can't block, they can't use Badgermole Cub's mana ability (it's tapped), and any earthbent land creature that was tapped for mana is locked down. Their attack is isolated and punished in blocks.</div>
-    </div>
-    <div class="card">
-      <div class="card-label">Line: Stun Trigger</div>
-      <div class="card-title">Drowner + Requiting Hex Combo</div>
-      <div class="card-body">Drowner ETB taps their best 4 creatures including Cub. They're now mana-constrained. On your turn, swing with Kaito, Bane of Nightmares — ninjutsu into Kaito off Siren. Kaito attacks, Bat trigger strips their hand. Then Requiting Hex their key creature on their draw step. They draw into nothing and have an empty hand.</div>
+      <div class="card-body">After they declare attackers, flash Drowner. ETB taps everything that isn't attacking — their non-attackers can't block, Badgermole Cub can't tap for mana this turn, the earthbent land-creature is locked. Their attack is isolated to exactly what they declared. No tricks, no backup, no mana. Block efficiently and swing back with your full board next turn.</div>
     </div>
   </div>
 
@@ -582,7 +602,8 @@
         <br><br>
         No conditions, no cost, no 1/1 fish. Targets any creature they control. This is your primary use case in almost every matchup because the creatures are almost always the more urgent problem:
         <ul style="margin:10px 0 0 16px;font-size:14px;font-weight:300;color:var(--mid);line-height:2.2;">
-          <li><strong>Badgermole Cub</strong> — bounce it on their T2 before they can tap it for mana. They spent {1}{G}, get it back in hand. No earthbend, no ramp.</li>
+          <li><strong>Earthbent land-creature</strong> — the no-gift mode targets any creature they control, and the earthbent land qualifies. Bounce it, it returns to their hand as a plain land. Their earthbend effect ends. They lose the 1/1 haste creature and the land disappears from play for this turn — the best of all worlds, and you gave them nothing.</li>
+          <li><strong>Badgermole Cub</strong> — bounce before they tap it for mana. They spent {1}{G}, get it back in hand. No earthbend, no ramp.</li>
           <li><strong>Icetill Explorer</strong> — bounce the engine piece. They lose their extra land play and GY recursion for the turn. Every land they played from GY this turn still happened, but the continuous effect ends.</li>
           <li><strong>Mightform Harmonizer</strong> — bounce it mid-combo. They're about to double a creature's power with the next land drop — bounce Harmonizer in response, doubling doesn't happen, combo reset.</li>
           <li><strong>Leatherhead, Swamp Stalker</strong> — bounce before she attacks and removes her hexproof counter. Her hexproof counter means you can't target her, but you can bounce her in response to their attack declaration before combat damage is dealt.</li>
@@ -615,6 +636,7 @@
       <div style="background:var(--paper);padding:20px;">
         <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--mid);margin-bottom:10px;">Gift = No → Target a Creature</div>
         <div style="font-size:14px;font-weight:300;color:var(--mid);line-height:2;">
+          <strong style="color:#065f46;">Earthbent land-creature (returns to hand as a land)</strong><br>
           Badgermole Cub (kills their ramp)<br>
           Icetill Explorer (kills their engine)<br>
           Mightform Harmonizer (breaks their combo)<br>
@@ -684,8 +706,7 @@
           Badgermole Cub, Icetill Explorer, Harmonizer, Leatherhead, Hydra<br><br>
           <strong style="color:var(--ink);">Gift fish → any nonland permanent:</strong><br>
           Sapling Nursery, Earthbender Ascension<br><br>
-          <em style="color:var(--rule);font-size:12px;">Earthbent land = still a land → can't target either mode</em><br>
-          <em style="color:var(--rule);font-size:12px;">Fish token enters tapped → irrelevant</em>
+          <em style="color:var(--rule);font-size:12px;">Fish token enters tapped — irrelevant</em>
         </div>
       </div>
     </div>
