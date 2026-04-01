@@ -151,6 +151,7 @@
   <button class="nav-link active" onclick="show('overview')">Overview</button>
   <button class="nav-link" onclick="show('decklist')">Decklist</button>
   <button class="nav-link" onclick="show('gameflow')">Game Flow</button>
+  <button class="nav-link" onclick="show('lines')">Lines</button>
   <button class="nav-link" onclick="show('engines')">Engines</button>
   <button class="nav-link" onclick="show('roles')">Roles</button>
   <button class="nav-link" onclick="show('matchups')">Matchups</button>
@@ -452,6 +453,207 @@
   <h2>Mana Management</h2>
   <p>This deck is greedy with mana. The key discipline: <strong>never tap out on your own main phase if their threat could require an instant-speed answer.</strong> Hold {B} for Requiting Hex or Long Goodbye. Hold {1}{U} for Floodpits Drowner at their end step. Hold {2}{U} for Tishana's Tidebinder in response to their ETB. The deck plays as a control deck on the opponent's turn and an aggro deck on your turn. <span class="c">Gloomlake Verge</span> is your most important land — always plays as {U} immediately, then {B} once you have any Island or Swamp in play.</p>
   <p><span class="c">Multiversal Passage</span> enters tapped unless you pay 2 life — you almost always pay the life. This deck has enough life gain access (Cecil lifelink, Requiting Hex blight, Qarsi Revenant lifelink) to absorb the early life payments. Don't sacrifice speed for life on Passage. <span class="c">Starting Town</span> is your turn-1 fixer — enters untapped in turns 1-3, fixes any color for 1 life.</p>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════ CH03b LINES -->
+<div id="lines" class="section">
+  <div class="section-label">Chapter 03b</div>
+  <h1>Disruption<br>Lines</h1>
+
+  <div class="mantra">"Present a threat. Be hella annoying. Every interaction is a two-for-one when you hold flash mana and make them play into it."</div>
+
+  <p>This chapter documents the specific instant-speed interaction sequences that define how Zuxas's build plays against creature-based strategies — especially Mono-Green Landfall. The deck's flash package lets you develop your board on their end step while holding mana for disruption on their turn. These lines are the reason you keep mana up even when deploying threats looks more profitable.</p>
+
+  <h2>The Cub Trap</h2>
+  <p>Badgermole Cub is Mono-Green's primary ramp engine. Their T2 Cub into T3 Ascension or Sapling Nursery is the nut draw that wins them the game. Disrupting it early shuts down their entire curve. The correct response window is <strong>when the Cub's ETB trigger is on the stack</strong> — after they've cast it but before the earthbend resolves.</p>
+
+  <div class="card-grid card-grid-2">
+    <div class="card">
+      <div class="card-label">Line A — Kill the Cub, Keep the Land</div>
+      <div class="card-title">Requiting Hex on Cub ETB</div>
+      <div class="card-body">
+        <strong>Sequence:</strong> They cast Badgermole Cub ({1}{G}) on T2. ETB triggers — "earthbend 1: target a land you control." Before the earthbend resolves, cast <span class="c">Requiting Hex</span> ({1}{B}{W}, exile target creature MV ≤ 2). Cub is exiled. The earthbend trigger is on the stack with no legal target (Cub is gone and the ability was "earthbend 1" — it resolves harmlessly with no effect since the land selection hasn't locked in yet). Wait — actually the trigger says "target a land you control" at casting, not at resolution. If you hex the Cub after it's entered but the ETB is still on the stack, the ETB resolves but there's no Cub to operate with. The land just doesn't get earthbent.
+        <br><br><strong>Result:</strong> They spent {1}{G} for nothing. No earthbent land, no mana acceleration this turn.
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-label">Line B — Tap the Earthbent Land</div>
+      <div class="card-title">Floodpits Drowner on the Land-Creature</div>
+      <div class="card-body">
+        <strong>Important oracle rule:</strong> The earthbent land is both a creature AND a land simultaneously. <span class="c">Into the Flood Maw</span> says "return target <em>nonland</em> permanent" — it <strong>cannot target</strong> the earthbent land because it has land type. <span class="c">Floodpits Drowner</span> ETB ("tap any number of target creatures or planeswalkers") <strong>can</strong> tap it — it's a creature.
+        <br><br><strong>Sequence:</strong> Cub ETBs, earthbend resolves (e.g., Fabled Passage becomes a 1/1 creature with haste). Flash in Floodpits Drowner in response to their land drop. ETB: tap the earthbent Passage + any other tapped creatures. Their land-creature is now tapped — it can't attack and its earthbend mana is unavailable this turn.
+        <br><br><strong>Result:</strong> Their Cub ramp is negated for the turn. If they planned to tap the earthbent land for {G}, they can't. Drowner also taps their other creatures.
+      </div>
+    </div>
+  </div>
+
+  <div class="card-grid card-grid-2" style="margin-top:1px;">
+    <div class="card">
+      <div class="card-label">Line C — Full Suppression</div>
+      <div class="card-title">Hex Cub + Drowner Board Tap</div>
+      <div class="card-body">
+        <strong>The premium sequence against T2 Cub:</strong>
+        <ol style="margin:8px 0 0 16px;font-size:14px;font-weight:300;color:var(--mid);line-height:2;">
+          <li>They play Badgermole Cub. ETB earthbend on stack.</li>
+          <li>You cast <span class="c">Requiting Hex</span> in response — Cub is exiled, earthbend fizzles.</li>
+          <li>On their T3 (they play Icetill Explorer or Ascension), flash in <span class="c">Floodpits Drowner</span> EOT.</li>
+          <li>ETB taps their Explorer + any other creatures. They untap into a tapped board.</li>
+        </ol>
+        <br>Two cards (Hex + Drowner) destroyed two of their turns. Your Kaito on T3 now enters a board they can't use.
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-label">Line D — Delayed Cub Kill</div>
+      <div class="card-title">Let Earthbend Resolve, Then Hex</div>
+      <div class="card-body">
+        <strong>When you let the earthbend resolve first:</strong> Cub earthbends onto a Fabled Passage (two landfall triggers happen — they get value). THEN you Hex the Cub afterward. You lose the double-trigger prevention, but you still exile their primary mana doubler. The earthbent Passage returns tapped at EOT anyway.
+        <br><br><strong>When is this better?</strong> When you want to see which land they earthbend (tells you their hand contents — earthbend onto fetch = they have another land drop). When you're saving the response mana for their more dangerous T3 play and letting T2 Cub resolve is acceptable.
+      </div>
+    </div>
+  </div>
+
+  <h2>The Fabled Passage Ambush</h2>
+
+  <p>This is the most under-known interaction in the matchup. <span class="c">Tishana's Tidebinder</span> counters activated and triggered abilities. Fabled Passage has an activated ability: {T}, Sacrifice this land: Search for a basic land, put it into play tapped (then untap if 4+ lands). The sacrifice is a <strong>cost</strong> — it's paid before the ability goes on the stack. If you Tidebinder the activated ability after they sacrifice the Passage, they lose the Passage AND don't get the land.</p>
+
+  <div class="card-grid card-grid-2">
+    <div class="card">
+      <div class="card-label">The Interaction</div>
+      <div class="card-title">Tidebinder Counters Fabled Passage</div>
+      <div class="card-body">
+        <strong>Sequence:</strong>
+        <ol style="margin:8px 0 0 16px;font-size:14px;font-weight:300;color:var(--mid);line-height:2;">
+          <li>They tap and sacrifice Fabled Passage to activate it (sacrifice is the cost — Passage is now gone).</li>
+          <li>The ability goes on the stack: "Search for a basic land card, put it onto the battlefield tapped, then shuffle. Then if you control 4+ lands, untap that land."</li>
+          <li>You flash in <span class="c">Tishana's Tidebinder</span> ({1}{U}{G}), ETB: counter target activated or triggered ability.</li>
+          <li>Target the Fabled Passage activated ability. It's countered.</li>
+        </ol>
+        <br><strong>Result:</strong> They sacrificed a Fabled Passage for literally nothing. They're now down one land they planned to use as a landfall trigger + fetch, and the search effect is gone. Their life total takes 3 from Tidebinder's ETB.
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-label">Other Tidebinder Targets vs Green</div>
+      <div class="card-title">Activated & Triggered Abilities</div>
+      <div class="card-body">
+        Tidebinder can counter <strong>any</strong> activated or triggered ability — not just Fabled Passage:
+        <ul style="margin:8px 0 0 16px;font-size:14px;font-weight:300;color:var(--mid);line-height:2;">
+          <li><strong>Escape Tunnel unblockable mode</strong> — they sacrifice Tunnel to make Harmonizer unblockable. Counter it. Tunnel is gone, creature is still blockable. Combo stops.</li>
+          <li><strong>Mightform Harmonizer landfall trigger</strong> — counter the "double target creature's power" triggered ability. Their combo doubling doesn't happen this land drop.</li>
+          <li><strong>Earthbender Ascension quest counter trigger</strong> — counter the +1/+1 + trample granted trigger (at 4+ counters). Their creature doesn't get the boost this land drop.</li>
+          <li><strong>Ba Sing Se earthbend activation</strong> — their land doesn't become a threat creature.</li>
+          <li><strong>Sapling Nursery indestructible activation</strong> — counter it in response to your sweeper. The indestructible clause doesn't apply. Their Treefolk board is now vulnerable.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <h2>The Drowner Tap-Out Punish</h2>
+
+  <p>Floodpits Drowner is your most powerful flash creature vs Mono-Green because it can tap <strong>any number</strong> of targets. In a matchup where their entire plan involves deploying a board of creatures and attacking, a flashed Drowner on their end step or in combat creates a full turn of free attacks for you.</p>
+
+  <div class="card-grid card-grid-3">
+    <div class="card">
+      <div class="card-label">Line: EOT Tap</div>
+      <div class="card-title">Their End Step Drowner</div>
+      <div class="card-body">Flash Drowner at their end step (after they've deployed their board). ETB taps: Icetill Explorer, Badgermole Cub, Earthbent Land-Creature, Sazh's Chocobo. They pass to your turn with everything tapped. You attack freely with your full board. They untap into 0 blockers next turn only if they draw more.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Line: Combat Tap</div>
+      <div class="card-title">Flash During Their Attack Step</div>
+      <div class="card-body">When they declare attackers, flash Drowner after attackers are declared. ETB taps everything in their non-attacking creatures — their non-attackers can't block, they can't use Badgermole Cub's mana ability (it's tapped), and any earthbent land creature that was tapped for mana is locked down. Their attack is isolated and punished in blocks.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Line: Stun Trigger</div>
+      <div class="card-title">Drowner + Requiting Hex Combo</div>
+      <div class="card-body">Drowner ETB taps their best 4 creatures including Cub. They're now mana-constrained. On your turn, swing with Kaito, Bane of Nightmares — ninjutsu into Kaito off Siren. Kaito attacks, Bat trigger strips their hand. Then Requiting Hex their key creature on their draw step. They draw into nothing and have an empty hand.</div>
+    </div>
+  </div>
+
+  <h2>Into the Flood Maw — What It Actually Hits</h2>
+
+  <p>Into the Flood Maw bounces a <em>nonland</em> permanent. Key oracle ruling: <strong>an earthbent land is still a land</strong> and cannot be bounced by Into the Flood Maw. But there are excellent targets among their nonland permanents:</p>
+
+  <div class="card-grid card-grid-2">
+    <div class="card">
+      <div class="card-label">Prime Targets</div>
+      <div class="card-title">Nonland Permanents to Bounce</div>
+      <div class="card-body">
+        <ul style="margin:0 0 0 16px;font-size:14px;font-weight:300;color:var(--mid);line-height:2.2;">
+          <li><strong>Sapling Nursery</strong> — bounce it when they tap out to cast it on T3. They spent 4 mana, got nothing. They must recast it. Best at instant speed EOT.</li>
+          <li><strong>Earthbender Ascension</strong> — bounce it to reset its quest counters to zero. If it has 3 counters and is about to grant +1/+1 + trample on the next land, bouncing resets the clock entirely.</li>
+          <li><strong>Mightform Harmonizer</strong> — bounce it in response to them warping it (if they try to warp it to protect it, you can bounce before the warp happens).</li>
+          <li><strong>Badgermole Cub</strong> — bounce it as a creature (nonland permanent). They lose the ETB earthbend and the mana doubling effect.</li>
+          <li><strong>Leatherhead, Swamp Stalker</strong> — bounce before she deals damage and removes her hexproof counter interaction. Reset her hexproof counter situation.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-label">The Timing Edge</div>
+      <div class="card-title">Bounce at Instant Speed on Their End Step</div>
+      <div class="card-body">
+        Into the Flood Maw is an instant — use it on their end step so:
+        <ul style="margin:8px 0 0 16px;font-size:14px;font-weight:300;color:var(--mid);line-height:2.2;">
+          <li>They can't recast Sapling Nursery until their next turn (no mana open).</li>
+          <li>You untap with full mana available on your turn.</li>
+          <li>They spent their entire turn developing a board that went back to their hand.</li>
+        </ul>
+        <br>The best pattern: let them commit to casting Nursery or Ascension on their turn. Hold Into the Flood Maw. At their end step — bounce it. They have zero mana to respond. Repeat for 2-3 turns to deny them the engine they need to win.
+      </div>
+    </div>
+  </div>
+
+  <h2>The Kaito + Bat Threat Pressure Loop</h2>
+
+  <p>The "present a threat and be annoying" strategy isn't just reactive — it's the Kaito-based pressure loop that forces them into bad decisions. Deploy Siren on T1, let it get in a hit, ninjutsu Kaito into the attack. Kaito ETB: Deep-Cavern Bat trigger strips their best piece. Now they must address Kaito (hexproof on your turn) without being able to target it. Their answer requires passing through your flash mana window.</p>
+
+  <div class="card-grid card-grid-3">
+    <div class="card">
+      <div class="card-label">Turn 2-3</div>
+      <div class="card-title">Siren Connects → Kaito Appears</div>
+      <div class="card-body">T1 Spyglass Siren (1/1 flier, Recon on entry). T2 swing, they likely don't block (1 damage). Ninjutsu Kaito: return Siren to hand, Kaito enters attacking. Bat trigger: look at their hand, exile a nonland card. They've lost their best piece by T2 before they've played a creature.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Their Response Window</div>
+      <div class="card-title">They Must Tap Down to Answer</div>
+      <div class="card-body">To answer Kaito they need to attack back with power 3+ creature, or use sorcery-speed removal. Both require tapping out. That's your window: hold Requiting Hex or Floodpits Drowner. When they tap for the answer, flash in Drowner EOT to tap everything else. Your next attack with Kaito is free.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Reward</div>
+      <div class="card-title">Kaito Loyalty Builds</div>
+      <div class="card-body">Each Kaito attack generates a 3/2 Cecil if he doesn't hit, or -2 to look at top 3 and grab a creature. Cecil with Kaito in play: transformed Cecil becomes a 4/4 with lifelink and double strike, which closes fast. The pressure loop forces them to commit resources to deal with Kaito, leaving no mana for disrupting your flash responses.</div>
+    </div>
+  </div>
+
+  <h2>Sequence Reference — vs Mono-Green</h2>
+  <div style="border:1px solid var(--rule);margin:24px 0;">
+    <div style="background:var(--ink);padding:16px 24px;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(242,237,230,0.5);">Priority Interaction Targets</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:var(--rule);">
+      <div style="background:var(--paper);padding:20px;">
+        <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--mid);margin-bottom:8px;">Kill Immediately</div>
+        <div style="font-size:14px;font-weight:300;color:var(--mid);line-height:2;">
+          <strong style="color:var(--ink);">Badgermole Cub</strong> — Requiting Hex (MV 2, exiles)<br>
+          <strong style="color:var(--ink);">Icetill Explorer</strong> — Shoot the Sheriff (non-outlaw, 3 damage + exile, MV 4)<br>
+          <strong style="color:var(--ink);">Leatherhead</strong> — Bitter Triumph before she deals combat damage (prevent her hexproof counter removal trigger)
+        </div>
+      </div>
+      <div style="background:var(--paper);padding:20px;">
+        <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--mid);margin-bottom:8px;">Counter / Tap</div>
+        <div style="font-size:14px;font-weight:300;color:var(--mid);line-height:2;">
+          <strong style="color:var(--ink);">Fabled Passage activation</strong> — Tidebinder (counter it, they lose the land AND the Passage)<br>
+          <strong style="color:var(--ink);">Escape Tunnel unblockable</strong> — Tidebinder (counter it, Tunnel sacrificed for nothing, combo stopped)<br>
+          <strong style="color:var(--ink);">Harmonizer landfall trigger</strong> — Tidebinder (one doubling negated)
+        </div>
+      </div>
+      <div style="background:var(--paper);padding:20px;">
+        <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--mid);margin-bottom:8px;">Bounce / Tap</div>
+        <div style="font-size:14px;font-weight:300;color:var(--mid);line-height:2;">
+          <strong style="color:var(--ink);">Sapling Nursery</strong> — Into the Flood Maw, EOT when they're tapped<br>
+          <strong style="color:var(--ink);">Earthbender Ascension</strong> — Into the Flood Maw, reset quest counters<br>
+          <strong style="color:var(--ink);">Earthbent land-creature</strong> — Floodpits Drowner (CAN tap it — it's a creature; CANNOT bounce with Flood Maw — it's still a land)
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 <!-- ══════════════════════════════════════════════════════════ CH04 ENGINES -->
