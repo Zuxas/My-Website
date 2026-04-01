@@ -1,0 +1,1063 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Dimir Midrange/Aggro Standard playbook — Team Resolve. Kaito, Enduring Curiosity, Floodpits Drowner. Full matchup guide, heuristics, and sideboard deep dive." />
+<title>Dimir Midrange — Team Resolve Standard Playbook</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+  :root { --ink:#0e0e0e; --paper:#f2ede6; --paper-dark:#e8e1d6; --rule:#c8bfb0; --accent:#1a3a5c; --accent-light:#d4e4f4; --danger:#8f1a1a; --danger-light:#f7d6d6; --gold:#8f6a1a; --gold-light:#f7ead6; --mid:#5a5248; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:var(--paper); color:var(--ink); font-family:'Crimson Pro',Georgia,serif; font-size:17px; line-height:1.6; }
+  .header-band { background:var(--ink); border-bottom:3px solid var(--accent); }
+  .header-inner { max-width:1100px; margin:0 auto; padding:32px 80px; display:flex; justify-content:space-between; align-items:flex-end; gap:40px; }
+  .header-eyebrow { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:rgba(242,237,230,0.35); margin-bottom:8px; }
+  .header-title { font-family:'Bebas Neue',sans-serif; font-size:56px; line-height:0.9; color:var(--paper); letter-spacing:0.02em; }
+  .header-title span { color:#4a9ede; }
+  .header-mantra { font-family:'Crimson Pro',serif; font-style:italic; font-size:15px; color:rgba(242,237,230,0.4); margin-top:8px; }
+  .header-right { display:flex; flex-direction:column; gap:8px; text-align:right; padding-bottom:4px; }
+  .header-stat { display:flex; gap:12px; align-items:center; justify-content:flex-end; }
+  .hs-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; color:rgba(242,237,230,0.3); }
+  .hs-val { font-family:'DM Mono',monospace; font-size:12px; color:var(--paper); }
+  nav { position:sticky; top:0; z-index:100; background:var(--ink); border-bottom:1px solid rgba(242,237,230,0.1); padding:0 80px; display:flex; align-items:center; gap:0; overflow-x:auto; scrollbar-width:none; }
+  nav::-webkit-scrollbar { display:none; }
+  .nav-brand { font-family:'Bebas Neue',sans-serif; font-size:18px; color:#4a9ede; letter-spacing:0.05em; margin-right:40px; white-space:nowrap; padding:16px 0; text-decoration:none; }
+  .nav-link { font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:rgba(242,237,230,0.4); padding:20px 16px; cursor:pointer; white-space:nowrap; border-bottom:2px solid transparent; transition:all 0.2s; background:none; border-top:none; border-left:none; border-right:none; }
+  .nav-link:hover, .nav-link.active { color:var(--paper); border-bottom-color:#4a9ede; }
+  .page { max-width:1100px; margin:0 auto; padding:80px 80px; }
+  .section { display:none; animation:fadeIn 0.3s ease; }
+  .section.active { display:block; }
+  @keyframes fadeIn { from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:translateY(0);} }
+  .section-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.25em; text-transform:uppercase; color:var(--mid); margin-bottom:8px; }
+  h1 { font-family:'Bebas Neue',sans-serif; font-size:64px; line-height:0.9; letter-spacing:0.01em; color:var(--ink); margin-bottom:40px; }
+  h2 { font-family:'Bebas Neue',sans-serif; font-size:36px; letter-spacing:0.02em; color:var(--ink); margin:56px 0 20px; padding-bottom:8px; border-bottom:2px solid var(--ink); }
+  h3 { font-family:'DM Mono',monospace; font-size:12px; letter-spacing:0.15em; text-transform:uppercase; color:var(--accent); margin:32px 0 12px; }
+  p { margin-bottom:16px; color:var(--ink); font-weight:300; }
+  strong { font-weight:600; }
+  .c { color:var(--accent); font-weight:400; }
+  .mantra { border-left:4px solid var(--accent); padding:24px 32px; background:var(--accent-light); margin:32px 0; font-style:italic; font-size:20px; color:var(--accent); line-height:1.5; }
+  .card-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); gap:1px; background:var(--rule); border:1px solid var(--rule); margin:24px 0; }
+  .card-grid-2 { grid-template-columns:repeat(2,1fr) !important; }
+  .card-grid-3 { grid-template-columns:repeat(3,1fr) !important; }
+  .card { background:var(--paper); padding:24px; }
+  .card:hover { background:var(--paper-dark); }
+  .card-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--mid); margin-bottom:8px; }
+  .card-title { font-family:'Bebas Neue',sans-serif; font-size:22px; letter-spacing:0.03em; color:var(--ink); margin-bottom:8px; }
+  .card-body { font-size:15px; font-weight:300; color:var(--mid); line-height:1.5; }
+  .decklist { display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--rule); border:1px solid var(--rule); margin:24px 0; }
+  .dl-section { background:var(--paper); padding:24px; }
+  .dl-section-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--mid); margin-bottom:16px; }
+  .dl-group { margin-bottom:20px; }
+  .dl-group-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; color:var(--ink); background:var(--paper-dark); padding:4px 8px; margin-bottom:8px; display:inline-block; }
+  .dl-card-row { display:flex; justify-content:space-between; align-items:baseline; padding:3px 0; border-bottom:1px solid rgba(200,191,176,0.3); font-size:15px; font-weight:300; }
+  .dl-card-row:last-child { border-bottom:none; }
+  .dl-qty { font-family:'DM Mono',monospace; font-size:12px; color:var(--mid); flex-shrink:0; margin-left:8px; }
+  .matchup-table { width:100%; border-collapse:collapse; margin:24px 0; }
+  .matchup-table th { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; padding:10px 16px; background:var(--ink); color:rgba(242,237,230,0.6); text-align:left; }
+  .matchup-table td { padding:12px 16px; border-bottom:1px solid var(--rule); font-size:15px; font-weight:300; }
+  .matchup-table tr:hover td { background:var(--paper-dark); cursor:pointer; }
+  .matchup-detail { display:none; background:var(--accent-light); border-left:4px solid var(--accent); padding:24px 32px; margin:0; }
+  .matchup-detail.open { display:block; }
+  .verdict { display:inline-block; font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; padding:4px 10px; border:1px solid; }
+  .verdict-dog { background:var(--danger-light); color:var(--danger); border-color:var(--danger); }
+  .verdict-even { background:var(--gold-light); color:var(--gold); border-color:var(--gold); }
+  .verdict-favor { background:#d1fae5; color:#065f46; border-color:#065f46; }
+  .sb-table { width:100%; border-collapse:collapse; margin:16px 0; }
+  .sb-table th { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; padding:8px 12px; background:var(--paper-dark); color:var(--mid); text-align:left; border-bottom:2px solid var(--rule); }
+  .sb-table td { padding:10px 12px; border-bottom:1px solid var(--rule); font-size:14px; font-weight:300; }
+  .sb-out { color:var(--danger); font-family:'DM Mono',monospace; font-size:12px; }
+  .sb-in { color:#065f46; font-family:'DM Mono',monospace; font-size:12px; }
+  .sb-note { font-size:13px; font-weight:300; color:var(--mid); font-style:italic; margin-top:6px; }
+  .sb-card-guide { border:1px solid var(--rule); margin:24px 0; }
+  .sb-guide-row { display:grid; grid-template-columns:200px 1fr; gap:0; border-bottom:1px solid var(--rule); }
+  .sb-guide-row:last-child { border-bottom:none; }
+  .sb-guide-name { font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.08em; text-transform:uppercase; padding:16px; background:var(--paper-dark); color:var(--ink); border-right:1px solid var(--rule); display:flex; align-items:flex-start; }
+  .sb-guide-body { padding:16px; font-size:14px; font-weight:300; line-height:1.6; color:var(--mid); }
+  .role-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--rule); border:1px solid var(--rule); margin:24px 0; }
+  .role-card { background:var(--paper); padding:24px; }
+  .role-name { font-family:'Bebas Neue',sans-serif; font-size:28px; letter-spacing:0.02em; margin-bottom:8px; }
+  .role-name-primary { color:var(--accent); }
+  .role-name-secondary { color:var(--gold); }
+  .role-name-tertiary { color:var(--mid); }
+  .role-desc { font-size:14px; font-weight:300; color:var(--mid); line-height:1.5; margin-bottom:12px; }
+  .role-matchups { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.1em; text-transform:uppercase; color:var(--mid); }
+  .engine-block { border:1px solid var(--rule); margin:32px 0; }
+  .engine-header { background:var(--ink); padding:20px 24px; display:flex; align-items:center; gap:16px; }
+  .engine-letter { font-family:'Bebas Neue',sans-serif; font-size:40px; color:#4a9ede; line-height:1; }
+  .engine-name { font-family:'Bebas Neue',sans-serif; font-size:24px; color:var(--paper); letter-spacing:0.03em; }
+  .engine-body { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--rule); }
+  .engine-step { background:var(--paper); padding:20px; }
+  .engine-step-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--mid); margin-bottom:6px; }
+  .engine-step-title { font-family:'Bebas Neue',sans-serif; font-size:20px; color:var(--ink); margin-bottom:8px; }
+  .engine-step-body { font-size:14px; font-weight:300; color:var(--mid); line-height:1.5; }
+  .heuristic-list { list-style:none; margin:0; padding:0; counter-reset:heuristic; }
+  .heuristic-list li { counter-increment:heuristic; display:grid; grid-template-columns:48px 1fr; gap:16px; padding:20px 0; border-bottom:1px solid var(--rule); align-items:start; }
+  .heuristic-list li:last-child { border-bottom:none; }
+  .heuristic-num { font-family:'DM Mono',monospace; font-size:22px; color:var(--rule); font-weight:500; }
+  .heuristic-body strong { display:block; font-size:16px; font-weight:600; margin-bottom:4px; color:var(--ink); }
+  .heuristic-body { font-size:14px; font-weight:300; color:var(--mid); line-height:1.5; }
+  .tuning-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--rule); border:1px solid var(--rule); margin:24px 0; }
+  .tuning-cell { background:var(--paper); padding:20px; }
+  .tuning-cell-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; color:var(--mid); margin-bottom:8px; }
+  .tuning-cell-title { font-family:'Bebas Neue',sans-serif; font-size:20px; color:var(--ink); margin-bottom:8px; }
+  .tuning-cell-body { font-size:14px; font-weight:300; color:var(--mid); line-height:1.5; }
+  .curve-strip { display:flex; gap:1px; background:var(--rule); border:1px solid var(--rule); margin:24px 0; }
+  .curve-slot { flex:1; background:var(--paper); padding:16px 12px; text-align:center; }
+  .curve-cmc { font-family:'Bebas Neue',sans-serif; font-size:32px; color:var(--accent); line-height:1; }
+  .curve-count { font-family:'DM Mono',monospace; font-size:11px; color:var(--mid); letter-spacing:0.1em; margin-top:4px; }
+  .curve-bar { height:4px; background:var(--accent); margin:8px auto 0; border-radius:2px; opacity:0.5; }
+  .print-btn { display:inline-flex; align-items:center; gap:8px; font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.12em; text-transform:uppercase; background:var(--ink); color:var(--paper); border:none; padding:10px 20px; cursor:pointer; margin-bottom:32px; }
+  .print-section { border:1px solid var(--rule); padding:32px; margin:24px 0; }
+  .print-title { font-family:'Bebas Neue',sans-serif; font-size:48px; color:var(--ink); }
+  .print-sub { font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.15em; text-transform:uppercase; color:var(--mid); margin-bottom:24px; }
+  .print-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+  .print-col-title { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--mid); margin-bottom:8px; padding-bottom:4px; border-bottom:1px solid var(--rule); }
+  .print-line { font-size:13px; font-weight:300; padding:2px 0; display:flex; gap:8px; }
+  .print-mu { margin-bottom:16px; }
+  .print-mu-name { font-family:'Bebas Neue',sans-serif; font-size:18px; color:var(--ink); }
+  .print-mu-role { font-family:'DM Mono',monospace; font-size:9px; letter-spacing:0.1em; text-transform:uppercase; color:var(--mid); margin-bottom:6px; }
+  .print-cols { display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+  .print-col-label { font-family:'DM Mono',monospace; font-size:9px; letter-spacing:0.15em; text-transform:uppercase; color:var(--mid); margin-bottom:4px; }
+  .print-row { font-size:12px; font-weight:300; display:flex; justify-content:space-between; padding:1px 0; border-bottom:1px solid rgba(200,191,176,0.4); }
+  .print-qty { font-family:'DM Mono',monospace; font-size:11px; color:var(--mid); }
+  .print-needle { font-family:'DM Mono',monospace; font-size:9px; letter-spacing:0.06em; color:var(--danger); margin-top:6px; text-transform:uppercase; }
+  footer { background:var(--ink); color:rgba(242,237,230,0.3); padding:40px 80px; margin-top:80px; display:flex; justify-content:space-between; align-items:center; }
+  footer span { font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.1em; text-transform:uppercase; }
+  @media (max-width:768px) { .header-inner,nav,.page,footer { padding-left:24px; padding-right:24px; } .header-title { font-size:40px; } .header-right { display:none; } .decklist,.role-grid,.engine-body,.tuning-grid,.print-grid { grid-template-columns:1fr; } nav { padding:0 24px; } }
+  @media print { nav,.print-btn,footer { display:none; } .section { display:block !important; } }
+</style>
+</head>
+<body>
+
+<div class="header-band">
+  <div class="header-inner">
+    <div>
+      <div class="header-eyebrow">Team Resolve · Standard · March 2026</div>
+      <div class="header-title">Dimir<br><span>Midrange</span></div>
+      <div class="header-mantra">"Every creature is a question they have to answer at instant speed."</div>
+    </div>
+    <div class="header-right">
+      <div class="header-stat"><span class="hs-label">Role</span><span class="hs-val">Tempo-Midrange</span></div>
+      <div class="header-stat"><span class="hs-label">Colors</span><span class="hs-val">U B</span></div>
+      <div class="header-stat"><span class="hs-label">Kill Turn</span><span class="hs-val">4–5</span></div>
+      <div class="header-stat"><span class="hs-label">Author</span><span class="hs-val">Zuxas</span></div>
+    </div>
+  </div>
+</div>
+
+<nav>
+  <a class="nav-brand" href="deck-guides.html">Team Resolve</a>
+  <button class="nav-link active" onclick="show('overview')">Overview</button>
+  <button class="nav-link" onclick="show('decklist')">Decklist</button>
+  <button class="nav-link" onclick="show('gameflow')">Game Flow</button>
+  <button class="nav-link" onclick="show('engines')">Engines</button>
+  <button class="nav-link" onclick="show('roles')">Roles</button>
+  <button class="nav-link" onclick="show('matchups')">Matchups</button>
+  <button class="nav-link" onclick="show('sideboard')">Sideboard</button>
+  <button class="nav-link" onclick="show('heuristics')">Heuristics</button>
+  <button class="nav-link" onclick="show('tuning')">Tuning</button>
+  <button class="nav-link" onclick="show('prep')">Prep</button>
+</nav>
+
+<div class="page">
+
+<!-- ══════════════════════════════════════════════════════════ CH01 OVERVIEW -->
+<div id="overview" class="section active">
+  <div class="section-label">Chapter 01</div>
+  <h1>Deck<br>Overview</h1>
+
+  <div class="mantra">"On the play, develop Kaito and force them to have the answer. On the draw, deploy Enduring Curiosity and punish them for attacking into it."</div>
+
+  <p>Dimir Midrange is the premier tempo-control strategy in Standard. Every threat in the deck operates at instant speed or generates immediate value on entry — <span class="c">Floodpits Drowner</span> stuns their best creature, <span class="c">Tishana's Tidebinder</span> locks out ETBs and planeswalker abilities, <span class="c">Kaito, Bane of Nightmares</span> becomes a hexproof 3/4 Ninja the moment it resolves on your turn. The opponent is always reacting. You are always the one asking questions.</p>
+
+  <p>The deck sits between aggro and control — not slow enough to fold to pressure, not so fast it runs out of gas. <span class="c">Enduring Curiosity</span> is the card that enables the grind: once it's in play as an enchantment it's essentially permanent card draw, and the opponent has no clean answer. Every creature that deals combat damage draws a card. The deck generates more resources than it spends and wins long games against midrange and control while having just enough tempo tools to survive aggro.</p>
+
+  <p>The Zuxas build leans toward the aggro end of the spectrum. <span class="c">Azure Beastbinder</span> and <span class="c">Floodpits Drowner</span> represent a flash creature package that operates at instant speed on the opponent's turn, and <span class="c">Cecil, Dark Knight</span> provides a high-risk/high-reward {B} 2/3 deathtouch that transforms into a 4/4 lifelink when your life drops to half — a unique life-pressure payoff that rewards attacking aggressively with the rest of your threats.</p>
+
+  <h2>What This Deck Does</h2>
+  <div class="card-grid card-grid-3">
+    <div class="card">
+      <div class="card-label">Primary Plan</div>
+      <div class="card-title">Flash Threats + Card Draw</div>
+      <div class="card-body">Deploy threats at instant speed on the opponent's end step. Each threat generates value immediately. <span class="c">Enduring Curiosity</span> turns every successful attack into a card. Kaito's 0 ability generates a card every turn. You're always drawing into more answers.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Secondary Plan</div>
+      <div class="card-title">Tempo Disruption</div>
+      <div class="card-body"><span class="c">Tishana's Tidebinder</span> counters their key ability and strips the permanent. <span class="c">Floodpits Drowner</span> stuns their best attacker and threatens to shuffle it away. <span class="c">Azure Beastbinder</span> blanks their best permanent on attack. Every creature is also disruption.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Win Condition</div>
+      <div class="card-title">Out-Resource + Close</div>
+      <div class="card-body">Generate card advantage until the opponent runs out of answers, then close with <span class="c">Restless Reef</span> attacks, <span class="c">Cecil</span> transforming into a 4/4 lifelink, or Kaito's emblem making all your creatures bigger. The deck rarely goldfishes — it wins by exhausting opponent options.</div>
+    </div>
+  </div>
+
+  <h2>Why Play This Deck</h2>
+  <div class="card-grid card-grid-2">
+    <div class="card">
+      <div class="card-label">Play This If</div>
+      <div class="card-title">You Want Flexibility</div>
+      <div class="card-body">The deck shifts roles game-to-game and even turn-to-turn. Against aggro you're the control deck using flash blockers and removal. Against control you're the beatdown deck attacking through counters and protecting threats. Against midrange mirrors you're the tempo deck with more instant-speed plays. No two games feel the same.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Skip This If</div>
+      <div class="card-title">You Want Simple Lines</div>
+      <div class="card-body">This deck has a high decision density. When to deploy Kaito vs. hold mana for Tidebinder. When to attack with Cecil knowing you'll lose life to Darkness. When to promise the fish for Into the Flood Maw. When to blight your own creature for Requiting Hex. Every turn has meaningful choices. It rewards reps.</div>
+    </div>
+  </div>
+
+  <h2>Meta Position</h2>
+  <p>Dimir Midrange was the most played deck in Standard through much of 2025, ranging from 15–25% of the field depending on the month. After the Pro Tour Lorwyn Eclipsed meta shift (early 2026), the format diversified significantly — Mono-Green Landfall (12%), Izzet Elementals (11%), and Dimir variants (8–9%) form the current top tables. The deck's core cards (Kaito, Enduring Curiosity) have been flagged as ban candidates by multiple sources but remain legal. Play it while the window is open.</p>
+  <p>Zuxas's build is tuned for the current aggro-heavy meta: <span class="c">Requiting Hex</span> ×3 main handles the aggressive early creatures that a pure midrange build struggles with, and the flash creature package at 1-2 mana means you can develop your board on their end step while holding mana for removal on their turn.</p>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════ CH02 DECKLIST -->
+<div id="decklist" class="section">
+  <div class="section-label">Chapter 02</div>
+  <h1>Decklist</h1>
+  <p style="font-style:italic;color:var(--mid);font-size:15px;margin-bottom:24px;">Zuxas's list — Dimir Midrange/Aggro · Standard 2026</p>
+
+  <div class="decklist">
+    <div class="dl-section">
+      <div class="dl-section-label">Maindeck (60)</div>
+
+      <div class="dl-group">
+        <div class="dl-group-label">Creatures (18)</div>
+        <div class="dl-card-row"><span><span class="c">Spyglass Siren</span></span><span class="dl-qty">4</span></div>
+        <div class="dl-card-row"><span><span class="c">Cecil, Dark Knight</span></span><span class="dl-qty">2</span></div>
+        <div class="dl-card-row"><span><span class="c">Azure Beastbinder</span></span><span class="dl-qty">2</span></div>
+        <div class="dl-card-row"><span><span class="c">Floodpits Drowner</span></span><span class="dl-qty">4</span></div>
+        <div class="dl-card-row"><span><span class="c">Tishana's Tidebinder</span></span><span class="dl-qty">4</span></div>
+        <div class="dl-card-row"><span><span class="c">Loch Mare</span></span><span class="dl-qty">1</span></div>
+        <div class="dl-card-row"><span><span class="c">Qarsi Revenant</span></span><span class="dl-qty">1</span></div>
+      </div>
+
+      <div class="dl-group">
+        <div class="dl-group-label">Planeswalkers (4)</div>
+        <div class="dl-card-row"><span><span class="c">Kaito, Bane of Nightmares</span></span><span class="dl-qty">4</span></div>
+      </div>
+
+      <div class="dl-group">
+        <div class="dl-group-label">Enchantments (3)</div>
+        <div class="dl-card-row"><span><span class="c">Enduring Curiosity</span></span><span class="dl-qty">3</span></div>
+      </div>
+
+      <div class="dl-group">
+        <div class="dl-group-label">Instants / Spells (13)</div>
+        <div class="dl-card-row"><span><span class="c">Requiting Hex</span></span><span class="dl-qty">3</span></div>
+        <div class="dl-card-row"><span><span class="c">Shoot the Sheriff</span></span><span class="dl-qty">2</span></div>
+        <div class="dl-card-row"><span><span class="c">Bitter Triumph</span></span><span class="dl-qty">1</span></div>
+        <div class="dl-card-row"><span><span class="c">Long Goodbye</span></span><span class="dl-qty">1</span></div>
+        <div class="dl-card-row"><span><span class="c">Into the Flood Maw</span></span><span class="dl-qty">2</span></div>
+        <div class="dl-card-row"><span><span class="c">Phantom Interference</span></span><span class="dl-qty">1</span></div>
+        <div class="dl-card-row"><span><span class="c">Spell Snare</span></span><span class="dl-qty">1</span></div>
+        <div class="dl-card-row"><span><span class="c">Multiversal Passage</span></span><span class="dl-qty">2</span></div>
+      </div>
+    </div>
+
+    <div class="dl-section">
+      <div class="dl-section-label">Lands (22)</div>
+      <div class="dl-group">
+        <div class="dl-card-row"><span>Island</span><span class="dl-qty">5</span></div>
+        <div class="dl-card-row"><span>Swamp</span><span class="dl-qty">4</span></div>
+        <div class="dl-card-row"><span><span class="c">Watery Grave</span></span><span class="dl-qty">4</span></div>
+        <div class="dl-card-row"><span><span class="c">Gloomlake Verge</span></span><span class="dl-qty">4</span></div>
+        <div class="dl-card-row"><span><span class="c">Restless Reef</span></span><span class="dl-qty">2</span></div>
+        <div class="dl-card-row"><span><span class="c">Soulstone Sanctuary</span></span><span class="dl-qty">2</span></div>
+        <div class="dl-card-row"><span><span class="c">Starting Town</span></span><span class="dl-qty">1</span></div>
+      </div>
+
+      <div class="dl-section-label" style="margin-top:24px;">Sideboard (15)</div>
+      <div class="dl-group">
+        <div class="dl-card-row"><span><span class="c">Soul-Guide Lantern</span></span><span class="dl-qty">2</span></div>
+        <div class="dl-card-row"><span><span class="c">Duress</span></span><span class="dl-qty">1</span></div>
+        <div class="dl-card-row"><span><span class="c">Bitter Triumph</span></span><span class="dl-qty">1</span></div>
+        <div class="dl-card-row"><span><span class="c">Annul</span></span><span class="dl-qty">1</span></div>
+        <div class="dl-card-row"><span><span class="c">Essence Scatter</span></span><span class="dl-qty">1</span></div>
+        <div class="dl-card-row"><span><span class="c">Spell Pierce</span></span><span class="dl-qty">1</span></div>
+        <div class="dl-card-row"><span><span class="c">Disdainful Stroke</span></span><span class="dl-qty">1</span></div>
+        <div class="dl-card-row"><span><span class="c">Spider-Sense</span></span><span class="dl-qty">1</span></div>
+        <div class="dl-card-row"><span><span class="c">Strategic Betrayal</span></span><span class="dl-qty">1</span></div>
+        <div class="dl-card-row"><span><span class="c">Requiting Hex</span></span><span class="dl-qty">1</span></div>
+        <div class="dl-card-row"><span><span class="c">Day of Black Sun</span></span><span class="dl-qty">1</span></div>
+        <div class="dl-card-row"><span><span class="c">Kaito, Cunning Infiltrator</span></span><span class="dl-qty">1</span></div>
+        <div class="dl-card-row"><span><span class="c">The Unagi of Kyoshi Island</span></span><span class="dl-qty">1</span></div>
+        <div class="dl-card-row"><span><span class="c">Wan Shi Tong, Librarian</span></span><span class="dl-qty">1</span></div>
+      </div>
+    </div>
+  </div>
+
+  <h2>Mana Curve</h2>
+  <div class="curve-strip">
+    <div class="curve-slot"><div class="curve-cmc">1</div><div class="curve-count">7 spells</div><div class="curve-bar" style="width:40%"></div></div>
+    <div class="curve-slot"><div class="curve-cmc">2</div><div class="curve-count">10 spells</div><div class="curve-bar" style="width:75%"></div></div>
+    <div class="curve-slot"><div class="curve-cmc">3</div><div class="curve-count">11 spells</div><div class="curve-bar" style="width:100%"></div></div>
+    <div class="curve-slot"><div class="curve-cmc">4</div><div class="curve-count">5 spells</div><div class="curve-bar" style="width:35%"></div></div>
+    <div class="curve-slot"><div class="curve-cmc">5+</div><div class="curve-count">3 spells</div><div class="curve-bar" style="width:20%"></div></div>
+  </div>
+  <p style="font-size:14px;color:var(--mid);">Peak at 3 mana. The 3-drop slot is the deck's identity: Kaito, Tishana's Tidebinder, and Enduring Curiosity all live here. Turn 3 is where the deck's power comes online. Curve notes: Requiting Hex and Spell Snare are {1} and {B} respectively — cheap interaction that protects the 3-drop window.</p>
+
+  <h2>Card Notes</h2>
+  <div class="card-grid">
+    <div class="card">
+      <div class="card-label">The Engine</div>
+      <div class="card-title">Kaito, Bane of Nightmares</div>
+      <div class="card-body">{2}{U}{B}. Ninjutsu {1}{U}{B} (return unblocked attacker, put Kaito in attacking). During your turn with loyalty counters: 3/4 Ninja with hexproof — opponents have no clean instant-speed answer. 0: Surveil 2, draw a card for each opponent who lost life this turn. That's a free draw every turn you attacked. −2: Tap + 2 stun counters on target creature.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">The Draw Engine</div>
+      <div class="card-title">Enduring Curiosity</div>
+      <div class="card-body">{2}{U}{U} Enchantment Creature — Cat Glimmer. Flash. Draw a card whenever any creature you control deals combat damage. When it dies as a creature, returns to battlefield as an enchantment — not a creature, so targeted removal that requires creature type fails. As an enchantment it still triggers. The opponent needs exile to answer it permanently.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">The Tempo Package</div>
+      <div class="card-title">Floodpits Drowner</div>
+      <div class="card-body">{1}{U} 2/1 Flash Vigilance. ETB: tap target creature + stun counter (can't untap next turn). {1}{U}{T}: shuffle this creature and target stunned creature into their owners' libraries. Combined: deploy at their end step, stun their best threat, then on your turn pay {1}{U} to shuffle both away. Two-for-one that generates a tempo swing plus library manipulation.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">The Ability Killer</div>
+      <div class="card-title">Tishana's Tidebinder</div>
+      <div class="card-body">{2}{U} 3/2 Flash. ETB: counter target activated or triggered ability. If an artifact/creature/planeswalker ability is countered, that permanent loses ALL abilities while Tidebinder is on the battlefield. Hits: any ETB trigger on resolution, a planeswalker's activated ability, any activated ability like looting or sacrifice effects. A resolved Tidebinder is a threat + permanent ability lock in one card.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">The Aggro Tool</div>
+      <div class="card-title">Azure Beastbinder</div>
+      <div class="card-body">{1}{U} 1/3 Vigilance. Can't be blocked by power 2+. On attack: target opponent permanent loses all abilities until your next turn; if creature, base 2/2 until your next turn. Blanks their best creature or planeswalker on attack — can't be blocked by most things, turns their 5/5 into a vanilla 2/2, and strips walker abilities. Vigilance means it blocks the turn after too.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">The Transformer</div>
+      <div class="card-title">Cecil, Dark Knight</div>
+      <div class="card-body">{B} 2/3 Deathtouch. Darkness: whenever Cecil deals damage, you lose that life too. At half life: untap + transform → Cecil, Redeemed Paladin 4/4 Lifelink. Indestructible-granting Protect ability for other attackers. High variance: kills efficiently but drains you. When you flip him at 10 life the lifelink starts recovering it. Best deployed mid-to-late when you can absorb the life loss.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Cheap Removal</div>
+      <div class="card-title">Requiting Hex</div>
+      <div class="card-body">{B} Instant. Additional cost: optionally blight 1 (put −1/−1 counter on a creature you control). Destroy target creature with MV 2 or less. If blighted: gain 2 life. The blight target can be Loch Mare (removing one of its built-in −1/−1 counters) or a creature already at −1/−1 to sacrifice it cleanly. Against Mono-Red: the life gain is critical. Against aggro mirrors: answers all their 1-2 drops cleanly at {B}.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Uncounterable Removal</div>
+      <div class="card-title">Long Goodbye</div>
+      <div class="card-body">{1}{B} Instant. Can't be countered. Destroy target creature or planeswalker with MV 3 or less. The "can't be countered" text matters against blue decks — your removal resolves even through their countermagic. Hits Kaito (MV 3), most 2-drops, all 1-drops. Slightly more expensive than Requiting Hex but hits walkers and can't be interacted with by counterspells.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Flex Removal</div>
+      <div class="card-title">Shoot the Sheriff</div>
+      <div class="card-body">{1}{B} Instant. Destroy target non-outlaw creature. Outlaws (Assassins, Mercenaries, Pirates, Rogues, Warlocks) are exempt — everyone else dies. In practice this means you can't use it on Pirates or Rogues. Most creatures in the format are not outlaws. Note: your own <span class="c">Spyglass Siren</span> (Siren Pirate) is an outlaw — can't be targeted by opponent's Sheriff either.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Bounce / Tempo</div>
+      <div class="card-title">Into the Flood Maw</div>
+      <div class="card-body">{U} Instant. Gift a tapped Fish: bounce creature (or any nonland permanent if gift promised). The gift mode gives them a 1/1 Fish token. The calculus: no gift → bounce any creature. Gift → bounce any nonland permanent (hits enchantments, artifacts, planeswalkers) but they get a 1/1. Usually worth promising the gift when bouncing an enchantment or planeswalker that would otherwise be hard to answer.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Flex Counter</div>
+      <div class="card-title">Phantom Interference</div>
+      <div class="card-body">{U} Spree. +{3}: create 2/2 Spirit with flying. +{1}: counter target spell unless pay {2}. Can pay both modes simultaneously for {U}+{3}+{1} = {1}{U}{U}{U}. Most useful: the soft counter mode at {1}{U}. Not a hard counter — they can pay {2} to resolve. Best against opponents who are tapped out on their turn. The Spirit mode is too expensive to see regular play.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Narrow Counter</div>
+      <div class="card-title">Spell Snare</div>
+      <div class="card-body">{U} Instant. Counter target spell with MV exactly 2. Niche but powerful — MV 2 is a heavily played slot in Standard right now. Hits most 2-drop threats and interaction. Extremely efficient at {U}. The 1-of count reflects its narrowness — it's dead against control decks and low-curve aggro, but a blowout against midrange 2-drops like Raffine, Fable tokens, or any 2-drop value piece.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════ CH03 GAME FLOW -->
+<div id="gameflow" class="section">
+  <div class="section-label">Chapter 03</div>
+  <h1>Game Flow</h1>
+
+  <div class="mantra">"Turn 1: set up mana. Turn 2: apply pressure. Turn 3: deploy Kaito or Enduring Curiosity and never let them breathe."</div>
+
+  <h2>Turn-by-Turn Framework</h2>
+  <div class="card-grid card-grid-3">
+    <div class="card">
+      <div class="card-label">Turns 1–2</div>
+      <div class="card-title">Setup + First Pressure</div>
+      <div class="card-body">Turn 1: Fetch untapped dual or play basic. Spyglass Siren for a 1/1 flier + Map token. <strong>On the play:</strong> Siren → surveil/explore on turn 2 is your fastest start. Cecil, Dark Knight at {B} on turn 1 — instant 2/3 deathtouch but remember Darkness drains you each hit. Requiting Hex held for their turn-2 threat. Spell Snare open if on the draw vs known 2-drop openings.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Turn 3</div>
+      <div class="card-title">Deploy the Engine</div>
+      <div class="card-body"><strong>On the play:</strong> Kaito, Bane of Nightmares — immediately becomes a 3/4 hexproof Ninja. Force them to have an answer before their next turn. <strong>On the draw:</strong> Enduring Curiosity — flash it at their end step to set up turn-3 attacks that draw cards. Kaito on the draw is also correct if they haven't deployed a threat; the hexproof on your turn means they can't target it at all on your turn.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Turns 4–5</div>
+      <div class="card-title">Lock + Close</div>
+      <div class="card-body">Floodpits Drowner at their end step — stun their attacker, hold shuffle threat. Tishana's Tidebinder in response to any ability. Azure Beastbinder attacks blanking their best permanent while being unblockable by most creatures. Restless Reef activates as a 4/4 deathtouch attacker when you have spare mana. The game typically ends on turn 6-7 with the opponent having exhausted their removal on redundant threats.</div>
+    </div>
+  </div>
+
+  <h2>Key Decision Points</h2>
+  <div class="card-grid card-grid-2">
+    <div class="card">
+      <div class="card-label">Kaito vs Enduring Curiosity</div>
+      <div class="card-title">The Turn-3 Choice</div>
+      <div class="card-body"><strong>Play Kaito when on the play</strong> — you can deploy him on your turn and he immediately has hexproof while you have priority. Opponents can't answer him at instant speed on your turn. <strong>Play Enduring Curiosity when on the draw</strong> — you're a turn behind, so flash it in at their end step. Curiosity as an enchantment is difficult to answer, and the draw engine operates even without attacking. Both plans are correct in their context — the mistake is playing Kaito on the draw when you needed a draw engine, or playing Curiosity on the play when you had tempo advantage.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Cecil's Darkness Trigger</div>
+      <div class="card-title">The Life Math</div>
+      <div class="card-body">Cecil at {B} is an outstanding rate but every point of damage he deals also comes off your life. Do the math before attacking: if Cecil deals 3 damage to their creature through blocking, you also lose 3. Plan when you want to flip him — at 10 life (half of 20) he transforms into the Redeemed Paladin. <strong>Don't flip him when you're already losing</strong> — 4/4 lifelink needs attacks to gain life back, and if their board is too wide the lifelink won't recover fast enough. Deploy Cecil when you can absorb 4-6 life loss and expect to flip on your own schedule.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">The Into the Flood Maw Gift</div>
+      <div class="card-title">When to Promise the Fish</div>
+      <div class="card-body">No gift: bounce any creature (sorcery speed if they have one). Gift: bounce any nonland permanent AND they get a 1/1 Fish. <strong>Always promise the gift</strong> when bouncing: enchantments, artifacts, planeswalkers (Enduring Curiosity, a resolved walker). The 1/1 Fish is irrelevant if you're bouncing something worth 3+ mana. <strong>Don't promise the gift</strong> when the 1/1 Fish is relevant — they're at low life, flood the board against tokens, or they have empty-board value from the Fish token.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Floodpits Drowner Timing</div>
+      <div class="card-title">Stun First, Shuffle Later</div>
+      <div class="card-body">ETB stun goes on the stack when Drowner enters. The activated shuffle ability ({1}{U}{T}: shuffle self and stunned creature) is a separate ability. Sequence: Deploy at their end step → stun their threat → on your turn, either attack around the stunned creature or pay {1}{U} to shuffle both away. <strong>Don't immediately shuffle</strong> — assess whether the stunned creature poses a greater threat than a 2/1 body on your board. Sometimes keeping Drowner to attack with is better than trading both away.</div>
+    </div>
+  </div>
+
+  <h2>Mana Management</h2>
+  <p>This deck is greedy with mana. The key discipline: <strong>never tap out on your own main phase if their threat could require an instant-speed answer.</strong> Hold {B} for Requiting Hex or Long Goodbye. Hold {1}{U} for Floodpits Drowner at their end step. Hold {2}{U} for Tishana's Tidebinder in response to their ETB. The deck plays as a control deck on the opponent's turn and an aggro deck on your turn. <span class="c">Gloomlake Verge</span> is your most important land — always plays as {U} immediately, then {B} once you have any Island or Swamp in play.</p>
+  <p><span class="c">Multiversal Passage</span> enters tapped unless you pay 2 life — you almost always pay the life. This deck has enough life gain access (Cecil lifelink, Requiting Hex blight, Qarsi Revenant lifelink) to absorb the early life payments. Don't sacrifice speed for life on Passage. <span class="c">Starting Town</span> is your turn-1 fixer — enters untapped in turns 1-3, fixes any color for 1 life.</p>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════ CH04 ENGINES -->
+<div id="engines" class="section">
+  <div class="section-label">Chapter 04</div>
+  <h1>Core Engines</h1>
+
+  <div class="engine-block">
+    <div class="engine-header">
+      <div class="engine-letter">A</div>
+      <div class="engine-name">The Kaito Clock Engine</div>
+    </div>
+    <div class="engine-body">
+      <div class="engine-step">
+        <div class="engine-step-label">Activate</div>
+        <div class="engine-step-title">Deploy Kaito</div>
+        <div class="engine-step-body">Cast Kaito on your turn. He immediately becomes a 3/4 Ninja with hexproof. Opponents have no clean instant-speed answer on your turn — removal resolves during their turn but Kaito is already attacking or using abilities. Ninjutsu from hand: return an unblocked attacker, put Kaito in attacking and tapped.</div>
+      </div>
+      <div class="engine-step">
+        <div class="engine-step-label">Generate</div>
+        <div class="engine-step-title">Attack + 0 Ability</div>
+        <div class="engine-step-body">Attack with Kaito (3/4 hexproof). If any opponent took damage this turn: Kaito's 0 ability draws a card (surveil 2 first, then draw for each opponent who lost life). With Enduring Curiosity in play: every creature dealing damage draws a card AND Kaito draws on the 0. Some turns generate 3+ cards off a single attack step.</div>
+      </div>
+      <div class="engine-step">
+        <div class="engine-step-label">Pressure</div>
+        <div class="engine-step-title">+1 Emblem Stack</div>
+        <div class="engine-step-body">Kaito's +1 creates an emblem giving all Ninjas +1/+1. Stack multiple emblems over multiple turns. With Spyglass Siren (Siren Pirate — not a Ninja), the Ninja bonus doesn't apply to her. Kaito himself is a Ninja. −2 option: tap + double stun counter on a key blocker, clearing the path for other attackers for two turns.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="engine-block">
+    <div class="engine-header">
+      <div class="engine-letter">B</div>
+      <div class="engine-name">The Enduring Curiosity Draw Engine</div>
+    </div>
+    <div class="engine-body">
+      <div class="engine-step">
+        <div class="engine-step-label">Deploy</div>
+        <div class="engine-step-title">Flash at End Step</div>
+        <div class="engine-step-body">Cast Enduring Curiosity at the opponent's end step — arrives as a 4/4 Flash creature with the draw trigger active. Immediate blocker. If it dies as a creature (opponent removes it on their next turn), it returns to the battlefield as an enchantment — the draw trigger still applies. It cannot be answered by creature removal after returning.</div>
+      </div>
+      <div class="engine-step">
+        <div class="engine-step-label">Trigger</div>
+        <div class="engine-step-title">Any Combat Damage</div>
+        <div class="engine-step-body">Every creature dealing combat damage draws a card. Not just Curiosity — Spyglass Siren dealing 1 flying damage draws a card. Floodpits Drowner connecting draws. With a full board of 5 attackers connecting: draw 5 cards in one combat step. The opponent must block or die to the damage AND the card advantage simultaneously.</div>
+      </div>
+      <div class="engine-step">
+        <div class="engine-step-label">Sustain</div>
+        <div class="engine-step-title">Enchantment Persistence</div>
+        <div class="engine-step-body">As an enchantment, Curiosity survives all creature removal: Shoot the Sheriff, Long Goodbye, kill spells of all types. The only answer is exile (Strategic Betrayal, Bitter Triumph — but opponents don't typically run exile for enchantments). This creates a permanent draw engine that generates card advantage every attack step for the rest of the game.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="engine-block">
+    <div class="engine-header">
+      <div class="engine-letter">C</div>
+      <div class="engine-name">The Flash Disruption Engine</div>
+    </div>
+    <div class="engine-body">
+      <div class="engine-step">
+        <div class="engine-step-label">Instant Speed</div>
+        <div class="engine-step-title">Their End Step</div>
+        <div class="engine-step-body">Floodpits Drowner, Tishana's Tidebinder, and Kaito (via Ninjutsu) all operate at instant speed. Deploy at their end step: they tapped out during their main phase, their ETB has already resolved, they're vulnerable. End step deployment means you have your full turn with mana available after the threat lands.</div>
+      </div>
+      <div class="engine-step">
+        <div class="engine-step-label">Lock</div>
+        <div class="engine-step-title">Ability Countering</div>
+        <div class="engine-step-body">Tishana's Tidebinder counters any activated or triggered ability on resolution — then strips all abilities from that permanent while Tidebinder is alive. Target their planeswalker's activation, their creature's ETB, their equipment's equip ability. The permanent is now a vanilla threat with no upside. In practice this often 2-for-1s — you counter the ability AND disable the permanent permanently.</div>
+      </div>
+      <div class="engine-step">
+        <div class="engine-step-label">Close</div>
+        <div class="engine-step-title">Tempo + Damage</div>
+        <div class="engine-step-body">Azure Beastbinder: attack to blank their best permanent (loses abilities until your next turn, base 2/2 if creature). Can't be blocked by power 2+ — most threats in Standard are 3+ power, making Beastbinder effectively unblockable in many board states. Vigilance means it blocks after attacking. A recurring tempo machine that generates card advantage via Enduring Curiosity.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════ CH05 ROLES -->
+<div id="roles" class="section">
+  <div class="section-label">Chapter 05</div>
+  <h1>Role Assignment</h1>
+
+  <div class="mantra">"The most common way Dimir loses is by drawing the wrong half of its deck. Know which role you're filling before the first spell resolves."</div>
+
+  <div class="role-grid">
+    <div class="role-card">
+      <div class="role-name role-name-primary">Beatdown</div>
+      <div class="role-desc">You're the aggressor. Deploy threats before their answers arrive. Force them to spend removal on your threats rather than developing their own game plan. Applicable vs Control, Midrange, and any slow deck where your threats outpace their removal.</div>
+      <div class="role-matchups">vs Control · vs Slow Midrange · vs Combo</div>
+    </div>
+    <div class="role-card">
+      <div class="role-name role-name-secondary">Tempo</div>
+      <div class="role-desc">Disrupt while developing. Counter their key ability with Tidebinder, bounce their best permanent, stun their attacker, and develop your own threats simultaneously. This is the deck's natural mode against most midrange opponents.</div>
+      <div class="role-matchups">vs Midrange Mirrors · vs Tempo Decks</div>
+    </div>
+    <div class="role-card">
+      <div class="role-name role-name-tertiary">Survival</div>
+      <div class="role-desc">You're behind. Use removal to stabilize, deploy Enduring Curiosity to rebuild card advantage, and look for the flash threat that swings the board. Mulligan aggressively for interaction when facing fast aggro. Don't play into their clock.</div>
+      <div class="role-matchups">vs Mono-Red · vs Boros Aggro · vs Fast Creature Decks</div>
+    </div>
+  </div>
+
+  <h2>Role by Matchup</h2>
+  <p>The critical skill in Dimir is recognizing which role to occupy and committing to it early. The most common mistake is trying to play Beatdown against Mono-Red when you need Survival lines — holding Kaito for turn 3 when you should be tapping out for Requiting Hex on turn 1 to stop the bleeding.</p>
+
+  <div class="card-grid card-grid-2">
+    <div class="card">
+      <div class="card-label">Against Aggro (Red, Boros, Mono-White)</div>
+      <div class="card-title">Survival Mode</div>
+      <div class="card-body">Prioritize interaction in your opener. Mulligan for Requiting Hex or Shoot the Sheriff. Play Floodpits Drowner to stun their best attacker — a 2/1 with vigilance that also stuns blocks profitably. Hold mana for instant-speed responses. Once you stabilize at 10+ life: Cecil, Dark Knight becomes an option (his lifelink after transformation helps recover). Enduring Curiosity takes over the late game when their hand empties.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Against Control (UW, Jeskai, Azorius)</div>
+      <div class="card-title">Beatdown Mode</div>
+      <div class="card-body">You're the aggressor. Deploy threats on the play before their counterspells are online. Spyglass Siren on turn 1 applies pressure before their turn-3 Counterspell mana. Kaito on turn 3 has hexproof — they can't answer it on your turn. Long Goodbye can't be countered — use it to remove their blockers through their own countermagic. Don't give them free turns to draw sweepers.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Against Midrange (Mono-Green, Dimir Mirror, Izzet)</div>
+      <div class="card-title">Tempo Mode</div>
+      <div class="card-body">Role management is the game. Flash in Tidebinder to counter their ETB. Beastbinder blanks their top threat on attack. Hold bounce for their key enchantment or planeswalker. Enduring Curiosity as an enchantment is very difficult for other midrange decks to answer — most don't run enchantment removal main. The first Curiosity that sticks usually wins the resource battle.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Against Combo</div>
+      <div class="card-title">Disrupt + Clock</div>
+      <div class="card-body">Apply clock pressure while holding disruption. Spider-Sense counters triggered abilities (Living End, combo resolution triggers). Tishana's Tidebinder counters any activated ability on their combo piece. Duress from the SB hits their setup spells. Soul-Guide Lantern handles GY-based combos. You don't need to stop every piece — disrupting the key one while your clock counts down is enough.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════ CH06 MATCHUPS -->
+<div id="matchups" class="section">
+  <div class="section-label">Chapter 06</div>
+  <h1>Matchup Guide</h1>
+
+  <table class="matchup-table">
+    <thead><tr><th>Matchup</th><th>Role</th><th>Verdict</th><th>Key Note</th></tr></thead>
+    <tbody>
+      <tr onclick="toggle('mu-monored')"><td><strong>Mono-Red Aggro</strong></td><td>Survival</td><td><span class="verdict verdict-dog">Unfavorable G1</span></td><td>Requiting Hex and Shoot the Sheriff are critical. Stabilize, then grind.</td></tr>
+      <tr><td colspan="4" class="matchup-detail" id="mu-monored">
+        <p>Mono-Red is your hardest G1. Their aggressive curve (turn-1 threat, turn-2 threat, turn-3 Goblin Bombardment or burn spell) outpaces your 3-drop plan. <span class="c">Requiting Hex</span> at {B} kills their 1-2 drops for nothing — this is your most important card. Prioritize keeping any hand with Hex or Sheriff on the draw. Floodpits Drowner as a 2/1 flash blocker that stuns their threat buys two turns. Mulligan aggressively for interaction — a hand of five 3-drops loses to Mono-Red G1 on the draw.</p>
+        <p><strong>On the play:</strong> T1 Spyglass Siren, T2 hold open {B} for Hex, T3 Kaito to force immediate answers. <strong>On the draw:</strong> Skip Siren, keep Hex + Sheriff, stabilize first, then Enduring Curiosity when they're out of gas.</p>
+        <table class="sb-table"><thead><tr><th>Out</th><th>In</th></tr></thead><tbody>
+          <tr><td class="sb-out">−2 <span class="c">Into the Flood Maw</span></td><td class="sb-in">+1 <span class="c">Requiting Hex</span></td></tr>
+          <tr><td class="sb-out">−1 <span class="c">Spell Snare</span></td><td class="sb-in">+1 <span class="c">Bitter Triumph</span></td></tr>
+          <tr><td class="sb-out">−1 <span class="c">Phantom Interference</span></td><td class="sb-in">+1 <span class="c">Day of Black Sun</span></td></tr>
+        </tbody></table>
+        <p class="sb-note">Day of Black Sun at {X}{B}{B}: cast at X=2 to destroy all MV ≤ 2 creatures — wipes their entire early board. Into the Flood Maw is too slow vs their curve. Phantom Interference's soft counter is irrelevant — they're not casting spells you need to counter, they're casting creatures you need to kill. The extra Bitter Triumph answers any threat they might deploy that your cheaper removal misses.</p>
+        <p class="sb-note"><strong>Key needle:</strong> Cecil, Dark Knight is a liability vs Mono-Red — the Darkness trigger drains you while they're burning your face. Don't attack with Cecil until you're already at half life and ready to flip. If you're at 10 life and Cecil is attacking into a 3/2, the 3 damage you deal = 3 life lost = you're at 7. Dangerous. Either use Cecil as a blocker (deathtouch) or wait to flip safely.</p>
+      </td></tr>
+
+      <tr onclick="toggle('mu-monogreen')"><td><strong>Mono-Green Landfall</strong></td><td>Tempo</td><td><span class="verdict verdict-even">Even</span></td><td>Counter Badgermole Cub's ETB with Tidebinder. Bounce their key enchantments.</td></tr>
+      <tr><td colspan="4" class="matchup-detail" id="mu-monogreen">
+        <p>Mono-Green Landfall (12% of Standard) is your most common opponent. Their plan: play lands, trigger Badgermole Cub's ETB to ramp, deploy large Elementals, grow threats with Endurance/landfall counters. <span class="c">Tishana's Tidebinder</span> countering Badgermole Cub's ETB means Cub enters but generates no mana — just a 2/2 body. This is frequently a 2-for-1. <span class="c">Shoot the Sheriff</span> kills Cub cleanly. Beastbinder on attack blanks their 5/5 Elemental down to 2/2 base until your next turn.</p>
+        <p>Their weakness: no instant-speed interaction. Your entire flash package operates when they can't respond. Enduring Curiosity as an enchantment is extremely difficult for them to answer — most Mono-Green builds don't run enchantment removal.</p>
+        <table class="sb-table"><thead><tr><th>Out</th><th>In</th></tr></thead><tbody>
+          <tr><td class="sb-out">−1 <span class="c">Spell Snare</span></td><td class="sb-in">+1 <span class="c">Strategic Betrayal</span></td></tr>
+          <tr><td class="sb-out">−1 <span class="c">Phantom Interference</span></td><td class="sb-in">+1 <span class="c">Disdainful Stroke</span></td></tr>
+        </tbody></table>
+        <p class="sb-note">Strategic Betrayal: {1}{B} sorcery — target opponent exiles a creature and their GY. Removes their best threat AND their GY resources simultaneously. Disdainful Stroke hits their 4+ MV Elementals. Spell Snare is narrow vs their curve (most key pieces are not MV 2). Phantom Interference's soft counter is marginal — their threats are creatures, not instants/sorceries.</p>
+        <p class="sb-note"><strong>Key needle:</strong> Counter Badgermole Cub's mana generation ETB with Tidebinder. Don't wait — deploy Tidebinder in response to Cub's ETB trigger. Cub enters as a 2/2 with no abilities and no mana generation. Their entire ramp plan collapses if they never get the mana from early Cub triggers.</p>
+      </td></tr>
+
+      <tr onclick="toggle('mu-izzet')"><td><strong>Izzet Elementals</strong></td><td>Tempo</td><td><span class="verdict verdict-even">Even</span></td><td>Tidebinder counters their key Elemental ETBs. Spell Snare hits their 2-drops.</td></tr>
+      <tr><td colspan="4" class="matchup-detail" id="mu-izzet">
+        <p>Izzet Elementals (11% meta) operates on ETB triggers and spell chaining. Their key sequences involve Elementals that trigger on entry for value or damage. <span class="c">Tishana's Tidebinder</span> deployed at instant speed in response to their Elemental's ETB trigger turns every Elemental into a vanilla body. <span class="c">Spell Snare</span> catches their MV-2 setup pieces. They have access to countermagic — don't tap out carelessly. Hold {U} open for Floodpits Drowner as a blocker + stun tool.</p>
+        <table class="sb-table"><thead><tr><th>Out</th><th>In</th></tr></thead><tbody>
+          <tr><td class="sb-out">−2 <span class="c">Cecil, Dark Knight</span></td><td class="sb-in">+1 <span class="c">Duress</span></td></tr>
+          <tr><td class="sb-out">−1 <span class="c">Bitter Triumph</span></td><td class="sb-in">+1 <span class="c">Disdainful Stroke</span></td></tr>
+          <tr><td class="sb-out">−1 <span class="c">Loch Mare</span></td><td class="sb-in">+1 <span class="c">Essence Scatter</span></td></tr>
+        </tbody></table>
+        <p class="sb-note">Duress hits their non-creature setup spells and counterspells. Cecil is too slow and the Darkness drain is dangerous against their burn elements. More counters let you protect your key threats through their own interaction. Essence Scatter hard-counters any creature they try to resolve.</p>
+        <p class="sb-note"><strong>Key needle:</strong> Tidebinder in response to any Elemental ETB trigger — you counter the trigger AND the permanent loses all abilities. A 5/5 Elemental with no ETB and no activated abilities is just a body. Flash Tidebinder at their end step when they're tapped out for maximum impact.</p>
+      </td></tr>
+
+      <tr onclick="toggle('mu-dimir-mirror')"><td><strong>Dimir Mirror</strong></td><td>Tempo</td><td><span class="verdict verdict-even">Even</span></td><td>First Enduring Curiosity that sticks wins the card war. Protect yours, counter theirs.</td></tr>
+      <tr><td colspan="4" class="matchup-detail" id="mu-dimir-mirror">
+        <p>The Dimir mirror is a battle of Enduring Curiosity and Kaito value. Whoever resolves and keeps Curiosity first typically wins the resource war. <span class="c">Into the Flood Maw</span> (gift mode) bounces their Curiosity as a nonland permanent. Counter their Kaito with Phantom Interference or Spell Snare on their turn-3 deployment. Tidebinder locks their Kaito's 0 ability when they try to activate it. Spider-Sense from SB counters their activated abilities.</p>
+        <table class="sb-table"><thead><tr><th>Out</th><th>In</th></tr></thead><tbody>
+          <tr><td class="sb-out">−3 <span class="c">Requiting Hex</span></td><td class="sb-in">+1 <span class="c">Duress</span></td></tr>
+          <tr><td class="sb-out">−2 <span class="c">Shoot the Sheriff</span></td><td class="sb-in">+1 <span class="c">Spider-Sense</span></td></tr>
+          <tr><td class="sb-out">−1 <span class="c">Cecil, Dark Knight</span></td><td class="sb-in">+1 <span class="c">Disdainful Stroke</span></td></tr>
+          <tr><td class="sb-out"></td><td class="sb-in">+1 <span class="c">Kaito, Cunning Infiltrator</span></td></tr>
+          <tr><td class="sb-out"></td><td class="sb-in">+1 <span class="c">Wan Shi Tong, Librarian</span></td></tr>
+        </tbody></table>
+        <p class="sb-note">Requiting Hex is narrow in the mirror — they don't have many MV ≤ 2 targets worth killing. Kaito Cunning Infiltrator provides a different threat angle: gains loyalty from combat damage, makes Ninja tokens, and enables a different +1 line. Wan Shi Tong provides an alternate win condition — flash in for X draw cards, grows as they search their library, cannot easily be answered by their removal suite.</p>
+        <p class="sb-note"><strong>Key needle:</strong> In the mirror, use Into the Flood Maw with the gift to bounce their Enduring Curiosity — bouncing an enchantment is worth giving them a 1/1. Their Curiosity as an enchantment has no creature body, so it can't block or attack, but it IS a nonland permanent — Flood Maw's gift mode hits it. This is the cleanest answer to their enchantment version.</p>
+      </td></tr>
+
+      <tr onclick="toggle('mu-control')"><td><strong>Azorius / Jeskai Control</strong></td><td>Beatdown</td><td><span class="verdict verdict-favor">Favorable</span></td><td>Deploy threats before their countermagic is online. Long Goodbye bypasses their counters.</td></tr>
+      <tr><td colspan="4" class="matchup-detail" id="mu-control">
+        <p>You're the aggressor. Control decks have counterspells and sweepers but need time to set up. Spyglass Siren on turn 1 applies pressure before their Counterspell mana. Kaito on turn 3 has hexproof on your turn — they can't answer it while you're taking your turn. <span class="c">Long Goodbye</span> can't be countered — remove their key blockers through their counterspell shields. Enduring Curiosity as an enchantment survives their creature sweepers.</p>
+        <p>Their primary answer to enchantments is bounce or exile. If they have no bounce, Curiosity generates enough card advantage to outgrind any control plan. Apply consistent pressure and don't let them stabilize.</p>
+        <table class="sb-table"><thead><tr><th>Out</th><th>In</th></tr></thead><tbody>
+          <tr><td class="sb-out">−3 <span class="c">Requiting Hex</span></td><td class="sb-in">+1 <span class="c">Duress</span></td></tr>
+          <tr><td class="sb-out">−2 <span class="c">Shoot the Sheriff</span></td><td class="sb-in">+1 <span class="c">Spell Pierce</span></td></tr>
+          <tr><td class="sb-out">−1 <span class="c">Cecil, Dark Knight</span></td><td class="sb-in">+1 <span class="c">Disdainful Stroke</span></td></tr>
+          <tr><td class="sb-out"></td><td class="sb-in">+1 <span class="c">Kaito, Cunning Infiltrator</span></td></tr>
+          <tr><td class="sb-out"></td><td class="sb-in">+1 <span class="c">The Unagi of Kyoshi Island</span></td></tr>
+          <tr><td class="sb-out"></td><td class="sb-in">+1 <span class="c">Wan Shi Tong, Librarian</span></td></tr>
+        </tbody></table>
+        <p class="sb-note">Creature removal is dead — trim all of it. The Unagi of Kyoshi Island: {3}{U}{U} 5/5 Flash, ward {4} (opponents need 4+ mana to answer it, which control decks can eventually pay but it slows them dramatically), and whenever they draw their second card each turn you draw two. Against control who draws multiple cards per turn: this generates cascading card advantage. Wan Shi Tong provides a similar finisher angle with flash and flying.</p>
+        <p class="sb-note"><strong>Key needle:</strong> Deploy threats on the play before they have Counterspell mana. Turn-1 Siren, turn-2 Beastbinder or hold up removal, turn-3 Kaito — this curve forces them to answer threats before their {U}{U} is available. If they take turn 2 off to set up, you've already dealt 3 damage and have Kaito entering next turn.</p>
+      </td></tr>
+
+      <tr onclick="toggle('mu-boros')"><td><strong>Boros Aggro / Dragons</strong></td><td>Survival</td><td><span class="verdict verdict-dog">Unfavorable G1</span></td><td>Interaction-heavy opener. Drowner stuns their best attacker. Cecil lifelink post-transform helps.</td></tr>
+      <tr><td colspan="4" class="matchup-detail" id="mu-boros">
+        <p>Boros applies two-color pressure with evasion and burn reach. Their red component means burn can close from outside damage range. Floodpits Drowner stuns their best threat; Requiting Hex removes their early drops. The key challenge is their flying threats — Spyglass Siren can trade with small fliers but their Dragons or larger aerial threats need Long Goodbye or Shoot the Sheriff.</p>
+        <table class="sb-table"><thead><tr><th>Out</th><th>In</th></tr></thead><tbody>
+          <tr><td class="sb-out">−2 <span class="c">Into the Flood Maw</span></td><td class="sb-in">+1 <span class="c">Requiting Hex</span></td></tr>
+          <tr><td class="sb-out">−1 <span class="c">Spell Snare</span></td><td class="sb-in">+1 <span class="c">Bitter Triumph</span></td></tr>
+          <tr><td class="sb-out">−1 <span class="c">Phantom Interference</span></td><td class="sb-in">+1 <span class="c">Day of Black Sun</span></td></tr>
+        </tbody></table>
+        <p class="sb-note">Same plan as vs Mono-Red: maximize removal density. Day of Black Sun at X=2 clears their early aggressive board. Into the Flood Maw is too slow at sorcery speed when their creatures are already attacking. Cecil transforming into 4/4 lifelink is a legitimate stabilization tool in this matchup — his lifelink gains cover Darkness losses once you're past half life.</p>
+        <p class="sb-note"><strong>Key needle:</strong> Don't tap out against Boros until you're in a safe position. They often hold burn (Lightning Strike, Flame Channeler, etc.) to finish — die to burn out of a stabilized board position is the primary loss mode. Keep enough creatures to chump-block if necessary and preserve life total above lethal burn range. Estimate their reach before attacking.</p>
+      </td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════ CH07 SIDEBOARD -->
+<div id="sideboard" class="section">
+  <div class="section-label">Chapter 07</div>
+  <h1>Sideboard Guide</h1>
+
+  <div class="mantra">"Don't over-sideboard. Trim dead cards, keep your curve intact, and trust the deck's natural balance. Every card you board in should have a clear target."</div>
+
+  <h2>Sideboard Card-by-Card</h2>
+  <div class="sb-card-guide">
+    <div class="sb-guide-row">
+      <div class="sb-guide-name">Soul-Guide Lantern ×2</div>
+      <div class="sb-guide-body">{1} artifact. ETB: exile target player's graveyard. {T}, sacrifice: exile target card from any GY. Your primary GY hate. Board in vs any deck relying on the graveyard: Reanimator strategies, Living End, Escape mechanics. ETB exiles their entire GY immediately on entry. The sacrifice ability lets you precisely remove individual cards at instant speed. Two copies provide redundant access without overloading the SB.</div>
+    </div>
+    <div class="sb-guide-row">
+      <div class="sb-guide-name">Duress ×1</div>
+      <div class="sb-guide-body">{B} sorcery. Target opponent reveals hand; you choose a noncreature, nonland card and they discard it. Hits: counterspells, removal spells, planeswalkers, enchantments, combo pieces. Board in vs control (strips their key counterspell), vs combo (takes their setup spell), vs midrange mirrors (takes their Enduring Curiosity before it resolves). Excellent on turn 1 — strips their best interactive spell before it matters.</div>
+    </div>
+    <div class="sb-guide-row">
+      <div class="sb-guide-name">Bitter Triumph ×1</div>
+      <div class="sb-guide-body">{1}{B} instant. Additional cost: discard or pay 3 life. Destroy target creature or planeswalker. The SB copy supplements the main-deck 1-of. Board in vs any matchup where removal density matters — Boros Aggro, Mono-Red. The discard cost is relevant: you can pitch a land, a redundant copy of a card, or an unneeded Phantom Interference. Hits walkers — important against any planeswalker-based strategy.</div>
+    </div>
+    <div class="sb-guide-row">
+      <div class="sb-guide-name">Annul ×1</div>
+      <div class="sb-guide-body">{U} instant. Counter target artifact or enchantment spell. Hard counter for {U}. Board in vs artifact-based strategies and enchantment decks. In current Standard: relevant against Azorius Artifacts, any deck running Enduring Curiosity or key enchantments. The one-of slot means it's a surgical inclusion when you know their plan involves an artifact or enchantment payoff. Don't board it in speculatively — bring it when you know exactly what you're countering.</div>
+    </div>
+    <div class="sb-guide-row">
+      <div class="sb-guide-name">Essence Scatter ×1</div>
+      <div class="sb-guide-body">{1}{U} instant. Counter target creature spell. Hard counter specifically for creatures. Supplements your flash package vs decks that run large, hard-to-answer creature threats your tempo tools don't cleanly handle. Board in vs Izzet Elementals (counter their key Elemental before the ETB), vs any deck where Tidebinder's ability countering isn't enough and you need to stop the creature entirely. More expensive than Requiting Hex but hits any size creature.</div>
+    </div>
+    <div class="sb-guide-row">
+      <div class="sb-guide-name">Spell Pierce ×1</div>
+      <div class="sb-guide-body">{U} instant. Counter target noncreature spell unless pay {2}. Soft counter for noncreature spells. Board in vs control (counters their sweeper, counter, planeswalker for {U} early before they can pay {2}), vs combo (counters their setup spell). Particularly strong in turns 2-4 before the opponent has excess mana. Late game it loses effectiveness — they can always pay {2}. Best as a turn-1-3 tempo piece.</div>
+    </div>
+    <div class="sb-guide-row">
+      <div class="sb-guide-name">Disdainful Stroke ×1</div>
+      <div class="sb-guide-body">{1}{U} instant. Counter target spell with MV 4 or greater. Hard counter for expensive spells. Board in vs Control (counters their sweepers and finishers), vs Mono-Green (counters their large Elementals and Badgermole follow-ups), vs any midrange deck running expensive payoffs. Does nothing vs aggro (their threats are all MV 1-3). A clean, efficient answer to the format's top-end threats that your other counters miss.</div>
+    </div>
+    <div class="sb-guide-row">
+      <div class="sb-guide-name">Spider-Sense ×1</div>
+      <div class="sb-guide-body">{1}{U} instant. Web-slinging {U}: counter target instant, sorcery, or triggered ability (if you return a tapped creature to hand when casting for {U}). Counter target instant, sorcery, or triggered ability. Notable: counters TRIGGERED ABILITIES — this stacks with Tishana's Tidebinder as a second axis of ability denial. Board in vs triggered-ability-heavy decks, vs Storm/combo (counters their key triggered ability), vs mirror (counters Curiosity's draw trigger). The web-slinging mode lets you pay {U} by returning a tapped creature — deploy Floodpits Drowner after it attacked, return it to hand, pay {U} for Spider-Sense, then redeploy Drowner for another ETB stun.</div>
+    </div>
+    <div class="sb-guide-row">
+      <div class="sb-guide-name">Strategic Betrayal ×1</div>
+      <div class="sb-guide-body">{1}{B} sorcery. Target opponent exiles a creature they control and their graveyard. Dual-function: removes their best creature AND their entire GY simultaneously. Board in vs decks with GY synergies where you also need creature removal (Living End, Reanimator, GY-based midrange). Unlike Soul-Guide Lantern, this also removes a creature — important when their GY plan and their key threat are both problems simultaneously. The "opponent chooses" clause means they pick their worst creature — use it when their GY is the primary target and the creature removal is the bonus.</div>
+    </div>
+    <div class="sb-guide-row">
+      <div class="sb-guide-name">Requiting Hex ×1</div>
+      <div class="sb-guide-body">Fourth copy for matchups where the MV ≤ 2 removal density matters most. Board in vs Mono-Red, Boros Aggro — anywhere the first three copies are correct and more redundancy is necessary. The life gain from the blight payment is particularly relevant in aggro mirrors where life totals are tight. Brings the total Hex count to 4, ensuring you see it consistently in the early turns when it matters most.</div>
+    </div>
+    <div class="sb-guide-row">
+      <div class="sb-guide-name">Day of Black Sun ×1</div>
+      <div class="sb-guide-body">{X}{B}{B} sorcery. Each creature with MV X or less loses all abilities until EOT, then is destroyed. The "loses all abilities" clause matters — it strips indestructible, hexproof, and any relevant abilities before destruction. At X=2: destroys all MV ≤ 2 creatures (entire Mono-Red board, most token strategies). At X=3: hits the 3-drop slot too. One-sided when you've deployed flash creatures at instant speed post-wipe. Board in vs any token strategy or wide aggro board that Requiting Hex + Shoot the Sheriff can't handle one-for-one.</div>
+    </div>
+    <div class="sb-guide-row">
+      <div class="sb-guide-name">Kaito, Cunning Infiltrator ×1</div>
+      <div class="sb-guide-body">{1}{U}{U} Planeswalker. Gains loyalty from combat damage. +1: one creature can't be blocked + draw/discard. −2: create 2/1 Ninja token. Boards in vs control and midrange mirrors as a different threat angle. Unlike Kaito Bane of Nightmares (your main-deck version), this Kaito doesn't have hexproof — but provides different utility: the +1 makes a creature unblockable AND replaces itself, generating repeated card selection. The Ninja token creation at −2 provides a recurring board presence that control decks struggle to answer efficiently.</div>
+    </div>
+    <div class="sb-guide-row">
+      <div class="sb-guide-name">Unagi of Kyoshi Island ×1</div>
+      <div class="sb-guide-body">{3}{U}{U} 5/5 Flash Legendary Serpent. Ward — Waterbend {4} (opponents pay 4 mana via tapping artifacts/creatures to target it). Whenever an opponent draws their second card each turn, you draw two. Flash means surprise deployment at their end step. The ward cost is effectively a soft "can't be answered" against control decks who are actively drawing cards to find answers — the more they draw, the more you draw. The Waterbend ward means they need {4} from any source to answer it. A finisher that punishes the card-draw-heavy strategies that would normally grind you out.</div>
+    </div>
+    <div class="sb-guide-row">
+      <div class="sb-guide-name">Wan Shi Tong, Librarian ×1</div>
+      <div class="sb-guide-body">{X}{U}{U} Legendary Flash Vigilance 1/1 Bird Spirit. ETB: put X +1/+1 counters, draw X/2 cards. Grows when opponents search their library. Cast for X=4: 5/5 that draws 2 cards on entry. Flash means instant-speed deployment. Boards in vs control and midrange mirrors as a card-advantage finisher. Growing whenever they fetch lands or tutor means it gets larger the more they interact. Vigilance lets it attack and still hold down defense. The flash + vigilance combination makes it a surprising blocker that also generates card advantage.</div>
+    </div>
+  </div>
+
+  <h2>What Never Comes Out</h2>
+  <div class="card-grid card-grid-3">
+    <div class="card">
+      <div class="card-label">Always Stays In</div>
+      <div class="card-title">Kaito, Bane of Nightmares ×4</div>
+      <div class="card-body">The deck's identity card. Hexproof on your turn means no clean answer. The 0 ability generates free card draw every turn you attacked. Never board out Kaito — if the matchup doesn't fit, play a different deck.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Almost Never Out</div>
+      <div class="card-title">Tishana's Tidebinder ×4</div>
+      <div class="card-body">Versatile across every matchup — counters ETBs, locks planeswalker abilities, strips abilities from key permanents. There's no matchup where this is completely dead. Maybe trim 1 in pure aggro mirrors but rarely.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Almost Never Out</div>
+      <div class="card-title">Floodpits Drowner ×4</div>
+      <div class="card-body">Flash blocker + stun + shuffle threat. Functions as removal, blocker, and tempo piece simultaneously. The shuffle ability removes opponent's stunned threats from the game entirely. Too versatile to leave out of any matchup.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════ CH08 HEURISTICS -->
+<div id="heuristics" class="section">
+  <div class="section-label">Chapter 08</div>
+  <h1>Heuristics</h1>
+
+  <div class="mantra">"The most common way Dimir loses is drawing the wrong half of the deck. Heuristics prevent that."</div>
+
+  <ol class="heuristic-list">
+    <li>
+      <div class="heuristic-num">01</div>
+      <div class="heuristic-body">
+        <strong>On the play, Kaito at 3. On the draw, Enduring Curiosity at 3.</strong>
+        On the play you can develop Kaito before they have answers available — he has hexproof on your turn and they can't answer him at instant speed while you're taking your turn. On the draw you're a tempo behind; Enduring Curiosity flashed in at their end step sets up a draw engine that operates regardless of whether you're ahead or behind.
+      </div>
+    </li>
+    <li>
+      <div class="heuristic-num">02</div>
+      <div class="heuristic-body">
+        <strong>Tishana's Tidebinder goes on the stack after the ability, not after the permanent resolves.</strong>
+        Flash Tidebinder in response to an activated or triggered ability — not in response to the spell being cast. The sequence: opponent casts creature → creature resolves and enters the battlefield → ETB ability goes on the stack → THEN flash Tidebinder → counter the ETB ability → the permanent also loses all abilities while Tidebinder is on the battlefield. If you flash Tidebinder in response to the creature spell, it's already in play by the time you target an ability.
+      </div>
+    </li>
+    <li>
+      <div class="heuristic-num">03</div>
+      <div class="heuristic-body">
+        <strong>Enduring Curiosity as an enchantment cannot be answered by creature removal.</strong>
+        Once Curiosity returns from dying as a creature, it's an enchantment — not a creature. Shoot the Sheriff, Long Goodbye, Tishana's Tidebinder's ability countering, Essence Scatter — none of these work. The opponent needs bounce (Into the Flood Maw, similar) or exile to remove it. Recognize when their removal suite can't answer your enchantment and play accordingly — no need to protect something that can't be targeted.
+      </div>
+    </li>
+    <li>
+      <div class="heuristic-num">04</div>
+      <div class="heuristic-body">
+        <strong>Don't attack with Cecil if Darkness damage will put you in burn range.</strong>
+        Cecil's Darkness trigger means every point of damage he deals also drains you. Do the math before every Cecil attack: if Cecil deals X damage (to their creature or player), you lose X life. Only attack with Cecil when you can absorb that life loss without falling into opponent's reach. Exception: when Cecil is at exactly half-life threshold and you want to flip him — calculate whether the flip is worth the life lost to trigger it.
+      </div>
+    </li>
+    <li>
+      <div class="heuristic-num">05</div>
+      <div class="heuristic-body">
+        <strong>Blight a −1/−1 counter from Loch Mare when paying Requiting Hex's additional cost.</strong>
+        Loch Mare enters with three −1/−1 counters on it (effectively a 1/2 until counters are removed). Requiting Hex's optional blight cost puts a −1/−1 counter on a creature you control. Instead of weakening a threat, blight removes one of Loch Mare's built-in counters — effectively paying the blight cost to activate Loch Mare's draw ability simultaneously. This is a 2-for-1 on the Hex payment.
+      </div>
+    </li>
+    <li>
+      <div class="heuristic-num">06</div>
+      <div class="heuristic-body">
+        <strong>Promise the gift on Into the Flood Maw when bouncing nonland permanents worth more than a 1/1.</strong>
+        No gift: bounce any creature. Gift mode: bounce any nonland permanent but they get a 1/1 Fish. The calculation is straightforward — if what you're bouncing is worth more than a 1/1 token (enchantment, planeswalker, artifact, expensive creature), always promise the gift. The 1/1 Fish is irrelevant if you're returning a Kaito or Enduring Curiosity. Only skip the gift when the 1/1 token matters to them (low life, token synergies).
+      </div>
+    </li>
+    <li>
+      <div class="heuristic-num">07</div>
+      <div class="heuristic-body">
+        <strong>Gloomlake Verge always provides {U} first. Check for Island or Swamp before assuming {B}.</strong>
+        Gloomlake Verge produces {B} only if you already control an Island or Swamp. On turn 1 with only Verge in play, you can only make {U} — not {B}. Plan your mana carefully on turn 1: if you need {B} for Cecil or Requiting Hex, you need a Swamp, Watery Grave, or Starting Town already in play. Multiversal Passage entering as a Swamp (pay 2 life) is the fixer.
+      </div>
+    </li>
+    <li>
+      <div class="heuristic-num">08</div>
+      <div class="heuristic-body">
+        <strong>Floodpits Drowner's shuffle ability: assess before paying {1}{U}.</strong>
+        The stun + shuffle is powerful but optional. After ETB stun, evaluate whether shuffling Drowner + their creature is correct. Sometimes keeping a 2/1 vigilance attacker on the board is better than a two-for-one shuffle — particularly when you're behind on board. The shuffle also removes your Drowner permanently. Most often the shuffle is correct: their stunned 5/5 disappearing is worth more than your 2/1 body. But against aggro where you need blockers, leaving Drowner on board as a 2/1 vigilance wall is sometimes better.
+      </div>
+    </li>
+    <li>
+      <div class="heuristic-num">09</div>
+      <div class="heuristic-body">
+        <strong>Kaito's hexproof applies only during your turn while he has loyalty counters.</strong>
+        On the opponent's turn, Kaito is a normal planeswalker with no hexproof — they can target him freely. The hexproof applies during YOUR turn as long as loyalty counters remain. This means: attack with Kaito, use his ability on your turn (he's safe), but expect them to remove him on their turn with targeted removal. Plan turns accordingly — don't leave Kaito at low loyalty expecting hexproof to protect him on their turn.
+      </div>
+    </li>
+    <li>
+      <div class="heuristic-num">10</div>
+      <div class="heuristic-body">
+        <strong>Azure Beastbinder's ability-stripping lasts until your next turn, not end of turn.</strong>
+        "Until your next turn" is longer than "until end of turn." Attack with Beastbinder on your turn — target creature or permanent loses all abilities AND if a creature it's base 2/2 — until the START of your next turn. This means on their turn (between your attack and your next turn) the permanent still has no abilities. A walker you stripped on your turn can't activate on their turn. A creature you reduced to 2/2 stays 2/2 through their untap step, upkeep, and main phase.
+      </div>
+    </li>
+    <li>
+      <div class="heuristic-num">11</div>
+      <div class="heuristic-body">
+        <strong>Restless Reef activates at {2}{U}{B} — don't forget the creature lands.</strong>
+        Restless Reef becomes a 4/4 Shark with deathtouch for {2}{U}{B} and mills 4 when it attacks. In late-game grinds or stalled boards, activating Reef as an additional attacker is often correct — a 4/4 deathtouch creature trades profitably with anything, and the mill is a bonus. Soulstone Sanctuary at {4} becomes a 3/3 vigilance all-creature-types attacker. Both land activations are frequently overlooked and can close games that feel stalled.
+      </div>
+    </li>
+    <li>
+      <div class="heuristic-num">12</div>
+      <div class="heuristic-body">
+        <strong>Spider-Sense's web-slinging mode: return Floodpits Drowner to get double ETB value.</strong>
+        Spider-Sense can be cast for {U} if you return a tapped creature to hand. The ideal target: Floodpits Drowner after it attacked and tapped. Return Drowner to hand to pay the web-slinging cost → counter their instant/sorcery/triggered ability → redeploy Drowner on your next turn for another ETB stun. You get Spider-Sense for {U} AND set up a second Drowner ETB trigger. This sequence requires Drowner to be tapped (it attacked or used the shuffle ability).
+      </div>
+    </li>
+    <li>
+      <div class="heuristic-num">13</div>
+      <div class="heuristic-body">
+        <strong>Long Goodbye can't be countered — save it for high-value targets behind counterspells.</strong>
+        Against control decks that hold countermagic: deploy your regular threats first to exhaust their counters, then use Long Goodbye to remove any blocker or planeswalker that resolves. The uncounterable property is most valuable when you know they have open mana for countermagic — your removal resolves regardless. MV 3 or less hits their Kaito, most 2-drops, and all 1-drops. Don't waste it on targets your counterable removal could handle.
+      </div>
+    </li>
+    <li>
+      <div class="heuristic-num">14</div>
+      <div class="heuristic-body">
+        <strong>Day of Black Sun's "loses all abilities" clause removes indestructible before destruction.</strong>
+        Day of Black Sun strips abilities and then destroys. A creature with indestructible (from a Paladin's Protect trigger, Jirina, or similar) loses indestructible first — then is destroyed by the second clause. This is an interaction many players miss. Against decks running indestructible effects, Day of Black Sun answers them cleanly where other removal fails.
+      </div>
+    </li>
+    <li>
+      <div class="heuristic-num">15</div>
+      <div class="heuristic-body">
+        <strong>Shoot the Sheriff can't hit your own Spyglass Siren (Siren Pirate = outlaw).</strong>
+        Outlaws are: Assassins, Mercenaries, Pirates, Rogues, and Warlocks. Spyglass Siren is a Siren Pirate — a Pirate is an outlaw. Sheriff can't target outlaws. This cuts both ways: your Siren can't be killed by your own Sheriff (you'd rarely want to), but more importantly, opponents running Shoot the Sheriff can't kill your Siren either. Factor this into blocking decisions — your Siren is protected against Sheriff-based removal.
+      </div>
+    </li>
+    <li>
+      <div class="heuristic-num">16</div>
+      <div class="heuristic-body">
+        <strong>Never over-sideboard. Trim dead cards, bring in targeted answers, preserve curve.</strong>
+        The most common Dimir loss condition is drawing the wrong half of the deck: too much removal against control, too many counters against aggro. Sideboard principle: remove only what's completely dead in the matchup, bring in only what has a clear target. Don't board in 8 cards against control because "more options is better" — you dilute your threat density and draw too many answers to nothing. One focused swap beats three speculative ones.
+      </div>
+    </li>
+  </ol>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════ CH09 TUNING -->
+<div id="tuning" class="section">
+  <div class="section-label">Chapter 09</div>
+  <h1>Tuning Notes</h1>
+
+  <div class="mantra">"The core of Kaito ×4, Tidebinder ×4, Floodpits Drowner ×4 is locked. The flex slots are where meta calls happen."</div>
+
+  <div class="tuning-grid">
+    <div class="tuning-cell">
+      <div class="tuning-cell-label">If Aggro Is Dominant (Mono-Red, Boros)</div>
+      <div class="tuning-cell-title">+1 Requiting Hex MD</div>
+      <div class="tuning-cell-body">Move the SB Hex copy to main. Cut 1 Phantom Interference (narrow vs aggro). Running 4 main Hexes against aggressive metas makes your {B} removal density overwhelming. The 1-mana cost is the key — it doesn't disrupt your 3-drop window.</div>
+    </div>
+    <div class="tuning-cell">
+      <div class="tuning-cell-label">If Midrange / Mirrors Are Dominant</div>
+      <div class="tuning-cell-title">+1 Enduring Curiosity MD</div>
+      <div class="tuning-cell-body">The current build runs 3 Curiosity. In midrange-heavy metas, running 4 increases your chances of resolving one in G1 before they can bring in enchantment removal. Cut 1 Bitter Triumph (less relevant vs midrange). The 4th Curiosity also gives you more post-death enchantment engines active simultaneously.</div>
+    </div>
+    <div class="tuning-cell">
+      <div class="tuning-cell-label">If Control Is Dominant (UW, Jeskai)</div>
+      <div class="tuning-cell-title">Move SB Finishers MD</div>
+      <div class="tuning-cell-body">Wan Shi Tong and Unagi thrive against control. In a control-heavy meta, consider moving one to the main. Cut 1 Shoot the Sheriff (dead vs control). Having the flash finisher available G1 removes their sideboard advantage — they're boarding in answers for threats you don't main-deck yet.</div>
+    </div>
+    <div class="tuning-cell">
+      <div class="tuning-cell-label">Cecil, Dark Knight — Include or Trim</div>
+      <div class="tuning-cell-title">0, 1, or 2 copies</div>
+      <div class="tuning-cell-body">Cecil is high-variance: exceptional when you flip on schedule, risky when you lose life from Darkness to aggro. In slower metas: 2 copies is correct — the transformed Paladin is a 4/4 lifelink with indestructible-granting attacks. In pure aggro metas: cut to 0 and replace with removal. Loch Mare is the safer flex threat slot.</div>
+    </div>
+    <div class="tuning-cell">
+      <div class="tuning-cell-label">Loch Mare — The Slow Grinder</div>
+      <div class="tuning-cell-title">1–2 copies</div>
+      <div class="tuning-cell-body">{1}{U} 4/5 with 3 counters (effectively 1/2 → 4/5 over time). Remove a counter for {1}{U}: draw. Remove 2 for {2}{U}: tap + stun. Excellent in long games and control matchups — provides repeated draw engine and disruption. The synergy with Requiting Hex's blight cost (blight Loch Mare to remove a counter while removing their 2-drop) is key tech.</div>
+    </div>
+    <div class="tuning-cell">
+      <div class="tuning-cell-label">Spell Snare — Meta Call</div>
+      <div class="tuning-cell-title">0 or 1 copies</div>
+      <div class="tuning-cell-body">Spell Snare is extremely metagame-dependent. Strong when MV 2 spells are the format's key interaction or threats. Cut entirely in metas where the relevant spells are 3+ MV. Currently: 1-of is correct given the variety of MV 2 key pieces across Mono-Green Cub, Izzet Elementals, and various aggro builds. In a meta without critical MV 2 pieces: replace with a second Bitter Triumph.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════ CH10 PREP -->
+<div id="prep" class="section">
+  <div class="section-label">Chapter 10</div>
+  <h1>Prep<br>Sheet</h1>
+
+  <button class="print-btn" onclick="window.print()">&#9113; Print This Sheet</button>
+
+  <div class="print-section">
+    <div class="print-title">Dimir Midrange</div>
+    <div class="print-sub">Team Resolve · Standard 2026 · Zuxas's List</div>
+
+    <div class="print-grid">
+      <div>
+        <div class="print-col-title">Key Oracle Reminders</div>
+        <div class="print-line"><span>Kaito hexproof: YOUR turn only while he has loyalty counters</span></div>
+        <div class="print-line"><span>Tidebinder: flash AFTER the ability goes on stack, not after spell</span></div>
+        <div class="print-line"><span>Enduring Curiosity as enchantment: not a creature, can't be creature-removed</span></div>
+        <div class="print-line"><span>Cecil Darkness: deal damage = lose that much life yourself</span></div>
+        <div class="print-line"><span>Requiting Hex blight: remove counter from Loch Mare to save threats</span></div>
+        <div class="print-line"><span>Into the Flood Maw gift: promise for enchantments/walkers, skip if Fish matters</span></div>
+        <div class="print-line"><span>Gloomlake Verge {B}: only if you already control Island or Swamp</span></div>
+        <div class="print-line"><span>Azure Beastbinder: ability strip lasts UNTIL YOUR NEXT TURN (not EOT)</span></div>
+        <div class="print-line"><span>Shoot the Sheriff: can't hit Pirates/Rogues/Assassins/Warlocks/Mercenaries</span></div>
+        <div class="print-line"><span>Spyglass Siren is a Pirate (outlaw) — immune to Shoot the Sheriff</span></div>
+        <div class="print-line"><span>Long Goodbye: can't be countered, hits MV ≤ 3 creature OR planeswalker</span></div>
+        <div class="print-line"><span>Day of Black Sun: strips abilities THEN destroys (hits indestructible)</span></div>
+
+        <div class="print-col-title" style="margin-top:16px;">Play/Draw Rule</div>
+        <div class="print-line"><span>On the play → Kaito turn 3 (hexproof on your turn)</span></div>
+        <div class="print-line"><span>On the draw → Enduring Curiosity end step (enchantment persistence)</span></div>
+        <div class="print-line"><span>On the draw vs aggro → skip both, prioritize removal</span></div>
+      </div>
+
+      <div>
+        <div class="print-col-title">Matchup Quick Reference</div>
+
+        <div class="print-mu">
+          <div class="print-mu-name">Mono-Red / Boros Aggro</div>
+          <div class="print-mu-role">Unfavorable G1 · Survival Mode</div>
+          <div class="print-cols">
+            <div>
+              <div class="print-col-label">Out</div>
+              <div class="print-row"><span>Into the Flood Maw ×2</span><span class="print-qty">−2</span></div>
+              <div class="print-row"><span>Spell Snare</span><span class="print-qty">−1</span></div>
+              <div class="print-row"><span>Phantom Interference</span><span class="print-qty">−1</span></div>
+            </div>
+            <div>
+              <div class="print-col-label">In</div>
+              <div class="print-row"><span>Requiting Hex</span><span class="print-qty">+1</span></div>
+              <div class="print-row"><span>Bitter Triumph</span><span class="print-qty">+1</span></div>
+              <div class="print-row"><span>Day of Black Sun</span><span class="print-qty">+1</span></div>
+            </div>
+          </div>
+          <div class="print-needle">Cecil is a liability vs aggro — don't attack into their burn range</div>
+        </div>
+
+        <div class="print-mu">
+          <div class="print-mu-name">Mono-Green Landfall</div>
+          <div class="print-mu-role">Even · Tempo Mode</div>
+          <div class="print-cols">
+            <div>
+              <div class="print-col-label">Out</div>
+              <div class="print-row"><span>Spell Snare</span><span class="print-qty">−1</span></div>
+              <div class="print-row"><span>Phantom Interference</span><span class="print-qty">−1</span></div>
+            </div>
+            <div>
+              <div class="print-col-label">In</div>
+              <div class="print-row"><span>Strategic Betrayal</span><span class="print-qty">+1</span></div>
+              <div class="print-row"><span>Disdainful Stroke</span><span class="print-qty">+1</span></div>
+            </div>
+          </div>
+          <div class="print-needle">Counter Badgermole Cub ETB with Tidebinder — their ramp collapses</div>
+        </div>
+
+        <div class="print-mu">
+          <div class="print-mu-name">Izzet Elementals</div>
+          <div class="print-mu-role">Even · Tempo Mode</div>
+          <div class="print-cols">
+            <div>
+              <div class="print-col-label">Out</div>
+              <div class="print-row"><span>Cecil, Dark Knight ×2</span><span class="print-qty">−2</span></div>
+              <div class="print-row"><span>Bitter Triumph</span><span class="print-qty">−1</span></div>
+              <div class="print-row"><span>Loch Mare</span><span class="print-qty">−1</span></div>
+            </div>
+            <div>
+              <div class="print-col-label">In</div>
+              <div class="print-row"><span>Duress</span><span class="print-qty">+1</span></div>
+              <div class="print-row"><span>Disdainful Stroke</span><span class="print-qty">+1</span></div>
+              <div class="print-row"><span>Essence Scatter</span><span class="print-qty">+1</span></div>
+            </div>
+          </div>
+          <div class="print-needle">Tidebinder their key Elemental ETB at their end step when they're tapped</div>
+        </div>
+      </div>
+
+      <div>
+        <div class="print-col-title">More Matchups</div>
+
+        <div class="print-mu">
+          <div class="print-mu-name">Dimir Mirror</div>
+          <div class="print-mu-role">Even · Tempo Mode</div>
+          <div class="print-cols">
+            <div>
+              <div class="print-col-label">Out</div>
+              <div class="print-row"><span>Requiting Hex ×3</span><span class="print-qty">−3</span></div>
+              <div class="print-row"><span>Shoot the Sheriff ×2</span><span class="print-qty">−2</span></div>
+              <div class="print-row"><span>Cecil ×1</span><span class="print-qty">−1</span></div>
+            </div>
+            <div>
+              <div class="print-col-label">In</div>
+              <div class="print-row"><span>Duress</span><span class="print-qty">+1</span></div>
+              <div class="print-row"><span>Spider-Sense</span><span class="print-qty">+1</span></div>
+              <div class="print-row"><span>Disdainful Stroke</span><span class="print-qty">+1</span></div>
+              <div class="print-row"><span>Kaito Cunning Infiltrator</span><span class="print-qty">+1</span></div>
+              <div class="print-row"><span>Wan Shi Tong</span><span class="print-qty">+1</span></div>
+            </div>
+          </div>
+          <div class="print-needle">Bounce their Enduring Curiosity (enchantment) with Flood Maw + gift</div>
+        </div>
+
+        <div class="print-mu">
+          <div class="print-mu-name">Azorius / Jeskai Control</div>
+          <div class="print-mu-role">Favorable · Beatdown Mode</div>
+          <div class="print-cols">
+            <div>
+              <div class="print-col-label">Out</div>
+              <div class="print-row"><span>Requiting Hex ×3</span><span class="print-qty">−3</span></div>
+              <div class="print-row"><span>Shoot the Sheriff ×2</span><span class="print-qty">−2</span></div>
+              <div class="print-row"><span>Cecil ×1</span><span class="print-qty">−1</span></div>
+            </div>
+            <div>
+              <div class="print-col-label">In</div>
+              <div class="print-row"><span>Duress</span><span class="print-qty">+1</span></div>
+              <div class="print-row"><span>Spell Pierce</span><span class="print-qty">+1</span></div>
+              <div class="print-row"><span>Disdainful Stroke</span><span class="print-qty">+1</span></div>
+              <div class="print-row"><span>Kaito Cunning Infiltrator</span><span class="print-qty">+1</span></div>
+              <div class="print-row"><span>Unagi of Kyoshi Island</span><span class="print-qty">+1</span></div>
+              <div class="print-row"><span>Wan Shi Tong</span><span class="print-qty">+1</span></div>
+            </div>
+          </div>
+          <div class="print-needle">Long Goodbye can't be countered — save for key blockers behind their shields</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div><!-- end .page -->
+
+<footer>
+  <span><a href="zuxas.html" style="color:rgba(242,237,230,0.3);text-decoration:none;">Zuxas</a> · Team Resolve</span>
+  <span>Standard 2026 · Dimir Midrange</span>
+  <span>March 2026</span>
+</footer>
+
+<script>
+function show(id) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  event.target.classList.add('active');
+  window.scrollTo(0,0);
+}
+function toggle(id) {
+  const el = document.getElementById(id);
+  el.classList.toggle('open');
+}
+function showFormat(f) {}
+</script>
+</body>
+</html>
