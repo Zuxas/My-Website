@@ -1,0 +1,947 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Mono-Green Landfall Standard playbook — Team Resolve. Sapling Nursery, Mightform Harmonizer, Icetill Explorer. RC Cincinnati / DC prep guide." />
+<title>Mono-Green Landfall — Team Resolve Standard Playbook</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+  :root { --ink:#0e0e0e; --paper:#f2ede6; --paper-dark:#e8e1d6; --rule:#c8bfb0; --accent:#1a4a1a; --accent-light:#d4f0d4; --danger:#8f1a1a; --danger-light:#f7d6d6; --gold:#8f6a1a; --gold-light:#f7ead6; --mid:#5a5248; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:var(--paper); color:var(--ink); font-family:'Crimson Pro',Georgia,serif; font-size:17px; line-height:1.6; }
+  .header-band { background:var(--ink); border-bottom:3px solid var(--accent); }
+  .header-inner { max-width:1100px; margin:0 auto; padding:32px 80px; display:flex; justify-content:space-between; align-items:flex-end; gap:40px; }
+  .header-eyebrow { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:rgba(242,237,230,0.35); margin-bottom:8px; }
+  .header-title { font-family:'Bebas Neue',sans-serif; font-size:56px; line-height:0.9; color:var(--paper); letter-spacing:0.02em; }
+  .header-title span { color:#4db84d; }
+  .header-mantra { font-family:'Crimson Pro',serif; font-style:italic; font-size:15px; color:rgba(242,237,230,0.4); margin-top:8px; }
+  .header-right { display:flex; flex-direction:column; gap:8px; text-align:right; padding-bottom:4px; }
+  .header-stat { display:flex; gap:12px; align-items:center; justify-content:flex-end; }
+  .hs-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; color:rgba(242,237,230,0.3); }
+  .hs-val { font-family:'DM Mono',monospace; font-size:12px; color:var(--paper); }
+  nav { position:sticky; top:0; z-index:100; background:var(--ink); border-bottom:1px solid rgba(242,237,230,0.1); padding:0 80px; display:flex; align-items:center; gap:0; overflow-x:auto; scrollbar-width:none; }
+  nav::-webkit-scrollbar { display:none; }
+  .nav-brand { font-family:'Bebas Neue',sans-serif; font-size:18px; color:#4db84d; letter-spacing:0.05em; margin-right:40px; white-space:nowrap; padding:16px 0; text-decoration:none; }
+  .nav-link { font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:rgba(242,237,230,0.4); padding:20px 16px; cursor:pointer; white-space:nowrap; border-bottom:2px solid transparent; transition:all 0.2s; background:none; border-top:none; border-left:none; border-right:none; }
+  .nav-link:hover, .nav-link.active { color:var(--paper); border-bottom-color:#4db84d; }
+  .page { max-width:1100px; margin:0 auto; padding:80px 80px; }
+  .section { display:none; animation:fadeIn 0.3s ease; }
+  .section.active { display:block; }
+  @keyframes fadeIn { from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:translateY(0);} }
+  .section-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.25em; text-transform:uppercase; color:var(--mid); margin-bottom:8px; }
+  h1 { font-family:'Bebas Neue',sans-serif; font-size:64px; line-height:0.9; letter-spacing:0.01em; color:var(--ink); margin-bottom:40px; }
+  h2 { font-family:'Bebas Neue',sans-serif; font-size:36px; letter-spacing:0.02em; color:var(--ink); margin:56px 0 20px; padding-bottom:8px; border-bottom:2px solid var(--ink); }
+  h3 { font-family:'DM Mono',monospace; font-size:12px; letter-spacing:0.15em; text-transform:uppercase; color:var(--accent); margin:32px 0 12px; }
+  p { margin-bottom:16px; color:var(--ink); font-weight:300; }
+  strong { font-weight:600; }
+  .c { color:var(--accent); font-weight:400; }
+  .mantra { border-left:4px solid var(--accent); padding:24px 32px; background:var(--accent-light); margin:32px 0; font-style:italic; font-size:20px; color:var(--accent); line-height:1.5; }
+  .card-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); gap:1px; background:var(--rule); border:1px solid var(--rule); margin:24px 0; }
+  .card-grid-2 { grid-template-columns:repeat(2,1fr) !important; }
+  .card-grid-3 { grid-template-columns:repeat(3,1fr) !important; }
+  .card { background:var(--paper); padding:24px; }
+  .card:hover { background:var(--paper-dark); }
+  .card-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--mid); margin-bottom:8px; }
+  .card-title { font-family:'Bebas Neue',sans-serif; font-size:22px; letter-spacing:0.03em; color:var(--ink); margin-bottom:8px; }
+  .card-body { font-size:15px; font-weight:300; color:var(--mid); line-height:1.5; }
+  .decklist { display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--rule); border:1px solid var(--rule); margin:24px 0; }
+  .dl-section { background:var(--paper); padding:24px; }
+  .dl-section-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--mid); margin-bottom:16px; }
+  .dl-group { margin-bottom:20px; }
+  .dl-group-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; color:var(--ink); background:var(--paper-dark); padding:4px 8px; margin-bottom:8px; display:inline-block; }
+  .dl-card-row { display:flex; justify-content:space-between; align-items:baseline; padding:3px 0; border-bottom:1px solid rgba(200,191,176,0.3); font-size:15px; font-weight:300; }
+  .dl-card-row:last-child { border-bottom:none; }
+  .dl-qty { font-family:'DM Mono',monospace; font-size:12px; color:var(--mid); flex-shrink:0; margin-left:8px; }
+  .matchup-table { width:100%; border-collapse:collapse; margin:24px 0; }
+  .matchup-table th { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; padding:10px 16px; background:var(--ink); color:rgba(242,237,230,0.6); text-align:left; }
+  .matchup-table td { padding:12px 16px; border-bottom:1px solid var(--rule); font-size:15px; font-weight:300; }
+  .matchup-table tr:hover td { background:var(--paper-dark); cursor:pointer; }
+  .matchup-detail { display:none; background:var(--accent-light); border-left:4px solid var(--accent); padding:24px 32px; margin:0; }
+  .matchup-detail.open { display:block; }
+  .verdict { display:inline-block; font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; padding:4px 10px; border:1px solid; }
+  .verdict-dog { background:var(--danger-light); color:var(--danger); border-color:var(--danger); }
+  .verdict-even { background:var(--gold-light); color:var(--gold); border-color:var(--gold); }
+  .verdict-favor { background:#d1fae5; color:#065f46; border-color:#065f46; }
+  .sb-table { width:100%; border-collapse:collapse; margin:16px 0; }
+  .sb-table th { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; padding:8px 12px; background:var(--paper-dark); color:var(--mid); text-align:left; border-bottom:2px solid var(--rule); }
+  .sb-table td { padding:10px 12px; border-bottom:1px solid var(--rule); font-size:14px; font-weight:300; }
+  .sb-out { color:var(--danger); font-family:'DM Mono',monospace; font-size:12px; }
+  .sb-in { color:#065f46; font-family:'DM Mono',monospace; font-size:12px; }
+  .sb-note { font-size:13px; font-weight:300; color:var(--mid); font-style:italic; margin-top:6px; }
+  .sb-card-guide { border:1px solid var(--rule); margin:24px 0; }
+  .sb-guide-row { display:grid; grid-template-columns:200px 1fr; gap:0; border-bottom:1px solid var(--rule); }
+  .sb-guide-row:last-child { border-bottom:none; }
+  .sb-guide-name { font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.08em; text-transform:uppercase; padding:16px; background:var(--paper-dark); color:var(--ink); border-right:1px solid var(--rule); display:flex; align-items:flex-start; }
+  .sb-guide-body { padding:16px; font-size:14px; font-weight:300; line-height:1.6; color:var(--mid); }
+  .engine-block { border:1px solid var(--rule); margin:32px 0; }
+  .engine-header { background:var(--ink); padding:20px 24px; display:flex; align-items:center; gap:16px; }
+  .engine-letter { font-family:'Bebas Neue',sans-serif; font-size:40px; color:#4db84d; line-height:1; }
+  .engine-name { font-family:'Bebas Neue',sans-serif; font-size:24px; color:var(--paper); letter-spacing:0.03em; }
+  .engine-body { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--rule); }
+  .engine-step { background:var(--paper); padding:20px; }
+  .engine-step-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--mid); margin-bottom:6px; }
+  .engine-step-title { font-family:'Bebas Neue',sans-serif; font-size:20px; color:var(--ink); margin-bottom:8px; }
+  .engine-step-body { font-size:14px; font-weight:300; color:var(--mid); line-height:1.5; }
+  .heuristic-list { list-style:none; margin:0; padding:0; }
+  .heuristic-list li { display:grid; grid-template-columns:48px 1fr; gap:16px; padding:20px 0; border-bottom:1px solid var(--rule); align-items:start; }
+  .heuristic-list li:last-child { border-bottom:none; }
+  .heuristic-num { font-family:'DM Mono',monospace; font-size:22px; color:var(--rule); font-weight:500; }
+  .heuristic-body strong { display:block; font-size:16px; font-weight:600; margin-bottom:4px; color:var(--ink); }
+  .heuristic-body { font-size:14px; font-weight:300; color:var(--mid); line-height:1.5; }
+  .tuning-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--rule); border:1px solid var(--rule); margin:24px 0; }
+  .tuning-cell { background:var(--paper); padding:20px; }
+  .tuning-cell-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; color:var(--mid); margin-bottom:8px; }
+  .tuning-cell-title { font-family:'Bebas Neue',sans-serif; font-size:20px; color:var(--ink); margin-bottom:8px; }
+  .tuning-cell-body { font-size:14px; font-weight:300; color:var(--mid); line-height:1.5; }
+  .curve-strip { display:flex; gap:1px; background:var(--rule); border:1px solid var(--rule); margin:24px 0; }
+  .curve-slot { flex:1; background:var(--paper); padding:16px 12px; text-align:center; }
+  .curve-cmc { font-family:'Bebas Neue',sans-serif; font-size:32px; color:var(--accent); line-height:1; }
+  .curve-count { font-family:'DM Mono',monospace; font-size:11px; color:var(--mid); letter-spacing:0.1em; margin-top:4px; }
+  .curve-bar { height:4px; background:var(--accent); margin:8px auto 0; border-radius:2px; opacity:0.5; }
+  .print-btn { display:inline-flex; align-items:center; gap:8px; font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.12em; text-transform:uppercase; background:var(--ink); color:var(--paper); border:none; padding:10px 20px; cursor:pointer; margin-bottom:32px; }
+  .print-section { border:1px solid var(--rule); padding:32px; margin:24px 0; }
+  .print-title { font-family:'Bebas Neue',sans-serif; font-size:48px; color:var(--ink); }
+  .print-sub { font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.15em; text-transform:uppercase; color:var(--mid); margin-bottom:24px; }
+  .print-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+  .print-col-title { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--mid); margin-bottom:8px; padding-bottom:4px; border-bottom:1px solid var(--rule); }
+  .print-line { font-size:13px; font-weight:300; padding:2px 0; }
+  .print-mu { margin-bottom:16px; }
+  .print-mu-name { font-family:'Bebas Neue',sans-serif; font-size:18px; color:var(--ink); }
+  .print-mu-role { font-family:'DM Mono',monospace; font-size:9px; letter-spacing:0.1em; text-transform:uppercase; color:var(--mid); margin-bottom:6px; }
+  .print-cols { display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+  .print-col-label { font-family:'DM Mono',monospace; font-size:9px; letter-spacing:0.15em; text-transform:uppercase; color:var(--mid); margin-bottom:4px; }
+  .print-row { font-size:12px; font-weight:300; display:flex; justify-content:space-between; padding:1px 0; border-bottom:1px solid rgba(200,191,176,0.4); }
+  .print-qty { font-family:'DM Mono',monospace; font-size:11px; color:var(--mid); }
+  .print-needle { font-family:'DM Mono',monospace; font-size:9px; letter-spacing:0.06em; color:var(--danger); margin-top:6px; text-transform:uppercase; }
+  .role-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--rule); border:1px solid var(--rule); margin:24px 0; }
+  .role-card { background:var(--paper); padding:24px; }
+  .role-name { font-family:'Bebas Neue',sans-serif; font-size:28px; letter-spacing:0.02em; margin-bottom:8px; }
+  .role-name-a { color:var(--accent); }
+  .role-name-b { color:var(--gold); }
+  .role-name-c { color:var(--mid); }
+  .role-desc { font-size:14px; font-weight:300; color:var(--mid); line-height:1.5; margin-bottom:12px; }
+  .role-matchups { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.1em; text-transform:uppercase; color:var(--mid); }
+  footer { background:var(--ink); color:rgba(242,237,230,0.3); padding:40px 80px; margin-top:80px; display:flex; justify-content:space-between; align-items:center; }
+  footer span { font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.1em; text-transform:uppercase; }
+  @media (max-width:768px) { .header-inner,nav,.page,footer { padding-left:24px; padding-right:24px; } .header-title { font-size:40px; } .header-right { display:none; } .decklist,.role-grid,.engine-body,.tuning-grid,.print-grid { grid-template-columns:1fr; } nav { padding:0 24px; } }
+  @media print { nav,.print-btn,footer { display:none; } .section { display:block !important; } }
+</style>
+</head>
+<body>
+
+<div class="header-band">
+  <div class="header-inner">
+    <div>
+      <div class="header-eyebrow">Team Resolve · Standard · RC Prep 2026</div>
+      <div class="header-title">Mono-Green<br><span>Landfall</span></div>
+      <div class="header-mantra">"Ramp, trigger, double. Repeat until they're dead."</div>
+    </div>
+    <div class="header-right">
+      <div class="header-stat"><span class="hs-label">Archetype</span><span class="hs-val">Aggro-Combo-Ramp</span></div>
+      <div class="header-stat"><span class="hs-label">Tier</span><span class="hs-val">A (61.3% WR)</span></div>
+      <div class="header-stat"><span class="hs-label">Kill Turn</span><span class="hs-val">4–5</span></div>
+      <div class="header-stat"><span class="hs-label">Source</span><span class="hs-val">RC Vancouver 2nd</span></div>
+    </div>
+  </div>
+</div>
+
+<nav>
+  <a class="nav-brand" href="deck-guides.html">Team Resolve</a>
+  <button class="nav-link active" onclick="show('overview')">Overview</button>
+  <button class="nav-link" onclick="show('decklist')">Decklist</button>
+  <button class="nav-link" onclick="show('gameflow')">Game Flow</button>
+  <button class="nav-link" onclick="show('engines')">Engines</button>
+  <button class="nav-link" onclick="show('roles')">Roles</button>
+  <button class="nav-link" onclick="show('matchups')">Matchups</button>
+  <button class="nav-link" onclick="show('sideboard')">Sideboard</button>
+  <button class="nav-link" onclick="show('heuristics')">Heuristics</button>
+  <button class="nav-link" onclick="show('tuning')">Tuning</button>
+  <button class="nav-link" onclick="show('prep')">Prep</button>
+</nav>
+
+<div class="page">
+
+<!-- ══════════════════════════════════════════════════════════ CH01 OVERVIEW -->
+<div id="overview" class="section active">
+  <div class="section-label">Chapter 01</div>
+  <h1>Deck<br>Overview</h1>
+
+  <div class="mantra">"You are a ramp deck that can go both taller and wider than most of the format. You have a solid aggro plan, a built-in combo kill, and a grind mode. The opponent never knows which angle to defend." — January, RC Vancouver 2nd Place</div>
+
+  <p>Mono-Green Landfall is the Tier A deck in Standard, sitting at <strong>61.3% win rate</strong> across 23,000 BO3 games (Plat–Mythic). It is the most popular deck you will face at Cincinnati and DC, and also one of the strongest to pilot — three distinct win conditions that switch dynamically based on what the opponent presents. Against aggressive opponents you play Sapling Nursery and go wide with Treefolk. Against interactive opponents you combo kill through their interaction with Icetill Explorer + Mightform Harmonizer. Against slow decks you stack counters on Sazh's Chocobo and Earthbender Ascension and beat them with a 20/20 trampler.</p>
+
+  <p>The deck's power comes from <strong>earthbending</strong> — turning a land into a haste creature with +1/+1 counters. Earthbending onto a fetch land triggers landfall twice. Badgermole Cub's earthbend on entry turns fetch land plays into mana-positive sequences. Earthbender Ascension accumulates quest counters and eventually grants +1/+1 + trample to any creature on every land drop. The entire engine snowballs: one fetch land can trigger four separate landfall effects simultaneously when your board is developed.</p>
+
+  <h2>Three Win Conditions</h2>
+  <div class="card-grid card-grid-3">
+    <div class="card">
+      <div class="card-label">Plan A — Beatdown</div>
+      <div class="card-title">Counter Stack + Trample</div>
+      <div class="card-body"><span class="c">Sazh's Chocobo</span> enters as a 0/1 but grows a counter every time a land enters — turn 1 Chocobo into turn 2 Ascension means every subsequent land gives +1/+1. Stack trample from Ascension and swing. Effective against any deck that doesn't block efficiently. T1 Chocobo is a clock they must respect immediately.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Plan B — Combo Kill</div>
+      <div class="card-title">Explorer + Harmonizer</div>
+      <div class="card-body"><span class="c">Icetill Explorer</span> + <span class="c">Mightform Harmonizer</span> + <span class="c">Escape Tunnel</span> (or trample enabler) creates one-shot potential from any board state. Play a land → Harmonizer doubles target creature's power → repeat with each additional land drop → unblockable through Escape Tunnel. A 2-power creature at 4 doublings = 32 damage. Faster with existing counters.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Plan C — Grind</div>
+      <div class="card-title">Sapling Nursery Flood</div>
+      <div class="card-body"><span class="c">Sapling Nursery</span> creates a 3/4 Treefolk with reach every time a land enters. With Icetill in play, every fetch puts a land into play and mills a card — potentially recovering more fetch lands to continue the loop. Against removal-heavy decks, the Nursery generates threats faster than they can spend resources. The indestructible activation is a sweeper protection button.</div>
+    </div>
+  </div>
+
+  <h2>Meta Position</h2>
+  <p>As of April 2026 (Plat–Mythic BO3): <strong>Mono-Green Landfall is Tier A at 61.3%</strong> with 23,000 games and 72 active decks. It is the single most-played archetype in the RC meta by a wide margin. The deck received a significant power upgrade from TMNT: <span class="c">Leatherhead, Swamp Stalker</span> (hexproof + trample + destroy artifact/enchantment on damage) is a combo kill enabler that is immune to most targeted interaction. Her hexproof counter means she survives the removal Dimir typically uses to stop the combo, and trample means she punches through any board state.</p>
+  <p>The deck's primary weakness is non-interactive combo (Bant Airbending, Nature's Rhythm) and speed — very aggressive red or white decks can kill before Nursery stabilizes. Sideboard construction revolves around these two axes: Torpor Orb for ETB-based strategies, and Meltstrider's Resolve / Mossborn Hydra for the mirror and combo matchups.</p>
+
+  <h2>Why Study This Deck</h2>
+  <p>You will face Mono-Green Landfall in rounds 1, 3, 5, and 7 at Cincinnati. It is 15.8% of the field. Your Dimir Midrange playbook rates this matchup at 38% — your worst common matchup. Understanding how Mono-Green operates, when their combo is live, and what their sideboard plan is against you makes you significantly better prepared to navigate the matchup correctly. Know your opponent's deck as well as your own.</p>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════ CH02 DECKLIST -->
+<div id="decklist" class="section">
+  <div class="section-label">Chapter 02</div>
+  <h1>Decklist</h1>
+  <p style="font-style:italic;color:var(--mid);font-size:15px;margin-bottom:24px;">January — 2nd Place RC Vancouver 2026 (240 players). Core 60 is the tournament-proven base. TMNT additions noted in card notes.</p>
+
+  <div class="decklist">
+    <div class="dl-section">
+      <div class="dl-section-label">Maindeck (60)</div>
+      <div class="dl-group">
+        <div class="dl-group-label">Creatures (22)</div>
+        <div class="dl-card-row"><span><span class="c">Llanowar Elves</span></span><span class="dl-qty">4</span></div>
+        <div class="dl-card-row"><span><span class="c">Sazh's Chocobo</span></span><span class="dl-qty">4</span></div>
+        <div class="dl-card-row"><span><span class="c">Badgermole Cub</span></span><span class="dl-qty">4</span></div>
+        <div class="dl-card-row"><span><span class="c">Mightform Harmonizer</span></span><span class="dl-qty">3</span></div>
+        <div class="dl-card-row"><span><span class="c">Mossborn Hydra</span></span><span class="dl-qty">2</span></div>
+        <div class="dl-card-row"><span><span class="c">Icetill Explorer</span></span><span class="dl-qty">4</span></div>
+        <div class="dl-card-row"><span><span class="c">Fecund Greenshell</span></span><span class="dl-qty">1</span></div>
+      </div>
+      <div class="dl-group">
+        <div class="dl-group-label">Enchantments (8)</div>
+        <div class="dl-card-row"><span><span class="c">Earthbender Ascension</span></span><span class="dl-qty">4</span></div>
+        <div class="dl-card-row"><span><span class="c">Sapling Nursery</span></span><span class="dl-qty">4</span></div>
+      </div>
+      <div class="dl-group">
+        <div class="dl-group-label">Instants / Sorceries (4)</div>
+        <div class="dl-card-row"><span><span class="c">Archdruid's Charm</span></span><span class="dl-qty">2</span></div>
+        <div class="dl-card-row"><span><span class="c">Esper Origins</span></span><span class="dl-qty">2</span></div>
+      </div>
+    </div>
+    <div class="dl-section">
+      <div class="dl-section-label">Lands (26)</div>
+      <div class="dl-group">
+        <div class="dl-card-row"><span>Forest</span><span class="dl-qty">13</span></div>
+        <div class="dl-card-row"><span><span class="c">Fabled Passage</span></span><span class="dl-qty">4</span></div>
+        <div class="dl-card-row"><span><span class="c">Escape Tunnel</span></span><span class="dl-qty">4</span></div>
+        <div class="dl-card-row"><span><span class="c">Ba Sing Se</span></span><span class="dl-qty">3</span></div>
+        <div class="dl-card-row"><span><span class="c">Promising Vein</span></span><span class="dl-qty">2</span></div>
+      </div>
+      <div class="dl-section-label" style="margin-top:24px;">Sideboard (15)</div>
+      <div class="dl-group">
+        <div class="dl-card-row"><span><span class="c">Torpor Orb</span></span><span class="dl-qty">3</span></div>
+        <div class="dl-card-row"><span><span class="c">Meltstrider's Resolve</span></span><span class="dl-qty">3</span></div>
+        <div class="dl-card-row"><span><span class="c">Mossborn Hydra</span></span><span class="dl-qty">2</span></div>
+        <div class="dl-card-row"><span><span class="c">Origin of Metalbending</span></span><span class="dl-qty">2</span></div>
+        <div class="dl-card-row"><span><span class="c">Surrak, Elusive Hunter</span></span><span class="dl-qty">1</span></div>
+        <div class="dl-card-row"><span><span class="c">Sandman, Shifting Scoundrel</span></span><span class="dl-qty">1</span></div>
+        <div class="dl-card-row"><span><span class="c">Soul-Guide Lantern</span></span><span class="dl-qty">1</span></div>
+        <div class="dl-card-row"><span><span class="c">Keen-Eyed Curator</span></span><span class="dl-qty">1</span></div>
+        <div class="dl-card-row"><span><span class="c">Pawpatch Formation</span></span><span class="dl-qty">1</span></div>
+      </div>
+    </div>
+  </div>
+
+  <h2>Mana Curve</h2>
+  <div class="curve-strip">
+    <div class="curve-slot"><div class="curve-cmc">1</div><div class="curve-count">8 spells</div><div class="curve-bar" style="width:65%"></div></div>
+    <div class="curve-slot"><div class="curve-cmc">2</div><div class="curve-count">8 spells</div><div class="curve-bar" style="width:65%"></div></div>
+    <div class="curve-slot"><div class="curve-cmc">3</div><div class="curve-count">3 spells</div><div class="curve-bar" style="width:25%"></div></div>
+    <div class="curve-slot"><div class="curve-cmc">4</div><div class="curve-count">9 spells</div><div class="curve-bar" style="width:100%"></div></div>
+    <div class="curve-slot"><div class="curve-cmc">5+</div><div class="curve-count">6 spells</div><div class="curve-bar" style="width:50%"></div></div>
+  </div>
+  <p style="font-size:14px;color:var(--mid);">Front-loaded at 1-2 mana (16 spells), peaks at 4 mana (Icetill, Sapling Nursery, Earthbender Ascension all effectively live here in practice). The 5+ slot is Fecund Greenshell, Esper Origins flashback, and late-game Archdruid's Charm activations. The deck mulligans aggressively — an opener with no 1-drop or ramp is often wrong.</p>
+
+  <h2>Card Notes</h2>
+  <div class="card-grid">
+    <div class="card">
+      <div class="card-label">The Clock</div>
+      <div class="card-title">Sazh's Chocobo</div>
+      <div class="card-body">{G} 0/1 Bird. Landfall — whenever a land you control enters, put a +1/+1 counter on this creature. Enters as a 0/1 but grows on every land drop thereafter. With Earthbender Ascension in play, every land after Ascension's trigger also gives Chocobo a counter AND gives it trample when Ascension fires. A T1 Chocobo that sees 6 land drops by turn 4 is a 6/6 trampler. Never side out — you're too light on cheap pressure if you do.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">The Ramp Engine</div>
+      <div class="card-title">Badgermole Cub</div>
+      <div class="card-body">{1}{G} 2/2. ETB: earthbend 1 (target land becomes 0/0 creature with haste, gets a +1/+1 counter, returns tapped when it dies). Whenever you tap a creature for mana, add {G}. The ETB earthbend is land-based ramp that triggers landfall — earthbend onto a fetch for two landfall triggers and a land. Cub also doubles mana from Llanowar Elves: tap Elves for {G}, Cub triggers adding {G}. Key vulnerability: opponents can stun or bounce your earthbent land in response to the earthbend trigger, killing it before it can contribute.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">The Combo Kill</div>
+      <div class="card-title">Mightform Harmonizer</div>
+      <div class="card-body">{2}{G} 4/4 Insect Druid. Landfall — whenever a land you control enters, double the power of target creature you control until end of turn. Warp {2}{G}: exile from hand, may cast from exile later. The combo: Icetill Explorer plays extra lands, Harmonizer doubles power on each land drop, Escape Tunnel makes the target unblockable. A 2-power creature with 4 doublings = 32 damage. Warp is critical — warping Harmonizer into exile preserves its ability to double while protecting it from removal. Never cast Harmonizer on an empty board unless you have immediate trample/evasion.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">The Land Engine</div>
+      <div class="card-title">Icetill Explorer</div>
+      <div class="card-body">{3}{G} 2/4. You may play an additional land each turn. You may play lands from your graveyard. Landfall — whenever a land you control enters, mill a card. The graveyard land recursion means cracking Fabled Passage from the GY triggers landfall again. "Milling is upside" — every mill increases the chance of hitting a fetch land in the yard to replay. A naked Icetill with no extra lands or GY fetches is just a 2/4 for 4. Sequence: play Icetill when you have a fetch in hand or GY to immediately start the engine.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">The Ramp + Engine</div>
+      <div class="card-title">Earthbender Ascension</div>
+      <div class="card-body">{1}{G} Enchantment. ETB: earthbend 2 + fetch basic tapped. Landfall — whenever a land enters, add a quest counter; at 4+ counters, put +1/+1 counter on a creature AND grant trample until EOT. The ETB earthbend on a fetch land = two landfall triggers (earthbend + fetch resolves). T1 Elf → T2 Ascension might be the strongest curve in the deck. Every subsequent land drop gifts a counter AND can trigger Ascension's payload. Against control, earthbending your land is sometimes correct even at no profit just to protect it from land destruction or bounce.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">The Grind Engine</div>
+      <div class="card-title">Sapling Nursery</div>
+      <div class="card-body">{X}{G} Enchantment (affinity for Forests). Landfall — whenever a land enters, create a 3/4 green Treefolk token with reach. {1}{G}, exile: Treefolk and Forests you control gain indestructible until EOT. Against any deck that interacts on the board, Nursery generates threats faster than they can remove them. The indestructible activation is a panic button — activate it in response to a sweeper to save your Treefolk board. Key: Nursery reduces cost for each Forest you control. With 5 Forests it costs {G}. The token's reach matters against flying threats.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">TMNT Addition</div>
+      <div class="card-title">Leatherhead, Swamp Stalker</div>
+      <div class="card-body">{3}{G} 5/4 Legendary Crocodile Mutant Rogue. Trample. Enters with a hexproof counter. Whenever Leatherhead deals combat damage to a player, you may remove a counter from her — when you do, destroy target artifact or enchantment that player controls. The hexproof counter protects her from the targeted removal Dimir uses to stop the combo. Trample means she punches through any board state. On damage trigger destroys their key permanents — Enduring Curiosity, Sapling Nursery, equipment. Run 2 copies in the TMNT build replacing 1 Mossborn Hydra and 1 Harmonizer.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">The Tutor</div>
+      <div class="card-title">Archdruid's Charm</div>
+      <div class="card-body">{G}{G}{G} Instant. Three modes: (1) Tutor creature or land — put land onto battlefield tapped or put creature into hand. (2) Put +1/+1 counter on creature, it fights target creature you don't control. (3) Exile target artifact or enchantment. The tutor mode finds Harmonizer for the combo kill or Leatherhead/Greenshell as a situational tutor target. Fight mode kills their blocker and grows a creature simultaneously. Exile mode handles permanents your other spells can't answer. The {G}{G}{G} cost means it requires 3 Forests — plan your earthbends around keeping enough Forests for this activation.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">The Top Deck</div>
+      <div class="card-title">Esper Origins</div>
+      <div class="card-body">{3}{G}{G} Sorcery // Saga Enchantment. Sorcery mode: Surveil 2, gain 2 life. Flashback {3}{G}. If cast from GY: exile it, transform to Saga with finality counter. Saga (Summon: Esper Maduin) — I: reveal top, if permanent put in hand; II: add {G}{G}; III: creatures get +2/+2 + trample. Rarely happy to see it in opening hand. Strong as a mid-game top deck — the surveil works with your GY synergies, 5 mana for 4/4 + 4 life + draw with selection is premium value when you have extra mana. Transforming into the Saga in the late game is a major swing.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">The Mirror Breaker</div>
+      <div class="card-title">Mossborn Hydra</div>
+      <div class="card-body">{3}{G} 0/0 Elemental Hydra. Enters with a +1/+1 counter. Trample. Landfall — whenever a land enters, double the number of +1/+1 counters on this creature. The mirror and combo matchup breaker. One land drop on a Hydra with 4 counters = 8 counters = 16-power trampler with the next drop. Extreme high-variance: incredible when it connects, irrelevant against removal. Side out against anything with efficient removal. Key: being an Elemental means Sunderflock (Izzet Spellementals) cannot bounce it.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">The Fetch Lands</div>
+      <div class="card-title">Fabled Passage / Escape Tunnel</div>
+      <div class="card-body">Fabled Passage: sacrifice → fetch basic tapped, untap if 4+ lands. Escape Tunnel: sacrifice → fetch basic tapped OR give ≤2 power creature unblockable. Four of each is mandatory. Passage untapping at 4+ lands enables important mana sequences. Escape Tunnel's unblockable mode is what enables the combo kill — a 2/2 that's unblockable + Harmonizer doublings = game over. Every Passage and Tunnel in the GY is a free land play with Icetill Explorer active.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">The Grind Threat</div>
+      <div class="card-title">Fecund Greenshell</div>
+      <div class="card-body">{4}{G} 4/6 Elemental Turtle. Reach. As long as you control 10+ lands, all creatures you control get +2/+2. ETB: if toughness > power among your creatures, look at top — put land into play tapped or into hand. The floor is low (5 mana 4/6 reach), but the ceiling is enormous — at 10 lands all your Treefolk tokens are 5/6 reach. The ETB trigger puts lands into play off the top, enabling further landfall chains. Run as a 1-of tutor target via Archdruid's Charm in the late game when you have 8+ lands already.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════ CH03 GAME FLOW -->
+<div id="gameflow" class="section">
+  <div class="section-label">Chapter 03</div>
+  <h1>Game Flow</h1>
+
+  <div class="mantra">"T1 Elf into T2 Ascension is the best curve in the deck. Every land drop after that is a free counter and a free trample trigger."</div>
+
+  <h2>Turn-by-Turn Framework</h2>
+  <div class="card-grid card-grid-3">
+    <div class="card">
+      <div class="card-label">Turns 1–2: Setup</div>
+      <div class="card-title">Ramp + Engine</div>
+      <div class="card-body"><strong>Best:</strong> T1 Llanowar Elves → T2 Earthbender Ascension (earthbends 2 + fetches a basic). Now every land gives Ascension a quest counter. <strong>Also strong:</strong> T1 Sazh's Chocobo → T2 Ascension or Badgermole Cub. T1 Chocobo means it's already been growing before Ascension fires. T2 Cub earthbending a fetch = 2 landfall triggers on T2.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Turns 3–4: Power Online</div>
+      <div class="card-title">Deploy Threats</div>
+      <div class="card-body">Turn 3: Mightform Harmonizer (warp it immediately if removal is likely), or Sapling Nursery (first Treefolk token lands the same turn if you play a land). Turn 4: Icetill Explorer — immediately play your land for turn, mill, and if there's a fetch in the GY you can replay it for a second land drop triggering Nursery + Harmonizer simultaneously.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Turns 5+: Execute</div>
+      <div class="card-title">Kill Window</div>
+      <div class="card-body">Assess which plan is live: board full of Treefolk → swing for lethal with trample from Ascension. Icetill + Harmonizer + evasion piece (Escape Tunnel) → chain land plays, double target creature power, Escape Tunnel for unblockable, deal 20+ damage. Mossborn Hydra with 3+ counters → one more land = 8+ power trampler.</div>
+    </div>
+  </div>
+
+  <h2>The Combo Kill — Step by Step</h2>
+  <p>Understanding the combo kill is essential for both playing the deck and playing against it. This is the sequence that ends games in one attack regardless of board state:</p>
+  <div class="card-grid card-grid-2">
+    <div class="card">
+      <div class="card-label">Requirements</div>
+      <div class="card-title">What You Need</div>
+      <div class="card-body">1. <span class="c">Icetill Explorer</span> on the battlefield (extra land plays + land from GY). 2. <span class="c">Mightform Harmonizer</span> on the battlefield (doubles power on landfall). 3. A creature with at least 2 power (Chocobo with counters, Badgermole Cub, or Harmonizer itself). 4. Multiple land plays available — either fetch lands in hand or GY, and/or Ba Sing Se activation. 5. <span class="c">Escape Tunnel</span> or trample enabler for the creature.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">The Sequence</div>
+      <div class="card-title">Execute the Kill</div>
+      <div class="card-body">Activate Escape Tunnel targeting your 2-power creature (unblockable). Play any land → Harmonizer triggers, double that creature's power (2 → 4). Play another land (fetch or GY land via Icetill) → double again (4 → 8). Again → 16. Again → 32. Attack with the 32-power unblockable creature for lethal. Alternatively: use trample from Ascension on a creature that already has 10+ power from counters — one more doubling = 20-40 power trampler.</div>
+    </div>
+  </div>
+
+  <h2>Reading the Game State</h2>
+  <div class="card-grid card-grid-2">
+    <div class="card">
+      <div class="card-label">When to Switch Plans</div>
+      <div class="card-title">Adaptive Game Plan</div>
+      <div class="card-body"><strong>Switch to Nursery plan:</strong> When you have 4+ lands and a Nursery on board and the opponent doesn't have a sweeper available. Treefolk tokens with reach block their fliers and attack profitably. <strong>Switch to combo plan:</strong> When they have a board full of blockers. One unblockable creature bypasses their entire defense. <strong>Stay on beatdown plan:</strong> Against control with no board — Chocobo + Ascension + attacks is faster than waiting to assemble the full combo.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">When Earthbending is Wrong</div>
+      <div class="card-title">Earthbend Caution</div>
+      <div class="card-body">Earthbending is strong but creates vulnerability: an earthbent land can be stunned (Floodpits Drowner), bounced (Into the Flood Maw), or killed before returning. In those cases you lose mana temporarily. Against Dimir: be careful earthbending when they have {1}{U} open — they can stun your earthbent land in response, leaving it as a dead permanent. Against control with open mana: earthbending is telegraphed. Sometimes holding the earthbend for combat or end step is better.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════ CH04 ENGINES -->
+<div id="engines" class="section">
+  <div class="section-label">Chapter 04</div>
+  <h1>Core Engines</h1>
+
+  <div class="engine-block">
+    <div class="engine-header">
+      <div class="engine-letter">A</div>
+      <div class="engine-name">The Landfall Cascade Engine</div>
+    </div>
+    <div class="engine-body">
+      <div class="engine-step">
+        <div class="engine-step-label">Trigger</div>
+        <div class="engine-step-title">Land Enters</div>
+        <div class="engine-step-body">Every land that enters simultaneously triggers: Sazh's Chocobo (+1/+1 counter), Mossborn Hydra (doubles counters), Mightform Harmonizer (doubles a creature's power), Earthbender Ascension (quest counter → at 4+: +1/+1 + trample), Sapling Nursery (3/4 Treefolk token), Icetill Explorer (mill a card). One land drop can simultaneously generate 6 separate effects when the full engine is assembled.</div>
+      </div>
+      <div class="engine-step">
+        <div class="engine-step-label">Amplify</div>
+        <div class="engine-step-title">Double Triggers</div>
+        <div class="engine-step-body">Fabled Passage: sacrifice counts as a land entering, then the fetched basic enters — two landfall triggers. Badgermole Cub earthbend onto a fetch: the fetch enters (trigger 1), then you sacrifice the fetch for a basic (trigger 2), AND the earthbent land has a counter on it. Ba Sing Se's activated earthbend on a fetch land = another double trigger. A single Fabled Passage activation with full engine = 12 simultaneous effects.</div>
+      </div>
+      <div class="engine-step">
+        <div class="engine-step-label">Sustain</div>
+        <div class="engine-step-title">GY Loops</div>
+        <div class="engine-step-body">Icetill Explorer lets you play lands from your graveyard. Mill a Fabled Passage → replay it from GY → two more triggers → possibly mill another Passage. With 8+ lands in play, Fecund Greenshell's ETB looks at the top and puts a land into play directly — adding fuel to the engine without spending a land drop. The loop self-sustains once Icetill is active with fetches in the GY.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="engine-block">
+    <div class="engine-header">
+      <div class="engine-letter">B</div>
+      <div class="engine-name">The Mana Acceleration Engine</div>
+    </div>
+    <div class="engine-body">
+      <div class="engine-step">
+        <div class="engine-step-label">Base</div>
+        <div class="engine-step-title">Llanowar Elves</div>
+        <div class="engine-step-body">T1 Llanowar Elves provides {G} on T2, enabling T2 Earthbender Ascension (which normally requires {1}{G}). More importantly, once Badgermole Cub is in play: tapping Elves for {G} triggers Cub's "whenever you tap a creature for mana" ability — adding another {G}. One Elf tap = {G}{G} with Cub on board.</div>
+      </div>
+      <div class="engine-step">
+        <div class="engine-step-label">Amplify</div>
+        <div class="engine-step-title">Badgermole Cub Double</div>
+        <div class="engine-step-body">Cub's ETB earthbends 1 — earthbend onto a basic Forest. The Forest becomes a 0/0 creature with a counter and haste. If you tap it for {G}, Cub's ability triggers again for {G} more. An earthbent Forest with Cub = {G}{G} from a single Forest tap. Add a second Cub and tapping your earthbent Forest with both Cubs live = {G}{G}{G} from one Forest. This creates explosive turns where you have 8+ mana on turn 4.</div>
+      </div>
+      <div class="engine-step">
+        <div class="engine-step-label">Explosive</div>
+        <div class="engine-step-title">Elf + Cub + Fetch</div>
+        <div class="engine-step-body">The dream sequence: T1 Elf, T2 Cub (earthbends a Fabled Passage — double landfall trigger), T3 you have 6 mana accessible (Elf {G} + Cub trigger {G} + earthbent land {G} + Cub trigger {G} + 2 lands). Play Icetill Explorer (4 mana), then play the Passage from GY (two more landfall triggers), potentially deploying Sapling Nursery and Harmonizer the same turn. This is the nut draw that ends games by turn 4.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════ CH05 ROLES -->
+<div id="roles" class="section">
+  <div class="section-label">Chapter 05</div>
+  <h1>Role Assignment</h1>
+
+  <div class="mantra">"The deck's biggest strength is its flexibility. You are never locked into one plan. The opponent must defend all three angles simultaneously."</div>
+
+  <div class="role-grid">
+    <div class="role-card">
+      <div class="role-name role-name-a">Aggro</div>
+      <div class="role-desc">Early Chocobo into counter stacking. Attack before they stabilize. Effective when they lack early interaction or when your combo is unavailable but your creatures are massive. Ascension's trample grant on every land drop is the enabler.</div>
+      <div class="role-matchups">vs Control · vs Combo · vs Slow Midrange</div>
+    </div>
+    <div class="role-card">
+      <div class="role-name role-name-b">Combo</div>
+      <div class="role-desc">Assemble Icetill + Harmonizer + Escape Tunnel. Execute one-shot kill from any life total. Effective when they have a full board of blockers. Bypasses their defensive setup entirely. Harmonizer via warp protects it from removal while setting up.</div>
+      <div class="role-matchups">vs Dimir · vs Wide Boards · vs Any Full Board</div>
+    </div>
+    <div class="role-card">
+      <div class="role-name role-name-c">Grind</div>
+      <div class="role-desc">Sapling Nursery generates threats every land drop. Indestructible activation protects from sweepers. Against any deck with creature removal, Nursery tokens replace themselves faster than they can spend removal. Win by generating more resources.</div>
+      <div class="role-matchups">vs Midrange · vs Removal-Heavy · vs Attrition</div>
+    </div>
+  </div>
+
+  <h2>Role Selection by Opponent</h2>
+  <div class="card-grid card-grid-2">
+    <div class="card">
+      <div class="card-label">vs Dimir Midrange (38% vs you)</div>
+      <div class="card-title">Combo Kill Through Flash Package</div>
+      <div class="card-body">Their flash package (Tidebinder, Drowner) can stun your earthbent lands and counter your ETBs. Don't over-rely on the earthbend plan — they can respond to it. The combo kill via Escape Tunnel bypasses their entire defensive setup: an unblockable threat ignores Floodpits Drowner's stun, Azure Beastbinder's power-2-block restriction, and their entire creature defense. Prioritize assembling Icetill + Harmonizer + Escape Tunnel. Sapling Nursery as an enchantment is very difficult for them to answer — most Dimir removal doesn't hit enchantments.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">vs Izzet Prowess</div>
+      <div class="card-title">Race + Sapling Nursery</div>
+      <div class="card-body">Izzet Prowess races you with spells pumping small creatures. Your larger bodies trade favorably in combat, but their burn can close from long range. Sapling Nursery provides reach blockers that chump their 5/5 prowess creatures. The combo kill is fast enough to race them — assembling the kill on turn 4-5 is usually before they can burn you out. Mossborn Hydra from the SB grows faster than their threats can block it.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">vs The Mirror</div>
+      <div class="card-title">Mossborn Hydra Races</div>
+      <div class="card-body">The mirror is decided by Mossborn Hydra. Whoever resolves and protects a Hydra first usually wins — one land drop doubles it, so a Hydra at 8 counters with one land in hand = 16-power trample that wins immediately. Sapling Nursery is not the plan here — a wall of 3/4 Treefolk is irrelevant against a 100-power Hydra. Side in the additional Hydra copies. Archdruid's Charm exile mode is excellent — exile their Hydra before they can double it.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">vs Control (Jeskai, Azorius)</div>
+      <div class="card-title">Sapling Nursery + Surrak</div>
+      <div class="card-body">Control has counterspells and sweepers but no clock. Sapling Nursery as an enchantment survives most sweepers. Deploy Nursery and let it generate Treefolk tokens faster than they can cast Wrath effects. Surrak, Elusive Hunter from the SB can't be countered and draws a card whenever they target your spells or creatures — forces a no-win situation. Sandman, Shifting Scoundrel from the SB grows to their land count and returns from the GY with a land — nearly unkillable with your recursion.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════ CH06 MATCHUPS -->
+<div id="matchups" class="section">
+  <div class="section-label">Chapter 06</div>
+  <h1>Matchup Guide</h1>
+
+  <table class="matchup-table">
+    <thead><tr><th>Matchup</th><th>Role</th><th>Verdict</th><th>Key Note</th></tr></thead>
+    <tbody>
+      <tr onclick="toggle('mu-dimir')"><td><strong>Dimir Midrange</strong></td><td>Combo</td><td><span class="verdict verdict-favor">Favorable (62%)</span></td><td>Your 62% WR vs their 38%. Combo kill through Escape Tunnel bypasses their flash package.</td></tr>
+      <tr><td colspan="4" class="matchup-detail" id="mu-dimir">
+        <p>Dimir Midrange is your best common matchup. Their 38% win rate against you (per Untapped.gg, 1,400 games BO3 Plat–Mythic) reflects their inability to efficiently answer both your Sapling Nursery (enchantment, survives creature removal) and your combo kill (Escape Tunnel bypasses all their blockers). Tidebinder counters Badgermole Cub's ETB — plan for this and don't over-rely on Cub's mana generation. Kaito, Bane of Nightmares as a 3/4 hexproof Ninja is your most problematic creature since he can attack profitably. But your larger threats outclass him quickly.</p>
+        <p>The key insight from Dimir's perspective: their Deep-Cavern Bat is their highest-impact card vs you (+14.7 pts) — it strips your key piece from hand. Be mindful of leaving the combo piece in hand if they have {1}{B} open. Warp Harmonizer proactively to protect it.</p>
+        <table class="sb-table"><thead><tr><th>Out</th><th>In</th></tr></thead><tbody>
+          <tr><td class="sb-out">−2 <span class="c">Mossborn Hydra</span></td><td class="sb-in">+1 <span class="c">Surrak, Elusive Hunter</span></td></tr>
+          <tr><td class="sb-out">−1 <span class="c">Esper Origins</span></td><td class="sb-in">+1 <span class="c">Sandman, Shifting Scoundrel</span></td></tr>
+          <tr><td class="sb-out">−1 <span class="c">Mightform Harmonizer</span></td><td class="sb-in">+1 <span class="c">Torpor Orb</span></td></tr>
+        </tbody></table>
+        <p class="sb-note">Torpor Orb stops their Tidebinder ETB (no ability countered), Floodpits Drowner ETB (no stun), and Kaito's ninjutsu doesn't trigger. A resolved Torpor Orb dismantles their flash disruption package entirely. Surrak can't be countered and draws when they target your spells — forces their Phantom Interference and Spell Snare to blank. Sandman grows to your land count (typically 6-8 lands by the time he's deployed) — unblockable by their small creatures.</p>
+        <p class="sb-note"><strong>Key needle:</strong> Warp Mightform Harmonizer proactively when Bat is likely. Exile it from hand with the warp cost before they can Bat it away. The combo still works — Harmonizer can be cast from exile on any later turn. Nursery as an enchantment — their removal suite (Requiting Hex, Shoot the Sheriff, Bitter Triumph) does nothing to it. Don't sacrifice Nursery even when ahead.</p>
+      </td></tr>
+
+      <tr onclick="toggle('mu-izzet')"><td><strong>Izzet Prowess</strong></td><td>Race</td><td><span class="verdict verdict-even">Even (51%)</span></td><td>Race their spell chain with your faster clock. Mossborn Hydra grows faster than their prowess triggers.</td></tr>
+      <tr><td colspan="4" class="matchup-detail" id="mu-izzet">
+        <p>Izzet Prowess operates by chaining spells to pump small creatures and burn face. Your bodies are larger but their cantrips generate card advantage. The race is close. Sazh's Chocobo on T1 applies clock pressure before their prowess engine is online. Sapling Nursery reach tokens block their pumped fliers and chump 5/5 prowess attackers. The combo kill is fast enough — T5 one-shot before they can burn you from 20 to 0.</p>
+        <table class="sb-table"><thead><tr><th>Out</th><th>In</th></tr></thead><tbody>
+          <tr><td class="sb-out">−2 <span class="c">Sapling Nursery</span></td><td class="sb-in">+2 <span class="c">Mossborn Hydra</span></td></tr>
+          <tr><td class="sb-out">−1 <span class="c">Fecund Greenshell</span></td><td class="sb-in">+1 <span class="c">Pawpatch Formation</span></td></tr>
+        </tbody></table>
+        <p class="sb-note">Mossborn Hydra grows exponentially faster than their creatures — one land drop doubles all counters, so a T3 Hydra with T4 two land plays is already a 4/4 that doubles to 8/8 on T5. Pawpatch Formation destroys their flying threats that Nursery tokens can't profitably block. Trim 2 Nurseries because the grind plan is too slow against their burn-reach strategy — you want faster threats.</p>
+        <p class="sb-note"><strong>Key needle:</strong> Don't let Icetill Explorer sit back waiting for the full combo. Against Prowess, Icetill as an extra land engine that charges your Hydra counters every turn is better than holding for the one-shot. A 32-power Hydra trampling over their board on T5 wins faster than trying to assemble Harmonizer + Escape Tunnel.</p>
+      </td></tr>
+
+      <tr onclick="toggle('mu-mirror')"><td><strong>Mono-Green Mirror</strong></td><td>Mossborn Hydra</td><td><span class="verdict verdict-even">Even (50%)</span></td><td>First Mossborn Hydra that connects wins. Archdruid's Charm exile is your answer to their Hydra.</td></tr>
+      <tr><td colspan="4" class="matchup-detail" id="mu-mirror">
+        <p>The mirror is decided almost entirely by Mossborn Hydra. Both players are doing the same thing — whoever lands a Hydra first and protects it from Archdruid's Charm exile wins when the next land drop doubles it to an unstoppable size. Sapling Nursery treefolk are irrelevant in the mirror — a wall of 3/4 reach tokens does nothing against a 50-power trample Hydra. Recognize this and don't over-invest in the Nursery plan. Harmonizer doubling Harmonizer itself creates an interesting line: Harmonizer is 4 power, one double = 8, two = 16, three = 32. Faster than the Hydra plan with fewer pieces if you have multiple Harmonizers.</p>
+        <table class="sb-table"><thead><tr><th>Out</th><th>In</th></tr></thead><tbody>
+          <tr><td class="sb-out">−4 <span class="c">Sapling Nursery</span></td><td class="sb-in">+2 <span class="c">Mossborn Hydra</span></td></tr>
+          <tr><td class="sb-out">−1 <span class="c">Esper Origins</span></td><td class="sb-in">+1 <span class="c">Origin of Metalbending</span></td></tr>
+          <tr><td class="sb-out">−1 <span class="c">Fecund Greenshell</span></td><td class="sb-in">+1 <span class="c">Pawpatch Formation</span></td></tr>
+        </tbody></table>
+        <p class="sb-note">Trim all 4 Nurseries — they win nothing in the mirror. Full Mossborn Hydra count (4 total with SB copies). Origin of Metalbending destroys their Sapling Nursery or Earthbender Ascension if they try to build around those. Pawpatch Formation is the Nursery exile answer. Don't play around their Archdruid's Charm — play fast and force them to react.</p>
+        <p class="sb-note"><strong>Key needle:</strong> On the Hydra: a Hydra with N counters + 1 land play = 2N counters = 2N power trample. If you have 4 counters and they have an Archdruid's Charm hold, wait for the turn you can play two lands in a row — by the time both land plays resolve the Hydra is at 16 power and they needed the Charm on the first double. Sequence your land plays to bait the Charm on the first double, then immediately play the second land to double to lethal.</p>
+      </td></tr>
+
+      <tr onclick="toggle('mu-control')"><td><strong>Jeskai / Azorius Control</strong></td><td>Grind</td><td><span class="verdict verdict-favor">Favorable (64%)</span></td><td>Sapling Nursery generates faster than they can sweep. Surrak can't be countered. Sandman recurs.</td></tr>
+      <tr><td colspan="4" class="matchup-detail" id="mu-control">
+        <p>Control has counterspells and sweepers but no clock. Sapling Nursery as an enchantment survives all creature-based sweepers. With Nursery active, every land drop creates a 3/4 Treefolk with reach — faster than they can spend removal. Their sweep kills the tokens but Nursery is still there to replace them. The indestructible activation protects even the tokens from the next sweep. Time Nursery activations to coincide with their sweeper timing.</p>
+        <table class="sb-table"><thead><tr><th>Out</th><th>In</th></tr></thead><tbody>
+          <tr><td class="sb-out">−2 <span class="c">Mossborn Hydra</span></td><td class="sb-in">+1 <span class="c">Surrak, Elusive Hunter</span></td></tr>
+          <tr><td class="sb-out">−1 <span class="c">Badgermole Cub</span></td><td class="sb-in">+1 <span class="c">Sandman, Shifting Scoundrel</span></td></tr>
+        </tbody></table>
+        <p class="sb-note">Surrak can't be countered and punishes them for targeting your permanents — every Time Wipe, Settle the Wreckage, or targeted removal draws you a card. Sandman grows to your land count (8+ power by turn 6), can't be blocked by small creatures, and returns from the GY with a land from the graveyard — effectively immortal as long as you have land recursion. Mossborn Hydra is too fragile against their targeted removal. Trim Cub when they're heavy on ETB counters (Torpor Orb strategies), otherwise keep.</p>
+        <p class="sb-note"><strong>Key needle:</strong> Hold Archdruid's Charm's exile mode for their key permanent (their planeswalker or Teferi). Don't use it to exile creatures — that's what Meltstrider's Resolve is for. Every Charm activation targeting a creature is a wasted counterspell-protection tool.</p>
+      </td></tr>
+
+      <tr onclick="toggle('mu-boros')"><td><strong>Boros Aggro</strong></td><td>Survival</td><td><span class="verdict verdict-dog">Unfavorable (44%)</span></td><td>Their burn reach and evasion is faster than your engine. Meltstrider's Resolve blocks key threats.</td></tr>
+      <tr><td colspan="4" class="matchup-detail" id="mu-boros">
+        <p>Boros Aggro applies two-color aggressive pressure with flying threats and burn reach. Your large bodies can't block their evasion efficiently, and their burn finishes games you thought you stabilized. The key is deploying Sapling Nursery early — reach tokens block their flying creatures. Fecund Greenshell's reach blocks their 6/6 Dragon. This matchup requires drawing your interaction (Meltstrider's Resolve, Archdruid's Charm fight mode) early.</p>
+        <table class="sb-table"><thead><tr><th>Out</th><th>In</th></tr></thead><tbody>
+          <tr><td class="sb-out">−2 <span class="c">Mossborn Hydra</span></td><td class="sb-in">+3 <span class="c">Meltstrider's Resolve</span></td></tr>
+          <tr><td class="sb-out">−1 <span class="c">Esper Origins</span></td><td class="sb-in">+1 <span class="c">Pawpatch Formation</span></td></tr>
+        </tbody></table>
+        <p class="sb-note">Meltstrider's Resolve: Aura ETB fight + enchanted creature gets +0/+2 and can't be blocked by more than one creature. The fight kills their key flier AND makes your threat bigger and resilient. Pawpatch Formation destroys flying creatures outright. Trim all Hydras — they're too slow against burn reach. Trim Esper Origins — 5 mana doesn't matter when they're attacking with 3/3 fliers on turn 3.</p>
+        <p class="sb-note"><strong>Key needle:</strong> Sapling Nursery's reach tokens are your primary blockers — they chump 3/3 fliers for free and stabilize the ground simultaneously. Prioritize deploying Nursery over the combo plan in this matchup. An active Nursery with 3 Forests represents one 3/4 reach token per land drop — they can't race that with burn alone.</p>
+      </td></tr>
+
+      <tr onclick="toggle('mu-monowhite')"><td><strong>Mono-White Aggro</strong></td><td>Survival</td><td><span class="verdict verdict-dog">Unfavorable (46%)</span></td><td>Their wide board with lifelink and anthem effects is hard to race. Nursery reach tokens are critical.</td></tr>
+      <tr><td colspan="4" class="matchup-detail" id="mu-monowhite">
+        <p>Mono-White Aggro creates a wide board of lifelink creatures with Lords pumping them. Your individual threats trade down against their going-wide strategy. Sapling Nursery's 3/4 reach tokens are your best blockers — they wall off their 2/2 lifelinkers while growing the board for your attack. The combo kill is slower here because their lifelink gains negate some damage.</p>
+        <table class="sb-table"><thead><tr><th>Out</th><th>In</th></tr></thead><tbody>
+          <tr><td class="sb-out">−2 <span class="c">Mossborn Hydra</span></td><td class="sb-in">+3 <span class="c">Meltstrider's Resolve</span></td></tr>
+          <tr><td class="sb-out">−1 <span class="c">Mightform Harmonizer</span></td><td class="sb-in">+1 <span class="c">Origin of Metalbending</span></td></tr>
+        </tbody></table>
+        <p class="sb-note">Meltstrider's Resolve fights their key creature (Lord or largest threat) and makes your blocker bigger. Origin of Metalbending destroys their enchantment-based buffs or equipment. Cut Hydras (too slow against their curve) and trim a Harmonizer (combo is slower than they kill). Prioritize Nursery deployment over everything else in this matchup.</p>
+        <p class="sb-note"><strong>Key needle:</strong> Their lifelink prevents the combo kill from working at full efficiency — you need to deal damage equal to their life total which may have been padded by 4-8 lifelink points. Aim to deal trample damage through their wider board rather than relying on the unblockable one-shot. Earthbender Ascension's trample grant turns your Treefolk tokens into threatening attackers that punch through their wide board.</p>
+      </td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════ CH07 SIDEBOARD -->
+<div id="sideboard" class="section">
+  <div class="section-label">Chapter 07</div>
+  <h1>Sideboard Guide</h1>
+
+  <div class="mantra">"Torpor Orb wins games against Dimir. Mossborn Hydra wins the mirror. Meltstrider's Resolve answers aggro. Build around these three axes."</div>
+
+  <h2>Sideboard Card-by-Card</h2>
+  <div class="sb-card-guide">
+    <div class="sb-guide-row">
+      <div class="sb-guide-name">Torpor Orb ×3</div>
+      <div class="sb-guide-body">{2} Artifact. Creatures entering don't cause abilities to trigger. This is your primary hate piece for any ETB-based strategy — and the current Standard meta is saturated with ETBs. Against Dimir Midrange: Tidebinder enters but doesn't counter any ability, Floodpits Drowner enters but doesn't stun, Kaito's ETBs are blanked. Against any Reanimator strategy: reanimated creatures don't trigger. Against Izzet Spellementals: Elemental ETBs are blanked. Board in whenever you face 3+ key ETBs in their strategy. Note: Torpor Orb also blanks your own Badgermole Cub ETB — plan accordingly by earthbending before Orb resolves if you need the mana generation.</div>
+    </div>
+    <div class="sb-guide-row">
+      <div class="sb-guide-name">Meltstrider's Resolve ×3</div>
+      <div class="sb-guide-body">{1}{G} Enchantment — Aura. Enchant creature you control. ETB: enchanted creature fights up to one target creature an opponent controls. Enchanted creature gets +0/+2 and can't be blocked by more than one creature. Board in vs aggressive decks where you need to remove specific threats efficiently. The fight kills their largest creature while making your threat bigger and giving it menace. Menace (can't be blocked by one creature) is particularly effective at punching through wide boards. A Sazh's Chocobo with +0/+2 and menace that already has 8 counters = an efficient 8/9 attacker that forces two blocks. Board in: Boros Aggro, Mono-White, any aggro matchup where specific creature answers are needed.</div>
+    </div>
+    <div class="sb-guide-row">
+      <div class="sb-guide-name">Mossborn Hydra ×2 (SB)</div>
+      <div class="sb-guide-body">Additional Hydra copies for the mirror and fast combo matchups. Running 4 total (2 main + 2 SB) gives you maximum Hydra density when you need it. Board in vs the mirror, vs Izzet matchups where the Hydra outraces their clock, and vs any non-interactive matchup. The key rule: board in Hydra when the game is about raw power (mirror, combo) and board out when the game is about interaction (aggro). An Elemental subtype means Sunderflock (Spellementals) can't bounce it — important against that specific matchup.</div>
+    </div>
+    <div class="sb-guide-row">
+      <div class="sb-guide-name">Origin of Metalbending ×2</div>
+      <div class="sb-guide-body">{1}{G} Instant — Lesson. Destroy target artifact or enchantment, OR put +1/+1 counter on target creature (it gains indestructible until EOT). The Lesson tag means it can be retrieved from outside the game via Learn effects if your main deck runs any. Destroy mode: answers key permanents that your other removal misses — Sapling Nursery in the mirror, Earthbender Ascension, Equipment, key artifacts. Counter + indestructible mode: makes your Hydra or Chocobo survive combat when they have a removal spell response. Board in whenever artifact/enchantment removal is needed (control matchups, mirror, Azorius Artifacts).</div>
+    </div>
+    <div class="sb-guide-row">
+      <div class="sb-guide-name">Surrak, Elusive Hunter ×1</div>
+      <div class="sb-guide-body">{3}{G} 4/3 Legendary Human Warrior. This spell can't be countered. Trample. Whenever a creature you control or a creature spell you control becomes the target of a spell or ability an opponent controls, draw a card. The uncounterable clause bypasses their counterspell suite. The draw trigger turns their interaction into card draw for you — every Tidebinder, Drowner, Sheriff, or Long Goodbye they cast targeting your creatures draws you a card. Against Dimir and any blue deck, Surrak generates 2-3 free cards per game just by being a threat they have to interact with. Board in: Dimir, Jeskai, any control matchup.</div>
+    </div>
+    <div class="sb-guide-row">
+      <div class="sb-guide-name">Sandman, Shifting Scoundrel ×1</div>
+      <div class="sb-guide-body">{4}{G} Legendary Sand Elemental */*. Power and toughness equal your land count. Can't be blocked by creatures with power 2 or less. {3}{G}{G}: return this card and a land card from your GY to play tapped. With 8 lands (typical mid-to-late game) = 8/8 that can't be blocked by small creatures. The GY recursion means he comes back after removal — pay {3}{G}{G} and replay him with a land. Against control who repeatedly sweeps, Sandman just keeps coming back. Board in: any attrition matchup, control, midrange where you need a recurring threat.</div>
+    </div>
+    <div class="sb-guide-row">
+      <div class="sb-guide-name">Soul-Guide Lantern ×1</div>
+      <div class="sb-guide-body">{1} Artifact. ETB: exile target card from a GY. {T}, sacrifice: exile each opponent's GY. {1}{T}, sacrifice: draw a card. Your primary GY hate. Board in vs any deck relying on the GY: Reanimator strategies, Izzet Spellementals (GY-based), Simic Ouroboroid. One copy is enough in most cases — it's a tutor target via Archdruid's Charm if you need it urgently. The draw mode is relevant when the GY hate isn't needed — don't sacrifice it for value when it might be needed later.</div>
+    </div>
+    <div class="sb-guide-row">
+      <div class="sb-guide-name">Keen-Eyed Curator ×1</div>
+      <div class="sb-guide-body">{2}{G} 3/3. As long as there are 4+ card types among cards exiled with this creature, it gets +4/+4 and has trample. {1}: Exile target card from any GY. A 3/3 for 3 that can grow to a 7/7 trampler with enough GY exiling. The sustained GY exile is relevant when Soul-Guide Lantern's one-shot effect isn't enough. Against Izzet Spellementals specifically — they use the GY heavily and Curator exiles it card by card while becoming a massive threat. Board in: any GY-dependent strategy where you want recurring exile access rather than one-shot exile.</div>
+    </div>
+    <div class="sb-guide-row">
+      <div class="sb-guide-name">Pawpatch Formation ×1</div>
+      <div class="sb-guide-body">{2}{G} Instant. Three modes: destroy target creature with flying, OR destroy target enchantment, OR draw a card and create a Food token. The modal flexibility earns this a slot. Destroy flying: answers their problematic fliers that Sapling Nursery reach tokens can't profitably trade with. Destroy enchantment: the mirror Sapling Nursery answer, or removes their key enchantment-based strategy. Draw + Food: life gain is relevant in aggro races and card draw is always welcome. Board in: any matchup with relevant flying threats or key enchantments, and the mirror.</div>
+    </div>
+  </div>
+
+  <h2>Sideboard Map by Matchup</h2>
+  <div class="card-grid card-grid-2">
+    <div class="card">
+      <div class="card-label">Bring In Most Often</div>
+      <div class="card-title">Torpor Orb (vs Dimir, Reanimator, Spellementals)</div>
+      <div class="card-body">The most impactful sideboard card against the most popular opponent. Dimir Midrange's entire disruption package is ETB-based — Orb turns all of it off simultaneously. Three copies ensures you draw it G2/G3. Board in whenever you count 3+ ETBs in their key cards.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Mirror Specific</div>
+      <div class="card-title">All 4 Mossborn Hydra + Origin of Metalbending</div>
+      <div class="card-body">The mirror is won by Hydra. Board in all 4 total copies. Origin of Metalbending destroys their Sapling Nursery or Ascension. Board out all 4 Nurseries and Greenshell. The mirror is a pure speed race — slow cards lose.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════ CH08 HEURISTICS -->
+<div id="heuristics" class="section">
+  <div class="section-label">Chapter 08</div>
+  <h1>Heuristics</h1>
+
+  <div class="mantra">"The deck is deceptively difficult to play. The earthbending mechanic has weird interactions and the combo math requires practice." — January, RC Vancouver 2026</div>
+
+  <ol class="heuristic-list">
+    <li>
+      <div class="heuristic-num">01</div>
+      <div class="heuristic-body">
+        <strong>T1 Llanowar Elves → T2 Earthbender Ascension is the best curve in the deck.</strong>
+        T1 Elf enables T2 Ascension which normally costs {1}{G}. Ascension's ETB earthbends 2 lands and fetches a basic tapped — three landfall triggers before any land plays. Every subsequent land drop gives Ascension a quest counter and eventually grants +1/+1 + trample. This curve outpaces almost any opponent who doesn't interact on T2.
+      </div>
+    </li>
+    <li>
+      <div class="heuristic-num">02</div>
+      <div class="heuristic-body">
+        <strong>Earthbend onto a fetch land for two landfall triggers, not onto a basic Forest.</strong>
+        The earthbend targets a land you control — target a Fabled Passage or Escape Tunnel. The fetch becomes a 0/0 creature with a counter. When it dies, it returns as a tapped fetch land in your control. Then sacrifice it to fetch a basic — that's trigger 1 (earthbend entering) + trigger 2 (fetch finding a basic). Earthbending a basic Forest only generates one trigger.
+      </div>
+    </li>
+    <li>
+      <div class="heuristic-num">03</div>
+      <div class="heuristic-body">
+        <strong>Warp Mightform Harmonizer proactively against Dimir and any removal-heavy deck.</strong>
+        Warping Harmonizer costs {2}{G} and exiles it from your hand. The Harmonizer can be cast from exile on any later turn — it is not gone. Warping it protects it from Deep-Cavern Bat (hand disruption), Duress, and any discard effect. Against Dimir who runs Bat in 73.4% of decks, warping Harmonizer on T3 before T4 Bat is a critical sequencing play that guarantees your combo piece is available.
+      </div>
+    </li>
+    <li>
+      <div class="heuristic-num">04</div>
+      <div class="heuristic-body">
+        <strong>Sapling Nursery's indestructible activation is a response — hold it for the sweeper.</strong>
+        {1}{G}: exile Nursery → Treefolk and Forests gain indestructible until EOT. This activates at instant speed and can be used in response to a Wrath effect, Day of Black Sun, or any mass removal. Timing: hold the activation until they announce the sweep, then respond to save your board. You sacrifice Nursery but keep all Treefolk tokens. If you have two Nurseries, activate one to save the Treefolk then replay the second Nursery next turn to resume token generation.
+      </div>
+    </li>
+    <li>
+      <div class="heuristic-num">05</div>
+      <div class="heuristic-body">
+        <strong>Mossborn Hydra doubling math: N counters + 1 land = 2N counters = 2N power trample.</strong>
+        A Hydra with 4 counters = 4/4. One land trigger = 8 counters = 8/8 trampler. Two consecutive land plays: 4 → 8 → 16. With three land plays available (fetch + Fabled Passage + Icetill extra land): 4 → 8 → 16 → 32. Track your available land drops before committing to attacks — you want to know if the Hydra can reach lethal before declaring attackers.
+      </div>
+    </li>
+    <li>
+      <div class="heuristic-num">06</div>
+      <div class="heuristic-body">
+        <strong>Archdruid's Charm's fight mode requires your creature to survive — target their smallest threat.</strong>
+        Fight mode: put a +1/+1 counter on your creature, it deals damage equal to its power to their creature, their creature deals back. If their creature has more power than your creature's toughness, your creature dies. Always use Charm's fight mode on a creature your attacker can survive trading with — or use it to kill their exact-toughness creature knowing your creature will survive the return damage. The +1/+1 counter means your creature might survive one more point of damage than you'd expect.
+      </div>
+    </li>
+    <li>
+      <div class="heuristic-num">07</div>
+      <div class="heuristic-body">
+        <strong>Torpor Orb also blanks your own Badgermole Cub ETB — sequence accordingly.</strong>
+        Before Torpor Orb enters, cast and resolve Badgermole Cub (and earthbend). Then deploy Orb. This lets you get the mana generation from Cub without blanking your own ETBs. If you draw Orb after Cub is already in play and you haven't earthbent yet — you've locked yourself out. The correct play: cast Cub, earthbend, then play Orb the following turn.
+      </div>
+    </li>
+    <li>
+      <div class="heuristic-num">08</div>
+      <div class="heuristic-body">
+        <strong>Never over-invest in Sapling Nursery in the mirror — the Treefolk tokens lose to Mossborn Hydra.</strong>
+        A wall of 3/4 reach Treefolk tokens is irrelevant when the opponent has a 50-power trampler. Recognize mirror matchups quickly (they also have 4 Forests, Ascension, Nursery) and pivot entirely to the Hydra plan G1. Side out all 4 Nurseries G2/G3 and replace with Hydras + disruption. The cards you spend on Nursery are wasted resources in the mirror.
+      </div>
+    </li>
+    <li>
+      <div class="heuristic-num">09</div>
+      <div class="heuristic-body">
+        <strong>Milling is upside — Icetill Explorer's landfall mill puts fetches in your GY for replaying.</strong>
+        Every mill with Icetill has a chance to hit a fetch land (you run 10 fetch lands = 10/34 remaining library). A milled Fabled Passage becomes playable from the GY for free — triggering two more landfall effects. Track what's in your GY. When Icetill is active, you want to be playing lands that trigger it every turn — not holding them. Mill aggressively and trust the GY recursion.
+      </div>
+    </li>
+    <li>
+      <div class="heuristic-num">10</div>
+      <div class="heuristic-body">
+        <strong>Leatherhead's hexproof counter protection: use the damage trigger once, strategically.</strong>
+        Leatherhead enters with one hexproof counter — protecting her from one targeted effect. Whenever she deals combat damage to a player, you may remove a counter to destroy an artifact or enchantment they control. The key decision: when to spend the hexproof counter vs when to keep it. Against Dimir: keep the hexproof counter until they try to target her. Against control: spend it on their key permanent (Teferi, sweeper enchantment). Against the mirror: spend it on their Sapling Nursery.
+      </div>
+    </li>
+    <li>
+      <div class="heuristic-num">11</div>
+      <div class="heuristic-body">
+        <strong>Escape Tunnel's unblockable mode targets power ≤ 2 only — check before activating.</strong>
+        Escape Tunnel: {T}, sacrifice → target creature with power 2 or less can't be blocked. If your target creature has a counter making it power 3+, Escape Tunnel cannot make it unblockable. The combo kill requires the target creature to have power ≤ 2 at the time of Escape Tunnel activation. After the first Harmonizer doubling (2 → 4 power), Escape Tunnel no longer works. Sequence: activate Escape Tunnel FIRST with the 2-power creature, then start doubling with land plays.
+      </div>
+    </li>
+    <li>
+      <div class="heuristic-num">12</div>
+      <div class="heuristic-body">
+        <strong>Fecund Greenshell is a tutor target — don't deploy it naked without 8+ lands.</strong>
+        Greenshell's ETB puts a land from the top into play tapped — triggering Nursery, Ascension, and Harmonizer. The 10-land +2/+2 bonus is good but not the primary reason to run it. Deploy Greenshell when you're already at 7-8 lands and the ETB will trigger multiple effects simultaneously. Use Archdruid's Charm to tutor it as a 5-mana "play a land + trigger engine once" effect. Don't hardcast it when the floor is just a 4/6 reach — there are better 5-drops in other contexts.
+      </div>
+    </li>
+  </ol>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════ CH09 TUNING -->
+<div id="tuning" class="section">
+  <div class="section-label">Chapter 09</div>
+  <h1>Tuning Notes</h1>
+
+  <div class="mantra">"The core of 4x each Elves, Chocobo, Cub, Ascension, Icetill, Nursery, Passage, Escape Tunnel is locked. The flex slots are Harmonizer count, Hydra count, and the 2-of instants."</div>
+
+  <div class="tuning-grid">
+    <div class="tuning-cell">
+      <div class="tuning-cell-label">Harmonizer Count: 2 vs 3 vs 4</div>
+      <div class="tuning-cell-title">3 is the sweet spot</div>
+      <div class="tuning-cell-body">4 Harmonizers means you draw it too often as a dead card on an empty board. 2 means you might not find it when the combo window opens. 3 is the number January settled on for RC Vancouver. Remember: Archdruid's Charm can tutor the 4th copy when needed, which effectively makes 3 copies behave like 3.5. Post-board in mirrors, trim to 1-2 because the combo kill is secondary to the Hydra plan.</div>
+    </div>
+    <div class="tuning-cell">
+      <div class="tuning-cell-label">Leatherhead Inclusion (TMNT Build)</div>
+      <div class="tuning-cell-title">2 copies replacing flex slots</div>
+      <div class="tuning-cell-body">The TMNT build runs 2 Leatherhead replacing 1 Mossborn Hydra main and 1 Mightform Harmonizer. Her hexproof counter + trample provides a more resilient combo piece than Harmonizer in removal-heavy metas. If Dimir is dominant: run 2 Leatherhead. If mirrors are dominant: keep more Hydras. Current meta (Apr 2026): Dimir at 8% meta, mirrors at ~15% — lean Leatherhead.</div>
+    </div>
+    <div class="tuning-cell">
+      <div class="tuning-cell-label">Esper Origins vs Fecund Greenshell</div>
+      <div class="tuning-cell-title">Both are flex 1-2 slots</div>
+      <div class="tuning-cell-body">January runs 2 Esper Origins + 1 Fecund Greenshell. Esper Origins is a strong top deck (surveil 2, gain 2, flashback to transform into a Saga). Greenshell has a higher ceiling but lower floor. In aggro-heavy metas: cut both for more interaction (Meltstrider's Resolve). In slow metas: more Greenshells. The RC Vancouver 2-1 split is well-tested.</div>
+    </div>
+    <div class="tuning-cell">
+      <div class="tuning-cell-label">Ba Sing Se Count: 2 vs 3</div>
+      <div class="tuning-cell-title">3 is the RC number</div>
+      <div class="tuning-cell-body">Ba Sing Se enters tapped unless you control a basic land — T1 Ba Sing Se is essentially a tapped Forest. But {2}{G}{T}: earthbend 2 makes it a mana-neutral land activation in the mid-game that generates double landfall triggers. The problem is it's not a Forest, which matters for Sapling Nursery cost reduction and Archdruid's Charm's {G}{G}{G}. Don't run 4 — the non-Forest penalty stacks. 3 is the correct balance.</div>
+    </div>
+    <div class="tuning-cell">
+      <div class="tuning-cell-label">Promising Vein: 2 copies</div>
+      <div class="tuning-cell-title">The mana-positive T2 land</div>
+      <div class="tuning-cell-body">Promising Vein enters as {C} mana but its activated ability {1}{T} sacrifices to fetch any basic tapped — enabling the T2 earthbend-onto-fetch play with Cub or setting up later land sequences. Not a Forest, so it doesn't help Nursery affinity or Charm. Run exactly 2 — they fill a specific niche but aren't generically good enough for 3+. Side note: {C} mana doesn't trigger Badgermole Cub's "tap creature for mana" — only colored mana sources do.</div>
+    </div>
+    <div class="tuning-cell">
+      <div class="tuning-cell-label">Torpor Orb: 3 copies in SB</div>
+      <div class="tuning-cell-title">Non-negotiable in current meta</div>
+      <div class="tuning-cell-body">Dimir Midrange is 15.8% of the Cincinnati meta and Torpor Orb wins that matchup single-handedly. Three copies ensures you draw it G2/G3. If you cut to 2 or less, you'll have games where Dimir has the better G2 simply because you didn't find Orb. At RC Cincinnati expect to face Dimir 3-4 times. Three Orbs is mandatory preparation.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════ CH10 PREP -->
+<div id="prep" class="section">
+  <div class="section-label">Chapter 10</div>
+  <h1>Prep Sheet</h1>
+
+  <button class="print-btn" onclick="window.print()">&#9113; Print This Sheet</button>
+
+  <div class="print-section">
+    <div class="print-title">Mono-Green Landfall</div>
+    <div class="print-sub">Team Resolve · Standard RC Prep 2026 · RC Vancouver 2nd Place List</div>
+
+    <div class="print-grid">
+      <div>
+        <div class="print-col-title">Key Oracle Reminders</div>
+        <div class="print-line">Earthbend onto FETCH not basic (2 triggers not 1)</div>
+        <div class="print-line">Escape Tunnel: target must have power ≤ 2 — check BEFORE Harmonizer doublings</div>
+        <div class="print-line">Mightform Harmonizer: doubles POWER until EOT only</div>
+        <div class="print-line">Sapling Nursery indestructible: exile Nursery to save Treefolk from sweeper</div>
+        <div class="print-line">Torpor Orb also blanks your own Cub ETB — deploy Cub first, then Orb</div>
+        <div class="print-line">Leatherhead hexproof counter: protect vs targeted removal, spend on key permanent</div>
+        <div class="print-line">Mossborn Hydra: enters with 1 counter, landfall DOUBLES counters each trigger</div>
+        <div class="print-line">Warp Harmonizer to exile before Bat/Duress strips it from hand</div>
+        <div class="print-line">Ba Sing Se NOT a Forest (doesn't reduce Nursery or help Charm casting)</div>
+        <div class="print-line">Fabled Passage untaps if you control 4+ lands — time sacrifice accordingly</div>
+        <div class="print-line">Archdruid's Charm {G}{G}{G} — plan Forest count before activating</div>
+        <div class="print-line">Esper Origins flashback from GY: if cast from GY → exile + transform to Saga</div>
+        <div class="print-col-title" style="margin-top:16px;">Combo Kill Sequence</div>
+        <div class="print-line">1. Escape Tunnel target (power ≤ 2, makes unblockable)</div>
+        <div class="print-line">2. Land enters → Harmonizer doubles power (2→4)</div>
+        <div class="print-line">3. Land enters → doubles (4→8)</div>
+        <div class="print-line">4. Land enters → doubles (8→16)</div>
+        <div class="print-line">5. Land enters → doubles (16→32) → attack for lethal</div>
+        <div class="print-line">Needs: Icetill (extra lands) + Harmonizer + 4 land plays + Escape Tunnel</div>
+      </div>
+
+      <div>
+        <div class="print-col-title">Matchup Quick Reference</div>
+
+        <div class="print-mu">
+          <div class="print-mu-name">Dimir Midrange</div>
+          <div class="print-mu-role">Favorable 62% · Combo Mode</div>
+          <div class="print-cols">
+            <div>
+              <div class="print-col-label">Out</div>
+              <div class="print-row"><span>Mossborn Hydra ×2</span><span class="print-qty">−2</span></div>
+              <div class="print-row"><span>Esper Origins ×1</span><span class="print-qty">−1</span></div>
+              <div class="print-row"><span>Harmonizer ×1</span><span class="print-qty">−1</span></div>
+            </div>
+            <div>
+              <div class="print-col-label">In</div>
+              <div class="print-row"><span>Torpor Orb ×3</span><span class="print-qty">+3</span></div>
+              <div class="print-row"><span>Surrak</span><span class="print-qty">+1</span></div>
+            </div>
+          </div>
+          <div class="print-needle">Torpor Orb blanks their entire ETB suite. Warp Harmonizer vs Bat.</div>
+        </div>
+
+        <div class="print-mu">
+          <div class="print-mu-name">Izzet Prowess</div>
+          <div class="print-mu-role">Even 51% · Race Mode</div>
+          <div class="print-cols">
+            <div>
+              <div class="print-col-label">Out</div>
+              <div class="print-row"><span>Sapling Nursery ×2</span><span class="print-qty">−2</span></div>
+              <div class="print-row"><span>Fecund Greenshell</span><span class="print-qty">−1</span></div>
+            </div>
+            <div>
+              <div class="print-col-label">In</div>
+              <div class="print-row"><span>Mossborn Hydra ×2</span><span class="print-qty">+2</span></div>
+              <div class="print-row"><span>Pawpatch Formation</span><span class="print-qty">+1</span></div>
+            </div>
+          </div>
+          <div class="print-needle">Hydra outraces their clock. Hydra is Elemental — Sunderflock can't bounce.</div>
+        </div>
+
+        <div class="print-mu">
+          <div class="print-mu-name">Mono-Green Mirror</div>
+          <div class="print-mu-role">Even 50% · Mossborn Hydra Wins</div>
+          <div class="print-cols">
+            <div>
+              <div class="print-col-label">Out</div>
+              <div class="print-row"><span>Sapling Nursery ×4</span><span class="print-qty">−4</span></div>
+              <div class="print-row"><span>Esper Origins ×1</span><span class="print-qty">−1</span></div>
+              <div class="print-row"><span>Fecund Greenshell ×1</span><span class="print-qty">−1</span></div>
+            </div>
+            <div>
+              <div class="print-col-label">In</div>
+              <div class="print-row"><span>Mossborn Hydra ×2</span><span class="print-qty">+2</span></div>
+              <div class="print-row"><span>Origin of Metalbending ×2</span><span class="print-qty">+2</span></div>
+              <div class="print-row"><span>Pawpatch Formation ×1</span><span class="print-qty">+1</span></div>
+            </div>
+          </div>
+          <div class="print-needle">4 total Hydras. Charm exile mode kills their Hydra. Nursery is useless here.</div>
+        </div>
+      </div>
+
+      <div>
+        <div class="print-col-title">More Matchups</div>
+
+        <div class="print-mu">
+          <div class="print-mu-name">Jeskai / Azorius Control</div>
+          <div class="print-mu-role">Favorable 64% · Grind Mode</div>
+          <div class="print-cols">
+            <div>
+              <div class="print-col-label">Out</div>
+              <div class="print-row"><span>Mossborn Hydra ×2</span><span class="print-qty">−2</span></div>
+              <div class="print-row"><span>Badgermole Cub ×1</span><span class="print-qty">−1</span></div>
+            </div>
+            <div>
+              <div class="print-col-label">In</div>
+              <div class="print-row"><span>Surrak</span><span class="print-qty">+1</span></div>
+              <div class="print-row"><span>Sandman</span><span class="print-qty">+1</span></div>
+            </div>
+          </div>
+          <div class="print-needle">Nursery survives sweepers. Surrak uncounterable + draws. Sandman recurs.</div>
+        </div>
+
+        <div class="print-mu">
+          <div class="print-mu-name">Boros Aggro</div>
+          <div class="print-mu-role">Unfavorable 44% · Survival</div>
+          <div class="print-cols">
+            <div>
+              <div class="print-col-label">Out</div>
+              <div class="print-row"><span>Mossborn Hydra ×2</span><span class="print-qty">−2</span></div>
+              <div class="print-row"><span>Esper Origins ×1</span><span class="print-qty">−1</span></div>
+            </div>
+            <div>
+              <div class="print-col-label">In</div>
+              <div class="print-row"><span>Meltstrider's Resolve ×3</span><span class="print-qty">+3</span></div>
+            </div>
+          </div>
+          <div class="print-needle">Reach tokens block fliers. Resolve fights key threat. Nursery is stabilizer.</div>
+        </div>
+
+        <div class="print-mu">
+          <div class="print-mu-name">Mono-White Aggro</div>
+          <div class="print-mu-role">Unfavorable 46% · Survival</div>
+          <div class="print-cols">
+            <div>
+              <div class="print-col-label">Out</div>
+              <div class="print-row"><span>Mossborn Hydra ×2</span><span class="print-qty">−2</span></div>
+              <div class="print-row"><span>Harmonizer ×1</span><span class="print-qty">−1</span></div>
+            </div>
+            <div>
+              <div class="print-col-label">In</div>
+              <div class="print-row"><span>Meltstrider's Resolve ×3</span><span class="print-qty">+3</span></div>
+            </div>
+          </div>
+          <div class="print-needle">Nursery reach tokens wall their wide board. Trample from Ascension punches through.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div><!-- end .page -->
+
+<footer>
+  <span><a href="deck-guides.html" style="color:rgba(242,237,230,0.3);text-decoration:none;">Team Resolve</a></span>
+  <span>Standard 2026 · Mono-Green Landfall</span>
+  <span>RC Prep · April 2026</span>
+</footer>
+
+<script>
+function show(id) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  event.target.classList.add('active');
+  window.scrollTo(0,0);
+}
+function toggle(id) {
+  const el = document.getElementById(id);
+  el.classList.toggle('open');
+}
+</script>
+</body>
+</html>
