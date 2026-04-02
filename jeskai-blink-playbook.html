@@ -196,7 +196,8 @@
   <button class="nav-link" onclick="show('engines')">Engines</button><button class="nav-link" onclick="show('roles')">Roles</button>
   <button class="nav-link" onclick="show('matchups')">Matchups</button>
   <button class="nav-link" onclick="show('sideboard')">Sideboard</button>
-  <button class="nav-link" onclick="show('heuristics')">Heuristics</button>
+  <button class="nav-link" onclick="show('edges')">Edges</button>
+<button class="nav-link" onclick="show('heuristics')">Heuristics</button>
   <button class="nav-link" onclick="show('tuning')">Tuning</button><button class="nav-link" onclick="show('prep')">Prep</button>
 </nav>
 
@@ -913,7 +914,7 @@
   <!-- ELDRAZI TRON vs JESKAI -->
   <div id="mu_etron_j" class="matchup-detail">
     <h3>Eldrazi Tron — Bounce Chalice, Counter Their Threats</h3>
-    <p>Eldrazi Tron's primary game plan against Jeskai is to land <span class="c">Chalice of the Void</span> at X=1 to shut off your entire interaction suite (most of your spells cost 1 mana). <span class="c">Phelia, Exuberant Shepherd</span> can exile and bounce Chalice as a permanent on her attack trigger — this is your cleanest in-game answer. Once Tron is assembled, <span class="c">Thought-Knot Seer</span> exiles your key disruption card and <span class="c">Reality Smasher</span> haste attacks immediately. Your creatures apply pressure while you hold countermagic for their key threats. This is a favorable matchup because your counter suite is more consistent than their threat suite.</p>
+    <p>Your first priority is <span class="c">Phelia, Exuberant Shepherd</span> on the board — she bounces <span class="c">Chalice of the Void</span> on her attack trigger every turn, restoring your instant-speed interaction each cycle. Without Chalice active, your counter suite handles everything they deploy. Apply creature pressure while holding <span class="c">Consign to Memory</span> for <span class="c">Thought-Knot Seer</span>'s exile ETB trigger (counter it — you keep your card) and <span class="c">Expedition Map</span>'s search activation (counter it — they miss a Tron land). This is a favorable matchup: your counter suite is more consistent than their threat suite and you answer their hate pieces in-game.</p>
     <h3>Play vs Draw</h3>
     <div class="pd-grid">
       <div class="pd-col">
@@ -952,7 +953,7 @@
   <!-- DOMAIN ZOO vs JESKAI -->
   <div id="mu_zoo_j" class="matchup-detail">
     <h3>Domain Zoo — Hard Matchup: Scion Hexproof Blanks Your Removal</h3>
-    <p>Domain Zoo applies fast pressure with domain-scaling threats. The biggest problem: Scion of Draco gains hexproof with full domain. Your primary removal (<span class="c">Solitude</span>, <span class="c">Prismatic Ending</span>) both target — Scion is immune. Your answers: White Orchid Phantom destroys one of their fetch/shock lands when it enters, reducing their domain count from 5 potentially to 4, which removes Scion's hexproof (hexproof requires domain 5). <span class="c">Ephemerate</span> on White Orchid Phantom ETBs it again, destroying a second land. <span class="c">Consign to Memory</span> can counter a triggered ability — but Zoo has no key triggered abilities. This matchup requires racing more than interacting.</p>
+    <p>Your primary line is reducing their domain count below 5 using <span class="c">White Orchid Phantom</span> — it destroys a nonbasic land on ETB, and <span class="c">Ephemerate</span> fires it a second time immediately. Dropping them from 5 domain to 4 removes <span class="c">Scion of Draco</span>'s hexproof, making it targetable by <span class="c">Solitude</span> and <span class="c">Prismatic Ending</span>. When Scion still has hexproof, ignore it and apply pressure: your token generation via <span class="c">Ocelot Pride</span> can race their life total if you stop trying to answer the unanswerable. This matchup rewards aggression and Phantom sequencing over trying to answer their board.</p>
     <h3>Play vs Draw</h3>
     <div class="pd-grid">
       <div class="pd-col">
@@ -963,7 +964,7 @@
       <div class="pd-col">
         <div class="pd-label">On the Draw</div>
         <div class="pd-title">Race — Don't Try to Answer Scion</div>
-        <div class="pd-body">If Scion has hexproof, ignore it and race. Attack with everything, calculate lethal via <span class="c">Ocelot Pride</span> tokens plus Scion damage you're taking. If you can kill them before Scion's lifelink and first strike generate too much life gain, the hexproof is irrelevant. Scion is exiled by its own end step anyway with Goryo's lines but not in Zoo.</div>
+        <div class="pd-body">If Scion has hexproof, ignore it and race. Attack with everything, calculate lethal via <span class="c">Ocelot Pride</span> tokens plus Scion damage you're taking. If you can kill them before Scion's lifelink and first strike generate too much life gain, the hexproof is irrelevant.</div>
       </div>
     </div>
     <h3>Sideboard</h3>
@@ -1173,6 +1174,43 @@
 </div>
 
 <!-- ── HEURISTICS ── -->
+<div id="edges" class="section">
+  <div class="section-label">Lines &amp; Tactics</div>
+  <h1>Edge Cases &amp;<br>Rules Precision</h1>
+  <div class="mantra">"The difference between a good play and a great play is knowing why it works."</div>
+
+  <div class="callout">
+    <strong>Consign to Memory — Triggered Abilities Only, Not Activated</strong>
+    <span class="c">Consign to Memory</span> counters <em>triggered abilities</em> (look for "when," "whenever," "at the beginning of") and <em>colorless spells</em>. It CANNOT counter: activated abilities (including <span class="c">Psychic Frog</span>'s discard, <span class="c">Griselbrand</span>'s draw 7, any loyalty ability). It CAN counter: <span class="c">Archon of Cruelty</span>'s ETB trigger, <span class="c">Summoner's Pact</span>'s upkeep trigger, <span class="c">Urza's Saga</span> chapter III tutor trigger, <span class="c">Expedition Map</span>'s search trigger, <span class="c">Thought-Knot Seer</span>'s "exile a card" ETB trigger. Replicate ({1}{U} per copy) lets one Consign counter multiple independent triggers.
+  </div>
+
+  <div class="callout">
+    <strong>Ephemerate Rebound Only Works From Hand</strong>
+    <span class="c">Ephemerate</span> says "Rebound (If you cast this spell from your hand, exile it as it resolves. At the beginning of your next upkeep, you may cast this card from exile without paying its mana cost.)" If Ephemerate is cast from any zone other than your hand — including from <span class="c">Snapcaster Mage</span> flashback, or any other effect — it does NOT rebound. The rebound trigger only fires when cast from hand. Always cast your hand Ephemertes before any copy or flashback effects to preserve rebound.
+  </div>
+
+  <div class="callout">
+    <strong>Phelia's Trigger Is On Attack, Not On Damage</strong>
+    <span class="c">Phelia, Exuberant Shepherd</span>'s ability fires when she attacks: "Whenever Phelia attacks, exile up to one other target nonland permanent you control or a nonland permanent an opponent controls." This is NOT a combat damage trigger — it fires when you declare her as an attacker, before combat damage. This means: (1) she doesn't need to connect to exile the target, (2) the exiled permanent returns at end of turn regardless of combat outcome, (3) even if she's blocked and dies, the exile already happened and the card returns.
+  </div>
+
+  <div class="callout">
+    <strong>White Orchid Phantom Destroys — It's a Mandatory ETB</strong>
+    <span class="c">White Orchid Phantom</span>'s ETB reads: "When White Orchid Phantom enters, destroy target nonbasic land an opponent controls. Search your library for a basic land card, put it onto the battlefield tapped, then shuffle." The destroy is NOT optional — if an opponent has a nonbasic land, you must target one. You then get a basic regardless of whether the destroy succeeds. If a land has indestructible, it survives but you still get your basic. Importantly, the land Phantom targets must be nonbasic — you cannot target a basic land even if you want to.
+  </div>
+
+  <div class="callout">
+    <strong>Sanctifier en-Vec — What Protection Covers</strong>
+    <span class="c">Sanctifier en-Vec</span> has protection from black and red: it cannot be damaged, enchanted, equipped, blocked, or targeted by anything black or red. Coverage: <span class="c">Galvanic Discharge</span> (red), <span class="c">Lava Dart</span> (red), <span class="c">Fatal Push</span> (black), <span class="c">Thoughtseize</span> (black), <span class="c">Lightning Bolt</span> (red) — all blank. NOT covered: colorless removal (Chalice triggers), white or green removal (Path to Exile, Solitude from opponent), trample damage (a 10/10 trampler assigns lethal trample damage through protection). Sanctifier winning requires keeping it alive against non-red, non-black removal.
+  </div>
+
+  <div class="callout">
+    <strong>Teferi TRav — You Still Have Instant Speed</strong>
+    <span class="c">Teferi, Time Raveler</span>'s static ability reads: "Each opponent can only cast spells during their own turn." This restricts opponents ONLY — you retain full instant-speed capabilities. Under your own Teferi, you can still: cast <span class="c">Ephemerate</span> at instant speed during combat, <span class="c">Solitude</span> at instant speed in response to anything, and hold up <span class="c">Consign to Memory</span> freely. The restriction is one-sided. Use this to play Teferi, then continue playing instant-speed interaction as normal — opponents cannot respond at instant speed, but you can.
+  </div>
+
+</div>
+
 <div id="heuristics" class="section">
   <div class="section-label">Chapter 08</div>
   <h1>Heuristics &amp;<br>Quick Rules</h1>
