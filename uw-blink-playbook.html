@@ -1003,11 +1003,13 @@
   <button class="nav-link active" onclick="show('identity')">Identity</button>
   <button class="nav-link" onclick="show('decklist')">Decklist</button>
   <button class="nav-link" onclick="show('gameplan')">Gameplan</button>
+  <button class="nav-link" onclick="show('engines')">Engines</button>
   <button class="nav-link" onclick="show('roles')">Roles</button>
   <button class="nav-link" onclick="show('matchups')">Matchups</button>
   <button class="nav-link" onclick="show('edges')">Edges</button>
   <button class="nav-link" onclick="show('sideboard')">SB Guide</button>
   <button class="nav-link" onclick="show('heuristics')">Heuristics</button>
+  <button class="nav-link" onclick="show('tuning')">Tuning</button>
   <button class="nav-link" onclick="show('prep')">Prep</button>
 </nav>
 
@@ -1287,8 +1289,125 @@
   </div>
 
   <!-- ── ROLES ── -->
-  <div id="roles" class="section">
-    <div class="section-label">Chapter 04</div>
+  
+<!-- ══ CH04 ENGINES ══ -->
+<div id="engines" class="section">
+  <div class="section-label">Chapter 04</div>
+  <h1>Core Engines</h1>
+  <div class="mantra">"Every creature in this deck does something when it enters. Your job is to make it enter as many times as possible."</div>
+
+  <div class="engine-block">
+    <div class="engine-header">
+      <div class="engine-letter">E1</div>
+      <div>
+        <div class="engine-name">Ephemerate Blink Loop</div>
+        <div style="font-size:13px;color:rgba(242,237,230,0.5);margin-top:4px;">Primary engine — fires every ETB in the deck twice, then rebounds</div>
+      </div>
+    </div>
+    <div class="engine-body">
+      <div class="engine-step">
+        <div class="engine-step-label">Trigger 1</div>
+        <div class="engine-step-title">Cast Ephemerate</div>
+        <div class="engine-step-body">Target any creature you control. That creature is exiled and immediately returns — ETB fires. Cost: {W}. Every creature in the deck has an ETB worth firing.</div>
+      </div>
+      <div class="engine-step">
+        <div class="engine-step-label">Trigger 2</div>
+        <div class="engine-step-title">Rebound</div>
+        <div class="engine-step-body">Ephemerate exiles itself as it resolves if cast from hand. At your next upkeep, it casts itself for free — firing the ETB a second time. One {W} spell = two blink triggers across two turns.</div>
+      </div>
+      <div class="engine-step">
+        <div class="engine-step-label">Best Targets</div>
+        <div class="engine-step-title">Solitude · Phantom · Shepherd</div>
+        <div class="engine-step-body">Solitude: exile two threats for free. White Orchid Phantom: destroy two nonbasic lands. Starfield Shepherd: two Warp tutors. Every target doubles its effect.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="engine-block">
+    <div class="engine-header">
+      <div class="engine-letter">E2</div>
+      <div>
+        <div class="engine-name">Phelia Attack Loop</div>
+        <div style="font-size:13px;color:rgba(242,237,230,0.5);margin-top:4px;">Tempo engine — resets permanents on attack, returns at end step</div>
+      </div>
+    </div>
+    <div class="engine-body">
+      <div class="engine-step">
+        <div class="engine-step-label">On Attack</div>
+        <div class="engine-step-title">Exile Any Nonland Permanent</div>
+        <div class="engine-step-body">Phelia's trigger fires when she attacks — exile a nonland permanent you or your opponent controls. No mana required. This fires before damage, so no connection needed.</div>
+      </div>
+      <div class="engine-step">
+        <div class="engine-step-label">End of Turn</div>
+        <div class="engine-step-title">Permanent Returns</div>
+        <div class="engine-step-body">The exiled permanent returns at end of turn. Your creatures re-enter triggering ETBs again. Opponent's permanents "reset" — Planeswalkers lose activations made this turn.</div>
+      </div>
+      <div class="engine-step">
+        <div class="engine-step-label">Best Uses</div>
+        <div class="engine-step-title">Bounce Chalice · Reset Phantom · Loop Shepherd</div>
+        <div class="engine-step-body">Exile Chalice of the Void = restore your instant-speed interaction for a full turn. Exile your own Phantom = second land destruction trigger on re-entry. Exile own Shepherd = second Warp tutor.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="engine-block">
+    <div class="engine-header">
+      <div class="engine-letter">E3</div>
+      <div>
+        <div class="engine-name">Guide of Souls Energy Loop</div>
+        <div style="font-size:13px;color:rgba(242,237,230,0.5);margin-top:4px;">Resource engine — generates energy + lifegain, fuels Ocelot Pride cats</div>
+      </div>
+    </div>
+    <div class="engine-body">
+      <div class="engine-step">
+        <div class="engine-step-label">On Creature ETB</div>
+        <div class="engine-step-title">You Gain Life</div>
+        <div class="engine-step-body">Guide of Souls: when a creature enters the battlefield under your control, you gain 1 life. In a blink deck, this fires multiple times per turn cycle. Every Ephemerate target + every Phelia loop generates life.</div>
+      </div>
+      <div class="engine-step">
+        <div class="engine-step-label">Life Threshold</div>
+        <div class="engine-step-title">Ocelot Pride Triggers</div>
+        <div class="engine-step-body">Ocelot Pride creates a 1/1 Cat token whenever you gain life above your starting total. In a single Ephemerate turn (2 ETBs = 2 life), Pride generates 2 Cat tokens. A looping engine becomes a token engine.</div>
+      </div>
+      <div class="engine-step">
+        <div class="engine-step-label">Energy Sink</div>
+        <div class="engine-step-title">+2/+2 Flying Grant</div>
+        <div class="engine-step-body">Pay {E}{E}{E}: target attacking creature gets +2/+2 and flying until end of turn. Use on your largest attacker on the turn you need to close. Guide of Souls also gains {E} when it attacks — start banking energy by turn 2.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="engine-block">
+    <div class="engine-header">
+      <div class="engine-letter">E4</div>
+      <div>
+        <div class="engine-name">Starfield Shepherd Warp Chain</div>
+        <div style="font-size:13px;color:rgba(242,237,230,0.5);margin-top:4px;">Tutor engine — ETB searches any enchantment, fueled by Ephemerate rebound</div>
+      </div>
+    </div>
+    <div class="engine-body">
+      <div class="engine-step">
+        <div class="engine-step-label">On ETB</div>
+        <div class="engine-step-title">Warp Searches Any Enchantment</div>
+        <div class="engine-step-body">Starfield Shepherd's Warp keyword lets you cast it for {1}{W} and search your library for an enchantment, putting it into your hand. The ETB tutors for the enchantment you need most: Witch Enchanter vs artifacts, Rest in Peace vs GY, Ocelot Pride vs control.</div>
+      </div>
+      <div class="engine-step">
+        <div class="engine-step-label">With Ephemerate</div>
+        <div class="engine-step-title">Two Tutors for One Card</div>
+        <div class="engine-step-body">Ephemerate Shepherd on cast = tutor #1. Rebound next upkeep = Shepherd ETB #2 = tutor #2. For {W} + {1}{W} you get two enchantment searches across two turns. This makes your sideboard functionally redundant — you find what you need.</div>
+      </div>
+      <div class="engine-step">
+        <div class="engine-step-label">Priority Targets</div>
+        <div class="engine-step-title">Context-Dependent</div>
+        <div class="engine-step-body">G1: Witch Enchanter (answers Blood Moon), Ocelot Pride (clock). G2 vs combo: Rest in Peace. G2 vs creatures: Sanctifier en-Vec. G2 vs control: Quantum Riddler (draw engine). The tutor makes every SB enchantment accessible on turn 3.</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div id="roles" class="section">
+    <div class="section-label">Chapter 05</div>
     <h1>Role<br>Assignment</h1>
 
     <p>Before turn 1, decide your role. This is the single most important pre-game decision with UW Blink. Stick to your role — but reevaluate every two turns.</p>
@@ -1360,7 +1479,7 @@
 
   <!-- ── MATCHUPS ── -->
   <div id="matchups" class="section">
-    <div class="section-label">Chapter 05</div>
+    <div class="section-label">Chapter 06</div>
     <h1>Matchup<br>Matrix</h1>
     <p>Click any matchup to expand the full game plan, sideboard, and If X → Do Y guide.</p>
 
@@ -1773,7 +1892,7 @@
 </div>
 
 <div id="sideboard" class="section">
-    <div class="section-label">Chapter 06</div>
+    <div class="section-label">Chapter 07</div>
     <h1>Sideboard<br>Deep Dive</h1>
 
     <p>Full per-matchup breakdown — role, play/draw notes, ins/outs, key card timing, and If X → Do Y. Use this to study. Use the <strong>Prep</strong> tab for the printable quick reference.</p>
@@ -2395,7 +2514,7 @@
 
   <!-- ── HEURISTICS ── -->
   <div id="heuristics" class="section">
-    <div class="section-label">Chapter 07</div>
+    <div class="section-label">Chapter 08</div>
     <h1>Master<br>Heuristics</h1>
 
     <div class="mantra">
@@ -2447,8 +2566,64 @@
   </div>
 
   <!-- ── PREP ── -->
-  <div id="prep" class="section">
-    <div class="section-label">Chapter 08</div>
+  
+<!-- ══ CH09 TUNING ══ -->
+<div id="tuning" class="section">
+  <div class="section-label">Chapter 09</div>
+  <h1>Tuning</h1>
+  <div class="mantra">"Every flex slot in UW Blink trades off one axis for another. Know what you're cutting before you cut it."</div>
+
+  <div class="card-grid card-grid-2">
+    <div class="card">
+      <div class="card-label">Quantum Riddler: 2 vs 3 vs 4</div>
+      <div class="card-title">The Draw Engine Count</div>
+      <div class="card-body">Most lists run 3. At 4: more consistent draw engine, but Riddler at Warp is slow against fast aggro and clogs blink lines. At 2: leaner, more room for interaction or Mockingbird, but you see it less in grind games. Run 4 if your meta is heavy on control or mirror. Cut to 2 if Prowess or Burn is above 15% of the room — their clock is faster than Riddler can generate value.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Mockingbird: 0 vs 1 vs 2</div>
+      <div class="card-title">The Mirror / Flex Creature</div>
+      <div class="card-body">The 1-copy is standard. Mockingbird at X copies any creature with MV ≤ X — at 2 mana it's your best mirror tool (copies their Phelia or Riddler for immediate ETB value). Cut to 0 against aggro-heavy metas where you need more interaction. Go to 2 in mirror-heavy tournament environments. Never go above 2 — dilutes your main engine density.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Consign to Memory: 0 vs 1 main</div>
+      <div class="card-title">The Main Deck Counter</div>
+      <div class="card-body">The current shell runs 1 main + 3 SB. The 1 main copy is primarily for triggered ability counters you need in G1 — Archon ETB in Glockulous, Pact upkeep trigger vs Titan. Cut the main copy if your expected field has no combo. Keep it if you expect Glockulous, Neoform, or Amulet Titan above 10% combined. The 3 SB copies are non-negotiable regardless.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Gemstone Caverns: SB vs Main</div>
+      <div class="card-title">The Speed Caverns</div>
+      <div class="card-body">Currently 1 SB copy. Caverns enters with a luck counter if it's in your opening hand (exile any other card) — you gain a free mana on turn 1 on the draw. Board in vs any combo matchup where being "on the play" for the first spell matters — Neoform, Glockulous, Storm. Consider main decking if your local meta is more than 30% combo. Never go above 1.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Sanctifier en-Vec: 1 main vs 0 main</div>
+      <div class="card-title">Flex Hate Bear Slot</div>
+      <div class="card-body">Currently 1 main. Sanctifier has protection from black and red (can't be targeted/blocked/damaged by either). In a meta with Boros Energy and Prowess it's a free threat that turns off their removal suite. Cut it to 0 main in control-heavy metas where it does nothing G1. Never cut the 2 SB copies — they're mandatory for aggro matchups.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Wrath of the Skies: 0 vs 2 SB</div>
+      <div class="card-title">The Board Wipe Count</div>
+      <div class="card-body">Currently 2 SB. X-cost sweeper that hits creatures with power ≤ X. At X=3 it clears most boards without hitting your own Kappa or large Constructs (but does hit your Phelia/Guide). Consider going 1 SB if your matchup spread has little aggro. Go 3 SB if token-wide decks like Boros Energy or Jeskai Blink are prevalent — the extra copy improves your ability to find it in G2 without Shepherd.</div>
+    </div>
+  </div>
+
+  <h2>Standard Register Conditions</h2>
+  <div class="card-grid card-grid-2">
+    <div class="card">
+      <div class="card-label">Register This Deck When</div>
+      <div class="card-title">Green Lights</div>
+      <div class="card-body">The meta is creature-based (Boros Energy, Prowess, Zoo) — your free removal and token generation outperform. Mirror matchup is high — your blink loops generate more value than anyone else. No heavy GY-hate meta that would blank your ETB loops.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Avoid When</div>
+      <div class="card-title">Red Lights</div>
+      <div class="card-body">Heavy combo meta above 25% — your disruption is tempo-based, not lock-based. Mass land destruction strategies (your Phantom is symmetric — opponent can also use Flagstones lines against you). Teferi, Time Raveler is at 15%+ of the meta (locks your instant-speed blink loops).</div>
+    </div>
+  </div>
+
+</div>
+
+<div id="prep" class="section">
+    <div class="section-label">Chapter 10</div>
     <h1>Tournament<br>Prep</h1>
 
     <h2>20-Minute Crash Course</h2>
