@@ -123,6 +123,9 @@
   footer span { font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.1em; text-transform:uppercase; }
   @media (max-width:768px) { .header-inner,nav,.page,footer { padding-left:24px; padding-right:24px; } .header-title { font-size:40px; } .header-right { display:none; } .decklist,.role-grid,.engine-body,.tuning-grid { grid-template-columns:1fr; } nav { padding:0 24px; } }
   @media print { nav,.print-btn,footer { display:none; } .section { display:block !important; } }
+  .edge-case { border:1px solid var(--accent); background:var(--accent-light); padding:16px 20px; margin:16px 0; font-size:14px; }
+  .edge-case-label { font-family:'DM Mono',monospace; font-size:9px; letter-spacing:0.15em; text-transform:uppercase; color:var(--accent); margin-bottom:6px; }
+  .edge-case-body { font-weight:300; color:var(--ink); line-height:1.5; }
 </style>
 </head>
 <body>
@@ -161,14 +164,6 @@
 
 <div class="page">
 
-
-<!-- ══════════════════════════════════════════════════════════ LINES -->
-<div id="lines" class="section">
-  <div class="section-label">Lines & Tactics</div>
-  <h1>Lines &<br>Tactics</h1>
-  <div class="mantra">"The edge cases that win games nobody expects you to win."</div>
-  <p><em>This section is being expanded with oracle-verified edge cases, timing windows, and 1-in-5000 interactions. Check back soon.</em></p>
-</div>
 
 <!-- CH01: OVERVIEW -->
 <div id="identity" class="section active">
@@ -431,11 +426,102 @@
 
 <!-- ══════════════════════════════════════════════════════════ LINES -->
 <div id="lines" class="section">
-  <div class="section-label">Lines & Tactics</div>
+  <div class="section-label">Lines & Tactics — The Titan Bible</div>
   <h1>Lines &<br>Tactics</h1>
-  <div class="mantra">"The edge cases that win games nobody expects you to win."</div>
-  <p><em>This section is being expanded with oracle-verified edge cases, timing windows, and 1-in-5000 interactions. Check back soon.</em></p>
+  <div class="mantra">"Cascade is the most rules-dense mechanic in Modern. Every timing window matters. Every interaction has a ruling."</div>
+
+  <h2>Living End Resolution — Three Steps in Order</h2>
+  <div class="card-grid card-grid-3">
+    <div class="card">
+      <div class="card-label">Step 1</div>
+      <div class="card-title">Each Player Exiles Their GY</div>
+      <div class="card-body">ALL creature cards from ALL graveyards are exiled simultaneously. Your cycled creatures (Striped Riverwinder, Street Wraith, etc.) are exiled. Opponent's creatures in GY are also exiled. Non-creature cards (instants, sorceries, lands) stay in the graveyard — only creature cards are exiled.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Step 2</div>
+      <div class="card-title">Each Player Sacrifices All Creatures</div>
+      <div class="card-body">ALL creatures in play are sacrificed simultaneously. Your cascade creature (Violent Outburst doesn't leave a body, but Shardless Agent is a 2/2 that dies here). Opponent's entire board is wiped. Sacrifice — not destroy. Indestructible doesn't save them. Death triggers fire (Blood Artist, etc.).</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Step 3</div>
+      <div class="card-title">Exiled Creatures Return</div>
+      <div class="card-body">ALL cards exiled in Step 1 enter the battlefield simultaneously. Your 5/5 Riverwinder, 7/7 Waker of Waves, 6/5 Troll, 3/4 Street Wraith — all enter at once. ETB triggers fire (Architects of Will, Foundation Breaker, Grief). <strong>ONLY cards exiled in Step 1 return</strong> — creatures sacrificed in Step 2 that got exiled by replacement effects (Leyline of the Void) do NOT return.</div>
+    </div>
+  </div>
+
+  <h2>Oracle-Verified Edge Cases</h2>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Cascade Timing — The Trigger Is on Cast, Not Resolution</div>
+    <div class="edge-case-body">Cascade triggers when you CAST the cascade spell. The cascade trigger goes on the stack ABOVE the cascade spell. Cascade resolves first: you exile cards until you hit a nonland card with lower MV, then you may cast it without paying its mana cost. If you cast Living End this way, it goes on the stack above everything. Opponent can respond to Living End with instants/abilities BEFORE it resolves. Key: the cascade spell (Violent Outburst) is still on the stack below Living End — it resolves after Living End.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Living End Has No Mana Cost — MV Is 0</div>
+    <div class="edge-case-body">Living End has no mana cost (not {0} — literally no cost). Its mana value is 0. This matters for: Chalice of the Void on 0 COUNTERS Living End (MV 0 spell). Spell Snare does NOT counter it (MV 0, not MV 2). Force of Negation CAN counter it (counters any noncreature spell). Cascade finds it because you exile until you find a nonland card with MV LESS than the cascade spell (MV 3) — Living End at MV 0 qualifies.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Leyline of the Void vs Living End — Replacement Effect Interaction</div>
+    <div class="edge-case-body">If opponent has <span class="c">Leyline of the Void</span> ("Cards that would be put into opponent's GY are exiled instead"): Step 1 still exiles YOUR creatures from your GY (they return in Step 3). Step 2 sacrifices all creatures — but YOUR sacrificed creatures are exiled by Leyline instead of going to GY. Per Scryfall ruling: "those cards were not exiled by Living End's first effect and will not be returned." So opponent's Leyline means your creatures that were already in GY return, but creatures sacrificed during resolution do NOT. This is why Living End boards in enchantment removal aggressively vs Leyline decks.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Nihil Spellbomb in Response to Living End</div>
+    <div class="edge-case-body">Opponent casts Nihil Spellbomb targeting you in response to Living End. Your GY is exiled by Spellbomb BEFORE Living End resolves. When Living End's Step 1 happens, your GY has no creature cards to exile. Step 2 still sacrifices all creatures. Step 3 returns nothing (for you) but opponent's creatures come back. Devastating. Counter-play: hold Subtlety or Force of Negation to protect Living End from GY hate on the stack.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Endurance in Response to Living End</div>
+    <div class="edge-case-body">Opponent flashes <span class="c">Endurance</span> targeting you: your GY goes to bottom of library. Living End resolves: Step 1 finds no creatures in your GY. Step 2 sacrifices all creatures (including Endurance itself). Step 3 returns nothing for you. Brutal. If they target THEMSELVES: their GY goes to library, but Endurance is a creature that entered the battlefield — it gets sacrificed in Step 2. Their creatures from the library don't come back (they weren't exiled from GY).</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Grief Evoke + Living End — Free Hand Disruption Then It Returns</div>
+    <div class="edge-case-body">Evoke Grief (exile a black card from hand): Grief enters, ETB triggers (opponent discards), then Grief is sacrificed (evoke clause). Grief goes to your GY as a 3/2 creature. When Living End resolves: Grief comes back from GY with its ETB — opponent discards AGAIN. You get a free Thoughtseize effect pre-combo AND Grief returns post-combo for a second disruption. This is the deck's primary pre-combo interaction line.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Subtlety vs Cascade Spell — Putting It on Top or Bottom</div>
+    <div class="edge-case-body">Opponent casts Subtlety targeting your Violent Outburst: "owner puts it on their choice of the top or bottom of their library." BUT cascade already triggered when Outburst was CAST. Subtlety bounces Outburst to your library, but the cascade trigger is already on the stack and still resolves. Living End still fires. Subtlety is BAD against cascade spells. To stop Living End, you must counter Living End ITSELF (on the stack after cascade resolves) or counter the cascade trigger with Consign to Memory.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Force of Negation Exiles Living End Permanently</div>
+    <div class="edge-case-body">FoN: "Counter target noncreature spell. If countered this way, exile it instead of putting it into GY." Living End is a noncreature spell. FoN counters it AND exiles it. Living End goes to exile permanently — it can never be suspended from exile (suspend only works from hand), and it's removed from the game entirely. In a deck running 4 Living End, losing one to FoN exile means only 3 remain. Two FoN exiles = only 2 left in the deck.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Suspend from Hand Only — Can't Suspend from GY or Exile</div>
+    <div class="edge-case-body">Suspend: "Rather than cast this card from your hand, pay {2}{B}{B} and exile it with three time counters." Suspend ONLY works from your hand. If Living End is in your GY (milled, discarded), you cannot suspend it. If it's in exile (FoN'd, Surgical'd), you cannot suspend it. The only way to cast Living End outside of cascade is to suspend it from hand — a 3-turn delay that's almost never used in competitive play because cascade is instant-speed.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Consign to Memory Counters the Cascade Trigger</div>
+    <div class="edge-case-body"><span class="c">Consign to Memory</span> ({U} instant, Replicate): "Counter target triggered ability or colorless spell." Cascade is a TRIGGERED ability. Consign can counter the cascade trigger itself — Living End never gets cast. This is the cleanest answer: one card, one mana, cascade never resolves. With Replicate: {U}{U}{1} counters TWO cascade triggers in the same turn.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Cycling Is Not Casting — Can't Be Countered by Counterspells</div>
+    <div class="edge-case-body">Cycling ({cost}, Discard this card: Draw a card) is an ACTIVATED ABILITY, not a spell. You can't counter cycling with Counterspell, Spell Pierce, or Force. The only way to stop cycling: Stifle (counter activated ability), Damping Sphere/Drannith Magistrate/Chalice (prevent casting, not cycling). Cycling puts the creature in your GY for Living End while drawing you closer to your cascade spell.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Street Wraith — Cycling Costs 2 Life, Not Mana</div>
+    <div class="edge-case-body">Street Wraith: "Cycling—Pay 2 life." No mana cost for cycling. Can be cycled on T0 before you play a land. Puts a 3/4 swampwalk creature in your GY for free (well, 2 life). This is essentially "pay 2 life: draw a card and put a 3/4 in your GY." The life cost is real against aggro — cycling 3 Wraiths = 6 life, which can cost you the game against Burn or Prowess.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Violent Outburst Is an Instant — Cascade at Instant Speed</div>
+    <div class="edge-case-body">Violent Outburst ({1}{R}{G} instant): cascade + "creatures you control get +1/+0 until EOT." The +1/+0 is irrelevant — you're casting this for cascade. The key: it's an INSTANT. You can cascade into Living End at instant speed. End of opponent's turn: cast Outburst, cascade into Living End, wipe their board, return your army. They untap facing 20+ power of creatures.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Demonic Dread Requires a Target — Can Target Your Own Creature</div>
+    <div class="edge-case-body">Demonic Dread ({1}{B}{R} sorcery): cascade + "target creature can't block this turn." It REQUIRES a target creature. If no creatures are in play, you can't cast it. In the early game before Living End: you may need to cast a creature just to have a target for Dread. You CAN target your own creature. Post-board: if opponent has no creatures and you have none, Dread is dead. Outburst doesn't have this restriction.</div>
+  </div>
 </div>
+
 
 <!-- CH05: ROLES -->
 <div id="roles" class="section">
