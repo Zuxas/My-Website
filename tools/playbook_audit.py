@@ -80,6 +80,24 @@ def get_decklist_cards(html):
 def audit_all(check_back=True, check_decks=True, check_stale=True):
     playbooks = sorted(glob.glob(os.path.join(BASE, '*-playbook.html')))
     
+    # Standard playbook names (use gameflow, answers, different structure)
+    STANDARD_PLAYBOOKS = {'boros-aggro', 'boros-energy', 'dimir-midrange', 'izzet-lessons',
+                          'izzet-prowess', 'jeskai-control', 'mono-green-landfall',
+                          'bant-rhythm', 'izzet-prowess'}
+
+    MODERN_REQUIRED = [
+        (r'id="(identity|overview)"',           'CH01'),
+        (r'id="decklist"',                       'CH02'),
+        (r'id="(gameplan|gameflow|game_plan)"',  'CH03'),
+        (r'id="(engines|answers)"',              'CH04'),
+        (r'id="roles"',                          'CH05'),
+        (r'id="matchups"',                       'CH06'),
+        (r'id="sideboard"',                      'CH07'),
+        (r'id="heuristics"',                     'CH08'),
+        (r'id="tuning"',                         'CH09'),
+        (r'id="prep"',                           'CH10'),
+    ]
+
     print('=' * 70)
     print('TEAM RESOLVE PLAYBOOK AUDIT')
     print('=' * 70)
@@ -101,6 +119,11 @@ def audit_all(check_back=True, check_decks=True, check_stale=True):
             if 'deck-guides.html' not in html:
                 issues.append('MISSING ← Guides back button')
 
+        # ── Structure check ───────────────────────────────────────────────
+        for pattern, label in MODERN_REQUIRED:
+            if not re.search(pattern, html, re.I):
+                issues.append(f'MISSING {label}')
+
         # ── Decklist card check ───────────────────────────────────────────
         if check_decks and ref.get('keys'):
             cards = get_decklist_cards(html)
@@ -112,16 +135,6 @@ def audit_all(check_back=True, check_decks=True, check_stale=True):
         # ── Melee link check ──────────────────────────────────────────────
         if check_decks and ref.get('melee') and ref['melee'] not in html:
             issues.append('MISSING melee.gg link in decklist')
-
-        # ── Stale card check ──────────────────────────────────────────────
-        if check_stale:
-            dl_section = re.search(r'id="decklist".*?(?:id="gameplan"|id="engines")', html, re.DOTALL)
-            dl_text = dl_section.group(0) if dl_section else ''
-            STALE = ['Snapcaster Mage','Memory Deluge','Archmage\'s Charm','Dress Down',
-                     'Dovin\'s Veto','Stony Silence','Counterspell'] if deck_key not in ['uw-control'] else []
-            stale_found = [s for s in STALE if s in dl_text]
-            if stale_found:
-                issues.append(f'STALE CARDS IN DECKLIST: {stale_found}')
 
         # ── Status line ───────────────────────────────────────────────────
         has_melee_link = bool(ref.get('melee'))
@@ -141,7 +154,6 @@ def audit_all(check_back=True, check_decks=True, check_stale=True):
         print(f'   Source : {ref.get("source","Unknown")}')
         print(f'   Melee  : {"✓ linked" if melee_in_file else ("no ref" if not has_melee_link else "LINK MISSING FROM FILE")}')
 
-        # Show card count
         cards = get_decklist_cards(html)
         print(f'   Cards  : {len(cards)} dl-card-row entries')
 

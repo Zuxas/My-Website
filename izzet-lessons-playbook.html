@@ -148,6 +148,7 @@
   <button class="nav-link" onclick="show('gameflow')">Gameplan</button>
   <button class="nav-link" onclick="show('lines')">Lines</button>
   <button class="nav-link" onclick="show('engines')">Engines</button>
+  <button class="nav-link" onclick="show('roles')">Roles</button>
   <button class="nav-link" onclick="show('matchups')">Matchups</button>
   <button class="nav-link" onclick="show('sideboard')">Sideboard</button>
   <button class="nav-link" onclick="show('heuristics')">Heuristics</button>
@@ -473,6 +474,40 @@
       <div class="engine-step"><div class="engine-step-label">Protect</div><div class="engine-step-title">Soul-Guide Lantern Kills Your Engine</div><div class="engine-step-body">Soul-Guide Lantern ({T}, sacrifice: exile each opponent's GY) is the #1 card opponents bring in against you. One activation resets your Lesson count to 0, bringing you back below threshold instantly. Your GY is not optional value — it's the engine itself. Side in Annul or Disdainful Stroke specifically to counter the Lantern resolving.</div></div>
     </div>
   </div>
+</div>
+
+
+<!-- CH05b ROLES -->
+<div id="roles" class="section">
+  <div class="section-label">Chapter 05b</div>
+  <h1>Role Assignment</h1>
+  <div class="mantra">"Before T1, decide: are you the control player or the combo player? Izzet Lessons can be both — but never at the same time."</div>
+
+  <div class="role-grid">
+    <div class="role-card">
+      <div class="role-name" style="color:var(--accent)">Combo</div>
+      <div class="role-desc">Default role. Spend turns 1-3 filling your GY with Lessons, cross the 3-Lesson threshold, then execute the Monument drain loop. You are racing to a specific board state.</div>
+      <div class="role-matchups">vs Control · vs Midrange · vs any deck without a T3 clock</div>
+    </div>
+    <div class="role-card">
+      <div class="role-name" style="color:var(--danger)">Control</div>
+      <div class="role-desc">Take this role when they threaten to kill you before you reach threshold. Spend early turns on removal — Firebending Lesson, Combustion Technique, Sear. Delay their clock, then resume combo once the board is manageable.</div>
+      <div class="role-matchups">vs Izzet Prowess · vs Boros Aggro · vs any T3 clock deck</div>
+    </div>
+    <div class="role-card">
+      <div class="role-name" style="color:var(--gold)">Tempo</div>
+      <div class="role-desc">Against decks you're faster than but can't fully ignore. Use Boomerang Basics to bounce their key permanent and buy the one turn needed to hit threshold. Play one disruptive spell, then back to combo.</div>
+      <div class="role-matchups">vs Mono-Green Landfall · vs slow ramp · vs any deck with one key permanent</div>
+    </div>
+  </div>
+
+  <h2>Role Mistakes to Avoid</h2>
+  <ul style="list-style:none;padding:0;margin:24px 0;">
+    <li style="padding:12px 0;border-bottom:1px solid var(--rule);font-weight:300;"><strong>Staying Combo against Prowess.</strong> If they have a 5/5 attacking by T3, you can't afford to pass the turn deploying Gran-Gran without holding up removal. Switch to Control — deal with their board first, reach threshold second.</li>
+    <li style="padding:12px 0;border-bottom:1px solid var(--rule);font-weight:300;"><strong>Over-committing to Control.</strong> Casting too many removal spells delays your Lesson threshold. Every Firebending Lesson used as removal is one GY Lesson — that's the silver lining. Every non-Lesson removal spell delays threshold with no GY benefit. Prioritize Lesson-type removal when possible.</li>
+    <li style="padding:12px 0;border-bottom:1px solid var(--rule);font-weight:300;"><strong>Deploying Artist's Talent into open mana.</strong> Artist's Talent at sorcery speed leaves you tapped. If they have removal, Gran-Gran dies on the stack or immediately after. Never deploy Artist's Talent when they have removal mana open.</li>
+    <li style="padding:12px 0;font-weight:300;"><strong>Ignoring Soul-Guide Lantern.</strong> Lantern resets your entire engine. Even when playing Combo mode, always keep a counterspell available when Lantern could hit your GY. The role doesn't change — but your threat assessment does.</li>
+  </ul>
 </div>
 
 <!-- CH06 MATCHUPS -->
