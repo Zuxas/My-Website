@@ -118,6 +118,9 @@
   footer span { font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.1em; text-transform:uppercase; }
   @media (max-width:768px) { .header-inner,nav,.page,footer { padding-left:24px; padding-right:24px; } .header-title { font-size:40px; } .header-right { display:none; } .decklist,.engine-body,.tuning-grid,.print-grid { grid-template-columns:1fr; } nav { padding:0 24px; } }
   @media print { nav,.print-btn,footer { display:none; } .section { display:block !important; } }
+  .edge-case { border:1px solid var(--accent); background:var(--accent-light); padding:16px 20px; margin:16px 0; font-size:14px; }
+  .edge-case-label { font-family:'DM Mono',monospace; font-size:9px; letter-spacing:0.15em; text-transform:uppercase; color:var(--accent); margin-bottom:6px; }
+  .edge-case-body { font-weight:300; color:var(--ink); line-height:1.5; }
 </style>
 </head>
 <body>
@@ -138,9 +141,9 @@
 </div>
 <nav>
   <a class="nav-brand" href="deck-guides.html">Team Resolve</a>
-  <button class="nav-link active" onclick="show('overview')">Overview</button>
+  <button class="nav-link active" onclick="show('overview')">Identity</button>
   <button class="nav-link" onclick="show('decklist')">Decklist</button>
-  <button class="nav-link" onclick="show('gameflow')">Game Flow</button>
+  <button class="nav-link" onclick="show('gameflow')">Gameplan</button>
   <button class="nav-link" onclick="show('lines')">Lines</button>
   <button class="nav-link" onclick="show('engines')">Engines</button>
   <button class="nav-link" onclick="show('roles')">Roles</button>
@@ -305,7 +308,7 @@
 <!-- CH03 GAME FLOW -->
 <div id="gameflow" class="section">
   <div class="section-label">Chapter 03</div>
-  <h1>Game Flow</h1>
+  <h1>Gameplan</h1>
   <div class="mantra">"Cast your noncreature spells BEFORE attacking. Every spell is a free +1/+1 or +2/+0 in combat."</div>
   <h2>Turn-by-Turn Framework</h2>
   <div class="card-grid card-grid-3">
@@ -542,6 +545,34 @@
       <div class="card-body">Return YOUR permanents: save a Stormchaser's Talent from being exiled by Seam Rip (bounce it before Seam Rip exiles it), save an Otter from being killed (bounce in response to removal). Return THEIR permanents: bounce their Earthbender Ascension (resets quest counters), bounce their key creature during combat (they lose a blocker). Remember: return mode says "1-2 target creatures/enchantments you own" — only your permanents for the return-to-hand mode.</div>
     </div>
   </div>
+
+  <h2>Oracle-Verified Edge Cases</h2>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Slickshot Show-Off Gets +2/+0 Per Noncreature, Not +1/+1</div>
+    <div class="edge-case-body">Slickshot's trigger is NOT prowess — it gives +2/+0, not +1/+1. It stacks: 3 spells = +6/+0 until EOT. A 3/1 flying haste that becomes a 9/1 after 3 spells. It dies to any 1-toughness removal regardless of pump. The +2/+0 matters for lethal math: Slickshot threatens more damage per spell than standard prowess creatures.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Heartfire Hero — Valiant Triggers Only ONCE Per Turn</div>
+    <div class="edge-case-body">"Whenever this creature becomes the target of a spell or ability you control for the FIRST time each turn." Second and third targeting spells don't trigger valiant. The +1/+1 counter is permanent (unlike prowess). The death trigger deals damage equal to POWER (including counters). A Hero with 3 counters that dies deals 4 damage.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Leyline of Resonance — Copies Trigger Prowess Again</div>
+    <div class="edge-case-body">"Whenever you cast an instant or sorcery that targets only a single creature you control, copy that spell." The COPY triggers prowess/Slickshot again (it's a new spell on the stack). Cast Burst Lightning targeting Swiftspear → Leyline copies → Swiftspear gets prowess from original AND copy = +2/+2 total. Careful: the copy also targets your creature — redirect to opponent's creature or face if possible.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Plot — Cast from Exile Triggers Prowess</div>
+    <div class="edge-case-body">Slickshot's Plot {1}{R}: exile from hand, cast later as sorcery (no mana cost). Casting from exile IS casting — triggers prowess, Slickshot's +2/+0, and all "when you cast" effects. Plot lets you bank a creature during a turn you can't use it, then deploy for free later with haste + prowess chain.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Screaming Nemesis — "Can't Gain Life" Is Permanent for the Game</div>
+    <div class="edge-case-body">"If a player is dealt damage this way, they can't gain life for the rest of the game." This lasts the ENTIRE GAME — not until end of turn. Even if Nemesis leaves play, the "can't gain life" persists. One Nemesis redirect shuts off all lifegain for the opponent permanently.</div>
+  </div>
+
 </div>
 
 <!-- CH07 SIDEBOARD -->

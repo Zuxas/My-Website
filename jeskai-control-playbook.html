@@ -108,6 +108,9 @@
   footer span { font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.1em; text-transform:uppercase; }
   @media (max-width:768px) { .header-inner,nav,.page,footer { padding-left:24px; padding-right:24px; } .header-title { font-size:40px; } .header-right { display:none; } .decklist,.tuning-grid,.print-grid { grid-template-columns:1fr; } nav { padding:0 24px; } }
   @media print { nav,.print-btn,footer { display:none; } .section { display:block !important; } }
+  .edge-case { border:1px solid var(--accent); background:var(--accent-light); padding:16px 20px; margin:16px 0; font-size:14px; }
+  .edge-case-label { font-family:'DM Mono',monospace; font-size:9px; letter-spacing:0.15em; text-transform:uppercase; color:var(--accent); margin-bottom:6px; }
+  .edge-case-body { font-weight:300; color:var(--ink); line-height:1.5; }
 </style>
 </head>
 <body>
@@ -128,9 +131,9 @@
 </div>
 <nav>
   <a class="nav-brand" href="deck-guides.html">Team Resolve</a>
-  <button class="nav-link active" onclick="show('overview')">Overview</button>
+  <button class="nav-link active" onclick="show('overview')">Identity</button>
   <button class="nav-link" onclick="show('decklist')">Decklist</button>
-  <button class="nav-link" onclick="show('gameflow')">Game Flow</button>
+  <button class="nav-link" onclick="show('gameflow')">Gameplan</button>
   <button class="nav-link" onclick="show('answers')">Answer Suite</button>
   <button class="nav-link" onclick="show('lines')">Lines</button>
   <button class="nav-link" onclick="show('roles')">Roles</button>
@@ -242,7 +245,7 @@
 <!-- CH03 GAME FLOW -->
 <div id="gameflow" class="section">
   <div class="section-label">Chapter 03</div>
-  <h1>Game Flow</h1>
+  <h1>Gameplan</h1>
   <div class="mantra">"Your job for the first 4 turns: don't die. Your job turns 5-8: answer everything. Your job after that: cast Revelation and win."</div>
   <h2>Turn-by-Turn Framework</h2>
   <div class="card-grid card-grid-3">
@@ -474,6 +477,33 @@
         <div style="font-size:14px;font-weight:300;color:var(--mid);line-height:2;">Voice's "your turn" restriction ends. You can now cast Helix on their end step. But any damage from this turn's combat and ETBs has already been dealt.</div>
       </div>
     </div>
+  </div>
+
+  <h2>Oracle-Verified Edge Cases</h2>
+
+  <div class="edge-case">
+    <div class="edge-case-label">No More Lies — Exiles If Countered, Not Just Counter</div>
+    <div class="edge-case-body">{W}{U} instant: "Counter unless they pay {3}. If countered this way, exile it instead of putting into graveyard." The exile matters against: flashback, escape, and GY recursion. If they DON'T pay {3}: their spell is exiled permanently. If they DO pay: their spell resolves normally and goes to GY. The {3} tax is steep early game but easy to pay T5+. Board out against decks with excess mana.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Sunfall — Exile, Not Destroy. Incubate Scales with Board Size</div>
+    <div class="edge-case-body">{3}{W}{W}: "Exile all creatures. Incubate X where X = creatures exiled." Exile bypasses indestructible, undying, death triggers, and "when dies" effects. The Incubator token has X +1/+1 counters — in a board stall with 6 creatures, you get a 6/6 for {2} to transform. Sunfall hits YOUR creatures too — don't play it with a board advantage unless the Incubator is worth more.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Tishana's Tidebinder — Permanent Ability Removal on Flash Body</div>
+    <div class="edge-case-body">{2}{U} 3/2 Flash Merfolk. ETB: "Counter up to one target activated or triggered ability. If countered this way, that permanent loses all abilities for as long as Tidebinder remains on the battlefield." This is permanent ability suppression — not until end of turn. A Tidebinder that counters Ob Nixilis's loyalty ability makes Ob lose ALL abilities while Tidebinder lives. Kill Tidebinder: Ob gets abilities back. The "up to one" means you can flash Tidebinder in with no target if you just need a 3/2 blocker.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Scrollshift as Protection — Exile Your Own Creature in Response</div>
+    <div class="edge-case-body">"Exile up to one target artifact, creature, or enchantment you control, then return it." In response to opponent's removal: Scrollshift your creature → it's exiled (removal fizzles, no legal target) → it returns. The creature is a new object: no longer targeted by anything. Also draws a card. This is a {2}{W} protection spell + cantrip that dodges ALL targeted removal.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Ob Nixilis Casualty — Copy with Lower Loyalty</div>
+    <div class="edge-case-body">"Casualty X: sacrifice creature with power X. Copy this spell. Copy isn't legendary, has starting loyalty X." If you sacrifice a 3-power creature: you get the original Ob (starting loyalty from card) AND a copy with loyalty 3. Both are planeswalkers named Ob Nixilis but the copy isn't legendary — no legend rule conflict. Two Obs on T3 is devastating. The copy can use +1 or -2 immediately.</div>
   </div>
 </div>
 

@@ -126,6 +126,9 @@
   footer span { font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.1em; text-transform:uppercase; }
   @media (max-width:768px) { .header-inner,nav,.page,footer { padding-left:24px; padding-right:24px; } .header-title { font-size:40px; } .header-right { display:none; } .decklist,.role-grid,.engine-body,.tuning-grid,.print-grid { grid-template-columns:1fr; } nav { padding:0 24px; } }
   @media print { nav,.print-btn,footer { display:none; } .section { display:block !important; } }
+  .edge-case { border:1px solid var(--accent); background:var(--accent-light); padding:16px 20px; margin:16px 0; font-size:14px; }
+  .edge-case-label { font-family:'DM Mono',monospace; font-size:9px; letter-spacing:0.15em; text-transform:uppercase; color:var(--accent); margin-bottom:6px; }
+  .edge-case-body { font-weight:300; color:var(--ink); line-height:1.5; }
 </style>
 </head>
 <body>
@@ -148,9 +151,9 @@
 
 <nav>
   <a class="nav-brand" href="deck-guides.html">Team Resolve</a>
-  <button class="nav-link active" onclick="show('overview')">Overview</button>
+  <button class="nav-link active" onclick="show('overview')">Identity</button>
   <button class="nav-link" onclick="show('decklist')">Decklist</button>
-  <button class="nav-link" onclick="show('gameflow')">Game Flow</button>
+  <button class="nav-link" onclick="show('gameflow')">Gameplan</button>
   <button class="nav-link" onclick="show('lines')">Lines</button>
   <button class="nav-link" onclick="show('engines')">Engines</button>
   <button class="nav-link" onclick="show('roles')">Roles</button>
@@ -333,7 +336,7 @@
 <!-- ══════════════════════════════════════════════════════════ CH03 GAME FLOW -->
 <div id="gameflow" class="section">
   <div class="section-label">Chapter 03</div>
-  <h1>Game Flow</h1>
+  <h1>Gameplan</h1>
 
   <div class="mantra">"T1 Elf into T2 Ascension is the best curve in the deck. Every land drop after that is a free counter and a free trample trigger."</div>
 
@@ -533,6 +536,33 @@
         Torpor Orb stops triggered abilities that trigger when creatures enter. It does NOT stop: Icetill Explorer's static abilities (play extra land, play from GY — those are continuous), Badgermole Cub's "tap creature for mana, add {G}" (that's triggered by tapping for mana, not by entering), Earthbender Ascension's landfall triggered ability (triggered by land entering, not creature entering). Orb is narrower than it appears — most of your engine remains intact.
       </div>
     </div>
+  </div>
+
+  <h2>Oracle-Verified Edge Cases</h2>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Lotus Cobra — Mana on EVERY Land Entry, Not Just Your Land Drop</div>
+    <div class="edge-case-body">"Landfall — Whenever a land you control enters, add one mana of any color." This triggers on: your normal land drop, fetch land cracking (land searched enters = second trigger), Innkeeper's Talent putting a land in, any effect that puts lands onto the battlefield. Cobra + fetch = 2 mana in one action. Cobra + multiple landfall triggers = explosive mana turns.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Innkeeper's Talent — Class Level Matters for Counter Interaction</div>
+    <div class="edge-case-body">Level 1: "At beginning of combat, put a +1/+1 counter on target creature." This targets — triggers valiant on the creature if it has valiant. Level 2 ({G}): "Permanents you control with counters on them have trample and ward {1}." Ward {1} means opponent pays {1} extra to target your creatures with counters. Level 3 ({3}{G}): "Whenever one or more +1/+1 counters are put on a creature you control, put that many +1/+1 counters on each other creature you control." This doubles all counter placement across your board.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Territorial Scythecat — Counters Are Permanent, Not Until EOT</div>
+    <div class="edge-case-body">"Landfall — put a +1/+1 counter." Unlike prowess (until EOT), Scythecat's growth is permanent. A Scythecat that triggers 4 times over 4 turns is a 7/7 trample. With Innkeeper's Talent Level 3: each landfall trigger puts a counter on Scythecat AND every other creature you control. A single fetch crack with Level 3 Talent + 3 creatures = 6 total counters distributed.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Kami of Transience — Triggers on Enchantment CAST, Not Entry</div>
+    <div class="edge-case-body">"Whenever you cast an enchantment spell, put a +1/+1 counter." Cast, not ETB — means tokens don't trigger it (tokens aren't cast). Kami also has: "At end step, if an enchantment was put into GY from battlefield this turn, return Kami from GY to hand." This makes Kami self-recurring — kill it, sacrifice an enchantment, get Kami back. Persistent threat that's hard to permanently answer.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Fetch Land + Cobra + Scythecat = 2 Triggers + 2 Mana</div>
+    <div class="edge-case-body">Play fetch land: Scythecat gets +1/+1, Cobra adds mana. Crack fetch: new land enters → Scythecat gets ANOTHER +1/+1, Cobra adds ANOTHER mana. One fetch = 2 landfall triggers = +2/+2 on Scythecat + 2 free mana from Cobra. This is 4 total triggers if you have 2 Scythecats. The deck's explosive potential comes from maximizing landfall triggers per turn.</div>
   </div>
 </div>
 
