@@ -209,6 +209,7 @@
   <button class="nav-link" onclick="show('engines')">Engines</button>
   <button class="nav-link" onclick="show('roles')">Roles</button>
   <button class="nav-link" onclick="show('matchups')">Matchups</button>
+  <button class="nav-link" onclick="show('edges')">Edges</button>
   <button class="nav-link" onclick="show('sideboard')">Sideboard</button>
   <button class="nav-link" onclick="show('heuristics')">Heuristics</button>
   <button class="nav-link" onclick="show('tuning')">Tuning</button>
@@ -904,7 +905,7 @@
   <!-- IZZET AFFINITY -->
   <div id="mu_affinity" class="matchup-detail">
     <h3>Izzet Affinity — Consign + Wrath Dismantle the Engine</h3>
-    <p>Izzet Affinity is an artifact-based aggro deck that lives and dies by <span class="c">Mox Opal</span>, <span class="c">Cranial Plating</span>, and <span class="c">Arcbound Ravager</span>. <span class="c">Consign to Memory</span> is your most disruptive card — it counters Arcbound Ravager's modular trigger and Urza's Saga's chapter III tutor trigger. <span class="c">March of Otherworldly Light</span> exiles any artifact by paying white cards. Preboard, lean on <span class="c">Prismatic Ending</span> for low-MV threats and <span class="c">Solitude</span> for <span class="c">Arcbound Ravager</span>. <span class="c">Wrath of the Skies</span> destroys all artifacts, creatures, and enchantments with MV ≤ X — use banked energy from <span class="c">Tune the Narrative</span> to hit Mox Opal (MV 1) and Ravager (MV 2) cleanly.</p>
+    <p>Your two targets are <span class="c">Mox Opal</span> on sight and <span class="c">Arcbound Ravager</span> before it dies. Kill Opal with <span class="c">Prismatic Ending</span> for W (MV 1) — removing their free mana source cuts <span class="c">Thoughtcast</span> off and sets their clock back a full turn. When Ravager dies, hold <span class="c">Consign to Memory</span> for the modular trigger — countering it means the counters don't redistribute onto an evasive creature. <span class="c">Consign</span> also counters <span class="c">Urza's Saga</span>'s chapter III tutor ability before they can fetch a key piece. <span class="c">March of Otherworldly Light</span> exiles any artifact by paying white mana. Postboard <span class="c">Wrath of the Skies</span> at X=2 sweeps Opal (MV 1) and Ravager (MV 2) in one shot.</p>
 
     <h3>Play vs Draw</h3>
     <div class="pd-grid">
@@ -990,7 +991,7 @@
   <!-- DOMAIN ZOO -->
   <div id="mu_zoo" class="matchup-detail">
     <h3>Domain Zoo — 0% DB Win Rate. Understand Why.</h3>
-    <p>Domain Zoo is the worst matchup in the format for UW Control at 0% in the DB. Their creatures are undercosted threats with domain scaling: <span class="c">Territorial Kavu</span> (2/2 + 1 for each basic land type = 5/5+ on turn 2), Wild Nacatl (3/3 for G with domain), and <span class="c">Scion of Draco</span> (gains hexproof, flying, lifelink, trample, haste, and first strike with full domain for WW via cost reduction). The hexproof blanks targeted interaction — but <span class="c">Wrath of the Skies</span> and <span class="c">Supreme Verdict</span> don't target, so they bypass hexproof cleanly. Their clock kills on turn 3-4 before you can deploy <span class="c">Supreme Verdict</span> with counter backup. This matchup is not unwinnable but if you expect Zoo to be over 8% of the room, strong consideration should be given to not registering this deck.</p>
+    <p>Your worst matchup — 0% in the live DB. Your only plan before turn 4 is stall: every resource you spend buys time for <span class="c">Supreme Verdict</span> with counter backup. You are not winning the board; you are delaying until Verdict resolves. <span class="c">Scion of Draco</span> has hexproof from full domain — <span class="c">Solitude</span> and targeted removal are blanked. Use <span class="c">Supreme Verdict</span> and <span class="c">Wrath of the Skies</span> only: neither targets, so both bypass hexproof cleanly. If Zoo is above 8% of your expected field, strongly consider playing a different deck — this matchup is structural, not solvable by play skill alone.</p>
 
     <h3>Play vs Draw</h3>
     <div class="pd-grid">
@@ -1070,7 +1071,7 @@
       <li><span class="if-label">If</span><span><strong>They pitch <span class="c">Atraxa, Grand Unifier</span> to <span class="c">Faithful Mending</span>:</strong> They are setting up <span class="c">Goryo's Vengeance</span>. Don't spend FoN on Mending — Mending itself doesn't kill you. Hold your counter for the <span class="c">Goryo's Vengeance</span> on their next turn. If you have RiP in hand, this is the moment to deploy it on your next turn before they have mana for Goryo's.</span></li>
       <li><span class="if-label">If</span><span><strong><span class="c">Goryo's Vengeance</span> is on the stack:</strong> Force of Negation pitches a blue card free on their turn (Goryo's is a noncreature spell). Counterspell also works. This is the cleanest counter target — stopping it here means their creature stays in the GY and they've spent the mana for nothing. Even if they have another in hand, you've bought turns.</span></li>
       <li><span class="if-label">If</span><span><strong><span class="c">Atraxa, Grand Unifier</span> enters the battlefield:</strong> <span class="c">Consign to Memory</span> counters the ETB trigger (look at top 10, put one of each card type into hand). They don't get the 7-card refuel. Atraxa is still a 7/7 flying vigilance trample lifelink — <span class="c">Solitude</span> exiles it. Don't wait for their end step, kill it before they untap.</span></li>
-      <li><span class="if-label">If</span><span><strong><span class="c">Griselbrand</span> enters the battlefield:</strong> <span class="c">Solitude</span> exiles it (exile up to one target creature, no mana needed if evoking). Counter any draw activation with <span class="c">Counterspell</span> — wait, actually Counterspell counters spells not activated abilities. Use <span class="c">Solitude</span> to exile Griselbrand before they activate, not after. <span class="c">Counterspell</span> theies. Counter the activation attempt is wrong. Instead: just Solitude before they activate.</span></li>
+      <li><span class="if-label">If</span><span><strong><span class="c">Griselbrand</span> enters the battlefield:</strong> <span class="c">Solitude</span> exiles it immediately — evoke for free, target Griselbrand, done. Do not wait for their draw activation: Griselbrand's "pay 7 life: draw 7" is an activated ability, and activated abilities cannot be countered by <span class="c">Counterspell</span> or <span class="c">Force of Negation</span>. Your only answer after it resolves is exile. Evoke <span class="c">Solitude</span> on the same stack as Goryo's Vengeance if you can — Griselbrand enters and immediately leaves before they ever get priority to activate.</span></li>
       <li><span class="if-label">If</span><span><strong><span class="c">Rest in Peace</span> is on board:</strong> <span class="c">Goryo's Vengeance</span> reads "return target legendary creature card with mana value 7 or greater from your graveyard." Under RiP there is no graveyard — all cards are in exile. Goryo's has no valid target. Their entire plan is gone. They must hardcast <span class="c">Atraxa</span> for WWBB plus 3 more, which you counter.</span></li>
       <li><span class="if-label">If</span><span><strong>They have <span class="c">Grief</span> + Ephemerate on turn 1:</strong> They'll discard your key card twice. Take the hit. Don't tap out trying to stop it — you can't counter evoke cost reductions efficiently. Rebuild with <span class="c">Stock Up</span> and <span class="c">Tune the Narrative</span>. Their <span class="c">Grief</span> play means they're down cards and mana on the combo setup.</span></li>
     </ul>
@@ -1079,8 +1080,7 @@
   <!-- RUBY STORM -->
   <div id="mu_storm" class="matchup-detail">
     <h3>Ruby Storm — Counter the Payoff, Not the Setup</h3>
-    <p>Ruby Storm chains low-cost red spells through <span class="c">Ruby Medallion</span> (cost reducer for red spells) and <span class="c">Past in Flames</span> (flash back spells from GY) to generate storm count, then wins with <span class="c">Grapeshot</span> (deal 1 to each target per copy) or <span class="c">Empty the Warrens</span> (make 2 tokens per copy). This is a hard matchup because their kill is fast (turn 3-4) and they can chain through your interaction if you tap at the wrong moment.</p>
-    <p>The correct counter strategy: ignore their early cantrips and mana generation. Hold <span class="c">Force of Negation</span> or <span class="c">Counterspell</span> specifically for <span class="c">Grapeshot</span> or <span class="c">Empty the Warrens</span> — those are the spells that win them the game. <span class="c">Prismatic Ending</span> from the main or <span class="c">Consign to Memory</span> removes <span class="c">Ruby Medallion</span>'s cost reduction (activated ability of an artifact), collapsing their entire mana efficiency by making every red spell cost 1 more.</p>
+    <p>Hold your counters for <span class="c">Grapeshot</span> or <span class="c">Empty the Warrens</span> — those are the only spells that lose you the game. Ignore the cantrips and rituals feeding into them. Your two levers: (1) counter the payoff when they go off, (2) destroy <span class="c">Ruby Medallion</span> before the chain starts — <span class="c">Prismatic Ending</span> for WU exiles it (MV 2), and removing it makes every red spell cost 1 more, collapsing the entire turn's efficiency. <span class="c">Teferi, Time Raveler</span>'s sorcery lock does nothing here: Storm plays everything at sorcery speed already. Keep <span class="c">Force of Negation</span> and <span class="c">Counterspell</span> up every turn from T3 onward.</p>
 
     <h3>Play vs Draw</h3>
     <div class="pd-grid">
@@ -1124,6 +1124,48 @@
 </div><!-- end matchups -->
 
 <!-- SIDEBOARD -->
+<div id="edges" class="section">
+  <div class="section-label">Chapter — Lines &amp; Tactics</div>
+  <h1>Edge Cases &amp;<br>Rules Precision</h1>
+  <div class="mantra">"Know exactly what your cards do — and exactly what they don't."</div>
+
+  <div class="callout">
+    <strong>Consign to Memory — What It Hits and What It Doesn't</strong>
+    <span class="c">Consign to Memory</span> ({2}{U}) counters <em>triggered abilities</em> or <em>colorless spells</em> only. It CANNOT counter: <span class="c">Force of Negation</span> (blue spell), <span class="c">Persist</span> (black sorcery), <span class="c">Counterspell</span> (blue instant), <span class="c">Griselbrand</span>'s draw activation (activated ability). It CAN counter: <span class="c">Archon of Cruelty</span>'s ETB trigger, <span class="c">Summoner's Pact</span>'s upkeep trigger (they lose the game), <span class="c">Urza's Saga</span> chapter III tutor trigger, <span class="c">Arcbound Ravager</span>'s modular death trigger. If you are unsure whether something is a triggered ability, look for the words "when," "whenever," or "at the beginning of." Those are triggers.
+  </div>
+
+  <div class="callout">
+    <strong>Supreme Verdict and Wrath of the Skies Don't Target — Hexproof Is Irrelevant</strong>
+    Hexproof says "this permanent can't be the target of spells or abilities your opponents control." <span class="c">Supreme Verdict</span> and <span class="c">Wrath of the Skies</span> say "destroy all creatures" — no targeting. Non-targeting sweepers bypass hexproof, shroud, and protection entirely. <span class="c">Scion of Draco</span> with full domain hexproof, <span class="c">Slippery Bogle</span>, <span class="c">Leyline Binding</span>'s ward — none of it matters against a non-targeting board wipe. This is your primary line against Domain Zoo and any hexproof creature strategy.
+  </div>
+
+  <div class="callout">
+    <strong>Teferi, Time Raveler Sorcery Lock — What It Stops and What It Doesn't</strong>
+    <span class="c">Teferi, Time Raveler</span>'s static ability: "Each opponent can only cast spells during their own turn." This stops opponents from casting instant-speed spells (counters, removal, Goryo's) during YOUR turn or at end of turn. It does NOT stop: your own instant-speed spells, triggered abilities (which are placed on the stack, not "cast"), activated abilities (which are "activated," not "cast"), or Ruby Storm (which plays everything at sorcery speed anyway). Under TRav, <span class="c">Goryo's Vengeance</span> is locked to sorcery speed — meaning they cannot cast it at your end step or in response to your Rest in Peace.
+  </div>
+
+  <div class="callout">
+    <strong>Force of Negation — Only on the Opponent's Turn</strong>
+    <span class="c">Force of Negation</span> has an alternative cost: "During an opponent's turn, you may exile a blue card from your hand rather than pay this spell's mana cost." The key word is "during an opponent's turn." On YOUR turn, you must pay {1}{U}{U}. You cannot pitch-counter on your own turn. This means: if you want to counter something for free, it must be their turn. If you tap out to cast a planeswalker on your turn and they try to counter it, you CANNOT Force for free to protect it — you must have {1}{U}{U} available.
+  </div>
+
+  <div class="callout">
+    <strong>Solitude Exile — Opponent Gains Life Equal to Exiled Creature's Power</strong>
+    <span class="c">Solitude</span>'s oracle text: "Exile up to one target creature. Its controller gains life equal to its power." When you evoke-exile their 5/5 <span class="c">Territorial Kavu</span>, they gain 5 life. This is not always relevant, but in the Zoo matchup it matters: exiling their 8/8 <span class="c">Scion of Draco</span> gives them 8 life. Track the life total swing carefully. Against aggro decks at 8 life, exiling a 6/6 that gives them 6 life may not be the correct line if it prolongs the game.
+  </div>
+
+  <div class="callout">
+    <strong>Storm Triggers — Counter Grapeshot Before Copies Exist</strong>
+    Storm creates copies as a triggered ability when you cast the storm spell. The sequence: (1) you cast <span class="c">Grapeshot</span>, (2) Storm triggers — "copy this spell for each spell cast before it this turn," (3) copies are placed on the stack. If you counter <span class="c">Grapeshot</span> in step (1), the storm trigger in step (2) never fires and no copies are created. If you wait until copies are on the stack, countering one copy does nothing — the others still resolve. Counter the original when first cast, before priority passes to trigger resolution.
+  </div>
+
+  <div class="callout">
+    <strong>Summoner's Pact Upkeep Kill — Consign to Memory Wins the Game</strong>
+    <span class="c">Summoner's Pact</span> has an upkeep trigger: "At the beginning of your next upkeep, pay {2}{G}{G}. If you don't, you lose the game." This upkeep trigger is a triggered ability — <span class="c">Consign to Memory</span> counters it. If they cast <span class="c">Summoner's Pact</span> to tutor a key piece and you let the Pact resolve (search is on the stack, you don't have a counter for the spell), then on THEIR next upkeep you can counter the "pay or lose" trigger with Consign. They don't pay, they lose. This is the correct sequencing: let Pact resolve if you have Consign for the upkeep trigger.
+  </div>
+
+</div>
+
 <div id="sideboard" class="section">
   <div class="section-label">Chapter 07</div>
   <h1>Sideboard<br>Guide</h1>
@@ -1144,20 +1186,17 @@
     </div>
     <div class="sb-guide-row">
       <div class="sb-guide-name"><span class="c">Celestial Purge</span></div>
-      <div class="sb-guide-body"><strong>1 copy.</strong> {1}{W} instant: exile target black or red permanent. No ramp, instant speed, hits planeswalkers. Primary uses: <span class="c">Archon of Cruelty</span> (black), <span class="c">Psychic Frog</span> (black), <span class="c">Grief</span> (black), <span class="c">Phlage</span> (red). Correct in Boros and Prowess matchups where the key threat is black or red and exiling is preferable to bouncing. you sorcery flash, so Path effectively becomes instant-speed for you under TRav). Primary targets: <span class="c">Primeval Titan</span>, <span class="c">Dragon's Rage Channeler</span> before delirium, Slickshot Show-Off.</div>
+      <div class="sb-guide-body"><strong>1 copy.</strong> {1}{W} instant: exile target black or red permanent. No ramp, instant speed, hits planeswalkers. Primary uses: <span class="c">Archon of Cruelty</span> (black), <span class="c">Psychic Frog</span> (black), <span class="c">Grief</span> (black), <span class="c">Phlage</span> (red). Correct in Boros, Prowess, and Esper matchups where the key threat is black or red and you need exile speed (Solitude bounces on evoke; Purge permanently exiles). Primary targets: <span class="c">Grief</span>, <span class="c">Psychic Frog</span>, <span class="c">Phlage</span>, <span class="c">Territorial Kavu</span> (red), Death's Shadow. Instant speed matters — use it during their combat step to exile an attacking threat before damage resolves.</div>
     </div>
     <div class="sb-guide-row">
-      <div class="sb-guide-name"><span class="c">Mystical Dispute</span></div>
-      <div class="sb-guide-body"><strong>2 copies.</strong> {W}{U} instant: counter target noncreature spell — this spell cannot be countered. Cannot be countered by any effect. Primary use: counter <span class="c">Teferi, Hero of Dominaria</span> in the mirror, counter <span class="c">Persist</span> when <span class="c">Counterspell</span> is unavailable, counter any key noncreature spell in blue mirrors where <span class="c">Mystical Dispute</span> isn't sufficient. The cannot-be-countered clause means <span class="c">Force of Negation</span>, <span class="c">Counterspell</span>, and <span class="c">Consign to Memory</span> cannot answer it. Hold this specifically for the mirror's Teferi Hero — don't waste it on lower-priority targets.</div>
+      <div class="sb-guide-name">Dovin's Veto</div>
+      <div class="sb-guide-body"><strong>2 copies.</strong> {W}{U} instant: counter target noncreature spell — <em>this spell cannot be countered</em>. The cannot-be-countered clause is the entire reason it exists: <span class="c">Force of Negation</span>, <span class="c">Counterspell</span>, and <span class="c">Consign to Memory</span> cannot answer it. Primary use: counter <span class="c">Teferi, Hero of Dominaria</span> in the mirror (their Teferi is noncreature), counter <span class="c">Persist</span> in Glockulous (black sorcery, noncreature), counter any key noncreature spell in mirrors where you need your counter to resolve unconditionally. Hold specifically for the mirror's Teferi Hero — don't waste it on low-priority cantrips.</div>
     </div>
     <div class="sb-guide-row">
       <div class="sb-guide-name"><span class="c">Mystical Dispute</span></div>
       <div class="sb-guide-body"><strong>2 copies.</strong> {2}{U} instant, costs {2} less if targeting a blue spell. Counter target spell unless its controller pays {3}. Against any blue opponent: {U} to counter their <span class="c">Counterspell</span>, <span class="c">Force of Negation</span>, or Teferi Hero. Board in vs any deck with blue spells worth countering (Blink mirror, UW mirror, Dimir midrange). The math: your {U} vs their {U}{U} <span class="c">Counterspell</span> = pure mana efficiency win. Repeat until they're tapped out and you resolve threats freely.</div>
     </div>
-    <div class="sb-guide-row">
-      <div class="sb-guide-name"><span class="c">Consign to Memory</span></div>
-      <div class="sb-guide-body"><strong>3 copies.</strong> {2}{U} instant with Replicate {1}{U}. Counters triggered abilities and activated abilities (not spells). Key uses: counter <span class="c">Archon of Cruelty</span> ETB trigger; counter <span class="c">Emperor of Bones</span> counter-placement trigger; counter <span class="c">Summoner's Pact</span> upkeep trigger (they lose the game); counter <span class="c">Urza's Saga</span> chapter abilities. Each Replicate copy costs {1}{U} and targets independently. One Consign with 2 Replicates = three ETB triggers countered for {4}{U}</div>
-    </div>
+
   </div>
 
   <h2>Quick Reference</h2>
