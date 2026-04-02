@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Goryo's Vengeance — Team Resolve Playbook</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+  /* ═══ GAMING PALETTE — sourced from UI UX Pro Max colors.csv ═══ */
+  /* Row: Gaming | pri=#7C3AED acc=#F43F5E bg=#0F0F23 fg=#E2E8F0 */
+  :root { --ink:#E2E8F0; --paper:#0F0F23; --paper-dark:#0A0A1A; --rule:#2D2B45; --accent:#7C3AED; --accent-light:rgba(124,58,237,0.15); --danger:#F43F5E; --danger-light:rgba(244,63,94,0.15); --gold:#CA8A04; --gold-light:rgba(202,138,4,0.15); --mid:#94A3B8; --card:#1E1C35; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:var(--paper); color:var(--ink); font-family:'Crimson Pro',Georgia,serif; font-size:17px; line-height:1.6; }
+  .header-band { background:var(--paper-dark); border-bottom:3px solid var(--accent); }
+  .header-inner { max-width:1100px; margin:0 auto; padding:32px 80px; display:flex; justify-content:space-between; align-items:flex-end; gap:40px; }
+  .header-eyebrow { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:rgba(226,232,240,0.3); margin-bottom:8px; }
+  .header-title { font-family:'Bebas Neue',sans-serif; font-size:56px; line-height:0.9; color:var(--ink); letter-spacing:0.02em; }
+  .header-title span { color:var(--accent); }
+  .header-mantra { font-family:'Crimson Pro',serif; font-style:italic; font-size:15px; color:rgba(226,232,240,0.35); margin-top:8px; }
+  .header-right { display:flex; flex-direction:column; gap:8px; text-align:right; padding-bottom:4px; }
+  .header-stat { display:flex; gap:12px; align-items:center; justify-content:flex-end; }
+  .hs-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; color:rgba(226,232,240,0.25); }
+  .hs-val { font-family:'DM Mono',monospace; font-size:12px; color:var(--ink); }
+  nav { position:sticky; top:0; z-index:100; background:var(--paper-dark); border-bottom:1px solid var(--rule); padding:0 80px; display:flex; align-items:center; gap:0; overflow-x:auto; scrollbar-width:none; }
+  nav::-webkit-scrollbar { display:none; }
+  .nav-brand { font-family:'Bebas Neue',sans-serif; font-size:18px; color:var(--accent); letter-spacing:0.05em; margin-right:40px; white-space:nowrap; padding:16px 0; text-decoration:none; }
+  .nav-link { font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:rgba(226,232,240,0.35); padding:20px 16px; cursor:pointer; white-space:nowrap; border-bottom:2px solid transparent; transition:all 0.2s; background:none; border-top:none; border-left:none; border-right:none; }
+  .nav-link:hover, .nav-link.active { color:var(--ink); border-bottom-color:var(--accent); }
+  .page { max-width:1100px; margin:0 auto; padding:80px 80px; }
+  .section { display:none; animation:fadeIn 0.3s ease; }
+  .section.active { display:block; }
+  @keyframes fadeIn { from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:translateY(0);} }
+  .section-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.25em; text-transform:uppercase; color:var(--mid); margin-bottom:8px; }
+  h1 { font-family:'Bebas Neue',sans-serif; font-size:64px; line-height:0.9; letter-spacing:0.01em; color:var(--ink); margin-bottom:40px; }
+  h2 { font-family:'Bebas Neue',sans-serif; font-size:36px; letter-spacing:0.02em; color:var(--ink); margin:56px 0 20px; padding-bottom:8px; border-bottom:2px solid var(--rule); }
+  h3 { font-family:'DM Mono',monospace; font-size:12px; letter-spacing:0.15em; text-transform:uppercase; color:var(--accent); margin:32px 0 12px; }
+  p { margin-bottom:16px; color:var(--ink); font-weight:300; }
+  strong { font-weight:600; }
+  .c { color:var(--accent); font-weight:400; }
+  .mantra { border-left:4px solid var(--accent); padding:24px 32px; background:var(--accent-light); margin:32px 0; font-style:italic; font-size:20px; color:var(--accent); line-height:1.5; }
+  .card-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); gap:1px; background:var(--rule); border:1px solid var(--rule); margin:24px 0; }
+  .card-grid-2 { grid-template-columns:repeat(2,1fr) !important; }
+  .card-grid-3 { grid-template-columns:repeat(3,1fr) !important; }
+  .card { background:var(--card); padding:24px; }
+  .card-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--mid); margin-bottom:8px; }
+  .card-title { font-family:'Bebas Neue',sans-serif; font-size:22px; letter-spacing:0.03em; color:var(--ink); margin-bottom:8px; }
+  .card-body { font-size:15px; font-weight:300; color:var(--mid); line-height:1.5; }
+  .edge-case { border:1px solid var(--accent); background:var(--accent-light); padding:16px 20px; margin:16px 0; font-size:14px; }
+  .edge-case-label { font-family:'DM Mono',monospace; font-size:9px; letter-spacing:0.15em; text-transform:uppercase; color:var(--accent); margin-bottom:6px; }
+  .edge-case-body { font-weight:300; color:var(--ink); line-height:1.5; }
+  .engine-block { border:1px solid var(--rule); margin:32px 0; }
+  .engine-header { background:var(--accent); padding:20px 24px; display:flex; align-items:center; gap:16px; }
+  .engine-letter { font-family:'Bebas Neue',sans-serif; font-size:40px; color:#fff; line-height:1; }
+  .engine-name { font-family:'Bebas Neue',sans-serif; font-size:24px; color:#fff; letter-spacing:0.03em; }
+  .engine-body { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--rule); }
+  .engine-step { background:var(--card); padding:20px; }
+  .engine-step-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--mid); margin-bottom:6px; }
+  .engine-step-title { font-family:'Bebas Neue',sans-serif; font-size:20px; color:var(--ink); margin-bottom:8px; }
+  .engine-step-body { font-size:14px; font-weight:300; color:var(--mid); line-height:1.5; }
+  .matchup-table { width:100%; border-collapse:collapse; margin:24px 0; }
+  .matchup-table th { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; padding:10px 16px; background:var(--card); color:var(--mid); text-align:left; border-bottom:2px solid var(--rule); }
+  .matchup-table td { padding:12px 16px; border-bottom:1px solid var(--rule); font-size:15px; font-weight:300; }
+  .matchup-table tr:hover td { background:var(--card); cursor:pointer; }
+  .matchup-detail { display:none; background:var(--accent-light); border-left:4px solid var(--accent); padding:24px 32px; }
+  .matchup-detail.open { display:block; }
+  .verdict { display:inline-block; font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; padding:4px 10px; border:1px solid; }
+  .verdict-dog { background:var(--danger-light); color:var(--danger); border-color:var(--danger); }
+  .verdict-even { background:var(--gold-light); color:var(--gold); border-color:var(--gold); }
+  .verdict-favor { background:rgba(34,197,94,0.15); color:#22C55E; border-color:#22C55E; }
+  .sb-note { font-size:13px; font-weight:300; color:var(--mid); font-style:italic; margin-top:6px; }
+  .role-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--rule); border:1px solid var(--rule); margin:24px 0; }
+  .role-card { background:var(--card); padding:24px; }
+  .role-name { font-family:'Bebas Neue',sans-serif; font-size:28px; letter-spacing:0.02em; margin-bottom:8px; }
+  .role-name-primary { color:var(--accent); }
+  .role-name-secondary { color:var(--gold); }
+  .role-name-tertiary { color:var(--mid); }
+  .role-desc { font-size:14px; font-weight:300; color:var(--mid); line-height:1.5; margin-bottom:12px; }
+  .role-matchups { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.1em; text-transform:uppercase; color:var(--mid); }
+  .heuristic-list { list-style:none; margin:0; padding:0; }
+  .heuristic-list li { display:grid; grid-template-columns:48px 1fr; gap:16px; padding:20px 0; border-bottom:1px solid var(--rule); align-items:start; }
+  .heuristic-list li:last-child { border-bottom:none; }
+  .heuristic-num { font-family:'DM Mono',monospace; font-size:22px; color:var(--rule); font-weight:500; }
+  .heuristic-body strong { display:block; font-size:16px; font-weight:600; margin-bottom:4px; color:var(--ink); }
+  .heuristic-body { font-size:14px; font-weight:300; color:var(--mid); line-height:1.5; }
+  .decklist { display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--rule); border:1px solid var(--rule); margin:24px 0; }
+  .dl-section { background:var(--card); padding:24px; }
+  .dl-section-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--mid); margin-bottom:16px; }
+  .dl-group { margin-bottom:20px; }
+  .dl-group-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; color:var(--ink); background:var(--paper-dark); padding:4px 8px; margin-bottom:8px; display:inline-block; }
+  .dl-card-row { display:flex; justify-content:space-between; align-items:baseline; padding:3px 0; border-bottom:1px solid rgba(45,43,69,0.5); font-size:15px; font-weight:300; }
+  .dl-card-row:last-child { border-bottom:none; }
+  .dl-qty { font-family:'DM Mono',monospace; font-size:12px; color:var(--mid); }
+  footer { background:var(--paper-dark); color:rgba(226,232,240,0.25); padding:40px 80px; margin-top:80px; display:flex; justify-content:space-between; align-items:center; border-top:1px solid var(--rule); }
+  footer span { font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.1em; text-transform:uppercase; }
+  @media (max-width:768px) { .header-inner,nav,.page,footer { padding-left:24px; padding-right:24px; } .header-title { font-size:40px; } .header-right { display:none; } .decklist,.role-grid,.engine-body { grid-template-columns:1fr; } }
+  @media print { nav,footer { display:none; } .section { display:block !important; } }
+</style>
+</head>
+<body>
+
+<div class="header-band">
+  <div class="header-inner">
+    <div>
+      <div class="header-eyebrow">Team Resolve · Modern · April 2026 · The Titan Bible</div>
+      <div class="header-title">Goryo's<br><span>Vengeance</span></div>
+      <div class="header-mantra">"Goryo's Vengeance → Atraxa enters with haste. Reveal top 10, take one of each type. Ephemerate before end step — Atraxa stays permanently. Rebound next upkeep — third ETB. You've seen 30 cards. You've taken 24. The game ended on turn 2."</div>
+    </div>
+    <div class="header-right">
+      <div class="header-stat"><span class="hs-label">Meta Share</span><span class="hs-val">~1.5–1.8%</span></div>
+      <div class="header-stat"><span class="hs-label">Role</span><span class="hs-val">Combo-Control (Esper)</span></div>
+      <div class="header-stat"><span class="hs-label">Colors</span><span class="hs-val">W U B (g splash)</span></div>
+      <div class="header-stat"><span class="hs-label">Kill Turn</span><span class="hs-val">2–3</span></div>
+      <div class="header-stat"><span class="hs-label">Palette</span><span class="hs-val">Gaming · UI UX Pro Max</span></div>
+    </div>
+  </div>
+</div>
+
+<nav>
+  <a class="nav-brand" href="deck-guides.html">Team Resolve</a>
+  <button class="nav-link active" onclick="show('identity')">Identity</button>
+  <button class="nav-link" onclick="show('decklist')">Decklist</button>
+  <button class="nav-link" onclick="show('gameplan')">Gameplan</button>
+  <button class="nav-link" onclick="show('engines')">Engines</button>
+  <button class="nav-link" onclick="show('lines')">Lines</button>
+  <button class="nav-link" onclick="show('roles')">Roles</button>
+  <button class="nav-link" onclick="show('matchups')">Matchups</button>
+  <button class="nav-link" onclick="show('sideboard')">Sideboard</button>
+  <button class="nav-link" onclick="show('heuristics')">Heuristics</button>
+  <button class="nav-link" onclick="show('tuning')">Tuning</button>
+  <button class="nav-link" onclick="show('prep')">Prep</button>
+</nav>
+
+<div class="page">
+
+<!-- ══════════════════════════════════════════════════════════ CH01 IDENTITY -->
+<div id="identity" class="section active">
+  <div class="section-label">Chapter 01</div>
+  <h1>Deck<br>Identity</h1>
+
+  <div class="mantra">"Two mana instant. Legendary creature from the graveyard. Haste. Exile at end of turn — unless you Ephemerate it first. Then it stays forever. Then Ephemerate rebounds. Then it enters a THIRD time. Atraxa reveals 30 cards. Griselbrand draws 21. Pick your poison."</div>
+
+  <p>Goryo's Vengeance is Modern's fastest reanimator combo. The namesake card — <span class="c">Goryo's Vengeance</span> ({1}{B}, instant) — returns a legendary creature from your graveyard with haste, but exiles it at end of turn. The trick: <span class="c">Ephemerate</span> ({W}) blinks the creature before the exile trigger, creating a new game object that no longer has the "exile at EOT" clause. The creature stays permanently. Ephemerate then rebounds next upkeep for a THIRD ETB trigger. With <span class="c">Atraxa, Grand Unifier</span>, that's three "reveal top 10, take one of each card type" triggers — you've seen 30 cards and taken up to 24. With <span class="c">Griselbrand</span>, that's a 7/7 flying lifelink that draws 7 cards per 7 life paid.</p>
+
+  <p>The deck backs this up with <span class="c">Psychic Frog</span> (discard fatties to GY while growing), <span class="c">Solitude</span> (free removal that also combos with Ephemerate), and a full Esper interaction suite. When the combo is disrupted, you pivot to fair Frog beats or Solitude + Ephemerate value. This is not a glass cannon — it's a combo deck with a legitimate control backup plan.</p>
+
+  <h2>The Key Cards — Oracle Verified</h2>
+  <div class="card-grid card-grid-3">
+    <div class="card">
+      <div class="card-label">The Namesake</div>
+      <div class="card-title">Goryo's Vengeance</div>
+      <div class="card-body"><strong>{1}{B} Instant — Arcane.</strong> "Return target legendary creature card from your graveyard to the battlefield. That creature gains haste. Exile it at the beginning of the next end step." INSTANT SPEED. Cast on opponent's end step → creature is on your side for your entire turn with haste. Or cast main phase with Ephemerate backup. Targets LEGENDARY creatures only — Atraxa ✓, Griselbrand ✓, Ulamog ✓. Splice onto Arcane {2}{B} (rarely relevant).</div>
+    </div>
+    <div class="card">
+      <div class="card-label">The Save</div>
+      <div class="card-title">Ephemerate</div>
+      <div class="card-body"><strong>{W} Instant.</strong> "Exile target creature you control, then return it. Rebound." This is the card that makes Goryo's broken. Cast before end step → creature blinks → returns as a NEW OBJECT → exile clause from Goryo's no longer applies → creature stays PERMANENTLY. Rebound next upkeep: cast again for free → THIRD ETB. One {W} spell = save your creature + 2 extra ETB triggers. Also combos with Solitude (evoke + Ephemerate = creature stays + 2nd removal ETB).</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Primary Target</div>
+      <div class="card-title">Atraxa, Grand Unifier</div>
+      <div class="card-body"><strong>{3}{G}{W}{U}{B} 7/7 Legendary Phyrexian Angel.</strong> Flying, vigilance, deathtouch, lifelink. "ETB: reveal top 10, take one of each card type (artifact, battle, creature, enchantment, instant, land, planeswalker, sorcery)." Up to 8 cards per ETB. With Goryo's + Ephemerate: 3 ETBs = reveal top 30, take up to 24 cards. Plus a 7/7 with 4 keywords. Hard-cast cost is {3}{G}{W}{U}{B} — irrelevant. You're paying {1}{B} via Goryo's.</div>
+    </div>
+  </div>
+
+  <div class="card-grid card-grid-2">
+    <div class="card">
+      <div class="card-label">Secondary Target</div>
+      <div class="card-title">Griselbrand</div>
+      <div class="card-body"><strong>{4}{B}{B}{B}{B} 7/7 Legendary Demon.</strong> Flying, lifelink. "Pay 7 life: Draw seven cards." With Goryo's: enter → attack for 7 lifelink (net 0 life) → pay 7 life draw 7 → pay 7 more draw 7 → you've drawn 14 cards and have a 7/7 flying lifelink. Ephemerate before EOT saves it permanently. Griselbrand is the raw power option — draw your entire deck and find whatever you need.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Free Removal Engine</div>
+      <div class="card-title">Solitude + Ephemerate</div>
+      <div class="card-body"><strong>Solitude: {3}{W}{W} 3/2 Flash, Lifelink. Evoke — exile a white card from hand.</strong> "ETB: exile up to one target creature." Evoke Solitude for free → ETB exiles a creature → evoke sacrifice trigger on stack → response: Ephemerate → Solitude blinks → returns as new object → sacrifice trigger fizzles → Solitude stays + SECOND exile trigger → Rebound next upkeep → THIRD exile. Free = exile 3 creatures over 2 turns.</div>
+    </div>
+  </div>
+
+  <h2>Oracle-Verified Edge Cases</h2>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Goryo's + Ephemerate — Why the Exile Clause Disappears</div>
+    <div class="edge-case-body">Goryo's creates a delayed trigger: "Exile [this creature] at the beginning of the next end step." This trigger tracks the specific GAME OBJECT that entered from the GY. When Ephemerate exiles and returns the creature, it's now a NEW game object. The delayed trigger from Goryo's still tries to exile the old object — which no longer exists on the battlefield. The trigger does nothing. The creature stays permanently. This is the fundamental interaction that makes the deck work.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Ephemerate Rebound — Fires Even If You Didn't Cast It From Hand the First Time</div>
+    <div class="edge-case-body">WRONG — rebound ONLY works if you cast Ephemerate from your HAND. "If you cast this spell from your hand, exile it as it resolves. At the beginning of your next upkeep, you may cast this card from exile." If Ephemerate is cast from the graveyard (flashback, Snapcaster) or from exile, it does NOT rebound. From hand = 2 blinks. From anywhere else = 1 blink. This matters for sequencing — always cast Ephemerate from hand when possible.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Goryo's Vengeance Targets LEGENDARY Creatures Only</div>
+    <div class="edge-case-body">Goryo's says "target legendary creature card." It cannot reanimate: Psychic Frog (not legendary), Emperor of Bones (not legendary), Archon of Cruelty (not legendary), Quantum Riddler (not legendary). It CAN reanimate: Atraxa (legendary ✓), Griselbrand (legendary ✓), Ulamog (legendary ✓), Solitude (NOT legendary — Solitude is just a creature). The legendary restriction means your GY targets are limited to your 5-9 legendary fatties.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Solitude Evoke + Ephemerate — Response Window</div>
+    <div class="edge-case-body">Evoke Solitude (exile a white card from hand): Solitude enters → ETB exile trigger + evoke sacrifice trigger both go on the stack. You control both triggers and choose the order. Stack the sacrifice trigger BELOW the exile trigger. Exile trigger resolves first → remove their creature. Then before sacrifice resolves → cast Ephemerate targeting Solitude → Solitude blinks → returns as new object → sacrifice trigger tries to find the old Solitude → it's gone → sacrifice fizzles. Solitude stays. Second ETB fires → exile another creature. Rebound next upkeep → third ETB.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Atraxa ETB — "One of Each Card Type" Means Up to 8 Cards</div>
+    <div class="edge-case-body">Atraxa reveals top 10 and you take one card of each TYPE: artifact, battle, creature, enchantment, instant, land, planeswalker, sorcery = 8 types. Realistically you take 4-6 cards per trigger (not every type is represented in top 10). With 3 triggers (Goryo's + Ephemerate + Rebound): you see 30 cards deep and take 12-18 cards total. You're refilling your hand multiple times over. The remaining cards go to the BOTTOM of library in random order — not the graveyard.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Griselbrand — Pay 7 Life Is an Activated Ability, Not a Trigger</div>
+    <div class="edge-case-body">"Pay 7 life: Draw seven cards" is an activated ability. You can activate it ANY NUMBER of times as long as you have life to pay. With lifelink: Griselbrand attacks for 7 → gain 7 life → you now have enough life to activate twice (pay 14 total). At 20 starting life with no damage taken: pay 7 (13 life) draw 7, pay 7 (6 life) draw 7 = 14 cards drawn. After attacking and gaining 7: pay 7 more draw 7. The Griselbrand player's life total IS their hand size.</div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════ CH02 DECKLIST -->
+<div id="decklist" class="section">
+  <div class="section-label">Chapter 02</div>
+  <h1>Decklist</h1>
+  <p style="font-style:italic;color:var(--mid);font-size:15px;margin-bottom:24px;">Jorbet — 7th (5-2-1), SCG CON Milwaukee $1K Modern, Feb 20 2026 · W-U-B-G Goryo's</p>
+  <div class="decklist">
+    <div class="dl-section">
+      <div class="dl-section-label">Maindeck (60)</div>
+      <div class="dl-group">
+        <div class="dl-group-label">Legendary Targets</div>
+        <div class="dl-card-row"><span><span class="c">Atraxa, Grand Unifier</span></span><span class="dl-qty">4</span></div>
+        <div class="dl-card-row"><span><span class="c">Griselbrand</span></span><span class="dl-qty">1</span></div>
+        <div class="dl-card-row"><span><span class="c">Ulamog, the Defiler</span></span><span class="dl-qty">1</span></div>
+      </div>
+      <div class="dl-group">
+        <div class="dl-group-label">Fair Creatures</div>
+        <div class="dl-card-row"><span><span class="c">Psychic Frog</span></span><span class="dl-qty">4</span></div>
+        <div class="dl-card-row"><span><span class="c">Solitude</span></span><span class="dl-qty">4</span></div>
+        <div class="dl-card-row"><span><span class="c">Quantum Riddler</span></span><span class="dl-qty">4</span></div>
+      </div>
+      <div class="dl-group">
+        <div class="dl-group-label">Combo</div>
+        <div class="dl-card-row"><span><span class="c">Goryo's Vengeance</span></span><span class="dl-qty">4</span></div>
+        <div class="dl-card-row"><span><span class="c">Ephemerate</span></span><span class="dl-qty">4</span></div>
+      </div>
+      <div class="dl-group">
+        <div class="dl-group-label">Disruption / Interaction</div>
+        <div class="dl-card-row"><span><span class="c">Thoughtseize</span></span><span class="dl-qty">3</span></div>
+        <div class="dl-card-row"><span><span class="c">Prismatic Ending</span></span><span class="dl-qty">2</span></div>
+        <div class="dl-card-row"><span><span class="c">Fatal Push</span></span><span class="dl-qty">2</span></div>
+      </div>
+    </div>
+    <div class="dl-section">
+      <div class="dl-section-label">Lands (~20)</div>
+      <div class="dl-group">
+        <div class="dl-card-row"><span><span class="c">Polluted Delta</span></span><span class="dl-qty">4</span></div>
+        <div class="dl-card-row"><span><span class="c">Flooded Strand</span></span><span class="dl-qty">3</span></div>
+        <div class="dl-card-row"><span><span class="c">Marsh Flats</span></span><span class="dl-qty">3</span></div>
+        <div class="dl-card-row"><span>Island</span><span class="dl-qty">2</span></div>
+        <div class="dl-card-row"><span>Swamp</span><span class="dl-qty">2</span></div>
+        <div class="dl-card-row"><span><span class="c">Watery Grave</span></span><span class="dl-qty">2</span></div>
+        <div class="dl-card-row"><span><span class="c">Godless Shrine</span></span><span class="dl-qty">1</span></div>
+        <div class="dl-card-row"><span><span class="c">Hallowed Fountain</span></span><span class="dl-qty">1</span></div>
+        <div class="dl-card-row"><span><span class="c">Meticulous Archive</span></span><span class="dl-qty">1</span></div>
+        <div class="dl-card-row"><span><span class="c">Undercity Sewers</span></span><span class="dl-qty">1</span></div>
+      </div>
+      <p style="font-size:13px;color:var(--mid);margin-top:16px;">Note: Exact 75 varies by build. Rvng's Showcase Challenge 1st (11-1, 235 players) is a common cross-reference. Some lists run Emperor of Bones, some cut Ulamog for more interaction. The core 8 (4 Goryo's + 4 Ephemerate) and 4 Atraxa + 4 Psychic Frog are non-negotiable.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════ CH03 GAMEPLAN -->
+<div id="gameplan" class="section">
+  <div class="section-label">Chapter 03</div>
+  <h1>Gameplan</h1>
+  <div class="mantra">"Get a legendary creature into the graveyard. Cast Goryo's Vengeance. Cast Ephemerate. Win the game."</div>
+
+  <h2>The T2 Kill Line</h2>
+  <div class="card-grid card-grid-3">
+    <div class="card"><div class="card-label">Turn 1</div><div class="card-title">Psychic Frog</div><div class="card-body">{U}{B}: Frog enters. Opponent's end step: discard Atraxa to Frog → Frog gets +1/+1 counter, Atraxa goes to GY. You now have the reanimation target ready.</div></div>
+    <div class="card"><div class="card-label">Turn 2</div><div class="card-title">Goryo's Vengeance</div><div class="card-body">{1}{B} instant: Atraxa enters from GY with haste. ETB #1: reveal top 10, take 4-6 cards. Now hold priority — cast Ephemerate ({W}). Atraxa blinks. ETB #2: reveal top 10, take 4-6 more cards. Atraxa stays permanently.</div></div>
+    <div class="card"><div class="card-label">Turn 3</div><div class="card-title">Rebound + Attack</div><div class="card-body">Upkeep: Ephemerate rebounds from exile for free. Atraxa blinks AGAIN. ETB #3: reveal top 10, take 4-6 MORE cards. Attack with 7/7 flying vigilance deathtouch lifelink. You've drawn 12-18 extra cards and have an unkillable threat. Game over.</div></div>
+  </div>
+
+  <h2>Alternative Lines</h2>
+  <div class="card-grid card-grid-2">
+    <div class="card"><div class="card-label">The Griselbrand Line</div><div class="card-title">Draw Your Entire Deck</div><div class="card-body">Goryo's → Griselbrand enters with haste. Attack for 7 lifelink (back to 20). Pay 7 life → draw 7. Pay 7 → draw 7. You've drawn 14 cards and have a 7/7 flying lifelink. Find Ephemerate in those 14 cards → blink Griselbrand → stays permanently. Alternatively: just hold all the answers you drew and win next turn.</div></div>
+    <div class="card"><div class="card-label">The Fair Plan</div><div class="card-title">Frog + Solitude + Ephemerate</div><div class="card-body">When combo is disrupted: Psychic Frog grows every turn via discard, draws cards on hit. Solitude evoke + Ephemerate = exile 3 creatures for free. Quantum Riddler draws cards on ETB. You're an Esper control deck with a combo finish that can pivot entirely to fair Magic and still win through card advantage.</div></div>
+  </div>
+
+  <h2>Mulligan Guide</h2>
+  <p><strong>Keep:</strong> Goryo's + Ephemerate + discard outlet (Frog or Atraxa in hand). Frog + legendary target + 2 lands. Solitude + Ephemerate + interaction + lands. <strong>Mulligan:</strong> Atraxa/Griselbrand in hand with NO way to discard them and NO Goryo's. Multiple legendary targets with no Goryo's or Frog. One-land hands without Frog.</p>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════ CH04 ENGINES -->
+<div id="engines" class="section">
+  <div class="section-label">Chapter 04</div>
+  <h1>Core Engines</h1>
+
+  <div class="engine-block">
+    <div class="engine-header"><div class="engine-letter">A</div><div class="engine-name">Goryo's + Ephemerate (The Core Combo)</div></div>
+    <div class="engine-body">
+      <div class="engine-step"><div class="engine-step-label">Setup</div><div class="engine-step-title">Legendary in GY</div><div class="engine-step-body">Psychic Frog discard (instant speed, grows Frog). Thoughtseize yourself in desperation. Natural draw + discard to hand size. The key: get Atraxa or Griselbrand into the graveyard by any means.</div></div>
+      <div class="engine-step"><div class="engine-step-label">Reanimate</div><div class="engine-step-title">Goryo's Vengeance</div><div class="engine-step-body">{1}{B} instant: legendary creature enters with haste. ETB fires immediately (Atraxa reveals 10 / Griselbrand can draw 7). The creature will be exiled at end of turn — unless you save it.</div></div>
+      <div class="engine-step"><div class="engine-step-label">Save</div><div class="engine-step-title">Ephemerate + Rebound</div><div class="engine-step-body">{W}: blink before end step → new object → exile clause gone → stays forever. Rebound next upkeep → third blink → third ETB. Total cost: {1}{B} + {W} = 3 mana for a permanent 7/7 with 3 ETBs.</div></div>
+    </div>
+  </div>
+
+  <div class="engine-block">
+    <div class="engine-header"><div class="engine-letter">B</div><div class="engine-name">Solitude + Ephemerate (Free Removal Loop)</div></div>
+    <div class="engine-body">
+      <div class="engine-step"><div class="engine-step-label">Evoke</div><div class="engine-step-title">Free Solitude</div><div class="engine-step-body">Exile a white card from hand → Solitude enters for free. ETB: exile target creature. Evoke sacrifice trigger goes on stack. 0 mana, 1 card = remove their best creature.</div></div>
+      <div class="engine-step"><div class="engine-step-label">Save</div><div class="engine-step-title">Ephemerate Response</div><div class="engine-step-body">Before sacrifice resolves: Ephemerate Solitude → blinks → returns as new object → sacrifice fizzles. Second ETB fires → exile ANOTHER creature. Solitude stays as a 3/2 lifelink body.</div></div>
+      <div class="engine-step"><div class="engine-step-label">Rebound</div><div class="engine-step-title">Third Exile</div><div class="engine-step-body">Next upkeep: Ephemerate rebounds → Solitude blinks AGAIN → third ETB → exile a THIRD creature. Net result: 0 mana spent, 2 cards used (white card + Ephemerate) = 3 creatures permanently exiled + a 3/2 lifelink.</div></div>
+    </div>
+  </div>
+
+  <div class="engine-block">
+    <div class="engine-header"><div class="engine-letter">C</div><div class="engine-name">Psychic Frog (GY Enabler + Backup Win Con)</div></div>
+    <div class="engine-body">
+      <div class="engine-step"><div class="engine-step-label">Fuel</div><div class="engine-step-title">Discard at Instant Speed</div><div class="engine-step-body">Discard Atraxa/Griselbrand to Frog → fatty goes to GY + Frog gets +1/+1. Do this at opponent's end step so they can't Surgical in response before your untap. Every discard is both combo fuel AND a pump.</div></div>
+      <div class="engine-step"><div class="engine-step-label">Grow</div><div class="engine-step-title">Counters Stack</div><div class="engine-step-body">T1 Frog. T2: discard 2 cards → 3/4 Frog. T3: discard 1 + exile 3 from GY for flying → 4/5 flying. Frog hits → draw a card. By T4 Frog is a 5/6 flying that draws cards every attack. Legitimate clock without the combo.</div></div>
+      <div class="engine-step"><div class="engine-step-label">Evasion</div><div class="engine-step-title">Exile 3 for Flying</div><div class="engine-step-body">"Exile three cards from your graveyard: flying until EOT." Uses GY cards that aren't legendary creatures (instants, sorceries, lands). Don't exile your Goryo's targets. The flying makes Frog unblockable against ground decks — a 5/6 flying draws a card per hit = 4-turn clock + card advantage.</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════ CH05 LINES -->
+<div id="lines" class="section">
+  <div class="section-label">Chapter 05 — The Titan Bible</div>
+  <h1>Lines &<br>Tactics</h1>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Goryo's at Opponent's End Step — Maximum Haste Value</div>
+    <div class="edge-case-body">Goryo's is an INSTANT. Cast it at their end step → creature enters with haste → "exile at beginning of the NEXT end step" = YOUR end step (a full turn away). You untap with the creature, attack with haste, and THEN it would exile at your end step. This gives you a full attack step. Without Ephemerate: you still get one full turn of attacks. With Griselbrand: attack for 7 lifelink + pay 7 draw 7 + pay 7 draw 7 before the exile triggers. You don't always need Ephemerate to get value.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Quantum Riddler + Ephemerate — Draw Engine Without Combo</div>
+    <div class="edge-case-body">Quantum Riddler: {3}{U}{U} 4/6 Sphinx. ETB: draw a card. Warp {1}{U} (enters as 1/1). Ephemerate on Quantum Riddler = blink → second ETB → draw again. Rebound → third ETB → draw again. 3 cards drawn from Ephemerate on a Riddler. When you don't have a legendary target in GY, Ephemerate + Riddler is your card advantage engine. Warp Riddler for {1}{U} → 1/1 that draws a card → Ephemerate for 2 more draws.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Ulamog, the Defiler — Cast Trigger vs ETB</div>
+    <div class="edge-case-body">Ulamog's "exile top half of opponent's library" is a CAST trigger, not ETB. Goryo's Vengeance puts Ulamog onto the battlefield — it was never CAST. So the half-library exile does NOT happen off Goryo's. What you DO get: a 7/7 with ward (sacrifice 2 permanents), +1/+1 counters equal to highest MV in exile, and annihilator X. If opponent has exiled cards with high MV (from Solitude, Prismatic Ending, etc.), Ulamog enters huge. The annihilator is real — they sacrifice X permanents per attack.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Atraxa Reveals Go to BOTTOM of Library, Not Graveyard</div>
+    <div class="edge-case-body">Atraxa: "Put the rest on the bottom of your library in a random order." Cards you don't take go to the BOTTOM — not the graveyard. This means: Atraxa does NOT fuel your GY (unlike looting effects). It also means cards you pass on are effectively gone for the rest of the game (bottom of a 40+ card library). Choose carefully — you only get one shot per reveal.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Solitude's Exile — Opponent GAINS Life Equal to Creature's Power</div>
+    <div class="edge-case-body">"That creature's controller gains life equal to its power." When you exile their 5/5, they gain 5 life. This is NOT free removal — there's a real cost. Against aggro decks at low life: be careful exiling their big threats because the life gain might give them extra turns. Against combo: the life gain is irrelevant. Calculate whether the life gain matters before deploying Solitude on curve.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Psychic Frog Discard Timing — End Step for Maximum Safety</div>
+    <div class="edge-case-body">Discard Atraxa to Frog during opponent's end step. They can respond with Surgical Extraction targeting Atraxa in GY — but they only have the end step to do it. Your untap is next, then your main phase: cast Goryo's. If they don't have instant-speed GY hate ready at that exact moment, you're safe. Never discard on your own turn if you can wait — give them the minimum window to respond.</div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════ CH06 ROLES -->
+<div id="roles" class="section">
+  <div class="section-label">Chapter 06</div>
+  <h1>Role Assignment</h1>
+  <div class="role-grid">
+    <div class="role-card"><div class="role-name role-name-primary">T2-3 Combo</div><div class="role-desc">Default mode. Dump legendary into GY → Goryo's + Ephemerate → Atraxa draws 12-18 cards / Griselbrand draws 14+. You're a two-card combo deck that wins on the spot when both pieces resolve.</div><div class="role-matchups">vs Midrange · vs Combo · vs Tron · vs Slow Decks</div></div>
+    <div class="role-card"><div class="role-name role-name-secondary">Esper Control</div><div class="role-desc">When GY is hated out: Solitude + Ephemerate removes threats for free. Quantum Riddler draws cards. Psychic Frog closes games. Thoughtseize strips their hand. You're a legitimate Esper control deck even without Goryo's.</div><div class="role-matchups">vs GY Hate · vs Aggro · vs Leyline Decks</div></div>
+    <div class="role-card"><div class="role-name role-name-tertiary">Frog Beats</div><div class="role-desc">Psychic Frog alone is a 4-turn clock that draws cards on every hit. Discard unwanted cards to grow it, exile junk from GY for flying. Some games you never resolve Goryo's — Frog just runs them over.</div><div class="role-matchups">vs Removal-Light · vs Combo · Post-Board When They Over-SB for GY</div></div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════ CH07 MATCHUPS -->
+<div id="matchups" class="section">
+  <div class="section-label">Chapter 07</div>
+  <h1>Matchup Guide</h1>
+  <table class="matchup-table">
+    <thead><tr><th>Matchup</th><th>Role</th><th>Verdict</th><th>Key Play</th></tr></thead>
+    <tbody>
+      <tr onclick="toggle('mu-boros')"><td><strong>Boros Energy</strong></td><td>Control</td><td><span class="verdict verdict-even">Even</span></td><td>Solitude + Ephemerate exiles their board for free</td></tr>
+      <tr><td colspan="4" class="matchup-detail" id="mu-boros"><p>Their removal is cheap but can't stop Goryo's (it's instant speed, 2 mana). Solitude evoke + Ephemerate removes 3 creatures for free — devastating against their creature-heavy board. Frog blocks profitably early. Combo can close before their energy goes online. Watch for Leyline of the Void from SB.</p></td></tr>
+      <tr onclick="toggle('mu-jeskai')"><td><strong>Jeskai Blink</strong></td><td>Combo</td><td><span class="verdict verdict-favor">Favorable</span></td><td>Your Ephemerate targets are better than theirs</td></tr>
+      <tr><td colspan="4" class="matchup-detail" id="mu-jeskai"><p>Both decks use Ephemerate. Your targets (Atraxa, Griselbrand) are MUCH bigger than theirs (Stoneforge, Phelia). Thoughtseize strips their Counterspell or Solitude. Goryo's at their end step resolves through Teferi bounce timing. One resolved Atraxa draws enough cards to bury them in advantage.</p></td></tr>
+      <tr onclick="toggle('mu-storm')"><td><strong>Ruby Storm</strong></td><td>Combo Race</td><td><span class="verdict verdict-favor">Favorable</span></td><td>T1 Thoughtseize + T2 Goryo's = faster AND disruptive</td></tr>
+      <tr><td colspan="4" class="matchup-detail" id="mu-storm"><p>You're faster. T2 Goryo's into Atraxa draws 6+ cards — game over before they assemble. Thoughtseize strips Past in Flames or Grapeshot. Solitude is a free creature removal when they try to win through Empty the Warrens tokens. Your combo doesn't care about their interaction.</p></td></tr>
+      <tr onclick="toggle('mu-living')"><td><strong>Living End</strong></td><td>Combo Race</td><td><span class="verdict verdict-dog">Unfavorable</span></td><td>Their cascade resolves through your disruption</td></tr>
+      <tr><td colspan="4" class="matchup-detail" id="mu-living"><p>Living End is problematic: it sacrifices your reanimated Atraxa AND fills their board. Your GY hate is limited. Spell Pierce counters the cascade spell but they can play around it. Solitude can exile their reanimated creatures after Living End resolves. Your best line: T2 Goryo's before they cascade T3. Race them.</p></td></tr>
+      <tr onclick="toggle('mu-affinity')"><td><strong>Izzet Affinity</strong></td><td>Control</td><td><span class="verdict verdict-even">Even</span></td><td>Solitude + Prismatic Ending answer their threats efficiently</td></tr>
+      <tr><td colspan="4" class="matchup-detail" id="mu-affinity"><p>Fatal Push with fetch revolt kills their key creatures. Solitude exiles anything for free. Prismatic Ending converge removes low-MV artifacts. Their clock is fast but fragile — remove their key threats and combo T3-4 for the win.</p></td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════ CH08 SIDEBOARD -->
+<div id="sideboard" class="section">
+  <div class="section-label">Chapter 08</div>
+  <h1>Sideboard Guide</h1>
+  <div class="mantra">"Post-board, opponents bring in GY hate. You bring in more fair cards. The deck transforms from combo to control seamlessly."</div>
+  <p>Core SB principle: when they bring in Leyline of the Void, Surgical Extraction, or Rest in Peace — cut Goryo's Vengeance (some or all copies) and lean on Solitude + Ephemerate + Frog as your fair game plan. Never cut all 4 Psychic Frogs — Frog is good in every configuration. Cut legendary fatties when GY hate is expected. Bring in countermagic against combo, removal against aggro.</p>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════ CH09 HEURISTICS -->
+<div id="heuristics" class="section">
+  <div class="section-label">Chapter 09</div>
+  <h1>Heuristics</h1>
+  <ol class="heuristic-list">
+    <li><div class="heuristic-num">01</div><div class="heuristic-body"><strong>Ephemerate is the most important card in the deck — not Goryo's.</strong> Goryo's without Ephemerate gives you one turn of value. Ephemerate without Goryo's still combos with Solitude (free 3x removal) and Quantum Riddler (3 cards). Never use Ephemerate frivolously.</div></li>
+    <li><div class="heuristic-num">02</div><div class="heuristic-body"><strong>Discard Atraxa at their end step, never your own turn.</strong> Psychic Frog's discard is instant speed. Dumping Atraxa at their end step minimizes the window for Surgical Extraction. They get one moment of priority before your untap → Goryo's.</div></li>
+    <li><div class="heuristic-num">03</div><div class="heuristic-body"><strong>Goryo's at their end step is often better than your main phase.</strong> Creature enters with haste. "Exile at beginning of next end step" = your end step. Full attack step. With Griselbrand: attack for 7 lifelink → draw 14 → find Ephemerate in those cards. Without Ephemerate: you still got a full turn of attacks + ETBs.</div></li>
+    <li><div class="heuristic-num">04</div><div class="heuristic-body"><strong>Solitude evoke + Ephemerate is your plan against aggro, not the combo.</strong> Against Boros Energy or Prowess: evoke Solitude (free), Ephemerate in response → exile 2 creatures immediately, third on rebound. You just removed their board for 1 card from hand. The combo (Goryo's) is backup in these matchups.</div></li>
+    <li><div class="heuristic-num">05</div><div class="heuristic-body"><strong>Atraxa over Griselbrand in 90% of situations.</strong> Atraxa draws 4-8 cards per ETB without costing life, has 4 keywords, and survives combat against anything. Griselbrand requires 7 life per draw — against aggro you can't afford it. Griselbrand is better ONLY when you need to dig for a specific answer immediately (draw 14 = find anything).</div></li>
+    <li><div class="heuristic-num">06</div><div class="heuristic-body"><strong>Goryo's targets LEGENDARY creatures only — know your legal targets.</strong> Legal: Atraxa, Griselbrand, Ulamog. Illegal: Psychic Frog, Solitude, Quantum Riddler, any non-legendary creature. Don't try to Goryo's a Solitude from GY — it won't work.</div></li>
+    <li><div class="heuristic-num">07</div><div class="heuristic-body"><strong>Ulamog's cast trigger does NOT fire off Goryo's.</strong> "When you cast Ulamog, exile top half of opponent's library" — this triggers on CAST, not ETB. Goryo's puts Ulamog directly onto the battlefield without casting. You get the body + ward + annihilator, but NOT the library exile. Ulamog is your least common Goryo's target — use it when you need annihilator or ward protection.</div></li>
+    <li><div class="heuristic-num">08</div><div class="heuristic-body"><strong>Ephemerate rebound only works from HAND.</strong> If you cast Ephemerate from graveyard (Snapcaster) or any zone other than hand, it does NOT rebound. Always prioritize casting Ephemerate from hand. The rebound = a free third blink, which is often the difference between winning and losing.</div></li>
+    <li><div class="heuristic-num">09</div><div class="heuristic-body"><strong>Against GY hate: transform into Esper Control.</strong> Post-board when they have Leyline of the Void or Rest in Peace: cut Goryo's + fatties, bring in more interaction. Frog + Solitude + Ephemerate + Riddler = a real control deck. They over-SB'd for your combo and you aren't even playing it.</div></li>
+    <li><div class="heuristic-num">10</div><div class="heuristic-body"><strong>Thoughtseize T1 tells you if the combo is safe.</strong> See their hand. Take Counterspell, Surgical, or their best threat. If they have no interaction → T2 Goryo's is safe. If they have Surgical → hold Atraxa until you can discard + Goryo's in the same turn window.</div></li>
+  </ol>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════ CH10 TUNING -->
+<div id="tuning" class="section">
+  <div class="section-label">Chapter 10</div>
+  <h1>Tuning</h1>
+  <div class="card-grid card-grid-2">
+    <div class="card"><div class="card-label">Griselbrand Count: 1 vs 2</div><div class="card-title">Life as a Resource</div><div class="card-body">Most lists run 1 Griselbrand. It's the haymaker when you need to draw your entire deck, but costs 7 life per activation. Against aggro-heavy metas: cut to 0. Against combo/control metas: consider 2 (more targets for Goryo's). Griselbrand is your "go nuclear" option — one copy is usually enough because Atraxa is better in most situations.</div></div>
+    <div class="card"><div class="card-label">Emperor of Bones</div><div class="card-title">67% of Lists Run It</div><div class="card-body">Emperor provides repeatable reanimation: exile a creature from GY → adapt → reanimate with haste (sacrifice at EOT). Not a Goryo's target (non-legendary). It's a 2-drop that gives you a second axis of reanimation. Run when you expect long games where multiple reanimation effects matter. Cut when you need more interaction or combo speed.</div></div>
+    <div class="card"><div class="card-label">Quantum Riddler</div><div class="card-title">58% of Lists Run It</div><div class="card-body">Riddler at Warp {1}{U} = 1/1 that draws a card on ETB. Ephemerate on Riddler = 3 cards. Full cast {3}{U}{U} = 4/6 flying that draws a card + doubles future draws when hand is empty. Run when you want more fair game backup. Cut when the meta rewards pure combo speed.</div></div>
+    <div class="card"><div class="card-label">Ulamog vs More Atraxa</div><div class="card-title">Annihilator vs Card Advantage</div><div class="card-body">Ulamog's cast trigger doesn't fire off Goryo's — so you lose the half-library exile. What you get: ward (sacrifice 2), counters from exile, annihilator. Run when: you face decks with indestructible/hexproof threats (annihilator forces sacrifice). Cut when: you need consistent ETB value (Atraxa is better).</div></div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════ CH11 PREP -->
+<div id="prep" class="section">
+  <div class="section-label">Chapter 11</div>
+  <h1>Prep Sheet</h1>
+  <p><strong>The Combo:</strong> Get legendary creature in GY (Frog discard at their end step) → Goryo's Vengeance ({1}{B} instant) → Ephemerate ({W}) before end step → creature stays permanently → Rebound next upkeep = 3rd ETB. Total cost: 3 mana.</p>
+  <p><strong>Primary target:</strong> Atraxa (reveal top 10, take one of each type, 7/7 flying vigilance deathtouch lifelink). <strong>Secondary:</strong> Griselbrand (7/7 flying lifelink, pay 7 draw 7). <strong>Backup plan:</strong> Solitude evoke + Ephemerate = exile 3 creatures for free. Psychic Frog = growing clock + card advantage.</p>
+  <p><strong>Critical rules:</strong> Goryo's targets LEGENDARY only. Ephemerate rebound only from HAND. Ulamog cast trigger doesn't fire off Goryo's. Atraxa reveals go to bottom, not GY. Solitude exile = opponent gains life.</p>
+</div>
+
+</div><!-- end .page -->
+
+<footer>
+  <span><a href="zuxas.html" style="color:rgba(226,232,240,0.25);text-decoration:none;">Zuxas</a> · Team Resolve</span>
+  <span>Modern 2026 · Goryo's Vengeance · The Titan Bible</span>
+  <span>April 2026 · Palette: Gaming (UI UX Pro Max)</span>
+</footer>
+
+<script>
+function show(id) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  event.target.classList.add('active');
+  window.scrollTo(0,0);
+}
+function toggle(id) {
+  const el = document.getElementById(id);
+  el.classList.toggle('open');
+}
+</script>
+</body>
+</html>
