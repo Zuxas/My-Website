@@ -158,6 +158,7 @@
   <button class="nav-link" onclick="show('engines')">Engines</button>
   <button class="nav-link" onclick="show('roles')">Roles</button>
   <button class="nav-link" onclick="show('matchups')">Matchups</button>
+  <button class="nav-link" onclick="show('edges')">Edges</button>
   <button class="nav-link" onclick="show('sideboard')">Sideboard</button>
   <button class="nav-link" onclick="show('heuristics')">Heuristics</button>
   <button class="nav-link" onclick="show('tuning')">Tuning</button>
@@ -667,6 +668,43 @@
 </div>
 
 <!-- CH07: SIDEBOARD -->
+<div id="edges" class="section">
+  <div class="section-label">Lines &amp; Tactics</div>
+  <h1>Edge Cases &amp;<br>Rules Precision</h1>
+  <div class="mantra">"Storm wins when your opponent wastes counters on the wrong spell. Know exactly what to protect."</div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Storm Copies — Counter the Original Before Copies Exist</div>
+    <div class="edge-case-body">Storm says "when you cast this spell, copy it for each other spell cast before it this turn." The copies are created by a triggered ability — but the copies only exist AFTER the storm trigger resolves. The window to counter the storm spell is BEFORE the trigger fires: counter Grapeshot when it first hits the stack and no copies exist yet. If you wait until after storm resolves, countering one copy does nothing to the others — each copy is an independent object on the stack. Against opponents holding interaction: always cast the storm spell first and force them to decide before copies exist.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Ruby Medallion — Cost Reduction, Not Mana Generation</div>
+    <div class="edge-case-body">Ruby Medallion says "red spells you cast cost {1} less to cast." This is a static ability that modifies the cost of your spells — it's not a triggered or activated ability, so Consign to Memory cannot counter it. The reduction is continuous and automatic. Removing Medallion (Prismatic Ending, March of Otherworldly Light) is the only way to stop the cost reduction. With Medallion in play: Desperate Ritual costs {R} (effectively free), Manamorphose costs {1} (net mana positive), the entire chain becomes dramatically more efficient. Opponents should prioritize destroying Medallion on sight — it's the difference between a turn-4 kill and a turn-6 kill.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Past in Flames Flashback — Teferi TRav Makes It Sorcery Speed</div>
+    <div class="edge-case-body">Past in Flames gives all instant and sorcery cards in your graveyard flashback equal to their mana cost until end of turn. Normally, instants with flashback can be cast at instant speed. Under Teferi, Time Raveler's static ability ("each opponent can only cast spells during their own turn"), your opponents are restricted to their own main phases — but YOU are not. Under opponent's Teferi, your flashback instants (Manamorphose, Desperate Ritual) are cast at sorcery speed. Plan your chain accordingly: with Teferi on board, sequence flashback instants before sorceries to avoid sorcery-speed conflicts. If you control Teferi: this doesn't affect you since the restriction is on opponents.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Empty the Warrens — Tokens Enter Without Haste</div>
+    <div class="edge-case-body">Empty the Warrens creates 2 goblin tokens per copy but does NOT give them haste. This means: (1) the tokens cannot attack the turn they enter, (2) your opponent has at minimum one full turn to set up a block or answer. Against opponents with sweepers (Supreme Verdict, Anger of the Gods) this is the window where they get a free turn. Against opponents with nothing: you still win on your next attack. Empty the Warrens is your backup plan when Grapeshot is countered — but time your Empty correctly to avoid giving opponents a "use Verdict for free" turn when you're at low storm count.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Birgi, God of Storytelling — Adds Mana on Cast, Not on Resolution</div>
+    <div class="edge-case-body">Birgi says "whenever you cast a spell, add {R}." This trigger fires when you CAST the spell — before it resolves. This means: if your Desperate Ritual is countered by a Counterspell, Birgi's trigger already fired and you still got the {R} from Birgi (plus the {R} from Ritual before it was countered). The counter is "too late" to stop Birgi's trigger. Sequence: Birgi in play → cast any red spell → Birgi trigger fires (add {R}) → then the spell resolves or gets countered independently. Opponents must counter Birgi herself or accept that every spell they counter still generates {R}.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Manamorphose — Counts Toward Storm and Replaces Itself</div>
+    <div class="edge-case-body">Manamorphose costs {1}{R} or {1}{G}, adds 2 mana of any color combination, and draws a card. Net cost: 0 mana (costs 2, generates 2) and replaces itself in hand. Crucially: casting Manamorphose counts as a spell for storm purposes — it increments your storm count while costing nothing. With Ruby Medallion: Manamorphose costs {R} and generates 2 mana, netting {1} positive. Lavinia, Azorius Renegade counters Manamorphose if it's cast for no mana (alternative cost {0} net effect). Vexing Bauble counters any "spell cast without mana spent" — Manamorphose spent mana so Bauble doesn't trigger on it.</div>
+  </div>
+
+</div>
+
 <div id="sideboard" class="section">
   <div class="section-label">Chapter 07</div>
   <h1>Sideboard<br>Guide</h1>

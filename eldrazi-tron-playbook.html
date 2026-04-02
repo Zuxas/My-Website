@@ -158,6 +158,7 @@
   <button class="nav-link" onclick="show('engines')">Engines</button>
   <button class="nav-link" onclick="show('roles')">Roles</button>
   <button class="nav-link" onclick="show('matchups')">Matchups</button>
+  <button class="nav-link" onclick="show('edges')">Edges</button>
   <button class="nav-link" onclick="show('sideboard')">Sideboard</button>
   <button class="nav-link" onclick="show('heuristics')">Heuristics</button>
   <button class="nav-link" onclick="show('tuning')">Tuning</button>
@@ -647,6 +648,43 @@
 </div>
 
 <!-- CH07: SIDEBOARD -->
+<div id="edges" class="section">
+  <div class="section-label">Lines &amp; Tactics</div>
+  <h1>Edge Cases &amp;<br>Rules Precision</h1>
+  <div class="mantra">"Tron wins on inevitability. Understand exactly what stops you and what doesn't."</div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Chalice of the Void — Counters on Cast, Not on Resolution</div>
+    <div class="edge-case-body">Chalice of the Void says "counter target spell with mana value equal to X." This counter fires when a spell with that MV is CAST — before it resolves. Chalice at 1 counters every MV-1 spell your opponents cast. Important: Chalice only counters SPELLS — it doesn't stop activated or triggered abilities, and it doesn't stop creatures entering the battlefield via non-spell means (Aether Vial, reanimation). Against humans with Vial: Chalice at 2 stops them casting 2-drops, but Vial at 2 puts them directly onto the battlefield without casting — Chalice doesn't care. Set Chalice at the MV where their most critical spells cluster.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Thought-Knot Seer — Two Separate Triggers</div>
+    <div class="edge-case-body">TKS has two triggered abilities: (1) "When this enters the battlefield, look at target opponent's hand. You may exile a nonland card from it" — fires on ETB, (2) "When this leaves the battlefield, target opponent draws a card" — fires on leaving. These are two separate triggers that resolve independently. If TKS is exiled or bounced, the second trigger fires and they draw. If you flicker TKS with Ephemerate, BOTH triggers fire — they lose a card on the first ETB and draw a card when TKS blinks out, netting zero. Never flicker TKS frivolously. The ETB exile trigger can be countered by Consign to Memory (it's a triggered ability).</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Reality Smasher — Discard Only When Targeted, Not When Swept</div>
+    <div class="edge-case-body">Reality Smasher says "Whenever Reality Smasher becomes the target of a spell or ability an opponent controls, counter it unless its controller discards a card." This ONLY fires when something TARGETS Smasher specifically. Non-targeting removal bypasses it entirely: Supreme Verdict ("destroy all creatures" — no target), All Is Dust ("each player sacrifices" — no target), Wrath of God, bounce effects that hit "all" or "each." Against Smasher: use sweepers over targeted removal to avoid the discard tax. If you must use targeted removal, have a disposable discard fodder ready.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">All Is Dust — Only Colored Permanents; Artifacts and Lands Survive</div>
+    <div class="edge-case-body">All Is Dust says "each player sacrifices all colored permanents they control." The key word is COLORED. Colorless permanents are unaffected — your own Chalice of the Void, Expedition Map, Sol Ring, Tron lands, Walking Ballista all survive All Is Dust. Opponents lose their colored creatures, enchantments, and planeswalkers, but keep any colorless permanents. Against decks with colorless threats (Eldrazi mirrors, other Tron): All Is Dust doesn't help. Against every fair colored deck: it's a one-sided board wipe that preserves your entire mana base and artifacts.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Karn Liberated — -3 Permanently Exiles; Ult Restarts the Game</div>
+    <div class="edge-case-body">Karn's -3 exiles target permanent. Unlike most exile effects, there's no "until Karn leaves" clause — the exile is permanent. The ultimate (+14 to 5 loyalty, then restart the game with exiled cards in play) is not just a game-restart — any cards exiled by Karn's -3 ability (from any game state, including cards opponents exiled from your hand on previous turns) enter the new game under your control. In long games, track what's been exiled. Karn's -3 can also exile your own permanents to set up the ultimate, pulling back key pieces like Ulamog or Emrakul that may have been answered.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Ulamog's Cast Trigger Fires on CAST, Not ETB</div>
+    <div class="edge-case-body">Ulamog, the Ceaseless Hunger says "when you cast this spell, exile the top twenty cards of target player's library." This triggers on CAST — if Ulamog is put onto the battlefield without casting (reanimation, Goryo's Vengeance, Show and Tell), the cast trigger DOES NOT fire. You get the body but not the exile. However, Ulamog's annihilator 4 and indestructibility are ETB-independent — those are static abilities that are always active when the creature is in play. The cast trigger is also a triggered ability — opponents with Consign to Memory can counter it (preventing the exile while Ulamog still enters).</div>
+  </div>
+
+</div>
+
 <div id="sideboard" class="section">
   <div class="section-label">Chapter 07</div>
   <h1>Sideboard<br>Guide</h1>

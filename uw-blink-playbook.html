@@ -1005,6 +1005,7 @@
   <button class="nav-link" onclick="show('gameplan')">Gameplan</button>
   <button class="nav-link" onclick="show('roles')">Roles</button>
   <button class="nav-link" onclick="show('matchups')">Matchups</button>
+  <button class="nav-link" onclick="show('edges')">Edges</button>
   <button class="nav-link" onclick="show('sideboard')">SB Guide</button>
   <button class="nav-link" onclick="show('heuristics')">Heuristics</button>
   <button class="nav-link" onclick="show('prep')">Prep</button>
@@ -1734,7 +1735,44 @@
   </div>
 
   <!-- ── SIDEBOARD ── -->
-  <div id="sideboard" class="section">
+  <div id="edges" class="section">
+  <div class="section-label">Lines &amp; Tactics</div>
+  <h1>Edge Cases &amp;<br>Rules Precision</h1>
+  <div class="mantra">"Blink wins on triggered ability sequencing. Every ETB is a decision point."</div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Ephemerate Rebound — Only From Hand, Not From Other Zones</div>
+    <div class="edge-case-body">Ephemerate's Rebound says "if you cast this spell from your hand, exile it as it resolves. At the beginning of your next upkeep, you may cast this card from exile without paying its mana cost." The critical qualifier: cast FROM HAND. If Ephemerate is cast from any other zone — Snapcaster Mage flashback, Eternal Witness recursion, any other zone — it does NOT rebound. Each copy of Ephemerate you cast from hand will rebound once. Never waste a hand Ephemerate on a low-value target when you have a Snapcaster copy available for that purpose.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Solitude Evoke — Ward Triggers After Cast, Before Resolution</div>
+    <div class="edge-case-body">When you evoke Solitude targeting a creature with Ward, the Ward trigger fires as Solitude is being cast (Ward says "whenever this becomes the target of a spell or ability an opponent controls"). The Ward trigger goes on the stack above Solitude. If the Ward cost isn't paid, Solitude is countered — it never resolves, and since Solitude was cast via evoke, the creature is sacrificed anyway (evoke sacrifice is a state-based action on resolution, but if Solitude is countered it doesn't resolve or sacrifice). Ward protection against evoke Solitude: they must pay the Ward cost or Solitude whiffs and they've lost nothing but the pitch card.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Stoneforge Mystic — Equip at Instant Speed During Opponent's Turn</div>
+    <div class="edge-case-body">Stoneforge Mystic's second ability: "{1}{W}, {T}: You may put an Equipment card from your hand onto the battlefield. If you do, attach it to a creature you control." This is an activated ability that can be used at instant speed at ANY time — including during your opponent's combat. Putting a Batterskull or Kaldra Compleat into play with a Germ token attached during their declare attackers step forces them to recalculate blocks and attack math with no warning. The key: SFM's ability doesn't have "sorcery speed only" or "main phase" restrictions. Use it as a combat trick, not just as a development step.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Consign to Memory — Counters ETB Triggers, Not the Creature</div>
+    <div class="edge-case-body">Consign to Memory counters triggered abilities (look for "when," "whenever," "at the beginning of") and colorless spells. When a creature with an ETB trigger enters the battlefield, its ETB trigger is a triggered ability — Consign counters it. But the CREATURE itself still entered and is on the battlefield. Consign on Archon of Cruelty's ETB: Archon is still a 8/8 flying lifelink on the board, you just prevented the sacrifice/discard/3 life trigger. Consign on Thought-Knot Seer's ETB: TKS is still a 4/4 on their board, but you kept your hand. The creature always stays — Consign only handles the trigger.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Force of Negation — Only on the Opponent's Turn, Noncreature Only</div>
+    <div class="edge-case-body">Force of Negation has two restrictions: (1) its alternative cost ("exile a blue card from your hand rather than pay this spell's mana cost") only works "during an opponent's turn" — on your own turn you must pay {1}{U}{U} normally, (2) Force of Negation can only counter noncreature spells. It cannot counter a creature being cast. This means: FoN cannot protect your creatures on your own turn for free, cannot stop an opponent's creature spell at any time, and cannot be used as free interaction during your own combat tricks. FoN is strictly for countering noncreature spells (instants, sorceries, planeswalkers, artifacts, enchantments) during the opponent's turn only.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Batterskull Germ Token — Bouncing Skull Returns Toughness, Not the Germ</div>
+    <div class="edge-case-body">Batterskull creates a 0/0 Germ token that gets equipped with Batterskull (becoming a 4/4 lifelink vigilance). If the Germ dies, Batterskull remains on the battlefield. Batterskull's built-in ability: "{3}: Return Batterskull to its owner's hand" returns the equipment card only — the Germ token is already dead, not returned. When Batterskull is re-put onto the battlefield via Stoneforge Mystic, a NEW Germ token is created and immediately gets the equipment. This bounce-and-redeploy is the correct line when opponents are trying to exile the Germ: return Skull to hand before it dies, re-enter with a fresh Germ.</div>
+  </div>
+
+</div>
+
+<div id="sideboard" class="section">
     <div class="section-label">Chapter 06</div>
     <h1>Sideboard<br>Deep Dive</h1>
 
