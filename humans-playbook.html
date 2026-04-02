@@ -152,6 +152,7 @@
   <button class="nav-link" onclick="show('lines')">Lines</button>
   <button class="nav-link" onclick="show('roles')">Roles</button>
   <button class="nav-link" onclick="show('matchups')">Matchups</button>
+  <button class="nav-link" onclick="show('edges')">Edges</button>
   <button class="nav-link" onclick="show('sideboard')">Sideboard</button>
   <button class="nav-link" onclick="show('heuristics')">Heuristics</button>
   <button class="nav-link" onclick="show('tuning')">Tuning</button>
@@ -588,7 +589,7 @@
 
       <tr onclick="toggle('mu-boros')"><td><strong>Boros Energy</strong></td><td>Grind</td><td><span class="verdict verdict-dog">Unfavorable</span></td><td>Coppercoat Vanguard — ward {1} taxes their cheap removal</td></tr>
       <tr><td colspan="4" class="matchup-detail" id="mu-boros">
-        <p>Your hardest common matchup. Their removal is efficient and cheap — <span class="c">Galvanic Discharge</span> kills anything for {R}, <span class="c">Lightning Bolt</span> punishes your low-toughness board. The energy package gives them reach you can't interact with. Your path to winning is deploying Coppercoat Vanguard early to tax their removal, then grinding through with Adeline tokens and Guide of Souls energy conversion. Jirina is critical — sacrifice in response to their burn to keep your board alive.</p>
+        <p>Your hardest common matchup. Deploy Coppercoat Vanguard early — ward {1} forces them to pay extra on every removal spell, which buys you the tempo to build your board before Jirina or Adeline comes down. Grind with Adeline tokens and Guide of Souls energy conversion once the board is established. Jirina's sacrifice is your blowout: hold it for their burn aimed at your key creature or their sweeper — instant-speed hexproof and indestructible until EOT keeps your whole team alive. Sanctifier en-Vec postboard blanks their entire removal suite.</p>
         <table class="sb-table"><thead><tr><th>Out</th><th>In</th></tr></thead><tbody>
           <tr><td class="sb-out">−2 Thalia, Guardian of Thraben</td><td class="sb-in">+2 Dismember</td></tr>
           <tr><td class="sb-out">−1 Mockingbird</td><td class="sb-in">+2 Sanctifier en-Vec</td></tr>
@@ -602,7 +603,7 @@
 
       <tr onclick="toggle('mu-jeskai')"><td><strong>Jeskai Blink</strong></td><td>Disruption</td><td><span class="verdict verdict-even">Even</span></td><td>Meddling Mage naming Ephemerate</td></tr>
       <tr><td colspan="4" class="matchup-detail" id="mu-jeskai">
-        <p>Their game plan revolves around Ephemerate loops — blinking Solitude for free removal, Stoneforge for equipment tutoring, Phelia for value. <span class="c">Meddling Mage</span> naming Ephemerate shuts down their primary engine. <span class="c">Thalia</span> taxing their noncreature spells is excellent here — Ephemerate at {W} + {1} tax = {1}{W}, and they're often tight on mana in the early turns. Zannty went 0-2 against Jeskai Blink in his Challenge run, so respect this matchup — they can grind through your disruption if you don't apply enough pressure alongside it.</p>
+        <p>Vial in <span class="c">Meddling Mage</span> at their end step naming Ephemerate — that's the game plan. Mage shuts down their entire blink engine; they can't Solitude, can't Stoneforge tutor, can't Phelia loop without first killing the Mage. <span class="c">Thalia</span> taxes their Ephemerate from {W} to {1}{W}, which is often enough to strand it in hand on a tight turn. Apply pressure alongside your disruption — Mage + Thalia + a 3/3 attacking every turn is more than they can handle. Don't play disruption-only; close the game before their engine comes back online.</p>
         <table class="sb-table"><thead><tr><th>Out</th><th>In</th></tr></thead><tbody>
           <tr><td class="sb-out">−4 Guide of Souls</td><td class="sb-in">+2 Reflector Mage</td></tr>
           <tr><td class="sb-out">−1 Mockingbird</td><td class="sb-in">+2 Dismember</td></tr>
@@ -643,7 +644,7 @@
 
       <tr onclick="toggle('mu-affinity')"><td><strong>Izzet Affinity</strong></td><td>Disruption</td><td><span class="verdict verdict-even">Even</span></td><td>Kataki, War's Wage from SB</td></tr>
       <tr><td colspan="4" class="matchup-detail" id="mu-affinity">
-        <p>Affinity dumps cheap artifacts and draws with Thought Monitor. Your disruption suite is relevant: <span class="c">Meddling Mage</span> naming Thought Monitor denies their draw engine. Post-board <span class="c">Kataki, War's Wage</span> forces them to pay {1} per artifact per upkeep — they can't maintain a wide artifact board under Kataki's tax. Your creatures are bigger than their individual artifacts, but their synergy can overwhelm if unchecked.</p>
+        <p>Vial in <span class="c">Kataki, War's Wage</span> on T2 — if it resolves early, their board collapses within one upkeep. A T2 Kataki against 3-4 artifacts in play forces them to pay {3-4} or sacrifice most of their board, and they can't pay and develop simultaneously. Name Thought Monitor with <span class="c">Meddling Mage</span> to deny their refueling mechanism. Your creatures win the combat step cleanly once their artifact synergies are taxed offline — the key is landing Kataki before their board gets too wide to contain.</p>
         <table class="sb-table"><thead><tr><th>Out</th><th>In</th></tr></thead><tbody>
           <tr><td class="sb-out">−2 Thalia, Guardian of Thraben</td><td class="sb-in">+2 Kataki, War's Wage</td></tr>
           <tr><td class="sb-out">−1 Mockingbird</td><td class="sb-in">+2 Dismember</td></tr>
@@ -681,7 +682,7 @@
 
       <tr onclick="toggle('mu-prowess')"><td><strong>Izzet Prowess</strong></td><td>Disruption</td><td><span class="verdict verdict-dog">Unfavorable</span></td><td>Plague Engineer naming Human (they run Monastery Swiftspear)</td></tr>
       <tr><td colspan="4" class="matchup-detail" id="mu-prowess">
-        <p>They're faster than you and their burn doubles as removal. <span class="c">Thalia</span> taxing their cantrips is your best G1 disruption — every prowess trigger that costs {1} more is a trigger that doesn't happen. <span class="c">Coppercoat</span>'s ward helps but they can usually pay {1} extra. Post-board <span class="c">Plague Engineer</span> naming a relevant type (depends on their creatures) gives your team a defensive edge. Sanctifier en-Vec blocks all their red creatures indefinitely.</p>
+        <p>Your best G1 play is T1 Hierarch → T2 Thalia — her +{1} tax on cantrips cuts their chain turns from 4-5 spells down to 2-3, which often means the difference between lethal damage and surviving. Respect the burn clock: stay above 8 life, don't go wide into their sweeper blowouts. Postboard, get Sanctifier en-Vec into play — protection from red means they literally cannot target, damage, or block it with any red card. A Sanctifier backed by your aggressive clock closes games they have no legal answer for.</p>
         <table class="sb-table"><thead><tr><th>Out</th><th>In</th></tr></thead><tbody>
           <tr><td class="sb-out">−4 Meddling Mage</td><td class="sb-in">+2 Plague Engineer</td></tr>
           <tr><td class="sb-out">−1 Mockingbird</td><td class="sb-in">+2 Dismember</td></tr>
@@ -697,6 +698,43 @@
 </div>
 
 <!-- ══════════════════════════════════════════════════════════ CH08 SIDEBOARD -->
+<div id="edges" class="section">
+  <div class="section-label">Lines &amp; Tactics</div>
+  <h1>Edge Cases &amp;<br>Rules Precision</h1>
+  <div class="mantra">"Humans wins on stacked triggers and precise sequencing — know exactly when each fires."</div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Exalted Triggers Only When Exactly ONE Creature Attacks</div>
+    <div class="edge-case-body">Noble Hierarch's exalted says "Whenever a creature you control attacks alone." If you attack with two creatures, zero exalted triggers fire. If you attack with one creature and have two Hierarchs in play, that creature gets +2/+2 (one exalted from each). Your early-game default: pick your best attacker and swing with it alone to maximize exalted. Late game when you need to go wide: swarm regardless of exalted. The decision point is usually turn 2-3 when you're choosing between one efficient attacker or pressuring with multiple smaller creatures.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Aether Vial — The Creature Is NOT Cast</div>
+    <div class="edge-case-body">Aether Vial says "Put a creature card with mana value equal to the number of charge counters on Aether Vial from your hand onto the battlefield." Vialing in a creature is NOT casting it — it bypasses counterspells entirely (nothing to counter), doesn't trigger prowess, doesn't pay the Thalia tax, and doesn't interact with Spell Snare. This also means: Cavern of Souls is redundant when using Vial (you don't need Cavern's anti-counter protection if you're not casting the creature). The critical interaction: Lavinia, Azorius Renegade says opponents can't cast noncreature spells without paying full mana — but she says nothing about putting creatures onto the battlefield via Vial.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Meddling Mage Name Happens on ETB — They Can't Respond to the Choice</div>
+    <div class="edge-case-body">Meddling Mage's ability is a replacement effect that triggers as it enters the battlefield — you choose the card name as part of the ETB. Opponents cannot respond to the name choice with an instant-speed spell because the name is locked in the moment Mage enters. This means: Vialing in Mage at their end step and naming Ephemerate is uncounterable and unresponsable. They can kill Mage after it enters, but the name is already chosen and active for as long as Mage lives.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Coppercoat Vanguard Does NOT Give Itself Ward</div>
+    <div class="edge-case-body">Coppercoat Vanguard says "Each other Human you control has ward {1}." The word "other" is critical — Vanguard itself has no ward. It's your most removal-vulnerable creature precisely because it protects everything else. Sequence accordingly: if you deploy Vanguard T2 after a T1 Human, your T1 creature immediately gets ward {1}, but Vanguard itself is open to any removal spell. If they remove Vanguard in response to your T2 deployment, your T1 creature's ward expires — ward is a continuous effect from Vanguard being in play.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Jirina, Dauntless General — Sacrifice Is a Cost, Not a Target</div>
+    <div class="edge-case-body">Jirina's protection ability reads: "Sacrifice Jirina: Humans you control gain hexproof and indestructible until end of turn." Sacrificing Jirina is the activation cost — it happens immediately when you activate the ability, before any player receives priority to respond. This means: (1) they cannot respond to the sacrifice with removal on Jirina (she's already sacrificed), (2) the hexproof and indestructible resolve even if they try to respond (it's already on the stack), (3) use this in response to sweepers, targeted removal, or combat tricks — not preemptively. Hexproof means they can't target your creatures; indestructible means damage and destroy effects are blanked.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Champion of the Parish and Thalia's Lieutenant Trigger Simultaneously</div>
+    <div class="edge-case-body">When a Human enters the battlefield (including Champion itself or Lieutenant itself), all "whenever a Human enters" triggers fire simultaneously. Champion of the Parish gets a +1/+1 counter for each Human ETB. Thalia's Lieutenant pumps all Humans including itself when it enters (counting itself as the triggering Human). With two Champions in play and one Human entering: both Champions get a counter simultaneously. With Lieutenant + Champion in play and a new Human entering: both Lieutenant's "gets a counter" trigger AND Champion's "I get a counter" trigger fire at the same time. You control both — put them on the stack in any order and resolve them sequentially.</div>
+  </div>
+
+</div>
+
 <div id="sideboard" class="section">
   <div class="section-label">Chapter 08</div>
   <h1>Sideboard Guide</h1>

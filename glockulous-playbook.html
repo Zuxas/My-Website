@@ -181,6 +181,7 @@
   <button class="nav-link" onclick="show('gameplan')">Game Flow</button>
   <button class="nav-link" onclick="show('engines')">Engines</button><button class="nav-link" onclick="show('roles')">Roles</button>
   <button class="nav-link" onclick="show('matchups')">Matchups</button>
+  <button class="nav-link" onclick="show('edges')">Edges</button>
   <button class="nav-link" onclick="show('sideboard')">Sideboard</button>
   <button class="nav-link" onclick="show('heuristics')">Heuristics</button>
   <button class="nav-link" onclick="show('tuning')">Tuning</button><button class="nav-link" onclick="show('prep')">Prep</button>
@@ -568,7 +569,7 @@
   <!-- BLINK -->
   <div id="mu_blink" class="matchup-detail">
     <h3>Jeskai Blink — Why It's Even</h3>
-    <p>Jeskai has <span class="c">Solitude</span> to exile Archon at zero mana cost and <span class="c">Consign to Memory</span> to counter triggered abilities. But Consign cannot counter <span class="c">Persist</span> (a black sorcery) or Emperor's Adapt (an activated ability). The correct sequence: <span class="c">Thoughtseize</span> their <span class="c">Solitude</span> before casting <span class="c">Persist</span>. If you clear the exile threat, Archon resolves and triggers. Their <span class="c">Counterspell</span> and <span class="c">Force of Negation</span> can counter <span class="c">Persist</span> — respect that and <span class="c">Thoughtseize</span> accordingly.</p>
+    <p><span class="c">Thoughtseize</span> on T1 to take their <span class="c">Solitude</span> — that's the key card that exiles Archon for zero mana. With Solitude gone, your <span class="c">Persist</span> resolves into a clean ETB. Hold <span class="c">Mystical Dispute</span> for their <span class="c">Counterspell</span> or <span class="c">Force of Negation</span> — Dispute counters blue spells for {U} when they control an Island, which they always do. One Dispute protecting your Persist wins the game. Be aware: their Consign counters triggered abilities, so your Emperor Adapt trigger can be countered — fire Consign at your own Warp copy if you have Riddler in play to split their interaction window.</p>
 
     <h3>Play vs Draw</h3>
     <div class="card-grid">
@@ -788,7 +789,7 @@
   <!-- ELDRAZI TRON vs GLOCK -->
   <div id="mu_etron_g" class="matchup-detail">
     <h3>Eldrazi Tron — TKS Strips Persist, Chalice Locks Looting</h3>
-    <p>Eldrazi Tron is a slight dog matchup. Their two hate pieces are devastating: <span class="c">Thought-Knot Seer</span> exiles the most important card from your hand — usually <span class="c">Persist</span> — and <span class="c">Chalice of the Void</span> at 1 counters <span class="c">Faithless Looting</span> (MV 1), <span class="c">Thoughtseize</span> (MV 1), and <span class="c">Fatal Push</span> (MV 1), crippling your entire interactive package. <span class="c">Reality Smasher</span> forces a discard when targeted, meaning your removal spells fail unless you sacrifice a card. Their 7-mana Eldrazi threats, however, are answered cleanly by a single <span class="c">Persist</span> — a Persisted Archon of Cruelty sacrifices their Reality Smasher, discards their hand, and races their entire board in one trigger.</p>
+    <p>T1 <span class="c">Thoughtseize</span> to strip <span class="c">Chalice of the Void</span> — this is your most important T1 play in the entire matchup. Without Chalice locking MV 1, your <span class="c">Faithless Looting</span>, <span class="c">Thoughtseize</span>, and <span class="c">Fatal Push</span> all run freely and you set up <span class="c">Persist</span> before they assemble Tron. If you can't strip Chalice, pivot: <span class="c">Psychic Frog</span> (MV 2) resolves through Chalice at 1, grows every turn, and their artifact-heavy deck has no efficient answer to a flying creature. Against <span class="c">Reality Smasher</span>: use <span class="c">Persist</span> rather than targeted removal — Archon ETB makes them sacrifice Reality Smasher as part of the trigger, bypassing the discard protection entirely.</p>
     <h3>Play vs Draw</h3>
     <div class="pd-grid">
       <div class="pd-col">
@@ -945,6 +946,43 @@
 <!-- end matchups -->
 
 <!-- SIDEBOARD GUIDE -->
+<div id="edges" class="section">
+  <div class="section-label">Lines &amp; Tactics</div>
+  <h1>Edge Cases &amp;<br>Rules Precision</h1>
+  <div class="mantra">"Glockulous wins on trigger sequencing. Know exactly when each fires and what counters it."</div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">The Consign Line — Counter Your Own Emperor Sacrifice Trigger</div>
+    <div class="edge-case-body">When <span class="c">Emperor of Bones</span> reanimates Archon, the Archon enters with haste and a finality counter, and a delayed triggered ability fires at the beginning of the NEXT end step: "sacrifice Archon." This sacrifice is a triggered ability on the stack. Fire <span class="c">Consign to Memory</span> at it — Consign counters triggered abilities. The sacrifice trigger is countered, Archon is never sacrificed, and it remains permanently. Result: a 6/6 flying lifelink Archon that attacked this turn and never leaves. The finality counter means if Archon ever dies later, it goes to exile (can't be Persisted) — but that's a minor cost for keeping it permanently in play.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Persist and the Finality Counter — Where Archon Goes When It Dies</div>
+    <div class="edge-case-body"><span class="c">Persist</span> says "Return target creature card from your graveyard to the battlefield. It gains haste until end of turn. Put a finality counter on it." A finality counter reads: "If a permanent has a finality counter on it, it's put into exile instead of any other zone when it leaves the battlefield." This means: Archon with a finality counter that dies goes to EXILE, not your graveyard. You cannot <span class="c">Persist</span> it again. <span class="c">Emperor of Bones</span> cannot exile it from the graveyard to reanimate (it's not in the graveyard). Track your finality counter Archons — they are one-time use. Your main-deck Archons without finality counters can be Persisted repeatedly.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Emperor of Bones Adapt Trigger — Counters Placed, Not Adapt Resolution</div>
+    <div class="edge-case-body"><span class="c">Emperor of Bones</span>'s reanimate ability fires from "Whenever one or more counters are placed on Emperor of Bones." The Adapt ability places N +1/+1 counters — and the moment those counters are placed, the "counters placed" trigger fires. This is a triggered ability, and it can be countered by <span class="c">Consign to Memory</span> (which counters triggered abilities). If your opponent has Consign up when you Adapt, they CAN counter the reanimate trigger, preventing Archon from entering. Play around this: Thoughtseize their Consign the turn before Adapting. The Adapt action itself (paying the Adapt cost) cannot be countered — only the resulting trigger.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Consign to Memory Cannot Counter Persist or Activated Abilities</div>
+    <div class="edge-case-body"><span class="c">Consign to Memory</span> counters triggered abilities or colorless spells. <span class="c">Persist</span> is a black sorcery — it is NOT a triggered ability, it IS a colored spell. Consign cannot counter Persist. Your <span class="c">Emperor of Bones</span> Adapt (paying {2} plus counters) is an activated ability — Consign cannot counter activated abilities either. What they CAN counter with Consign: your Emperor's "counters placed" reanimate trigger, Archon's ETB trigger (sacrifice, discard, lose 3). The most important opponent protection: if they have Consign up when your Archon ETB fires, they can counter the ETB trigger and you get nothing. Play around it by stripping Consign with Thoughtseize before Persisting.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Psychic Frog Flying — Exile FROM Your Graveyard Only</div>
+    <div class="edge-case-body"><span class="c">Psychic Frog</span>'s flying ability: "Pay {0}: Exile three cards from your graveyard. Psychic Frog gains flying until end of turn." The exile is from YOUR graveyard — not any graveyard, not a library, not hand. This means: (1) you need 3 cards in your own GY to activate it, (2) activating it removes your own Archon, Emperor, or Persist targets from the GY (the cost is real), (3) under <span class="c">Rest in Peace</span>, there is no graveyard and this ability cannot be activated. Calculate GY resources before granting flying — losing the 3 exiled cards may cost you future Persist or Emperor targets.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Reality Smasher Discard — Only When Targeted, Not When Swept</div>
+    <div class="edge-case-body"><span class="c">Reality Smasher</span> says "Whenever Reality Smasher becomes the target of a spell or ability an opponent controls, counter it unless its controller discards a card." This ONLY triggers when it is specifically TARGETED. Board sweepers (Supreme Verdict, Wrath of God, Archon ETB's "sacrifice a permanent") do NOT target — they affect all or use an instruction without a target. Against Smasher: use Archon's ETB sacrifice trigger (which forces them to sacrifice Smasher without targeting it), use Persist to get Archon into play and let the ETB do the work, or use untargeted sweepers. Targeted removal like Fatal Push triggers the discard. One way to "blank" the discard: use Fatal Push when their hand is already empty — they have nothing to discard so the discard is irrelevant, and the counter clause only applies if they CAN discard.</div>
+  </div>
+
+</div>
+
 <div id="sideboard" class="section">
   <div class="section-label">Chapter 07</div>
   <h1>Sideboard<br>Guide</h1>
