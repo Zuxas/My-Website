@@ -127,6 +127,9 @@
   footer span { font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.1em; text-transform:uppercase; }
   @media (max-width:768px) { .header-inner,nav,.page,footer { padding-left:24px; padding-right:24px; } .header-title { font-size:40px; } .header-right { display:none; } .decklist,.role-grid,.engine-body,.tuning-grid { grid-template-columns:1fr; } nav { padding:0 24px; } }
   @media print { nav,.print-btn,footer { display:none; } .section { display:block !important; } }
+  .edge-case { border:1px solid var(--accent); background:var(--accent-light); padding:16px 20px; margin:16px 0; font-size:14px; }
+  .edge-case-label { font-family:'DM Mono',monospace; font-size:9px; letter-spacing:0.15em; text-transform:uppercase; color:var(--accent); margin-bottom:6px; }
+  .edge-case-body { font-weight:300; color:var(--ink); line-height:1.5; }
 </style>
 </head>
 <body>
@@ -165,14 +168,6 @@
 
 <div class="page">
 
-
-<!-- ══════════════════════════════════════════════════════════ LINES -->
-<div id="lines" class="section">
-  <div class="section-label">Lines & Tactics</div>
-  <h1>Lines &<br>Tactics</h1>
-  <div class="mantra">"The edge cases that win games nobody expects you to win."</div>
-  <p><em>This section is being expanded with oracle-verified edge cases, timing windows, and 1-in-5000 interactions. Check back soon.</em></p>
-</div>
 
 <!-- CH01: OVERVIEW -->
 <div id="identity" class="section active">
@@ -443,11 +438,98 @@
 
 <!-- ══════════════════════════════════════════════════════════ LINES -->
 <div id="lines" class="section">
-  <div class="section-label">Lines & Tactics</div>
+  <div class="section-label">Lines & Tactics — The Titan Bible</div>
   <h1>Lines &<br>Tactics</h1>
-  <div class="mantra">"The edge cases that win games nobody expects you to win."</div>
-  <p><em>This section is being expanded with oracle-verified edge cases, timing windows, and 1-in-5000 interactions. Check back soon.</em></p>
+
+  <div class="mantra">"Every edge case documented. Every 1-in-5000 interaction verified. This is the section you pull up between rounds when something weird happened and you need to know if you were right."</div>
+
+  <h2>The Core Combo — Step by Step</h2>
+  <div class="card-grid card-grid-2">
+    <div class="card">
+      <div class="card-label">Setup Required</div>
+      <div class="card-title">Yawgmoth + 2 Undying Creatures</div>
+      <div class="card-body"><span class="c">Yawgmoth, Thran Physician</span> in play. Two undying creatures — typically <span class="c">Young Wolf</span> (1/1) and <span class="c">Strangleroot Geist</span> (2/1 haste). One has a +1/+1 counter from undying, one doesn't. Sacrifice the creature WITHOUT the counter. Put the -1/-1 counter on the creature WITH the +1/+1 counter. Counters cancel via CR 122.3. The sacrificed creature returns via undying with a fresh +1/+1. Repeat. Each cycle: draw 1 card, pay 1 life.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">The Kill</div>
+      <div class="card-title">Blood Artist / Zulaport / Geralf's Messenger</div>
+      <div class="card-body">With <span class="c">Blood Artist</span>: each sacrifice = opponent loses 1, you gain 1. Life gain offsets Yawgmoth's payment. Draw your entire deck, opponent loses life = your starting total. With <span class="c">Geralf's Messenger</span> as an undying creature: each return = "target opponent loses 2 life." Messenger enters TAPPED (can't block), but drain stacks infinitely. With <span class="c">Zulaport Cutthroat</span>: same as Artist but "each opponent" — can't be redirected, hits through hexproof.</div>
+    </div>
+  </div>
+
+  <h2>Oracle-Verified Edge Cases</h2>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Yawgmoth Has Protection from Humans</div>
+    <div class="edge-case-body">Often forgotten. Can't be targeted, damaged, enchanted, or blocked by Humans. <strong>Thalia</strong> can't block him. <strong>Reflector Mage</strong> can't bounce him. <strong>Meddling Mage</strong> can still name him (naming doesn't target). In the mirror: YOUR Yawgmoth can't target THEIR Yawgmoth with -1/-1 counters (both Humans). Only answers: Grist's -2 (sacrifice, not target), Cauldron-granted ability on a non-Human creature (CAN target the real Yawgmoth), or post-board removal.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Yawgmoth's -1/-1 Is "Up to One Target" — Can Choose Zero</div>
+    <div class="edge-case-body">You can activate and choose ZERO targets for the -1/-1 counter. You still sacrifice + draw. Per Scryfall ruling: "You may activate Yawgmoth's first activated ability without choosing a target creature. You'll just draw a card." Use when: no enemy creatures, don't want to shrink your own board, just need to dig for combo pieces.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">+1/+1 and -1/-1 Counters Cancel as State-Based Actions (CR 122.3)</div>
+    <div class="edge-case-body">Cancellation happens BETWEEN ability resolutions, not during. If multiple Yawgmoth activations are stacked: each resolves, state-based actions check (counters cancel), then next resolves. This means you can safely stack multiple activations targeting the same creature — the counters cancel correctly between each resolution.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Cauldron + Yawgmoth Exiled — Bypasses Protection from Humans</div>
+    <div class="edge-case-body">Cauldron grants Yawgmoth's abilities to non-Human creatures with +1/+1 counters. A Young Wolf with Yawgmoth's ability does NOT have protection from Humans. It CAN target the opponent's Yawgmoth with -1/-1. Critical mirror tech — the only way to directly kill an opposing Yawgmoth without Grist or sideboard cards.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Cauldron + Grist — One Loyalty Ability Per Turn Per Creature (Rule 606.3)</div>
+    <div class="edge-case-body">If 3 Grists are exiled under Cauldron, a creature with a +1/+1 counter still only gets ONE Grist activation per turn. However, DIFFERENT creatures each get their own activation. Board of 5 creatures with +1/+1 counters = 5 Grist activations per turn across different creatures. This is NOT the same as Wall of Roots (which uses a per-card "once each turn" restriction, not the loyalty rule).</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Cauldron + Walking Ballista — Infinite Damage Loop</div>
+    <div class="edge-case-body">Exile Ballista under Cauldron. Undying creature with +1/+1 counter gains "Remove a +1/+1 counter: deal 1 damage to any target." Remove the counter → creature has no +1/+1 counters → sacrifice to Yawgmoth or it dies from 0 toughness → undying returns it with fresh +1/+1 → repeat. With Blood Artist: infinite damage + life gain. The creature shoots itself, dies, returns, shoots again. Each loop = 1 damage from Ballista + 1 drain from Artist.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Wall of Roots Under Cauldron — Multiple Activations Per Creature</div>
+    <div class="edge-case-body">"Put a -0/-1 counter: Add {G}. Activate only once each turn." The restriction applies PER COPY of Wall exiled. 3 Walls under Cauldron = a single creature can activate 3 times per turn, adding {G}{G}{G} and getting 3 -0/-1 counters. This is different from Grist (Rule 606.3 for loyalty). A creature with Yawgmoth's ability + 3 Walls can generate {G}{G}{G} AND use Yawgmoth's proliferate (costs {B}{B} but Cauldron allows any color) in the same turn.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Grist Is a Creature Everywhere Except the Battlefield</div>
+    <div class="edge-case-body">"As long as Grist isn't on the battlefield, it's a 1/1 Insect creature in addition to its other types." On the STACK: creature spell — Chord of Calling and Eldritch Evolution can find it. Spell Pierce CANNOT counter it (creature spell). Essence Scatter CAN. In the GRAVEYARD: creature card — Cauldron can exile it. Grist's -5 ("each opponent loses life equal to creatures in your GY") counts Grist if it's in the GY when the ability resolves. In your LIBRARY: Chord for X=3 can find Grist (MV 3 creature).</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Pithing Needle on "Yawgmoth" Doesn't Stop Cauldron Copies</div>
+    <div class="edge-case-body">Needle names a card. "Yawgmoth, Thran Physician" stops the REAL Yawgmoth. But a Young Wolf with Yawgmoth's ability via Cauldron is named "Young Wolf" — Needle doesn't affect it. To stop Cauldron-granted abilities: name Agatha's Soul Cauldron itself (stops tap-to-exile, preventing new creatures from being exiled), or remove Cauldron directly.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Geralf's Messenger Enters Tapped — Every Time</div>
+    <div class="edge-case-body">Messenger enters tapped including via undying. Can never block the turn it returns. The "opponent loses 2 life" trigger fires on EVERY entry. With Yawgmoth combo: infinite 2-life drains. The tapped clause is irrelevant during combo — you're draining, not blocking.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Proliferate + Cauldron — Instant-Speed Board Pump</div>
+    <div class="edge-case-body">Yawgmoth's proliferate ({B}{B}, discard): choose permanents with counters, give each another of each kind. Cauldron allows mana of any color, so {G}{G} works. Board of 4 creatures with +1/+1 counters: proliferate = +4/+4 across the board at instant speed. Also adds loyalty counters to Grist — multiple proliferates set up surprise Grist ultimate (-5: opponents lose life = creatures in your GY).</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Endurance as Self-Reset</div>
+    <div class="edge-case-body"><span class="c">Endurance</span> ({1}{G}{G} 3/4 Flash Reach): "Target player puts all cards from their graveyard on the bottom of their library." Can target YOURSELF. After drawing deep with Yawgmoth and running low on library: flash Endurance → shuffle GY back → reset library. Evoke (exile green card) = free. Endurance itself can be sacrificed to Yawgmoth after use.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Chord of Calling — End-of-Turn Yawgmoth</div>
+    <div class="edge-case-body">Chord ({X}{G}{G}{G}, Convoke, Instant): at their end step with 4+ creatures — tap all for Convoke, Chord X=4, find Yawgmoth. He enters at their end step. Untap with Yawgmoth + undying creatures ready. Combo on YOUR turn before sorcery-speed answers. Primary "surprise combo" line — opponents who tap out die next turn.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Eldritch Evolution Exiles Itself</div>
+    <div class="edge-case-body">"Exile Eldritch Evolution." Can't be flashbacked, recurred, or counted for Grist's ultimate (not a creature in GY). The sacrifice is an ADDITIONAL COST — if countered, you still lost the creature but get nothing. Don't cast into open counter mana without bait or protection.</div>
+  </div>
 </div>
+
 
 <!-- CH05: ROLES -->
 <div id="roles" class="section">
