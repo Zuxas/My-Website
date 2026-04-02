@@ -197,6 +197,7 @@
   <button class="nav-link" onclick="show('gameplan')">Game Flow</button>
   <button class="nav-link" onclick="show('engines')">Engines</button><button class="nav-link" onclick="show('roles')">Roles</button>
   <button class="nav-link" onclick="show('matchups')">Matchups</button>
+  <button class="nav-link" onclick="show('edges')">Edges</button>
   <button class="nav-link" onclick="show('sideboard')">Sideboard</button>
   <button class="nav-link" onclick="show('heuristics')">Heuristics</button>
   <button class="nav-link" onclick="show('tuning')">Tuning</button><button class="nav-link" onclick="show('prep')">Prep</button>
@@ -1119,6 +1120,44 @@
 <!-- end matchups section -->
 
 <!-- ── SIDEBOARD GUIDE ── -->
+
+<div id="edges" class="section">
+  <div class="section-label">Lines &amp; Tactics</div>
+  <h1>Edge Cases &amp;<br>Rules Precision</h1>
+  <div class="mantra">"Boros wins on incremental edges. Every rules interaction you know precisely is a turn of damage they don't expect."</div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Galvanic Discharge — Energy Generated on Cast, Not Resolution</div>
+    <div class="edge-case-body">Galvanic Discharge says "this spell deals X damage, where X is 1 plus the number of energy counters you pay." When you cast it, you immediately generate 3 energy ({E}{E}{E}) as a triggered ability — then you decide how much energy to pay to scale the damage. This means you can pay 0 energy and still deal 1 damage. Even with 0 energy banked when you cast it, the 3 generated on cast let you immediately pay for a 4-damage Discharge in the same spell window. Important: the energy generation is a triggered ability on cast — under Stony Silence or Consign to Memory, that trigger could be countered, but Stony Silence doesn't affect instant/sorcery spells.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Goblin Bombardment — Sacrifice Doesn't Target</div>
+    <div class="edge-case-body">Goblin Bombardment's ability reads "sacrifice a creature: deal 1 damage to any target." The sacrifice is a COST, not a targeted effect — it happens immediately when you activate the ability, before any responses. The "any target" is what you're dealing damage to. This means: hexproof doesn't protect against Bombardment (you're targeting the player or creature for 1 damage, which does use targeting — so hexproof from opponent's spells DOES protect the creature). But the sacrifice itself can't be responded to with removal — by the time anyone can respond, the creature is already sacrificed.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Voice of Victory — Protection from Multicolored Is Not Hexproof</div>
+    <div class="edge-case-body">Voice of Victory has "protection from multicolored." Protection means: can't be damaged, blocked, enchanted, equipped, or targeted by anything multicolored. A multicolored spell like Prismatic Ending (white) — wait, Prismatic Ending is only white, so it IS a valid target. Counterspell is only blue — can target Voice. Fatal Push is only black — can target. Scion of Draco (multicolored) can't block Voice and Scion's triggered multicolored abilities can't target it. Key: protection only covers the exact color identity, not all interaction.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Blood Moon — Nonbasics Become Mountains, Mana Abilities Apply Immediately</div>
+    <div class="edge-case-body">Blood Moon says "nonbasic lands are Mountains." When it resolves, all nonbasic lands immediately lose their other types and abilities, becoming basic Mountains (they produce {R}). Your own Inspiring Vantage, Sacred Foundry, and Arena of Glory all become Mountains under Blood Moon — except your basic Plains and Islands. Plan your mana sequence: fetch your basic lands before Blood Moon lands. Note: Flagstones of Trokair is nonbasic — it becomes a Mountain under Blood Moon and loses its trigger. Arena of Glory becomes a Mountain but keeps its land type "Mountain" — not relevant since Mountains already produce {R}.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Phlage, Titan of Fire's Fury — Escape Enters with Haste</div>
+    <div class="edge-case-body">Phlage's escape clause gives it haste when it escapes from the graveyard. Escape costs {2}{R}{W} plus exile 5 other cards from your graveyard. The 5 cards exiled must be other cards (not Phlage itself). Phlage's ETB trigger fires on escape just as on cast: deal 3 damage to each opponent and each creature they control, you gain 3 life. The haste from escape means you can attack immediately. Important: when Phlage escapes, Nihil Spellbomb timing matters — if they crack Spellbomb before you escape, they exile your graveyard and Phlage can't escape without 5 other GY cards.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Ocelot Pride — Cat Triggers on Life Gained ABOVE Starting Total</div>
+    <div class="edge-case-body">Ocelot Pride creates a 1/1 Cat token "whenever you gain life for the first time each turn if your life total is greater than it was at the start of your most recent turn." This means: if you start your turn at 20 life and gain 2 life, you create a cat (you're now above 20). If you then gain more life, no additional cats that turn (only the FIRST time counts per turn). On opponent's turns, you can also trigger Ocelot if you gain life above your turn-start total. Guide of Souls on your opponent's creature ETBs can generate a cat on their turn if the life gain crosses your threshold.</div>
+  </div>
+
+</div>
+
 <div id="sideboard" class="section">
   <div class="section-label">Chapter 07</div>
   <h1>Sideboard<br>Guide</h1>

@@ -155,6 +155,7 @@
   <button class="nav-link" onclick="show('lines')">Lines & Tactics</button>
   <button class="nav-link" onclick="show('roles')">Roles</button>
   <button class="nav-link" onclick="show('matchups')">Matchups</button>
+  <button class="nav-link" onclick="show('edges')">Edges</button>
   <button class="nav-link" onclick="show('sideboard')">Sideboard</button>
   <button class="nav-link" onclick="show('heuristics')">Heuristics</button>
   <button class="nav-link" onclick="show('tuning')">Tuning</button>
@@ -1205,6 +1206,44 @@
 </div>
 
 <!-- ══════════════════════════════════════════════════════════ CH07 SIDEBOARD -->
+
+<div id="edges" class="section">
+  <div class="section-label">Lines &amp; Tactics</div>
+  <h1>Edge Cases &amp;<br>Rules Precision</h1>
+  <div class="mantra">"Dimir wins on information and timing. Know your targets, know your windows, know what your opponent's mana can do."</div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Into the Flood Maw — No-Gift Mode Targets Any Creature (Including Earthbent Lands)</div>
+    <div class="edge-case-body">Into the Flood Maw has two modes: (1) return target creature to hand, (2) no-gift mode — "You may return target creature an opponent controls to its owner's hand." The no-gift mode can target ANY creature an opponent controls — including a land that has been made into a creature by Earthbender Ascension's ability (earthbent lands are creature permanents while animated). This is the strongest use of the no-gift mode: returning an earthbent land returns it as a land to their hand, removing both their threat and mana source simultaneously.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Floodpits Drowner — Flash During Opponent's Upkeep for Maximum Mana Denial</div>
+    <div class="edge-case-body">Floodpits Drowner has flash and its ETB taps target creature an opponent controls. The optimal timing window: flash Drowner in during your opponent's upkeep step — after their creatures untap (untap step) but before their main phase. When Drowner's ETB taps a creature like Llanowar Elves, that creature is now tapped and cannot produce mana for the ENTIRE upcoming main phase. If you wait until their main phase, they can use the Elves for mana before you can tap it. Upkeep is the correct timing window for this interaction.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Kaito, Bane of Nightmares — Can't Activate the Turn It Enters</div>
+    <div class="edge-case-body">Kaito, Bane of Nightmares is a planeswalker with loyalty abilities. Planeswalkers enter with summoning sickness equivalent — you cannot activate a loyalty ability on the same turn a planeswalker enters the battlefield. Kaito enters, you cannot immediately use his -2 or any other ability until your NEXT turn. This means: deploying Kaito on turn 4 means his abilities are available on turn 5. Play around this by calculating whether Kaito's presence threatens anything before he can act — opponents should kill him before turn 5.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Phantom Interference — Soft Counter, Opponent Can Pay Through</div>
+    <div class="edge-case-body">Phantom Interference says "Counter target spell unless its controller pays {2}." This is a SOFT counter — the opponent has the option to pay {2} to let their spell resolve. This is meaningfully different from a hard counter like Counterspell (which cannot be paid through). Against a well-mana'd opponent in late game, Phantom Interference may not stop their key spell — they just pay {2}. Use Phantom Interference when you know they can't pay, or when the {2} tax forces them to leave your threat unanswered. Never count on Phantom Interference as a hard answer to a critical spell.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Psychic Frog — Flying Ability Uses YOUR Graveyard, Not Any Graveyard</div>
+    <div class="edge-case-body">Psychic Frog's flying ability: "Pay {0}: Exile three cards from YOUR graveyard. Psychic Frog gains flying until end of turn." The exile is specifically from YOUR graveyard — you cannot exile from opponent's. This matters: (1) you need 3 cards in your own GY to activate, (2) activating it removes your own resources (cards you might need for other plans), (3) under Rest in Peace there is no graveyard and this cannot activate. Don't use Frog's flying ability carelessly — those 3 exiled cards won't come back.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Badgermole Cub and Earthbender Ascension — Spell Snare Hard Counters Both</div>
+    <div class="edge-case-body">Spell Snare counters target spell with mana value exactly 2. Badgermole Cub has mana value 2 ({1}{G}). Earthbender Ascension has mana value 2 ({1}{G}). Spell Snare hard counters both for a single {U} with no pay-through clause. This is relevant in your sideboard guide: when boarding in Spell Snare against Mono-Green, you're getting a perfect answer to their two most critical pieces. Do NOT cut Spell Snare vs Mono-Green (it was previously mistakenly listed as a cut in an earlier version — that was wrong).</div>
+  </div>
+
+</div>
+
 <div id="sideboard" class="section">
   <div class="section-label">Chapter 07</div>
   <h1>Sideboard Guide</h1>

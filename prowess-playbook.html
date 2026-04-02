@@ -187,6 +187,7 @@
   <button class="nav-link" onclick="show('gameplan')">Game Flow</button>
   <button class="nav-link" onclick="show('engines')">Engines</button><button class="nav-link" onclick="show('roles')">Roles</button>
   <button class="nav-link" onclick="show('matchups')">Matchups</button>
+  <button class="nav-link" onclick="show('edges')">Edges</button>
   <button class="nav-link" onclick="show('sideboard')">Sideboard</button>
   <button class="nav-link" onclick="show('heuristics')">Heuristics</button>
   <button class="nav-link" onclick="show('tuning')">Tuning</button><button class="nav-link" onclick="show('prep')">Prep</button>
@@ -957,6 +958,44 @@
 <!-- end matchups section -->
 
 <!-- SIDEBOARD GUIDE -->
+
+<div id="edges" class="section">
+  <div class="section-label">Lines &amp; Tactics</div>
+  <h1>Edge Cases &amp;<br>Rules Precision</h1>
+  <div class="mantra">"Prowess wins on the third spell. Know exactly what triggers when, or the math never adds up."</div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Prowess — Triggers on Cast, Not Resolution</div>
+    <div class="edge-case-body">Prowess says "whenever you cast a noncreature spell, this creature gets +1/+1 until end of turn." This triggers when you CAST the spell — not when it resolves. If your Counterspell counters the spell in response, prowess still triggered on the cast. If the spell fizzles (target becomes illegal), prowess still triggered. This means: you can cast a spell into a counter knowing your creature gets the +1/+1 regardless of whether the spell resolves. Count prowess triggers from the moment of casting, not outcome.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Dragon's Rage Channeler — Delirium Check Is Continuous</div>
+    <div class="edge-case-body">Dragon's Rage Channeler has delirium — it's a 3/3 flier that must attack if able, but only while you have 4+ card types in your graveyard. This check is CONTINUOUS and constant — it updates every time your GY composition changes. If during your opponent's turn they use Nihil Spellbomb to exile your GY, DRC immediately loses delirium and reverts to a 1/1. If you then put 4+ types back, it regains delirium. Track your GY types actively: you need land, instant, sorcery, and creature (or enchantment/artifact) for delirium.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Murktide Regent — Size Is Based on Exiled Instants/Sorceries at ETB</div>
+    <div class="edge-case-body">Murktide Regent says "Delve. When Murktide Regent enters the battlefield, exile all instants and sorceries from your graveyard. Murktide Regent gets +2/+2 for each card exiled this way." The size is locked in when it enters — it doesn't grow or shrink after that based on spells cast later. The exiled cards fuel the size. Important: if opponents use Nihil Spellbomb before Murktide enters (exiling your GY), Murktide enters as a 0/0 and immediately dies as a state-based action. Cast Murktide before they have mana for GY disruption.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Slickshot Show-Off — Plot Exiles to Cast Later Free, Not for Free From Hand</div>
+    <div class="edge-case-body">Plot costs {1}{R}: exile Slickshot Show-Off from your hand. You may cast it from exile for free at any later point. The key distinction: Plotted spells are cast from exile zone, not from hand. Effects that care about casting from hand (Ephemerate rebound) don't apply. Lavinia, Azorius Renegade says "opponents can't cast spells without paying mana" — a Plotted Slickshot casting for free DOES get countered by Lavinia. Plotted spells cannot be cast on the same turn they're plotted.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Cori-Steel Cutter — Equipment Equip Is an Activated Ability</div>
+    <div class="edge-case-body">Cori-Steel Cutter's equip cost is an activated ability of an artifact. Under Stony Silence, Cori-Steel Cutter cannot be equipped to a creature (equip is an activated ability of an artifact — Stony Silence shuts off all activated abilities of artifacts). The creatures that already have it equipped keep the bonus, but you can't move the equipment while Stony Silence is in play. Against Humans post-board with Kataki, War's Wage: Cutter must pay {1} per upkeep or sacrifice. Against Consign to Memory: the triggered ability from Cutter generating tokens CAN be countered by Consign.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Lava Dart — Flashback Targets Any Creature, Including Your Own</div>
+    <div class="edge-case-body">Lava Dart deals 1 damage to any target. Flashback {R} (sacrifice a Mountain). When you flash it back, you can target any creature — including your own. This is intentional: targeting your own Monastery Swiftspear with Lava Dart flashback gives Swiftspear +1/+1 from prowess (you cast a spell) PLUS the 1 damage resolves on Swiftspear. Net: +1/+1 and -1 toughness = net 0 on toughness but +1 on power. More commonly, targeting your own creatures to trigger prowess multiple times in the same turn is a legitimate and common line.</div>
+  </div>
+
+</div>
+
 <div id="sideboard" class="section">
   <div class="section-label">Chapter 07</div>
   <h1>Sideboard<br>Guide</h1>
