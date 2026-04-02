@@ -123,6 +123,9 @@
   footer span { font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.1em; text-transform:uppercase; }
   @media (max-width:768px) { .header-inner,nav,.page,footer { padding-left:24px; padding-right:24px; } .header-title { font-size:40px; } .header-right { display:none; } .decklist,.role-grid,.engine-body,.tuning-grid { grid-template-columns:1fr; } nav { padding:0 24px; } }
   @media print { nav,.print-btn,footer { display:none; } .section { display:block !important; } }
+  .edge-case { border:1px solid var(--accent); background:var(--accent-light); padding:16px 20px; margin:16px 0; font-size:14px; }
+  .edge-case-label { font-family:'DM Mono',monospace; font-size:9px; letter-spacing:0.15em; text-transform:uppercase; color:var(--accent); margin-bottom:6px; }
+  .edge-case-body { font-weight:300; color:var(--ink); line-height:1.5; }
 </style>
 </head>
 <body>
@@ -161,14 +164,6 @@
 
 <div class="page">
 
-
-<!-- ══════════════════════════════════════════════════════════ LINES -->
-<div id="lines" class="section">
-  <div class="section-label">Lines & Tactics</div>
-  <h1>Lines &<br>Tactics</h1>
-  <div class="mantra">"The edge cases that win games nobody expects you to win."</div>
-  <p><em>This section is being expanded with oracle-verified edge cases, timing windows, and 1-in-5000 interactions. Check back soon.</em></p>
-</div>
 
 <!-- CH01: OVERVIEW -->
 <div id="identity" class="section active">
@@ -583,19 +578,123 @@
 
 <!-- ══════════════════════════════════════════════════════════ LINES -->
 <div id="lines" class="section">
-  <div class="section-label">Lines & Tactics</div>
+  <div class="section-label">Lines & Tactics — The Titan Bible</div>
   <h1>Lines &<br>Tactics</h1>
-  <div class="mantra">"The edge cases that win games nobody expects you to win."</div>
-  <p><em>This section is being expanded with oracle-verified edge cases, timing windows, and 1-in-5000 interactions. Check back soon.</em></p>
+  <div class="mantra">"The highest decision density in Modern. Every land drop is a puzzle. Amulet + bounce land = extra mana. Dryad + Valakut = Lightning Bolts on land entry. Titan finds the right 2 lands to win."</div>
+
+  <h2>Oracle-Verified Edge Cases</h2>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Amulet of Vigor + Bounce Land = Extra Mana</div>
+    <div class="edge-case-body">Bounce land (e.g. Simic Growth Chamber) enters tapped → Amulet trigger: untap it → tap it for {G}{U} → bounce-land ETB trigger: return a land you control to hand. With 2 Amulets: Amulet triggers twice → untap twice → tap for {G}{U}, untap again, tap for {G}{U} again → 4 mana from one land drop. The bounce trigger returns ANY land — return the bounce land itself to replay next turn. This is the deck's mana engine.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Amulet + Bounce Land — Trigger Ordering Matters</div>
+    <div class="edge-case-body">When a bounce land enters: TWO triggers go on the stack — Amulet's untap trigger AND the bounce land's "return a land" trigger. YOU choose the order (you control both). <strong>Correct order:</strong> put bounce trigger on stack first, then Amulet untap on top. Amulet resolves first (untap, tap for mana), then bounce trigger resolves (return a land). If you stack it wrong (bounce first): you return the land before untapping it → no mana.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Primeval Titan — Searches on ETB AND Attack</div>
+    <div class="edge-case-body">"Whenever this creature enters OR attacks, search for up to two lands, put onto battlefield tapped." The lands enter tapped — with Amulet they untap immediately. Titan ETB: find 2 bounce lands. Each enters tapped → Amulet untaps each → tap for mana → bounce triggers return lands to hand → replay them. A single Titan ETB with Amulet can generate 8+ mana. On attack: search again for 2 more lands. Titan on T3 with Amulet active often wins immediately.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Dryad of the Ilysian Grove + Valakut = Lightning Bolts</div>
+    <div class="edge-case-body">Dryad: "Lands you control are every basic land type in addition to their other types." Every land is a Mountain. Valakut: "Whenever a Mountain enters, if you control at least 5 other Mountains, deal 3 damage." With Dryad + Valakut + 5 other lands: every future land drop deals 3 damage. Titan searching for 2 lands = 6 damage. This is the Valakut kill — play lands, deal damage, don't need to attack.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Dryad — Extra Land Drop + Every Basic Type</div>
+    <div class="edge-case-body">"You may play an additional land on each of your turns." + "Lands you control are every basic land type." Two effects in one creature. The extra land drop stacks with Azusa (Azusa = +2 lands, Dryad = +1, total = 4 land drops per turn). The "every basic type" enables Valakut kills AND makes fetch lands find anything (Windswept Heath finds a "Forest" — with Dryad, every land is a Forest).</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Mycosynth Gardens Copies Amulet — Two Amulets for {0}</div>
+    <div class="edge-case-body">{X}, {T}: This land becomes a copy of target nontoken artifact with MV X. Amulet of Vigor is MV 1. Activate Gardens for {1}{T}: Gardens becomes a copy of Amulet. Now you have 2 Amulets — bounce lands untap twice, generating double mana. The copy is permanent (until Gardens copies something else). Gardens producing {C} or colored mana is lost once it becomes an Amulet (it's no longer a land — wait, it IS still a land that's also a copy of Amulet). It retains its land types but gains Amulet's abilities.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Tolaria West Transmute — Finds Pact, Amulet, EE, Walking Ballista</div>
+    <div class="edge-case-body">"Transmute {1}{U}{U}: search for a card with MV 0." MV 0 targets in the deck: Summoner's Pact (finds Titan or Dryad), Pact of Negation (free counter), Engineered Explosives (sweeper), Walking Ballista (removal or win-con). Transmute only as sorcery — can't surprise opponents. Transmute discards Tolaria West (it goes to GY, not exile). The versatility makes Tolaria West one of the most important lands in the deck.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Cultivator Colossus — Chain Lands Until You Miss</div>
+    <div class="edge-case-body">"When this enters, put a land from hand onto battlefield tapped. If you do, draw a card and repeat." This loops: land from hand → draw → if you drew a land, play it → draw → repeat. With 5-6 lands in hand: dump them all, draw 5-6 cards, end with a massive board + full hand. Colossus's P/T = lands you control — after chaining, it's often a 12/12+ trampler. The lands enter tapped — with Amulet they untap. Without Amulet they're tapped but you're still drawing cards and building the board.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Spelunking — Lands Enter Untapped (Second Amulet Effect)</div>
+    <div class="edge-case-body">"Lands you control enter untapped." This replaces the "enters tapped" clause on bounce lands and Titan-searched lands. Unlike Amulet (which is a triggered ability that untaps), Spelunking is a static replacement effect — the land never enters tapped in the first place. This means: no Amulet trigger (already untapped), but also no window for opponent to respond before you tap for mana. Spelunking also draws a card on ETB and puts a land from hand onto battlefield — it's ramp + card advantage + Amulet effect in one.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Summoner's Pact — Lose the Game if You Don't Pay</div>
+    <div class="edge-case-body">{0}: search for green creature → hand. Next upkeep: pay {2}{G}{G} or lose. With Titan + bounce lands + Amulet: generating {2}{G}{G} is trivial. Without Titan: you MUST have 4 mana next turn or you're dead. Don't Pact unless you can pay OR you're winning this turn. The upkeep trigger is mandatory — you can't "forget" it. It goes on the stack — opponent CAN respond to it (e.g., with Stifle to counter the payment and force the loss).</div>
+  </div>
 </div>
+
 
 <!-- ══════════════════════════════════════════════════════════ LINES -->
 <div id="lines" class="section">
-  <div class="section-label">Lines & Tactics</div>
+  <div class="section-label">Lines & Tactics — The Titan Bible</div>
   <h1>Lines &<br>Tactics</h1>
-  <div class="mantra">"The edge cases that win games nobody expects you to win."</div>
-  <p><em>This section is being expanded with oracle-verified edge cases, timing windows, and 1-in-5000 interactions. Check back soon.</em></p>
+  <div class="mantra">"The highest decision density in Modern. Every land drop is a puzzle. Amulet + bounce land = extra mana. Dryad + Valakut = Lightning Bolts on land entry. Titan finds the right 2 lands to win."</div>
+
+  <h2>Oracle-Verified Edge Cases</h2>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Amulet of Vigor + Bounce Land = Extra Mana</div>
+    <div class="edge-case-body">Bounce land (e.g. Simic Growth Chamber) enters tapped → Amulet trigger: untap it → tap it for {G}{U} → bounce-land ETB trigger: return a land you control to hand. With 2 Amulets: Amulet triggers twice → untap twice → tap for {G}{U}, untap again, tap for {G}{U} again → 4 mana from one land drop. The bounce trigger returns ANY land — return the bounce land itself to replay next turn. This is the deck's mana engine.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Amulet + Bounce Land — Trigger Ordering Matters</div>
+    <div class="edge-case-body">When a bounce land enters: TWO triggers go on the stack — Amulet's untap trigger AND the bounce land's "return a land" trigger. YOU choose the order (you control both). <strong>Correct order:</strong> put bounce trigger on stack first, then Amulet untap on top. Amulet resolves first (untap, tap for mana), then bounce trigger resolves (return a land). If you stack it wrong (bounce first): you return the land before untapping it → no mana.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Primeval Titan — Searches on ETB AND Attack</div>
+    <div class="edge-case-body">"Whenever this creature enters OR attacks, search for up to two lands, put onto battlefield tapped." The lands enter tapped — with Amulet they untap immediately. Titan ETB: find 2 bounce lands. Each enters tapped → Amulet untaps each → tap for mana → bounce triggers return lands to hand → replay them. A single Titan ETB with Amulet can generate 8+ mana. On attack: search again for 2 more lands. Titan on T3 with Amulet active often wins immediately.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Dryad of the Ilysian Grove + Valakut = Lightning Bolts</div>
+    <div class="edge-case-body">Dryad: "Lands you control are every basic land type in addition to their other types." Every land is a Mountain. Valakut: "Whenever a Mountain enters, if you control at least 5 other Mountains, deal 3 damage." With Dryad + Valakut + 5 other lands: every future land drop deals 3 damage. Titan searching for 2 lands = 6 damage. This is the Valakut kill — play lands, deal damage, don't need to attack.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Dryad — Extra Land Drop + Every Basic Type</div>
+    <div class="edge-case-body">"You may play an additional land on each of your turns." + "Lands you control are every basic land type." Two effects in one creature. The extra land drop stacks with Azusa (Azusa = +2 lands, Dryad = +1, total = 4 land drops per turn). The "every basic type" enables Valakut kills AND makes fetch lands find anything (Windswept Heath finds a "Forest" — with Dryad, every land is a Forest).</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Mycosynth Gardens Copies Amulet — Two Amulets for {0}</div>
+    <div class="edge-case-body">{X}, {T}: This land becomes a copy of target nontoken artifact with MV X. Amulet of Vigor is MV 1. Activate Gardens for {1}{T}: Gardens becomes a copy of Amulet. Now you have 2 Amulets — bounce lands untap twice, generating double mana. The copy is permanent (until Gardens copies something else). Gardens producing {C} or colored mana is lost once it becomes an Amulet (it's no longer a land — wait, it IS still a land that's also a copy of Amulet). It retains its land types but gains Amulet's abilities.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Tolaria West Transmute — Finds Pact, Amulet, EE, Walking Ballista</div>
+    <div class="edge-case-body">"Transmute {1}{U}{U}: search for a card with MV 0." MV 0 targets in the deck: Summoner's Pact (finds Titan or Dryad), Pact of Negation (free counter), Engineered Explosives (sweeper), Walking Ballista (removal or win-con). Transmute only as sorcery — can't surprise opponents. Transmute discards Tolaria West (it goes to GY, not exile). The versatility makes Tolaria West one of the most important lands in the deck.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Cultivator Colossus — Chain Lands Until You Miss</div>
+    <div class="edge-case-body">"When this enters, put a land from hand onto battlefield tapped. If you do, draw a card and repeat." This loops: land from hand → draw → if you drew a land, play it → draw → repeat. With 5-6 lands in hand: dump them all, draw 5-6 cards, end with a massive board + full hand. Colossus's P/T = lands you control — after chaining, it's often a 12/12+ trampler. The lands enter tapped — with Amulet they untap. Without Amulet they're tapped but you're still drawing cards and building the board.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Spelunking — Lands Enter Untapped (Second Amulet Effect)</div>
+    <div class="edge-case-body">"Lands you control enter untapped." This replaces the "enters tapped" clause on bounce lands and Titan-searched lands. Unlike Amulet (which is a triggered ability that untaps), Spelunking is a static replacement effect — the land never enters tapped in the first place. This means: no Amulet trigger (already untapped), but also no window for opponent to respond before you tap for mana. Spelunking also draws a card on ETB and puts a land from hand onto battlefield — it's ramp + card advantage + Amulet effect in one.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Summoner's Pact — Lose the Game if You Don't Pay</div>
+    <div class="edge-case-body">{0}: search for green creature → hand. Next upkeep: pay {2}{G}{G} or lose. With Titan + bounce lands + Amulet: generating {2}{G}{G} is trivial. Without Titan: you MUST have 4 mana next turn or you're dead. Don't Pact unless you can pay OR you're winning this turn. The upkeep trigger is mandatory — you can't "forget" it. It goes on the stack — opponent CAN respond to it (e.g., with Stifle to counter the payment and force the loss).</div>
+  </div>
 </div>
+
 
 <!-- CH05: ROLES -->
 <div id="roles" class="section">

@@ -149,13 +149,7 @@
 </nav>
 <div class="page">
 
-<!-- ══════════════════════════════════════════════════════════ LINES -->
-<div id="lines" class="section">
-  <div class="section-label">Lines & Tactics</div>
-  <h1>Lines &<br>Tactics</h1>
-  <div class="mantra">"The edge cases that win games nobody expects you to win."</div>
-  <p><em>This section is being expanded with oracle-verified edge cases, timing windows, and 1-in-5000 interactions. Check back soon.</em></p>
-</div>
+
 
 <!-- IDENTITY -->
 <div id="identity" class="section active">
@@ -459,11 +453,58 @@
 
 <!-- ══════════════════════════════════════════════════════════ LINES -->
 <div id="lines" class="section">
-  <div class="section-label">Lines & Tactics</div>
+  <div class="section-label">Lines & Tactics — The Titan Bible</div>
   <h1>Lines &<br>Tactics</h1>
-  <div class="mantra">"The edge cases that win games nobody expects you to win."</div>
-  <p><em>This section is being expanded with oracle-verified edge cases, timing windows, and 1-in-5000 interactions. Check back soon.</em></p>
+  <div class="mantra">"Domain math is deceptively simple until Leyline makes every permanent all colors and every land every type. Then things get weird."</div>
+
+  <h2>Oracle-Verified Edge Cases</h2>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Leyline of the Guildpact — Two Separate Effects</div>
+    <div class="edge-case-body">Effect 1: "Each nonland permanent you control is all colors." Your creatures, artifacts, enchantments, planeswalkers are WUBRG. This gives Scion of Draco's full keyword suite to every creature you control (vigilance + hexproof + lifelink + first strike + trample). Effect 2: "Your lands are every basic land type in addition to their other types." Every land is Plains Island Swamp Mountain Forest. This means: domain count is always 5, Tribal Flames always deals 5, Leyline Binding always costs {W}, Scion always costs {2}. The two effects are INDEPENDENT — if Leyline is removed, both stop immediately.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Leyline in Opening Hand — Free Turn-Zero Enchantment</div>
+    <div class="edge-case-body">"If this card is in your opening hand, you may begin the game with it on the battlefield." This happens BEFORE the first turn. Your T1 land is already every basic type → domain count = 5 immediately. Territorial Kavu is a 5/5 on T2. Nishoba Brawler is a 5/3 trample on T2. Tribal Flames is 5 damage for {1}{R} on T2. Scion of Draco costs {2} on T2. The deck's explosiveness depends heavily on finding Leyline in the opener. Mulligan aggressively for it.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Scion of Draco — Domain Cost Reduction + Keyword Distribution</div>
+    <div class="edge-case-body">{12} artifact creature Dragon 4/4 flying. "Domain — costs {2} less per basic land type." With 5 domain (Leyline): costs {2}. Without Leyline: fetch for Triomes to max domain. Scion grants keywords based on creature COLOR: white=vigilance, blue=hexproof, black=lifelink, red=first strike, green=trample. With Leyline: every creature is all colors → every creature gets ALL FIVE keywords. A 5/5 Territorial Kavu with vigilance, hexproof, lifelink, first strike, and trample is nearly unkillable.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Stubborn Denial — Ferocious Turns It into Hard Counter</div>
+    <div class="edge-case-body">{U} instant: counter noncreature spell unless they pay {1}. Ferocious: if you control power 4+, counter that spell INSTEAD (hard counter). With Leyline: Territorial Kavu is 5/5 → ferocious active. Stubborn Denial becomes a {U} hard counter for any noncreature spell. Without Kavu/Scion: it's just a Spell Pierce variant. Always have a 4+ power creature before relying on Denial as a hard counter.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Leyline Binding — Flash + Domain Reduction</div>
+    <div class="edge-case-body">{5}{W} enchantment, Flash. "Domain — costs {1} less per basic land type." With 5 domain: costs {W}. Flash + {W} = instant-speed Oblivion Ring for 1 mana. Exiles ANY nonland permanent (creatures, planeswalkers, artifacts, enchantments). If Binding is removed: the exiled permanent returns. Against Boseiju, Who Endures: opponent can channel Boseiju to destroy Binding → their permanent returns. Play around Boseiju by only Binding must-answer threats.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Tribal Flames — 5 Damage for {1}{R}</div>
+    <div class="edge-case-body">"Domain — deals X damage where X = basic land types you control." With 5 domain: 5 damage for {1}{R}. This is Lightning Bolt + 2. Hits any target (creature, planeswalker, player). 5 to face × 4 copies = 20 damage from Tribal Flames alone. Without Leyline: domain depends on fetching correctly. Fetch Triomes early (Zagoth Triome = Swamp Forest Island, 3 types from 1 land). Two different Triomes + a basic = 5 domain.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Territorial Kavu Attack Trigger — Discard or Exile</div>
+    <div class="edge-case-body">Whenever Kavu attacks, choose: discard then draw, OR exile a card from a GY. The discard-draw filters your hand (pitch lands, draw gas). The exile mode is GY hate — disrupts opponent's delve, escape, Unearth plans. Against Dimir Oculus: exile their Oculus from GY before they can Unearth it. Against Living End: exile their cycled creatures. Kavu attacks as a 5/5 minimum with Leyline — first strike + trample means it beats almost anything in combat.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Flare of Cultivation — Free Ramp by Sacrificing a Green Creature</div>
+    <div class="edge-case-body">"You may sacrifice a nontoken green creature rather than pay this spell's mana cost." Sacrifice a mana dork that's done its job → search for 2 basics (1 to battlefield tapped, 1 to hand). Free ramp + domain fixing. With Leyline: ALL your nonland permanents are all colors (including green) → any creature can be sacrificed. Without Leyline: only naturally green creatures qualify.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Leyline Removal Collapses Everything</div>
+    <div class="edge-case-body">If Leyline of the Guildpact is destroyed or exiled: all nonland permanents revert to their printed colors, all lands lose extra basic types. Domain count drops to whatever your actual basic land types are (often 2-3 without Leyline). Scion's keywords update IMMEDIATELY — your creatures lose hexproof, lifelink, etc. mid-combat if Leyline dies. Kavu shrinks. Binding's cost doesn't retroactively change (already on battlefield), but future Bindings cost more. Protect Leyline or accept the risk.</div>
+  </div>
 </div>
+
 
 <!-- ROLES -->
 <div id="roles" class="section">

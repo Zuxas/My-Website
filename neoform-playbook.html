@@ -150,13 +150,7 @@
 </nav>
 <div class="page">
 
-<!-- ══════════════════════════════════════════════════════════ LINES -->
-<div id="lines" class="section">
-  <div class="section-label">Lines & Tactics</div>
-  <h1>Lines &<br>Tactics</h1>
-  <div class="mantra">"The edge cases that win games nobody expects you to win."</div>
-  <p><em>This section is being expanded with oracle-verified edge cases, timing windows, and 1-in-5000 interactions. Check back soon.</em></p>
-</div>
+
 
 <!-- IDENTITY -->
 <div id="identity" class="section active">
@@ -499,11 +493,77 @@
 
 <!-- ══════════════════════════════════════════════════════════ LINES -->
 <div id="lines" class="section">
-  <div class="section-label">Lines & Tactics</div>
+  <div class="section-label">Lines & Tactics — The Titan Bible</div>
   <h1>Lines &<br>Tactics</h1>
-  <div class="mantra">"The edge cases that win games nobody expects you to win."</div>
-  <p><em>This section is being expanded with oracle-verified edge cases, timing windows, and 1-in-5000 interactions. Check back soon.</em></p>
+  <div class="mantra">"The fastest consistent kill in Modern. Every edge case can mean the difference between a T2 win and a fizzle."</div>
+
+  <h2>The T2 Kill Line — Step by Step</h2>
+  <div class="card-grid card-grid-3">
+    <div class="card">
+      <div class="card-label">Step 1 — Free Creature</div>
+      <div class="card-title">Allosaurus Rider for {0}</div>
+      <div class="card-body">Exile two green cards from hand instead of paying {5}{G}{G}. Rider enters as a 1+*/1+* (1 + lands you control). On T1 with 1 land: it's a 2/2. The exile is an ALTERNATIVE COST, not an additional cost — you choose to pay either {5}{G}{G} or exile 2 green cards. You can exile ANY green cards: lands (if they're green, e.g. Dryad Arbor), creatures, instants. The cards go to exile, not GY.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Step 2 — Sacrifice + Tutor</div>
+      <div class="card-title">Neoform Rider into Craterhoof</div>
+      <div class="card-body"><span class="c">Neoform</span> ({G}{U} sorcery): sacrifice Rider (MV 7) → search for creature MV 8 with +1/+1 counter. <span class="c">Eldritch Evolution</span> ({1}{G}{G} sorcery): sacrifice Rider (MV 7) → search for creature MV ≤ 9. Both find <span class="c">Craterhoof Behemoth</span> (MV 8). Neoform gives Craterhoof an extra +1/+1 counter (6/6 base). Evolution exiles itself after resolving.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Step 3 — Kill</div>
+      <div class="card-title">Craterhoof = Lethal</div>
+      <div class="card-body">Craterhoof enters: "creatures you control gain trample and get +X/+X where X = creatures you control." With just Craterhoof in play: X=1 → it's a 6/6 haste trample (or 7/7 with Neoform counter). That's not lethal alone — you need another creature. With a mana dork surviving: X=2 → Craterhoof is 7/7, dork is 2+/2+ → lethal if opponent is at 20. Multiple dorks = overkill.</div>
+    </div>
+  </div>
+
+  <h2>Oracle-Verified Edge Cases</h2>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Allosaurus Rider — Exile Cost Is Alternative, Not Additional</div>
+    <div class="edge-case-body">"You may exile two green cards from your hand rather than pay this spell's mana cost." This is an ALTERNATIVE cost. You choose: pay {5}{G}{G} OR exile 2 green cards. You cannot do both. If you choose the exile route and it's countered: the 2 green cards are exiled permanently (they don't return). The cards must be green — check the color indicator or color identity. Lands are colorless unless they have a color indicator (Dryad Arbor is green). Manamorphose is red AND green — it can be exiled.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Neoform vs Eldritch Evolution — Key Differences</div>
+    <div class="edge-case-body"><strong>Neoform</strong> ({G}{U}): finds MV EQUAL to sacrificed +1. Rider (MV 7) → must find exactly MV 8. Puts a +1/+1 counter on the creature. Does NOT exile itself — goes to GY. <strong>Evolution</strong> ({1}{G}{G}): finds MV LESS THAN OR EQUAL TO sacrificed +2. Rider (MV 7) → can find MV ≤ 9. No counter. EXILES ITSELF — goes to exile, not GY. <strong>Both:</strong> sacrifice is additional cost — if countered, you still lose the creature. Don't cast into open Counterspell mana.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Summoner's Pact — Lose the Game on Upkeep</div>
+    <div class="edge-case-body">{0} instant: search for a green creature, put in hand. At beginning of your NEXT upkeep: pay {2}{G}{G} or lose. The upkeep trigger goes on the stack — it CAN be responded to. If you combo off before your next upkeep (T2 kill): you never pay and never lose. If you use Pact and DON'T combo: you need {2}{G}{G} next upkeep or you're dead. Pact of Negation works the same way: {0} counter, pay {3}{U}{U} next upkeep or lose. Both Pacts are free protection during your combo turn.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Chancellor of the Tangle — Reveal from Opening Hand</div>
+    <div class="edge-case-body">"You may reveal this card from your opening hand. If you do, at the beginning of your first main phase, add {G}." The {G} is added at first MAIN PHASE, not upkeep. It doesn't use the stack — it just happens. This free {G} enables T1 plays that normally require 2 mana (like a land + Chancellor → {G}{G} for a 2-drop mana creature). Chancellor is also a 6/7 vigilance reach creature that can be hard-cast as a backup plan, but at {4}{G}{G}{G} that's almost never the line.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Simian Spirit Guide — Exile from Hand for {R}</div>
+    <div class="edge-case-body">"Exile this card from your hand: Add {R}." This is a mana ability — it doesn't use the stack and can't be responded to. Provides {R} for Manamorphose, Wild Cantor, or Grinning Ignus. The exile is permanent — the card goes to exile, not GY. In post-board games, Simian can be hard-cast as a 2/2 for {2}{R} in emergencies (almost never correct).</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Manamorphose — Free Cantrip That Fixes Colors</div>
+    <div class="edge-case-body">{1}{R/G} instant: add 2 mana of any color combination, draw a card. Net mana: +0 (you spent 2, you get 2 back). Net cards: +0 (you spent Manamorphose, you drew 1). But it fixes your colors AND triggers Birgi ({R} on cast). With Birgi: Manamorphose becomes mana-positive ({1}{R/G} cast → Birgi gives {R} → Manamorphose gives 2 mana → net +1 mana and a card drawn). This is the combo fuel that chains spells together.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Grinning Ignus + Birgi — Infinite Mana and Storm</div>
+    <div class="edge-case-body"><span class="c">Grinning Ignus</span> ({2}{R}): "{R}, return to hand: add {C}{C}{R}. Activate only as sorcery." <span class="c">Birgi</span>: "whenever you cast a spell, add {R}." Loop: cast Ignus for {2}{R} → Birgi triggers (add {R}) → you have {R}. Activate Ignus: return to hand, add {C}{C}{R}. Pool: {C}{C}{R}{R} → recast Ignus for {2}{R} using {C}{C}{R} → Birgi triggers again → net +{R} each loop. Infinite mana, infinite storm count. Win with Walking Ballista (X = infinite) or Craterhoof.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Eldritch Evolution Exiles Itself — Can't Be Recurred</div>
+    <div class="edge-case-body">"Exile Eldritch Evolution." After resolving, it goes to exile permanently. Can't be Snapcastered, can't be E-Witnessed, doesn't fuel delve. The sacrifice is ADDITIONAL cost — if it's countered, you lost the creature AND the spell. Against open counter mana: Neoform is safer (doesn't exile itself, costs less). Evolution is better when you need the wider search range (MV+2 vs MV+1 exact).</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Wild Cantor — Sacrifice for Any Color</div>
+    <div class="edge-case-body">{R/G} 1/1 Human Druid. "Sacrifice: add one mana of any color." The sacrifice is a mana ability — doesn't use the stack, can't be responded to. Cantor does double duty: it's a creature to sacrifice to Neoform/Evolution AND a mana source. Neoform sacrificing Cantor (MV 1) finds MV 2 creatures. Evolution sacrificing Cantor finds MV ≤ 3 creatures. Neither finds Craterhoof from Cantor alone — you need Rider.</div>
+  </div>
 </div>
+
 
 <!-- ROLES -->
 <div id="roles" class="section">
