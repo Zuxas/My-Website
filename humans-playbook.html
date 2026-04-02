@@ -119,6 +119,9 @@
   footer span { font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.1em; text-transform:uppercase; }
   @media (max-width:768px) { .header-inner,nav,.page,footer { padding-left:24px; padding-right:24px; } .header-title { font-size:40px; } .header-right { display:none; } .decklist,.role-grid,.engine-body,.tuning-grid,.print-grid { grid-template-columns:1fr; } nav { padding:0 24px; } }
   @media print { nav,.print-btn,footer { display:none; } .section { display:block !important; } }
+  .edge-case { border:1px solid var(--accent); background:var(--accent-light); padding:16px 20px; margin:16px 0; font-size:14px; }
+  .edge-case-label { font-family:'DM Mono',monospace; font-size:9px; letter-spacing:0.15em; text-transform:uppercase; color:var(--accent); margin-bottom:6px; }
+  .edge-case-body { font-weight:300; color:var(--ink); line-height:1.5; }
 </style>
 </head>
 <body>
@@ -460,6 +463,39 @@
       <div class="card-body">The sweeper that ignores your entire board. All Is Dust destroys all colored permanents — your Humans, your Vials, everything. Naming it forces them to beat you through creature combat where your disruption and lords shine. Secondary: Karn, the Great Creator.</div>
     </div>
   </div>
+
+  <h2>Oracle-Verified Edge Cases</h2>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Jirina + Aether Vial vs Living End — The Blowout Line</div>
+    <div class="edge-case-body">Living End is on the stack (from cascade). <strong>Response: Vial in Jirina at instant speed.</strong> Jirina ETB: "exile target player's graveyard" — target the OPPONENT. Their entire GY (all cycled creatures — 5/5s, 7/7s, 3/4s) is exiled permanently by Jirina, NOT by Living End. <strong>Now sacrifice Jirina</strong> — Humans gain hexproof + indestructible until EOT, and Jirina goes to YOUR GY. <strong>Living End resolves:</strong> Step 1: exile creature cards from GYs — Jirina is in your GY, gets exiled by Living End. Opponent's GY is already empty. Step 2: sacrifice all creatures (sacrifice bypasses indestructible — your Humans still die). Step 3: return cards exiled in Step 1 — Jirina comes back (she was exiled by Living End's Step 1). Opponent gets NOTHING (their creatures were exiled by Jirina's ETB, not Living End). <strong>Net result: opponent spent their whole turn cascading into a blank Living End, you have Jirina back as a 2/2.</strong> This is the single best interaction in the matchup.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Jirina ETB — "Exile Target Player's Graveyard" Targets a PLAYER</div>
+    <div class="edge-case-body">Jirina's ETB targets a PLAYER, not a graveyard. This means: Unsettled Mariner's "counter unless pay {1}" DOES apply if they target you with removal while Jirina's ETB targets them (Mariner triggers on targeting "you or a permanent you control" — Jirina targets the player, and the player might be you or the opponent). Also: Jirina can target YOUR OWN graveyard if you need to reset it (rare but relevant against Dauthi Voidwalker or GY hate that punishes you for having cards in GY).</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Jirina's Sacrifice — Hexproof + Indestructible Until EOT, but NOT vs Sacrifice</div>
+    <div class="edge-case-body">"Sacrifice Jirina: Humans you control gain hexproof and indestructible until end of turn." Indestructible prevents DESTROY effects (Fatal Push, Wrath of God). Hexproof prevents TARGETING (Bolt, Unholy Heat). But SACRIFICE effects bypass both. All Is Dust (sacrifice all colored permanents), Liliana's -2 (sacrifice a creature), Living End (each player sacrifices all creatures) — all still work through Jirina's protection. Time your sacrifice for when they're using targeted removal or destroy-based sweepers, not sacrifice-based effects.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Aether Vial Creatures Don't Trigger Thalia's Tax</div>
+    <div class="edge-case-body">Vialed creatures aren't CAST — they enter the battlefield directly. This means: Thalia's tax ({1} extra on noncreature spells) doesn't apply to Vial activations. Cavern of Souls' "can't be countered" is irrelevant for Vialed creatures (they were never on the stack). But all ETB triggers still fire: Champion gets counters, Lieutenant pumps, Guide generates energy, Meddling Mage names a card. Vial bypasses the stack entirely — the only thing that matters is the ETB.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Meddling Mage — Name Is Chosen on Entry, Can't Be Responded To</div>
+    <div class="edge-case-body">Meddling Mage's "name a nonland card" happens as it enters the battlefield — it's part of the ETB, not a triggered ability on the stack. The opponent CANNOT respond to the naming. If you Vial in Mage at their end step, you name the card and they have no window to cast it in response to the naming. The name choice is locked in before they get priority. This is why Vial + Mage at their end step is the strongest disruption play in the deck.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Coppercoat Vanguard Does NOT Give Itself Ward</div>
+    <div class="edge-case-body">"Each OTHER Human you control gets +1/+0 and has ward {1}." Coppercoat does not protect itself. It's your most removal-vulnerable creature. With 2 Coppercoats: each gives the OTHER one ward {1} and +1/+0. They protect each other but not themselves alone. Deploy Coppercoat into a board that already has creatures — don't lead with it into open removal mana.</div>
+  </div>
+
 </div>
 
 <!-- ══════════════════════════════════════════════════════════ CH06 ROLES -->
@@ -544,11 +580,12 @@
         <table class="sb-table"><thead><tr><th>Out</th><th>In</th></tr></thead><tbody>
           <tr><td class="sb-out">−2 Unsettled Mariner</td><td class="sb-in">+1 Lavinia, Azorius Renegade</td></tr>
           <tr><td class="sb-out">−2 Coppercoat Vanguard</td><td class="sb-in">+1 Vexing Bauble</td></tr>
-          <tr><td class="sb-out">−1 Mockingbird</td><td class="sb-in">+1 Grafdigger's Cage</td></tr>
+          <tr><td class="sb-out">−1 Mockingbird</td><td class="sb-in">+1 Drannith Magistrate</td></tr>
         </tbody></table>
-        <p class="sb-note">Mariner and Coppercoat are defensive cards you don't need — they're not targeting you, they're cascading. Grafdigger's Cage stops creatures entering from graveyards (Living End's entire purpose). With Mage + Lavinia + Cage + Bauble, they need to answer 4 different hate pieces across different card types.</p>
+        <p class="sb-note">Mariner and Coppercoat are defensive cards you don't need — they're not targeting you, they're cascading. Drannith Magistrate stops opponents from casting spells from anywhere other than hand (blocks Living End from cascade). With Mage + Lavinia + Magistrate + Bauble, they need to answer 4 different hate pieces across different card types.</p>
         <h3>% Point Edges</h3>
-        <p class="sb-note"><strong>+4 pts: Layer redundant hate.</strong> Mage names Living End → they need Force of Negation. Lavinia counters free spells → they need to remove her. Cage stops GY creatures → they need artifact removal. No Living End list can answer all three axes simultaneously.</p>
+        <p class="sb-note"><strong>+5 pts: Vial in Jirina with Living End on the stack.</strong> Jirina ETB exiles their entire GY. Sacrifice Jirina. Living End resolves: they get NOTHING back (their creatures were exiled by Jirina, not Living End). Jirina returns from YOUR GY via Living End's Step 3. The most devastating blowout in the matchup — their entire combo turn is blanked and you get a creature back.</p>
+        <p class="sb-note"><strong>+4 pts: Layer redundant hate.</strong> Mage names Living End → they need Force of Negation. Lavinia counters free spells → they need to remove her. Drannith Magistrate stops casting from non-hand → they need creature removal. No Living End list can answer all three axes simultaneously.</p>
       </td></tr>
 
       <tr onclick="toggle('mu-affinity')"><td><strong>Izzet Affinity</strong></td><td>Disruption</td><td><span class="verdict verdict-even">Even</span></td><td>Kataki, War's Wage from SB</td></tr>
@@ -664,11 +701,7 @@
       <div class="card-title">Vexing Bauble ×1</div>
       <div class="card-body">{1} Artifact. Whenever a player casts a spell with no mana spent, counter it. {1}, {T}, Sacrifice: draw a card. Redundancy with Lavinia on a different card type — Lavinia is a creature (removable), Bauble is an artifact (harder to interact with for many decks). The sacrifice-to-draw mode means it's never dead: against non-free-spell decks, cycle it for a card. Perfect for Living End, Neoform, Storm.</div>
     </div>
-    <div class="card">
-      <div class="card-label">Anti-Graveyard</div>
-      <div class="card-title">Grafdigger's Cage ×1</div>
-      <div class="card-body">{1} Artifact. Creature cards in graveyards and libraries can't enter the battlefield. Players can't cast spells from graveyards or libraries. Stops: Living End, Persist, Reanimator, Collected Company (from library), Neoform (from library). Also stops Past in Flames flashback. At {1} it deploys T1 before their combo comes online. Unlike Sanctifier which exiles once, Cage is a permanent lock.</div>
-    </div>
+
   </div>
 </div>
 
@@ -827,7 +860,7 @@
             <div><div class="print-col-label">In</div>
               <div class="print-row"><span>Lavinia</span><span class="print-qty">+1</span></div>
               <div class="print-row"><span>Vexing Bauble</span><span class="print-qty">+1</span></div>
-              <div class="print-row"><span>Grafdigger's Cage</span><span class="print-qty">+1</span></div>
+              <div class="print-row"><span>Drannith Magistrate</span><span class="print-qty">+1</span></div>
             </div>
           </div>
           <div class="print-needle">Name Living End · Layer 4 hate pieces across card types</div>
