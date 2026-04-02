@@ -620,7 +620,7 @@
   <!-- GRIXIS REANIMATOR -->
   <div id="mu_glock_a" class="matchup-detail">
     <h3>Grixis Reanimator — Even: Thoughtseize Strips Your Hand, Archon ETB Devastating</h3>
-    <p>Grixis Reanimator is an even matchup decided by whether they can disrupt your key pieces and whether they can resolve Archon of Cruelty before you close. Their <span class="c">Thoughtseize</span> on turn 1 strips your best card — if that's <span class="c">Pinnacle Emissary</span>, your entire token engine is delayed. Archon of Cruelty's ETB makes you sacrifice a permanent, discard a card, and lose 3 life — against a 12-artifact board you're sacrificing a Drone and discarding a land, but that's recoverable. Your fast clock is your best asset here. A turn-2 Kappa kills before they've assembled Persist + Archon.</p>
+    <p>Race them before Persist resolves — your fastest Kappa clock is turn 2, their Persist is also turn 2, and you are on average faster. T1 <span class="c">Pinnacle Emissary</span> into T2 Kappa kills before they've assembled Persist + Archon. Your main vulnerability is T1 Thoughtseize stripping Emissary — if that happens, pivot to the Weapons Manufacturing burst plan rather than waiting on Kappa. Hold <span class="c">Metallic Rebuke</span> for Persist (MV 2 — Improvise makes it {U} effective cost). One countered Persist often wins the game outright.</p>
     <h3>Play vs Draw</h3>
     <div class="pd-grid">
       <div class="pd-col"><div class="pd-label">On the Play</div><div class="pd-title">Kill Before Persist</div>
@@ -801,7 +801,7 @@
   <!-- ESPER REANIMATOR -->
   <div id="mu_esper_a" class="matchup-detail">
     <h3>Esper Reanimator — Favored: Your Clock Is Faster Than Their Combo</h3>
-    <p>Esper Reanimator uses Goryo's Vengeance (instant, reanimate a legendary creature from GY with haste, exile at next end step) to put Atraxa, Grand Unifier into play. Their fastest kill is turn 2-3. Your fastest kill is turn 2. On average you kill faster. Their Grief + Ephemerate (strip two cards from your hand turn 1) is disruptive but doesn't stop a Kappa that's already in play. <span class="c">Metallic Rebuke</span> counters Goryo's Vengeance (MV 2 — Rebuke with Improvise costs {U}) cleanly. Their plan requires assembling two specific cards (Atraxa in GY + Goryo's) while yours requires one (any hand with Emissary + artifacts).</p>
+    <p>Your clock is faster than theirs on average — you kill turn 2, their fastest Goryo's + Atraxa is also turn 2-3, and your plan requires one piece (Emissary + artifacts) versus their two (Atraxa in GY + Goryo's). Hold <span class="c">Metallic Rebuke</span> for Goryo's Vengeance (MV 2 — Rebuke with Improvise costs {U}). T1 Grief + Ephemerate stripping two cards is annoying but doesn't stop a Kappa already in play — if they strip Emissary, pivot to Weapons Manufacturing burst rather than rebuilding the Kappa line.</p>
     <h3>Play vs Draw</h3>
     <div class="pd-grid">
       <div class="pd-col"><div class="pd-label">On the Play</div><div class="pd-title">Race — Kill Before Goryo's</div>
@@ -886,7 +886,16 @@
   </div>
 
   <div class="edge-case">
-    <div class="edge-case-label">Grafdigger's Cage Has Two Clauses — One Stops Casting, One Stops Entering</div>
+    <div class="edge-case-label">Emry, Lurker of the Loch — Casts ONE Artifact Per Turn From GY</div>
+    <div class="edge-case-body"><span class="c">Emry, Lurker of the Loch</span> says "once each turn, you may cast an artifact spell from your graveyard." This is once PER TURN, not once per main phase — you get exactly one artifact cast from GY per full turn cycle. Under <span class="c">Grafdigger's Cage</span>, Emry's casting ability is completely shut off (Cage clause 2 prevents casting from GY). Emry's value in the matchup is primarily recurring <span class="c">Tormod's Crypt</span> (exile an opponent's GY on ETB for free) and <span class="c">Welding Jar</span> (protect key artifacts from removal). Against decks with no GY interaction, Emry recurring spent Mox Opals and Memnites provides significant card advantage.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Metalcraft — Counts ALL Artifacts You Control, Including Tokens</div>
+    <div class="edge-case-body">Metalcraft says "if you control three or more artifacts." This counts every artifact you control — Mox Opals, Equipment, Construct tokens from Urza's Saga, Drone tokens from Pinnacle Emissary, and Kappa Cannoneer itself. <span class="c">Galvanic Blast</span> deals 4 damage (not 2) with Metalcraft active. <span class="c">Thought Monitor</span> costs {U}{U} (not {6}{U}{U}) with Metalcraft. After a board wipe that kills all creatures, if your Mox Opal and other noncreature artifacts remain, Metalcraft may still be active — check your artifact count before assuming Metalcraft is offline.</div>
+  </div>
+
+
     <div class="edge-case-body">Grafdigger's Cage says: "(1) Creature cards can't enter the battlefield from graveyards or libraries. (2) Players can't cast spells from graveyards or libraries." Clause 1 stops any creature from entering the battlefield from a graveyard — this includes Persist, Emperor of Bones' reanimate trigger, and any "return to battlefield" effect. Clause 2 stops casting — this includes Emry recasting artifacts from GY and any Flashback creature spells. Against Grixis Reanimator, Grafdigger's Cage is a full hard lock on their combo: neither Persist nor Emperor can put Archon onto the battlefield while Cage is in play.</div>
   </div>
 
