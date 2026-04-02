@@ -164,6 +164,7 @@
   <button class="nav-link" onclick="show('engines')">Engines</button>
   <button class="nav-link" onclick="show('roles')">Roles</button>
   <button class="nav-link" onclick="show('matchups')">Matchups</button>
+  <button class="nav-link" onclick="show('edges')">Edges</button>
   <button class="nav-link" onclick="show('sideboard')">Sideboard</button>
   <button class="nav-link" onclick="show('heuristics')">Heuristics</button>
   <button class="nav-link" onclick="show('tuning')">Tuning</button>
@@ -529,7 +530,7 @@
   <!-- BOROS ENERGY -->
   <div id="mu_boros_a" class="matchup-detail">
     <h3>Boros Energy — Favored: Your Threats Are Unanswerable</h3>
-    <p>Boros Energy's removal suite is <span class="c">Galvanic Discharge</span> (energy scaled) and Lightning Bolt variants — all targeted, all stopped by Ward 4 on <span class="c">Kappa Cannoneer</span> unless they have 4 extra mana. Their Goblin Bombardment reach (sacrifice → 1 damage) bypasses Ward but requires a critical mass of creatures — by the time they've built enough tokens to Bombardment you out, you've already killed them with Kappa. Their Urza's Saga interacts with yours (both generate large Constructs) but yours scales faster due to Pinnacle Emissary Drone production boosting artifact count. This is a favorable matchup because their interactive tools are too slow or too expensive against your Ward-4 threat.</p>
+    <p>Deploy <span class="c">Kappa Cannoneer</span> and let Ward 4 do the work — their entire removal suite (<span class="c">Galvanic Discharge</span>, Lightning Bolt) costs {4} extra to target Kappa, which they will not pay in a speed race. Your clock kills them before they accumulate enough tokens for Goblin Bombardment to matter. Your Urza's Saga Construct scales faster than theirs because Pinnacle Emissary Drone production inflates your artifact count above theirs. Get Kappa attacking by turn 3 and your damage outraces everything they do.</p>
     <h3>Play vs Draw</h3>
     <div class="pd-grid">
       <div class="pd-col"><div class="pd-label">On the Play</div><div class="pd-title">Emissary T1 → Kappa T2</div>
@@ -558,7 +559,7 @@
   <!-- JESKAI BLINK -->
   <div id="mu_jeskai_a" class="matchup-detail">
     <h3>Jeskai Blink — Hard: Solitude Bypasses Ward, Phelia Loops Your Board</h3>
-    <p>Jeskai Blink is the hardest matchup for Izzet Affinity. <span class="c">Solitude</span> evoked (pay 1 life + exile a white card from hand) exiles <span class="c">Pinnacle Emissary</span> for zero mana on turn 0 and completely bypasses Ward 4 on Kappa Cannoneer — Solitude is a targeted effect and pays the Ward cost with life (Ward says "counter unless they pay 4 mana" — Solitude's evoke cost is not mana, but Ward's trigger asks "pay {4}" — actually Ward {4} says "counter this spell or ability unless its controller pays {4}." Solitude evoke exile resolves, then the Ward trigger goes on the stack. They pay 4 with life? No — Ward costs mana specifically. So they need to pay 4 mana OR the Solitude is countered. But Solitude already resolved when evoked... Actually let me clarify: Evoke means Solitude enters, the ETB trigger fires (exile creature), then Solitude is sacrificed. Ward fires when Solitude is cast and targets Kappa. They must pay 4 mana or the Ward trigger counters the Solitude spell. So against Kappa with Ward 4, Solitude costs {W} evoke + {4} Ward = 5 mana. Against Emissary (MV 3, no Ward), Solitude is free. This is the key distinction — Solitude is free against Emissary, expensive against Kappa. Their Ephemerate on Phelia also bounces your Emissary or Kappa for additional enters-the-battlefield value. Wrath of the Skies (destroy all creatures with power 3 or less? No — Wrath of the Skies is a White sorcery that destroys all creatures — check: "Destroy all creatures." Yes, board wipe) clears your entire board. This matchup is genuinely hard.</p>
+    <p>Your path to winning is Blood Moon on T2 — it converts their entire nonbasic land base to Mountains, shutting off Solitude ({W}{W}{W}{W} cast, or pitch a white card — still needs white in hand), Wrath of the Skies (WW), and Consign to Memory (UU). Under Blood Moon with no basics, they cannot cast their most important interaction. Without Blood Moon, the matchup is genuinely hard: <span class="c">Solitude</span> evoked exiles <span class="c">Pinnacle Emissary</span> for zero mana (Emissary has no Ward), and Ward 4 on Kappa costs them an extra {4} mana to target — which they will pay if they have it. Key line on Emissary: Solitude evoke fires a Ward trigger only if there IS Ward to fire. Emissary has no Ward, so it is always a free exile. Protect Emissary with <span class="c">Metallic Rebuke</span>, not Kappa's Ward. Your fastest win is T2 Blood Moon followed by T3 Kappa into a mana-locked opponent.</p>
     <h3>Play vs Draw</h3>
     <div class="pd-grid">
       <div class="pd-col"><div class="pd-label">On the Play</div><div class="pd-title">Blood Moon on T2 Is Your Best Play</div>
@@ -641,7 +642,7 @@
     <h3>If X &rarr; Do Y</h3>
     <ul class="ifthen-list">
       <li><span class="if-label">If</span><span><strong>Archon of Cruelty resolves via Persist and its ETB fires:</strong> You sacrifice a permanent or planeswalker — sacrifice your worst Drone. You discard a card — discard a land or a duplicate artifact. You lose 3 life. Archon is an 8/8 flying lifelink that attacks next turn. Calculate: can you kill them before Archon's next attack? If Kappa is in play and attacking, plus your other Drones/Constructs, can you deal 20+ damage before their end step? If yes, race it.</span></li>
-      <li><span class="if-label">If</span><span><strong>Grafdigger's Cage is in play:</strong> Cage prevents creature cards in graveyards or libraries from being cast. Persist specifically reads "return target nonlegendary creature card from your graveyard to the battlefield" — this is NOT casting, it's putting onto the battlefield. Grafdigger's Cage does NOT stop Persist! Cage stops Emry from casting artifacts from the GY and stops Emperor of Bones from putting exiled cards onto the battlefield (Emperor's trigger puts the card "onto the battlefield" — not casting, so Cage doesn't apply to Emperor either). Cage is still useful for stopping Faithless Looting + Emry recursion, but it doesn't stop their main combo.</span></li>
+      <li><span class="if-label">If</span><span><strong>Grafdigger's Cage is in play:</strong> Cage has two clauses: (1) players can't cast spells from graveyards or libraries, and (2) <em>creature cards can't enter the battlefield from graveyards or libraries</em>. The second clause DOES stop Persist — Persist puts a creature from the GY onto the battlefield, which clause 2 directly prevents. Under Grafdigger's Cage, Persist fails entirely. Cage also stops Emperor of Bones' reanimate trigger (puts Archon onto the battlefield from exile — blocked by clause 2). What Cage does NOT stop: Faithless Looting (discards to GY but doesn't cast from GY), casting Persist from hand (the spell itself resolves but the creature can't enter the battlefield). Bottom line: Grafdigger's Cage is a hard lock on their entire combo. Running it is your most powerful hate card in this matchup.</span></li>
       <li><span class="if-label">If</span><span><strong>Psychic Frog is their backup plan and has grown to 5/5+ with flying:</strong> A 5/5 flying lifelink creature that draws on connect is a real clock. Your <span class="c">Galvanic Blast</span> at Metalcraft deals 4 — not enough. Kappa Cannoneer as a large attacker races it. <span class="c">Sink into Stupor</span> bounces Frog to their hand, resetting its counters and buying you the turn. Prioritize bouncing Frog over other plays when they've pivoted to the Frog plan.</span></li>
     </ul>
   </div>
@@ -671,7 +672,7 @@
     <h3>If X &rarr; Do Y</h3>
     <ul class="ifthen-list">
       <li><span class="if-label">If</span><span><strong>Primeval Titan resolves and ETB trigger is on the stack:</strong> Consign to Memory counters the triggered ability — they don't search for any lands. Titan is now a 6/6 trample with no immediate impact. You can race a 6/6 with your Kappa and Drones. If you don't have Consign, calculate: their fetched Slayers' Stronghold (haste + power boost to Titan) plus Tolaria West for Pact means Titan attacks for 10+ with haste immediately. If they get that, you likely need to kill them this turn.</span></li>
-      <li><span class="if-label">If</span><span><strong>Summoner's Pact is cast (search for green creature including Titan):</strong> Summoner's Pact creates a delayed trigger at upkeep: "pay {2}{G}{G} or lose the game." Consign to Memory can counter the upkeep trigger — they don't pay, they don't lose the game, but they also don't have the creature. This is the play when they cast Pact and you want to stop the Titan line permanently. The Pact trigger is a triggered ability targeting their own game state — Consign counters it, causing them to lose the game at upkeep instead of paying. Wait — that creates a lost game, not a canceled search. Actually: if you counter the "pay or lose" trigger, the entire thing doesn't happen — they don't have to pay AND they don't lose. The Titan they searched for is still in their hand from the Pact resolution. Hmm — re-read: Summoner's Pact says "at the beginning of your next upkeep, pay {2}{G}{G}. If you don't, you lose the game." That "if you don't, you lose" clause fires if the trigger resolves and they don't pay. If you Consign the upkeep trigger, it's countered, it doesn't resolve, so the "pay or lose" never applies. They just got a free Titan off Pact. This is nuanced — in most cases don't Consign the Pact trigger, because it just gives them a free Titan. Instead counter the Titan's ETB trigger after it's cast.</span></li>
+      <li><span class="if-label">If</span><span><strong>Summoner's Pact is cast (search for green creature including Titan):</strong> Summoner's Pact creates an upkeep trigger: "pay {2}{G}{G} or lose the game." Consign to Memory can counter this trigger — but the result is NOT that they lose the game. If you counter the Pact upkeep trigger, it's simply countered: the "pay or lose" clause never resolves, meaning they neither pay nor lose. They already searched for Titan when Pact resolved — they got it for free. Bottom line: <strong>do NOT Consign the Pact upkeep trigger.</strong> It just gives them a free Titan. The correct target for Consign is Primeval Titan's ETB trigger after it resolves onto the battlefield — counter the land search, leave Titan as a vanilla 6/6. That is the correct sequencing.</span></li>
       <li><span class="if-label">If</span><span><strong>Damping Sphere is in play:</strong> Their bounce land + Amulet of Vigor combo produces extra mana (bounce land enters untapped due to Amulet, produce extra mana). Under Damping Sphere, if a land is tapped for 2+ mana, it produces only {C} instead. This cripples the bounce land mana engine. Their entire combo relies on getting WUBRG from specific land combinations — Damping Sphere collapses that to colorless only.</span></li>
     </ul>
   </div>
@@ -859,6 +860,38 @@
 </div><!-- end matchups -->
 
 <!-- SIDEBOARD GUIDE -->
+<div id="edges" class="section">
+  <div class="section-label">Lines &amp; Tactics</div>
+  <h1>Edge Cases &amp;<br>Rules Precision</h1>
+  <div class="mantra">"Artifact synergies stack on each other — every trigger you understand is a line they don't see coming."</div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Ward — An Additional Cost Trigger, Not Hexproof</div>
+    <div class="edge-case-body">Ward {4} on <span class="c">Kappa Cannoneer</span> says "whenever this permanent becomes the target of a spell or ability an opponent controls, counter it unless its controller pays {4}." This is a triggered ability that fires whenever Kappa is targeted. The opponent CAN still target Kappa — Ward just forces them to pay {4} or their spell/ability is countered. This means: (1) effects that don't target (Supreme Verdict, Wrath of the Skies) bypass Ward entirely, (2) <span class="c">Solitude</span> evoke targets and triggers Ward — they must pay {4} mana to exile Kappa, making Solitude effectively cost {4} against Kappa (Ward's trigger says "pay {4}" which is specifically mana), (3) Ward fires for EACH targeting — if they target Kappa twice, they pay {4} twice or lose both spells.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Improvise — Tapping Artifacts Pays Generic Mana, Not Colored</div>
+    <div class="edge-case-body">Improvise says "each artifact you tap while casting this spell pays for {1}." Improvise pays for GENERIC mana ({1}) only — it cannot pay for colored mana requirements. <span class="c">Metallic Rebuke</span> costs {2}{U}: you can tap 2 artifacts to pay the {2}, but you still need {U} from your lands or Mox Opal. With 3+ artifacts in play, Rebuke costs just {U} to cast. This is the key math: one blue source + any 2 artifact taps = full Rebuke cost. Against an opponent's Persist ({1}{B}), you need 1 blue source + 1 artifact tap for Rebuke, keeping at least one artifact untapped for Improvise isn't required since the artifact is tapping for the cost, not for mana.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Urza's Saga Chapter Triggers Are Triggered Abilities — Consign Counters Them</div>
+    <div class="edge-case-body">Urza's Saga is a Saga enchantment land. Each chapter ability fires as a triggered ability when that lore counter is added. Chapter I creates a Construct token. Chapter II gives artifacts you control +1/+1. Chapter III tutors a 0 or 1 MV artifact. All three are triggered abilities — <span class="c">Consign to Memory</span> can counter any of them. The most important: counter their Chapter III tutor trigger to deny the key artifact search. Note: Saga doesn't sacrifice at the end of Chapter III — it sacrifices as a STATE-BASED ACTION after the third chapter trigger has been handled, not as a triggered ability. You can't "save" your own Saga from sacrifice with Consign once Chapter III resolves.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Kappa Cannoneer's +1/+1 Counter Trigger Fires on Every Artifact ETB</div>
+    <div class="edge-case-body"><span class="c">Kappa Cannoneer</span> says "Whenever an artifact enters the battlefield under your control, put a +1/+1 counter on Kappa Cannoneer." This triggers on EVERY artifact ETB — including during your opponent's turn if you have instant-speed artifact deployment. Each Drone token entering triggers Kappa. A single Emissary attacking on turn 3 with 6 Drones already in play means Kappa is likely a 10+ power creature by combat. Also: Kappa's counter trigger fires even when Kappa has Ward. Ward only applies when Kappa is targeted — the counter trigger fires from your own artifacts and cannot be "Warded" away.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Grafdigger's Cage Has Two Clauses — One Stops Casting, One Stops Entering</div>
+    <div class="edge-case-body">Grafdigger's Cage says: "(1) Creature cards can't enter the battlefield from graveyards or libraries. (2) Players can't cast spells from graveyards or libraries." Clause 1 stops any creature from entering the battlefield from a graveyard — this includes Persist, Emperor of Bones' reanimate trigger, and any "return to battlefield" effect. Clause 2 stops casting — this includes Emry recasting artifacts from GY and any Flashback creature spells. Against Grixis Reanimator, Grafdigger's Cage is a full hard lock on their combo: neither Persist nor Emperor can put Archon onto the battlefield while Cage is in play.</div>
+  </div>
+
+</div>
+
 <div id="sideboard" class="section">
   <div class="section-label">Chapter 07</div>
   <h1>Sideboard<br>Guide</h1>
