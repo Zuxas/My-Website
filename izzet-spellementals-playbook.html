@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Izzet Spellementals — Team Resolve Standard Playbook</title>
+<link rel="icon" href="images/tab32.png" type="image/png">
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+html{overflow-y:scroll;}
+:root{--primary:#1c0505;--ink:#0e0e0e;--paper:#f2ede6;--paper-dark:#e8e1d6;--rule:#c8bfb0;--accent:#DC2626;--accent-light:rgba(220,38,38,0.12);--danger:#8f1a1a;--danger-light:rgba(143,26,26,0.12);--gold:#DC2626;--gold-light:rgba(220,38,38,0.12);--mid:#5a5248;--card:#ffffff;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--paper);color:var(--ink);font-family:'Crimson Pro',Georgia,serif;font-size:17px;line-height:1.6;}
+nav{position:sticky;top:0;z-index:100;background:var(--primary);border-bottom:2px solid var(--accent);display:flex;align-items:center;padding:0 32px;height:48px;gap:4px;overflow-x:auto;scrollbar-width:none;}
+nav::-webkit-scrollbar{display:none;}
+.nav-brand{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);margin-right:16px;white-space:nowrap;flex-shrink:0;}
+.nav-link{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(248,250,252,0.55);background:none;border:none;border-bottom:2px solid transparent;padding:0 10px;height:48px;cursor:pointer;white-space:nowrap;display:flex;align-items:center;text-decoration:none;transition:color 0.15s,border-color 0.15s;flex-shrink:0;}
+.nav-link:hover{color:rgba(248,250,252,0.85);}
+.nav-link.active{color:rgba(248,250,252,1);border-bottom-color:var(--accent);}
+.header-band{background:var(--primary);border-bottom:3px solid var(--accent);padding:48px 80px 40px;color:#f1f5f9;}
+.header-band,.header-band *{color:#f1f5f9;}
+.header-inner{max-width:1080px;margin:0 auto;display:grid;grid-template-columns:1fr auto;gap:40px;align-items:start;}
+.header-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(241,245,249,0.4);margin-bottom:12px;}
+.header-title{font-family:'DM Mono',monospace;font-size:clamp(26px,3.5vw,46px);font-weight:500;letter-spacing:0.06em;line-height:1.05;text-transform:uppercase;}
+.header-title .acc{color:var(--accent);}
+.header-tagline{font-size:15px;font-style:italic;color:rgba(241,245,249,0.5);margin-top:12px;max-width:520px;line-height:1.5;}
+.header-meta{text-align:right;}
+.meta-row{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(241,245,249,0.4);margin-bottom:4px;}
+.meta-row span{color:rgba(241,245,249,0.85);margin-left:6px;}
+.section{display:none;animation:fadeIn 0.3s ease;}
+.section.active{display:block;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:none;}}
+.content{max-width:1080px;margin:0 auto;padding:56px 80px 80px;}
+.section-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--mid);margin-bottom:8px;display:block;}
+h1{font-family:'DM Mono',monospace;font-size:clamp(28px,4vw,44px);font-weight:500;letter-spacing:0.06em;text-transform:uppercase;line-height:1.05;margin-bottom:32px;}
+h2{font-family:'DM Mono',monospace;font-size:13px;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);margin:48px 0 16px;padding-bottom:8px;border-bottom:1px solid var(--rule);}
+h3{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--mid);margin:24px 0 8px;}
+p{font-size:16px;line-height:1.7;color:var(--ink);margin-bottom:14px;font-weight:300;}
+strong{font-weight:600;}
+.mantra{background:var(--accent-light);border-left:3px solid var(--accent);padding:20px 24px;margin:0 0 40px;font-style:italic;font-size:17px;line-height:1.6;}
+.card-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule);margin:16px 0;}
+.card-grid-2{grid-template-columns:repeat(2,1fr)!important;}
+.card-grid-3{grid-template-columns:repeat(3,1fr)!important;}
+.card{background:var(--card);padding:20px;}
+.card:hover{background:#faf7f2;}
+.card-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:var(--mid);margin-bottom:6px;}
+.card-title{font-family:'DM Mono',monospace;font-size:13px;color:var(--accent);margin-bottom:8px;font-weight:500;}
+.card-body{font-size:14px;color:var(--mid);line-height:1.55;font-weight:300;}
+.deck-row{display:flex;justify-content:space-between;padding:3px 0;border-bottom:1px solid rgba(200,191,176,0.4);font-size:15px;}
+.deck-count{font-family:'DM Mono',monospace;font-size:12px;color:var(--mid);min-width:24px;}
+.matchup-block{border:1px solid var(--rule);margin:24px 0;background:var(--card);}
+.matchup-header{background:var(--paper-dark);padding:16px 20px;display:flex;align-items:center;gap:12px;cursor:pointer;justify-content:space-between;}
+.matchup-header h3{margin:0;font-size:11px;letter-spacing:0.15em;color:var(--ink);}
+.verdict{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.15em;text-transform:uppercase;padding:3px 10px;border-radius:2px;}
+.verdict-good{background:rgba(22,163,74,0.15);color:#15803d;}
+.verdict-even{background:rgba(90,82,72,0.12);color:var(--mid);}
+.verdict-hard{background:rgba(143,26,26,0.12);color:#991b1b;}
+.matchup-body{padding:20px;display:none;}
+.matchup-body.open{display:block;}
+.sb-table{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--rule);margin:12px 0;}
+.sb-col{background:var(--paper);padding:12px 16px;}
+.sb-col-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.15em;text-transform:uppercase;color:var(--mid);margin-bottom:8px;}
+.sb-item{display:flex;justify-content:space-between;font-size:14px;padding:2px 0;font-weight:300;}
+.sb-qty{font-family:'DM Mono',monospace;font-size:11px;color:var(--mid);}
+.heuristic-list{list-style:none;margin:16px 0;}
+.heuristic-list li{padding:14px 0;border-bottom:1px solid var(--rule);display:flex;gap:16px;align-items:start;}
+.heuristic-list li:last-child{border-bottom:none;}
+.h-num{font-family:'DM Mono',monospace;font-size:10px;color:var(--accent);flex-shrink:0;padding-top:2px;min-width:28px;}
+.h-text{font-size:15px;font-weight:300;line-height:1.6;}
+.h-text strong{font-weight:600;}
+.edge-case{background:var(--card);border:1px solid var(--rule);border-left:3px solid var(--accent);padding:16px 20px;margin:12px 0;}
+.edge-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:6px;}
+.edge-body{font-size:14px;font-weight:300;line-height:1.6;}
+.print-btn{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;background:var(--accent);color:#fff;border:none;padding:10px 20px;cursor:pointer;margin:16px 0;}
+#sb-print-zone{display:none;}
+@media print{nav,.header-band{display:none!important;}#sb-print-zone{display:block!important;}body{background:#fff;}}
+.card-tip{position:fixed;z-index:9999;pointer-events:none;width:220px;border-radius:8px;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,0.6);opacity:0;transition:opacity 0.15s;background:#1a1a2e;}
+.card-tip.visible{opacity:1;}
+.card-tip img{width:220px;height:auto;display:block;}
+.card-tip-loading{width:220px;height:308px;display:flex;align-items:center;justify-content:center;color:#94a3b8;font-size:12px;font-family:monospace;background:#1e293b;}
+span.c{cursor:help;border-bottom:1px dashed var(--accent);}
+span.c:hover{border-bottom-style:solid;}
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-brand">Izzet Spellementals</div>
+  <a class="nav-link" href="deck-guides.html" style="text-decoration:none;">&#8592; Guides</a>
+  <button class="nav-link active" onclick="show('identity')">Overview</button>
+  <button class="nav-link" onclick="show('decklist')">Decklist</button>
+  <button class="nav-link" onclick="show('gameplan')">Game Flow</button>
+  <button class="nav-link" onclick="show('engines')">Engines</button>
+  <button class="nav-link" onclick="show('lines')">Lines</button>
+  <button class="nav-link" onclick="show('roles')">Roles</button>
+  <button class="nav-link" onclick="show('matchups')">Matchups</button>
+  <button class="nav-link" onclick="show('sideboard')">Sideboard</button>
+  <button class="nav-link" onclick="show('heuristics')">Heuristics</button>
+  <button class="nav-link" onclick="show('tuning')">Tuning</button>
+  <button class="nav-link" onclick="show('prep')">Prep</button>
+</nav>
+<div class="header-band">
+  <div class="header-inner">
+    <div>
+      <div class="header-label">Team Resolve · Standard · April 2026</div>
+      <div class="header-title">IZZET<br><span class="acc">SPELLEMENTALS</span></div>
+      <div class="header-tagline">"Ashling enters. Roaming Throne doubles the trigger. You discard two and draw two. Then Ashling transforms into Rimebound and does it again next turn."</div>
+    </div>
+    <div class="header-meta">
+      <div class="meta-row">META SHARE<span>5.26%</span></div>
+      <div class="meta-row">ROLE<span>Midrange-Aggro</span></div>
+      <div class="meta-row">COLORS<span>U R</span></div>
+      <div class="meta-row">KILL TURN<span>4–6</span></div>
+      <div class="meta-row">REFERENCE<span>The Boulder — PT Lorwyn Eclipsed design</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- CH01 IDENTITY -->
+<div id="identity" class="section active">
+<div class="content">
+  <span class="section-label">Chapter 01</span>
+  <h1>DECK<br>IDENTITY</h1>
+  <div class="mantra">"Your creatures are Elementals and your Elementals care about spells. Every spell you cast does double duty — it's an interaction piece AND a board pump."</div>
+
+  <p><span class="c">Izzet Spellementals</span> was designed by The Boulder team for Pro Tour Lorwyn Eclipsed 2026, where it posted an extremely high win rate against Badgermole Cub strategies. The deck sits at 5.26% of Standard and is the premier Elemental-tribal midrange strategy in the format.</p>
+
+  <p>The core engine: <span class="c">Ashling, Rekindled</span> is a legendary Elemental that triggers on ETB — discard a card, if you do draw a card. With <span class="c">Roaming Throne</span> naming Elemental, that trigger fires twice. You discard 2, draw 2, and net cycle your hand completely on a creature that's also a 3/3. When Ashling transforms into Ashling, Rimebound at the beginning of your first main phase (pay {U}), she becomes an even more powerful variant that continues generating value every turn.</p>
+
+  <p><span class="c">Sunderflock</span> is your sweeper — an Elemental that deals damage to each creature equal to something, and costs less per Elemental you control or cast. <span class="c">Flamebraider</span> and <span class="c">Vibrance</span> fuel the Elemental synergy. <span class="c">Wistfulness</span> and <span class="c">Deceit</span> provide interaction. <span class="c">Bounce Off</span> buys tempo. The entire package is built to go wide with Elementals, generate card advantage through Ashling + Throne, and close with a Sunderflock sweep that clears the opponent's board while yours survives.</p>
+
+  <h2>Why Roaming Throne Doubles Ashling</h2>
+  <div class="card-grid card-grid-2">
+    <div class="card"><div class="card-label">The Interaction</div><div class="card-title">Roaming Throne: Double Elemental Triggers</div><div class="card-body">Roaming Throne enters and you choose a creature type — choose Elemental. Now whenever an Elemental you control triggers an ability, that ability triggers an additional time. Ashling's "discard a card, draw a card" ETB triggers TWICE → net: discard 2, draw 2. All your Elemental ETBs double. Sunderflock's damage doubles. Flamebraider's triggers double. Roaming Throne effectively makes every Elemental ETB cost-efficient.</div></div>
+    <div class="card"><div class="card-label">The Win Condition</div><div class="card-title">Sunderflock as a Board Wipe</div><div class="card-body">Sunderflock is an Elemental that deals damage to each creature an opponent controls equal to the number of Elementals you control or the number of Elemental spells you've cast this turn. With Roaming Throne doubling the trigger: the damage fires twice. Against go-wide decks, this wipes their entire board while your Elementals survive (they don't deal damage to creatures you control). With 4 Elementals on board, Sunderflock does 4+4 = 8 damage to each of their creatures.</div></div>
+  </div>
+</div>
+</div>
+
+<!-- CH02 DECKLIST -->
+<div id="decklist" class="section">
+<div class="content">
+  <span class="section-label">Chapter 02</span>
+  <h1>DECKLIST</h1>
+  <div class="mantra">"Current build — Traditional Standard Ranked, March 30 2026"</div>
+  <div class="card-grid card-grid-3">
+    <div class="card">
+      <h3>Creatures (11)</h3>
+      <div class="deck-row"><span class="deck-count">4</span><span><span class="c">Ashling, Rekindled</span></span></div>
+      <div class="deck-row"><span class="deck-count">4</span><span><span class="c">Flamebraider</span></span></div>
+      <div class="deck-row"><span class="deck-count">3</span><span><span class="c">Sunderflock</span></span></div>
+      <h3 style="margin-top:16px;">Artifacts / Enchantments (4)</h3>
+      <div class="deck-row"><span class="deck-count">4</span><span><span class="c">Roaming Throne</span></span></div>
+      <h3 style="margin-top:16px;">Spells (20)</h3>
+      <div class="deck-row"><span class="deck-count">4</span><span><span class="c">Wistfulness</span></span></div>
+      <div class="deck-row"><span class="deck-count">4</span><span><span class="c">Vibrance</span></span></div>
+      <div class="deck-row"><span class="deck-count">4</span><span><span class="c">Deceit</span></span></div>
+      <div class="deck-row"><span class="deck-count">3</span><span><span class="c">Winternight Stories</span></span></div>
+      <div class="deck-row"><span class="deck-count">3</span><span><span class="c">Bounce Off</span></span></div>
+      <div class="deck-row"><span class="deck-count">2</span><span><span class="c">Beza, the Bounding Spring</span></span></div>
+    </div>
+    <div class="card">
+      <h3>Lands (25)</h3>
+      <div class="deck-row"><span class="deck-count">4</span><span><span class="c">Secluded Courtyard</span></span></div>
+      <div class="deck-row"><span class="deck-count">4</span><span><span class="c">Steam Vents</span></span></div>
+      <div class="deck-row"><span class="deck-count">4</span><span><span class="c">Starting Town</span></span></div>
+      <div class="deck-row"><span class="deck-count">4</span><span><span class="c">Cavern of Souls</span></span></div>
+      <div class="deck-row"><span class="deck-count">3</span><span><span class="c">Eclipsed Realms</span></span></div>
+      <div class="deck-row"><span class="deck-count">2</span><span><span class="c">Breeding Pool</span></span></div>
+      <div class="deck-row"><span class="deck-count">1</span><span>Island</span></div>
+      <div class="deck-row"><span class="deck-count">1</span><span><span class="c">Cori Mountain Monastery</span></span></div>
+      <div class="deck-row"><span class="deck-count">1</span><span><span class="c">Thundering Falls</span></span></div>
+      <div class="deck-row"><span class="deck-count">1</span><span><span class="c">Pit of Offerings</span></span></div>
+    </div>
+    <div class="card">
+      <h3>Sideboard (15)</h3>
+      <div class="deck-row"><span class="deck-count">3</span><span><span class="c">Pyroclasm</span></span></div>
+      <div class="deck-row"><span class="deck-count">3</span><span><span class="c">Spell Snare</span></span></div>
+      <div class="deck-row"><span class="deck-count">2</span><span><span class="c">Soul-Guide Lantern</span></span></div>
+      <div class="deck-row"><span class="deck-count">2</span><span><span class="c">Sear</span></span></div>
+      <div class="deck-row"><span class="deck-count">1</span><span><span class="c">Sunderflock</span></span></div>
+      <div class="deck-row"><span class="deck-count">1</span><span><span class="c">Disdainful Stroke</span></span></div>
+      <div class="deck-row"><span class="deck-count">1</span><span><span class="c">Beza, the Bounding Spring</span></span></div>
+      <div class="deck-row"><span class="deck-count">1</span><span><span class="c">Pit of Offerings</span></span></div>
+      <div class="deck-row"><span class="deck-count">1</span><span><span class="c">Spider-Sense</span></span></div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- CH03 GAMEPLAN -->
+<div id="gameplan" class="section">
+<div class="content">
+  <span class="section-label">Chapter 03</span>
+  <h1>GAME<br>FLOW</h1>
+  <div class="mantra">"T2 Roaming Throne. T3 Ashling (double trigger: discard 2, draw 2). T4 Flamebraider + Wistfulness into board pressure. T5 Sunderflock wipes their board."</div>
+  <div class="card-grid card-grid-2">
+    <div class="card"><div class="card-label">Turns 1–2</div><div class="card-title">Set Up the Doubler</div><div class="card-body">T1: Vibrance or Wistfulness to filter/develop. T2: Roaming Throne (choose Elemental). Throne on T2 means every Elemental you cast afterward has doubled triggers. If Throne isn't in hand, deploy Flamebraider or Wistfulness to build board presence. Cavern of Souls naming Elemental ensures Throne and Ashling can't be countered.</div></div>
+    <div class="card"><div class="card-label">Turns 3–4</div><div class="card-title">Ashling Engine Online</div><div class="card-body">T3: Ashling, Rekindled with Throne active → discard 2, draw 2 (double trigger) on ETB. Your hand cycles through itself efficiently. T4: Pay {U} at beginning of first main phase to transform Ashling into Rimebound for additional value. Deploy Flamebraider or more spells to build Elemental count for Sunderflock.</div></div>
+    <div class="card"><div class="card-label">Turns 4–5</div><div class="card-title">Sunderflock Wipe</div><div class="card-body">With 3+ Elementals on board, Sunderflock deals 3+ damage to each creature they control. With Roaming Throne: that trigger fires twice → 6+ damage to each creature. Their board is wiped. Your Elementals survive (Sunderflock targets only opponent's creatures). Attack for lethal on an empty board.</div></div>
+    <div class="card"><div class="card-label">Alternate Lines</div><div class="card-title">Deceit + Beza Grind</div><div class="card-body">When Sunderflock isn't the right play, Deceit provides early interaction (Distress + bounce). Beza, the Bounding Spring generates creatures and life gain on ETB — with Roaming Throne, Beza's Elemental trigger fires twice. Winter Stories discards to generate advantage. This grindy line wins in attrition matchups where sweepers aren't needed.</div></div>
+  </div>
+
+  <h2>Mulligan Framework</h2>
+  <p><strong>Keep:</strong> Any 7 with Roaming Throne + 2 Elementals + 3 lands. Any 7 with Ashling + 2 lands + any spell. Cavern of Souls hands are stronger keeps — they protect your key creatures from countermagic.</p>
+  <p><strong>Mulligan:</strong> 0-1 lands. 5+ lands. Hands with only Sunderflock (needs other Elementals to matter). Hands with 4+ noncreature spells and no Elementals.</p>
+</div>
+</div>
+
+<!-- CH04 ENGINES -->
+<div id="engines" class="section">
+<div class="content">
+  <span class="section-label">Chapter 04</span>
+  <h1>CORE<br>ENGINES</h1>
+  <div class="mantra">"Roaming Throne makes every Elemental ETB happen twice. This is the multiplier that makes the entire deck work."</div>
+  <div class="card-grid card-grid-3">
+    <div class="card"><div class="card-label">Engine 1</div><div class="card-title">Ashling + Roaming Throne</div><div class="card-body">Ashling ETB: discard, draw. Throne doubles it: discard 2, draw 2. Net: hand stays the same size while cycling your whole hand. You filter aggressively looking for Sunderflock, lands, or key pieces. Deploy Ashling multiple times (bounce with Bounce Off and redeploy) to cycle repeatedly.</div></div>
+    <div class="card"><div class="card-label">Engine 2</div><div class="card-title">Sunderflock Sweep</div><div class="card-body">Sunderflock deals damage equal to Elementals on board. With Throne: double that. With 4 Elementals: 8 damage to each of their creatures. Their Prowess Otters (1/1-3/3), Badgermole Cubs (2/2), and spiders (1/2) all die. Your Elementals don't. You swing for lethal on an empty board the same turn or next turn.</div></div>
+    <div class="card"><div class="card-label">Engine 3</div><div class="card-title">Vibrance + Wistfulness Flood</div><div class="card-body">Vibrance and Wistfulness are cheap instants/sorceries that draw cards and/or generate card advantage. They fill the graveyard, enable Eclipsed Realms (a land that does something with instants/sorceries in GY), and keep your hand full. Run all 8 copies to maintain card advantage even without Ashling online.</div></div>
+  </div>
+</div>
+</div>
+
+<!-- CH05 LINES -->
+<div id="lines" class="section">
+<div class="content">
+  <span class="section-label">Chapter 05</span>
+  <h1>LINES &amp;<br>TACTICS</h1>
+  <div class="mantra">"Name Elemental with Cavern of Souls before casting Ashling or Roaming Throne. They cannot be countered on Cavern mana."</div>
+  <div class="edge-case"><div class="edge-label">Line 01 — Cavern of Souls Protects Your Key Pieces</div><div class="edge-body">Cavern of Souls lets you cast creatures of the chosen type without them being countered. Name Elemental — now Ashling and Sunderflock and Flamebraider cannot be countered if cast off Cavern mana. This is critical vs Izzet Lessons (It'll Quench Ya) and Jeskai Control (No More Lies). Roaming Throne is an artifact, not a creature — it CAN be countered even off Cavern. Protect Throne with Bounce Off or Spell Snare (SB).</div></div>
+  <div class="edge-case"><div class="edge-label">Line 02 — Sunderflock Timing</div><div class="edge-body">Sunderflock's damage to each creature fires at cast time (it's a triggered ability on enter, or the spell itself if it's a sorcery). With Roaming Throne active: the damage trigger fires twice. Count your Elementals before casting Sunderflock — you need enough to kill what they have. With 3 Elementals: 6 damage to each of their creatures (Throne doubles 3 → 6). Flamebraider and Ashling count. Roaming Throne does NOT count (it's not an Elemental). Cast Sunderflock after all your Elementals are deployed, not before.</div></div>
+  <div class="edge-case"><div class="edge-label">Line 03 — Bounce Off Protects Ashling for Multiple ETB Triggers</div><div class="edge-body">Bounce Off ({1}{U}: return target creature to its owner's hand; if that creature is legendary, draw a card) can target your own Ashling. Return Ashling to hand → draw a card (Ashling is legendary) → re-cast Ashling → ETB fires again (discard 2, draw 2 with Throne). Total value from one Bounce Off cycle: return Ashling + draw 1 + discard 2 draw 2 = cycle 2 cards and draw 1. Use this when Ashling has taken damage and is about to die, or when you need to find Sunderflock urgently.</div></div>
+</div>
+</div>
+
+<!-- CH06 ROLES -->
+<div id="roles" class="section">
+<div class="content">
+  <span class="section-label">Chapter 06</span>
+  <h1>ROLE<br>ASSIGNMENT</h1>
+  <div class="mantra">"You're always the midrange deck. You don't rush, you don't purely control — you set up and then end the game on one decisive turn."</div>
+  <div class="card-grid card-grid-3">
+    <div class="card"><div class="card-label">Primary</div><div class="card-title">Board Control Then Swing</div><div class="card-body">Build your Elemental board, double triggers with Throne, wipe their board with Sunderflock, attack into empty opposition. This is the main win pattern. You're the control player in aggro matchups and the aggro player against control.</div></div>
+    <div class="card"><div class="card-label">Secondary</div><div class="card-title">Ashling Grind</div><div class="card-body">When Sunderflock isn't right, grind with Ashling + Throne card advantage. Cycle your hand repeatedly, find your best cards, outvalue their engine. Beza and Winternight Stories contribute to the grind. You win through card quantity.</div></div>
+    <div class="card"><div class="card-label">Tertiary</div><div class="card-title">Tempo Through Deceit</div><div class="card-body">Strip their key spell with Deceit (Distress mode) or bounce their key permanent (bounce mode for MV ≤ 2 permanents). Use Bounce Off for tempo. Deploy Sunderflock as a threat they have to answer. Sometimes you win through tempo rather than a clean combo.</div></div>
+  </div>
+</div>
+</div>
+
+<!-- CH07: MATCHUPS -->
+<div id="matchups" class="section">
+<div class="content">
+  <span class="section-label">Chapter 07</span>
+  <h1>MATCHUP<br>GUIDE</h1>
+  <div class="mantra">"Throne resolves, you win. Throne doesn't resolve, fight for it with every counter in your hand."</div>
+
+  <div class="matchup-block">
+    <div class="matchup-header" onclick="toggle('mu-monogreen')">
+      <h3>MONO-GREEN LANDFALL</h3><span class="verdict verdict-even">Even</span>
+    </div>
+    <div id="mu-monogreen" class="matchup-body">
+      <p>Their Icetill combo can end the game before Sunderflock sets up. Your Sunderflock with Throne active deals damage equal to your Elemental count to each of their creatures — at 3 Elementals it's 6 damage to each. Their Mightform Harmonizer and Badgermole Cub both die. The race is who sets up first.</p>
+      <p><strong>Priority:</strong> Get Roaming Throne down early and protect it. Once Throne is active, Sunderflock effectively resets their board. Counter their Earthbender Ascension if possible — if Ascension fully activates their engine speed doubles. Use Cavern of Souls naming Elemental so your threats can't be countered by their few interaction pieces.</p>
+      <p><strong>Needle:</strong> Counter Sapling Nursery if they attempt it. A resolved Nursery means they're generating 3/4 reach tokens that block your Elementals. Bounce Off can handle Nursery if it resolves (return target nonland permanent MV ≤ 2... check Nursery's MV). Kill Badgermole Cub immediately — their ramp is their speed advantage.</p>
+      <div class="sb-table">
+        <div class="sb-col"><div class="sb-col-label">In</div>
+          <div class="sb-item"><span><span class="c">Pyroclasm</span></span><span class="sb-qty">+1</span></div>
+          <div class="sb-item"><span><span class="c">Hydro-Man, Fluid Felon</span></span><span class="sb-qty">+2</span></div>
+        </div>
+        <div class="sb-col"><div class="sb-col-label">Out</div>
+          <div class="sb-item"><span><span class="c">Winternight Stories</span></span><span class="sb-qty">&minus;2</span></div>
+          <div class="sb-item"><span><span class="c">Glacial Dragonhunt</span></span><span class="sb-qty">&minus;1</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="matchup-block">
+    <div class="matchup-header" onclick="toggle('mu-prowess')">
+      <h3>IZZET PROWESS</h3><span class="verdict verdict-hard">Unfavorable</span>
+    </div>
+    <div id="mu-prowess" class="matchup-body">
+      <p>They kill on turn 3-4 and you set up on turn 4-5. Speed mismatch is the problem. Hearth Elemental (4 toughness) blocks Slickshot Show-Off effectively since Slickshot only has 2 base toughness and its power pump is temporary. Eddymurk Crab ETB taps their two biggest threats and buys you an extra turn.</p>
+      <p><strong>Priority:</strong> Survive to turn 5. Your Elementals all have 4 toughness which blocks most of their attackers. Cast Eddymurk Crab at their end step on turn 4 to tap their Slickshot + biggest Otter. Then Sunderflock on your turn kills their token flood. Cavern of Souls means your Crab and Sunderflock can't be countered with Spell Pierce or Get Out.</p>
+      <p><strong>Needle:</strong> Burst Lightning kills Flamebraider (1/2) and Eddymurk Crab costs enough that it's usually your EOT bomb. The key line: hold open mana on their T3-T4, flash Crab at their EOT, tap their 2 biggest, untap and Sunderflock to sweep their smaller tokens.</p>
+      <div class="sb-table">
+        <div class="sb-col"><div class="sb-col-label">In</div>
+          <div class="sb-item"><span><span class="c">Pyroclasm</span></span><span class="sb-qty">+1</span></div>
+          <div class="sb-item"><span><span class="c">Annul</span></span><span class="sb-qty">+2</span></div>
+          <div class="sb-item"><span><span class="c">Abrade</span></span><span class="sb-qty">+1</span></div>
+        </div>
+        <div class="sb-col"><div class="sb-col-label">Out</div>
+          <div class="sb-item"><span><span class="c">Roaming Throne</span></span><span class="sb-qty">&minus;2</span></div>
+          <div class="sb-item"><span><span class="c">Winternight Stories</span></span><span class="sb-qty">&minus;2</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="matchup-block">
+    <div class="matchup-header" onclick="toggle('mu-lessons')">
+      <h3>IZZET LESSONS</h3><span class="verdict verdict-even">Even</span>
+    </div>
+    <div id="mu-lessons" class="matchup-body">
+      <p>Mirror-ish matchup of spell-heavy Izzet decks. They have Monument to Endurance for graveyard recursion and life gain; you have Sunderflock as a board wipe that doubles with Throne. Your Cavern of Souls naming Elemental makes your threats uncounterable, bypassing their It'll Quench Ya and Spell Snare.</p>
+      <p><strong>Priority:</strong> Cavern of Souls is your most important card. Name Elemental on Cavern. Now they can't counter your Ashling, Sunderflock, Hearth Elemental, or Flamebraider. Their Abandon Attachments can hit your Roaming Throne though — it's an artifact. Protect Throne with Bounce Off or Spell Snare (SB). Get Monument to Endurance out of the game with Soul-Guide Lantern (exiles their GY, stopping Monument's fuel).</p>
+      <p><strong>Needle:</strong> Soul-Guide Lantern exiles their graveyard, cutting off Monument to Endurance's recursion engine. Board it in every game. Their hand disruption (Deceit/Distress mode) hits your Roaming Throne plan — cast Throne only when you can protect it.</p>
+      <div class="sb-table">
+        <div class="sb-col"><div class="sb-col-label">In</div>
+          <div class="sb-item"><span><span class="c">Soul-Guide Lantern</span></span><span class="sb-qty">+2</span></div>
+          <div class="sb-item"><span><span class="c">Annul</span></span><span class="sb-qty">+2</span></div>
+        </div>
+        <div class="sb-col"><div class="sb-col-label">Out</div>
+          <div class="sb-item"><span><span class="c">Winternight Stories</span></span><span class="sb-qty">&minus;2</span></div>
+          <div class="sb-item"><span><span class="c">Glacial Dragonhunt</span></span><span class="sb-qty">&minus;1</span></div>
+          <div class="sb-item"><span><span class="c">Spell Pierce</span></span><span class="sb-qty">&minus;1</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="matchup-block">
+    <div class="matchup-header" onclick="toggle('mu-dimir')">
+      <h3>DIMIR MIDRANGE</h3><span class="verdict verdict-good">Favorable</span>
+    </div>
+    <div id="mu-dimir" class="matchup-body">
+      <p>Your Elementals are large enough to brick their ground threats. Floodpits Drowner (the bounce spell on enter) can reset your Ashling but you get to re-enter triggers. Cavern of Souls naming Elemental bypasses their entire counterspell package. Sunderflock with Throne kills Kaito, their Drowners, and their Overlord of Balemurk in one shot.</p>
+      <p><strong>Priority:</strong> Play through their interaction with Cavern. Cast Roaming Throne when they're at low mana. Sunderflock with 3 Elementals deals 6 damage to each creature — this kills almost their entire board. Ashling recursion with Bounce Off means they never permanently remove your engine. Keep Bounce Off to protect Ashling from Into the Flood Maw (which would bounce your whole board at sorcery speed).</p>
+      <p><strong>Needle:</strong> Their Enduring Curiosity attached to Floodpits Drowner lets them draw whenever Drowner bounces a permanent — don't let Drowner resolve. Counter it or Bounce Off their Enduring Curiosity before it generates value. Deceit (discard mode) strips your Throne from hand — cast Throne the turn you draw it if possible.</p>
+      <div class="sb-table">
+        <div class="sb-col"><div class="sb-col-label">In</div>
+          <div class="sb-item"><span><span class="c">Disdainful Stroke</span></span><span class="sb-qty">+2</span></div>
+          <div class="sb-item"><span><span class="c">Hydro-Man, Fluid Felon</span></span><span class="sb-qty">+2</span></div>
+        </div>
+        <div class="sb-col"><div class="sb-col-label">Out</div>
+          <div class="sb-item"><span><span class="c">Winternight Stories</span></span><span class="sb-qty">&minus;2</span></div>
+          <div class="sb-item"><span><span class="c">Spell Pierce</span></span><span class="sb-qty">&minus;1</span></div>
+          <div class="sb-item"><span><span class="c">Glacial Dragonhunt</span></span><span class="sb-qty">&minus;1</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="matchup-block">
+    <div class="matchup-header" onclick="toggle('mu-jeskai')">
+      <h3>JESKAI CONTROL</h3><span class="verdict verdict-even">Even</span>
+    </div>
+    <div id="mu-jeskai" class="matchup-body">
+      <p>Cavern of Souls makes your threats uncounterable. Their sweepers (Day of Judgment, Avatar's Wrath) can answer your board, but Ashling bounces back. The game is decided by whether your Roaming Throne resolves — it's an artifact, so Cavern doesn't protect it. Cast Throne only when they're at 3 or fewer mana.</p>
+      <p><strong>Priority:</strong> Land Roaming Throne against their open mana window. Their No More Lies counters your Throne for {1}{U}{W} — wait for their T3-T4 tap-out. Once Throne resolves, your Sunderflock and Ashling generate 2x triggers per cast which outpaces their card draw. Bounce Off protects Throne from High Noon lock and exile effects.</p>
+      <p><strong>Needle:</strong> High Noon (can only cast one spell per turn) significantly slows your multi-spell turns. Bounce Off targeting your own Ashling lets you re-cast it as your one spell for another round of enter triggers. Disdainful Stroke (SB) counters their expensive sweepers at 2 mana. Their Ajani, Outland Chaperone gains life — factor that into your kill clock.</p>
+      <div class="sb-table">
+        <div class="sb-col"><div class="sb-col-label">In</div>
+          <div class="sb-item"><span><span class="c">Disdainful Stroke</span></span><span class="sb-qty">+2</span></div>
+          <div class="sb-item"><span><span class="c">Negate</span></span><span class="sb-qty">+1</span></div>
+        </div>
+        <div class="sb-col"><div class="sb-col-label">Out</div>
+          <div class="sb-item"><span><span class="c">Spell Pierce</span></span><span class="sb-qty">&minus;1</span></div>
+          <div class="sb-item"><span><span class="c">Glacial Dragonhunt</span></span><span class="sb-qty">&minus;1</span></div>
+          <div class="sb-item"><span><span class="c">Spider-Sense</span></span><span class="sb-qty">&minus;1</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="matchup-block">
+    <div class="matchup-header" onclick="toggle('mu-boros')">
+      <h3>BOROS AGGRO</h3><span class="verdict verdict-good">Favorable</span>
+    </div>
+    <div id="mu-boros" class="matchup-body">
+      <p>Your 4-toughness Elementals block their entire creature base profitably. Hearth Elemental at 3/4 blocks Clarion Conqueror, Voice of Victory, and Nova Hellkite if needed. Sunderflock with even 2 Elementals deals 4 damage to each of their creatures — their 2-toughness creatures all die. Eddymurk Crab taps their best attackers at flash speed.</p>
+      <p><strong>Priority:</strong> Establish blockers immediately. Don't race — stabilize and then take over. A single Sunderflock with Throne at 3 Elementals clears their whole board and leaves you ahead on board. Crab at flash speed on their attack step taps Ojer Axonil before it can double their damage pings.</p>
+      <p><strong>Needle:</strong> Kill Ojer Axonil immediately with Burst Lightning (2 damage... Ojer is a 4/4 so Burst Lightning doesn't kill it. Sear deals 4 damage which also doesn't kill Ojer at 4 toughness). Broadside Barrage (5 damage) or Sunderflock are your Ojer answers. Don't let Ojer + Sharpshooter sit on board simultaneously.</p>
+      <div class="sb-table">
+        <div class="sb-col"><div class="sb-col-label">In</div>
+          <div class="sb-item"><span><span class="c">Pyroclasm</span></span><span class="sb-qty">+1</span></div>
+          <div class="sb-item"><span><span class="c">Abrade</span></span><span class="sb-qty">+1</span></div>
+        </div>
+        <div class="sb-col"><div class="sb-col-label">Out</div>
+          <div class="sb-item"><span><span class="c">Winternight Stories</span></span><span class="sb-qty">&minus;2</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</div>
+
+<!-- CH08: SIDEBOARD -->
+<div id="sideboard" class="section">
+<div class="content">
+  <span class="section-label">Chapter 08</span>
+  <h1>SIDEBOARD<br>GUIDE</h1>
+  <div class="mantra">"Cavern of Souls is not in your sideboard — it's in your main deck. Everything else supplements it."</div>
+
+  <h2>SB Card Priority</h2>
+  <div class="card-grid card-grid-2">
+    <div class="card"><div class="card-label">Priority 1</div><div class="card-title">Soul-Guide Lantern ×2</div><div class="card-body">Graveyard hate that also cycles. In against Izzet Lessons (Monument to Endurance fuel), any GY-based strategy. The ETB exiles one card; the sacrifice exiles their whole GY. Cheap enough to cast alongside your threats.</div></div>
+    <div class="card"><div class="card-label">Priority 2</div><div class="card-title">Disdainful Stroke ×2</div><div class="card-body">Counter MV 4+ spells for 2 mana. Hits their sweepers (Day of Judgment, Avatar's Wrath), their Monument to Endurance, their Ouroboroid. Boards in vs any control or combo deck where their key spells cost 4+.</div></div>
+    <div class="card"><div class="card-label">Priority 3</div><div class="card-title">Pyroclasm ×1</div><div class="card-body">2 damage to each creature. Sweeps Izzet Prowess tokens (1/1 Otters), Boros 1-drops, Mono-White lifelinkers. Boards in vs any go-wide token strategy. Triggers your prowess creatures if you have any and also counts as a spell for Hearth Elemental's cost reduction.</div></div>
+    <div class="card"><div class="card-label">Priority 4</div><div class="card-title">Hydro-Man, Fluid Felon ×2</div><div class="card-body">Flexible answer to problem permanents. Boards in vs decks with key noncreature permanents you need to bounce. Check oracle text for exact targeting restrictions before boarding in.</div></div>
+  </div>
+
+  <h2>What Comes Out</h2>
+  <div class="card-grid card-grid-3">
+    <div class="card"><div class="card-label">First Out</div><div class="card-title">Glacial Dragonhunt</div><div class="card-body">The narrowest main deck card. A sorcery that deals damage to each creature without flying — useful against ground aggro but too slow against most of the current meta. First card out in almost every SB configuration.</div></div>
+    <div class="card"><div class="card-label">Second Out</div><div class="card-title">Winternight Stories</div><div class="card-body">The card advantage enchantment is great in fair matchups but slow against aggro. Trim 2 copies when you need interactive answers. Keep at least 1 in against control for the grind.</div></div>
+    <div class="card"><div class="card-label">Third Out</div><div class="card-title">Spell Pierce</div><div class="card-body">Effective early but loses value late. Trim vs aggro (they run few spells you need to counter) and vs decks with cheap spells that pay through easily. Keep vs control and combo.</div></div>
+  </div>
+
+  <button class="print-btn" onclick="printSB()">&#9113; Print SB Reference</button>
+  <div id="sb-print-zone">
+    <h2 style="font-family:'DM Mono',monospace;font-size:14px;margin-bottom:12px;">IZZET SPELLEMENTALS — SB Reference · 5.26% Standard April 2026</h2>
+    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:12px;font-size:11px;font-family:'DM Mono',monospace;">
+      <div><strong>vs MONO-GREEN (Even)</strong><br>IN: +1 Pyroclasm, +2 Hydro-Man<br>OUT: −2 Winternight Stories, −1 Glacial Dragonhunt</div>
+      <div><strong>vs IZZET PROWESS (Unfav)</strong><br>IN: +1 Pyroclasm, +2 Annul, +1 Abrade<br>OUT: −2 Roaming Throne, −2 Winternight Stories</div>
+      <div><strong>vs IZZET LESSONS (Even)</strong><br>IN: +2 Soul-Guide Lantern, +2 Annul<br>OUT: −2 Winternight Stories, −1 Glacial Dragonhunt, −1 Spell Pierce</div>
+      <div><strong>vs DIMIR MIDRANGE (Fav)</strong><br>IN: +2 Disdainful Stroke, +2 Hydro-Man<br>OUT: −2 Winternight Stories, −1 Spell Pierce, −1 Glacial Dragonhunt</div>
+      <div><strong>vs JESKAI CONTROL (Even)</strong><br>IN: +2 Disdainful Stroke, +1 Negate<br>OUT: −1 Spell Pierce, −1 Glacial Dragonhunt, −1 Spider-Sense</div>
+      <div><strong>vs BOROS AGGRO (Fav)</strong><br>IN: +1 Pyroclasm, +1 Abrade<br>OUT: −2 Winternight Stories</div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- CH09: HEURISTICS -->
+<div id="heuristics" class="section">
+<div class="content">
+  <span class="section-label">Chapter 09</span>
+  <h1>HEURISTICS</h1>
+  <div class="mantra">"Name Elemental on Cavern every single game. Not naming Elemental is the most common mistake in this deck."</div>
+  <ol class="heuristic-list">
+    <li><span class="h-num">01</span><span class="h-text"><strong>Always name Elemental on Cavern of Souls.</strong> Ashling, Hearth Elemental, Sunderflock, and Flamebraider are all Elementals. Cavern makes them uncounterable when cast off its mana. This is the deck's primary way around countermagic. Never name a different creature type.</span></li>
+    <li><span class="h-num">02</span><span class="h-text"><strong>Roaming Throne is an artifact — Cavern does NOT protect it.</strong> Cast Throne only when they have 3 or fewer mana open (can't pay for No More Lies or No More Lies {1}{U}{W}). Bounce Off can protect Throne in response to a counter. Throne resolving is your highest-priority action.</span></li>
+    <li><span class="h-num">03</span><span class="h-text"><strong>Count your Elementals before casting Sunderflock.</strong> Sunderflock deals damage equal to the number of Elementals you control to each creature. With Roaming Throne, it doubles: 3 Elementals = 6 damage each. A Flamebraider (2/2), Hearth Elemental (3/4), Ashling (3/3) in play = 9 damage to each creature with Throne. Math it out before casting.</span></li>
+    <li><span class="h-num">04</span><span class="h-text"><strong>Hearth Elemental costs 1 less per instant/sorcery in your GY — like Eddymurk Crab.</strong> With 3 spells in GY: Hearth costs {1}{R}. With 5 spells: {R}. Prioritize filling your GY with cheap spells in the first 3 turns to reduce Hearth's cost. It arrives as a 3/4 with haste — that haste matters for racing.</span></li>
+    <li><span class="h-num">05</span><span class="h-text"><strong>Bounce Off on your own Ashling draws a card (Ashling is legendary).</strong> Return Ashling → draw a card → recast → ETB triggers again (discard 2 draw 2 with Throne). Use this when Ashling is damaged, or when you need a specific card urgently from a fresh ETB trigger cycle.</span></li>
+    <li><span class="h-num">06</span><span class="h-text"><strong>Ashling's discard-draw on ETB happens BEFORE you draw.</strong> Discard 2 cards first, then draw 2. You can't draw to replace what you just discarded. Choose carefully what to pitch — your GY cards matter less than your hand cards in most situations.</span></li>
+    <li><span class="h-num">07</span><span class="h-text"><strong>Flamebraider creates 1/1 Elemental tokens when it attacks — those tokens count for Sunderflock.</strong> If Flamebraider attacks and creates 2 tokens, you now have 2 more Elementals. Cast Sunderflock AFTER Flamebraider's attack trigger resolves for maximum damage. This is the "Sunderflock after combat" sequencing.</span></li>
+    <li><span class="h-num">08</span><span class="h-text"><strong>Wistfulness draws a card when you cast another Elemental.</strong> The draw trigger fires when you cast — not when the Elemental enters the battlefield. Bounce Off'ing your own Elemental back to hand and recasting it triggers Wistfulness again. Each Elemental you cast while Wistfulness is in play draws a card.</span></li>
+    <li><span class="h-num">09</span><span class="h-text"><strong>Eddymurk Crab at flash speed on THEIR end step taps two creatures — attack with your whole board next turn.</strong> Don't cast Crab during your main phase unless lethal matters. The correct window is their end step after they pass priority. The tapped creatures stay tapped through your full attack.</span></li>
+    <li><span class="h-num">10</span><span class="h-text"><strong>Deceit's Distress mode (discard mode) is sorcery speed.</strong> You can't cast it at instant speed to strip a card. Cast it on your T2 to strip their key piece before they cast it. Don't hold it hoping for a perfect instant-speed discard window — use it proactively on the spell you're most afraid of.</span></li>
+  </ol>
+</div>
+</div>
+
+<!-- CH10: TUNING -->
+<div id="tuning" class="section">
+<div class="content">
+  <span class="section-label">Chapter 10</span>
+  <h1>TUNING<br>NOTES</h1>
+  <div class="mantra">"4 Cavern is non-negotiable. 4 Roaming Throne is non-negotiable. Everything else is flex."</div>
+
+  <h2>Lock Cards — Never Cut</h2>
+  <div class="card-grid card-grid-2">
+    <div class="card"><div class="card-label">Lock</div><div class="card-title">4 Cavern of Souls + 4 Roaming Throne</div><div class="card-body">These are why you play Spellementals over other Elemental strategies. Cavern makes your threats uncounterable. Throne doubles every ETB trigger. The deck doesn't function without both at 4 copies. Any list that cuts either is a different deck.</div></div>
+    <div class="card"><div class="card-label">Lock</div><div class="card-title">4 Ashling, Rekindled + 4 Sunderflock</div><div class="card-body">Ashling is the engine (ETB: discard 2, draw 2 with Throne). Sunderflock is the board wipe and finisher (doubles with Throne). These are your 8 power cards. Full playset of both is mandatory.</div></div>
+  </div>
+
+  <h2>Flex Slots</h2>
+  <div class="card-grid card-grid-3">
+    <div class="card"><div class="card-label">2 copies — adjust up/down</div><div class="card-title">Winternight Stories</div><div class="card-body">Excellent in fair matchups, slow against aggro. Run 2-3 in control-heavy metas, 1-2 in aggro-heavy fields. The passive card advantage over multiple turns outgrows sweepers.</div></div>
+    <div class="card"><div class="card-label">1-2 copies</div><div class="card-title">Bounce Off</div><div class="card-body">Protects Ashling (draw a card) and provides tempo. Run 2 in metas with high-value permanents to bounce (Sapling Nursery, Roaming Throne in mirror). 1 is fine in aggro-heavy fields.</div></div>
+    <div class="card"><div class="card-label">0-1 copy</div><div class="card-title">Glacial Dragonhunt</div><div class="card-body">Ground creature sweeper with flying exemption. Cut in almost every non-aggro meta. The only reason to run it: a field of Mono-Green Landfall and Boros Aggro where you need another sweeper.</div></div>
+  </div>
+
+  <h2>When to Register</h2>
+  <div class="card-grid card-grid-2">
+    <div class="card"><div class="card-label">Register When</div><div class="card-title">Midrange + Control Are Popular</div><div class="card-body">Cavern of Souls is at maximum value against Dimir Midrange and Jeskai Control — both rely heavily on counterspells. If the field is these two archetypes plus fair creature decks, Spellementals is well-positioned with free-casting Elementals and Throne doubling everything.</div></div>
+    <div class="card"><div class="card-label">Avoid When</div><div class="card-title">Izzet Prowess Is Dominant</div><div class="card-body">Your speed disadvantage vs Prowess means a Prowess-heavy field is rough. If more than 15% of the expected field is Prowess, consider Mono-Green Landfall or Izzet Lessons which have better Prowess matchups.</div></div>
+  </div>
+</div>
+</div>
+
+<!-- CH11: PREP -->
+<div id="prep" class="section">
+<div class="content">
+  <span class="section-label">Chapter 11</span>
+  <h1>EVENT<br>PREP</h1>
+  <div class="mantra">"Every round: name Elemental on Cavern before anything else."</div>
+
+  <h2>Night Before Checklist</h2>
+  <div class="card-grid card-grid-2">
+    <div class="card"><div class="card-label">Know Cold</div><div class="card-title">Sunderflock Damage Math</div><div class="card-body">3 Elementals + Throne = 6 damage each. 4 Elementals + Throne = 8 damage each. 2 Elementals + Throne = 4 damage each (kills most 4-toughness creatures with a Burst Lightning follow-up). Know these by reflex before sitting down.</div></div>
+    <div class="card"><div class="card-label">Know Cold</div><div class="card-title">Cavern Only Protects Creature Spells</div><div class="card-body">Roaming Throne is an artifact spell — casting it off Cavern mana does NOT make it uncounterable (Cavern only applies to creature spells of the named type). Cast Throne with open mana to protect it. Bounce Off in response to their counter saves it.</div></div>
+    <div class="card"><div class="card-label">Verify</div><div class="card-title">Hearth Elemental Cost Reduction</div><div class="card-body">Hearth Elemental costs {1} less for each instant/sorcery in your GY. At 4 spells in GY it's {R} — essentially free. Count your GY spells before every main phase to know what Hearth currently costs. Missing a free 3/4 with haste is a significant play error.</div></div>
+    <div class="card"><div class="card-label">Confirm</div><div class="card-title">SB for Expected Meta</div><div class="card-body">Check the current meta breakdown. Soul-Guide Lantern in against every GY deck. Annul and Disdainful Stroke in against control. Pyroclasm and Abrade in against aggro. Confirm your 15 before heading out.</div></div>
+  </div>
+
+  <h2>Round 1 Tells</h2>
+  <p>T1 land tells: <strong>Steam Vents or Spirebluff Canal</strong> = Izzet something (Prowess, Lessons, or mirror) — name Elemental on Cavern, hold interaction. <strong>Forest or Fabled Passage</strong> = likely Mono-Green — get Roaming Throne down fast. <strong>Island or Watery Grave</strong> = Dimir — play your Cavern game freely.</p>
+
+  <button class="print-btn" onclick="printSB()">&#9113; Print Event Reference</button>
+  <div id="sb-print-zone">
+    <h2 style="font-family:'DM Mono',monospace;font-size:14px;margin-bottom:12px;">IZZET SPELLEMENTALS — Event Reference · 5.26% Standard April 2026</h2>
+    <p style="font-size:11px;font-family:'DM Mono',monospace;margin-bottom:12px;">ALWAYS: Name Elemental on Cavern of Souls | Sunderflock math: (Elementals × 2 with Throne) damage each creature</p>
+    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:12px;font-size:11px;font-family:'DM Mono',monospace;">
+      <div><strong>vs MONO-GREEN (Even)</strong><br>IN: +1 Pyroclasm, +2 Hydro-Man | OUT: −2 Winternight, −1 Dragonhunt</div>
+      <div><strong>vs IZZET PROWESS (Unfav)</strong><br>IN: +1 Pyroclasm, +2 Annul, +1 Abrade | OUT: −2 Throne, −2 Winternight</div>
+      <div><strong>vs IZZET LESSONS (Even)</strong><br>IN: +2 Soul-Guide, +2 Annul | OUT: −2 Winternight, −1 Dragonhunt, −1 Pierce</div>
+      <div><strong>vs DIMIR MIDRANGE (Fav)</strong><br>IN: +2 Disdainful, +2 Hydro-Man | OUT: −2 Winternight, −1 Pierce, −1 Dragonhunt</div>
+      <div><strong>vs JESKAI CONTROL (Even)</strong><br>IN: +2 Disdainful, +1 Negate | OUT: −1 Pierce, −1 Dragonhunt, −1 Spider-Sense</div>
+      <div><strong>vs BOROS AGGRO (Fav)</strong><br>IN: +1 Pyroclasm, +1 Abrade | OUT: −2 Winternight</div>
+    </div>
+  </div>
+</div>
+</div>
+
+<footer style="border-top:1px solid var(--rule);padding:24px 80px;display:flex;justify-content:space-between;align-items:center;font-family:'DM Mono',monospace;font-size:10px;color:var(--mid);">
+  <span>Team Resolve &middot; Standard 2026</span>
+  <span>Palette: Red/Orange Row 12 &mdash; April 2026</span>
+  <span>Reference: RC Turin Top8 (Kaluz&yacute;) + MTGO League (Ulry 5-0)</span>
+</footer>
+
+<script>
+function show(id){
+  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.nav-link').forEach(b=>b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  event.target.classList.add('active');
+  window.scrollTo(0,0);
+}
+function toggle(id){document.getElementById(id).classList.toggle('open');}
+function printSB(){window.print();}
+</script>
+<script>
+(function(){
+  const TIP=document.createElement('div');TIP.className='card-tip';
+  TIP.innerHTML='<div class="card-tip-loading">loading...</div>';
+  document.body.appendChild(TIP);
+  const CACHE={};let hideTimer=null;
+  function pos(e){const PAD=24,W=220,H=310;let x=e.clientX+PAD,y=e.clientY-H/2;
+    if(x+W>window.innerWidth)x=e.clientX-W-PAD;if(y<8)y=8;
+    if(y+H>window.innerHeight)y=window.innerHeight-H-8;
+    TIP.style.left=x+'px';TIP.style.top=y+'px';}
+  async function show2(name,e){
+    clearTimeout(hideTimer);TIP.innerHTML='<div class="card-tip-loading">loading...</div>';
+    TIP.classList.add('visible');pos(e);
+    if(CACHE[name]){TIP.innerHTML=`<img src="${CACHE[name]}" alt="${name}">`;return;}
+    try{const r=await fetch(`https://api.scryfall.com/cards/named?fuzzy=${encodeURIComponent(name)}`);
+      if(!r.ok){TIP.classList.remove('visible');return;}
+      const d=await r.json();const img=d.image_uris?.normal||d.card_faces?.[0]?.image_uris?.normal;
+      if(!img){TIP.classList.remove('visible');return;}
+      CACHE[name]=img;TIP.innerHTML=`<img src="${img}" alt="${name}">`;}
+    catch(err){TIP.classList.remove('visible');}
+  }
+  function hide(){hideTimer=setTimeout(()=>TIP.classList.remove('visible'),80);}
+  document.addEventListener('mouseover',e=>{const el=e.target.closest('span.c');if(!el)return;show2(el.textContent.trim(),e);});
+  document.addEventListener('mousemove',e=>{if(TIP.classList.contains('visible'))pos(e);});
+  document.addEventListener('mouseout',e=>{if(e.target.closest('span.c'))hide();});
+})();
+</script>
+</body>
+</html>
