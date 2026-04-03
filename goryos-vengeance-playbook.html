@@ -118,7 +118,9 @@
   body.printing-sb .section:not(#prep) { display:none !important; }
   body.printing-sb #prep > *:not(#sb-print-zone) { display:none !important; }
   body.printing-sb #sb-print-zone { display:block !important; }
-  body.printing-sb .print-grid { display:grid !important; }
+  body.printing-sb .print-grid { display:grid !important; grid-template-columns:repeat(3,1fr) !important; }
+  @page { size: landscape; margin: 0.4in; }
+  body.printing-sb { zoom: 0.72; }
   body.printing-sb .print-cols { display:grid !important; }
   body.printing-sb .print-row { display:flex !important; }
   body.printing-sb .print-mu { display:block !important; }
