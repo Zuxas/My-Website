@@ -108,7 +108,23 @@
   footer { background:var(--paper-dark); color:rgba(226,232,240,0.25); padding:40px 80px; margin-top:80px; display:flex; justify-content:space-between; align-items:center; border-top:1px solid var(--rule); }
   footer span { font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.1em; text-transform:uppercase; }
   @media (max-width:768px) { .header-inner,nav,.page,footer { padding-left:24px; padding-right:24px; } .header-title { font-size:40px; } .header-right { display:none; } .decklist,.role-grid,.engine-body { grid-template-columns:1fr; } }
-  @media print { nav,footer { display:none; } .section { display:block !important; } }
+  @media print {
+  nav, footer { display:none; }
+  .section { display:block !important; }
+  /* SB-only print mode */
+  body.printing-sb .header-band,
+  body.printing-sb nav,
+  body.printing-sb footer { display:none !important; }
+  body.printing-sb .section:not(#prep) { display:none !important; }
+  body.printing-sb #prep > *:not(#sb-print-zone) { display:none !important; }
+  body.printing-sb #sb-print-zone { display:block !important; }
+  body.printing-sb .print-grid { display:grid !important; }
+  body.printing-sb .print-cols { display:grid !important; }
+  body.printing-sb .print-row { display:flex !important; }
+  body.printing-sb .print-mu { display:block !important; }
+  body.printing-sb .print-mu > * { display:block !important; }
+  body.printing-sb .print-qty { font-family:monospace; }
+}
 
   /* ── PRINT / SB GRID ─────────────────────────────────── */
   .print-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; background:transparent; border:none; margin:24px 0; }
@@ -1132,7 +1148,7 @@
 <div id="prep" class="section">
   <div class="section-label">Chapter 11</div>
   <h1>Prep<br>Sheet</h1>
-    <button class="print-btn" onclick="window.print()">&#x2259; Print This Sheet</button>
+    <button class="print-btn" onclick="printSB()">&#x2259; Print SB Reference</button>
 
 
     <h2>20-Minute Crash Course</h2>
@@ -1146,6 +1162,7 @@
       <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Sideboard rule:</strong> Wear // Tear is your primary Leyline answer. Find it before setting up the combo.</span></li>
     </ul>
 
+  <div id="sb-print-zone">
     <h2>Printable Sideboard Reference</h2>
   <p>All 12 matchup ins/outs on one page. Hit Print and take it to the event.</p>
 
@@ -1369,6 +1386,7 @@
   </div>
 
 
+</div>
 
 <h2>Testing Framework</h2>
     <div class="card-grid">
@@ -1415,6 +1433,14 @@
 
 <script>
 function toggleCheck(el) { el.classList.toggle('checked'); }
+function printSB() {
+  document.body.classList.add('printing-sb');
+  window.addEventListener('afterprint', function cleanup() {
+    document.body.classList.remove('printing-sb');
+    window.removeEventListener('afterprint', cleanup);
+  });
+  window.print();
+}
 function show(id) {
   document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
   document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
