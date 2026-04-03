@@ -4,510 +4,370 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Deck Playbooks — Team Resolve</title>
+<link rel="stylesheet" href="styles.css">
 <link rel="icon" href="images/tab32.png" type="image/png">
-<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 <style>
-*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
-:root {
-  --bg:    #0B0B13;
-  --bg2:   #111120;
-  --ink:   #F1F5F9;
-  --mid:   #94A3B8;
-  --dim:   #475569;
-  --border:#1E293B;
-  --gold:  #CA8A04;
-}
-html { overflow-y:scroll; background:var(--bg); color:var(--ink); }
-body { font-family:'Crimson Pro',Georgia,serif; font-size:17px; line-height:1.6; min-height:100vh; }
-
-/* ── NAV ─────────────────────────────────────────── */
-nav {
-  position:sticky; top:0; z-index:100;
-  background:rgba(11,11,19,0.92);
-  backdrop-filter:blur(12px);
-  border-bottom:1px solid var(--border);
-  display:flex; align-items:center; gap:0; padding:0 32px; height:52px;
-}
-.nav-brand { font-family:'DM Mono',monospace; font-size:12px; letter-spacing:0.18em; text-transform:uppercase; color:var(--gold); margin-right:auto; text-decoration:none; }
-.nav-link { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.12em; text-transform:uppercase; color:var(--mid); text-decoration:none; padding:0 16px; height:52px; display:flex; align-items:center; border-bottom:2px solid transparent; transition:color 0.15s, border-color 0.15s; white-space:nowrap; }
-.nav-link:hover { color:var(--ink); }
-.nav-link.active { color:var(--ink); border-bottom-color:var(--gold); }
-
-/* ── HEADER ──────────────────────────────────────── */
-.hero { padding:72px 64px 48px; max-width:1200px; margin:0 auto; }
-.hero-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--dim); margin-bottom:16px; }
-.hero-title { font-size:clamp(40px,5vw,64px); font-weight:300; line-height:1.05; margin-bottom:16px; }
-.hero-title strong { font-weight:600; color:var(--gold); display:block; }
-.hero-sub { font-size:16px; font-weight:300; color:var(--mid); max-width:560px; line-height:1.7; }
-
-/* ── FORMAT TABS ─────────────────────────────────── */
-.tabs-wrap { border-bottom:1px solid var(--border); margin:0; padding:0 64px; max-width:1200px; margin-left:auto; margin-right:auto; }
-.tabs { display:flex; gap:0; }
-.tab { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; padding:14px 24px; cursor:pointer; background:none; border:none; border-bottom:2px solid transparent; margin-bottom:-1px; color:var(--dim); transition:all 0.2s; white-space:nowrap; }
-.tab:hover { color:var(--mid); }
-.tab.active { color:var(--ink); border-bottom-color:var(--gold); }
-.tab .n { font-size:9px; opacity:0.55; margin-left:5px; }
-
-/* ── MAIN CONTENT ────────────────────────────────── */
-.content { max-width:1200px; margin:0 auto; padding:0 64px 96px; }
-.format-section { display:none; }
-.format-section.active { display:block; }
-
-/* ── SECTION HEADERS ─────────────────────────────── */
-.section-head { margin:56px 0 24px; display:flex; align-items:baseline; gap:16px; border-bottom:1px solid var(--border); padding-bottom:12px; }
-.section-head h2 { font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.18em; text-transform:uppercase; color:var(--dim); font-weight:400; }
-.section-head .sh-count { font-family:'DM Mono',monospace; font-size:9px; color:var(--dim); opacity:0.5; }
-
-/* ── SEARCH ──────────────────────────────────────── */
-.search-wrap { margin:32px 0 0; }
-.search-input { background:var(--bg2); border:1px solid var(--border); color:var(--ink); font-family:'DM Mono',monospace; font-size:12px; letter-spacing:0.05em; padding:10px 16px; width:100%; max-width:380px; outline:none; transition:border-color 0.2s; }
-.search-input:focus { border-color:var(--gold); }
-.search-input::placeholder { color:var(--dim); }
-
-/* ── DECK GRID ───────────────────────────────────── */
-.deck-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:1px; background:var(--border); margin-top:1px; }
-.deck-card { background:var(--bg2); position:relative; display:flex; flex-direction:column; transition:background 0.15s; text-decoration:none; color:inherit; overflow:hidden; }
-.deck-card:hover { background:#161625; }
-.deck-card .accent-bar { height:3px; width:100%; flex-shrink:0; }
-.deck-card .card-inner { padding:28px 28px 24px; flex:1; display:flex; flex-direction:column; gap:0; }
-.deck-card .dc-label { font-family:'DM Mono',monospace; font-size:9px; letter-spacing:0.18em; text-transform:uppercase; color:var(--dim); margin-bottom:8px; }
-.deck-card .dc-name { font-size:22px; font-weight:600; line-height:1.1; margin-bottom:4px; }
-.deck-card .dc-role { font-family:'DM Mono',monospace; font-size:10px; color:var(--mid); margin-bottom:14px; }
-.deck-card .dc-body { font-size:14px; font-weight:300; color:var(--mid); line-height:1.55; flex:1; }
-.deck-card .dc-footer { margin-top:20px; display:flex; align-items:center; justify-content:space-between; }
-.deck-card .dc-meta { font-family:'DM Mono',monospace; font-size:9px; letter-spacing:0.1em; color:var(--dim); }
-.deck-card .dc-arrow { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.12em; text-transform:uppercase; transition:color 0.15s; }
-.deck-card:hover .dc-arrow { color:var(--gold); }
-.deck-card.hidden { display:none; }
-
-/* ── COMING SOON ─────────────────────────────────── */
-.soon-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:1px; background:var(--border); margin-top:1px; }
-.soon-card { background:var(--bg2); padding:24px; opacity:0.4; }
-.soon-card .sc-label { font-family:'DM Mono',monospace; font-size:9px; letter-spacing:0.18em; text-transform:uppercase; color:var(--dim); margin-bottom:8px; }
-.soon-card .sc-name { font-size:18px; font-weight:600; color:var(--mid); }
-
-/* ── RC TARGET CARDS ─────────────────────────────── */
-.rc-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:1px; background:var(--border); margin-top:1px; }
-.rc-card { background:var(--bg2); padding:28px; border-top:2px solid var(--gold); }
-.rc-card .rc-date { font-family:'DM Mono',monospace; font-size:9px; letter-spacing:0.18em; text-transform:uppercase; color:var(--gold); margin-bottom:8px; }
-.rc-card .rc-name { font-size:20px; font-weight:600; margin-bottom:8px; }
-.rc-card .rc-body { font-size:14px; font-weight:300; color:var(--mid); line-height:1.55; }
-
-/* ── FOOTER ──────────────────────────────────────── */
-footer { border-top:1px solid var(--border); padding:32px 64px; max-width:1200px; margin:0 auto; display:flex; justify-content:space-between; align-items:center; }
-footer span { font-family:'DM Mono',monospace; font-size:10px; color:var(--dim); letter-spacing:0.08em; }
-
-@media(max-width:768px) {
-  .hero { padding:48px 24px 32px; }
-  .tabs-wrap, .content { padding-left:24px; padding-right:24px; }
-  .deck-grid { grid-template-columns:1fr; }
-  footer { padding:24px; flex-direction:column; gap:8px; }
-}
+  .format-tabs { display:flex; gap:0; border-bottom:2px solid var(--rule); margin:0 0 24px; overflow-x:auto; scrollbar-width:none; }
+  .format-tabs::-webkit-scrollbar { display:none; }
+  .format-tab { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.12em; text-transform:uppercase; padding:10px 20px; cursor:pointer; background:none; border:none; color:var(--text-muted); border-bottom:2px solid transparent; margin-bottom:-2px; transition:all 0.2s; white-space:nowrap; }
+  .format-tab:hover { color:var(--text); }
+  .format-tab.active { color:var(--accent); border-bottom-color:var(--accent); }
+  .format-tab .n { font-size:9px; opacity:0.5; margin-left:4px; }
+  .format-section { display:none; }
+  .format-section.active { display:block; }
+  .search-row { display:flex; align-items:center; gap:12px; margin:0 0 20px; }
+  .search-input { background:var(--bg-dark); border:1px solid var(--rule); color:var(--text); font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.05em; padding:8px 14px; outline:none; transition:border-color 0.2s; flex:0 0 280px; }
+  .search-input:focus { border-color:var(--accent); }
+  .search-input::placeholder { color:var(--text-dim); }
+  .deck-count { font-family:'DM Mono',monospace; font-size:10px; color:var(--text-dim); letter-spacing:0.1em; }
+  .card.deck-card { padding:0; overflow:hidden; }
+  .card.deck-card .deck-accent { height:3px; }
+  .card.deck-card .deck-inner { padding:20px; }
+  .card.deck-card .card-title { color:var(--accent); }
+  .card.deck-card .deck-footer { display:flex; justify-content:space-between; align-items:center; margin-top:12px; }
+  .card.deck-card .deck-meta { font-family:'DM Mono',monospace; font-size:9px; color:var(--text-dim); letter-spacing:0.08em; }
+  .card.deck-card .deck-open { font-family:'DM Mono',monospace; font-size:9px; letter-spacing:0.12em; text-transform:uppercase; color:var(--accent); }
+  .card.deck-card:hover .deck-open { color:var(--text); }
+  .card.deck-card.hidden { display:none; }
+  .rc-card { background:var(--bg-panel); border-top:2px solid var(--gold) !important; padding:20px; }
+  .rc-card .rc-date { font-family:'DM Mono',monospace; font-size:9px; letter-spacing:0.18em; text-transform:uppercase; color:var(--gold); margin-bottom:6px; }
+  .rc-card .card-title { color:var(--gold); }
 </style>
 </head>
 <body>
-
-<nav>
-  <a class="nav-brand" href="index.html">Team Resolve</a>
-  <a class="nav-link" href="index.html">Home</a>
-  <a class="nav-link active" href="deck-guides.html">Playbooks</a>
-  <a class="nav-link" href="meta.html">Meta</a>
-  <a class="nav-link" href="team.html">Team</a>
+<nav class="main-nav">
+  <ul>
+    <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+    <li><a href="meta.html"><i class="fas fa-chart-line"></i> Strategies</a></li>
+    <li><a href="deckbuilding.html"><i class="fas fa-cogs"></i> Deck Building</a></li>
+    <li><a href="analyze.html"><i class="fas fa-search"></i> Analyze Deck Lists</a></li>
+    <li><a href="deck-guides.html" class="active"><i class="fas fa-book"></i> Guides</a></li>
+    <li><a href="team.html"><i class="fas fa-users"></i> Team</a></li>
+    <li><a href="zuxas.html"><i class="fas fa-user"></i> Zuxas</a></li>
+  </ul>
 </nav>
 
-<div class="hero">
-  <div class="hero-label">Team Resolve · Competitive Prep</div>
-  <h1 class="hero-title">Deck<strong>Playbooks</strong></h1>
-  <p class="hero-sub">Full competitive playbooks for every format Team Resolve is actively testing. Each guide covers deck identity, game flow, engines, lines &amp; tactics, roles, matchup deep dives, sideboard guide, heuristics, tuning notes, and a printable prep sheet.</p>
-</div>
+<main id="top" class="fade-in-top-to-bottom">
+  <section class="column">
+    <span class="section-label">Team Resolve · Competitive Playbooks</span>
+    <h1>deck playbooks</h1>
+    <p class="intro">Full competitive playbooks for every format Team Resolve is actively testing. Each guide covers deck identity, full decklist, game flow, engines, lines &amp; tactics, role assignment, matchup deep dives, sideboard guide, heuristics, tuning notes, and a printable prep sheet.</p>
 
-<div class="tabs-wrap">
-  <div class="tabs">
-    <button class="tab active" onclick="showFormat('modern',this)">Modern <span class="n">17</span></button>
-    <button class="tab" onclick="showFormat('standard',this)">Standard <span class="n">5</span></button>
-    <button class="tab" onclick="showFormat('pioneer',this)">Pioneer <span class="n">0</span></button>
-    <button class="tab" onclick="showFormat('legacy',this)">Legacy <span class="n">0</span></button>
-  </div>
-</div>
-
-<div class="content">
-
-  <!-- ═══ MODERN ═══════════════════════════════════════════════════ -->
-  <div id="format-modern" class="format-section active">
-
-    <div class="search-wrap">
-      <input class="search-input" type="text" placeholder="Search decks..." oninput="filterDecks(this.value)" />
+    <div class="format-tabs">
+      <button class="format-tab active" onclick="showFormat('modern',this)">Modern <span class="n">17</span></button>
+      <button class="format-tab" onclick="showFormat('standard',this)">Standard <span class="n">5</span></button>
+      <button class="format-tab" onclick="showFormat('pioneer',this)">Pioneer <span class="n">0</span></button>
+      <button class="format-tab" onclick="showFormat('legacy',this)">Legacy <span class="n">0</span></button>
     </div>
 
-    <div class="section-head"><h2>All Modern Playbooks</h2><span class="sh-count">16 guides · April 2026 · LDXP SEA26 reference</span></div>
-    <div class="deck-grid" id="modern-grid">
-      <a class="deck-card" href="goryos-vengeance-playbook.html">
-        <div class="accent-bar" style="background:#CA8A04"></div>
-        <div class="card-inner">
-          <div class="dc-label">Esper · ~1.5–1.8%</div>
-          <div class="dc-name" style="color:#CA8A04">Goryo's Vengeance</div>
-          <div class="dc-role">Combo-Control · T2–3 Kill</div>
-          <div class="dc-body">Goryo's → Atraxa enters with haste. Ephemerate before the EOT exile → stays permanently. Griselbrand draws 21 with enough life. The fastest reanimator in Modern with a full Esper control backup plan.</div>
-          <div class="dc-footer">
-            <span class="dc-meta">Theater/Cinema · Row 77</span>
-            <span class="dc-arrow" style="color:#CA8A04">Open →</span>
-          </div>
-        </div>
-      </a>
-
-      <a class="deck-card" href="ruby-storm-playbook.html">
-        <div class="accent-bar" style="background:#FF3333"></div>
-        <div class="card-inner">
-          <div class="dc-label">Mono Red · 6.2%</div>
-          <div class="dc-name" style="color:#FF3333">Ruby Storm</div>
-          <div class="dc-role">Linear Combo · T2–3 Kill</div>
-          <div class="dc-body">Ruby Medallion + Ral, Monsoon Mage reduce every ritual to net positive mana. Chain until storm count reaches 20, Wish for Grapeshot, win. LDXP SEA26 reference: McDougal 9-0-4.</div>
-          <div class="dc-footer">
-            <span class="dc-meta">Cybersecurity · Row 80</span>
-            <span class="dc-arrow" style="color:#FF3333">Open →</span>
-          </div>
-        </div>
-      </a>
-
-      <a class="deck-card" href="glockulous-playbook.html">
-        <div class="accent-bar" style="background:#8B5CF6"></div>
-        <div class="card-inner">
-          <div class="dc-label">Grixis · ~2%</div>
-          <div class="dc-name" style="color:#8B5CF6">Glockulous</div>
-          <div class="dc-role">Graveyard Midrange · T3–4</div>
-          <div class="dc-body">Archon of Cruelty via Persist or Emperor of Bones. Each Archon trigger is a 6-point life swing. Psychic Frog and Harbinger of the Seas as a resilient two-axis backup plan.</div>
-          <div class="dc-footer">
-            <span class="dc-meta">Fintech/Crypto · Row 14</span>
-            <span class="dc-arrow" style="color:#8B5CF6">Open →</span>
-          </div>
-        </div>
-      </a>
-
-      <a class="deck-card" href="yawgmoth-playbook.html">
-        <div class="accent-bar" style="background:#22C55E"></div>
-        <div class="card-inner">
-          <div class="dc-label">Golgari · 2.0%</div>
-          <div class="dc-name" style="color:#22C55E">Golgari Yawgmoth</div>
-          <div class="dc-role">Creature Combo · T3–4 Loop</div>
-          <div class="dc-body">Yawgmoth + Melira + two undying creatures + Blood Artist = infinite loop. 12 tutors via Chord and Evolution. Plays fair creature value when the combo is disrupted. 11 matchup deep dives.</div>
-          <div class="dc-footer">
-            <span class="dc-meta">Developer Tool · Row 81</span>
-            <span class="dc-arrow" style="color:#22C55E">Open →</span>
-          </div>
-        </div>
-      </a>
-
-      <a class="deck-card" href="dimir-oculus-playbook.html">
-        <div class="accent-bar" style="background:#2563EB"></div>
-        <div class="card-inner">
-          <div class="dc-label">Dimir · ~3.5%</div>
-          <div class="dc-name" style="color:#2563EB">Dimir Oculus</div>
-          <div class="dc-role">Tempo-Control · T3–5</div>
-          <div class="dc-body">Psychic Frog grows on every discard. Abhorrent Oculus reanimates via Unearth. Murktide as the third finisher axis. Every card in the GY is currency for three different payoffs.</div>
-          <div class="dc-footer">
-            <span class="dc-meta">Ride Hailing · Row 96</span>
-            <span class="dc-arrow" style="color:#2563EB">Open →</span>
-          </div>
-        </div>
-      </a>
-
-      <a class="deck-card" href="izzet-affinity-playbook.html">
-        <div class="accent-bar" style="background:#059669"></div>
-        <div class="card-inner">
-          <div class="dc-label">Izzet · 8.0%</div>
-          <div class="dc-name" style="color:#059669">Izzet Affinity</div>
-          <div class="dc-role">Artifact Aggro-Combo · T3–4</div>
-          <div class="dc-body">Weapons Manufacturing generates artifact tokens for Kappa Cannoneer. Pinnacle Emissary copies provide burst kills from nowhere. Urza's Saga tutors the mana engine. 11 matchup deep dives.</div>
-          <div class="dc-footer">
-            <span class="dc-meta">Healthcare App · Row 8</span>
-            <span class="dc-arrow" style="color:#059669">Open →</span>
-          </div>
-        </div>
-      </a>
-
-      <a class="deck-card" href="eldrazi-tron-playbook.html">
-        <div class="accent-bar" style="background:#0369A1"></div>
-        <div class="card-inner">
-          <div class="dc-label">Colorless · 5.5%</div>
-          <div class="dc-name" style="color:#0369A1">Eldrazi Tron</div>
-          <div class="dc-role">Ramp-Midrange · T3–4</div>
-          <div class="dc-body">Urza's Tower + Mine + Factory into Thought-Knot Seer and Ulamog. Karn, the Great Creator wishes for hate pieces from the sideboard. Chalice of the Void at 1 shuts most interactive decks. 12 matchups.</div>
-          <div class="dc-footer">
-            <span class="dc-meta">B2B Service · Row 5</span>
-            <span class="dc-arrow" style="color:#0369A1">Open →</span>
-          </div>
-        </div>
-      </a>
-
-      <a class="deck-card" href="amulet-titan-playbook.html">
-        <div class="accent-bar" style="background:#16A34A"></div>
-        <div class="card-inner">
-          <div class="dc-label">Green Splash · 3.1%</div>
-          <div class="dc-name" style="color:#16A34A">Amulet Titan</div>
-          <div class="dc-role">Land Combo-Ramp · T2–4</div>
-          <div class="dc-body">Amulet of Vigor untaps every bounce land, generating net mana with each land drop. Primeval Titan finds two lands on ETB and two more on attack. Scapeshift as a 7-land instant win. 11 deep dives.</div>
-          <div class="dc-footer">
-            <span class="dc-meta">EV/Charging · Row 25</span>
-            <span class="dc-arrow" style="color:#16A34A">Open →</span>
-          </div>
-        </div>
-      </a>
-
-      <a class="deck-card" href="living-end-playbook.html">
-        <div class="accent-bar" style="background:#A16207"></div>
-        <div class="card-inner">
-          <div class="dc-label">Cascade · 2.8%</div>
-          <div class="dc-name" style="color:#A16207">Living End</div>
-          <div class="dc-role">Cascade Combo · T2–3</div>
-          <div class="dc-body">Cycle threats turns 1–2, cast Violent Outburst at instant speed on their end step. Board wipes their side, returns your whole GY. Zero main-deck spells with MV ≤2 so cascade always hits Living End.</div>
-          <div class="dc-footer">
-            <span class="dc-meta">Brewery/Winery · Row 64</span>
-            <span class="dc-arrow" style="color:#A16207">Open →</span>
-          </div>
-        </div>
-      </a>
-
-      <a class="deck-card" href="neoform-playbook.html">
-        <div class="accent-bar" style="background:#059669"></div>
-        <div class="card-inner">
-          <div class="dc-label">Simic · 2.7%</div>
-          <div class="dc-name" style="color:#059669">Simic Neoform</div>
-          <div class="dc-role">All-In Combo · T2</div>
-          <div class="dc-body">T1 mana dork, T2 Neoform chain into Ghalta and Mavren with haste. Alternatively chains into Ureni for Eldrazi protection. Pact of Negation backup on the combo turn. Full protection suite.</div>
-          <div class="dc-footer">
-            <span class="dc-meta">Micro SaaS · Row 2</span>
-            <span class="dc-arrow" style="color:#059669">Open →</span>
-          </div>
-        </div>
-      </a>
-
-      <a class="deck-card" href="domain-zoo-playbook.html">
-        <div class="accent-bar" style="background:#A16207"></div>
-        <div class="card-inner">
-          <div class="dc-label">Five-Color · 2.6%</div>
-          <div class="dc-name" style="color:#A16207">Domain Zoo</div>
-          <div class="dc-role">Aggro-Combo · T1 Threat</div>
-          <div class="dc-body">Turn-zero Leyline of the Guildpact grants full domain instantly. Scion of Draco is free, Territorial Kavu enters as a 5/5+ with hexproof. Tribal Flames at full domain deals 5. 10 matchup deep dives.</div>
-          <div class="dc-footer">
-            <span class="dc-meta">E-comm Luxury · Row 4</span>
-            <span class="dc-arrow" style="color:#A16207">Open →</span>
-          </div>
-        </div>
-      </a>
-
-      <a class="deck-card" href="prowess-playbook.html">
-        <div class="accent-bar" style="background:#EA580C"></div>
-        <div class="card-inner">
-          <div class="dc-label">Izzet · 4%</div>
-          <div class="dc-name" style="color:#EA580C">Izzet Prowess</div>
-          <div class="dc-role">Tempo-Aggro · T3–4</div>
-          <div class="dc-body">Dragon's Rage Channeler + Swiftspear chain spells for +1/+1 triggers each. Lava Dart flashback provides free pump. Flurry of Horns copies spells for reach. Highest damage ceiling in Modern.</div>
-          <div class="dc-footer">
-            <span class="dc-meta">Educational App · Row 9</span>
-            <span class="dc-arrow" style="color:#EA580C">Open →</span>
-          </div>
-        </div>
-      </a>
-
-      <a class="deck-card" href="jeskai-blink-playbook.html">
-        <div class="accent-bar" style="background:#EA580C"></div>
-        <div class="card-inner">
-          <div class="dc-label">Jeskai · ~7%</div>
-          <div class="dc-name" style="color:#EA580C">Jeskai Blink</div>
-          <div class="dc-role">Tempo-Control · T3–5</div>
-          <div class="dc-body">Evoke Solitude + Ephemerate = permanent exile engine at WW. Teferi, Time Raveler stops all instants. Red adds Phlage and Ragavan for aggressive pressure. Highest interaction density in the format.</div>
-          <div class="dc-footer">
-            <span class="dc-meta">SaaS General · Row 1</span>
-            <span class="dc-arrow" style="color:#EA580C">Open →</span>
-          </div>
-        </div>
-      </a>
-
-      <a class="deck-card" href="uw-blink-playbook.html">
-        <div class="accent-bar" style="background:#0EA5E9"></div>
-        <div class="card-inner">
-          <div class="dc-label">Azorius · ~5%</div>
-          <div class="dc-name" style="color:#0EA5E9">UW Blink</div>
-          <div class="dc-role">Tempo-Control · T3–5</div>
-          <div class="dc-body">Phelia + Ephemerate generates ETB value every turn. Solitude evokes for free removal. Restoration Angel extends the blink engine. Purest form of the Blink shell — maximum consistency, highest decision density.</div>
-          <div class="dc-footer">
-            <span class="dc-meta">Dental Practice · Row 60</span>
-            <span class="dc-arrow" style="color:#0EA5E9">Open →</span>
-          </div>
-        </div>
-      </a>
-
-      <a class="deck-card" href="uw-control-playbook.html">
-        <div class="accent-bar" style="background:#2563EB"></div>
-        <div class="card-inner">
-          <div class="dc-label">Azorius · ~2%</div>
-          <div class="dc-name" style="color:#2563EB">UW Control</div>
-          <div class="dc-role">Draw-Go Control · T5+</div>
-          <div class="dc-body">Isochron Scepter + Orim's Chant creates a hard lock: they never get another main phase. Teferi, Hero of Dominaria closes. Evariel's LDXP PTQ reference list at 8-0-2. Highest ceiling if the lock resolves.</div>
-          <div class="dc-footer">
-            <span class="dc-meta">Knowledge Base · Row 30</span>
-            <span class="dc-arrow" style="color:#2563EB">Open →</span>
-          </div>
-        </div>
-      </a>
-
-      <a class="deck-card" href="humans-playbook.html">
-        <div class="accent-bar" style="background:#16A34A"></div>
-        <div class="card-inner">
-          <div class="dc-label">Five-Color · ~2%</div>
-          <div class="dc-name" style="color:#16A34A">Humans</div>
-          <div class="dc-role">Aggro-Disruption · T3–4</div>
-          <div class="dc-body">Meddling Mage names their win condition, Thalia taxes every non-creature spell. Aether Vial deploys creatures at flash speed. Champion of the Parish grows with every Human. Disrupts while applying a fast clock.</div>
-          <div class="dc-footer">
-            <span class="dc-meta">Membership · Row 71</span>
-            <span class="dc-arrow" style="color:#16A34A">Open →</span>
-          </div>
-        </div>
-      </a>
-
-      <a class="deck-card" href="boros-energy-playbook.html">
-        <div class="accent-bar" style="background:#DC2626"></div>
-        <div class="card-inner">
-          <div class="dc-label">Boros · ~16%</div>
-          <div class="dc-name" style="color:#DC2626">Boros Energy</div>
-          <div class="dc-role">Aggro-Midrange · T3–4</div>
-          <div class="dc-body">Ragavan generates mana and steals cards. Guide of Souls floods the board with energy. Ocelot Pride makes cat tokens every turn. The format's defining aggressive deck and the baseline every other deck is measured against.</div>
-          <div class="dc-footer">
-            <span class="dc-meta">Sports Team · Row 75</span>
-            <span class="dc-arrow" style="color:#DC2626">Open →</span>
-          </div>
-        </div>
-      </a>
-
-    </div><!-- /deck-grid -->
-
-    <div class="section-head" style="margin-top:64px"><h2>How to use these guides</h2></div>
-    <p style="color:var(--mid);font-size:15px;font-weight:300;max-width:640px;line-height:1.7">Each playbook works offline. The <strong style="color:var(--ink);font-weight:400">Prep</strong> tab is printable — the Print SB Reference button outputs only the matchup matrix on one portrait page. Read the heuristics the night before an event, not during rounds. Hover any card name for the Scryfall image.</p>
-
-  </div><!-- /modern -->
-
-  <!-- ═══ STANDARD ══════════════════════════════════════════════════ -->
-  <div id="format-standard" class="format-section">
-
-    <div class="section-head"><h2>Target Events</h2><span class="sh-count">RC prep · May 2026</span></div>
-    <div class="rc-grid">
-      <div class="rc-card">
-        <div class="rc-date">May 15–17, 2026</div>
-        <div class="rc-name">SCG CON Cincinnati</div>
-        <div class="rc-body">Standard Constructed. Top finishers qualify for Pro Tour Marvel Super Heroes — MagicCon Amsterdam, July 17–19. First of the two May RC targets.</div>
+    <!-- ═══ MODERN ═══════════════════════════════════════════════ -->
+    <div id="format-modern" class="format-section active">
+      <div class="search-row">
+        <input class="search-input" type="text" placeholder="Search decks..." oninput="filterDecks(this.value)">
+        <span class="deck-count">17 guides · April 2026 · LDXP SEA26 reference</span>
       </div>
-      <div class="rc-card">
-        <div class="rc-date">May 29–31, 2026</div>
-        <div class="rc-name">SCG CON Washington DC</div>
-        <div class="rc-body">Standard Constructed. Same prize structure and Pro Tour invite path. Two shots at the same invite — lock the 75 and know every matchup cold by May 15.</div>
+      <div class="card-grid" id="modern-grid">
+
+        <!-- GORYO'S VENGEANCE -->
+        <a href="goryos-vengeance-playbook.html" class="card deck-card" style="text-decoration:none;display:block;">
+          <div class="deck-accent" style="background:#CA8A04"></div>
+          <div class="deck-inner">
+            <div class="card-label">Esper · ~1.5–1.8% · Combo-Control</div>
+            <div class="card-title" style="color:#CA8A04">Goryo's Vengeance</div>
+            <div class="card-body">Goryo's → Atraxa enters with haste. Ephemerate before EOT exile → stays permanently. Griselbrand draws 21. Fastest reanimator in Modern with full Esper control backup.</div>
+            <div class="deck-footer"><span class="deck-meta">Theater/Cinema · Row 77</span><span class="deck-open">Open →</span></div>
+          </div>
+        </a>
+
+        <!-- BOROS ENERGY -->
+        <a href="boros-energy-playbook.html" class="card deck-card" style="text-decoration:none;display:block;">
+          <div class="deck-accent" style="background:#DC2626"></div>
+          <div class="deck-inner">
+            <div class="card-label">Boros · ~16% · Aggro-Midrange</div>
+            <div class="card-title" style="color:#DC2626">Boros Energy</div>
+            <div class="card-body">Ragavan generates mana and steals cards. Guide of Souls floods the board with energy. Ocelot Pride token engine. The format baseline — every other deck is measured against this one.</div>
+            <div class="deck-footer"><span class="deck-meta">Sports Team · Row 75</span><span class="deck-open">Open →</span></div>
+          </div>
+        </a>
+
+        <!-- RUBY STORM -->
+        <a href="ruby-storm-playbook.html" class="card deck-card" style="text-decoration:none;display:block;">
+          <div class="deck-accent" style="background:#FF3333"></div>
+          <div class="deck-inner">
+            <div class="card-label">Mono Red · 6.2% · Linear Combo</div>
+            <div class="card-title" style="color:#FF3333">Ruby Storm</div>
+            <div class="card-body">Ruby Medallion + Ral, Monsoon Mage reduce every ritual to net positive mana. Chain until storm count reaches 20, Wish for Grapeshot. McDougal 9-0-4 LDXP SEA26.</div>
+            <div class="deck-footer"><span class="deck-meta">Cybersecurity · Row 80</span><span class="deck-open">Open →</span></div>
+          </div>
+        </a>
+
+        <!-- GLOCKULOUS -->
+        <a href="glockulous-playbook.html" class="card deck-card" style="text-decoration:none;display:block;">
+          <div class="deck-accent" style="background:#8B5CF6"></div>
+          <div class="deck-inner">
+            <div class="card-label">Grixis · ~2% · GY Midrange</div>
+            <div class="card-title" style="color:#8B5CF6">Glockulous</div>
+            <div class="card-body">Archon of Cruelty via Persist or Emperor of Bones. Each Archon trigger is a 6-point life swing. Psychic Frog and Harbinger of the Seas as a resilient dual-axis backup plan.</div>
+            <div class="deck-footer"><span class="deck-meta">Fintech/Crypto · Row 14</span><span class="deck-open">Open →</span></div>
+          </div>
+        </a>
+
+        <!-- YAWGMOTH -->
+        <a href="yawgmoth-playbook.html" class="card deck-card" style="text-decoration:none;display:block;">
+          <div class="deck-accent" style="background:#22C55E"></div>
+          <div class="deck-inner">
+            <div class="card-label">Golgari · 2.0% · Creature Combo</div>
+            <div class="card-title" style="color:#22C55E">Golgari Yawgmoth</div>
+            <div class="card-body">Yawgmoth + Melira + two undying + Blood Artist = infinite loop. 12 tutors via Chord and Evolution. Plays fair creature value when the combo is disrupted. 11 matchup deep dives.</div>
+            <div class="deck-footer"><span class="deck-meta">Developer Tool · Row 81</span><span class="deck-open">Open →</span></div>
+          </div>
+        </a>
+
+        <!-- DIMIR OCULUS -->
+        <a href="dimir-oculus-playbook.html" class="card deck-card" style="text-decoration:none;display:block;">
+          <div class="deck-accent" style="background:#2563EB"></div>
+          <div class="deck-inner">
+            <div class="card-label">Dimir · ~3.5% · Tempo-Control</div>
+            <div class="card-title" style="color:#2563EB">Dimir Oculus</div>
+            <div class="card-body">Psychic Frog grows on every discard. Abhorrent Oculus reanimates via Unearth. Murktide as the third finisher axis. Every card in your GY is currency for three different payoffs.</div>
+            <div class="deck-footer"><span class="deck-meta">Ride Hailing · Row 96</span><span class="deck-open">Open →</span></div>
+          </div>
+        </a>
+
+        <!-- IZZET AFFINITY -->
+        <a href="izzet-affinity-playbook.html" class="card deck-card" style="text-decoration:none;display:block;">
+          <div class="deck-accent" style="background:#059669"></div>
+          <div class="deck-inner">
+            <div class="card-label">Izzet · 8.0% · Artifact Aggro-Combo</div>
+            <div class="card-title" style="color:#059669">Izzet Affinity</div>
+            <div class="card-body">Weapons Manufacturing generates artifact tokens for Kappa Cannoneer. Pinnacle Emissary copies provide burst kills from nowhere. Urza's Saga tutors the mana engine. 11 matchup deep dives.</div>
+            <div class="deck-footer"><span class="deck-meta">Healthcare App · Row 8</span><span class="deck-open">Open →</span></div>
+          </div>
+        </a>
+
+        <!-- ELDRAZI TRON -->
+        <a href="eldrazi-tron-playbook.html" class="card deck-card" style="text-decoration:none;display:block;">
+          <div class="deck-accent" style="background:#0369A1"></div>
+          <div class="deck-inner">
+            <div class="card-label">Colorless · 5.5% · Ramp-Midrange</div>
+            <div class="card-title" style="color:#0369A1">Eldrazi Tron</div>
+            <div class="card-body">Urza's Tower + Mine + Factory into TKS and Ulamog. Karn, the Great Creator wishes for hate pieces. Chalice of the Void at 1 shuts most interactive decks. 12 matchups.</div>
+            <div class="deck-footer"><span class="deck-meta">B2B Service · Row 5</span><span class="deck-open">Open →</span></div>
+          </div>
+        </a>
+
+        <!-- AMULET TITAN -->
+        <a href="amulet-titan-playbook.html" class="card deck-card" style="text-decoration:none;display:block;">
+          <div class="deck-accent" style="background:#16A34A"></div>
+          <div class="deck-inner">
+            <div class="card-label">Green Splash · 3.1% · Land Combo</div>
+            <div class="card-title" style="color:#16A34A">Amulet Titan</div>
+            <div class="card-body">Amulet of Vigor untaps every bounce land, generating net mana each land drop. Primeval Titan finds 2 lands on ETB, 2 more on attack. Scapeshift as a 7-land instant win. 11 deep dives.</div>
+            <div class="deck-footer"><span class="deck-meta">EV/Charging · Row 25</span><span class="deck-open">Open →</span></div>
+          </div>
+        </a>
+
+        <!-- LIVING END -->
+        <a href="living-end-playbook.html" class="card deck-card" style="text-decoration:none;display:block;">
+          <div class="deck-accent" style="background:#A16207"></div>
+          <div class="deck-inner">
+            <div class="card-label">Cascade · 2.8% · Combo</div>
+            <div class="card-title" style="color:#A16207">Living End</div>
+            <div class="card-body">Cycle threats turns 1–2, Violent Outburst at instant speed on their end step. Board wipes their side, returns your whole GY. Zero main-deck spells with MV ≤2. 11 deep dives.</div>
+            <div class="deck-footer"><span class="deck-meta">Brewery/Winery · Row 64</span><span class="deck-open">Open →</span></div>
+          </div>
+        </a>
+
+        <!-- NEOFORM -->
+        <a href="neoform-playbook.html" class="card deck-card" style="text-decoration:none;display:block;">
+          <div class="deck-accent" style="background:#059669"></div>
+          <div class="deck-inner">
+            <div class="card-label">Simic · 2.7% · All-In Combo</div>
+            <div class="card-title" style="color:#059669">Simic Neoform</div>
+            <div class="card-body">T1 mana dork, T2 Neoform chain into Ghalta and Mavren with haste. Alternatively Ureni for Eldrazi protection. Pact of Negation backup on the combo turn. Full protection suite.</div>
+            <div class="deck-footer"><span class="deck-meta">Micro SaaS · Row 2</span><span class="deck-open">Open →</span></div>
+          </div>
+        </a>
+
+        <!-- DOMAIN ZOO -->
+        <a href="domain-zoo-playbook.html" class="card deck-card" style="text-decoration:none;display:block;">
+          <div class="deck-accent" style="background:#A16207"></div>
+          <div class="deck-inner">
+            <div class="card-label">Five-Color · 2.6% · Aggro-Combo</div>
+            <div class="card-title" style="color:#A16207">Domain Zoo</div>
+            <div class="card-body">Turn-zero Leyline of the Guildpact grants full domain instantly. Scion of Draco is free, Territorial Kavu is a 5/5+ with hexproof. Tribal Flames at full domain deals 5. 10 deep dives.</div>
+            <div class="deck-footer"><span class="deck-meta">E-comm Luxury · Row 4</span><span class="deck-open">Open →</span></div>
+          </div>
+        </a>
+
+        <!-- IZZET PROWESS -->
+        <a href="prowess-playbook.html" class="card deck-card" style="text-decoration:none;display:block;">
+          <div class="deck-accent" style="background:#EA580C"></div>
+          <div class="deck-inner">
+            <div class="card-label">Izzet · 4% · Tempo-Aggro</div>
+            <div class="card-title" style="color:#EA580C">Izzet Prowess</div>
+            <div class="card-body">Dragon's Rage Channeler + Swiftspear chain spells for triggers each. Lava Dart flashback provides free pump. Flurry of Horns copies spells for reach. Highest damage ceiling in Modern.</div>
+            <div class="deck-footer"><span class="deck-meta">Educational App · Row 9</span><span class="deck-open">Open →</span></div>
+          </div>
+        </a>
+
+        <!-- JESKAI BLINK -->
+        <a href="jeskai-blink-playbook.html" class="card deck-card" style="text-decoration:none;display:block;">
+          <div class="deck-accent" style="background:#EA580C"></div>
+          <div class="deck-inner">
+            <div class="card-label">Jeskai · ~7% · Tempo-Control</div>
+            <div class="card-title" style="color:#EA580C">Jeskai Blink</div>
+            <div class="card-body">Evoke Solitude + Ephemerate = permanent exile engine at WW. Teferi, Time Raveler stops all instants. Red adds Phlage and Ragavan for aggressive pressure. Highest interaction density in the format.</div>
+            <div class="deck-footer"><span class="deck-meta">SaaS General · Row 1</span><span class="deck-open">Open →</span></div>
+          </div>
+        </a>
+
+        <!-- UW BLINK -->
+        <a href="uw-blink-playbook.html" class="card deck-card" style="text-decoration:none;display:block;">
+          <div class="deck-accent" style="background:#0EA5E9"></div>
+          <div class="deck-inner">
+            <div class="card-label">Azorius · ~5% · Tempo-Control</div>
+            <div class="card-title" style="color:#0EA5E9">UW Blink</div>
+            <div class="card-body">Phelia + Ephemerate generates ETB value every turn. Solitude evokes for free removal. Restoration Angel extends the blink engine. Purest Blink shell — maximum consistency, highest decision density.</div>
+            <div class="deck-footer"><span class="deck-meta">Dental Practice · Row 60</span><span class="deck-open">Open →</span></div>
+          </div>
+        </a>
+
+        <!-- UW CONTROL -->
+        <a href="uw-control-playbook.html" class="card deck-card" style="text-decoration:none;display:block;">
+          <div class="deck-accent" style="background:#2563EB"></div>
+          <div class="deck-inner">
+            <div class="card-label">Azorius · ~2% · Draw-Go Control</div>
+            <div class="card-title" style="color:#2563EB">UW Control</div>
+            <div class="card-body">Isochron Scepter + Orim's Chant creates a hard lock: they never get another main phase. Teferi Hero closes. Evariel LDXP PTQ reference at 8-0-2. Highest ceiling if the lock resolves.</div>
+            <div class="deck-footer"><span class="deck-meta">Knowledge Base · Row 30</span><span class="deck-open">Open →</span></div>
+          </div>
+        </a>
+
+        <!-- HUMANS -->
+        <a href="humans-playbook.html" class="card deck-card" style="text-decoration:none;display:block;">
+          <div class="deck-accent" style="background:#16A34A"></div>
+          <div class="deck-inner">
+            <div class="card-label">Five-Color · ~2% · Aggro-Disruption</div>
+            <div class="card-title" style="color:#16A34A">Humans</div>
+            <div class="card-body">Meddling Mage names their win condition. Thalia taxes every non-creature spell. Aether Vial deploys at flash speed. Champion of the Parish grows with every Human. Disrupts while applying a clock.</div>
+            <div class="deck-footer"><span class="deck-meta">Membership · Row 71</span><span class="deck-open">Open →</span></div>
+          </div>
+        </a>
+
+      </div><!-- /modern-grid -->
+
+      <h2>how to use these guides</h2>
+      <p>Each playbook works offline. The <strong>Prep</strong> tab is printable — the Print SB Reference button outputs only the matchup matrix on one portrait page. Read the heuristics the night before an event, not during rounds. Hover any card name for the Scryfall card image.</p>
+    </div><!-- /format-modern -->
+
+    <!-- ═══ STANDARD ══════════════════════════════════════════════ -->
+    <div id="format-standard" class="format-section">
+      <h2>target events</h2>
+      <div class="card-grid card-grid-3">
+        <div class="rc-card">
+          <div class="rc-date">May 15–17, 2026</div>
+          <div class="card-title">SCG CON Cincinnati</div>
+          <div class="card-body">Standard Constructed. Top finishers qualify for Pro Tour Marvel Super Heroes — MagicCon Amsterdam, July 17–19. First of the two May RC targets.</div>
+        </div>
+        <div class="rc-card">
+          <div class="rc-date">May 29–31, 2026</div>
+          <div class="card-title">SCG CON Washington DC</div>
+          <div class="card-body">Standard Constructed. Same prize structure and Pro Tour invite path. Two shots at the same invite — lock the 75 and know every matchup cold by May 15.</div>
+        </div>
+        <div class="rc-card">
+          <div class="rc-date">July 17–19, 2026</div>
+          <div class="card-title">Pro Tour Amsterdam</div>
+          <div class="card-body">Pro Tour Marvel Super Heroes at MagicCon Amsterdam. The goal both RCs are building toward. Format: Standard.</div>
+        </div>
       </div>
-      <div class="rc-card">
-        <div class="rc-date">July 17–19, 2026</div>
-        <div class="rc-name">Pro Tour Amsterdam</div>
-        <div class="rc-body">Pro Tour Marvel Super Heroes at MagicCon Amsterdam. The goal both RCs are building toward. Format: Standard.</div>
+
+      <h2>standard playbooks</h2>
+      <div class="card-grid">
+        <a href="dimir-midrange-playbook.html" class="card deck-card" style="text-decoration:none;display:block;">
+          <div class="deck-accent" style="background:#1E40AF"></div>
+          <div class="deck-inner">
+            <div class="card-label">Blue/Black · Tier A · Zuxas</div>
+            <div class="card-title" style="color:#1E40AF">Dimir Midrange</div>
+            <div class="card-body">Kaito, Bane of Nightmares + Enduring Curiosity draw engine. 8 matchups, 6,500+ game dataset. Double-Kaito ninjutsu, Cecil life math. 18 heuristics.</div>
+            <div class="deck-footer"><span class="deck-meta">61.3% WR</span><span class="deck-open">Open →</span></div>
+          </div>
+        </a>
+        <a href="mono-green-landfall-playbook.html" class="card deck-card" style="text-decoration:none;display:block;">
+          <div class="deck-accent" style="background:#16A34A"></div>
+          <div class="deck-inner">
+            <div class="card-label">Green · Tier A · RC Prep</div>
+            <div class="card-title" style="color:#16A34A">Mono-Green Landfall</div>
+            <div class="card-body">Three win conditions: Chocobo beatdown, Icetill + Harmonizer combo, Sapling Nursery grind. RC Vancouver 2nd place list. Torpor Orb tech vs Dimir ETBs.</div>
+            <div class="deck-footer"><span class="deck-meta">61.3% WR</span><span class="deck-open">Open →</span></div>
+          </div>
+        </a>
+        <a href="izzet-prowess-playbook.html" class="card deck-card" style="text-decoration:none;display:block;">
+          <div class="deck-accent" style="background:#EA580C"></div>
+          <div class="deck-inner">
+            <div class="card-label">Blue/Red · Tier B · RC Prep</div>
+            <div class="card-title" style="color:#EA580C">Izzet Prowess</div>
+            <div class="card-body">Slickshot Show-Off, Elusive Otter, Stormchaser's Talent. Plot mechanic enables surprise T3 kills. LucasG1ggs Mar 30 list. Plot timing guide, GY acceleration.</div>
+            <div class="deck-footer"><span class="deck-meta">59.2% WR</span><span class="deck-open">Open →</span></div>
+          </div>
+        </a>
+        <a href="boros-aggro-playbook.html" class="card deck-card" style="text-decoration:none;display:block;">
+          <div class="deck-accent" style="background:#DC2626"></div>
+          <div class="deck-inner">
+            <div class="card-label">Red/White · Tier B · RC Prep</div>
+            <div class="card-title" style="color:#DC2626">Boros Aggro</div>
+            <div class="card-body">Monstrous Rage + Emberheart Challenger. ETB ping aggro with full RC prep package including matchup deep dives and sideboard guide.</div>
+            <div class="deck-footer"><span class="deck-meta">RC prep</span><span class="deck-open">Open →</span></div>
+          </div>
+        </a>
+        <a href="jeskai-control-playbook.html" class="card deck-card" style="text-decoration:none;display:block;">
+          <div class="deck-accent" style="background:#7C3AED"></div>
+          <div class="deck-inner">
+            <div class="card-label">Blue/Red/White · Tier B · RC Prep</div>
+            <div class="card-title" style="color:#7C3AED">Jeskai Control</div>
+            <div class="card-body">Memory Deluge + Atraxa top-end. Full counterspell suite. RC prep with matchup deep dives and printable prep sheet.</div>
+            <div class="deck-footer"><span class="deck-meta">RC prep</span><span class="deck-open">Open →</span></div>
+          </div>
+        </a>
       </div>
+    </div><!-- /standard -->
+
+    <!-- ═══ PIONEER ════════════════════════════════════════════════ -->
+    <div id="format-pioneer" class="format-section">
+      <h2>coming soon</h2>
+      <p>Pioneer playbooks are in the queue. Lotus Field, Azorius Spirits, and Rakdos Midrange are planned.</p>
     </div>
 
-    <div class="section-head" style="margin-top:48px"><h2>Standard Playbooks</h2><span class="sh-count">5 guides · April 2026</span></div>
-    <div class="deck-grid">
-
-      <a class="deck-card" href="dimir-midrange-playbook.html">
-        <div class="accent-bar" style="background:#1E40AF"></div>
-        <div class="card-inner">
-          <div class="dc-label">Blue/Black · Tier A</div>
-          <div class="dc-name" style="color:#1E40AF">Dimir Midrange</div>
-          <div class="dc-role">Tempo-Midrange · Zuxas</div>
-          <div class="dc-body">Kaito, Bane of Nightmares + Enduring Curiosity draw engine. 8 matchups, 6,500+ game dataset. Double-Kaito ninjutsu, play/draw engine selection, Cecil life math. 18 heuristics.</div>
-          <div class="dc-footer"><span class="dc-meta">61.3% WR</span><span class="dc-arrow" style="color:#1E40AF">Open →</span></div>
-        </div>
-      </a>
-
-      <a class="deck-card" href="mono-green-landfall-playbook.html">
-        <div class="accent-bar" style="background:#16A34A"></div>
-        <div class="card-inner">
-          <div class="dc-label">Green · Tier A</div>
-          <div class="dc-name" style="color:#16A34A">Mono-Green Landfall</div>
-          <div class="dc-role">Aggro-Combo · RC Prep</div>
-          <div class="dc-body">Three win conditions: Chocobo beatdown, Icetill + Harmonizer combo, Sapling Nursery grind. RC Vancouver 2nd place list. Torpor Orb tech vs Dimir ETBs.</div>
-          <div class="dc-footer"><span class="dc-meta">61.3% WR</span><span class="dc-arrow" style="color:#16A34A">Open →</span></div>
-        </div>
-      </a>
-
-      <a class="deck-card" href="izzet-prowess-playbook.html">
-        <div class="accent-bar" style="background:#EA580C"></div>
-        <div class="card-inner">
-          <div class="dc-label">Blue/Red · Tier B</div>
-          <div class="dc-name" style="color:#EA580C">Izzet Prowess</div>
-          <div class="dc-role">Tempo-Aggro · RC Prep</div>
-          <div class="dc-body">Slickshot Show-Off, Elusive Otter, Stormchaser's Talent. Plot mechanic enables surprise T3 kills. LucasG1ggs Mar 30 list. Plot timing guide, GY acceleration engine.</div>
-          <div class="dc-footer"><span class="dc-meta">59.2% WR</span><span class="dc-arrow" style="color:#EA580C">Open →</span></div>
-        </div>
-      </a>
-
-      <a class="deck-card" href="boros-aggro-playbook.html">
-        <div class="accent-bar" style="background:#DC2626"></div>
-        <div class="card-inner">
-          <div class="dc-label">Red/White · Tier B</div>
-          <div class="dc-name" style="color:#DC2626">Boros Aggro</div>
-          <div class="dc-role">ETB Ping Aggro · RC Prep</div>
-          <div class="dc-body">Monstrous Rage + Emberheart Challenger. Full RC prep package with matchup deep dives and sideboard guide.</div>
-          <div class="dc-footer"><span class="dc-meta">RC prep</span><span class="dc-arrow" style="color:#DC2626">Open →</span></div>
-        </div>
-      </a>
-
-      <a class="deck-card" href="jeskai-control-playbook.html">
-        <div class="accent-bar" style="background:#7C3AED"></div>
-        <div class="card-inner">
-          <div class="dc-label">Blue/Red/White · Tier B</div>
-          <div class="dc-name" style="color:#7C3AED">Jeskai Control</div>
-          <div class="dc-role">Draw-Go Control · RC Prep</div>
-          <div class="dc-body">Memory Deluge + Atraxa top-end. Full counterspell suite. RC prep with matchup deep dives.</div>
-          <div class="dc-footer"><span class="dc-meta">RC prep</span><span class="dc-arrow" style="color:#7C3AED">Open →</span></div>
-        </div>
-      </a>
-
+    <!-- ═══ LEGACY ══════════════════════════════════════════════════ -->
+    <div id="format-legacy" class="format-section">
+      <h2>coming soon</h2>
+      <p>Legacy playbooks are in the queue. UR Delver and Death &amp; Taxes are planned.</p>
     </div>
 
-  </div><!-- /standard -->
+  </section>
+</main>
 
-  <!-- ═══ PIONEER ══════════════════════════════════════════════════ -->
-  <div id="format-pioneer" class="format-section">
-    <div class="section-head" style="margin-top:40px"><h2>Coming Soon</h2></div>
-    <div class="soon-grid">
-      <div class="soon-card"><div class="sc-label">Pioneer · Planned</div><div class="sc-name">Lotus Field</div></div>
-      <div class="soon-card"><div class="sc-label">Pioneer · Planned</div><div class="sc-name">Azorius Spirits</div></div>
-      <div class="soon-card"><div class="sc-label">Pioneer · Planned</div><div class="sc-name">Rakdos Midrange</div></div>
-    </div>
-  </div>
-
-  <!-- ═══ LEGACY ════════════════════════════════════════════════════ -->
-  <div id="format-legacy" class="format-section">
-    <div class="section-head" style="margin-top:40px"><h2>Coming Soon</h2></div>
-    <div class="soon-grid">
-      <div class="soon-card"><div class="sc-label">Legacy · Planned</div><div class="sc-name">UR Delver</div></div>
-      <div class="soon-card"><div class="sc-label">Legacy · Planned</div><div class="sc-name">Death & Taxes</div></div>
-    </div>
-  </div>
-
-</div><!-- /content -->
+<a href="#top" class="back-to-top"><i class="fas fa-arrow-up"></i> Top</a>
 
 <footer>
-  <span>Team Resolve · Competitive Playbooks · April 2026</span>
-  <span>16 Modern · 5 Standard</span>
+  <span>Team Resolve · Competitive Playbooks</span>
+  <span>17 Modern · 5 Standard · April 2026</span>
+  <span>&copy; 2026</span>
 </footer>
 
 <script>
 function showFormat(id, btn) {
   document.querySelectorAll('.format-section').forEach(s => s.classList.remove('active'));
-  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.format-tab').forEach(t => t.classList.remove('active'));
   document.getElementById('format-' + id).classList.add('active');
   if (btn) btn.classList.add('active');
 }
 function filterDecks(q) {
   const term = q.toLowerCase();
   document.querySelectorAll('#modern-grid .deck-card').forEach(card => {
-    const text = card.textContent.toLowerCase();
-    card.classList.toggle('hidden', term.length > 0 && !text.includes(term));
+    card.classList.toggle('hidden', term.length > 0 && !card.textContent.toLowerCase().includes(term));
   });
 }
 </script>
