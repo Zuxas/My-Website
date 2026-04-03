@@ -130,6 +130,27 @@
   .check-box.checked { background:var(--accent); }
 
   .print-btn { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; background:var(--ink); color:var(--paper); border:none; padding:10px 20px; cursor:pointer; margin-bottom:32px; }
+  @media print {
+  /* SB-only print mode */
+  body.printing-sb .header-band,
+  body.printing-sb nav,
+  body.printing-sb footer { display:none !important; }
+  body.printing-sb .section:not(#prep) { display:none !important; }
+  body.printing-sb #prep > *:not(#sb-print-zone) { display:none !important; }
+  body.printing-sb #sb-print-zone { display:block !important; }
+  body.printing-sb #sb-print-zone h2,
+  body.printing-sb #sb-print-zone p,
+  body.printing-sb .print-btn { display:none !important; }
+  body.printing-sb .print-grid { display:grid !important; grid-template-columns:repeat(3,1fr) !important; }
+  body.printing-sb .print-cols { display:grid !important; }
+  body.printing-sb .print-row { display:flex !important; }
+  body.printing-sb .print-mu { display:block !important; }
+  body.printing-sb .print-mu > * { display:block !important; }
+  body.printing-sb .print-qty { font-family:monospace; }
+  @page { size: portrait; margin: 0.35in; }
+  body.printing-sb { zoom: 0.62; }
+  body.printing-sb #sb-print-zone { page-break-after: avoid; }
+  }
 </style>
 </head>
 <body>
@@ -921,7 +942,7 @@
 <div id="prep" class="section">
   <div class="section-label">Chapter 10</div>
   <h1>Tournament Prep Sheet</h1>
-    <button class="print-btn" onclick="window.print()">&#x2259; Print This Sheet</button>
+    <button class="print-btn" onclick="printSB()">&#x2259; Print This Sheet</button>
 
 
     <h2>20-Minute Crash Course</h2>
@@ -1115,7 +1136,7 @@
 <footer>
   <span>Team Resolve · Modern · 2026</span>
   <span>Simic <span class="c">Neoform</span> — 2.7% Meta Share</span>
-  <span>Last Updated: April 2026</span>
+  <span>Last Updated: April 2026 · Palette: Micro SaaS (UI UX Pro Max Row 2)</span>
 </footer>
 
 <script>

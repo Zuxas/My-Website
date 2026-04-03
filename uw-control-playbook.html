@@ -174,7 +174,26 @@
   footer span { font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.1em; text-transform:uppercase; }
   @media (max-width:768px) { .header-inner,nav,.page,footer { padding-left:24px; padding-right:24px; } .header-title { font-size:40px; } .header-right { display:none; } .decklist,.role-grid,.pd-grid,.sb-table,.sb-deep-grid,.tuning-grid { grid-template-columns:1fr; } .engine-body { grid-template-columns:1fr; } .flow-strip { flex-direction:column; } nav { padding:0 24px; } }
   @media print {
-    body > *:not(.page) { display:none !important; }
+    body > *:not(.page) { display:none !important;   /* SB-only print mode */
+  body.printing-sb .header-band,
+  body.printing-sb nav,
+  body.printing-sb footer { display:none !important; }
+  body.printing-sb .section:not(#prep) { display:none !important; }
+  body.printing-sb #prep > *:not(#sb-print-zone) { display:none !important; }
+  body.printing-sb #sb-print-zone { display:block !important; }
+  body.printing-sb #sb-print-zone h2,
+  body.printing-sb #sb-print-zone p,
+  body.printing-sb .print-btn { display:none !important; }
+  body.printing-sb .print-grid { display:grid !important; grid-template-columns:repeat(3,1fr) !important; }
+  body.printing-sb .print-cols { display:grid !important; }
+  body.printing-sb .print-row { display:flex !important; }
+  body.printing-sb .print-mu { display:block !important; }
+  body.printing-sb .print-mu > * { display:block !important; }
+  body.printing-sb .print-qty { font-family:monospace; }
+  @page { size: portrait; margin: 0.35in; }
+  body.printing-sb { zoom: 0.62; }
+  body.printing-sb #sb-print-zone { page-break-after: avoid; }
+}
     .page > *:not(#prep) { display:none !important; }
     #prep > *:not(.print-grid) { display:none !important; }
     .print-grid { display:grid !important; grid-template-columns:repeat(3,1fr) !important; gap:1px !important; background:#c8bfb0 !important; width:100% !important; margin:0 !important; }
@@ -1395,7 +1414,7 @@
 <div id="prep" class="section">
   <div class="section-label">Chapter 10</div>
   <h1>Event Day<br>Prep</h1>
-  <button class="print-btn" onclick="window.print()">⎙ Print This Sheet</button>
+  <button class="print-btn" onclick="printSB()">⎙ Print This Sheet</button>
     <h2>20-Minute Crash Course</h2>
     <p>If you're sitting down in 20 minutes, run through this in order:</p>
     <ul class="checklist" id="crash-checklist">
@@ -1664,10 +1683,18 @@
 
 <footer>
   <span>Team Resolve · Modern · Azorius Control Playbook</span>
-  <span>Zuxas · 2026 RC Season</span>
+  <span>Zuxas · 2026 RC Seaso · Palette: Knowledge Base/Docs (UI UX Pro Max Row 30)</span>
 </footer>
 
 <script>
+function printSB() {
+  document.body.classList.add('printing-sb');
+  window.addEventListener('afterprint', function cleanup() {
+    document.body.classList.remove('printing-sb');
+    window.removeEventListener('afterprint', cleanup);
+  });
+  window.print();
+}
 function toggleCheck(el) { el.classList.toggle('checked'); }
 function show(id) {
   document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));

@@ -135,7 +135,26 @@
   footer { background:var(--ink); color:rgba(242,237,230,0.3); padding:40px 80px; margin-top:80px; display:flex; justify-content:space-between; align-items:center; }
   footer span { font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.1em; text-transform:uppercase; }
   @media (max-width:768px) { .header-inner,nav,.page,footer { padding-left:24px; padding-right:24px; } .header-title { font-size:40px; } .header-right { display:none; } .decklist,.role-grid,.sb-table,.engine-body,.tuning-grid,.pd-grid { grid-template-columns:1fr; } nav { padding:0 24px; } }
-  @media print { nav,.print-btn,footer { display:none; } .section { display:block !important; } }
+  @media print { nav,.print-btn,footer { display:none;   /* SB-only print mode */
+  body.printing-sb .header-band,
+  body.printing-sb nav,
+  body.printing-sb footer { display:none !important; }
+  body.printing-sb .section:not(#prep) { display:none !important; }
+  body.printing-sb #prep > *:not(#sb-print-zone) { display:none !important; }
+  body.printing-sb #sb-print-zone { display:block !important; }
+  body.printing-sb #sb-print-zone h2,
+  body.printing-sb #sb-print-zone p,
+  body.printing-sb .print-btn { display:none !important; }
+  body.printing-sb .print-grid { display:grid !important; grid-template-columns:repeat(3,1fr) !important; }
+  body.printing-sb .print-cols { display:grid !important; }
+  body.printing-sb .print-row { display:flex !important; }
+  body.printing-sb .print-mu { display:block !important; }
+  body.printing-sb .print-mu > * { display:block !important; }
+  body.printing-sb .print-qty { font-family:monospace; }
+  @page { size: portrait; margin: 0.35in; }
+  body.printing-sb { zoom: 0.62; }
+  body.printing-sb #sb-print-zone { page-break-after: avoid; }
+} .section { display:block !important; } }
 
   .checklist { list-style:none; padding:0; margin:24px 0; }
   .checklist li { display:flex; align-items:flex-start; gap:16px; padding:12px 0; border-bottom:1px solid var(--rule); font-weight:300; font-size:15px; }
@@ -1020,7 +1039,7 @@
 <div id="prep" class="section">
   <div class="section-label">Chapter 10</div>
   <h1>Event<br>Prep Sheet</h1>
-  <button class="print-btn" onclick="window.print()">&#9112; Print This Sheet</button>
+  <button class="print-btn" onclick="printSB()">&#9112; Print This Sheet</button>
     <h2>20-Minute Crash Course</h2>
     <p>If you're sitting down in 20 minutes, run through this in order:</p>
     <ul class="checklist" id="crash-checklist">
@@ -1237,17 +1256,24 @@
       <div class="print-needle">EE burst after Verdict. Bounce Teferi with Stupor.</div>
     </div>
   </div>
-</div>
 
 </div><!-- end .page -->
 
 <footer>
   <span>Team Resolve · Izzet Affinity Playbook</span>
   <span>March 30, 2026 · 7.1% Meta Share</span>
-  <span>&copy; 2026 Team Resolve</span>
+  <span>&copy; 2026 Team Resolve · Palette: Healthcare App (UI UX Pro Max Row 8)</span>
 </footer>
 
 <script>
+function printSB() {
+  document.body.classList.add('printing-sb');
+  window.addEventListener('afterprint', function cleanup() {
+    document.body.classList.remove('printing-sb');
+    window.removeEventListener('afterprint', cleanup);
+  });
+  window.print();
+}
 function toggleCheck(el) { el.classList.toggle('checked'); }
 function show(id) {
   document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));

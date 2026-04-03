@@ -131,7 +131,26 @@
   footer { background:var(--ink); color:rgba(242,237,230,0.3); padding:40px 80px; margin-top:80px; display:flex; justify-content:space-between; align-items:center; }
   footer span { font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.1em; text-transform:uppercase; }
   @media (max-width:768px) { .header-inner,nav,.page,footer { padding-left:24px; padding-right:24px; } .header-title { font-size:40px; } .header-right { display:none; } .decklist,.role-grid,.engine-body,.tuning-grid { grid-template-columns:1fr; } nav { padding:0 24px; } }
-  @media print { nav,.print-btn,footer { display:none; } .section { display:block !important; } }
+  @media print { nav,.print-btn,footer { display:none;   /* SB-only print mode */
+  body.printing-sb .header-band,
+  body.printing-sb nav,
+  body.printing-sb footer { display:none !important; }
+  body.printing-sb .section:not(#prep) { display:none !important; }
+  body.printing-sb #prep > *:not(#sb-print-zone) { display:none !important; }
+  body.printing-sb #sb-print-zone { display:block !important; }
+  body.printing-sb #sb-print-zone h2,
+  body.printing-sb #sb-print-zone p,
+  body.printing-sb .print-btn { display:none !important; }
+  body.printing-sb .print-grid { display:grid !important; grid-template-columns:repeat(3,1fr) !important; }
+  body.printing-sb .print-cols { display:grid !important; }
+  body.printing-sb .print-row { display:flex !important; }
+  body.printing-sb .print-mu { display:block !important; }
+  body.printing-sb .print-mu > * { display:block !important; }
+  body.printing-sb .print-qty { font-family:monospace; }
+  @page { size: portrait; margin: 0.35in; }
+  body.printing-sb { zoom: 0.62; }
+  body.printing-sb #sb-print-zone { page-break-after: avoid; }
+} .section { display:block !important; } }
   .edge-case { border:1px solid var(--accent); background:var(--accent-light); padding:16px 20px; margin:16px 0; font-size:14px; }
   .edge-case-label { font-family:'DM Mono',monospace; font-size:9px; letter-spacing:0.15em; text-transform:uppercase; color:var(--accent); margin-bottom:6px; }
   .edge-case-body { font-weight:300; color:var(--ink); line-height:1.5; }
@@ -884,7 +903,7 @@
 <div id="prep" class="section">
   <div class="section-label">Chapter 10</div>
   <h1>Prep<br>Sheet</h1>
-  <button class="print-btn" onclick="window.print()">⎙ Print This Sheet</button>
+  <button class="print-btn" onclick="printSB()">⎙ Print This Sheet</button>
     <h2>20-Minute Crash Course</h2>
     <p>If you're sitting down in 20 minutes, run through this in order:</p>
     <ul class="checklist" id="crash-checklist">
@@ -1089,7 +1108,7 @@
 <footer>
   <span>Team Resolve · Modern · 2026</span>
   <span>Living End — 2.8% Meta Share</span>
-  <span>Last Updated: April 2026</span>
+  <span>Last Updated: April 2026 · Palette: Brewery/Winery (UI UX Pro Max Row 64)</span>
 </footer>
 
 <script>

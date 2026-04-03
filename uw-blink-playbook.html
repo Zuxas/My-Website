@@ -939,7 +939,26 @@
   }
 
   @media print {
-    nav, .header-band, footer, .print-btn, .section:not(#prep) { display: none !important; }
+    nav, .header-band, footer, .print-btn, .section:not(#prep) { display: none !important;   /* SB-only print mode */
+  body.printing-sb .header-band,
+  body.printing-sb nav,
+  body.printing-sb footer { display:none !important; }
+  body.printing-sb .section:not(#prep) { display:none !important; }
+  body.printing-sb #prep > *:not(#sb-print-zone) { display:none !important; }
+  body.printing-sb #sb-print-zone { display:block !important; }
+  body.printing-sb #sb-print-zone h2,
+  body.printing-sb #sb-print-zone p,
+  body.printing-sb .print-btn { display:none !important; }
+  body.printing-sb .print-grid { display:grid !important; grid-template-columns:repeat(3,1fr) !important; }
+  body.printing-sb .print-cols { display:grid !important; }
+  body.printing-sb .print-row { display:flex !important; }
+  body.printing-sb .print-mu { display:block !important; }
+  body.printing-sb .print-mu > * { display:block !important; }
+  body.printing-sb .print-qty { font-family:monospace; }
+  @page { size: portrait; margin: 0.35in; }
+  body.printing-sb { zoom: 0.62; }
+  body.printing-sb #sb-print-zone { page-break-after: avoid; }
+}
     #prep { display: block !important; }
     body { background: white; font-size: 11px; }
     .page { padding: 0; max-width: 100%; }
@@ -2682,7 +2701,7 @@
 
     <h2>Printable Sideboard Reference</h2>
     <p>All 9 matchup ins/outs on one page. Hit Print and take it to the event.</p>
-    <button class="print-btn" onclick="window.print()">⎙ Print This Page</button>
+    <button class="print-btn" onclick="printSB()">⎙ Print This Page</button>
 
     <div class="print-grid">
 
@@ -2898,7 +2917,7 @@
 
 <footer>
   <span>Team Resolve · UW Blink Master Playbook</span>
-  <span>Zuxas · Captain · Modern</span>
+  <span>Zuxas · Captain · Moder · Palette: Dental Practice (UI UX Pro Max Row 60)</span>
 </footer>
 
 <script>
@@ -2929,7 +2948,15 @@
     if (!isOpen) parent.classList.add('open');
   }
 
-  function toggleCheck(el) {
+  function printSB() {
+  document.body.classList.add('printing-sb');
+  window.addEventListener('afterprint', function cleanup() {
+    document.body.classList.remove('printing-sb');
+    window.removeEventListener('afterprint', cleanup);
+  });
+  window.print();
+}
+function toggleCheck(el) {
     el.classList.toggle('checked');
   }
 </script>
