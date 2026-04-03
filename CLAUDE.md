@@ -1,6 +1,6 @@
 # CLAUDE.md — Team Resolve MTG Playbook Project
 # Handoff document for continuing sessions
-# Last updated: 2026-04-03 | Commit: 18dc47f
+# Last updated: 2026-04-03 | Commit: 31b641e
 
 ---
 
@@ -25,40 +25,32 @@ E:\vscode ai project\My-Website\
 
 ---
 
-## CURRENT STATE: 15 PLAYBOOKS
+## CURRENT STATE
 
-### ✅ COMPLETE (audited against LDXP SEA26 where applicable)
-| Deck | melee.gg Reference | Record |
+### Modern (16 playbooks) — ALL COMPLETE
+All 16 pass full compliance audit:
+- div_diff=0, 11 tabs, parchment base, unique accent/primary per deck
+- UI UX Pro Max palette applied (colors.csv row per deck)
+- Scryfall card tooltips (PAD=24, 220px)
+- `← Guides` nav + static brand on all 16
+- Header white text on all 16
+
+### Standard (6 playbooks) — ACTIVE RC PREP
+| Deck | Meta % | Lessons MU |
 |---|---|---|
-| Amulet Titan | https://melee.gg/Decklist/View/2a4efd5e (aljce) | 13-1-2, 1st |
-| Boros Energy | https://melee.gg/Decklist/View/02cc5e0e (Pfenning) | 10-3-0, 9th |
-| Domain Zoo | https://melee.gg/Decklist/View/51023674 (MasT1) | 9-4-0, 19th |
-| Eldrazi Tron | — (needs audit) | — |
-| Glockulous (Grixis Reanimator) | — (needs audit) | — |
-| Izzet Affinity | https://melee.gg/Decklist/View/f8e13375 (Jeffrey Chang) | 10-0-4 |
-| Jeskai Blink | — (needs audit) | — |
-| Living End | — (needs audit) | — |
-| Neoform | — (needs audit) | — |
-| Golgari Yawgmoth | — (needs audit) | — |
-| Izzet Prowess | — (needs audit) | — |
-| Ruby Storm | https://melee.gg/Decklist/View/5b97bdff (Chance McDougal) | 9-0-4 |
-| UW Blink | intentionally pre-LDXP shell | — |
-| UW Control | https://melee.gg/Decklist/View/a6a4917b (Evariel) | 8-0-2 |
+| Izzet Prowess | 10.15% | ✅ |
+| Dimir Midrange | 6.15% | ✅ |
+| Mono-Green Landfall | ~11% | ✅ |
+| Boros Aggro | ~2% | ✅ |
+| Jeskai Control | 2.49% | ✅ |
+| Bant Rhythm | 1.82% | ✅ (new, Fortunati RC Turin 1st 15-2) |
 
-### 📋 NEXT IN QUEUE (alphabetical)
-1. **Eldrazi Tron** ← next target
-2. Glockulous
-3. Jeskai Blink
-4. Living End
-5. Neoform
-6. Izzet Prowess
-7. Golgari Yawgmoth
-3. Glockulous
-4. Jeskai Blink
-5. Living End
-6. Neoform
-7. Izzet Prowess
-8. Golgari Yawgmoth
+All 6 have current April 3 2026 meta % and Izzet Lessons matchup.
+
+### deck-guides.html
+- Modern tab: 17 (includes Boros Energy)
+- Standard tab: 6 (includes Bant Rhythm)
+- All deck cards show color identity + meta % (no palette credits)
 
 ---
 
