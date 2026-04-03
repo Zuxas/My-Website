@@ -19,6 +19,13 @@ One-sentence description for a pilot who has never seen the deck:
 Who on Team Resolve pilots this:
 Tournament pedigree (RC Top 8s, notable finishes, melee.gg reference):
 
+Palette (from UI UX Pro Max colors.csv):
+  Row #:
+  Name:
+  Accent hex:
+  Theme (light / dark):
+  Reason for choice:
+
 ---
 
 ## SECTION 02 — THE 75

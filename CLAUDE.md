@@ -157,7 +157,43 @@ Git uses PowerShell semicolon-chained syntax, 30s timeout.
 
 ---
 
-## KEY TECHNICAL PATTERNS
+## PALETTE SYSTEM — UI UX PRO MAX COLORS.CSV
+
+Every playbook gets a named palette from `UI_UX_Pro_Max_colors.csv`.
+File location: `E:\vscode ai project\My-Website\UI_UX_Pro_Max_colors.csv`
+
+**How it works:**
+- Each row in the CSV is a named palette with columns: Row# | Name | Primary | Accent | Background | Foreground
+- Pick a palette that matches the deck's personality
+- Note the row number — it goes in the footer: `"Palette: [Name] (UI UX Pro Max Row [N])"`
+- The Accent color becomes `--accent` in the CSS `:root` vars
+
+**Selection guide:**
+- Aggro/burn → warm (red, orange, amber rows)
+- Control → cool (blue, slate, indigo rows)
+- Combo/reanimator → dramatic (Theater/Cinema, deep purple rows)
+- Midrange → earth tones (forest green, teal, olive rows)
+
+**CSS vars to set:**
+```css
+--accent:       [Accent hex]
+--accent-light: rgba([accent RGB], 0.18)
+--gold:         [same as accent for single-accent designs]
+--gold-light:   rgba([accent RGB], 0.18)
+```
+
+**Dark vs light theme:**
+- Light theme (default): `--paper: #FAFAF8`, `--ink: #1C1917`
+- Dark theme (e.g. Goryo's Vengeance Row 77): `--paper: #0F0F23`, `--ink: #F8FAFC`
+  Dark theme requires extra contrast work on cards, print-grid, SB tables.
+
+**Current palette assignments** (check each playbook's footer for Row #):
+- Goryo's Vengeance: Theater/Cinema, Row 77, `--accent: #CA8A04` (gold), dark theme
+- All others: check `<footer>` tag in the HTML file for `Palette:` credit
+
+---
+
+
 
 ### Reading melee.gg decklists
 Navigate to the URL, then `get_page_text` — returns full decklist as plain text with card names and quantities. Works reliably.

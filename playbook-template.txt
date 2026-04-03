@@ -7,6 +7,41 @@ Standard: Goryo's Vengeance (April 2026) — all new guides match this structure
 Fill every [BRACKET] before building the HTML guide.
 11 tabs map 1:1 to the HTML playbook sections.
 Pilot-perspective is non-negotiable: "you do X", never "the deck does X."
+
+----------------------------------------------------------------
+PALETTE SELECTION — UI UX PRO MAX COLORS.CSV
+----------------------------------------------------------------
+Every playbook uses a named palette from the UI UX Pro Max colors.csv file.
+Located at: E:\vscode ai project\My-Website\UI_UX_Pro_Max_colors.csv
+(also referenced as "colors.csv" in the project)
+
+HOW TO PICK A PALETTE:
+1. Open colors.csv — each row is a named palette with columns:
+     Row# | Name | Primary | Accent | Background | Foreground | ...
+2. Pick a palette that fits the deck's personality/feel:
+     - Aggro/burn decks → warm palettes (red, orange, amber)
+     - Control decks → cool palettes (blue, slate, indigo)
+     - Combo decks → dramatic palettes (deep purple, cinema, dark theater)
+     - Midrange → earth tones (forest, teal, olive)
+3. Note the ROW NUMBER — it goes in the footer credit line:
+     "Palette: [Name] (UI UX Pro Max Row [N])"
+4. Use the palette's Accent color as --accent in the CSS :root vars
+5. For dark-themed decks (like Goryo's Vengeance), use the palette's
+   Background color as --paper and set --ink to a light foreground
+
+CSS VARS TO SET PER PALETTE:
+  --accent:        [Accent hex from palette]
+  --accent-light:  rgba([accent RGB], 0.18)
+  --gold:          [same as accent for mono-accent designs]
+  --gold-light:    rgba([accent RGB], 0.18)
+
+PALETTE EXAMPLES ALREADY IN USE:
+  Goryo's Vengeance:  Theater/Cinema  Row 77   #CA8A04 accent, dark bg
+  Boros Energy:       [check footer]
+  Izzet Affinity:     [check footer]
+  UW Blink:           [check footer]
+
+ALWAYS verify the footer of an existing playbook to see its palette credit.
 ================================================================
 
 
