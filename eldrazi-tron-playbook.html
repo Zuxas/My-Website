@@ -56,14 +56,17 @@
   .matchup-table th { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; padding:10px 16px; background:var(--ink); color:rgba(242,237,230,0.6); text-align:left; }
   .matchup-table td { padding:12px 16px; border-bottom:1px solid var(--rule); font-size:15px; font-weight:300; }
   .matchup-table tr:hover td { background:var(--paper-dark); cursor:pointer; }
-  .matchup-detail { display:none; background:var(--accent-light); border-left:4px solid var(--accent); padding:24px 32px; margin:0; }
+    .matchup-detail { display:none; border:1px solid var(--rule); background:var(--paper-dark); padding:32px 40px; margin:0 0 2px; animation:fadeIn 0.2s ease; }
   .matchup-detail.open { display:block; }
   .verdict { display:inline-block; font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; padding:4px 10px; border:1px solid; }
   .verdict-dog { background:var(--danger-light); color:var(--danger); border-color:var(--danger); }
   .verdict-even { background:var(--gold-light); color:var(--gold); border-color:var(--gold); }
   .verdict-favor { background:#e8f5e9; color:#1a6b1a; border-color:#1a6b1a; }
   .verdict-hard { background:var(--danger-light); color:var(--danger); border-color:var(--danger); }
-  .sb-table { width:100%; border-collapse:collapse; margin:16px 0; }
+  .sb-col { background:var(--paper); padding:20px; }
+    .sb-item { font-size:13px; font-weight:300; padding:4px 0; border-bottom:1px solid rgba(200,191,176,0.2); }
+  .sb-col-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--mid); margin-bottom:12px; }
+  .sb-table { display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--rule); border:1px solid var(--rule); margin:16px 0; }
   .sb-table th { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; padding:8px 12px; background:var(--paper-dark); color:var(--mid); text-align:left; border-bottom:2px solid var(--rule); }
   .sb-table td { padding:10px 12px; border-bottom:1px solid var(--rule); font-size:14px; font-weight:300; }
   .sb-out { color:var(--danger); font-family:'DM Mono',monospace; font-size:12px; }
@@ -513,11 +516,20 @@
       <strong>The Matchup:</strong> Boros Energy is generally favorable — your threats are too large for their removal package (Lightning Helix, Galvanic Discharge). Kappa Cannoneer is rare in their list, and Goblin Bombardment requires time to accumulate enough creatures. The catch: some Boros lists run Blood Moon main deck, which destroys your Tron mana base. A Moon on turn 3 with no answer can lose you the game on the spot.<br><br>
       <strong>Key Threats:</strong> Ragavan, Nimble Pilferer is the primary concern — it attacks, generates Treasure (mana), and impulses your cards. A turn-1 Ragavan backed by a Lightning Helix can steal enough tempo to kill you. Either block with Thought-Knot Seer or answer with Kozilek's Command (exile mode for small creatures). Sowing Mycospawn's 3/3 body blocks and survives Galvanic Discharge.<br><br>
       <strong>Blood Moon Warning:</strong> If opponent leads with Sacred Foundry → Mountain → Blood Moon, all your Urza lands become Mountains (non-basic). Your Eldrazi Temple also becomes a Mountain. Only Eldrazi Temple and basic Forest survive Blood Moon (Ugin's Labyrinth does not — it's a nonbasic). Fetch the Forest with Sowing Mycospawn to maintain green mana.<br><br>
-      <table class="sb-table"><tr><th>OUT</th><th>IN</th></tr>
-      <tr><td class="sb-out">−2 Ulamog, the Ceaseless Hunger (too slow)</td><td class="sb-in">+1 Walking Ballista (kills Ragavan)</td></tr>
-      <tr><td class="sb-out">−1 Relic of Progenitus</td><td class="sb-in">+1 Torpor Orb (stops Guide of Souls, Voice of Victory ETBs)</td></tr>
-      <tr><td class="sb-out">−1 Thought-Knot Seer (dies easily, gives them card)</td><td class="sb-in">+1 Ensnaring Bridge (vs token swarms)</td></tr>
-      </table>
+      <div class="sb-table">
+        <div class="sb-col">
+          <div class="sb-col-label">Out</div>
+          <div class="sb-item"><span>−2 Ulamog, the Ceaseless Hunger (too slow)</span></div>
+          <div class="sb-item"><span>−1 Relic of Progenitus</span></div>
+          <div class="sb-item"><span>−1 Thought-Knot Seer (dies easily, gives them card)</span></div>
+        </div>
+        <div class="sb-col">
+          <div class="sb-col-label">In</div>
+          <div class="sb-item"><span>+1 Walking Ballista (kills Ragavan)</span></div>
+          <div class="sb-item"><span>+1 Torpor Orb (stops Guide of Souls, Voice of Victory ETBs)</span></div>
+          <div class="sb-item"><span>+1 Ensnaring Bridge (vs token swarms)</span></div>
+        </div>
+      </div>
       <div class="sb-note">Walking Ballista with counters kills Ragavan on turn 2 via Eldrazi Temple. Torpor Orb shuts off all ETB triggers — Guide of Souls doesn't gain life, Voice of Victory doesn't make tokens. Ensnaring Bridge after dumping your hand = they can't attack through it.</div>
     </td></tr>
 
@@ -526,10 +538,18 @@
       <strong>The Matchup:</strong> Jeskai Blink struggles against colorless threats. Consign to Memory counters colored spells only — it cannot counter Thought-Knot Seer, Ugin, Ulamog, or any of your Eldrazi. Solitude can exile TKS, but at the cost of a card and 2 life. Teferi, Time Raveler stops instant-speed interaction — but your threats are cast at sorcery speed anyway so Teferi barely affects you.<br><br>
       <strong>Key Play:</strong> Vexing Bauble from the SB forces them to "play fair" — Force of Negation, Solitude, and Subtlety all have pitch costs that Bauble taxes. They have to pay the actual mana cost. Against a deck that relies on pitch elementals for free interaction, taxing those cards dramatically slows them down.<br><br>
       <strong>TKS Timing:</strong> Cast TKS on turn 2 (via Temple + Talisman) to strip a key piece before they can set up. If they're holding Ephemerate + Solitude, stripping Ephemerate makes their Solitude much weaker. Read their hand before choosing what to exile.<br><br>
-      <table class="sb-table"><tr><th>OUT</th><th>IN</th></tr>
-      <tr><td class="sb-out">−2 Dismember (less relevant vs non-creature-reliant deck)</td><td class="sb-in">+1 Vexing Bauble</td></tr>
-      <tr><td class="sb-out">−1 Relic of Progenitus</td><td class="sb-in">+1 Torpor Orb (stops Phelia, Quantum Riddler ETBs)</td></tr>
-      </table>
+      <div class="sb-table">
+        <div class="sb-col">
+          <div class="sb-col-label">Out</div>
+          <div class="sb-item"><span>−2 Dismember (less relevant vs non-creature-reliant deck)</span></div>
+          <div class="sb-item"><span>−1 Relic of Progenitus</span></div>
+        </div>
+        <div class="sb-col">
+          <div class="sb-col-label">In</div>
+          <div class="sb-item"><span>+1 Vexing Bauble</span></div>
+          <div class="sb-item"><span>+1 Torpor Orb (stops Phelia, Quantum Riddler ETBs)</span></div>
+        </div>
+      </div>
       <div class="sb-note">Torpor Orb shuts down the entire Blink engine — Phelia doesn't untap, Quantum Riddler doesn't draw, Solitude ETB exiles nothing. One card that costs them their entire game plan.</div>
     </td></tr>
 
@@ -538,13 +558,20 @@
       <strong>The Matchup:</strong> Izzet Affinity is one of Eldrazi Tron's worst matchups. Their threats are mostly colorless (Kappa Cannoneer, Constructs, Drones) — Ugin's exile triggers miss. Kappa Cannoneer with Ward 4 is expensive to answer. The Weapons Manufacturing + EE burst can kill from nowhere. Pinnacle Emissary floods the board before you can set up.<br><br>
       <strong>Karn Value:</strong> Karn's static shuts off Mox Opal (opponent's), Aether Spellbomb, Springleaf Drum. This is meaningful — Affinity loses significant mana acceleration under Karn. But their artifact-creature threats (Kappa, constructs) still attack and grow. You need Karn + immediate pressure to race their board.<br><br>
       <strong>Disruptor Flute:</strong> Name Kappa Cannoneer to shut off its activated ability (the +1/+1 counter trigger is a triggered ability, not activated — Flute doesn't stop it). Better: name Pinnacle Emissary to shut off its Warp ability. Or name Urza's Saga to make Chapter II/III cost {3} more each — effectively shutting down Saga's Construct production and artifact tutor.<br><br>
-      <table class="sb-table"><tr><th>OUT</th><th>IN</th></tr>
-      <tr><td class="sb-out">−2 Ulamog (too slow)</td><td class="sb-in">+1 Vexing Bauble (disrupts their free artifacts)</td></tr>
-      <tr><td class="sb-out">−4 Ugin, Eye of the Storms (misses on colorless)</td><td class="sb-in">+1 Ensnaring Bridge (if you can empty hand)</td></tr>
-      <tr><td class="sb-out">−1 Relic of Progenitus</td><td class="sb-in">+3 Disruptor Flute</td></tr>
-      <tr><td></td><td class="sb-in">+1 The Filigree Sylex (board wipe for small artifacts)</td></tr>
-      <tr><td></td><td class="sb-in">+1 Grafdigger's Cage (stops Emry from GY)</td></tr>
-      </table>
+      <div class="sb-table">
+        <div class="sb-col">
+          <div class="sb-col-label">Out</div>
+          <div class="sb-item"><span>−2 Ulamog (too slow)</span></div>
+          <div class="sb-item"><span>−4 Ugin, Eye of the Storms (misses on colorless)</span></div>
+          <div class="sb-item"><span>−1 Relic of Progenitus</span></div>
+        </div>
+        <div class="sb-col">
+          <div class="sb-col-label">In</div>
+          <div class="sb-item"><span>+1 Vexing Bauble (disrupts their free artifacts)</span></div>
+          <div class="sb-item"><span>+1 Ensnaring Bridge (if you can empty hand)</span></div>
+          <div class="sb-item"><span>+3 Disruptor Flute</span></div>
+        </div>
+      </div>
     </td></tr>
 
     <tr onclick="toggle('mu-storm')"><td>Ruby Storm</td><td>6.2%</td><td><span class="verdict verdict-dog">Dog</span></td><td>Dog</td><td>Even</td></tr>
@@ -552,11 +579,20 @@
       <strong>The Matchup:</strong> Ruby Storm kills turn 2–3. Eldrazi Tron's disruption (Thought-Knot Seer) requires 4 mana on turn 2 — one turn too slow. G1 is a race you usually lose. Post-board, the Karn toolbox dramatically improves the matchup with the right hate pieces.<br><br>
       <strong>Karn Lines:</strong> Fetch Trinisphere (all spells cost at least {3}) — this completely shuts down Storm's ritual chain at {1}{R} each. Fetch Damping Sphere (each spell costs +1 per prior spell this turn) — devastating for chaining 20 spells. Fetch Disruptor Flute, name Ruby Medallion (costs {3} more to cast) or Ral, Monsoon Mage. The Flute's activated ability lock also stops Medallion's static... wait, Ruby Medallion's cost reduction is a static ability not an activated one — Flute only locks activated abilities. Name Ral to lock the coin flip activated trigger? No — those are triggered abilities. Better to just tax the spell by naming Ral for +{3} cast cost.<br><br>
       <strong>Sowing Mycospawn:</strong> Kicking Mycospawn exiles one of their lands. Storm runs only 18–20 lands and needs at least 3 by turn 3. Exiling their Sacred Foundry removes their only white mana for Orim's Chant. Exiling a fetch land reduces their reach for mana sources.<br><br>
-      <table class="sb-table"><tr><th>OUT</th><th>IN</th></tr>
-      <tr><td class="sb-out">−2 Ulamog (far too slow)</td><td class="sb-in">+1 Trinisphere</td></tr>
-      <tr><td class="sb-out">−4 Ugin, Eye of the Storms (7 mana, they're dead turn 3)</td><td class="sb-in">+1 Damping Sphere</td></tr>
-      <tr><td class="sb-out">−1 Relic (wrong graveyard hate)</td><td class="sb-in">+3 Disruptor Flute</td></tr>
-      </table>
+      <div class="sb-table">
+        <div class="sb-col">
+          <div class="sb-col-label">Out</div>
+          <div class="sb-item"><span>−2 Ulamog (far too slow)</span></div>
+          <div class="sb-item"><span>−4 Ugin, Eye of the Storms (7 mana, they're dead turn 3)</span></div>
+          <div class="sb-item"><span>−1 Relic (wrong graveyard hate)</span></div>
+        </div>
+        <div class="sb-col">
+          <div class="sb-col-label">In</div>
+          <div class="sb-item"><span>+1 Trinisphere</span></div>
+          <div class="sb-item"><span>+1 Damping Sphere</span></div>
+          <div class="sb-item"><span>+3 Disruptor Flute</span></div>
+        </div>
+      </div>
       <div class="sb-note">With Trinisphere in play via Karn, every Storm spell costs at least 3 mana. Their rituals still generate 3 mana each, but with a reducer making spells cost 1 less, they net only 0 mana per ritual under Trinisphere. The combo grinds to a halt.</div>
     </td></tr>
 
@@ -565,11 +601,20 @@
       <strong>The Matchup:</strong> Tameshi Belcher assembles a 12-mana turn on turn 4 and activates Goblin Charbelcher for lethal. Karn is the key card — its static shuts off the Belcher's activated ability entirely (Belcher is an artifact the opponent controls, its tap ability is an activated ability). With Karn in play, they literally cannot win via Belcher.<br><br>
       <strong>Sowing Mycospawn Land Denial:</strong> Belcher runs a very low land count (5–8 lands total). Kicking Mycospawn to exile a land is devastating — they may not be able to make their land drops for the rest of the game. Exiling Simic Growth Chamber (a key Tameshi target) is especially strong.<br><br>
       <strong>Thought-Knot Seer:</strong> Strip Tameshi or Lotus Bloom from hand. Removing either card significantly delays or prevents their combo. TKS on turn 2 via Temple is a meaningful disruption play against a turn-4 kill deck.<br><br>
-      <table class="sb-table"><tr><th>OUT</th><th>IN</th></tr>
-      <tr><td class="sb-out">−2 Ulamog (too slow)</td><td class="sb-in">+1 Trinisphere (min 3 mana per spell)</td></tr>
-      <tr><td class="sb-out">−4 Ugin (too slow, misses on blue artifacts)</td><td class="sb-in">+3 Disruptor Flute (name Belcher or Tameshi)</td></tr>
-      <tr><td class="sb-out">−1 Dismember</td><td class="sb-in">+1 Damping Sphere</td></tr>
-      </table>
+      <div class="sb-table">
+        <div class="sb-col">
+          <div class="sb-col-label">Out</div>
+          <div class="sb-item"><span>−2 Ulamog (too slow)</span></div>
+          <div class="sb-item"><span>−4 Ugin (too slow, misses on blue artifacts)</span></div>
+          <div class="sb-item"><span>−1 Dismember</span></div>
+        </div>
+        <div class="sb-col">
+          <div class="sb-col-label">In</div>
+          <div class="sb-item"><span>+1 Trinisphere (min 3 mana per spell)</span></div>
+          <div class="sb-item"><span>+3 Disruptor Flute (name Belcher or Tameshi)</span></div>
+          <div class="sb-item"><span>+1 Damping Sphere</span></div>
+        </div>
+      </div>
     </td></tr>
 
     <tr onclick="toggle('mu-amulet')"><td>Amulet Titan</td><td>3.1%</td><td><span class="verdict verdict-even">Even</span></td><td>Even</td><td>Even</td></tr>
@@ -577,10 +622,18 @@
       <strong>The Matchup:</strong> A true mirror of mana acceleration strategies. Amulet Titan kills by finding Primeval Titan and tutoring Slayer's Stronghold + Sunhome for a same-turn kill. Their interaction pieces are Endurance, Boseiju, and The One Ring. Your Karn static shuts off Amulet of Vigor's triggered ability... wait — Amulet is a triggered ability, not activated. Karn doesn't stop Amulet triggers. But Karn can fetch Damping Sphere (bounce lands produce {C} instead of {W} or {G}) — this partially disrupts but doesn't fully shut down Amulet.<br><br>
       <strong>Sowing Mycospawn as Kicker:</strong> Kicking Mycospawn to exile a bounce land (Simic Growth Chamber, Gruul Turf) severs the core Amulet engine. Without bounce lands, Amulet becomes just a tapper-untapper with no mana advantage. This is the most impactful play in the matchup if you can kick Mycospawn early.<br><br>
       <strong>Thought-Knot Seer:</strong> Strip Primeval Titan from hand before they can play it. Even if they Summoner's Pact for it, stripping the actual copy means Pact triggers next turn for another 4 mana to find a different win — buying you more time.<br><br>
-      <table class="sb-table"><tr><th>OUT</th><th>IN</th></tr>
-      <tr><td class="sb-out">−2 Ugin (underwhelming vs mostly green deck)</td><td class="sb-in">+1 Damping Sphere (bounce lands produce C)</td></tr>
-      <tr><td class="sb-out">−1 Relic of Progenitus</td><td class="sb-in">+1 Grafdigger's Cage (stops Summoner's Pact creature entering)</td></tr>
-      </table>
+      <div class="sb-table">
+        <div class="sb-col">
+          <div class="sb-col-label">Out</div>
+          <div class="sb-item"><span>−2 Ugin (underwhelming vs mostly green deck)</span></div>
+          <div class="sb-item"><span>−1 Relic of Progenitus</span></div>
+        </div>
+        <div class="sb-col">
+          <div class="sb-col-label">In</div>
+          <div class="sb-item"><span>+1 Damping Sphere (bounce lands produce C)</span></div>
+          <div class="sb-item"><span>+1 Grafdigger's Cage (stops Summoner's Pact creature entering)</span></div>
+        </div>
+      </div>
     </td></tr>
 
     <tr onclick="toggle('mu-prowess')"><td>Izzet Prowess</td><td>4%</td><td><span class="verdict verdict-dog">Dog</span></td><td>Dog</td><td>Even</td></tr>
@@ -588,12 +641,22 @@
       <strong>The Matchup:</strong> Izzet Prowess presents the fastest clock in Modern alongside meaningful interaction (Lightning Bolt kills Thought-Knot Seer profitably since they draw a card anyway). Slickshot Show-Off makes their threats evasive and difficult to block. Without a fast Karn + Ensnaring Bridge line, this matchup is brutal.<br><br>
       <strong>Kozilek's Command:</strong> On turn 2 with Eldrazi Temple, X=2: create 2 Spawn tokens (0/1 chump blockers) AND exile 2 cards from graveyard (hitting Lava Dart and flashback pieces). This is the best early play in the matchup — it both slows the clock and disrupts the graveyard engine.<br><br>
       <strong>Ensnaring Bridge:</strong> Fetch with Karn immediately. Discard your hand down to 2–3 cards (you're likely behind anyway), and Prowess creatures can't attack through it if they have power > your hand size. The combo of Karn + Bridge on turn 3 wins a large percentage of games where opponents aren't ready for it.<br><br>
-      <table class="sb-table"><tr><th>OUT</th><th>IN</th></tr>
-      <tr><td class="sb-out">−2 Ulamog (too slow)</td><td class="sb-in">+1 Ensnaring Bridge</td></tr>
-      <tr><td class="sb-out">−4 Ugin (7 mana, they're dead turn 4)</td><td class="sb-in">+1 Walking Ballista (kills 1-toughness threats)</td></tr>
-      <tr><td class="sb-out">−2 Thought-Knot Seer (gives them a card)</td><td class="sb-in">+1 The Filigree Sylex (board wipe)</td></tr>
-      <tr><td class="sb-out">−1 Expedition Map (not needed)</td><td class="sb-in">+1 Vexing Bauble</td></tr>
-      </table>
+      <div class="sb-table">
+        <div class="sb-col">
+          <div class="sb-col-label">Out</div>
+          <div class="sb-item"><span>−2 Ulamog (too slow)</span></div>
+          <div class="sb-item"><span>−4 Ugin (7 mana, they're dead turn 4)</span></div>
+          <div class="sb-item"><span>−2 Thought-Knot Seer (gives them a card)</span></div>
+          <div class="sb-item"><span>−1 Expedition Map (not needed)</span></div>
+        </div>
+        <div class="sb-col">
+          <div class="sb-col-label">In</div>
+          <div class="sb-item"><span>+1 Ensnaring Bridge</span></div>
+          <div class="sb-item"><span>+1 Walking Ballista (kills 1-toughness threats)</span></div>
+          <div class="sb-item"><span>+1 The Filigree Sylex (board wipe)</span></div>
+          <div class="sb-item"><span>+1 Vexing Bauble</span></div>
+        </div>
+      </div>
     </td></tr>
 
     <tr onclick="toggle('mu-reanimator')"><td>Grixis Reanimator</td><td>1.5%</td><td><span class="verdict verdict-even">Even</span></td><td>Even</td><td>Favor</td></tr>
@@ -601,10 +664,18 @@
       <strong>The Matchup:</strong> Grixis Reanimator wins by getting Archon of Cruelty into play on turn 2–3 via Persist + Emperor of Bones or Goryo's Vengeance. Archon has a finality counter, so it's exiled when it dies — your Ulamog's cast trigger can exile it (two permanents on cast: exile Archon preemptively). Thought-Knot Seer strips Persist or the Archon before they can combo.<br><br>
       <strong>Karn Lines:</strong> Karn fetches Grafdigger's Cage (creatures can't enter from GY — stops Persist and Goryo's Vengeance both). Tormod's Crypt from SB also exiles their graveyard in response to Persist targeting Archon. Fetching the right hate piece on turn 3 shuts down the entire combo.<br><br>
       <strong>Consign to Memory Note:</strong> Post-board, Grixis Reanimator often runs Consign to Memory (counters colorless spells). This hits your Thought-Knot Seer, Expedition Map, and Kozilek's Command. Play around Consign by waiting until they tap out for their combo before deploying key pieces.<br><br>
-      <table class="sb-table"><tr><th>OUT</th><th>IN</th></tr>
-      <tr><td class="sb-out">−2 Dismember (less relevant)</td><td class="sb-in">+1 Grafdigger's Cage</td></tr>
-      <tr><td class="sb-out">−1 Kozilek's Command (less relevant)</td><td class="sb-in">+1 Tormod's Crypt</td></tr>
-      </table>
+      <div class="sb-table">
+        <div class="sb-col">
+          <div class="sb-col-label">Out</div>
+          <div class="sb-item"><span>−2 Dismember (less relevant)</span></div>
+          <div class="sb-item"><span>−1 Kozilek's Command (less relevant)</span></div>
+        </div>
+        <div class="sb-col">
+          <div class="sb-col-label">In</div>
+          <div class="sb-item"><span>+1 Grafdigger's Cage</span></div>
+          <div class="sb-item"><span>+1 Tormod's Crypt</span></div>
+        </div>
+      </div>
     </td></tr>
 
     <tr onclick="toggle('mu-uwc')"><td>UW Control</td><td>2%</td><td><span class="verdict verdict-favor">Favorable</span></td><td>Favor</td><td>Favor</td></tr>
@@ -612,31 +683,56 @@
       <strong>The Matchup:</strong> UW Control struggles to answer colorless threats with their removal package (Solitude exiles creatures, Path to Exile). They lack answers to planeswalkers (Karn, Ugin) that don't cost them significant tempo. Ugin on turn 3 exiles their Teferi or Snapcaster on cast, then continues exiling any colored permanent they play. The mana advantage is simply too large for them to overcome.<br><br>
       <strong>Vexing Bauble:</strong> Shuts off Force of Negation and Solitude — their primary ways to interact for free. With Bauble in play, they must pay the full mana cost for all interaction. They can't pitch a card to counter your Ulamog. This dramatically slows their ability to answer your threats.<br><br>
       <strong>TKS Targeting:</strong> Strip Counterspell, Cryptic Command, or Force of Negation. Leaving them with only Solitude is manageable — Solitude costs 5 mana normally, and Karn's mana advantage overwhelms that cost quickly.<br><br>
-      <table class="sb-table"><tr><th>OUT</th><th>IN</th></tr>
-      <tr><td class="sb-out">−2 Dismember (they're not a creature deck)</td><td class="sb-in">+1 Vexing Bauble</td></tr>
-      <tr><td class="sb-out">−1 Relic of Progenitus (wrong hate)</td><td class="sb-in">+1 Disruptor Flute (name Counterspell)</td></tr>
-      </table>
+      <div class="sb-table">
+        <div class="sb-col">
+          <div class="sb-col-label">Out</div>
+          <div class="sb-item"><span>−2 Dismember (they're not a creature deck)</span></div>
+          <div class="sb-item"><span>−1 Relic of Progenitus (wrong hate)</span></div>
+        </div>
+        <div class="sb-col">
+          <div class="sb-col-label">In</div>
+          <div class="sb-item"><span>+1 Vexing Bauble</span></div>
+          <div class="sb-item"><span>+1 Disruptor Flute (name Counterspell)</span></div>
+        </div>
+      </div>
     </td></tr>
 
     <tr onclick="toggle('mu-domain')"><td>Domain Aggro</td><td>2.6%</td><td><span class="verdict verdict-even">Even</span></td><td>Even</td><td>Favor</td></tr>
     <tr><td colspan="5" class="matchup-detail" id="mu-domain">
       <strong>The Matchup:</strong> Domain Aggro presents Scion of Draco (hexproof, lifelink, double strike on their turn with Leyline of the Guildpact) and fast Atraxa threats. Scion at 2 mana attacks for 4+ the turn after it resolves and has hexproof from targeted removal. Kozilek's Command X=4 can exile Scion (MV 6 but X needs to be ≥ 6 — too expensive). Your Dismember kills it (−5/−5).<br><br>
       <strong>Key Interaction:</strong> Dismember kills Scion of Draco and most other Domain threats. Kozilek's Command at X=2 creates blockers and deals with smaller threats. Thought-Knot Seer strips Atraxa or Scion before it resolves. Ensnaring Bridge from the SB stops all attacks once you've deployed your hand.<br><br>
-      <table class="sb-table"><tr><th>OUT</th><th>IN</th></tr>
-      <tr><td class="sb-out">−2 Ulamog (too slow, their clock is fast)</td><td class="sb-in">+1 Ensnaring Bridge</td></tr>
-      <tr><td class="sb-out">−4 Ugin (too slow)</td><td class="sb-in">+1 Walking Ballista</td></tr>
-      <tr><td class="sb-out">−1 Relic</td><td class="sb-in">+1 Torpor Orb (stops ETB hexproof/lifelink from Leyline)</td></tr>
-      </table>
+      <div class="sb-table">
+        <div class="sb-col">
+          <div class="sb-col-label">Out</div>
+          <div class="sb-item"><span>−2 Ulamog (too slow, their clock is fast)</span></div>
+          <div class="sb-item"><span>−4 Ugin (too slow)</span></div>
+          <div class="sb-item"><span>−1 Relic</span></div>
+        </div>
+        <div class="sb-col">
+          <div class="sb-col-label">In</div>
+          <div class="sb-item"><span>+1 Ensnaring Bridge</span></div>
+          <div class="sb-item"><span>+1 Walking Ballista</span></div>
+          <div class="sb-item"><span>+1 Torpor Orb (stops ETB hexproof/lifelink from Leyline)</span></div>
+        </div>
+      </div>
     </td></tr>
 
     <tr onclick="toggle('mu-living')"><td>Living End</td><td>2.4%</td><td><span class="verdict verdict-favor">Favorable</span></td><td>Favor</td><td>Favor</td></tr>
     <tr><td colspan="5" class="matchup-detail" id="mu-living">
       <strong>The Matchup:</strong> Living End cascades into the namesake card via Violent Outburst or Ardent Plea. Your graveyard hate disrupts both the cycling fill-up phase (Relic exiles their GY incrementally) and the cascade turn (Grafdigger's Cage → creatures can't enter from GY → Living End resolves but does nothing). Karn fetching either piece game 1 via his static is enough to win most games.<br><br>
       <strong>Sowing Mycospawn Land Exile:</strong> Kicking Mycospawn to exile a forest or cycling land further disrupts their mana for casting cascade spells. Living End runs only 16–18 lands — losing one is significant. Combined with early Relic slowly taxing their GY resources, you can grind them out of the game they need to win.<br><br>
-      <table class="sb-table"><tr><th>OUT</th><th>IN</th></tr>
-      <tr><td class="sb-out">−2 Dismember (less relevant)</td><td class="sb-in">+1 Grafdigger's Cage</td></tr>
-      <tr><td class="sb-out">−2 Kozilek's Command (GY exile mode is weak here)</td><td class="sb-in">+1 Tormod's Crypt</td></tr>
-      </table>
+      <div class="sb-table">
+        <div class="sb-col">
+          <div class="sb-col-label">Out</div>
+          <div class="sb-item"><span>−2 Dismember (less relevant)</span></div>
+          <div class="sb-item"><span>−2 Kozilek's Command (GY exile mode is weak here)</span></div>
+        </div>
+        <div class="sb-col">
+          <div class="sb-col-label">In</div>
+          <div class="sb-item"><span>+1 Grafdigger's Cage</span></div>
+          <div class="sb-item"><span>+1 Tormod's Crypt</span></div>
+        </div>
+      </div>
     </td></tr>
 
     <tr onclick="toggle('mu-mirror')"><td>Eldrazi Tron Mirror</td><td>5.5%</td><td><span class="verdict verdict-even">Even</span></td><td>Even</td><td>Even</td></tr>
@@ -644,10 +740,18 @@
       <strong>The Matchup:</strong> Both players are playing the same mana development game. First to assemble Tron has the mana advantage. First Thought-Knot Seer strips the opponent's Karn or a key Tron piece. Karn is the most important card — whoever resolves Karn first and fetches Ensnaring Bridge or Trinisphere likely wins, since the other player can't profitably attack through Bridge.<br><br>
       <strong>Disruptor Flute:</strong> Name Karn in the mirror — makes their Karn cost {7} to cast and shuts off Karn's activated abilities (the −2). This is the strongest play. Or name their Ugin (costs {10}) to lock them out of board wipes. The Flute from SB turns an even matchup into a decisive advantage.<br><br>
       <strong>Sowing Mycospawn Tempo:</strong> Kicking Mycospawn to exile a Tron piece is game-winning if they haven't assembled Tron. They lose a land that can never be replaced, and you're now way ahead on mana development.<br><br>
-      <table class="sb-table"><tr><th>OUT</th><th>IN</th></tr>
-      <tr><td class="sb-out">−2 Dismember (not relevant)</td><td class="sb-in">+3 Disruptor Flute (name Karn)</td></tr>
-      <tr><td class="sb-out">−1 Relic of Progenitus</td><td class="sb-in">+1 Damping Sphere (disrupts opponent's Tron)</td></tr>
-      </table>
+      <div class="sb-table">
+        <div class="sb-col">
+          <div class="sb-col-label">Out</div>
+          <div class="sb-item"><span>−2 Dismember (not relevant)</span></div>
+          <div class="sb-item"><span>−1 Relic of Progenitus</span></div>
+        </div>
+        <div class="sb-col">
+          <div class="sb-col-label">In</div>
+          <div class="sb-item"><span>+3 Disruptor Flute (name Karn)</span></div>
+          <div class="sb-item"><span>+1 Damping Sphere (disrupts opponent's Tron)</span></div>
+        </div>
+      </div>
     </td></tr>
   </table>
 </div>

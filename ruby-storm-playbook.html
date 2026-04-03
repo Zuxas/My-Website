@@ -56,14 +56,17 @@
   .matchup-table th { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; padding:10px 16px; background:var(--ink); color:rgba(242,237,230,0.6); text-align:left; }
   .matchup-table td { padding:12px 16px; border-bottom:1px solid var(--rule); font-size:15px; font-weight:300; }
   .matchup-table tr:hover td { background:var(--paper-dark); cursor:pointer; }
-  .matchup-detail { display:none; background:var(--accent-light); border-left:4px solid var(--accent); padding:24px 32px; margin:0; }
+    .matchup-detail { display:none; border:1px solid var(--rule); background:var(--paper-dark); padding:32px 40px; margin:0 0 2px; animation:fadeIn 0.2s ease; }
   .matchup-detail.open { display:block; }
   .verdict { display:inline-block; font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; padding:4px 10px; border:1px solid; }
   .verdict-dog { background:var(--danger-light); color:var(--danger); border-color:var(--danger); }
   .verdict-even { background:var(--gold-light); color:var(--gold); border-color:var(--gold); }
   .verdict-favor { background:#e8f5e9; color:#1a6b1a; border-color:#1a6b1a; }
   .verdict-hard { background:var(--danger-light); color:var(--danger); border-color:var(--danger); }
-  .sb-table { width:100%; border-collapse:collapse; margin:16px 0; }
+  .sb-col { background:var(--paper); padding:20px; }
+    .sb-item { font-size:13px; font-weight:300; padding:4px 0; border-bottom:1px solid rgba(200,191,176,0.2); }
+  .sb-col-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--mid); margin-bottom:12px; }
+  .sb-table { display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--rule); border:1px solid var(--rule); margin:16px 0; }
   .sb-table th { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; padding:8px 12px; background:var(--paper-dark); color:var(--mid); text-align:left; border-bottom:2px solid var(--rule); }
   .sb-table td { padding:10px 12px; border-bottom:1px solid var(--rule); font-size:14px; font-weight:300; }
   .sb-out { color:var(--danger); font-family:'DM Mono',monospace; font-size:12px; }
@@ -551,10 +554,18 @@
       <strong>The Matchup:</strong> Boros Energy is a fast aggro deck with 8–12 points of damage by turn 3 but limited main-deck interaction. G1 is strongly in your favor — they can't stop the combo with Lightning Bolt or Galvanic Discharge. Post-board they bring Damping Sphere and sometimes Rest in Peace.<br><br>
       <strong>Key Constraint:</strong> You need to win at comfortable life. Ral's coin flips at 4 life can kill you — at low life, just count a Medallion line instead and skip Ral. Goblin Bombardment deals 1 per creature sacrifice — a board of 6 creatures can dome you for 6 in response to your combo turn.<br><br>
       <strong>Play/Draw Split:</strong> On the play you should be killing turn 3. On the draw, they deal 6–8 damage by your turn 3, so prioritize speed over elegance.<br><br>
-      <table class="sb-table"><tr><th>OUT</th><th>IN</th></tr>
-      <tr><td class="sb-out">−2 Strike It Rich</td><td class="sb-in">+2 Prismatic Ending (vs Damping Sphere)</td></tr>
-      <tr><td class="sb-out">−1 Valakut Awakening</td><td class="sb-in">+1 Brotherhood's End (vs token boards)</td></tr>
-      </table>
+      <div class="sb-table">
+        <div class="sb-col">
+          <div class="sb-col-label">Out</div>
+          <div class="sb-item"><span>−2 Strike It Rich</span></div>
+          <div class="sb-item"><span>−1 Valakut Awakening</span></div>
+        </div>
+        <div class="sb-col">
+          <div class="sb-col-label">In</div>
+          <div class="sb-item"><span>+2 Prismatic Ending (vs Damping Sphere)</span></div>
+          <div class="sb-item"><span>+1 Brotherhood's End (vs token boards)</span></div>
+        </div>
+      </div>
       <div class="sb-note">Damping Sphere is the only relevant hate they typically run. Each spell costs +1 more per prior spell this turn — devastating for storm chains. Ending it immediately is priority one on G2 entry.</div>
     </td></tr>
 
@@ -563,11 +574,18 @@
       <strong>The Matchup:</strong> Jeskai Blink has Consign to Memory, Teferi Time Raveler (stops instant-speed interaction), Cryptic Command, and Force of Negation. They can counter your reducer and your Past in Flames. This is one of Storm's harder matchups — they have the right interaction package to disrupt without dying.<br><br>
       <strong>Key Play:</strong> Wait for their tap-out turn (Quantum Riddler ETB, Ephemerate targeting, any sorcery-speed play). Go in response to their combat step or during their end step, not on your own turn when they have all mana open. Orim's Chant on their upkeep buys the full turn you need.<br><br>
       <strong>Teferi Read:</strong> If Teferi resolves, they can bounce your permanents at sorcery speed and cast spells at sorcery speed — but they can't instant-speed counter your combo. This is actually your window: jam through Teferi's protection by going on your turn.<br><br>
-      <table class="sb-table"><tr><th>OUT</th><th>IN</th></tr>
-      <tr><td class="sb-out">−2 Strike It Rich</td><td class="sb-in">+4 Orim's Chant</td></tr>
-      <tr><td class="sb-out">−2 Glimpse the Impossible</td><td class="sb-in">+1 Into the Flood Maw</td></tr>
-      <tr><td class="sb-out">−1 Shatterskull Smashing</td><td></td></tr>
-      </table>
+      <div class="sb-table">
+        <div class="sb-col">
+          <div class="sb-col-label">Out</div>
+          <div class="sb-item"><span>−2 Strike It Rich</span></div>
+          <div class="sb-item"><span>−2 Glimpse the Impossible</span></div>
+        </div>
+        <div class="sb-col">
+          <div class="sb-col-label">In</div>
+          <div class="sb-item"><span>+4 Orim's Chant</span></div>
+          <div class="sb-item"><span>+1 Into the Flood Maw</span></div>
+        </div>
+      </div>
       <div class="sb-note">Orim's Chant on their upkeep prevents them from casting Consign or Force of Negation. They literally can't interact. This is Storm's "I win" button against blue decks — the white mana is the reason Elegant Parlor exists.</div>
     </td></tr>
 
@@ -576,10 +594,18 @@
       <strong>The Matchup:</strong> Affinity has Metallic Rebuke (improvise-discounted counter) and Consign to Memory (counters colorless spells) in the main deck. They CAN counter Ruby Medallion (colorless, MV 2 — Consign hits it). They cannot counter Ral (red spell). Post-board they add Damping Sphere and Mystical Dispute.<br><br>
       <strong>G1 Edge:</strong> Affinity's clock is real — Kappa Cannoneer growing to 8/8 unblockable is fast. But they don't run much main deck interaction otherwise. Force their interaction with a draw spell, then jam the reducer.<br><br>
       <strong>Key Oracle:</strong> Consign CAN counter Ruby Medallion. Don't deploy Ruby into open Consign mana. Deploy Ral instead (red spell, uncounterable by Consign). Once Ral is in play, the engine runs.<br><br>
-      <table class="sb-table"><tr><th>OUT</th><th>IN</th></tr>
-      <tr><td class="sb-out">−2 Strike It Rich</td><td class="sb-in">+2 Prismatic Ending</td></tr>
-      <tr><td class="sb-out">−1 Valakut Awakening</td><td class="sb-in">+1 Abrade (vs Kappa/artifacts)</td></tr>
-      </table>
+      <div class="sb-table">
+        <div class="sb-col">
+          <div class="sb-col-label">Out</div>
+          <div class="sb-item"><span>−2 Strike It Rich</span></div>
+          <div class="sb-item"><span>−1 Valakut Awakening</span></div>
+        </div>
+        <div class="sb-col">
+          <div class="sb-col-label">In</div>
+          <div class="sb-item"><span>+2 Prismatic Ending</span></div>
+          <div class="sb-item"><span>+1 Abrade (vs Kappa/artifacts)</span></div>
+        </div>
+      </div>
     </td></tr>
 
     <tr onclick="toggle('mu-etron')"><td>Eldrazi Tron</td><td>5.5%</td><td><span class="verdict verdict-dog">Dog</span></td><td>Even</td><td>Hard</td></tr>
@@ -587,10 +613,18 @@
       <strong>The Matchup:</strong> Eldrazi Tron's primary hate is Karn, the Great Creator — which shuts off Ruby Medallion as an artifact. Karn's static prevents you from activating Medallion's... wait, no — Karn says opponents can't activate abilities of artifacts. Ruby Medallion is a static ability, not an activated one. So Karn doesn't shut off Medallion! The real Karn threat is fetching Ensnaring Bridge (shuts off attacking with Goblin tokens) or Grafdigger's Cage.<br><br>
       <strong>Actual Threats:</strong> Thought-Knot Seer strips a key card. All Is Dust destroys all your colored permanents. Chalice of the Void at 1 or 2 stops your ritual chains cold. Chalice at 2 stops Pyretic, Desperate, Wrenn's Resolve, Reckless Impulse, Ral — essentially the entire deck.<br><br>
       <strong>Speed Window:</strong> Tron assembles turn 3 (Urza's Mine + Power Plant + Tower). Your turn 3 kill beats their turn 3 Tron. On the draw, you're racing. Win before Chalice.<br><br>
-      <table class="sb-table"><tr><th>OUT</th><th>IN</th></tr>
-      <tr><td class="sb-out">−2 Glimpse the Impossible</td><td class="sb-in">+2 Prismatic Ending (vs Chalice)</td></tr>
-      <tr><td class="sb-out">−1 Strike It Rich</td><td class="sb-in">+1 Return the Favor</td></tr>
-      </table>
+      <div class="sb-table">
+        <div class="sb-col">
+          <div class="sb-col-label">Out</div>
+          <div class="sb-item"><span>−2 Glimpse the Impossible</span></div>
+          <div class="sb-item"><span>−1 Strike It Rich</span></div>
+        </div>
+        <div class="sb-col">
+          <div class="sb-col-label">In</div>
+          <div class="sb-item"><span>+2 Prismatic Ending (vs Chalice)</span></div>
+          <div class="sb-item"><span>+1 Return the Favor</span></div>
+        </div>
+      </div>
       <div class="sb-note">Return the Favor counters Karn or Ugin and casts a copy of it for free — massive tempo swing. Prismatic Ending hits Chalice of the Void at 1 or 2 at sorcery speed before going off.</div>
     </td></tr>
 
@@ -599,10 +633,16 @@
       <strong>The Matchup:</strong> Both decks are trying to win by turn 3–4. Amulet Titan's relevant hate pieces are Endurance (mills your GY out of exile, but doesn't stop PIF), Boseiju (destroys enchantments — hits Ruby Medallion!), and The One Ring (buys time). Their clock is fast — Primeval Titan threatens an instant kill.<br><br>
       <strong>Key Speed:</strong> On the play, prioritize killing turn 3. On the draw, they can potentially win turn 3 via Amulet + bounce land + Titan. Bring in Orim's Chant on the draw to buy a turn.<br><br>
       <strong>Boseiju Note:</strong> Boseiju destroys Ruby Medallion (enchantment? No — Medallion is an artifact). Actually Boseiju destroys noncreature permanents if it targets an opponent's permanent. They wouldn't target their own Ruby Medallion. Boseiju targets your Medallion as a noncreature permanent — it CAN hit it. Watch for Boseiju lines.<br><br>
-      <table class="sb-table"><tr><th>OUT</th><th>IN</th></tr>
-      <tr><td class="sb-out">−1 Valakut Awakening (on play)</td><td class="sb-in">+2 Orim's Chant (on draw)</td></tr>
-      <tr><td class="sb-out">−2 Strike It Rich (on draw)</td><td class="sb-in"></td></tr>
-      </table>
+      <div class="sb-table">
+        <div class="sb-col">
+          <div class="sb-col-label">Out</div>
+          <div class="sb-item"><span>−1 Valakut Awakening (on play)</span></div>
+        </div>
+        <div class="sb-col">
+          <div class="sb-col-label">In</div>
+          <div class="sb-item"><span>+2 Orim's Chant (on draw)</span></div>
+        </div>
+      </div>
     </td></tr>
 
     <tr onclick="toggle('mu-domain')"><td>Domain Aggro</td><td>2.6%</td><td><span class="verdict verdict-dog">Dog</span></td><td>Even</td><td>Dog</td></tr>
@@ -610,10 +650,18 @@
       <strong>The Matchup:</strong> Domain Aggro presents one of Storm's hardest clocks. Leyline of the Guildpact on turn 0, Scion of Draco for 2 mana on turn 1 with haste, Atraxa on turn 3. They can deal 15+ damage by your turn 3. On top of that, post-board they run Leyline of Sanctity — which stops Grapeshot from targeting players.<br><br>
       <strong>Leyline of Sanctity Problem:</strong> If they have Leyline of Sanctity, your entire Grapeshot plan is shut off. You must pivot to Empty the Warrens for 20+ Goblins, then survive to attack. Against a Scion of Draco, your 1/1 tokens trade unfavorably. This matchup is hard when they draw Leyline.<br><br>
       <strong>Speed is the Only Answer:</strong> You must kill turn 3, no exceptions. If they have 16 damage in and you're at 15 life, the Ral flip kill is dangerous. Use Medallion line only — more deterministic.<br><br>
-      <table class="sb-table"><tr><th>OUT</th><th>IN</th></tr>
-      <tr><td class="sb-out">−2 Glimpse the Impossible</td><td class="sb-in">+3 Prismatic Ending (vs Leyline of Sanctity)</td></tr>
-      <tr><td class="sb-out">−1 Strike It Rich</td><td class="sb-in">+2 Empty the Warrens (backup vs Leyline)</td></tr>
-      </table>
+      <div class="sb-table">
+        <div class="sb-col">
+          <div class="sb-col-label">Out</div>
+          <div class="sb-item"><span>−2 Glimpse the Impossible</span></div>
+          <div class="sb-item"><span>−1 Strike It Rich</span></div>
+        </div>
+        <div class="sb-col">
+          <div class="sb-col-label">In</div>
+          <div class="sb-item"><span>+3 Prismatic Ending (vs Leyline of Sanctity)</span></div>
+          <div class="sb-item"><span>+2 Empty the Warrens (backup vs Leyline)</span></div>
+        </div>
+      </div>
     </td></tr>
 
     <tr onclick="toggle('mu-reanimator')"><td>Grixis Reanimator</td><td>1.5%</td><td><span class="verdict verdict-dog">Dog</span></td><td>Even</td><td>Dog</td></tr>
@@ -621,10 +669,18 @@
       <strong>The Matchup:</strong> Thoughtseize and Inquisition of Kozilek strip your key pieces. Storm is highly synergistic — losing Medallion or PIF to discard can invalidate your entire hand. They can discard your only reducer on turn 1 and leave you stranded. Post-board they add graveyard hate (Nihil Spellbomb, Rest in Peace) that stops PIF.<br><br>
       <strong>Archon of Cruelty:</strong> If they reanimate Archon on turn 2–3, you're looking at 6 life lost on their attack trigger plus hand disruption. At 14 life, their turn 3 Archon attack + your own Ral flips can kill you before you win.<br><br>
       <strong>Best Approach:</strong> Jam early. Don't play around discard — if you have a turn 2 reducer line, take it before they can Thoughtseize on turn 1 after seeing your hand on their T1. Going off before T2 Thoughtseize is the correct play when available.<br><br>
-      <table class="sb-table"><tr><th>OUT</th><th>IN</th></tr>
-      <tr><td class="sb-out">−2 Strike It Rich</td><td class="sb-in">+4 Orim's Chant</td></tr>
-      <tr><td class="sb-out">−2 Glimpse the Impossible</td><td class="sb-in">+1 Into the Flood Maw</td></tr>
-      </table>
+      <div class="sb-table">
+        <div class="sb-col">
+          <div class="sb-col-label">Out</div>
+          <div class="sb-item"><span>−2 Strike It Rich</span></div>
+          <div class="sb-item"><span>−2 Glimpse the Impossible</span></div>
+        </div>
+        <div class="sb-col">
+          <div class="sb-col-label">In</div>
+          <div class="sb-item"><span>+4 Orim's Chant</span></div>
+          <div class="sb-item"><span>+1 Into the Flood Maw</span></div>
+        </div>
+      </div>
       <div class="sb-note">Orim's Chant on their upkeep prevents Persist and all sorceries. They can't reanimate Archon. This single-card answer to their entire game plan is why Chant is the best SB card in the format.</div>
     </td></tr>
 
@@ -632,10 +688,18 @@
     <tr><td colspan="5" class="matchup-detail" id="mu-uwc">
       <strong>The Matchup:</strong> UW Control has Counterspell, Force of Negation, and Solitude. They counter your reducer if you deploy it into open mana. The game plan: probe their interaction with Reckless Impulse effects (force them to spend counters), then deploy reducer and win the same turn. The impulse draws are 2-for-1s they can't counter efficiently.<br><br>
       <strong>Key Read:</strong> Identify their "full lock" turn vs their "reactive" turn. If they tap out for a Teferi, Kaya, or The One Ring — that's your window. Take it. Against The One Ring: they protected it for card advantage — on their next upkeep, they take damage equal to counters. Alchemist's Gambit sideboard can give you an extra turn to win through the Ring's protection stall.<br><br>
-      <table class="sb-table"><tr><th>OUT</th><th>IN</th></tr>
-      <tr><td class="sb-out">−2 Strike It Rich</td><td class="sb-in">+4 Orim's Chant</td></tr>
-      <tr><td class="sb-out">−2 Glimpse the Impossible</td><td class="sb-in">+1 Galvanic Relay (uncounterable engine)</td></tr>
-      </table>
+      <div class="sb-table">
+        <div class="sb-col">
+          <div class="sb-col-label">Out</div>
+          <div class="sb-item"><span>−2 Strike It Rich</span></div>
+          <div class="sb-item"><span>−2 Glimpse the Impossible</span></div>
+        </div>
+        <div class="sb-col">
+          <div class="sb-col-label">In</div>
+          <div class="sb-item"><span>+4 Orim's Chant</span></div>
+          <div class="sb-item"><span>+1 Galvanic Relay (uncounterable engine)</span></div>
+        </div>
+      </div>
       <div class="sb-note">Galvanic Relay (storm card) can't be countered after copies resolve. Cast it with storm count 5 = 5 cards exiled for next turn. Control can't stop the next turn's setup. It's the hedge against heavy counter presence.</div>
     </td></tr>
 
@@ -644,10 +708,18 @@
       <strong>The Matchup:</strong> Prowess presents a fast, interactive clock. Lava Dart flashback pings your planeswalker (Ral) and triggers prowess. They have Lightning Bolt to kill Ral. Cori-Steel Cutter creates unblockable threats. On the draw, they can kill Ral in response to cast trigger before it reduces a single spell.<br><br>
       <strong>Protect Ral:</strong> Cast Ral with mana up to cast a ritual in response to removal, attempting a flip before Bolt resolves. If Ral gets Bolted, his +1 ability was last used on the turn he was cast — its effect persists through opponent's turn if he flipped first. Use Ruby Medallion as the primary reducer if Ral gets targeted early.<br><br>
       <strong>Speed Rule:</strong> Kill before they have 8 damage in the air and a Lava Dart + Bolt ready. Turn 3 is mandatory. Turn 4 is typically losing.<br><br>
-      <table class="sb-table"><tr><th>OUT</th><th>IN</th></tr>
-      <tr><td class="sb-out">−2 Glimpse the Impossible</td><td class="sb-in">+4 Orim's Chant</td></tr>
-      <tr><td class="sb-out">−2 Strike It Rich</td><td class="sb-in">+1 Brotherhood's End</td></tr>
-      </table>
+      <div class="sb-table">
+        <div class="sb-col">
+          <div class="sb-col-label">Out</div>
+          <div class="sb-item"><span>−2 Glimpse the Impossible</span></div>
+          <div class="sb-item"><span>−2 Strike It Rich</span></div>
+        </div>
+        <div class="sb-col">
+          <div class="sb-col-label">In</div>
+          <div class="sb-item"><span>+4 Orim's Chant</span></div>
+          <div class="sb-item"><span>+1 Brotherhood's End</span></div>
+        </div>
+      </div>
     </td></tr>
 
     <tr onclick="toggle('mu-mirror')"><td>Ruby Storm Mirror</td><td>6.2%</td><td><span class="verdict verdict-even">Even</span></td><td>Even</td><td>Even</td></tr>
@@ -655,9 +727,16 @@
       <strong>The Matchup:</strong> Both players are trying to kill on turn 3. The player who goes first has a decisive advantage. The mirror is almost entirely decided by coin flip (who plays first) and who draws a faster reducer hand.<br><br>
       <strong>On the Draw Only:</strong> Bring in 1–2 Orim's Chants. If you're going second, Chanting during their upkeep on turn 3 forces them to wait another turn — giving you the kill window. On the play, don't bring in Chants — you'll just be slower than them.<br><br>
       <strong>Gemstone Caverns:</strong> The mirror is one of the places Gemstone Caverns has maximum value. If you're on the draw, play it for free — exile a card, but now you have a land in play on turn 1 without spending your land drop, enabling a turn 2 kill attempt instead of turn 3.<br><br>
-      <table class="sb-table"><tr><th>OUT</th><th>IN</th></tr>
-      <tr><td class="sb-out">−1 Strike It Rich (on draw)</td><td class="sb-in">+1 Orim's Chant (on draw only)</td></tr>
-      </table>
+      <div class="sb-table">
+        <div class="sb-col">
+          <div class="sb-col-label">Out</div>
+          <div class="sb-item"><span>−1 Strike It Rich (on draw)</span></div>
+        </div>
+        <div class="sb-col">
+          <div class="sb-col-label">In</div>
+          <div class="sb-item"><span>+1 Orim's Chant (on draw only)</span></div>
+        </div>
+      </div>
     </td></tr>
 
     <tr onclick="toggle('mu-living')"><td>Living End</td><td>2.4%</td><td><span class="verdict verdict-even">Even</span></td><td>Favor</td><td>Even</td></tr>
@@ -665,9 +744,16 @@
       <strong>The Matchup:</strong> Living End cascades into a free Living End (MV 0) via Violent Outburst (MV 3) or Ardent Plea. Their kill is typically turn 3–4 when they cascade. G1 is favorable for Storm — they have minimal interaction before their cascade turn.<br><br>
       <strong>Cascade Timing:</strong> Their Violent Outburst is an instant — they can cascade at the end of your turn 3 to set up their board, then kill on their turn 4. If you're killing turn 3, you're killing before they cascade. Force of Negation in their SB can counter your PIF on cascade turns — they might keep FoN up to stop you from winning at instant speed.<br><br>
       <strong>Orim's Chant:</strong> Chanting during their upkeep on their Living End turn prevents Violent Outburst entirely (it's a sorcery during their main phase). This completely shuts off their game plan for a full turn.<br><br>
-      <table class="sb-table"><tr><th>OUT</th><th>IN</th></tr>
-      <tr><td class="sb-out">−2 Strike It Rich</td><td class="sb-in">+2 Orim's Chant</td></tr>
-      </table>
+      <div class="sb-table">
+        <div class="sb-col">
+          <div class="sb-col-label">Out</div>
+          <div class="sb-item"><span>−2 Strike It Rich</span></div>
+        </div>
+        <div class="sb-col">
+          <div class="sb-col-label">In</div>
+          <div class="sb-item"><span>+2 Orim's Chant</span></div>
+        </div>
+      </div>
     </td></tr>
   </table>
 </div>

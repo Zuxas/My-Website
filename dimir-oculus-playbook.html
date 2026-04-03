@@ -56,13 +56,16 @@
   .matchup-table th { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; padding:10px 16px; background:var(--ink); color:rgba(242,237,230,0.6); text-align:left; }
   .matchup-table td { padding:12px 16px; border-bottom:1px solid var(--rule); font-size:15px; font-weight:300; }
   .matchup-table tr:hover td { background:var(--paper-dark); cursor:pointer; }
-  .matchup-detail { display:none; background:var(--accent-light); border-left:4px solid var(--accent); padding:24px 32px; margin:0; }
+    .matchup-detail { display:none; border:1px solid var(--rule); background:var(--paper-dark); padding:32px 40px; margin:0 0 2px; animation:fadeIn 0.2s ease; }
   .matchup-detail.open { display:block; }
   .verdict { display:inline-block; font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; padding:4px 10px; border:1px solid; }
   .verdict-dog { background:var(--danger-light); color:var(--danger); border-color:var(--danger); }
   .verdict-even { background:var(--gold-light); color:var(--gold); border-color:var(--gold); }
   .verdict-favor { background:#d1fae5; color:#065f46; border-color:#065f46; }
-  .sb-table { width:100%; border-collapse:collapse; margin:16px 0; }
+  .sb-col { background:var(--paper); padding:20px; }
+  .sb-item { font-size:13px; font-weight:300; padding:4px 0; border-bottom:1px solid rgba(200,191,176,0.2); }
+  .sb-col-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--mid); margin-bottom:12px; }
+  .sb-table { display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--rule); border:1px solid var(--rule); margin:16px 0; }
   .sb-table th { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; padding:8px 12px; background:var(--paper-dark); color:var(--mid); text-align:left; border-bottom:2px solid var(--rule); }
   .sb-table td { padding:10px 12px; border-bottom:1px solid var(--rule); font-size:14px; font-weight:300; }
   .sb-out { color:var(--danger); font-family:'DM Mono',monospace; font-size:12px; }
@@ -624,13 +627,20 @@
       <tr><td colspan="4" class="matchup-detail" id="mu-boros">
         <p>The format's #1 deck at 16% meta. Post-ban (One Ring gone), Boros lost its grind engine. Your Fatal Push kills every creature they play for {B}. Bowmasters punishes Guide of Souls triggers. The key question is whether you can stabilize against their explosive T1-T2 curve before your card advantage takes over. Frog on T2 is risky if they have Galvanic Discharge — consider holding T2 open for Push + Snare instead, then deploying Frog T3 with protection.</p>
         <p><strong>Harbinger wins this matchup.</strong> Most Boros lists run 0-1 basic Plains. A resolved Harbinger locks them off {R} and {W} from most of their manabase. Pre-fetch your Swamp, then slam Harbinger T3. If it sticks, they're drawing dead.</p>
-        <table class="sb-table"><thead><tr><th>Out</th><th>In</th></tr></thead><tbody>
-          <tr><td class="sb-out">−2 Force of Negation</td><td class="sb-in">+1 Harbinger of the Seas</td></tr>
-          <tr><td class="sb-out">−2 Sink into Stupor</td><td class="sb-in">+1 Shoot the Sheriff</td></tr>
-          <tr><td class="sb-out">−1 Counterspell</td><td class="sb-in">+1 Orcish Bowmasters</td></tr>
-          <tr><td class="sb-out"></td><td class="sb-in">+1 Stern Scolding</td></tr>
-          <tr><td class="sb-out"></td><td class="sb-in">+1 Toxic Deluge</td></tr>
-        </tbody></table>
+        <div class="sb-table">
+        <div class="sb-col">
+          <div class="sb-col-label">Out</div>
+          <div class="sb-item"><span>−2 Force of Negation</span></div>
+          <div class="sb-item"><span>−2 Sink into Stupor</span></div>
+          <div class="sb-item"><span>−1 Counterspell</span></div>
+        </div>
+        <div class="sb-col">
+          <div class="sb-col-label">In</div>
+          <div class="sb-item"><span>+1 Harbinger of the Seas</span></div>
+          <div class="sb-item"><span>+1 Shoot the Sheriff</span></div>
+          <div class="sb-item"><span>+1 Orcish Bowmasters</span></div>
+        </div>
+      </div>
         <p class="sb-note">Force of Negation is weak — their spells are cheap creatures, not noncreature threats. Sink at {1}{U}{U} is too slow for their curve. Bring in maximum removal density. Stern Scolding at {U} counters Guide of Souls (0/2), Ocelot Pride (1/1), Ajani (1/2) — every key creature. Toxic Deluge at 2 life wipes their board without caring about indestructible or protection.</p>
         <h3>% Point Edges</h3>
         <p class="sb-note"><strong>+3–4 pts: Harbinger on T3 with Swamp pre-fetched.</strong> If Harbinger resolves and they don't have basic Plains in play, their turns 4+ are effectively blanked. This converts an even matchup into a soft lock.</p>
@@ -640,11 +650,20 @@
       <tr onclick="toggle('mu-jeskai')"><td><strong>Jeskai Blink</strong></td><td>Tempo</td><td><span class="verdict verdict-even">Even</span></td><td>Counterspell on Ephemerate — denies their engine</td></tr>
       <tr><td colspan="4" class="matchup-detail" id="mu-jeskai">
         <p>Their plan: Ephemerate Solitude for free removal, Stoneforge for equipment, Phelia for value. Your plan: counter Ephemerate (deny their entire engine), Push their creatures, race with Frog. Frog is excellent here — Solitude can exile it, but if they used evoke they lose Solitude too. A protected Frog that draws cards every attack outraces their value engine. Murktide is your best finisher — an 8/8 flying that Solitude can exile but they need to spend a full card (not evoke) to do it.</p>
-        <table class="sb-table"><thead><tr><th>Out</th><th>In</th></tr></thead><tbody>
-          <tr><td class="sb-out">−2 Harbinger of the Seas</td><td class="sb-in">+1 Force of Negation</td></tr>
-          <tr><td class="sb-out">−1 Shoot the Sheriff</td><td class="sb-in">+1 Spell Pierce</td></tr>
-          <tr><td class="sb-out">−1 Spell Snare</td><td class="sb-in">+1 Accursed Marauder</td></tr>
-        </tbody></table>
+        <div class="sb-table">
+        <div class="sb-col">
+          <div class="sb-col-label">Out</div>
+          <div class="sb-item"><span>−2 Harbinger of the Seas</span></div>
+          <div class="sb-item"><span>−1 Shoot the Sheriff</span></div>
+          <div class="sb-item"><span>−1 Spell Snare</span></div>
+        </div>
+        <div class="sb-col">
+          <div class="sb-col-label">In</div>
+          <div class="sb-item"><span>+1 Force of Negation</span></div>
+          <div class="sb-item"><span>+1 Spell Pierce</span></div>
+          <div class="sb-item"><span>+1 Accursed Marauder</span></div>
+        </div>
+      </div>
         <p class="sb-note">Harbinger is less useful — they run enough basics for Blink to function under it. Accursed Marauder is your answer to a Solitude they managed to stick permanently — the edict bypasses Solitude's exile ability. Force #3 improves your counter density for their key noncreature spells (Ephemerate, Prismatic Ending).</p>
         <h3>% Point Edges</h3>
         <p class="sb-note"><strong>+3 pts: Counter Ephemerate, not Solitude.</strong> Solitude without Ephemerate is a one-shot exile. Ephemerate on Solitude is a recurring exile engine. Always prioritize countering the Ephemerate.</p>
@@ -653,11 +672,20 @@
       <tr onclick="toggle('mu-storm')"><td><strong>Ruby Storm</strong></td><td>Control</td><td><span class="verdict verdict-favor">Favorable</span></td><td>Force of Negation — free counter on their combo turn</td></tr>
       <tr><td colspan="4" class="matchup-detail" id="mu-storm">
         <p>You have everything Storm hates: free countermagic (Force of Negation), cheap interaction (Spell Pierce, Counterspell), and a clock that punishes them for not going off immediately. Frog on T2 means they need to combo T3 or die to card advantage. Force of Negation is your best card — exiles Past in Flames (removes it permanently, can't flashback from exile) and counters their key rituals for free. <span class="c">Spell Snare</span> counters Ruby Medallion (MV 2).</p>
-        <table class="sb-table"><thead><tr><th>Out</th><th>In</th></tr></thead><tbody>
-          <tr><td class="sb-out">−4 Fatal Push</td><td class="sb-in">+3 Consign to Memory</td></tr>
-          <tr><td class="sb-out">−2 Orcish Bowmasters</td><td class="sb-in">+1 Force of Negation</td></tr>
-          <tr><td class="sb-out">−1 Shoot the Sheriff</td><td class="sb-in">+1 Spell Pierce</td></tr>
-        </tbody></table>
+        <div class="sb-table">
+        <div class="sb-col">
+          <div class="sb-col-label">Out</div>
+          <div class="sb-item"><span>−4 Fatal Push</span></div>
+          <div class="sb-item"><span>−2 Orcish Bowmasters</span></div>
+          <div class="sb-item"><span>−1 Shoot the Sheriff</span></div>
+        </div>
+        <div class="sb-col">
+          <div class="sb-col-label">In</div>
+          <div class="sb-item"><span>+3 Consign to Memory</span></div>
+          <div class="sb-item"><span>+1 Force of Negation</span></div>
+          <div class="sb-item"><span>+1 Spell Pierce</span></div>
+        </div>
+      </div>
         <p class="sb-note">All creature removal is dead — they play 0-2 creatures. Consign to Memory is your best SB card: counters triggered abilities (Storm trigger on Grapeshot), counters colorless spells (Ruby Medallion), and has Replicate to counter multiple copies. Force #3 ensures you always have a free counter available.</p>
         <h3>% Point Edges</h3>
         <p class="sb-note"><strong>+4 pts: Consign to Memory on the Storm trigger.</strong> Grapeshot's Storm trigger creates copies. Consign counters triggered abilities. Counter the Storm trigger = 0 copies. They spent their entire hand on rituals for a single Grapeshot dealing 1 damage.</p>
@@ -667,22 +695,40 @@
       <tr onclick="toggle('mu-affinity')"><td><strong>Izzet Affinity</strong></td><td>Tempo</td><td><span class="verdict verdict-even">Even</span></td><td>Fatal Push + Spell Snare on their key pieces</td></tr>
       <tr><td colspan="4" class="matchup-detail" id="mu-affinity">
         <p>Affinity dumps cheap artifacts and draws with Thought Monitor. Your Fatal Push kills their creatures efficiently. Spell Snare counters their MV 2 payoffs. Bowmasters punishes Thought Monitor's draw trigger. The matchup is about denying their draw engine while establishing your own — first player to pull ahead on cards wins. Post-board, Consign to Memory counters triggered abilities AND colorless spells (Thought Monitor, Sojourner's Companion).</p>
-        <table class="sb-table"><thead><tr><th>Out</th><th>In</th></tr></thead><tbody>
-          <tr><td class="sb-out">−2 Harbinger of the Seas</td><td class="sb-in">+3 Consign to Memory</td></tr>
-          <tr><td class="sb-out">−2 Force of Negation</td><td class="sb-in">+1 Orcish Bowmasters</td></tr>
-          <tr><td class="sb-out">−1 Sink into Stupor</td><td class="sb-in">+1 Stern Scolding</td></tr>
-        </tbody></table>
+        <div class="sb-table">
+        <div class="sb-col">
+          <div class="sb-col-label">Out</div>
+          <div class="sb-item"><span>−2 Harbinger of the Seas</span></div>
+          <div class="sb-item"><span>−2 Force of Negation</span></div>
+          <div class="sb-item"><span>−1 Sink into Stupor</span></div>
+        </div>
+        <div class="sb-col">
+          <div class="sb-col-label">In</div>
+          <div class="sb-item"><span>+3 Consign to Memory</span></div>
+          <div class="sb-item"><span>+1 Orcish Bowmasters</span></div>
+          <div class="sb-item"><span>+1 Stern Scolding</span></div>
+        </div>
+      </div>
         <p class="sb-note">Harbinger doesn't help — their mana is artifact-based, not land-based. Force is less useful because their key spells are cheap (payable for {1}{U}{U}). Consign is your MVP: counters Thought Monitor ({7} colorless, often cast for {0}-{1}), counters Cranial Plating equip trigger, counters any triggered ability from their artifacts.</p>
       </td></tr>
 
       <tr onclick="toggle('mu-etron')"><td><strong>Eldrazi Tron</strong></td><td>Unfair</td><td><span class="verdict verdict-dog">Unfavorable</span></td><td>Unearth Oculus T2 — race before Tron assembles</td></tr>
       <tr><td colspan="4" class="matchup-detail" id="mu-etron">
         <p>Their late game is unbeatable — All Is Dust, Ugin, Ulamog. Your interaction (Push, Counterspell) barely touches their threats. Fatal Push doesn't kill anything relevant (all MV 4+). Counterspell can stop one threat but they have 8+. <strong>Your only path to winning is speed.</strong> T2 Unearth Oculus or T2 Frog into T3 protected Murktide = lethal before they assemble Tron. If the game goes to T6+, you lose. Harbinger from SB can buy time by turning their Tron lands into Islands (no {C}{C}{C} from Urza lands).</p>
-        <table class="sb-table"><thead><tr><th>Out</th><th>In</th></tr></thead><tbody>
-          <tr><td class="sb-out">−4 Fatal Push</td><td class="sb-in">+1 Harbinger of the Seas</td></tr>
-          <tr><td class="sb-out">−1 Shoot the Sheriff</td><td class="sb-in">+3 Consign to Memory</td></tr>
-          <tr><td class="sb-out">−2 Spell Snare</td><td class="sb-in">+1 Spell Pierce</td></tr>
-        </tbody></table>
+        <div class="sb-table">
+        <div class="sb-col">
+          <div class="sb-col-label">Out</div>
+          <div class="sb-item"><span>−4 Fatal Push</span></div>
+          <div class="sb-item"><span>−1 Shoot the Sheriff</span></div>
+          <div class="sb-item"><span>−2 Spell Snare</span></div>
+        </div>
+        <div class="sb-col">
+          <div class="sb-col-label">In</div>
+          <div class="sb-item"><span>+1 Harbinger of the Seas</span></div>
+          <div class="sb-item"><span>+3 Consign to Memory</span></div>
+          <div class="sb-item"><span>+1 Spell Pierce</span></div>
+        </div>
+      </div>
         <p class="sb-note">All creature removal is dead — nothing they play dies to Push or Sheriff. Consign counters ALL their colorless spells (Karn, All Is Dust, Walking Ballista, Chalice of the Void) AND triggered abilities (Thought-Knot Seer ETB, Ulamog cast trigger). Harbinger turns Tron lands into Islands — they produce {U} instead of {C}{C}. This delays their big spells by 2-3 turns.</p>
         <h3>% Point Edges</h3>
         <p class="sb-note"><strong>+3 pts: Consign to Memory on their Karn cast or All Is Dust.</strong> For {U} (+replicate), you deny their most impactful spells. Replicate means you can counter BOTH Karn AND the follow-up All Is Dust in the same turn for {U}{U}{1}.</p>
@@ -692,11 +738,20 @@
       <tr><td colspan="4" class="matchup-detail" id="mu-living">
         <p>They cascade into Living End — a sorcery that destroys all creatures and returns all creature cards from all graveyards to the battlefield. Your counterspell suite stops this cleanly: Counterspell the cascade spell (Living End never triggers), Force of Negation on their turn (free counter, AND FoN exiles the cascade spell — preventing future recursion), Consign to Memory counters the Living End trigger itself (it's a triggered ability from cascade). Multiple redundant counter axes.</p>
         <p><strong>Key:</strong> your own GY matters. If Living End resolves, YOUR creatures return too (Frog, Bowmasters, Oculus). But theirs are bigger (Striped Riverwinder, Architects of Will). Best plan: counter the cascade spell and never let it resolve.</p>
-        <table class="sb-table"><thead><tr><th>Out</th><th>In</th></tr></thead><tbody>
-          <tr><td class="sb-out">−4 Fatal Push</td><td class="sb-in">+3 Nihil Spellbomb</td></tr>
-          <tr><td class="sb-out">−1 Shoot the Sheriff</td><td class="sb-in">+3 Consign to Memory</td></tr>
-          <tr><td class="sb-out">−2 Orcish Bowmasters</td><td class="sb-in">+1 Force of Negation</td></tr>
-        </tbody></table>
+        <div class="sb-table">
+        <div class="sb-col">
+          <div class="sb-col-label">Out</div>
+          <div class="sb-item"><span>−4 Fatal Push</span></div>
+          <div class="sb-item"><span>−1 Shoot the Sheriff</span></div>
+          <div class="sb-item"><span>−2 Orcish Bowmasters</span></div>
+        </div>
+        <div class="sb-col">
+          <div class="sb-col-label">In</div>
+          <div class="sb-item"><span>+3 Nihil Spellbomb</span></div>
+          <div class="sb-item"><span>+3 Consign to Memory</span></div>
+          <div class="sb-item"><span>+1 Force of Negation</span></div>
+        </div>
+      </div>
         <p class="sb-note">All creature removal is dead — they don't cast creatures, they cycle them. Nihil Spellbomb exiles their GY at instant speed in response to Living End trigger — they get nothing back. Consign counters the cascade trigger OR Living End itself. Force #3 ensures you always have a free answer.</p>
         <h3>% Point Edges</h3>
         <p class="sb-note"><strong>+3 pts: Nihil Spellbomb in response to Living End.</strong> Living End resolves: destroys all creatures, then returns all creatures from GY. If you Spellbomb their GY AFTER the destroy but BEFORE the return (both happen as part of the same spell), they get nothing back. Your creatures return (if any were in your GY), theirs don't.</p>
@@ -706,12 +761,22 @@
       <tr onclick="toggle('mu-mirror')"><td><strong>Dimir Mirror</strong></td><td>Tempo</td><td><span class="verdict verdict-even">Even — Skill Dependent</span></td><td>Stern Scolding — kills Frog and Bowmasters for {U}</td></tr>
       <tr><td colspan="4" class="matchup-detail" id="mu-mirror">
         <p>The mirror is defined by who resolves the first Frog and protects it. Both sides have identical interaction — the player who sequences better wins. <span class="c">Stern Scolding</span> from SB is devastating: {U} instant that counters any creature spell with power or toughness 2 or less. Kills: Psychic Frog (1/2), Orcish Bowmasters (1/1), Harbinger (2/2). <span class="c">Long Goodbye</span> from their side (if they have it) kills Frog through your counters because it "can't be countered." Track whether they've shown Long Goodbye G1 — if yes, don't expose Frog without backup.</p>
-        <table class="sb-table"><thead><tr><th>Out</th><th>In</th></tr></thead><tbody>
-          <tr><td class="sb-out">−2 Harbinger of the Seas</td><td class="sb-in">+1 Stern Scolding</td></tr>
-          <tr><td class="sb-out">−1 Shoot the Sheriff</td><td class="sb-in">+1 Spell Pierce</td></tr>
-          <tr><td class="sb-out">−1 Spell Snare</td><td class="sb-in">+3 Nihil Spellbomb</td></tr>
-          <tr><td class="sb-out">−2 Force of Negation</td><td class="sb-in">+1 Accursed Marauder</td></tr>
-        </tbody></table>
+        <div class="sb-table">
+        <div class="sb-col">
+          <div class="sb-col-label">Out</div>
+          <div class="sb-item"><span>−2 Harbinger of the Seas</span></div>
+          <div class="sb-item"><span>−1 Shoot the Sheriff</span></div>
+          <div class="sb-item"><span>−1 Spell Snare</span></div>
+          <div class="sb-item"><span>−2 Force of Negation</span></div>
+        </div>
+        <div class="sb-col">
+          <div class="sb-col-label">In</div>
+          <div class="sb-item"><span>+1 Stern Scolding</span></div>
+          <div class="sb-item"><span>+1 Spell Pierce</span></div>
+          <div class="sb-item"><span>+3 Nihil Spellbomb</span></div>
+          <div class="sb-item"><span>+1 Accursed Marauder</span></div>
+        </div>
+      </div>
         <p class="sb-note">Harbinger is symmetric — hurts both of you equally. Force is less useful because their key spells are creatures (Frog, Oculus). Nihil Spellbomb denies their Unearth angle entirely — fire it before their T3 Unearth window. Stern Scolding is your best SB card: kills Frog and Bowmasters for {U} at instant speed. Accursed Marauder is your edict for a resolved Oculus/Murktide you can't otherwise kill.</p>
         <h3>% Point Edges</h3>
         <p class="sb-note"><strong>+3 pts: Nihil Spellbomb before their T3 Unearth window.</strong> If they deployed Frog T2 and plan to discard Oculus + Unearth T3: crack Spellbomb during their upkeep to exile their entire GY. No Oculus to Unearth. No instants for future Murktide. Devastating.</p>

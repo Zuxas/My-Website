@@ -55,14 +55,17 @@
   .matchup-table th { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; padding:10px 16px; background:var(--ink); color:rgba(242,237,230,0.6); text-align:left; }
   .matchup-table td { padding:12px 16px; border-bottom:1px solid var(--rule); font-size:15px; font-weight:300; }
   .matchup-table tr:hover td { background:var(--paper-dark); cursor:pointer; }
-  .matchup-detail { display:none; background:var(--accent-light); border-left:4px solid #4B5563; padding:24px 32px; margin:0; }
+    .matchup-detail { display:none; border:1px solid var(--rule); background:var(--paper-dark); padding:32px 40px; margin:0 0 2px; animation:fadeIn 0.2s ease; }
   .matchup-detail.open { display:block; }
   .verdict { display:inline-block; font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; padding:4px 10px; border:1px solid; }
   .verdict-dog { background:var(--danger-light); color:var(--danger); border-color:var(--danger); }
   .verdict-even { background:var(--gold-light); color:var(--gold); border-color:var(--gold); }
   .verdict-favor { background:#d1fae5; color:#065f46; border-color:#065f46; }
   .verdict-hard { background:var(--danger-light); color:var(--danger); border-color:var(--danger); }
-  .sb-table { width:100%; border-collapse:collapse; margin:16px 0; }
+  .sb-col { background:var(--paper); padding:20px; }
+    .sb-item { font-size:13px; font-weight:300; padding:4px 0; border-bottom:1px solid rgba(200,191,176,0.2); }
+  .sb-col-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--mid); margin-bottom:12px; }
+  .sb-table { display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--rule); border:1px solid var(--rule); margin:16px 0; }
   .sb-table th { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; padding:8px 12px; background:var(--paper-dark); color:var(--mid); text-align:left; border-bottom:2px solid var(--rule); }
   .sb-table td { padding:10px 12px; border-bottom:1px solid var(--rule); font-size:14px; font-weight:300; }
   .sb-out { color:var(--danger); font-family:'DM Mono',monospace; font-size:12px; }
@@ -572,60 +575,108 @@
     <tr><td colspan="5" class="matchup-detail" id="mu-boros">
       <strong>The Matchup:</strong> Boros Energy is a race. They present Ragavan, Goblin Pilferer and fast threats while you assemble the 4-piece combo. Their Lightning Bolt kills Young Wolf (1/1) before undying resolves. Galvanic Discharge exiles creatures — exiled creatures don't trigger undying (undying only triggers on death, and exile isn't "dying" — actually: Galvanic Discharge deals damage and if they die from damage, it IS dying. But "exile" on death effects specifically exile instead of moving to GY, preventing undying... let me clarify: Galvanic Discharge doesn't exile — it deals damage equal to energy. The creature dies normally from lethal damage and undying triggers). Rest in Peace hosing the undying creatures' return is their key hate piece.<br><br>
       <strong>Young Wolf Value:</strong> Young Wolf blocks Ragavan every turn — it returns with undying, trade again next turn. This buys you 2–3 turns to assemble the combo. Don't sacrifice Young Wolf early unless needed for Evolution — his blocking role is critical against Boros's turn-1 threats.<br><br>
-      <table class="sb-table"><tr><th>OUT</th><th>IN</th></tr>
-      <tr><td class="sb-out">−1 Postmaster Pell</td><td class="sb-in">+2 Haywire Mite (vs RIP / Relic)</td></tr>
-      <tr><td class="sb-out">−1 Zulaport Cutthroat</td><td class="sb-in">+2 Endurance (survive aggro, block Ragavan)</td></tr>
-      </table>
+      <div class="sb-table">
+        <div class="sb-col">
+          <div class="sb-col-label">Out</div>
+          <div class="sb-item"><span>−1 Postmaster Pell</span></div>
+          <div class="sb-item"><span>−1 Zulaport Cutthroat</span></div>
+        </div>
+        <div class="sb-col">
+          <div class="sb-col-label">In</div>
+          <div class="sb-item"><span>+2 Haywire Mite (vs RIP / Relic)</span></div>
+          <div class="sb-item"><span>+2 Endurance (survive aggro, block Ragavan)</span></div>
+        </div>
+      </div>
     </td></tr>
 
     <tr onclick="toggle('mu-jeskai')"><td>Jeskai Blink</td><td>7%</td><td><span class="verdict verdict-dog">Dog</span></td><td>Dog</td><td>Dog</td></tr>
     <tr><td colspan="5" class="matchup-detail" id="mu-jeskai">
       <strong>The Matchup:</strong> Jeskai Blink runs Solitude (exile a creature, lifelink) and Prismatic Ending (exile a permanent with MV ≤ number of basic types). Both exile rather than kill — exiled creatures don't trigger undying. Solitude exiles Yawgmoth or Melira cleanly. The blink package (Ephemerate) lets them re-use Solitude to exile multiple combo pieces. Consign to Memory counters colorless activated abilities — does it hit Yawgmoth's activated ability? Consign counters spells; activated abilities on the stack could be seen as spells... but Yawgmoth's ability isn't a spell, it's an activated ability. Consign counters colorless SPELLS, not abilities. Yawgmoth's ability isn't stopped by Consign.<br><br>
       <strong>Veil of Summer SB:</strong> Veil of Summer (SB) — draw a card, spells your opponents control can't target you or your permanents, they can't be countered this turn. Blanks Solitude (targets your Yawgmoth) and counterspells for the turn. Cast Veil, then Chord for Yawgmoth.<br><br>
-      <table class="sb-table"><tr><th>OUT</th><th>IN</th></tr>
-      <tr><td class="sb-out">−2 Hapatra, Vizier of Poisons</td><td class="sb-in">+2 Veil of Summer</td></tr>
-      <tr><td class="sb-out">−1 Grist</td><td class="sb-in">+3 Thoughtseize (strips Solitude from hand)</td></tr>
-      </table>
+      <div class="sb-table">
+        <div class="sb-col">
+          <div class="sb-col-label">Out</div>
+          <div class="sb-item"><span>−2 Hapatra, Vizier of Poisons</span></div>
+          <div class="sb-item"><span>−1 Grist</span></div>
+        </div>
+        <div class="sb-col">
+          <div class="sb-col-label">In</div>
+          <div class="sb-item"><span>+2 Veil of Summer</span></div>
+          <div class="sb-item"><span>+3 Thoughtseize (strips Solitude from hand)</span></div>
+        </div>
+      </div>
     </td></tr>
 
     <tr onclick="toggle('mu-affinity')"><td>Izzet Affinity</td><td>8%</td><td><span class="verdict verdict-even">Even</span></td><td>Favor</td><td>Even</td></tr>
     <tr><td colspan="5" class="matchup-detail" id="mu-affinity">
       <strong>The Matchup:</strong> Izzet Affinity has limited creature interaction. Their main threats (Kappa Cannoneer, artifact creatures) are dealt with by Yawgmoth's -1/-1 placement and Hapatra's deathtouch Snakes. G1 you're faster. Post-board, Affinity brings Leyline of the Void (GY exile) — prevents undying from returning creatures. Force of Vigor from your SB handles Leyline. Their Karn can fetch Tormenting Voice? No — Karn fetches artifacts. Damping Sphere slows you significantly ({1} mana from each mana source means your convoke for Chord costs more mana real-land).<br><br>
       <strong>Haywire Mite SB:</strong> Against Karn, the Great Creator — Karn's static says opponents can't activate artifact abilities, not YOUR creature abilities. Karn doesn't affect Yawgmoth. But Karn can fetch Grafdigger's Cage (stops creatures from entering from GY = stops undying). Haywire Mite: exile target noncreature artifact (Cage is an artifact). Perfect answer.<br><br>
-      <table class="sb-table"><tr><th>OUT</th><th>IN</th></tr>
-      <tr><td class="sb-out">−2 Melira (less relevant vs artifacts)</td><td class="sb-in">+2 Force of Vigor (Leyline)</td></tr>
-      <tr><td class="sb-out">−1 Zulaport Cutthroat</td><td class="sb-in">+2 Haywire Mite (Cage/Sphere)</td></tr>
-      </table>
+      <div class="sb-table">
+        <div class="sb-col">
+          <div class="sb-col-label">Out</div>
+          <div class="sb-item"><span>−2 Melira (less relevant vs artifacts)</span></div>
+          <div class="sb-item"><span>−1 Zulaport Cutthroat</span></div>
+        </div>
+        <div class="sb-col">
+          <div class="sb-col-label">In</div>
+          <div class="sb-item"><span>+2 Force of Vigor (Leyline)</span></div>
+          <div class="sb-item"><span>+2 Haywire Mite (Cage/Sphere)</span></div>
+        </div>
+      </div>
     </td></tr>
 
     <tr onclick="toggle('mu-storm')"><td>Ruby Storm</td><td>6.2%</td><td><span class="verdict verdict-dog">Dog</span></td><td>Dog</td><td>Even</td></tr>
     <tr><td colspan="5" class="matchup-detail" id="mu-storm">
       <strong>The Matchup:</strong> Ruby Storm kills turn 2–3. Your combo kills turn 3–4. They're faster. G1 is difficult — you have no meaningful interaction with their combo. Post-board: Thoughtseize strips their key spells (Ral, Ruby Medallion), Veil of Summer protects your own combo from their interaction. You want to present a fast clock and also strip their best card from hand on turn 1.<br><br>
       <strong>Fulminator Mage:</strong> Chord for Fulminator Mage destroys their Sacred Foundry or another key nonbasic. Without the correct mana base, Storm struggles to produce the colored mana needed for specific spell combinations. This is a soft disruption that buys time.<br><br>
-      <table class="sb-table"><tr><th>OUT</th><th>IN</th></tr>
-      <tr><td class="sb-out">−2 Hapatra</td><td class="sb-in">+3 Thoughtseize</td></tr>
-      <tr><td class="sb-out">−1 Bloodline Cultivator</td><td class="sb-in">+2 Veil of Summer</td></tr>
-      </table>
+      <div class="sb-table">
+        <div class="sb-col">
+          <div class="sb-col-label">Out</div>
+          <div class="sb-item"><span>−2 Hapatra</span></div>
+          <div class="sb-item"><span>−1 Bloodline Cultivator</span></div>
+        </div>
+        <div class="sb-col">
+          <div class="sb-col-label">In</div>
+          <div class="sb-item"><span>+3 Thoughtseize</span></div>
+          <div class="sb-item"><span>+2 Veil of Summer</span></div>
+        </div>
+      </div>
     </td></tr>
 
     <tr onclick="toggle('mu-etron')"><td>Eldrazi Tron</td><td>5.5%</td><td><span class="verdict verdict-even">Even</span></td><td>Favor</td><td>Even</td></tr>
     <tr><td colspan="5" class="matchup-detail" id="mu-etron">
       <strong>The Matchup:</strong> Eldrazi Tron's primary interaction is Thought-Knot Seer (ETB exile a card from hand — exiled cards don't come back). TKS on turn 2 strips your Yawgmoth or a key tutor. Kozilek's Command can exile your GY (which includes undying creatures). Karn's static doesn't affect Yawgmoth (he's a creature, not an artifact). G1 is favorable because their deck doesn't interact efficiently with creature combos beyond TKS.<br><br>
       <strong>Fulminator Mage:</strong> Chord for Fulminator Mage destroys a Tron land, disrupting their {7}+ mana assemby. This is the primary disruption tool against Tron strategies — destroying one Tron piece (Urza's Tower, Mine, Power Plant) delays them 2 turns.<br><br>
-      <table class="sb-table"><tr><th>OUT</th><th>IN</th></tr>
-      <tr><td class="sb-out">−2 Hapatra</td><td class="sb-in">+2 Fulminator Mage (destroy Tron lands)</td></tr>
-      <tr><td class="sb-out">−1 Zulaport Cutthroat</td><td class="sb-in">+3 Thoughtseize (strip TKS or Ugin)</td></tr>
-      </table>
+      <div class="sb-table">
+        <div class="sb-col">
+          <div class="sb-col-label">Out</div>
+          <div class="sb-item"><span>−2 Hapatra</span></div>
+          <div class="sb-item"><span>−1 Zulaport Cutthroat</span></div>
+        </div>
+        <div class="sb-col">
+          <div class="sb-col-label">In</div>
+          <div class="sb-item"><span>+2 Fulminator Mage (destroy Tron lands)</span></div>
+          <div class="sb-item"><span>+3 Thoughtseize (strip TKS or Ugin)</span></div>
+        </div>
+      </div>
     </td></tr>
 
     <tr onclick="toggle('mu-living')"><td>Living End</td><td>2.8%</td><td><span class="verdict verdict-even">Even</span></td><td>Dog</td><td>Even</td></tr>
     <tr><td colspan="5" class="matchup-detail" id="mu-living">
       <strong>The Matchup:</strong> Living End board-wipes your combo setup and brings back whatever creatures they've cycled. If Yawgmoth survives Living End (he was in play — he gets sacrificed by Living End, then comes back if he's in your GY — yes, Living End returns all creatures from both GYs including yours). After their Living End: they get their 5 cycled creatures back AND you get Yawgmoth + your undying back too. Race to win post-LE.<br><br>
       <strong>Endurance SB:</strong> Chord for Endurance in response to their Violent Outburst cascade. Endurance ETB: shuffle their GY. Now their Living End finds nothing to return (their creatures are shuffled back to library). This is the key counter-play.<br><br>
-      <table class="sb-table"><tr><th>OUT</th><th>IN</th></tr>
-      <tr><td class="sb-out">−2 Grist</td><td class="sb-in">+2 Endurance (counter their Living End)</td></tr>
-      <tr><td class="sb-out">−1 Bloodline Cultivator</td><td class="sb-in">+3 Thoughtseize (strip Violent Outburst)</td></tr>
-      </table>
+      <div class="sb-table">
+        <div class="sb-col">
+          <div class="sb-col-label">Out</div>
+          <div class="sb-item"><span>−2 Grist</span></div>
+          <div class="sb-item"><span>−1 Bloodline Cultivator</span></div>
+        </div>
+        <div class="sb-col">
+          <div class="sb-col-label">In</div>
+          <div class="sb-item"><span>+2 Endurance (counter their Living End)</span></div>
+          <div class="sb-item"><span>+3 Thoughtseize (strip Violent Outburst)</span></div>
+        </div>
+      </div>
       <div class="sb-note">Chord for Endurance in response to their cascade. Endurance shuffles their GY — Living End returns nothing. Protect your own GY.</div>
     </td></tr>
 
@@ -633,49 +684,89 @@
     <tr><td colspan="5" class="matchup-detail" id="mu-amulet">
       <strong>The Matchup:</strong> Amulet Titan has almost no creature interaction. Their primary win condition (Primeval Titan) is a 6/6 trample — killable with Young Wolf + Yawgmoth -1/-1 sequence (place -1/-1 on Titan each activation). Cursed Totem from their SB shuts Yawgmoth entirely. Force of Vigor from your SB destroys Cursed Totem (Force of Vigor destroys artifacts/enchantments). The matchup is good G1 and manageable post-board.<br><br>
       <strong>Boseiju vs Agatha's Soul Cauldron:</strong> If you have Agatha's Soul Cauldron and Yawgmoth is in GY: Boseiju from their hand can destroy Cauldron in response to its exile trigger. Don't activate Cauldron to exile Yawgmoth if they have Boseiju mana available.<br><br>
-      <table class="sb-table"><tr><th>OUT</th><th>IN</th></tr>
-      <tr><td class="sb-out">−1 Grist</td><td class="sb-in">+2 Force of Vigor (destroy Cursed Totem)</td></tr>
-      <tr><td class="sb-out">−1 Zulaport Cutthroat</td><td class="sb-in">+2 Haywire Mite (instant exile of Totem)</td></tr>
-      </table>
+      <div class="sb-table">
+        <div class="sb-col">
+          <div class="sb-col-label">Out</div>
+          <div class="sb-item"><span>−1 Grist</span></div>
+          <div class="sb-item"><span>−1 Zulaport Cutthroat</span></div>
+        </div>
+        <div class="sb-col">
+          <div class="sb-col-label">In</div>
+          <div class="sb-item"><span>+2 Force of Vigor (destroy Cursed Totem)</span></div>
+          <div class="sb-item"><span>+2 Haywire Mite (instant exile of Totem)</span></div>
+        </div>
+      </div>
     </td></tr>
 
     <tr onclick="toggle('mu-uwc')"><td>UW Control</td><td>2%</td><td><span class="verdict verdict-dog">Dog</span></td><td>Dog</td><td>Even</td></tr>
     <tr><td colspan="5" class="matchup-detail" id="mu-uwc">
       <strong>The Matchup:</strong> UW Control exiles creatures (Solitude, Prismatic Ending, Teferi bounces). Exile effects circumvent undying. Force of Negation counters Eldritch Evolution on your combo turn. Post-board Thoughtseize strips their key answers before you combo. Veil of Summer blanks their targeted removal for a turn, allowing a combo turn without interaction.<br><br>
       <strong>Convoke for Chord:</strong> When using Chord of Calling with convoke (tapping creatures to help pay {G} costs), do so on their end step to avoid Counterspell. Tap your creatures for convoke — they become tapped (can't block) but Chord at instant speed finds Yawgmoth into their end step with no sorcery-speed answers.<br><br>
-      <table class="sb-table"><tr><th>OUT</th><th>IN</th></tr>
-      <tr><td class="sb-out">−2 Hapatra</td><td class="sb-in">+3 Thoughtseize</td></tr>
-      <tr><td class="sb-out">−1 Bloodline Cultivator</td><td class="sb-in">+2 Veil of Summer</td></tr>
-      </table>
+      <div class="sb-table">
+        <div class="sb-col">
+          <div class="sb-col-label">Out</div>
+          <div class="sb-item"><span>−2 Hapatra</span></div>
+          <div class="sb-item"><span>−1 Bloodline Cultivator</span></div>
+        </div>
+        <div class="sb-col">
+          <div class="sb-col-label">In</div>
+          <div class="sb-item"><span>+3 Thoughtseize</span></div>
+          <div class="sb-item"><span>+2 Veil of Summer</span></div>
+        </div>
+      </div>
     </td></tr>
 
     <tr onclick="toggle('mu-reanimator')"><td>Grixis Reanimator</td><td>1.5%</td><td><span class="verdict verdict-favor">Favorable</span></td><td>Favor</td><td>Favor</td></tr>
     <tr><td colspan="5" class="matchup-detail" id="mu-reanimator">
       <strong>The Matchup:</strong> Grixis Reanimator's main threat (Archon of Cruelty) has an ETB that forces you to sacrifice a creature, discard a card, and lose 3 life. You can sacrifice the undying creature (it returns!), discard a non-essential card, and still have the Archon on their side as a blocker. Your Yawgmoth places -1/-1 on Archon each activation — eventually killing it. Endurance from your SB shuffles their GY before Persist or Goryo's Vengeance resolves.<br><br>
-      <table class="sb-table"><tr><th>OUT</th><th>IN</th></tr>
-      <tr><td class="sb-out">−1 Bloodline Cultivator</td><td class="sb-in">+2 Endurance (counter reanimation)</td></tr>
-      <tr><td class="sb-out">−1 Grist</td><td class="sb-in">+2 Thoughtseize (strip Persist)</td></tr>
-      </table>
+      <div class="sb-table">
+        <div class="sb-col">
+          <div class="sb-col-label">Out</div>
+          <div class="sb-item"><span>−1 Bloodline Cultivator</span></div>
+          <div class="sb-item"><span>−1 Grist</span></div>
+        </div>
+        <div class="sb-col">
+          <div class="sb-col-label">In</div>
+          <div class="sb-item"><span>+2 Endurance (counter reanimation)</span></div>
+          <div class="sb-item"><span>+2 Thoughtseize (strip Persist)</span></div>
+        </div>
+      </div>
     </td></tr>
 
     <tr onclick="toggle('mu-domain')"><td>Domain Aggro</td><td>2.6%</td><td><span class="verdict verdict-even">Even</span></td><td>Favor</td><td>Even</td></tr>
     <tr><td colspan="5" class="matchup-detail" id="mu-domain">
       <strong>The Matchup:</strong> Domain Aggro presents Scion of Draco with hexproof (from opponent targeting). Yawgmoth's -1/-1 ability targets a creature — hexproof prevents Yawgmoth from targeting Scion. Hapatra's Snakes have deathtouch and block Scion in combat (Scion gets +2/+2 for each basic type you control — it's likely very large). Without being able to target Scion, you need to win through the combo drain before they kill you.<br><br>
       <strong>Speed:</strong> Your combo kills faster than they can deal 20 damage if you assemble by turn 3–4. Young Wolf blocking Ragavan/early threats while you tutor up combo is the key line. Post-board Thoughtseize strips Scion or Leyline of the Guildpact (which gives Scion hexproof).<br><br>
-      <table class="sb-table"><tr><th>OUT</th><th>IN</th></tr>
-      <tr><td class="sb-out">−1 Grist</td><td class="sb-in">+3 Thoughtseize (strip Scion or Leyline)</td></tr>
-      <tr><td class="sb-out">−2 Hapatra</td><td class="sb-in">+2 Endurance (3/4 body, blocks attackers)</td></tr>
-      </table>
+      <div class="sb-table">
+        <div class="sb-col">
+          <div class="sb-col-label">Out</div>
+          <div class="sb-item"><span>−1 Grist</span></div>
+          <div class="sb-item"><span>−2 Hapatra</span></div>
+        </div>
+        <div class="sb-col">
+          <div class="sb-col-label">In</div>
+          <div class="sb-item"><span>+3 Thoughtseize (strip Scion or Leyline)</span></div>
+          <div class="sb-item"><span>+2 Endurance (3/4 body, blocks attackers)</span></div>
+        </div>
+      </div>
     </td></tr>
 
     <tr onclick="toggle('mu-mirror')"><td>Yawgmoth Mirror</td><td>2%</td><td><span class="verdict verdict-even">Even</span></td><td>Even</td><td>Even</td></tr>
     <tr><td colspan="5" class="matchup-detail" id="mu-mirror">
       <strong>The Matchup:</strong> Mirror is about who assembles the combo first and whether their Blood Artist triggers before your loop begins. Key interaction: if they start the infinite loop, you can sacrifice a creature in response to each Yawgmoth activation to trigger your own Blood Artist (if you have one). The player who goes first usually wins — priority in the same board state wins the mirror by establishing the loop before the other player can respond.<br><br>
       <strong>Agatha's Soul Cauldron:</strong> In the mirror, Cauldron exiling the opponent's Yawgmoth from GY removes their best recursion. Activate Cauldron to exile their Yawgmoth before they can use it — prevents them from using Cauldron on their own side later.<br><br>
-      <table class="sb-table"><tr><th>OUT</th><th>IN</th></tr>
-      <tr><td class="sb-out">−2 Hapatra</td><td class="sb-in">+3 Thoughtseize (strip their Yawgmoth)</td></tr>
-      <tr><td class="sb-out">−1 Bloodline Cultivator</td><td class="sb-in">+2 Veil of Summer</td></tr>
-      </table>
+      <div class="sb-table">
+        <div class="sb-col">
+          <div class="sb-col-label">Out</div>
+          <div class="sb-item"><span>−2 Hapatra</span></div>
+          <div class="sb-item"><span>−1 Bloodline Cultivator</span></div>
+        </div>
+        <div class="sb-col">
+          <div class="sb-col-label">In</div>
+          <div class="sb-item"><span>+3 Thoughtseize (strip their Yawgmoth)</span></div>
+          <div class="sb-item"><span>+2 Veil of Summer</span></div>
+        </div>
+      </div>
     </td></tr>
   </table>
 </div>

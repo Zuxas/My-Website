@@ -55,14 +55,17 @@
   .matchup-table th { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; padding:10px 16px; background:var(--ink); color:rgba(242,237,230,0.6); text-align:left; }
   .matchup-table td { padding:12px 16px; border-bottom:1px solid var(--rule); font-size:15px; font-weight:300; }
   .matchup-table tr:hover td { background:var(--paper-dark); cursor:pointer; }
-  .matchup-detail { display:none; background:var(--accent-light); border-left:4px solid var(--accent); padding:24px 32px; margin:0; }
+    .matchup-detail { display:none; border:1px solid var(--rule); background:var(--paper-dark); padding:32px 40px; margin:0 0 2px; animation:fadeIn 0.2s ease; }
   .matchup-detail.open { display:block; }
   .verdict { display:inline-block; font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; padding:4px 10px; border:1px solid; }
   .verdict-dog { background:var(--danger-light); color:var(--danger); border-color:var(--danger); }
   .verdict-even { background:var(--gold-light); color:var(--gold); border-color:var(--gold); }
   .verdict-favor { background:#d1fae5; color:#065f46; border-color:#065f46; }
   .verdict-hard { background:var(--danger-light); color:var(--danger); border-color:var(--danger); }
-  .sb-table { width:100%; border-collapse:collapse; margin:16px 0; }
+  .sb-col { background:var(--paper); padding:20px; }
+    .sb-item { font-size:13px; font-weight:300; padding:4px 0; border-bottom:1px solid rgba(200,191,176,0.2); }
+  .sb-col-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--mid); margin-bottom:12px; }
+  .sb-table { display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--rule); border:1px solid var(--rule); margin:16px 0; }
   .sb-table th { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; padding:8px 12px; background:var(--paper-dark); color:var(--mid); text-align:left; border-bottom:2px solid var(--rule); }
   .sb-table td { padding:10px 12px; border-bottom:1px solid var(--rule); font-size:14px; font-weight:300; }
   .sb-out { color:var(--danger); font-family:'DM Mono',monospace; font-size:12px; }
@@ -566,10 +569,18 @@
       <strong>The Matchup:</strong> Boros Energy has minimal GY interaction and can't stop a turn-3 cascade. Their removal (Lightning Bolt, Lightning Helix, Galvanic Discharge) deals with small creatures but Living End returns bodies that are too large for Bolt to kill — Street Wraith (3/4), Horror of the Broken Lands (4/4), Curator of Mysteries (4/4 flying). A living end board of 4 large creatures attacks past whatever Boros built on turns 1–3.<br><br>
       <strong>Aggro Race:</strong> On the draw against a fast Boros hand (Ragavan T1 → Cori-Steel Cutter T2), you may be at 8–10 life before you cascade on T3. Street Wraith cycling costs 2 life per cycle — don't cycle all 4 Street Wraiths against a burn plan. Board-wipe their creatures with Living End and your 3/4 blockers survive.<br><br>
       <strong>Post-Board:</strong> Boros may bring Relic of Progenitus or Rest in Peace. Foundation Breaker from SB handles both. Clarion Conqueror SB shuts their Kappa Cannoneer and Ragavan activated abilities as a bonus.<br><br>
-      <table class="sb-table"><tr><th>OUT</th><th>IN</th></tr>
-      <tr><td class="sb-out">−2 Overlord of the Balemurk (too slow for the race)</td><td class="sb-in">+2 Foundation Breaker (answers RIP / Relic)</td></tr>
-      <tr><td class="sb-out">−1 Ardent Plea (enough cascade)</td><td class="sb-in">+2 Endurance (battlefield size, blocks Ragavan)</td></tr>
-      </table>
+      <div class="sb-table">
+        <div class="sb-col">
+          <div class="sb-col-label">Out</div>
+          <div class="sb-item"><span>−2 Overlord of the Balemurk (too slow for the race)</span></div>
+          <div class="sb-item"><span>−1 Ardent Plea (enough cascade)</span></div>
+        </div>
+        <div class="sb-col">
+          <div class="sb-col-label">In</div>
+          <div class="sb-item"><span>+2 Foundation Breaker (answers RIP / Relic)</span></div>
+          <div class="sb-item"><span>+2 Endurance (battlefield size, blocks Ragavan)</span></div>
+        </div>
+      </div>
     </td></tr>
 
     <tr onclick="toggle('mu-jeskai')"><td>Jeskai Blink</td><td>7%</td><td><span class="verdict verdict-dog">Dog</span></td><td>Dog</td><td>Hard</td></tr>
@@ -577,10 +588,18 @@
       <strong>The Matchup:</strong> Jeskai Blink is one of the harder matchups. Consign to Memory counters spells with no colored mana in their cost — Living End has NO mana cost, making it colorless for this purpose. Consign to Memory CAN counter Living End. Force of Negation can counter it too. Teferi, Time Raveler removes your ability to cascade at instant speed (you can't cast spells at instant speed with Teferi), forcing you to cascade on your main phase where they have full access to interaction.<br><br>
       <strong>Consign Note:</strong> Living End is a sorcery with no mana cost. Consign to Memory counters spells that are "colorless" (no colored mana costs). Living End qualifies — it's a valid Consign target. This is unique — most decks can't hit Living End with interaction this clean.<br><br>
       <strong>Grief Pre-Cascade:</strong> Strip their Consign or Force of Negation before cascading. If they have 2 counters, you may need two Grief triggers or Force of Negation backup. The matchup is winnable with Grief → Force protection on cascade but they have density of interaction.<br><br>
-      <table class="sb-table"><tr><th>OUT</th><th>IN</th></tr>
-      <tr><td class="sb-out">−2 Waker of Waves (too slow)</td><td class="sb-in">+2 Commandeer (steal their Teferi)</td></tr>
-      <tr><td class="sb-out">−1 Ardent Plea</td><td class="sb-in">+2 Inevitable Betrayal (steal their threats)</td></tr>
-      </table>
+      <div class="sb-table">
+        <div class="sb-col">
+          <div class="sb-col-label">Out</div>
+          <div class="sb-item"><span>−2 Waker of Waves (too slow)</span></div>
+          <div class="sb-item"><span>−1 Ardent Plea</span></div>
+        </div>
+        <div class="sb-col">
+          <div class="sb-col-label">In</div>
+          <div class="sb-item"><span>+2 Commandeer (steal their Teferi)</span></div>
+          <div class="sb-item"><span>+2 Inevitable Betrayal (steal their threats)</span></div>
+        </div>
+      </div>
       <div class="sb-note">Consign to Memory CAN counter Living End — it has no colored mana in its cost. Know this going in and plan around it with Grief strips.</div>
     </td></tr>
 
@@ -589,10 +608,18 @@
       <strong>The Matchup:</strong> G1 is favorable — Affinity can't stop the cascade and Living End board-wipes their artifact creatures plus their Construct tokens from Urza's Saga. Post-board, Affinity has Leyline of the Void (GY exile continuously) and Grafdigger's Cage (creatures can't enter from GY). Leyline of the Void on turn 0 is game over — your cycling creatures can't even reach the GY.<br><br>
       <strong>Leyline of the Void:</strong> If they have Leyline out, cycling is now pointless for the Living End plan — each cycled creature is immediately exiled, not put to GY. Your cascade still hits Living End but Living End finds no creatures in GY (they're all exiled). Foundation Breaker: played from hand, ETB destroys Leyline. This MUST be the first priority against Leyline — don't cascade until it's gone.<br><br>
       <strong>Clarion Conqueror SB:</strong> Shuts off their Kappa Cannoneer activated ability and their artifact creature activated abilities (relevant for Izzet's mana dorks).<br><br>
-      <table class="sb-table"><tr><th>OUT</th><th>IN</th></tr>
-      <tr><td class="sb-out">−2 Grief (poor vs artifacts)</td><td class="sb-in">+3 Foundation Breaker (Cage/Leyline)</td></tr>
-      <tr><td class="sb-out">−1 Waker of Waves</td><td class="sb-in">+2 Force of Vigor (destroys Leyline FoV)</td></tr>
-      </table>
+      <div class="sb-table">
+        <div class="sb-col">
+          <div class="sb-col-label">Out</div>
+          <div class="sb-item"><span>−2 Grief (poor vs artifacts)</span></div>
+          <div class="sb-item"><span>−1 Waker of Waves</span></div>
+        </div>
+        <div class="sb-col">
+          <div class="sb-col-label">In</div>
+          <div class="sb-item"><span>+3 Foundation Breaker (Cage/Leyline)</span></div>
+          <div class="sb-item"><span>+2 Force of Vigor (destroys Leyline FoV)</span></div>
+        </div>
+      </div>
       <div class="sb-note">Leyline of the Void on T0 = don't cycle, answer it first. Foundation Breaker from hand destroys Leyline even with Grafdigger's Cage in play.</div>
     </td></tr>
 
@@ -600,10 +627,18 @@
     <tr><td colspan="5" class="matchup-detail" id="mu-storm">
       <strong>The Matchup:</strong> Speed race G1 — both kill turn 3. On the play: cascade turn 3 before they can combo. On the draw: they may kill turn 2–3 before you can cascade. Force of Negation protects your cascade. They have Orim's Chant post-board which says "target player can't cast spells this turn" — if they Orim's Chant you on your cascade turn, you can't cascade. This is their key post-board tool.<br><br>
       <strong>Force of Negation vs Orim's Chant:</strong> Orim's Chant targeting you prevents you from casting spells including Violent Outburst. You can cast FoN in response to Orim's Chant before it resolves to counter it — but if they play Ral's +1 (which copies the next instant/sorcery), Chant gets copied and both must be countered. This is why running multiple FoNs matters.<br><br>
-      <table class="sb-table"><tr><th>OUT</th><th>IN</th></tr>
-      <tr><td class="sb-out">−2 Overlord of the Balemurk (too slow)</td><td class="sb-in">+2 Endurance (protects vs Past in Flames flashback)</td></tr>
-      <tr><td class="sb-out">−1 Ardent Plea</td><td class="sb-in">+1 Grief (strips their Orim's Chant pre-combat)</td></tr>
-      </table>
+      <div class="sb-table">
+        <div class="sb-col">
+          <div class="sb-col-label">Out</div>
+          <div class="sb-item"><span>−2 Overlord of the Balemurk (too slow)</span></div>
+          <div class="sb-item"><span>−1 Ardent Plea</span></div>
+        </div>
+        <div class="sb-col">
+          <div class="sb-col-label">In</div>
+          <div class="sb-item"><span>+2 Endurance (protects vs Past in Flames flashback)</span></div>
+          <div class="sb-item"><span>+1 Grief (strips their Orim's Chant pre-combat)</span></div>
+        </div>
+      </div>
     </td></tr>
 
     <tr onclick="toggle('mu-etron')"><td>Eldrazi Tron</td><td>5.5%</td><td><span class="verdict verdict-dog">Dog</span></td><td>Even</td><td>Dog</td></tr>
@@ -611,30 +646,54 @@
       <strong>The Matchup:</strong> Thought-Knot Seer strips your Violent Outburst or Force of Negation from hand on turn 2, setting up a turn-3 cascade with no protection. Kozilek's Command exiles your GY (the {2}{B}{B} mode). Relic of Progenitus ticks up until it exiles all GYs. The combination of hand disruption + GY exile is exactly what breaks the Living End gameplan. Post-board, Inevitable Betrayal steals their Ulamog or Emrakul for free.<br><br>
       <strong>Inevitable Betrayal:</strong> Pitch 3 blue cards, search their library for a creature, put it under your control. Stealing Ulamog from Eldrazi Tron is a blowout. The 3 blue cards pitched are 3 cyclers in your GY for a future Living End. This is one of the best silver bullets in the SB specifically for Tron.<br><br>
       <strong>Commandeer:</strong> Steal Kozilek's Command before it exiles your GY. Pitch 2 blue cards — you now control their GY exile effect. The 2 pitched blue cards go to GY.<br><br>
-      <table class="sb-table"><tr><th>OUT</th><th>IN</th></tr>
-      <tr><td class="sb-out">−2 Ardent Plea (low need for redundancy)</td><td class="sb-in">+2 Inevitable Betrayal (steal their fatties)</td></tr>
-      <tr><td class="sb-out">−2 Grief (less useful vs colorless threats)</td><td class="sb-in">+2 Commandeer (steal Kozilek's Command)</td></tr>
-      </table>
+      <div class="sb-table">
+        <div class="sb-col">
+          <div class="sb-col-label">Out</div>
+          <div class="sb-item"><span>−2 Ardent Plea (low need for redundancy)</span></div>
+          <div class="sb-item"><span>−2 Grief (less useful vs colorless threats)</span></div>
+        </div>
+        <div class="sb-col">
+          <div class="sb-col-label">In</div>
+          <div class="sb-item"><span>+2 Inevitable Betrayal (steal their fatties)</span></div>
+          <div class="sb-item"><span>+2 Commandeer (steal Kozilek's Command)</span></div>
+        </div>
+      </div>
     </td></tr>
 
     <tr onclick="toggle('mu-yawg')"><td>Golgari Yawgmoth</td><td>2%</td><td><span class="verdict verdict-even">Even</span></td><td>Favor</td><td>Even</td></tr>
     <tr><td colspan="5" class="matchup-detail" id="mu-yawg">
       <strong>The Matchup:</strong> G1 is favorable — Yawgmoth has minimal GY hate and you can board-wipe their creature-heavy setup on turn 3. Living End wipes Yawgmoth himself (protection from Humans means nothing when everyone is sacrificed simultaneously — Living End makes all creatures leave regardless). Post-board, Yawgmoth brings Force of Vigor (destroys Clarion Conqueror) and sometimes Leyline of the Void.<br><br>
       <strong>Clarion Conqueror:</strong> Shuts off Yawgmoth's activated sacrifice ability completely. Living End returns Clarion Conqueror as a 3/3 flyer. Even if they Force of Vigor it, you've forced them to use their SB piece and slowed their combo by at least one turn.<br><br>
-      <table class="sb-table"><tr><th>OUT</th><th>IN</th></tr>
-      <tr><td class="sb-out">−1 Waker of Waves</td><td class="sb-in">+2 Clarion Conqueror (shuts Yawgmoth ability)</td></tr>
-      <tr><td class="sb-out">−1 Overlord of the Balemurk</td><td class="sb-in">+2 Foundation Breaker (vs their Leyline post-board)</td></tr>
-      </table>
+      <div class="sb-table">
+        <div class="sb-col">
+          <div class="sb-col-label">Out</div>
+          <div class="sb-item"><span>−1 Waker of Waves</span></div>
+          <div class="sb-item"><span>−1 Overlord of the Balemurk</span></div>
+        </div>
+        <div class="sb-col">
+          <div class="sb-col-label">In</div>
+          <div class="sb-item"><span>+2 Clarion Conqueror (shuts Yawgmoth ability)</span></div>
+          <div class="sb-item"><span>+2 Foundation Breaker (vs their Leyline post-board)</span></div>
+        </div>
+      </div>
     </td></tr>
 
     <tr onclick="toggle('mu-amulet')"><td>Amulet Titan</td><td>3.1%</td><td><span class="verdict verdict-even">Even</span></td><td>Favor</td><td>Even</td></tr>
     <tr><td colspan="5" class="matchup-detail" id="mu-amulet">
       <strong>The Matchup:</strong> Pure speed race. Amulet Titan can kill turn 3, Living End kills turn 3. The key interaction points: Endurance (they have it SB) shuffles your GY before Living End resolves — answer it with Subtlety. Their Defense Grid (post-board) makes your free spells cost {3} more on their turn: Force of Negation costs {4}{U}{U} on their turn, effectively uncastable free. Don't rely on FoN vs Defense Grid.<br><br>
       <strong>Bojuka Bog:</strong> Amulet Titan runs Bojuka Bog as a mainboard land they can fetch with Primeval Titan. If they cascade-fetch Bojuka Bog while your Living End is on the stack, your GY is exiled. Prioritize making sure Living End resolves before they can find Bojuka. Casting at EOT of their turn prevents them from having a combat step to fetch Bog.<br><br>
-      <table class="sb-table"><tr><th>OUT</th><th>IN</th></tr>
-      <tr><td class="sb-out">−2 Overlord of the Balemurk</td><td class="sb-in">+2 Endurance (protect your GY from their Bog)</td></tr>
-      <tr><td class="sb-out">−1 Grief</td><td class="sb-in">+1 Foundation Breaker (vs Cursed Totem SB)</td></tr>
-      </table>
+      <div class="sb-table">
+        <div class="sb-col">
+          <div class="sb-col-label">Out</div>
+          <div class="sb-item"><span>−2 Overlord of the Balemurk</span></div>
+          <div class="sb-item"><span>−1 Grief</span></div>
+        </div>
+        <div class="sb-col">
+          <div class="sb-col-label">In</div>
+          <div class="sb-item"><span>+2 Endurance (protect your GY from their Bog)</span></div>
+          <div class="sb-item"><span>+1 Foundation Breaker (vs Cursed Totem SB)</span></div>
+        </div>
+      </div>
     </td></tr>
 
     <tr onclick="toggle('mu-uwc')"><td>UW Control</td><td>2%</td><td><span class="verdict verdict-dog">Dog</span></td><td>Dog</td><td>Hard</td></tr>
@@ -642,40 +701,72 @@
       <strong>The Matchup:</strong> UW Control has the full counter-suite: Counterspell, Force of Negation (also can't be used on Living End on their turn if they want it free — it's a noncreature spell), and most critically, Teferi, Time Raveler. Teferi's +1 and static ability means you can only cast spells on your main phase — no instant-speed cascade at EOT. Cascade on your main phase while they have full mana and full interaction is extremely difficult.<br><br>
       <strong>Grief First, Always:</strong> Strip Teferi from their hand before cascading. Without Teferi, you regain the instant-speed advantage. Grief + Violent Outburst on the same turn (Grief resolves, strip Teferi from hand, EOT cast Violent Outburst) is the cleanest game plan. But if they have backup counters, this still fails.<br><br>
       <strong>Commandeer vs Their Spells:</strong> Commandeer steals a Teferi on the stack (it's a noncreature spell). Gain control of their Teferi. Pitch 2 blue cyclers.<br><br>
-      <table class="sb-table"><tr><th>OUT</th><th>IN</th></tr>
-      <tr><td class="sb-out">−2 Overlord of the Balemurk</td><td class="sb-in">+2 Commandeer (steal Teferi)</td></tr>
-      <tr><td class="sb-out">−2 Waker of Waves</td><td class="sb-in">+2 Inevitable Betrayal (steal their threat)</td></tr>
-      </table>
+      <div class="sb-table">
+        <div class="sb-col">
+          <div class="sb-col-label">Out</div>
+          <div class="sb-item"><span>−2 Overlord of the Balemurk</span></div>
+          <div class="sb-item"><span>−2 Waker of Waves</span></div>
+        </div>
+        <div class="sb-col">
+          <div class="sb-col-label">In</div>
+          <div class="sb-item"><span>+2 Commandeer (steal Teferi)</span></div>
+          <div class="sb-item"><span>+2 Inevitable Betrayal (steal their threat)</span></div>
+        </div>
+      </div>
     </td></tr>
 
     <tr onclick="toggle('mu-reanimator')"><td>Grixis Reanimator</td><td>1.5%</td><td><span class="verdict verdict-favor">Favorable</span></td><td>Favor</td><td>Favor</td></tr>
     <tr><td colspan="5" class="matchup-detail" id="mu-reanimator">
       <strong>The Matchup:</strong> Grixis Reanimator runs Grief (shared card!) for hand disruption. But your deck is more redundant — 4 Living End, 8 cascade spells. Losing one Violent Outburst to Grief still leaves plenty of lines. Living End wipes their reanimated Archon of Cruelty (6/6 with trample and triggers — all removed). Endurance from your SB can shuffle their GY when they try to reanimate, clearing their target.<br><br>
       <strong>Speed:</strong> You're both trying to win on turn 2–3. On the play, cascade before they can reanimate. On the draw, their T2 Archon into Grief EOT hitting your Violent Outburst can be disruptive — keep more than one cascade in hand when possible.<br><br>
-      <table class="sb-table"><tr><th>OUT</th><th>IN</th></tr>
-      <tr><td class="sb-out">−2 Overlord of the Balemurk</td><td class="sb-in">+2 Endurance (shuffle their Archon GY)</td></tr>
-      <tr><td class="sb-out">−1 Waker of Waves</td><td class="sb-in">+1 Foundation Breaker (vs Cage)</td></tr>
-      </table>
+      <div class="sb-table">
+        <div class="sb-col">
+          <div class="sb-col-label">Out</div>
+          <div class="sb-item"><span>−2 Overlord of the Balemurk</span></div>
+          <div class="sb-item"><span>−1 Waker of Waves</span></div>
+        </div>
+        <div class="sb-col">
+          <div class="sb-col-label">In</div>
+          <div class="sb-item"><span>+2 Endurance (shuffle their Archon GY)</span></div>
+          <div class="sb-item"><span>+1 Foundation Breaker (vs Cage)</span></div>
+        </div>
+      </div>
     </td></tr>
 
     <tr onclick="toggle('mu-domain')"><td>Domain Aggro</td><td>2.6%</td><td><span class="verdict verdict-even">Even</span></td><td>Favor</td><td>Even</td></tr>
     <tr><td colspan="5" class="matchup-detail" id="mu-domain">
       <strong>The Matchup:</strong> Domain Aggro is fast but has no GY interaction. Their hexproof Scion of Draco is in danger from Living End's "sacrifice all creatures" clause — it doesn't target, so hexproof doesn't protect it. Post-board, Domain brings Damping Sphere or some disruption. Their main pressure: killing you before turn 3. Street Wraith cycling costs life, and Scion with double-strike can kill fast. Board-wipe with Living End resets the board state cleanly.<br><br>
       <strong>Endurance SB:</strong> Endurance as a blocker (3/4 reach, flash) can stop Scion of Draco in combat. Endurance from hand (not evoke) = a 3/4 reach that stays on board.<br><br>
-      <table class="sb-table"><tr><th>OUT</th><th>IN</th></tr>
-      <tr><td class="sb-out">−2 Overlord of the Balemurk</td><td class="sb-in">+2 Endurance (3/4 reach blocks fliers)</td></tr>
-      <tr><td class="sb-out">−1 Waker of Waves</td><td class="sb-in">+2 Foundation Breaker (vs potential RIP)</td></tr>
-      </table>
+      <div class="sb-table">
+        <div class="sb-col">
+          <div class="sb-col-label">Out</div>
+          <div class="sb-item"><span>−2 Overlord of the Balemurk</span></div>
+          <div class="sb-item"><span>−1 Waker of Waves</span></div>
+        </div>
+        <div class="sb-col">
+          <div class="sb-col-label">In</div>
+          <div class="sb-item"><span>+2 Endurance (3/4 reach blocks fliers)</span></div>
+          <div class="sb-item"><span>+2 Foundation Breaker (vs potential RIP)</span></div>
+        </div>
+      </div>
     </td></tr>
 
     <tr onclick="toggle('mu-mirror')"><td>Living End Mirror</td><td>2.8%</td><td><span class="verdict verdict-even">Even</span></td><td>Even</td><td>Even</td></tr>
     <tr><td colspan="5" class="matchup-detail" id="mu-mirror">
       <strong>The Matchup:</strong> Whoever resolves Living End first usually wins — their cascade wipes your board too, and they get all their creatures back. Key tech: cascade in response to their cascade. When they cast Violent Outburst and cascade trigger is on stack, you cascade with your own spell → your Living End resolves first (it's on top of the stack), wiping your GY and theirs, putting creatures in play. Then their Living End resolves with nothing in GY.<br><br>
       <strong>Force of Negation Wars:</strong> Counter their Living End, they Force yours. Whoever runs out of FoNs first loses. Sideboard: extra Grief to strip their FoN from hand before your cascade.<br><br>
-      <table class="sb-table"><tr><th>OUT</th><th>IN</th></tr>
-      <tr><td class="sb-out">−2 Overlord of the Balemurk</td><td class="sb-in">+2 Endurance (shuffle their GY before LE resolves)</td></tr>
-      <tr><td class="sb-out">−1 Waker of Waves</td><td class="sb-in">+1 Grief (strips their FoN)</td></tr>
-      </table>
+      <div class="sb-table">
+        <div class="sb-col">
+          <div class="sb-col-label">Out</div>
+          <div class="sb-item"><span>−2 Overlord of the Balemurk</span></div>
+          <div class="sb-item"><span>−1 Waker of Waves</span></div>
+        </div>
+        <div class="sb-col">
+          <div class="sb-col-label">In</div>
+          <div class="sb-item"><span>+2 Endurance (shuffle their GY before LE resolves)</span></div>
+          <div class="sb-item"><span>+1 Grief (strips their FoN)</span></div>
+        </div>
+      </div>
       <div class="sb-note">Cascade in response to their cascade. Your Living End resolves first, you get all GY creatures. Then their Living End resolves with nothing left to return.</div>
     </td></tr>
   </table>

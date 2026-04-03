@@ -56,13 +56,16 @@
   .matchup-table th { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; padding:10px 16px; background:var(--ink); color:rgba(242,237,230,0.6); text-align:left; }
   .matchup-table td { padding:12px 16px; border-bottom:1px solid var(--rule); font-size:15px; font-weight:300; }
   .matchup-table tr:hover td { background:var(--paper-dark); cursor:pointer; }
-  .matchup-detail { display:none; background:var(--accent-light); border-left:4px solid var(--accent); padding:24px 32px; margin:0; }
+    .matchup-detail { display:none; border:1px solid var(--rule); background:var(--paper-dark); padding:32px 40px; margin:0 0 2px; animation:fadeIn 0.2s ease; }
   .matchup-detail.open { display:block; }
   .verdict { display:inline-block; font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; padding:4px 10px; border:1px solid; }
   .verdict-dog { background:var(--danger-light); color:var(--danger); border-color:var(--danger); }
   .verdict-even { background:var(--gold-light); color:var(--gold); border-color:var(--gold); }
   .verdict-favor { background:#d1fae5; color:#065f46; border-color:#065f46; }
-  .sb-table { width:100%; border-collapse:collapse; margin:16px 0; }
+  .sb-col { background:var(--paper); padding:20px; }
+  .sb-item { font-size:13px; font-weight:300; padding:4px 0; border-bottom:1px solid rgba(200,191,176,0.2); }
+  .sb-col-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--mid); margin-bottom:12px; }
+  .sb-table { display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--rule); border:1px solid var(--rule); margin:16px 0; }
   .sb-table th { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; padding:8px 12px; background:var(--paper-dark); color:var(--mid); text-align:left; border-bottom:2px solid var(--rule); }
   .sb-table td { padding:10px 12px; border-bottom:1px solid var(--rule); font-size:14px; font-weight:300; }
   .sb-out { color:var(--danger); font-family:'DM Mono',monospace; font-size:12px; }
@@ -595,11 +598,20 @@
       <tr onclick="toggle('mu-boros')"><td><strong>Boros Energy</strong></td><td>Grind</td><td><span class="verdict verdict-dog">Unfavorable</span></td><td>Coppercoat Vanguard — ward {1} taxes their cheap removal</td></tr>
       <tr><td colspan="4" class="matchup-detail" id="mu-boros">
         <p>Your hardest common matchup. Deploy Coppercoat Vanguard early — ward {1} forces them to pay extra on every removal spell, which buys you the tempo to build your board before Jirina or Adeline comes down. Grind with Adeline tokens and Guide of Souls energy conversion once the board is established. Jirina's sacrifice is your blowout: hold it for their burn aimed at your key creature or their sweeper — instant-speed hexproof and indestructible until EOT keeps your whole team alive. Sanctifier en-Vec postboard blanks their entire removal suite.</p>
-        <table class="sb-table"><thead><tr><th>Out</th><th>In</th></tr></thead><tbody>
-          <tr><td class="sb-out">−2 Thalia, Guardian of Thraben</td><td class="sb-in">+2 Dismember</td></tr>
-          <tr><td class="sb-out">−1 Mockingbird</td><td class="sb-in">+2 Sanctifier en-Vec</td></tr>
-          <tr><td class="sb-out">−2 Mantis Rider</td><td class="sb-in">+1 Clarion Conqueror</td></tr>
-        </tbody></table>
+        <div class="sb-table">
+        <div class="sb-col">
+          <div class="sb-col-label">Out</div>
+          <div class="sb-item"><span>−2 Thalia, Guardian of Thraben</span></div>
+          <div class="sb-item"><span>−1 Mockingbird</span></div>
+          <div class="sb-item"><span>−2 Mantis Rider</span></div>
+        </div>
+        <div class="sb-col">
+          <div class="sb-col-label">In</div>
+          <div class="sb-item"><span>+2 Dismember</span></div>
+          <div class="sb-item"><span>+2 Sanctifier en-Vec</span></div>
+          <div class="sb-item"><span>+1 Clarion Conqueror</span></div>
+        </div>
+      </div>
         <p class="sb-note">Thalia is weak here — their spells cost 1-2 mana already and the extra {1} doesn't slow them meaningfully. Sanctifier en-Vec has protection from black AND red — it blanks their entire removal suite and can't be blocked by their red creatures. Dismember answers their top threats through any amount of energy.</p>
         <h3>% Point Edges</h3>
         <p class="sb-note"><strong>+2–3 pts: Sanctifier en-Vec is your best SB card.</strong> Protection from black and red means they literally cannot target it, block it, or deal damage to it. A 2/2 that attacks every turn unimpeded while carrying Lieutenant counters and Guide of Souls flying closes games they have no answer to.</p>
@@ -609,11 +621,18 @@
       <tr onclick="toggle('mu-jeskai')"><td><strong>Jeskai Blink</strong></td><td>Disruption</td><td><span class="verdict verdict-even">Even</span></td><td>Meddling Mage naming Ephemerate</td></tr>
       <tr><td colspan="4" class="matchup-detail" id="mu-jeskai">
         <p>Vial in <span class="c">Meddling Mage</span> at their end step naming Ephemerate — that's the game plan. Mage shuts down their entire blink engine; they can't Solitude, can't Stoneforge tutor, can't Phelia loop without first killing the Mage. <span class="c">Thalia</span> taxes their Ephemerate from {W} to {1}{W}, which is often enough to strand it in hand on a tight turn. Apply pressure alongside your disruption — Mage + Thalia + a 3/3 attacking every turn is more than they can handle. Don't play disruption-only; close the game before their engine comes back online.</p>
-        <table class="sb-table"><thead><tr><th>Out</th><th>In</th></tr></thead><tbody>
-          <tr><td class="sb-out">−4 Guide of Souls</td><td class="sb-in">+2 Reflector Mage</td></tr>
-          <tr><td class="sb-out">−1 Mockingbird</td><td class="sb-in">+2 Dismember</td></tr>
-          <tr><td class="sb-out"></td><td class="sb-in">+1 Gaddock Teeg</td></tr>
-        </tbody></table>
+        <div class="sb-table">
+        <div class="sb-col">
+          <div class="sb-col-label">Out</div>
+          <div class="sb-item"><span>−4 Guide of Souls</span></div>
+          <div class="sb-item"><span>−1 Mockingbird</span></div>
+        </div>
+        <div class="sb-col">
+          <div class="sb-col-label">In</div>
+          <div class="sb-item"><span>+2 Reflector Mage</span></div>
+          <div class="sb-item"><span>+2 Dismember</span></div>
+        </div>
+      </div>
         <p class="sb-note">Guide's energy plan is too slow against their interaction density. Reflector Mage bounces Solitude or Stoneforge and prevents recast for a turn — devastating tempo. Gaddock Teeg stops Wrath of God, Supreme Verdict, and any MV 4+ spell. Dismember kills Solitude through their Ephemerate timing.</p>
         <h3>% Point Edges</h3>
         <p class="sb-note"><strong>+3 pts: Jirina sacrifice in response to Solitude evoke.</strong> They evoke Solitude targeting your best creature → sacrifice Jirina → your entire team gains hexproof and indestructible → Solitude's exile fizzles, and their Solitude dies to evoke. You kept everything, they lost their Solitude for nothing.</p>
@@ -623,11 +642,20 @@
       <tr onclick="toggle('mu-storm')"><td><strong>Ruby Storm</strong></td><td>Aggro-First</td><td><span class="verdict verdict-favor">Favorable</span></td><td>Thalia + Meddling Mage double lock</td></tr>
       <tr><td colspan="4" class="matchup-detail" id="mu-storm">
         <p>Your best matchup in the meta. <span class="c">Thalia</span> taxes every ritual and cantrip — their entire deck is noncreature spells. <span class="c">Meddling Mage</span> naming Past in Flames or Grapeshot removes their primary win condition. Even without those two, your clock kills them by T4 while they're still trying to assemble mana through your taxes. Post-board <span class="c">Gaddock Teeg</span> stops all MV 4+ noncreature spells AND X-spells — both Past in Flames and Grapeshot are illegal under Teeg.</p>
-        <table class="sb-table"><thead><tr><th>Out</th><th>In</th></tr></thead><tbody>
-          <tr><td class="sb-out">−2 Adeline, Resplendent Cathar</td><td class="sb-in">+1 Gaddock Teeg</td></tr>
-          <tr><td class="sb-out">−2 Jirina, Dauntless General</td><td class="sb-in">+1 Lavinia, Azorius Renegade</td></tr>
-          <tr><td class="sb-out">−1 Mockingbird</td><td class="sb-in">+1 Vexing Bauble</td></tr>
-        </tbody></table>
+        <div class="sb-table">
+        <div class="sb-col">
+          <div class="sb-col-label">Out</div>
+          <div class="sb-item"><span>−2 Adeline, Resplendent Cathar</span></div>
+          <div class="sb-item"><span>−2 Jirina, Dauntless General</span></div>
+          <div class="sb-item"><span>−1 Mockingbird</span></div>
+        </div>
+        <div class="sb-col">
+          <div class="sb-col-label">In</div>
+          <div class="sb-item"><span>+1 Gaddock Teeg</span></div>
+          <div class="sb-item"><span>+1 Lavinia, Azorius Renegade</span></div>
+          <div class="sb-item"><span>+1 Vexing Bauble</span></div>
+        </div>
+      </div>
         <p class="sb-note">Adeline is too slow at 3 mana — you need disruption, not more bodies. Lavinia counters any spell cast without paying full mana (counters Manamorphose's {0} net, stops Past in Flames flashback if they can't pay). Vexing Bauble counters any free spell. Teeg locks them out entirely.</p>
         <h3>% Point Edges</h3>
         <p class="sb-note"><strong>+5 pts: Thalia + Teeg + Mage = triple lock.</strong> Thalia taxes +{1}, Teeg blocks MV 4+ and X-spells, Mage names their remaining out. They need to find removal for ALL THREE hate pieces before they can combo. Most Storm lists run 0-2 pieces of creature removal.</p>
@@ -636,11 +664,20 @@
       <tr onclick="toggle('mu-living')"><td><strong>Living End</strong></td><td>Aggro-First</td><td><span class="verdict verdict-favor">Favorable</span></td><td>Meddling Mage naming Living End</td></tr>
       <tr><td colspan="4" class="matchup-detail" id="mu-living">
         <p>Zannty went 2-0 against Living End in his Challenge run. <span class="c">Meddling Mage</span> naming Living End means they literally cannot win without bouncing or killing the Mage first. Post-board <span class="c">Lavinia</span> counters cascade into Living End (it's cast without paying mana). <span class="c">Vexing Bauble</span> counters any spell cast for free. Your clock kills them by T4 while they're cycling creatures that never enter the battlefield.</p>
-        <table class="sb-table"><thead><tr><th>Out</th><th>In</th></tr></thead><tbody>
-          <tr><td class="sb-out">−2 Unsettled Mariner</td><td class="sb-in">+1 Lavinia, Azorius Renegade</td></tr>
-          <tr><td class="sb-out">−2 Coppercoat Vanguard</td><td class="sb-in">+1 Vexing Bauble</td></tr>
-          <tr><td class="sb-out">−1 Mockingbird</td><td class="sb-in">+1 Drannith Magistrate</td></tr>
-        </tbody></table>
+        <div class="sb-table">
+        <div class="sb-col">
+          <div class="sb-col-label">Out</div>
+          <div class="sb-item"><span>−2 Unsettled Mariner</span></div>
+          <div class="sb-item"><span>−2 Coppercoat Vanguard</span></div>
+          <div class="sb-item"><span>−1 Mockingbird</span></div>
+        </div>
+        <div class="sb-col">
+          <div class="sb-col-label">In</div>
+          <div class="sb-item"><span>+1 Lavinia, Azorius Renegade</span></div>
+          <div class="sb-item"><span>+1 Vexing Bauble</span></div>
+          <div class="sb-item"><span>+1 Drannith Magistrate</span></div>
+        </div>
+      </div>
         <p class="sb-note">Mariner and Coppercoat are defensive cards you don't need — they're not targeting you, they're cascading. Drannith Magistrate stops opponents from casting spells from anywhere other than hand (blocks Living End from cascade). With Mage + Lavinia + Magistrate + Bauble, they need to answer 4 different hate pieces across different card types.</p>
         <h3>% Point Edges</h3>
         <p class="sb-note"><strong>+5 pts: Vial in Jirina with Living End on the stack.</strong> Jirina ETB exiles their entire GY. Sacrifice Jirina. Living End resolves: they get NOTHING back (their creatures were exiled by Jirina, not Living End). Jirina returns from YOUR GY via Living End's Step 3. The most devastating blowout in the matchup — their entire combo turn is blanked and you get a creature back.</p>
@@ -650,11 +687,20 @@
       <tr onclick="toggle('mu-affinity')"><td><strong>Izzet Affinity</strong></td><td>Disruption</td><td><span class="verdict verdict-even">Even</span></td><td>Kataki, War's Wage from SB</td></tr>
       <tr><td colspan="4" class="matchup-detail" id="mu-affinity">
         <p>Vial in <span class="c">Kataki, War's Wage</span> on T2 — if it resolves early, their board collapses within one upkeep. A T2 Kataki against 3-4 artifacts in play forces them to pay {3-4} or sacrifice most of their board, and they can't pay and develop simultaneously. Name Thought Monitor with <span class="c">Meddling Mage</span> to deny their refueling mechanism. Your creatures win the combat step cleanly once their artifact synergies are taxed offline — the key is landing Kataki before their board gets too wide to contain.</p>
-        <table class="sb-table"><thead><tr><th>Out</th><th>In</th></tr></thead><tbody>
-          <tr><td class="sb-out">−2 Thalia, Guardian of Thraben</td><td class="sb-in">+2 Kataki, War's Wage</td></tr>
-          <tr><td class="sb-out">−1 Mockingbird</td><td class="sb-in">+2 Dismember</td></tr>
-          <tr><td class="sb-out">−2 Mantis Rider</td><td class="sb-in">+1 Drannith Magistrate</td></tr>
-        </tbody></table>
+        <div class="sb-table">
+        <div class="sb-col">
+          <div class="sb-col-label">Out</div>
+          <div class="sb-item"><span>−2 Thalia, Guardian of Thraben</span></div>
+          <div class="sb-item"><span>−1 Mockingbird</span></div>
+          <div class="sb-item"><span>−2 Mantis Rider</span></div>
+        </div>
+        <div class="sb-col">
+          <div class="sb-col-label">In</div>
+          <div class="sb-item"><span>+2 Kataki, War's Wage</span></div>
+          <div class="sb-item"><span>+2 Dismember</span></div>
+          <div class="sb-item"><span>+1 Drannith Magistrate</span></div>
+        </div>
+      </div>
         <p class="sb-note">Thalia barely matters — their spells are mostly cheap artifacts. Kataki is your best card: it forces them to sacrifice artifacts or pay {1} each upkeep. If Kataki resolves early, their entire board collapses. Dismember kills their key threats through any toughness.</p>
         <h3>% Point Edges</h3>
         <p class="sb-note"><strong>+4 pts: T2 Kataki off Hierarch/Vial = game over.</strong> They typically have 3-4 artifacts in play by T2. Kataki forces them to pay {3-4} on their upkeep or sacrifice. They can't pay AND develop. If they sacrifice, your clock runs unimpeded. If they pay, they can't cast anything else.</p>
@@ -663,10 +709,18 @@
       <tr onclick="toggle('mu-dimir')"><td><strong>Dimir Control</strong></td><td>Disruption</td><td><span class="verdict verdict-favor">Favorable</span></td><td>Cavern of Souls + Vial uncounterability</td></tr>
       <tr><td colspan="4" class="matchup-detail" id="mu-dimir">
         <p>Zannty went 2-1 against Dimir Control. Your creatures enter through Cavern of Souls (uncounterable) or Aether Vial (not cast). Their counterspell suite is largely irrelevant. <span class="c">Thalia</span> taxes their removal and draw spells. <span class="c">Meddling Mage</span> names their best removal. <span class="c">Coppercoat</span>'s ward {1} plus Mariner's tax means their Fatal Push costs {3}{B}. They're a control deck that can't control you.</p>
-        <table class="sb-table"><thead><tr><th>Out</th><th>In</th></tr></thead><tbody>
-          <tr><td class="sb-out">−1 Mockingbird</td><td class="sb-in">+2 Sanctifier en-Vec</td></tr>
-          <tr><td class="sb-out">−2 Mantis Rider</td><td class="sb-in">+1 Gaddock Teeg</td></tr>
-        </tbody></table>
+        <div class="sb-table">
+        <div class="sb-col">
+          <div class="sb-col-label">Out</div>
+          <div class="sb-item"><span>−1 Mockingbird</span></div>
+          <div class="sb-item"><span>−2 Mantis Rider</span></div>
+        </div>
+        <div class="sb-col">
+          <div class="sb-col-label">In</div>
+          <div class="sb-item"><span>+2 Sanctifier en-Vec</span></div>
+          <div class="sb-item"><span>+1 Gaddock Teeg</span></div>
+        </div>
+      </div>
         <p class="sb-note">Sanctifier has protection from black — their entire removal suite misses it. Teeg stops MV 4+ noncreature spells (Cryptic Command, sweepers). Mantis Rider dies to every removal spell they run; Sanctifier doesn't die to any of them.</p>
         <h3>% Point Edges</h3>
         <p class="sb-note"><strong>+3 pts: Triple tax stack shuts them down.</strong> Thalia (+{1} noncreature) + Coppercoat (ward {1}) + Mariner (pay {1} to target) = their {1}{B} Fatal Push now costs {4}{B} to resolve targeting your creature. Their interaction becomes uncastable on curve.</p>
@@ -675,11 +729,20 @@
       <tr onclick="toggle('mu-etron')"><td><strong>Eldrazi Tron</strong></td><td>Aggro-First</td><td><span class="verdict verdict-even">Even</span></td><td>Meddling Mage naming All Is Dust</td></tr>
       <tr><td colspan="4" class="matchup-detail" id="mu-etron">
         <p>Race them. Their Tron assembly is slower than your clock if you deploy efficiently. <span class="c">Meddling Mage</span> naming All Is Dust prevents the sweeper that destroys your entire colored board. <span class="c">Thalia</span> taxes Expedition Map, All Is Dust, and Karn. Without All Is Dust, they're trying to block your 4+ creatures with one Walking Ballista or Reality Smasher at a time — and your lords make your team big enough to push through.</p>
-        <table class="sb-table"><thead><tr><th>Out</th><th>In</th></tr></thead><tbody>
-          <tr><td class="sb-out">−2 Coppercoat Vanguard</td><td class="sb-in">+2 Dismember</td></tr>
-          <tr><td class="sb-out">−1 Mockingbird</td><td class="sb-in">+2 Reflector Mage</td></tr>
-          <tr><td class="sb-out">−2 Unsettled Mariner</td><td class="sb-in">+1 Gaddock Teeg</td></tr>
-        </tbody></table>
+        <div class="sb-table">
+        <div class="sb-col">
+          <div class="sb-col-label">Out</div>
+          <div class="sb-item"><span>−2 Coppercoat Vanguard</span></div>
+          <div class="sb-item"><span>−1 Mockingbird</span></div>
+          <div class="sb-item"><span>−2 Unsettled Mariner</span></div>
+        </div>
+        <div class="sb-col">
+          <div class="sb-col-label">In</div>
+          <div class="sb-item"><span>+2 Dismember</span></div>
+          <div class="sb-item"><span>+2 Reflector Mage</span></div>
+          <div class="sb-item"><span>+1 Gaddock Teeg</span></div>
+        </div>
+      </div>
         <p class="sb-note">Ward and Mariner are less useful — E-Tron doesn't target your creatures much, they sweep or go over. Reflector Mage bounces Reality Smasher or a big Eldrazi and buys you a full turn of attacks. Dismember kills anything at instant speed. Teeg stops All Is Dust (MV 7) and Karn (MV 4+).</p>
         <h3>% Point Edges</h3>
         <p class="sb-note"><strong>+2–3 pts: Race before Tron assembles.</strong> If you can present lethal by T4, they often haven't assembled Tron yet (T1 Mine, T2 Plant, T3 Tower, T4 All Is Dust). Your clock is faster than their setup. Every turn you delay deploying threats is a turn closer to their inevitability.</p>
@@ -688,11 +751,18 @@
       <tr onclick="toggle('mu-prowess')"><td><strong>Izzet Prowess</strong></td><td>Disruption</td><td><span class="verdict verdict-dog">Unfavorable</span></td><td>Plague Engineer naming Human (they run Monastery Swiftspear)</td></tr>
       <tr><td colspan="4" class="matchup-detail" id="mu-prowess">
         <p>Your best G1 play is T1 Hierarch → T2 Thalia — her +{1} tax on cantrips cuts their chain turns from 4-5 spells down to 2-3, which often means the difference between lethal damage and surviving. Respect the burn clock: stay above 8 life, don't go wide into their sweeper blowouts. Postboard, get Sanctifier en-Vec into play — protection from red means they literally cannot target, damage, or block it with any red card. A Sanctifier backed by your aggressive clock closes games they have no legal answer for.</p>
-        <table class="sb-table"><thead><tr><th>Out</th><th>In</th></tr></thead><tbody>
-          <tr><td class="sb-out">−4 Meddling Mage</td><td class="sb-in">+2 Plague Engineer</td></tr>
-          <tr><td class="sb-out">−1 Mockingbird</td><td class="sb-in">+2 Dismember</td></tr>
-          <tr><td class="sb-out"></td><td class="sb-in">+1 Clarion Conqueror</td></tr>
-        </tbody></table>
+        <div class="sb-table">
+        <div class="sb-col">
+          <div class="sb-col-label">Out</div>
+          <div class="sb-item"><span>−4 Meddling Mage</span></div>
+          <div class="sb-item"><span>−1 Mockingbird</span></div>
+        </div>
+        <div class="sb-col">
+          <div class="sb-col-label">In</div>
+          <div class="sb-item"><span>+2 Plague Engineer</span></div>
+          <div class="sb-item"><span>+2 Dismember</span></div>
+        </div>
+      </div>
         <p class="sb-note">Meddling Mage is weak — they have too many interchangeable spells to name just one. Plague Engineer giving their creatures -1/-1 blanks their 1/1 tokens and makes their base-power-1 prowess creatures fragile. Dismember kills anything at instant speed.</p>
         <h3>% Point Edges</h3>
         <p class="sb-note"><strong>+2 pts: Thalia on T1 off Hierarch.</strong> T1 Hierarch → T2 Thalia = their cantrips all cost {1} more starting T2. Their explosive turns depend on chaining 3-4 spells — each costing +{1} means they cast 1-2 fewer spells per turn. That's 2-4 fewer prowess triggers, which is 2-4 less damage.</p>

@@ -62,7 +62,7 @@
   .matchup-table th { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; padding:10px 16px; background:var(--card); color:var(--mid); text-align:left; border-bottom:2px solid var(--rule); }
   .matchup-table td { padding:12px 16px; border-bottom:1px solid var(--rule); font-size:15px; font-weight:300; }
   .matchup-table tr:hover td { background:var(--card); cursor:pointer; }
-  .matchup-detail { display:none; background:var(--accent-light); border-left:4px solid var(--accent); padding:24px 32px; }
+  .matchup-detail { display:none; border:1px solid var(--rule); background:var(--paper-dark); padding:32px 40px; margin:0 0 2px; animation:fadeIn 0.2s ease; }
   .matchup-detail.open { display:block; }
   .verdict { display:inline-block; font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; padding:4px 10px; border:1px solid; }
   .verdict-dog { background:var(--danger-light); color:var(--danger); border-color:var(--danger); }
@@ -449,11 +449,20 @@
       <tr onclick="toggle('mu-boros')"><td><strong>Boros Energy</strong></td><td>Control → Combo</td><td><span class="verdict verdict-even">Even</span></td><td>Solitude + Ephemerate exiles their board for free</td></tr>
       <tr><td colspan="4" class="matchup-detail" id="mu-boros">
         <p>Their removal is cheap but can't stop Goryo's (instant speed, 2 mana). Solitude evoke + Ephemerate removes 3 creatures for free. Frog blocks profitably early. Combo can close before their energy goes online. Post-board: watch for Leyline of the Void. IlNano recommends Nihil Spellbomb for Phlage, but many Boros players side Phlage out — if so, skip Spellbombs and keep all 4 Riddlers.</p>
-        <table class="sb-table"><thead><tr><th>Out</th><th>In</th></tr></thead><tbody>
-          <tr><td class="sb-out">−1 Griselbrand</td><td class="sb-in">+2 Nihil Spellbomb</td></tr>
-          <tr><td class="sb-out">−1 Ulamog, the Defiler</td><td class="sb-in">+1 Fatal Push</td></tr>
-          <tr><td class="sb-out">−1 Spell Pierce</td><td class="sb-in">+1 Celestial Purge</td></tr>
-        </tbody></table>
+        <div class="sb-table">
+        <div class="sb-col">
+          <div class="sb-col-label">Out</div>
+          <div class="sb-item"><span>−1 Griselbrand</span></div>
+          <div class="sb-item"><span>−1 Ulamog, the Defiler</span></div>
+          <div class="sb-item"><span>−1 Spell Pierce</span></div>
+        </div>
+        <div class="sb-col">
+          <div class="sb-col-label">In</div>
+          <div class="sb-item"><span>+2 Nihil Spellbomb</span></div>
+          <div class="sb-item"><span>+1 Fatal Push</span></div>
+          <div class="sb-item"><span>+1 Celestial Purge</span></div>
+        </div>
+      </div>
         <p class="sb-note">Griselbrand is too life-intensive against an aggro deck. Ulamog's cast trigger doesn't fire off Goryo's. Nihil Spellbomb exiles their Phlage / stops recursion. Celestial Purge exiles any red or black permanent cleanly.</p>
         <h3>% Point Edges</h3>
         <p class="sb-note"><strong>+3 pts: Solitude evoke + Ephemerate on T2.</strong> Exile their Ajani + follow-up creature for free. They lose 2 threats, you gain a 3/2 lifelink body. Their entire T1-T2 development is erased.</p>
@@ -463,11 +472,20 @@
       <tr onclick="toggle('mu-jeskai')"><td><strong>Jeskai Blink</strong></td><td>Combo</td><td><span class="verdict verdict-favor">Favorable</span></td><td>Your Ephemerate targets are better than theirs</td></tr>
       <tr><td colspan="4" class="matchup-detail" id="mu-jeskai">
         <p>Mirror of Ephemerate strategies — but your targets (Atraxa, Griselbrand) dwarf theirs (Stoneforge, Phelia). Thoughtseize strips their Counterspell or Solitude. Goryo's at their end step resolves through Teferi bounce timing. One resolved Atraxa buries them.</p>
-        <table class="sb-table"><thead><tr><th>Out</th><th>In</th></tr></thead><tbody>
-          <tr><td class="sb-out">−2 Fatal Push</td><td class="sb-in">+2 Thoughtseize</td></tr>
-          <tr><td class="sb-out">−1 Prismatic Ending</td><td class="sb-in">+1 Flare of Denial</td></tr>
-          <tr><td class="sb-out">−1 Ulamog</td><td class="sb-in">+1 Mystical Dispute</td></tr>
-        </tbody></table>
+        <div class="sb-table">
+        <div class="sb-col">
+          <div class="sb-col-label">Out</div>
+          <div class="sb-item"><span>−2 Fatal Push</span></div>
+          <div class="sb-item"><span>−1 Prismatic Ending</span></div>
+          <div class="sb-item"><span>−1 Ulamog</span></div>
+        </div>
+        <div class="sb-col">
+          <div class="sb-col-label">In</div>
+          <div class="sb-item"><span>+2 Thoughtseize</span></div>
+          <div class="sb-item"><span>+1 Flare of Denial</span></div>
+          <div class="sb-item"><span>+1 Mystical Dispute</span></div>
+        </div>
+      </div>
         <p class="sb-note">Push is weak — their threats are MV 3+ or evoked. More hand disruption + counters to protect your combo. Flare of Denial sacrifices a blue creature (Frog, Riddler) to counter for free.</p>
         <h3>% Point Edges</h3>
         <p class="sb-note"><strong>+4 pts: Goryo's at their end step through Teferi.</strong> Teferi bounces at sorcery speed. If you wait until their end step, Teferi can't stop Goryo's. Atraxa enters, Ephemerate saves it. They need Counterspell in hand — and Thoughtseize already took it.</p>
@@ -476,57 +494,98 @@
       <tr onclick="toggle('mu-storm')"><td><strong>Ruby Storm</strong></td><td>Combo Race</td><td><span class="verdict verdict-favor">Favorable</span></td><td>T1 Thoughtseize + T2 Goryo's = faster AND disruptive</td></tr>
       <tr><td colspan="4" class="matchup-detail" id="mu-storm">
         <p>You're faster AND more disruptive. T1 Thoughtseize strips Past in Flames or Grapeshot. T2 Goryo's Atraxa draws 6+ cards before they assemble. Subtlety from SB pitches for free to bounce their key spell back to library.</p>
-        <table class="sb-table"><thead><tr><th>Out</th><th>In</th></tr></thead><tbody>
-          <tr><td class="sb-out">−4 Solitude</td><td class="sb-in">+2 Subtlety</td></tr>
-          <tr><td class="sb-out">−2 Prismatic Ending</td><td class="sb-in">+2 Thoughtseize</td></tr>
-          <tr><td class="sb-out">−2 Fatal Push</td><td class="sb-in">+1 Flare of Denial</td></tr>
-          <tr><td class="sb-out"></td><td class="sb-in">+1 Mystical Dispute</td></tr>
-        </tbody></table>
+        <div class="sb-table">
+        <div class="sb-col">
+          <div class="sb-col-label">Out</div>
+          <div class="sb-item"><span>−4 Solitude</span></div>
+          <div class="sb-item"><span>−2 Prismatic Ending</span></div>
+          <div class="sb-item"><span>−2 Fatal Push</span></div>
+        </div>
+        <div class="sb-col">
+          <div class="sb-col-label">In</div>
+          <div class="sb-item"><span>+2 Subtlety</span></div>
+          <div class="sb-item"><span>+2 Thoughtseize</span></div>
+          <div class="sb-item"><span>+1 Flare of Denial</span></div>
+        </div>
+      </div>
         <p class="sb-note">Solitude and creature removal are dead — Storm doesn't run creatures. All disruption pivots to hand disruption + countermagic. Subtlety evoke for free bounces their Grapeshot or Past in Flames back to library.</p>
       </td></tr>
 
       <tr onclick="toggle('mu-living')"><td><strong>Living End</strong></td><td>Combo Race</td><td><span class="verdict verdict-dog">Unfavorable</span></td><td>Race to T2 Goryo's before their T3 cascade</td></tr>
       <tr><td colspan="4" class="matchup-detail" id="mu-living">
         <p>Living End sacrifices your reanimated Atraxa AND fills their board — double disaster. Spell Pierce counters cascade but they can play around it. Your best hope: T2 Goryo's before they cascade T3. Post-board: Nihil Spellbomb exiles their GY before Living End resolves. Subtlety bounces the cascade spell.</p>
-        <table class="sb-table"><thead><tr><th>Out</th><th>In</th></tr></thead><tbody>
-          <tr><td class="sb-out">−2 Prismatic Ending</td><td class="sb-in">+2 Nihil Spellbomb</td></tr>
-          <tr><td class="sb-out">−2 Fatal Push</td><td class="sb-in">+2 Subtlety</td></tr>
-          <tr><td class="sb-out">−1 Solitude</td><td class="sb-in">+1 Flare of Denial</td></tr>
-        </tbody></table>
+        <div class="sb-table">
+        <div class="sb-col">
+          <div class="sb-col-label">Out</div>
+          <div class="sb-item"><span>−2 Prismatic Ending</span></div>
+          <div class="sb-item"><span>−2 Fatal Push</span></div>
+          <div class="sb-item"><span>−1 Solitude</span></div>
+        </div>
+        <div class="sb-col">
+          <div class="sb-col-label">In</div>
+          <div class="sb-item"><span>+2 Nihil Spellbomb</span></div>
+          <div class="sb-item"><span>+2 Subtlety</span></div>
+          <div class="sb-item"><span>+1 Flare of Denial</span></div>
+        </div>
+      </div>
         <p class="sb-note">Their creatures are in the GY, not the battlefield — creature removal is dead. Nihil Spellbomb nukes their GY at instant speed. Subtlety bounces cascade spells for free. Flare counters Living End itself.</p>
       </td></tr>
 
       <tr onclick="toggle('mu-affinity')"><td><strong>Izzet Affinity</strong></td><td>Control</td><td><span class="verdict verdict-even">Even</span></td><td>Solitude + Prismatic Ending answer their threats efficiently</td></tr>
       <tr><td colspan="4" class="matchup-detail" id="mu-affinity">
         <p>Fatal Push with fetch revolt kills their key creatures. Solitude exiles anything. Prismatic Ending removes cheap artifacts. Their clock is fast but fragile — answer their key threats and combo T3-4. Dress Down shuts off all their creature abilities for a turn.</p>
-        <table class="sb-table"><thead><tr><th>Out</th><th>In</th></tr></thead><tbody>
-          <tr><td class="sb-out">−1 Griselbrand</td><td class="sb-in">+1 Dress Down</td></tr>
-          <tr><td class="sb-out">−1 Ulamog</td><td class="sb-in">+1 Wear // Tear</td></tr>
-          <tr><td class="sb-out">−2 Thoughtseize</td><td class="sb-in">+1 Fatal Push</td></tr>
-          <tr><td class="sb-out"></td><td class="sb-in">+1 Prismatic Ending</td></tr>
-        </tbody></table>
+        <div class="sb-table">
+        <div class="sb-col">
+          <div class="sb-col-label">Out</div>
+          <div class="sb-item"><span>−1 Griselbrand</span></div>
+          <div class="sb-item"><span>−1 Ulamog</span></div>
+          <div class="sb-item"><span>−2 Thoughtseize</span></div>
+        </div>
+        <div class="sb-col">
+          <div class="sb-col-label">In</div>
+          <div class="sb-item"><span>+1 Dress Down</span></div>
+          <div class="sb-item"><span>+1 Wear // Tear</span></div>
+          <div class="sb-item"><span>+1 Fatal Push</span></div>
+        </div>
+      </div>
         <p class="sb-note">Thoughtseize loses value against a deck that dumps its hand T1-T2. More removal to handle their explosive starts. Dress Down turns off all abilities — Thought Monitor stops drawing, Frogmite dies (0/0 without affinity body), everything shrinks.</p>
       </td></tr>
 
       <tr onclick="toggle('mu-etron')"><td><strong>Eldrazi Tron</strong></td><td>Combo</td><td><span class="verdict verdict-favor">Favorable</span></td><td>They can't interact with instant-speed Goryo's</td></tr>
       <tr><td colspan="4" class="matchup-detail" id="mu-etron">
         <p>Eldrazi Tron has minimal interaction with your combo — no counterspells, no GY hate G1. Goryo's at their end step is safe. Atraxa draws into more interaction than they can handle. Their All Is Dust is sorcery speed and expensive. Thoughtseize takes their Karn or All Is Dust. Only danger: Chalice of the Void at 2 (blocks Goryo's) — Prismatic Ending or Wear // Tear answers it.</p>
-        <table class="sb-table"><thead><tr><th>Out</th><th>In</th></tr></thead><tbody>
-          <tr><td class="sb-out">−2 Fatal Push</td><td class="sb-in">+2 Wear // Tear</td></tr>
-          <tr><td class="sb-out">−2 Spell Pierce</td><td class="sb-in">+2 Thoughtseize</td></tr>
-        </tbody></table>
+        <div class="sb-table">
+        <div class="sb-col">
+          <div class="sb-col-label">Out</div>
+          <div class="sb-item"><span>−2 Fatal Push</span></div>
+          <div class="sb-item"><span>−2 Spell Pierce</span></div>
+        </div>
+        <div class="sb-col">
+          <div class="sb-col-label">In</div>
+          <div class="sb-item"><span>+2 Wear // Tear</span></div>
+          <div class="sb-item"><span>+2 Thoughtseize</span></div>
+        </div>
+      </div>
         <p class="sb-note">Push doesn't kill their big Eldrazi. Spell Pierce is weak against a deck with excess mana. Wear // Tear answers Chalice of the Void. More Thoughtseize to strip All Is Dust or Karn.</p>
       </td></tr>
 
       <tr onclick="toggle('mu-prowess')"><td><strong>Izzet Prowess</strong></td><td>Control</td><td><span class="verdict verdict-even">Even</span></td><td>Solitude + Ephemerate dominates their small creatures</td></tr>
       <tr><td colspan="4" class="matchup-detail" id="mu-prowess">
         <p>They're faster on raw damage but fragile. Solitude evoke + Ephemerate removes their board for free. Fatal Push kills every creature they run. Psychic Frog blocks profitably (1/2 survives Lightning Bolt). The danger: they can kill you before T3 with a nut draw. Race to Solitude + Ephemerate to stabilize, then combo.</p>
-        <table class="sb-table"><thead><tr><th>Out</th><th>In</th></tr></thead><tbody>
-          <tr><td class="sb-out">−1 Griselbrand</td><td class="sb-in">+1 Fatal Push</td></tr>
-          <tr><td class="sb-out">−1 Ulamog</td><td class="sb-in">+1 Celestial Purge</td></tr>
-          <tr><td class="sb-out">−2 Thoughtseize</td><td class="sb-in">+1 Dress Down</td></tr>
-          <tr><td class="sb-out"></td><td class="sb-in">+1 Prismatic Ending</td></tr>
-        </tbody></table>
+        <div class="sb-table">
+        <div class="sb-col">
+          <div class="sb-col-label">Out</div>
+          <div class="sb-item"><span>−1 Griselbrand</span></div>
+          <div class="sb-item"><span>−1 Ulamog</span></div>
+          <div class="sb-item"><span>−2 Thoughtseize</span></div>
+        </div>
+        <div class="sb-col">
+          <div class="sb-col-label">In</div>
+          <div class="sb-item"><span>+1 Fatal Push</span></div>
+          <div class="sb-item"><span>+1 Celestial Purge</span></div>
+          <div class="sb-item"><span>+1 Dress Down</span></div>
+        </div>
+      </div>
         <p class="sb-note">Thoughtseize costs 2 life against a deck trying to kill you — too dangerous. Griselbrand costs 7 life per draw — uncastable at low life. More removal to handle their explosive starts. Dress Down turns off prowess mid-combat = their 5/6 Swiftspear becomes a 1/2.</p>
         <h3>% Point Edges</h3>
         <p class="sb-note"><strong>+3 pts: Dress Down mid-combat.</strong> They cast 3 spells to pump Swiftspear to 4/5 → you flash Dress Down → Swiftspear becomes 1/2 → their combat math is destroyed AND you draw a card. Dress Down sacrifices at end step so your creatures get their abilities back.</p>
@@ -534,11 +593,20 @@
       <tr onclick="toggle('mu-yawgmoth')"><td><strong>Yawgmoth</strong></td><td>Combo Race</td><td><span class="verdict verdict-dog">Unfavorable</span></td><td>Race to T2-3 Goryo's before they assemble Yawgmoth</td></tr>
       <tr><td colspan="4" class="matchup-detail" id="mu-yawgmoth">
         <p>Yawgmoth is your hardest non-GY-hate matchup. They combo off T3-4 with Yawgmoth + Undying creatures (Young Wolf, Strangleroot Geist) to draw their entire deck and kill with Zulaport Cutthroat pings. Their clock is steady and they apply pressure while assembling. Your window: T2-3 Goryo's into Atraxa before they find Yawgmoth. Post-board: they bring Endurance (exiles your GY on ETB as a 3/4 reach for free). Subtlety answers Endurance on the stack. Thoughtseize is your best card here — take Yawgmoth himself, not the enablers.</p>
-        <table class="sb-table"><thead><tr><th>Out</th><th>In</th></tr></thead><tbody>
-          <tr><td class="sb-out">-2 Spell Pierce</td><td class="sb-in">+2 Subtlety</td></tr>
-          <tr><td class="sb-out">-1 Prismatic Ending</td><td class="sb-in">+2 Thoughtseize</td></tr>
-          <tr><td class="sb-out">-1 Solitude</td><td class="sb-in">+1 Fatal Push</td></tr>
-        </tbody></table>
+        <div class="sb-table">
+        <div class="sb-col">
+          <div class="sb-col-label">Out</div>
+          <div class="sb-item"><span>-2 Spell Pierce</span></div>
+          <div class="sb-item"><span>-1 Prismatic Ending</span></div>
+          <div class="sb-item"><span>-1 Solitude</span></div>
+        </div>
+        <div class="sb-col">
+          <div class="sb-col-label">In</div>
+          <div class="sb-item"><span>+2 Subtlety</span></div>
+          <div class="sb-item"><span>+2 Thoughtseize</span></div>
+          <div class="sb-item"><span>+1 Fatal Push</span></div>
+        </div>
+      </div>
         <p class="sb-note">Spell Pierce is too conditional — they have mana by T3. Prismatic Ending can't kill Yawgmoth (MV 4). More hand disruption + Fatal Push for their early undying creatures. Subtlety bounces Endurance before GY exile resolves.</p>
         <h3>% Point Edges</h3>
         <p class="sb-note"><strong>+4 pts: T1 Thoughtseize taking Yawgmoth.</strong> Without Yawgmoth, their undying creatures are just 1-drops with upside. The entire combo requires the legendary creature. Taking it T1 buys you multiple turns to assemble Goryo's safely.</p>
@@ -548,10 +616,18 @@
       <tr onclick="toggle('mu-titan')"><td><strong>Amulet Titan</strong></td><td>Combo Race</td><td><span class="verdict verdict-even">Even</span></td><td>Thoughtseize their Amulet or Titan on T1</td></tr>
       <tr><td colspan="4" class="matchup-detail" id="mu-titan">
         <p>Two of the fastest combo decks in Modern. Amulet Titan can win T2 with the ideal Amulet + Simic Growth Chamber draw; you can win T2 with Psychic Frog into Goryo's. The matchup comes down to who has their hand disruption at the right moment. Thoughtseize T1 strips their Amulet of Vigor (kills their fast combo turn) or their Primeval Titan (removes the finisher). They have minimal interaction with your GY main deck — no counters, no GY hate. Post-board: they bring Endurance (exiles your GY on ETB for free). Answer with Subtlety on the stack.</p>
-        <table class="sb-table"><thead><tr><th>Out</th><th>In</th></tr></thead><tbody>
-          <tr><td class="sb-out">-2 Solitude</td><td class="sb-in">+2 Subtlety</td></tr>
-          <tr><td class="sb-out">-2 Fatal Push</td><td class="sb-in">+2 Thoughtseize</td></tr>
-        </tbody></table>
+        <div class="sb-table">
+        <div class="sb-col">
+          <div class="sb-col-label">Out</div>
+          <div class="sb-item"><span>-2 Solitude</span></div>
+          <div class="sb-item"><span>-2 Fatal Push</span></div>
+        </div>
+        <div class="sb-col">
+          <div class="sb-col-label">In</div>
+          <div class="sb-item"><span>+2 Subtlety</span></div>
+          <div class="sb-item"><span>+2 Thoughtseize</span></div>
+        </div>
+      </div>
         <p class="sb-note">Solitude exiles creatures — irrelevant until they have Titan. Fatal Push can't kill Primeval Titan (MV 6). More hand disruption and Subtlety to bounce Endurance or Titan on the stack.</p>
         <h3>% Point Edges</h3>
         <p class="sb-note"><strong>+3 pts: Thoughtseize taking Amulet of Vigor.</strong> Without Amulet, their lands ETB tapped. Their T2 kill becomes a T4-5 fair ramp plan. This converts the matchup from a pure race to a game where your T3 Goryo's is the clear faster line.</p>
@@ -560,11 +636,20 @@
       <tr onclick="toggle('mu-shadow')"><td><strong>Death's Shadow</strong></td><td>Control to Combo</td><td><span class="verdict verdict-favor">Favorable</span></td><td>Your threats are larger and your disruption mirrors theirs</td></tr>
       <tr><td colspan="4" class="matchup-detail" id="mu-shadow">
         <p>Shadow mirrors your plan at half-scale. They run Thoughtseize, Fatal Push, and a fast clock — but their threats (4/4 Shadow, Ledger Shredder) are dwarfed by Atraxa's 7/7 flying deathtouch lifelink. Solitude exiles Death's Shadow cleanly — the "controller gains life equal to power" clause benefits you when exiling their 8/8. Fatal Push kills everything they run. Psychic Frog blocks their early pressure profitably and grows. Their Thoughtseize hurts, but you bring more disruption per game and your endgame is more powerful.</p>
-        <table class="sb-table"><thead><tr><th>Out</th><th>In</th></tr></thead><tbody>
-          <tr><td class="sb-out">-1 Ulamog</td><td class="sb-in">+1 Celestial Purge</td></tr>
-          <tr><td class="sb-out">-1 Griselbrand</td><td class="sb-in">+1 Fatal Push</td></tr>
-          <tr><td class="sb-out">-2 Spell Pierce</td><td class="sb-in">+2 Thoughtseize</td></tr>
-        </tbody></table>
+        <div class="sb-table">
+        <div class="sb-col">
+          <div class="sb-col-label">Out</div>
+          <div class="sb-item"><span>-1 Ulamog</span></div>
+          <div class="sb-item"><span>-1 Griselbrand</span></div>
+          <div class="sb-item"><span>-2 Spell Pierce</span></div>
+        </div>
+        <div class="sb-col">
+          <div class="sb-col-label">In</div>
+          <div class="sb-item"><span>+1 Celestial Purge</span></div>
+          <div class="sb-item"><span>+1 Fatal Push</span></div>
+          <div class="sb-item"><span>+2 Thoughtseize</span></div>
+        </div>
+      </div>
         <p class="sb-note">Ulamog and Griselbrand are too slow/life-intensive. Celestial Purge exiles Death's Shadow (black) and Kroxa (red). More Push and Thoughtseize to match their disruption. You want the fastest, most interactive version of your deck here.</p>
         <h3>% Point Edges</h3>
         <p class="sb-note"><strong>+3 pts: Solitude exiling Death's Shadow when it's 6+/6+.</strong> They lose a 6/6+ body AND you gain 6+ life — a 12+ point swing in one mana. This reverses any pressure they've applied and directly stabilizes the board.</p>
@@ -574,10 +659,18 @@
       <tr onclick="toggle('mu-mgtron')"><td><strong>Mono-Green Tron</strong></td><td>Combo</td><td><span class="verdict verdict-favor">Favorable</span></td><td>You combo T2-3 before they assemble Tron T3</td></tr>
       <tr><td colspan="4" class="matchup-detail" id="mu-mgtron">
         <p>Mono-Green Tron has no meaningful interaction with your combo in game 1. No counters, no GY hate — just Relic of Progenitus (exiles one card per activation, sacs to exile all GYs). Monitor Relic closely: if they're ticking it every turn, discard Atraxa and cast Goryo's in the same main phase window before Relic gets another activation. Their clock (Karn Liberated, Ulamog) is T3 at earliest. You reliably win T2-3 before they stabilize. Post-board: they bring Grafdigger's Cage (prevents Goryo's from resolving). Wear // Tear answers it immediately — make destroying Cage your first priority before setting up the combo.</p>
-        <table class="sb-table"><thead><tr><th>Out</th><th>In</th></tr></thead><tbody>
-          <tr><td class="sb-out">-4 Fatal Push</td><td class="sb-in">+2 Wear // Tear</td></tr>
-          <tr><td class="sb-out">-2 Solitude</td><td class="sb-in">+2 Thoughtseize</td></tr>
-        </tbody></table>
+        <div class="sb-table">
+        <div class="sb-col">
+          <div class="sb-col-label">Out</div>
+          <div class="sb-item"><span>-4 Fatal Push</span></div>
+          <div class="sb-item"><span>-2 Solitude</span></div>
+        </div>
+        <div class="sb-col">
+          <div class="sb-col-label">In</div>
+          <div class="sb-item"><span>+2 Wear // Tear</span></div>
+          <div class="sb-item"><span>+2 Thoughtseize</span></div>
+        </div>
+      </div>
         <p class="sb-note">Fatal Push and Solitude are dead — no creatures until T3+. Wear // Tear destroys Grafdigger's Cage and Relic of Progenitus. Thoughtseize takes Karn (which can exile a permanent immediately) or an assembled Tron piece.</p>
         <h3>% Point Edges</h3>
         <p class="sb-note"><strong>+4 pts: T1 Thoughtseize taking a Tron piece.</strong> Without all three Tron lands they're a midrange deck with overcosted spells. Taking any one delays their big spells by 2+ turns. Your T3 Goryo's is fast; their T5-6 catch-up is not.</p>
@@ -587,12 +680,22 @@
       <tr onclick="toggle('mu-zoo')"><td><strong>Domain Zoo</strong></td><td>Control</td><td><span class="verdict verdict-dog">Unfavorable</span></td><td>Manage their clock with Solitude; Wear // Tear Leyline before combo turn</td></tr>
       <tr><td colspan="4" class="matchup-detail" id="mu-zoo">
         <p>Domain Zoo is your second-hardest matchup. They present a T2 clock (Territorial Kavu, Scion of Draco, Nacatl) backed by Leyline of the Void G0 in some lists — if Leyline resolves on T0, your combo is offline until Wear // Tear arrives. Their threats grow fast (Kavu with domain = 5/5+), and Stubborn Denial becomes a hard counter once they have a 4/4+ creature. Your gameplan: Solitude evoke + Ephemerate buys a turn against their creature-heavy draws. Race to combo before they close. Psychic Frog blocks Nacatl profitably early. Main issue: their T1-2 curve is faster than your combo assembles, and their SB disruption (Leyline, Endurance) attacks both your GY and your rebound plan.</p>
-        <table class="sb-table"><thead><tr><th>Out</th><th>In</th></tr></thead><tbody>
-          <tr><td class="sb-out">-1 Griselbrand</td><td class="sb-in">+2 Wear // Tear</td></tr>
-          <tr><td class="sb-out">-1 Ulamog</td><td class="sb-in">+2 Nihil Spellbomb</td></tr>
-          <tr><td class="sb-out">-2 Spell Pierce</td><td class="sb-in">+1 Celestial Purge</td></tr>
-          <tr><td class="sb-out">-2 Thoughtseize</td><td class="sb-in">+1 Fatal Push</td></tr>
-        </tbody></table>
+        <div class="sb-table">
+        <div class="sb-col">
+          <div class="sb-col-label">Out</div>
+          <div class="sb-item"><span>-1 Griselbrand</span></div>
+          <div class="sb-item"><span>-1 Ulamog</span></div>
+          <div class="sb-item"><span>-2 Spell Pierce</span></div>
+          <div class="sb-item"><span>-2 Thoughtseize</span></div>
+        </div>
+        <div class="sb-col">
+          <div class="sb-col-label">In</div>
+          <div class="sb-item"><span>+2 Wear // Tear</span></div>
+          <div class="sb-item"><span>+2 Nihil Spellbomb</span></div>
+          <div class="sb-item"><span>+1 Celestial Purge</span></div>
+          <div class="sb-item"><span>+1 Fatal Push</span></div>
+        </div>
+      </div>
         <p class="sb-note">Griselbrand costs 7 life — impossible against a deck dealing 2-3 damage per turn per creature. Spell Pierce doesn't stop their threats. Wear // Tear is your Leyline answer. Nihil Spellbomb preemptively stops recursion angles. Celestial Purge exiles Scion of Draco (multicolored, red+white permanent).</p>
         <h3>% Point Edges</h3>
         <p class="sb-note"><strong>+4 pts: Solitude evoke + Ephemerate on their Territorial Kavu.</strong> Kavu grows to 5/5+ with full domain. Exiling it for free (Solitude evoke) + Ephemerate rebound means you exile 2 creatures and gain 10+ life. This swing often decides the game on the spot.</p>

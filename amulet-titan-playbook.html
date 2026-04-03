@@ -55,14 +55,17 @@
   .matchup-table th { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; padding:10px 16px; background:var(--ink); color:rgba(242,237,230,0.6); text-align:left; }
   .matchup-table td { padding:12px 16px; border-bottom:1px solid var(--rule); font-size:15px; font-weight:300; }
   .matchup-table tr:hover td { background:var(--paper-dark); cursor:pointer; }
-  .matchup-detail { display:none; background:var(--accent-light); border-left:4px solid var(--accent); padding:24px 32px; margin:0; }
+    .matchup-detail { display:none; border:1px solid var(--rule); background:var(--paper-dark); padding:32px 40px; margin:0 0 2px; animation:fadeIn 0.2s ease; }
   .matchup-detail.open { display:block; }
   .verdict { display:inline-block; font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; padding:4px 10px; border:1px solid; }
   .verdict-dog { background:var(--danger-light); color:var(--danger); border-color:var(--danger); }
   .verdict-even { background:var(--gold-light); color:var(--gold); border-color:var(--gold); }
   .verdict-favor { background:#d1fae5; color:#065f46; border-color:#065f46; }
   .verdict-hard { background:var(--danger-light); color:var(--danger); border-color:var(--danger); }
-  .sb-table { width:100%; border-collapse:collapse; margin:16px 0; }
+  .sb-col { background:var(--paper); padding:20px; }
+    .sb-item { font-size:13px; font-weight:300; padding:4px 0; border-bottom:1px solid rgba(200,191,176,0.2); }
+  .sb-col-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--mid); margin-bottom:12px; }
+  .sb-table { display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--rule); border:1px solid var(--rule); margin:16px 0; }
   .sb-table th { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; padding:8px 12px; background:var(--paper-dark); color:var(--mid); text-align:left; border-bottom:2px solid var(--rule); }
   .sb-table td { padding:10px 12px; border-bottom:1px solid var(--rule); font-size:14px; font-weight:300; }
   .sb-out { color:var(--danger); font-family:'DM Mono',monospace; font-size:12px; }
@@ -739,10 +742,18 @@
       <strong>The Matchup:</strong> Boros Energy is generally a favorable matchup. Their removal package (Lightning Helix, Galvanic Discharge) struggles to answer Primeval Titan (6/6 trample survives Discharge at 3 damage; Helix can't kill it). Kappa Cannoneer is rare in their lists. Your primary concern is Blood Moon — some Boros lists run it main deck post-2025. A turn-2 Blood Moon with no Forest in hand loses the game.<br><br>
       <strong>Key Play:</strong> Handle Ragavan, Nimble Pilferer — if it connects, they gain mana and impulse your cards. Arboreal Grazer or a Saga Construct blocks it cleanly. Either keep an interaction piece or be ahead on board development such that Ragavan blocking doesn't hurt you.<br><br>
       <strong>Blood Moon:</strong> Always keep basic Forest accessible. Arboreal Grazer finding Forest before Moon resolves survives Moon (basics aren't affected). Even under Moon, green mana from basics can cast Titan eventually.<br><br>
-      <table class="sb-table"><tr><th>OUT</th><th>IN</th></tr>
-      <tr><td class="sb-out">−1 Cultivator Colossus (too slow vs aggro)</td><td class="sb-in">+2 Dismember (kills Ragavan, Phlage)</td></tr>
-      <tr><td class="sb-out">−2 Malevolent Rumble (draw step matters less)</td><td class="sb-in">+2 Fire Magic (sweeps their creature board)</td></tr>
-      </table>
+      <div class="sb-table">
+        <div class="sb-col">
+          <div class="sb-col-label">Out</div>
+          <div class="sb-item"><span>−1 Cultivator Colossus (too slow vs aggro)</span></div>
+          <div class="sb-item"><span>−2 Malevolent Rumble (draw step matters less)</span></div>
+        </div>
+        <div class="sb-col">
+          <div class="sb-col-label">In</div>
+          <div class="sb-item"><span>+2 Dismember (kills Ragavan, Phlage)</span></div>
+          <div class="sb-item"><span>+2 Fire Magic (sweeps their creature board)</span></div>
+        </div>
+      </div>
     </td></tr>
 
     <tr onclick="toggle('mu-jeskai')"><td>Jeskai Blink</td><td>7%</td><td><span class="verdict verdict-dog">Dog</span></td><td>Dog</td><td>Even</td></tr>
@@ -750,30 +761,54 @@
       <strong>The Matchup:</strong> Jeskai Blink has Consign to Memory (counters colorless spells — this hits Amulet of Vigor, Engineered Explosives, but NOT Primeval Titan), Force of Negation (counters Titan), Teferi, Time Raveler (bounces your permanents at sorcery speed). Solitude with evoke exiles Titan for free. They have the full toolkit to disrupt.<br><br>
       <strong>Consign Note:</strong> Consign to Memory is a colored-spell filter — it cannot counter Primeval Titan (green). It CAN counter Amulet of Vigor (colorless), Spelunking is green but Amulet is {1} colorless. Watch for Consign targeting Amulet on turn 1. Don't expose Amulet into open Consign mana if possible.<br><br>
       <strong>Trinisphere:</strong> Post-board the key card in this matchup. Trinisphere makes every spell cost at least {3} — their Consign to Memory ({2}{U}), Force of Negation, Solitude evoke (normally free) all cost more. Deploy Trinisphere before your kill turn to tax everything they try to do. It doesn't affect Titan at all (costs 6).<br><br>
-      <table class="sb-table"><tr><th>OUT</th><th>IN</th></tr>
-      <tr><td class="sb-out">−2 Scapeshift (slower, they have counters)</td><td class="sb-in">+2 Trinisphere (taxes all their interaction)</td></tr>
-      <tr><td class="sb-out">−1 Vexing Bauble</td><td class="sb-in">+2 Force of Vigor (answers Damping Sphere)</td></tr>
-      </table>
+      <div class="sb-table">
+        <div class="sb-col">
+          <div class="sb-col-label">Out</div>
+          <div class="sb-item"><span>−2 Scapeshift (slower, they have counters)</span></div>
+          <div class="sb-item"><span>−1 Vexing Bauble</span></div>
+        </div>
+        <div class="sb-col">
+          <div class="sb-col-label">In</div>
+          <div class="sb-item"><span>+2 Trinisphere (taxes all their interaction)</span></div>
+          <div class="sb-item"><span>+2 Force of Vigor (answers Damping Sphere)</span></div>
+        </div>
+      </div>
     </td></tr>
 
     <tr onclick="toggle('mu-affinity')"><td>Izzet Affinity</td><td>8%</td><td><span class="verdict verdict-even">Even</span></td><td>Even</td><td>Even</td></tr>
     <tr><td colspan="5" class="matchup-detail" id="mu-affinity">
       <strong>The Matchup:</strong> Affinity's clock is fast but Primeval Titan blocks Kappa Cannoneer in combat. Their primary interaction is Metallic Rebuke and Consign — neither hits Titan. The Weapons Manufacturing + EE burst kill is the real threat: if they can accumulate 10 Munitions tokens and EE at 0, they can kill from 20 without attacking. Your Titan needs to attack and kill before they assemble the burst.<br><br>
       <strong>Collector Ouphe:</strong> Collector Ouphe shuts off activated abilities of ALL artifacts — including their Mox Opal, Arcbound Ravager, and Claws of Gix. A green 2/2 that completely freezes their board is devastating. Fetch it with Green Sun's Zenith (X=2) or bring it in from the SB.<br><br>
-      <table class="sb-table"><tr><th>OUT</th><th>IN</th></tr>
-      <tr><td class="sb-out">−1 Cultivator Colossus</td><td class="sb-in">+1 Collector Ouphe (shuts off Mox Opal, Arcbound)</td></tr>
-      <tr><td class="sb-out">−2 Malevolent Rumble</td><td class="sb-in">+3 Force of Vigor (destroys Damping Sphere, Weapons Manufacturing)</td></tr>
-      </table>
+      <div class="sb-table">
+        <div class="sb-col">
+          <div class="sb-col-label">Out</div>
+          <div class="sb-item"><span>−1 Cultivator Colossus</span></div>
+          <div class="sb-item"><span>−2 Malevolent Rumble</span></div>
+        </div>
+        <div class="sb-col">
+          <div class="sb-col-label">In</div>
+          <div class="sb-item"><span>+1 Collector Ouphe (shuts off Mox Opal, Arcbound)</span></div>
+          <div class="sb-item"><span>+3 Force of Vigor (destroys Damping Sphere, Weapons Manufacturing)</span></div>
+        </div>
+      </div>
     </td></tr>
 
     <tr onclick="toggle('mu-storm')"><td>Ruby Storm</td><td>6.2%</td><td><span class="verdict verdict-even">Even</span></td><td>Favor</td><td>Even</td></tr>
     <tr><td colspan="5" class="matchup-detail" id="mu-storm">
       <strong>The Matchup:</strong> Ruby Storm has almost no interaction in game 1 — they can't stop Primeval Titan. G1 is strongly favorable: they need to kill turn 2–3, and a Titan blocking stops them from racing. Post-board they bring Orim's Chant and Damping Sphere. Damping Sphere is devastating — bounce lands produce {C} instead of their colors, completely breaking the Amulet engine.<br><br>
       <strong>Trinisphere vs Storm post-board:</strong> Trinisphere is the clean answer. Every spell costs at least {3} — Ruby Medallion ({2}) becomes {3}, Pyretic Ritual ({1}{R}) becomes {3}, Manamorphose ({1}{G/R}) becomes {3}. Storm can't chain rituals. Trinisphere turn 2 off Amulet mana wins this matchup cleanly.<br><br>
-      <table class="sb-table"><tr><th>OUT</th><th>IN</th></tr>
-      <tr><td class="sb-out">−1 Cultivator Colossus</td><td class="sb-in">+2 Trinisphere (locks them out of chaining)</td></tr>
-      <tr><td class="sb-out">−2 Scapeshift (slower line)</td><td class="sb-in">+3 Force of Vigor (destroys Damping Sphere)</td></tr>
-      </table>
+      <div class="sb-table">
+        <div class="sb-col">
+          <div class="sb-col-label">Out</div>
+          <div class="sb-item"><span>−1 Cultivator Colossus</span></div>
+          <div class="sb-item"><span>−2 Scapeshift (slower line)</span></div>
+        </div>
+        <div class="sb-col">
+          <div class="sb-col-label">In</div>
+          <div class="sb-item"><span>+2 Trinisphere (locks them out of chaining)</span></div>
+          <div class="sb-item"><span>+3 Force of Vigor (destroys Damping Sphere)</span></div>
+        </div>
+      </div>
     </td></tr>
 
     <tr onclick="toggle('mu-etron')"><td>Eldrazi Tron</td><td>5.5%</td><td><span class="verdict verdict-even">Even</span></td><td>Even</td><td>Even</td></tr>
@@ -781,10 +816,18 @@
       <strong>The Matchup:</strong> Eldrazi Tron's key threat is Thought-Knot Seer stripping your Titan or Summoner's Pact. Karn, the Great Creator's static shuts off Amulet of Vigor (artifact activated ability — wait, Amulet's trigger is a TRIGGERED ability, not an activated ability. Karn's static only affects activated abilities. Amulet is safe under Karn!). However, Karn can fetch Damping Sphere from SB, which does break the bounce land engine.<br><br>
       <strong>Sowing Mycospawn Note:</strong> Eldrazi Tron runs Sowing Mycospawn, which kicked exiles a land. If they kick it to exile a bounce land (Simic Growth Chamber, Gruul Turf), that land is permanently gone. Losing a key bounce land significantly reduces your mana output. Prioritize finding multiple copies of bounce lands, or use Tolaria West to find another copy.<br><br>
       <strong>Speed:</strong> You're faster. Kill on turn 3 before they can assemble Tron and fetch hate. Sowing Mycospawn kicked can exile a bounce land permanently — losing Gruul Turf or Simic Growth Chamber hurts your mana engine.<br><br>
-      <table class="sb-table"><tr><th>OUT</th><th>IN</th></tr>
-      <tr><td class="sb-out">−1 Cultivator Colossus</td><td class="sb-in">+2 Dismember (kills TKS before its ETB resolves)</td></tr>
-      <tr><td class="sb-out">−2 Scapeshift</td><td class="sb-in">+3 Force of Vigor (destroys Damping Sphere)</td></tr>
-      </table>
+      <div class="sb-table">
+        <div class="sb-col">
+          <div class="sb-col-label">Out</div>
+          <div class="sb-item"><span>−1 Cultivator Colossus</span></div>
+          <div class="sb-item"><span>−2 Scapeshift</span></div>
+        </div>
+        <div class="sb-col">
+          <div class="sb-col-label">In</div>
+          <div class="sb-item"><span>+2 Dismember (kills TKS before its ETB resolves)</span></div>
+          <div class="sb-item"><span>+3 Force of Vigor (destroys Damping Sphere)</span></div>
+        </div>
+      </div>
       <div class="sb-note">Karn's static DOES NOT affect Amulet of Vigor — Amulet's untap is a triggered ability, not an activated ability. Karn only blanks activated abilities. Don't misplay around a non-existent interaction.</div>
     </td></tr>
 
@@ -793,11 +836,20 @@
       <strong>The Matchup:</strong> CrisMTG77: "I believe it's the worst pairing we could currently have in the metagame." Post-board they run Force of Vigor (destroys Amulet), Fulminator Mage (destroys Tron lands — wait, we have bounce lands not Tron), and Haywire Mite. The combo presents a fast clock and meaningful disruption. Cursed Totem from your SB shuts off Yawgmoth's activated ability entirely — without being able to activate Yawgmoth, they're just attacking with creatures.<br><br>
       <strong>Cursed Totem:</strong> "Activated abilities of creatures can't be activated." This blanks Yawgmoth (sacrifice + draw is an activated ability), Hapatra (no tap abilities), and Eldritch Evolution's sacrifice cost (wait — Eldritch Evolution sacrifices as a cost of the spell, not an activated ability). Totem is specifically for Yawgmoth and Hapatra.<br><br>
       <strong>Boseiju:</strong> Keep Boseiju in hand to destroy Agatha's Soul Cauldron in response to its "exile a creature" trigger. Timing: destroy Cauldron as soon as it targets a creature (before exile resolves).<br><br>
-      <table class="sb-table"><tr><th>OUT</th><th>IN</th></tr>
-      <tr><td class="sb-out">−1 Cultivator Colossus</td><td class="sb-in">+2 Dismember (kills Yawgmoth, Hapatra)</td></tr>
-      <tr><td class="sb-out">−2 Scapeshift</td><td class="sb-in">+2 Fire Magic (sweeps Young Wolf, Geralf's Messenger boards)</td></tr>
-      <tr><td class="sb-out">−1 Vexing Bauble</td><td class="sb-in">+1 Collector Ouphe (shuts off Yawgmoth's activated ability)</td></tr>
-      </table>
+      <div class="sb-table">
+        <div class="sb-col">
+          <div class="sb-col-label">Out</div>
+          <div class="sb-item"><span>−1 Cultivator Colossus</span></div>
+          <div class="sb-item"><span>−2 Scapeshift</span></div>
+          <div class="sb-item"><span>−1 Vexing Bauble</span></div>
+        </div>
+        <div class="sb-col">
+          <div class="sb-col-label">In</div>
+          <div class="sb-item"><span>+2 Dismember (kills Yawgmoth, Hapatra)</span></div>
+          <div class="sb-item"><span>+2 Fire Magic (sweeps Young Wolf, Geralf's Messenger boards)</span></div>
+          <div class="sb-item"><span>+1 Collector Ouphe (shuts off Yawgmoth's activated ability)</span></div>
+        </div>
+      </div>
       <div class="sb-note">Collector Ouphe — "activated abilities of artifacts can't be activated" — does NOT apply to Yawgmoth (he's a creature). But Ouphe does shut off any artifact-based activated abilities in their deck.</div>
     </td></tr>
 
@@ -805,50 +857,90 @@
     <tr><td colspan="5" class="matchup-detail" id="mu-living">
       <strong>The Matchup:</strong> One of the worst matchups. Living End has cheap discard (Grief, cycling), a turn-3 cascade kill, and Force of Negation for protection. Your only G1 interaction is Bojuka Bog (ETB exile a GY). The discard line (bouncing a land on turn 2 to hold 8 cards, discarding Titan at end step) extends the game past their turn-3 cascade but doesn't stop it.<br><br>
       <strong>Bojuka Bog (SB):</strong> Bojuka Bog in the SB is fetchable with Titan ETB in games 2/3. When you bring it in, use Titan's ETB trigger to fetch Bojuka Bog — it ETBs immediately and exiles their GY before they cascade. Alternatively, fetch it as a land drop with Green Sun's Zenith (since Bog is a land)... wait, GSZ finds creatures. Just fetch Bog with Titan.<br><br>
-      <table class="sb-table"><tr><th>OUT</th><th>IN</th></tr>
-      <tr><td class="sb-out">−1 Cultivator Colossus</td><td class="sb-in">+1 Bojuka Bog (fetch with Titan ETB to exile their GY)</td></tr>
-      <tr><td class="sb-out">−2 Scapeshift (slower line)</td><td class="sb-in">+2 Trinisphere (taxes Force of Negation and Violent Outburst)</td></tr>
-      </table>
+      <div class="sb-table">
+        <div class="sb-col">
+          <div class="sb-col-label">Out</div>
+          <div class="sb-item"><span>−1 Cultivator Colossus</span></div>
+          <div class="sb-item"><span>−2 Scapeshift (slower line)</span></div>
+        </div>
+        <div class="sb-col">
+          <div class="sb-col-label">In</div>
+          <div class="sb-item"><span>+1 Bojuka Bog (fetch with Titan ETB to exile their GY)</span></div>
+          <div class="sb-item"><span>+2 Trinisphere (taxes Force of Negation and Violent Outburst)</span></div>
+        </div>
+      </div>
     </td></tr>
 
     <tr onclick="toggle('mu-mirror')"><td>Amulet Mirror</td><td>3.1%</td><td><span class="verdict verdict-even">Even</span></td><td>Even</td><td>Even</td></tr>
     <tr><td colspan="5" class="matchup-detail" id="mu-mirror">
       <strong>The Matchup:</strong> Whoever casts Titan first wins. The mirror is about (a) not falling behind on Amulet development and (b) using Boseiju to destroy the opponent's key land (usually targeting their Slayers' Stronghold to prevent the haste kill, or targeting their Simic Growth Chamber to break their mana). CrisMTG77: "It's vital to correctly detect your opponent's intentions." Leave a bounce land on the table early to signal aggression and see how they respond.<br><br>
       <strong>Force of Vigor:</strong> Best mirror card. Destroys their Amulet(s) at instant speed with no mana cost (pitch a green card). Removing their Amulets while yours remain means your bounce lands produce surplus mana and theirs don't. Three copies in the SB means high probability of drawing one naturally.<br><br>
-      <table class="sb-table"><tr><th>OUT</th><th>IN</th></tr>
-      <tr><td class="sb-out">−1 Cultivator Colossus</td><td class="sb-in">+3 Force of Vigor (destroy their Amulets)</td></tr>
-      <tr><td class="sb-out">−2 Scapeshift</td><td class="sb-in">+2 Dismember (kill their Titan before ETB)</td></tr>
-      </table>
+      <div class="sb-table">
+        <div class="sb-col">
+          <div class="sb-col-label">Out</div>
+          <div class="sb-item"><span>−1 Cultivator Colossus</span></div>
+          <div class="sb-item"><span>−2 Scapeshift</span></div>
+        </div>
+        <div class="sb-col">
+          <div class="sb-col-label">In</div>
+          <div class="sb-item"><span>+3 Force of Vigor (destroy their Amulets)</span></div>
+          <div class="sb-item"><span>+2 Dismember (kill their Titan before ETB)</span></div>
+        </div>
+      </div>
     </td></tr>
 
     <tr onclick="toggle('mu-uwc')"><td>UW Control</td><td>2%</td><td><span class="verdict verdict-even">Even</span></td><td>Favor</td><td>Even</td></tr>
     <tr><td colspan="5" class="matchup-detail" id="mu-uwc">
       <strong>The Matchup:</strong> UW Control has Counterspell, Force of Negation, and Solitude. Post-board they may add specific land hate. G1 is favorable: they have limited answers to a resolved Titan and struggle to counter through the Amulet mana advantage. Defense Grid post-board makes their counterspells cost {3} more on your turn — essentially locking out all their interaction while you combo.<br><br>
       <strong>Trinisphere:</strong> Post-board, Trinisphere taxes their Counterspell ({U}{U} → {3}), Force of Negation → {3}, Orim's Chant → {3}. Deploy Trinisphere before your combo turn. It doesn't affect Titan (costs 6).<br><br>
-      <table class="sb-table"><tr><th>OUT</th><th>IN</th></tr>
-      <tr><td class="sb-out">−1 Vexing Bauble</td><td class="sb-in">+2 Trinisphere (taxes all their counters)</td></tr>
-      <tr><td class="sb-out">−2 Scapeshift</td><td class="sb-in">+3 Force of Vigor (answer specific hate pieces)</td></tr>
-      </table>
+      <div class="sb-table">
+        <div class="sb-col">
+          <div class="sb-col-label">Out</div>
+          <div class="sb-item"><span>−1 Vexing Bauble</span></div>
+          <div class="sb-item"><span>−2 Scapeshift</span></div>
+        </div>
+        <div class="sb-col">
+          <div class="sb-col-label">In</div>
+          <div class="sb-item"><span>+2 Trinisphere (taxes all their counters)</span></div>
+          <div class="sb-item"><span>+3 Force of Vigor (answer specific hate pieces)</span></div>
+        </div>
+      </div>
     </td></tr>
 
     <tr onclick="toggle('mu-reanimator')"><td>Grixis Reanimator</td><td>1.5%</td><td><span class="verdict verdict-even">Even</span></td><td>Favor</td><td>Even</td></tr>
     <tr><td colspan="5" class="matchup-detail" id="mu-reanimator">
       <strong>The Matchup:</strong> Grixis Reanimator wins by reanimating Archon of Cruelty on turn 2–3. Their disruption is Thoughtseize (strips Titan or Amulet from hand). G1 speed wins — your turn-3 Titan with the kill line is faster than their turn-3 Archon in most hands. Bojuka Bog (a land in your deck!) can ETB exile their graveyard when you fetch it with Titan, shutting down Persist or Goryo's Vengeance on the spot.<br><br>
       <strong>Bojuka Bog Line:</strong> Bojuka Bog is in the SB — bring it in for game 2/3. When you cast Primeval Titan, use the ETB trigger to fetch Bojuka Bog + any utility land. Bog ETBs immediately, exiling their GY, shutting down Persist or Goryo's Vengeance before they can use it. This is why Bog in the SB is still a functional answer — Titan finds it for free mid-game.<br><br>
-      <table class="sb-table"><tr><th>OUT</th><th>IN</th></tr>
-      <tr><td class="sb-out">−1 Cultivator Colossus</td><td class="sb-in">+1 Bojuka Bog (Titan fetches it → exile their GY)</td></tr>
-      <tr><td class="sb-out">−2 Scapeshift</td><td class="sb-in">+2 Trinisphere (taxes Thoughtseize? no — but taxes their reanimation spells)</td></tr>
-      </table>
+      <div class="sb-table">
+        <div class="sb-col">
+          <div class="sb-col-label">Out</div>
+          <div class="sb-item"><span>−1 Cultivator Colossus</span></div>
+          <div class="sb-item"><span>−2 Scapeshift</span></div>
+        </div>
+        <div class="sb-col">
+          <div class="sb-col-label">In</div>
+          <div class="sb-item"><span>+1 Bojuka Bog (Titan fetches it → exile their GY)</span></div>
+          <div class="sb-item"><span>+2 Trinisphere (taxes Thoughtseize? no — but taxes their reanimation spells)</span></div>
+        </div>
+      </div>
     </td></tr>
 
     <tr onclick="toggle('mu-domain')"><td>Domain Aggro</td><td>2.6%</td><td><span class="verdict verdict-favor">Favorable</span></td><td>Favor</td><td>Favor</td></tr>
     <tr><td colspan="5" class="matchup-detail" id="mu-domain">
       <strong>The Matchup:</strong> Domain Aggro presents Scion of Draco (hexproof with Leyline of the Guildpact, double strike). Scion has hexproof from targeted removal but can be blocked by Primeval Titan (6/6 trample). Arboreal Grazer (0/3 reach) can block and survive Lightning Bolt — relevant blocker in the early turns. Your Titan is the most powerful threat on the board by turn 3, and their threats have no answer for it in combat.<br><br>
       <strong>Dismember:</strong> Kills Scion of Draco (−5/−5 = 1/1 first strike, then combat cleanup). Despite paying 4 life, killing a hexproof double-striker is worth the life loss. Keep Dismember for their hexproof threats.<br><br>
-      <table class="sb-table"><tr><th>OUT</th><th>IN</th></tr>
-      <tr><td class="sb-out">−1 Cultivator Colossus (too slow vs aggro)</td><td class="sb-in">+2 Dismember (kills Scion with Boseiju removing hexproof first)</td></tr>
-      <tr><td class="sb-out">−2 Scapeshift</td><td class="sb-in">+2 Fire Magic (sweeps their creature board)</td></tr>
-      </table>
+      <div class="sb-table">
+        <div class="sb-col">
+          <div class="sb-col-label">Out</div>
+          <div class="sb-item"><span>−1 Cultivator Colossus (too slow vs aggro)</span></div>
+          <div class="sb-item"><span>−2 Scapeshift</span></div>
+        </div>
+        <div class="sb-col">
+          <div class="sb-col-label">In</div>
+          <div class="sb-item"><span>+2 Dismember (kills Scion with Boseiju removing hexproof first)</span></div>
+          <div class="sb-item"><span>+2 Fire Magic (sweeps their creature board)</span></div>
+        </div>
+      </div>
     </td></tr>
   </table>
 </div>
