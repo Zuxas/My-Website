@@ -6,30 +6,24 @@
 <title>Jeskai Blink — Team Resolve Playbook</title>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --ink: #0e0e0e; --paper: #f2ede6; --paper-dark: #e8e1d6; --rule: #c8bfb0;
-    --accent: #c0622b; --accent-light: #fbe4d6;
-    --danger: #8f1a1a; --danger-light: #f7d6d6;
-    --gold: #8f6a1a; --gold-light: #f7ead6;
-    --mid: #5a5248;
-  }
+  :root { --ink:#1E293B; --paper:#F8FAFC; --paper-dark:#E4E6E7; --rule:#E9EFF8; --accent:#EA580C; --accent-light:rgba(234,88,12,0.15); --danger:#DC2626; --danger-light:rgba(220,38,38,0.15); --gold:#EA580C; --gold-light:rgba(234,88,12,0.15); --mid:#64748B; --card:#FFFFFF; }
   html { overflow-y: scroll; }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body { background: var(--paper); color: var(--ink); font-family: 'Crimson Pro', Georgia, serif; font-size: 17px; line-height: 1.6; }
   .header-band { background: var(--ink); border-bottom: 3px solid #c0622b; }
   .header-inner { max-width: 1100px; margin: 0 auto; padding: 32px 80px; display: flex; justify-content: space-between; align-items: flex-end; gap: 40px; }
-  .header-eyebrow { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(242,237,230,0.35); margin-bottom: 8px; }
+  .header-eyebrow { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(248,250,252,0.35); margin-bottom: 8px; }
   .header-title { font-family: 'Bebas Neue', sans-serif; font-size: 56px; line-height: 0.9; color: var(--paper); letter-spacing: 0.02em; }
   .header-title span { color: #c0622b; }
-  .header-mantra { font-family: 'Crimson Pro', serif; font-style: italic; font-size: 15px; color: rgba(242,237,230,0.4); margin-top: 8px; }
+  .header-mantra { font-family: 'Crimson Pro', serif; font-style: italic; font-size: 15px; color: rgba(248,250,252,0.4); margin-top: 8px; }
   .header-right { display: flex; flex-direction: column; gap: 8px; text-align: right; padding-bottom: 4px; }
   .header-stat { display: flex; gap: 12px; align-items: center; justify-content: flex-end; }
-  .hs-label { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(242,237,230,0.3); }
+  .hs-label { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(248,250,252,0.3); }
   .hs-val { font-family: 'DM Mono', monospace; font-size: 12px; color: var(--paper); }
-  nav { position: sticky; top: 0; z-index: 100; background: var(--ink); border-bottom: 1px solid rgba(242,237,230,0.1); padding: 0 80px; display: flex; align-items: center; gap: 0; overflow-x: auto; scrollbar-width: none; }
+  nav { position: sticky; top: 0; z-index: 100; background: var(--ink); border-bottom: 1px solid rgba(248,250,252,0.1); padding: 0 80px; display: flex; align-items: center; gap: 0; overflow-x: auto; scrollbar-width: none; }
   nav::-webkit-scrollbar { display: none; }
   .nav-brand { font-family: 'Bebas Neue', sans-serif; font-size: 18px; color: #c0622b; letter-spacing: 0.05em; margin-right: 40px; white-space: nowrap; padding: 16px 0; }
-  .nav-link { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(242,237,230,0.4); padding: 20px 16px; cursor: pointer; white-space: nowrap; border-bottom: 2px solid transparent; transition: all 0.2s; background: none; border-top: none; border-left: none; border-right: none; }
+  .nav-link { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(248,250,252,0.4); padding: 20px 16px; cursor: pointer; white-space: nowrap; border-bottom: 2px solid transparent; transition: all 0.2s; background: none; border-top: none; border-left: none; border-right: none; }
   .nav-link:hover, .nav-link.active { color: var(--paper); border-bottom-color: #c0622b; }
   .page { max-width: 1100px; margin: 0 auto; padding: 80px 80px; }
   .section { display: none; animation: fadeIn 0.3s ease; }
@@ -153,7 +147,7 @@
   .tuning-up::before { content:"▲ "; color:#1a6b1a; font-size:12px; }
   .tuning-down { font-size:14px; font-weight:300; margin-bottom:6px; }
   .tuning-down::before { content:"▼ "; color:var(--danger); font-size:12px; }
-  footer { background: var(--ink); color: rgba(242,237,230,0.3); padding: 40px 80px; margin-top: 80px; display: flex; justify-content: space-between; align-items: center; }
+  footer { background: var(--ink); color: rgba(248,250,252,0.3); padding: 40px 80px; margin-top: 80px; display: flex; justify-content: space-between; align-items: center; }
   footer span { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; }
   @media (max-width: 768px) { .header-inner, nav, .page, footer { padding-left: 24px; padding-right: 24px; } .header-title { font-size: 40px; } .header-right { display: none; } .decklist, .role-grid, .sb-table, .sb-deep-grid { grid-template-columns: 1fr; } nav { padding: 0 24px; } }
   @media print {
@@ -461,7 +455,7 @@
   <div class="engine-block">
     <div class="engine-header"><div class="engine-letter">A</div>
       <div><div class="engine-name">Phelia Attack Loop</div>
-      <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(242,237,230,0.4);margin-top:4px;">Every Phelia attack generates a free ETB trigger from your best creature — at instant speed.</div></div>
+      <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(248,250,252,0.4);margin-top:4px;">Every Phelia attack generates a free ETB trigger from your best creature — at instant speed.</div></div>
     </div>
     <div class="engine-body">
       <div class="engine-step"><div class="engine-step-label">Setup</div><div class="engine-step-title">Phelia + Any ETB Creature</div>
@@ -476,7 +470,7 @@
   <div class="engine-block">
     <div class="engine-header"><div class="engine-letter">B</div>
       <div><div class="engine-name">White Orchid Phantom + Ephemerate Land Denial</div>
-      <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(242,237,230,0.4);margin-top:4px;">One Phantom + one Ephemerate destroys two lands and tutors two basics for you.</div></div>
+      <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(248,250,252,0.4);margin-top:4px;">One Phantom + one Ephemerate destroys two lands and tutors two basics for you.</div></div>
     </div>
     <div class="engine-body">
       <div class="engine-step"><div class="engine-step-label">Setup</div><div class="engine-step-title">White Orchid Phantom ETB</div>
@@ -491,7 +485,7 @@
   <div class="engine-block">
     <div class="engine-header"><div class="engine-letter">C</div>
       <div><div class="engine-name">Ocelot Pride + Consign to Memory Denial Package</div>
-      <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(242,237,230,0.4);margin-top:4px;">Tokens provide a clock. Consign protects the clock and counters opponent combo pieces.</div></div>
+      <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(248,250,252,0.4);margin-top:4px;">Tokens provide a clock. Consign protects the clock and counters opponent combo pieces.</div></div>
     </div>
     <div class="engine-body">
       <div class="engine-step"><div class="engine-step-label">Setup</div><div class="engine-step-title">Ocelot Pride Token Generation</div>

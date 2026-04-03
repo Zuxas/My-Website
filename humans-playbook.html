@@ -7,23 +7,23 @@
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
 <style>
   html { overflow-y: scroll; }
-  :root { --ink:#0e0e0e; --paper:#f2ede6; --paper-dark:#e8e1d6; --rule:#c8bfb0; --accent:#C2851F; --accent-light:#fdf0dc; --danger:#8f1a1a; --danger-light:#f7d6d6; --gold:#8f6a1a; --gold-light:#f7ead6; --mid:#5a5248; }
+  :root { --ink:#4C1D95; --paper:#FAF5FF; --paper-dark:#E6E1EA; --rule:#ECEEF9; --accent:#16A34A; --accent-light:rgba(22,163,74,0.15); --danger:#DC2626; --danger-light:rgba(220,38,38,0.15); --gold:#16A34A; --gold-light:rgba(22,163,74,0.15); --mid:#64748B; --card:#FFFFFF; }
   * { margin:0; padding:0; box-sizing:border-box; }
   body { background:var(--paper); color:var(--ink); font-family:'Crimson Pro',Georgia,serif; font-size:17px; line-height:1.6; }
   .header-band { background:var(--ink); border-bottom:3px solid #C2851F; }
   .header-inner { max-width:1100px; margin:0 auto; padding:32px 80px; display:flex; justify-content:space-between; align-items:flex-end; gap:40px; }
-  .header-eyebrow { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:rgba(242,237,230,0.35); margin-bottom:8px; }
+  .header-eyebrow { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:rgba(250,245,255,0.35); margin-bottom:8px; }
   .header-title { font-family:'Bebas Neue',sans-serif; font-size:56px; line-height:0.9; color:var(--paper); letter-spacing:0.02em; }
   .header-title span { color:#C2851F; }
-  .header-mantra { font-family:'Crimson Pro',serif; font-style:italic; font-size:15px; color:rgba(242,237,230,0.4); margin-top:8px; }
+  .header-mantra { font-family:'Crimson Pro',serif; font-style:italic; font-size:15px; color:rgba(250,245,255,0.4); margin-top:8px; }
   .header-right { display:flex; flex-direction:column; gap:8px; text-align:right; padding-bottom:4px; }
   .header-stat { display:flex; gap:12px; align-items:center; justify-content:flex-end; }
-  .hs-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; color:rgba(242,237,230,0.3); }
+  .hs-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; color:rgba(250,245,255,0.3); }
   .hs-val { font-family:'DM Mono',monospace; font-size:12px; color:var(--paper); }
-  nav { position:sticky; top:0; z-index:100; background:var(--ink); border-bottom:1px solid rgba(242,237,230,0.1); padding:0 80px; display:flex; align-items:center; gap:0; overflow-x:auto; scrollbar-width:none; }
+  nav { position:sticky; top:0; z-index:100; background:var(--ink); border-bottom:1px solid rgba(250,245,255,0.1); padding:0 80px; display:flex; align-items:center; gap:0; overflow-x:auto; scrollbar-width:none; }
   nav::-webkit-scrollbar { display:none; }
   .nav-brand { font-family:'Bebas Neue',sans-serif; font-size:18px; color:#C2851F; letter-spacing:0.05em; margin-right:40px; white-space:nowrap; padding:16px 0; text-decoration:none; }
-  .nav-link { font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:rgba(242,237,230,0.4); padding:20px 16px; cursor:pointer; white-space:nowrap; border-bottom:2px solid transparent; transition:all 0.2s; background:none; border-top:none; border-left:none; border-right:none; }
+  .nav-link { font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:rgba(250,245,255,0.4); padding:20px 16px; cursor:pointer; white-space:nowrap; border-bottom:2px solid transparent; transition:all 0.2s; background:none; border-top:none; border-left:none; border-right:none; }
   .nav-link:hover, .nav-link.active { color:var(--paper); border-bottom-color:#C2851F; }
   .page { max-width:1100px; margin:0 auto; padding:80px 80px; }
   .section { display:none; animation:fadeIn 0.3s ease; }
@@ -58,7 +58,7 @@
   .matchup-table colgroup col:nth-child(2) { width:16%; }
   .matchup-table colgroup col:nth-child(3) { width:16%; }
   .matchup-table colgroup col:nth-child(4) { width:26%; }
-  .matchup-table th { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; padding:10px 16px; background:var(--ink); color:rgba(242,237,230,0.6); text-align:left; }
+  .matchup-table th { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; padding:10px 16px; background:var(--ink); color:rgba(250,245,255,0.6); text-align:left; }
   .matchup-table td { padding:12px 16px; border-bottom:1px solid var(--rule); font-size:15px; font-weight:300; }
   .matchup-table tr:hover td { background:var(--paper-dark); cursor:pointer; }
     .matchup-detail { display:none; border:1px solid var(--rule); background:var(--paper-dark); padding:32px 40px; margin:0 0 2px; animation:fadeIn 0.2s ease; }
@@ -124,7 +124,7 @@
   .print-row { font-size:12px; font-weight:300; display:flex; justify-content:space-between; padding:1px 0; border-bottom:1px solid rgba(200,191,176,0.4); }
   .print-qty { font-family:'DM Mono',monospace; font-size:11px; color:var(--mid); }
   .print-needle { font-family:'DM Mono',monospace; font-size:9px; letter-spacing:0.06em; color:var(--danger); margin-top:6px; text-transform:uppercase; }
-  footer { background:var(--ink); color:rgba(242,237,230,0.3); padding:40px 80px; margin-top:80px; display:flex; justify-content:space-between; align-items:center; }
+  footer { background:var(--ink); color:rgba(250,245,255,0.3); padding:40px 80px; margin-top:80px; display:flex; justify-content:space-between; align-items:center; }
   footer span { font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.1em; text-transform:uppercase; }
   @media (max-width:768px) { .header-inner,nav,.page,footer { padding-left:24px; padding-right:24px; } .header-title { font-size:40px; } .header-right { display:none; } .decklist,.role-grid,.engine-body,.tuning-grid,.print-grid { grid-template-columns:1fr; } nav { padding:0 24px; } }
   @media print { nav,.print-btn,footer { display:none;   /* SB-only print mode */
@@ -1346,7 +1346,7 @@
 </div><!-- end .page -->
 
 <footer>
-  <span><a href="zuxas.html" style="color:rgba(242,237,230,0.3);text-decoration:none;">Zuxas</a> · Team Resolve</span>
+  <span><a href="zuxas.html" style="color:rgba(250,245,255,0.3);text-decoration:none;">Zuxas</a> · Team Resolve</span>
   <span>Modern 2026 · 5-Color Humans</span>
   <span>April 2026 · Palette: Membership/Community (UI UX Pro Max Row 71)</span>
 </footer>

@@ -7,23 +7,23 @@
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
 <style>
   html { overflow-y: scroll; }
-  :root { --ink:#0e0e0e; --paper:#f2ede6; --paper-dark:#e8e1d6; --rule:#c8bfb0; --accent:#1a6b8f; --accent-light:#d0e8f2; --danger:#8f1a1a; --danger-light:#f7d6d6; --gold:#8f6a1a; --gold-light:#f7ead6; --mid:#5a5248; }
+  :root { --ink:#164E63; --paper:#ECFEFF; --paper-dark:#D9E9EA; --rule:#E8F1F6; --accent:#059669; --accent-light:rgba(5,150,105,0.15); --danger:#DC2626; --danger-light:rgba(220,38,38,0.15); --gold:#059669; --gold-light:rgba(5,150,105,0.15); --mid:#64748B; --card:#FFFFFF; }
   * { margin:0; padding:0; box-sizing:border-box; }
   body { background:var(--paper); color:var(--ink); font-family:'Crimson Pro',Georgia,serif; font-size:17px; line-height:1.6; }
   .header-band { background:var(--ink); border-bottom:3px solid #1a6b8f; }
   .header-inner { max-width:1100px; margin:0 auto; padding:32px 80px; display:flex; justify-content:space-between; align-items:flex-end; gap:40px; }
-  .header-eyebrow { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:rgba(242,237,230,0.35); margin-bottom:8px; }
+  .header-eyebrow { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:rgba(236,254,255,0.35); margin-bottom:8px; }
   .header-title { font-family:'Bebas Neue',sans-serif; font-size:56px; line-height:0.9; color:var(--paper); letter-spacing:0.02em; }
   .header-title span { color:#3ab0e0; }
-  .header-mantra { font-family:'Crimson Pro',serif; font-style:italic; font-size:15px; color:rgba(242,237,230,0.4); margin-top:8px; }
+  .header-mantra { font-family:'Crimson Pro',serif; font-style:italic; font-size:15px; color:rgba(236,254,255,0.4); margin-top:8px; }
   .header-right { display:flex; flex-direction:column; gap:8px; text-align:right; padding-bottom:4px; }
   .header-stat { display:flex; gap:12px; align-items:center; justify-content:flex-end; }
-  .hs-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; color:rgba(242,237,230,0.3); }
+  .hs-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; color:rgba(236,254,255,0.3); }
   .hs-val { font-family:'DM Mono',monospace; font-size:12px; color:var(--paper); }
-  nav { position:sticky; top:0; z-index:100; background:var(--ink); border-bottom:1px solid rgba(242,237,230,0.1); padding:0 80px; display:flex; align-items:center; gap:0; overflow-x:auto; scrollbar-width:none; }
+  nav { position:sticky; top:0; z-index:100; background:var(--ink); border-bottom:1px solid rgba(236,254,255,0.1); padding:0 80px; display:flex; align-items:center; gap:0; overflow-x:auto; scrollbar-width:none; }
   nav::-webkit-scrollbar { display:none; }
   .nav-brand { font-family:'Bebas Neue',sans-serif; font-size:18px; color:#3ab0e0; letter-spacing:0.05em; margin-right:40px; white-space:nowrap; padding:16px 0; }
-  .nav-link { font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:rgba(242,237,230,0.4); padding:20px 16px; cursor:pointer; white-space:nowrap; border-bottom:2px solid transparent; transition:all 0.2s; background:none; border-top:none; border-left:none; border-right:none; }
+  .nav-link { font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:rgba(236,254,255,0.4); padding:20px 16px; cursor:pointer; white-space:nowrap; border-bottom:2px solid transparent; transition:all 0.2s; background:none; border-top:none; border-left:none; border-right:none; }
   .nav-link:hover, .nav-link.active { color:var(--paper); border-bottom-color:#1a6b8f; }
   .page { max-width:1100px; margin:0 auto; padding:80px 80px; }
   .section { display:none; animation:fadeIn 0.3s ease; }
@@ -132,7 +132,7 @@
   .print-needle { font-family:'DM Mono',monospace; font-size:9px; letter-spacing:0.06em; color:var(--danger); margin-top:6px; text-transform:uppercase; }
   .tag { display:inline-block; font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.08em; background:var(--paper-dark); border:1px solid var(--rule); padding:3px 8px; margin:2px; }
   .c { color:var(--accent); font-weight:400; }
-  footer { background:var(--ink); color:rgba(242,237,230,0.3); padding:40px 80px; margin-top:80px; display:flex; justify-content:space-between; align-items:center; }
+  footer { background:var(--ink); color:rgba(236,254,255,0.3); padding:40px 80px; margin-top:80px; display:flex; justify-content:space-between; align-items:center; }
   footer span { font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.1em; text-transform:uppercase; }
   @media (max-width:768px) { .header-inner,nav,.page,footer { padding-left:24px; padding-right:24px; } .header-title { font-size:40px; } .header-right { display:none; } .decklist,.role-grid,.sb-table,.engine-body,.tuning-grid,.pd-grid { grid-template-columns:1fr; } nav { padding:0 24px; } }
   @media print { nav,.print-btn,footer { display:none;   /* SB-only print mode */
@@ -458,7 +458,7 @@
   <div class="engine-block">
     <div class="engine-header"><div class="engine-letter">A</div>
       <div><div class="engine-name">Pinnacle Emissary Token Flood Engine</div>
-      <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(242,237,230,0.4);margin-top:4px;">Every artifact cast after Emissary enters is a free 1/1 flying Drone. Kappa Cannoneer converts each one into a +1/+1 counter and a turn of unblockability.</div></div>
+      <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(236,254,255,0.4);margin-top:4px;">Every artifact cast after Emissary enters is a free 1/1 flying Drone. Kappa Cannoneer converts each one into a +1/+1 counter and a turn of unblockability.</div></div>
     </div>
     <div class="engine-body">
       <div class="engine-step"><div class="engine-step-label">Setup</div><div class="engine-step-title">Emissary on T1 or T2</div>
@@ -473,7 +473,7 @@
   <div class="engine-block">
     <div class="engine-header"><div class="engine-letter">B</div>
       <div><div class="engine-name">Weapons Manufacturing + Engineered Explosives Burst</div>
-      <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(242,237,230,0.4);margin-top:4px;">Every nontoken artifact entering creates a Munitions bomb. EE at X=0 detonates them all simultaneously. The damage is uncounterable and bypasses hexproof.</div></div>
+      <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(236,254,255,0.4);margin-top:4px;">Every nontoken artifact entering creates a Munitions bomb. EE at X=0 detonates them all simultaneously. The damage is uncounterable and bypasses hexproof.</div></div>
     </div>
     <div class="engine-body">
       <div class="engine-step"><div class="engine-step-label">Setup</div><div class="engine-step-title">Weapons Manufacturing Active</div>
@@ -488,7 +488,7 @@
   <div class="engine-block">
     <div class="engine-header"><div class="engine-letter">C</div>
       <div><div class="engine-name">Urza's Saga + Emry Recursion Engine</div>
-      <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(242,237,230,0.4);margin-top:4px;">Urza's Saga creates Constructs that scale with artifact count and tutors zero-drops on chapter III. Emry recycles artifacts from the GY every turn — your graveyard is a second hand.</div></div>
+      <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(236,254,255,0.4);margin-top:4px;">Urza's Saga creates Constructs that scale with artifact count and tutors zero-drops on chapter III. Emry recycles artifacts from the GY every turn — your graveyard is a second hand.</div></div>
     </div>
     <div class="engine-body">
       <div class="engine-step"><div class="engine-step-label">Setup</div><div class="engine-step-title">Saga on Turn 2, Emry When Deep</div>

@@ -7,23 +7,23 @@
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
 <style>
   html { overflow-y: scroll; }
-  :root { --ink:#0e0e0e; --paper:#f2ede6; --paper-dark:#e8e1d6; --rule:#c8bfb0; --accent:#7C2D12; --accent-light:#dbeafe; --danger:#8f1a1a; --danger-light:#f7d6d6; --gold:#8f6a1a; --gold-light:#f7ead6; --mid:#5a5248; }
+  :root { --ink:#450A0A; --paper:#FEF2F2; --paper-dark:#E9DEDE; --rule:#ECEDF0; --accent:#A16207; --accent-light:rgba(161,98,7,0.15); --danger:#DC2626; --danger-light:rgba(220,38,38,0.15); --gold:#A16207; --gold-light:rgba(161,98,7,0.15); --mid:#64748B; --card:#FFFFFF; }
   * { margin:0; padding:0; box-sizing:border-box; }
   body { background:var(--paper); color:var(--ink); font-family:'Crimson Pro',Georgia,serif; font-size:17px; line-height:1.6; }
   .header-band { background:var(--ink); border-bottom:3px solid #7C2D12; }
   .header-inner { max-width:1100px; margin:0 auto; padding:32px 80px; display:flex; justify-content:space-between; align-items:flex-end; gap:40px; }
-  .header-eyebrow { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:rgba(242,237,230,0.35); margin-bottom:8px; }
+  .header-eyebrow { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:rgba(254,242,242,0.35); margin-bottom:8px; }
   .header-title { font-family:'Bebas Neue',sans-serif; font-size:56px; line-height:0.9; color:var(--paper); letter-spacing:0.02em; }
   .header-title span { color:#60a5fa; }
-  .header-mantra { font-family:'Crimson Pro',serif; font-style:italic; font-size:15px; color:rgba(242,237,230,0.4); margin-top:8px; }
+  .header-mantra { font-family:'Crimson Pro',serif; font-style:italic; font-size:15px; color:rgba(254,242,242,0.4); margin-top:8px; }
   .header-right { display:flex; flex-direction:column; gap:8px; text-align:right; padding-bottom:4px; }
   .header-stat { display:flex; gap:12px; align-items:center; justify-content:flex-end; }
-  .hs-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; color:rgba(242,237,230,0.3); }
+  .hs-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; color:rgba(254,242,242,0.3); }
   .hs-val { font-family:'DM Mono',monospace; font-size:12px; color:var(--paper); }
-  nav { position:sticky; top:0; z-index:100; background:var(--ink); border-bottom:1px solid rgba(242,237,230,0.1); padding:0 80px; display:flex; align-items:center; gap:0; overflow-x:auto; scrollbar-width:none; }
+  nav { position:sticky; top:0; z-index:100; background:var(--ink); border-bottom:1px solid rgba(254,242,242,0.1); padding:0 80px; display:flex; align-items:center; gap:0; overflow-x:auto; scrollbar-width:none; }
   nav::-webkit-scrollbar { display:none; }
   .nav-brand { font-family:'Bebas Neue',sans-serif; font-size:18px; color:#60a5fa; letter-spacing:0.05em; margin-right:40px; white-space:nowrap; padding:16px 0; }
-  .nav-link { font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:rgba(242,237,230,0.4); padding:20px 16px; cursor:pointer; white-space:nowrap; border-bottom:2px solid transparent; transition:all 0.2s; background:none; border-top:none; border-left:none; border-right:none; }
+  .nav-link { font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:rgba(254,242,242,0.4); padding:20px 16px; cursor:pointer; white-space:nowrap; border-bottom:2px solid transparent; transition:all 0.2s; background:none; border-top:none; border-left:none; border-right:none; }
   .nav-link:hover, .nav-link.active { color:var(--paper); border-bottom-color:#7C2D12; }
   .page { max-width:1100px; margin:0 auto; padding:80px 80px; }
   .section { display:none; animation:fadeIn 0.3s ease; }
@@ -57,7 +57,7 @@
   .matchup-table colgroup col:nth-child(2) { width:16%; }
   .matchup-table colgroup col:nth-child(3) { width:16%; }
   .matchup-table colgroup col:nth-child(4) { width:26%; }
-  .matchup-table th { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; padding:10px 16px; background:var(--ink); color:rgba(242,237,230,0.6); text-align:left; }
+  .matchup-table th { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; padding:10px 16px; background:var(--ink); color:rgba(254,242,242,0.6); text-align:left; }
   .matchup-table td { padding:12px 16px; border-bottom:1px solid var(--rule); font-size:15px; font-weight:300; }
   .matchup-table tr:hover td { background:var(--paper-dark); cursor:pointer; }
     .matchup-detail { display:none; border:1px solid var(--rule); background:var(--paper-dark); padding:32px 40px; margin:0 0 2px; animation:fadeIn 0.2s ease; }
@@ -128,7 +128,7 @@
   .print-qty { font-family:'DM Mono',monospace; font-size:11px; color:var(--mid); flex-shrink:0; margin-left:4px; }
   .print-needle { font-family:'DM Mono',monospace; font-size:9px; letter-spacing:0.06em; color:var(--danger); margin-top:6px; text-transform:uppercase; }
   .c { color:var(--accent); font-weight:400; }
-  footer { background:var(--ink); color:rgba(242,237,230,0.3); padding:40px 80px; margin-top:80px; display:flex; justify-content:space-between; align-items:center; }
+  footer { background:var(--ink); color:rgba(254,242,242,0.3); padding:40px 80px; margin-top:80px; display:flex; justify-content:space-between; align-items:center; }
   footer span { font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.1em; text-transform:uppercase; }
   @media (max-width:768px) { .header-inner,nav,.page,footer { padding-left:24px; padding-right:24px; } .header-title { font-size:40px; } .header-right { display:none; } .decklist,.role-grid,.engine-body,.tuning-grid { grid-template-columns:1fr; } nav { padding:0 24px; } }
   @media print { nav,.print-btn,footer { display:none;   /* SB-only print mode */
@@ -421,7 +421,7 @@
   <div class="engine-block">
     <div class="engine-header">
       <div class="engine-letter">1</div>
-      <div><div class="engine-name">Cascade Combo Engine</div><div style="font-family:'DM Mono',monospace;font-size:11px;color:rgba(242,237,230,0.4);letter-spacing:0.1em;text-transform:uppercase;">Primary Win Engine</div></div>
+      <div><div class="engine-name">Cascade Combo Engine</div><div style="font-family:'DM Mono',monospace;font-size:11px;color:rgba(254,242,242,0.4);letter-spacing:0.1em;text-transform:uppercase;">Primary Win Engine</div></div>
     </div>
     <div class="engine-body">
       <div class="engine-step"><div class="engine-step-label">Setup</div><div class="engine-step-title">Cycle T1–T2</div><div class="engine-step-body">Turns 1–2: cycle every creature possible. Street Wraith (free), Monstrous Carabid ({B/R}), Horror of the Broken Lands ({B}), Curator of Mysteries ({U}). Target: 4–6 creatures in GY before turn 3. Overlord of the Balemurk played early (impending {1}{B}) mills 4 more. With 6 creatures in GY, Living End returns a 6-creature board immediately.</div></div>
@@ -433,7 +433,7 @@
   <div class="engine-block">
     <div class="engine-header">
       <div class="engine-letter">2</div>
-      <div><div class="engine-name">Graveyard Rebuild Engine</div><div style="font-family:'DM Mono',monospace;font-size:11px;color:rgba(242,237,230,0.4);letter-spacing:0.1em;text-transform:uppercase;">Resilience Engine</div></div>
+      <div><div class="engine-name">Graveyard Rebuild Engine</div><div style="font-family:'DM Mono',monospace;font-size:11px;color:rgba(254,242,242,0.4);letter-spacing:0.1em;text-transform:uppercase;">Resilience Engine</div></div>
     </div>
     <div class="engine-body">
       <div class="engine-step"><div class="engine-step-label">Setup</div><div class="engine-step-title">After a Countered LE</div><div class="engine-step-body">If Living End is countered: it goes to the graveyard (countered spells go to GY unless exiled). Cascade "cast for free" means if countered, it goes to GY, not exile. This matters — you can recur Living End from GY with specific effects, but more relevantly, your cycled creatures are still in GY. The next cascade spell finds Living End in GY? No — cascade finds from library, not GY. Next cascade whiffs unless you have a 4th Living End in library.</div></div>
@@ -445,7 +445,7 @@
   <div class="engine-block">
     <div class="engine-header">
       <div class="engine-letter">3</div>
-      <div><div class="engine-name">Free-Spell Interaction Engine</div><div style="font-family:'DM Mono',monospace;font-size:11px;color:rgba(242,237,230,0.4);letter-spacing:0.1em;text-transform:uppercase;">Protection Engine</div></div>
+      <div><div class="engine-name">Free-Spell Interaction Engine</div><div style="font-family:'DM Mono',monospace;font-size:11px;color:rgba(254,242,242,0.4);letter-spacing:0.1em;text-transform:uppercase;">Protection Engine</div></div>
     </div>
     <div class="engine-body">
       <div class="engine-step"><div class="engine-step-label">Setup</div><div class="engine-step-title">Free Pitch Spells</div><div class="engine-step-body">Force of Negation (pitch blue, counter noncreature spell on opponent's turn), Subtlety (pitch blue, put creature/PW spell on top/bottom), Grief (pitch black, opponent discards), Endurance (pitch green, shuffle GY). All can be cast for free on opponent's turn by pitching a colored card. This gives the deck interaction without tapping mana, critical when you need mana for your own cascade on the same turn.</div></div>
