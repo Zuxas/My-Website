@@ -97,13 +97,13 @@
   @media print { nav,footer { display:none; } .section { display:block !important; } }
 
   /* ── PRINT / SB GRID ─────────────────────────────────── */
-  .print-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--rule); border:1px solid var(--rule); margin:24px 0; }
-  .print-mu { background:var(--card); padding:16px 18px; }
+  .print-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; background:transparent; border:none; margin:24px 0; }
+  .print-mu { background:var(--card); padding:16px 18px; border:1px solid rgba(202,138,4,0.25); }
   .print-mu-name { font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:var(--ink); margin-bottom:4px; }
   .print-mu-role { font-size:12px; color:var(--mid); margin-bottom:10px; font-weight:300; }
   .print-cols { display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:8px; }
   .print-col-label { font-family:'DM Mono',monospace; font-size:9px; letter-spacing:0.15em; text-transform:uppercase; color:var(--mid); margin-bottom:4px; }
-  .print-row { display:flex; justify-content:space-between; font-size:12px; font-weight:300; padding:2px 0; border-bottom:1px solid rgba(255,255,255,0.05); }
+  .print-row { display:flex; justify-content:space-between; font-size:12px; font-weight:300; color:var(--ink); padding:3px 0; border-bottom:1px solid rgba(248,250,252,0.1); }
   .print-qty { font-family:'DM Mono',monospace; font-size:11px; color:var(--accent); }
   .print-needle { font-family:'DM Mono',monospace; font-size:9px; letter-spacing:0.08em; text-transform:uppercase; color:var(--accent); margin-top:8px; }
   .print-note { font-size:11px; color:var(--mid); margin-top:4px; font-weight:300; line-height:1.4; }
@@ -111,8 +111,8 @@
   .diff-even { color:#facc15; }
   .diff-medium { color:#fb923c; }
   .diff-hard { color:#f87171; }
-  @media (max-width:900px) { .print-grid { grid-template-columns:1fr 1fr; } }
-  @media (max-width:600px) { .print-grid { grid-template-columns:1fr; } }
+  @media (max-width:900px) { .print-grid { grid-template-columns:1fr 1fr; gap:8px; } }
+  @media (max-width:600px) { .print-grid { grid-template-columns:1fr; gap:6px; } }
 
   .checklist { list-style:none; padding:0; margin:24px 0; }
   .checklist li { display:flex; align-items:flex-start; gap:16px; padding:12px 0; border-bottom:1px solid rgba(248,250,252,0.12); font-weight:300; font-size:15px; color:var(--ink); }
