@@ -4,126 +4,150 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Bant Rhythm — Team Resolve Playbook</title>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<link rel="icon" href="images/tab32.png" type="image/png">
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-  html { overflow-y: scroll; }
-  :root { --ink:#0e0e0e; --paper:#f2ede6; --paper-dark:#e8e1d6; --rule:#c8bfb0; --accent:#166534; --accent-light:#dcfce7; --danger:#8f1a1a; --danger-light:#f7d6d6; --gold:#8f6a1a; --gold-light:#f7ead6; --mid:#5a5248; }
-  * { margin:0; padding:0; box-sizing:border-box; }
-  body { background:var(--paper); color:var(--ink); font-family:'Crimson Pro',Georgia,serif; font-size:17px; line-height:1.6; }
-  .header-band { background:var(--ink); border-bottom:3px solid var(--accent); }
-  .header-inner { max-width:1100px; margin:0 auto; padding:32px 80px; display:flex; justify-content:space-between; align-items:flex-end; gap:40px; }
-  .header-eyebrow { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:rgba(242,237,230,0.35); margin-bottom:8px; }
-  .header-title { font-family:'Bebas Neue',sans-serif; font-size:56px; line-height:0.9; color:var(--paper); letter-spacing:0.02em; }
-  .header-title span { color:#4ade80; }
-  .header-mantra { font-family:'Crimson Pro',serif; font-style:italic; font-size:15px; color:rgba(242,237,230,0.4); margin-top:8px; }
-  .header-right { display:flex; flex-direction:column; gap:8px; text-align:right; padding-bottom:4px; }
-  .header-stat { display:flex; gap:12px; align-items:center; justify-content:flex-end; }
-  .hs-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; color:rgba(242,237,230,0.3); }
-  .hs-val { font-family:'DM Mono',monospace; font-size:12px; color:var(--paper); }
-  nav { position:sticky; top:0; z-index:100; background:var(--ink); border-bottom:1px solid rgba(242,237,230,0.1); padding:0 80px; display:flex; align-items:center; gap:0; overflow-x:auto; scrollbar-width:none; }
-  nav::-webkit-scrollbar { display:none; }
-  .nav-brand { font-family:'Bebas Neue',sans-serif; font-size:18px; color:#4ade80; letter-spacing:0.05em; margin-right:40px; white-space:nowrap; padding:16px 0; text-decoration:none; }
-  .nav-link { font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:rgba(242,237,230,0.4); padding:20px 16px; cursor:pointer; white-space:nowrap; border-bottom:2px solid transparent; transition:all 0.2s; background:none; border-top:none; border-left:none; border-right:none; }
-  .nav-link:hover, .nav-link.active { color:var(--paper); border-bottom-color:#4ade80; }
-  .page { max-width:1100px; margin:0 auto; padding:80px 80px; }
-  .section { display:none; animation:fadeIn 0.3s ease; }
-  .section.active { display:block; }
-  @keyframes fadeIn { from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:translateY(0);} }
-  .section-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.25em; text-transform:uppercase; color:var(--mid); margin-bottom:8px; }
-  h1 { font-family:'Bebas Neue',sans-serif; font-size:64px; line-height:0.9; letter-spacing:0.01em; color:var(--ink); margin-bottom:40px; }
-  h2 { font-family:'Bebas Neue',sans-serif; font-size:36px; letter-spacing:0.02em; color:var(--ink); margin:56px 0 20px; padding-bottom:8px; border-bottom:2px solid var(--ink); }
-  h3 { font-family:'DM Mono',monospace; font-size:12px; letter-spacing:0.15em; text-transform:uppercase; color:var(--accent); margin:32px 0 12px; }
-  p { margin-bottom:16px; color:var(--ink); font-weight:300; }
-  strong { font-weight:600; }
-  .c { color:var(--accent); font-weight:400; }
-  .mantra { border-left:4px solid var(--accent); padding:24px 32px; background:var(--accent-light); margin:32px 0; font-style:italic; font-size:20px; color:var(--accent); line-height:1.5; }
-  .card-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); gap:1px; background:var(--rule); border:1px solid var(--rule); margin:24px 0; }
-  .card-grid-2 { grid-template-columns:repeat(2,1fr) !important; }
-  .card-grid-3 { grid-template-columns:repeat(3,1fr) !important; }
-  .card { background:var(--paper); padding:24px; }
-  .card-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--mid); margin-bottom:8px; }
-  .card-title { font-family:'Bebas Neue',sans-serif; font-size:22px; letter-spacing:0.03em; color:var(--ink); margin-bottom:8px; }
-  .card-body { font-size:15px; font-weight:300; color:var(--mid); line-height:1.5; }
-  .decklist { display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--rule); border:1px solid var(--rule); margin:24px 0; }
-  .dl-section { background:var(--paper); padding:24px; }
-  .dl-section-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--mid); margin-bottom:16px; }
-  .dl-group { margin-bottom:20px; }
-  .dl-group-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; color:var(--ink); background:var(--paper-dark); padding:4px 8px; margin-bottom:8px; display:inline-block; }
-  .dl-card-row { display:flex; justify-content:space-between; align-items:baseline; padding:3px 0; border-bottom:1px solid rgba(200,191,176,0.3); font-size:15px; font-weight:300; }
-  .dl-card-row:last-child { border-bottom:none; }
-  .dl-qty { font-family:'DM Mono',monospace; font-size:12px; color:var(--mid); flex-shrink:0; margin-left:8px; }
-  .edge-case { border:1px solid var(--accent); background:var(--accent-light); padding:16px 20px; margin:16px 0; font-size:14px; }
-  .edge-case-label { font-family:'DM Mono',monospace; font-size:9px; letter-spacing:0.15em; text-transform:uppercase; color:var(--accent); margin-bottom:6px; }
-  .edge-case-body { font-weight:300; color:var(--ink); line-height:1.5; }
-  .engine-block { border:1px solid var(--rule); margin:32px 0; }
-  .engine-header { background:var(--ink); padding:20px 24px; display:flex; align-items:center; gap:16px; }
-  .engine-letter { font-family:'Bebas Neue',sans-serif; font-size:40px; color:#4ade80; line-height:1; }
-  .engine-name { font-family:'Bebas Neue',sans-serif; font-size:24px; color:var(--paper); letter-spacing:0.03em; }
-  .engine-body { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--rule); }
-  .engine-step { background:var(--paper); padding:20px; }
-  .engine-step-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--mid); margin-bottom:6px; }
-  .engine-step-title { font-family:'Bebas Neue',sans-serif; font-size:20px; color:var(--ink); margin-bottom:8px; }
-  .engine-step-body { font-size:14px; font-weight:300; color:var(--mid); line-height:1.5; }
-  .heuristic-list { list-style:none; margin:0; padding:0; }
-  .heuristic-list li { display:grid; grid-template-columns:48px 1fr; gap:16px; padding:20px 0; border-bottom:1px solid var(--rule); align-items:start; }
-  .heuristic-list li:last-child { border-bottom:none; }
-  .heuristic-num { font-family:'DM Mono',monospace; font-size:22px; color:var(--rule); font-weight:500; }
-  .heuristic-body strong { display:block; font-size:16px; font-weight:600; margin-bottom:4px; color:var(--ink); }
-  .heuristic-body { font-size:14px; font-weight:300; color:var(--mid); line-height:1.5; }
-  .matchup-table { width:100%; border-collapse:collapse; margin:24px 0; }
-  .matchup-table th { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; padding:10px 16px; background:var(--ink); color:rgba(242,237,230,0.6); text-align:left; }
-  .matchup-table td { padding:12px 16px; border-bottom:1px solid var(--rule); font-size:15px; font-weight:300; }
-  .matchup-table tr:hover td { background:var(--paper-dark); cursor:pointer; }
-  .matchup-detail { display:none; background:var(--accent-light); border-left:4px solid var(--accent); padding:24px 32px; margin:0; }
-  .matchup-detail.open { display:block; }
-  .verdict { display:inline-block; font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; padding:4px 10px; border:1px solid; }
-  .verdict-dog { background:var(--danger-light); color:var(--danger); border-color:var(--danger); }
-  .verdict-even { background:var(--gold-light); color:var(--gold); border-color:var(--gold); }
-  .verdict-favor { background:#d1fae5; color:#065f46; border-color:#065f46; }
-  .sb-table { width:100%; border-collapse:collapse; margin:16px 0; }
-  .sb-table th { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; padding:8px 12px; background:var(--paper-dark); color:var(--mid); text-align:left; border-bottom:2px solid var(--rule); }
-  .sb-table td { padding:10px 12px; border-bottom:1px solid var(--rule); font-size:14px; font-weight:300; }
-  .sb-out { color:var(--danger); font-family:'DM Mono',monospace; font-size:12px; }
-  .sb-in { color:#065f46; font-family:'DM Mono',monospace; font-size:12px; }
-  .sb-note { font-size:13px; font-weight:300; color:var(--mid); font-style:italic; margin-top:6px; }
-  .role-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--rule); border:1px solid var(--rule); margin:24px 0; }
-  .role-card { background:var(--paper); padding:24px; }
-  .role-name { font-family:'Bebas Neue',sans-serif; font-size:28px; letter-spacing:0.02em; margin-bottom:8px; }
-  .role-name-primary { color:var(--accent); }
-  .role-name-secondary { color:var(--gold); }
-  .role-name-tertiary { color:var(--mid); }
-  .role-desc { font-size:14px; font-weight:300; color:var(--mid); line-height:1.5; margin-bottom:12px; }
-  .role-matchups { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.1em; text-transform:uppercase; color:var(--mid); }
-  footer { background:var(--ink); color:rgba(242,237,230,0.3); padding:40px 80px; margin-top:80px; display:flex; justify-content:space-between; align-items:center; }
-  footer span { font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.1em; text-transform:uppercase; }
-  @media (max-width:768px) { .header-inner,nav,.page,footer { padding-left:24px; padding-right:24px; } .header-title { font-size:40px; } .header-right { display:none; } .decklist,.role-grid,.engine-body { grid-template-columns:1fr; } nav { padding:0 24px; } }
-  @media print { nav,footer { display:none; } .section { display:block !important; } }
+html { overflow-y:scroll; }
+/* ═══ BANT RHYTHM PALETTE — UI UX Pro Max Row 3 E-commerce ═══ */
+/* Row 3: E-commerce | acc=#EA580C bg=parchment */
+:root {
+  --primary:    #083117;
+  --ink:        #0e0e0e;
+  --paper:      #f2ede6;
+  --paper-dark: #e8e1d6;
+  --rule:       #c8bfb0;
+  --accent:     #16A34A;
+  --accent-light:rgba(22,163,74,0.15);
+  --danger:     #8f1a1a;
+  --danger-light:rgba(143,26,26,0.12);
+  --gold:       #16A34A;
+  --gold-light: rgba(22,163,74,0.15);
+  --mid:        #5a5248;
+  --card:       #ffffff;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--paper);color:var(--ink);font-family:'Crimson Pro',Georgia,serif;font-size:17px;line-height:1.6;}
+
+/* ── NAV ────────────────────────────────── */
+nav{position:sticky;top:0;z-index:100;background:var(--primary);border-bottom:2px solid var(--accent);display:flex;align-items:center;padding:0 32px;height:48px;gap:4px;}
+.nav-brand{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);margin-right:16px;white-space:nowrap;}
+.nav-link{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(248,250,252,0.55);background:none;border:none;border-bottom:2px solid transparent;padding:0 12px;height:48px;cursor:pointer;white-space:nowrap;display:flex;align-items:center;text-decoration:none;transition:color 0.15s,border-color 0.15s;}
+.nav-link:hover{color:rgba(248,250,252,0.85);}
+.nav-link.active{color:rgba(248,250,252,1);border-bottom-color:var(--accent);}
+
+/* ── HEADER ─────────────────────────────── */
+.header-band{background:var(--primary);border-bottom:3px solid var(--accent);padding:48px 80px 40px;position:relative;overflow:hidden;color:#f1f5f9;}
+.header-band p,.header-band span,.header-band div{color:#f1f5f9;}
+.header-band::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(ellipse at 20% 50%,rgba(22,163,74,0.08) 0%,transparent 70%);pointer-events:none;}
+.header-inner{max-width:1080px;margin:0 auto;display:grid;grid-template-columns:1fr auto;gap:40px;align-items:start;position:relative;}
+.header-meta{text-align:right;}
+.header-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(248,250,252,0.4);margin-bottom:12px;}
+.header-title{font-family:'DM Mono',monospace;font-size:clamp(32px,4vw,52px);font-weight:500;letter-spacing:0.06em;line-height:1.05;text-transform:uppercase;color:#f1f5f9;}
+.header-title .accent{color:var(--accent);}
+.header-tagline{font-size:15px;font-style:italic;color:rgba(248,250,252,0.5);margin-top:12px;max-width:520px;line-height:1.5;}
+.meta-row{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(248,250,252,0.4);margin-bottom:4px;}
+.meta-row span{color:rgba(248,250,252,0.8);margin-left:6px;}
+
+/* ── LAYOUT ─────────────────────────────── */
+.section{display:none;animation:fadeIn 0.3s ease;}
+.section.active{display:block;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
+.content{max-width:1080px;margin:0 auto;padding:56px 80px 80px;}
+.section-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--mid);margin-bottom:8px;display:block;}
+h1{font-family:'DM Mono',monospace;font-size:clamp(32px,4vw,48px);font-weight:500;letter-spacing:0.06em;text-transform:uppercase;line-height:1.05;margin-bottom:32px;color:var(--ink);}
+h2{font-family:'DM Mono',monospace;font-size:13px;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);margin:48px 0 16px;padding-bottom:8px;border-bottom:1px solid var(--rule);}
+h3{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--mid);margin:24px 0 8px;}
+p{font-size:16px;line-height:1.7;color:var(--ink);margin-bottom:14px;font-weight:300;}
+a{color:var(--accent);text-decoration:none;}
+a:hover{text-decoration:underline;}
+strong{font-weight:600;}
+.mantra{background:var(--accent-light);border-left:3px solid var(--accent);padding:20px 24px;margin:0 0 40px;font-style:italic;font-size:17px;color:var(--ink);line-height:1.6;}
+
+/* ── CARDS ──────────────────────────────── */
+.card-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule);margin:16px 0;}
+.card-grid-2{grid-template-columns:repeat(2,1fr)!important;}
+.card-grid-3{grid-template-columns:repeat(3,1fr)!important;}
+.card{background:var(--card);padding:20px;transition:background 0.15s;}
+.card:hover{background:#faf7f2;}
+.card-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:var(--mid);margin-bottom:6px;}
+.card-title{font-family:'DM Mono',monospace;font-size:13px;letter-spacing:0.05em;color:var(--accent);margin-bottom:8px;font-weight:500;}
+.card-body{font-size:14px;color:var(--mid);line-height:1.55;font-weight:300;}
+
+/* ── ROLE GRID ───────────────────────────── */
+.role-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule);margin:16px 0;}
+.role-card{background:var(--card);padding:20px;}
+.role-card .role-name{font-family:'DM Mono',monospace;font-size:12px;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:8px;font-weight:500;}
+.role-card p{font-size:14px;margin-bottom:0;}
+
+/* ── MATCHUP ─────────────────────────────── */
+.matchup-block{border:1px solid var(--rule);margin:24px 0;background:var(--card);}
+.matchup-header{background:var(--paper-dark);padding:16px 20px;display:flex;align-items:center;gap:12px;cursor:pointer;justify-content:space-between;}
+.matchup-header h3{margin:0;font-size:11px;letter-spacing:0.15em;color:var(--ink);}
+.verdict{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.15em;text-transform:uppercase;padding:3px 10px;border-radius:2px;}
+.verdict-good{background:rgba(22,163,74,0.15);color:#15803d;}
+.verdict-even{background:rgba(90,82,72,0.12);color:var(--mid);}
+.verdict-hard{background:rgba(143,26,26,0.12);color:#991b1b;}
+.matchup-body{padding:20px;display:none;}
+.matchup-body.open{display:block;}
+.sb-table{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--rule);margin:12px 0;}
+.sb-col{background:var(--paper);padding:12px 16px;}
+.sb-col-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.15em;text-transform:uppercase;color:var(--mid);margin-bottom:8px;}
+.sb-item{display:flex;justify-content:space-between;align-items:baseline;font-size:14px;padding:2px 0;font-weight:300;}
+.sb-qty{font-family:'DM Mono',monospace;font-size:11px;color:var(--mid);}
+
+/* ── SIDEBOARD / PRINT ───────────────────── */
+.sb-guide{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px;margin:16px 0;}
+.sb-slot{background:var(--card);border:1px solid var(--rule);padding:16px;}
+.sb-slot-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.18em;text-transform:uppercase;color:var(--mid);margin-bottom:6px;}
+.sb-slot-card{font-family:'DM Mono',monospace;font-size:12px;color:var(--accent);margin-bottom:4px;}
+.sb-slot-note{font-size:13px;color:var(--mid);font-weight:300;}
+.print-btn{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;background:var(--accent);color:#fff;border:none;padding:10px 20px;cursor:pointer;margin:16px 0;}
+.print-btn:hover{opacity:0.85;}
+#sb-print-zone{display:none;}
+
+/* ── HEURISTICS ──────────────────────────── */
+.heuristic-list{list-style:none;margin:16px 0;}
+.heuristic-list li{padding:14px 0;border-bottom:1px solid var(--rule);display:flex;gap:16px;align-items:start;}
+.heuristic-list li:last-child{border-bottom:none;}
+.h-num{font-family:'DM Mono',monospace;font-size:10px;color:var(--accent);flex-shrink:0;padding-top:2px;min-width:28px;}
+.h-text{font-size:15px;font-weight:300;color:var(--ink);}
+.h-text strong{font-weight:600;color:var(--ink);}
+
+/* ── EDGE CASES ──────────────────────────── */
+.edge-case{background:var(--card);border:1px solid var(--rule);border-left:3px solid var(--accent);padding:16px 20px;margin:12px 0;}
+.edge-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:6px;}
+.edge-body{font-size:14px;font-weight:300;color:var(--ink);line-height:1.6;}
+
+/* ── DECKLIST ────────────────────────────── */
+.deck-section{margin:24px 0;}
+.deck-section h3{color:var(--accent);}
+.deck-row{display:flex;justify-content:space-between;padding:3px 0;border-bottom:1px solid rgba(200,191,176,0.4);font-size:15px;}
+.deck-count{font-family:'DM Mono',monospace;font-size:12px;color:var(--mid);min-width:20px;}
+
+/* ── PRINT ───────────────────────────────── */
+@media print{
+  nav,.header-band,#sb-print-zone~*{display:none!important;}
+  #sb-print-zone{display:block!important;}
+  body{background:#fff;color:#000;}
+}
+
+span.c{cursor:help;border-bottom:1px dashed var(--accent);}
+span.c:hover{border-bottom-style:solid;}
+/* TOOLTIP */
+.card-tip{position:fixed;z-index:9999;pointer-events:none;width:220px;border-radius:8px;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,0.6);opacity:0;transition:opacity 0.15s ease;background:#1a1a2e;}
+.card-tip.visible{opacity:1;}
+.card-tip img{width:220px;height:auto;display:block;}
+.card-tip-loading{width:220px;height:308px;display:flex;align-items:center;justify-content:center;color:#94a3b8;font-size:12px;font-family:monospace;background:#1e293b;}
 </style>
 </head>
 <body>
 
-<div class="header-band">
-  <div class="header-inner">
-    <div>
-      <div class="header-eyebrow">Team Resolve · Standard · April 2026</div>
-      <div class="header-title">Bant<br><span>Rhythm</span></div>
-      <div class="header-mantra">"T1 mana dork. T2 Badgermole Cub doubles your mana. T3 Nature's Rhythm for Ouroboroid. T4 your board gets +4/+4 each. T5 Craterhoof. Good game."</div>
-    </div>
-    <div class="header-right">
-      <div class="header-stat"><span class="hs-label">Meta Share</span><span class="hs-val">~4% (Bant + Simic Rhythm)</span></div>
-      <div class="header-stat"><span class="hs-label">Role</span><span class="hs-val">Mana Dork Aggro + Toolbox</span></div>
-      <div class="header-stat"><span class="hs-label">Colors</span><span class="hs-val">G U w</span></div>
-      <div class="header-stat"><span class="hs-label">Kill Turn</span><span class="hs-val">4–5</span></div>
-      <div class="header-stat"><span class="hs-label">Author</span><span class="hs-val">Zuxas</span></div>
-    </div>
-  </div>
-</div>
-
 <nav>
-  <a class="nav-brand" href="deck-guides.html">Team Resolve</a>
-  <button class="nav-link active" onclick="show('identity')">Identity</button>
+  <div class="nav-brand">Bant Rhythm</div>
+  <a class="nav-link" href="deck-guides.html" style="text-decoration:none;">&#8592; Guides</a>
+  <button class="nav-link active" onclick="show('identity')">Overview</button>
   <button class="nav-link" onclick="show('decklist')">Decklist</button>
-  <button class="nav-link" onclick="show('gameplan')">Gameplan</button>
+  <button class="nav-link" onclick="show('gameplan')">Game Flow</button>
   <button class="nav-link" onclick="show('engines')">Engines</button>
   <button class="nav-link" onclick="show('lines')">Lines</button>
   <button class="nav-link" onclick="show('roles')">Roles</button>
@@ -134,492 +158,607 @@
   <button class="nav-link" onclick="show('prep')">Prep</button>
 </nav>
 
-<div class="page">
+<div class="header-band">
+  <div class="header-inner">
+    <div>
+      <div class="header-label">Team Resolve · Standard · April 2026</div>
+      <div class="header-title">BANT<br><span class="accent">RHYTHM</span></div>
+      <div class="header-tagline">"You put a mana dork down. They answer it. You make three spiders. They answer those. You play Nature's Rhythm. They lose."</div>
+    </div>
+    <div class="header-meta">
+      <div class="meta-row">META SHARE<span>~8% (+5.7%)</span></div>
+      <div class="meta-row">ROLE<span>Tempo-Midrange</span></div>
+      <div class="meta-row">COLORS<span>W G U</span></div>
+      <div class="meta-row">KILL TURN<span>4–6</span></div>
+      <div class="meta-row">REFERENCE<span>Fortunati — RC Turin 1st, 15-2</span></div>
+    </div>
+  </div>
+</div>
 
-<!-- ══════════════════════════════════════════════════════════ CH01 IDENTITY -->
+<!-- CH01: IDENTITY -->
 <div id="identity" class="section active">
-  <div class="section-label">Chapter 01</div>
-  <h1>Deck<br>Identity</h1>
+<div class="content">
+  <span class="section-label">Chapter 01</span>
+  <h1>DECK<br>IDENTITY</h1>
+  <div class="mantra">"Every threat generates another threat. Every answer they spend is a two-for-one against them. You never run out of things to do."</div>
 
-  <div class="mantra">"Sixteen mana creatures. Four Nature's Rhythm tutors. One Craterhoof Behemoth. You produce more mana than any deck in Standard, you tutor any creature you need, and you kill in one attack step."</div>
+  <p><span class="c">Nature's Rhythm</span> is the engine. For two mana, it puts a land into play and makes a 1/1 spider token with reach. That's a land drop, a blocker, and a body for <span class="c">Gene Pollinator</span> to trigger off — all from one card. The deck is built around making Nature's Rhythm as explosive as possible, as early as possible.</p>
 
-  <p>Bant Rhythm is Standard's premier mana-dork aggro deck with a toolbox finish. It won RC Turin 2026 (1,025 players, 15-2) in the hands of Andrea Fortunati, beating Esper Pixie in the finals. The deck runs 16 mana creatures that accelerate you 2-3 turns ahead of the curve, then deploys haymaker threats that no fair deck can answer in time. <span class="c">Nature's Rhythm</span> ({X}{G}{G}) tutors any creature directly to the battlefield, and its harmonize ability lets you cast it AGAIN from the graveyard. <span class="c">Ouroboroid</span> puts +1/+1 counters equal to its power on your ENTIRE board at the start of combat — every turn. <span class="c">Craterhoof Behemoth</span> ends the game in one attack step.</p>
+  <p>The enablers are <span class="c">Llanowar Elves</span> and <span class="c">Badgermole Cub</span>: one-mana accelerants that let you cast Nature's Rhythm on turn two. From there, <span class="c">Gene Pollinator</span> doubles every token you make, <span class="c">Spider Manifestation</span> makes more tokens at flash speed, and <span class="c">Quantum Riddler</span> demands an immediate answer or starts generating card advantage every turn.</p>
 
-  <p>The deck's identity is defined by a tension: you need to deploy enough mana creatures to accelerate, but every mana creature you draw late is a dead card. Nature's Rhythm solves this by turning excess mana into tutored threats. Badgermole Cub solves it by doubling the mana your creatures produce. The result: you're faster than aggro (T4-5 kills), more consistent than combo (16 mana creatures + 4 tutors), and more resilient than midrange (harmonize lets you rebuild from a sweeper).</p>
+  <p>The top end is <span class="c">Mockingbird</span>, <span class="c">Ouroboroid</span>, and <span class="c">Brightglass Gearhulk</span>. Mockingbird copies your most valuable creature every time it attacks. Ouroboroid closes the game when resources are depleted — two 4/4s for four mana is ahead of rate, and the cycle mode keeps the engine running. Brightglass Gearhulk recycles your threats from the graveyard while providing a large flying body.</p>
 
-  <h2>The Key Cards — Oracle Verified</h2>
+  <p><span class="c">Seam Rip</span> is the interaction suite — a counterspell that doubles as a discard outlet for <span class="c">Mockingbird</span> and enables <span class="c">Quantum Riddler</span>'s surveil. The deck generates so much material that even when opponents answer your threats, you've already replaced them.</p>
+
+  <h2>The Three Axes</h2>
   <div class="card-grid card-grid-3">
     <div class="card">
-      <div class="card-label">The Tutor Engine</div>
-      <div class="card-title">Nature's Rhythm</div>
-      <div class="card-body"><strong>{X}{G}{G} Sorcery.</strong> Search library for creature MV ≤ X, put onto battlefield. <strong>Harmonize {X}{G}{G}{G}{G}:</strong> cast from GY for this cost. You may tap a creature to reduce generic cost by its power. Then exile. Two tutor effects from one card. T3 with Cub mana: Nature's Rhythm for X=4 = Ouroboroid or Quantum Riddler directly to battlefield. Later: harmonize from GY tapping your 5-power Ouroboroid to reduce cost by 5.</div>
+      <div class="card-label">Axis 1 — Speed</div>
+      <div class="card-title">T2 Nature's Rhythm</div>
+      <div class="card-body">Llanowar Elves or Badgermole Cub into Nature's Rhythm on turn two is the gold standard opener. This puts you two lands ahead of your curve while leaving a blocker. Against aggro, the spider token buys time. Against control, the land advantage converts into more threats every turn.</div>
     </div>
     <div class="card">
-      <div class="card-label">The Exponential Threat</div>
-      <div class="card-title">Ouroboroid</div>
-      <div class="card-body"><strong>{2}{G}{G} 1/3 Plant Wurm.</strong> "At the beginning of combat on your turn, put X +1/+1 counters on each creature you control, where X is this creature's power." Enters as 1/3. First combat: each creature gets 1 counter. Ouroboroid is now 2/4. Second combat: each creature gets 2 counters. Ouroboroid is now 4/6. Third combat: 4 counters each. EXPONENTIAL growth. With 4 creatures in play, turn 3 of Ouroboroid = +16 total counters across the board.</div>
+      <div class="card-label">Axis 2 — Volume</div>
+      <div class="card-title">Gene Pollinator Doubling</div>
+      <div class="card-body">Every token your permanents make is doubled by Gene Pollinator. Nature's Rhythm makes one spider → Pollinator makes it two. Spider Manifestation makes two spiders at instant speed → Pollinator makes it four. The volume of threats overwhelming removal-based decks is the primary win condition against interactive strategies.</div>
     </div>
     <div class="card">
-      <div class="card-label">The Finisher</div>
-      <div class="card-title">Craterhoof Behemoth</div>
-      <div class="card-body"><strong>{5}{G}{G}{G} 5/5 Beast. Haste.</strong> "When this enters, creatures you control gain trample and get +X/+X until EOT, where X = creatures you control." With 6 creatures: each gets +6/+6 and trample. A board of 1/1 mana dorks becomes 7/7 tramplers. Total damage from 6 creatures: 6 × 7 = 42 trampling damage. Nature's Rhythm for X=8 finds Craterhoof directly to battlefield. The one-card kill.</div>
+      <div class="card-label">Axis 3 — Inevitability</div>
+      <div class="card-title">Card Advantage Top End</div>
+      <div class="card-body">Quantum Riddler generates card advantage every turn it survives. Mockingbird copies your best creature every attack. Brightglass Gearhulk returns creatures from the graveyard. Against decks that can match your tempo, the top-end card advantage means you win the long game. Ouroboroid is the finisher — two 4/4s from one card is above rate at any stage.</div>
     </div>
   </div>
 
+  <h2>When to Register Bant Rhythm</h2>
   <div class="card-grid card-grid-2">
     <div class="card">
-      <div class="card-label">The Mana Doubler</div>
-      <div class="card-title">Badgermole Cub</div>
-      <div class="card-body"><strong>{1}{G} 2/2 Badger Mole.</strong> ETB: earthbend 1 (target land becomes a 0/0 creature with haste that's still a land, put a +1/+1 counter on it, returns to battlefield tapped if it dies/is exiled). <strong>"Whenever you tap a creature for mana, add an additional {G}."</strong> This doubles every mana creature. Llanowar Elves: {G} + {G} = {G}{G}. Gene Pollinator: any color + {G}. Spider Manifestation: {R}/{G} + {G}. With Cub, your T3 mana is often 5-6.</div>
+      <div class="card-label">Register When</div>
+      <div class="card-title">Field Is Midrange and Aggro</div>
+      <div class="card-body">Bant Rhythm's token production invalidates single-target removal. Against Dimir Midrange, every removal spell they spend on a spider token is a two-for-one in your favor. Against Boros Aggro, your board goes wide faster than their threats can kill you. The deck performs best when opponents are leaning on creature removal rather than sweepers.</div>
     </div>
     <div class="card">
-      <div class="card-label">The Card Advantage Engine</div>
-      <div class="card-title">Quantum Riddler</div>
-      <div class="card-body"><strong>{3}{U}{U} 4/6 Sphinx. Flying.</strong> ETB: draw a card. "As long as you have one or fewer cards in hand, if you would draw one or more cards, draw that many plus one instead." <strong>Warp {1}{U}:</strong> cast for {1}{U} from hand (enters as a 1/1 instead). The draw doubling is active when you've dumped your hand — which this deck does quickly. Warp mode lets you deploy early as a 1/1 body that still doubles future draws. Nature's Rhythm for X=5 puts the full 4/6 version directly onto the battlefield.</div>
+      <div class="card-label">Consider Other Options When</div>
+      <div class="card-title">Field Is Heavy Sweepers</div>
+      <div class="card-body">Mass removal (Day of Judgment, Sunfall, Temporary Lockdown) answers your board comprehensively. If Jeskai Control or Azorius Blink are dominant with multiple sweepers, your token engine becomes less reliable. Also consider alternatives if Torpor Orb is widely played — it stops Gene Pollinator's doubling trigger.</div>
     </div>
   </div>
-
-  <h2>Oracle-Verified Edge Cases</h2>
-
-  <div class="edge-case">
-    <div class="edge-case-label">Nature's Rhythm Harmonize — Tap Creatures to Reduce Cost</div>
-    <div class="edge-case-body">"You may tap a creature you control to reduce that cost by an amount of generic mana equal to its power." You tap ONE creature per harmonize cast. An Ouroboroid that's grown to 5/X reduces the harmonize cost by 5 generic mana. Harmonize for X=5 normally costs {5}{G}{G}{G}{G} = 9 mana. With a 5-power creature tap: {G}{G}{G}{G} = 4 mana + the creature tap. This makes the second tutor surprisingly affordable in the mid-game. The creature tapped this way doesn't add mana — it just reduces the harmonize cost.</div>
-  </div>
-
-  <div class="edge-case">
-    <div class="edge-case-label">Ouroboroid — Counters Scale with Its Own Power, Including Itself</div>
-    <div class="edge-case-body">Ouroboroid puts counters on EACH creature you control — including itself. T1: Ouroboroid is 1/3. Combat trigger: each creature gets 1 counter. Ouroboroid is now 2/4. T2: combat trigger: each creature gets 2 counters. Ouroboroid is now 4/6. T3: 4 counters each. Ouroboroid is 8/10. The growth is EXPONENTIAL (power doubles each turn). With a second Ouroboroid via Mockingbird: both triggers fire — the first puts X counters (based on first Ouroboroid's power), then the second puts X counters (based on second's power). Double exponential.</div>
-  </div>
-
-  <div class="edge-case">
-    <div class="edge-case-label">Badgermole Cub Earthbend — The Land Becomes a Creature</div>
-    <div class="edge-case-body">Earthbend 1: target land becomes a 0/0 creature with haste (still a land), put a +1/+1 counter on it. It's a 1/1 land creature. It CAN attack (haste). It CAN be killed by creature removal. It CAN tap for mana AND attack in the same turn (tap for mana pre-combat, attack post-combat). "When it dies or is exiled, return it to the battlefield tapped" — the land is resilient. Sweepers kill it but it comes back tapped. It's essentially a free 1/1 haste that replaces itself.</div>
-  </div>
-
-  <div class="edge-case">
-    <div class="edge-case-label">Mockingbird — Copies Anything, Gains Flying</div>
-    <div class="edge-case-body"><strong>{X}{U} 1/1 Bird Bard. Flying.</strong> "Enter as a copy of any creature with MV ≤ mana spent to cast this, except it's a Bird in addition to its other types and has flying." Copy opponent's best threat. Copy your own Ouroboroid (now you have two exponential combat triggers). Copy Craterhoof (two ETBs = double +X/+X). The copy has flying regardless of what it copies — a flying Ouroboroid or flying Craterhoof. X = total mana spent, not just X in the cost. Mockingbird for {5}{U} (6 mana spent) copies anything MV ≤ 6.</div>
-  </div>
-
-  <div class="edge-case">
-    <div class="edge-case-label">Gene Pollinator — Taps ANY Untapped Permanent</div>
-    <div class="edge-case-body"><strong>{G} 1/2 Artifact Creature. "{T}, Tap an untapped permanent you control: Add one mana of any color."</strong> The permanent you tap doesn't need to be a creature — it can be a land, artifact, enchantment, or planeswalker. This effectively turns any untapped permanent into a mana source. With Badgermole Cub: Pollinator taps itself + taps another permanent → {any color} + {G} (from Cub's doubling). Gene Pollinator is also an artifact creature — relevant for metalcraft, artifact synergies, and Brightglass Gearhulk's tutor.</div>
-  </div>
-
-  <div class="edge-case">
-    <div class="edge-case-label">Formidable Speaker — Creature Tutor on ETB (Not Fauna Shaman)</div>
-    <div class="edge-case-body"><strong>{2}{G} 2/4 Elf Druid.</strong> "When this enters, you may discard a card. If you do, search library for a creature card, reveal it, put into hand." This is an ETB trigger, not an activated ability — it happens once on entry. Discard is optional ("you may"). The tutored creature goes to HAND (not battlefield — that's Nature's Rhythm). The {1}{T} untap ability is a separate utility: untap a mana creature for extra mana, or untap an attacker post-combat for blocking. Nature's Rhythm for X=3 puts Formidable Speaker directly onto battlefield → ETB triggers → discard a card → tutor a creature to hand.</div>
-  </div>
-
-  <div class="edge-case">
-    <div class="edge-case-label">Spider Manifestation — Untaps Whenever You Cast MV 4+</div>
-    <div class="edge-case-body"><strong>{1}{R/G} 2/2 Spider Avatar. Reach. "{T}: Add {R} or {G}."</strong> "Whenever you cast a spell with MV 4 or greater, untap this creature." Tap for mana → cast a 4+ MV spell → Spider untaps → tap for mana again. With Badgermole Cub: each tap adds {R/G} + {G}. Casting Ouroboroid (MV 4): Spider untaps → tap again → 4 total mana from one Spider in one turn. Casting Quantum Riddler (MV 5) or Craterhoof (MV 8): same untap. Chain multiple big spells in one turn.</div>
-  </div>
-
-  <div class="edge-case">
-    <div class="edge-case-label">Brightglass Gearhulk — Tutors Two MV ≤ 1 Permanents</div>
-    <div class="edge-case-body"><strong>{G}{G}{W}{W} 4/4 First strike, trample.</strong> "When this enters, search library for up to two artifact, creature, and/or enchantment cards with MV 1 or less, reveal them, put into hand." Finds: Llanowar Elves (MV 1 creature), Gene Pollinator (MV 1 artifact creature), Seam Rip (MV 1 enchantment), Meltstrider's Resolve (MV 1 enchantment), Soul-Guide Lantern (MV 1 artifact). Two tutors + a 4/4 first strike trample body. The {W}{W} cost requires Temple Garden or Starting Town.</div>
-  </div>
+</div>
 </div>
 
-<!-- ══════════════════════════════════════════════════════════ CH02 DECKLIST -->
+<!-- CH02: DECKLIST -->
 <div id="decklist" class="section">
-  <div class="section-label">Chapter 02</div>
-  <h1>Decklist</h1>
-  <p style="font-style:italic;color:var(--mid);font-size:15px;margin-bottom:24px;">Andrea Fortunati — 1st, RC Turin 2026 (1,025 players, 15-2)</p>
-  <div class="decklist">
-    <div class="dl-section">
-      <div class="dl-section-label">Maindeck (60)</div>
-      <div class="dl-group">
-        <div class="dl-group-label">Mana Creatures (16)</div>
-        <div class="dl-card-row"><span><span class="c">Llanowar Elves</span></span><span class="dl-qty">4</span></div>
-        <div class="dl-card-row"><span><span class="c">Badgermole Cub</span></span><span class="dl-qty">4</span></div>
-        <div class="dl-card-row"><span><span class="c">Gene Pollinator</span></span><span class="dl-qty">4</span></div>
-        <div class="dl-card-row"><span><span class="c">Spider Manifestation</span></span><span class="dl-qty">4</span></div>
-      </div>
-      <div class="dl-group">
-        <div class="dl-group-label">Threats & Engines</div>
-        <div class="dl-card-row"><span><span class="c">Mockingbird</span></span><span class="dl-qty">4</span></div>
-        <div class="dl-card-row"><span><span class="c">Quantum Riddler</span></span><span class="dl-qty">4</span></div>
-        <div class="dl-card-row"><span><span class="c">Formidable Speaker</span></span><span class="dl-qty">3</span></div>
-        <div class="dl-card-row"><span><span class="c">Ouroboroid</span></span><span class="dl-qty">1</span></div>
-        <div class="dl-card-row"><span><span class="c">Craterhoof Behemoth</span></span><span class="dl-qty">1</span></div>
-        <div class="dl-card-row"><span><span class="c">Brightglass Gearhulk</span></span><span class="dl-qty">1</span></div>
-        <div class="dl-card-row"><span><span class="c">Explosive Prodigy</span></span><span class="dl-qty">1</span></div>
-        <div class="dl-card-row"><span><span class="c">Marang River Regent</span></span><span class="dl-qty">1</span></div>
-      </div>
-      <div class="dl-group">
-        <div class="dl-group-label">Tutor / Interaction</div>
-        <div class="dl-card-row"><span><span class="c">Nature's Rhythm</span></span><span class="dl-qty">4</span></div>
-        <div class="dl-card-row"><span><span class="c">Seam Rip</span></span><span class="dl-qty">1</span></div>
-        <div class="dl-card-row"><span><span class="c">Meltstrider's Resolve</span></span><span class="dl-qty">1</span></div>
-      </div>
+<div class="content">
+  <span class="section-label">Chapter 02</span>
+  <h1>DECKLIST</h1>
+  <div class="mantra">"Andrea Fortunati — 1st Place, RC Turin 2026 (15-2, 88%)"</div>
+
+  <div class="card-grid card-grid-3">
+    <div class="deck-section card">
+      <h3>Creatures (16)</h3>
+      <div class="deck-row"><span class="deck-count">4</span><span><span class="c">Llanowar Elves</span></span></div>
+      <div class="deck-row"><span class="deck-count">4</span><span><span class="c">Badgermole Cub</span></span></div>
+      <div class="deck-row"><span class="deck-count">4</span><span><span class="c">Gene Pollinator</span></span></div>
+      <div class="deck-row"><span class="deck-count">3</span><span><span class="c">Quantum Riddler</span></span></div>
+      <div class="deck-row"><span class="deck-count">1</span><span><span class="c">Brightglass Gearhulk</span></span></div>
     </div>
-    <div class="dl-section">
-      <div class="dl-section-label">Lands (21)</div>
-      <div class="dl-group">
-        <div class="dl-card-row"><span><span class="c">Breeding Pool</span></span><span class="dl-qty">4</span></div>
-        <div class="dl-card-row"><span><span class="c">Multiversal Passage</span></span><span class="dl-qty">4</span></div>
-        <div class="dl-card-row"><span><span class="c">Hushwood Verge</span></span><span class="dl-qty">4</span></div>
-        <div class="dl-card-row"><span><span class="c">Starting Town</span></span><span class="dl-qty">4</span></div>
-        <div class="dl-card-row"><span><span class="c">Temple Garden</span></span><span class="dl-qty">3</span></div>
-        <div class="dl-card-row"><span><span class="c">Willowrush Verge</span></span><span class="dl-qty">2</span></div>
-        <div class="dl-card-row"><span>Forest</span><span class="dl-qty">1</span></div>
-      </div>
-      <div class="dl-section-label" style="margin-top:24px;">Sideboard (15)</div>
-      <div class="dl-group">
-        <div class="dl-card-row"><span><span class="c">Unable to Scream</span></span><span class="dl-qty">2</span></div>
-        <div class="dl-card-row"><span><span class="c">Spider-Sense</span></span><span class="dl-qty">2</span></div>
-        <div class="dl-card-row"><span><span class="c">Soul-Guide Lantern</span></span><span class="dl-qty">2</span></div>
-        <div class="dl-card-row"><span><span class="c">Reclamation Sage</span></span><span class="dl-qty">1</span></div>
-        <div class="dl-card-row"><span><span class="c">Seam Rip</span></span><span class="dl-qty">1</span></div>
-        <div class="dl-card-row"><span><span class="c">Keen-Eyed Curator</span></span><span class="dl-qty">1</span></div>
-        <div class="dl-card-row"><span><span class="c">Enduring Curiosity</span></span><span class="dl-qty">1</span></div>
-        <div class="dl-card-row"><span><span class="c">Meltstrider's Resolve</span></span><span class="dl-qty">1</span></div>
-        <div class="dl-card-row"><span><span class="c">Sab-Sunen, Luxa Embodied</span></span><span class="dl-qty">1</span></div>
-        <div class="dl-card-row"><span><span class="c">Wistfulness</span></span><span class="dl-qty">1</span></div>
-        <div class="dl-card-row"><span><span class="c">Voice of Victory</span></span><span class="dl-qty">1</span></div>
-        <div class="dl-card-row"><span><span class="c">Doorkeeper Thrull</span></span><span class="dl-qty">1</span></div>
-      </div>
+    <div class="deck-section card">
+      <h3>Spells (20)</h3>
+      <div class="deck-row"><span class="deck-count">4</span><span><span class="c">Nature's Rhythm</span></span></div>
+      <div class="deck-row"><span class="deck-count">4</span><span><span class="c">Spider Manifestation</span></span></div>
+      <div class="deck-row"><span class="deck-count">4</span><span><span class="c">Seam Rip</span></span></div>
+      <div class="deck-row"><span class="deck-count">3</span><span><span class="c">Mockingbird</span></span></div>
+      <div class="deck-row"><span class="deck-count">2</span><span><span class="c">Ouroboroid</span></span></div>
+      <div class="deck-row"><span class="deck-count">1</span><span><span class="c">Beza, the Bounding Spring</span></span></div>
+      <div class="deck-row"><span class="deck-count">1</span><span><span class="c">Meltstrider's Resolve</span></span></div>
+      <div class="deck-row"><span class="deck-count">1</span><span><span class="c">Bounce Off</span></span></div>
+      <div class="deck-row"><span class="deck-count">1</span><span><span class="c">Craterhoof Behemoth</span></span></div>
+    </div>
+    <div class="deck-section card">
+      <h3>Lands (24)</h3>
+      <div class="deck-row"><span class="deck-count">4</span><span><span class="c">Temple Garden</span></span></div>
+      <div class="deck-row"><span class="deck-count">4</span><span><span class="c">Breeding Pool</span></span></div>
+      <div class="deck-row"><span class="deck-count">4</span><span><span class="c">Hushwood Verge</span></span></div>
+      <div class="deck-row"><span class="deck-count">4</span><span><span class="c">Starting Town</span></span></div>
+      <div class="deck-row"><span class="deck-count">2</span><span><span class="c">Multiversal Passage</span></span></div>
+      <div class="deck-row"><span class="deck-count">2</span><span><span class="c">Botanical Sanctum</span></span></div>
+      <div class="deck-row"><span class="deck-count">1</span><span><span class="c">Willowrush Verge</span></span></div>
+      <div class="deck-row"><span class="deck-count">1</span><span>Forest</span></div>
+    </div>
+  </div>
+
+  <h2>Sideboard (15)</h2>
+  <div class="card-grid card-grid-3">
+    <div class="deck-section card">
+      <h3>Graveyard / Disruption</h3>
+      <div class="deck-row"><span class="deck-count">2</span><span><span class="c">Rest in Peace</span></span></div>
+      <div class="deck-row"><span class="deck-count">2</span><span><span class="c">Spider-Sense</span></span></div>
+      <div class="deck-row"><span class="deck-count">1</span><span><span class="c">Soul-Guide Lantern</span></span></div>
+    </div>
+    <div class="deck-section card">
+      <h3>Interaction</h3>
+      <div class="deck-row"><span class="deck-count">2</span><span><span class="c">Sage of the Skies</span></span></div>
+      <div class="deck-row"><span class="deck-count">1</span><span><span class="c">Get Lost</span></span></div>
+      <div class="deck-row"><span class="deck-count">1</span><span><span class="c">Surrak, Elusive Hunter</span></span></div>
+      <div class="deck-row"><span class="deck-count">1</span><span><span class="c">Chomping Changeling</span></span></div>
+      <div class="deck-row"><span class="deck-count">1</span><span><span class="c">Champion of the Weird</span></span></div>
+    </div>
+    <div class="deck-section card">
+      <h3>Other</h3>
+      <div class="deck-row"><span class="deck-count">2</span><span><span class="c">Oko, Lorwyn Liege</span></span></div>
+      <div class="deck-row"><span class="deck-count">1</span><span><span class="c">Leatherhead, Swamp Stalker</span></span></div>
+      <div class="deck-row"><span class="deck-count">1</span><span><span class="c">Focus Fire</span></span></div>
+      <div class="deck-row"><span class="deck-count">1</span><span><span class="c">Insidious Fungus</span></span></div>
+      <div class="deck-row"><span class="deck-count">1</span><span><span class="c">Beza, the Bounding Spring</span></span></div>
+    </div>
+  </div>
+
+  <h2>Key Card Notes</h2>
+  <div class="card-grid card-grid-2">
+    <div class="card">
+      <div class="card-label">Mana Engine</div>
+      <div class="card-title">Llanowar Elves + Badgermole Cub</div>
+      <div class="card-body">Both are one-mana green creatures that tap for green mana. Badgermole Cub has the upside of being a 2/2 that can block profitably, while Llanowar Elves is the classic efficient accelerant. Running 8 copies ensures a T2 Nature's Rhythm is consistent. Prioritize keeping hands with at least one.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Win Condition</div>
+      <div class="card-title">Gene Pollinator + Spider Manifestation</div>
+      <div class="card-body">Gene Pollinator doubles token creation. Spider Manifestation creates two 1/2 spider tokens with reach at instant speed for 1GG. With Pollinator in play, Spider Manifestation becomes four 1/2 spiders. This combination at instant speed on the opponent's end step, then attacking with eight reach spiders is a common win line.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Top End</div>
+      <div class="card-title">Craterhoof Behemoth</div>
+      <div class="card-body">One copy as a late-game finisher. When you have 6+ creatures on board, Craterhoof gives everything +6/+6 and trample — this closes the game from almost any board state. Don't rush it out; wait until you have at least 4 creatures for it to be a one-turn-kill threat.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Flex Slot</div>
+      <div class="card-title">Mockingbird</div>
+      <div class="card-body">Mockingbird becomes a copy of the creature with the highest power when it attacks. In your deck, it most commonly copies Brightglass Gearhulk (returning a creature) or Quantum Riddler (surveil 2 + possible card draw). Three copies is correct — you want to draw it mid-game, not in your opening hand.</div>
     </div>
   </div>
 </div>
+</div>
 
-<!-- ══════════════════════════════════════════════════════════ CH03 GAMEPLAN -->
+<!-- CH03: GAMEPLAN -->
 <div id="gameplan" class="section">
-  <div class="section-label">Chapter 03</div>
-  <h1>Gameplan</h1>
-  <div class="mantra">"Ramp → Tutor → Kill. The deck does three things and does them faster than anything in the format."</div>
+<div class="content">
+  <span class="section-label">Chapter 03</span>
+  <h1>GAME<br>PLAN</h1>
+  <div class="mantra">"T1 dork. T2 Nature's Rhythm. T3 Pollinator. T4 Manifestation at end of their turn. T5 swing for lethal."</div>
 
-  <h2>The Ideal Curve</h2>
+  <h2>Turn-by-Turn Blueprint</h2>
+  <div class="card-grid">
+    <div class="card"><div class="card-label">Turn 1</div><div class="card-title">Mana Dork</div><div class="card-body">Llanowar Elves or Badgermole Cub. This is non-negotiable — any hand without a T1 dork is either a snap mulligan or a very slow start. The dork enables every line that follows. On the play, you want this turn one. On the draw, you can consider hands without it if they have enough gas.</div></div>
+    <div class="card"><div class="card-label">Turn 2</div><div class="card-title">Nature's Rhythm</div><div class="card-body">Tap your land and your dork, cast Nature's Rhythm. You get a land into play and a 1/1 spider token. You're now at 3 lands with a blocker. This is the deck's best turn-2 play. If you don't have it, cast Gene Pollinator (sets up T3 Manifestation doubling) or a second dork.</div></div>
+    <div class="card"><div class="card-label">Turn 3</div><div class="card-title">Gene Pollinator</div><div class="card-body">With 3 lands and a dork, you have 4 mana. Cast Gene Pollinator. Now every token you make this turn and forward is doubled. If Pollinator is already in hand from T2, you can Nature's Rhythm on T2 then Pollinator on T3 to set up the explosive T4. This is the standard sequencing.</div></div>
+    <div class="card"><div class="card-label">Turn 4+</div><div class="card-title">Go Wide</div><div class="card-body">Spider Manifestation on their end step with Pollinator in play = four 1/2 reach spiders for 1GG. Quantum Riddler starts surveiling and generating card advantage. Mockingbird attacks and copies your best creature. By turn 5 with an uncontested Pollinator, you have lethal on board through most defenses.</div></div>
+  </div>
+
+  <h2>Play vs Draw</h2>
+  <div class="card-grid card-grid-2">
+    <div class="card">
+      <div class="card-label">On the Play</div>
+      <div class="card-title">Prioritize T1 Dork</div>
+      <div class="card-body">You have the speed advantage — use it. Any opener with a T1 dork into T2 Nature's Rhythm is a keep. You'll be ahead on board by T3. Mulligan aggressively for the T1 accelerant. Don't keep slow hands on the play — your advantage is tempo and you lose it with a slow start.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">On the Draw</div>
+      <div class="card-title">Extra Card Covers for Speed</div>
+      <div class="card-body">On the draw, you get a free card which offsets being a turn behind. You can keep slightly slower hands because you have more options. A hand with Gene Pollinator + Spider Manifestation (but no T1 dork) is more keepable on the draw than on the play — you have time to cast Pollinator naturally by T3 off two lands and the draw card.</div>
+    </div>
+  </div>
+
+  <h2>When Disrupted</h2>
+  <div class="card-grid card-grid-2">
+    <div class="card">
+      <div class="card-label">If Gene Pollinator Dies</div>
+      <div class="card-title">Continue Flooding the Board</div>
+      <div class="card-body">Pollinator is important but not essential. Spider Manifestation still makes two spiders without it. Quantum Riddler still surveils. Nature's Rhythm still ramps. Cast your second Pollinator if you have it, or pivot to casting Mockingbird and Ouroboroid for above-rate threats. Don't slow down — their removal spell bought them one turn, not the game.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">If T1 Dork Is Removed</div>
+      <div class="card-title">Rebuild at Natural Pace</div>
+      <div class="card-body">T1 dork killed means you're back to normal pace. Cast Nature's Rhythm on T3 (their removal + your land on T2). You're one turn behind but still functional. Cast second dork on T2 if you have it to try again. Versus removal-heavy decks, this happens frequently — your engine is resilient enough to function without the dork.</div>
+    </div>
+  </div>
+
+  <h2>Mulligan Framework</h2>
+  <p><strong>Snap keeps:</strong> Any 7 with T1 dork + Nature's Rhythm + payoff (Pollinator or Manifestation). Any 7 with T1 dork + Gene Pollinator + 3 lands.</p>
+  <p><strong>Keep on 7:</strong> Two lands + dork + Nature's Rhythm. Three lands + Pollinator + Manifestation (no dork). Four lands + any two threats.</p>
+  <p><strong>Mulligan:</strong> Any hand with 0 or 1 land. Any hand with 5+ lands. Any hand without green mana. Any hand with only expensive spells and no acceleration (Brightglass + Ouroboroid + Riddler with no dork or Nature's Rhythm).</p>
+  <p><strong>Mulligan to 6 logic:</strong> Keep the best 6 that has either a T1 dork or Nature's Rhythm plus at least 2 lands. At 5, you need T1 dork + Nature's Rhythm + one other card to stay in it.</p>
+</div>
+</div>
+
+<!-- CH04: ENGINES -->
+<div id="engines" class="section">
+<div class="content">
+  <span class="section-label">Chapter 04</span>
+  <h1>CORE<br>ENGINES</h1>
+  <div class="mantra">"Token doubling is an engine, not a threat. Kill the threat (Pollinator) and you still have to kill each token individually."</div>
+
+  <h2>Engine Priority Order</h2>
+  <div class="card-grid card-grid-3">
+    <div class="card"><div class="card-label">Engine P1</div><div class="card-title">Nature's Rhythm + Llanowar Elves</div><div class="card-body">Primary engine. T1 dork → T2 Rhythm is 3 lands by T2 plus a spider. Everything else in the deck is enabled by this ramp. Cast this before anything else. This is the sequencing priority above all other considerations.</div></div>
+    <div class="card"><div class="card-label">Engine P2</div><div class="card-title">Gene Pollinator + Spider Manifestation</div><div class="card-body">Token doubling engine. Pollinator in play means each Manifestation makes 4 spiders instead of 2. Each additional Nature's Rhythm trigger also creates 2 spiders instead of 1. This is the volume engine that buries opponents in bodies.</div></div>
+    <div class="card"><div class="card-label">Engine P3</div><div class="card-title">Quantum Riddler + Mockingbird</div><div class="card-body">Card advantage engine. Quantum Riddler surveil 2 every turn it attacks — filtering your draws, filling the graveyard. Mockingbird copies Riddler on attack for double surveil. Once these are online, you generate more card advantage per turn than the opponent can burn resources answering.</div></div>
+  </div>
+
+  <h2>Speed Math</h2>
+  <div class="card-grid card-grid-2">
+    <div class="card">
+      <div class="card-label">Kill Turn Calculation</div>
+      <div class="card-title">Standard Kill: Turn 5</div>
+      <div class="card-body">T1: Dork. T2: Nature's Rhythm (3 lands, 1 spider). T3: Gene Pollinator (4 lands). T4: Spider Manifestation EOT → 4 spiders total. T5: Attack with 4 spiders + Pollinator + original spider = lethal vs most life totals. Add Craterhoof for a turn earlier if board is large enough.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Accelerated Kill</div>
+      <div class="card-title">Craterhoof Kill: Turn 4</div>
+      <div class="card-body">T1: Dork. T2: Nature's Rhythm (2 spiders with Pollinator on T3 setup). T3: Gene Pollinator + second Nature's Rhythm (2 more spiders = 4 total). T4: Craterhoof with 5 creatures → each gets +5/+5 trample. 4 spiders × 6/7 + Pollinator + Hoof = 40+ damage. This line requires both Natures Rhythms.</div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- CH05: LINES -->
+<div id="lines" class="section">
+<div class="content">
+  <span class="section-label">Chapter 05</span>
+  <h1>LINES &amp;<br>TACTICS</h1>
+  <div class="mantra">"Spider Manifestation at instant speed at end of their turn is not a combat trick — it's a board wipe answer."</div>
+
+  <h2>Three Lines You Must Know Cold</h2>
   <div class="card-grid card-grid-3">
     <div class="card">
-      <div class="card-label">Turn 1</div>
-      <div class="card-title">Mana Creature</div>
-      <div class="card-body">Llanowar Elves, Gene Pollinator, or Spider Manifestation. Any 1-drop that produces mana. With 12 one-drop mana creatures in the deck, you have a T1 dork ~87% of games on 7 cards. This is the deck's foundation — without T1 acceleration, you're a turn behind.</div>
+      <div class="card-label">Line 01 — Critical</div>
+      <div class="card-title">Nature's Rhythm Puts a Land Into Play Tapped</div>
+      <div class="card-body">Nature's Rhythm says "search your library for a basic land card and put it onto the battlefield tapped." The land enters TAPPED. You cannot use it the turn you play Nature's Rhythm for mana. Plan your mana accordingly — if you cast Rhythm with 2 mana and need 3 to cast Pollinator immediately after, you're one short. The ramp is for NEXT turn, not the same turn.</div>
     </div>
     <div class="card">
-      <div class="card-label">Turn 2</div>
-      <div class="card-title">Badgermole Cub or Second Dork</div>
-      <div class="card-body">Cub on T2 doubles your mana going forward. With T1 elf + T2 Cub: T3 mana = land + elf ({G}{G} with Cub) + Cub ({G}) + land = 5+ mana on T3. Without Cub: deploy a second mana creature. Two dorks + 2 lands = 4 mana on T3, still enough for Nature's Rhythm X=2.</div>
+      <div class="card-label">Line 02 — Critical</div>
+      <div class="card-title">Gene Pollinator Triggers on Token CREATION</div>
+      <div class="card-body">Gene Pollinator creates an additional token whenever a non-token creature you control creates one or more tokens. This means: Nature's Rhythm (creates 1 spider → Pollinator creates 1 more = 2 total). Spider Manifestation (creates 2 spiders → Pollinator creates 2 more = 4 total). Pollinator does NOT trigger off tokens you copy or tokens created by the tokens themselves — only from non-token creatures creating tokens.</div>
     </div>
     <div class="card">
-      <div class="card-label">Turn 3</div>
-      <div class="card-title">Nature's Rhythm for the Haymaker</div>
-      <div class="card-body">With 5+ mana: Nature's Rhythm X=4 → Ouroboroid directly to battlefield. X=3 → Formidable Speaker (ETB: discard, tutor creature to hand). X=5 → Quantum Riddler (4/6 flying, draw a card). The flexibility of Nature's Rhythm means T3 is always a massive threat regardless of what you need.</div>
+      <div class="card-label">Line 03 — Critical</div>
+      <div class="card-title">Mockingbird Copies on Attack — Checks at That Moment</div>
+      <div class="card-body">Mockingbird becomes a copy of the creature with the highest power among creatures you control when it attacks. This is checked at the moment of attack declaration, not at end of combat. If you attack with Mockingbird and a 5/5, Mockingbird becomes a 5/5 copy. If that creature later leaves the battlefield during combat, Mockingbird keeps the copy for that turn. You can attack with Mockingbird before other creatures to confirm what it will copy.</div>
     </div>
   </div>
 
-  <h2>Mulligan Guide</h2>
-  <div class="card-grid card-grid-2">
-    <div class="card">
-      <div class="card-label">Always Keep</div>
-      <div class="card-title">Dork + Cub + Payoff</div>
-      <div class="card-body">Any hand with a T1 mana creature, Badgermole Cub, and either Nature's Rhythm or a big threat is a snap keep. You'll have 5+ mana on T3 with a tutor or threat ready. Even without the payoff: dork + Cub + 2 lands keeps itself because you'll draw into Nature's Rhythm or a threat within 2-3 draws.</div>
-    </div>
-    <div class="card">
-      <div class="card-label">Mulligan</div>
-      <div class="card-title">No Mana Creature</div>
-      <div class="card-body">A hand with lands and big threats but no mana creature is a mulligan. Playing Ouroboroid on T4 instead of T3 (one turn slower) is the difference between winning and losing against Prowess. The deck needs T1 acceleration to function. Also mulligan: all mana creatures + no payoff and no Nature's Rhythm. You'll flood the board with 1/1s that do nothing.</div>
-    </div>
-  </div>
+  <h2>Timing Windows</h2>
+  <div class="edge-case"><div class="edge-label">Spider Manifestation Timing</div><div class="edge-body">Spider Manifestation is an instant. Cast it at the end of the opponent's turn (their end step) for maximum value: you get four blockers ready for their next turn (with Pollinator), and you also get to swing with them on YOUR next turn immediately. Casting during your own main phase means you can't immediately use them offensively AND they enter as defenders first. Always prefer end-of-opponent's-turn casting for Manifestation.</div></div>
+  <div class="edge-case"><div class="edge-label">Seam Rip as a Discard Outlet</div><div class="edge-body">Seam Rip (when used as the discard/recast mode) is not just a counterspell — it exiles an instant or sorcery from your graveyard and reuses it, OR you can use it to discard a card to fuel Mockingbird's "copy" trigger. Specifically: Mockingbird can copy a creature you control, so discarding Mockingbird and getting value from the graveyard synergy is real. Know both modes of Seam Rip before game 1.</div></div>
+  <div class="edge-case"><div class="edge-label">Quantum Riddler Attack Trigger</div><div class="edge-body">Quantum Riddler triggers when it attacks: surveil 2, then if you have two or more instants and sorceries in your graveyard, draw a card. In a deck with 4 Seam Rips and 4 Natures Rhythms as sorceries, you hit 2+ graveyard instants/sorceries quickly. Once the threshold is hit, Riddler attacks = draw a card AND surveil 2 every turn. Protect Riddler at all costs once this engine is online.</div></div>
+</div>
 </div>
 
-<!-- ══════════════════════════════════════════════════════════ CH04 ENGINES -->
-<div id="engines" class="section">
-  <div class="section-label">Chapter 04</div>
-  <h1>Core Engines</h1>
-
-  <div class="engine-block">
-    <div class="engine-header"><div class="engine-letter">A</div><div class="engine-name">The Mana Engine</div></div>
-    <div class="engine-body">
-      <div class="engine-step"><div class="engine-step-label">T1</div><div class="engine-step-title">Deploy Dork</div><div class="engine-step-body">Llanowar Elves ({G}→{G}), Gene Pollinator ({T}+tap permanent→any color), Spider Manifestation ({T}→{R}/{G}, untaps on MV4+ cast). 12 one-drops that produce mana.</div></div>
-      <div class="engine-step"><div class="engine-step-label">T2</div><div class="engine-step-title">Badgermole Cub Doubles</div><div class="engine-step-body">Cub: "Whenever you tap a creature for mana, add an additional {G}." Every dork now produces double. Elves: {G}{G}. Pollinator: {any}{G}. Spider: {R/G}{G}. Your T3 mana pool is 5-7.</div></div>
-      <div class="engine-step"><div class="engine-step-label">T3+</div><div class="engine-step-title">Spider Untap Chains</div><div class="engine-step-body">Spider Manifestation untaps on MV 4+ cast. Tap Spider for mana → cast Ouroboroid (MV 4) → Spider untaps → tap again. With Cub: 4 mana from one Spider in one turn. Chain multiple big spells.</div></div>
-    </div>
-  </div>
-
-  <div class="engine-block">
-    <div class="engine-header"><div class="engine-letter">B</div><div class="engine-name">The Tutor Engine</div></div>
-    <div class="engine-body">
-      <div class="engine-step"><div class="engine-step-label">First Cast</div><div class="engine-step-title">Nature's Rhythm to Battlefield</div><div class="engine-step-body">{X}{G}{G}: creature MV ≤ X directly to battlefield. X=4: Ouroboroid. X=5: Quantum Riddler. X=8: Craterhoof. The flexibility means you always find the right threat for the game state.</div></div>
-      <div class="engine-step"><div class="engine-step-label">Second Cast</div><div class="engine-step-title">Harmonize from GY</div><div class="engine-step-body">{X}{G}{G}{G}{G} from GY, tap a creature to reduce generic by its power. An Ouroboroid at 4+ power makes the second cast very affordable. Find Craterhoof to close, or a silver bullet for the matchup.</div></div>
-      <div class="engine-step"><div class="engine-step-label">Silver Bullets</div><div class="engine-step-title">Toolbox Access</div><div class="engine-step-body">1-of targets: Seam Rip (exile MV ≤ 2), Meltstrider's Resolve (fight removal), Explosive Prodigy (damage), Marang River Regent (double bounce), Brightglass Gearhulk (tutor 2 MV ≤ 1). Nature's Rhythm finds the right tool for the job.</div></div>
-    </div>
-  </div>
-
-  <div class="engine-block">
-    <div class="engine-header"><div class="engine-letter">C</div><div class="engine-name">The Exponential Combat Engine</div></div>
-    <div class="engine-body">
-      <div class="engine-step"><div class="engine-step-label">Deploy</div><div class="engine-step-title">Ouroboroid Enters</div><div class="engine-step-body">1/3 Plant Wurm for {2}{G}{G}. Unassuming on entry. The power is in the combat trigger — it compounds every single turn.</div></div>
-      <div class="engine-step"><div class="engine-step-label">Compound</div><div class="engine-step-title">+X/+X Counters to All</div><div class="engine-step-body">Beginning of combat: each creature gets counters = Ouroboroid's power. T1: each gets +1 (Ouro=2/4). T2: +2 (Ouro=4/6). T3: +4 (Ouro=8/10). Three combat steps = your 1/1 dorks are now 8/8s.</div></div>
-      <div class="engine-step"><div class="engine-step-label">Double</div><div class="engine-step-title">Mockingbird Copies Ouroboroid</div><div class="engine-step-body">Two Ouroboroid combat triggers = double the counters per turn. Both grow exponentially. Board state after 2 turns of double Ouroboroid: every creature has 6+ counters. Lethal without Craterhoof.</div></div>
-    </div>
-  </div>
-</div>
-
-<!-- ══════════════════════════════════════════════════════════ CH05 LINES -->
-<div id="lines" class="section">
-  <div class="section-label">Chapter 05 — Lines & Tactics</div>
-  <h1>Lines &<br>Tactics</h1>
-  <div class="mantra">"Every edge case documented. Every 1-in-5000 interaction verified."</div>
-
-  <div class="edge-case">
-    <div class="edge-case-label">Mockingbird X Cost — "Mana Spent" Not MV</div>
-    <div class="edge-case-body">"MV less than or equal to the amount of mana SPENT to cast this creature." Mana spent includes colored mana. Mockingbird for {4}{U} = 5 mana spent. It can copy any creature MV ≤ 5. If you have Badgermole Cub and tap Elves for {G}{G}, you still only SPENT the mana on Mockingbird's cost — the extra {G} from Cub doesn't count as "mana spent to cast" if it wasn't used on Mockingbird. Only mana that actually paid for the spell counts.</div>
-  </div>
-
-  <div class="edge-case">
-    <div class="edge-case-label">Quantum Riddler Warp — Enters as 1/1, Not 4/6</div>
-    <div class="edge-case-body">"Warp {1}{U}" lets you cast Quantum Riddler for {1}{U} instead of {3}{U}{U}. It enters as a 1/1 (warped version). The ETB draw and the card-doubling ability still work regardless of Warp. A 1/1 that draws a card on entry and doubles future draws when your hand is empty is still excellent for {1}{U}. Nature's Rhythm for X=5 bypasses Warp entirely — it puts the full 4/6 version directly onto the battlefield.</div>
-  </div>
-
-  <div class="edge-case">
-    <div class="edge-case-label">Voice of Victory (SB) — Opponents Can't Cast Spells on Your Turn</div>
-    <div class="edge-case-body">{1}{W} 1/3 Human Bard. Mobilize 2. "Your opponents can't cast spells during your turn." This shuts off: all instant-speed interaction, combat tricks, flash creatures. They can't Torch the Tower your attacker, can't counter your Nature's Rhythm, can't flash in blockers. Board in against: Jeskai Control (shuts off all their counterspells on your turn), Izzet Prowess (no combat tricks). Mobilize 2 creates two 1/1 tokens on attack — more bodies for Craterhoof count.</div>
-  </div>
-
-  <div class="edge-case">
-    <div class="edge-case-label">Doorkeeper Thrull (SB) — ETBs Don't Trigger</div>
-    <div class="edge-case-body">{1}{W} 1/2 Flash Flying Thrull. "Artifacts and creatures entering don't cause abilities to trigger." This stops: Heartfire Hero valiant (triggered by targeting), Ouroboroid's combat counter trigger on the OPPONENT'S Ouroboroid (if mirror), Orcish Bowmasters ETB (no ping, no Orc Army), all ETB effects. Board in against: any deck relying heavily on ETB triggers. Flash means you can deploy it during their turn before their key ETB creature.</div>
-  </div>
-
-  <div class="edge-case">
-    <div class="edge-case-label">Wistfulness (SB) — Two Modes Based on Colors Spent</div>
-    <div class="edge-case-body">{3}{G/U}{G/U} 6/5 Elemental Incarnation. "If {G}{G} was spent: exile target artifact or enchantment." "If {U}{U} was spent: draw 2, discard 1." You CAN get BOTH modes if you spend {G}{G}{U}{U} + {1} = {1}{G}{G}{U}{U}. Naturalize + card filter in one creature. Evoke {G/U}{G/U}: sacrifice on entry but ETBs still trigger. Evoke for {G}{G} = free Naturalize. Evoke for {U}{U} = draw 2 discard 1 for 2 mana.</div>
-  </div>
-
-  <div class="edge-case">
-    <div class="edge-case-label">Spider-Sense (SB) — Web-Slinging Reduces Cost</div>
-    <div class="edge-case-body">{1}{U} instant. "Web-slinging {U}: cast for {U} if you also return a tapped creature you control to hand." Counter target instant, sorcery, or triggered ability. For {U} you bounce your own tapped mana dork (replay next turn) and counter their spell/trigger. This turns a used dork into a free counterspell. Board in against combo (counter their key spell), against Izzet (counter their burn/cantrip mid-combat).</div>
-  </div>
-
-  <div class="edge-case">
-    <div class="edge-case-label">Unable to Scream (SB) — Permanent Shutdown on Any Creature</div>
-    <div class="edge-case-body">{U} Aura. "Enchanted creature loses all abilities and is a Toy artifact creature with base P/T 0/2." This permanently neutralizes any creature — Ouroboroid becomes a 0/2 Toy. Screaming Nemesis becomes a 0/2 Toy. No abilities, no threat, no combat relevance. For {U}. The "can't be turned face up" clause is relevant against manifest/morph (Standard doesn't have much of this currently but the clause exists).</div>
-  </div>
-
-  <div class="edge-case">
-    <div class="edge-case-label">Sab-Sunen, Luxa Embodied (SB) — Even/Odd Counter Math</div>
-    <div class="edge-case-body">{3}{G}{U} 6/6 Legendary God. Reach, trample, indestructible. "Can't attack or block unless it has an even number of counters (zero is even)." Starts with 0 counters (even) → CAN attack immediately. First main phase: +1/+1 counter (now 1 = odd) → can't attack, BUT draws 2 cards. Next turn: another counter (2 = even) → can attack as 8/8 indestructible trample. Alternates: odd turns draw 2, even turns attack. A Nature's Rhythm for X=5 puts this indestructible god directly onto the battlefield.</div>
-  </div>
-</div>
-
-<!-- ══════════════════════════════════════════════════════════ CH06 ROLES -->
+<!-- CH06: ROLES -->
 <div id="roles" class="section">
-  <div class="section-label">Chapter 06</div>
-  <h1>Role Assignment</h1>
+<div class="content">
+  <span class="section-label">Chapter 06</span>
+  <h1>ROLE<br>ASSIGNMENT</h1>
+  <div class="mantra">"You are always the beatdown. The question is whether you're the fast beatdown or the resilient midrange beatdown."</div>
+
   <div class="role-grid">
-    <div class="role-card"><div class="role-name role-name-primary">Ramp Aggro</div><div class="role-desc">Default mode. Accelerate with dorks, deploy threats ahead of curve, attack with growing board. Ouroboroid makes every creature bigger each turn. Win through combat damage before they stabilize.</div><div class="role-matchups">vs Midrange · vs Control · vs Slower Combo</div></div>
-    <div class="role-card"><div class="role-name role-name-secondary">Toolbox</div><div class="role-desc">Nature's Rhythm finds the right answer: Seam Rip for their key 2-drop, Meltstrider's Resolve to fight removal, Marang River Regent to bounce their board. You're an aggro deck that tutors silver bullets.</div><div class="role-matchups">vs Enchantment Decks · vs Specific Threats</div></div>
-    <div class="role-card"><div class="role-name role-name-tertiary">Combo Finish</div><div class="role-desc">When the board stalls: Nature's Rhythm for Craterhoof Behemoth. 5+ creatures + Craterhoof = lethal in one attack. This is your "I win" button that bypasses board stalls entirely.</div><div class="role-matchups">vs Stalled Boards · vs Lifegain · vs Go-Wide Mirrors</div></div>
+    <div class="role-card">
+      <div class="role-name">Fast Aggro</div>
+      <p>T1 dork into T2 Rhythm into T3 Pollinator into T4 lethal threats. Deploy as fast as possible. Don't hold Manifestation for the "right" moment — cast it the first chance you have with Pollinator on board. Against aggro mirrors and go-wide decks, speed wins.</p>
+      <p style="margin-top:8px;font-size:13px;color:var(--mid);">VS AGGRO · VS BOROS · VS MONO-GREEN</p>
+    </div>
+    <div class="role-card">
+      <div class="role-name">Resilient Midrange</div>
+      <p>Play to your resources, not to your curve. Hold Seam Rip for their key spell. Cast Spider Manifestation at end of their turn rather than your main phase. Deploy Quantum Riddler to generate card advantage. Win by generating more threats than they have answers over 6-8 turns.</p>
+      <p style="margin-top:8px;font-size:13px;color:var(--mid);">VS CONTROL · VS DIMIR · VS REMOVAL-HEAVY</p>
+    </div>
+    <div class="role-card">
+      <div class="role-name">Combo Finisher</div>
+      <p>Save Craterhoof for the killing blow. Spend early turns building a board of 5+ creatures, then Hoof as the unblockable finisher. Don't cast Hoof until you can win that turn — it's a sorcery and they get to untap and answer your board if it doesn't kill immediately.</p>
+      <p style="margin-top:8px;font-size:13px;color:var(--mid);">VS ANY STABILIZED BOARD</p>
+    </div>
   </div>
-</div>
 
-<!-- ══════════════════════════════════════════════════════════ CH07 MATCHUPS -->
-<div id="matchups" class="section">
-  <div class="section-label">Chapter 07</div>
-  <h1>Matchup Guide</h1>
-  <table class="matchup-table">
-    <thead><tr><th>Matchup</th><th>Role</th><th>Verdict</th><th>Key Card</th></tr></thead>
-    <tbody>
-      <tr onclick="toggle('mu-prowess')"><td><strong>Izzet Prowess</strong></td><td>Ramp Aggro</td><td><span class="verdict verdict-even">Even</span></td><td>Meltstrider's Resolve — fight removal that also buffs</td></tr>
-      <tr><td colspan="4" class="matchup-detail" id="mu-prowess">
-        <p>Race matchup. They're faster on raw damage (T3 kills possible with Slickshot), but you're bigger. An Ouroboroid that survives one combat step makes your board larger than theirs. Meltstrider's Resolve on a 3-power creature fights and kills their Slickshot (1 toughness regardless of pump) while giving +0/+2 to survive. Their removal (Burst Lightning, Torch the Tower) kills your dorks but can't efficiently answer Ouroboroid or Quantum Riddler. Post-board: Voice of Victory shuts off their combat tricks entirely.</p>
-        <h3>% Point Edges</h3>
-        <p class="sb-note"><strong>+3 pts: Resolve on Ouroboroid fighting Slickshot.</strong> Slickshot is always 1 toughness regardless of +2/+0 pumps. Your 1/3 Ouroboroid fights it and wins, gaining +0/+2 = 1/5. Slickshot dies. Your Ouroboroid lives and grows next combat.</p>
-        <table class="sb-table"><thead><tr><th>Out</th><th>In</th></tr></thead><tbody>
-          <tr><td class="sb-out">&#x2212;2 Quantum Riddler</td><td class="sb-in">+2 Voice of Victory</td></tr>
-          <tr><td class="sb-out">&#x2212;1 Marang River Regent</td><td class="sb-in">+1 Meltstrider's Resolve</td></tr>
-        </tbody></table>
-        <p class="sb-note">Riddler is too slow at 5 mana against a T3 clock. Voice of Victory shuts off all their instant-speed combat tricks and burn — they cannot Torch the Tower, Burst Lightning, or use any instant during your attack step.</p>
-      </td></tr>
-
-      <tr onclick="toggle('mu-landfall')"><td><strong>Mono-Green Landfall</strong></td><td>Combo Finish</td><td><span class="verdict verdict-favor">Favorable</span></td><td>Craterhoof — your creatures are bigger, and you have the one-card kill</td></tr>
-      <tr><td colspan="4" class="matchup-detail" id="mu-landfall">
-        <p>Both decks go wide with creatures. Both grow their boards. But you have Craterhoof — the instant kill they don't have. You also have Nature's Rhythm to tutor it. Their Scythecat and Innkeeper's Talent grow creatures, but Ouroboroid grows your ENTIRE board exponentially. In a stalled board: Nature's Rhythm for Craterhoof ends the game. They have no equivalent finisher.</p>
-        <h3>% Point Edges</h3>
-        <p class="sb-note"><strong>+4 pts: Craterhoof into a stalled board.</strong> Both sides have 5+ creatures. You tutor Craterhoof. They don't have an equivalent. +5/+5 and trample to everything = lethal through their blockers.</p>
-        <table class="sb-table"><thead><tr><th>Out</th><th>In</th></tr></thead><tbody>
-          <tr><td class="sb-out">&#x2212;1 Seam Rip</td><td class="sb-in">+1 Keen-Eyed Curator</td></tr>
-          <tr><td class="sb-out">&#x2212;1 Meltstrider's Resolve</td><td class="sb-in">+1 Unable to Scream</td></tr>
-        </tbody></table>
-        <p class="sb-note">Seam Rip and Resolve are answer cards — in a mirror-style race you want more threats and GY hate. Unable to Scream permanently disables their key threat for {U}. Curator grows itself while hating their GY, and Nature's Rhythm can tutor it for X=2.</p>
-      </td></tr>
-
-      <tr onclick="toggle('mu-dimir')"><td><strong>Dimir Midrange</strong></td><td>Ramp Aggro</td><td><span class="verdict verdict-even">Even</span></td><td>Nature's Rhythm — they can't interact with a sorcery-speed tutor</td></tr>
-      <tr><td colspan="4" class="matchup-detail" id="mu-dimir">
-        <p>They have removal (Go for the Throat) and hand disruption (Duress). Their plan is to pick apart your hand and answer your threats one-by-one. Your plan: produce more threats than they have answers. Nature's Rhythm puts a creature directly onto the battlefield — it can't be Duressed (sorcery, not creature) and the creature enters without being cast (dodges Counterspell on the creature itself). Post-board: Sab-Sunen is indestructible — their removal can't answer it.</p>
-        <h3>% Point Edges</h3>
-        <p class="sb-note"><strong>+3 pts: Nature's Rhythm at sorcery speed dodges instant-speed interaction.</strong> They can't Phantom Interference your Nature's Rhythm — it's a sorcery and they need instant-speed counterspells. The creature it finds also enters WITHOUT being cast (bypasses Counterspell on that creature).</p>
-        <p class="sb-note"><strong>+2 pts: Sab-Sunen post-board is unanswerable.</strong> Indestructible 6/6 means their removal suite — Go for the Throat, Into the Flood Maw — does nothing. They must race a god that draws 2 cards every other turn.</p>
-        <table class="sb-table"><thead><tr><th>Out</th><th>In</th></tr></thead><tbody>
-          <tr><td class="sb-out">&#x2212;1 Explosive Prodigy</td><td class="sb-in">+1 Sab-Sunen, Luxa Embodied</td></tr>
-          <tr><td class="sb-out">&#x2212;1 Marang River Regent</td><td class="sb-in">+2 Soul-Guide Lantern</td></tr>
-          <tr><td class="sb-out">&#x2212;1 Seam Rip</td><td class="sb-in">+1 Spider-Sense</td></tr>
-        </tbody></table>
-        <p class="sb-note">Prodigy and Regent are situational threats — replace with the indestructible finisher and GY hate (Kaito recurses from GY). Spider-Sense gives you a counterspell for their key removal spells when you need to protect Ouroboroid.</p>
-      </td></tr>
-
-      <tr onclick="toggle('mu-lessons')"><td><strong>Izzet Lessons</strong></td><td>Toolbox</td><td><span class="verdict verdict-dog">Slightly Unfavorable</span></td><td>Voice of Victory — shuts off instant-speed interaction</td></tr>
-      <tr><td colspan="4" class="matchup-detail" id="mu-lessons">
-        <p>Lessons has Torch the Tower to kill your dorks, Learn effects for card advantage, and flexible interaction. Their plan: kill your mana creatures to slow your engine, then win with Monument drain. Your plan: develop fast enough that losing one dork doesn't matter, and deploy Voice of Victory before their drain loop goes online. G1 they can outvalue you; G2-3 Voice of Victory removes their instant-speed toolbox entirely.</p>
-        <h3>% Point Edges</h3>
-        <p class="sb-note"><strong>+4 pts: Voice of Victory naming their turn.</strong> They can't Torch the Tower (instant), can't play instant-speed Learn effects, can't respond to your attacks. Their entire interactive gameplan is instant-speed — Voice blanks it. Deploy Voice BEFORE your Nature's Rhythm turn so they can't respond to the tutor either.</p>
-        <table class="sb-table"><thead><tr><th>Out</th><th>In</th></tr></thead><tbody>
-          <tr><td class="sb-out">&#x2212;1 Explosive Prodigy</td><td class="sb-in">+2 Voice of Victory</td></tr>
-          <tr><td class="sb-out">&#x2212;1 Marang River Regent</td><td class="sb-in">+2 Spider-Sense</td></tr>
-          <tr><td class="sb-out">&#x2212;1 Brightglass Gearhulk</td><td class="sb-in">+1 Reclamation Sage</td></tr>
-          <tr><td class="sb-out">&#x2212;1 Meltstrider's Resolve</td><td class="sb-in"></td></tr>
-        </tbody></table>
-        <p class="sb-note">Gearhulk and Resolve are for matchups with more permanent-based threats. Against Lessons, you need interaction (Voice, Spider-Sense) and enchantment hate (Reclamation Sage for Monument to Endurance / Artist's Talent).</p>
-      </td></tr>
-
-      <tr onclick="toggle('mu-control')"><td><strong>Jeskai Control</strong></td><td>Ramp Aggro</td><td><span class="verdict verdict-favor">Favorable</span></td><td>Nature's Rhythm — overwhelm their answer count</td></tr>
-      <tr><td colspan="4" class="matchup-detail" id="mu-control">
-        <p>Control decks want to answer one threat at a time. You present 4+ threats per turn. Sunfall sweeps your board but you rebuild faster than they can find another sweeper. Nature's Rhythm into Craterhoof is a one-card kill they need a counterspell for — if they don't have it, game over. Harmonize from GY means one Nature's Rhythm = two tutor effects. They can't counter both. Post-board: Voice of Victory + Sab-Sunen (indestructible) makes their life miserable.</p>
-        <h3>% Point Edges</h3>
-        <p class="sb-note"><strong>+4 pts: Harmonize from GY after they counter Nature's Rhythm.</strong> They counter your first Nature's Rhythm. Good — now Nature's Rhythm is in your GY. Harmonize next turn: tap your Ouroboroid (5+ power by now) to reduce cost by 5. Your second tutor costs almost nothing and finds Craterhoof for the kill.</p>
-        <p class="sb-note"><strong>+3 pts: Sab-Sunen is indestructible — they have no clean answer.</strong> Jeskai Control's removal (Farewell, Sunfall) exiles but Sab-Sunen is indestructible — indestructible doesn't stop exile, so Farewell does answer it. Key interaction: their TARGETED removal (any removal that says "destroy") can't kill Sab-Sunen. Mass exile (Farewell) can.</p>
-        <table class="sb-table"><thead><tr><th>Out</th><th>In</th></tr></thead><tbody>
-          <tr><td class="sb-out">&#x2212;1 Seam Rip</td><td class="sb-in">+2 Voice of Victory</td></tr>
-          <tr><td class="sb-out">&#x2212;1 Meltstrider's Resolve</td><td class="sb-in">+2 Spider-Sense</td></tr>
-          <tr><td class="sb-out">&#x2212;1 Explosive Prodigy</td><td class="sb-in">+1 Sab-Sunen, Luxa Embodied</td></tr>
-          <tr><td class="sb-out">&#x2212;1 Marang River Regent</td><td class="sb-in"></td></tr>
-        </tbody></table>
-        <p class="sb-note">Cut the silver bullets that answer creatures — control doesn't have creatures to answer. Voice shuts off their entire counterspell suite on your turn. Spider-Sense gives you countermagic for their sweepers. Sab-Sunen demands an exile effect they have to dig for.</p>
-      </td></tr>
-
-      <tr onclick="toggle('mu-boros')"><td><strong>Boros Aggro</strong></td><td>Ramp Aggro</td><td><span class="verdict verdict-dog">Unfavorable</span></td><td>Meltstrider's Resolve — fight their threats while growing yours</td></tr>
-      <tr><td colspan="4" class="matchup-detail" id="mu-boros">
-        <p>Boros Aggro is faster and more disruptive than you expect. Their clock (Voice of Victory, Seasoned Pyromancer, Goblin Bombardment) applies pressure before you can deploy Ouroboroid. Goblin Bombardment is the card that specifically punishes you — they sacrifice tokens for direct damage that bypasses your growing board entirely. Your T1-2 dorks die to Galvanic Discharge. The plan: deploy enough dorks that some survive, get Ouroboroid on the board, and grow faster than their Bombardment can kill you. Meltstrider's Resolve fights their key creatures while growing yours.</p>
-        <h3>% Point Edges</h3>
-        <p class="sb-note"><strong>+3 pts: Ouroboroid surviving one combat step wins the race.</strong> Your 1/3 Ouroboroid survives Discharge (needs 4+ energy to deal 4). After one combat, your board is too large for Bombardment to race. Protect Ouroboroid and let the exponential growth take over.</p>
-        <table class="sb-table"><thead><tr><th>Out</th><th>In</th></tr></thead><tbody>
-          <tr><td class="sb-out">&#x2212;2 Quantum Riddler</td><td class="sb-in">+2 Voice of Victory</td></tr>
-          <tr><td class="sb-out">&#x2212;1 Brightglass Gearhulk</td><td class="sb-in">+1 Wistfulness</td></tr>
-          <tr><td class="sb-out">&#x2212;1 Marang River Regent</td><td class="sb-in">+2 Meltstrider's Resolve</td></tr>
-          <tr><td class="sb-out">&#x2212;1 Seam Rip</td><td class="sb-in"></td></tr>
-        </tbody></table>
-        <p class="sb-note">Riddler is 5 mana — too slow when dying on T3. Wistfulness evoke for {G}{G} exiles Goblin Bombardment (enchantment). Voice of Victory stops their burn and combat tricks. Extra Resolve fights their creatures while growing yours.</p>
-      </td></tr>
-
-      <tr onclick="toggle('mu-mirror')"><td><strong>Bant Rhythm Mirror</strong></td><td>Ramp Aggro</td><td><span class="verdict verdict-even">Even</span></td><td>Ouroboroid — first one that survives wins</td></tr>
-      <tr><td colspan="4" class="matchup-detail" id="mu-mirror">
-        <p>The mirror is decided by who gets Ouroboroid into play first AND alive through combat. Both players have Nature's Rhythm — both will find Ouroboroid on approximately the same turn. The difference: if their Ouroboroid survives combat and yours doesn't, their board grows exponentially while yours stagnates. Unable to Scream is the perfect answer — {U} permanently neutralizes their Ouroboroid (becomes 0/2 Toy with no abilities). Mockingbird copying THEIR Ouroboroid is a free win.</p>
-        <h3>% Point Edges</h3>
-        <p class="sb-note"><strong>+5 pts: Unable to Scream on their Ouroboroid.</strong> For {U}, their exponential engine becomes a 0/2 Toy. Your Ouroboroid grows uncontested. This single card swings the mirror by 10+ power differential per combat step.</p>
-        <p class="sb-note"><strong>+3 pts: Mockingbird copying their Ouroboroid.</strong> You get an identical exponential engine. Both your Ouroboroids trigger at the beginning of combat — double counter generation. Your board grows at 4× the rate instead of 2×.</p>
-        <table class="sb-table"><thead><tr><th>Out</th><th>In</th></tr></thead><tbody>
-          <tr><td class="sb-out">&#x2212;2 Meltstrider's Resolve</td><td class="sb-in">+2 Unable to Scream</td></tr>
-          <tr><td class="sb-out">&#x2212;1 Marang River Regent</td><td class="sb-in">+2 Soul-Guide Lantern</td></tr>
-          <tr><td class="sb-out">&#x2212;1 Seam Rip</td><td class="sb-in">+1 Keen-Eyed Curator</td></tr>
-        </tbody></table>
-        <p class="sb-note">Resolve and Regent are for non-mirror matchups. Unable to Scream is your best mirror card. Soul-Guide Lantern hates on Harmonize from GY (exile their Nature's Rhythm before they can harmonize). Curator grows while attacking their GY.</p>
-      </td></tr>
-
-      <tr onclick="toggle('mu-oculus')"><td><strong>Dimir Oculus</strong></td><td>Ramp Aggro</td><td><span class="verdict verdict-favor">Favorable</span></td><td>Your creatures outgrow their interaction window</td></tr>
-      <tr><td colspan="4" class="matchup-detail" id="mu-oculus">
-        <p>Dimir Oculus (or Esper Blink) relies on Ephemerate loops for value and Solitude for removal. Their plan against you: Solitude exiles your Ouroboroid for free (evoke). Your plan: deploy multiple threats faster than they have Solitudes. They only run 4 Solitudes — after those are used, your Ouroboroid survives. Gene Pollinator and Spider Manifestation come down too fast for Solitude-speed interaction. Quantum Riddler on T3 as a 1/1 (Warp) starts drawing cards immediately and growing once your hand empties.</p>
-        <h3>% Point Edges</h3>
-        <p class="sb-note"><strong>+3 pts: Deploy 3+ threats before their Solitude line comes online.</strong> Solitude requires a white card to evoke for free. T1 dork, T2 Cub, T3 Nature's Rhythm = three permanents down before they have Solitude mana backup. They can only answer one at a time. Each answer spent on a dork is one not available for Ouroboroid.</p>
-        <table class="sb-table"><thead><tr><th>Out</th><th>In</th></tr></thead><tbody>
-          <tr><td class="sb-out">&#x2212;1 Meltstrider's Resolve</td><td class="sb-in">+1 Voice of Victory</td></tr>
-          <tr><td class="sb-out">&#x2212;1 Seam Rip</td><td class="sb-in">+1 Spider-Sense</td></tr>
-          <tr><td class="sb-out">&#x2212;1 Explosive Prodigy</td><td class="sb-in">+1 Doorkeeper Thrull</td></tr>
-        </tbody></table>
-        <p class="sb-note">Cut silver bullets that fight creatures. Voice stops their instant-speed Ephemerate/Solitude on your turn. Spider-Sense counters their key spells. Doorkeeper Thrull (flash) prevents ETB triggers on Solitude and their blink engine — deployed during their turn before their key ETB creature enters.</p>
-      </td></tr>
-    </tbody>
-  </table>
-</div>
-
-<!-- ══════════════════════════════════════════════════════════ CH08 SIDEBOARD -->
-<div id="sideboard" class="section">
-  <div class="section-label">Chapter 08</div>
-  <h1>Sideboard Guide</h1>
-  <div class="mantra">"Most silver bullets are tutorable via Nature's Rhythm. Your sideboard isn't just 15 cards — it's 15 cards that Nature's Rhythm can find."</div>
-
-  <div class="card-grid card-grid-2">
-    <div class="card"><div class="card-label">Anti-Creature</div><div class="card-title">Unable to Scream ×2</div><div class="card-body">{U} Aura: creature loses all abilities, becomes 0/2 Toy. Permanently neutralizes any creature for 1 mana. Board in against: any deck with a must-answer creature (Ouroboroid mirror, Screaming Nemesis, Sheoldred).</div></div>
-    <div class="card"><div class="card-label">Counterspell</div><div class="card-title">Spider-Sense ×2</div><div class="card-body">{1}{U} or {U} with web-slinging (bounce a tapped creature). Counters instants, sorceries, and triggered abilities. Board in against: combo, control, Izzet anything. Web-slinging turns a used mana dork into free countermagic.</div></div>
-    <div class="card"><div class="card-label">GY Hate</div><div class="card-title">Soul-Guide Lantern ×2</div><div class="card-body">{1} artifact. ETB: exile a card from GY. Sacrifice: exile opponents' GYs OR draw a card. Never dead — against non-GY decks, sacrifice to draw. Board in against: Dimir Midrange (Kaito recursion), Reanimator, any GY-reliant strategy.</div></div>
-    <div class="card"><div class="card-label">Artifact/Enchantment Hate</div><div class="card-title">Reclamation Sage ×1</div><div class="card-body">{2}{G} 2/1 ETB: may destroy artifact or enchantment. Tutorable via Nature's Rhythm for X=3. Board in against: Izzet Lessons (Monument to Endurance, Artist's Talent), enchantment-based decks, artifact strategies.</div></div>
-    <div class="card"><div class="card-label">Interaction</div><div class="card-title">Seam Rip ×1 (2nd copy)</div><div class="card-body">{W} enchantment: exile target nonland permanent MV ≤ 2 until Seam Rip leaves. The 2nd copy for matchups where low-MV threats dominate (Prowess creatures, mana dorks in mirror).</div></div>
-    <div class="card"><div class="card-label">GY Value</div><div class="card-title">Keen-Eyed Curator ×1</div><div class="card-body">{G}{G} 3/3 Raccoon Scout. Exiles cards from GY for counters — gets +4/+4 and trample with 4+ card types exiled. A self-growing threat that doubles as GY hate. Nature's Rhythm for X=2 puts it directly onto battlefield.</div></div>
-    <div class="card"><div class="card-label">Card Advantage</div><div class="card-title">Enduring Curiosity ×1</div><div class="card-body">{2}{U}{U} 4/3 Flash. "Whenever a creature you control deals combat damage, draw a card." With 5 creatures attacking: draw 5 cards. When it dies: returns as a non-creature enchantment (keeps the draw trigger). Board in against midrange for sustained card advantage.</div></div>
-    <div class="card"><div class="card-label">Anti-Instant</div><div class="card-title">Voice of Victory ×1</div><div class="card-body">{1}{W} 1/3. Mobilize 2. "Opponents can't cast spells during your turn." Shuts off ALL instant-speed interaction. Board in against: Jeskai Control, Izzet Prowess, anything with combat tricks or counterspells.</div></div>
-    <div class="card"><div class="card-label">Anti-ETB</div><div class="card-title">Doorkeeper Thrull ×1</div><div class="card-body">{1}{W} 1/2 Flash Flying. "Artifacts and creatures entering don't cause abilities to trigger." Stops all ETB effects. Flash deployment timing is critical — play BEFORE their key ETB creature.</div></div>
-    <div class="card"><div class="card-label">Indestructible Finisher</div><div class="card-title">Sab-Sunen, Luxa Embodied ×1</div><div class="card-body">{3}{G}{U} 6/6 indestructible God. Alternates: odd counters = draw 2, even counters = can attack. Nature's Rhythm for X=5 puts it onto battlefield. Against removal-heavy decks: they can't kill it.</div></div>
-  </div>
-</div>
-
-<!-- ══════════════════════════════════════════════════════════ CH09 HEURISTICS -->
-<div id="heuristics" class="section">
-  <div class="section-label">Chapter 09</div>
-  <h1>Heuristics</h1>
+  <h2>Role Mistakes to Avoid</h2>
   <ol class="heuristic-list">
-    <li><div class="heuristic-num">01</div><div class="heuristic-body"><strong>T1 mana creature is non-negotiable.</strong> Mulligan any hand without a T1 mana dork. The deck needs acceleration to function. 12 one-drops = ~87% to have one in a 7-card hand.</div></li>
-    <li><div class="heuristic-num">02</div><div class="heuristic-body"><strong>Badgermole Cub on T2 doubles everything.</strong> If you have Cub and a choice between playing Cub T2 or another dork T2: always Cub. The mana doubling compounds — T3 with Cub is 5+ mana vs 4 without.</div></li>
-    <li><div class="heuristic-num">03</div><div class="heuristic-body"><strong>Nature's Rhythm X should match the game state, not just the biggest threat.</strong> Don't always tutor Craterhoof. X=3 for Formidable Speaker (tutor another creature to hand) when you need to build. X=4 for Ouroboroid when you need a board that grows. X=8 for Craterhoof only when you have 5+ creatures and need to win THIS turn.</div></li>
-    <li><div class="heuristic-num">04</div><div class="heuristic-body"><strong>Ouroboroid grows exponentially. Protect it for one turn and the game is over.</strong> If Ouroboroid survives two combat steps, your board is +3/+3 across everything. Three steps: +7/+7. Don't block with Ouroboroid — ever. It needs to live.</div></li>
-    <li><div class="heuristic-num">05</div><div class="heuristic-body"><strong>Mockingbird copying Ouroboroid is the strongest play in the deck.</strong> Two exponential combat triggers = double counters per turn. Both triggers resolve at beginning of combat. Each Ouroboroid sees the other's grown power for the next turn. Copy your own Ouroboroid, not the opponent's best creature, unless their creature wins immediately.</div></li>
-    <li><div class="heuristic-num">06</div><div class="heuristic-body"><strong>Spider Manifestation untaps on MV 4+ cast — chain big spells.</strong> Tap Spider for mana → cast MV 4+ → Spider untaps → tap again → cast another spell if you have mana. With Cub: 4+ mana per Spider per big spell cast.</div></li>
-    <li><div class="heuristic-num">07</div><div class="heuristic-body"><strong>Harmonize from GY is your insurance policy.</strong> If Nature's Rhythm resolves and gets the creature you need, it goes to GY. Later: harmonize finds a SECOND creature. One card = two tutors. Plan your first Nature's Rhythm knowing you get a second cast later.</div></li>
-    <li><div class="heuristic-num">08</div><div class="heuristic-body"><strong>Gene Pollinator taps any untapped permanent, not just creatures.</strong> A land that hasn't tapped yet, an artifact that isn't being used, even a planeswalker — all valid targets for Pollinator's mana ability. This makes Pollinator your most flexible mana source.</div></li>
-    <li><div class="heuristic-num">09</div><div class="heuristic-body"><strong>Formidable Speaker's discard is optional — but you should almost always discard.</strong> The tutor is worth more than almost any card in your hand. Discard a land or a redundant mana creature to find Craterhoof or Ouroboroid.</div></li>
-    <li><div class="heuristic-num">10</div><div class="heuristic-body"><strong>Craterhoof counts itself.</strong> Hoof + 5 other creatures = X=6. Each creature gets +6/+6. Hoof itself is 11/11 haste trample. Don't forget to count Hoof in the X calculation.</div></li>
-    <li><div class="heuristic-num">11</div><div class="heuristic-body"><strong>Nature's Rhythm can't be Duressed.</strong> It's a sorcery, not a creature or a hand card that Duress targets (Duress makes you discard a noncreature, nonland card — but you cast Rhythm, you don't discard it). More importantly: the creature Nature's Rhythm finds enters WITHOUT being cast — it can't be countered by Counterspell targeting the creature spell. The creature is put directly onto the battlefield from the library.</div></li>
-    <li><div class="heuristic-num">12</div><div class="heuristic-body"><strong>Voice of Victory is deployed BEFORE your Nature's Rhythm turn.</strong> Voice says "opponents can't cast spells during your turn." If you deploy Voice on your Nature's Rhythm turn, they can respond to Voice with instant-speed removal. Deploy Voice the turn before to lock them out entirely — now on your big turn they can't do anything.</div></li>
-    <li><div class="heuristic-num">13</div><div class="heuristic-body"><strong>Brightglass Gearhulk tutors TWO cards from the same search.</strong> "Up to two" artifact, creature, and/or enchantment cards with MV 1 or less. Find Llanowar Elves + Gene Pollinator, or Seam Rip + Soul-Guide Lantern, or any two MV-1 silver bullets simultaneously. Nature's Rhythm for X=4 puts Gearhulk directly onto battlefield → two tutors for one spell cast.</div></li>
+    <li><span class="h-num">01</span><span class="h-text"><strong>Casting Spider Manifestation in your main phase.</strong> You lose the "flash" advantage, giving opponents a full turn to answer before you can attack. The flash mode is the power — use it at end of their turn for four surprise blockers/attackers.</span></li>
+    <li><span class="h-num">02</span><span class="h-text"><strong>Casting Craterhoof without lethal math.</strong> Hoof gives +X/+X where X is the number of creatures you control. Count it out before committing. If you have 5 creatures and they're at 16 life, Hoof makes everything a 6/6 — that's 30 trample damage. Don't cast it if they can simply not die.</span></li>
+    <li><span class="h-num">03</span><span class="h-text"><strong>Not protecting Gene Pollinator.</strong> Pollinator is your force multiplier. Seam Rip exists to protect it, not just to counter their spells. If they're pointing removal at Pollinator, counter it. One counter spell on Pollinator is worth more than saving it for a later spell.</span></li>
+    <li><span class="h-num">04</span><span class="h-text"><strong>Over-committing into Sweepers.</strong> Against control decks with Day of Judgment, hold back one threat. Cast Manifestation at end of their turn, attack, then if they Wrath your board you can recast from a safe position with Brightglass Gearhulk or cast Ouroboroid as a rebuild.</span></li>
+  </ol>
+
+  <h2>Role-Switching Signals</h2>
+  <div class="card-grid card-grid-2">
+    <div class="card"><div class="card-label">Switch to Slower When</div><div class="card-title">They Have Open Mana and Cards in Hand</div><div class="card-body">Three mana open + two cards in hand vs. your go-wide board = likely Seam Rip for your Pollinator or a sweeper. Slow down, bait the interaction with a lower-value card first, then commit your Pollinator when they've tapped out or used the counter.</div></div>
+    <div class="card"><div class="card-label">Accelerate When</div><div class="card-title">They've Spent Their Interaction</div><div class="card-body">Once they've tapped out or used their last counterspell, go full speed. Cast Pollinator, follow with Manifestation immediately, attack for as much as possible. The window after they've spent their interaction is your strongest attacking position.</div></div>
+  </div>
+</div>
+</div>
+
+<!-- CH07: MATCHUPS -->
+<div id="matchups" class="section">
+<div class="content">
+  <span class="section-label">Chapter 07</span>
+  <h1>MATCHUP<br>GUIDE</h1>
+  <div class="mantra">"Most matchups come down to one question: can they deal with 8+ power across 4+ bodies on turn 5?"</div>
+
+  <!-- DIMIR MIDRANGE -->
+  <div class="matchup-block">
+    <div class="matchup-header" onclick="toggle('mu-dimir')">
+      <h3>DIMIR MIDRANGE</h3><span class="verdict verdict-good">Favorable</span>
+    </div>
+    <div id="mu-dimir" class="matchup-body">
+      <p>Their removal suite is mostly single-target. Every spider token they spend removal on is a resource trade you win — your spells make 2-4 tokens, their removal handles one at a time. Their Kaito and Cecil engines are slow enough that you're already attacking with 6+ power before they stabilize.</p>
+      <p><strong>What they're trying to do:</strong> Use Floodpits Drowner + Kaito to generate card advantage and block your ground assault. Cecil life-math can outrace aggro builds but struggles vs. multiple evasion threats.</p>
+      <p><strong>What you do:</strong> Go wide immediately. Cast Pollinator ASAP. Use Spider Manifestation at end of their T3 to create a blocking wall that also attacks T4. Prioritize attacking with Quantum Riddler to generate card advantage that matches their engine.</p>
+      <p><strong>Key threat to answer:</strong> Floodpits Drowner — it blocks your tokens indefinitely and untaps when they enter the battlefield. Into the Flood Maw bounces your whole board at sorcery speed. Protect against it with Seam Rip.</p>
+      <div class="sb-table">
+        <div class="sb-col"><div class="sb-col-label">In</div>
+          <div class="sb-item"><span><span class="c">Surrak, Elusive Hunter</span></span><span class="sb-qty">+1</span></div>
+          <div class="sb-item"><span><span class="c">Oko, Lorwyn Liege</span></span><span class="sb-qty">+2</span></div>
+          <div class="sb-item"><span><span class="c">Spider-Sense</span></span><span class="sb-qty">+2</span></div>
+        </div>
+        <div class="sb-col"><div class="sb-col-label">Out</div>
+          <div class="sb-item"><span><span class="c">Bounce Off</span></span><span class="sb-qty">&minus;1</span></div>
+          <div class="sb-item"><span><span class="c">Meltstrider's Resolve</span></span><span class="sb-qty">&minus;1</span></div>
+          <div class="sb-item"><span><span class="c">Beza, the Bounding Spring</span></span><span class="sb-qty">&minus;1</span></div>
+          <div class="sb-item"><span><span class="c">Brightglass Gearhulk</span></span><span class="sb-qty">&minus;1</span></div>
+          <div class="sb-item"><span><span class="c">Mockingbird</span></span><span class="sb-qty">&minus;1</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MONO-GREEN LANDFALL -->
+  <div class="matchup-block">
+    <div class="matchup-header" onclick="toggle('mu-monogreen')">
+      <h3>MONO-GREEN LANDFALL</h3><span class="verdict verdict-even">Even</span>
+    </div>
+    <div id="mu-monogreen" class="matchup-body">
+      <p>Both decks go wide with tokens. The difference is Mono-Green has Icetill Explorer combo kill and Sapling Nursery grind. You have Quantum Riddler card advantage and Craterhoof for the big swing. The matchup is decided by who gets ahead on board before the opponent's key combo pieces come online.</p>
+      <p><strong>What they're trying to do:</strong> Ramp to Mightform Harmonizer + Icetill Explorer for the instant win, or Sapling Nursery for the grinding advantage.</p>
+      <p><strong>What you do:</strong> Race. Your spiders have reach which blocks their Mightform Harmonizer fliers. Get Gene Pollinator down fast and flood the board with spiders. Their tokens don't have evasion; yours have reach and block effectively.</p>
+      <div class="sb-table">
+        <div class="sb-col"><div class="sb-col-label">In</div>
+          <div class="sb-item"><span><span class="c">Soul-Guide Lantern</span></span><span class="sb-qty">+1</span></div>
+          <div class="sb-item"><span><span class="c">Surrak, Elusive Hunter</span></span><span class="sb-qty">+1</span></div>
+          <div class="sb-item"><span><span class="c">Chomping Changeling</span></span><span class="sb-qty">+1</span></div>
+        </div>
+        <div class="sb-col"><div class="sb-col-label">Out</div>
+          <div class="sb-item"><span><span class="c">Meltstrider's Resolve</span></span><span class="sb-qty">&minus;1</span></div>
+          <div class="sb-item"><span><span class="c">Bounce Off</span></span><span class="sb-qty">&minus;1</span></div>
+          <div class="sb-item"><span><span class="c">Ouroboroid</span></span><span class="sb-qty">&minus;1</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- IZZET PROWESS -->
+  <div class="matchup-block">
+    <div class="matchup-header" onclick="toggle('mu-prowess')">
+      <h3>IZZET PROWESS</h3><span class="verdict verdict-even">Even</span>
+    </div>
+    <div id="mu-prowess" class="matchup-body">
+      <p>Prowess kills T3-4 with pump spells and Slickshot Show-Off. Your spider tokens with reach are actually good blockers against their aerial threats. The race is close — you can stabilize with 4+ spiders if you survive the initial burst.</p>
+      <p><strong>What they're trying to do:</strong> Get a DRC or Swiftspear down early and chain spells. Every spell pumps multiple creatures.</p>
+      <p><strong>What you do:</strong> T2 Nature's Rhythm for the spider is your most important survival play. Don't prioritize speed over blocking — put up the wall of reach spiders first, then go wide. Your ceiling is higher if the game goes long; their ceiling is higher if you die early.</p>
+      <div class="sb-table">
+        <div class="sb-col"><div class="sb-col-label">In</div>
+          <div class="sb-item"><span><span class="c">Focus Fire</span></span><span class="sb-qty">+1</span></div>
+          <div class="sb-item"><span><span class="c">Chomping Changeling</span></span><span class="sb-qty">+1</span></div>
+          <div class="sb-item"><span><span class="c">Sage of the Skies</span></span><span class="sb-qty">+2</span></div>
+        </div>
+        <div class="sb-col"><div class="sb-col-label">Out</div>
+          <div class="sb-item"><span><span class="c">Ouroboroid</span></span><span class="sb-qty">&minus;2</span></div>
+          <div class="sb-item"><span><span class="c">Brightglass Gearhulk</span></span><span class="sb-qty">&minus;1</span></div>
+          <div class="sb-item"><span><span class="c">Mockingbird</span></span><span class="sb-qty">&minus;1</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BOROS AGGRO -->
+  <div class="matchup-block">
+    <div class="matchup-header" onclick="toggle('mu-boros')">
+      <h3>BOROS AGGRO</h3><span class="verdict verdict-good">Favorable</span>
+    </div>
+    <div id="mu-boros" class="matchup-body">
+      <p>Their creatures are individually powerful but you go wider. Spider tokens with reach block their fliers. Gene Pollinator + Manifestation creates more blockers than they have attackers. This is your best matchup in the Standard field.</p>
+      <p><strong>What they're trying to do:</strong> Emberheart Challenger + Monstrous Rage for a fast kill. Get in for early damage and close with burn.</p>
+      <p><strong>What you do:</strong> Block aggressively. T2 Nature's Rhythm gives you a spider that blocks their T2 attacker. By T4, you have more bodies than they have damage. Their removal is inefficient against tokens. Race them with Pollinator doubling your spider count every turn.</p>
+      <div class="sb-table">
+        <div class="sb-col"><div class="sb-col-label">In</div>
+          <div class="sb-item"><span><span class="c">Focus Fire</span></span><span class="sb-qty">+1</span></div>
+          <div class="sb-item"><span><span class="c">Sage of the Skies</span></span><span class="sb-qty">+2</span></div>
+        </div>
+        <div class="sb-col"><div class="sb-col-label">Out</div>
+          <div class="sb-item"><span><span class="c">Ouroboroid</span></span><span class="sb-qty">&minus;2</span></div>
+          <div class="sb-item"><span><span class="c">Meltstrider's Resolve</span></span><span class="sb-qty">&minus;1</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- JESKAI CONTROL -->
+  <div class="matchup-block">
+    <div class="matchup-header" onclick="toggle('mu-jeskai')">
+      <h3>JESKAI CONTROL</h3><span class="verdict verdict-even">Even</span>
+    </div>
+    <div id="mu-jeskai" class="matchup-body">
+      <p>Their sweepers (Day of Judgment, Sunfall) can undo your board instantly. Seam Rip is critical here — counter the sweeper. Play around Seam Rip by baiting with small threats first, then deploying Pollinator after they've used their counter or tapped out for a sweeper.</p>
+      <p><strong>What they're trying to do:</strong> Resolve a sweeper when you're fully committed, then establish Atraxa or Memory Deluge for the inevitable.</p>
+      <p><strong>What you do:</strong> Never fully commit. Cast Pollinator when they're at 3 or fewer mana. Hold Manifestation as instant-speed rebuild after their sweeper. Use Ouroboroid post-sweeper as two 4/4s that must be answered immediately. Save Seam Rip specifically for sweepers, not for tempo counterspells.</p>
+      <div class="sb-table">
+        <div class="sb-col"><div class="sb-col-label">In</div>
+          <div class="sb-item"><span><span class="c">Rest in Peace</span></span><span class="sb-qty">+2</span></div>
+          <div class="sb-item"><span><span class="c">Oko, Lorwyn Liege</span></span><span class="sb-qty">+2</span></div>
+          <div class="sb-item"><span><span class="c">Champion of the Weird</span></span><span class="sb-qty">+1</span></div>
+        </div>
+        <div class="sb-col"><div class="sb-col-label">Out</div>
+          <div class="sb-item"><span><span class="c">Bounce Off</span></span><span class="sb-qty">&minus;1</span></div>
+          <div class="sb-item"><span><span class="c">Badgermole Cub</span></span><span class="sb-qty">&minus;2</span></div>
+          <div class="sb-item"><span><span class="c">Llanowar Elves</span></span><span class="sb-qty">&minus;2</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MIRROR -->
+  <div class="matchup-block">
+    <div class="matchup-header" onclick="toggle('mu-mirror')">
+      <h3>BANT RHYTHM MIRROR</h3><span class="verdict verdict-even">Even</span>
+    </div>
+    <div id="mu-mirror" class="matchup-body">
+      <p>First Gene Pollinator wins. The mirror is decided by who gets Pollinator down first and untapped. Both decks go wide at the same rate without Pollinator, but the first one to double their token production creates an insurmountable board advantage.</p>
+      <p><strong>What you do:</strong> Race to Pollinator. Use Seam Rip to counter their Pollinator if you're behind on tempo. Hold Craterhoof as the alpha swing after they've blocked everything.</p>
+      <div class="sb-table">
+        <div class="sb-col"><div class="sb-col-label">In</div>
+          <div class="sb-item"><span><span class="c">Surrak, Elusive Hunter</span></span><span class="sb-qty">+1</span></div>
+          <div class="sb-item"><span><span class="c">Oko, Lorwyn Liege</span></span><span class="sb-qty">+2</span></div>
+        </div>
+        <div class="sb-col"><div class="sb-col-label">Out</div>
+          <div class="sb-item"><span><span class="c">Bounce Off</span></span><span class="sb-qty">&minus;1</span></div>
+          <div class="sb-item"><span><span class="c">Meltstrider's Resolve</span></span><span class="sb-qty">&minus;1</span></div>
+          <div class="sb-item"><span><span class="c">Beza, the Bounding Spring</span></span><span class="sb-qty">&minus;1</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</div>
+
+<!-- CH08: SIDEBOARD -->
+<div id="sideboard" class="section">
+<div class="content">
+  <span class="section-label">Chapter 08</span>
+  <h1>SIDEBOARD<br>GUIDE</h1>
+  <div class="mantra">"Rest in Peace turns off your own Brightglass Gearhulk. Don't board both in the same configuration."</div>
+
+  <h2>SB Slot Priority Order</h2>
+  <div class="card-grid card-grid-2">
+    <div class="card"><div class="card-label">Priority 1</div><div class="card-title">Oko, Lorwyn Liege ×2</div><div class="card-body">Best card in the 15. Comes in vs control and any midrange matchup where Pollinator gets answered repeatedly. Oko generates continuous value, grows your board, and requires multiple answers. Board him whenever you expect a long game.</div></div>
+    <div class="card"><div class="card-label">Priority 2</div><div class="card-title">Rest in Peace ×2</div><div class="card-body">Vs graveyard-based strategies. NOTE: RiP exiles YOUR graveyard too, shutting off Brightglass Gearhulk's recursion. When boarding in RiP, cut Gearhulk simultaneously. Don't run both in the same configuration.</div></div>
+    <div class="card"><div class="card-label">Priority 3</div><div class="card-title">Sage of the Skies ×2</div><div class="card-body">Flying blocker and clock. Boards in vs aggro with aerial threats (Izzet Prowess, Boros fliers). Also valuable vs control — they can't counter as efficiently vs two separate threats on sequential turns.</div></div>
+    <div class="card"><div class="card-label">Priority 4</div><div class="card-title">Spider-Sense ×2 · Surrak ×1 · Focus Fire ×1</div><div class="card-body">Flexible hate. Spider-Sense for interaction-heavy matchups. Surrak, Elusive Hunter gives hexproof to protect your key threat. Focus Fire removes a blocker or walker. Evaluate based on what their deck specifically does.</div></div>
+  </div>
+
+  <h2>First Cards Out</h2>
+  <div class="card-grid card-grid-3">
+    <div class="card"><div class="card-label">Cut First</div><div class="card-title">Meltstrider's Resolve</div><div class="card-body">Most situational singleton. Only keeps a permanent alive once. Comes out in almost every SB configuration unless you're specifically worried about a single removal spell on a must-protect permanent.</div></div>
+    <div class="card"><div class="card-label">Cut Second</div><div class="card-title">Bounce Off</div><div class="card-body">Only relevant when you need to protect a key play at instant speed. Out vs aggro (they run out of threats, not spells) and vs heavy removal (too narrow).</div></div>
+    <div class="card"><div class="card-label">Cut vs Control</div><div class="card-title">Llanowar Elves / Badgermole Cub</div><div class="card-body">Vs heavy-sweeper control, dorks become liabilities late. They die to sweepers and are bad topdecks. Trim 2–3 copies when boarding expensive threats that don't need T2 acceleration.</div></div>
+  </div>
+
+  <button class="print-btn" onclick="printSB()">&#9113; Print SB Reference</button>
+  <div id="sb-print-zone">
+    <h2 style="font-family:'DM Mono',monospace;margin-bottom:16px;">BANT RHYTHM — SB Reference · RC Turin 2026 (Fortunati 15-2)</h2>
+    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:16px;font-size:13px;">
+      <div><strong>vs DIMIR MIDRANGE (Favorable)</strong><br>IN: +1 Surrak, +2 Oko, +2 Spider-Sense<br>OUT: −1 Bounce Off, −1 Resolve, −1 Beza, −1 Gearhulk, −1 Mockingbird</div>
+      <div><strong>vs MONO-GREEN (Even)</strong><br>IN: +1 Soul-Guide, +1 Surrak, +1 Chomping Changeling<br>OUT: −1 Resolve, −1 Bounce Off, −1 Ouroboroid</div>
+      <div><strong>vs IZZET PROWESS (Even)</strong><br>IN: +1 Focus Fire, +1 Chomping Changeling, +2 Sage of Skies<br>OUT: −2 Ouroboroid, −1 Gearhulk, −1 Mockingbird</div>
+      <div><strong>vs BOROS AGGRO (Favorable)</strong><br>IN: +1 Focus Fire, +2 Sage of Skies<br>OUT: −2 Ouroboroid, −1 Resolve</div>
+      <div><strong>vs JESKAI CONTROL (Even)</strong><br>IN: +2 Rest in Peace, +2 Oko, +1 Champion of the Weird<br>OUT: −1 Bounce Off, −2 Badgermole, −2 Llanowar Elves</div>
+      <div><strong>vs BANT MIRROR (Even)</strong><br>IN: +1 Surrak, +2 Oko<br>OUT: −1 Bounce Off, −1 Resolve, −1 Beza</div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- CH09: HEURISTICS -->
+<div id="heuristics" class="section">
+<div class="content">
+  <span class="section-label">Chapter 09</span>
+  <h1>HEURISTICS</h1>
+  <div class="mantra">"Decisions made in 3 seconds beat decisions made in 30 seconds. Internalize these before sitting down."</div>
+  <ol class="heuristic-list">
+    <li><span class="h-num">01</span><span class="h-text"><strong>On the play: T1 dork or mulligan.</strong> Any 7-card hand without a T1 accelerant on the play is a strong candidate for mulligan. The deck underperforms badly when it starts on T2 Nature's Rhythm instead of T1 dork → T2 Rhythm.</span></li>
+    <li><span class="h-num">02</span><span class="h-text"><strong>Nature's Rhythm fetches a BASIC land, entering TAPPED.</strong> Not a dual. Not untapped. You need actual basic Forests and Plains in your deck. Plan your mana — Rhythm's land cannot be used the turn it enters.</span></li>
+    <li><span class="h-num">03</span><span class="h-text"><strong>Cast Spider Manifestation at the END of their turn, not yours.</strong> The flash is the power. Casting during your main phase means you lose a full attack and give them a turn to answer. Always prefer instant-speed deployment at their EOT.</span></li>
+    <li><span class="h-num">04</span><span class="h-text"><strong>Gene Pollinator doubles the TOKEN, not the card.</strong> Nature's Rhythm creates 1 spider; Pollinator creates 1 more. Manifestation creates 2 spiders; Pollinator creates 2 more. The trigger is "whenever a non-token creature you control creates tokens."</span></li>
+    <li><span class="h-num">05</span><span class="h-text"><strong>Save at least one Seam Rip for their sweeper vs control.</strong> Don't spend counters on tempo plays. Their Day of Judgment undoes 3 turns of work. Hold Seam Rip specifically for board wipes — let their removal resolve on individual creatures.</span></li>
+    <li><span class="h-num">06</span><span class="h-text"><strong>Quantum Riddler triggers on ATTACK, not end step.</strong> You must attack with Riddler to surveil 2 and potentially draw. Don't leave it back on defense if you need the card filtering that turn.</span></li>
+    <li><span class="h-num">07</span><span class="h-text"><strong>Mockingbird checks power at attack declaration.</strong> It becomes a copy of the highest-power creature you control at the moment it attacks. Attack with Mockingbird after buffing other creatures, not before.</span></li>
+    <li><span class="h-num">08</span><span class="h-text"><strong>Craterhoof is a sorcery — never cast it without lethal math.</strong> They untap and kill you if Hoof doesn't win the game immediately. Count: number of creatures × (power + X) where X = number of your creatures. Don't cast unless it kills.</span></li>
+    <li><span class="h-num">09</span><span class="h-text"><strong>Rest in Peace shuts off your Brightglass Gearhulk.</strong> When boarding RiP, cut Gearhulk as well. Never run both in the same configuration.</span></li>
+    <li><span class="h-num">10</span><span class="h-text"><strong>In the mirror, counter their Pollinator, not their threats.</strong> One Pollinator resolved means every Manifestation makes 4 spiders. Use Seam Rip on the engine, not on individual creatures.</span></li>
+    <li><span class="h-num">11</span><span class="h-text"><strong>Badgermole Cub is a 2/2 that can block profitably.</strong> Don't always tap it for mana. Against aggressive decks, blocking their 2/1 with your 2/2 and developing normally is correct. The flexibility of "dork or blocker" is its value.</span></li>
+    <li><span class="h-num">12</span><span class="h-text"><strong>Hushwood Verge enters untapped only if you control a Forest or Plains.</strong> Temple Garden counts as both. Sequence your first land drop correctly — play a basic or shock before Verge to get it untapped.</span></li>
   </ol>
 </div>
+</div>
 
-<!-- ══════════════════════════════════════════════════════════ CH10 TUNING -->
+<!-- CH10: TUNING -->
 <div id="tuning" class="section">
-  <div class="section-label">Chapter 10</div>
-  <h1>Tuning</h1>
+<div class="content">
+  <span class="section-label">Chapter 10</span>
+  <h1>TUNING<br>NOTES</h1>
+  <div class="mantra">"Every singleton in the main deck earns its slot by covering a specific hole. Don't add cards — replace them."</div>
+
+  <h2>Register Conditions</h2>
   <div class="card-grid card-grid-2">
-    <div class="card"><div class="card-label">Bant vs Simic</div><div class="card-title">The White Splash</div><div class="card-body">Fortunati's build splashes white for: Temple Garden, Hushwood Verge, Brightglass Gearhulk, Seam Rip, and SB cards (Voice of Victory, Doorkeeper Thrull, Unable to Scream). The white adds powerful interaction and tutoring that pure Simic can't access. The cost: slightly less consistent mana (need {W} sources). In a meta where interaction matters (control, mirrors): Bant is better. In a pure race meta: Simic is leaner.</div></div>
-    <div class="card"><div class="card-label">Ouroboroid Count: 1 vs 2+</div><div class="card-title">Toolbox vs Redundancy</div><div class="card-body">Fortunati runs only 1 Ouroboroid. With 4 Nature's Rhythm + 3 Formidable Speaker, you have 7 ways to find it. Running 2 adds redundancy (draw it naturally more often) but dilutes your silver bullet slots. In a diverse meta: 1 Ouroboroid + more silver bullets. In a creature-stall meta: 2 Ouroboroid to guarantee the exponential engine.</div></div>
-    <div class="card"><div class="card-label">Keen-Eyed Curator Main vs SB</div><div class="card-title">Self-Growing Threat + GY Hate</div><div class="card-body">Some lists run Curator mainboard as a 2-drop that grows itself while exiling opponent's GY cards. Fortunati keeps it SB. Main if: the meta is GY-heavy (Dimir, Reanimator). SB if: you need the maindeck slots for more consistent mana or interaction. Curator is Nature's Rhythm tutorable for X=2 — very cheap to find.</div></div>
-    <div class="card"><div class="card-label">Leyline Weaver vs Spider Manifestation</div><div class="card-title">Alternative Mana Creature</div><div class="card-body">Some lists (like the Arena ranked list) run Leyline Weaver instead of Spider Manifestation. Leyline Weaver is a 2-drop that taps for mana based on enchantments you control. Spider Manifestation taps for {R}/{G} and untaps on MV 4+ casts. In Fortunati's build with minimal enchantments, Spider is better. In an enchantment-heavy build: Leyline Weaver produces more mana.</div></div>
+    <div class="card"><div class="card-label">Register When</div><div class="card-title">Midrange and Aggro Are Dominant</div><div class="card-body">Bant Rhythm is built to beat creature strategies with targeted removal. When the field is Dimir Midrange + Boros Aggro + Mono-Green, you're favored in the two biggest matchups and even in the mirror. Register when you expect a ground-based metagame.</div></div>
+    <div class="card"><div class="card-label">Do Not Register When</div><div class="card-title">Multiple Mass Removal Decks Are Present</div><div class="card-body">If Jeskai Control, Azorius Blink, and White Aggro with Temporary Lockdown are all above 15% combined, your token strategy faces multiple angles of sweeper hate. Reconsider or heavily adjust the sideboard for sweeper resilience.</div></div>
+  </div>
+
+  <h2>Cards to Consider Adding</h2>
+  <div class="card-grid card-grid-3">
+    <div class="card"><div class="card-label">+1 vs Control</div><div class="card-title">Archdruid's Charm</div><div class="card-body">Flexible green modal spell — can ramp, remove artifacts, or put a creature directly into play. The 2nd copy of Masaya Hoshino's Top64 Turin list ran 2 copies. Consider adding if control is heavy in your expected field.</div></div>
+    <div class="card"><div class="card-label">+1–2 vs Sweepers</div><div class="card-title">Keen-Eyed Curator</div><div class="card-body">Also seen in Turin Top64 lists. Provides card selection and resilience — if your board gets swept, Curator helps rebuild faster. The 2nd Hoshino list ran 2 copies main. Worth testing if sweepers are prevalent.</div></div>
+    <div class="card"><div class="card-label">SB Flex</div><div class="card-title">Ygra, Eater of All</div><div class="card-body">Appeared as a 1-of SB in some Turin lists. A powerful top-end threat that generates tokens on creature deaths — both yours and theirs. Excellent in long attrition games. Consider replacing Insidious Fungus or Focus Fire.</div></div>
+  </div>
+
+  <h2>What Not to Cut</h2>
+  <div class="card-grid card-grid-2">
+    <div class="card"><div class="card-label">Do Not Cut</div><div class="card-title">The 8 Dorks (4+4)</div><div class="card-body">The consistency of T1 mana acceleration is fundamental. Dropping below 8 dorks reduces the frequency of the T2 Nature's Rhythm line from high to low. The deck has a specific speed requirement — don't compromise it.</div></div>
+    <div class="card"><div class="card-label">Do Not Cut</div><div class="card-title">Craterhoof Behemoth</div><div class="card-body">The 1-of finisher that wins games you otherwise can't. Against decks that can match your token volume, Craterhoof is the trump card that ends the game in one attack. Worth the slot as a singleton.</div></div>
   </div>
 </div>
+</div>
 
-<!-- ══════════════════════════════════════════════════════════ CH11 PREP -->
+<!-- CH11: PREP -->
 <div id="prep" class="section">
-  <div class="section-label">Chapter 11</div>
-  <h1>Prep Sheet</h1>
-  <p><strong>Quick Reference:</strong> T1 dork → T2 Cub → T3 Nature's Rhythm → T4 Ouroboroid combat → T5 Craterhoof. Mulligan any hand without a T1 mana creature. Nature's Rhythm X=4 for Ouroboroid, X=8 for Craterhoof. Ouroboroid grows exponentially — protect it. Mockingbird copies Ouroboroid for double triggers. Harmonize from GY = second tutor from one card.</p>
-  <p><strong>Sideboard Quick Guide:</strong> vs Prowess: +Voice of Victory, +Meltstrider's Resolve, −Quantum Riddler, −Marang River Regent. vs Control: +Voice of Victory, +Sab-Sunen, +Spider-Sense, −Seam Rip, −Explosive Prodigy, −Meltstrider's Resolve. vs Mirror: +Unable to Scream ×2, +Keen-Eyed Curator, −Explosive Prodigy, −Seam Rip, −Meltstrider's Resolve. vs GY decks: +Soul-Guide Lantern ×2, +Keen-Eyed Curator, −Seam Rip, −Explosive Prodigy, −Marang River Regent.</p>
+<div class="content">
+  <span class="section-label">Chapter 11</span>
+  <h1>EVENT<br>PREP</h1>
+  <div class="mantra">"Know the kill math before round 1. Know your SB configuration before leaving for the venue."</div>
 
-  <h2>Sideboard Matrix</h2>
-  <style>.bant-pg{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule);margin:24px 0;}.bant-pm{background:var(--paper);padding:14px 16px;}.bant-pn{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink);margin-bottom:4px;}.bant-pr{font-size:11px;color:var(--mid);margin-bottom:8px;font-weight:300;}.bant-pc{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:6px;}.bant-pl{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.15em;text-transform:uppercase;color:var(--mid);margin-bottom:3px;}.bant-row{display:flex;justify-content:space-between;font-size:11px;font-weight:300;padding:1px 0;border-bottom:1px solid rgba(200,191,176,0.2);}.bant-qty{font-family:'DM Mono',monospace;font-size:10px;color:var(--accent);}.bant-nd{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.06em;text-transform:uppercase;color:var(--accent);margin-top:6px;}@media(max-width:900px){.bant-pg{grid-template-columns:1fr 1fr;}}</style>
-  <div class="bant-pg">
-    <div class="bant-pm"><div class="bant-pn">Izzet Prowess <span style="color:var(--gold);font-size:9px;">EVEN</span></div><div class="bant-pr">Race · Survive T3 → grow T4+</div><div class="bant-pc"><div><div class="bant-pl">Out</div><div class="bant-row"><span>Quantum Riddler ×2</span><span class="bant-qty">−2</span></div><div class="bant-row"><span>Marang River Regent</span><span class="bant-qty">−1</span></div></div><div><div class="bant-pl">In</div><div class="bant-row"><span>Voice of Victory ×2</span><span class="bant-qty">+2</span></div><div class="bant-row"><span>Meltstrider's Resolve</span><span class="bant-qty">+1</span></div></div></div><div class="bant-nd">Voice stops all instant burn on your turn</div></div>
-    <div class="bant-pm"><div class="bant-pn">Mono-Green Landfall <span style="color:#065f46;font-size:9px;">FAVORABLE</span></div><div class="bant-pr">Combo Finish · Tutor Craterhoof</div><div class="bant-pc"><div><div class="bant-pl">Out</div><div class="bant-row"><span>Seam Rip</span><span class="bant-qty">−1</span></div><div class="bant-row"><span>Meltstrider's Resolve</span><span class="bant-qty">−1</span></div></div><div><div class="bant-pl">In</div><div class="bant-row"><span>Keen-Eyed Curator</span><span class="bant-qty">+1</span></div><div class="bant-row"><span>Unable to Scream</span><span class="bant-qty">+1</span></div></div></div><div class="bant-nd">Craterhoof into stalled board = instant kill</div></div>
-    <div class="bant-pm"><div class="bant-pn">Dimir Midrange <span style="color:var(--gold);font-size:9px;">EVEN</span></div><div class="bant-pr">Ramp Aggro · Flood threats</div><div class="bant-pc"><div><div class="bant-pl">Out</div><div class="bant-row"><span>Explosive Prodigy</span><span class="bant-qty">−1</span></div><div class="bant-row"><span>Marang River Regent</span><span class="bant-qty">−1</span></div><div class="bant-row"><span>Seam Rip</span><span class="bant-qty">−1</span></div></div><div><div class="bant-pl">In</div><div class="bant-row"><span>Sab-Sunen</span><span class="bant-qty">+1</span></div><div class="bant-row"><span>Soul-Guide Lantern ×2</span><span class="bant-qty">+2</span></div><div class="bant-row"><span>Spider-Sense</span><span class="bant-qty">+1</span></div></div></div><div class="bant-nd">Sab-Sunen indestructible — removal is blank</div></div>
-    <div class="bant-pm"><div class="bant-pn">Izzet Lessons <span style="color:var(--danger);font-size:9px;">SLIGHT DOG</span></div><div class="bant-pr">Toolbox · Voice + Sage</div><div class="bant-pc"><div><div class="bant-pl">Out</div><div class="bant-row"><span>Explosive Prodigy</span><span class="bant-qty">−1</span></div><div class="bant-row"><span>Marang River Regent</span><span class="bant-qty">−1</span></div><div class="bant-row"><span>Brightglass Gearhulk</span><span class="bant-qty">−1</span></div><div class="bant-row"><span>Meltstrider's Resolve</span><span class="bant-qty">−1</span></div></div><div><div class="bant-pl">In</div><div class="bant-row"><span>Voice of Victory ×2</span><span class="bant-qty">+2</span></div><div class="bant-row"><span>Spider-Sense ×2</span><span class="bant-qty">+2</span></div><div class="bant-row"><span>Reclamation Sage</span><span class="bant-qty">+1</span></div></div></div><div class="bant-nd">Sage destroys Monument before it goes online</div></div>
-    <div class="bant-pm"><div class="bant-pn">Jeskai Control <span style="color:#065f46;font-size:9px;">FAVORABLE</span></div><div class="bant-pr">Ramp Aggro · Flood + Harmonize</div><div class="bant-pc"><div><div class="bant-pl">Out</div><div class="bant-row"><span>Seam Rip</span><span class="bant-qty">−1</span></div><div class="bant-row"><span>Meltstrider's Resolve</span><span class="bant-qty">−1</span></div><div class="bant-row"><span>Explosive Prodigy</span><span class="bant-qty">−1</span></div><div class="bant-row"><span>Marang River Regent</span><span class="bant-qty">−1</span></div></div><div><div class="bant-pl">In</div><div class="bant-row"><span>Voice of Victory ×2</span><span class="bant-qty">+2</span></div><div class="bant-row"><span>Spider-Sense ×2</span><span class="bant-qty">+2</span></div><div class="bant-row"><span>Sab-Sunen</span><span class="bant-qty">+1</span></div></div></div><div class="bant-nd">Counter countered = Rhythm in GY = free 2nd tutor</div></div>
-    <div class="bant-pm"><div class="bant-pn">Boros Aggro <span style="color:var(--danger);font-size:9px;">UNFAVORABLE</span></div><div class="bant-pr">Race · Survive Bombardment</div><div class="bant-pc"><div><div class="bant-pl">Out</div><div class="bant-row"><span>Quantum Riddler ×2</span><span class="bant-qty">−2</span></div><div class="bant-row"><span>Brightglass Gearhulk</span><span class="bant-qty">−1</span></div><div class="bant-row"><span>Marang River Regent</span><span class="bant-qty">−1</span></div><div class="bant-row"><span>Seam Rip</span><span class="bant-qty">−1</span></div></div><div><div class="bant-pl">In</div><div class="bant-row"><span>Voice of Victory ×2</span><span class="bant-qty">+2</span></div><div class="bant-row"><span>Wistfulness</span><span class="bant-qty">+1</span></div><div class="bant-row"><span>Meltstrider's Resolve ×2</span><span class="bant-qty">+2</span></div></div></div><div class="bant-nd">Wistfulness evoke {G}{G} = destroy Bombardment</div></div>
-    <div class="bant-pm"><div class="bant-pn">Bant Mirror <span style="color:var(--gold);font-size:9px;">EVEN</span></div><div class="bant-pr">Race · First Ouroboroid wins</div><div class="bant-pc"><div><div class="bant-pl">Out</div><div class="bant-row"><span>Meltstrider's Resolve ×2</span><span class="bant-qty">−2</span></div><div class="bant-row"><span>Marang River Regent</span><span class="bant-qty">−1</span></div><div class="bant-row"><span>Seam Rip</span><span class="bant-qty">−1</span></div></div><div><div class="bant-pl">In</div><div class="bant-row"><span>Unable to Scream ×2</span><span class="bant-qty">+2</span></div><div class="bant-row"><span>Soul-Guide Lantern ×2</span><span class="bant-qty">+2</span></div><div class="bant-row"><span>Keen-Eyed Curator</span><span class="bant-qty">+1</span></div></div></div><div class="bant-nd">Scream on their Ouroboroid = {U} wins the game</div></div>
-    <div class="bant-pm"><div class="bant-pn">Dimir Oculus <span style="color:#065f46;font-size:9px;">FAVORABLE</span></div><div class="bant-pr">Ramp Aggro · Flood past Solitudes</div><div class="bant-pc"><div><div class="bant-pl">Out</div><div class="bant-row"><span>Meltstrider's Resolve</span><span class="bant-qty">−1</span></div><div class="bant-row"><span>Seam Rip</span><span class="bant-qty">−1</span></div><div class="bant-row"><span>Explosive Prodigy</span><span class="bant-qty">−1</span></div></div><div><div class="bant-pl">In</div><div class="bant-row"><span>Voice of Victory</span><span class="bant-qty">+1</span></div><div class="bant-row"><span>Spider-Sense</span><span class="bant-qty">+1</span></div><div class="bant-row"><span>Doorkeeper Thrull</span><span class="bant-qty">+1</span></div></div></div><div class="bant-nd">Flash Thrull before their ETB creature enters</div></div>
+  <h2>Night Before Checklist</h2>
+  <div class="card-grid card-grid-2">
+    <div class="card"><div class="card-label">Know Cold</div><div class="card-title">Pollinator Doubling Math</div><div class="card-body">Nature's Rhythm + Pollinator = 2 spiders. Manifestation + Pollinator = 4 spiders. Two Manifestations + Pollinator = 8 spiders. One more Nature's Rhythm = 10 total. Know these numbers instantly — they determine combat math every game.</div></div>
+    <div class="card"><div class="card-label">Know Cold</div><div class="card-title">Craterhoof Kill Thresholds</div><div class="card-body">5 creatures → each gets +5/+5 trample. 6 creatures → +6/+6. Count it out: 4 spiders (1/2+5/5=6/7) + Pollinator (3/3+5/5=8/8) + another creature + Hoof itself = massive trample damage. Memorize the 5-creature and 6-creature scenarios.</div></div>
+    <div class="card"><div class="card-label">Verify</div><div class="card-title">Basic Land Count</div><div class="card-body">You need at least 5 basics for Nature's Rhythm to reliably find lands. Count your basics: you should have 1 Forest main deck plus basics from Hushwood Verge and Willowrush Verge fetching. Ensure the count is correct before submitting the decklist.</div></div>
+    <div class="card"><div class="card-label">Confirm</div><div class="card-title">SB Configuration for Expected Field</div><div class="card-body">Check the current meta breakdown. If Dimir Midrange &gt; 15%: make sure Oko ×2 + Spider-Sense ×2 are in the 15. If Control &gt; 10%: Rest in Peace ×2 + Oko ×2 mandatory. Confirm your 15 matches the expected room, not the average room.</div></div>
+  </div>
+
+  <h2>Round 1 Read</h2>
+  <p>T1 land tells: <strong>Island or Swamp</strong> = likely Dimir Midrange or control — hold Seam Rip for their key spell. <strong>Plains or Mountain</strong> = aggro — deploy your spider wall immediately. <strong>Forest</strong> = could be mirror, Mono-Green, or a ramp deck — watch for their T1 dork to identify.</p>
+
+  <button class="print-btn" onclick="printSB()">&#9113; Print Event-Day Reference</button>
+  <div id="sb-print-zone">
+    <h2 style="font-family:'DM Mono',monospace;font-size:14px;margin-bottom:12px;">BANT RHYTHM — Event Reference · Fortunati RC Turin 2026 (1st, 15-2)</h2>
+    <p style="font-size:11px;font-family:'DM Mono',monospace;margin-bottom:16px;">KEY LINES: T1 dork → T2 Nature's Rhythm → T3 Pollinator → T4 EOT Manifestation (4 spiders w/ Pollinator) → T5 lethal | Craterhoof at 5+ creatures</p>
+    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:12px;font-size:11px;font-family:'DM Mono',monospace;">
+      <div><strong>vs DIMIR MIDRANGE (FAVORABLE)</strong><br>IN: +1 Surrak, +2 Oko, +2 Spider-Sense<br>OUT: −1 Bounce Off, −1 Resolve, −1 Beza, −1 Gearhulk, −1 Mockingbird</div>
+      <div><strong>vs MONO-GREEN (EVEN)</strong><br>IN: +1 Soul-Guide, +1 Surrak, +1 Chomping Changeling<br>OUT: −1 Resolve, −1 Bounce Off, −1 Ouroboroid</div>
+      <div><strong>vs IZZET PROWESS (EVEN)</strong><br>IN: +1 Focus Fire, +1 Chomping Changeling, +2 Sage of Skies<br>OUT: −2 Ouroboroid, −1 Gearhulk, −1 Mockingbird</div>
+      <div><strong>vs BOROS AGGRO (FAVORABLE)</strong><br>IN: +1 Focus Fire, +2 Sage of Skies<br>OUT: −2 Ouroboroid, −1 Resolve</div>
+      <div><strong>vs JESKAI CONTROL (EVEN)</strong><br>IN: +2 Rest in Peace, +2 Oko, +1 Champion<br>OUT: −1 Bounce Off, −2 Badgermole, −2 Llanowar Elves</div>
+      <div><strong>vs BANT MIRROR (EVEN)</strong><br>IN: +1 Surrak, +2 Oko<br>OUT: −1 Bounce Off, −1 Resolve, −1 Beza</div>
+    </div>
+    <p style="font-size:10px;margin-top:16px;font-family:'DM Mono',monospace;">SB: 2 Oko · 2 Rest in Peace · 2 Sage of Skies · 2 Spider-Sense · 1 Soul-Guide Lantern · 1 Surrak · 1 Get Lost · 1 Chomping Changeling · 1 Champion of the Weird · 1 Focus Fire · 1 Leatherhead · 1 Insidious Fungus · 1 Beza</p>
   </div>
 </div>
+</div>
 
-</div><!-- end .page -->
-
-<footer>
-  <span><a href="zuxas.html" style="color:rgba(242,237,230,0.3);text-decoration:none;">Zuxas</a> · Team Resolve</span>
-  <span>Standard 2026 · Bant Rhythm</span>
-  <span>April 2026</span>
+<footer style="border-top:1px solid var(--rule);padding:24px 80px;display:flex;justify-content:space-between;align-items:center;font-family:'DM Mono',monospace;font-size:10px;color:var(--mid);">
+  <span>Team Resolve · Standard 2026</span>
+  <span>Palette: E-commerce (UI UX Pro Max Row 3) — April 2026</span>
+  <span>Reference: Fortunati RC Turin 1st 15-2</span>
 </footer>
 
 <script>
 function show(id) {
   document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-  document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+  document.querySelectorAll('.nav-link').forEach(b => b.classList.remove('active'));
   document.getElementById(id).classList.add('active');
   event.target.classList.add('active');
   window.scrollTo(0,0);
@@ -628,6 +767,47 @@ function toggle(id) {
   const el = document.getElementById(id);
   el.classList.toggle('open');
 }
+function printSB() {
+  document.body.classList.add('printing-sb');
+  window.print();
+  document.body.classList.remove('printing-sb');
+}
+</script>
+<script>
+(function() {
+  const TIP = document.createElement('div');
+  TIP.className = 'card-tip';
+  TIP.innerHTML = '<div class="card-tip-loading">loading...</div>';
+  document.body.appendChild(TIP);
+  const CACHE = {};
+  let hideTimer = null;
+  function pos(e) {
+    const PAD=24,W=220,H=310;
+    let x=e.clientX+PAD, y=e.clientY-H/2;
+    if(x+W>window.innerWidth) x=e.clientX-W-PAD;
+    if(y<8) y=8;
+    if(y+H>window.innerHeight) y=window.innerHeight-H-8;
+    TIP.style.left=x+'px'; TIP.style.top=y+'px';
+  }
+  async function show2(name,e) {
+    clearTimeout(hideTimer);
+    TIP.innerHTML='<div class="card-tip-loading">loading...</div>';
+    TIP.classList.add('visible'); pos(e);
+    if(CACHE[name]){TIP.innerHTML=`<img src="${CACHE[name]}" alt="${name}">`;return;}
+    try {
+      const r=await fetch(`https://api.scryfall.com/cards/named?fuzzy=${encodeURIComponent(name)}`);
+      if(!r.ok){TIP.classList.remove('visible');return;}
+      const d=await r.json();
+      const img=d.image_uris?.normal||d.card_faces?.[0]?.image_uris?.normal;
+      if(!img){TIP.classList.remove('visible');return;}
+      CACHE[name]=img; TIP.innerHTML=`<img src="${img}" alt="${name}">`;
+    } catch(err){TIP.classList.remove('visible');}
+  }
+  function hide(){hideTimer=setTimeout(()=>TIP.classList.remove('visible'),80);}
+  document.addEventListener('mouseover',e=>{const el=e.target.closest('span.c');if(!el)return;show2(el.textContent.trim(),e);});
+  document.addEventListener('mousemove',e=>{if(TIP.classList.contains('visible'))pos(e);});
+  document.addEventListener('mouseout',e=>{if(e.target.closest('span.c'))hide();});
+})();
 </script>
 </body>
 </html>
