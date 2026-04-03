@@ -245,28 +245,55 @@ Temp fix scripts (`_fix_*.py`) are always deleted before commit.
 
 ---
 
-## PLAYBOOK HTML STRUCTURE (10 tabs)
+## PLAYBOOK HTML STRUCTURE (11 tabs)
 
-Every playbook follows this identical structure:
+**Gold standard: Goryo's Vengeance (April 2026). All new guides match this.**
+Template: `playbook-template.txt` | Intake form: `deck-guide-intake.md`
+
 ```
-CH01: Overview / Identity / Philosophy
-CH02: The 75 (decklist + mana curve + key card notes)
-CH03: Game Plan / Game Flow  
-CH04: Engines / Core Engines
-CH05: Roles / Role Assignment
-CH06: Matchup Deep Dives (matchup table + SB tables)
-CH07: Sideboard Guide (card-by-card)
-CH08: Heuristics & Quick Rules (16 items)
-CH09: Tuning Notes
-CH10: Event Day Prep / Prep Sheet (print grid)
+CH01: Identity       — key cards oracle-verified + edge cases
+CH02: Decklist       — 75 + melee.gg reference
+CH03: Gameplan       — kill line + alt lines + mulligan guide + play/draw + backup plans
+CH04: Engines        — engine A/B/C + priority order + speed math
+CH05: Lines          — 3 priority lines + timing/target/decision edge cases
+CH06: Roles          — 3 roles + how to identify + mistakes + switching signals
+CH07: Matchups       — table (role/verdict/key play) + expand (SB + point edges)
+CH08: Sideboard      — card-by-card guide + SB matrix
+CH09: Heuristics     — 12–16 numbered rules
+CH10: Tuning         — flex slot analyses + register conditions + SB priority order
+CH11: Prep           — crash course → SB matrix → testing → matchday
 ```
 
-Key site_audit checks:
-- `tabs=10` (all 10 tabs present)
+**Section quality bar:**
+- Identity: oracle text verified via Scryfall. Edge cases = non-obvious rules only.
+- Gameplan: mulligan is card-grid-3 with specific hands, not vague conditions.
+- Engines: priority order explicit. Speed math includes exact mana costs.
+- Lines: 3 priority lines at top. Edge cases under Timing/Target/Decision headers.
+- Roles: switching signals are explicit triggers. Mistake list has 4 items.
+- Matchups: every matchup has point edges (+N pts format). SB note explains cuts.
+- Tuning: register conditions are specific (%, meta density), not generic.
+- Prep: SB matrix prints on 1 page portrait (printSB() function, not window.print()).
+
+**Pilot-perspective voice standard:**
+Every section answers "what do you do" — never describes what the opponent does
+without immediately telling the pilot what to do in response.
+Audit: you/your ratio vs they/their/them should skew heavily toward "you."
+
+**Key site_audit checks:**
+- `tabs=11` (all 11 tabs present)
 - `doubles=0` (no duplicate card entries)
 - `heur=True` (heuristics section present)
 - `date=True` (date in header)
 - `sw=True` (wrap_cards has been run)
+- `print_btn=True` (printSB() not window.print())
+
+**Common HTML structure pitfalls (learned from Goryo's build):**
+- div balance MUST be 0 globally and per-section before committing
+- Never use an anchor that includes the section's closing </div> — content inserted after it floats outside the section and shows on every tab
+- Prep reorders require surgery on h2 blocks only — never reassemble the full section wrapper
+- The page wrapper </div><!-- end .page --> must be AFTER the last section's </div>
+- @media print needs body class toggle (printSB()) not window.print() for isolated printing
+- table-layout:fixed + colgroup required on matchup tables to prevent column shift on row expand
 
 ---
 
