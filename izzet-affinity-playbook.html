@@ -135,6 +135,11 @@
   footer span { font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.1em; text-transform:uppercase; }
   @media (max-width:768px) { .header-inner,nav,.page,footer { padding-left:24px; padding-right:24px; } .header-title { font-size:40px; } .header-right { display:none; } .decklist,.role-grid,.sb-table,.engine-body,.tuning-grid,.pd-grid { grid-template-columns:1fr; } nav { padding:0 24px; } }
   @media print { nav,.print-btn,footer { display:none; } .section { display:block !important; } }
+
+  .checklist { list-style:none; padding:0; margin:24px 0; }
+  .checklist li { display:flex; align-items:flex-start; gap:16px; padding:12px 0; border-bottom:1px solid var(--rule); font-weight:300; font-size:15px; }
+  .check-box { width:20px; height:20px; border:2px solid var(--accent); flex-shrink:0; cursor:pointer; margin-top:2px; transition:background 0.15s; }
+  .check-box.checked { background:var(--accent); }
 </style>
 </head>
 <body>
@@ -1014,6 +1019,51 @@
   <div class="section-label">Chapter 10</div>
   <h1>Event<br>Prep Sheet</h1>
   <button class="print-btn" onclick="window.print()">&#9112; Print This Sheet</button>
+    <h2>20-Minute Crash Course</h2>
+    <p>If you're sitting down in 20 minutes, run through this in order:</p>
+    <ul class="checklist" id="crash-checklist">
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Mulligan rule:</strong> Keep any hand with Pinnacle Emissary. The token engine is the deck. Everything else supports it.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Improvise rule:</strong> Improvise pays generic mana only — you still need colored sources. Rebuke always needs {U}.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Ward rule:</strong> Ward 4 costs opponents 4 mana to target Kappa. In a speed race, they won't pay. Deploy Kappa and attack.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Blood Moon rule:</strong> Your basic Island produces through Blood Moon. Play basics early vs red decks.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Kappa rule:</strong> Every artifact ETB gives Kappa a +1/+1 counter. Emissary Drones make Kappa enormous. Protect Kappa.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Sideboard rule:</strong> Blood Moon on T2 shuts out Jeskai, UW, and any 3+ color control deck. Board it in freely.</span></li>
+    </ul>
+
+    <h2>Testing Framework</h2>
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-label">Block 01</div>
+        <div class="card-title">Kappa Turn 2</div>
+        <div class="card-body">Practice the T1 Emissary → T2 Kappa Cannoneer line at tournament speed.</div>
+      </div>
+      <div class="card">
+        <div class="card-label">Block 02</div>
+        <div class="card-title">Improvise Math</div>
+        <div class="card-body">Count available Improvise each turn. Know when Rebuke costs {U} vs {2}{U}.</div>
+      </div>
+      <div class="card">
+        <div class="card-label">Block 03</div>
+        <div class="card-title">Blood Moon Lines</div>
+        <div class="card-body">Practice what you can cast after Blood Moon resolves. Basic Island gives you {U}.</div>
+      </div>
+      <div class="card">
+        <div class="card-label">Block 04</div>
+        <div class="card-title">Mirror Sequencing</div>
+        <div class="card-body">Emissary first wins the mirror. Drill why and practice the priority of deployment.</div>
+      </div>
+    </div>
+
+    <h2>Matchday Routine</h2>
+    <ul class="heuristic-list">
+      <li>Register and confirm Blood Moon count. It's your best G2/G3 weapon.</li>
+      <li>Know your Improvise math before the first round. Rebuke costs {U} with 2 artifacts. Memorize it.</li>
+      <li>Between rounds: did you deploy Emissary T1? If you didn't, that's why you fell behind.</li>
+      <li>Ward 4 is a tax, not hexproof. Board wipes ignore Ward. Know the difference.</li>
+      <li>Trust the speed. Kappa attacking on T3 is often lethal before they stabilize.</li>
+    </ul>
+
+
 
   <div class="print-grid">
     <div class="print-mu">

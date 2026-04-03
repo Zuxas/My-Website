@@ -129,6 +129,11 @@
   footer span { font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.1em; text-transform:uppercase; }
   @media (max-width:768px) { .header-inner,nav,.page,footer { padding-left:24px; padding-right:24px; } .header-title { font-size:40px; } .header-right { display:none; } .decklist,.role-grid,.engine-body,.tuning-grid,.pd-grid { grid-template-columns:1fr; } nav { padding:0 24px; } }
   @media print { nav,.print-btn,footer { display:none; } .section { display:block !important; } }
+
+  .checklist { list-style:none; padding:0; margin:24px 0; }
+  .checklist li { display:flex; align-items:flex-start; gap:16px; padding:12px 0; border-bottom:1px solid var(--rule); font-weight:300; font-size:15px; }
+  .check-box { width:20px; height:20px; border:2px solid var(--accent); flex-shrink:0; cursor:pointer; margin-top:2px; transition:background 0.15s; }
+  .check-box.checked { background:var(--accent); }
 </style>
 </head>
 <body>
@@ -817,6 +822,51 @@
   <div class="section-label">Chapter 10</div>
   <h1>Prep<br>Sheet</h1>
   <button class="print-btn" onclick="window.print()">⎙ Print This Sheet</button>
+    <h2>20-Minute Crash Course</h2>
+    <p>If you're sitting down in 20 minutes, run through this in order:</p>
+    <ul class="checklist" id="crash-checklist">
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Mulligan rule:</strong> Keep any hand with Ruby Medallion + 2 rituals, or a hand that cycles to find them by T3.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Storm rule:</strong> Count your storm count BEFORE casting Grapeshot. You need N copies to kill for N damage.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Medallion rule:</strong> Ruby Medallion reduces red spell costs by {1}. It does NOT generate mana — it reduces cost.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Past in Flames rule:</strong> PiF flashes back your whole GY. Cast it when you have 5+ mana AND 3+ spells to flash back.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>TRav rule:</strong> Under Teferi, Time Raveler, PiF is sorcery speed. It already was sorcery speed. No change.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Sideboard rule:</strong> Damping Sphere prevents more than 1 spell per turn. Find your Wear // Tear before going off.</span></li>
+    </ul>
+
+    <h2>Testing Framework</h2>
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-label">Block 01</div>
+        <div class="card-title">Storm Count</div>
+        <div class="card-body">Count storm before casting Grapeshot in every rep. Never cast without counting first.</div>
+      </div>
+      <div class="card">
+        <div class="card-label">Block 02</div>
+        <div class="card-title">Medallion Lines</div>
+        <div class="card-body">Practice T3 kills with and without Medallion in play. Know the mana difference.</div>
+      </div>
+      <div class="card">
+        <div class="card-label">Block 03</div>
+        <div class="card-title">PiF Timing</div>
+        <div class="card-body">When do you cast Past in Flames? Practice identifying the right moment — not too early.</div>
+      </div>
+      <div class="card">
+        <div class="card-label">Block 04</div>
+        <div class="card-title">Hate Navigation</div>
+        <div class="card-body">Play through Damping Sphere, Eidolon of the Great Revel, and Thalia. These are common post-board.</div>
+      </div>
+    </div>
+
+    <h2>Matchday Routine</h2>
+    <ul class="heuristic-list">
+      <li>Register with Grapeshot and Empty the Warrens counts confirmed. Both need to be there.</li>
+      <li>Count storm BEFORE casting Grapeshot. Count your spells this turn. Lethal storm = N damage needed.</li>
+      <li>Between rounds: did you wait for the right moment to cast PiF? Early PiF loses to disruption.</li>
+      <li>Medallion vs no-Medallion lines are different. Know both paths before sitting down.</li>
+      <li>The deck wins through speed and sequencing. Practice until the line is automatic.</li>
+    </ul>
+
+
 
   <h3>Tournament Day Quick Reference</h3>
   <div class="print-grid">

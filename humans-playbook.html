@@ -122,6 +122,11 @@
   .edge-case { border:1px solid var(--accent); background:var(--accent-light); padding:16px 20px; margin:16px 0; font-size:14px; }
   .edge-case-label { font-family:'DM Mono',monospace; font-size:9px; letter-spacing:0.15em; text-transform:uppercase; color:var(--accent); margin-bottom:6px; }
   .edge-case-body { font-weight:300; color:var(--ink); line-height:1.5; }
+
+  .checklist { list-style:none; padding:0; margin:24px 0; }
+  .checklist li { display:flex; align-items:flex-start; gap:16px; padding:12px 0; border-bottom:1px solid var(--rule); font-weight:300; font-size:15px; }
+  .check-box { width:20px; height:20px; border:2px solid var(--accent); flex-shrink:0; cursor:pointer; margin-top:2px; transition:background 0.15s; }
+  .check-box.checked { background:var(--accent); }
 </style>
 </head>
 <body>
@@ -877,6 +882,51 @@
   <div class="section-label">Chapter 11</div>
   <h1>Prep Sheet</h1>
   <button class="print-btn" onclick="window.print()">Print This Sheet</button>
+    <h2>20-Minute Crash Course</h2>
+    <p>If you're sitting down in 20 minutes, run through this in order:</p>
+    <ul class="checklist" id="crash-checklist">
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Mulligan rule:</strong> Mull any hand without a T1 mana creature. No Hierarch, no Aether Vial = too slow.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Vial rule:</strong> Vial stays at 2 unless you specifically need 3. 20 of your 36 creatures cost 2.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Meddling rule:</strong> Name their WIN CONDITION, not their most common card. Past in Flames vs Storm, not Ritual.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Jirina rule:</strong> Hold Jirina's sacrifice for their sweeper or lethal removal. Don't sacrifice preemptively.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Coppercoat rule:</strong> Coppercoat does NOT give itself ward. It gives every OTHER Human ward. Plan removal accordingly.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Sideboard rule:</strong> Know your Kataki target before G2 vs any artifact deck. T2 Kataki off Hierarch is game over.</span></li>
+    </ul>
+
+    <h2>Testing Framework</h2>
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-label">Block 01</div>
+        <div class="card-title">Vial Timing</div>
+        <div class="card-body">Every decision about when to tick Vial and when to use it at end step. Drill it.</div>
+      </div>
+      <div class="card">
+        <div class="card-label">Block 02</div>
+        <div class="card-title">Meddling Mage Names</div>
+        <div class="card-body">Name 20 matchups, state the correct Mage name immediately. Then state the backup. No pausing.</div>
+      </div>
+      <div class="card">
+        <div class="card-label">Block 03</div>
+        <div class="card-title">Jirina Sacrifice</div>
+        <div class="card-body">Drill holding Jirina's sacrifice for the exact right moment. Preemptive sacrifice is the mistake.</div>
+      </div>
+      <div class="card">
+        <div class="card-label">Block 04</div>
+        <div class="card-title">Tax Stack Math</div>
+        <div class="card-body">Practice Thalia + Coppercoat + Mariner tax calculations. Know the exact mana cost of opponent's spells.</div>
+      </div>
+    </div>
+
+    <h2>Matchday Routine</h2>
+    <ul class="heuristic-list">
+      <li>Register your Vial count and Cavern naming in hand. Both matter in G1.</li>
+      <li>Know your Meddling Mage names before every round. Write them on your deck box.</li>
+      <li>Between rounds: did you save Jirina? Preemptive sacrifice is the mistake that costs games.</li>
+      <li>Never bring in more than 7 cards sideboard. The main deck is the plan — support it, don't replace it.</li>
+      <li>The deck rewards aggressive sequencing. Trust Vial timing and play fast.</li>
+    </ul>
+
+
 
   <div class="print-section">
     <div class="print-title">5-Color Humans</div>

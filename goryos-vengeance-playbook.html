@@ -113,6 +113,13 @@
   .diff-hard { color:#f87171; }
   @media (max-width:900px) { .print-grid { grid-template-columns:1fr 1fr; } }
   @media (max-width:600px) { .print-grid { grid-template-columns:1fr; } }
+
+  .checklist { list-style:none; padding:0; margin:24px 0; }
+  .checklist li { display:flex; align-items:flex-start; gap:16px; padding:12px 0; border-bottom:1px solid var(--rule); font-weight:300; font-size:15px; }
+  .check-box { width:20px; height:20px; border:2px solid var(--accent); flex-shrink:0; cursor:pointer; margin-top:2px; transition:background 0.15s; }
+  .check-box.checked { background:var(--accent); }
+
+  .print-btn { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; background:var(--ink); color:var(--paper); border:none; padding:10px 20px; cursor:pointer; margin-bottom:32px; }
 </style>
 </head>
 <body>
@@ -869,6 +876,53 @@
 <div id="prep" class="section">
   <div class="section-label">Chapter 11</div>
   <h1>Prep Sheet</h1>
+    <button class="print-btn" onclick="window.print()">&#x2259; Print This Sheet</button>
+
+
+    <h2>20-Minute Crash Course</h2>
+    <p>If you're sitting down in 20 minutes, run through this in order:</p>
+    <ul class="checklist" id="crash-checklist">
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Mulligan rule:</strong> Keep any hand with Psychic Frog + a black source. Don't keep hands with only big creatures.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Discard rule:</strong> Always discard Atraxa at THEIR end step, never your own. Minimize the Surgical Extraction window.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Goryo's rule:</strong> With Ephemerate in hand: cast Goryo's in your main phase. Without it: cast at their end step.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Target rule:</strong> Goryo's targets LEGENDARY only. Atraxa, Griselbrand, Ulamog. Never Solitude, never Frog.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>GY hate rule:</strong> When they have Rest in Peace: become Esper Control immediately. Cut Goryo's, keep the fair plan.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Sideboard rule:</strong> Wear // Tear is your primary Leyline answer. Find it before setting up the combo.</span></li>
+    </ul>
+
+    <h2>Testing Framework</h2>
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-label">Block 01</div>
+        <div class="card-title">Combo Execution</div>
+        <div class="card-body">T2 Goryo's into Atraxa into Ephemerate. Execute it blindfolded. This is the whole deck.</div>
+      </div>
+      <div class="card">
+        <div class="card-label">Block 02</div>
+        <div class="card-title">Esper Control Mode</div>
+        <div class="card-body">Practice playing as pure Esper Control with Frog + Solitude + Ephemerate when GY is hated.</div>
+      </div>
+      <div class="card">
+        <div class="card-label">Block 03</div>
+        <div class="card-title">Thoughtseize Window</div>
+        <div class="card-body">Drill seeing their hand on T1 and correctly evaluating whether combo is safe T2.</div>
+      </div>
+      <div class="card">
+        <div class="card-label">Block 04</div>
+        <div class="card-title">GY Hate Reps</div>
+        <div class="card-body">Practice playing against Leyline of the Void from T0. Find Wear // Tear before you commit.</div>
+      </div>
+    </div>
+
+    <h2>Matchday Routine</h2>
+    <ul class="heuristic-list">
+      <li>Register with Wear // Tear confirmed in SB. Leyline of the Void is everywhere.</li>
+      <li>Know which mode you're in before T1: Combo (Goryo's) or Control (Frog + Solitude). Don't split.</li>
+      <li>Between rounds: did you discard Atraxa at their end step? Always their end step.</li>
+      <li>When they have GY hate, become Esper Control immediately. Don't fight through hate, go around it.</li>
+      <li>Protect the combo. Thoughtseize T1 tells you if T2 is safe. Use the information.</li>
+    </ul>
+
   <p><strong>The Combo:</strong> Get legendary creature in GY (Frog discard at their end step) → Goryo's Vengeance ({1}{B} instant) → Ephemerate ({W}) before end step → creature stays permanently → Rebound next upkeep = 3rd ETB. Total cost: 3 mana.</p>
   <p><strong>Primary target:</strong> Atraxa (reveal top 10, take one of each type, 7/7 flying vigilance deathtouch lifelink). <strong>Secondary:</strong> Griselbrand (7/7 flying lifelink, pay 7 draw 7). <strong>Backup plan:</strong> Solitude evoke + Ephemerate = exile 3 creatures for free. Psychic Frog = growing clock + card advantage.</p>
   <p><strong>Critical rules:</strong> Goryo's targets LEGENDARY only. Ephemerate rebound only from HAND. Ulamog cast trigger doesn't fire off Goryo's. Atraxa reveals go to bottom, not GY. Solitude exile = opponent gains life.</p>

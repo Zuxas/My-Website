@@ -159,6 +159,11 @@
     }
     .print-mu { background:#f2ede6 !important; padding:14px !important; }
   }
+
+  .checklist { list-style:none; padding:0; margin:24px 0; }
+  .checklist li { display:flex; align-items:flex-start; gap:16px; padding:12px 0; border-bottom:1px solid var(--rule); font-weight:300; font-size:15px; }
+  .check-box { width:20px; height:20px; border:2px solid var(--accent); flex-shrink:0; cursor:pointer; margin-top:2px; transition:background 0.15s; }
+  .check-box.checked { background:var(--accent); }
 </style>
 </head>
 <body>
@@ -1159,6 +1164,51 @@
   <div class="section-label">Chapter 10</div>
   <h1>Event Day<br>Prep</h1>
   <button class="print-btn" onclick="window.print()">⎙ Print This Sheet</button>
+    <h2>20-Minute Crash Course</h2>
+    <p>If you're sitting down in 20 minutes, run through this in order:</p>
+    <ul class="checklist" id="crash-checklist">
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Mulligan rule:</strong> Keep any hand with a T1 creature + 2+ spells. Hands with only spells and no creature are mulligans.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Prowess rule:</strong> Prowess triggers on CAST, not resolution. A countered spell still gave your Swiftspear +1/+1.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Delirium rule:</strong> DRC needs 4 card types in GY. Track: land, instant, sorcery, creature. Lava Dart flashback from hand counts.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Burn rule:</strong> Cast ALL noncreature spells BEFORE attacking. Prowess stacks up before combat math.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Lava Dart rule:</strong> Target your OWN creatures to trigger prowess. Dart + flashback = 2 prowess triggers for {R}.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Sideboard rule:</strong> Murktide enters based on current GY. Cast it before opponents exile your GY.</span></li>
+    </ul>
+
+    <h2>Testing Framework</h2>
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-label">Block 01</div>
+        <div class="card-title">Spell Sequencing</div>
+        <div class="card-body">Cast all noncreature spells BEFORE attacking. Practice the order of spells each turn.</div>
+      </div>
+      <div class="card">
+        <div class="card-label">Block 02</div>
+        <div class="card-title">DRC Delirium</div>
+        <div class="card-body">Track your GY types actively in every rep. Know when you have delirium and when you don't.</div>
+      </div>
+      <div class="card">
+        <div class="card-label">Block 03</div>
+        <div class="card-title">Burn Math</div>
+        <div class="card-body">Count exact lethal from any board state. Know when Dart flashback + attack closes it.</div>
+      </div>
+      <div class="card">
+        <div class="card-label">Block 04</div>
+        <div class="card-title">G2 Hate Navigation</div>
+        <div class="card-body">Play through Sanctifier en-Vec and Leyline of Sanctity. These are your worst post-board scenarios.</div>
+      </div>
+    </div>
+
+    <h2>Matchday Routine</h2>
+    <ul class="heuristic-list">
+      <li>Register with Murktide and DRC counts confirmed. These are your primary threats.</li>
+      <li>Know your burn math before every combat. Pyretic Ritual does nothing in combat — but Dart does.</li>
+      <li>Between rounds: did you cast spells before attacking? That's the one rule. One rule. Don't break it.</li>
+      <li>Delirium tracking: 4 types. Land, instant, sorcery, creature. Know your GY at all times.</li>
+      <li>The deck rewards aggression. Slow, conservative plays with Prowess are wrong.</li>
+    </ul>
+
+
 
   <div class="print-grid">
     <div class="print-mu">

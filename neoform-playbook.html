@@ -115,6 +115,13 @@
   .engine-step { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; padding:16px; background:var(--paper-dark); color:var(--accent); border-right:1px solid var(--rule); display:flex; align-items:flex-start; font-weight:500; }
   .engine-body { padding:16px 20px; font-size:15px; font-weight:300; line-height:1.6; color:var(--ink); }
   .c { border-bottom:1px solid var(--accent); cursor:default; }
+
+  .checklist { list-style:none; padding:0; margin:24px 0; }
+  .checklist li { display:flex; align-items:flex-start; gap:16px; padding:12px 0; border-bottom:1px solid var(--rule); font-weight:300; font-size:15px; }
+  .check-box { width:20px; height:20px; border:2px solid var(--accent); flex-shrink:0; cursor:pointer; margin-top:2px; transition:background 0.15s; }
+  .check-box.checked { background:var(--accent); }
+
+  .print-btn { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; background:var(--ink); color:var(--paper); border:none; padding:10px 20px; cursor:pointer; margin-bottom:32px; }
 </style>
 </head>
 <body>
@@ -905,6 +912,53 @@
 <div id="prep" class="section">
   <div class="section-label">Chapter 10</div>
   <h1>Tournament Prep Sheet</h1>
+    <button class="print-btn" onclick="window.print()">&#x2259; Print This Sheet</button>
+
+
+    <h2>20-Minute Crash Course</h2>
+    <p>If you're sitting down in 20 minutes, run through this in order:</p>
+    <ul class="checklist" id="crash-checklist">
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Mulligan rule:</strong> Keep any hand with Allosaurus Rider + a green card to pitch, or Neoform + a 1-drop creature.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Allosaurus rule:</strong> Allosaurus Rider's alternative cost: exile 2 green cards from hand. Must be green card types, not just green mana.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Neoform rule:</strong> Neoform sacrifices a creature and finds one with exactly 1 more MV. Sacrifice a 1-drop: find a 2-drop (Clever Lumimancer).</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Kill line rule:</strong> T2 kill: T1 dork, T2 Neoform sacrifice dork → Lumimancer, then pitch Allosaurus for free → Neoform Lumimancer → Ghalta.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Pact rule:</strong> Cast Summoner's Pact only when you win before your next upkeep OR you have {2}{G}{G} available.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Sideboard rule:</strong> Consign counters cascade triggers. Know your counter targets for each matchup before sitting down.</span></li>
+    </ul>
+
+    <h2>Testing Framework</h2>
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-label">Block 01</div>
+        <div class="card-title">T2 Kill Line</div>
+        <div class="card-body">Execute the T2 Ghalta line at tournament speed. Allosaurus pitch → Neoform chain → kill.</div>
+      </div>
+      <div class="card">
+        <div class="card-label">Block 02</div>
+        <div class="card-title">Consign Timing</div>
+        <div class="card-body">Drill holding Consign for opponent's disruption. Know which spell to counter.</div>
+      </div>
+      <div class="card">
+        <div class="card-label">Block 03</div>
+        <div class="card-title">Pact Math</div>
+        <div class="card-body">Practice knowing exactly when you can and cannot cast Summoner's Pact safely.</div>
+      </div>
+      <div class="card">
+        <div class="card-label">Block 04</div>
+        <div class="card-title">Resilience Lines</div>
+        <div class="card-body">Practice what you do after T1 interaction hits your setup. The deck has multiple lines.</div>
+      </div>
+    </div>
+
+    <h2>Matchday Routine</h2>
+    <ul class="heuristic-list">
+      <li>Register with Consign confirmed. Counter the disruption, execute the combo.</li>
+      <li>Know your kill line before Round 1. T2 or T3? Which route based on your hand?</li>
+      <li>Between rounds: Pact timing review. Can you pay {2}{G}{G} next upkeep? If unsure, don't cast it.</li>
+      <li>Don't cast Pact as a desperation play. Only cast when you know the outcome.</li>
+      <li>The deck is fast. Trust the speed and don't slow down to play around disruption you haven't confirmed.</li>
+    </ul>
+
   <div class="print-section">
     <div class="print-title">Simic <span class="c">Neoform</span></div>
     <div class="print-sub">Team Resolve · Tournament Reference · 2026</div>

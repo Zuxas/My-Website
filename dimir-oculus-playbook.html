@@ -121,6 +121,11 @@
   footer span { font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.1em; text-transform:uppercase; }
   @media (max-width:768px) { .header-inner,nav,.page,footer { padding-left:24px; padding-right:24px; } .header-title { font-size:40px; } .header-right { display:none; } .decklist,.role-grid,.engine-body,.tuning-grid,.print-grid { grid-template-columns:1fr; } nav { padding:0 24px; } }
   @media print { nav,.print-btn,footer { display:none; } .section { display:block !important; } }
+
+  .checklist { list-style:none; padding:0; margin:24px 0; }
+  .checklist li { display:flex; align-items:flex-start; gap:16px; padding:12px 0; border-bottom:1px solid var(--rule); font-weight:300; font-size:15px; }
+  .check-box { width:20px; height:20px; border:2px solid var(--accent); flex-shrink:0; cursor:pointer; margin-top:2px; transition:background 0.15s; }
+  .check-box.checked { background:var(--accent); }
 </style>
 </head>
 <body>
@@ -860,6 +865,51 @@
   <div class="section-label">Chapter 11</div>
   <h1>Prep Sheet</h1>
   <button class="print-btn" onclick="window.print()">Print This Sheet</button>
+    <h2>20-Minute Crash Course</h2>
+    <p>If you're sitting down in 20 minutes, run through this in order:</p>
+    <ul class="checklist" id="crash-checklist">
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Mulligan rule:</strong> Keep any hand with 2 lands + interaction. Discard-heavy hands without threats are mulligans.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Role rule:</strong> Before T1: are you the aggressor or the control player? Frog + disruption = aggressor. Disruption only = control.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Frog rule:</strong> Never grant Frog flying unless the combat result is worth losing 3 GY cards.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Solitude rule:</strong> Evoke + Ephemerate for 3 exiles across 2 turns. Never waste Solitude on a 1/1.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Stack rule:</strong> Never cast Ephemerate first in a stack war. Let them commit, then respond.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Sideboard rule:</strong> Name the correct Meddling Mage target before G2. Write it on your deck box.</span></li>
+    </ul>
+
+    <h2>Testing Framework</h2>
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-label">Block 01</div>
+        <div class="card-title">Frog Beats Plan</div>
+        <div class="card-body">Practice winning with just Psychic Frog when Archon is answered. It's a real win condition.</div>
+      </div>
+      <div class="card">
+        <div class="card-label">Block 02</div>
+        <div class="card-title">Solitude Timing</div>
+        <div class="card-body">Drill Solitude evoke + Ephemerate on the exact right target. Two wrong exiles loses games.</div>
+      </div>
+      <div class="card">
+        <div class="card-label">Block 03</div>
+        <div class="card-title">G2 GY Hate Lines</div>
+        <div class="card-body">Practice playing through Rest in Peace and Endurance. These are your hardest post-board situations.</div>
+      </div>
+      <div class="card">
+        <div class="card-label">Block 04</div>
+        <div class="card-title">Clock Practice</div>
+        <div class="card-body">Count turns to lethal. Dimir can draw games by overvaluing setup over closing.</div>
+      </div>
+    </div>
+
+    <h2>Matchday Routine</h2>
+    <ul class="heuristic-list">
+      <li>Register your list. Confirm Needle targets are in the SB. Write them on your deck box.</li>
+      <li>Know your Meddling Mage names before Round 1. Have the list memorized.</li>
+      <li>Between rounds: think about whether you played the correct role. Not the correct cards — the role.</li>
+      <li>Don't over-sideboard. 5-7 cards is the range. More than 7 means you're diluting the plan.</li>
+      <li>The Frog beats them when Archon can't. Recognize when to switch plans and commit early.</li>
+    </ul>
+
+
 
   <div class="print-section">
     <div class="print-title">Dimir Oculus</div>

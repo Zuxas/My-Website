@@ -167,6 +167,11 @@
     }
     .print-mu { background:#f2ede6 !important; padding:14px !important; }
   }
+
+  .checklist { list-style:none; padding:0; margin:24px 0; }
+  .checklist li { display:flex; align-items:flex-start; gap:16px; padding:12px 0; border-bottom:1px solid var(--rule); font-weight:300; font-size:15px; }
+  .check-box { width:20px; height:20px; border:2px solid var(--accent); flex-shrink:0; cursor:pointer; margin-top:2px; transition:background 0.15s; }
+  .check-box.checked { background:var(--accent); }
 </style>
 </head>
 <body>
@@ -1288,6 +1293,51 @@
   <div class="section-label">Chapter 10</div>
   <h1>Event Day<br>Prep</h1>
   <button class="print-btn" onclick="window.print()">⎙ Print This Sheet</button>
+    <h2>20-Minute Crash Course</h2>
+    <p>If you're sitting down in 20 minutes, run through this in order:</p>
+    <ul class="checklist" id="crash-checklist">
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Mulligan rule:</strong> Six with Solitude + Ephemerate beats seven without. Clock by T4 or disrupt by T3.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Role rule:</strong> Before T1: Control, Tempo, or Beatdown. If they're faster, you're Control. If they're slower, Beatdown.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Ephemerate rule:</strong> Never fire Ephemerate first in a stack war. Let them commit, then respond with yours.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Phelia rule:</strong> Blink THEIR permanents before yours. She's a Time Walk, not a value engine.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>White rule:</strong> Fetch your basic Plains first. Solitude, Sanctifier, Ocelot — all require white. Miss it and you lose.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Sideboard rule:</strong> Never bring in more than 7 cards. Mockingbird out first. Double-check Needle targets.</span></li>
+    </ul>
+
+    <h2>Testing Framework</h2>
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-label">Block 01</div>
+        <div class="card-title">20 vs Combo</div>
+        <div class="card-body">Reanimator, Belcher, Neoform. Drill mulligans and disruption sequencing.</div>
+      </div>
+      <div class="card">
+        <div class="card-label">Block 02</div>
+        <div class="card-title">20 vs Aggro</div>
+        <div class="card-body">Energy, Prowess, Domain. Drill Solitude timing, Wrath sequencing, and the Ocelot kill after stabilization.</div>
+      </div>
+      <div class="card">
+        <div class="card-label">Block 03</div>
+        <div class="card-title">20 vs Control / Mirror</div>
+        <div class="card-body">Practice patience, Ephemerate timing, and Teferi sequencing. Commit threats after Verdict.</div>
+      </div>
+      <div class="card">
+        <div class="card-label">Block 04</div>
+        <div class="card-title">Clock Practice</div>
+        <div class="card-body">Play games under 20 minutes. If you're drawing out, it's sequencing — not the deck.</div>
+      </div>
+    </div>
+
+    <h2>Matchday Routine</h2>
+    <ul class="heuristic-list">
+      <li>Register decklist carefully. Double-check SB counts and spellings. Needle targets must match what you've playtested.</li>
+      <li>Review the matchup matrix before Round 1. Don't open the guide mid-match.</li>
+      <li>Between rounds: breathe. Don't tunnel on mistakes. The next round starts at 0-0.</li>
+      <li>End of Day 1: hydrate, review your notes, reset mentally for Day 2.</li>
+      <li>Treat it like athletics. Body and mind both need to be ready for 12+ rounds of complex sequencing.</li>
+    </ul>
+
+
 
   <div class="print-grid">
     <div class="print-mu">

@@ -153,6 +153,11 @@
     }
     .print-mu { background:#f2ede6 !important; padding:14px !important; }
   }
+
+  .checklist { list-style:none; padding:0; margin:24px 0; }
+  .checklist li { display:flex; align-items:flex-start; gap:16px; padding:12px 0; border-bottom:1px solid var(--rule); font-weight:300; font-size:15px; }
+  .check-box { width:20px; height:20px; border:2px solid var(--accent); flex-shrink:0; cursor:pointer; margin-top:2px; transition:background 0.15s; }
+  .check-box.checked { background:var(--accent); }
 </style>
 </head>
 <body>
@@ -1145,6 +1150,51 @@
   <div class="section-label">Chapter 10</div>
   <h1>Event Day<br>Prep</h1>
   <button class="print-btn" onclick="window.print()">⎙ Print This Sheet</button>
+    <h2>20-Minute Crash Course</h2>
+    <p>If you're sitting down in 20 minutes, run through this in order:</p>
+    <ul class="checklist" id="crash-checklist">
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Mulligan rule:</strong> Keep any hand with Faithless Looting or Thought Scour + a black source. You need GY fuel.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Persist rule:</strong> Only cast Persist when you know their counterspells are gone. Thoughtseize first, always.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Emperor rule:</strong> Emperor Adapt trigger = creature from GY with haste AND finality counter. It sacrifices at EOT. Consign that trigger.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Frog rule:</strong> Frog is a legitimate win condition. A 5/5+ flier with draw-on-connect beats control without Archon.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Consign rule:</strong> Counter Emperor's sacrifice trigger to keep Archon permanently. This is the primary Consign line.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Sideboard rule:</strong> Harbinger of the Seas collapses their nonbasic mana. Prioritize it vs any 3+ color deck.</span></li>
+    </ul>
+
+    <h2>Testing Framework</h2>
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-label">Block 01</div>
+        <div class="card-title">Persist Sequencing</div>
+        <div class="card-body">Practice Thoughtseize → Persist → Archon ETB in one smooth sequence. No pausing.</div>
+      </div>
+      <div class="card">
+        <div class="card-label">Block 02</div>
+        <div class="card-title">Consign Emperor Trigger</div>
+        <div class="card-body">Drill countering Emperor's sacrifice trigger. This is the highest-skill interaction in the deck.</div>
+      </div>
+      <div class="card">
+        <div class="card-label">Block 03</div>
+        <div class="card-title">Fair Frog Plan</div>
+        <div class="card-body">Practice winning with Frog plan when Archon is answered repeatedly. Know when to pivot.</div>
+      </div>
+      <div class="card">
+        <div class="card-label">Block 04</div>
+        <div class="card-title">GY Hate Reps</div>
+        <div class="card-body">Play through Rest in Peace and Nihil Spellbomb. These are your most common post-board obstacles.</div>
+      </div>
+    </div>
+
+    <h2>Matchday Routine</h2>
+    <ul class="heuristic-list">
+      <li>Register with Harbinger in SB confirmed. Harbinger vs multicolor is a back-breaker.</li>
+      <li>Know the Consign targets before Round 1. Archon ETB trigger, Emperor sacrifice trigger. Both are triggered abilities.</li>
+      <li>Between rounds: did you play Persist into open mana? That's the mistake. Thoughtseize first.</li>
+      <li>Nihil Spellbomb timing: crack before they untap into their combo turn, not after.</li>
+      <li>The Frog wins games Archon can't. When you're behind, pivot early.</li>
+    </ul>
+
+
 
   <div class="print-grid">
     <div class="print-mu">

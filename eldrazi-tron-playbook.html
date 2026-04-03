@@ -129,6 +129,11 @@
   footer span { font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.1em; text-transform:uppercase; }
   @media (max-width:768px) { .header-inner,nav,.page,footer { padding-left:24px; padding-right:24px; } .header-title { font-size:40px; } .header-right { display:none; } .decklist,.role-grid,.engine-body,.tuning-grid,.pd-grid { grid-template-columns:1fr; } nav { padding:0 24px; } }
   @media print { nav,.print-btn,footer { display:none; } .section { display:block !important; } }
+
+  .checklist { list-style:none; padding:0; margin:24px 0; }
+  .checklist li { display:flex; align-items:flex-start; gap:16px; padding:12px 0; border-bottom:1px solid var(--rule); font-weight:300; font-size:15px; }
+  .check-box { width:20px; height:20px; border:2px solid var(--accent); flex-shrink:0; cursor:pointer; margin-top:2px; transition:background 0.15s; }
+  .check-box.checked { background:var(--accent); }
 </style>
 </head>
 <body>
@@ -790,6 +795,51 @@
   <div class="section-label">Chapter 10</div>
   <h1>Prep<br>Sheet</h1>
   <button class="print-btn" onclick="window.print()">⎙ Print This Sheet</button>
+    <h2>20-Minute Crash Course</h2>
+    <p>If you're sitting down in 20 minutes, run through this in order:</p>
+    <ul class="checklist" id="crash-checklist">
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Mulligan rule:</strong> Keep any hand that assembles Tron by T3 OR has a T2-3 threat. Don't keep all Eldrazi and no Tron.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Tron rule:</strong> Urza's Mine + Tower + Power Plant. You need all three. Map and Expedition Map find missing pieces.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Chalice rule:</strong> Chalice at 1 on T1 is your best G1 play against most Modern decks. Lead with it when possible.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>TKS rule:</strong> Thought-Knot Seer on T2 via Sol land + Tron piece. Take their best card. Always.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>All Is Dust rule:</strong> Sorcery speed — attack BEFORE casting All Is Dust if you want to deal combat damage first.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Sideboard rule:</strong> Karn's wish: name a specific answer. Know your Karn targets for each matchup before G2.</span></li>
+    </ul>
+
+    <h2>Testing Framework</h2>
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-label">Block 01</div>
+        <div class="card-title">T2 TKS Lines</div>
+        <div class="card-body">Practice assembling T2 Thought-Knot Seer. Sol land + Expedition Map or Eye of Ugin.</div>
+      </div>
+      <div class="card">
+        <div class="card-label">Block 02</div>
+        <div class="card-title">Chalice Decision</div>
+        <div class="card-body">Drill setting Chalice at the right number for each matchup. 1 vs most, 0 vs Dredge.</div>
+      </div>
+      <div class="card">
+        <div class="card-label">Block 03</div>
+        <div class="card-title">All Is Dust Timing</div>
+        <div class="card-body">Practice when to hold All Is Dust vs deploy it. Sorcery speed = attack first.</div>
+      </div>
+      <div class="card">
+        <div class="card-label">Block 04</div>
+        <div class="card-title">Clock Practice</div>
+        <div class="card-body">Tron can flood — count real turns to lethal and commit to the kill.</div>
+      </div>
+    </div>
+
+    <h2>Matchday Routine</h2>
+    <ul class="heuristic-list">
+      <li>Register carefully. Confirm Chalice count and Walking Ballista count. Critical cards.</li>
+      <li>Set your Chalice number based on the matchup before casting it. Don't set it and change your mind.</li>
+      <li>Between rounds: review your mulligan patterns. Tron mulligans are format-specific. Know the keeps.</li>
+      <li>All Is Dust is sorcery speed. Attack before casting it when the board has a race.</li>
+      <li>Don't be passive. Tron's late game is dominant — commit to winning it.</li>
+    </ul>
+
+
 
   <h3>Karn Toolbox Quick Reference</h3>
   <div class="card-grid card-grid-3" style="margin-bottom:40px;">

@@ -126,6 +126,11 @@
   .edge-case { border:1px solid var(--accent); background:var(--accent-light); padding:16px 20px; margin:16px 0; font-size:14px; }
   .edge-case-label { font-family:'DM Mono',monospace; font-size:9px; letter-spacing:0.15em; text-transform:uppercase; color:var(--accent); margin-bottom:6px; }
   .edge-case-body { font-weight:300; color:var(--ink); line-height:1.5; }
+
+  .checklist { list-style:none; padding:0; margin:24px 0; }
+  .checklist li { display:flex; align-items:flex-start; gap:16px; padding:12px 0; border-bottom:1px solid var(--rule); font-weight:300; font-size:15px; }
+  .check-box { width:20px; height:20px; border:2px solid var(--accent); flex-shrink:0; cursor:pointer; margin-top:2px; transition:background 0.15s; }
+  .check-box.checked { background:var(--accent); }
 </style>
 </head>
 <body>
@@ -954,6 +959,51 @@
   <div class="section-label">Chapter 10</div>
   <h1>Prep<br>Sheet</h1>
   <button class="print-btn" onclick="window.print()">⎙ Print This Sheet</button>
+    <h2>20-Minute Crash Course</h2>
+    <p>If you're sitting down in 20 minutes, run through this in order:</p>
+    <ul class="checklist" id="crash-checklist">
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Mulligan rule:</strong> Keep any hand with Amulet of Vigor + a bounce land, or any hand with Spelunking. Ship any hand with no acceleration.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Kill line rule:</strong> Know which line you're on before T1: Haste Titan via Hanweir Battlements, or bounce-land burst. Don't improvise mid-game.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Pact rule:</strong> Cast Summoner's Pact only when you can pay {2}{G}{G} next upkeep OR you win before your next upkeep. No exceptions.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Bounce land rule:</strong> Never tap a bounce land for mana unless you have no choice. Every untap = more mana next turn.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Sideboard rule:</strong> Know your Needle target before G2. Slayers' Stronghold vs most, Valakut vs Scapeshift lines.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Consign rule:</strong> Counter Titan's ETB trigger, not the Titan itself. Let it enter, then Consign the land-fetch trigger.</span></li>
+    </ul>
+
+    <h2>Testing Framework</h2>
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-label">Block 01</div>
+        <div class="card-title">Drill the Kill Line</div>
+        <div class="card-body">Practice T3 Titan kills with different land configurations. If you stumble in G1, it's sequencing.</div>
+      </div>
+      <div class="card">
+        <div class="card-label">Block 02</div>
+        <div class="card-title">Pact Timing</div>
+        <div class="card-body">Practice knowing when you can and can't cast Summoner's Pact. One wrong Pact loses the match.</div>
+      </div>
+      <div class="card">
+        <div class="card-label">Block 03</div>
+        <div class="card-title">G2/G3 Blood Moon Lines</div>
+        <div class="card-body">They bring Blood Moon. Your basic Forest + Islands still win. Practice finding lines through it.</div>
+      </div>
+      <div class="card">
+        <div class="card-label">Block 04</div>
+        <div class="card-title">Clock Practice</div>
+        <div class="card-body">Kill in 20 minutes or time out. Amulet draws can be long — be deliberate and fast.</div>
+      </div>
+    </div>
+
+    <h2>Matchday Routine</h2>
+    <ul class="heuristic-list">
+      <li>Register your list carefully. Confirm bounce land count and Pact count. Both are critical.</li>
+      <li>Know your kill line before Round 1. Which line are you on today? Have an answer.</li>
+      <li>Between rounds: review Pact timing rules. One wrong Pact loses a match you controlled.</li>
+      <li>Don't let the complexity slow you down. If you stall, it's sequencing. Practice more reps.</li>
+      <li>Hydrate and eat. Titan draws are cognitively demanding. 12 rounds is an athletic event.</li>
+    </ul>
+
+
 
   <h3>Standard Kill Line Reference</h3>
   <div class="card-grid card-grid-2" style="margin-bottom:40px;">

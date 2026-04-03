@@ -130,6 +130,11 @@
   .edge-case { border:1px solid var(--accent); background:var(--accent-light); padding:16px 20px; margin:16px 0; font-size:14px; }
   .edge-case-label { font-family:'DM Mono',monospace; font-size:9px; letter-spacing:0.15em; text-transform:uppercase; color:var(--accent); margin-bottom:6px; }
   .edge-case-body { font-weight:300; color:var(--ink); line-height:1.5; }
+
+  .checklist { list-style:none; padding:0; margin:24px 0; }
+  .checklist li { display:flex; align-items:flex-start; gap:16px; padding:12px 0; border-bottom:1px solid var(--rule); font-weight:300; font-size:15px; }
+  .check-box { width:20px; height:20px; border:2px solid var(--accent); flex-shrink:0; cursor:pointer; margin-top:2px; transition:background 0.15s; }
+  .check-box.checked { background:var(--accent); }
 </style>
 </head>
 <body>
@@ -780,6 +785,51 @@
   <div class="section-label">Chapter 10</div>
   <h1>Prep<br>Sheet</h1>
   <button class="print-btn" onclick="window.print()">⎙ Print This Sheet</button>
+    <h2>20-Minute Crash Course</h2>
+    <p>If you're sitting down in 20 minutes, run through this in order:</p>
+    <ul class="checklist" id="crash-checklist">
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Mulligan rule:</strong> Keep any hand with Young Wolf or Strangleroot Geist + a black source. Undying is your engine.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Yawgmoth rule:</strong> {1}{B}: sacrifice a creature, target gets -1/-1 counter, draw a card. This loops infinitely with two undying creatures.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Combo rule:</strong> Two undying creatures + Yawgmoth + Blood Artist or Zulaport Cutthroat = kill. Sacrifice one, it comes back, sacrifice the other, it comes back. Loop.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Protect rule:</strong> Chord of Calling and Collected Company find your missing pieces. Chord for Yawgmoth at instant speed during their EOT.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Viscera Seer rule:</strong> Viscera Seer scrys when you sacrifice a creature. In the combo, scry before drawing to set up the next card.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Sideboard rule:</strong> Endurance and Collected Company are your post-board resilience. Know which matchups want which.</span></li>
+    </ul>
+
+    <h2>Testing Framework</h2>
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-label">Block 01</div>
+        <div class="card-title">Combo Loop</div>
+        <div class="card-body">Drill the Yawgmoth loop until it's mechanical: sacrifice, -1/-1 counter, draw, undying returns, loop.</div>
+      </div>
+      <div class="card">
+        <div class="card-label">Block 02</div>
+        <div class="card-title">CoCo Timing</div>
+        <div class="card-body">Practice casting Collected Company at opponents' EOT. Know exactly what you can and can't find.</div>
+      </div>
+      <div class="card">
+        <div class="card-label">Block 03</div>
+        <div class="card-title">Protect Yawgmoth</div>
+        <div class="card-body">Practice keeping disruption specifically for Yawgmoth protection. He's the only piece that matters.</div>
+      </div>
+      <div class="card">
+        <div class="card-label">Block 04</div>
+        <div class="card-title">G2 Hate Lines</div>
+        <div class="card-body">Practice through Grafdigger's Cage (stops Persist/CoCo), Solitude, and Endurance.</div>
+      </div>
+    </div>
+
+    <h2>Matchday Routine</h2>
+    <ul class="heuristic-list">
+      <li>Register and confirm Chord of Calling count. It's your primary tutor.</li>
+      <li>Know the exact loop sequence before Round 1. Sacrifice, -1/-1, draw, undying, repeat. Mechanical.</li>
+      <li>Between rounds: did you protect Yawgmoth? He's the one piece that matters. Everything else is support.</li>
+      <li>Chord at EOT is almost always correct. Instant speed Yawgmoth is the line.</li>
+      <li>The combo is clean. If you're taking a long time executing it, practice more reps.</li>
+    </ul>
+
+
 
   <h3>The Combo Requirements — Never Forget</h3>
   <div class="card-grid card-grid-2" style="margin-bottom:40px;">

@@ -182,6 +182,11 @@
     .diff-hard,.diff-medium,.diff-even,.diff-good,.c,.print-mu-name,.print-mu-role,.print-col-label,.print-row,.print-needle,.print-note,.print-qty { display:revert !important; }
     body { margin:0; padding:0; }
   }
+
+  .checklist { list-style:none; padding:0; margin:24px 0; }
+  .checklist li { display:flex; align-items:flex-start; gap:16px; padding:12px 0; border-bottom:1px solid var(--rule); font-weight:300; font-size:15px; }
+  .check-box { width:20px; height:20px; border:2px solid var(--accent); flex-shrink:0; cursor:pointer; margin-top:2px; transition:background 0.15s; }
+  .check-box.checked { background:var(--accent); }
 </style>
 </head>
 <body>
@@ -1389,6 +1394,51 @@
   <div class="section-label">Chapter 10</div>
   <h1>Event Day<br>Prep</h1>
   <button class="print-btn" onclick="window.print()">⎙ Print This Sheet</button>
+    <h2>20-Minute Crash Course</h2>
+    <p>If you're sitting down in 20 minutes, run through this in order:</p>
+    <ul class="checklist" id="crash-checklist">
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Mulligan rule:</strong> Keep any hand with 3 lands + 2 interaction pieces. Pure draw hands without answers are mulligans.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Counter rule:</strong> Save Force of Negation for the card that wins them the game. Don't Force their cantrips.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Verdict rule:</strong> Always keep Verdict mana up from T4. Never tap out. The deck can't win without Verdict backup.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Teferi rule:</strong> TRav sorcery lock is ONE-SIDED. You keep full instant speed. Don't confuse your own restrictions.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>FoN rule:</strong> Force of Negation is free ONLY on the opponent's turn. On your own turn, you pay {1}{U}{U}.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Sideboard rule:</strong> Rest in Peace exiles all GYs on entry AND ongoing. Deploy it the FIRST turn you safely can.</span></li>
+    </ul>
+
+    <h2>Testing Framework</h2>
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-label">Block 01</div>
+        <div class="card-title">Verdict Backup</div>
+        <div class="card-body">Practice never tapping out before T4. Every rep: hold mana, hold Verdict, hold Verdict.</div>
+      </div>
+      <div class="card">
+        <div class="card-label">Block 02</div>
+        <div class="card-title">FoN Targets</div>
+        <div class="card-body">Drill which spells deserve Force of Negation. Counter the win condition, not the setup.</div>
+      </div>
+      <div class="card">
+        <div class="card-label">Block 03</div>
+        <div class="card-title">TRav Deployment</div>
+        <div class="card-body">Practice when to deploy TRav vs hold up countermagic. One-sided sorcery lock is strong but you need mana.</div>
+      </div>
+      <div class="card">
+        <div class="card-label">Block 04</div>
+        <div class="card-title">G2 RiP Timing</div>
+        <div class="card-body">Drill playing Rest in Peace the first safe turn. Late RiP loses to rebuilt graveyards.</div>
+      </div>
+    </div>
+
+    <h2>Matchday Routine</h2>
+    <ul class="heuristic-list">
+      <li>Register and confirm RiP count. It's your most important post-board card.</li>
+      <li>Never tap out before T4. Write this on your hand. Never. Tap. Out.</li>
+      <li>Between rounds: which counterspells did you waste? FoN goes on win conditions. Not cantrips.</li>
+      <li>TRav + countermagic = opponents play at sorcery speed. You still have instant speed. Use it.</li>
+      <li>Control rewards discipline. Undisciplined UW play loses to decks it should beat.</li>
+    </ul>
+
+
 
   <h2>Engines — One Line Each</h2>
   <div class="ref-block">
