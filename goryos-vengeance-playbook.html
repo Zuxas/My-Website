@@ -115,7 +115,7 @@
   @media (max-width:600px) { .print-grid { grid-template-columns:1fr; } }
 
   .checklist { list-style:none; padding:0; margin:24px 0; }
-  .checklist li { display:flex; align-items:flex-start; gap:16px; padding:12px 0; border-bottom:1px solid var(--rule); font-weight:300; font-size:15px; }
+  .checklist li { display:flex; align-items:flex-start; gap:16px; padding:12px 0; border-bottom:1px solid rgba(248,250,252,0.12); font-weight:300; font-size:15px; color:var(--ink); }
   .check-box { width:20px; height:20px; border:2px solid var(--accent); flex-shrink:0; cursor:pointer; margin-top:2px; transition:background 0.15s; }
   .check-box.checked { background:var(--accent); }
 
@@ -937,6 +937,7 @@
 </footer>
 
 <script>
+function toggleCheck(el) { el.classList.toggle('checked'); }
 function show(id) {
   document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
   document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
