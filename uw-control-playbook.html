@@ -81,7 +81,7 @@
   .role-name { font-family:'Bebas Neue',sans-serif; font-size:26px; letter-spacing:0.03em; margin-bottom:8px; color:var(--accent); }
   .role-desc { font-size:15px; font-weight:300; color:var(--mid); line-height:1.5; margin-bottom:12px; }
   .role-matchups { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.08em; color:rgba(14,14,14,0.4); }
-  .matchup-table { width:100%; border-collapse:collapse; margin:24px 0; font-size:15px; }
+  .matchup-table { width:100%; border-collapse:collapse; margin:24px 0; font-size:15px;  table-layout:fixed; }
   .matchup-table thead tr { background:var(--ink); color:var(--paper); }
   .matchup-table th { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; padding:12px 16px; text-align:left; font-weight:400; }
   .matchup-table td { padding:12px 16px; border-bottom:1px solid var(--rule); font-weight:300; vertical-align:top; }
@@ -657,6 +657,7 @@
   <p>Click any row to expand. Win rates from Team Resolve gauntlet data + 262k-match DB.</p>
 
   <table class="matchup-table">
+    <colgroup><col><col><col><col></colgroup>
     <thead><tr><th>Matchup</th><th>Meta Share</th><th>Difficulty</th><th>Your Role</th></tr></thead>
     <tbody>
       <tr onclick="toggleMatchup('mu_boros')"><td><strong>Boros Energy</strong></td><td>17.9%</td><td><span class="diff-hard">Hard</span></td><td>Survive — Verdict on 4, don't tap out early</td></tr>
