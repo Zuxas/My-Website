@@ -177,6 +177,12 @@ span.c {
   border-bottom:1px dashed var(--accent,#CA8A04);
 }
 span.c:hover { border-bottom-style:solid; }
+
+  /* ── EDGE CASES ──────────────────────────────────────────── */
+  .edge-case{background:var(--card,#fff);border:1px solid var(--rule,#c8bfb0);border-left:3px solid var(--accent);padding:16px 20px;margin:16px 0;}
+  .edge-case-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:8px;font-weight:500;}
+  .edge-case-body{font-size:14px;font-weight:300;color:var(--ink,#0e0e0e);line-height:1.65;}
+  .edge-case-body strong{font-weight:600;}
 </style>
 </head>
 <body>
@@ -1337,7 +1343,7 @@ function toggle(id) {
   let hideTimer = null;
 
   function pos(e) {
-    const PAD = 16, W = 200, H = 280;
+    const PAD = 24, W = 220, H = 310;
     let x = e.clientX + PAD;
     let y = e.clientY - H / 2;
     if (x + W > window.innerWidth)  x = e.clientX - W - PAD;
@@ -1380,7 +1386,7 @@ function toggle(id) {
   document.addEventListener('mouseover', e => {
     const el = e.target.closest('span.c');
     if (!el) return;
-    show(el.textContent.trim(), e);
+    showTip(el.textContent.trim(), e);
   });
   document.addEventListener('mousemove', e => {
     if (TIP.classList.contains('visible')) pos(e);

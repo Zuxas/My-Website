@@ -1424,7 +1424,7 @@ function toggle(id) {
   let hideTimer = null;
 
   function pos(e) {
-    const PAD = 16, W = 200, H = 280;
+    const PAD = 24, W = 220, H = 310;
     let x = e.clientX + PAD;
     let y = e.clientY - H / 2;
     if (x + W > window.innerWidth)  x = e.clientX - W - PAD;
@@ -1467,7 +1467,7 @@ function toggle(id) {
   document.addEventListener('mouseover', e => {
     const el = e.target.closest('span.c');
     if (!el) return;
-    show(el.textContent.trim(), e);
+    showTip(el.textContent.trim(), e);
   });
   document.addEventListener('mousemove', e => {
     if (TIP.classList.contains('visible')) pos(e);
