@@ -189,6 +189,7 @@
   <button class="nav-link" onclick="show('decklist')">Decklist</button>
   <button class="nav-link" onclick="show('gameplan')">Game Flow</button>
   <button class="nav-link" onclick="show('engines')">Engines</button>
+  <button class="nav-link" onclick="show('lines')">Lines</button>
   <button class="nav-link" onclick="show('roles')">Roles</button>
   <button class="nav-link" onclick="show('matchups')">Matchups</button>
   <button class="nav-link" onclick="show('edges')">Edges</button>
@@ -412,6 +413,16 @@
       <div class="card-body">Karn on turn 3 is often enough to win. Keep if you have 4+ mana available by turn 3 and Karn in hand. Even without Tron, Temple + Talisman + a third source = 4 mana on turn 3. Karn fetching Ensnaring Bridge wins most aggro games immediately.</div>
     </div>
   </div>
+  <h2>Play vs Draw</h2>
+  <div class="card-grid card-grid-2">
+    <div class="card"><div class="card-label">On the Play</div><div class="card-title">T1 Chalice or Map</div><div class="card-body">On the play, T1 Chalice of the Void on 1 shuts down every 1-CMC spell your opponent planned. T1 Expedition Map tutors a Tron piece for T2 assembly. Both are correct depending on their deck — if you saw their hand via T1 Duress in their SB, deploy accordingly. Against aggro: Chalice at 1 immediately. Against combo or control: Expedition Map to race to Tron.</div></div>
+    <div class="card"><div class="card-label">On the Draw</div><div class="card-title">Extra Card Finds Tron Piece</div><div class="card-body">On the draw you see 8 cards, dramatically improving Tron assembly odds. Keep slightly looser hands on the draw — two Tron pieces + Map is a keep on draw even without a third piece. Against aggro on the draw: Chalice at 1 is urgent — they’ve had a T1 and may have deployed already. Prioritize Chalice over Tron development if their board is ahead.</div></div>
+  </div>
+  <h2>When Disrupted</h2>
+  <div class="card-grid card-grid-2">
+    <div class="card"><div class="card-label">Tron Disrupted</div><div class="card-title">Map + Karn Rebuild</div><div class="card-body">Spreading Seas or Blood Moon disrupts Tron. Pivot: Expedition Map finds Eye of Ugin or the missing Tron piece anyway (basic land types don’t apply to colorless utility lands). Karn, the Great Creator fetches any artifact from SB including Ensnaring Bridge or Trinisphere. Eldrazi still cast from colorless mana — you can still function on colorless even without full Tron assembly.</div></div>
+    <div class="card"><div class="card-label">Key Threats Answered</div><div class="card-title">Karn Tutor Chain</div><div class="card-body">TKS and Ulamog both answered: Karn, the Great Creator’s -2 fetches any artifact from outside the game (your SB). Fetch Ensnaring Bridge to lock out their attacks, Trinisphere to tax their spells, or Relic of Progenitus for GY hate. Karn’s +1 makes their artifacts unable to activate — shut off their Mox Opal, Aether Vial, or Chalice they set against you.</div></div>
+  </div>
 </div>
 
 <!-- CH04: ENGINES -->
@@ -501,9 +512,46 @@
     <li><strong>Prioritize early Eldrazi Temple over Tron piece 1:</strong> Sometimes your turn-1 choice is Temple vs a Tron land. If you're planning to cast Thought-Knot Seer or Kozilek's Command on turn 2, Temple is the better opening — it accelerates your actual plays. If you're setting up for Karn on turn 3, a Tron piece is correct since you need two pieces for Map to function.</li>
     <li><strong>Disruptor Flute as a Karn fetch vs combo:</strong> In game 1 vs Storm or Belcher, Karn can fetch Disruptor Flute from the SB. Name Ral, Monsoon Mage to shut down the flip trigger (Ral's activated abilities can't be activated). OR name Goblin Charbelcher to shut off the activation. Flute's static makes chosen cards cost {3} more AND their activated abilities are locked — two different effects.</li>
   </ul>
+  <h2>Engine Priority Order</h2>
+  <div class="card-grid card-grid-3">
+    <div class="card"><div class="card-label">Priority 01</div><div class="card-title">Assemble Tron</div><div class="card-body">Urza’s Mine + Urza’s Power Plant + Urza’s Tower = 7 colorless mana on T3. This is the foundation of everything. Before deploying threats or interaction, always advance Tron assembly. Expedition Map tutors any land — fetch the missing Tron piece. Ancient Stirrings finds any colorless card including Tron lands. Prioritize assembly over any other action.</div></div>
+    <div class="card"><div class="card-label">Priority 02</div><div class="card-title">Karn/Ugin Planeswalker</div><div class="card-body">Once Tron is assembled, the T3 play is Karn, the Great Creator or Ugin, the Spirit Dragon. Karn immediately +1s to lock their artifacts or -2s to fetch from SB. Ugin at -X wipes all colored permanents. These are your primary threats and engines — Eldrazi cast alongside them but the walkers generate ongoing value the Eldrazi don’t.</div></div>
+    <div class="card"><div class="card-label">Priority 03</div><div class="card-title">TKS / Ulamog Clock</div><div class="card-body">Thought-Knot Seer (4 mana) exiles a card from hand and provides a 4/4 body. Ulamog (10 mana) exiles two permanents on cast and attacks with annihilator 4. TKS is your primary disruptive threat and clock. Ulamog is the game-ending threat. Deploy TKS when Tron is online and you need to strip their answer before your Karn resolves.</div></div>
+  </div>
+  <h2>Speed Math</h2>
+  <div class="card-grid card-grid-3">
+    <div class="card"><div class="card-label">T3 Karn/Ugin</div><div class="card-title">The Dream</div><div class="card-body">T1: Expedition Map.<br>T2: Crack Map, find missing Tron piece. All 3 Tron lands in play.<br>T3: 7 mana. Cast Karn (4) or Ugin (8 — needs 1 more land) or TKS (4) + Chalice (1).<br>Karn T3 immediately -2 fetches Ensnaring Bridge or Trinisphere from SB.<br><strong>This is the default goldfish.</strong> Any hand with 2 Tron pieces + Map achieves this.</div></div>
+    <div class="card"><div class="card-label">T4 Without Map</div><div class="card-title">Stirrings Line</div><div class="card-body">T1: Ancient Stirrings (find Tron piece or Chalice).<br>T2: Deploy Tron piece + Stirrings again.<br>T3: Missing piece found, 7 mana assembles.<br>T4: Ugin (10 mana with 7+3) or TKS + Karn.<br>Without Map, Stirrings is your tutor. Ancient Stirrings finds ANY colorless card including all Eldrazi, walkers, and Tron lands.</div></div>
+    <div class="card"><div class="card-label">Key Decision</div><div class="card-title">Chalice vs Tron First</div><div class="card-body"><strong>Chalice first (T1):</strong> Vs aggro (Boros, Prowess, Domain Zoo). Their T1 spells are MV 1 and Chalice stops them immediately.<br><br><strong>Tron first:</strong> Vs combo (Storm, Living End, Amulet). Map T1 to race their kill turn — you need 7 mana before they combo, not just to stop their interaction.</div></div>
+  </div>
 </div>
 
-<!-- CH05: ROLES -->
+<!-- CH05: LINES -->
+<div id="lines" class="section">
+  <div class="section-label">Lines &amp; Tactics</div>
+  <h1>Lines &amp;<br>Tactics</h1>
+  <div class="mantra">"Chalice, TKS, and All Is Dust all have non-obvious rules. Know them before you sit down."</div>
+
+  <h2>Three Lines You Must Know Cold</h2>
+  <div class="card-grid card-grid-3">
+    <div class="card"><div class="card-label">Critical</div><div class="card-title">TKS Leaving Gives Them a Draw</div><div class="card-body">When Thought-Knot Seer enters, it exiles a card from their hand. When TKS LEAVES the battlefield, the opponent draws a card — any card, not the exiled one. Killing your own TKS (sacrifice to dodge removal) gives them a card. Bouncing TKS returns the exiled card AND triggers the draw. Never bounce TKS with a card exiled unless it’s worth giving them a card.</div></div>
+    <div class="card"><div class="card-label">Critical</div><div class="card-title">Chalice at 1 Stops Your Own Interaction Too</div><div class="card-body">Chalice of the Void on 1 counters ALL spells with MV 1, including your Walking Ballista at 0 (pays 0 then enters as a 0/0), your Dismember, and any MV-1 SB card. Set Chalice after you’ve deployed your own MV-1 pieces. Chalice at 0 stops free spells: Force of Negation alternate cost, suspend spells being cast for free. Know what each setting stops before placing.</div></div>
+    <div class="card"><div class="card-label">Critical</div><div class="card-title">All Is Dust Hits Only Colored Permanents</div><div class="card-body">All Is Dust makes each player sacrifice all colored permanents. Your Eldrazi, your lands, your Chalice, your Karn, your Ulamog — all colorless, all survive. Their colored creatures, planeswalkers, enchantments die. This is not a symmetrical Wrath. Cast it when they have a colored board and you have a colorless one. Your colorless board survives their response to it.</div></div>
+  </div>
+
+  <h2>Timing Windows</h2>
+  <div class="edge-case">
+    <div class="edge-label">When to Hold Mana vs Spend It</div>
+    <div class="edge-body">The core timing decision for this deck: every land drop and every spell cast is a commitment. Know before your upkeep which lines require open mana this turn and which don’t. Holding mana = passing priority; spending it = committing to a plan. Make this decision in your upkeep, not in response to their action.</div>
+  </div>
+  <div class="edge-case">
+    <div class="edge-label">When to Cast at Their End Step vs Your Main Phase</div>
+    <div class="edge-body">End-step casts maximize information: you’ve seen their full turn, they’re often tapped out. Main-phase casts maximize mana availability for follow-up. Know which of your key spells gain most from end-step timing and which need main-phase mana backup.</div>
+  </div>
+
+</div>
+
+<!-- CH06: ROLES -->
 <div id="roles" class="section">
   <div class="section-label">Chapter 05</div>
   <h1>Role<br>Assignment</h1>
@@ -524,6 +572,20 @@
       <div class="role-desc">When Tron isn't assembling and you're behind on board, pivot to Eldrazi Temple + Talisman mana for turn-2 Thought-Knot Seer. This non-Tron plan is slower but still viable. Kozilek's Command on turn 2 via Temple is a legitimate early-game stabilization play. Don't sacrifice all your resources trying to force-assemble Tron when the Temple plan is more immediate.</div>
       <div class="role-matchups">vs fast clocks when Tron is offline</div>
     </div>
+  </div>
+  <h2>Role Mistakes to Avoid</h2>
+  <ul class="heuristic-list">
+    <li><div class="heuristic-num">01</div><div class="heuristic-body"><strong>Deploying TKS when Tron isn’t assembled yet.</strong> TKS costs 4 mana and gives them a card when it dies. Casting TKS on 4 non-Tron mana when you could spend that turn assembling Tron is usually wrong. The exception: you need to strip their GY hate or counter before they can use it on your next turn.</div></li>
+    <li><div class="heuristic-num">02</div><div class="heuristic-body"><strong>Chalice at 1 when you still need to cast MV-1 cards yourself.</strong> Set Chalice after you’ve deployed all your MV-1 spells (Expedition Map, Relic of Progenitus). A Chalice at 1 that counters your own Map is worse than no Chalice at all.</div></li>
+    <li><div class="heuristic-num">03</div><div class="heuristic-body"><strong>Bouncing TKS without checking the draw trigger.</strong> When TKS leaves the battlefield, opponent draws a card. If you bounce your own TKS (vs removal), the draw trigger still fires. Evaluate whether the draw they get is worse than losing TKS permanently.</div></li>
+    <li><div class="heuristic-num">04</div><div class="heuristic-body"><strong>Not fetching Ensnaring Bridge with Karn vs aggro.</strong> Karn -2 fetches Ensnaring Bridge from the SB when your hand is empty. Bridge locks out all attackers with power greater than the number of cards in your hand. The moment you empty your hand, all their attacks are stopped. Karn + empty hand + Bridge = locked board.</div></li>
+  </ul>
+  <h2>Role-Switching Signals</h2>
+  <div class="card-grid card-grid-2">
+    <div class="card"><div class="card-label">Switch to Lockdown When</div><div class="card-title">Their Board Is Faster Than Yours</div><div class="card-body">Tron isn’t assembled by T3 and they have a creature board. Karn -2 fetches Ensnaring Bridge immediately. Trinisphere taxes every spell they cast. Chalice at 1 stops their interaction. Switch from developing Tron to deploying hate pieces that slow them enough to assemble on T4.</div></div>
+    <div class="card"><div class="card-label">Switch to Full Gas When</div><div class="card-title">Tron Is Online</div><div class="card-body">Tron assembled, 7+ mana available. Stop developing, start threatening. Karn T3, TKS T4, Ulamog T5 if the game goes long. Every turn you have 7+ mana is a turn they should be losing. Don’t pass without casting something impactful.</div></div>
+    <div class="card"><div class="card-label">Never Slow Down When</div><div class="card-title">Karn + Empty Hand Available</div><div class="card-body">Karn in play + 0 cards in hand = fetch Ensnaring Bridge immediately. This position is often a clean lock — they can’t attack (Bridge), you have Karn generating ongoing value. Execute this line the moment the conditions are met.</div></div>
+    <div class="card"><div class="card-label">Identify Before T1</div><div class="card-title">Race vs Lock</div><div class="card-body">Their deck races you (Boros, Prowess, Domain) → Chalice T1, lock them out of interaction. Their deck combos you (Storm, Living End) → Map T1, race to Tron faster than they kill. Their deck controls you (Jeskai, UWC) → TKS T4 to strip counters, Ulamog T5 to close.</div></div>
   </div>
 </div>
 
@@ -917,6 +979,19 @@
       <div class="tuning-down">−1 Grafdigger's Cage (not needed)</div>
     </div>
   </div>
+  <h2>Register Conditions</h2>
+  <div class="card-grid card-grid-2">
+    <div class="card"><div class="card-label">Register When</div><div class="card-title">Green Lights</div><div class="card-body">Midrange and fair interactive fields — your Tron threats are too large for their answers. Low Damping Sphere density (shuts off multiple untaps per bounce land, but for you: limits to 1 mana per land). Combo-heavy fields (Storm, Living End) — TKS strips their key card. You’ve practiced the Karn SB tutor chains for the top 5 matchups.</div></div>
+    <div class="card"><div class="card-label">Avoid When</div><div class="card-title">Red Lights</div><div class="card-body">Heavy Blood Moon meta — Blood Moon makes all nonbasic lands Mountains, turning your Tron lands into Mountains that produce R, breaking assembly. High Spreading Seas density (turns your land into an Island, breaking Tron). You haven’t practiced the Karn tutor chain for the expected matchups — wrong SB fetch under pressure costs games.</div></div>
+  </div>
+  <h2>SB Slot Priority Order</h2>
+  <ol class="heuristic-list">
+    <li><div class="heuristic-num">01</div><div class="heuristic-body"><strong>Ensnaring Bridge (1 copy in SB, tutored by Karn)</strong> — Locks out all attackers when your hand is empty. The primary lockdown piece vs aggro. Never cut — Karn fetches it on demand.</div></li>
+    <li><div class="heuristic-num">02</div><div class="heuristic-body"><strong>Trinisphere (2 copies)</strong> — Every spell costs at least {3}. Devastating vs Storm (can’t chain cheap rituals), Living End (cascade costs more), Jeskai Blink (all interaction taxed). Bring in vs any spell-heavy interactive deck.</div></li>
+    <li><div class="heuristic-num">03</div><div class="heuristic-body"><strong>Disruptor Flute (3 copies)</strong> — Name a card; spells with that name can’t be cast. Goes in vs Tameshi Belcher (name Belcher), Ruby Storm (name Grapeshot), UW Control (name Counterspell). Replaces Meddling Mage for colorless decks.</div></li>
+    <li><div class="heuristic-num">04</div><div class="heuristic-body"><strong>Grafdigger’s Cage + Tormod’s Crypt (2 copies)</strong> — GY hate for Living End, Goryo’s, Neoform. Cage prevents creature cards entering from GY. Crypt exiles entire GY at instant speed. Both are MV 0-1 so Karn tutors either.</div></li>
+    <li><div class="heuristic-num">05</div><div class="heuristic-body"><strong>Flex (Vexing Bauble, Torpor Orb, Walking Ballista, The Filigree Sylex)</strong> — Torpor Orb prevents ETB triggers (shuts off TKS for them, Restoration Angel, Guide of Souls). Sylex is a board wipe. Ballista kills small creatures. Adjust per field.</div></li>
+  </ol>
 </div>
 
 <!-- CH10: PREP SHEET -->

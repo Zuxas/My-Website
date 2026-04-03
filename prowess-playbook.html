@@ -210,7 +210,8 @@
   <button class="nav-link active" onclick="show('identity')">Overview</button>
   <button class="nav-link" onclick="show('decklist')">Decklist</button>
   <button class="nav-link" onclick="show('gameplan')">Game Flow</button>
-  <button class="nav-link" onclick="show('engines')">Engines</button><button class="nav-link" onclick="show('roles')">Roles</button>
+  <button class="nav-link" onclick="show('engines')">Engines</button>
+  <button class="nav-link" onclick="show('lines')">Lines</button><button class="nav-link" onclick="show('roles')">Roles</button>
   <button class="nav-link" onclick="show('matchups')">Matchups</button>
   <button class="nav-link" onclick="show('edges')">Edges</button>
   <button class="nav-link" onclick="show('sideboard')">Sideboard</button>
@@ -434,6 +435,17 @@
   <p><strong>Snap mulligan:</strong> Hands with 0 one-drop threats, 4+ lands, or hands that are purely cantrips without threats. You need a creature to pump — cantrips with no target are dead cards.</p>
   <p><strong>Delirium note:</strong> Hands with <span class="c">Mishra's Bauble</span> are stronger than they look because Bauble counts as an artifact in the yard and triggers prowess for free. Prioritize hands that can hit delirium by turn 2.</p>
   <p><strong>On the draw:</strong> One extra card means more redundancy. You can keep slightly lower-threat hands on the draw because the extra card often provides the missing piece. Lean toward keeping hands with Preordain or Expressive Iteration on the draw — card selection is more valuable when you have extra information.</p>
+
+  <h2>Play vs Draw</h2>
+  <div class="card-grid card-grid-2">
+    <div class="card"><div class="card-label">On the Play</div><div class="card-title">T1 DRC or Swiftspear</div><div class="card-body">On the play, T1 Dragon’s Rage Channeler or Monastery Swiftspear is your highest-value opening. DRC on T1 starts surveiling to build delirium while applying pressure. On the play: always lead with a 1-drop threat. A land-pass on T1 means you’re a full turn behind the tempo game and your spells do less damage without a prowess/surveil trigger magnet on the board.</div></div>
+    <div class="card"><div class="card-label">On the Draw</div><div class="card-title">Extra Card Finds the Kill Spell</div><div class="card-body">On the draw, the extra card often provides the burn spell that closes the game or the cantrip that finds it. Keep looser hands on the draw if they have a threat + any cantrip. Against aggro on the draw: Fatal Push or Lava Dart hands are keepable even without a T1 threat because you need to survive to T3 before your clock takes over.</div></div>
+  </div>
+  <h2>When Disrupted</h2>
+  <div class="card-grid card-grid-2">
+    <div class="card"><div class="card-label">Threats Removed</div><div class="card-title">Burn to Face</div><div class="card-body">DRC and Swiftspear removed: pivot to burn plan. Lightning Bolt + Light Up the Stage + any damage spell = 8-10 damage from hand. At 20 life this closes in 2-3 turns without any creatures. The burn redundancy means creature removal never fully answers this deck — they’re only removing 5-6 prowess triggers, not the damage output itself.</div></div>
+    <div class="card"><div class="card-label">Burn Countered</div><div class="card-title">Rebuild with DRC Surveil</div><div class="card-body">Burn spells countered: rebuild via DRC’s surveil triggers. Each noncreature spell surveils 1 — dig through the deck for more threats. Murktide Regent in the GY as a finisher means even a swept board recovers to a 4/4+ flier in 2-3 spells. DRC surveil makes every card you draw a choice, not a topdeck.</div></div>
+  </div>
 </div>
 
 <!-- ROLES -->
@@ -494,7 +506,46 @@
     <li><span class="trick-tag">Sequence</span><span><strong>DRC surveil order matters:</strong> DRC's surveil 1 triggers when you cast any spell. If you're about to draw a card (from Bauble, Sleight), surveil first — put the card you want on top, then draw it. If you need to hit delirium, surveil to put a non-land card in the GY. Plan the surveil destination before the spell resolves.</span></li>
     <li><span class="trick-tag">Avoid</span><span><strong>Don't overcommit to the board against sweepers:</strong> Prowess is a burst deck, not a go-wide deck. Casting your entire hand onto the board over multiple turns and losing everything to Supreme Verdict is the wrong line. Deploy one or two threats at a time, keep burn for face rather than removal, and burst-kill them before the sweeper becomes relevant.</span></li>
   </ul>
+
+  <h2>Engine Priority Order</h2>
+  <div class="card-grid card-grid-3">
+    <div class="card"><div class="card-label">Priority 01</div><div class="card-title">DRC + Delirium Surveil</div><div class="card-body">Dragon’s Rage Channeler with delirium active: surveil 1 whenever you cast a noncreature spell + gains flying and +2/+1. This is your primary engine — DRC surveiling finds threats, fills GY for Murktide, and grows the clock. Get to delirium (4 card types in GY) as fast as possible via fetch lands (land type), spells (instant + sorcery), and DRC itself (creature).</div></div>
+    <div class="card"><div class="card-label">Priority 02</div><div class="card-title">Swiftspear + Spell Chain</div><div class="card-body">Monastery Swiftspear gets +1/+1 until EOT for each noncreature spell. Chain spells in one turn: Bolt + Dart + Preordain = Swiftspear is 4/5 until EOT. Attack before the chain if you need more power, or attack after to surprise with unexpected pump. Every spell you’d cast anyway grows Swiftspear for free.</div></div>
+    <div class="card"><div class="card-label">Priority 03</div><div class="card-title">Murktide Regent Finisher</div><div class="card-body">Murktide Regent costs {2}{U} when enough instants/sorceries are in your GY. Each instant/sorcery in GY makes Murktide +1/+1. With 5 instants in GY, Murktide is a 7/7 flying for {2}{U}. This is the inevitability finisher when the early game stalls — survive to T3-4 and Murktide closes 3-4 attack steps from 20 life.</div></div>
+  </div>
+  <h2>Speed Math</h2>
+  <div class="card-grid card-grid-3">
+    <div class="card"><div class="card-label">DRC Delirium Clock</div><div class="card-title">T3 Delirium Online</div><div class="card-body">T1: DRC. T2: Fetch land (crack it: land type in GY) + Lightning Bolt (instant type). DRC is now 1/2. T3: Preordain (sorcery type) + DRC surveils. Delirium check: creature (DRC), instant (Bolt), sorcery (Preordain), land (fetch cracked). 4 types = delirium. DRC is now 3/3 flying. Swing T3 for 3, chain spells.</div></div>
+    <div class="card"><div class="card-label">Swiftspear Kill</div><div class="card-title">T3 One-Turn Kill</div><div class="card-body">T1: Swiftspear. T2: Light Up the Stage ({R}: reveal cards, cast 2 for free). T3: Chain Bolt + Dart + Preordain + Mutagenic Growth (2 life) → Swiftspear is 5/6. Attack for 5. Bolt face for 3. Dart face for 1. Total: 9 from 20 life. T4 close.<br>The fastest line requires Swiftspear + 4 spells + burn.</div></div>
+    <div class="card"><div class="card-label">Clock Decision</div><div class="card-title">Race vs Burn</div><div class="card-body"><strong>Attack aggressively:</strong> They’re below 12 life. Swing, chain burn. Finish with Bolt to face.<br><br><strong>Burn face:</strong> They have a 5/5 blocker but 8 life. Don’t attack into it. Dart (1) + Bolt (3) + Light Up the Stage → 2 more damage spells = 6+. Count damage from hand first.</div></div>
+  </div>
 </div>
+
+<!-- CH05: LINES -->
+<div id="lines" class="section">
+  <div class="section-label">Lines &amp; Tactics</div>
+  <h1>Lines &amp;<br>Tactics</h1>
+  <div class="mantra">"DRC delirium requirements and Lava Dart Mountain counts decide your speed each game."</div>
+
+  <h2>Three Lines You Must Know Cold</h2>
+  <div class="card-grid card-grid-3">
+    <div class="card"><div class="card-label">Critical</div><div class="card-title">DRC Needs 4 Card TYPES for Delirium</div><div class="card-body">Dragon’s Rage Channeler’s Delirium requires 4 different card types in your graveyard, not 4 cards. Card types: Instant, Sorcery, Creature, Land, Artifact, Enchantment. The most common gap: you have Instant (Lightning Bolt), Creature (DRC), Land (from fetch) = 3 types. You need a SORCERY — Preordain or Serum Visions. Without a sorcery in GY, DRC is a vanilla 1/1. Surveil aggressively with DRC’s trigger to find the sorcery type.</div></div>
+    <div class="card"><div class="card-label">Critical</div><div class="card-title">Monastery Swiftspear Prowess Triggers Stack</div><div class="card-body">Monastery Swiftspear gets +1/+1 until end of turn whenever you cast a noncreature spell. Each spell is a separate trigger. Cast Lightning Bolt + Mutagenic Growth + Preordain in one turn — Swiftspear gets 3 separate +1/+1 triggers = 4/5 until EOT. Triggers can be responded to individually and all still resolve. Chain spells before blocks to maximize Swiftspear’s combat size. Count before declaring attackers.</div></div>
+    <div class="card"><div class="card-label">Critical</div><div class="card-title">Lava Dart Flashback Sacrifices a MOUNTAIN</div><div class="card-body">Lava Dart’s flashback cost is to sacrifice a Mountain — not just any land, specifically a Mountain-type land. Steam Vents is a Mountain (it has the Mountain land type). Scalding Tarn after fetching a Mountain leaves no Mountain on board. Basics: only basic Mountain counts. Count your Mountains before counting available Dart flashbacks. Never tap your last Mountain for mana if you need the Dart flashback to kill a blocker.</div></div>
+  </div>
+
+  <h2>Timing Windows</h2>
+  <div class="edge-case">
+    <div class="edge-label">When to Hold Mana vs Spend It</div>
+    <div class="edge-body">The core timing decision for this deck: every land drop and every spell cast is a commitment. Know before your upkeep which lines require open mana this turn and which don’t. Holding mana = passing priority; spending it = committing to a plan. Make this decision in your upkeep, not in response to their action.</div>
+  </div>
+  <div class="edge-case">
+    <div class="edge-label">When to Cast at Their End Step vs Your Main Phase</div>
+    <div class="edge-body">End-step casts maximize information: you’ve seen their full turn, they’re often tapped out. Main-phase casts maximize mana availability for follow-up. Know which of your key spells gain most from end-step timing and which need main-phase mana backup.</div>
+  </div>
+
+</div>
+
 
 <div id="roles" class="section">
   <div class="section-label">Chapter 05</div>
@@ -527,6 +578,14 @@
     <li><strong>Casting Murktide too early.</strong> A turn 3 Murktide from a hand without threats is a 3/3 flier for a lot of resources. A turn 5 Murktide after the graveyard is stacked is often a 7/7+. Don't rush the Regent — let it scale.</li>
     <li><strong>Flashing back <span class="c">Lava Dart</span> carelessly.</strong> The flashback cost is sacrifice a Mountain. Recklessly using Dart flashback in the early turns depletes your land base. Count your lands before flashing Dart.</li>
   </ul>
+
+  <h2>Role-Switching Signals</h2>
+  <div class="card-grid card-grid-2">
+    <div class="card"><div class="card-label">Switch to Tempo When</div><div class="card-title">They Have a Clock You Can't Race</div><div class="card-body">Opponent presents a threat you can't ignore — a resolved Primeval Titan, a 5/5 Kappa Cannoneer, a Teferi with counters. Stop chaining spells for prowess pumps and deploy targeted removal. Unholy Heat with delirium active (6 damage) is your premium answer. Prioritize surviving over growing your threats.</div></div>
+    <div class="card"><div class="card-label">Stay on Aggro When</div><div class="card-title">Their Life Total Is in Lethal Range</div><div class="card-body">Opponent is below 8 life and you have DRC or Swiftspear with spells in hand. Stop holding back for "better" lines — calculate pump math and attack. Mutagenic Growth + Lava Dart + one spell = 6+ damage from nothing. Commit when the math says lethal is available this turn.</div></div>
+    <div class="card"><div class="card-label">Never Slow Down When</div><div class="card-title">Delirium + Open Board</div><div class="card-body">Delirium is active, DRC is attacking with surveil, and they have no blockers. This is your highest-value position. Don't switch modes — keep casting spells to trigger prowess, keep flipping DRC to 3/3 surveil 1, keep piling on damage. The tempo advantage compounds with every spell.</div></div>
+    <div class="card"><div class="card-label">Identify Before T1</div><div class="card-title">Read Their Opener</div><div class="card-body">Their T1 land tells you a lot: Island = likely counter suite, hold spells until they tap out. Mountain/Plains = aggro mirror or Boros, race them immediately. No land = potential mull to 6, press aggressively. Use this read to sequence your first two spells correctly — the right opener beats good hands by 20%.</div></div>
+  </div>
 </div>
 
 <!-- MATCHUPS -->
@@ -1179,6 +1238,20 @@
       <p style="font-size:14px;font-weight:300;margin-top:8px;">Slickshot Show-Off at 2 mana is a 2/2 flier with Plot — pay 1R to cast it for free from exile later. As a go-spell (cast after another spell this turn) it gets an additional +1/+1 counter. The question is whether 2 mana up front for a delayed 5/5 flier is better than another DRC or Swiftspear at 1 mana. Currently testing a 2-2 split.</p>
     </div>
   </div>
+
+  <h2>Register Conditions</h2>
+  <div class="card-grid card-grid-2">
+    <div class="card"><div class="card-label">Register When</div><div class="card-title">Green Lights</div><div class="card-body">Fair midrange field — your T1 clock demands immediate interaction. Low life-gain density (Rhox Faith Mender, Leyline of Sanctity shuts off burn). Combo decks present — your T2 DRC races their T3 combo. You have delirium path practiced for the top 5 matchups.</div></div>
+    <div class="card"><div class="card-label">Avoid When</div><div class="card-title">Red Lights</div><div class="card-body">Heavy lifegain meta (Soul-Warden, Leyline of Sanctity) — burn plan fails against life totals 30+. Multiple Supreme Verdict builds where your creature investment gets blanked. You haven’t practiced delirium management (4 card types) and fall behind on clock timing.</div></div>
+  </div>
+  <h2>SB Slot Priority Order</h2>
+  <ol class="heuristic-list">
+    <li><div class="heuristic-num">01</div><div class="heuristic-body"><strong>Unholy Heat (4 copies)</strong> — Deal 2 or 6 damage (with delirium) to any target at instant speed. Goes in vs any creature-heavy deck. 6 damage kills Ragavan, Swiftspear, Phlage — any 5-toughness threat. Essential vs large creatures that stop your attack.</div></li>
+    <li><div class="heuristic-num">02</div><div class="heuristic-body"><strong>Surgical Extraction (2 copies)</strong> — Strip a card type from their deck after seeing one copy. Goes in vs combo decks (strip their win condition), Living End (strip a key cycler type), Reanimator (strip Griselbrand).</div></li>
+    <li><div class="heuristic-num">03</div><div class="heuristic-body"><strong>Blood Moon (2 copies)</strong> — Nonbasic lands become Mountains. Devastating vs Amulet Titan (Tron lands become Mountains), Domain Zoo (multicolor mana base breaks), Jeskai Blink (Hallowed Fountain becomes Mountain, cuts their blue). Goes in vs any nonbasic-heavy deck.</div></li>
+    <li><div class="heuristic-num">04</div><div class="heuristic-body"><strong>Consign to Memory (4 copies)</strong> — Counter any spell and exile GY. Goes in vs combo decks (Storm, Living End, Goryo’s). Your primary stack interaction vs non-creature combo.</div></li>
+    <li><div class="heuristic-num">05</div><div class="heuristic-body"><strong>Spell Snare (flex)</strong> — Counter any MV-2 spell for {U}. Goes in vs Blink (Counterspell is MV 2), Control (Day’s Undoing is MV 3 — doesn’t hit). Slot based on expected MV-2 threats in the room.</div></li>
+  </ol>
 </div>
 
 <div id="prep" class="section">

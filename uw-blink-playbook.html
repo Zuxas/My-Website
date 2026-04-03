@@ -1026,6 +1026,7 @@
   <button class="nav-link" onclick="show('decklist')">Decklist</button>
   <button class="nav-link" onclick="show('gameplan')">Gameplan</button>
   <button class="nav-link" onclick="show('engines')">Engines</button>
+  <button class="nav-link" onclick="show('lines')">Lines</button>
   <button class="nav-link" onclick="show('roles')">Roles</button>
   <button class="nav-link" onclick="show('matchups')">Matchups</button>
   <button class="nav-link" onclick="show('edges')">Edges</button>
@@ -1308,7 +1309,18 @@
       <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Phelia as Time Walk:</strong> Attack → blink their Atraxa/Titan/walker. They lose that permanent's effect for the full turn cycle.</span></li>
       <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Guide + Ocelot Stabilizer:</strong> Cats chump + lifegain buys turns. Ascend online = 2+ blockers per turn.</span></li>
     </ul>
+  
+  <h2>Play vs Draw</h2>
+  <div class="card-grid card-grid-2">
+    <div class="card"><div class="card-label">On the Play</div><div class="card-title">T2 Solitude on Their Threat</div><div class="card-body">On the play, T2 evoke Solitude to exile their key threat or T3 Restoration Angel sets up the blink loop. On the play you dictate tempo — evoke Solitude + Ephemerate on T2 converts your 2-card investment into a 5/5 body and 2 exile effects before they’ve developed. This tempo advantage compounds with Teferi’s sorcery lock on T3.</div></div>
+    <div class="card"><div class="card-label">On the Draw</div><div class="card-title">Hold Ephemerate Open</div><div class="card-body">On the draw, your extra card gives you more Ephemerate / Solitude coverage. Hold Ephemerate mana open on their T2 and T3 to respond to their threats in real time. Against aggro on the draw: Solitude T1 evoke (pay white card) to stop their T1 deployment is the highest-priority play.</div></div>
   </div>
+  <h2>When Disrupted</h2>
+  <div class="card-grid card-grid-2">
+    <div class="card"><div class="card-label">Teferi Removed</div><div class="card-title">Reactive Ephemerate Mode</div><div class="card-body">Teferi removed: opponents interact at instant speed again. Switch to reactive: hold Ephemerate + Solitude mana open every turn. Deploy threats during their end step or in response to their attacks. Without Teferi’s lock, you play draw-go but your flash pieces still generate value without the sorcery-speed protection.</div></div>
+    <div class="card"><div class="card-label">Solitude Answered</div><div class="card-title">Angel + Riddler Rebuild</div><div class="card-body">Solitude countered or removed: rebuild with Restoration Angel (blinks any non-Angel creature you control) and Quantum Riddler (draw on each blink). Chain Angel + creature ETBs to refill hand and rebuild board. Teferi’s +1 continues generating card draw. You can win entirely through Teferi + Angel value without ever resolving another Solitude.</div></div>
+  </div>
+</div>
 
   <!-- ── ROLES ── -->
   
@@ -1426,7 +1438,46 @@
     </div>
   </div>
 
+
+  <h2>Engine Priority Order</h2>
+  <div class="card-grid card-grid-3">
+    <div class="card"><div class="card-label">Priority 01</div><div class="card-title">Evoke + Ephemerate ETB Loop</div><div class="card-body">Evoke Solitude (exile white card) + Ephemerate (in response to sacrifice trigger) = 2 exile ETBs + a permanent 5/5. Ephemerate rebounds: second blink next upkeep = another exile. This loop is the highest-value engine and should be executed every time you have Solitude + Ephemerate + a relevant target.</div></div>
+    <div class="card"><div class="card-label">Priority 02</div><div class="card-title">Teferi + Sorcery Flash</div><div class="card-body">Teferi, Time Raveler locks opponents to sorcery speed while +1 draws cards. His +1 also enables sorcery-speed flash for Restoration Angel and other creatures (not directly useful since Angel is already instant-speed, but applies to other sorceries). Each Teferi +1 is +1 card and the sorcery-speed lock continues. Protect him once resolved.</div></div>
+    <div class="card"><div class="card-label">Priority 03</div><div class="card-title">Quantum Riddler Blink Draw</div><div class="card-body">Quantum Riddler draws a card each time you blink a permanent. With Ephemerate + Restoration Angel chains, Riddler generates 2-4 cards per turn. This card advantage engine makes your late game inevitably better than any fair opponent. Deploy Riddler once Teferi is in play to protect the blink chain.</div></div>
+  </div>
+  <h2>Speed Math</h2>
+  <div class="card-grid card-grid-3">
+    <div class="card"><div class="card-label">Evoke Combo Timing</div><div class="card-title">T2 Double Exile</div><div class="card-body">T2: Evoke Solitude (exile a white card) → Solitude ETB exiles their threat. Evoke sacrifice trigger on stack → Ephemerate Solitude ({W}) → Solitude exiles, sacrifice trigger fizzles, Solitude returns at end of step as 5/5. Ephemerate rebound next upkeep → blink again for second exile ETB.<br>Cost: 1 white card + {W}. Return: 2 exiles + permanent 5/5.</div></div>
+    <div class="card"><div class="card-label">Angel Chain</div><div class="card-title">T4 Value Acceleration</div><div class="card-body">T4: Restoration Angel (flash) → blinks Quantum Riddler → Riddler ETB draws a card. Flash Angel at instant speed during their EOT. Riddler drew a card. Next turn: Ephemerate Angel → blinks Riddler again → another card drawn. Chain generates 2-3 cards from 2 pieces.</div></div>
+    <div class="card"><div class="card-label">Kill Speed</div><div class="card-title">Teferi + Creatures Clock</div><div class="card-body">Teferi (3/4) + Solitude (5/5) + Restoration Angel (3/4) = 11 attack power. From 20 life: 2 attack steps while using Teferi +1 to bounce their blockers. With Teferi’s lock active, they can’t flash in blockers. The clock is fast enough that you don’t need a dedicated finisher — the value pieces are also the damage.</div></div>
+  </div>
 </div>
+
+<!-- CH05: LINES -->
+<div id="lines" class="section">
+  <div class="section-label">Lines &amp; Tactics</div>
+  <h1>Lines &amp;<br>Tactics</h1>
+  <div class="mantra">"Ephemerate’s rebound timing and Solitude evoke + blink windows define this deck’s power."</div>
+
+  <h2>Three Lines You Must Know Cold</h2>
+  <div class="card-grid card-grid-3">
+    <div class="card"><div class="card-label">Critical</div><div class="card-title">Ephemerate Rebounds at Your Next Upkeep</div><div class="card-body">Ephemerate exiles the creature, which returns at the beginning of the next end step. On your turn: exile + return at YOUR end step, then rebound copy at YOUR NEXT upkeep = exile + return again at your next end step. Total: 2 ETB blinks from one Ephemerate. On opponent’s turn (cast during their attack): exile + return at THEIR end step, rebound at YOUR upkeep = exile + return at your end step. Same 2 blinks, different timing windows.</div></div>
+    <div class="card"><div class="card-label">Critical</div><div class="card-title">Evoke + Ephemerate: Keep the Creature</div><div class="card-body">Evoke Solitude: ETB trigger (exile target creature) and evoke sacrifice trigger both go on the stack. Ephemerate Solitude in response to the sacrifice trigger: Solitude exiles before being sacrificed. Sacrifice trigger resolves with no target. Solitude returns at end of step as a full 5/5. Ephemerate’s rebound blinks it again next upkeep — another exile ETB. Two free exile effects from Solitude + one Ephemerate. Always have Ephemerate ready when evoking.</div></div>
+    <div class="card"><div class="card-label">Critical</div><div class="card-title">Restoration Angel Cannot Blink Angels</div><div class="card-body">Restoration Angel says target non-Angel creature you control. This restriction means: you cannot blink another Angel with it, and you cannot blink itself. In practice this rarely matters for UW Blink but know it so you don’t target an Angel creature incorrectly. All your value creatures (Eternal Witness, Wall of Omens, Recruiters) are non-Angel and are valid targets.</div></div>
+  </div>
+
+  <h2>Timing Windows</h2>
+  <div class="edge-case">
+    <div class="edge-label">When to Hold Mana vs Spend It</div>
+    <div class="edge-body">The core timing decision for this deck: every land drop and every spell cast is a commitment. Know before your upkeep which lines require open mana this turn and which don’t. Holding mana = passing priority; spending it = committing to a plan. Make this decision in your upkeep, not in response to their action.</div>
+  </div>
+  <div class="edge-case">
+    <div class="edge-label">When to Cast at Their End Step vs Your Main Phase</div>
+    <div class="edge-body">End-step casts maximize information: you’ve seen their full turn, they’re often tapped out. Main-phase casts maximize mana availability for follow-up. Know which of your key spells gain most from end-step timing and which need main-phase mana backup.</div>
+  </div>
+
+</div>
+
 
 <div id="roles" class="section">
     <div class="section-label">Chapter 05</div>
@@ -2642,6 +2693,15 @@
     </div>
   </div>
 
+
+  <h2>SB Slot Priority Order</h2>
+  <ol class="heuristic-list">
+    <li><div class="heuristic-num">01</div><div class="heuristic-body"><strong>Sanctifier en-Vec (2 copies)</strong> — Protection from black and red. Immune to Fatal Push, Bolt, Galvanic Discharge. Goes in vs Boros Energy and Prowess — the creature they cannot answer.</div></li>
+    <li><div class="heuristic-num">02</div><div class="heuristic-body"><strong>Wrath of the Skies (2 copies)</strong> — Exile all creatures with energy counters. Full power vs Boros Energy. Goes in vs any energy-based strategy.</div></li>
+    <li><div class="heuristic-num">03</div><div class="heuristic-body"><strong>Teferi, Time Raveler (1 extra copy)</strong> — Extra Teferi for matchups where sorcery lock is critical — vs Storm, Living End, any instant-speed combo deck.</div></li>
+    <li><div class="heuristic-num">04</div><div class="heuristic-body"><strong>Rest in Peace (2 copies)</strong> — Exile all GY cards as they go there. Goes in vs Living End, Goryo’s, Yawgmoth. Blanks GY-based strategies completely.</div></li>
+    <li><div class="heuristic-num">05</div><div class="heuristic-body"><strong>Consign to Memory + Hexdrinker (flex)</strong> — Consign counters any spell and exiles GY vs combo. Hexdrinker levels up to protection from everything — unkillable by targeted removal. Adjust based on field composition.</div></li>
+  </ol>
 </div>
 
 <div id="prep" class="section">

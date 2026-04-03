@@ -187,6 +187,7 @@
   <button class="nav-link" onclick="show('decklist')">Decklist</button>
   <button class="nav-link" onclick="show('gameplan')">Game Flow</button>
   <button class="nav-link" onclick="show('engines')">Engines</button>
+  <button class="nav-link" onclick="show('lines')">Lines</button>
   <button class="nav-link" onclick="show('roles')">Roles</button>
   <button class="nav-link" onclick="show('matchups')">Matchups</button>
   <button class="nav-link" onclick="show('edges')">Edges</button>
@@ -435,6 +436,17 @@
     <div class="sb-guide-row"><div class="sb-guide-name">EE Timing</div><div class="sb-guide-body"><span class="c">Engineered Explosives</span> at X=0: you need (1) Weapons Manufacturing active, (2) at least 4 Munitions tokens for meaningful damage, (3) opponent in kill range from 8+ damage. EE at 0 costs {0} to cast (just a colorless mana source) — Mox Opal, tapped Fiery Islet, sacrifice Claws of Gix for life, etc. The {2} sacrifice cost is the mana you need to hold. Total kill sequence: build Munitions → hold {2} mana → sacrifice EE at instant speed if needed, or main phase for sorcery-speed Wrath effects.</div></div>
     <div class="sb-guide-row"><div class="sb-guide-name">When Kappa Is Under Pressure</div><div class="sb-guide-body">Ward 4 means they spend 4+ extra mana to target Kappa. If they spend 6-10 mana killing your Kappa, you've tempo-won the exchange — you spent 2 Improvise mana, they spent 10. Don't overvalue protecting Kappa at the cost of tempo. Let it die to Solitude evoke (which bypasses Ward by paying the cost with life/card) — that's the correct play for them. Rebuild with Emry or a second Kappa.</div></div>
   </div>
+
+  <h2>Play vs Draw</h2>
+  <div class="card-grid card-grid-2">
+    <div class="card"><div class="card-label">On the Play</div><div class="card-title">T1 Mox Opal into Ornithopter</div><div class="card-body">On the play, T1 Mox Opal (if metalcraft active) into Ornithopter + Thoughtcast for card draw is your best opening. Deploy as many zero-cost artifacts as possible T1 to build metalcraft. On the play: count your artifact count before tapping Opal. Urza’s Saga on T1 starts its chapter count immediately and generates Constructs by T3.</div></div>
+    <div class="card"><div class="card-label">On the Draw</div><div class="card-title">Extra Card Finds Kappa</div><div class="card-body">On the draw you see 8 cards, improving odds of finding Kappa Cannoneer + enough artifacts to power it. Keep looser hands on the draw if they contain the artifact mana base. Against removal-heavy decks on the draw: plan around your first Kappa being answered — have a second threat or Urza’s Saga backup ready.</div></div>
+  </div>
+  <h2>When Disrupted</h2>
+  <div class="card-grid card-grid-2">
+    <div class="card"><div class="card-label">Kappa Answered</div><div class="card-title">Urza’s Saga Backup</div><div class="card-body">Kappa Cannoneer removed: Urza’s Saga is your second win condition. Chapter III tutors Shadowspear (trample + lifelink) or Welding Jar (protect an artifact). 3/3 Construct tokens + the tutored equipment close games. Saga generates a threat board even without Kappa.</div></div>
+    <div class="card"><div class="card-label">Mox Opal Hated</div><div class="card-title">Affinity Beatdown</div><div class="card-body">Collector Ouphe or Stony Silence shuts off artifacts. Pivot: affinity creatures still get cost reduction. Thoughtcast still cantrips. Kappa still gets ward from shield counters (not activated). Your creatures are still large — attack with a 6/6 Kappa even without the activated ability generating extra shields.</div></div>
+  </div>
 </div>
 
 <!-- ENGINES -->
@@ -496,9 +508,48 @@
     <li><span class="trick-tag">Sequence</span><span><strong>Arcbound Ravager + Munitions sacrifice loop:</strong> <span class="c">Arcbound Ravager</span> sacrifices artifacts to put +1/+1 counters on itself. Sacrificing a Munitions token to Ravager (not to EE) triggers the Munitions "when this token leaves the battlefield" ability — dealing 2 damage. Ravager grows by 1 per sacrifice. You can sacrifice multiple Munitions tokens to Ravager during combat to: (1) grow Ravager, (2) deal 2 damage per Munitions sacrificed, (3) build Ravager's modular counters for transfer to another artifact creature when Ravager dies.</span></li>
     <li><span class="trick-tag">Avoid</span><span><strong>Don't EE at 0 when you have Mox Opals you still need:</strong> EE at 0 destroys all MV-0 nonland permanents — including your Mox Opals (MV 0), Memnites (MV 0), Ornithopters (MV 0), Mishra's Baubles (MV 0). This is intended in the kill sequence, but destructive if you need that Mox Opal for mana. Calculate: do I still need my MV-0 artifacts after this EE? If yes, hold EE or cast it at X=1 with one color mana (1 charge counter, destroys MV-1 permanents instead).</span></li>
   </ul>
+
+  <h2>Engine Priority Order</h2>
+  <div class="card-grid card-grid-3">
+    <div class="card"><div class="card-label">Priority 01</div><div class="card-title">Mox Opal Metalcraft</div><div class="card-body">Mox Opal + metalcraft (3+ artifacts) generates free colored mana every turn. This is your primary mana engine — before casting anything, count your artifacts and check if Opal is active. Zero-cost artifacts (Ornithopter, Memnite) plus Opal activate metalcraft on T1 before any land-based mana is needed.</div></div>
+    <div class="card"><div class="card-label">Priority 02</div><div class="card-title">Kappa Cannoneer + Shields</div><div class="card-body">Kappa gets a shield counter whenever you cast a noncreature spell. Each counter adds Ward 2. Deploy Kappa then chain cheap artifacts and cantrips to stack 2-3 shield counters immediately. A Kappa with 3 counters requires paying 6 or more to target it — effectively unkillable by targeted removal. Build shields before passing.</div></div>
+    <div class="card"><div class="card-label">Priority 03</div><div class="card-title">Urza’s Saga Clock</div><div class="card-body">Urza’s Saga Chapter I + II generate Construct tokens each upkeep. Chapter III tutors any artifact with MV 0 or 1. Deploy Saga as a backup when Kappa is unavailable — it creates a self-contained clock plus a SB fetch that can answer hate pieces (Cage) or add equipment.</div></div>
+  </div>
+  <h2>Speed Math</h2>
+  <div class="card-grid card-grid-3">
+    <div class="card"><div class="card-label">T2 Kappa</div><div class="card-title">Fastest Clock</div><div class="card-body">T1: Mox Opal + 2 zero-cost artifacts (metalcraft) + Thoughtcast (draw 2 for {U}).<br>T2: Kappa Cannoneer (4 mana from lands + Opal). Cast a cantrip → Kappa gets shield counter (Ward 2). Kappa attacks as 4/4+ with Ward 2.<br>Kappa closes in 3-4 attack steps from 20 life with growing ward protection.</div></div>
+    <div class="card"><div class="card-label">T3 Saga</div><div class="card-title">Backup Clock</div><div class="card-body">T1: Zero-cost artifacts + land.<br>T2: Urza’s Saga (Chapter I starts).<br>T3: Chapter II → 3/3 Construct. Chapter III next turn → tutor Shadowspear (trample+lifelink for all attackers) or Kappa from hand.<br>Saga provides 2 Construct tokens + a tutor by T4.</div></div>
+    <div class="card"><div class="card-label">Decision Point</div><div class="card-title">Kappa vs Saga First</div><div class="card-body"><strong>Lead Kappa:</strong> Vs creature-light decks that can’t block it. Kappa with 2 shield counters is immediately threatening.<br><br><strong>Lead Saga:</strong> Vs removal-heavy decks. Saga’s Constructs are harder to remove than Kappa and the tutor lets you answer their SB hate piece on Chapter III.</div></div>
+  </div>
 </div>
 
 <!-- ROLES -->
+<!-- CH05: LINES -->
+<div id="lines" class="section">
+  <div class="section-label">Lines &amp; Tactics</div>
+  <h1>Lines &amp;<br>Tactics</h1>
+  <div class="mantra">"Kappa’s Ward, Mox Opal metalcraft, and Saga’s tutor targets all have precision rules."</div>
+
+  <h2>Three Lines You Must Know Cold</h2>
+  <div class="card-grid card-grid-3">
+    <div class="card"><div class="card-label">Critical</div><div class="card-title">Kappa Cannoneer Ward 2 Triggers Per Shield Counter</div><div class="card-body">Kappa Cannoneer gains Ward 2 for each shield counter on it. Each shield counter creates a separate Ward 2 trigger when Kappa is targeted. Targeting Kappa with 2 shield counters = 2 Ward triggers = pay 2 twice (total 4) or the targeting spell is countered. Ward triggers happen when the target is declared, not on resolution. Counter-spells that don’t target (Cryptic Command tap mode) bypass Ward entirely.</div></div>
+    <div class="card"><div class="card-label">Critical</div><div class="card-title">Mox Opal Needs Metalcraft — Count Opal Itself</div><div class="card-body">Mox Opal requires metalcraft — 3 or more artifacts in play — to tap for mana. Opal counts itself as one of the 3. With Ornithopter + Thoughtcast + Opal = 3 artifacts = metalcraft active. If you lose one artifact (removal on Ornithopter), metalcraft breaks and Opal goes inert immediately (it’s a static ability check). Rebuild to 3 artifacts before attempting to tap Opal again.</div></div>
+    <div class="card"><div class="card-label">Critical</div><div class="card-title">Urza’s Saga Chapter III — Know Your Targets</div><div class="card-body">Urza’s Saga Chapter III tutors for a creature or artifact with MV 0 or 1 from your deck. Key targets: Shadowspear (1, trample + lifelink for attackers), Welding Jar (0, free regeneration for an artifact), Pithing Needle (1, name a planeswalker ability), Grafdigger’s Cage (1, prevents GY + library-from-other-zones). In the mirror: Saga tutors Cage to lock their GY. Know your target before Saga resolves.</div></div>
+  </div>
+
+  <h2>Timing Windows</h2>
+  <div class="edge-case">
+    <div class="edge-label">When to Hold Mana vs Spend It</div>
+    <div class="edge-body">The core timing decision for this deck: every land drop and every spell cast is a commitment. Know before your upkeep which lines require open mana this turn and which don’t. Holding mana = passing priority; spending it = committing to a plan. Make this decision in your upkeep, not in response to their action.</div>
+  </div>
+  <div class="edge-case">
+    <div class="edge-label">When to Cast at Their End Step vs Your Main Phase</div>
+    <div class="edge-body">End-step casts maximize information: you’ve seen their full turn, they’re often tapped out. Main-phase casts maximize mana availability for follow-up. Know which of your key spells gain most from end-step timing and which need main-phase mana backup.</div>
+  </div>
+
+</div>
+
+
 <div id="roles" class="section">
   <div class="section-label">Chapter 05</div>
   <h1>Role<br>Assignment</h1>
@@ -526,6 +577,21 @@
     <div class="sb-guide-row"><div class="sb-guide-name">Switch to Weapons Burst when</div><div class="sb-guide-body">They've demonstrated Solitude (bypasses Ward) or Wrath of the Skies (board clear). Now Kappa won't stick. Deploy Weapons Manufacturing as your priority and accumulate Munitions passively. Every artifact you play after Manufacturing is a 2-damage bomb they can't see coming. Hold EE until you have 4+ Munitions and they're at 8-12 life.</div></div>
     <div class="sb-guide-row"><div class="sb-guide-name">Switch to Saga Inevitability when</div><div class="sb-guide-body">Both Kappa and your EE burst have been answered. Your GY is deep, Emry is or can be in play, and the game is going long. Stop racing, start grinding. Emry recurring Bauble every turn draws a card per turn. Saga creates an ever-growing Construct. A 20/20 Construct that was tutored with Shadowspear (for lifelink + trample) isn't answered by conventional removal.</div></div>
     <div class="sb-guide-row"><div class="sb-guide-name">Never switch to pure control</div><div class="sb-guide-body">This is not a control deck. Even when holding Metallic Rebuke and Sink into Stupor, you are the aggressor. The counterspells protect your threats — they don't win the game alone. Don't get caught holding interaction while your threats sit in hand. Deploy threats first, hold counters for their answers, not vice versa.</div></div>
+  </div>
+
+  <h2>Role Mistakes to Avoid</h2>
+  <ul class="heuristic-list">
+    <li><div class="heuristic-num">01</div><div class="heuristic-body"><strong>Tapping Mox Opal before metalcraft is confirmed.</strong> Count artifacts (including Opal itself) before tapping. Losing one artifact in response breaks metalcraft and Opal fizzles if you’ve already declared tap.</div></li>
+    <li><div class="heuristic-num">02</div><div class="heuristic-body"><strong>Not stacking Kappa’s shields before passing.</strong> After deploying Kappa, cast every cheap artifact or cantrip you have to stack shield counters immediately. Passing with Kappa at 0 counters invites targeted removal for free.</div></li>
+    <li><div class="heuristic-num">03</div><div class="heuristic-body"><strong>Using Urza’s Saga as a tap land and forgetting to tutor.</strong> Saga’s Chapter III tutors an artifact with MV 0 or 1. Know your targets before Saga resolves: Shadowspear, Welding Jar, Pithing Needle, Grafdigger’s Cage (vs Living End mirror), Collector Ouphe (vs artifact mirror).</div></li>
+    <li><div class="heuristic-num">04</div><div class="heuristic-body"><strong>Walking into Whipflare or Pyroclasm with a 1-toughness artifact board.</strong> Whipflare deals 2 damage to all nonartifact creatures. Your Ornithopter (0/2) survives. Your Memnite (1/1) dies. Count toughnesses before committing your board against Boros or Prowess SB sweepers.</div></li>
+  </ul>
+  <h2>Role-Switching Signals</h2>
+  <div class="card-grid card-grid-2">
+    <div class="card"><div class="card-label">Lead With Kappa When</div><div class="card-title">Light on Removal</div><div class="card-body">Boros Energy game 1, combo decks, any deck without targeted removal. Kappa’s Ward 2 + shield counters is too expensive for them to answer profitably.</div></div>
+    <div class="card"><div class="card-label">Lead With Saga When</div><div class="card-title">Removal-Heavy Opponent</div><div class="card-body">Vs Jeskai Blink, UW Control, Dimir Frog: deploy Saga first. It creates multiple bodies and the Chapter III tutor can fetch Pithing Needle to name their key removal spell.</div></div>
+    <div class="card"><div class="card-label">Switch to Opal Plan When</div><div class="card-title">Fast Mana Available</div><div class="card-body">Three+ artifacts in opening hand including Opal: activate metalcraft ASAP and pour mana into Kappa + cantrips. Speed is your advantage when Opal is active.</div></div>
+    <div class="card"><div class="card-label">Never Slow Down When</div><div class="card-title">Kappa Has 3+ Shields</div><div class="card-body">Kappa at 3 shield counters = Ward 6+ to target it. Attack every turn. They cannot answer it profitably. Don’t wait for more shields — just attack.</div></div>
   </div>
 </div>
 
@@ -1033,6 +1099,20 @@
       <p style="font-size:14px;font-weight:300;margin-top:8px;">Ravenous Robots generates Robots alongside Emissary's Drones — both trigger off artifact spells cast, doubling token production for Kappa Cannoneer. Testing 2-of as a Claws of Gix replacement. Krang as a 1-of is appearing in March 2026 Challenge lists as a late-game refuel tool in longer games.</p>
     </div>
   </div>
+
+  <h2>Register Conditions</h2>
+  <div class="card-grid card-grid-2">
+    <div class="card"><div class="card-label">Register When</div><div class="card-title">Green Lights</div><div class="card-body">Low Collector Ouphe and Stony Silence density in expected SBs. Midrange-heavy field where your Kappa clock is faster than their answers. Combo decks present — your T2 Kappa races their T3. You’ve practiced the Saga backup plan for when Kappa is answered.</div></div>
+    <div class="card"><div class="card-label">Avoid When</div><div class="card-title">Red Lights</div><div class="card-body">Heavy Collector Ouphe meta — shuts off ALL artifact activated abilities (Opal, Kappa shields, Welding Jar regeneration). High Stony Silence builds. Multiple Whipflare/Pyroclasm decks (kills your artifact creature base). You haven’t practiced the Urza’s Saga-only game plan.</div></div>
+  </div>
+  <h2>SB Slot Priority Order</h2>
+  <ol class="heuristic-list">
+    <li><div class="heuristic-num">01</div><div class="heuristic-body"><strong>Whipflare (2 copies)</strong> — Deal 2 damage to all nonartifact creatures. Vs Boros Energy (kills Ragavan, Swiftspear, tokens), Prowess (kills all threats), Yawgmoth (kills Young Wolf, Geralf’s Messenger). Your artifact creatures survive.</div></li>
+    <li><div class="heuristic-num">02</div><div class="heuristic-body"><strong>Surgical Extraction / Tormod’s Crypt</strong> — GY hate for Goryo’s, Living End, Yawgmoth undying loops. Crypt exiles at instant speed for free. Surgical strips a card type. Goes in vs any GY-based strategy.</div></li>
+    <li><div class="heuristic-num">03</div><div class="heuristic-body"><strong>Consign to Memory (3 copies)</strong> — Counter any colorless spell OR exile target GY. Vs Eldrazi Tron (counter TKS cast trigger), Tameshi Belcher (counter Belcher), Living End (exile GY). Double utility makes it the most flexible SB card.</div></li>
+    <li><div class="heuristic-num">04</div><div class="heuristic-body"><strong>Spell Snare + Stern Scolding (flex)</strong> — Spell Snare counters any MV-2 spell (Lightning Bolt flash timing, Counterspell). Stern Scolding counters any MV-3 or less creature. Goes in vs creature-heavy decks or counter-war matchups.</div></li>
+    <li><div class="heuristic-num">05</div><div class="heuristic-body"><strong>Pithing Needle + Tormod’s Crypt (Saga tutors)</strong> — Both are MV 0-1, both fetched by Urza’s Saga Chapter III. Name specific planeswalker abilities or GY fetch triggers with Needle. Slot as needed per expected field.</div></li>
+  </ol>
 </div>
 
 <!-- PREP SHEET -->

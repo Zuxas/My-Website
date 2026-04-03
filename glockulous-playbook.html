@@ -204,7 +204,8 @@
   <button class="nav-link active" onclick="show('identity')">Overview</button>
   <button class="nav-link" onclick="show('decklist')">Decklist</button>
   <button class="nav-link" onclick="show('gameplan')">Game Flow</button>
-  <button class="nav-link" onclick="show('engines')">Engines</button><button class="nav-link" onclick="show('roles')">Roles</button>
+  <button class="nav-link" onclick="show('engines')">Engines</button>
+  <button class="nav-link" onclick="show('lines')">Lines</button><button class="nav-link" onclick="show('roles')">Roles</button>
   <button class="nav-link" onclick="show('matchups')">Matchups</button>
   <button class="nav-link" onclick="show('edges')">Edges</button>
   <button class="nav-link" onclick="show('sideboard')">Sideboard</button>
@@ -422,6 +423,16 @@
   <p><strong>Snap mulligan:</strong> Any hand where Archon can't get to the graveyard by turn 2, or any hand with 0 return mechanisms and 0 ways to draw into them.</p>
   <p><strong>The Frog keep:</strong> <span class="c">Psychic Frog</span> + <span class="c">Thoughtseize</span> + 2 lands + any spell is a legitimate keep. You play the fair midrange game: <span class="c">Thoughtseize</span> their answer on turn 1, Frog on turn 2, attack for cards. You'll draw into the combo line naturally.</p>
   <p><strong>Troll in opening hand rule:</strong> With Looting → keep and discard via Looting. Without Looting and 2 lands → swampcycle for black source. Without Looting and only 1 land → keep and swampcycle on turn 1 to find a second land. A castable Troll (6 mana) is never the plan.</p>
+  <h2>Play vs Draw</h2>
+  <div class="card-grid card-grid-2">
+    <div class="card"><div class="card-label">On the Play</div><div class="card-title">T1 Faithless Looting Sets Everything</div><div class="card-body">On the play, T1 Faithless Looting mills 2 cards and discards 2 — filling your GY with Griselbrand and the fatties you want to reanimate while finding your reanimation spell. The sooner Griselbrand is in the GY, the sooner you can reanimate it. On the play: Looting > any other T1. Never spend T1 on a land-pass if Looting is in hand.</div></div>
+    <div class="card"><div class="card-label">On the Draw</div><div class="card-title">Grief First on Draw</div><div class="card-body">On the draw, opponents have had a T1. They may have deployed a threat or GY hate. Consider T1 Grief (evoke for {B}) to strip their Endurance, Relic, or key spell from hand before you try to reanimate T2. The extra card on draw makes Grief+reanimate lines more consistent. On draw vs blue decks: always consider Grief first to clear the counter before attempting reanimation.</div></div>
+  </div>
+  <h2>When Disrupted</h2>
+  <div class="card-grid card-grid-2">
+    <div class="card"><div class="card-label">GY Exiled</div><div class="card-title">Fair Mode — Grief + Drown</div><div class="card-body">Nihil Spellbomb or Endurance exiles your GY. Pivot: Grief (3/1 menace body), Drown in the Loch (counter or destroy at instant speed), and Unearth targets that aren’t in the GY yet (small creatures). Surveil aggressively to fill GY again for a second reanimation window. Don’t scoop to GY exile — the fair plan is real.</div></div>
+    <div class="card"><div class="card-label">Griselbrand Answered</div><div class="card-title">Second Target from Hand</div><div class="card-body">Griselbrand removed: look for your second reanimation target in hand or GY. Troll of Khazad-dûm is a backup large threat. Persist creatures (Kitchen Finks) generate ETB value. Grief is a 3/1 body. Chain reanimation attempts — you have multiple fatties and multiple reanimation spells. The second reanimation is almost always available.</div></div>
+  </div>
 </div>
 
 <!-- ROLES -->
@@ -482,7 +493,45 @@
     <li><span class="trick-tag">Sequence</span><span><strong>Faithless Looting draws THEN discards — full information discard:</strong> You draw two new cards before making your discard decision. You see your entire new hand before choosing what to pitch. This means you always have perfect information on the discard — never pitch a card you just drew unless it's worse than what you're keeping. Common mistake: treating Looting like a blind discard and pitching incorrectly.</span></li>
     <li><span class="trick-tag">Avoid</span><span><strong>Don't exile GY cards for Frog flying when you still need those cards for Persist:</strong> Frog's flying cost is three GY cards — those might be the Archon, a Persist target, and your Emperor. Evaluate: is connecting with Frog this turn (drawing one card) worth permanently removing three key GY resources? Only grant flying when the combat result is more valuable than the three cards you're exiling.</span></li>
   </ul>
+  <h2>Engine Priority Order</h2>
+  <div class="card-grid card-grid-3">
+    <div class="card"><div class="card-label">Priority 01</div><div class="card-title">GY Fill + Reanimate Griselbrand</div><div class="card-body">Faithless Looting + reanimation spell is the primary engine. Looting puts Griselbrand in GY on T1, reanimate on T2. Griselbrand enters with haste (no — 7/7 lifelink, no haste). Pay 7 life: draw 7. Find your protection (Grief strips their answer). This is the engine that wins in 1-2 turns — execute as fast as possible.</div></div>
+    <div class="card"><div class="card-label">Priority 02</div><div class="card-title">Griselbrand Draw Chain</div><div class="card-body">Griselbrand in play: pay 7, draw 7. Find Animate Dead, Living End, or another protection piece. Pay 7 again (14 life spent total). Find your next threat. Each activation draws 7 — at 21 starting life, you can activate 3 times for 21 cards. Stop when you have what you need. This engine converts a resolved Griselbrand into an instant-win with enough life.</div></div>
+    <div class="card"><div class="card-label">Priority 03</div><div class="card-title">Persist Loop (Backup)</div><div class="card-body">Kitchen Finks or other Persist creatures + a sacrifice outlet = recursive life gain and ETB triggers. Finks returns with -1/-1 counter, dies again, counter goes to +1/+1 via Melira (if in build) or just loops for 2 life per cycle. This is the fair backup when Griselbrand is exiled and the GY is empty — grind with Persist until a reanimation window opens.</div></div>
+  </div>
+  <h2>Speed Math</h2>
+  <div class="card-grid card-grid-3">
+    <div class="card"><div class="card-label">T2 Griselbrand</div><div class="card-title">The Dream</div><div class="card-body">T1: Faithless Looting — discard Griselbrand + any other fatty.<br>T2: Any reanimation spell targeting Griselbrand.<br>Griselbrand enters (7/7 lifelink). Pay 7 life, draw 7. Find Grief to strip their answer. Pay 7 again. Now at 7 life but with 14 extra cards drawn. Win condition in hand.<br><strong>This T2 line is real</strong> and must be answered or they lose.</div></div>
+    <div class="card"><div class="card-label">T3 Standard</div><div class="card-title">Grief First Then Reanimate</div><div class="card-body">T1: Looting or Grief (strip their Endurance/counter).<br>T2: Continue GY fill or second discard.<br>T3: Reanimate Griselbrand or fatty.<br>This is the default vs interactive decks. The extra turn spent on Grief protection converts the coin flip (will they Endurance?) into a near-certain resolution.</div></div>
+    <div class="card"><div class="card-label">When to Rush vs Wait</div><div class="card-title">Blue Mana Check</div><div class="card-body"><strong>Rush T2:</strong> No blue sources visible. Fair deck (Boros, Prowess). Race their clock.<br><br><strong>Wait for T3:</strong> They have open blue mana. T1 Grief strips Endurance or Force of Negation from hand, THEN reanimate T3 safely. The one-turn delay is worth the protection.</div></div>
+  </div>
 </div>
+
+<!-- CH05: LINES -->
+<div id="lines" class="section">
+  <div class="section-label">Lines &amp; Tactics</div>
+  <h1>Lines &amp;<br>Tactics</h1>
+  <div class="mantra">"Reanimation timing and Griselbrand’s activations win or lose games in narrow windows."</div>
+
+  <h2>Three Lines You Must Know Cold</h2>
+  <div class="card-grid card-grid-3">
+    <div class="card"><div class="card-label">Critical</div><div class="card-title">GY Exile in Response = Fizzle</div><div class="card-body">Reanimation spells target a creature card in a graveyard. If the GY is exiled in response — Endurance flash, Nihil Spellbomb, Relic of Progenitus — the target is illegal and the reanimation spell fizzles. Griselbrand does not enter. The spell is countered by rules (illegal target). This is why your Grief must strip Endurance before you attempt reanimation vs blue decks.</div></div>
+    <div class="card"><div class="card-label">Critical</div><div class="card-title">Griselbrand Draws 7 Can Be Repeated</div><div class="card-body">Griselbrand’s ability costs 7 life and has no mana cost. You can activate it multiple times per turn as long as you have 7+ life each time. At 21 life: activate 3 times = draw 21 cards. Use this to find your combo pieces, protection, or second reanimation target. After activation 1, you have 14 life — activate again. At 14: activate again, 7 life left. Optimal: stop at 1 activation if you already have what you need.</div></div>
+    <div class="card"><div class="card-label">Critical</div><div class="card-title">Persist/Undying Counters Cancel Each Other</div><div class="card-body">If a creature has both Persist (-1/-1 counter on return) and a +1/+1 counter already on it, the -1/-1 and +1/+1 cancel and the creature returns clean without either counter. Kitchen Finks with a +1/+1 counter on it that dies: Persist triggers, returns, the counters cancel = clean Finks. This enables infinite ETB loops with sacrifice outlets: sac Finks (+1/+1 counter), Persist returns it clean, sac again.</div></div>
+  </div>
+
+  <h2>Timing Windows</h2>
+  <div class="edge-case">
+    <div class="edge-label">When to Hold Mana vs Spend It</div>
+    <div class="edge-body">The core timing decision for this deck: every land drop and every spell cast is a commitment. Know before your upkeep which lines require open mana this turn and which don’t. Holding mana = passing priority; spending it = committing to a plan. Make this decision in your upkeep, not in response to their action.</div>
+  </div>
+  <div class="edge-case">
+    <div class="edge-label">When to Cast at Their End Step vs Your Main Phase</div>
+    <div class="edge-body">End-step casts maximize information: you’ve seen their full turn, they’re often tapped out. Main-phase casts maximize mana availability for follow-up. Know which of your key spells gain most from end-step timing and which need main-phase mana backup.</div>
+  </div>
+
+</div>
+
 
 <div id="roles" class="section">
   <div class="section-label">Chapter 05</div>
@@ -520,6 +569,21 @@
       <strong>Line 2 — Counter your own <span class="c">Quantum Riddler</span> Warp trigger to bait out their countermagic.</strong> Riddler's Warp keyword copies the spell you cast as a triggered ability on the stack. Concrete line: you cast <span class="c">Persist</span> with Riddler in play and two Consigns in hand. The Warp trigger goes on the stack, creating a copy of Persist. Fire Consign at your own Warp copy trigger. Opponent now faces a decision: counter your Consign (Warp copy resolves, Archon enters off the copy — the original Persist is still on the stack and also resolves) or let Consign resolve (Warp copy is countered, but the original Persist is untouched and resolves). Either way Archon enters. They cannot counter both the original and the copy in the same window with one counterspell. This forces their interaction at the worst possible time for them.</li>
     <li><strong>Forgetting that <span class="c">Faithless Looting</span> draws before discarding.</strong> You can't "loot away" Archon to then draw it back. You draw two, keeping the best two, then discard. The discard decision is made with full information on your new hand — use this correctly and you'll always pitch the right two cards.</li>
   </ol>
+
+  <h2>Role Mistakes to Avoid</h2>
+  <ul class="heuristic-list">
+    <li><div class="heuristic-num">01</div><div class="heuristic-body"><strong>Not Griefing before reanimating vs blue decks.</strong> Open blue mana = Endurance or Force possible. T1 Grief strips the hate piece. T3 reanimate safely after stripping their answer.</div></li>
+    <li><div class="heuristic-num">02</div><div class="heuristic-body"><strong>Paying too many Griselbrand activations at low life.</strong> 3 activations = 21 life. At 20 life, 3 activations puts you at -1 — you die. Stop at 2 activations (14 life spent) and hold 6 life as a combat buffer against their remaining threats.</div></li>
+    <li><div class="heuristic-num">03</div><div class="heuristic-body"><strong>Discarding the reanimation spell instead of the fatty.</strong> Faithless Looting: discard Griselbrand, keep Animate Dead. Never discard the spell that returns your target. Double-check your discard choices under time pressure.</div></li>
+    <li><div class="heuristic-num">04</div><div class="heuristic-body"><strong>Reanimating into active Grafdigger’s Cage.</strong> Cage prevents creatures entering from GY. Answer Cage with Mystical Dispute (counter it) or remove it before the reanimate resolves. Never tap out for reanimate into visible Cage.</div></li>
+  </ul>
+  <h2>Role-Switching Signals</h2>
+  <div class="card-grid card-grid-2">
+    <div class="card"><div class="card-label">Go Fast</div><div class="card-title">No Blue, Fair Deck</div><div class="card-body">Boros, Prowess, Domain Zoo: no counterspells or instant GY exile. Race with T2 Griselbrand immediately. Every turn they draw is a turn closer to finding hate.</div></div>
+    <div class="card"><div class="card-label">Grief First</div><div class="card-title">Blue Mana Visible</div><div class="card-body">Strip Endurance or Force of Negation T1 with Grief. Reanimate T3 safely. One-turn delay converts a coin flip into a near-certain resolution.</div></div>
+    <div class="card"><div class="card-label">Fair Mode</div><div class="card-title">GY Locked</div><div class="card-body">Multiple hate pieces active. Switch to Grief+Drown value plan. Surveil to rebuild GY for the next reanimate window. Drown kills their key creature or counters their spell.</div></div>
+    <div class="card"><div class="card-label">Never Into</div><div class="card-title">Active Cage or Relic</div><div class="card-body">Grafdigger’s Cage = no reanimation. Relic of Progenitus will exile your GY end step. Answer hate pieces with Mystical Dispute or Nihil Spellbomb before attempting reanimation.</div></div>
+  </div>
 </div>
 
 <!-- MATCHUPS -->
@@ -1165,6 +1229,19 @@
       <p style="font-size:14px;font-weight:300;margin-top:8px;">Current 75 does not include Riddler or Consign main. Under evaluation: 2 Quantum Riddler + 2 Consign to Memory main as a counter-war package against control. The Riddler Warp bait line (cast Persist → Riddler copies it via Warp → Consign your Warp copy trigger → opponent must counter Consign or let Archon in) forces a no-win interaction for them. Testing begins next RC cycle.</p>
     </div>
   </div>
+  <h2>Register Conditions</h2>
+  <div class="card-grid card-grid-2">
+    <div class="card"><div class="card-label">Register When</div><div class="card-title">Green Lights</div><div class="card-body">Low Endurance density in expected SBs — flash GY exile is the hardest card to play through. Midrange-heavy field where your T2 7/7 is faster than their clock. Few Grafdigger’s Cage builds. Combo present (Storm, Living End) — your T2 Griselbrand is faster. You’ve practiced the fair-mode Grief+Drown game for when reanimate fails.</div></div>
+    <div class="card"><div class="card-label">Avoid When</div><div class="card-title">Red Lights</div><div class="card-body">Multiple Endurance builds expected — flash GY exile in response to reanimation is extremely difficult to beat. High Nihil Spellbomb density. Heavy Grafdigger’s Cage builds. You haven’t practiced the Griselbrand activation count — activating too many times at low life loses games you would have won.</div></div>
+  </div>
+  <h2>SB Slot Priority Order</h2>
+  <ol class="heuristic-list">
+    <li><div class="heuristic-num">01</div><div class="heuristic-body"><strong>Nihil Spellbomb (3 copies)</strong> — Exile target GY at instant speed + draw a card. Use offensively: exile their GY before Living End. Defensively: answers opponent GY builds. Never blank — the draw mode is always relevant.</div></li>
+    <li><div class="heuristic-num">02</div><div class="heuristic-body"><strong>Mystical Dispute (3-4 copies)</strong> — Counter any blue spell for {U}. Goes in vs Jeskai Blink, UW Control, Dimir Frog. Disputes their Force of Negation (blue), their Endurance (green — doesn’t work), their Counterspell (blue). Know what it can and can’t counter.</div></li>
+    <li><div class="heuristic-num">03</div><div class="heuristic-body"><strong>Harbinger of the Seas (2 copies)</strong> — Makes all islands legendary. Cuts their blue mana in half vs any island-heavy deck. Goes in vs Jeskai Blink, UW Control, Dimir Frog. Dead vs Boros, Prowess, ETron.</div></li>
+    <li><div class="heuristic-num">04</div><div class="heuristic-body"><strong>Drown in the Loch (2 copies)</strong> — Counter or destroy any spell/permanent if its MV ≤ cards in target GY. Goes in vs any deck with a large GY (Living End after cycling, Yawgmoth after creature loop). Grows better as the game goes long.</div></li>
+    <li><div class="heuristic-num">05</div><div class="heuristic-body"><strong>Flex (Spell Pierce, additional Grief)</strong> — Spell Pierce counters any noncreature spell for {U} early. Extra Grief strips additional hands. Adjust based on expected counter density in the room.</div></li>
+  </ol>
 </div>
 
 <div id="prep" class="section">

@@ -232,6 +232,7 @@
   <button class="nav-link" onclick="show('decklist')">Decklist</button>
   <button class="nav-link" onclick="show('gameplan')">Game Flow</button>
   <button class="nav-link" onclick="show('engines')">Engines</button>
+  <button class="nav-link" onclick="show('lines')">Lines</button>
   <button class="nav-link" onclick="show('roles')">Roles</button>
   <button class="nav-link" onclick="show('matchups')">Matchups</button>
   <button class="nav-link" onclick="show('edges')">Edges</button>
@@ -530,6 +531,17 @@
   <p><strong>Snap mulligan:</strong> Zero interaction (all lands and card draw), five or more lands, one-land hands regardless of other cards, hands with no blue source by turn 2.</p>
   <p><strong>On the draw:</strong> The extra card means you can keep hands slightly weaker on interaction because you have one more card to find it. <span class="c">Stock Up</span> hands and Scepter-less hands both become more keepable on the draw.</p>
   <p><strong>Teferi TRav in opener:</strong> A hand with Teferi TRav + 3 lands + 2 answers is almost always a snap keep. TRav on turn 3 into counter backup is the fastest and safest path to establishing control.</p>
+
+  <h2>Play vs Draw</h2>
+  <div class="card-grid card-grid-2">
+    <div class="card"><div class="card-label">On the Play</div><div class="card-title">T1 Interaction, T4 Teferi</div><div class="card-body">On the play, your T1 is interaction: Spell Snare up, Brainstorm to fix hand, or simply pass and hold mana. On the play you’re dictating tempo — pass T1 with Spell Snare mana and counter their T2 spell while developing your land base. Teferi on T3 (with mana available) locks them down before they assemble their plan.</div></div>
+    <div class="card"><div class="card-label">On the Draw</div><div class="card-title">Extra Card Finds Force of Negation</div><div class="card-body">On the draw you see 8 cards, dramatically improving Force of Negation odds. Keep looser hands on the draw if they have 3 lands + 2 interaction pieces. Force of Negation on the draw is most valuable in the early turns when you’re behind — free counter of their key spell while developing.</div></div>
+  </div>
+  <h2>When Disrupted</h2>
+  <div class="card-grid card-grid-2">
+    <div class="card"><div class="card-label">Teferi Removed</div><div class="card-title">Snapcaster Rebuys</div><div class="card-body">Teferi killed: opponents interact at instant speed again. Hold Cryptic Command mana open (tap all their creatures before their attack step). Snapcaster Mage rebuy Counterspell or Day’s Undoing for hand refill. The control plan still functions without Teferi — it just requires more mana efficiency.</div></div>
+    <div class="card"><div class="card-label">Lands Disrupted</div><div class="card-title">Brainstorm + Force Holds</div><div class="card-body">Blood Moon or Spreading Seas disrupts your mana. Pivot: Force of Negation handles the key threats for free. Brainstorm shuffles bad draws away. Keep basic lands in hand until Blood Moon is answered with Prismatic Ending or Cryptic Command bounce.</div></div>
+  </div>
 </div>
 
 <!-- ENGINES -->
@@ -634,9 +646,48 @@
     <li><span class="trick-tag">Avoid</span><span><strong>Never cast Day's Undoing if your GY has spells you want to rebuy:</strong> Day's Undoing shuffles your GY into your library. If you've got valuable spells in the yard — <span class="c">Counterspell</span>, <span class="c">Supreme Verdict</span> — Day's Undoing dilutes your library rather than letting you access them. Cast Day's Undoing when your hand is the problem (empty or low) and your GY is not a resource you're protecting.</span></li>
     <li><span class="trick-tag">Advanced</span><span><strong>Wan Shi Tong punishes every opposing fetchland:</strong> Once Wan Shi Tong is in play, each time they crack a fetchland (which says "search your library"), Wan Shi Tong's trigger fires — +1/+1 counter and draw a card. A single game in which they crack 4 fetchlands = 4 free cards and Wan Shi Tong as a 9/9 blocker. Deploy Wan Shi Tong early against fetchland-heavy opponents.</span></li>
   </ul>
+
+  <h2>Engine Priority Order</h2>
+  <div class="card-grid card-grid-3">
+    <div class="card"><div class="card-label">Priority 01</div><div class="card-title">Teferi + Sorcery Speed Lock</div><div class="card-body">Teferi, Time Raveler’s static locks opponents to sorcery speed. While Teferi is in play: deploy your sorceries (Supreme Verdict, Day’s Undoing) at instant speed during their end step. +1 bounces their permanent. Protect Teferi as your primary engine — every turn he survives is a free card advantage and tempo loss for them.</div></div>
+    <div class="card"><div class="card-label">Priority 02</div><div class="card-title">Cryptic Command Value Chain</div><div class="card-body">Cryptic Command with 2 modes (counter+draw, tap all+draw) is your primary card advantage and board control piece. Counter their best spell AND draw a card. Tap all their creatures before attacks AND draw a card. Use Snapcaster Mage to flash back Cryptic for a second set of 2 modes. The Command + Snapcaster chain generates +2 cards per cycle.</div></div>
+    <div class="card"><div class="card-label">Priority 03</div><div class="card-title">Day’s Undoing + Teferi</div><div class="card-body">Day’s Undoing: each player shuffles hand + GY into library and draws 7. THEN the turn ends. With Teferi in play: cast Undoing during their turn (Teferi gives you flash for sorceries until your next turn). You draw 7, the turn ends before they can cast anything with their new 7 cards. This is the game-winning draw refuel when your hand is empty.</div></div>
+  </div>
+  <h2>Speed Math</h2>
+  <div class="card-grid card-grid-3">
+    <div class="card"><div class="card-label">The Day’s Undoing Combo</div><div class="card-title">Full Refuel at Instant Speed</div><div class="card-body">Teferi in play (gives sorceries flash until your next turn). Their turn: cast Day’s Undoing at instant speed. Both players shuffle and draw 7. End step occurs (Day’s Undoing ends the turn). They have 7 new cards but no mana. You have 7 new cards going into your untap. This is a complete hand refuel with no opportunity for them to use their new hand.</div></div>
+    <div class="card"><div class="card-label">Supreme Verdict Setup</div><div class="card-title">Sweeper at Instant Speed</div><div class="card-body">Teferi in play. Their attack step: wait until they declare attackers. Cast Supreme Verdict at instant speed (sorcery, but Teferi gives flash) before damage. Sweeper resolves, all creatures die including your own (but you have no creatures). This timing denies them combat damage AND sweeps at instant speed. Standard UW Control sequencing.</div></div>
+    <div class="card"><div class="card-label">Clock Speed</div><div class="card-title">How Fast Do You Win?</div><div class="card-body">Celestial Colonnade (3/4 flying creature land): attacks for 3 every turn. From 20 life: 7 attack steps. That’s your default clock. With Day’s Undoing refueling, you can protect Colonnade for 7 attacks. Accelerate with Teferi ultimate: −10 creates 2/2 Wizard tokens for every instant/sorcery in your GY.</div></div>
+  </div>
 </div>
 
 <!-- ROLES -->
+<!-- CH05: LINES -->
+<div id="lines" class="section">
+  <div class="section-label">Lines &amp; Tactics</div>
+  <h1>Lines &amp;<br>Tactics</h1>
+  <div class="mantra">"Force of Negation timing and Cryptic Command modes are where pilots give away percentage points."</div>
+
+  <h2>Three Lines You Must Know Cold</h2>
+  <div class="card-grid card-grid-3">
+    <div class="card"><div class="card-label">Critical</div><div class="card-title">Force of Negation is NOT Free On Your Turn</div><div class="card-body">Force of Negation can only be cast for its alternate cost (exile a blue card) if it is NOT your turn. On your own turn, you must pay {1}{U}{U}. This is the most common rules error with Force. If you’re in your own main phase or combat, Force costs full mana. This means you cannot Force your opponent’s response to your own Wrath of God on your turn — you’d need to pay {1}{U}{U}. Hold Force for their turn.</div></div>
+    <div class="card"><div class="card-label">Critical</div><div class="card-title">Teferi +1 Lets You Cast Spells at Flash Speed</div><div class="card-body">Teferi, Time Raveler’s +1 says "until your next turn, you may cast sorcery spells as though they had flash." This lets you cast Supreme Verdict, Day’s Undoing, and other sorceries at instant speed until your next turn. Cast Verdict during their end step after they’ve committed their board. Cast Day’s Undoing during their upkeep when they have no mana. The +1 also bounces a noncreature, nonland permanent at +1 resolution.</div></div>
+    <div class="card"><div class="card-label">Critical</div><div class="card-title">Cryptic Command: Use the Return Mode</div><div class="card-body">Cryptic Command’s 4 modes: counter spell, return permanent, tap all creatures, draw a card. The return mode is the most underused: Counter + Return bounces your own Snapcaster Mage to rebuy a spell AND counters their response in one Cryptic. Tap All + Return resets their board AND bounces a threat. Return your own Vendilion Clique mid-combat to get another ETB (see their hand again). Know all 6 two-mode combinations before sitting down.</div></div>
+  </div>
+
+  <h2>Timing Windows</h2>
+  <div class="edge-case">
+    <div class="edge-label">When to Hold Mana vs Spend It</div>
+    <div class="edge-body">The core timing decision for this deck: every land drop and every spell cast is a commitment. Know before your upkeep which lines require open mana this turn and which don’t. Holding mana = passing priority; spending it = committing to a plan. Make this decision in your upkeep, not in response to their action.</div>
+  </div>
+  <div class="edge-case">
+    <div class="edge-label">When to Cast at Their End Step vs Your Main Phase</div>
+    <div class="edge-body">End-step casts maximize information: you’ve seen their full turn, they’re often tapped out. Main-phase casts maximize mana availability for follow-up. Know which of your key spells gain most from end-step timing and which need main-phase mana backup.</div>
+  </div>
+
+</div>
+
+
 <div id="roles" class="section">
   <div class="section-label">Chapter 05</div>
   <h1>Role Assignment</h1>
@@ -668,6 +719,14 @@
     <li><strong>Deploying Teferi Hero into open mana without counter backup.</strong> A Teferi Hero that gets immediately Spell Pierced or Force of Negated with no backup is a 5-mana do-nothing. Only deploy Teferi Hero when you can protect him — hold <span class="c">Force of Negation</span> or <span class="c">Counterspell</span> in hand when you cast him.</li>
     <li><strong>Breaking the Scepter lock with your own Wrath of the Skies.</strong> <span class="c">Wrath of the Skies</span> destroys artifacts including your own <span class="c">Isochron Scepter</span>. Once the Scepter lock is active, switch to a non-Wrath route to close — <span class="c">Teferi, Hero of Dominaria</span> or <span class="c">Wan Shi Tong</span>. Only fire Wrath before the lock is established or after you're ready to win without it.</li>
   </ol>
+
+  <h2>Role-Switching Signals</h2>
+  <div class="card-grid card-grid-2">
+    <div class="card"><div class="card-label">Switch to Tempo When</div><div class="card-title">Scepter Lock Is Online</div><div class="card-body">Isochron Scepter with Orim's Chant imprinted and Teferi, Time Raveler in play: stop drawing and passing. Deploy your win condition — Teferi Hero, Jace, Wan Shi Tong. Tap Scepter each upkeep to prevent their main phase. The lock is established, now close the game before they draw Force of Vigor.</div></div>
+    <div class="card"><div class="card-label">Stay on Control When</div><div class="card-title">They Have Answers in Hand</div><div class="card-body">You know they have Force of Negation or Consign to Memory from a Thoughtseize or scry. Hold Teferi Hero until they tap out on their turn. Use Teferi Time Raveler +1 to set up sorcery-speed Wrath timing. Don't walk your win condition into open mana — one free counter ends the game.</div></div>
+    <div class="card"><div class="card-label">Never Deploy Threats When</div><div class="card-title">Their Hand Is Unknown</div><div class="card-body">You've had no information on their hand since T1. They've been drawing and holding. Scry before deploying Teferi Hero — a Day's Undoing or cantrip first to see what's coming. Deploying a 5-mana threat into a completely unknown hand is the most common loss condition for UW Control pilots.</div></div>
+    <div class="card"><div class="card-label">Switch to Prison When</div><div class="card-title">Combo Deck Across the Table</div><div class="card-body">Facing Storm, Living End, Neoform, Amulet Titan: abandon the draw-go plan. Lead Chalice of the Void at 0 (stops cascade) or Vexing Bauble early. Deploy Orim's Chant each turn. Force every spell they try to resolve. Tap Scepter on their upkeep. The prison is your gameplan vs combo — not the control gameplan.</div></div>
+  </div>
 </div>
 
 <!-- MATCHUPS -->
@@ -1408,6 +1467,20 @@
       <div class="card-body">Subtlety ({3}{U}{U}, pitch blue card, evoke: return target noncreature nonland spell to owner's hand) delays key spells and provides a 3/3 flash body. Testing it when combo is light and ETB denial matters less than hand disruption. Lórien Revealed ({3}{U}{U}: draw 3, can be cycled as an Island) is pure card selection — testing as a 1-of over second <span class="c">Tune the Narrative</span> for additional non-redundant card draw.</div>
     </div>
   </div>
+
+  <h2>Register Conditions</h2>
+  <div class="card-grid card-grid-2">
+    <div class="card"><div class="card-label">Register When</div><div class="card-title">Green Lights</div><div class="card-body">Fair interactive field where Supreme Verdict and Teferi invalidate their gameplan. Combo decks present (Storm, Living End) — Force of Negation + Day’s Undoing generate inevitability. Low threat density — Celestial Colonnade clock reaches lethal without racing pressure. You’ve practiced the Day’s Undoing + Teferi timing for all expected matchups.</div></div>
+    <div class="card"><div class="card-label">Avoid When</div><div class="card-title">Red Lights</div><div class="card-body">Heavy Blood Moon field — your nonbasic lands become Mountains, breaking blue mana. Multiple Amulet Titan builds (T3 kill is faster than your Teferi on T3). Very fast aggro field where 5-toughness threats come down T1-2 and Supreme Verdict is too slow. You haven’t practiced the Cryptic Command mode selection for specific matchups.</div></div>
+  </div>
+  <h2>SB Slot Priority Order</h2>
+  <ol class="heuristic-list">
+    <li><div class="heuristic-num">01</div><div class="heuristic-body"><strong>Wrath of the Skies (2 copies)</strong> — Exile all energy creatures. Full power vs Boros Energy. Goes in vs any energy-based strategy. Pairs with Celestial Purge for redundant removal.</div></li>
+    <li><div class="heuristic-num">02</div><div class="heuristic-body"><strong>Celestial Purge (2 copies)</strong> — Exile target black or red permanent for {1}{W}. Hits Ragavan, Phlage, Psychic Frog, Murktide Regent. Goes in vs any black or red-based threat deck.</div></li>
+    <li><div class="heuristic-num">03</div><div class="heuristic-body"><strong>Rest in Peace (2 copies)</strong> — Exile all GY cards as they go there. Goes in vs Living End, Goryo’s, Yawgmoth, any GY combo. Also blanks Snapcaster Mage for the mirror.</div></li>
+    <li><div class="heuristic-num">04</div><div class="heuristic-body"><strong>Disruptor Flute (2 copies)</strong> — Name a card; spells with that name can’t be cast. Goes in vs combo (name Grapeshot, name Living End, name Violent Outburst). Replaces Meddling Mage for the control shell.</div></li>
+    <li><div class="heuristic-num">05</div><div class="heuristic-body"><strong>Lórien Revealed + Day’s Undoing extra (flex)</strong> — Lórien Revealed cycles through the deck for Islands or draws 3 in a long game. Extra Undoing for matchups where card refuel is critical. Adjust based on expected game length.</div></li>
+  </ol>
 </div>
 
 <!-- PREP -->

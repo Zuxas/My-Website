@@ -189,6 +189,7 @@
   <button class="nav-link" onclick="show('decklist')">Decklist</button>
   <button class="nav-link" onclick="show('gameplan')">Game Flow</button>
   <button class="nav-link" onclick="show('engines')">Engines</button>
+  <button class="nav-link" onclick="show('lines')">Lines</button>
   <button class="nav-link" onclick="show('roles')">Roles</button>
   <button class="nav-link" onclick="show('matchups')">Matchups</button>
   <button class="nav-link" onclick="show('edges')">Edges</button>
@@ -443,6 +444,16 @@
       <div class="card-body">If you haven't killed by turn 4, the opponent has set up. Assume: (a) they've found their hate pieces, (b) creature decks have 8+ damage in, (c) combo opponents are also ready to win. Use <span class="c">Orim's Chant</span> on their upkeep if needed to steal the extra turn. Valakut Awakening on turn 3 to cycle bad cards can enable a turn 4 kill instead.</div>
     </div>
   </div>
+  <h2>Play vs Draw</h2>
+  <div class="card-grid card-grid-2">
+    <div class="card"><div class="card-label">On the Play</div><div class="card-title">T1 Ruby Medallion Is Everything</div><div class="card-body">On the play, T1 Ruby Medallion dramatically accelerates your T2-3 kill. Every subsequent red spell costs 1 less. Grapeshot with Medallion in play costs {R} instead of {1}{R}. Past in Flames costs {2}{R} instead of {3}{R}. Mulligan aggressively for T1 Medallion hands on the play — a hand without Medallion or a cantrip to find it is playing a slower version of the deck.</div></div>
+    <div class="card"><div class="card-label">On the Draw</div><div class="card-title">Extra Card Finds Missing Piece</div><div class="card-body">On the draw you see 8 cards, improving Medallion + kill spell odds. Keep looser hands on the draw — a cantrip-heavy hand without Medallion can keep on draw since you’ll see more cards. Against aggro on the draw: T1 Medallion is still correct over any other play. Against combo mirrors on the draw: Orim’s Chant hands (stop their combo turn) are more valuable since they’re a turn ahead.</div></div>
+  </div>
+  <h2>When Disrupted</h2>
+  <div class="card-grid card-grid-2">
+    <div class="card"><div class="card-label">Medallion Destroyed</div><div class="card-title">Second Medallion or Rebuild</div><div class="card-body">Medallion removed: assess your mana. Can you still reach kill mana without the discount? If you have a second Medallion in hand, deploy it immediately. If not, your kill turn requires 1 additional mana per spell — count whether you can still chain enough spells at full cost. If not, develop another cantrip turn to find the second Medallion or enough rituals.</div></div>
+    <div class="card"><div class="card-label">Grapeshot Countered</div><div class="card-title">Empty the Warrens Backup</div><div class="card-body">Grapeshot countered: if your storm count was 8+, Empty the Warrens makes 16+ Goblin tokens. Attack on their empty board for lethal next turn. This backup plan requires no additional cards — just a second win condition in the SB. Post-board vs Leyline of Sanctity (stops Grapeshot targeting face), Empty the Warrens becomes the PRIMARY plan since tokens attack, not target.</div></div>
+  </div>
 </div>
 
 <!-- CH04: ENGINES -->
@@ -532,9 +543,46 @@
     <li><strong>Shatterskull Smashing vs hate bears:</strong> Shatterskull Smashing (MDFC) kills Drannith Magistrate, Ethersworn Canonist, Thalia, and Deafening Silence creatures as a sorcery. Cast it before going off — this is an exception where spending a card pre-combo is correct because the hate piece costs you the game otherwise.</li>
     <li><strong>Valakut Awakening cycle:</strong> Cast Valakut Awakening, put all your excess lands or redundant spells on the bottom, draw that many +1. This is the Brainstorm of Ruby Storm — converts a bad hand into a good one mid-setup, and is especially powerful in post-board games where opponents have stripped your hand with discard.</li>
   </ul>
+  <h2>Engine Priority Order</h2>
+  <div class="card-grid card-grid-3">
+    <div class="card"><div class="card-label">Priority 01</div><div class="card-title">Ruby Medallion + Rituals</div><div class="card-body">Ruby Medallion reducing costs + Desperate Ritual/Pyretic Ritual generating mana = the storm engine. Every ritual at full cost generates {R}{R} from {R}. With Medallion, Pyretic costs {R} and generates {R}{R}{R} = net +2 mana. Chain rituals to build storm count. This engine is the foundation: Medallion first, then chain.</div></div>
+    <div class="card"><div class="card-label">Priority 02</div><div class="card-title">Past in Flames Flashback Chain</div><div class="card-body">Past in Flames gives everything in your GY flashback until end of turn. After PiF resolves, flash back every ritual in your GY for massive mana generation and storm count building. Flash back cantrips for card selection. Flash back a second PiF if available. This engine takes a 3-5 storm count to a 15-20 storm count in one turn.</div></div>
+    <div class="card"><div class="card-label">Priority 03</div><div class="card-title">Grapeshot or Empty the Warrens</div><div class="card-body">Grapeshot closes when storm count = enough damage. Empty the Warrens closes when facing Leyline of Sanctity or when they’re at 20 life and you can’t reach lethal storm. Calculate before casting: Grapeshot storm count × 1 damage per copy. If that’s not lethal, switch to Empty the Warrens and win on the attack next turn with 16+ tokens.</div></div>
+  </div>
+  <h2>Speed Math</h2>
+  <div class="card-grid card-grid-3">
+    <div class="card"><div class="card-label">T2 Kill</div><div class="card-title">Medallion T1 + Chain T2</div><div class="card-body">T1: Ruby Medallion ({1}{R}, now in play).<br>T2: Pyretic Ritual ({R} with Medallion → +{R}{R}{R}). Desperate Ritual ({R} → +{R}{R}{R}). Seething Song ({2}{R} with Medallion = {1}{R} → +{R}{R}{R}{R}{R}). Chain cantrips. PiF ({2}{R} with Medallion). Flash back rituals. Grapeshot when storm = lethal.<br><strong>Requires:</strong> Medallion + multiple rituals + kill spell in opening 7.</div></div>
+    <div class="card"><div class="card-label">T3 Standard</div><div class="card-title">Default Kill Turn</div><div class="card-body">T1: Medallion or cantrip.<br>T2: Deploy Medallion (if not T1) + ritual chain begins.<br>T3: PiF + flashback chain + Grapeshot at storm 10+.<br>At 20 life: storm 10 = 10 Grapeshot copies = 10 damage. Need storm 20+ for a clean kill from 20.<br>With 2 Medallions: rituals cost 0 or {R}, chain becomes infinite with enough spells in GY.</div></div>
+    <div class="card"><div class="card-label">T2 vs T3 Decision</div><div class="card-title">When to Force It</div><div class="card-body"><strong>Force T2:</strong> Facing Living End, Amulet, Neoform — all T2-3 combo decks. Race them. Any kill on T2 beats their T3.<br><br><strong>Hold for T3:</strong> They have open blue mana. Pass T2 with Orim’s Chant ready. Cast Chant on their upkeep (they can’t cast spells this turn), then chain freely T3 with no interaction possible.</div></div>
+  </div>
 </div>
 
-<!-- CH05: ROLES -->
+<!-- CH05: LINES -->
+<div id="lines" class="section">
+  <div class="section-label">Lines &amp; Tactics</div>
+  <h1>Lines &amp;<br>Tactics</h1>
+  <div class="mantra">"Medallion math and Past in Flames chains are calculated before you cast the first spell."</div>
+
+  <h2>Three Lines You Must Know Cold</h2>
+  <div class="card-grid card-grid-3">
+    <div class="card"><div class="card-label">Critical</div><div class="card-title">Ruby Medallion Reduces Generic Mana Only</div><div class="card-body">Ruby Medallion reduces the cost of red spells you cast by {1}. It reduces GENERIC mana only — not colored pip requirements. Lightning Bolt costs {R}: Medallion doesn’t reduce it (no generic). Grapeshot costs {1}{R}: Medallion reduces it to {R}. Past in Flames costs {3}{R}: Medallion reduces to {2}{R}. With 2 Medallions, Past in Flames costs {1}{R}. Calculate mana requirements before starting your chain or you’ll strand mid-combo.</div></div>
+    <div class="card"><div class="card-label">Critical</div><div class="card-title">Past in Flames Gives Itself Flashback</div><div class="card-body">Past in Flames gives all instants and sorceries in your graveyard flashback until end of turn — including itself. After PiF resolves, it goes to your GY. You can then flash it back again from the GY (paying {3}{R} or {2}{R} with Medallion) to give everything in GY flashback again. This means a single PiF can generate multiple copies of your storm pieces if you have the mana. The key: PiF’s flashback is granted by the RESOLVED PiF — PiF in GY before casting gets flashback from a newly resolved PiF.</div></div>
+    <div class="card"><div class="card-label">Critical</div><div class="card-title">Storm Counts Spells Cast This Turn, Not Copies</div><div class="card-body">Grapeshot’s storm copies one copy for each spell cast before it this turn. The storm copies themselves are NOT spells cast — they’re copies put directly on the stack. Storm count: every ritual, every Medallion discount trigger, every cantrip, every PiF cast. Grapeshot itself counts as 1 spell. So storm of 10 = 9 previous spells + Grapeshot = 10 copies total. Count carefully before casting Grapeshot to know if it’s lethal.</div></div>
+  </div>
+
+  <h2>Timing Windows</h2>
+  <div class="edge-case">
+    <div class="edge-label">When to Hold Mana vs Spend It</div>
+    <div class="edge-body">The core timing decision for this deck: every land drop and every spell cast is a commitment. Know before your upkeep which lines require open mana this turn and which don’t. Holding mana = passing priority; spending it = committing to a plan. Make this decision in your upkeep, not in response to their action.</div>
+  </div>
+  <div class="edge-case">
+    <div class="edge-label">When to Cast at Their End Step vs Your Main Phase</div>
+    <div class="edge-body">End-step casts maximize information: you’ve seen their full turn, they’re often tapped out. Main-phase casts maximize mana availability for follow-up. Know which of your key spells gain most from end-step timing and which need main-phase mana backup.</div>
+  </div>
+
+</div>
+
+<!-- CH06: ROLES -->
 <div id="roles" class="section">
   <div class="section-label">Chapter 05</div>
   <h1>Role<br>Assignment</h1>
@@ -563,6 +611,20 @@
     <div class="sb-guide-row"><div class="sb-guide-name">Go Now</div><div class="sb-guide-body">Opponent tapped out for a permanent. Opponent has fewer than 2 cards in hand. You have a clean kill line (counted the mana). You're on turn 3 and opponent has no visible hate. You're racing a combo deck that wins on turn 4. These are your unambiguous green lights.</div></div>
     <div class="sb-guide-row"><div class="sb-guide-name">Wait One Turn</div><div class="sb-guide-body">Opponent has 2+ mana open and a full hand. You're missing one key piece (second ritual, Manamorphose to bridge mana). You have <span class="c">Reckless Impulse</span> and can use it now to see 2 more cards that might complete the line. Valakut Awakening can cycle away dead cards to find the missing piece.</div></div>
     <div class="sb-guide-row"><div class="sb-guide-name">Never Go</div><div class="sb-guide-body">When you can't count a line to winning. Generating 12 mana and having no Grapeshot or Wish doesn't win games. The discipline of aborting a combo turn mid-way (by casting Reckless Impulse rather than your last ritual) is what separates experienced Storm players from pilots who go out on 15 storm.</div></div>
+  </div>
+  <h2>Role Mistakes to Avoid</h2>
+  <ul class="heuristic-list">
+    <li><div class="heuristic-num">01</div><div class="heuristic-body"><strong>Not counting storm before casting Grapeshot.</strong> Count every spell cast this turn before casting Grapeshot. Chain: Medallion, Ritual × 3, Cantrip × 2, PiF, flashback Ritual × 3, flashback Cantrip = 11 spells + Grapeshot = 12 copies = 12 damage. Do the math in advance — not after Grapeshot resolves.</div></li>
+    <li><div class="heuristic-num">02</div><div class="heuristic-body"><strong>Casting PiF before building enough storm in the GY.</strong> PiF only flashes back spells already in your GY. If you cast PiF immediately with 2 spells in GY, you get 2 flashbacks. Chain more rituals/cantrips before casting PiF to maximize the flashback pool. Optimal: 5+ spells in GY before PiF.</div></li>
+    <li><div class="heuristic-num">03</div><div class="heuristic-body"><strong>Using Orim’s Chant on your turn when it needs to be their upkeep.</strong> Orim’s Chant is most powerful at the BEGINNING OF THEIR UPKEEP — they can’t cast spells for the whole turn. Casting on their end step only stops their end-step instant play. Casting during your own turn does nothing for the combo protection you need.</div></li>
+    <li><div class="heuristic-num">04</div><div class="heuristic-body"><strong>Forgetting Empty the Warrens vs Leyline of Sanctity.</strong> Leyline prevents opponents from being targeted. Grapeshot targets them — it’s blocked. Empty the Warrens doesn’t target — it makes tokens. The tokens attack. Post-board vs Leyline: always pivot to Empty as the primary win condition. Never jam Grapeshot into a Leyline.</div></li>
+  </ul>
+  <h2>Role-Switching Signals</h2>
+  <div class="card-grid card-grid-2">
+    <div class="card"><div class="card-label">Force T2-3 Kill When</div><div class="card-title">No Blue Mana Visible</div><div class="card-body">Their opening land is not blue. They’ve spent their mana on T1-2. They’re on a fair deck with no stack interaction. Execute the combo as fast as possible. Every turn you wait gives them a draw step to find Force of Negation or Orim’s Chant.</div></div>
+    <div class="card"><div class="card-label">Orim’s Chant First When</div><div class="card-title">Blue Mana Visible</div><div class="card-body">Any open blue mana = potential Force of Negation. Cast Orim’s Chant at the beginning of their upkeep — they can’t cast spells this turn. Then combo freely on your turn. Chant is the strongest protection piece in the deck and costs 0 tempo when used optimally.</div></div>
+    <div class="card"><div class="card-label">Switch to Empty the Warrens When</div><div class="card-title">Leyline or Low Storm Count</div><div class="card-body">Leyline of Sanctity in play: Grapeshot can’t target them. Switch to Empty. Storm count will be 14+ anyway — 28 Goblin tokens is a 2-swing kill at 20 life. Also switch when your storm count is high but Grapeshot math doesn’t reach lethal.</div></div>
+    <div class="card"><div class="card-label">Never Commit Without Counting</div><div class="card-title">Pre-Chain Calculation</div><div class="card-body">Before casting the first ritual in the chain, map your full line: available mana, available GY flashbacks, expected storm count, kill calculation. Committing to the chain without a kill line is a game loss. Calculate — then execute.</div></div>
   </div>
 </div>
 
@@ -926,6 +988,19 @@
       <div class="tuning-down">−1 Galvanic Relay (too slow vs aggro)</div>
     </div>
   </div>
+  <h2>Register Conditions</h2>
+  <div class="card-grid card-grid-2">
+    <div class="card"><div class="card-label">Register When</div><div class="card-title">Green Lights</div><div class="card-body">Low Force of Negation density in expected sideboards. Midrange-heavy field — no deck can interact with a T2-3 kill at sorcery speed. Orim’s Chant is legal — the event uses proper tournament rules. You’ve practiced counting storm under pressure. You know the Leyline backup (Empty the Warrens) cold.</div></div>
+    <div class="card"><div class="card-label">Avoid When</div><div class="card-title">Red Lights</div><div class="card-body">Heavy Force of Negation + Orim’s Chant mirror (Jeskai and UW builds run Chant post-board to stop you). Damping Sphere builds dominate the field (limits to 1 mana per land + costs 2 more per duplicate spell type). You haven’t tested the Empty the Warrens backup plan vs Leyline decks.</div></div>
+  </div>
+  <h2>SB Slot Priority Order</h2>
+  <ol class="heuristic-list">
+    <li><div class="heuristic-num">01</div><div class="heuristic-body"><strong>Orim’s Chant (4 copies)</strong> — Prevents target player from casting spells this turn. Cast at their upkeep for a complete blank turn. Counters Force of Negation, Endurance, and any instant-speed interaction. Goes in vs any interactive deck. Never cut below 4.</div></li>
+    <li><div class="heuristic-num">02</div><div class="heuristic-body"><strong>Prismatic Ending (2-3 copies)</strong> — Destroy/exile any permanent with MV ≤ colors spent. Vs Damping Sphere (MV 2, costs 2 colors). Goes in vs any hate piece that costs 2 or less. Answers Chalice, Sphere, Blood Moon.</div></li>
+    <li><div class="heuristic-num">03</div><div class="heuristic-body"><strong>Empty the Warrens (2 copies)</strong> — The Leyline of Sanctity backup. Storm 14+ = 28 Goblin tokens = 2-swing kill. Goes in vs any deck running Leyline or when Grapeshot is countered and you need a backup win condition.</div></li>
+    <li><div class="heuristic-num">04</div><div class="heuristic-body"><strong>Brotherhood’s End + Abrade (flex)</strong> — Brotherhood’s End sweeps token boards (Boros Energy tokens, Empty the Warrens tokens in mirror). Abrade destroys Kappa Cannoneer or any artifact threat. Slot based on expected field composition.</div></li>
+    <li><div class="heuristic-num">05</div><div class="heuristic-body"><strong>Into the Flood Maw + Galvanic Relay (situational)</strong> — Flood Maw bounces a permanent and draws a card vs control. Galvanic Relay is an uncounterable future card draw (suspend, exiled from stack on resolution). Goes in vs heavy counterspell builds where you need resilience.</div></li>
+  </ol>
 </div>
 
 <!-- CH10: PREP SHEET -->

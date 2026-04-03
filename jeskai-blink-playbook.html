@@ -218,7 +218,8 @@
   <button class="nav-link active" onclick="show('identity')">Overview</button>
   <button class="nav-link" onclick="show('decklist')">Decklist</button>
   <button class="nav-link" onclick="show('gameplan')">Game Flow</button>
-  <button class="nav-link" onclick="show('engines')">Engines</button><button class="nav-link" onclick="show('roles')">Roles</button>
+  <button class="nav-link" onclick="show('engines')">Engines</button>
+  <button class="nav-link" onclick="show('lines')">Lines</button><button class="nav-link" onclick="show('roles')">Roles</button>
   <button class="nav-link" onclick="show('matchups')">Matchups</button>
   <button class="nav-link" onclick="show('sideboard')">Sideboard</button>
   <button class="nav-link" onclick="show('edges')">Edges</button>
@@ -438,6 +439,17 @@
     <li><span class="if-label">Priority 4</span><span><strong>Hold Consign for the right target.</strong> Know what you're protecting against before the game starts. Make the Consign plan during deck selection, not at the table.</span></li>
     <li><span class="if-label">Priority 5</span><span><strong>Engines over interaction once ahead.</strong> Once you've stabilized, deploy Riddler and Shepherd over holding mana for interaction. The card advantage they generate is your win condition, not your removal suite.</span></li>
   </ul>
+
+  <h2>Play vs Draw</h2>
+  <div class="card-grid card-grid-2">
+    <div class="card"><div class="card-label">On the Play</div><div class="card-title">T2 Solitude on Their Threat</div><div class="card-body">On the play, T2 evoke Solitude to exile their key T1 threat (Ragavan, Thoughtseize target, Swiftspear) is your highest-value early play. Evoke costs only a white card from hand. On the play: always have a Solitude target plan before T2. Follow with Ephemerate in your hand to keep Solitude as a 5/5 and generate a second exile ETB.</div></div>
+    <div class="card"><div class="card-label">On the Draw</div><div class="card-title">Hold Ephemerate for Response</div><div class="card-body">On the draw, hold Ephemerate mana open through their T2 to respond to whatever they deploy. The extra card on draw often provides the second ETB piece you need. Against aggro on the draw: Solitude T1 (if you can pay the evoke cost) is the priority to not fall behind on board.</div></div>
+  </div>
+  <h2>When Disrupted</h2>
+  <div class="card-grid card-grid-2">
+    <div class="card"><div class="card-label">Teferi Removed</div><div class="card-title">Switch to Solitude Tempo</div><div class="card-body">Teferi killed: opponents can now interact at instant speed again. Shift to reactive mode: hold Solitude + Ephemerate mana, deploy on their turn when they tap out. Without Teferi’s sorcery-speed lock, you play a more traditional draw-go game — your flash pieces still generate value.</div></div>
+    <div class="card"><div class="card-label">Key Creatures Answered</div><div class="card-title">Rebuild with Teferi</div><div class="card-body">Solitude/Restoration Angel removed: rebuild via Teferi’s -3 (return their threat to library) and +1 (draw + sorcery flash). Teferi generates value without creatures in play. A resolved Teferi with no creatures is still a slow clock via loyalty counters and ultimate.</div></div>
+  </div>
 </div>
 
 <!-- ── ROLES ── -->
@@ -498,7 +510,46 @@
     <li><span class="trick-tag">Combat</span><span><strong>Phelia on their creature during attacks denies their combat trigger:</strong> Phelia's attack trigger can exile opponent permanents too. If they attack with a creature that has a combat damage trigger (Ragavan, DRC), exile it with Phelia before it deals damage. It returns at end of turn — they lose the combat step entirely and the trigger never fires.</span></li>
     <li><span class="trick-tag">Sequence</span><span><strong>White Orchid Phantom target priority:</strong> Against multicolor decks, destroy their most painful nonbasic: their only source of a specific color, or the land that enables their combo. Against Amulet Titan: Simic Growth Chamber (they lose a bounce land). Against Glockulous: Watery Grave (removes black source, stranding Persist). Against mirrors: their Hallowed Fountain (reduces their ability to hold Counterspell mana).</span></li>
   </ul>
+
+  <h2>Engine Priority Order</h2>
+  <div class="card-grid card-grid-3">
+    <div class="card"><div class="card-label">Priority 01</div><div class="card-title">Evoke + Ephemerate Loop</div><div class="card-body">Evoke Solitude/Fury + Ephemerate (save creature before sacrifice trigger) = the primary engine. This generates a free exile ETB, keeps a 5/5, and Ephemerate rebounds for a second blink next upkeep. Two exile effects from one evoke + one Ephemerate. Deploy every time you have both pieces and a relevant target.</div></div>
+    <div class="card"><div class="card-label">Priority 02</div><div class="card-title">Teferi Sorcery Lock</div><div class="card-body">Teferi, Time Raveler on the board locks opponents to sorcery speed. Every spell you cast is immune to instant-speed interaction. +1 draws a card and bounces a noncreature. -3 puts their threat on top of their library. Teferi is simultaneously protection, removal, and a card engine — protect him once he’s resolved.</div></div>
+    <div class="card"><div class="card-label">Priority 03</div><div class="card-title">Restoration Angel / Quantum Riddler</div><div class="card-body">Restoration Angel blinks any non-Angel creature you control at instant speed, triggering ETBs. Quantum Riddler generates card draw on each blink. These are your value engines in longer games where the evoke combo isn’t available. Chain Angel + blink targets to generate multiple ETBs per turn.</div></div>
+  </div>
+  <h2>Speed Math</h2>
+  <div class="card-grid card-grid-3">
+    <div class="card"><div class="card-label">Evoke + Ephemerate</div><div class="card-title">T2-3 Tempo Swing</div><div class="card-body">T2: Evoke Solitude (exile white card) → ETB exiles their key creature. In response to sacrifice trigger: Ephemerate ({W}) → Solitude exiles, returns at end of step as a 5/5. Rebound next upkeep: Ephemerate blinks Solitude again → second exile ETB.<br>Net: 2 exile effects + a 5/5 for the cost of a white card + {W}.</div></div>
+    <div class="card"><div class="card-label">Teferi Clock</div><div class="card-title">The Grind Finisher</div><div class="card-body">Teferi +1 each turn: draw a card. -3 when they develop a threat: put it on top of their library (they re-draw it, gain no tempo). Teferi’s ultimate (−10): for each instant/sorcery in your GY, create a 2/2 Wizard. A Teferi that ultimates wins the game immediately via Wizard tokens.<br>Teferi can also win just by bouncing their threats repeatedly while you draw ahead.</div></div>
+    <div class="card"><div class="card-label">When to Apply Clock</div><div class="card-title">Hold vs Deploy Teferi</div><div class="card-body"><strong>Deploy immediately:</strong> Vs aggro or when they have no counterspells visible. Teferi at sorcery speed, protected by open Solitude mana.<br><br><strong>Hold:</strong> Vs heavy counter decks. Wait until they tap out for their own spell, then deploy Teferi into their empty mana. Counter their counter with Consign to Memory.</div></div>
+  </div>
 </div>
+
+<!-- CH05: LINES -->
+<div id="lines" class="section">
+  <div class="section-label">Lines &amp; Tactics</div>
+  <h1>Lines &amp;<br>Tactics</h1>
+  <div class="mantra">"Evoke + Ephemerate timing and Teferi’s sorcery-speed lock are the two rules that close games."</div>
+
+  <h2>Three Lines You Must Know Cold</h2>
+  <div class="card-grid card-grid-3">
+    <div class="card"><div class="card-label">Critical</div><div class="card-title">Evoke + Ephemerate Saves the Creature</div><div class="card-body">When you evoke Solitude, the ETB trigger (exile a creature) goes on the stack. THEN the evoke sacrifice trigger goes on the stack. Before the sacrifice trigger resolves, Ephemerate the creature. Solitude exiles, returns at end of step. The sacrifice trigger resolves but the creature is already in exile/returning — it survives. Solitude returns as a full 5/5 with no sacrifice pending, and Ephemerate rebounds. This is 2 exile triggers from one Solitude + one Ephemerate.</div></div>
+    <div class="card"><div class="card-label">Critical</div><div class="card-title">Teferi Locks Opponents to Sorcery Speed</div><div class="card-body">Teferi, Time Raveler’s static: opponents can’t cast spells or activate abilities except during their own main phase (sorcery speed). This means: no instant-speed removal, no Force of Negation on your spells, no Vial activations at flash speed, no Endurance flash. While Teferi is in play, every spell you cast is protected from instant-speed interaction. Cast your threats on your main phase — they respond on their turn with full information but no flash.</div></div>
+    <div class="card"><div class="card-label">Critical</div><div class="card-title">Prismatic Ending MV Scales With Colors Spent</div><div class="card-body">Prismatic Ending’s domain: it exiles a permanent with MV less than or equal to the number of basic land types among lands you control when you cast it. With 3 colors (Jeskai: W, U, R) = exiles MV ≤ 3. Add a green source (Triome) = MV ≤ 4. The land types are BASIC land types, not lands themselves — your Hallowed Fountain counts as Island + Plains. Scalding Tarn fetching basic Mountain adds R type. Know your domain before targeting.</div></div>
+  </div>
+
+  <h2>Timing Windows</h2>
+  <div class="edge-case">
+    <div class="edge-label">When to Hold Mana vs Spend It</div>
+    <div class="edge-body">The core timing decision for this deck: every land drop and every spell cast is a commitment. Know before your upkeep which lines require open mana this turn and which don’t. Holding mana = passing priority; spending it = committing to a plan. Make this decision in your upkeep, not in response to their action.</div>
+  </div>
+  <div class="edge-case">
+    <div class="edge-label">When to Cast at Their End Step vs Your Main Phase</div>
+    <div class="edge-body">End-step casts maximize information: you’ve seen their full turn, they’re often tapped out. Main-phase casts maximize mana availability for follow-up. Know which of your key spells gain most from end-step timing and which need main-phase mana backup.</div>
+  </div>
+
+</div>
+
 
 <div id="roles" class="section">
   <div class="section-label">Chapter 05</div>
@@ -1308,6 +1359,20 @@
       <p style="font-size:14px;font-weight:300;margin-top:8px;">Quantum Riddler under evaluation: cast for Warp {1}{U} as a 4/6 flier for 2 mana this turn. Its replacement effect (draw an extra card when you have one or fewer cards in hand) synergizes with Faithless Looting-style discard effects. The Warp exile trigger can be countered by Consign to Memory to keep it permanently.</p>
     </div>
   </div>
+
+  <h2>Register Conditions</h2>
+  <div class="card-grid card-grid-2">
+    <div class="card"><div class="card-label">Register When</div><div class="card-title">Green Lights</div><div class="card-body">Midrange-heavy field where Teferi + Solitude is faster than their clock. Combo decks present — Consign counters key spells. Low Counterspell density in expected SBs. You’ve practiced the evoke+Ephemerate timing for the top matchups.</div></div>
+    <div class="card"><div class="card-label">Avoid When</div><div class="card-title">Red Lights</div><div class="card-body">Heavy Force of Negation field — your evoke + Ephemerate chain gets countered and you’ve spent 2 cards to resolve nothing. Multiple Harbinger of the Seas builds (cuts your blue mana). You haven’t practiced the Teferi-only grind plan.</div></div>
+  </div>
+  <h2>SB Slot Priority Order</h2>
+  <ol class="heuristic-list">
+    <li><div class="heuristic-num">01</div><div class="heuristic-body"><strong>Sanctifier en-Vec (2 copies)</strong> — Protection from black and red. Immune to Fatal Push, Lightning Bolt, Galvanic Discharge. Goes in vs Boros Energy and Prowess — the creature they can’t answer.</div></li>
+    <li><div class="heuristic-num">02</div><div class="heuristic-body"><strong>Wrath of the Skies (2 copies)</strong> — Exile all creatures with energy counters. At full power vs Boros Energy (kills every creature they run). Goes in vs any energy-based deck.</div></li>
+    <li><div class="heuristic-num">03</div><div class="heuristic-body"><strong>Consign to Memory (4 copies)</strong> — Counter any spell and exile target GY. Goes in vs Storm (counter PiF), Living End (counter cascade), combo decks. The most flexible SB card.</div></li>
+    <li><div class="heuristic-num">04</div><div class="heuristic-body"><strong>Teferi, Time Raveler extra (1 copy)</strong> — Extra Teferi for matchups where his sorcery lock matters every game. Goes in vs storm-based combo and aggressive blue decks.</div></li>
+    <li><div class="heuristic-num">05</div><div class="heuristic-body"><strong>Rest in Peace (2 copies)</strong> — Exiles all GY cards as they go there. Goes in vs Living End, Goryo’s, Yawgmoth, and any GY-based combo. Blanks GY synergies completely.</div></li>
+  </ol>
 </div>
 
 <div id="prep" class="section">
