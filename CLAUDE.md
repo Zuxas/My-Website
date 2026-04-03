@@ -174,6 +174,12 @@ File location: `E:\vscode ai project\My-Website\UI_UX_Pro_Max_colors.csv`
 - Combo/reanimator → dramatic (Theater/Cinema, deep purple rows)
 - Midrange → earth tones (forest green, teal, olive rows)
 
+**Full MTG color combo → archetype → row mapping:**
+See `PALETTE_GUIDE.md` in the project root.
+This file assigns a specific Row # to every color combination + archetype style
+(e.g. Izzet Aggro → Row 9, Jund Midrange → Row 122, Esper Reanimator → Row 77).
+Always check this file before picking a palette for a new guide.
+
 **CSS vars to set:**
 ```css
 --accent:       [Accent hex]
