@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mono-Red Aggro — Team Resolve Playbook</title>
+<link rel="icon" href="images/tab32.png" type="image/png">
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+html{overflow-y:scroll;}
+:root{
+  --primary:    #1c0606;
+  --ink:        #0e0e0e;
+  --paper:      #f2ede6;
+  --paper-dark: #e8e1d6;
+  --rule:       #c8bfb0;
+  --accent:     #EF4444;
+  --accent-light:rgba(239,68,68,0.1);
+  --danger:     #8f1a1a;
+  --danger-light:rgba(143,26,26,0.12);
+  --gold:       #EF4444;
+  --gold-light: rgba(239,68,68,0.1);
+  --mid:        #5a5248;
+  --card:       #ffffff;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--paper);color:var(--ink);font-family:'Crimson Pro',Georgia,serif;font-size:17px;line-height:1.6;}
+nav{position:sticky;top:0;z-index:100;background:var(--primary);border-bottom:2px solid var(--accent);display:flex;align-items:center;padding:0 32px;height:48px;gap:4px;}
+.nav-brand{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);margin-right:16px;white-space:nowrap;}
+.nav-link{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(248,250,252,0.55);background:none;border:none;border-bottom:2px solid transparent;padding:0 12px;height:48px;cursor:pointer;white-space:nowrap;display:flex;align-items:center;text-decoration:none;transition:color 0.15s,border-color 0.15s;}
+.nav-link:hover{color:rgba(248,250,252,0.85);}
+.nav-link.active{color:rgba(248,250,252,1);border-bottom-color:var(--accent);}
+.header-band{background:var(--primary);border-bottom:3px solid var(--accent);padding:48px 80px 40px;position:relative;overflow:hidden;color:#f1f5f9;}
+.header-band,.header-band *{color:#f1f5f9;}
+.header-band::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 20% 50%,rgba(239,68,68,0.1) 0%,transparent 70%);pointer-events:none;}
+.header-inner{max-width:1080px;margin:0 auto;display:grid;grid-template-columns:1fr auto;gap:40px;align-items:start;position:relative;}
+.header-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(248,250,252,0.4);margin-bottom:12px;}
+.header-title{font-family:'DM Mono',monospace;font-size:clamp(32px,4vw,52px);font-weight:500;letter-spacing:0.06em;line-height:1.05;text-transform:uppercase;}
+.header-title .accent{color:var(--accent);}
+.header-tagline{font-size:15px;font-style:italic;color:rgba(248,250,252,0.5);margin-top:12px;max-width:520px;line-height:1.5;}
+.meta-row{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(248,250,252,0.4);margin-bottom:4px;}
+.meta-row span{color:rgba(248,250,252,0.8);margin-left:6px;}
+.section{display:none;animation:fadeIn 0.3s ease;}
+.section.active{display:block;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
+.content{max-width:1080px;margin:0 auto;padding:56px 80px 80px;}
+.section-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--mid);margin-bottom:8px;display:block;}
+h1{font-family:'DM Mono',monospace;font-size:clamp(32px,4vw,48px);font-weight:500;letter-spacing:0.06em;text-transform:uppercase;line-height:1.05;margin-bottom:32px;}
+h2{font-family:'DM Mono',monospace;font-size:13px;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);margin:48px 0 16px;padding-bottom:8px;border-bottom:1px solid var(--rule);}
+h3{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--mid);margin:24px 0 8px;}
+p{font-size:16px;line-height:1.7;color:var(--ink);margin-bottom:14px;font-weight:300;}
+strong{font-weight:600;}
+.mantra{background:var(--accent-light);border-left:3px solid var(--accent);padding:20px 24px;margin:0 0 40px;font-style:italic;font-size:17px;color:var(--ink);line-height:1.6;}
+.card-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule);margin:16px 0;}
+.card-grid-2{grid-template-columns:repeat(2,1fr)!important;}
+.card-grid-3{grid-template-columns:repeat(3,1fr)!important;}
+.card{background:var(--card);padding:20px;transition:background 0.15s;}
+.card:hover{background:#faf7f2;}
+.card-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:var(--mid);margin-bottom:6px;}
+.card-title{font-family:'DM Mono',monospace;font-size:13px;letter-spacing:0.05em;color:var(--accent);margin-bottom:8px;font-weight:500;}
+.card-body{font-size:14px;color:var(--mid);line-height:1.55;font-weight:300;}
+.matchup-block{border:1px solid var(--rule);margin:24px 0;background:var(--card);}
+.matchup-header{background:var(--paper-dark);padding:16px 20px;display:flex;align-items:center;justify-content:space-between;cursor:pointer;}
+.matchup-header h3{margin:0;font-size:11px;letter-spacing:0.15em;color:var(--ink);}
+.verdict{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.15em;text-transform:uppercase;padding:3px 10px;border-radius:2px;}
+.verdict-good{background:rgba(239,68,68,0.1);color:#b91c1c;}
+.verdict-even{background:rgba(90,82,72,0.12);color:var(--mid);}
+.verdict-hard{background:rgba(143,26,26,0.12);color:#991b1b;}
+.matchup-body{padding:20px;display:none;}
+.matchup-body.open{display:block;}
+.sb-table{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--rule);margin:12px 0;}
+.sb-col{background:var(--paper);padding:12px 16px;}
+.sb-col-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.15em;text-transform:uppercase;color:var(--mid);margin-bottom:8px;}
+.sb-item{display:flex;justify-content:space-between;align-items:baseline;font-size:14px;padding:2px 0;font-weight:300;}
+.sb-qty{font-family:'DM Mono',monospace;font-size:11px;color:var(--mid);}
+.heuristic-list{list-style:none;margin:16px 0;}
+.heuristic-list li{padding:14px 0;border-bottom:1px solid var(--rule);display:flex;gap:16px;align-items:start;}
+.heuristic-list li:last-child{border-bottom:none;}
+.h-num{font-family:'DM Mono',monospace;font-size:10px;color:var(--accent);flex-shrink:0;padding-top:2px;min-width:28px;}
+.h-text{font-size:15px;font-weight:300;color:var(--ink);}
+.h-text strong{font-weight:600;}
+.deck-row{display:flex;justify-content:space-between;padding:3px 0;border-bottom:1px solid rgba(200,191,176,0.4);font-size:15px;}
+.deck-count{font-family:'DM Mono',monospace;font-size:12px;color:var(--mid);min-width:20px;}
+.edge-case{background:var(--card);border:1px solid var(--rule);border-left:3px solid var(--accent);padding:16px 20px;margin:12px 0;}
+.edge-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:6px;}
+.edge-body{font-size:14px;font-weight:300;color:var(--ink);line-height:1.65;}
+.print-btn{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;background:var(--accent);color:#fff;border:none;padding:10px 20px;cursor:pointer;margin:16px 0;}
+span.c{cursor:help;border-bottom:1px dashed var(--accent);}
+span.c:hover{border-bottom-style:solid;}
+.card-tip{position:fixed;z-index:9999;pointer-events:none;width:220px;border-radius:8px;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,0.6);opacity:0;transition:opacity 0.15s ease;background:#1a1a2e;}
+.card-tip.visible{opacity:1;}
+.card-tip img{width:220px;height:auto;display:block;}
+.card-tip-loading{width:220px;height:308px;display:flex;align-items:center;justify-content:center;color:#94a3b8;font-size:12px;font-family:monospace;background:#1e293b;}
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-brand">Mono-Red Aggro</div>
+  <a class="nav-link" href="deck-guides.html" style="text-decoration:none;">&#8592; Guides</a>
+  <button class="nav-link active" onclick="show('identity')">Overview</button>
+  <button class="nav-link" onclick="show('decklist')">Decklist</button>
+  <button class="nav-link" onclick="show('gameplan')">Game Flow</button>
+  <button class="nav-link" onclick="show('engines')">Engines</button>
+  <button class="nav-link" onclick="show('lines')">Lines</button>
+  <button class="nav-link" onclick="show('roles')">Roles</button>
+  <button class="nav-link" onclick="show('matchups')">Matchups</button>
+  <button class="nav-link" onclick="show('sideboard')">Sideboard</button>
+  <button class="nav-link" onclick="show('heuristics')">Heuristics</button>
+  <button class="nav-link" onclick="show('tuning')">Tuning</button>
+  <button class="nav-link" onclick="show('prep')">Prep</button>
+</nav>
+<div class="header-band">
+  <div class="header-inner">
+    <div>
+      <div class="header-label">Team Resolve · Standard · April 2026</div>
+      <div class="header-title">MONO-RED<br><span class="accent">AGGRO</span></div>
+      <div class="header-tagline">"Every creature has haste. Every burn spell doubles as a combat trick. You kill on turn 3 or you lose on turn 4."</div>
+    </div>
+    <div class="header-meta">
+      <div class="meta-row">META SHARE<span>3.00%</span></div>
+      <div class="meta-row">ROLE<span>Aggro</span></div>
+      <div class="meta-row">COLORS<span>R</span></div>
+      <div class="meta-row">KILL TURN<span>3–5</span></div>
+      <div class="meta-row">REFERENCE<span>MendezCL MTGO Challenge Mar 2026</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- CH01 IDENTITY -->
+<div id="identity" class="section active">
+<div class="content">
+  <span class="section-label">Chapter 01</span>
+  <h1>DECK<br>IDENTITY</h1>
+  <div class="mantra">"You don't play around removal. You play faster than they can cast it."</div>
+
+  <p>Mono-Red Aggro is Standard's fastest deck. Every creature in the 75 has haste or generates immediate value. <span class="c">Emberheart Challenger</span> is a 2/2 haste prowess that grows whenever you target it. <span class="c">Burnout Bashtronaut</span> is a 2/1 haste that copies itself when it attacks — one card becomes two attackers. <span class="c">Nova Hellkite</span> is a 4/4 haste flying dragon that deals 2 damage on entry. Everything attacks the turn it enters.</p>
+
+  <p>The burn suite closes games that stall. <span class="c">Burst Lightning</span> is 2 damage for {R} or 4 damage with kicker. <span class="c">Sear</span> is 4 damage for {1}{R} to any creature or planeswalker. When opponents stabilize at 8 life, three burn spells end the game without combat. The deck kills opponents who never see the final blow coming.</p>
+
+  <p><span class="c">Raphael, the Nightwatcher</span> is the top-end resilience piece — he generates card advantage every turn and represents a 5/4 lifelink body that opponents must answer. <span class="c">Inti, Seneschal of the Sun</span> exiles the top card on each attack, giving you resources to cast even when your hand is empty. Against control decks that answer everything, these two provide inevitability.</p>
+
+  <h2>Why Mono-Red in 2026</h2>
+  <div class="card-grid card-grid-3">
+    <div class="card"><div class="card-label">Speed</div><div class="card-title">T3–T4 Kill Clock</div><div class="card-body">Faster than every other deck in Standard. Against Mono-Green and Simic Rhythm who are setting up their engine, you're attacking for 8+ on turn 3. Against control that's trying to sculpt a hand, you're dealing 20 before they assemble their stabilization tools.</div></div>
+    <div class="card"><div class="card-label">Consistency</div><div class="card-title">All Threats, No Blanks</div><div class="card-body">Every card in the main deck is either a hasty threat or a damage spell that kills something. There are no setup cards, no ramp, no card draw that doesn't also deal damage. Every card in your opening hand does something immediately.</div></div>
+    <div class="card"><div class="card-label">Versatility</div><div class="card-title">Burn Goes to Face or Kills Creatures</div><div class="card-body">Burst Lightning and Sear are both removal AND reach. A Sear that kills their Gene Pollinator is just as good as a Sear to face. Against decks you can't race, pivot to controlling the board with burn and win with a single unblocked Nova Hellkite.</div></div>
+  </div>
+
+  <h2>When NOT to Register Mono-Red</h2>
+  <p><strong>Avoid if:</strong> The expected field is heavy on lifelink (Voice of Victory, Ajani tokens from Azorius Flash) and avatar effects. Multiple Sunspine Lynx (SB) help vs lifelink decks, but if you're facing 4+ Voices of Victory across multiple rounds, your racing math becomes unreliable. Also avoid if Avatar's Wrath is heavily played — it sweeps your entire board at one mana per creature killed.</p>
+</div>
+</div>
+
+<!-- CH02 DECKLIST -->
+<div id="decklist" class="section">
+<div class="content">
+  <span class="section-label">Chapter 02</span>
+  <h1>DECKLIST</h1>
+  <div class="mantra">"MendezCL — MTGO Standard Challenge, March 21, 2026"</div>
+  <div class="card-grid card-grid-3">
+    <div class="card">
+      <h3>Creatures (28)</h3>
+      <div class="deck-row"><span class="deck-count">4</span><span><span class="c">Fanatical Firebrand</span></span></div>
+      <div class="deck-row"><span class="deck-count">4</span><span><span class="c">Hired Claw</span></span></div>
+      <div class="deck-row"><span class="deck-count">4</span><span><span class="c">Emberheart Challenger</span></span></div>
+      <div class="deck-row"><span class="deck-count">4</span><span><span class="c">Burnout Bashtronaut</span></span></div>
+      <div class="deck-row"><span class="deck-count">4</span><span><span class="c">Magebane Lizard</span></span></div>
+      <div class="deck-row"><span class="deck-count">4</span><span><span class="c">Nova Hellkite</span></span></div>
+      <div class="deck-row"><span class="deck-count">2</span><span><span class="c">Inti, Seneschal of the Sun</span></span></div>
+      <div class="deck-row"><span class="deck-count">2</span><span><span class="c">Raphael, the Nightwatcher</span></span></div>
+    </div>
+    <div class="card">
+      <h3>Spells (12)</h3>
+      <div class="deck-row"><span class="deck-count">4</span><span><span class="c">Burst Lightning</span></span></div>
+      <div class="deck-row"><span class="deck-count">4</span><span><span class="c">Sear</span></span></div>
+      <div class="deck-row"><span class="deck-count">2</span><span><span class="c">Shock</span></span></div>
+      <div class="deck-row"><span class="deck-count">2</span><span><span class="c">Stingerback Terror</span></span></div>
+      <h3 style="margin-top:16px;">Lands (20)</h3>
+      <div class="deck-row"><span class="deck-count">4</span><span><span class="c">Rockface Village</span></span></div>
+      <div class="deck-row"><span class="deck-count">2</span><span><span class="c">Soulstone Sanctuary</span></span></div>
+      <div class="deck-row"><span class="deck-count">14</span><span>Mountain</span></div>
+    </div>
+    <div class="card">
+      <h3>Sideboard (15)</h3>
+      <div class="deck-row"><span class="deck-count">3</span><span><span class="c">Sunspine Lynx</span></span></div>
+      <div class="deck-row"><span class="deck-count">2</span><span><span class="c">Gastal Thrillroller</span></span></div>
+      <div class="deck-row"><span class="deck-count">2</span><span><span class="c">Tersa Lightshatter</span></span></div>
+      <div class="deck-row"><span class="deck-count">2</span><span><span class="c">Ghost Vacuum</span></span></div>
+      <div class="deck-row"><span class="deck-count">2</span><span><span class="c">Slagstorm</span></span></div>
+      <div class="deck-row"><span class="deck-count">2</span><span><span class="c">Twisted Fealty</span></span></div>
+      <div class="deck-row"><span class="deck-count">2</span><span><span class="c">Abrade</span></span></div>
+    </div>
+  </div>
+
+  <h2>Key Card Notes</h2>
+  <div class="card-grid card-grid-2">
+    <div class="card"><div class="card-label">The Prowess Engine</div><div class="card-title">Emberheart Challenger</div><div class="card-body">2/2 haste prowess. Valiant: whenever it becomes the target of a spell or ability you control, it gets a +1/+1 counter permanently. Targeting Emberheart with Burst Lightning, Shock, or Sear triggers Valiant — the counter stacks. A T2 Emberheart targeted by a T2 Shock is a 3/3 haste for an effective 3 mana total. Prowess stacks on top. By T4, this card is often a 5/5+ hasty attacker.</div></div>
+    <div class="card"><div class="card-label">The Token Doubler</div><div class="card-title">Burnout Bashtronaut</div><div class="card-body">2/1 haste. Whenever it attacks, create a token copy of Burnout Bashtronaut that's tapped and attacking. One attacker becomes two. Two Bashtronauts become four. In multiples, Bashtronaut's attack trigger creates an attacking token of EACH Bashtronaut — exponential scaling. A second Bashtronaut's attack creates copies of both, giving you 4 attackers from 2 cards. The ceiling is enormous.</div></div>
+    <div class="card"><div class="card-label">The Reach</div><div class="card-title">Burst Lightning + Sear</div><div class="card-body">Burst Lightning: {R} — 2 damage, or {5}{R} — 4 damage with kicker. Sear: {1}{R} — 4 damage to any creature or planeswalker. These are both removal AND reach. At 6 life: Burst Lightning + Sear = 6 damage to face = game. They also trigger Emberheart Challenger's Valiant when targeting your own creatures. Never tap a non-land mana source — 6 lands + kicker Burst Lightning is viable in longer games.</div></div>
+    <div class="card"><div class="card-label">The Top End</div><div class="card-title">Nova Hellkite + Raphael</div><div class="card-body">Nova Hellkite: 4/4 flying haste Dragon for 5 mana. ETB: deals 2 damage to any target. Immediately relevant damage on entry + 4 flying damage on attack = 6 damage the turn it enters. Raphael, the Nightwatcher: generates card advantage each turn while applying pressure. Boards in vs control — provides both a 5/4 lifelink body and ongoing resource generation that outlasts removal.</div></div>
+  </div>
+</div>
+</div>
+
+<!-- CH03 GAME FLOW -->
+<div id="gameplan" class="section">
+<div class="content">
+  <span class="section-label">Chapter 03</span>
+  <h1>GAME<br>PLAN</h1>
+  <div class="mantra">"T1 creature. T2 creature + spell. T3 attack for lethal. That's the plan. Execute it."</div>
+  <div class="card-grid card-grid-2">
+    <div class="card"><div class="card-label">On the Play</div><div class="card-title">T1 Creature Is Mandatory</div><div class="card-body">T1: Fanatical Firebrand or Hired Claw. On the play, any hand without a T1 haste creature is a likely mulligan. That one point of damage on turn 1 matters. T2: Emberheart Challenger + Shock targeting Emberheart (prowess trigger + Valiant counter = 4/4 haste effectively). T3: Burnout Bashtronaut (attack with Bashtronaut, token copy of Bashtronaut attacks too). Two creatures have been attacking since T1 — they're at 12 or less.</div></div>
+    <div class="card"><div class="card-label">Burn Clock</div><div class="card-title">Face vs Creature Decision</div><div class="card-body">Every burn spell faces this decision: go to face or kill a blocker? Rule: kill the blocker IF killing it lets you deal more damage this attack than the spell to face. Example: they have a 2/4 blocker and you have Emberheart (3/3) + Sear. Sear to face = 4 damage. Sear kills the blocker + Emberheart attacks unblocked = 3 damage. Cast Sear to face. The math governs — always calculate before casting.</div></div>
+    <div class="card"><div class="card-label">Mulligan</div><div class="card-title">7 or 6, Never 5</div><div class="card-body">Keep on 7: any hand with a T1 creature + T2 play + lands. Keep on 6: hands with 2 one-drops + burn, or 1 one-drop + Emberheart + burn. Hard mulligan: no T1 creature on the play, 5+ lands, no haste creatures whatsoever. At 5 you need two haste creatures that attack immediately — anything slower is a game loss.</div></div>
+    <div class="card"><div class="card-label">Stalled Board</div><div class="card-title">Pivot to Pure Burn</div><div class="card-body">When blocked by large creatures (Ouroboroid 4/4s, Drowner 3/2s), stop attacking into unfavorable blocks. Burn their life total directly. 3 burn spells = 8-10 damage to face. A Nova Hellkite for 2 ETB + 4 flying = 6 unblocked damage. When the ground stalls, win through the air or through burn to face. Don't attack into large blockers and lose your threats.</div></div>
+  </div>
+</div>
+</div>
+
+<!-- CH04 ENGINES -->
+<div id="engines" class="section">
+<div class="content">
+  <span class="section-label">Chapter 04</span>
+  <h1>CORE<br>ENGINES</h1>
+  <div class="mantra">"Burnout Bashtronaut token copies also attack and also create tokens when THEY attack."</div>
+  <div class="card-grid card-grid-3">
+    <div class="card"><div class="card-label">Engine 1 — Kills T3</div><div class="card-title">Burnout Exponential</div><div class="card-body">T2: Two Burnout Bashtronauts. T3 attack: each creates a tapped attacking token of itself. You have 4 attackers. Next turn: each of the 4 attacks, creating 4 more = 8 total. The exponential growth means a stalled board is solved in 1-2 turns with Bashtronauts. Opponents must answer each one individually or lose to the math.</div></div>
+    <div class="card"><div class="card-label">Engine 2 — Pumps to Win</div><div class="card-title">Emberheart Valiant Stack</div><div class="card-body">Emberheart Challenger with 3 Valiant counters is a 5/5 haste prowess. Target it with Burst Lightning (Valiant trigger → 6/6), cast Shock (prowess → +1/+1 until EOT → 7/7 attacking). Two burn spells targeting Emberheart = 7+ damage in one combat. The Valiant trigger is permanent; prowess is temporary but stacks in-combat.</div></div>
+    <div class="card"><div class="card-label">Engine 3 — Late Game</div><div class="card-title">Inti + Nova Hellkite</div><div class="card-body">Against decks that match your early pressure: Inti exiles top card on attack and lets you cast it for free if creatures attacked. Nova Hellkite provides 6 damage the turn it enters (2 ETB + 4 flying). In slower games after burn runs low, Inti refuels and Hellkite closes without needing to attack through ground blockers.</div></div>
+  </div>
+</div>
+</div>
+
+<!-- CH05 LINES -->
+<div id="lines" class="section">
+<div class="content">
+  <span class="section-label">Chapter 05</span>
+  <h1>LINES &amp;<br>TACTICS</h1>
+  <div class="mantra">"Calculate the damage BEFORE casting the burn. Know your kill turn before you commit."</div>
+  <div class="edge-case"><div class="edge-label">Line 01 — Burnout Bashtronaut Token Copies Also Have the Attack Trigger</div><div class="edge-body">When Burnout Bashtronaut attacks, it creates a token copy of itself that's tapped and attacking. That token ALSO has the attack trigger. But it's already tapped and attacking this turn — so the token's trigger fires the NEXT time it attacks. With 2 Bashtronauts attacking T2: 2 tokens created. T3: those 2 tokens attack and each creates a token = 4 Bashtronauts + 2 tokens attacking = 6 attackers total. The doubling is one-turn delayed for tokens, not immediate.</div></div>
+  <div class="edge-case"><div class="edge-label">Line 02 — Emberheart Challenger Valiant Triggers Only Once Per Turn</div><div class="edge-body">Valiant says "whenever this creature becomes the target of a spell or ability you control for the FIRST time each turn." Only the first targeting each turn triggers Valiant. If you cast Shock targeting Emberheart (Valiant triggers, +1/+1 counter), then cast Burst Lightning also targeting Emberheart — Burst Lightning does NOT trigger Valiant again. One counter per turn maximum. However, Burst Lightning's prowess pump (+1/+1 until EOT) still applies. Multiple-targeting is fine for prowess; only the first matters for Valiant.</div></div>
+  <div class="edge-case"><div class="edge-label">Line 03 — Burst Lightning Kicker Timing</div><div class="edge-body">Burst Lightning with kicker costs {5}{R} = 6 total mana. The kicker is paid when you cast the spell — you declare kicker before it resolves. In early turns (1-3), always cast unkicked (2 damage for R). In late turns (6+ mana), kicked Burst Lightning is 4 damage for 6 mana while triggering prowess on any creature in play. The kicker option is specifically for when the opponent is at 4 life and you need one spell to kill them when they have blockers everywhere.</div></div>
+  <div class="edge-case"><div class="edge-label">Line 04 — Fanatical Firebrand Tap Ability — Exile After Use</div><div class="edge-body">Fanatical Firebrand: {T}: it deals 1 damage to any target, then exile Fanatical Firebrand. This is a sacrifice effect — you get one activation, then it's gone. Use cases: (1) Deal the final 1 damage to face when opponent is at 1 life. (2) Kill a 1-toughness blocker before combat. (3) Trigger Emberheart Challenger's Valiant for a free +1/+1 counter (targeting your own creature with a {T} ability is a valid Valiant trigger). Don't waste the activation on irrelevant targets — it only fires once.</div></div>
+</div>
+</div>
+
+<!-- CH06 ROLES -->
+<div id="roles" class="section">
+<div class="content">
+  <span class="section-label">Chapter 06</span>
+  <h1>ROLE<br>ASSIGNMENT</h1>
+  <div class="mantra">"You are always the aggressor. The only question is whether you're racing or burning."</div>
+  <div class="card-grid card-grid-3">
+    <div class="card"><div class="card-label">vs Midrange</div><div class="card-title">Pure Speed — Race</div><div class="card-body">Against Dimir, Simic, Bant — they're setting up engines. You're attacking for 8 before their engine is active. Don't interact with their setup at all. Kill them before Ouroboroid hits. Burn goes face 100% of the time unless killing a blocker creates more damage that turn. Fast and clean.</div></div>
+    <div class="card"><div class="card-label">vs Aggro Mirrors</div><div class="card-title">Attack + Block Math</div><div class="card-body">Against Boros Aggro mirror or Izzet Prowess — track life totals carefully. Racing math: if you're both at the same life total and you attack into their attack next turn, who dies first? Burnout Bashtronaut tokens give you more attackers than they have blockers. Slagstorm (SB) sweeps their 1/1 tokens.</div></div>
+    <div class="card"><div class="card-label">vs Control</div><div class="card-title">Resilience + Burn</div><div class="card-body">Against Jeskai and Azorius Flash — curve out through their counters. Deploy threats every turn until one sticks. Raphael (SB) provides card advantage to rebuild after sweepers. Inti exiles top card for free casts. Keep enough burn in hand to close from 8 life without attacking.</div></div>
+  </div>
+</div>
+</div>
+
+<!-- CH07 MATCHUPS -->
+<div id="matchups" class="section">
+<div class="content">
+  <span class="section-label">Chapter 07</span>
+  <h1>MATCHUP<br>GUIDE</h1>
+  <div class="mantra">"Know the kill turn for every matchup before the match starts. Mono-Red wins on math."</div>
+
+  <div class="matchup-block">
+    <div class="matchup-header" onclick="toggle('mu-monogreen')">
+      <h3>MONO-GREEN LANDFALL</h3><span class="verdict verdict-good">Favorable</span>
+    </div>
+    <div id="mu-monogreen" class="matchup-body">
+      <p>They're slower. T1-T3, they're ramping and setting up their engine. You're attacking for 8-10 damage. Sapling Nursery doesn't come online until T4-T5. By then you're presenting lethal or near-lethal through burn. Llanowar Elves and Badgermole Cub are 1/1 and 2/2 — Burst Lightning kills the Elves, your creatures trade with the Cub.</p>
+      <p><strong>Priority:</strong> Go face as early as possible. Burn does not kill their Mightform Harmonizer (8 toughness) — don't try. Kill their mana dorks (Burst Lightning on Llanowar Elves is always correct) to slow their engine and give yourself extra attack steps. Nova Hellkite's flying bypasses their ground creatures entirely.</p>
+      <p><strong>Needle:</strong> Sunspine Lynx (SB) — if they're gaining life from Beza or other effects, Lynx shuts off lifegain. Twisted Fealty gives you control of their Mightform Harmonizer for a turn — attack with their 8/8 into their own board.</p>
+      <div class="sb-table">
+        <div class="sb-col"><div class="sb-col-label">In</div>
+          <div class="sb-item"><span><span class="c">Twisted Fealty</span></span><span class="sb-qty">+2</span></div>
+          <div class="sb-item"><span><span class="c">Tersa Lightshatter</span></span><span class="sb-qty">+2</span></div>
+        </div>
+        <div class="sb-col"><div class="sb-col-label">Out</div>
+          <div class="sb-item"><span><span class="c">Stingerback Terror</span></span><span class="sb-qty">&minus;2</span></div>
+          <div class="sb-item"><span><span class="c">Raphael, the Nightwatcher</span></span><span class="sb-qty">&minus;2</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="matchup-block">
+    <div class="matchup-header" onclick="toggle('mu-prowess')">
+      <h3>IZZET PROWESS</h3><span class="verdict verdict-even">Even</span>
+    </div>
+    <div id="mu-prowess" class="matchup-body">
+      <p>Near-mirror in terms of speed. They kill T3-T4 with Slickshot + cantrip chains. You kill T3-T4 with haste creatures + burn. The difference: they have flying threats (Slickshot, Elusive Otter) that dodge your ground creatures. Magebane Lizard (if it flies or has relevant ability) can block aerial threats. Track life totals every turn.</p>
+      <p><strong>Priority:</strong> Kill their Stormchaser's Talent if you can — it generates ongoing threats. Burst Lightning targeting their Elusive Otter before it pumps stops the prowess chain. Nova Hellkite's 2 ETB damage hits their face directly even if they have blockers. With Slagstorm in the SB, sweep their 1/1 Otter tokens for {1}{R}.</p>
+      <p><strong>Needle:</strong> Slagstorm at sorcery speed kills all 1-toughness creatures — sweeps Otter tokens and Fanatical Firebrand on your side too. Plan carefully around your own Slagstorm. Sunspine Lynx hoses their lifelink if they have it.</p>
+      <div class="sb-table">
+        <div class="sb-col"><div class="sb-col-label">In</div>
+          <div class="sb-item"><span><span class="c">Slagstorm</span></span><span class="sb-qty">+2</span></div>
+          <div class="sb-item"><span><span class="c">Gastal Thrillroller</span></span><span class="sb-qty">+2</span></div>
+        </div>
+        <div class="sb-col"><div class="sb-col-label">Out</div>
+          <div class="sb-item"><span><span class="c">Raphael, the Nightwatcher</span></span><span class="sb-qty">&minus;2</span></div>
+          <div class="sb-item"><span><span class="c">Stingerback Terror</span></span><span class="sb-qty">&minus;2</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="matchup-block">
+    <div class="matchup-header" onclick="toggle('mu-lessons')">
+      <h3>IZZET LESSONS</h3><span class="verdict verdict-good">Favorable</span>
+    </div>
+    <div id="mu-lessons" class="matchup-body">
+      <p>Their plan is slow. Monument to Endurance only matters once they're alive to activate it — kill them before it becomes relevant. Gran-Gran and Accumulate Wisdom draw cards but don't stop your creatures from attacking. Their Abandon Attachments can remove your Magebane Lizard but costs them their turn. Race.</p>
+      <p><strong>Priority:</strong> Kill them before turn 5. Their Abandon Attachments is the one card that disrupts you (it can destroy non-basic lands via the Regrowth mode, or destroy your key enchantment). Keep burn for face unless you absolutely must clear a blocker. Nova Hellkite flying over their non-flying threats is often the game-winner.</p>
+      <p><strong>Needle:</strong> Ghost Vacuum (SB) exiles their graveyard, cutting off Monument to Endurance's recursion engine. Sunspine Lynx shuts off Monument's life gain mode permanently.</p>
+      <div class="sb-table">
+        <div class="sb-col"><div class="sb-col-label">In</div>
+          <div class="sb-item"><span><span class="c">Sunspine Lynx</span></span><span class="sb-qty">+3</span></div>
+          <div class="sb-item"><span><span class="c">Ghost Vacuum</span></span><span class="sb-qty">+2</span></div>
+        </div>
+        <div class="sb-col"><div class="sb-col-label">Out</div>
+          <div class="sb-item"><span><span class="c">Stingerback Terror</span></span><span class="sb-qty">&minus;2</span></div>
+          <div class="sb-item"><span><span class="c">Raphael, the Nightwatcher</span></span><span class="sb-qty">&minus;2</span></div>
+          <div class="sb-item"><span><span class="c">Inti, Seneschal of the Sun</span></span><span class="sb-qty">&minus;1</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="matchup-block">
+    <div class="matchup-header" onclick="toggle('mu-azorius')">
+      <h3>AZORIUS FLASH</h3><span class="verdict verdict-hard">Unfavorable</span>
+    </div>
+    <div id="mu-azorius" class="matchup-body">
+      <p>Voice of Victory lifelink counters your damage math. Avatar's Wrath sweeps your board. High Noon limits you to one spell per turn. This is your worst matchup. Their life gain via Voice means you need 25+ damage worth of resources to kill them instead of 20. Plan accordingly.</p>
+      <p><strong>Priority:</strong> Kill Voice of Victory on sight with burn — don't let it attack and gain life. Sunspine Lynx (SB) shuts off lifelink permanently, converting the matchup. Deploy Burnout Bashtronaut tokens after their Avatar's Wrath resolves — they board-wipe one turn, you refill the next. Raphael provides a 5/4 lifelink body to fight their lifelink strategy symmetrically.</p>
+      <p><strong>Needle:</strong> Sunspine Lynx is mandatory here — must board 3 copies. With Lynx in play, Voice of Victory's lifelink is permanently disabled. Twisted Fealty can steal their Floodpits Drowner at a critical moment. Under High Noon, prioritize your one spell carefully — creature threats usually win over removal.</p>
+      <div class="sb-table">
+        <div class="sb-col"><div class="sb-col-label">In</div>
+          <div class="sb-item"><span><span class="c">Sunspine Lynx</span></span><span class="sb-qty">+3</span></div>
+          <div class="sb-item"><span><span class="c">Raphael, the Nightwatcher</span></span><span class="sb-qty">&minus;0</span></div>
+        </div>
+        <div class="sb-col"><div class="sb-col-label">Out</div>
+          <div class="sb-item"><span><span class="c">Stingerback Terror</span></span><span class="sb-qty">&minus;2</span></div>
+          <div class="sb-item"><span><span class="c">Shock</span></span><span class="sb-qty">&minus;1</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="matchup-block">
+    <div class="matchup-header" onclick="toggle('mu-dimir')">
+      <h3>DIMIR MIDRANGE</h3><span class="verdict verdict-even">Even</span>
+    </div>
+    <div id="mu-dimir" class="matchup-body">
+      <p>Their removal (Requiting Hex, Bitter Triumph) kills your creatures 1-for-1 but you're generating more threats than they have answers. Kaito, Bane of Nightmares is a clock for them but you're faster. Floodpits Drowner bouncing your creature is a tempo play, not permanent removal — it comes back next turn with haste.</p>
+      <p><strong>Priority:</strong> Go wide with Burnout Bashtronaut tokens — they have more removal than you have creatures if you play 1-for-1, but tokens overwhelm their removal count. Sear kills their Cecil, Dark Knight and their Kaito. Burn Kaito before it gets to 4 loyalty. Nova Hellkite's ETB damage hits Kaito directly if needed.</p>
+      <p><strong>Needle:</strong> Twisted Fealty steals Floodpits Drowner mid-turn — attack with their own Drowner, then it goes to your side. Ghost Vacuum exiles their graveyard, stopping any recursion strategies. Tersa Lightshatter (SB) — check oracle for specific interaction, but it provides an additional threat that might not die to their removal cleanly.</p>
+      <div class="sb-table">
+        <div class="sb-col"><div class="sb-col-label">In</div>
+          <div class="sb-item"><span><span class="c">Twisted Fealty</span></span><span class="sb-qty">+2</span></div>
+          <div class="sb-item"><span><span class="c">Ghost Vacuum</span></span><span class="sb-qty">+2</span></div>
+        </div>
+        <div class="sb-col"><div class="sb-col-label">Out</div>
+          <div class="sb-item"><span><span class="c">Stingerback Terror</span></span><span class="sb-qty">&minus;2</span></div>
+          <div class="sb-item"><span><span class="c">Raphael, the Nightwatcher</span></span><span class="sb-qty">&minus;2</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</div>
+
+<!-- CH08 SIDEBOARD -->
+<div id="sideboard" class="section">
+<div class="content">
+  <span class="section-label">Chapter 08</span>
+  <h1>SIDEBOARD<br>GUIDE</h1>
+  <div class="mantra">"Sunspine Lynx is mandatory against any deck with lifegain — it shuts off the entire mechanic permanently."</div>
+  <div class="card-grid card-grid-2">
+    <div class="card"><div class="card-label">P1 — Always</div><div class="card-title">Sunspine Lynx ×3</div><div class="card-body">Prevents opponents from gaining life. In against: Azorius Flash (Voice of Victory lifelink), Izzet Lessons (Monument to Endurance life gain), any deck with Ajani, Beza, or other life gain. The effect is permanent and applies to ALL life gain including combat damage lifegain. Mandatory in at least 3 of your 8 expected matchups.</div></div>
+    <div class="card"><div class="card-label">P2 — Sweepers</div><div class="card-title">Slagstorm ×2</div><div class="card-body">Sorcery: deals 3 damage to each creature OR 3 damage to each player. The creature mode sweeps Izzet Prowess tokens (1/1 Otters), Boros Aggro 1-drops, Mono-White tokens. The player mode is an additional Fireball effect for 3 to face. Note: sweeper mode also kills YOUR creatures. Plan Slagstorm timing carefully.</div></div>
+    <div class="card"><div class="card-label">P3 — Theft</div><div class="card-title">Twisted Fealty ×2</div><div class="card-body">Gain control of target creature until EOT, and it gains haste. Attack with their best creature into their own side, then it goes to your control permanently? (check oracle — may be until EOT only). In against: Mono-Green (steal Harmonizer), Dimir (steal Drowner), Azorius (steal Floodpits Drowner). One card that neutralizes their best threat while giving you an attacker.</div></div>
+    <div class="card"><div class="card-label">P4 — GY Hate</div><div class="card-title">Ghost Vacuum ×2</div><div class="card-body">Artifact that exiles cards from graveyards. In against: Izzet Lessons (Monument to Endurance), Dimir Excruciator (any GY strategies), Simic Rhythm (Marang River Regent death trigger). Cheap enough to cast alongside your threats.</div></div>
+  </div>
+
+  <button class="print-btn" onclick="printSB()">&#9113; Print SB Reference</button>
+  <div id="sb-print-zone">
+    <h2 style="font-family:'DM Mono',monospace;font-size:14px;margin-bottom:12px;">MONO-RED AGGRO — SB Reference · 3.00% Standard April 2026</h2>
+    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:12px;font-size:11px;font-family:'DM Mono',monospace;">
+      <div><strong>vs MONO-GREEN (Fav)</strong><br>IN: +2 Twisted Fealty, +2 Tersa | OUT: −2 Stingerback, −2 Raphael</div>
+      <div><strong>vs IZZET PROWESS (Even)</strong><br>IN: +2 Slagstorm, +2 Gastal | OUT: −2 Raphael, −2 Stingerback</div>
+      <div><strong>vs IZZET LESSONS (Fav)</strong><br>IN: +3 Sunspine Lynx, +2 Ghost Vacuum | OUT: −2 Stingerback, −2 Raphael, −1 Inti</div>
+      <div><strong>vs AZORIUS FLASH (Unfav)</strong><br>IN: +3 Sunspine Lynx | OUT: −2 Stingerback, −1 Shock</div>
+      <div><strong>vs DIMIR MIDRANGE (Even)</strong><br>IN: +2 Twisted Fealty, +2 Ghost Vacuum | OUT: −2 Stingerback, −2 Raphael</div>
+      <div><strong>vs BOROS AGGRO (mirror)</strong><br>IN: +2 Slagstorm, +2 Abrade | OUT: −2 Raphael, −2 Inti</div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- CH09 HEURISTICS -->
+<div id="heuristics" class="section">
+<div class="content">
+  <span class="section-label">Chapter 09</span>
+  <h1>HEURISTICS</h1>
+  <div class="mantra">"Always calculate lethal before casting the first burn spell. Know the finish line before you commit."</div>
+  <ol class="heuristic-list">
+    <li><span class="h-num">01</span><span class="h-text"><strong>T1 haste creature is mandatory on the play.</strong> That first point of damage on turn 1 represents a full turn of tempo. On the play, mulligan any hand without a T1 haste creature unless the hand is otherwise exceptional (2 Emberheart + lots of burn for T2 is almost as fast).</span></li>
+    <li><span class="h-num">02</span><span class="h-text"><strong>Emberheart Valiant only triggers once per turn.</strong> The first spell that targets Emberheart triggers Valiant (+1/+1 counter). Subsequent spells targeting it the same turn only trigger prowess (+1/+1 until EOT). One counter per turn maximum — plan accordingly.</span></li>
+    <li><span class="h-num">03</span><span class="h-text"><strong>Burnout Bashtronaut tokens attack-trigger on THEIR attack, not the turn they enter.</strong> Token enters tapped and attacking — the trigger fires next combat when THEY attack. 2 Bashtronauts on T2 → attack T3 → 4 attackers, but token triggers don't apply until T4. Plan the doubling one turn ahead.</span></li>
+    <li><span class="h-num">04</span><span class="h-text"><strong>Burn goes face unless killing a blocker creates more damage this combat.</strong> Default burn to face. Exception: kill the blocker if unblocked damage + burn exceeds blocked damage + burn. Always run the math before casting. Novice error: killing a 2/4 blocker with Sear when Sear to face + blocked swing deals more total damage.</span></li>
+    <li><span class="h-num">05</span><span class="h-text"><strong>Nova Hellkite's ETB damage can go to any target — face, creature, or planeswalker.</strong> The 2 damage on entry doesn't have to go to face. Kill a Kaito, finish off a 2-life creature, or remove a 1/1 token. Always evaluate the best use of the 2 ETB damage before choosing the target.</span></li>
+    <li><span class="h-num">06</span><span class="h-text"><strong>Slagstorm also kills YOUR creatures.</strong> When you resolve Slagstorm's sweep mode (3 damage to each creature), your Fanatical Firebrand (1/1), Hired Claw, Burnout Bashtronaut tokens, and any 1-2 toughness creatures you control also die. Time Slagstorm AFTER you've attacked with your small creatures, not before.</span></li>
+    <li><span class="h-num">07</span><span class="h-text"><strong>Sunspine Lynx only stops opponents from gaining life — it doesn't stop life loss.</strong> Your own burn spells that deal damage to opponents are still damage, just without the opponent gaining life. Lynx specifically prevents "gaining life" triggers and effects — not damage prevention or redirects.</span></li>
+    <li><span class="h-num">08</span><span class="h-text"><strong>Fanatical Firebrand's {T} activation exiles it permanently.</strong> One use. Don't tap Firebrand for 1 damage to face when you can attack for 1 damage with it AND still have the activation available. Use the activation only when you can't attack (it's tapped, summoning sick in rare cases, or can't get through).</span></li>
+    <li><span class="h-num">09</span><span class="h-text"><strong>Inti exiles the top card when a creature you control attacks — you can cast it that turn for free.</strong> When Inti is in play and you attack, you get to cast the exiled card for free. This means your draw step is replaced by a free cast every attack. Against control, Inti + any creature attacking = two spells per turn in a High Noon game.</span></li>
+    <li><span class="h-num">10</span><span class="h-text"><strong>Rockface Village can tap for red mana as a creature.</strong> Rockface Village is a land that can become a red creature. In late game, it's an additional attacker. More importantly, it produces red mana — don't forget it counts toward your burn spell math. With 14 Mountains + 4 Rockface + 2 Soulstone = 20 mana sources.</span></li>
+  </ol>
+</div>
+</div>
+
+<!-- CH10 TUNING -->
+<div id="tuning" class="section">
+<div class="content">
+  <span class="section-label">Chapter 10</span>
+  <h1>TUNING<br>NOTES</h1>
+  <div class="mantra">"Never go below 16 haste creatures. Speed is the deck's identity — compromise it and you're just a worse aggro deck."</div>
+  <div class="card-grid card-grid-3">
+    <div class="card"><div class="card-label">Lock</div><div class="card-title">8 Burn Spells Minimum</div><div class="card-body">Burst Lightning + Sear at 4 each = 8 burn spells. This is the minimum for reliable reach. Without 8 burn spells, you can't close games from 8 life. The deck requires the burn to be functional — don't cut below 8 total.</div></div>
+    <div class="card"><div class="card-label">Lock</div><div class="card-title">4 Emberheart + 4 Burnout</div><div class="card-body">The two most powerful threats. Full playsets of both. Emberheart provides the scaling clock (Valiant counters + prowess). Burnout provides the go-wide exponential (token doubling). Missing either reduces your ceiling and floor simultaneously.</div></div>
+    <div class="card"><div class="card-label">Flex 0–2</div><div class="card-title">Raphael + Inti</div><div class="card-body">Top-end resilience. In aggro-heavy metas, cut both — they're slow for a race. In control-heavy metas, run 2-3 combined — they provide the inevitability control matchups require. Raphael's lifelink also matters vs Azorius Flash's lifelink strategy.</div></div>
+    <div class="card"><div class="card-label">Flex 0–2</div><div class="card-title">Stingerback Terror</div><div class="card-body">The mainboard flex creature. In aggro metas, replace with Fanatical Firebrand × 4 for more T1 plays. In midrange metas, Stingerback Terror's resilience matters. If you're seeing lots of sweepers, cut it entirely for burn spells.</div></div>
+    <div class="card"><div class="card-label">Consider</div><div class="card-title">4 Fanatical Firebrand main</div><div class="card-body">Some builds run 4 copies main. The T1 1-damage attack matters and the {T}: deal 1 damage activation provides the last point of reach. In fast meta matchups (Prowess, Boros Aggro mirrors), the T1 Firebrand's early damage is decisive.</div></div>
+    <div class="card"><div class="card-label">Register When</div><div class="card-title">Meta Is Slow + No Lifegain</div><div class="card-body">If Izzet Lessons (Monument life gain) and Azorius Flash (Voice lifelink) are below 10% combined, register Mono-Red. If those two are dominant, reconsider — Sunspine Lynx helps but you're still fighting uphill. Best in metas of midrange decks without life gain.</div></div>
+  </div>
+</div>
+</div>
+
+<!-- CH11 PREP -->
+<div id="prep" class="section">
+<div class="content">
+  <span class="section-label">Chapter 11</span>
+  <h1>EVENT<br>PREP</h1>
+  <div class="mantra">"Know your kill turns before the match starts. Mono-Red is won in deckbuilding and pregame math."</div>
+  <div class="card-grid card-grid-2">
+    <div class="card"><div class="card-label">Memorize</div><div class="card-title">Lethal Math From Common Life Totals</div><div class="card-body">8 life: Burst Lightning (2) + Sear (4) + any 2-power attacker = dead. 10 life: Nova Hellkite ETB (2) + Sear (4) + flying Hellkite (4) = dead the turn Hellkite enters. 12 life: 3 attackers at 4 power + Burst Lightning kicked (4) = dead. Know these numbers by reflex.</div></div>
+    <div class="card"><div class="card-label">Know Cold</div><div class="card-title">Slagstorm Kills Your Creatures Too</div><div class="card-body">Attack with all small creatures first, then resolve Slagstorm. Never Slagstorm into your own board without attacking. The board wipe hits everything — always attack before wiping.</div></div>
+    <div class="card"><div class="card-label">Verify</div><div class="card-title">SB Priority for Expected Field</div><div class="card-body">Lifegain-heavy field (Azorius + Lessons): max 3 Sunspine Lynx mandatory. Aggro-heavy: max 2 Slagstorm + 2 Abrade. Midrange/control: 2 Twisted Fealty + 2 Ghost Vacuum. Confirm your 15 against the expected field.</div></div>
+    <div class="card"><div class="card-label">Round 1 Tell</div><div class="card-title">T1 Land Read</div><div class="card-body">Forest = Mono-Green or Simic — go face completely, burn for them if possible. Hallowed Fountain = Azorius Flash — board Sunspine Lynx immediately. Steam Vents = Izzet (Prowess/Lessons/Spellementals) — race or control depending on what they do T1-T2. Watery Grave = Dimir — go wide with Bashtronauts.</div></div>
+  </div>
+
+  <button class="print-btn" onclick="printSB()">&#9113; Print Event Reference</button>
+  <div id="sb-print-zone">
+    <h2 style="font-family:'DM Mono',monospace;font-size:14px;margin-bottom:12px;">MONO-RED AGGRO — Event Reference · 3.00% Standard April 2026</h2>
+    <p style="font-size:11px;font-family:'DM Mono',monospace;margin-bottom:12px;">LETHAL: 8 life = Burst+Sear+attacker | 10 life = Hellkite ETB+flying | Slagstorm hits YOUR creatures too — attack first | Valiant = 1 counter/turn max</p>
+    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:12px;font-size:11px;font-family:'DM Mono',monospace;">
+      <div><strong>vs MONO-GREEN (Fav)</strong><br>IN: +2 Fealty, +2 Tersa | OUT: −2 Stingerback, −2 Raphael</div>
+      <div><strong>vs IZZET PROWESS (Even)</strong><br>IN: +2 Slagstorm, +2 Gastal | OUT: −2 Raphael, −2 Stingerback</div>
+      <div><strong>vs IZZET LESSONS (Fav)</strong><br>IN: +3 Lynx, +2 Vacuum | OUT: −2 Stingerback, −2 Raphael, −1 Inti</div>
+      <div><strong>vs AZORIUS FLASH (Unfav)</strong><br>IN: +3 Sunspine Lynx | OUT: −2 Stingerback, −1 Shock</div>
+      <div><strong>vs DIMIR MIDRANGE (Even)</strong><br>IN: +2 Fealty, +2 Vacuum | OUT: −2 Stingerback, −2 Raphael</div>
+      <div><strong>vs BOROS AGGRO (Mirror)</strong><br>IN: +2 Slagstorm, +2 Abrade | OUT: −2 Raphael, −2 Inti</div>
+    </div>
+  </div>
+</div>
+</div>
+
+<footer style="border-top:1px solid var(--rule);padding:24px 80px;display:flex;justify-content:space-between;font-family:'DM Mono',monospace;font-size:10px;color:var(--mid);">
+  <span>Team Resolve &middot; Standard 2026</span>
+  <span>Palette: Red &mdash; April 2026</span>
+  <span>Reference: MendezCL MTGO Challenge Mar 21 2026</span>
+</footer>
+
+<script>
+function show(id){
+  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.nav-link').forEach(b=>b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  event.target.classList.add('active');
+  window.scrollTo(0,0);
+}
+function toggle(id){document.getElementById(id).classList.toggle('open');}
+function printSB(){window.print();}
+</script>
+<script>
+(function(){
+  const TIP=document.createElement('div');TIP.className='card-tip';
+  TIP.innerHTML='<div class="card-tip-loading">loading...</div>';
+  document.body.appendChild(TIP);
+  const CACHE={};let hideTimer=null;
+  function pos(e){const PAD=24,W=220,H=310;let x=e.clientX+PAD,y=e.clientY-H/2;
+    if(x+W>window.innerWidth)x=e.clientX-W-PAD;if(y<8)y=8;
+    if(y+H>window.innerHeight)y=window.innerHeight-H-8;
+    TIP.style.left=x+'px';TIP.style.top=y+'px';}
+  async function showTip(name,e){
+    clearTimeout(hideTimer);TIP.innerHTML='<div class="card-tip-loading">loading...</div>';
+    TIP.classList.add('visible');pos(e);
+    if(CACHE[name]){TIP.innerHTML=`<img src="${CACHE[name]}" alt="${name}">`;return;}
+    try{const r=await fetch(`https://api.scryfall.com/cards/named?fuzzy=${encodeURIComponent(name)}`);
+      if(!r.ok){TIP.classList.remove('visible');return;}
+      const d=await r.json();const img=d.image_uris?.normal||d.card_faces?.[0]?.image_uris?.normal;
+      if(!img){TIP.classList.remove('visible');return;}
+      CACHE[name]=img;TIP.innerHTML=`<img src="${img}" alt="${name}">`;}
+    catch(err){TIP.classList.remove('visible');}
+  }
+  function hide(){hideTimer=setTimeout(()=>TIP.classList.remove('visible'),80);}
+  document.addEventListener('mouseover',e=>{const el=e.target.closest('span.c');if(!el)return;showTip(el.textContent.trim(),e);});
+  document.addEventListener('mousemove',e=>{if(TIP.classList.contains('visible'))pos(e);});
+  document.addEventListener('mouseout',e=>{if(e.target.closest('span.c'))hide();});
+})();
+</script>
+</body>
+</html>
