@@ -1,6 +1,6 @@
 # CLAUDE.md — Team Resolve MTG Playbook Project
 # Handoff document for continuing sessions
-# Last updated: 2026-03-31 | Commit: cb70208
+# Last updated: 2026-04-03 | Commit: 18dc47f
 
 ---
 
@@ -188,14 +188,163 @@ Always check this file before picking a palette for a new guide.
 --gold-light:   rgba([accent RGB], 0.18)
 ```
 
-**Dark vs light theme:**
-- Light theme (default): `--paper: #FAFAF8`, `--ink: #1C1917`
-- Dark theme (e.g. Goryo's Vengeance Row 77): `--paper: #0F0F23`, `--ink: #F8FAFC`
-  Dark theme requires extra contrast work on cards, print-grid, SB tables.
+**ALL playbooks use light/parchment base — NO dark themes.**
 
-**Current palette assignments** (check each playbook's footer for Row #):
-- Goryo's Vengeance: Theater/Cinema, Row 77, `--accent: #CA8A04` (gold), dark theme
-- All others: check `<footer>` tag in the HTML file for `Palette:` credit
+---
+
+## CSS STANDARDS FOR ALL PLAYBOOKS
+### (apply to every new playbook, enforce on all existing ones)
+
+### :root variables — complete required set
+```css
+:root {
+  --primary:      [darken(accent, 0.25)];   /* header bg — always very dark */
+  --ink:          #0e0e0e;                  /* body text — always near-black */
+  --paper:        #f2ede6;                  /* content bg — always parchment */
+  --paper-dark:   #e8e1d6;                  /* slightly darker parchment */
+  --rule:         #c8bfb0;                  /* dividers */
+  --accent:       [palette accent hex];     /* links, titles, borders, underlines */
+  --accent-light: rgba([accent RGB], 0.15); /* tinted backgrounds */
+  --danger:       #8f1a1a;
+  --danger-light: rgba(143,26,26,0.12);
+  --gold:         [same as accent];
+  --gold-light:   rgba([accent RGB], 0.15);
+  --mid:          #5a5248;                  /* muted text */
+  --card:         #ffffff;                  /* card backgrounds */
+}
+```
+
+### --primary formula
+`--primary` = the palette's Primary color darkened to 25% brightness:
+```python
+def darken(hex, factor=0.25):
+    r,g,b = hex_to_rgb(hex)
+    return '#{:02x}{:02x}{:02x}'.format(int(r*factor), int(g*factor), int(b*factor))
+primary = darken(palette_row['Primary'])
+```
+Examples: `#0891B2` → `#02242c` | `#7C3AED` → `#1f0e3b` | `#CA8A04` → `#322201`
+
+### Header band
+```css
+.header-band {
+  background: var(--primary);            /* dark, deck-specific tint */
+  border-bottom: 3px solid var(--accent);
+  color: #f1f5f9;                        /* REQUIRED — white text on dark bg */
+}
+.header-band p, .header-band span, .header-band div { color: #f1f5f9; }
+```
+
+### Nav bar
+```css
+nav {
+  background: var(--primary);            /* same dark as header */
+  border-bottom: 2px solid var(--accent);
+}
+.nav-brand { color: var(--accent); }
+.nav-link  { color: rgba(248,250,252,0.55); }
+.nav-link.active, .nav-link:hover { color: rgba(248,250,252,1); }
+```
+
+### Nav structure (required elements, in order)
+```html
+<nav>
+  <div class="nav-brand">Deck Name</div>
+  <a class="nav-link" href="deck-guides.html" style="text-decoration:none;">&#8592; Guides</a>
+  <button class="nav-link active" onclick="show('identity')">Overview</button>
+  <!-- remaining tab buttons -->
+</nav>
+```
+- Nav brand is a `<div>` (NOT an `<a>` tag — brand is not a link)
+- `← Guides` is always the first nav-link after the brand
+- No other back-links anywhere
+
+### Scryfall card image tooltips
+Inject before `</style>`:
+```css
+.card-tip { position:fixed; z-index:9999; pointer-events:none; width:220px;
+  border-radius:8px; overflow:hidden; box-shadow:0 8px 32px rgba(0,0,0,0.6);
+  opacity:0; transition:opacity 0.15s ease; background:#1a1a2e; }
+.card-tip.visible { opacity:1; }
+.card-tip img { width:220px; height:auto; display:block; }
+.card-tip-loading { width:220px; height:308px; display:flex; align-items:center;
+  justify-content:center; color:#94a3b8; font-size:12px; font-family:monospace;
+  background:#1e293b; }
+span.c { cursor:help; border-bottom:1px dashed var(--accent,#CA8A04); }
+span.c:hover { border-bottom-style:solid; }
+```
+
+Inject before `</body>`:
+```html
+<script>
+(function() {
+  const TIP = document.createElement('div');
+  TIP.className = 'card-tip';
+  TIP.innerHTML = '<div class="card-tip-loading">loading...</div>';
+  document.body.appendChild(TIP);
+  const CACHE = {};
+  let hideTimer = null;
+  function pos(e) {
+    const PAD=24,W=220,H=310;
+    let x=e.clientX+PAD, y=e.clientY-H/2;
+    if(x+W>window.innerWidth) x=e.clientX-W-PAD;
+    if(y<8) y=8;
+    if(y+H>window.innerHeight) y=window.innerHeight-H-8;
+    TIP.style.left=x+'px'; TIP.style.top=y+'px';
+  }
+  async function show(name,e) {
+    clearTimeout(hideTimer);
+    TIP.innerHTML='<div class="card-tip-loading">loading...</div>';
+    TIP.classList.add('visible'); pos(e);
+    if(CACHE[name]){TIP.innerHTML=`<img src="${CACHE[name]}" alt="${name}">`;return;}
+    try {
+      const r=await fetch(`https://api.scryfall.com/cards/named?fuzzy=${encodeURIComponent(name)}`);
+      if(!r.ok){TIP.classList.remove('visible');return;}
+      const d=await r.json();
+      const img=d.image_uris?.normal||d.card_faces?.[0]?.image_uris?.normal;
+      if(!img){TIP.classList.remove('visible');return;}
+      CACHE[name]=img; TIP.innerHTML=`<img src="${img}" alt="${name}">`;
+    } catch(err){TIP.classList.remove('visible');}
+  }
+  function hide(){hideTimer=setTimeout(()=>TIP.classList.remove('visible'),80);}
+  document.addEventListener('mouseover',e=>{const el=e.target.closest('span.c');if(!el)return;show(el.textContent.trim(),e);});
+  document.addEventListener('mousemove',e=>{if(TIP.classList.contains('visible'))pos(e);});
+  document.addEventListener('mouseout',e=>{if(e.target.closest('span.c'))hide();});
+})();
+</script>
+```
+
+### Compliance checklist for every new playbook
+- [ ] `:root` has all 13 vars including `--primary`
+- [ ] `--paper: #f2ede6` (parchment, NOT palette background color)
+- [ ] `--ink: #0e0e0e` (dark text, NOT palette foreground color)
+- [ ] `--primary` = palette Primary darkened to 25%
+- [ ] `.header-band` uses `var(--primary)` bg + `var(--accent)` border + `color:#f1f5f9`
+- [ ] `nav` uses `var(--primary)` bg + `var(--accent)` border-bottom
+- [ ] Nav has static brand div + `← Guides` link + tab buttons
+- [ ] Scryfall tooltip CSS injected once before `</style>`
+- [ ] Scryfall tooltip JS injected once before `</body>`
+- [ ] `div_diff == 0` (balanced divs)
+- [ ] Footer has `Palette: [Name] (UI UX Pro Max Row [N])`
+
+**Current palette assignments (all 16 Modern playbooks):**
+| Deck | Row | Accent | Primary (darkened) |
+|---|---|---|---|
+| amulet-titan | 25 EV/Charging | #16A34A | #02242c |
+| dimir-oculus | 96 Ride Hailing | #2563EB | #09183a |
+| domain-zoo | 4 E-comm Luxury | #A16207 | #070605 |
+| eldrazi-tron | 5 B2B Service | #0369A1 | #03050a |
+| glockulous | 14 Fintech/Crypto | #8B5CF6 | #22173d |
+| goryos-vengeance | 77 Theater/Cinema | #CA8A04 | #322201 |
+| humans | 71 Membership | #D97706 | #2d1a00 |
+| izzet-affinity | 8 Healthcare | #059669 | #02242c |
+| jeskai-blink | 1 SaaS General | #EA580C | #09183a |
+| living-end | 64 Brewery/Winery | #A16207 | #1f0b04 |
+| neoform | 2 Micro SaaS | #059669 | #18193c |
+| prowess | 9 Educational | #EA580C | #131139 |
+| ruby-storm | 80 Cybersecurity | #FF3333 | #3f0c0c |
+| uw-blink | 60 Dental Practice | #0EA5E9 | #03293a |
+| uw-control | 30 Knowledge Base | #2563EB | #11151a |
+| yawgmoth | 81 Developer Tool | #22C55E | #083117 |
 
 ---
 
