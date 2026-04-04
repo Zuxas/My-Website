@@ -118,8 +118,17 @@ Tooltip JS: PAD=24, W=220, H=310. Function named `showTip`. One IIFE per file.
 
 ---
 
-## PENDING / FUTURE WORK
+## NEXT SESSION — PIONEER
 
-- Monitor new entrants crossing 2% threshold for potential new playbooks
-- Modern audit queue (LDXP SEA26 workflow): Domain Zoo → Eldrazi Tron → Glockulous → Jeskai Blink → Living End → Neoform → Izzet Prowess → Golgari Yawgmoth
-- Consider updating meta % values as April RCs produce results
+**Start Pioneer work next session.** Do NOT continue Modern audit queue yet.
+
+### Pioneer scope (TBD at session start):
+- Survey current Pioneer meta (mtgdecks.net / mtgmelee.com)
+- Decide: new Pioneer section on site, or separate Pioneer playbook site?
+- Identify top archetypes by meta % (same 2%+ threshold as Standard)
+- Establish Pioneer CSS palette scheme (distinguish from Standard + Modern visually)
+
+### Outstanding (lower priority):
+- Monitor Standard new entrants crossing 2%
+- Modern audit queue (LDXP SEA26): Domain Zoo → Eldrazi Tron → Glockulous → Jeskai Blink → Living End → Neoform → Izzet Prowess → Golgari Yawgmoth
+- Consider updating Standard meta % values as April RCs produce results
