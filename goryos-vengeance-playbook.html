@@ -15,6 +15,7 @@
   body { background:var(--paper); color:var(--ink); font-family:'Crimson Pro',Georgia,serif; font-size:17px; line-height:1.6; }
   .header-band { background:var(--primary); border-bottom:3px solid var(--accent); position:relative; overflow:hidden; padding:48px 80px 40px;position:relative;overflow:hidden;}
   .header-band { color: #f1f5f9; }
+  .header-band,.header-band *{color:#f1f5f9;}
   .header-band p, .header-band span, .header-band div { color: #f1f5f9; }
 
   .header-band::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse 60% 120% at 20% 50%, rgba(202,138,4,0.06) 0%, transparent 70%); pointer-events:none; }
@@ -1507,7 +1508,7 @@ function toggle(id) {
   let hideTimer = null;
 
   function pos(e) {
-    const PAD = 24, W = 220, H = 310;
+    const PAD=24,W=220,H=310;
     let x = e.clientX + PAD;
     let y = e.clientY - H / 2;
     if (x + W > window.innerWidth)  x = e.clientX - W - PAD;

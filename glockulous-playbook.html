@@ -15,6 +15,7 @@
   body { background:var(--paper); color:var(--ink); font-family:'Crimson Pro',Georgia,serif; font-size:17px; line-height:1.6; }
   .header-band { background:var(--primary); border-bottom:3px solid var(--accent); padding:48px 80px 40px;position:relative;overflow:hidden;}
   .header-band { color: #f1f5f9; }
+  .header-band,.header-band *{color:#f1f5f9;}
   .header-band p, .header-band span, .header-band div { color: #f1f5f9; }
 
   .header-inner { max-width:1080px; margin:0 auto; display:flex; justify-content:space-between; align-items:flex-end; gap:40px; }
@@ -1529,7 +1530,7 @@ function toggleDeep(header) {
   let hideTimer = null;
 
   function pos(e) {
-    const PAD = 24, W = 220, H = 310;
+    const PAD=24,W=220,H=310;
     let x = e.clientX + PAD;
     let y = e.clientY - H / 2;
     if (x + W > window.innerWidth)  x = e.clientX - W - PAD;
