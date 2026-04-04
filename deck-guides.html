@@ -65,7 +65,7 @@
     <!-- ═══ MODERN ═══════════════════════════════════════════════ -->
     <div id="format-modern" class="format-section active">
       <div class="search-row">
-        <input class="search-input" type="text" placeholder="Search decks..." oninput="filterDecks(this.value)">
+        <input class="search-input" type="text" placeholder="Search decks..." oninput="filterCards(this,'modern-grid')">
         <span class="deck-count">17 guides · April 2026 · LDXP SEA26 reference</span>
       </div>
       <div class="card-grid" id="modern-grid">
@@ -285,7 +285,11 @@
       </div>
 
       <h2>standard playbooks</h2>
-      <div class="card-grid">
+      <div class="search-row">
+        <input class="search-input" type="text" placeholder="Search Standard decks..." oninput="filterCards(this,'standard-grid')">
+        <span class="deck-count">14 guides · April 2026</span>
+      </div>
+      <div class="card-grid" id="standard-grid">
         <a href="dimir-midrange-playbook.html" class="card deck-card" style="text-decoration:none;display:block;">
           <div class="deck-accent" style="background:#1E40AF"></div>
           <div class="deck-inner">
@@ -548,6 +552,12 @@ function showFormat(id, btn) {
   document.querySelectorAll('.format-tab').forEach(t => t.classList.remove('active'));
   document.getElementById('format-' + id).classList.add('active');
   if (btn) btn.classList.add('active');
+}
+function filterCards(inputEl, gridId) {
+  const term = inputEl.value.toLowerCase();
+  document.querySelectorAll('#' + gridId + ' .deck-card').forEach(card => {
+    card.classList.toggle('hidden', term.length > 0 && !card.textContent.toLowerCase().includes(term));
+  });
 }
 function filterDecks(q) {
   const term = q.toLowerCase();
