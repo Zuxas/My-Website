@@ -58,7 +58,7 @@
     <div class="format-tabs">
       <button class="format-tab active" onclick="showFormat('modern',this)">Modern <span class="n">17</span></button>
       <button class="format-tab" onclick="showFormat('standard',this)">Standard <span class="n">14</span></button>
-      <button class="format-tab" onclick="showFormat('pioneer',this)">Pioneer <span class="n">0</span></button>
+      <button class="format-tab" onclick="showFormat('pioneer',this)">Pioneer <span class="n">9</span></button>
       <button class="format-tab" onclick="showFormat('legacy',this)">Legacy <span class="n">0</span></button>
     </div>
 
@@ -435,6 +435,92 @@
 
     <!-- ═══ PIONEER ════════════════════════════════════════════════ -->
     <div id="format-pioneer" class="format-section">
+      <div class="search-row">
+        <input class="search-input" type="text" placeholder="Search Pioneer decks..." oninput="filterCards(this,'pioneer-grid')">
+      </div>
+      <div class="card-grid" id="pioneer-grid">
+        <a href="ur-cutter-playbook.html" class="card deck-card" style="text-decoration:none;display:block;">
+          <div class="deck-accent" style="background:#EA580C"></div>
+          <div class="deck-inner">
+            <div class="card-label">Blue/Red &middot; ~23% &middot; Aggro-Combo</div>
+            <div class="card-title" style="color:#EA580C">UR Cutter (Izzet Prowess)</div>
+            <div class="card-body">Cori-Steel Cutter into a Monk token army fueled by Sleight of Hand, Opt, and Treasure Cruise. Arclight Phoenix provides inevitability. The format's dominant aggro-combo deck. Multiple PT Top8 finishes.</div>
+            <div class="deck-footer"><span class="deck-meta">U R &middot; Coming Soon</span><span class="deck-open">Open &rarr;</span></div>
+          </div>
+        </a>
+        <a href="orzhov-greasefang-playbook.html" class="card deck-card" style="text-decoration:none;display:block;">
+          <div class="deck-accent" style="background:#7C3AED"></div>
+          <div class="deck-inner">
+            <div class="card-label">White/Black &middot; ~12% &middot; Combo</div>
+            <div class="card-title" style="color:#7C3AED">Orzhov Greasefang</div>
+            <div class="card-body">Discard Parhelion II, reanimate it with Greasefang on T3 for 13 flying power. Cryptcaller Chariot and Monument to Endurance as discard payoffs. Seasoned Hallowblade as the aggro backup plan.</div>
+            <div class="deck-footer"><span class="deck-meta">W B &middot; Coming Soon</span><span class="deck-open">Open &rarr;</span></div>
+          </div>
+        </a>
+        <a href="rdw-pioneer-playbook.html" class="card deck-card" style="text-decoration:none;display:block;">
+          <div class="deck-accent" style="background:#DC2626"></div>
+          <div class="deck-inner">
+            <div class="card-label">Red &middot; ~10% &middot; Aggro</div>
+            <div class="card-title" style="color:#DC2626">Red Deck Wins</div>
+            <div class="card-body">Emberheart Challenger, Screaming Nemesis, Manifold Mouse. Burn suite backed by Monstrous Rage. The fastest non-combo kill in Pioneer. Sunspine Lynx neutralizes lifegain strategies.</div>
+            <div class="deck-footer"><span class="deck-meta">R &middot; Coming Soon</span><span class="deck-open">Open &rarr;</span></div>
+          </div>
+        </a>
+        <a href="selesnya-company-playbook.html" class="card deck-card" style="text-decoration:none;display:block;">
+          <div class="deck-accent" style="background:#16A34A"></div>
+          <div class="deck-inner">
+            <div class="card-label">Green/White &middot; ~9% &middot; Midrange</div>
+            <div class="card-title" style="color:#16A34A">Selesnya Company</div>
+            <div class="card-body">Collected Company into powerful ETB creatures. Boosted by Badgermole Cub, Ouroboroid, and Elspeth, Storm Slayer at the top end. Classic ramp-into-CoCo strategy with Avatar-era upgrades.</div>
+            <div class="deck-footer"><span class="deck-meta">G W &middot; Coming Soon</span><span class="deck-open">Open &rarr;</span></div>
+          </div>
+        </a>
+        <a href="uw-control-pioneer-playbook.html" class="card deck-card" style="text-decoration:none;display:block;">
+          <div class="deck-accent" style="background:#0EA5E9"></div>
+          <div class="deck-inner">
+            <div class="card-label">White/Blue &middot; ~9% &middot; Control</div>
+            <div class="card-title" style="color:#0EA5E9">UW Control</div>
+            <div class="card-body">Counterspells, sweepers, and card advantage engines. Teferi, Hero of Dominaria as the long-game finisher. Survives both the red aggro and Greasefang metagame through efficient answers.</div>
+            <div class="deck-footer"><span class="deck-meta">W U &middot; Coming Soon</span><span class="deck-open">Open &rarr;</span></div>
+          </div>
+        </a>
+        <a href="izzet-phoenix-playbook.html" class="card deck-card" style="text-decoration:none;display:block;">
+          <div class="deck-accent" style="background:#F97316"></div>
+          <div class="deck-inner">
+            <div class="card-label">Blue/Red &middot; ~5% &middot; Graveyard Combo</div>
+            <div class="card-title" style="color:#F97316">Arclight Phoenix</div>
+            <div class="card-body">Cantrip-dense shell fuels Arclight Phoenix recursion from the graveyard. Treasure Cruise refills. Artist's Talent and Cori-Steel Cutter provide the go-wide angle alongside the Phoenix engine.</div>
+            <div class="deck-footer"><span class="deck-meta">U R &middot; Coming Soon</span><span class="deck-open">Open &rarr;</span></div>
+          </div>
+        </a>
+        <a href="lotus-field-playbook.html" class="card deck-card" style="text-decoration:none;display:block;">
+          <div class="deck-accent" style="background:#A855F7"></div>
+          <div class="deck-inner">
+            <div class="card-label">Green/Blue &middot; ~4% &middot; Combo</div>
+            <div class="card-title" style="color:#A855F7">Lotus Field Combo</div>
+            <div class="card-body">Spelunking + Lotus Field + Aftermath Analyst to generate unbounded mana. Fae of Wishes tutors Peer into the Abyss for the combo kill. Mastermind's Acquisition adds redundancy. One of Pioneer's best-designed combo decks.</div>
+            <div class="deck-footer"><span class="deck-meta">G U &middot; Coming Soon</span><span class="deck-open">Open &rarr;</span></div>
+          </div>
+        </a>
+        <a href="izzet-control-pioneer-playbook.html" class="card deck-card" style="text-decoration:none;display:block;">
+          <div class="deck-accent" style="background:#06B6D4"></div>
+          <div class="deck-inner">
+            <div class="card-label">Blue/Red &middot; ~3% &middot; Control</div>
+            <div class="card-title" style="color:#06B6D4">Izzet Control</div>
+            <div class="card-body">Permission and burn backed by Cori-Steel Cutter as the win condition. Tempo-oriented control that can switch to aggressive Monk-token beats when the permission plan is disrupted.</div>
+            <div class="deck-footer"><span class="deck-meta">U R &middot; Coming Soon</span><span class="deck-open">Open &rarr;</span></div>
+          </div>
+        </a>
+        <a href="niv-to-light-playbook.html" class="card deck-card" style="text-decoration:none;display:block;">
+          <div class="deck-accent" style="background:#D97706"></div>
+          <div class="deck-inner">
+            <div class="card-label">5-Color &middot; ~2% &middot; Midrange-Combo</div>
+            <div class="card-title" style="color:#D97706">Niv-Mizzet Reborn</div>
+            <div class="card-body">Bring to Light finds Niv-Mizzet, who refills your hand with 5-color two-card pairs. A toolbox midrange deck with a powerful inevitability engine. Resurgent in March 2026 after a quiet period.</div>
+            <div class="deck-footer"><span class="deck-meta">5C &middot; Coming Soon</span><span class="deck-open">Open &rarr;</span></div>
+          </div>
+        </a>
+      </div>
       <h2>coming soon</h2>
       <p>Pioneer playbooks are in the queue. Lotus Field, Azorius Spirits, and Rakdos Midrange are planned.</p>
     </div>
