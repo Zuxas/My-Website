@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" href="images/tab32.png" type="image/png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UW Control — Team Resolve Pioneer Playbook</title>
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+html{overflow-y:scroll;}
+:root{
+  --primary:#0a1e3c;
+  --ink:#0e0e0e;
+  --paper:#f2ede6;
+  --paper-dark:#e8e1d6;
+  --rule:#c8bfb0;
+  --accent:#2563EB;
+  --accent-light:rgba(37,99,235,0.09);
+  --mid:#5a5248;
+  --card:#ffffff;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--paper);color:var(--ink);font-family:'Crimson Pro',Georgia,serif;font-size:17px;line-height:1.6;}
+nav{position:sticky;top:0;z-index:100;background:var(--primary);border-bottom:2px solid var(--accent);display:flex;align-items:center;padding:0 32px;height:48px;gap:4px;}
+.nav-brand{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);margin-right:16px;white-space:nowrap;}
+.nav-link{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(248,250,252,0.55);background:none;border:none;border-bottom:2px solid transparent;padding:0 12px;height:48px;cursor:pointer;white-space:nowrap;display:flex;align-items:center;text-decoration:none;transition:color 0.15s,border-color 0.15s;}
+.nav-link:hover{color:rgba(248,250,252,0.85);}
+.nav-link.active{color:#fff;border-bottom-color:var(--accent);}
+.header-band{background:var(--primary);border-bottom:3px solid var(--accent);padding:48px 80px 40px;position:relative;overflow:hidden;}
+.header-band,.header-band *{color:#f1f5f9;}
+.header-band::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 10% 50%,rgba(37,99,235,0.12) 0%,transparent 70%);pointer-events:none;}
+.header-inner{max-width:1080px;margin:0 auto;display:grid;grid-template-columns:1fr auto;gap:40px;align-items:start;position:relative;}
+.header-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(248,250,252,0.4);margin-bottom:12px;}
+.header-title{font-family:'DM Mono',monospace;font-size:clamp(32px,4vw,52px);font-weight:500;letter-spacing:0.06em;line-height:1.05;text-transform:uppercase;}
+.header-title span{color:var(--accent);}
+.header-tagline{font-size:15px;font-style:italic;color:rgba(248,250,252,0.5);margin-top:12px;max-width:520px;line-height:1.5;}
+.meta-row{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(248,250,252,0.4);margin-bottom:4px;}
+.meta-row span{color:rgba(248,250,252,0.8);margin-left:6px;}
+.section{display:none;animation:fadeIn 0.3s ease;}
+.section.active{display:block;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
+.content{max-width:1080px;margin:0 auto;padding:56px 80px 80px;}
+.section-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--mid);margin-bottom:8px;display:block;}
+h1{font-family:'DM Mono',monospace;font-size:clamp(32px,4vw,48px);font-weight:500;letter-spacing:0.06em;text-transform:uppercase;line-height:1.05;margin-bottom:32px;}
+h2{font-family:'DM Mono',monospace;font-size:13px;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);margin:48px 0 16px;padding-bottom:8px;border-bottom:1px solid var(--rule);}
+h3{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--mid);margin:24px 0 8px;}
+p{font-size:16px;line-height:1.7;color:var(--ink);margin-bottom:14px;font-weight:300;}
+strong{font-weight:600;}
+.mantra{background:var(--accent-light);border-left:3px solid var(--accent);padding:20px 24px;margin:0 0 40px;font-style:italic;font-size:17px;color:var(--ink);line-height:1.6;}
+.card-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule);margin:16px 0;}
+.card-grid-2{grid-template-columns:repeat(2,1fr)!important;}
+.card-grid-3{grid-template-columns:repeat(3,1fr)!important;}
+.card{background:var(--card);padding:20px;transition:background 0.15s;}
+.card:hover{background:#faf7f2;}
+.card-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:var(--mid);margin-bottom:6px;}
+.card-title{font-family:'DM Mono',monospace;font-size:13px;letter-spacing:0.05em;color:var(--accent);margin-bottom:8px;font-weight:500;}
+.card-body{font-size:14px;color:var(--mid);line-height:1.55;font-weight:300;}
+.matchup-block{border:1px solid var(--rule);margin:24px 0;background:var(--card);}
+.matchup-header{background:var(--paper-dark);padding:16px 20px;display:flex;align-items:center;justify-content:space-between;cursor:pointer;}
+.matchup-header h3{margin:0;font-size:11px;letter-spacing:0.15em;color:var(--ink);}
+.verdict{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.15em;text-transform:uppercase;padding:3px 10px;border-radius:2px;}
+.verdict-good{background:rgba(37,99,235,0.1);color:#1e40af;}
+.verdict-even{background:rgba(90,82,72,0.12);color:var(--mid);}
+.verdict-hard{background:rgba(180,35,24,0.1);color:#991b1b;}
+.matchup-body{padding:20px;display:none;}
+.matchup-body.open{display:block;}
+.sb-table{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--rule);margin:12px 0;}
+.sb-col{background:var(--paper);padding:12px 16px;}
+.sb-col-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.15em;text-transform:uppercase;color:var(--mid);margin-bottom:8px;}
+.sb-item{display:flex;justify-content:space-between;align-items:baseline;font-size:14px;padding:2px 0;font-weight:300;}
+.sb-qty{font-family:'DM Mono',monospace;font-size:11px;color:var(--mid);}
+.heuristic-list{list-style:none;margin:16px 0;}
+.heuristic-list li{padding:14px 0;border-bottom:1px solid var(--rule);display:flex;gap:16px;align-items:start;}
+.heuristic-list li:last-child{border-bottom:none;}
+.h-num{font-family:'DM Mono',monospace;font-size:10px;color:var(--accent);flex-shrink:0;padding-top:2px;min-width:28px;}
+.h-text{font-size:15px;font-weight:300;color:var(--ink);}
+.h-text strong{font-weight:600;}
+.deck-row{display:flex;justify-content:space-between;padding:3px 0;border-bottom:1px solid rgba(200,191,176,0.4);font-size:15px;}
+.deck-count{font-family:'DM Mono',monospace;font-size:12px;color:var(--mid);min-width:20px;}
+.edge-case{background:var(--card);border:1px solid var(--rule);border-left:3px solid var(--accent);padding:16px 20px;margin:12px 0;}
+.edge-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:6px;}
+.edge-body{font-size:14px;font-weight:300;color:var(--ink);line-height:1.65;}
+.print-btn{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;background:var(--accent);color:#fff;border:none;padding:10px 20px;cursor:pointer;margin:16px 0;}
+span.c{cursor:help;border-bottom:1px dashed var(--accent);}
+span.c:hover{border-bottom-style:solid;}
+.card-tip{position:fixed;z-index:9999;pointer-events:none;width:220px;border-radius:8px;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,0.6);opacity:0;transition:opacity 0.15s ease;background:#1a1a2e;}
+.card-tip.visible{opacity:1;}
+.card-tip img{width:220px;height:auto;display:block;}
+.card-tip-loading{width:220px;height:310px;display:flex;align-items:center;justify-content:center;color:#94a3b8;font-size:12px;font-family:monospace;background:#1e293b;}
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-brand">UW Control</div>
+  <a class="nav-link" href="deck-guides.html" style="text-decoration:none;">&#8592; Guides</a>
+  <button class="nav-link active" onclick="show('identity')">Overview</button>
+  <button class="nav-link" onclick="show('decklist')">Decklist</button>
+  <button class="nav-link" onclick="show('gameplan')">Game Flow</button>
+  <button class="nav-link" onclick="show('engines')">Engines</button>
+  <button class="nav-link" onclick="show('lines')">Lines</button>
+  <button class="nav-link" onclick="show('roles')">Roles</button>
+  <button class="nav-link" onclick="show('matchups')">Matchups</button>
+  <button class="nav-link" onclick="show('sideboard')">Sideboard</button>
+  <button class="nav-link" onclick="show('heuristics')">Heuristics</button>
+  <button class="nav-link" onclick="show('tuning')">Tuning</button>
+  <button class="nav-link" onclick="show('prep')">Prep</button>
+</nav>
+<div class="header-band">
+  <div class="header-inner">
+    <div>
+      <div class="header-label">Team Resolve · Pioneer · April 2026</div>
+      <div class="header-title">UW<br><span>CONTROL</span></div>
+      <div class="header-tagline">"Answer every threat. Sweep when they overextend. Teferi resolves. The game is over."</div>
+    </div>
+    <div>
+      <div class="meta-row">META SHARE<span>~9%</span></div>
+      <div class="meta-row">ROLE<span>Tempo-Control</span></div>
+      <div class="meta-row">COLORS<span>U W</span></div>
+      <div class="meta-row">KILL TURN<span>6–8</span></div>
+      <div class="meta-row">REFERENCE<span>MTGO Challenge Mar 22 2026 — SPyromancer 1st (8-1)</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- CH01 IDENTITY -->
+<div id="identity" class="section active">
+<div class="content">
+  <span class="section-label">Chapter 01</span>
+  <h1>DECK<br>IDENTITY</h1>
+  <div class="mantra">"You never tap out. Every turn ends with mana available. Every threat they present gets answered. When Teferi resolves, the game is functionally over."</div>
+
+  <p>UW Control is Pioneer's premier permission-and-sweeper control deck. The plan is consistent regardless of the matchup: answer every early threat with removal, hold up counterspells every turn, sweep the board when they overcommit, and win by resolving <span class="c">Teferi, Hero of Dominaria</span> and protecting it until the ultimate ends the game. No other deck in Pioneer can match the card advantage Teferi generates each turn.</p>
+
+  <p>The interaction package is layered: <span class="c">March of Otherworldly Light</span> removes early threats at instant speed for any converted mana cost. <span class="c">Get Lost</span> removes anything and gives them two Clue tokens (which is fine — you'll kill them before they draw enough to matter). <span class="c">No More Lies</span> is the soft counterspell of choice — a {1}{U} Mana Leak that stops everything early when opponents are mana-constrained. <span class="c">Dovin's Veto</span> is the hard counter for critical spells you cannot afford to let resolve.</p>
+
+  <p><span class="c">Temporary Lockdown</span> is the deck's answer to wide boards — it exiles all nonland permanents with MV 2 or less until it leaves the battlefield. Against UR Cutter's Monk tokens, Selesnya Company's elves, and RDW's one-drops, Lockdown is a sweeper that doesn't need to wait until turn 4. <span class="c">Supreme Verdict</span> is the uncounterable true sweeper for larger boards. The win conditions are all planeswalkers: Teferi closes long games via ultimate, <span class="c">The Wandering Emperor</span> stabilizes at instant speed, and <span class="c">Elspeth, Storm Slayer</span> provides resilient pressure.</p>
+
+  <h2>Why UW Control At 9% Pioneer</h2>
+  <div class="card-grid card-grid-3">
+    <div class="card"><div class="card-label">Inevitability</div><div class="card-title">Teferi Wins Every Long Game</div><div class="card-body">Teferi, Hero of Dominaria draws a card and untaps two lands every turn. In a control shell, this means you draw a card and still have two mana available for a counterspell. No fair deck in Pioneer can outgrind this engine. Once Teferi resolves and survives a turn, your hand size and mana advantage grow exponentially.</div></div>
+    <div class="card"><div class="card-label">Layered Defense</div><div class="card-title">Every Threat Has an Answer</div><div class="card-body">Temporary Lockdown for go-wide. Supreme Verdict for go-tall. March of Otherworldly Light for individual threats. No More Lies for spells on the stack. Dovin's Veto for must-counter spells. Farewell for GY-based strategies. Each layer addresses a different axis of attack — the deck has no unwinnable matchup.</div></div>
+    <div class="card"><div class="card-label">Flash Threats</div><div class="card-title">Wandering Emperor at Instant Speed</div><div class="card-body">The Wandering Emperor is a flash planeswalker — you can cast it at any time. This means you never need to tap out on your own turn. Deploy Wandering Emperor at end of their turn, untap, and continue holding up interaction. The Emperor creates tokens, exiles tapped attackers, and protects your life total without ever requiring you to spend your turn proactively.</div></div>
+  </div>
+</div>
+</div>
+
+<!-- CH02 DECKLIST -->
+<div id="decklist" class="section">
+<div class="content">
+  <span class="section-label">Chapter 02</span>
+  <h1>DECKLIST</h1>
+  <div class="mantra">"MTGO Pioneer Challenge — March 22, 2026 · SPyromancer 1st Place 8-1"</div>
+  <div class="card-grid card-grid-3">
+    <div class="card">
+      <h3>Threats (7)</h3>
+      <div class="deck-row"><span class="deck-count">2</span><span><span class="c">Teferi, Hero of Dominaria</span></span></div>
+      <div class="deck-row"><span class="deck-count">3</span><span><span class="c">The Wandering Emperor</span></span></div>
+      <div class="deck-row"><span class="deck-count">1</span><span><span class="c">Elspeth, Storm Slayer</span></span></div>
+      <div class="deck-row"><span class="deck-count">1</span><span><span class="c">Beza, the Bounding Spring</span></span></div>
+      <h3 style="margin-top:16px;">Interaction (21)</h3>
+      <div class="deck-row"><span class="deck-count">4</span><span><span class="c">March of Otherworldly Light</span></span></div>
+      <div class="deck-row"><span class="deck-count">3</span><span><span class="c">Get Lost</span></span></div>
+      <div class="deck-row"><span class="deck-count">4</span><span><span class="c">No More Lies</span></span></div>
+      <div class="deck-row"><span class="deck-count">2</span><span><span class="c">Dovin's Veto</span></span></div>
+      <div class="deck-row"><span class="deck-count">3</span><span><span class="c">Temporary Lockdown</span></span></div>
+      <div class="deck-row"><span class="deck-count">2</span><span><span class="c">Supreme Verdict</span></span></div>
+      <div class="deck-row"><span class="deck-count">1</span><span><span class="c">Farewell</span></span></div>
+      <div class="deck-row"><span class="deck-count">1</span><span><span class="c">Three Steps Ahead</span></span></div>
+      <div class="deck-row"><span class="deck-count">1</span><span><span class="c">High Noon</span></span></div>
+    </div>
+    <div class="card">
+      <h3>Card Selection (6)</h3>
+      <div class="deck-row"><span class="deck-count">4</span><span><span class="c">Consult the Star Charts</span></span></div>
+      <div class="deck-row"><span class="deck-count">1</span><span><span class="c">Stock Up</span></span></div>
+      <div class="deck-row"><span class="deck-count">1</span><span><span class="c">Memory Deluge</span></span></div>
+      <h3 style="margin-top:16px;">Lands (26)</h3>
+      <div class="deck-row"><span class="deck-count">4</span><span><span class="c">Hallowed Fountain</span></span></div>
+      <div class="deck-row"><span class="deck-count">4</span><span><span class="c">Floodfarm Verge</span></span></div>
+      <div class="deck-row"><span class="deck-count">3</span><span><span class="c">Deserted Beach</span></span></div>
+      <div class="deck-row"><span class="deck-count">2</span><span><span class="c">Meticulous Archive</span></span></div>
+      <div class="deck-row"><span class="deck-count">2</span><span><span class="c">Restless Anchorage</span></span></div>
+      <div class="deck-row"><span class="deck-count">2</span><span><span class="c">Fountainport</span></span></div>
+      <div class="deck-row"><span class="deck-count">2</span><span><span class="c">Field of Ruin</span></span></div>
+      <div class="deck-row"><span class="deck-count">2</span><span><span class="c">Island</span></span></div>
+      <div class="deck-row"><span class="deck-count">2</span><span><span class="c">Plains</span></span></div>
+      <div class="deck-row"><span class="deck-count">1</span><span><span class="c">Hall of Storm Giants</span></span></div>
+      <div class="deck-row"><span class="deck-count">1</span><span><span class="c">Eiganjo, Seat of the Empire</span></span></div>
+      <div class="deck-row"><span class="deck-count">1</span><span><span class="c">Otawara, Soaring City</span></span></div>
+    </div>
+    <div class="card">
+      <h3>Sideboard (15)</h3>
+      <div class="deck-row"><span class="deck-count">2</span><span><span class="c">Brimaz, King of Oreskos</span></span></div>
+      <div class="deck-row"><span class="deck-count">2</span><span><span class="c">Regal Caracal</span></span></div>
+      <div class="deck-row"><span class="deck-count">2</span><span><span class="c">Beza, the Bounding Spring</span></span></div>
+      <div class="deck-row"><span class="deck-count">1</span><span><span class="c">Kaheera, the Orphanguard</span></span></div>
+      <div class="deck-row"><span class="deck-count">1</span><span><span class="c">Kutzil's Flanker</span></span></div>
+      <div class="deck-row"><span class="deck-count">2</span><span><span class="c">High Noon</span></span></div>
+      <div class="deck-row"><span class="deck-count">2</span><span><span class="c">Rest in Peace</span></span></div>
+      <div class="deck-row"><span class="deck-count">1</span><span><span class="c">Temporary Lockdown</span></span></div>
+      <div class="deck-row"><span class="deck-count">1</span><span><span class="c">Get Lost</span></span></div>
+      <div class="deck-row"><span class="deck-count">1</span><span><span class="c">Dovin's Veto</span></span></div>
+    </div>
+  </div>
+
+  <h2>Key Card Notes</h2>
+  <div class="card-grid card-grid-2">
+    <div class="card"><div class="card-label">The Engine</div><div class="card-title">Teferi, Hero of Dominaria</div><div class="card-body">5 mana. +1: draw a card, untap two lands. This means after playing Teferi you can +1 and still leave {U}{U} up for a counterspell. Every subsequent turn: draw a card AND maintain countermagic. -3: put a nonland permanent on top of its owner's library — answers anything that slipped through. Ultimate: each turn exile 3 target permanents. Games where Teferi untaps are almost unlosable.</div></div>
+    <div class="card"><div class="card-label">The Flash Threat</div><div class="card-title">The Wandering Emperor</div><div class="card-body">4 mana Flash. +1: creates a 2/2 vigilance Samurai token. +1 (alternate): put a +1/+1 counter and first strike on target creature. -2: exile target tapped creature, gain 2 life. Cast at instant speed at end of their turn. Never tap out for this — it functions exactly like passing the turn with a threat ready. Against aggro the exile mode stabilizes the board. Against control the token threatens lethal.</div></div>
+    <div class="card"><div class="card-label">The Sweeper</div><div class="card-title">Temporary Lockdown vs Supreme Verdict</div><div class="card-body">Temporary Lockdown: 3 mana enchantment, exiles all nonland permanents with MV 2 or less until it leaves. Cheaper, hits non-creatures, and handles token boards. Use for wide aggro. Supreme Verdict: 4 mana sorcery, destroys all creatures, can't be countered. Use for larger creature threats or when you need an uncounterable effect. Know which to cast when — Lockdown is usually correct against most Pioneer decks.</div></div>
+    <div class="card"><div class="card-label">The Hard Counter</div><div class="card-title">Dovin's Veto vs No More Lies</div><div class="card-body">No More Lies ({1U}) is your soft counter — counters unless they pay {3}. Perfect for early game when mana is tight. Dovin's Veto ({WU}) is the hard counter — counters and can't be countered itself. Reserve Dovin's Veto for: Teferi-level threats, their sweepers vs your board, combo-critical spells (Greasefang ETB trigger). No More Lies is the free-roll counter; Dovin's Veto is the nuclear button.</div></div>
+  </div>
+</div>
+</div>
+
+<!-- CH03 GAME FLOW -->
+<div id="gameplan" class="section">
+<div class="content">
+  <span class="section-label">Chapter 03</span>
+  <h1>GAME<br>FLOW</h1>
+  <div class="mantra">"T1-T4: survive and answer threats. T5: Teferi with counterspell backup. T6+: their resources are gone."</div>
+  <div class="card-grid card-grid-2">
+    <div class="card"><div class="card-label">Early (T1–T3)</div><div class="card-title">Survival Phase</div><div class="card-body">Your only goal in turns 1-3 is to not die. March of Otherworldly Light removes early threats at any mana cost. Consult the Star Charts draws cards and sculpts your hand. Temporary Lockdown on T3 sweeps MV-2 or less permanents. Never commit a threat — hold all your mana for answers. The opponent is trying to establish pressure; you're answering everything.</div></div>
+    <div class="card"><div class="card-label">Mid (T4–T5)</div><div class="card-title">Transition to Control</div><div class="card-body">T4: Supreme Verdict or Temporary Lockdown wipes whatever survived. Wandering Emperor at end of their T4 stabilizes. T5: Teferi with a counterspell backup in hand — this is your target state. Playing Teferi at 5 mana while holding No More Lies means: deploy Teferi, they try to answer it, you counter their answer. Teferi survives and your lead is permanent.</div></div>
+    <div class="card"><div class="card-label">Late (T6+)</div><div class="card-title">Inevitability Phase</div><div class="card-body">Once Teferi is active: +1 every turn draws a card AND leaves 2 mana up. Each turn your hand grows, your options expand, and their resources deplete. Use Teferi -3 to send their threats back to their library one at a time. If they ever cast a creature, Wandering Emperor exiles it tapped. Memory Deluge at instant speed refuels if Teferi dies. The game ends when Teferi ultimates or they concede.</div></div>
+    <div class="card"><div class="card-label">Mulligan</div><div class="card-title">Need: Land + Interaction + Draw</div><div class="card-body">Keep: 3-4 lands, at least 2 interaction pieces, at least 1 draw spell. Mulligan: fewer than 3 lands (you can't play on curve), 0 interaction pieces (you die to aggro), or hands with 2+ Teferi and no way to survive to T5. You can keep 2 lands if both are dual lands and you have Consult the Star Charts to find more. At 6: keep 3 lands + 2 interaction. At 5: 3 lands + 1 instant-speed removal + 1 counterspell.</div></div>
+  </div>
+</div>
+</div>
+
+<!-- CH04 ENGINES -->
+<div id="engines" class="section">
+<div class="content">
+  <span class="section-label">Chapter 04</span>
+  <h1>CORE<br>ENGINES</h1>
+  <div class="mantra">"Defense layer, sweeper layer, draw engine, win condition. Four systems. None fails if the others are running."</div>
+  <div class="card-grid card-grid-3">
+    <div class="card"><div class="card-label">Engine 1 — Removal Suite</div><div class="card-title">Spot + Sweeper Layering</div><div class="card-body">March of Otherworldly Light exiles at instant speed. Get Lost answers anything at sorcery speed for 2 mana. Temporary Lockdown blanks boards at 3 mana. Supreme Verdict wipes boards at 4 mana. Farewell is the reset button for GY and artifact-heavy strategies. Each answers a different threat width — never be caught with the wrong tool by understanding each card's specific role.</div></div>
+    <div class="card"><div class="card-label">Engine 2 — Permission Suite</div><div class="card-title">Hard + Soft Countermagic</div><div class="card-body">No More Lies counters early (soft — {1U}, unless pay {3}). Dovin's Veto counters critical spells (hard — {WU}, can't be countered). Three Steps Ahead is flexible: copy, counter, or draw 2. Together they cover every threat type: early creatures, high-impact spells, and uncounterable threats (Dovin's Veto handles their Dovin's Veto; Supreme Verdict can't be countered back). Always know which counter to use for each threat.</div></div>
+    <div class="card"><div class="card-label">Engine 3 — Draw Engine</div><div class="card-title">Consult + Memory Deluge + Teferi</div><div class="card-body">Consult the Star Charts at 2 mana filters draws. Memory Deluge at 4 mana (or flashback for 5) draws 3-4 cards. Teferi draws a card AND untaps 2 lands every turn. The draw engine ensures you never run out of answers — every turn your hand replenishes while opponents' hands empty. At Teferi mana you're typically drawing more per turn than you're spending.</div></div>
+  </div>
+</div>
+</div>
+
+<!-- CH05 LINES -->
+<div id="lines" class="section">
+<div class="content">
+  <span class="section-label">Chapter 05</span>
+  <h1>LINES &amp;<br>TACTICS</h1>
+  <div class="mantra">"Never tap out on your main phase unless casting Teferi with backup. Every other turn ends with mana available."</div>
+  <div class="edge-case"><div class="edge-label">Line 01 — The Teferi Sequence: Deploy with Counterspell Backup</div><div class="edge-body">The ideal Teferi deployment: T5, cast Teferi, hold No More Lies or Dovin's Veto. They must answer Teferi or they lose — and you answer their answer. If they don't have a response, Teferi +1 on T6 draws a card AND leaves {U}{U} up. From this point forward you can counter anything while drawing a card every turn. Never deploy Teferi without backup unless their hand is empty or you're certain they have no answers.</div></div>
+  <div class="edge-case"><div class="edge-label">Line 02 — Wandering Emperor Timing: End of Their Turn, Not Your Main Phase</div><div class="edge-body">The Wandering Emperor has Flash — never cast it during your main phase. Always wait until the end of their turn. This preserves mana for your turn's counterspells and never wastes a turn on a proactive play when you should be answering. The only exception: using Emperor's -2 to exile an attacking creature that would deal lethal damage. In that case cast it during their combat, before damage.</div></div>
+  <div class="edge-case"><div class="edge-label">Line 03 — Temporary Lockdown: Know When It's Wrong</div><div class="edge-body">Temporary Lockdown exiles MV-2 or less permanents until Lockdown leaves. This means: (1) if your own Lockdown gets destroyed, everything returns; (2) their MV-3+ permanents survive; (3) your own MV-2 permanents (Beza if in play, Restless Anchorage tokens) are also exiled. The dangerous scenario: you cast Lockdown to clear their board, they destroy it with a card you didn't answer, and everything returns. Always ensure Lockdown survives by having counterspells for their artifact/enchantment removal.</div></div>
+  <div class="edge-case"><div class="edge-label">Line 04 — Field of Ruin vs Utility Lands: Force Their Basic Land Draws</div><div class="edge-body">Field of Ruin taps for colorless, and {2}: destroy target nonbasic land, then each player searches for a basic. Use it against: Lotus Field (destroys their Lotus before it comes back), Restless lands (creature-lands that can attack you), and Nykthos, Shrine to Nyx. The "each player searches" clause means you also get a basic — you're trading one of your lands for their best land, but replacing yours with a basic that enters tapped. Use it proactively vs combo lands, reactively vs creature-lands.</div></div>
+</div>
+</div>
+
+<!-- CH06 ROLES -->
+<div id="roles" class="section">
+<div class="content">
+  <span class="section-label">Chapter 06</span>
+  <h1>ROLE<br>ASSIGNMENT</h1>
+  <div class="mantra">"You are always the reactive deck. Every action is a response to their action. Never act without cause."</div>
+  <div class="card-grid card-grid-3">
+    <div class="card"><div class="card-label">vs Aggro</div><div class="card-title">Survive to T4 Wrath</div><div class="card-body">Against RDW, Selesnya Company: your goal is staying alive until Temporary Lockdown or Supreme Verdict clears the board. March of Otherworldly Light removes early threats. Beza (SB) gains life. Wandering Emperor exiles key attackers in combat. Your life total is a resource — don't spend it to stop irrelevant damage. A wrath on T4 followed by Teferi on T5 wins the game.</div></div>
+    <div class="card"><div class="card-label">vs Combo</div><div class="card-title">Counter Their Key Piece</div><div class="card-body">Against Greasefang: counter or remove Greasefang itself on the stack (the ETB trigger is the kill). Rest in Peace (SB) answers the GY recursion. Against Lotus Field: Field of Ruin destroys Lotus before it doubles. Get Lost answers Thespian's Stage. High Noon (SB) stops them from untapping lands to generate explosive mana.</div></div>
+    <div class="card"><div class="card-label">vs Midrange/Control</div><div class="card-title">Win the Permission War</div><div class="card-body">Against UR Cutter and Dimir Midrange: play around their interaction by baiting counters on expendable spells before deploying Teferi. Against the UW mirror: the first Teferi to resolve often wins — hold Dovin's Veto for their Teferi, deploy yours when they're tapped out. Wandering Emperor at instant speed functions as a threat that never exposes you to their interaction window.</div></div>
+  </div>
+</div>
+</div>
+
+<!-- CH07 MATCHUPS -->
+<div id="matchups" class="section">
+<div class="content">
+  <span class="section-label">Chapter 07</span>
+  <h1>MATCHUP<br>GUIDE</h1>
+  <div class="mantra">"Know which sweeper to cast, when to hold countermagic, and when Teferi is safe to deploy."</div>
+
+  <div class="matchup-block">
+    <div class="matchup-header" onclick="toggle('mu-cutter')">
+      <h3>UR CUTTER</h3><span class="verdict verdict-even">Even</span>
+    </div>
+    <div id="mu-cutter" class="matchup-body">
+      <p>UR Cutter plays fast through cantrips and Treasure Cruise. Temporary Lockdown clears all their Monk tokens and Cutter itself (MV 2). No More Lies counters Stormchaser's Talent (MV 3 after activation cost) — counter it on the stack. Their Treasure Cruise is devastating at instant speed; hold Dovin's Veto for their Cruise or Vivi Ornitier.</p>
+      <p><strong>Priority:</strong> Kill or exile their Cutter before the Otter token engine fires. Temporary Lockdown exiles the Monk tokens and the Cutter (if MV 2) in one sweep. If they've cracked Treasure Cruise, your hand needs to be all interaction — they've seen 3 cards of gas. Deploy Wandering Emperor to pressure their planeswalker loyalty while holding up countermagic.</p>
+      <div class="sb-table">
+        <div class="sb-col"><div class="sb-col-label">In</div>
+          <div class="sb-item"><span><span class="c">Brimaz, King of Oreskos</span></span><span class="sb-qty">+2</span></div>
+          <div class="sb-item"><span><span class="c">Dovin's Veto</span></span><span class="sb-qty">+1</span></div>
+        </div>
+        <div class="sb-col"><div class="sb-col-label">Out</div>
+          <div class="sb-item"><span><span class="c">Beza, the Bounding Spring</span></span><span class="sb-qty">&minus;1</span></div>
+          <div class="sb-item"><span><span class="c">High Noon</span></span><span class="sb-qty">&minus;1</span></div>
+          <div class="sb-item"><span><span class="c">Farewell</span></span><span class="sb-qty">&minus;1</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="matchup-block">
+    <div class="matchup-header" onclick="toggle('mu-rdw')">
+      <h3>RED DECK WINS</h3><span class="verdict verdict-even">Even</span>
+    </div>
+    <div id="mu-rdw" class="matchup-body">
+      <p>RDW kills by T3-4. Your survival depends on Temporary Lockdown clearing their board before Eidolon of the Great Revel taxes your spells beyond reach. Each spell you cast while Eidolon is active costs 2 extra life — remove Eidolon before deploying your own spells if possible. Beza (SB) provides lifegain to stabilize outside burn range. Brimaz (SB) is a 3/3 first strike that blocks efficiently and generates tokens.</p>
+      <p><strong>Priority:</strong> Kill Eidolon immediately — it's worth spending March of Otherworldly Light to clear it. Temporary Lockdown sweeps everything MV 2 or less including Swiftspear, Soul-Scar Mage, and Ghitu Lavarunner in one card. If you survive to T4 with 6+ life you win. Wandering Emperor -2 mode can exile a key attacking creature in combat when they try to go lethal.</p>
+      <div class="sb-table">
+        <div class="sb-col"><div class="sb-col-label">In</div>
+          <div class="sb-item"><span><span class="c">Beza, the Bounding Spring</span></span><span class="sb-qty">+2</span></div>
+          <div class="sb-item"><span><span class="c">Brimaz, King of Oreskos</span></span><span class="sb-qty">+2</span></div>
+          <div class="sb-item"><span><span class="c">Regal Caracal</span></span><span class="sb-qty">+2</span></div>
+        </div>
+        <div class="sb-col"><div class="sb-col-label">Out</div>
+          <div class="sb-item"><span><span class="c">Dovin's Veto</span></span><span class="sb-qty">&minus;2</span></div>
+          <div class="sb-item"><span><span class="c">No More Lies</span></span><span class="sb-qty">&minus;2</span></div>
+          <div class="sb-item"><span><span class="c">High Noon</span></span><span class="sb-qty">&minus;1</span></div>
+          <div class="sb-item"><span><span class="c">Three Steps Ahead</span></span><span class="sb-qty">&minus;1</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="matchup-block">
+    <div class="matchup-header" onclick="toggle('mu-greasefang')">
+      <h3>ORZHOV GREASEFANG</h3><span class="verdict verdict-good">Favorable</span>
+    </div>
+    <div id="mu-greasefang" class="matchup-body">
+      <p>Greasefang combo relies on: (1) discarding Parhelion II, (2) casting Greasefang, (3) reanimating Parhelion. Your counters stop any of these steps. March of Otherworldly Light exiles Greasefang before ETB resolves. Get Lost removes Greasefang at instant speed. Rest in Peace (SB) shuts the GY completely — no Parhelion II can be returned. Dovin's Veto is the nuclear button for their key spell.</p>
+      <p><strong>Priority:</strong> Answer Greasefang on the stack before its ETB resolves. Rest in Peace on T2 alongside a land prevents them from setting up. If they've already discarded Parhelion II but haven't cast Greasefang yet, hold removal for when Greasefang enters. Their Angels (4/4 flying vigilance tokens from Parhelion II) are easy targets for Wandering Emperor -2 post-attack since they attack and become tapped.</p>
+      <div class="sb-table">
+        <div class="sb-col"><div class="sb-col-label">In</div>
+          <div class="sb-item"><span><span class="c">Rest in Peace</span></span><span class="sb-qty">+2</span></div>
+          <div class="sb-item"><span><span class="c">Dovin's Veto</span></span><span class="sb-qty">+1</span></div>
+          <div class="sb-item"><span><span class="c">Kutzil's Flanker</span></span><span class="sb-qty">+1</span></div>
+        </div>
+        <div class="sb-col"><div class="sb-col-label">Out</div>
+          <div class="sb-item"><span><span class="c">Temporary Lockdown</span></span><span class="sb-qty">&minus;2</span></div>
+          <div class="sb-item"><span><span class="c">High Noon</span></span><span class="sb-qty">&minus;1</span></div>
+          <div class="sb-item"><span><span class="c">Beza, the Bounding Spring</span></span><span class="sb-qty">&minus;1</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="matchup-block">
+    <div class="matchup-header" onclick="toggle('mu-selesnya')">
+      <h3>SELESNYA COMPANY</h3><span class="verdict verdict-even">Even</span>
+    </div>
+    <div id="mu-selesnya" class="matchup-body">
+      <p>Selesnya goes wide quickly and refills at instant speed with CoCo. Temporary Lockdown sweeps their entire early board (all creatures MV 2 or less: Llanowar Elves, Elvish Mystic, Thalia, Voice of Resurgence, Kellan). Supreme Verdict kills the mid-game threats Lockdown misses. The key interaction: Collected Company at end of your turn creates creatures AFTER your sweeper resolves — always have another answer for the CoCo refill.</p>
+      <p><strong>Priority:</strong> Temporary Lockdown on T3 clears their board. They respond with CoCo end of their T3 — you have Supreme Verdict for whatever survives. Thalia taxes your spells — each interaction costs {1} more. This makes Dovin's Veto cost {W}{U}{1} through Thalia and No More Lies cost {1}{U}{1}. Kill Thalia first to restore mana efficiency. Brimaz and Regal Caracal outclass their remaining ground threats.</p>
+      <div class="sb-table">
+        <div class="sb-col"><div class="sb-col-label">In</div>
+          <div class="sb-item"><span><span class="c">Brimaz, King of Oreskos</span></span><span class="sb-qty">+2</span></div>
+          <div class="sb-item"><span><span class="c">Regal Caracal</span></span><span class="sb-qty">+2</span></div>
+          <div class="sb-item"><span><span class="c">Temporary Lockdown</span></span><span class="sb-qty">+1</span></div>
+        </div>
+        <div class="sb-col"><div class="sb-col-label">Out</div>
+          <div class="sb-item"><span><span class="c">No More Lies</span></span><span class="sb-qty">&minus;2</span></div>
+          <div class="sb-item"><span><span class="c">Dovin's Veto</span></span><span class="sb-qty">&minus;2</span></div>
+          <div class="sb-item"><span><span class="c">Stock Up</span></span><span class="sb-qty">&minus;1</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="matchup-block">
+    <div class="matchup-header" onclick="toggle('mu-lotus')">
+      <h3>LOTUS FIELD</h3><span class="verdict verdict-good">Favorable</span>
+    </div>
+    <div id="mu-lotus" class="matchup-body">
+      <p>Lotus Field combo needs Lotus Field + Thespian's Stage to generate 6+ mana for Hidden Strings loops. Field of Ruin destroys either piece early. Get Lost and March of Otherworldly Light answer Thespian's Stage before it copies Lotus. High Noon (SB) prevents them from untapping their lands with Hidden Strings — their entire combo relies on untapping Lotus. With High Noon, their entire strategy is shut down.</p>
+      <p><strong>Priority:</strong> Field of Ruin their Thespian's Stage before it can copy Lotus. If they have both, prioritize destroying Thespian's Stage over Lotus (Lotus without Stage can't loop). High Noon on T3-4 ends the game — they cannot use Hidden Strings to untap with Noon in play. Farewell is your reset if they somehow assemble the full combo — it exiles their lands if needed.</p>
+      <div class="sb-table">
+        <div class="sb-col"><div class="sb-col-label">In</div>
+          <div class="sb-item"><span><span class="c">High Noon</span></span><span class="sb-qty">+2</span></div>
+          <div class="sb-item"><span><span class="c">Dovin's Veto</span></span><span class="sb-qty">+1</span></div>
+        </div>
+        <div class="sb-col"><div class="sb-col-label">Out</div>
+          <div class="sb-item"><span><span class="c">Beza, the Bounding Spring</span></span><span class="sb-qty">&minus;1</span></div>
+          <div class="sb-item"><span><span class="c">Temporary Lockdown</span></span><span class="sb-qty">&minus;1</span></div>
+          <div class="sb-item"><span><span class="c">No More Lies</span></span><span class="sb-qty">&minus;1</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</div>
+
+<!-- CH08 SIDEBOARD -->
+<div id="sideboard" class="section">
+<div class="content">
+  <span class="section-label">Chapter 08</span>
+  <h1>SIDEBOARD<br>GUIDE</h1>
+  <div class="mantra">"Your sideboard converts the already-powerful control shell into a lock for each specific matchup."</div>
+  <div class="card-grid card-grid-2">
+    <div class="card"><div class="card-label">P1 — Cat Package</div><div class="card-title">Brimaz + Caracal + Kaheera</div><div class="card-body">Brimaz, King of Oreskos is a 3/3 first strike for {1WW} that creates a 1/1 Cat Warrior token whenever it attacks or blocks. Regal Caracal is a 3/4 for {3WW} that creates two 1/1 Cat tokens with lifelink and gives all your Cats +1/+1 and lifelink. Kaheera, the Orphanguard as companion (no non-Cat creatures) gives all your non-Cat Companions +1/+1 and vigilance. Board this package in vs creature decks where you need to close the game with threats after sweeping their board.</div></div>
+    <div class="card"><div class="card-label">P2 — Lifegain</div><div class="card-title">Beza, the Bounding Spring ×3</div><div class="card-body">Beza enters tapped and generates a Forest land plus gains life. As a 2/4 body it blocks efficiently. Primary value: lifegain stabilization vs RDW and aggressive strategies. You have 1 in the main and 2 more in the sideboard. Bring in all 3 vs burn-heavy matchups to stabilize your life total. The body is also a legitimate blocker in creature-heavy matchups.</div></div>
+    <div class="card"><div class="card-label">P3 — GY Hate</div><div class="card-title">Rest in Peace ×2</div><div class="card-body">Exiles all GYs and prevents future GY use. Primary target: Greasefang (Parhelion II can't return), Arclight Phoenix (can't come back from GY), and any recursion strategy. Note: RIP also exiles your own GY, so Wandering Emperor's token creation and your own Memory Deluge flashback are unaffected (they don't use GY). Cast on T2 before they set up their discard outlet.</div></div>
+    <div class="card"><div class="card-label">P4 — Combo Hate</div><div class="card-title">High Noon ×3</div><div class="card-body">Enchantment: players can't untap more lands than they had at the start of their turn. Destroys Lotus Field combo — their entire plan involves untapping Lotus with Hidden Strings. Also relevant vs any land-untap effect. Comes with 1 in the main and 2 more in the sideboard. Board all 3 copies vs Lotus Field. The 3 total copies with the SB pair ensure you draw it in G2-3 with a sculpted hand.</div></div>
+  </div>
+
+  <button class="print-btn" onclick="window.print()">&#9113; Print SB Reference</button>
+  <div style="font-family:'DM Mono',monospace;font-size:11px;margin-top:16px;">
+    <div style="font-weight:500;margin-bottom:8px;">UW CONTROL — SB MATRIX · Pioneer April 2026</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+      <div><strong>vs UR CUTTER (Even)</strong><br>IN: +2 Brimaz, +1 Dovin's Veto | OUT: −1 Beza, −1 High Noon, −1 Farewell</div>
+      <div><strong>vs RDW (Even)</strong><br>IN: +2 Beza, +2 Brimaz, +2 Caracal | OUT: −2 Dovin's, −2 No More Lies, −1 High Noon, −1 Three Steps</div>
+      <div><strong>vs GREASEFANG (Fav)</strong><br>IN: +2 RIP, +1 Dovin's, +1 Kutzil's | OUT: −2 Lockdown, −1 High Noon, −1 Beza</div>
+      <div><strong>vs SELESNYA CO (Even)</strong><br>IN: +2 Brimaz, +2 Caracal, +1 Lockdown | OUT: −2 No More Lies, −2 Dovin's, −1 Stock Up</div>
+      <div><strong>vs LOTUS FIELD (Fav)</strong><br>IN: +2 High Noon, +1 Dovin's | OUT: −1 Beza, −1 Lockdown, −1 No More Lies</div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- CH09 HEURISTICS -->
+<div id="heuristics" class="section">
+<div class="content">
+  <span class="section-label">Chapter 09</span>
+  <h1>HEURISTICS</h1>
+  <div class="mantra">"Pass with mana up. Answer on their turn. Deploy on your end step or after their end step."</div>
+  <ol class="heuristic-list">
+    <li><span class="h-num">01</span><span class="h-text"><strong>Never tap out on your main phase before T5 unless casting Teferi with backup.</strong> Every turn from T1-T4 should end with at least {U} up for a counterspell. If you tap out, you're vulnerable to their most important spell. The deck is built around this principle — every action is reactive until Teferi resolves.</span></li>
+    <li><span class="h-num">02</span><span class="h-text"><strong>Teferi with a counter in hand — that's the target. Teferi alone is not.</strong> A resolved Teferi with no backup is one removal spell away from doing nothing. Save a counterspell specifically for the turn you deploy Teferi. No More Lies is the standard — Teferi costs 5, they answer with something 3 or less, you counter for {1U}.</span></li>
+    <li><span class="h-num">03</span><span class="h-text"><strong>Wandering Emperor timing: always end of their turn, never your main phase.</strong> The flash ability is the point. Cast it in their end step to create a blocker or threat, then untap with full mana for your turn's counterspells. Casting it on your main phase wastes your turn's interaction window.</span></li>
+    <li><span class="h-num">04</span><span class="h-text"><strong>March of Otherworldly Light can exile any MV at any cost — use it for non-creatures too.</strong> March removes enchantments, artifacts, and creatures. It can hit planeswalkers (unlike some removal). It exiles (important vs recursion). You can pay extra white to hit higher MV targets. Don't forget the non-creature applications vs Lotus Field's Thespian's Stage or CoCo matchups.</span></li>
+    <li><span class="h-num">05</span><span class="h-text"><strong>Temporary Lockdown returning permanents is your opponent's primary line vs you.</strong> If they can destroy Lockdown, everything comes back. Always hold a counterspell specifically to protect Lockdown after it resolves. Their Naturalize, Abrade, or disenchant effect is the card that wins the game — don't let it resolve.</span></li>
+    <li><span class="h-num">06</span><span class="h-text"><strong>Dovin's Veto is for their Dovin's Veto and their Teferi. Save it.</strong> Don't waste Dovin's Veto on a 2-drop creature or a draw spell. Reserve it for: their Teferi, their Dovin's Veto (countering the uncounterable), their Supreme Verdict vs your board, and combo-critical spells. No More Lies handles everything else.</span></li>
+    <li><span class="h-num">07</span><span class="h-text"><strong>Field of Ruin's basic land search triggers for both players — use it early.</strong> Field of Ruin forces both players to search for a basic when it destroys a nonbasic. Use it early when they have a utility land (Lotus Field, Restless Anchorage, Nykthos) and you have a basic to spare. Don't wait until late — the tempo of destroying their best land early outweighs the slight mana cost.</span></li>
+    <li><span class="h-num">08</span><span class="h-text"><strong>Supreme Verdict can't be countered — deploy it freely when sweeping is correct.</strong> Unlike Temporary Lockdown, Supreme Verdict doesn't care about their counterspells. If you're in a mirror and they have a board with Teferi, Supreme Verdict is the trump that can't be answered. Time it for when they're tapped out to also deploy a threat the same turn.</span></li>
+    <li><span class="h-num">09</span><span class="h-text"><strong>Memory Deluge at instant speed — use it end of their turn to sculpt your hand.</strong> Memory Deluge is best cast at the end of their turn when they passed without action. You see X+3 cards, put X-1 back. This ensures your next turn starts with maximum information and the best possible cards. Don't cast it in your main phase unless you need it immediately.</span></li>
+    <li><span class="h-num">10</span><span class="h-text"><strong>In the mirror: the first Teferi to resolve wins. Hold Dovin's Veto for their Teferi specifically.</strong> Mirror matches are decided by who resolves Teferi first. Both players know this, so they hold countermagic. The line: bait their counters on an expendable spell, then deploy Teferi with Dovin's Veto backup. Dovin's Veto into their Dovin's Veto on your Teferi is the key interaction pattern.</span></li>
+  </ol>
+</div>
+</div>
+
+<!-- CH10 TUNING -->
+<div id="tuning" class="section">
+<div class="content">
+  <span class="section-label">Chapter 10</span>
+  <h1>TUNING<br>NOTES</h1>
+  <div class="mantra">"4 No More Lies and 4 March of Otherworldly Light are the locks. Everything else adjusts to meta."</div>
+  <div class="card-grid card-grid-3">
+    <div class="card"><div class="card-label">Lock — Never Cut</div><div class="card-title">4 March of Otherworldly Light</div><div class="card-body">The most flexible removal spell in Pioneer — instant, any MV, exiles. Hits creatures, enchantments, artifacts, and planeswalkers. Never cut below 4. The exile clause is critical vs GY strategies.</div></div>
+    <div class="card"><div class="card-label">Lock — Never Cut</div><div class="card-title">4 No More Lies</div><div class="card-body">The best early counterspell available. Counters anything for {1U} when opponents are mana-constrained (turns 1-4). Never cut to fewer than 4 — your early permission suite depends on it.</div></div>
+    <div class="card"><div class="card-label">Lock — Never Cut</div><div class="card-title">2 Teferi, Hero of Dominaria</div><div class="card-body">Your primary win condition and draw engine. 2 copies ensures you draw it in most games without flooding. 3 copies is too many — Teferi is dead in hand before T5 and bad when you draw multiples.</div></div>
+    <div class="card"><div class="card-label">Flex 2–3</div><div class="card-title">Dovin's Veto</div><div class="card-body">2 main is correct for most metas. In heavy-blue or mirror-heavy metas, move to 3 main. In aggro-heavy metas, trim to 1 and move the rest to sideboard where they arrive with a plan.</div></div>
+    <div class="card"><div class="card-label">Flex 2–3</div><div class="card-title">Temporary Lockdown</div><div class="card-body">3 main in aggro-heavy metas. 2 in balanced metas. The card is too narrow vs control and combo to run 4, but too powerful vs creature decks to run fewer than 2.</div></div>
+    <div class="card"><div class="card-label">Meta Call</div><div class="card-title">High Noon</div><div class="card-body">Main-deck when Lotus Field is popular (prevents the land-untap combo). Board it out in control-heavy metas where it does nothing. The main deck 1 is a hedge — if you never face Lotus, it's a low-impact card that at worst draws off Consult.</div></div>
+  </div>
+</div>
+</div>
+
+<!-- CH11 PREP -->
+<div id="prep" class="section">
+<div class="content">
+  <span class="section-label">Chapter 11</span>
+  <h1>EVENT<br>PREP</h1>
+  <div class="mantra">"Know which sweeper for which matchup. Know when to deploy Teferi. Know which counter to save for which threat."</div>
+  <div class="card-grid card-grid-2">
+    <div class="card"><div class="card-label">Know Cold</div><div class="card-title">Lockdown vs Verdict Decision Tree</div><div class="card-body">Temporary Lockdown: vs MV-2-or-less dominated boards (RDW, Selesnya elves, tokens). Supreme Verdict: vs boards with MV-3+ creatures (Bonecrusher Giant, Voice of Resurgence Tokens that are big, or any board where Lockdown misses something important). Farewell: vs GY-heavy or artifact-heavy situations, or as a hard reset when nothing else cleans up.</div></div>
+    <div class="card"><div class="card-label">Know Cold</div><div class="card-title">Counter Priority Hierarchy</div><div class="card-body">Use No More Lies on: early creatures and spells when opponent has limited mana. Use Dovin's Veto on: Teferi (mirror), their Dovin's Veto, combo kill spell, sweeper that would destroy your board. Use Three Steps Ahead on: copy a planeswalker ability if you need its effect, counter if flexible, or draw 2 in late game. Never waste Dovin's Veto on a creature.</div></div>
+    <div class="card"><div class="card-label">Verify</div><div class="card-title">SB vs Expected Field</div><div class="card-body">Heavy aggro (RDW, Selesnya): max Beza + Brimaz + Caracal. Heavy combo (Greasefang, Lotus): RIP + High Noon. Heavy blue (Cutter, mirror): Dovin's Veto + Brimaz for clock. Confirm your 15 matches the room. UW's sideboard is versatile — no matchup is unwinnable after siding.</div></div>
+    <div class="card"><div class="card-label">Round 1 Tell</div><div class="card-title">T1 Land Read</div><div class="card-body">Steam Vents/Mountain = UR Cutter or RDW (Lockdown G2). Godless Shrine = Greasefang (board RIP G2). Forest = Selesnya Company (board Brimaz, extra Lockdown). Island/Hallowed Fountain without Plains = potentially Dimir Midrange. Urborg = Lotus Field (board High Noon G2). Opponent mulliganing aggressively = likely Lotus Field or Greasefang setting up a specific hand.</div></div>
+  </div>
+
+  <button class="print-btn" onclick="window.print()">&#9113; Print Event Reference</button>
+  <div style="font-family:'DM Mono',monospace;font-size:11px;margin-top:16px;">
+    <div style="font-weight:500;margin-bottom:8px;">UW CONTROL — Event Reference · Pioneer April 2026</div>
+    <p style="font-size:11px;margin-bottom:8px;">ALWAYS: Pass with mana up | Wandering Emperor EOT not main phase | Teferi requires backup counter | Dovin's Veto = nuclear button only | Lockdown requires protection | Supreme Verdict can't be countered</p>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+      <div><strong>vs UR CUTTER (Even)</strong> — Counter Talent, board Brimaz</div>
+      <div><strong>vs RDW (Even)</strong> — Lockdown clears all, board lifegain</div>
+      <div><strong>vs GREASEFANG (Fav)</strong> — Answer Greasefang on stack, board RIP</div>
+      <div><strong>vs SELESNYA CO (Even)</strong> — Lockdown → Verdict sequence, board Brimaz</div>
+      <div><strong>vs LOTUS FIELD (Fav)</strong> — Field of Ruin Stage, board High Noon</div>
+    </div>
+  </div>
+</div>
+</div>
+
+<footer style="border-top:1px solid var(--rule);padding:24px 80px;display:flex;justify-content:space-between;font-family:'DM Mono',monospace;font-size:10px;color:var(--mid);">
+  <span>Team Resolve &middot; Pioneer 2026</span>
+  <span>Royal Blue &mdash; April 2026</span>
+  <span>MTGO Challenge Mar 22 2026 &middot; SPyromancer 1st (8-1)</span>
+</footer>
+
+<script>
+function show(id){
+  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.nav-link').forEach(b=>b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  event.target.classList.add('active');
+  window.scrollTo(0,0);
+}
+function toggle(id){document.getElementById(id).classList.toggle('open');}
+</script>
+<script>
+(function(){
+  const TIP=document.createElement('div');TIP.className='card-tip';
+  TIP.innerHTML='<div class="card-tip-loading">loading...</div>';
+  document.body.appendChild(TIP);
+  const CACHE={};let hideTimer=null;const PAD=24,W=220,H=310;
+  function pos(e){let x=e.clientX+PAD,y=e.clientY-H/2;
+    if(x+W>window.innerWidth)x=e.clientX-W-PAD;if(y<8)y=8;
+    if(y+H>window.innerHeight)y=window.innerHeight-H-8;
+    TIP.style.left=x+'px';TIP.style.top=y+'px';}
+  async function showTip(name,e){
+    clearTimeout(hideTimer);TIP.innerHTML='<div class="card-tip-loading">loading...</div>';
+    TIP.classList.add('visible');pos(e);
+    if(CACHE[name]){TIP.innerHTML=`<img src="${CACHE[name]}" alt="${name}">`;return;}
+    try{const r=await fetch(`https://api.scryfall.com/cards/named?fuzzy=${encodeURIComponent(name)}`);
+      const d=await r.json();const img=d.image_uris?.normal||d.card_faces?.[0]?.image_uris?.normal;
+      if(!img){TIP.classList.remove('visible');return;}
+      CACHE[name]=img;TIP.innerHTML=`<img src="${img}" alt="${name}">`;}
+    catch(err){TIP.classList.remove('visible');}
+  }
+  function hide(){hideTimer=setTimeout(()=>TIP.classList.remove('visible'),80);}
+  document.addEventListener('mouseover',e=>{const el=e.target.closest('span.c');if(!el)return;showTip(el.textContent.trim(),e);});
+  document.addEventListener('mousemove',e=>{if(TIP.classList.contains('visible'))pos(e);});
+  document.addEventListener('mouseout',e=>{if(e.target.closest('span.c'))hide();});
+})();
+</script>
+</body>
+</html>
