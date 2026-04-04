@@ -10,6 +10,10 @@
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 <style>
+  nav{position:sticky;top:0;z-index:100;background:#09183a;border-bottom:2px solid var(--accent, #65bcd5);display:flex;align-items:center;padding:0 32px;height:48px;gap:4px;}
+  .nav-brand{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent,#4aaed9);margin-right:16px;white-space:nowrap;cursor:default;}
+  .nav-link{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(248,250,252,0.55);border-bottom:2px solid transparent;padding:0 12px;height:48px;display:flex;align-items:center;text-decoration:none;transition:color 0.15s,border-color 0.15s;background:none;border-top:none;border-left:none;border-right:none;white-space:nowrap;}
+  .nav-link:hover{color:rgba(248,250,252,0.9);}
   body { background:#f2ede6; color:#0e0e0e; font-family:'Crimson Pro',Georgia,serif; font-size:17px; line-height:1.6; }
   .team-header { background:#0e0e0e; border-bottom:3px solid #C2851F; padding:48px 80px; }
   .team-header-inner { max-width:1100px; margin:0 auto; }
@@ -40,16 +44,14 @@
 </head>
 <body>
 
-<nav class="main-nav">
-    <ul>
-        <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
-        <li><a href="meta.html"><i class="fas fa-chart-line"></i> Strategies</a></li>
-        <li><a href="deckbuilding.html"><i class="fas fa-cogs"></i> Deck Building</a></li>
-        <li><a href="analyze.html"><i class="fas fa-search"></i> Analyze Deck Lists</a></li>
-        <li><a href="deck-guides.html"><i class="fas fa-book"></i> Guides</a></li>
-        <li><a href="team.html" class="active"><i class="fas fa-users"></i> Team</a></li>
-        <li><a href="zuxas.html"><i class="fas fa-user"></i> Zuxas</a></li>
-    </ul>
+<nav>
+  <div class="nav-brand">Team Resolve</div>
+  <a class="nav-link" href="index.html">Home</a>
+  <a class="nav-link" href="meta.html">Strategies</a>
+  <a class="nav-link" href="deckbuilding.html">Deck Building</a>
+  <a class="nav-link" href="analyze.html">Analyze</a>
+  <a class="nav-link" href="deck-guides.html">Guides</a>
+  <a class="nav-link" href="team.html">Team</a>
 </nav>
 
 <div class="team-header">
