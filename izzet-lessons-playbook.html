@@ -748,8 +748,8 @@ function printSB() {
   TIP.innerHTML='<div class="card-tip-loading">loading...</div>';
   document.body.appendChild(TIP);
   const CACHE={};let ht=null;
-  function pos(e){const P=24,W=220,H=310;let x=e.clientX+P,y=e.clientY-H/2;
-    if(x+W>window.innerWidth)x=e.clientX-W-P;if(y<8)y=8;
+  function pos(e){const PAD=24,W=220,H=310;let x=e.clientX+PAD,y=e.clientY-H/2;
+    if(x+W>window.innerWidth)x=e.clientX-W-PAD;if(y<8)y=8;
     if(y+H>window.innerHeight)y=window.innerHeight-H-8;
     TIP.style.left=x+'px';TIP.style.top=y+'px';}
   async function show2(name,e){
