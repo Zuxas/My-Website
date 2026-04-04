@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" href="images/tab32.png" type="image/png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rakdos Boomer Midrange — Team Resolve Pioneer Playbook</title>
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+html{overflow-y:scroll;}
+:root{
+  --primary:#1a0505;
+  --ink:#0e0e0e;
+  --paper:#f2ede6;
+  --paper-dark:#e8e1d6;
+  --rule:#c8bfb0;
+  --accent:#991B1B;
+  --accent-light:rgba(153,27,27,0.08);
+  --mid:#5a5248;
+  --card:#ffffff;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--paper);color:var(--ink);font-family:'Crimson Pro',Georgia,serif;font-size:17px;line-height:1.6;}
+nav{position:sticky;top:0;z-index:100;background:var(--primary);border-bottom:2px solid var(--accent);display:flex;align-items:center;padding:0 32px;height:48px;gap:4px;}
+.nav-brand{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);margin-right:16px;white-space:nowrap;}
+.nav-link{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(248,250,252,0.55);background:none;border:none;border-bottom:2px solid transparent;padding:0 12px;height:48px;cursor:pointer;white-space:nowrap;display:flex;align-items:center;text-decoration:none;transition:color 0.15s,border-color 0.15s;}
+.nav-link:hover{color:rgba(248,250,252,0.85);}
+.nav-link.active{color:#fff;border-bottom-color:var(--accent);}
+.header-band{background:var(--primary);border-bottom:3px solid var(--accent);padding:48px 80px 40px;position:relative;overflow:hidden;}
+.header-band,.header-band *{color:#f1f5f9;}
+.header-band::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 10% 50%,rgba(153,27,27,0.18) 0%,transparent 70%);pointer-events:none;}
+.header-inner{max-width:1080px;margin:0 auto;display:grid;grid-template-columns:1fr auto;gap:40px;align-items:start;position:relative;}
+.header-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(248,250,252,0.4);margin-bottom:12px;}
+.header-title{font-family:'DM Mono',monospace;font-size:clamp(32px,4vw,52px);font-weight:500;letter-spacing:0.06em;line-height:1.05;text-transform:uppercase;}
+.header-title span{color:var(--accent);}
+.header-tagline{font-size:15px;font-style:italic;color:rgba(248,250,252,0.5);margin-top:12px;max-width:520px;line-height:1.5;}
+.meta-row{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(248,250,252,0.4);margin-bottom:4px;}
+.meta-row span{color:rgba(248,250,252,0.8);margin-left:6px;}
+.section{display:none;animation:fadeIn 0.3s ease;}
+.section.active{display:block;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
+.content{max-width:1080px;margin:0 auto;padding:56px 80px 80px;}
+.section-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--mid);margin-bottom:8px;display:block;}
+h1{font-family:'DM Mono',monospace;font-size:clamp(32px,4vw,48px);font-weight:500;letter-spacing:0.06em;text-transform:uppercase;line-height:1.05;margin-bottom:32px;}
+h2{font-family:'DM Mono',monospace;font-size:13px;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);margin:48px 0 16px;padding-bottom:8px;border-bottom:1px solid var(--rule);}
+h3{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--mid);margin:24px 0 8px;}
+p{font-size:16px;line-height:1.7;color:var(--ink);margin-bottom:14px;font-weight:300;}
+strong{font-weight:600;}
+.mantra{background:var(--accent-light);border-left:3px solid var(--accent);padding:20px 24px;margin:0 0 40px;font-style:italic;font-size:17px;color:var(--ink);line-height:1.6;}
+.card-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule);margin:16px 0;}
+.card-grid-2{grid-template-columns:repeat(2,1fr)!important;}
+.card-grid-3{grid-template-columns:repeat(3,1fr)!important;}
+.card{background:var(--card);padding:20px;transition:background 0.15s;}
+.card:hover{background:#faf7f2;}
+.card-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:var(--mid);margin-bottom:6px;}
+.card-title{font-family:'DM Mono',monospace;font-size:13px;letter-spacing:0.05em;color:var(--accent);margin-bottom:8px;font-weight:500;}
+.card-body{font-size:14px;color:var(--mid);line-height:1.55;font-weight:300;}
+.matchup-block{border:1px solid var(--rule);margin:24px 0;background:var(--card);}
+.matchup-header{background:var(--paper-dark);padding:16px 20px;display:flex;align-items:center;justify-content:space-between;cursor:pointer;}
+.matchup-header h3{margin:0;font-size:11px;letter-spacing:0.15em;color:var(--ink);}
+.verdict{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.15em;text-transform:uppercase;padding:3px 10px;border-radius:2px;}
+.verdict-good{background:rgba(153,27,27,0.1);color:#7f1d1d;}
+.verdict-even{background:rgba(90,82,72,0.12);color:var(--mid);}
+.verdict-hard{background:rgba(180,35,24,0.1);color:#991b1b;}
+.matchup-body{padding:20px;display:none;}
+.matchup-body.open{display:block;}
+.sb-table{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--rule);margin:12px 0;}
+.sb-col{background:var(--paper);padding:12px 16px;}
+.sb-col-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.15em;text-transform:uppercase;color:var(--mid);margin-bottom:8px;}
+.sb-item{display:flex;justify-content:space-between;align-items:baseline;font-size:14px;padding:2px 0;font-weight:300;}
+.sb-qty{font-family:'DM Mono',monospace;font-size:11px;color:var(--mid);}
+.heuristic-list{list-style:none;margin:16px 0;}
+.heuristic-list li{padding:14px 0;border-bottom:1px solid var(--rule);display:flex;gap:16px;align-items:start;}
+.heuristic-list li:last-child{border-bottom:none;}
+.h-num{font-family:'DM Mono',monospace;font-size:10px;color:var(--accent);flex-shrink:0;padding-top:2px;min-width:28px;}
+.h-text{font-size:15px;font-weight:300;color:var(--ink);}
+.h-text strong{font-weight:600;}
+.deck-row{display:flex;justify-content:space-between;padding:3px 0;border-bottom:1px solid rgba(200,191,176,0.4);font-size:15px;}
+.deck-count{font-family:'DM Mono',monospace;font-size:12px;color:var(--mid);min-width:20px;}
+.edge-case{background:var(--card);border:1px solid var(--rule);border-left:3px solid var(--accent);padding:16px 20px;margin:12px 0;}
+.edge-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:6px;}
+.edge-body{font-size:14px;font-weight:300;color:var(--ink);line-height:1.65;}
+.print-btn{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;background:var(--accent);color:#fff;border:none;padding:10px 20px;cursor:pointer;margin:16px 0;}
+span.c{cursor:help;border-bottom:1px dashed var(--accent);}
+span.c:hover{border-bottom-style:solid;}
+.card-tip{position:fixed;z-index:9999;pointer-events:none;width:220px;border-radius:8px;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,0.6);opacity:0;transition:opacity 0.15s ease;background:#1a1a2e;}
+.card-tip.visible{opacity:1;}
+.card-tip img{width:220px;height:auto;display:block;}
+.card-tip-loading{width:220px;height:310px;display:flex;align-items:center;justify-content:center;color:#94a3b8;font-size:12px;font-family:monospace;background:#1e293b;}
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-brand">Rakdos Boomer</div>
+  <a class="nav-link" href="deck-guides.html" style="text-decoration:none;">&#8592; Guides</a>
+  <button class="nav-link active" onclick="show('identity')">Overview</button>
+  <button class="nav-link" onclick="show('decklist')">Decklist</button>
+  <button class="nav-link" onclick="show('gameplan')">Game Flow</button>
+  <button class="nav-link" onclick="show('engines')">Engines</button>
+  <button class="nav-link" onclick="show('lines')">Lines</button>
+  <button class="nav-link" onclick="show('roles')">Roles</button>
+  <button class="nav-link" onclick="show('matchups')">Matchups</button>
+  <button class="nav-link" onclick="show('sideboard')">Sideboard</button>
+  <button class="nav-link" onclick="show('heuristics')">Heuristics</button>
+  <button class="nav-link" onclick="show('tuning')">Tuning</button>
+  <button class="nav-link" onclick="show('prep')">Prep</button>
+</nav>
+<div class="header-band">
+  <div class="header-inner">
+    <div>
+      <div class="header-label">Team Resolve · Pioneer · April 2026</div>
+      <div class="header-title">RAKDOS<br><span>BOOMER</span></div>
+      <div class="header-tagline">"Thoughtseize their best card. Deploy Fable. Flip it. Sheoldred resolves. They die to their own draw step."</div>
+    </div>
+    <div>
+      <div class="meta-row">META SHARE<span>~2%</span></div>
+      <div class="meta-row">ROLE<span>Midrange-Attrition</span></div>
+      <div class="meta-row">COLORS<span>B R</span></div>
+      <div class="meta-row">KILL TURN<span>5–7</span></div>
+      <div class="meta-row">REFERENCE<span>Pioneer Metagame — April 2026</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- CH01 IDENTITY -->
+<div id="identity" class="section active">
+<div class="content">
+  <span class="section-label">Chapter 01</span>
+  <h1>DECK<br>IDENTITY</h1>
+  <div class="mantra">"You strip their hand, remove their threats one-for-one, and deploy threats that generate more value than they can answer. Sheoldred drains them every draw step. Fable generates two bodies. You never run out of gas."</div>
+
+  <p>Rakdos Boomer Midrange is the most traditional fair deck in Pioneer. The plan never changes: disrupt with <span class="c">Thoughtseize</span> and <span class="c">Fatal Push</span>, generate value with <span class="c">Fable of the Mirror-Breaker</span> and <span class="c">Bloodtithe Harvester</span>, and close with <span class="c">Sheoldred, the Apocalypse</span> and <span class="c">Graveyard Trespasser</span>. The deck is called "Boomer" because it plays nothing exotic — no combo, no GY synergy beyond Trespasser — just efficient black-red interaction cards that have been proven format-defining threats for years.</p>
+
+  <p>The deck's strength is its density of individually powerful cards. <span class="c">Thoughtseize</span> on T1 gives you perfect information and strips the most dangerous card from their hand. <span class="c">Fatal Push</span> kills virtually any creature in the format for {B}. <span class="c">Fable of the Mirror-Breaker</span> creates a 2/2 Goblin (that makes Treasure), loots away bad cards, then transforms into Reflection of Kiki-Jiki — copying your best creature every turn with haste. <span class="c">Sheoldred, the Apocalypse</span> is the deck's premier closer: a 4/5 deathtouch that makes opponents lose 2 life each time they draw a card. Against a deck drawing 2-3 cards per turn, Sheoldred drains 4-6 life per turn and draws them into death.</p>
+
+  <h2>Why Register Rakdos Boomer</h2>
+  <div class="card-grid card-grid-3">
+    <div class="card"><div class="card-label">Inevitability</div><div class="card-title">Sheoldred Ends Every Long Game</div><div class="card-body">Sheoldred, the Apocalypse deals 2 damage whenever any player draws a card (except the first each turn). In a format where control decks draw 3-4 cards per turn via Teferi and Consult the Star Charts, Sheoldred deals 6-8 damage per turn passively. Removing her costs a removal spell + 2 more life taken to the face first. Opponents who let Sheoldred live die to their own draw steps.</div></div>
+    <div class="card"><div class="card-label">Disruption</div><div class="card-title">Thoughtseize + Perfect Information</div><div class="card-body">A T1 Thoughtseize reveals your opponent's entire hand, lets you strip the most dangerous card, and gives you perfect sequencing knowledge for the next 3-4 turns. Against combo (Greasefang, Lotus Field), strip the key piece. Against control, strip Teferi or their sweeper. Against aggro, strip Eidolon or their combat trick. The information gain is as valuable as the card stripped.</div></div>
+    <div class="card"><div class="card-label">Value Engine</div><div class="card-title">Fable Generates Two Bodies + Loot</div><div class="card-body">Fable of the Mirror-Breaker: Chapter 1 creates a 2/2 Goblin that produces Treasure tokens. Chapter 2: loot (discard and draw). Chapter 3: transforms into Reflection of Kiki-Jiki — copies any nonlegendary creature you control with haste. Flipping Fable with Sheoldred in play creates a haste 4/5 deathtouch that immediately activates Sheoldred's drain. One Fable flip can swing the game entirely.</div></div>
+  </div>
+</div>
+</div>
+
+<!-- CH02 DECKLIST -->
+<div id="decklist" class="section">
+<div class="content">
+  <span class="section-label">Chapter 02</span>
+  <h1>DECKLIST</h1>
+  <div class="mantra">"Pioneer Metagame Reference — April 2026 · Classic Rakdos Midrange shell"</div>
+  <div class="card-grid card-grid-3">
+    <div class="card">
+      <h3>Disruption (8)</h3>
+      <div class="deck-row"><span class="deck-count">4</span><span><span class="c">Thoughtseize</span></span></div>
+      <div class="deck-row"><span class="deck-count">4</span><span><span class="c">Fatal Push</span></span></div>
+      <h3 style="margin-top:12px;">Removal (6)</h3>
+      <div class="deck-row"><span class="deck-count">3</span><span><span class="c">Bonecrusher Giant</span></span></div>
+      <div class="deck-row"><span class="deck-count">2</span><span><span class="c">Dreadbore</span></span></div>
+      <div class="deck-row"><span class="deck-count">1</span><span><span class="c">Power Word Kill</span></span></div>
+      <h3 style="margin-top:12px;">Threats (12)</h3>
+      <div class="deck-row"><span class="deck-count">4</span><span><span class="c">Bloodtithe Harvester</span></span></div>
+      <div class="deck-row"><span class="deck-count">3</span><span><span class="c">Graveyard Trespasser</span></span></div>
+      <div class="deck-row"><span class="deck-count">3</span><span><span class="c">Sheoldred, the Apocalypse</span></span></div>
+      <div class="deck-row"><span class="deck-count">2</span><span><span class="c">Kalitas, Traitor of Ghet</span></span></div>
+    </div>
+    <div class="card">
+      <h3>Engines (4)</h3>
+      <div class="deck-row"><span class="deck-count">4</span><span><span class="c">Fable of the Mirror-Breaker</span></span></div>
+      <h3 style="margin-top:12px;">Lands (24)</h3>
+      <div class="deck-row"><span class="deck-count">4</span><span><span class="c">Blood Crypt</span></span></div>
+      <div class="deck-row"><span class="deck-count">4</span><span><span class="c">Blackcleave Cliffs</span></span></div>
+      <div class="deck-row"><span class="deck-count">4</span><span><span class="c">Blightstep Pathway</span></span></div>
+      <div class="deck-row"><span class="deck-count">2</span><span><span class="c">Sulfurous Springs</span></span></div>
+      <div class="deck-row"><span class="deck-count">2</span><span><span class="c">Haunted Ridge</span></span></div>
+      <div class="deck-row"><span class="deck-count">4</span><span>Swamp</span></div>
+      <div class="deck-row"><span class="deck-count">2</span><span>Mountain</span></div>
+      <div class="deck-row"><span class="deck-count">1</span><span><span class="c">Den of the Bugbear</span></span></div>
+      <div class="deck-row"><span class="deck-count">1</span><span><span class="c">Hive of the Eye Tyrant</span></span></div>
+    </div>
+    <div class="card">
+      <h3>Sideboard (15)</h3>
+      <div class="deck-row"><span class="deck-count">3</span><span><span class="c">Duress</span></span></div>
+      <div class="deck-row"><span class="deck-count">2</span><span><span class="c">Unlicensed Hearse</span></span></div>
+      <div class="deck-row"><span class="deck-count">2</span><span><span class="c">Abrade</span></span></div>
+      <div class="deck-row"><span class="deck-count">2</span><span><span class="c">Kolaghan's Command</span></span></div>
+      <div class="deck-row"><span class="deck-count">2</span><span><span class="c">Chandra, Torch of Defiance</span></span></div>
+      <div class="deck-row"><span class="deck-count">1</span><span><span class="c">Extinction Event</span></span></div>
+      <div class="deck-row"><span class="deck-count">1</span><span><span class="c">Brotherhood's End</span></span></div>
+      <div class="deck-row"><span class="deck-count">1</span><span><span class="c">Go Blank</span></span></div>
+      <div class="deck-row"><span class="deck-count">1</span><span><span class="c">Rending Volley</span></span></div>
+    </div>
+  </div>
+
+  <h2>Key Card Notes</h2>
+  <div class="card-grid card-grid-2">
+    <div class="card"><div class="card-label">The Engine</div><div class="card-title">Fable of the Mirror-Breaker</div><div class="card-body">Chapter 1: 2/2 Goblin Shaman that makes a Treasure when it attacks. Chapter 2: discard and draw a card. Chapter 3: transform into Reflection of Kiki-Jiki — whenever a nonlegendary creature enters under your control, create a haste token copy exiled at EOT. Reflection copying Sheoldred = free 4/5 deathtouch haste that drains 2 per opponent draw. Reflection copying Bloodtithe Harvester = free removal + Blood token. Fable is the deck's most important card to protect.</div></div>
+    <div class="card"><div class="card-label">The Closer</div><div class="card-title">Sheoldred, the Apocalypse</div><div class="card-body">4/5 deathtouch for {2BB}. You gain 2 life when YOU draw a card. Opponent loses 2 life when THEY draw a card. Against a control opponent drawing via Consult the Star Charts and Memory Deluge, Sheoldred drains 6-10 life per turn passively. Against any opponent, Sheoldred converts their draw steps into life loss. Deathtouch means any blocker dies to Sheoldred in combat. It wins long games by existing.</div></div>
+    <div class="card"><div class="card-label">The GY Hate</div><div class="card-title">Graveyard Trespasser</div><div class="card-body">3/3 for {2B} with ward (opponent must discard a card to target it). On entry and on each attack: exile up to one card from a target player's GY, and if a creature card was exiled, drain 1 life. Shuts off Arclight Phoenix and Greasefang GY engines while draining life. Ward forces opponents to spend a card to remove it — making it both a value engine and a removal-resistant threat. The drain stacks quickly against GY-heavy decks.</div></div>
+    <div class="card"><div class="card-label">The Removal</div><div class="card-title">Fatal Push + Bloodtithe Harvester</div><div class="card-body">Fatal Push: {B} instant, destroy target creature with MV 2 or less (MV 4 or less with revolt — triggered by a permanent leaving the field this turn). Bloodtithe Harvester: 3/2 for {BR} that makes a Blood token and can sacrifice itself + Blood tokens to deal 3 damage to a target creature (scales with more Blood). Two overlapping removal sources that handle creatures of different sizes. Harvester's sacrifice ability doesn't use the stack target selection — it resolves faster than most responses.</div></div>
+  </div>
+</div>
+</div>
+
+<!-- CH03 GAME FLOW -->
+<div id="gameplan" class="section">
+<div class="content">
+  <span class="section-label">Chapter 03</span>
+  <h1>GAME<br>FLOW</h1>
+  <div class="mantra">"T1 Thoughtseize. T2 Bloodtithe Harvester. T3 Fable. T4 Sheoldred. They die to their draw step."</div>
+  <div class="card-grid card-grid-2">
+    <div class="card"><div class="card-label">Early (T1–T2)</div><div class="card-title">Disrupt + Deploy</div><div class="card-body">T1: Thoughtseize — see their hand, strip the best card. Perfect information shapes your T2-T4 sequencing. T2: Bloodtithe Harvester is the ideal T2 play: 3/2 body that makes a Blood token (rummage later) and serves as removal when you have Blood tokens. Alternatively, Fatal Push kills their T1 creature. Your goal: answer their T2-T3 threat while deploying your own.</div></div>
+    <div class="card"><div class="card-label">Mid (T3–T4)</div><div class="card-title">Fable + Value Accrual</div><div class="card-body">T3: Fable of the Mirror-Breaker. The Goblin token attacks on T4 for a Treasure, Chapter 2 loots, Chapter 3 transforms T5. T4: Sheoldred or Graveyard Trespasser. Sheoldred on T4 with a Fable in play means T5: Reflection of Kiki-Jiki copies Sheoldred, creating a haste 4/5 deathtouch that attacks immediately. Two Sheoldreds on T5 drains 4 per their draw step. Most opponents can't survive this.</div></div>
+    <div class="card"><div class="card-label">Late (T5+)</div><div class="card-title">Sheoldred Drain or Creature Pressure</div><div class="card-body">Sheoldred in play kills control opponents through draw steps (2 life per draw = 6 per turn if they draw 3). Against aggro, Sheoldred's 4/5 deathtouch blanks attackers and Kalitas exiles their creatures preventing recursion. The game's won through incremental advantage: every creature you play generates more value than their single-removal answer. Fable's loot Chapter 2 refills your hand when you're running low.</div></div>
+    <div class="card"><div class="card-label">Mulligan</div><div class="card-title">Need: 3 Lands + Disruption + Threat</div><div class="card-body">Keep: 3 lands (including at least one black source), 1 Thoughtseize or Fatal Push, and a 2-3 drop threat. Mulligan: 1-2 land hands (you miss T2 plays which are critical), all threats with no interaction (you die to combo before impacting the board), 4+ lands with nothing to do. At 6: 3 lands + Thoughtseize + any threat. At 5: 2 lands + Thoughtseize + Harvester + any removal.</div></div>
+  </div>
+</div>
+</div>
+
+<!-- CH04 ENGINES -->
+<div id="engines" class="section">
+<div class="content">
+  <span class="section-label">Chapter 04</span>
+  <h1>CORE<br>ENGINES</h1>
+  <div class="mantra">"Thoughtseize gives information. Fable generates value. Sheoldred drains. Three engines, all running simultaneously."</div>
+  <div class="card-grid card-grid-3">
+    <div class="card"><div class="card-label">Engine 1 — Information</div><div class="card-title">Thoughtseize + Sequencing</div><div class="card-body">Thoughtseize on T1 reveals their entire opening hand. This information tells you: what's their kill condition, what's their next 3 turns, what's dangerous vs. ignorable. Strip the most important card — usually their combo piece, their sweeper (vs. your threats), their Treasure Cruise (prevents them from refueling), or their best T2 play. The information from Thoughtseize shapes every subsequent decision in the game.</div></div>
+    <div class="card"><div class="card-label">Engine 2 — Value</div><div class="card-title">Fable → Reflection of Kiki-Jiki</div><div class="card-body">Fable generates value across all three chapters. Chapter 1 (Goblin → Treasure): Treasure enables higher-mana plays earlier. Chapter 2 (loot): dig for Sheoldred, remove lands, put Kroxa in GY. Chapter 3 (Reflection): copy your best nonlegendary creature with haste. Reflection copying Graveyard Trespasser exiles a GY card and drains 1. Reflection copying Bloodtithe Harvester provides removal + Blood. Fable flippped with Sheoldred = game over.</div></div>
+    <div class="card"><div class="card-label">Engine 3 — Drain</div><div class="card-title">Sheoldred, the Apocalypse</div><div class="card-body">Sheoldred is a passive win condition that grows more powerful as the game progresses. Early game: a 4/5 deathtouch that demands immediate answer. Mid game: 2 life per opponent draw step turns their card advantage into a clock. Late game: against decks that need to draw 3+ cards per turn to keep up (control, Phoenix), Sheoldred generates 6-8 damage per turn passively. Opponents must kill her immediately or die to their own draws.</div></div>
+  </div>
+</div>
+</div>
+
+<!-- CH05 LINES -->
+<div id="lines" class="section">
+<div class="content">
+  <span class="section-label">Chapter 05</span>
+  <h1>LINES &amp;<br>TACTICS</h1>
+  <div class="mantra">"Thoughtseize on T1 for information. Use Fatal Push revolted. Protect Fable — it's worth more than anything else."</div>
+  <div class="edge-case"><div class="edge-label">Line 01 — Thoughtseize Timing: Information vs Disruption</div><div class="edge-body">T1 Thoughtseize gives information early but the hand they show on T1 is 7 cards that become increasingly stale as the game progresses. However, knowing their opening hand on T1 tells you which of their cards to answer T2-T4. Against combo: strip the key piece (Parhelion II, Greasefang, Lotus Field). Against control: strip their most powerful card (Teferi, Supreme Verdict) to buy turns. Against aggro: strip Eidolon of the Great Revel. If you hold Thoughtseize until T3-T4, they've already deployed their dangerous cards. Strip early.</div></div>
+  <div class="edge-case"><div class="edge-label">Line 02 — Fatal Push Revolt: Create the Trigger</div><div class="edge-body">Fatal Push normally kills MV-2 or less creatures. With revolt (a permanent left your battlefield this turn), it kills MV-4 or less. Revolt triggers: a fetch land cracking, a Blood token being sacrificed, a Treasure being sacrificed, a creature dying in combat, Bloodtithe Harvester activating (sacrifices itself and Blood tokens). The standard sequence: sacrifice a Blood token from Harvester to "set up revolt," then Fatal Push a 3-4 MV creature. This sequence kills threats Fatal Push would normally miss entirely — including Bonecrusher Giant and most four-drops.</div></div>
+  <div class="edge-case"><div class="edge-label">Line 03 — Protect Fable: It's Worth More Than Any Card It Could Replace</div><div class="edge-body">Fable of the Mirror-Breaker is the deck's most valuable card — worth protecting with a Thoughtseize to strip opponent's answer before deploying it. When you have Fable in hand and Thoughtseize available, always Thoughtseize first to check for removal. If they have Abrupt Decay or a counter, strip it first, then deploy Fable safely. A flipped Fable (Reflection of Kiki-Jiki) that survives a full turn generates more value per turn than almost any other card in Pioneer.</div></div>
+  <div class="edge-case"><div class="edge-label">Line 04 — Graveyard Trespasser Ward: Force the Discard</div><div class="edge-body">Graveyard Trespasser has ward — opponent must discard a card to target it with a spell or ability. This is a resource tax, not prevention. Force the opponent to pay the ward cost at the worst time: deploy Trespasser when their hand is depleted after casting multiple spells. A Trespasser deployed when the opponent has 0-1 cards is essentially uncounterable because they can't afford the discard cost. Trespasser deployed into a full hand just gets answered. Sequence your T3 Trespasser after their T3 action has emptied useful cards from their hand.</div></div>
+</div>
+</div>
+
+<!-- CH06 ROLES -->
+<div id="roles" class="section">
+<div class="content">
+  <span class="section-label">Chapter 06</span>
+  <h1>ROLE<br>ASSIGNMENT</h1>
+  <div class="mantra">"You're the fair deck in an unfair format. Your edge is individual card quality and perfect information from Thoughtseize."</div>
+  <div class="card-grid card-grid-3">
+    <div class="card"><div class="card-label">vs Aggro</div><div class="card-title">Answer Their Threats, Deploy Yours</div><div class="card-body">Against RDW: Fatal Push kills Monastery Swiftspear and Soul-Scar Mage on T1. Bonecrusher Giant's Stomp deals 2 to kill their one-drops (and prevents damage prevention — ignoring protection spells). Kalitas, Traitor of Ghet gains life and exiles their creatures on death. Graveyard Trespasser's drain stabilizes. You can't race burn — answer everything and deploy Sheoldred at 6+ life.</div></div>
+    <div class="card"><div class="card-label">vs Midrange</div><div class="card-title">Out-Value Their Resources</div><div class="card-body">Against Selesnya Company and similar: your 1-for-1 removal trades favorably with their 1/1 Elves. Sheoldred blanks their draw-step value. Graveyard Trespasser with ward forces extra resource spending. Fable's Reflection copying Sheoldred on T5 generates overwhelming advantage they can't answer profitably. You win midrange mirrors by generating more value per card than they do.</div></div>
+    <div class="card"><div class="card-label">vs Combo/Control</div><div class="card-title">Strip Key Pieces, Pressure Life</div><div class="card-body">Against Greasefang, Lotus Field, and UW Control: Thoughtseize strips the kill piece (Parhelion II, Emergent Ultimatum, Teferi). Dreadbore handles planeswalkers (the only non-blue planeswalker removal in Pioneer). Sheoldred kills control through draw steps. Against combo: don't over-discard — Thoughtseize the ONE critical piece, then race with creatures. They only need one piece to win; you only need to answer that one piece.</div></div>
+  </div>
+</div>
+</div>
+
+<!-- CH07 MATCHUPS -->
+<div id="matchups" class="section">
+<div class="content">
+  <span class="section-label">Chapter 07</span>
+  <h1>MATCHUP<br>GUIDE</h1>
+  <div class="mantra">"Thoughtseize shows you the answer. Then everything else is execution."</div>
+
+  <div class="matchup-block">
+    <div class="matchup-header" onclick="toggle('mu-cutter')"><h3>UR CUTTER</h3><span class="verdict verdict-even">Even</span></div>
+    <div id="mu-cutter" class="matchup-body">
+      <p>Their Monk tokens and Cutter engine generate more threats than your removal can answer. Key: Thoughtseize their Stormchaser's Talent before they deploy it — without the token engine, their creatures are manageable. Bloodtithe Harvester's sacrifice ability kills a Monk token + drains. Sheoldred in play taxes their cantrips (each Opt and Consider costs them 2 life). Their Treasure Cruise refuels — Thoughtseize to strip it or accept the 3-card refuel and answer the resulting threats.</p>
+      <div class="sb-table">
+        <div class="sb-col"><div class="sb-col-label">In</div><div class="sb-item"><span><span class="c">Abrade</span></span><span class="sb-qty">+2</span></div><div class="sb-item"><span><span class="c">Kolaghan's Command</span></span><span class="sb-qty">+2</span></div></div>
+        <div class="sb-col"><div class="sb-col-label">Out</div><div class="sb-item"><span><span class="c">Kalitas, Traitor of Ghet</span></span><span class="sb-qty">&minus;2</span></div><div class="sb-item"><span><span class="c">Power Word Kill</span></span><span class="sb-qty">&minus;1</span></div><div class="sb-item"><span><span class="c">Dreadbore</span></span><span class="sb-qty">&minus;1</span></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="matchup-block">
+    <div class="matchup-header" onclick="toggle('mu-rdw')"><h3>RED DECK WINS</h3><span class="verdict verdict-even">Even</span></div>
+    <div id="mu-rdw" class="matchup-body">
+      <p>RDW kills by T3-4. Fatal Push kills their T1 threats immediately. Bonecrusher Giant's Stomp deals 2 damage at instant speed on T2 and deals with Eidolon of the Great Revel. Kalitas, Traitor of Ghet gains life per creature kill and exiles their creatures (preventing Monastery Swiftspear recursion). Brotherhood's End (SB) sweeps their entire board. Your life total is a resource — don't Thoughtseize yourself below 10 life vs burn. Sheoldred's 4/5 deathtouch blocks everything they have.</p>
+      <div class="sb-table">
+        <div class="sb-col"><div class="sb-col-label">In</div><div class="sb-item"><span><span class="c">Brotherhood's End</span></span><span class="sb-qty">+1</span></div><div class="sb-item"><span><span class="c">Abrade</span></span><span class="sb-qty">+2</span></div></div>
+        <div class="sb-col"><div class="sb-col-label">Out</div><div class="sb-item"><span><span class="c">Thoughtseize</span></span><span class="sb-qty">&minus;2</span></div><div class="sb-item"><span><span class="c">Dreadbore</span></span><span class="sb-qty">&minus;1</span></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="matchup-block">
+    <div class="matchup-header" onclick="toggle('mu-greasefang')"><h3>ORZHOV GREASEFANG</h3><span class="verdict verdict-good">Favorable</span></div>
+    <div id="mu-greasefang" class="matchup-body">
+      <p>T1 Thoughtseize strips Parhelion II or Greasefang before they can set up. Fatal Push kills Greasefang. Dreadbore kills Greasefang at sorcery speed. Graveyard Trespasser exiles GY cards on attack — preventing Parhelion II from being returned. Unlicensed Hearse (SB) fills up with their GY cards, removing the Parhelion II target permanently. Their main plan is fragile when your T1 Thoughtseize sees exactly what they have and strips the critical piece.</p>
+      <div class="sb-table">
+        <div class="sb-col"><div class="sb-col-label">In</div><div class="sb-item"><span><span class="c">Unlicensed Hearse</span></span><span class="sb-qty">+2</span></div><div class="sb-item"><span><span class="c">Go Blank</span></span><span class="sb-qty">+1</span></div></div>
+        <div class="sb-col"><div class="sb-col-label">Out</div><div class="sb-item"><span><span class="c">Fatal Push</span></span><span class="sb-qty">&minus;2</span></div><div class="sb-item"><span><span class="c">Power Word Kill</span></span><span class="sb-qty">&minus;1</span></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="matchup-block">
+    <div class="matchup-header" onclick="toggle('mu-control')"><h3>UW CONTROL</h3><span class="verdict verdict-even">Even</span></div>
+    <div id="mu-control" class="matchup-body">
+      <p>Thoughtseize strips their Teferi, Hero of Dominaria before it resolves. Dreadbore answers Teferi at sorcery speed when it does resolve. Sheoldred in play kills them through their own draw steps — every Consult the Star Charts, Memory Deluge, and Teferi draw is 2 more life lost. They must kill Sheoldred immediately or die. Chandra, Torch of Defiance (SB) is a planeswalker they can't counter with Dovin's Veto and generates mana or removal every activation.</p>
+      <div class="sb-table">
+        <div class="sb-col"><div class="sb-col-label">In</div><div class="sb-item"><span><span class="c">Duress</span></span><span class="sb-qty">+3</span></div><div class="sb-item"><span><span class="c">Chandra, Torch of Defiance</span></span><span class="sb-qty">+2</span></div></div>
+        <div class="sb-col"><div class="sb-col-label">Out</div><div class="sb-item"><span><span class="c">Fatal Push</span></span><span class="sb-qty">&minus;4</span></div><div class="sb-item"><span><span class="c">Power Word Kill</span></span><span class="sb-qty">&minus;1</span></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="matchup-block">
+    <div class="matchup-header" onclick="toggle('mu-phoenix')"><h3>ARCLIGHT PHOENIX</h3><span class="verdict verdict-even">Even</span></div>
+    <div id="mu-phoenix" class="matchup-body">
+      <p>Graveyard Trespasser exiles GY cards on each attack, including Arclight Phoenix — preventing their recursion. Unlicensed Hearse (SB) turns into a vehicle that exiles Phoenixes by filling with GY cards. Thoughtseize strips their Artist's Talent or Treasure Cruise before it refuels them. Kalitas, Traitor of Ghet exiles every creature they kill in combat (including Phoenixes) turning death into permanent exile. Your GY hate package is the game — deploy Trespasser and Hearse as quickly as possible.</p>
+      <div class="sb-table">
+        <div class="sb-col"><div class="sb-col-label">In</div><div class="sb-item"><span><span class="c">Unlicensed Hearse</span></span><span class="sb-qty">+2</span></div><div class="sb-item"><span><span class="c">Kolaghan's Command</span></span><span class="sb-qty">+2</span></div></div>
+        <div class="sb-col"><div class="sb-col-label">Out</div><div class="sb-item"><span><span class="c">Kalitas, Traitor of Ghet</span></span><span class="sb-qty">&minus;2</span></div><div class="sb-item"><span><span class="c">Dreadbore</span></span><span class="sb-qty">&minus;2</span></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- CH08 SIDEBOARD -->
+<div id="sideboard" class="section">
+<div class="content">
+  <span class="section-label">Chapter 08</span>
+  <h1>SIDEBOARD<br>GUIDE</h1>
+  <div class="mantra">"Your sideboard converts fair midrange into specialized hate for each matchup type."</div>
+  <div class="card-grid card-grid-2">
+    <div class="card"><div class="card-label">P1 — vs Control/Combo</div><div class="card-title">Duress ×3</div><div class="card-body">A {B} discard that forces the opponent to reveal their hand and discard a noncreature, nonland card. Against UW Control: strips Teferi, Supreme Verdict, Dovin's Veto, No More Lies. Against Lotus Field: strips Bring to Light, Hidden Strings, or Emergent Ultimatum. Against Greasefang: strips Parhelion II or Monument to Endurance. Duress is Thoughtseize's cheaper sibling for matchups where you need to strip multiple spells — {B} vs {1B} means you can cast Duress + another spell on the same turn more easily.</div></div>
+    <div class="card"><div class="card-label">P2 — vs GY Decks</div><div class="card-title">Unlicensed Hearse ×2</div><div class="card-body">2-mana artifact Vehicle. Tap two creatures to crew it into a 3/3. More importantly: {2}: exile up to two cards from any GY — Hearse gets a +1/+1 counter for each card exiled. Against Arclight Phoenix: exile two Phoenixes per activation, permanently removing them. Against Greasefang: exile Parhelion II from GY. Once Hearse has exiled 4-6 cards, it becomes a 5-8/5-8 vehicle that crews into a massive threat. Requires no payment beyond the activation — just removing their GY pieces.</div></div>
+    <div class="card"><div class="card-label">P3 — vs Artifacts/Artifacts/Aggro</div><div class="card-title">Abrade ×2 + Kolaghan's Command ×2</div><div class="card-body">Abrade: {1R} instant — deal 3 damage to any creature OR destroy target artifact. Hits Cori-Steel Cutter (before it transforms), Unlicensed Hearse (their SB hate), and any relevant artifact. Kolaghan's Command ({1BR}): four modes including deal 2 damage, destroy artifact, make opponent discard, or return creature from GY. Kolaghan's Command returning Sheoldred from GY is the deck's most powerful late-game play — Sheoldred is a legend so you can only have one in play, but it can be recast via Command.</div></div>
+    <div class="card"><div class="card-label">P4 — vs Combo/Aggro Boards</div><div class="card-title">Extinction Event + Brotherhood's End</div><div class="card-body">Extinction Event ({3B}): exile all creatures with even or odd MV. The choice matters — say "even" to exile MV-2 creatures (Bloodtithe Harvester, Thalia) or "odd" to exile MV-1 and 3 creatures (Swiftspear, Bonecrusher Giant). Brotherhood's End ({1RR}): deals 2 damage to each creature and player, OR 3 damage to each artifact. Brotherhood's End G2 vs RDW clears their entire board including Eidolon. Two sweepers in the sideboard give you answers to wide boards that single removal can't handle.</div></div>
+  </div>
+</div>
+</div>
+
+<!-- CH09 HEURISTICS -->
+<div id="heuristics" class="section">
+<div class="content">
+  <span class="section-label">Chapter 09</span>
+  <h1>HEURISTICS</h1>
+  <div class="mantra">"Thoughtseize T1. Revolt Fatal Push for 4-drops. Protect Fable. Never Thoughtseize when losing life matters."</div>
+  <ol class="heuristic-list">
+    <li><span class="h-num">01</span><span class="h-text"><strong>Thoughtseize T1 in most games — don't hold it.</strong> The value of information decays rapidly. By T3, they've drawn 2-3 new cards and your T1 information is partially stale. Strip the most dangerous card on T1. The exception: vs RDW, don't pay 2 life to Thoughtseize when you're already at 12 from their attacks — 2 life matters more than information when you're racing burn.</span></li>
+    <li><span class="h-num">02</span><span class="h-text"><strong>Create revolt for Fatal Push on demand via Blood token sacrifice.</strong> Bloodtithe Harvester creates Blood tokens. When you need to kill a 3-4 MV creature, sacrifice a Blood token first (triggering revolt), THEN cast Fatal Push. This sequence kills any creature up to MV 4. The Blood token sacrifice must be done before declaring Fatal Push as the target — order of operations matters.</span></li>
+    <li><span class="h-num">03</span><span class="h-text"><strong>Fable Chapter 2 — loot away lands, not spells.</strong> Chapter 2 lets you discard a card and draw a card. Use it to discard: excess lands (flood), Blood tokens (can't cast), dead removal (vs a deck with no creatures). Keep: Thoughtseize, Sheoldred, removal spells you'll need. The loot helps with flood but don't discard cards you'll actually need in the next 2 turns.</span></li>
+    <li><span class="h-num">04</span><span class="h-text"><strong>Against control, cut Fatal Push and board in Duress.</strong> Control decks run minimal creatures — Fatal Push is a dead card in hand. Bring in Duress to strip their high-impact spells (Teferi, Verdict, Dovin's Veto) instead. Dreadbore handles any planeswalker that resolves. Sheoldred kills them through draw steps. Fatal Push stays in for matchups with relevant creatures only.</span></li>
+    <li><span class="h-num">05</span><span class="h-text"><strong>Dreadbore is sorcery speed — plan your Teferi answers accordingly.</strong> Dreadbore destroys any creature OR planeswalker at sorcery speed. Against Teferi (Hero of Dominaria): Dreadbore on your main phase before Teferi can activate. Against Wandering Emperor: you can't Dreadbore it at instant speed during combat. Know that Dreadbore requires sorcery-speed window — use Fatal Push for instant-speed answers, Dreadbore for planned main-phase answers.</span></li>
+    <li><span class="h-num">06</span><span class="h-text"><strong>Kalitas, Traitor of Ghet: exile-on-kill prevents all recursion including Phoenix, Parhelion, and Kroxa.</strong> Whenever any non-token creature dies and Kalitas is in play, exile it and create a 2/2 Zombie. This exiles Arclight Phoenixes (prevents recursion), Greasefang (prevents returning Parhelion), and any creature your removal spells kill. Kalitas is your built-in GY hate vs creature-based strategies. Deploy it when your removal is active.</span></li>
+    <li><span class="h-num">07</span><span class="h-text"><strong>Reflection of Kiki-Jiki copies nonlegendary creatures — Sheoldred is legendary, so time the flip right.</strong> Reflection copies nonlegendary creatures. Sheoldred IS legendary — Reflection can't copy it directly. However: Reflection creates a TOKEN COPY — token copies of legendary permanents don't trigger the legend rule. So Reflection copying Sheoldred works and creates a legal haste token. Just don't cast a second real Sheoldred while the token is in play.</span></li>
+    <li><span class="h-num">08</span><span class="h-text"><strong>Graveyard Trespasser ward timing: deploy into their depleted hand, not their full hand.</strong> Ward — discard a card — is only a cost, not prevention. Deploy Trespasser after they've used multiple spells in a turn, leaving them with 1-2 cards. If they have 5 cards, paying ward cost is easy. If they have 0-1 cards, paying ward effectively means they can't answer Trespasser this turn.</span></li>
+    <li><span class="h-num">09</span><span class="h-text"><strong>Sheoldred in play: their draw step is a clock. Count turns to death.</strong> With Sheoldred in play and opponent at 14 life: if they draw 2 cards per turn, that's 4 life per turn, and they die in 3.5 turns. Calculate this before each combat — know whether you need to attack aggressively to close or whether Sheoldred alone wins in time. Often Sheoldred + passive drain wins without you needing to attack at all.</span></li>
+    <li><span class="h-num">10</span><span class="h-text"><strong>Unlicensed Hearse grows permanently — crew it early to start exiling.</strong> Hearse gains +1/+1 counters for each card it exiles from GYs. Start activating {2} on T3-T4 to exile Phoenixes or Parhelions before they matter. A Hearse that's been activating for 3 turns is a 5-6/5-6 that can crew into a massive attacker. Don't save it for "when the GY gets big" — exile early, exile often, and it becomes a legitimate threat.</span></li>
+  </ol>
+</div>
+</div>
+
+<!-- CH10 TUNING -->
+<div id="tuning" class="section">
+<div class="content">
+  <span class="section-label">Chapter 10</span>
+  <h1>TUNING<br>NOTES</h1>
+  <div class="mantra">"4 Thoughtseize, 4 Fatal Push, 4 Fable are immovable. Everything else responds to meta threats."</div>
+  <div class="card-grid card-grid-3">
+    <div class="card"><div class="card-label">Lock</div><div class="card-title">4 Thoughtseize + 4 Fatal Push</div><div class="card-body">Thoughtseize is the best T1 play in Pioneer across every matchup. Fatal Push kills virtually any relevant creature at {B}. These 8 cards define the deck's identity. Never cut below 4 of either.</div></div>
+    <div class="card"><div class="card-label">Lock</div><div class="card-title">4 Fable of the Mirror-Breaker</div><div class="card-body">The deck's best card after Thoughtseize. Generates value across all three chapters and transforms into the deck's primary win engine. Always 4 copies — finding Fable consistently by T3 is non-negotiable.</div></div>
+    <div class="card"><div class="card-label">Lock</div><div class="card-title">3–4 Sheoldred</div><div class="card-body">3 is the reference number; 4 in control-heavy metas where Sheoldred wins games alone. Sheoldred is legendary so multiples in hand are dead. 3 copies maximizes seeing it in most games without the redundancy problem.</div></div>
+    <div class="card"><div class="card-label">Flex 2–4</div><div class="card-title">Bloodtithe Harvester</div><div class="card-body">4 is standard. Can trim to 3 in metas where the 3/2 body is less relevant (control-heavy). The Blood token provides valuable looting and the sacrifice ability scales with Blood count — more Harvesters = more Blood = better removal. 4 is correct in most metas.</div></div>
+    <div class="card"><div class="card-label">Flex 0–3</div><div class="card-title">Kalitas, Traitor of Ghet</div><div class="card-body">2 in standard builds. The 3/4 lifelink body and exile-on-kill are valuable vs aggro and GY decks. 0 copies vs control (irrelevant). 3 copies in heavy aggro or GY-combo metas. Kalitas is the most meta-dependent slot in the deck.</div></div>
+    <div class="card"><div class="card-label">Flex</div><div class="card-title">Removal Suite</div><div class="card-body">Bonecrusher Giant (Stomp deals 2, prevents damage prevention — runs 3). Dreadbore (kills planeswalkers at sorcery speed — runs 2). Power Word Kill (cheap unconditional creature removal — 1 copy). Adjust the ratio: more Dreadbore vs planeswalker-heavy metas, more Giant vs aggro metas, more Power Word Kill vs wide creature fields.</div></div>
+  </div>
+</div>
+</div>
+
+<!-- CH11 PREP -->
+<div id="prep" class="section">
+<div class="content">
+  <span class="section-label">Chapter 11</span>
+  <h1>EVENT<br>PREP</h1>
+  <div class="mantra">"Know which card to Thoughtseize. Know when to Fatal Push with revolt. Know when Sheoldred wins without attacking."</div>
+  <div class="card-grid card-grid-2">
+    <div class="card"><div class="card-label">Know Cold</div><div class="card-title">Thoughtseize Priority by Matchup</div><div class="card-body">vs UR Cutter: strip Stormchaser's Talent (their engine). vs RDW: strip Eidolon of the Great Revel (their tax card). vs Greasefang: strip Parhelion II (their kill piece). vs Lotus Field: strip Emergent Ultimatum or Bring to Light. vs UW Control: strip Teferi, Hero of Dominaria (their win condition and draw engine). vs Selesnya: strip Collected Company (their refuel) or Thalia (their tax). vs Phoenix: strip Artist's Talent (their loot engine) or Treasure Cruise.</div></div>
+    <div class="card"><div class="card-label">Know Cold</div><div class="card-title">Sheoldred Drain Math</div><div class="card-body">With Sheoldred in play: each opponent draw costs them 2 life. Standard draws: 1/turn = 2 life per turn (dies in ~10 turns from 20 life at no draws before). With cantrips: 3 draws/turn = 6 life per turn (dies in ~3 turns from 18 life). Control with Teferi: draws 1+ per turn + untap lands. Know the turn count to death so you know whether to attack or wait. Often: Sheoldred + 2-3 turns is lethal without attacking at all.</div></div>
+    <div class="card"><div class="card-label">Verify</div><div class="card-title">SB Matches Expected Field</div><div class="card-body">Heavy GY (Phoenix, Greasefang): max Unlicensed Hearse + Go Blank. Heavy control: max Duress + Chandra. Heavy aggro (RDW, Selesnya): Brotherhood's End + Extinction Event. Heavy combo (Lotus Field): Duress + Extinction Event for odd-MV creature exiling (Vizier of Tumbling Sands = MV 3, odd). Confirm 15 cards match the expected field before registration.</div></div>
+    <div class="card"><div class="card-label">Round 1 Tell</div><div class="card-title">T1 Land Read</div><div class="card-body">Steam Vents = UR Cutter (Thoughtseize their Talent). Mountain only = RDW (board Abrade G2, don't Thoughtseize below 14 life). Godless Shrine = Greasefang (Thoughtseize Parhelion II, board Hearse G2). Hallowed Fountain = UW Control (Thoughtseize Teferi, board Duress + Chandra G2). Forest = Selesnya Company (Thoughtseize CoCo). Cycling land / Forest = Lotus Field (board Duress + Extinction Event G2).</div></div>
+  </div>
+
+  <button class="print-btn" onclick="window.print()">&#9113; Print Event Reference</button>
+  <div style="font-family:'DM Mono',monospace;font-size:11px;margin-top:16px;">
+    <div style="font-weight:500;margin-bottom:8px;">RAKDOS BOOMER — Event Reference · Pioneer April 2026</div>
+    <p style="font-size:11px;margin-bottom:8px;">Thoughtseize T1 | Create revolt for Fatal Push | Protect Fable with Thoughtseize | Count Sheoldred drain turns | Trespasser into depleted hand | Hearse exiles early, not when GY is big</p>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+      <div><strong>vs UR CUTTER (Even)</strong> — Strip Talent, board Abrade + Kolaghan's</div>
+      <div><strong>vs RDW (Even)</strong> — Kill everything, board Brotherhood's End</div>
+      <div><strong>vs GREASEFANG (Fav)</strong> — Strip Parhelion, board Hearse + Go Blank</div>
+      <div><strong>vs UW CONTROL (Even)</strong> — Strip Teferi, board Duress + Chandra</div>
+      <div><strong>vs PHOENIX (Even)</strong> — Trespasser + Hearse, board Hearse + Kolaghan's</div>
+    </div>
+  </div>
+</div>
+</div>
+
+<footer style="border-top:1px solid var(--rule);padding:24px 80px;display:flex;justify-content:space-between;font-family:'DM Mono',monospace;font-size:10px;color:var(--mid);">
+  <span>Team Resolve &middot; Pioneer 2026</span>
+  <span>Rakdos Red &mdash; April 2026</span>
+  <span>Classic Rakdos Midrange &middot; Pioneer April 2026</span>
+</footer>
+
+<script>
+function show(id){
+  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.nav-link').forEach(b=>b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  event.target.classList.add('active');
+  window.scrollTo(0,0);
+}
+function toggle(id){document.getElementById(id).classList.toggle('open');}
+</script>
+<script>
+(function(){
+  const TIP=document.createElement('div');TIP.className='card-tip';
+  TIP.innerHTML='<div class="card-tip-loading">loading...</div>';
+  document.body.appendChild(TIP);
+  const CACHE={};let hideTimer=null;const PAD=24,W=220,H=310;
+  function pos(e){let x=e.clientX+PAD,y=e.clientY-H/2;
+    if(x+W>window.innerWidth)x=e.clientX-W-PAD;if(y<8)y=8;
+    if(y+H>window.innerHeight)y=window.innerHeight-H-8;
+    TIP.style.left=x+'px';TIP.style.top=y+'px';}
+  async function showTip(name,e){
+    clearTimeout(hideTimer);TIP.innerHTML='<div class="card-tip-loading">loading...</div>';
+    TIP.classList.add('visible');pos(e);
+    if(CACHE[name]){TIP.innerHTML=`<img src="${CACHE[name]}" alt="${name}">`;return;}
+    try{const r=await fetch(`https://api.scryfall.com/cards/named?fuzzy=${encodeURIComponent(name)}`);
+      const d=await r.json();const img=d.image_uris?.normal||d.card_faces?.[0]?.image_uris?.normal;
+      if(!img){TIP.classList.remove('visible');return;}
+      CACHE[name]=img;TIP.innerHTML=`<img src="${img}" alt="${name}">`;}
+    catch(err){TIP.classList.remove('visible');}
+  }
+  function hide(){hideTimer=setTimeout(()=>TIP.classList.remove('visible'),80);}
+  document.addEventListener('mouseover',e=>{const el=e.target.closest('span.c');if(!el)return;showTip(el.textContent.trim(),e);});
+  document.addEventListener('mousemove',e=>{if(TIP.classList.contains('visible'))pos(e);});
+  document.addEventListener('mouseout',e=>{if(e.target.closest('span.c'))hide();});
+})();
+</script>
+</body>
+</html>
