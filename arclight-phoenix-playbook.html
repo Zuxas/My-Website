@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" href="images/tab32.png" type="image/png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Arclight Phoenix — Team Resolve Pioneer Playbook</title>
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+html{overflow-y:scroll;}
+:root{
+  --primary:#1a0a00;
+  --ink:#0e0e0e;
+  --paper:#f2ede6;
+  --paper-dark:#e8e1d6;
+  --rule:#c8bfb0;
+  --accent:#EA580C;
+  --accent-light:rgba(234,88,12,0.09);
+  --mid:#5a5248;
+  --card:#ffffff;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--paper);color:var(--ink);font-family:'Crimson Pro',Georgia,serif;font-size:17px;line-height:1.6;}
+nav{position:sticky;top:0;z-index:100;background:var(--primary);border-bottom:2px solid var(--accent);display:flex;align-items:center;padding:0 32px;height:48px;gap:4px;}
+.nav-brand{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);margin-right:16px;white-space:nowrap;}
+.nav-link{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(248,250,252,0.55);background:none;border:none;border-bottom:2px solid transparent;padding:0 12px;height:48px;cursor:pointer;white-space:nowrap;display:flex;align-items:center;text-decoration:none;transition:color 0.15s,border-color 0.15s;}
+.nav-link:hover{color:rgba(248,250,252,0.85);}
+.nav-link.active{color:#fff;border-bottom-color:var(--accent);}
+.header-band{background:var(--primary);border-bottom:3px solid var(--accent);padding:48px 80px 40px;position:relative;overflow:hidden;}
+.header-band,.header-band *{color:#f1f5f9;}
+.header-band::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 10% 50%,rgba(234,88,12,0.15) 0%,transparent 70%);pointer-events:none;}
+.header-inner{max-width:1080px;margin:0 auto;display:grid;grid-template-columns:1fr auto;gap:40px;align-items:start;position:relative;}
+.header-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(248,250,252,0.4);margin-bottom:12px;}
+.header-title{font-family:'DM Mono',monospace;font-size:clamp(32px,4vw,52px);font-weight:500;letter-spacing:0.06em;line-height:1.05;text-transform:uppercase;}
+.header-title span{color:var(--accent);}
+.header-tagline{font-size:15px;font-style:italic;color:rgba(248,250,252,0.5);margin-top:12px;max-width:520px;line-height:1.5;}
+.meta-row{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(248,250,252,0.4);margin-bottom:4px;}
+.meta-row span{color:rgba(248,250,252,0.8);margin-left:6px;}
+.section{display:none;animation:fadeIn 0.3s ease;}
+.section.active{display:block;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
+.content{max-width:1080px;margin:0 auto;padding:56px 80px 80px;}
+.section-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--mid);margin-bottom:8px;display:block;}
+h1{font-family:'DM Mono',monospace;font-size:clamp(32px,4vw,48px);font-weight:500;letter-spacing:0.06em;text-transform:uppercase;line-height:1.05;margin-bottom:32px;}
+h2{font-family:'DM Mono',monospace;font-size:13px;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);margin:48px 0 16px;padding-bottom:8px;border-bottom:1px solid var(--rule);}
+h3{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--mid);margin:24px 0 8px;}
+p{font-size:16px;line-height:1.7;color:var(--ink);margin-bottom:14px;font-weight:300;}
+strong{font-weight:600;}
+.mantra{background:var(--accent-light);border-left:3px solid var(--accent);padding:20px 24px;margin:0 0 40px;font-style:italic;font-size:17px;color:var(--ink);line-height:1.6;}
+.card-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule);margin:16px 0;}
+.card-grid-2{grid-template-columns:repeat(2,1fr)!important;}
+.card-grid-3{grid-template-columns:repeat(3,1fr)!important;}
+.card{background:var(--card);padding:20px;transition:background 0.15s;}
+.card:hover{background:#faf7f2;}
+.card-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:var(--mid);margin-bottom:6px;}
+.card-title{font-family:'DM Mono',monospace;font-size:13px;letter-spacing:0.05em;color:var(--accent);margin-bottom:8px;font-weight:500;}
+.card-body{font-size:14px;color:var(--mid);line-height:1.55;font-weight:300;}
+.matchup-block{border:1px solid var(--rule);margin:24px 0;background:var(--card);}
+.matchup-header{background:var(--paper-dark);padding:16px 20px;display:flex;align-items:center;justify-content:space-between;cursor:pointer;}
+.matchup-header h3{margin:0;font-size:11px;letter-spacing:0.15em;color:var(--ink);}
+.verdict{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.15em;text-transform:uppercase;padding:3px 10px;border-radius:2px;}
+.verdict-good{background:rgba(234,88,12,0.1);color:#9a3412;}
+.verdict-even{background:rgba(90,82,72,0.12);color:var(--mid);}
+.verdict-hard{background:rgba(180,35,24,0.1);color:#991b1b;}
+.matchup-body{padding:20px;display:none;}
+.matchup-body.open{display:block;}
+.sb-table{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--rule);margin:12px 0;}
+.sb-col{background:var(--paper);padding:12px 16px;}
+.sb-col-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.15em;text-transform:uppercase;color:var(--mid);margin-bottom:8px;}
+.sb-item{display:flex;justify-content:space-between;align-items:baseline;font-size:14px;padding:2px 0;font-weight:300;}
+.sb-qty{font-family:'DM Mono',monospace;font-size:11px;color:var(--mid);}
+.heuristic-list{list-style:none;margin:16px 0;}
+.heuristic-list li{padding:14px 0;border-bottom:1px solid var(--rule);display:flex;gap:16px;align-items:start;}
+.heuristic-list li:last-child{border-bottom:none;}
+.h-num{font-family:'DM Mono',monospace;font-size:10px;color:var(--accent);flex-shrink:0;padding-top:2px;min-width:28px;}
+.h-text{font-size:15px;font-weight:300;color:var(--ink);}
+.h-text strong{font-weight:600;}
+.deck-row{display:flex;justify-content:space-between;padding:3px 0;border-bottom:1px solid rgba(200,191,176,0.4);font-size:15px;}
+.deck-count{font-family:'DM Mono',monospace;font-size:12px;color:var(--mid);min-width:20px;}
+.edge-case{background:var(--card);border:1px solid var(--rule);border-left:3px solid var(--accent);padding:16px 20px;margin:12px 0;}
+.edge-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:6px;}
+.edge-body{font-size:14px;font-weight:300;color:var(--ink);line-height:1.65;}
+.print-btn{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;background:var(--accent);color:#fff;border:none;padding:10px 20px;cursor:pointer;margin:16px 0;}
+span.c{cursor:help;border-bottom:1px dashed var(--accent);}
+span.c:hover{border-bottom-style:solid;}
+.card-tip{position:fixed;z-index:9999;pointer-events:none;width:220px;border-radius:8px;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,0.6);opacity:0;transition:opacity 0.15s ease;background:#1a1a2e;}
+.card-tip.visible{opacity:1;}
+.card-tip img{width:220px;height:auto;display:block;}
+.card-tip-loading{width:220px;height:310px;display:flex;align-items:center;justify-content:center;color:#94a3b8;font-size:12px;font-family:monospace;background:#1e293b;}
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-brand">Arclight Phoenix</div>
+  <a class="nav-link" href="deck-guides.html" style="text-decoration:none;">&#8592; Guides</a>
+  <button class="nav-link active" onclick="show('identity')">Overview</button>
+  <button class="nav-link" onclick="show('decklist')">Decklist</button>
+  <button class="nav-link" onclick="show('gameplan')">Game Flow</button>
+  <button class="nav-link" onclick="show('engines')">Engines</button>
+  <button class="nav-link" onclick="show('lines')">Lines</button>
+  <button class="nav-link" onclick="show('roles')">Roles</button>
+  <button class="nav-link" onclick="show('matchups')">Matchups</button>
+  <button class="nav-link" onclick="show('sideboard')">Sideboard</button>
+  <button class="nav-link" onclick="show('heuristics')">Heuristics</button>
+  <button class="nav-link" onclick="show('tuning')">Tuning</button>
+  <button class="nav-link" onclick="show('prep')">Prep</button>
+</nav>
+<div class="header-band">
+  <div class="header-inner">
+    <div>
+      <div class="header-label">Team Resolve · Pioneer · April 2026</div>
+      <div class="header-title">ARCLIGHT<br><span>PHOENIX</span></div>
+      <div class="header-tagline">"Discard two Phoenixes. Opt, Consider, Sleight of Hand. Two 3/2 haste fliers attacking on turn 3. They need two answers. They have one."</div>
+    </div>
+    <div>
+      <div class="meta-row">META SHARE<span>~5%</span></div>
+      <div class="meta-row">ROLE<span>Tempo-Combo</span></div>
+      <div class="meta-row">COLORS<span>U R</span></div>
+      <div class="meta-row">KILL TURN<span>3–4</span></div>
+      <div class="meta-row">REFERENCE<span>Metagame Mentor — Pioneer July 2025 (16.4% WM)</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- CH01 IDENTITY -->
+<div id="identity" class="section active">
+<div class="content">
+  <span class="section-label">Chapter 01</span>
+  <h1>DECK<br>IDENTITY</h1>
+  <div class="mantra">"The plan is simple: get Phoenixes in the graveyard early, cast three cheap spells in a single turn, and attack with 3/2 haste fliers that come back every turn. Your opponent needs exile effects. Your spells reload you faster than they can answer."</div>
+
+  <p>Arclight Phoenix is Pioneer's premier GY-value combo-tempo deck. The namesake card — <span class="c">Arclight Phoenix</span> — is a 3/2 flying haste creature that returns from the graveyard to the battlefield at the beginning of combat if you've cast three or more instant/sorcery spells during your turn. The deck runs 12 one-mana cantrips (Consider, Opt, Sleight of Hand) specifically to enable this recursion consistently from turn 3 onward.</p>
+
+  <p>The modern version of the deck runs a dual threat structure: <span class="c">Cori-Steel Cutter</span> provides a secondary win condition that doesn't require the GY. When Cutter transforms into an equipment and you cast spells, an Otter Monk 1/1 token enters each time. <span class="c">Artist's Talent</span> enables both threats simultaneously — each spell you cast while it's in play loots (discard, then draw), filling your GY with Phoenixes and churning through the deck for gas.</p>
+
+  <p><span class="c">Treasure Cruise</span> is the engine that makes the whole deck absurd. After filling your GY with discarded Phoenixes and cantrips, Cruise costs {U} or {1U} by turn 3-4. Drawing three cards for one mana while already having two Phoenixes in your GY means your next turn has six cards worth of action. <span class="c">Picklock Prankster</span> accelerates the GY even faster — its adventure (Pilfer) lets you loot for {U}, and the 2/2 Flash body enters after, providing a creature that also enables spell chains.</p>
+
+  <h2>Why Phoenix At 5% — And Why You Should Still Register It</h2>
+  <div class="card-grid card-grid-3">
+    <div class="card"><div class="card-label">The Clock</div><div class="card-title">Consistent T3 Flying Attack</div><div class="card-body">Two Phoenixes attacking on T3 is 6 damage. One Cutter-equipped Otter + one Phoenix is another angle. No other deck in Pioneer consistently presents two haste fliers on T3 that come back from the GY for free. The speed and resilience combination is unique.</div></div>
+    <div class="card"><div class="card-label">The Fuel</div><div class="card-title">Treasure Cruise at 1–2 Mana</div><div class="card-body">Drawing three cards for {U} is what the deck is actually doing. No fair card in Pioneer matches this rate. After one Phoenix recurs and two cantrips fire, your Cruise costs {U} by turn 3. You're drawing 3 cards while they're interacting with one thing.</div></div>
+    <div class="card"><div class="card-label">The Resilience</div><div class="card-title">Threats Return From GY Automatically</div><div class="card-body">Unlike every other deck, your threats don't die permanently — they come back next turn if you can cast three spells. Single removal spells are tempo-neutral. They kill your Phoenix; you cast three cantrips; it returns. They need exile effects specifically. Most decks don't run enough.</div></div>
+  </div>
+</div>
+</div>
+
+<!-- CH02 DECKLIST -->
+<div id="decklist" class="section">
+<div class="content">
+  <span class="section-label">Chapter 02</span>
+  <h1>DECKLIST</h1>
+  <div class="mantra">"Metagame Mentor — Pioneer July 2025 · Reference list at 16.4% winner's metagame"</div>
+  <div class="card-grid card-grid-3">
+    <div class="card">
+      <h3>Threats (11)</h3>
+      <div class="deck-row"><span class="deck-count">4</span><span><span class="c">Arclight Phoenix</span></span></div>
+      <div class="deck-row"><span class="deck-count">4</span><span><span class="c">Cori-Steel Cutter</span></span></div>
+      <div class="deck-row"><span class="deck-count">3</span><span><span class="c">Picklock Prankster</span></span></div>
+      <h3 style="margin-top:16px;">Engines (5)</h3>
+      <div class="deck-row"><span class="deck-count">4</span><span><span class="c">Artist's Talent</span></span></div>
+      <div class="deck-row"><span class="deck-count">1</span><span><span class="c">Proft's Eidetic Memory</span></span></div>
+      <h3 style="margin-top:16px;">Cantrips (12)</h3>
+      <div class="deck-row"><span class="deck-count">4</span><span><span class="c">Consider</span></span></div>
+      <div class="deck-row"><span class="deck-count">4</span><span><span class="c">Opt</span></span></div>
+      <div class="deck-row"><span class="deck-count">4</span><span><span class="c">Sleight of Hand</span></span></div>
+    </div>
+    <div class="card">
+      <h3>Interaction (10)</h3>
+      <div class="deck-row"><span class="deck-count">4</span><span><span class="c">Treasure Cruise</span></span></div>
+      <div class="deck-row"><span class="deck-count">3</span><span><span class="c">Fiery Impulse</span></span></div>
+      <div class="deck-row"><span class="deck-count">3</span><span><span class="c">Lightning Axe</span></span></div>
+      <div class="deck-row"><span class="deck-count">2</span><span><span class="c">Into the Flood Maw</span></span></div>
+      <div class="deck-row"><span class="deck-count">1</span><span><span class="c">Torch the Tower</span></span></div>
+      <h3 style="margin-top:16px;">Lands (19)</h3>
+      <div class="deck-row"><span class="deck-count">4</span><span><span class="c">Steam Vents</span></span></div>
+      <div class="deck-row"><span class="deck-count">4</span><span><span class="c">Spirebluff Canal</span></span></div>
+      <div class="deck-row"><span class="deck-count">4</span><span><span class="c">Riverglide Pathway</span></span></div>
+      <div class="deck-row"><span class="deck-count">2</span><span>Island</span></div>
+      <div class="deck-row"><span class="deck-count">1</span><span><span class="c">Shivan Reef</span></span></div>
+      <div class="deck-row"><span class="deck-count">1</span><span><span class="c">Stormcarved Coast</span></span></div>
+      <div class="deck-row"><span class="deck-count">1</span><span><span class="c">Otawara, Soaring City</span></span></div>
+      <div class="deck-row"><span class="deck-count">1</span><span><span class="c">Hall of Storm Giants</span></span></div>
+      <div class="deck-row"><span class="deck-count">1</span><span><span class="c">Spikefield Hazard</span></span></div>
+    </div>
+    <div class="card">
+      <h3>Sideboard (15)</h3>
+      <div class="deck-row"><span class="deck-count">3</span><span><span class="c">Brazen Borrower</span></span></div>
+      <div class="deck-row"><span class="deck-count">2</span><span><span class="c">Spell Pierce</span></span></div>
+      <div class="deck-row"><span class="deck-count">2</span><span><span class="c">Annul</span></span></div>
+      <div class="deck-row"><span class="deck-count">2</span><span><span class="c">Chandra's Defeat</span></span></div>
+      <div class="deck-row"><span class="deck-count">1</span><span><span class="c">Abrade</span></span></div>
+      <div class="deck-row"><span class="deck-count">1</span><span><span class="c">Negate</span></span></div>
+      <div class="deck-row"><span class="deck-count">1</span><span><span class="c">Into the Flood Maw</span></span></div>
+      <div class="deck-row"><span class="deck-count">1</span><span><span class="c">Anger of the Gods</span></span></div>
+      <div class="deck-row"><span class="deck-count">1</span><span><span class="c">Aether Gust</span></span></div>
+      <div class="deck-row"><span class="deck-count">1</span><span><span class="c">Brotherhood's End</span></span></div>
+    </div>
+  </div>
+
+  <h2>Key Card Notes</h2>
+  <div class="card-grid card-grid-2">
+    <div class="card"><div class="card-label">The Win Con</div><div class="card-title">Arclight Phoenix — GY Recursion Haste Flier</div><div class="card-body">3/2 flying haste for {3R}. Returns from the GY to the battlefield at the beginning of combat on your turn if you've cast 3+ instant/sorcery spells this turn. You rarely hardcast it — the goal is to discard it via Artist's Talent, Lightning Axe (discard), Picklock Prankster looting, or Consider (surveil). Then cast three cantrips and it's back with haste, attacking immediately. Remove + return costs them 2 cards total; you spent zero.</div></div>
+    <div class="card"><div class="card-label">The Fuel</div><div class="card-title">Treasure Cruise — Draw 3 for {U}</div><div class="card-body">Delve: exile cards from your GY, each exiled card reduces the cost by {1}. With 2 Phoenixes and 5 cantrips in the GY (easy by T3), Cruise costs {U}. Drawing 3 cards for 1 mana is the single most efficient draw spell in Pioneer. The tension: exiling GY cards also removes Phoenix — plan which cards to exile (cantrips yes, Phoenixes no).</div></div>
+    <div class="card"><div class="card-label">The Loot Engine</div><div class="card-title">Artist's Talent + Picklock Prankster</div><div class="card-body">Artist's Talent: {1U} enchantment, each spell you cast while it's in play loots (draw, then discard). Every cantrip becomes double-filtering. Picklock Prankster's adventure (Pilfer) loots for {U} at instant speed, then you get a 2/2 Flash body. Both put Phoenixes in GY while drawing cards. Together with 12 cantrips, you reliably have Phoenixes in GY by T2.</div></div>
+    <div class="card"><div class="card-label">The Removal</div><div class="card-title">Lightning Axe + Fiery Impulse</div><div class="card-body">Lightning Axe: {R}, deals 5 damage to target creature, you discard a card. The discard is a feature — pitch a Phoenix to activate it. A 5-damage instant that also loads your GY is the best tempo play in the deck. Fiery Impulse: {R}, deals 2 damage to target creature (3 with spell mastery — any two instant/sorcery in GY). Your 12 cantrips enable spell mastery by T2.</div></div>
+  </div>
+</div>
+</div>
+
+<!-- CH03 GAME FLOW -->
+<div id="gameplan" class="section">
+<div class="content">
+  <span class="section-label">Chapter 03</span>
+  <h1>GAME<br>FLOW</h1>
+  <div class="mantra">"T1: cantrip, filter for Phoenix. T2: discard Phoenix to Talent or Lightning Axe. T3: three spells, Phoenix returns, attack for 3. They're at 17."</div>
+  <div class="card-grid card-grid-2">
+    <div class="card"><div class="card-label">Ideal Curve</div><div class="card-title">T1–T4 Phoenix Recursion</div><div class="card-body">T1: Opt or Consider (surveil/scry, put Phoenix on top or in GY). T2: Artist's Talent, then cantrip (loots — discard Phoenix). T3: Opt + Consider + Sleight of Hand (three spells, Phoenix returns from GY with haste), attack for 3. T4: Treasure Cruise for {U} (5 cards in GY), draw 3, second Phoenix returns next turn. They're at 14 after T3 attack and facing an impossible card-advantage gap.</div></div>
+    <div class="card"><div class="card-label">Mulligan</div><div class="card-title">Need: 2 Lands + Cantrips + GY Enabler</div><div class="card-body">Keep: 2 lands, 2+ cantrips, and either Artist's Talent or a way to discard Phoenix (Lightning Axe, Picklock). Mulligan: 0 cantrips (can't enable Phoenix recursion), 4+ lands (too slow), or a hand with Treasure Cruise but no way to fill the GY. At 6: 2 lands + 2 cantrips is keepable. At 5: 2 lands + Consider + any spell is fine if you have a Phoenix in hand.</div></div>
+    <div class="card"><div class="card-label">The Recursion Window</div><div class="card-title">Counting to Three Spells</div><div class="card-body">Phoenix returns "at the beginning of combat" if you've cast 3+ instant/sorcery spells "this turn." Every cantrip counts. Every removal spell counts. Lightning Axe + Opt + Consider = three spells, Phoenix back. Into the Flood Maw + Sleight + Opt = three spells, two Phoenixes back. Count carefully — going to combat a spell short means Phoenix stays dead that turn.</div></div>
+    <div class="card"><div class="card-label">Treasure Cruise Priority</div><div class="card-title">Exile Cantrips, Not Phoenixes</div><div class="card-body">When casting Treasure Cruise for delve, choose which GY cards to exile carefully. Exile: spent cantrips (Opt, Consider, Sleight), spent removal (Fiery Impulse), and cards you don't need back. Never exile: Arclight Phoenixes (they need to stay in GY to recur), Lightning Axe (it might be the discard outlet you need). Wrong exile choices cost you a Phoenix activation the next turn.</div></div>
+  </div>
+</div>
+</div>
+
+<!-- CH04 ENGINES -->
+<div id="engines" class="section">
+<div class="content">
+  <span class="section-label">Chapter 04</span>
+  <h1>CORE<br>ENGINES</h1>
+  <div class="mantra">"Cantrip engine fills GY. Loot engine puts Phoenixes in GY. Recursion engine returns them. Cruise refuels everything."</div>
+  <div class="card-grid card-grid-3">
+    <div class="card"><div class="card-label">Engine 1 — GY Fill</div><div class="card-title">12 Cantrips + Loot Package</div><div class="card-body">4 Consider, 4 Opt, 4 Sleight of Hand = 12 one-mana cantrips that draw a card and filter your hand/deck. Consider specifically surveil 1 — you can put a Phoenix directly into your GY. Opt scries 1. Sleight sees 2 cards and keeps 1. Together they fill your GY with 4-8 cards by turn 3 while digging toward Treasure Cruise. Every cantrip is also a spell that counts toward Phoenix recursion.</div></div>
+    <div class="card"><div class="card-label">Engine 2 — Phoenix Recursion</div><div class="card-title">3 Spells = Phoenix Returns</div><div class="card-body">Arclight Phoenix returns at the start of combat if you've cast 3+ instant/sorcery spells. Your 12 cantrips + Artist's Talent loots + Picklock's adventure + removal = 25+ instant/sorceries in the deck. Turn 3 onward, three {1} spells means Phoenix attacks with haste. Two Phoenixes in GY: same cost, double the attack. The recursion is free — no mana investment beyond your normal plays.</div></div>
+    <div class="card"><div class="card-label">Engine 3 — Refuel</div><div class="card-title">Treasure Cruise at 1–2 Mana</div><div class="card-body">After filling the GY in turns 1-3, Treasure Cruise costs {U}. Drawing three cards refills your cantrip chain, finds more Phoenixes for the GY, and maintains pressure long after the opponent has stabilized the board. The recursion loop: fill GY with cantrips → Cruise for 1 → fill GY again → Cruise again. No fair deck can match this card draw rate.</div></div>
+  </div>
+</div>
+</div>
+
+<!-- CH05 LINES -->
+<div id="lines" class="section">
+<div class="content">
+  <span class="section-label">Chapter 05</span>
+  <h1>LINES &amp;<br>TACTICS</h1>
+  <div class="mantra">"Discard Phoenixes early and often. Three spells is always the target. Never exile Phoenixes for Cruise."</div>
+  <div class="edge-case"><div class="edge-label">Line 01 — Consider vs Opt — Which to Cast First</div><div class="edge-body">When you have both Consider and Opt in hand and want to fill your GY, cast Consider first. Consider's surveil lets you put a card directly into your GY — including a Phoenix. Opt only scries (puts back on top). Consider → Opt sequence: Consider puts Phoenix in GY (or finds the right card), Opt digs further. Opt → Consider sequence: less value from the surveil since you've already filtered. Consider first, always.</div></div>
+  <div class="edge-case"><div class="edge-label">Line 02 — Lightning Axe as Both Removal and GY Enabler</div><div class="edge-body">Lightning Axe deals 5 damage and requires discarding a card. The discard cost is a benefit when you're holding Phoenixes. A Phoenix-in-hand + Lightning Axe on a creature = you remove their threat AND put Phoenix in your GY for free. The 5-damage threshold kills every relevant creature in Pioneer (Monastery Swiftspear, Soul-Scar Mage, Thalia, Kellan, Greasefang itself). Time it correctly: cast Axe, discard Phoenix, then cast two more spells this turn, Phoenix attacks with haste.</div></div>
+  <div class="edge-case"><div class="edge-label">Line 03 — Artist's Talent Timing — Play It Before Your Cantrips</div><div class="edge-body">Artist's Talent loots every spell you cast while it's in play. If you have Talent + three cantrips in hand on T3, the correct sequence: cast Talent first, then cast cantrips (each triggers the loot). Three cantrips while Talent is active = three additional loots = six card interactions on one turn. If you cast cantrips before Talent, you get zero loot triggers. Always Talent before cantrips.</div></div>
+  <div class="edge-case"><div class="edge-label">Line 04 — Into the Flood Maw — Bounce as Both Interaction and Tempo</div><div class="edge-body">Into the Flood Maw bounces a nonland permanent to its owner's hand. At instant speed for {2U}, it answers threats you can't kill with burn (Teferi, large creatures, enchantments like Rest in Peace). It also counts as a spell for Phoenix recursion — bounce their RIP at end of their turn + two cantrips on your turn = Phoenix returns and their hate piece is gone. The correct response to Rest in Peace: hold Into the Flood Maw + two cantrips, bounce at end of their upkeep, then chain three spells on your main phase.</div></div>
+</div>
+</div>
+
+<!-- CH06 ROLES -->
+<div id="roles" class="section">
+<div class="content">
+  <span class="section-label">Chapter 06</span>
+  <h1>ROLE<br>ASSIGNMENT</h1>
+  <div class="mantra">"You're always the tempo deck. You apply threats and force them to answer. If they don't, you win. If they do, you come back."</div>
+  <div class="card-grid card-grid-3">
+    <div class="card"><div class="card-label">vs Aggro</div><div class="card-title">Interact and Race</div><div class="card-body">Against RDW: Lightning Axe kills Eidolon (5 damage, key target), Fiery Impulse + spell mastery kills most one-drops. Your Phoenix trades unfavorably with combat and comes back; their Swiftspear doesn't. Brotherhood's End (SB) sweeps all their one-drops. You race their clock while removing their threats via your already-necessary spells.</div></div>
+    <div class="card"><div class="card-label">vs Combo</div><div class="card-title">Race and Bounce Key Pieces</div><div class="card-body">Against Greasefang: race their T3 kill. Into the Flood Maw bounces Greasefang the turn they cast it — the ETB doesn't trigger without Greasefang surviving. Against Lotus Field: apply pressure, Into the Flood Maw bounces Lotus Field or Thespian's Stage. Spell Pierce (SB) counters their setup spells. You're typically faster than Lotus Field.</div></div>
+    <div class="card"><div class="card-label">vs Control</div><div class="card-title">Force Them to Exile</div><div class="card-body">Against UW Control: your threats recur from the GY — every removal spell they cast is temporary unless it's exile. Force them to use exile effects (March of Otherworldly Light) early on your smaller threats, then Phoenix dodges the rest. Spell Pierce (SB) answers Temporary Lockdown. Brazen Borrower bounces Teferi at instant speed. Never overcommit creatures into a clear Supreme Verdict.</div></div>
+  </div>
+</div>
+</div>
+
+<!-- CH07 MATCHUPS -->
+<div id="matchups" class="section">
+<div class="content">
+  <span class="section-label">Chapter 07</span>
+  <h1>MATCHUP<br>GUIDE</h1>
+  <div class="mantra">"Your threats recur. Force them to have exile. Play around Rest in Peace specifically."</div>
+
+  <div class="matchup-block">
+    <div class="matchup-header" onclick="toggle('mu-cutter')">
+      <h3>UR CUTTER (MIRROR-ADJACENT)</h3><span class="verdict verdict-even">Even</span>
+    </div>
+    <div id="mu-cutter" class="matchup-body">
+      <p>Both decks run similar cantrip + Cutter engines. The Phoenix version has the GY recursion angle but more vulnerable to Rest in Peace. Your Phoenix is actually BETTER than their Monk tokens in a race because it has 3 power and flies. Key difference: you can run Under their Cutter engine because your Phoenixes come back even after they interact.</p>
+      <p><strong>Priority:</strong> Don't cut Phoenixes for more removal. Your GY advantage is your edge. Side in Annul for their Cutter; their Cutter entering is the engine you need to answer (Annul hits the Equipment before it transforms). Chandra's Defeat handles their Phoenixes or planeswalkers they board in.</p>
+      <div class="sb-table">
+        <div class="sb-col"><div class="sb-col-label">In</div>
+          <div class="sb-item"><span><span class="c">Annul</span></span><span class="sb-qty">+2</span></div>
+          <div class="sb-item"><span><span class="c">Spell Pierce</span></span><span class="sb-qty">+2</span></div>
+        </div>
+        <div class="sb-col"><div class="sb-col-label">Out</div>
+          <div class="sb-item"><span><span class="c">Lightning Axe</span></span><span class="sb-qty">&minus;2</span></div>
+          <div class="sb-item"><span><span class="c">Into the Flood Maw</span></span><span class="sb-qty">&minus;2</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="matchup-block">
+    <div class="matchup-header" onclick="toggle('mu-greasefang')">
+      <h3>ORZHOV GREASEFANG</h3><span class="verdict verdict-good">Favorable</span>
+    </div>
+    <div id="mu-greasefang" class="matchup-body">
+      <p>You're faster. Greasefang needs T3; you attack with Phoenix on T3. Into the Flood Maw bounces Greasefang when it enters — the ETB trigger that returns Parhelion II never resolves because Greasefang bounces before it resolves. Chandra's Defeat (SB) kills Greasefang cleanly at instant speed for {R}. Annul hits their Monument to Endurance (their best GY enabler).</p>
+      <p><strong>Priority:</strong> Don't let Greasefang's ETB trigger resolve. Hold Into the Flood Maw and bounce it the moment they cast it, before the ETB. If it resolves, target the Phoenix trigger for Into the Flood Maw (the trigger that returns Parhelion II — bouncing Greasefang after the ETB resolves still prevents the attack by removing Parhelion's pilot). Annul destroys their Monument at {U}.</p>
+      <div class="sb-table">
+        <div class="sb-col"><div class="sb-col-label">In</div>
+          <div class="sb-item"><span><span class="c">Chandra's Defeat</span></span><span class="sb-qty">+2</span></div>
+          <div class="sb-item"><span><span class="c">Annul</span></span><span class="sb-qty">+2</span></div>
+        </div>
+        <div class="sb-col"><div class="sb-col-label">Out</div>
+          <div class="sb-item"><span><span class="c">Proft's Eidetic Memory</span></span><span class="sb-qty">&minus;1</span></div>
+          <div class="sb-item"><span><span class="c">Torch the Tower</span></span><span class="sb-qty">&minus;1</span></div>
+          <div class="sb-item"><span><span class="c">Fiery Impulse</span></span><span class="sb-qty">&minus;2</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="matchup-block">
+    <div class="matchup-header" onclick="toggle('mu-rdw')">
+      <h3>RED DECK WINS</h3><span class="verdict verdict-even">Even</span>
+    </div>
+    <div id="mu-rdw" class="matchup-body">
+      <p>RDW kills faster than your T3 Phoenix attack but your removal suite is excellent. Lightning Axe kills Eidolon of the Great Revel (5 damage, hits the 2/2). Fiery Impulse kills their one-drops with spell mastery. Brotherhood's End (SB) sweeps their entire board at {1RR}. The race: RDW deals 15+ damage by T4; you need to remove enough threats to survive to Cruise refuel.</p>
+      <p><strong>Priority:</strong> Kill Eidolon immediately — it taxes every spell you cast while active. Remove it first, then cantrip chain normally. Brotherhood's End at {1RR} deals 2 damage to each creature and each player, killing their one-drops and finishing off creatures at 2 toughness. Don't overload removal — keep three spells available for Phoenix recursion each turn.</p>
+      <div class="sb-table">
+        <div class="sb-col"><div class="sb-col-label">In</div>
+          <div class="sb-item"><span><span class="c">Brotherhood's End</span></span><span class="sb-qty">+1</span></div>
+          <div class="sb-item"><span><span class="c">Aether Gust</span></span><span class="sb-qty">+1</span></div>
+          <div class="sb-item"><span><span class="c">Chandra's Defeat</span></span><span class="sb-qty">+2</span></div>
+        </div>
+        <div class="sb-col"><div class="sb-col-label">Out</div>
+          <div class="sb-item"><span><span class="c">Into the Flood Maw</span></span><span class="sb-qty">&minus;2</span></div>
+          <div class="sb-item"><span><span class="c">Proft's Eidetic Memory</span></span><span class="sb-qty">&minus;1</span></div>
+          <div class="sb-item"><span><span class="c">Treasure Cruise</span></span><span class="sb-qty">&minus;1</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="matchup-block">
+    <div class="matchup-header" onclick="toggle('mu-control')">
+      <h3>UW CONTROL</h3><span class="verdict verdict-hard">Unfavorable</span>
+    </div>
+    <div id="mu-control" class="matchup-body">
+      <p>UW Control's biggest weapons vs Phoenix: Rest in Peace (SB) exiles all GYs preventing Phoenix recursion, Temporary Lockdown exiles Artist's Talent and Cutter (MV 2), Supreme Verdict wipes your Prankster + Cutter board. Their exile answers specifically answer your recursion. Brazen Borrower (SB) bounces Teferi or RIP at instant speed. Negate answers Verdict. Spell Pierce answers early Lockdown.</p>
+      <p><strong>Priority:</strong> Always answer Rest in Peace before casting Treasure Cruise (Cruise exiles your GY, leaving nothing to recur after RIP is gone). Into the Flood Maw bounces RIP at end of their turn + cantrip chain = Phoenix returns. Brazen Borrower bounces Teferi mid-combat preventing its abilities. Never overextend into a Supreme Verdict — keep Phoenixes in GY rather than creatures on board.</p>
+      <div class="sb-table">
+        <div class="sb-col"><div class="sb-col-label">In</div>
+          <div class="sb-item"><span><span class="c">Brazen Borrower</span></span><span class="sb-qty">+3</span></div>
+          <div class="sb-item"><span><span class="c">Spell Pierce</span></span><span class="sb-qty">+2</span></div>
+          <div class="sb-item"><span><span class="c">Negate</span></span><span class="sb-qty">+1</span></div>
+        </div>
+        <div class="sb-col"><div class="sb-col-label">Out</div>
+          <div class="sb-item"><span><span class="c">Lightning Axe</span></span><span class="sb-qty">&minus;3</span></div>
+          <div class="sb-item"><span><span class="c">Fiery Impulse</span></span><span class="sb-qty">&minus;2</span></div>
+          <div class="sb-item"><span><span class="c">Torch the Tower</span></span><span class="sb-qty">&minus;1</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="matchup-block">
+    <div class="matchup-header" onclick="toggle('mu-selesnya')">
+      <h3>SELESNYA COMPANY</h3><span class="verdict verdict-good">Favorable</span>
+    </div>
+    <div id="mu-selesnya" class="matchup-body">
+      <p>Selesnya's ground creatures can't block your flying Phoenixes. Their clock is T4-5; yours is T3. Thalia (2/1 first strike) taxes your spells {1} each — account for this by slowing slightly or using Into the Flood Maw to bounce Thalia. Lightning Axe kills Thalia at 5 damage cleanly. Anger of the Gods (SB) exiles their entire low-MV creature suite (Llanowar Elves, Elvish Mystic, Thalia, Voice of Resurgence).</p>
+      <p><strong>Priority:</strong> Target Thalia with Lightning Axe early — she makes your three-spell chain cost more mana. Their CoCo refills the board but can't block Phoenixes. Anger of the Gods exiles creatures with toughness ≤ 3, hitting their entire early game including Voice of Resurgence (the Elemental token that Voice creates if they die is prevented by exile). Keep the air open for Phoenix attacks.</p>
+      <div class="sb-table">
+        <div class="sb-col"><div class="sb-col-label">In</div>
+          <div class="sb-item"><span><span class="c">Anger of the Gods</span></span><span class="sb-qty">+1</span></div>
+          <div class="sb-item"><span><span class="c">Brotherhood's End</span></span><span class="sb-qty">+1</span></div>
+        </div>
+        <div class="sb-col"><div class="sb-col-label">Out</div>
+          <div class="sb-item"><span><span class="c">Into the Flood Maw</span></span><span class="sb-qty">&minus;1</span></div>
+          <div class="sb-item"><span><span class="c">Proft's Eidetic Memory</span></span><span class="sb-qty">&minus;1</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</div>
+
+<!-- CH08 SIDEBOARD -->
+<div id="sideboard" class="section">
+<div class="content">
+  <span class="section-label">Chapter 08</span>
+  <h1>SIDEBOARD<br>GUIDE</h1>
+  <div class="mantra">"Your sideboard adds permission and removal for matchup-specific threats. Never cut too many spells or Phoenix recursion breaks."</div>
+  <div class="card-grid card-grid-2">
+    <div class="card"><div class="card-label">P1 — vs Control</div><div class="card-title">Brazen Borrower ×3</div><div class="card-body">2/1 Flash Flying for {1UU}. The Adventure (Petty Theft) bounces a non-land permanent for {1U} at instant speed. Bounces: Teferi (sends the 5-mana engine back to hand), Rest in Peace (removes GY hate at instant speed), Temporary Lockdown (returning all exiled permanents). The flash flying body also closes games vs a tapped-out control deck. Your best SB card vs any non-creature-based deck.</div></div>
+    <div class="card"><div class="card-label">P2 — vs Artifacts/Enchantments</div><div class="card-title">Annul ×2</div><div class="card-body">{U} instant that counters target artifact or enchantment spell. In Pioneer 2026: hits Cori-Steel Cutter on the stack (before it transforms), Rest in Peace (before it enters), Monument to Endurance, Artist's Talent in the mirror. The {1} cost is critical — it doesn't break your three-spell chain on mana like a {2} counterspell would. An artifact/enchantment Spell Pierce.</div></div>
+    <div class="card"><div class="card-label">P3 — vs Red Threats</div><div class="card-title">Chandra's Defeat ×2</div><div class="card-body">{R} instant that exiles a red permanent or red spell (bonus life gain if red creature dies). Hits: Greasefang (the critical threat), other Phoenixes in the mirror, Eidolon of the Great Revel. Exiles rather than destroys — critical for shutting off RDW's persistent threats and preventing Greasefang recursion via Cryptcaller Chariot. At {R} it doesn't interrupt your three-spell chain.</div></div>
+    <div class="card"><div class="card-label">P4 — vs Wide Boards</div><div class="card-title">Brotherhood's End + Anger of the Gods</div><div class="card-body">Brotherhood's End: {1RR} sorcery that deals 2 damage to each creature and each player, or deals 3 damage to each artifact. Anger of the Gods: {1RR} sorcery that deals 3 damage to each creature with toughness 3 or less AND exiles them (preventing recursion). Anger's exile clause is the critical distinction vs Selesnya Company — Voice of Resurgence's token doesn't trigger if the creature is exiled rather than dying.</div></div>
+  </div>
+</div>
+</div>
+
+<!-- CH09 HEURISTICS -->
+<div id="heuristics" class="section">
+<div class="content">
+  <span class="section-label">Chapter 09</span>
+  <h1>HEURISTICS</h1>
+  <div class="mantra">"Three spells is the target every turn. Discard Phoenixes early. Never exile Phoenixes for Cruise."</div>
+  <ol class="heuristic-list">
+    <li><span class="h-num">01</span><span class="h-text"><strong>Always cast Artist's Talent before your cantrips on the same turn.</strong> Talent loots for each spell while it's in play. Cantrips before Talent get zero loot triggers. Talent first — every subsequent cantrip on that turn filters twice as efficiently.</span></li>
+    <li><span class="h-num">02</span><span class="h-text"><strong>Consider before Opt when you want to put Phoenix in GY.</strong> Consider's surveil puts a card directly into GY. Opt scries — the card either stays on top or goes to the bottom, never into GY. For GY loading, Consider is superior. For deck-filtering when you want to draw something, Opt is fine.</span></li>
+    <li><span class="h-num">03</span><span class="h-text"><strong>Lightning Axe + Phoenix in hand = free GY load.</strong> When you need removal AND need Phoenix in GY, Lightning Axe solves both at once. Discard Phoenix to pay the Axe's additional cost. One mana, remove their threat, Phoenix enters GY. This is the most efficient play in the deck.</span></li>
+    <li><span class="h-num">04</span><span class="h-text"><strong>Count to three before going to combat — always.</strong> Phoenix returns "at the beginning of combat." Before declaring attack, count: have I cast 3+ instant/sorcery spells this turn? If you forgot a spell, cast it before moving to combat. If you're at 2, cast one more cantrip before attacking. Once you declare attackers, it's too late.</span></li>
+    <li><span class="h-num">05</span><span class="h-text"><strong>Treasure Cruise: exile cantrips and removal, never Phoenixes.</strong> Each exiled card reduces Cruise's cost by {1}. Exile: spent Opts, Considers, Sleights, Fiery Impulses, Torch the Towers. Never exile: Arclight Phoenixes (they need to stay in GY to recur). Making this mistake once loses the game.</span></li>
+    <li><span class="h-num">06</span><span class="h-text"><strong>Against Rest in Peace: hold Into the Flood Maw and bounce it before casting Cruise.</strong> RIP exiles all GYs and prevents Phoenix recursion. Before casting Treasure Cruise (which exiles cards from your GY, leaving nothing to recur even after RIP is gone), bounce RIP with Into the Flood Maw. Then cast three spells on your turn to recur Phoenixes before they can recast RIP.</span></li>
+    <li><span class="h-num">07</span><span class="h-text"><strong>Fiery Impulse for 3 damage requires spell mastery — two instant/sorceries in GY.</strong> Fiery Impulse deals 2 damage normally, 3 with spell mastery. By T2, you typically have 2+ instant/sorceries in GY. The extra point matters for: killing Greasefang (2/2), Thalia (2/1 first strike — without the 3, she survives combat), and Monastery Swiftspear when it's pumped.</span></li>
+    <li><span class="h-num">08</span><span class="h-text"><strong>Picklock Prankster's adventure (Pilfer) loots at instant speed — use it at end of their turn.</strong> Pilfer is a {U} instant that loots (draw a card, then discard a card). Discard a Phoenix to set up your next turn's recursion without spending your main phase. Then cast Prankster's creature side as a 2/2 Flash on their end step. Two birds, one Prankster.</span></li>
+    <li><span class="h-num">09</span><span class="h-text"><strong>Two Phoenixes in GY is the same cost as one — keep both if possible.</strong> Phoenix's recursion doesn't care how many Phoenixes are in your GY — three spells = all of them return. Two Phoenixes in GY attacking is 6 flying damage. Always try to get both into the GY before your recursion turn. Lightning Axe can discard the second one for free removal.</span></li>
+    <li><span class="h-num">10</span><span class="h-text"><strong>Don't keep Cutter on the board vs Supreme Verdict — bounce or protect it.</strong> Cutter is one of your best non-GY win conditions. Against UW Control, don't leave Cutter on the board when they might Verdict. Either keep mana up to bounce it with Brazen Borrower (Petty Theft) or accept that Cutter dies and win with Phoenix recursion instead. Protecting Cutter often means not committing it at all.</span></li>
+  </ol>
+</div>
+</div>
+
+<!-- CH10 TUNING -->
+<div id="tuning" class="section">
+<div class="content">
+  <span class="section-label">Chapter 10</span>
+  <h1>TUNING<br>NOTES</h1>
+  <div class="mantra">"4 Phoenix, 4 Cruise, 12 cantrips is the core. The removal suite adjusts to the meta."</div>
+  <div class="card-grid card-grid-3">
+    <div class="card"><div class="card-label">Lock — Never Cut</div><div class="card-title">4 Arclight Phoenix</div><div class="card-body">The deck's identity card. 4 ensures maximum GY density. More copies in GY = more Phoenix attacks per recursion turn. Never cut any — you need to draw them early to discard them early.</div></div>
+    <div class="card"><div class="card-label">Lock — Never Cut</div><div class="card-title">4 Treasure Cruise</div><div class="card-body">The most broken draw spell in Pioneer. Fills your hand every turn in the mid-game for {U}. 4 ensures you draw it consistently in the window when your GY is full. Never cut any.</div></div>
+    <div class="card"><div class="card-label">Lock — Never Cut</div><div class="card-title">12 One-Mana Cantrips</div><div class="card-body">4 Consider + 4 Opt + 4 Sleight of Hand = the recursion enablers AND the GY fillers AND the draw engine. Below 10 cantrips the deck's consistency collapses. Never cut below 12 total.</div></div>
+    <div class="card"><div class="card-label">Flex 3–4</div><div class="card-title">Picklock Prankster</div><div class="card-body">3 is the reference number. 4 in metas where GY filling speed matters more (GY hate heavy). 3 in metas where the 2/2 Flash body is less relevant. The adventure is always good; the creature side is context-dependent.</div></div>
+    <div class="card"><div class="card-label">Flex 2–4</div><div class="card-title">Into the Flood Maw</div><div class="card-body">2 main is correct in most metas. In UW Control or enchantment-heavy metas go to 3. The bounce is your only main-deck answer to Rest in Peace and Teferi. At 1 you'll frequently not see it when needed.</div></div>
+    <div class="card"><div class="card-label">Consider Registering</div><div class="card-title">UR Cutter Instead</div><div class="card-body">UR Cutter runs a similar engine (Cutter + cantrips + Cruise) without the GY dependency. At ~23% meta share vs Phoenix's 5%, the edge comes from avoiding graveyard hate. If the meta has heavy RIP/Leyline of the Void, seriously consider switching to Cutter.</div></div>
+  </div>
+</div>
+</div>
+
+<!-- CH11 PREP -->
+<div id="prep" class="section">
+<div class="content">
+  <span class="section-label">Chapter 11</span>
+  <h1>EVENT<br>PREP</h1>
+  <div class="mantra">"Expect Rest in Peace. Know how to beat it. Plan for Anger of the Gods. Don't overcommit Phoenixes."</div>
+  <div class="card-grid card-grid-2">
+    <div class="card"><div class="card-label">Know Cold</div><div class="card-title">The Rest in Peace Protocol</div><div class="card-body">When they cast RIP: stop and evaluate your GY state. If Phoenixes are in GY, you have until their end step to bounce RIP (Into the Flood Maw) before casting Cruise. Priority: (1) bounce RIP, (2) cast three spells, (3) Phoenixes return, (4) attack. They recast RIP; repeat. Don't cast Treasure Cruise while RIP is in play.</div></div>
+    <div class="card"><div class="card-label">Know Cold</div><div class="card-title">GY Count for Cruise Cost</div><div class="card-body">Cruise costs {8U} without delve. You need 8 cards in GY to cast it for {U}. Track your GY count from turn 1: each cantrip cycles through 1 card, Talent loots add 1 card to GY, Lightning Axe puts 1 more. By T3 you typically have 5-8 cards in GY. Never cast Cruise before you have 6+ GY cards unless you can afford the extra mana.</div></div>
+    <div class="card"><div class="card-label">Verify</div><div class="card-title">SB Matches Expected GY Hate Level</div><div class="card-body">Heavy GY hate expected (Greasefang/Control): more Annul + Brazen Borrower. Light GY hate (RDW/Selesnya): Brotherhood's End + Anger of the Gods. Your SB is the correct 15 for the current April 2026 meta. Only adjust if you see unusual numbers of Leyline of the Void or Tormod's Crypt.</div></div>
+    <div class="card"><div class="card-label">Round 1 Tell</div><div class="card-title">T1 Land Read</div><div class="card-body">Godless Shrine = Greasefang (board Chandra's Defeat + Annul G2). Hallowed Fountain = UW Control (board Brazen Borrower + Spell Pierce + Negate G2). Mountain = RDW (board Brotherhood's End + Chandra's Defeat G2). Forest = Selesnya Company (board Anger of the Gods G2). Steam Vents without Phoenix = possibly UR Cutter (board Annul for Cutter).</div></div>
+  </div>
+
+  <button class="print-btn" onclick="window.print()">&#9113; Print Event Reference</button>
+  <div style="font-family:'DM Mono',monospace;font-size:11px;margin-top:16px;">
+    <div style="font-weight:500;margin-bottom:8px;">ARCLIGHT PHOENIX — Event Reference · Pioneer April 2026</div>
+    <p style="font-size:11px;margin-bottom:8px;">ALWAYS: Talent before cantrips | Consider before Opt for GY loading | Axe + discard Phoenix = free GY load | Count to 3 spells before combat | Never exile Phoenix for Cruise | Bounce RIP before Cruise</p>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+      <div><strong>vs UR CUTTER (Even)</strong> — Board Annul + Spell Pierce</div>
+      <div><strong>vs GREASEFANG (Fav)</strong> — Bounce Greasefang ETB, board Chandra's Defeat</div>
+      <div><strong>vs RDW (Even)</strong> — Kill Eidolon, board Brotherhood's End</div>
+      <div><strong>vs UW CONTROL (Unf)</strong> — Answer RIP, board Brazen Borrower</div>
+      <div><strong>vs SELESNYA CO (Fav)</strong> — Fly over their board, board Anger of the Gods</div>
+    </div>
+  </div>
+</div>
+</div>
+
+<footer style="border-top:1px solid var(--rule);padding:24px 80px;display:flex;justify-content:space-between;font-family:'DM Mono',monospace;font-size:10px;color:var(--mid);">
+  <span>Team Resolve &middot; Pioneer 2026</span>
+  <span>Phoenix Orange &mdash; April 2026</span>
+  <span>Metagame Mentor Reference Build &middot; April 2026</span>
+</footer>
+
+<script>
+function show(id){
+  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.nav-link').forEach(b=>b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  event.target.classList.add('active');
+  window.scrollTo(0,0);
+}
+function toggle(id){document.getElementById(id).classList.toggle('open');}
+</script>
+<script>
+(function(){
+  const TIP=document.createElement('div');TIP.className='card-tip';
+  TIP.innerHTML='<div class="card-tip-loading">loading...</div>';
+  document.body.appendChild(TIP);
+  const CACHE={};let hideTimer=null;const PAD=24,W=220,H=310;
+  function pos(e){let x=e.clientX+PAD,y=e.clientY-H/2;
+    if(x+W>window.innerWidth)x=e.clientX-W-PAD;if(y<8)y=8;
+    if(y+H>window.innerHeight)y=window.innerHeight-H-8;
+    TIP.style.left=x+'px';TIP.style.top=y+'px';}
+  async function showTip(name,e){
+    clearTimeout(hideTimer);TIP.innerHTML='<div class="card-tip-loading">loading...</div>';
+    TIP.classList.add('visible');pos(e);
+    if(CACHE[name]){TIP.innerHTML=`<img src="${CACHE[name]}" alt="${name}">`;return;}
+    try{const r=await fetch(`https://api.scryfall.com/cards/named?fuzzy=${encodeURIComponent(name)}`);
+      const d=await r.json();const img=d.image_uris?.normal||d.card_faces?.[0]?.image_uris?.normal;
+      if(!img){TIP.classList.remove('visible');return;}
+      CACHE[name]=img;TIP.innerHTML=`<img src="${img}" alt="${name}">`;}
+    catch(err){TIP.classList.remove('visible');}
+  }
+  function hide(){hideTimer=setTimeout(()=>TIP.classList.remove('visible'),80);}
+  document.addEventListener('mouseover',e=>{const el=e.target.closest('span.c');if(!el)return;showTip(el.textContent.trim(),e);});
+  document.addEventListener('mousemove',e=>{if(TIP.classList.contains('visible'))pos(e);});
+  document.addEventListener('mouseout',e=>{if(e.target.closest('span.c'))hide();});
+})();
+</script>
+</body>
+</html>
