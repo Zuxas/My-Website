@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" href="images/tab32.png" type="image/png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mono-White Humans — Team Resolve Pioneer Playbook</title>
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+html{overflow-y:scroll;}
+:root{
+  --primary:#1a1409;
+  --ink:#0e0e0e;
+  --paper:#f2ede6;
+  --paper-dark:#e8e1d6;
+  --rule:#c8bfb0;
+  --accent:#D97706;
+  --accent-light:rgba(217,119,6,0.08);
+  --mid:#5a5248;
+  --card:#ffffff;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--paper);color:var(--ink);font-family:'Crimson Pro',Georgia,serif;font-size:17px;line-height:1.6;}
+nav{position:sticky;top:0;z-index:100;background:var(--primary);border-bottom:2px solid var(--accent);display:flex;align-items:center;padding:0 32px;height:48px;gap:4px;}
+.nav-brand{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);margin-right:16px;white-space:nowrap;}
+.nav-link{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(248,250,252,0.55);background:none;border:none;border-bottom:2px solid transparent;padding:0 12px;height:48px;cursor:pointer;white-space:nowrap;display:flex;align-items:center;text-decoration:none;transition:color 0.15s,border-color 0.15s;}
+.nav-link:hover{color:rgba(248,250,252,0.85);}
+.nav-link.active{color:#fff;border-bottom-color:var(--accent);}
+.header-band{background:var(--primary);border-bottom:3px solid var(--accent);padding:48px 80px 40px;position:relative;overflow:hidden;}
+.header-band,.header-band *{color:#f1f5f9;}
+.header-band::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 10% 50%,rgba(217,119,6,0.15) 0%,transparent 70%);pointer-events:none;}
+.header-inner{max-width:1080px;margin:0 auto;display:grid;grid-template-columns:1fr auto;gap:40px;align-items:start;position:relative;}
+.header-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(248,250,252,0.4);margin-bottom:12px;}
+.header-title{font-family:'DM Mono',monospace;font-size:clamp(32px,4vw,52px);font-weight:500;letter-spacing:0.06em;line-height:1.05;text-transform:uppercase;}
+.header-title span{color:var(--accent);}
+.header-tagline{font-size:15px;font-style:italic;color:rgba(248,250,252,0.5);margin-top:12px;max-width:520px;line-height:1.5;}
+.meta-row{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(248,250,252,0.4);margin-bottom:4px;}
+.meta-row span{color:rgba(248,250,252,0.8);margin-left:6px;}
+.section{display:none;animation:fadeIn 0.3s ease;}
+.section.active{display:block;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
+.content{max-width:1080px;margin:0 auto;padding:56px 80px 80px;}
+.section-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--mid);margin-bottom:8px;display:block;}
+h1{font-family:'DM Mono',monospace;font-size:clamp(32px,4vw,48px);font-weight:500;letter-spacing:0.06em;text-transform:uppercase;line-height:1.05;margin-bottom:32px;}
+h2{font-family:'DM Mono',monospace;font-size:13px;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);margin:48px 0 16px;padding-bottom:8px;border-bottom:1px solid var(--rule);}
+h3{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--mid);margin:24px 0 8px;}
+p{font-size:16px;line-height:1.7;color:var(--ink);margin-bottom:14px;font-weight:300;}
+strong{font-weight:600;}
+.mantra{background:var(--accent-light);border-left:3px solid var(--accent);padding:20px 24px;margin:0 0 40px;font-style:italic;font-size:17px;color:var(--ink);line-height:1.6;}
+.card-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule);margin:16px 0;}
+.card-grid-2{grid-template-columns:repeat(2,1fr)!important;}
+.card-grid-3{grid-template-columns:repeat(3,1fr)!important;}
+.card{background:var(--card);padding:20px;transition:background 0.15s;}
+.card:hover{background:#faf7f2;}
+.card-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:var(--mid);margin-bottom:6px;}
+.card-title{font-family:'DM Mono',monospace;font-size:13px;letter-spacing:0.05em;color:var(--accent);margin-bottom:8px;font-weight:500;}
+.card-body{font-size:14px;color:var(--mid);line-height:1.55;font-weight:300;}
+.matchup-block{border:1px solid var(--rule);margin:24px 0;background:var(--card);}
+.matchup-header{background:var(--paper-dark);padding:16px 20px;display:flex;align-items:center;justify-content:space-between;cursor:pointer;}
+.matchup-header h3{margin:0;font-size:11px;letter-spacing:0.15em;color:var(--ink);}
+.verdict{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.15em;text-transform:uppercase;padding:3px 10px;border-radius:2px;}
+.verdict-good{background:rgba(217,119,6,0.1);color:#92400e;}
+.verdict-even{background:rgba(90,82,72,0.12);color:var(--mid);}
+.verdict-hard{background:rgba(180,35,24,0.1);color:#991b1b;}
+.matchup-body{padding:20px;display:none;}
+.matchup-body.open{display:block;}
+.sb-table{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--rule);margin:12px 0;}
+.sb-col{background:var(--paper);padding:12px 16px;}
+.sb-col-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.15em;text-transform:uppercase;color:var(--mid);margin-bottom:8px;}
+.sb-item{display:flex;justify-content:space-between;align-items:baseline;font-size:14px;padding:2px 0;font-weight:300;}
+.sb-qty{font-family:'DM Mono',monospace;font-size:11px;color:var(--mid);}
+.heuristic-list{list-style:none;margin:16px 0;}
+.heuristic-list li{padding:14px 0;border-bottom:1px solid var(--rule);display:flex;gap:16px;align-items:start;}
+.heuristic-list li:last-child{border-bottom:none;}
+.h-num{font-family:'DM Mono',monospace;font-size:10px;color:var(--accent);flex-shrink:0;padding-top:2px;min-width:28px;}
+.h-text{font-size:15px;font-weight:300;color:var(--ink);}
+.h-text strong{font-weight:600;}
+.deck-row{display:flex;justify-content:space-between;padding:3px 0;border-bottom:1px solid rgba(200,191,176,0.4);font-size:15px;}
+.deck-count{font-family:'DM Mono',monospace;font-size:12px;color:var(--mid);min-width:20px;}
+.edge-case{background:var(--card);border:1px solid var(--rule);border-left:3px solid var(--accent);padding:16px 20px;margin:12px 0;}
+.edge-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:6px;}
+.edge-body{font-size:14px;font-weight:300;color:var(--ink);line-height:1.65;}
+.print-btn{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;background:var(--accent);color:#fff;border:none;padding:10px 20px;cursor:pointer;margin:16px 0;}
+span.c{cursor:help;border-bottom:1px dashed var(--accent);}
+span.c:hover{border-bottom-style:solid;}
+.card-tip{position:fixed;z-index:9999;pointer-events:none;width:220px;border-radius:8px;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,0.6);opacity:0;transition:opacity 0.15s ease;background:#1a1a2e;}
+.card-tip.visible{opacity:1;}
+.card-tip img{width:220px;height:auto;display:block;}
+.card-tip-loading{width:220px;height:310px;display:flex;align-items:center;justify-content:center;color:#94a3b8;font-size:12px;font-family:monospace;background:#1e293b;}
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-brand">Mono-White Humans</div>
+  <a class="nav-link" href="deck-guides.html" style="text-decoration:none;">&#8592; Guides</a>
+  <button class="nav-link active" onclick="show('identity')">Overview</button>
+  <button class="nav-link" onclick="show('decklist')">Decklist</button>
+  <button class="nav-link" onclick="show('gameplan')">Game Flow</button>
+  <button class="nav-link" onclick="show('engines')">Engines</button>
+  <button class="nav-link" onclick="show('lines')">Lines</button>
+  <button class="nav-link" onclick="show('roles')">Roles</button>
+  <button class="nav-link" onclick="show('matchups')">Matchups</button>
+  <button class="nav-link" onclick="show('sideboard')">Sideboard</button>
+  <button class="nav-link" onclick="show('heuristics')">Heuristics</button>
+  <button class="nav-link" onclick="show('tuning')">Tuning</button>
+  <button class="nav-link" onclick="show('prep')">Prep</button>
+</nav>
+<div class="header-band">
+  <div class="header-inner">
+    <div>
+      <div class="header-label">Team Resolve · Pioneer · April 2026</div>
+      <div class="header-title">MONO-WHITE<br><span>HUMANS</span></div>
+      <div class="header-tagline">"T1 Recruitment Officer. T2 Thalia. T3 Adeline into 2 tokens. T4 Brave the Elements, attack for lethal. They had four turns to answer six creatures and ran out."</div>
+    </div>
+    <div>
+      <div class="meta-row">META SHARE<span>~2%</span></div>
+      <div class="meta-row">ROLE<span>Aggro-Tribal</span></div>
+      <div class="meta-row">COLORS<span>W</span></div>
+      <div class="meta-row">KILL TURN<span>3–5</span></div>
+      <div class="meta-row">REFERENCE<span>Pioneer Metagame Reference — April 2026</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- CH01 IDENTITY -->
+<div id="identity" class="section active">
+<div class="content">
+  <span class="section-label">Chapter 01</span>
+  <h1>DECK<br>IDENTITY</h1>
+  <div class="mantra">"Every creature is a Human. Every Human entering play pumps Thalia's Lieutenant and generates a token from Adeline. Brave the Elements makes them all unblockable or indestructible. The deck kills fast, protects itself, and rebuilds after sweepers."</div>
+
+  <p>Mono-White Humans is Pioneer's premier tribal aggro deck. The plan is straightforward: deploy one-drop Humans on T1, develop a wide board T2-T3, pump the entire team with <span class="c">Thalia's Lieutenant</span> and <span class="c">Coppercoat Vanguard</span>, and win through a single combat step protected by <span class="c">Brave the Elements</span>. The deck's power comes from the explosive synergy between its Human tribal lords and its go-wide token generation.</p>
+
+  <p><span class="c">Adeline, Resplendent Cathar</span> is the deck's premier threat: a 1/1 Human for {1WW} that whenever you attack, puts a 1/1 Human token into play tapping for each opponent (growing each time). The tokens enter tapped and attacking — Adeline herself doesn't need to attack. A single Adeline generates 1-2 tokens per combat, and each token triggers Thalia's Lieutenant when it enters (putting a +1/+1 counter on it) and gets +1/+1 from Coppercoat Vanguard.</p>
+
+  <p><span class="c">Recruitment Officer</span> provides the deck's card advantage engine: a 2/1 Human for {W} with Outpost Recruit — {3W}: look at the top four cards, put a Human into your hand and the rest on the bottom. In the mid-game when you're running low on threats, Recruitment Officer ensures you always have the next Human to deploy. <span class="c">Brave the Elements</span> is the deck's primary protection spell — naming white makes all your white creatures immune to spot removal and indestructible to damage-based sweepers for the turn, while also making them unblockable by non-white creatures.</p>
+
+  <h2>Why Mono-White Humans</h2>
+  <div class="card-grid card-grid-3">
+    <div class="card"><div class="card-label">Speed</div><div class="card-title">T3-T4 Lethal With Protection</div><div class="card-body">A T1 Recruitment Officer, T2 Thalia's Lieutenant, T3 Adeline generates a 4/4 Adeline, a 3/3 Lieutenant, and a 2/2 token with one attack. Brave the Elements on T4 makes everything unblockable by non-white and immune to targeted removal. This clock kills T4 on average and is essentially impossible to answer without a sweeper that resolves before Brave.</div></div>
+    <div class="card"><div class="card-label">Resilience</div><div class="card-title">Brave the Elements Blanks All Targeted Removal</div><div class="card-body">Brave the Elements costs {W} at instant speed: choose a color — all your white creatures gain protection from that color until EOT. Protection from red blanks Fatal Push and Lightning Axe. Protection from black blanks Thoughtseize targeting and most removal. Protection from blue blanks counters targeting creatures. One card nullifies an opponent's entire removal suite in a single turn.</div></div>
+    <div class="card"><div class="card-label">Disruption</div><div class="card-title">Thalia Taxes Their Answers</div><div class="card-body">Thalia, Guardian of Thraben taxes every noncreature spell {1} extra. Against UR Cutter (20+ spells), Greasefang (10+ spells), and control (15+ spells), Thalia generates 10-20 extra mana worth of tempo over a game. Your creatures cost nothing extra (all are creatures). Opponents pay more for every answer while you deploy threats for the normal cost.</div></div>
+  </div>
+</div>
+</div>
+
+<!-- CH02 DECKLIST -->
+<div id="decklist" class="section">
+<div class="content">
+  <span class="section-label">Chapter 02</span>
+  <h1>DECKLIST</h1>
+  <div class="mantra">"Pioneer Metagame Reference — April 2026 · Classic Mono-White Humans shell"</div>
+  <div class="card-grid card-grid-3">
+    <div class="card">
+      <h3>One-Drops (12)</h3>
+      <div class="deck-row"><span class="deck-count">4</span><span><span class="c">Recruitment Officer</span></span></div>
+      <div class="deck-row"><span class="deck-count">4</span><span><span class="c">Dauntless Bodyguard</span></span></div>
+      <div class="deck-row"><span class="deck-count">3</span><span><span class="c">Kytheon, Hero of Akros</span></span></div>
+      <div class="deck-row"><span class="deck-count">1</span><span><span class="c">Hopeful Initiate</span></span></div>
+      <h3 style="margin-top:12px;">Two-Drops (8)</h3>
+      <div class="deck-row"><span class="deck-count">4</span><span><span class="c">Thalia, Guardian of Thraben</span></span></div>
+      <div class="deck-row"><span class="deck-count">4</span><span><span class="c">Coppercoat Vanguard</span></span></div>
+      <h3 style="margin-top:12px;">Three-Drops (8)</h3>
+      <div class="deck-row"><span class="deck-count">4</span><span><span class="c">Adeline, Resplendent Cathar</span></span></div>
+      <div class="deck-row"><span class="deck-count">4</span><span><span class="c">Thalia's Lieutenant</span></span></div>
+    </div>
+    <div class="card">
+      <h3>Spells (8)</h3>
+      <div class="deck-row"><span class="deck-count">4</span><span><span class="c">Brave the Elements</span></span></div>
+      <div class="deck-row"><span class="deck-count">2</span><span><span class="c">Declaration in Stone</span></span></div>
+      <div class="deck-row"><span class="deck-count">2</span><span><span class="c">Fateful Absence</span></span></div>
+      <h3 style="margin-top:12px;">Lands (22)</h3>
+      <div class="deck-row"><span class="deck-count">16</span><span>Plains</span></div>
+      <div class="deck-row"><span class="deck-count">2</span><span><span class="c">Castle Ardenvale</span></span></div>
+      <div class="deck-row"><span class="deck-count">2</span><span><span class="c">Mutavault</span></span></div>
+      <div class="deck-row"><span class="deck-count">1</span><span><span class="c">Eiganjo, Seat of the Empire</span></span></div>
+      <div class="deck-row"><span class="deck-count">1</span><span><span class="c">Cave of the Frost Dragon</span></span></div>
+    </div>
+    <div class="card">
+      <h3>Sideboard (15)</h3>
+      <div class="deck-row"><span class="deck-count">4</span><span><span class="c">Coppercoat Vanguard</span></span></div>
+      <div class="deck-row"><span class="deck-count">2</span><span><span class="c">Rest in Peace</span></span></div>
+      <div class="deck-row"><span class="deck-count">2</span><span><span class="c">Wedding Announcement</span></span></div>
+      <div class="deck-row"><span class="deck-count">2</span><span><span class="c">Portable Hole</span></span></div>
+      <div class="deck-row"><span class="deck-count">2</span><span><span class="c">Guardian of Faith</span></span></div>
+      <div class="deck-row"><span class="deck-count">2</span><span><span class="c">Ossification</span></span></div>
+      <div class="deck-row"><span class="deck-count">1</span><span><span class="c">Reidane, God of the Worthy</span></span></div>
+    </div>
+  </div>
+
+  <h2>Key Card Notes</h2>
+  <div class="card-grid card-grid-2">
+    <div class="card"><div class="card-label">The Pump</div><div class="card-title">Thalia's Lieutenant + Coppercoat Vanguard</div><div class="card-body">Thalia's Lieutenant: {1W} Human — when it enters, put a +1/+1 counter on each other Human you control. Whenever another Human enters under your control, put a +1/+1 counter on Lieutenant. Coppercoat Vanguard: {1W} Human — other Humans you control get +1/+1 and have ward {1} (opponent must pay {1} extra to target them). These two together: every Human that enters pumps Lieutenant, and every Human on board has ward and gets +1 from Vanguard.</div></div>
+    <div class="card"><div class="card-label">The Generator</div><div class="card-title">Adeline, Resplendent Cathar</div><div class="card-body">1/1 for {1WW} (grows via counters from Thalia's Lieutenant and Vanguard). Whenever you attack: for each opponent, create a 1/1 Human token that's tapped and attacking. Each token: triggers Thalia's Lieutenant (+1/+1 counter), gets +1/+1 from Vanguard, and has ward from Vanguard. One Adeline with Lieutenant and Vanguard in play can generate 3-5 creatures in two attack steps. Adeline herself is the #1 removal target — opponents always kill her first.</div></div>
+    <div class="card"><div class="card-label">The Shield</div><div class="card-title">Brave the Elements</div><div class="card-body">{W} instant. Choose a color — all white creatures you control gain protection from that color until EOT. Protection means: can't be targeted by that color, can't be blocked by that color, damage prevention from that color. Naming white protects your own creatures from your own cards (used rarely). Naming red: blocks Lightning Axe, Play with Fire, Fiery Impulse, sweepers. Naming black: blocks Fatal Push, Thoughtseize-adjacent effects. Naming blue: blocks Into the Flood Maw, Make Disappear targeting your creatures.</div></div>
+    <div class="card"><div class="card-label">The Body</div><div class="card-title">Dauntless Bodyguard — Sacrifice for Indestructible</div><div class="card-body">{W} Human — when it enters, attach it to another creature. Sacrifice Bodyguard: the attached creature gains indestructible until EOT. Protect Adeline or Thalia's Lieutenant from targeted removal or combat damage by sacrificing Bodyguard. This is a two-for-one in your favor: they use a removal spell AND you sacrifice a 2/1 body, but your threat survives. Against sweepers: sacrifice Bodyguard to give Adeline indestructible — Supreme Verdict doesn't destroy her.</div></div>
+  </div>
+</div>
+</div>
+
+<!-- CH03 GAME FLOW -->
+<div id="gameplan" class="section">
+<div class="content">
+  <span class="section-label">Chapter 03</span>
+  <h1>GAME<br>FLOW</h1>
+  <div class="mantra">"T1 one-drop. T2 Thalia or Lieutenant. T3 Adeline attacks into tokens. T4 Brave the Elements — unblockable attack for lethal."</div>
+  <div class="card-grid card-grid-2">
+    <div class="card"><div class="card-label">Ideal Curve</div><div class="card-title">T1–T4 Kill</div><div class="card-body">T1: Recruitment Officer (2/1) or Dauntless Bodyguard (2/1). T2: Thalia's Lieutenant — Lieutenant enters, pumps the T1 Human +1/+1. Both creatures now at 3/2 and 2/2. T3: Adeline (now 2/2 from Lieutenant trigger) — attack, Adeline trigger creates a 1/1 token tapped attacking (Lieutenant pumps again). T4: second attack with 4 creatures, then Brave the Elements naming the color of their blockers — everything unblockable for the turn. Lethal.</div></div>
+    <div class="card"><div class="card-label">Mulligan</div><div class="card-title">Need: 2 Lands + 2 One-Drops or Curve</div><div class="card-body">Keep: any hand with 2-3 Plains, a one-drop Human, and a 2-3 drop. Mulligan: 1 land (can't function), 4+ lands (too slow to deploy threats in time), 0 one-drops (the deck needs to curve from T1). At 6: 2 lands + Recruitment Officer + any 2-drop is excellent. At 5: 2 lands + Officer + Thalia's Lieutenant is a correct keep. One-drops are the most critical opening cards — prioritize hands that have at least two creatures to deploy T1-T2.</div></div>
+    <div class="card"><div class="card-label">Brave the Elements Timing</div><div class="card-title">Declare Attackers, Then Cast Brave</div><div class="card-body">Brave the Elements is an instant — cast it AFTER declaring attackers. Sequence: declare all your creatures as attackers → opponents declare blockers → before damage, cast Brave the Elements naming the blocker color. Result: all your white creatures have protection from that color — blockers are removed from combat (they can't block white creatures with protection from their color). Your entire attack resolves unblocked. The opponent can't respond with block assignments after Brave resolves.</div></div>
+    <div class="card"><div class="card-label">Coppercoat Vanguard Ward</div><div class="card-title">Every Human Costs {1} Extra to Target</div><div class="card-body">Coppercoat Vanguard gives all other Humans ward {1}. This means: targeting any of your Humans with a spell or ability requires paying {1} additional, or the spell is countered. In practice: Fatal Push targeting your 1-drop now costs {B}{1}. Lightning Axe targeting Adeline costs {R}{1}. On T2 with Thalia also in play, every answer they have costs {1} extra (Thalia) + {1} more (Ward) = {2} extra per interaction. This makes answering your board prohibitively expensive.</div></div>
+  </div>
+</div>
+</div>
+
+<!-- CH04 ENGINES -->
+<div id="engines" class="section">
+<div class="content">
+  <span class="section-label">Chapter 04</span>
+  <h1>CORE<br>ENGINES</h1>
+  <div class="mantra">"Lieutenant pumps every Human that enters. Vanguard gives everyone +1/+1 and ward. Adeline generates bodies every attack. Three engines compounding simultaneously."</div>
+  <div class="card-grid card-grid-3">
+    <div class="card"><div class="card-label">Engine 1 — Counters</div><div class="card-title">Thalia's Lieutenant Counter Loop</div><div class="card-body">Every Human entering play under your control puts a +1/+1 counter on Thalia's Lieutenant. Lieutenant entering play puts a +1/+1 counter on EACH other Human. With Adeline generating 1-2 tokens per combat, Lieutenant grows by 1-2 counters per attack step. A Lieutenant that's been in play for 2-3 attacks is a 6-8/6-8 creature. The counter loop is self-reinforcing — more Humans entering → bigger Lieutenant → bigger whole team.</div></div>
+    <div class="card"><div class="card-label">Engine 2 — Tokens</div><div class="card-title">Adeline's Combat Token Generation</div><div class="card-body">Whenever you attack, Adeline creates 1/1 Human tokens (one per opponent) tapped and attacking. In a 1v1 game: one token per attack. Each token triggers Lieutenant (+1 counter), enters with ward from Vanguard (+1/+1), and attacks immediately. Two Adeline attacks with Lieutenant in play creates 2 tokens — each of which pumps Lieutenant 2 more times (from the two enters). Token generation compounds rapidly with both lords on board.</div></div>
+    <div class="card"><div class="card-label">Engine 3 — Protection</div><div class="card-title">Brave the Elements + Ward</div><div class="card-body">Coppercoat Vanguard's ward {1} forces opponents to pay {1} extra per targeting spell. Brave the Elements provides a full-color protection layer at {W} instant speed. Together they create a two-layer defense: ward taxes every individual removal spell, and Brave blanks all removal of a chosen color in a single turn. Against removal-heavy decks, this combination means you can commit your entire board knowing Brave prevents it from being answered profitably.</div></div>
+  </div>
+</div>
+</div>
+
+<!-- CH05 LINES -->
+<div id="lines" class="section">
+<div class="content">
+  <span class="section-label">Chapter 05</span>
+  <h1>LINES &amp;<br>TACTICS</h1>
+  <div class="mantra">"Brave after declaring attackers. Bodyguard sacrificed at the right moment. Adeline attacks even into walls."</div>
+  <div class="edge-case"><div class="edge-label">Line 01 — Adeline Attacks Even If She'd Die in Combat</div><div class="edge-body">Adeline's token-creation trigger fires whenever you attack — not when she deals damage or survives. If Adeline attacks into a 4/4 that would kill her in combat, she STILL creates her token before combat damage resolves (the trigger goes on the stack when you declare attackers, which is before damage). Always attack with Adeline. The token generation is more valuable than keeping her back as a blocker. Even a suicidal Adeline attack creates a Human token that pumps Lieutenant and gets Vanguard's buff.</div></div>
+  <div class="edge-case"><div class="edge-label">Line 02 — Dauntless Bodyguard Attachment: Choose the Right Target</div><div class="edge-body">Dauntless Bodyguard attaches to a creature when it enters. Choose the highest-value threat: Adeline (your token generator — protect her from removal), Thalia's Lieutenant (your counter engine — protect her from sweepers), or Coppercoat Vanguard (your ward provider — protect him from Fatal Push). The correct attachment depends on the matchup: vs removal-heavy (Rakdos): attach to Adeline. Vs sweeper-heavy (control): attach to Lieutenant. Vs aggro racing: attach to Vanguard. Never attach to a Recruitment Officer or Kytheon — the 2/1 is less valuable than the lords.</div></div>
+  <div class="edge-case"><div class="edge-label">Line 03 — Brave the Elements vs Sweepers: Name the Right Color</div><div class="edge-body">When the opponent casts a sweeper, respond with Brave the Elements naming the correct color. Supreme Verdict (WU — damage prevention doesn't apply since it destroys, not deals damage — but protection prevents "being dealt damage" AND "being the target of spells" for the chosen color. Protection from white counters Supreme Verdict if it's white. However, "destroy all creatures" isn't targeting — it hits everyone. Brave the Elements protection specifically says the creature "can't be blocked" and "can't be targeted" and "damage prevention" — it doesn't grant indestructible. Against Supreme Verdict, use Dauntless Bodyguard (sacrifice for indestructible), not Brave. Against Anger of the Gods (red 3 damage), name red with Brave — damage from red spells is prevented, creatures survive.</div></div>
+  <div class="edge-case"><div class="edge-label">Line 04 — Recruitment Officer's Outpost Recruit: Use at 4 Mana in the Mid-Game</div><div class="edge-body">Recruitment Officer's activated ability costs {3W}: look at top 4, keep a Human. This is a mid-game engine for refueling after your initial board is answered. Use it on T4-T5 when your board has been cleared by a sweeper and you need to reload. The {3W} cost means you need 4 mana — it's not a T1 action (just deploy it as a 2/1 and continue). In the late game with 5+ mana and no action, activate twice to dig 8 cards deep for your key Humans (Adeline, Lieutenant, Vanguard).</div></div>
+</div>
+</div>
+
+<!-- CH06 ROLES -->
+<div id="roles" class="section">
+<div class="content">
+  <span class="section-label">Chapter 06</span>
+  <h1>ROLE<br>ASSIGNMENT</h1>
+  <div class="mantra">"You are always the aggressor. Every turn you're developing your board and forcing them to react."</div>
+  <div class="card-grid card-grid-3">
+    <div class="card"><div class="card-label">vs Aggro</div><div class="card-title">Race and Protect</div><div class="card-body">Against RDW: your 2/1 bodies trade with their 1/1s favorably. Coppercoat Vanguard's ward {1} forces them to pay {1} extra for each removal spell targeting your Humans. Brave the Elements names red — immune to all their burn spells and Eidolon of the Great Revel triggers for the turn. You can race burn by deploying Humans faster than they can deal damage. Castle Ardenvale generates 1/1 tokens at instant speed to maintain board presence.</div></div>
+    <div class="card"><div class="card-label">vs Midrange</div><div class="card-title">Deploy Faster Than Their Removal Can Keep Up</div><div class="card-body">Against Rakdos Midrange: Thalia taxes their Thoughtseize and Fatal Push. Ward {1} on every Human means answering your board costs {1} per card. Adeline generates more bodies than they have removal spells. Brave the Elements names black — Fatal Push, Power Word Kill, and Dreadbore all get blanked. They run 6-8 removal spells; you generate 10+ bodies across 4 turns.</div></div>
+    <div class="card"><div class="card-label">vs Control/Combo</div><div class="card-title">Thalia Buys Time, Brave Protects</div><div class="card-body">Against UW Control: Thalia taxes every counterspell and removal spell {1} extra. Against Greasefang: Thalia taxes all their discard outlets. Wedding Announcement (SB) generates bodies through their board wipes — three turns of tokens means your next sweep recovery is already assembled. Deploy multiple threats per turn to force one-for-many removal or concession.</div></div>
+  </div>
+</div>
+</div>
+
+<!-- CH07 MATCHUPS -->
+<div id="matchups" class="section">
+<div class="content">
+  <span class="section-label">Chapter 07</span>
+  <h1>MATCHUP<br>GUIDE</h1>
+  <div class="mantra">"Brave the Elements is your answer to almost everything. Name the right color."</div>
+
+  <div class="matchup-block">
+    <div class="matchup-header" onclick="toggle('mu-cutter')"><h3>UR CUTTER</h3><span class="verdict verdict-even">Even</span></div>
+    <div id="mu-cutter" class="matchup-body">
+      <p>Thalia taxes their cantrips and Stormchaser's Talent activations. Your ground Humans trade favorably with their Monk tokens (2/2 vs 1/1). Brave the Elements naming blue stops Into the Flood Maw from bouncing your key creatures. Their Treasure Cruise refuels — accept the 3-card refuel and maintain your board pressure. Coppercoat Vanguard's ward makes targeting your Humans expensive, forcing them to use Fiery Impulse or Fiery Impulse + extra mana.</p>
+      <div class="sb-table">
+        <div class="sb-col"><div class="sb-col-label">In</div><div class="sb-item"><span><span class="c">Portable Hole</span></span><span class="sb-qty">+2</span></div><div class="sb-item"><span><span class="c">Ossification</span></span><span class="sb-qty">+2</span></div></div>
+        <div class="sb-col"><div class="sb-col-label">Out</div><div class="sb-item"><span><span class="c">Hopeful Initiate</span></span><span class="sb-qty">&minus;1</span></div><div class="sb-item"><span><span class="c">Fateful Absence</span></span><span class="sb-qty">&minus;2</span></div><div class="sb-item"><span><span class="c">Declaration in Stone</span></span><span class="sb-qty">&minus;1</span></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="matchup-block">
+    <div class="matchup-header" onclick="toggle('mu-rdw')"><h3>RED DECK WINS</h3><span class="verdict verdict-even">Even</span></div>
+    <div id="mu-rdw" class="matchup-body">
+      <p>Their Eidolon of the Great Revel costs them life too — your Humans cost 1-3 mana and trigger Eidolon. Wait until you have Brave the Elements available before running out into their Eidolon. Brave naming red blanks Eidolon's trigger AND their burn spells for a full turn — you gain life from their Eidolon triggers on your opponents with protection from red. Their Rampaging Ferocidon (SB) prevents lifegain — note that Brave protection doesn't gain life, it just prevents damage.</p>
+      <div class="sb-table">
+        <div class="sb-col"><div class="sb-col-label">In</div><div class="sb-item"><span><span class="c">Guardian of Faith</span></span><span class="sb-qty">+2</span></div></div>
+        <div class="sb-col"><div class="sb-col-label">Out</div><div class="sb-item"><span><span class="c">Hopeful Initiate</span></span><span class="sb-qty">&minus;1</span></div><div class="sb-item"><span><span class="c">Declaration in Stone</span></span><span class="sb-qty">&minus;1</span></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="matchup-block">
+    <div class="matchup-header" onclick="toggle('mu-selesnya')"><h3>SELESNYA COMPANY (MIRROR-ADJACENT)</h3><span class="verdict verdict-even">Even</span></div>
+    <div id="mu-selesnya" class="matchup-body">
+      <p>Their CoCo refills faster than your Recruitment Officer. Your threats are comparable in size but your lords (Lieutenant, Vanguard) make your entire team bigger. Brave the Elements gives you the attacking advantage in a stalled board — name green to make their blockers unable to block your white creatures. Their Thalia taxes YOUR Brave the Elements {1} extra — hold extra mana when you plan to Brave through their Thalia.</p>
+      <div class="sb-table">
+        <div class="sb-col"><div class="sb-col-label">In</div><div class="sb-item"><span><span class="c">Portable Hole</span></span><span class="sb-qty">+2</span></div><div class="sb-item"><span><span class="c">Ossification</span></span><span class="sb-qty">+2</span></div></div>
+        <div class="sb-col"><div class="sb-col-label">Out</div><div class="sb-item"><span><span class="c">Fateful Absence</span></span><span class="sb-qty">&minus;2</span></div><div class="sb-item"><span><span class="c">Hopeful Initiate</span></span><span class="sb-qty">&minus;1</span></div><div class="sb-item"><span><span class="c">Kytheon</span></span><span class="sb-qty">&minus;1</span></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="matchup-block">
+    <div class="matchup-header" onclick="toggle('mu-control')"><h3>UW CONTROL</h3><span class="verdict verdict-hard">Unfavorable</span></div>
+    <div id="mu-control" class="matchup-body">
+      <p>Supreme Verdict (uncounterable) sweeps your entire board. Temporary Lockdown exiles all your MV-2 or less Humans. Their Teferi out-values your card advantage. Wedding Announcement (SB) survives sweepers — it generates bodies on each of its three chapter turns, meaning post-wrath you rebuild immediately. Reidane, God of the Worthy (SB) taxes their snow lands and prevents casting enchantments at less than sorcery speed, which disrupts their Temporary Lockdown timing.</p>
+      <div class="sb-table">
+        <div class="sb-col"><div class="sb-col-label">In</div><div class="sb-item"><span><span class="c">Wedding Announcement</span></span><span class="sb-qty">+2</span></div><div class="sb-item"><span><span class="c">Reidane, God of the Worthy</span></span><span class="sb-qty">+1</span></div><div class="sb-item"><span><span class="c">Guardian of Faith</span></span><span class="sb-qty">+2</span></div></div>
+        <div class="sb-col"><div class="sb-col-label">Out</div><div class="sb-item"><span><span class="c">Hopeful Initiate</span></span><span class="sb-qty">&minus;1</span></div><div class="sb-item"><span><span class="c">Thalia, Guardian of Thraben</span></span><span class="sb-qty">&minus;2</span></div><div class="sb-item"><span><span class="c">Kytheon</span></span><span class="sb-qty">&minus;2</span></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="matchup-block">
+    <div class="matchup-header" onclick="toggle('mu-greasefang')"><h3>ORZHOV GREASEFANG</h3><span class="verdict verdict-good">Favorable</span></div>
+    <div id="mu-greasefang" class="matchup-body">
+      <p>You're faster. T1-T2-T3 Human curve kills by T4-T5; they combo on T3-4. Thalia taxes their discard outlets {1} extra per spell. Their Thoughtseize strips key pieces — target Brave the Elements from hand. Brave naming black blanks their targeted discard attempts from hand. Rest in Peace (SB) removes Parhelion II from GY permanently. Your wide human board attacks through their non-flying blockers; their 9/9 flying Angel doesn't block your creatures.</p>
+      <div class="sb-table">
+        <div class="sb-col"><div class="sb-col-label">In</div><div class="sb-item"><span><span class="c">Rest in Peace</span></span><span class="sb-qty">+2</span></div><div class="sb-item"><span><span class="c">Ossification</span></span><span class="sb-qty">+2</span></div></div>
+        <div class="sb-col"><div class="sb-col-label">Out</div><div class="sb-item"><span><span class="c">Declaration in Stone</span></span><span class="sb-qty">&minus;2</span></div><div class="sb-item"><span><span class="c">Fateful Absence</span></span><span class="sb-qty">&minus;2</span></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- CH08 SIDEBOARD -->
+<div id="sideboard" class="section">
+<div class="content">
+  <span class="section-label">Chapter 08</span>
+  <h1>SIDEBOARD<br>GUIDE</h1>
+  <div class="mantra">"Your sideboard addresses sweepers (Guardian of Faith), GY decks (Rest in Peace), and attrition (Wedding Announcement)."</div>
+  <div class="card-grid card-grid-2">
+    <div class="card"><div class="card-label">P1 — vs Sweepers</div><div class="card-title">Guardian of Faith ×2</div><div class="card-body">3/2 Spirit Human for {1WW} with flash. When it enters, exile any number of target creatures you control. When Guardian leaves the battlefield, return those exiled creatures. This converts a Supreme Verdict into a tempo loss for your opponent: respond to the Verdict by flashing in Guardian, exiling your key creatures, surviving the wrath, then they return when Guardian dies. Against UW Control's sweeper suite, Guardian completely nullifies Verdict at the cost of only the creatures you chose not to save. Often used to save just your lords.</div></div>
+    <div class="card"><div class="card-label">P2 — vs Attrition/Control</div><div class="card-title">Wedding Announcement ×2</div><div class="card-body">Enchantment for {2W}. Chapter 1: put a 1/1 white Human Soldier into play. Chapter 2: same. Chapter 3: same, then transform into Wedding Festivity — all creatures you control get +1/+1. Three Humans over three turns is a sweeper-proof threat source. Unlike creatures, it doesn't die to sweepers until it's already generated 2-3 bodies. Against control where every sweeper clears your board, Wedding Announcement ensures you always have the next threat coming. Chapter 3 pump can be lethal with a developed board.</div></div>
+    <div class="card"><div class="card-label">P3 — vs GY Decks</div><div class="card-title">Rest in Peace ×2</div><div class="card-body">Enchantment that exiles all GYs and prevents future GY use. Against Greasefang: Parhelion II can't be returned. Against Arclight Phoenix: Phoenixes can't come back. Against Lotus Field: Dig Through Time targets removed. Deploy on T2 alongside a one-drop creature to deny their GY engine before it sets up. Note: RIP also exiles your creatures from GY — Dauntless Bodyguard attached to a creature can't have the creature returned if RIP is in play. Plan around this if relevant.</div></div>
+    <div class="card"><div class="card-label">P4 — Enchantment Removal</div><div class="card-title">Portable Hole + Ossification</div><div class="card-body">Portable Hole: {W} enchantment — exile target nonland permanent with MV 2 or less until Portable Hole leaves. Hits: Thalia, Coppercoat Vanguard, Bloodtithe Harvester, Cori-Steel Cutter (before transformation), Eidolon of the Great Revel. Ossification: {1W} enchantment — exile target creature or planeswalker. Note: Ossification requires you to control a Plains (easy in mono-white). Both are enchantments — stronger against decks with limited enchantment removal, weaker against Selesnya Company (Hopeful Initiate) or anything with Boseiju.</div></div>
+  </div>
+</div>
+</div>
+
+<!-- CH09 HEURISTICS -->
+<div id="heuristics" class="section">
+<div class="content">
+  <span class="section-label">Chapter 09</span>
+  <h1>HEURISTICS</h1>
+  <div class="mantra">"Brave after declaring attackers. Adeline always attacks. Bodyguard on the right target. Thalia taxes — use the tempo."</div>
+  <ol class="heuristic-list">
+    <li><span class="h-num">01</span><span class="h-text"><strong>Brave the Elements is cast AFTER declaring attackers, before damage.</strong> The correct window is after blockers are declared. Declare your attackers → opponent assigns blockers → before combat damage, cast Brave naming the blocker color. All blockers are removed from combat (protection from that color means they can't block). Your entire attack is unblockable for that turn.</span></li>
+    <li><span class="h-num">02</span><span class="h-text"><strong>Adeline always attacks — even into creatures that would kill her.</strong> Adeline's token trigger fires when you attack, before combat damage. She creates the token even if she dies in combat. Always attack with Adeline — the token generation is more valuable than preserving her as a blocker, and a suicidal Adeline attack still creates a body for Lieutenant and Vanguard.</span></li>
+    <li><span class="h-num">03</span><span class="h-text"><strong>Dauntless Bodyguard: attach to Adeline vs removal, Lieutenant vs sweepers.</strong> Against removal-heavy decks: attach to Adeline (she's the #1 removal target). Against sweeper decks: attach to Lieutenant (protecting the counter engine matters most). Against aggro racing: attach to Coppercoat Vanguard (preserving ward for the whole team is most valuable). Never attach to a 1/1 token or Recruitment Officer.</span></li>
+    <li><span class="h-num">04</span><span class="h-text"><strong>Brave the Elements vs Supreme Verdict: Brave doesn't grant indestructible.</strong> Brave the Elements grants protection from a color — not indestructible. Supreme Verdict says "destroy" which isn't dealing damage and doesn't require targeting. Protection doesn't prevent "destroy" effects. Against Supreme Verdict: use Dauntless Bodyguard (sacrifice for indestructible) or Guardian of Faith (SB, flash — exile creatures before Verdict resolves). Brave beats Anger of the Gods (red damage) but not Verdict (white destroy).</span></li>
+    <li><span class="h-num">05</span><span class="h-text"><strong>Coppercoat Vanguard ward {1} costs — don't forget to make them pay it.</strong> Whenever an opponent targets one of your other Humans, they must pay {1} or the spell is countered. This is a triggered ability — you must prioritize it and announce "ward triggers." Opponents who cast removal without realizing ward exists will learn — but in competitive play, remind them ward triggers so the interaction resolves correctly.</span></li>
+    <li><span class="h-num">06</span><span class="h-text"><strong>Thalia taxes your own Brave the Elements {1} — hold extra mana when planning to Brave.</strong> Thalia taxes ALL noncreature spells including your own. Brave the Elements normally costs {W}; with your own Thalia in play, it costs {1W}. This is only relevant when you're at exactly {W} available mana and planning to Brave. Hold an extra {1} on turns you plan to use Brave with Thalia in play.</span></li>
+    <li><span class="h-num">07</span><span class="h-text"><strong>Kytheon, Hero of Akros: attack with three or more creatures to transform into a planeswalker.</strong> Kytheon becomes Gideon, Battle-Forged at EOT if you attacked with three or more creatures this turn. As a planeswalker, he provides an additional finisher axis. Against removal-heavy decks, flipped Kytheon (with his indestructible ability) is extremely difficult to answer. Attack with your full board on T3-T4 when Kytheon has been in play to enable the flip.</span></li>
+    <li><span class="h-num">08</span><span class="h-text"><strong>Castle Ardenvale: activate at instant speed to generate bodies mid-combat or after sweepers.</strong> Castle Ardenvale activates for {3W}: create a 1/1 white Human token. Use at instant speed after their sweeper resolves (with mana up) to immediately rebuild. Use during combat to create a blocker for an unexpected attack. With 5+ mana available, activate twice in a turn to generate two tokens for Lieutenant triggers.</span></li>
+    <li><span class="h-num">09</span><span class="h-text"><strong>Wedding Announcement generates bodies through multiple sweepers — deploy early vs control.</strong> Wedding Announcement creates a Human token on Chapter 1 (T2 of being in play) and Chapter 2 (T3). If they sweep the board on T4, Announcement has already generated 2 bodies and continues on T5 with Chapter 3. Against control, Wedding Announcement is your resilient value engine — deploy it on T3 whenever you expect a sweeper is coming.</span></li>
+    <li><span class="h-num">10</span><span class="h-text"><strong>Recruitment Officer mid-game activation: dig at 4 mana, not T1.</strong> Recruitment Officer's {3W} ability is most powerful in the mid-game when your hand is depleted. Activate on T4-T6 when you need Adeline, Lieutenant, or another specific Human. On T1, just play Officer as a 2/1 attacker — the activation will come later. In the late game with 8 mana available, activate twice on the same turn to dig 8 cards deep.</span></li>
+  </ol>
+</div>
+</div>
+
+<!-- CH10 TUNING -->
+<div id="tuning" class="section">
+<div class="content">
+  <span class="section-label">Chapter 10</span>
+  <h1>TUNING<br>NOTES</h1>
+  <div class="mantra">"4 Adeline, 4 Thalia's Lieutenant, 4 Coppercoat Vanguard, 4 Brave the Elements are immovable. Everything else adjusts."</div>
+  <div class="card-grid card-grid-3">
+    <div class="card"><div class="card-label">Lock</div><div class="card-title">4 Adeline + 4 Lieutenant + 4 Vanguard</div><div class="card-body">These three form the deck's tribal engine. Adeline generates bodies, Lieutenant pumps the team, Vanguard provides +1/+1 and ward to everything. All three at 4 copies ensures you draw at least two of the three in every game. Never cut any.</div></div>
+    <div class="card"><div class="card-label">Lock</div><div class="card-title">4 Brave the Elements</div><div class="card-body">The deck's primary protection spell and combat trick. Brave is what allows the go-wide Human strategy to work against removal. 4 copies ensures you draw it in most games. Never cut below 4.</div></div>
+    <div class="card"><div class="card-label">Lock</div><div class="card-title">4 Thalia, Guardian of Thraben</div><div class="card-body">The deck's primary disruption piece. Thalia taxing noncreature spells is what enables the Human aggro strategy against combo and control. 4 is mandatory — finding Thalia consistently on T2 is critical.</div></div>
+    <div class="card"><div class="card-label">Flex 3–4</div><div class="card-title">Recruitment Officer</div><div class="card-body">4 is the reference number. Can trim to 3 in metas where the 2/1 body is less relevant and you need more aggressive one-drops. The mid-game activation is most valuable in long games vs control — if your meta is all aggro mirrors, Officer's activation matters less.</div></div>
+    <div class="card"><div class="card-label">Flex 2–4</div><div class="card-title">Removal (Declaration + Fateful Absence)</div><div class="card-body">The removal suite adjusts to meta threats. Declaration in Stone handles go-wide (exiles multiple copies). Fateful Absence handles any creature or planeswalker. In aggro-heavy metas, reduce removal to 2 total and add more creatures. In control-heavy metas, increase to 4 total for more interaction.</div></div>
+    <div class="card"><div class="card-label">Utility Lands</div><div class="card-title">Castle Ardenvale + Mutavault</div><div class="card-body">Castle Ardenvale generates 1/1 Humans at instant speed (enters tapped — doesn't ETB under Mutavault's "land" condition). Mutavault can animate as a 2/2 all-creature and is itself a Human when a creature. 2 of each is the correct ratio. 3+ utility lands risks missing critical Plains for white mana in opening hands.</div></div>
+  </div>
+</div>
+</div>
+
+<!-- CH11 PREP -->
+<div id="prep" class="section">
+<div class="content">
+  <span class="section-label">Chapter 11</span>
+  <h1>EVENT<br>PREP</h1>
+  <div class="mantra">"Know which color to name with Brave. Know when Bodyguard saves vs sacrifices. Know the sweeper interaction."</div>
+  <div class="card-grid card-grid-2">
+    <div class="card"><div class="card-label">Know Cold</div><div class="card-title">Brave the Elements — Name by Matchup</div><div class="card-body">vs RDW: name red — blocks Fiery Impulse, Lightning Strike, Eidolon triggers, and all burn. vs Rakdos Midrange: name black — blocks Fatal Push, Power Word Kill, Dreadbore. vs UR Cutter: name blue — blocks Into the Flood Maw, Make Disappear targeting your creatures. vs UW Control: name white — blocks only their white removal (March of Otherworldly Light); name blue for their counterspells. vs Selesnya (mirror-ish): name green — your white creatures can't be blocked by green. In combat: name the color of their blockers to make your attack unblockable.</div></div>
+    <div class="card"><div class="card-label">Know Cold</div><div class="card-title">Sweeper Defense Sequence</div><div class="card-body">Supreme Verdict incoming: sacrifice Dauntless Bodyguard targeting Adeline or Lieutenant (indestructible survives Verdict). Alternatively, flash in Guardian of Faith in response, exiling your key creatures before Verdict resolves. Temporary Lockdown (exiles MV≤2): no answer from these creatures themselves — Brave doesn't help, Bodyguard doesn't help. In game 2 vs UW Control, don't overcommit creatures with MV≤2 when you see 4 mana open. Anger of the Gods (deals 3 damage): Brave the Elements naming red prevents damage from red spells — your creatures survive.</div></div>
+    <div class="card"><div class="card-label">Verify</div><div class="card-title">SB Matches Expected Field</div><div class="card-body">Heavy control (UW): Wedding Announcement × 2 + Guardian of Faith × 2 + Reidane. Heavy GY (Greasefang, Phoenix): Rest in Peace × 2. Heavy aggro/creature mirrors: Portable Hole × 2 + Ossification × 2. Heavy midrange (Rakdos): Ossification × 2 + Wedding Announcement × 2. The 15-card SB covers all matchups — confirm you know which 4-5 cards come in for each deck you expect.</div></div>
+    <div class="card"><div class="card-label">Round 1 Tell</div><div class="card-title">T1 Land Read</div><div class="card-body">Mountain = RDW (board Guardian of Faith, hold Brave for red protection). Godless Shrine = Greasefang (race aggressively, board RIP G2). Steam Vents = UR Cutter (board Portable Hole + Ossification for Cutter/Talent). Hallowed Fountain = UW Control (board Wedding Announcement + Guardian of Faith). Forest = Selesnya Company (board Portable Hole + Ossification, name green with Brave in combat).</div></div>
+  </div>
+
+  <button class="print-btn" onclick="window.print()">&#9113; Print Event Reference</button>
+  <div style="font-family:'DM Mono',monospace;font-size:11px;margin-top:16px;">
+    <div style="font-weight:500;margin-bottom:8px;">MONO-WHITE HUMANS — Event Reference · Pioneer April 2026</div>
+    <p style="font-size:11px;margin-bottom:8px;">Brave AFTER declaring attackers | Adeline always attacks | Bodyguard on Adeline vs removal | Ward {1} — make them pay | Thalia taxes your Brave too | Guardian of Faith beats Verdict | Brave ≠ indestructible (doesn't beat Verdict)</p>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+      <div><strong>vs UR CUTTER (Even)</strong> — Brave=blue stops bounces, board Portable Hole</div>
+      <div><strong>vs RDW (Even)</strong> — Brave=red blanks all burn, board Guardian</div>
+      <div><strong>vs GREASEFANG (Fav)</strong> — Race + board Rest in Peace</div>
+      <div><strong>vs UW CONTROL (Unfav)</strong> — Board Wedding Announcement + Guardian</div>
+      <div><strong>vs SELESNYA (Even)</strong> — Brave=green in combat, board Portable Hole</div>
+    </div>
+  </div>
+</div>
+</div>
+
+<footer style="border-top:1px solid var(--rule);padding:24px 80px;display:flex;justify-content:space-between;font-family:'DM Mono',monospace;font-size:10px;color:var(--mid);">
+  <span>Team Resolve &middot; Pioneer 2026</span>
+  <span>Honor Gold &mdash; April 2026</span>
+  <span>Classic Mono-White Humans &middot; Pioneer April 2026</span>
+</footer>
+
+<script>
+function show(id){
+  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.nav-link').forEach(b=>b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  event.target.classList.add('active');
+  window.scrollTo(0,0);
+}
+function toggle(id){document.getElementById(id).classList.toggle('open');}
+</script>
+<script>
+(function(){
+  const TIP=document.createElement('div');TIP.className='card-tip';
+  TIP.innerHTML='<div class="card-tip-loading">loading...</div>';
+  document.body.appendChild(TIP);
+  const CACHE={};let hideTimer=null;const PAD=24,W=220,H=310;
+  function pos(e){let x=e.clientX+PAD,y=e.clientY-H/2;
+    if(x+W>window.innerWidth)x=e.clientX-W-PAD;if(y<8)y=8;
+    if(y+H>window.innerHeight)y=window.innerHeight-H-8;
+    TIP.style.left=x+'px';TIP.style.top=y+'px';}
+  async function showTip(name,e){
+    clearTimeout(hideTimer);TIP.innerHTML='<div class="card-tip-loading">loading...</div>';
+    TIP.classList.add('visible');pos(e);
+    if(CACHE[name]){TIP.innerHTML=`<img src="${CACHE[name]}" alt="${name}">`;return;}
+    try{const r=await fetch(`https://api.scryfall.com/cards/named?fuzzy=${encodeURIComponent(name)}`);
+      const d=await r.json();const img=d.image_uris?.normal||d.card_faces?.[0]?.image_uris?.normal;
+      if(!img){TIP.classList.remove('visible');return;}
+      CACHE[name]=img;TIP.innerHTML=`<img src="${img}" alt="${name}">`;}
+    catch(err){TIP.classList.remove('visible');}
+  }
+  function hide(){hideTimer=setTimeout(()=>TIP.classList.remove('visible'),80);}
+  document.addEventListener('mouseover',e=>{const el=e.target.closest('span.c');if(!el)return;showTip(el.textContent.trim(),e);});
+  document.addEventListener('mousemove',e=>{if(TIP.classList.contains('visible'))pos(e);});
+  document.addEventListener('mouseout',e=>{if(e.target.closest('span.c'))hide();});
+})();
+</script>
+</body>
+</html>
