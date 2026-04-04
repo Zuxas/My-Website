@@ -556,13 +556,13 @@ function showFormat(id, btn) {
 function filterCards(inputEl, gridId) {
   const term = inputEl.value.toLowerCase();
   document.querySelectorAll('#' + gridId + ' .deck-card').forEach(card => {
-    card.classList.toggle('hidden', term.length > 0 && !card.textContent.toLowerCase().includes(term));
+    card.style.display = (term.length > 0 && !card.textContent.toLowerCase().includes(term)) ? 'none' : 'block';
   });
 }
 function filterDecks(q) {
   const term = q.toLowerCase();
   document.querySelectorAll('#modern-grid .deck-card').forEach(card => {
-    card.classList.toggle('hidden', term.length > 0 && !card.textContent.toLowerCase().includes(term));
+    card.style.display = (term.length > 0 && !card.textContent.toLowerCase().includes(term)) ? 'none' : 'block';
   });
 }
 </script>
