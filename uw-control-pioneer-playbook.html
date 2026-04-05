@@ -554,7 +554,18 @@ span.c:hover{border-bottom-style:solid;}
   </div>
 </div>
 
-  <div id="sb-print-zone">
+  
+  <h2>20-Minute Crash Course</h2>
+  <p>If you're sitting down in 20 minutes, run through this in order:</p>
+  <ul class="checklist" id="crash-checklist">
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Mulligan rule:</strong> Keep any 7 with 2 lands + a counter OR 2 lands + Supreme Verdict. Never keep a hand without the ability to interact by T2.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Dovin's Veto rule:</strong> Dovin's Veto is uncounterable. Against decks that run counterspells of their own, Veto is your most important counter. They cannot Negate your Veto â€” it resolves every time.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Supreme Verdict rule:</strong> Supreme Verdict can't be countered. Deploy it when they have 3+ creatures. Against Selesnya Company: cast it after their Company resolves â€” they can't counter it. The entire board gets exiled.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Teferi, Hero of Dominaria rule:</strong> Teferi untaps two lands when he pluses. This means you plus Teferi, untap 2 lands, and still have mana open for interaction on their turn. He's a 2-for-1 mana machine.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Brimaz rule:</strong> Brimaz, King of Oreskos creates a 1/1 Cat with vigilance when it attacks or blocks. Deploy Brimaz on T3 and attack every turn â€” the Cat token creates a blocker army that makes their attack math impossible.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Board rule:</strong> Dovin's Veto in the SB is uncounterable vs counter decks. Board in 3 copies vs any deck that wants to counter your key spells â€” they cannot interact with Veto.</span></li>
+  </ul>
+<div id="sb-print-zone">
     <h2>Printable Sideboard Reference</h2>
     <p>All matchup ins/outs on one sheet. Print and take to the event.</p>
     <button class="print-btn" onclick="printSB()">&#x2259; Print SB Reference</button>
@@ -707,6 +718,23 @@ span.c:hover{border-bottom-style:solid;}
     </div>
     </div>
   </div>
+
+  <h2>Testing Framework</h2>
+  <div class="card-grid">
+      <div class="card"><div class="card-label">Block 01</div><div class="card-title">Teferi + Mana Management</div><div class="card-body">Practice the Teferi plus-untap sequence. Plus Teferi â†’ untap 2 lands â†’ hold them open for interaction. Know which 2 lands to untap for maximum flexibility on your opponent's turn.</div></div>
+      <div class="card"><div class="card-label">Block 02</div><div class="card-title">Supreme Verdict Timing</div><div class="card-body">Practice identifying the Supreme Verdict threshold. 3+ creatures is the default. Against Company: wait for their Company resolution (they can't counter Verdict), then sweep the board.</div></div>
+      <div class="card"><div class="card-label">Block 03</div><div class="card-title">Counter Priority</div><div class="card-body">Practice selecting the correct counter for each threat. Dovin's Veto vs noncreature. Absorb vs anything (3 life gain). Know which counter applies to their specific threat before holding up mana.</div></div>
+      <div class="card"><div class="card-label">Block 04</div><div class="card-title">Brimaz Board Building</div><div class="card-body">Practice the Brimaz board building sequence. T3 Brimaz â†’ T4 attack (2/3 + 1/1 Cat blocker). T5 attack again (two 1/1 Cats + Brimaz). Know the exact board state after 3 turns of Brimaz attacks.</div></div>
+  </div>
+
+  <h2>Matchday Routine</h2>
+  <ol class="heuristic-list">
+      <li><div class="heuristic-num">01</div><div class="heuristic-body">Teferi plus-untap: know which 2 lands to untap. Untap your blue sources to hold Dovin's Veto open. Never untap lands that don't contribute to interaction.</div></li>
+      <li><div class="heuristic-num">02</div><div class="heuristic-body">Supreme Verdict timing: 3+ creatures. Against Company: wait for Company to resolve, then Verdict. The uncounterable clause means they can't stop it.</div></li>
+      <li><div class="heuristic-num">03</div><div class="heuristic-body">Dovin's Veto: your most important SB card vs counter wars. Board in 3 copies vs any deck that runs Negate or Counterspell â€” they literally can't interact with it.</div></li>
+      <li><div class="heuristic-num">04</div><div class="heuristic-body">Between rounds: count how many counters you cast productively vs how many you held unnecessarily. Over-holding interaction leaves you one turn slow.</div></li>
+      <li><div class="heuristic-num">05</div><div class="heuristic-body">Their T1 land: Mountain = RDW (board Brimaz + Regal Caracal), Godless Shrine = Greasefang (board Dovin's Veto + Rest in Peace), Sacred Foundry = unknown (board generically).</div></li>
+  </ol>
 
 </div>
 

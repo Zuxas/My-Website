@@ -476,7 +476,18 @@ span.c:hover{border-bottom-style:solid;}
   </div>
 </div>
 
-  <div id="sb-print-zone">
+  
+  <h2>20-Minute Crash Course</h2>
+  <p>If you're sitting down in 20 minutes, run through this in order:</p>
+  <ul class="checklist" id="crash-checklist">
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Mulligan rule:</strong> Keep any 7 with Thoughtseize + a 2-drop OR Bloodtithe Harvester + removal. Never keep a hand without T1 disruption or T2 clock.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Thoughtseize rule:</strong> Thoughtseize on T1 is almost always correct. You see their hand and take their best card. Against combo: take the combo piece. Against control: take their best interaction.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Sheoldred rule:</strong> Sheoldred, the Apocalypse makes them lose 2 life when they draw (including their draw step). Against draw-heavy decks, Sheoldred is lethal within 5-6 turns alone.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Bloodtithe Harvester rule:</strong> Bloodtithe Harvester (3/2) makes a Blood token on ETB and can sacrifice Blood to destroy a tapped creature. Use the Blood sacrifice on their tapped blocker after combat.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Kalitas rule:</strong> Kalitas, Traitor of Ghet exiles non-token creatures opponents control when they die AND creates a Zombie token. Against creature decks, Kalitas is your most powerful anti-recursion card.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Board rule:</strong> Kolaghan's Command chooses two modes. Against artifact-heavy: destroy artifact + discard. Against GY decks: return your creature + deal damage. Know your two modes before casting.</span></li>
+  </ul>
+<div id="sb-print-zone">
     <h2>Printable Sideboard Reference</h2>
     <p>All matchup ins/outs on one sheet. Print and take to the event.</p>
     <button class="print-btn" onclick="printSB()">&#x2259; Print SB Reference</button>
@@ -621,6 +632,23 @@ span.c:hover{border-bottom-style:solid;}
     </div>
     </div>
   </div>
+
+  <h2>Testing Framework</h2>
+  <div class="card-grid">
+      <div class="card"><div class="card-label">Block 01</div><div class="card-title">T1 Thoughtseize Targets</div><div class="card-body">Practice evaluating Thoughtseize targets by hand content. Rule: take the card that wins them the game, not the card you most recognize. Unknown cards are often worse than the card you recognize.</div></div>
+      <div class="card"><div class="card-label">Block 02</div><div class="card-title">Sheoldred Math</div><div class="card-body">Practice Sheoldred life drain math. They draw their card on upkeep: âˆ’2 life. Each Opt: âˆ’2 more. A control opponent casting 6 spells takes 12 damage from Sheoldred alone. Know when Sheoldred's clock is faster than your creatures.</div></div>
+      <div class="card"><div class="card-label">Block 03</div><div class="card-title">Kalitas Exile Lines</div><div class="card-body">Practice Kalitas exile trigger. When their creature dies (to your removal), it gets exiled AND you create a Zombie. Against Greasefang: exile Greasefang. They can't crew Parhelion again from GY. Know this interaction cold.</div></div>
+      <div class="card"><div class="card-label">Block 04</div><div class="card-title">Kolaghan's Command Modes</div><div class="card-body">Practice selecting Kolaghan's Command modes. Two modes simultaneously: most common is "return creature + deal 2 damage" or "destroy artifact + they discard." Know your two modes for each board state before casting.</div></div>
+  </div>
+
+  <h2>Matchday Routine</h2>
+  <ol class="heuristic-list">
+      <li><div class="heuristic-num">01</div><div class="heuristic-body">T1 Thoughtseize is almost always correct. You see their entire hand and take their most impactful card. The information alone is worth the 2 life.</div></li>
+      <li><div class="heuristic-num">02</div><div class="heuristic-body">Sheoldred math: track their draw triggers. A control opponent drawing 6 cards while Sheoldred is in play takes 12 damage. Sheoldred often wins races you didn't know you were winning.</div></li>
+      <li><div class="heuristic-num">03</div><div class="heuristic-body">Kalitas exile timing: use your removal when Kalitas is in play to maximize exile value. Each creature that dies to your spells = exile + Zombie.</div></li>
+      <li><div class="heuristic-num">04</div><div class="heuristic-body">Between rounds: identify your Thoughtseize target accuracy. Did you take the card that actually decided the game? This is a skill-development metric.</div></li>
+      <li><div class="heuristic-num">05</div><div class="heuristic-body">Their T1: Hallowed Fountain = UW Control (prioritize Thoughtseize), Breeding Pool = Selesnya (expect Company), Mountain = RDW (board removal first).</div></li>
+  </ol>
 
 </div>
 

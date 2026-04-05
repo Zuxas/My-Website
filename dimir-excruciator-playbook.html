@@ -533,7 +533,18 @@ span.c:hover{border-bottom-style:solid;}
     <div class="card"><div class="card-label">Know Cold</div><div class="card-title">Torpor Orb Interaction</div><div class="card-body">Torpor Orb stops ALL ETB triggers including Excruciator's exile and Deceit's discard and Harvester of Misery's sweep. If Torpor Orb is in play (yours or theirs), none of these work. Know which cards in your deck are ETB-dependent before boarding Torpor Orb. In the Orb configuration, you win through Riddler and Deceit bodies only.</div></div>
   </div>
   <button class="print-btn" onclick="printSB()">&#9113; Print Event Reference</button>
-  <div id="sb-print-zone">
+  
+  <h2>20-Minute Crash Course</h2>
+  <p>If you're sitting down in 20 minutes, run through this in order:</p>
+  <ul class="checklist" id="crash-checklist">
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Mulligan rule:</strong> Keep any 7 with 2 lands + Floodpits Drowner OR Earthbender Ascension + a land. Never keep a hand without an early bounce or counter threat.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Floodpits Drowner rule:</strong> Floodpits Drowner is flash (2/3) that bounces a creature on ETB. Deploy at their EOT to bounce their key creature before your turn â€” they lose the mana to recast.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Harbinger rule:</strong> Harbinger of the Seas makes all nonbasic lands enter tapped. Deploy it on T3 before they play their fourth land â€” one turn of mana delay is often enough to win.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Ascension rule:</strong> Earthbender Ascension triggers when you draw your second card each turn. Cantrip BEFORE playing Ascension â€” the draw trigger needs Ascension already in play.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Counterspell rule:</strong> Hold Counterspell for their key permanent or their key combo piece. Don't counter cantrips â€” counter the thing that wins them the game.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Board rule:</strong> Duress on T1 strips their best answer before you develop your board. Against counter-heavy decks: Duress before Ascension. Always.</span></li>
+  </ul>
+<div id="sb-print-zone">
     <div style="font-family:'DM Mono',monospace;font-size:11px;">
       <strong>DIMIR EXCRUCIATOR · Event Reference · Larsen PT Lorwyn Eclipsed 1st (15-4, 78%)</strong><br><br>
       COMBO: Restless Reef (no summoning sickness) → Excruciator resolves → both exile to 6 → Reef attacks (mills 4, they have 2) → Insatiable Avarice targets them (draw 3 from 2 cards = lose)<br>
@@ -541,6 +552,23 @@ span.c:hover{border-bottom-style:solid;}
       ⚠️ TORPOR ORB: Stops Excruciator ETB. Only board when going Riddler fair plan.
     </div>
   </div>
+
+  <h2>Testing Framework</h2>
+  <div class="card-grid">
+      <div class="card"><div class="card-label">Block 01</div><div class="card-title">Floodpits Drowner Timing</div><div class="card-body">Practice deploying Floodpits Drowner at their EOT to bounce their key creature. The sequence: they tap out, you flash in Drowner, bounce their threat, untap with advantage.</div></div>
+      <div class="card"><div class="card-label">Block 02</div><div class="card-title">Harbinger Timing</div><div class="card-body">Practice the T3 Harbinger line. Against greedy manabases, deploying Harbinger on T3 means their T4 land enters tapped â€” they miss their key play. Know when Harbinger is better than Counterspell.</div></div>
+      <div class="card"><div class="card-label">Block 03</div><div class="card-title">Ascension Trigger Sequencing</div><div class="card-body">Practice drawing your second card AFTER Ascension resolves. Cantrip â†’ (Ascension ETB) â†’ second draw triggers Ascension. Wrong order = missed trigger.</div></div>
+      <div class="card"><div class="card-label">Block 04</div><div class="card-title">Duress Targets</div><div class="card-body">Practice identifying the correct Duress target. Against Izzet Prowess: take their pump spell. Against Jeskai Control: take their board wipe. Against Mono-Green: take Earthbender Ascension. Know the target before casting.</div></div>
+  </div>
+
+  <h2>Matchday Routine</h2>
+  <ol class="heuristic-list">
+      <li><div class="heuristic-num">01</div><div class="heuristic-body">Floodpits Drowner at their EOT is almost always correct. Bounce their most dangerous creature before your untap.</div></li>
+      <li><div class="heuristic-num">02</div><div class="heuristic-body">Harbinger of the Seas: deploy it when they've played 2-3 nonbasics. The lockdown compounds with each nonbasic they play.</div></li>
+      <li><div class="heuristic-num">03</div><div class="heuristic-body">Duress T1: know your targets by matchup before round 1 starts. Izzet â†’ pump spell, Jeskai â†’ wipe, Mono-Green â†’ Ascension.</div></li>
+      <li><div class="heuristic-num">04</div><div class="heuristic-body">Between rounds: count how often you countered the right spell. The most common mistake is countering a cantrip instead of the real threat.</div></li>
+      <li><div class="heuristic-num">05</div><div class="heuristic-body">Your deck wins through resource superiority. Every Floodpits Drowner bounce, every Harbinger trigger, every Ascension draw is compounding advantage.</div></li>
+  </ol>
 </div>
 
   <div id="sb-print-zone">

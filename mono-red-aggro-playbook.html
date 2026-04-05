@@ -529,7 +529,18 @@ span.c:hover{border-bottom-style:solid;}
   </div>
 
   <button class="print-btn" onclick="printSB()">&#9113; Print Event Reference</button>
-  <div id="sb-print-zone">
+  
+  <h2>20-Minute Crash Course</h2>
+  <p>If you're sitting down in 20 minutes, run through this in order:</p>
+  <ul class="checklist" id="crash-checklist">
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Mulligan rule:</strong> Keep any 7 with a 1-drop + a 2-drop. Never keep a hand without a turn 1 play â€” your clock starts on T1.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Clock rule:</strong> You need to kill by turn 4. If they're above 10 life on T4 with a blocker, evaluate whether your burn can close. If not, you're likely losing.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Eidolon rule:</strong> Eidolon of the Great Revel deals 2 damage to players when they cast spells with MV â‰¤ 3. Deploy it on T2 â€” it deals 2 damage to them for EVERY cantrip and removal spell they cast.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Burn rule:</strong> Point burn at face unless killing their creature is strictly necessary. Against blockers: kill the blocker only if your damage through the blocker exceeds the burn damage directly.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Goblin Bombardment rule:</strong> Goblin Bombardment sacrifices a creature to deal 1 damage to any target. Sacrifice your creatures to damage face when they deploy a board wipe â€” you deal damage even through a sweeper.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Board rule:</strong> Roiling Vortex ({R}) prevents opponents from gaining life AND deals 1 damage per spell they cast. Against lifegain decks, Roiling Vortex is your most important sideboard card.</span></li>
+  </ul>
+<div id="sb-print-zone">
     <h2 style="font-family:'DM Mono',monospace;font-size:14px;margin-bottom:12px;">MONO-RED AGGRO — Event Reference · 3.00% Standard April 2026</h2>
     <p style="font-size:11px;font-family:'DM Mono',monospace;margin-bottom:12px;">LETHAL: 8 life = Burst+Sear+attacker | 10 life = Hellkite ETB+flying | Slagstorm hits YOUR creatures too — attack first | Valiant = 1 counter/turn max</p>
     <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:12px;font-size:11px;font-family:'DM Mono',monospace;">
@@ -541,6 +552,23 @@ span.c:hover{border-bottom-style:solid;}
       <div><strong>vs BOROS AGGRO (Mirror)</strong><br>IN: +2 Slagstorm, +2 Abrade | OUT: −2 Raphael, −2 Inti</div>
     </div>
   </div>
+
+  <h2>Testing Framework</h2>
+  <div class="card-grid">
+      <div class="card"><div class="card-label">Block 01</div><div class="card-title">Turn 4 Goldfish</div><div class="card-body">Practice your T4 goldfish kill. T1: 1-drop (deals 2). T2: Eidolon + attack (4+2). T3: attack + burn (6+2+2). T4: attack + Burst Lightning + Lightning Bolt = lethal. Know the sequence.</div></div>
+      <div class="card"><div class="card-label">Block 02</div><div class="card-title">Burn vs Block Decision</div><div class="card-body">Practice the "burn face or kill blocker" decision. If their blocker would deal 2 damage to your attacker and your attacker would deal 3, trade is neutral â€” burn face for 3 instead.</div></div>
+      <div class="card"><div class="card-label">Block 03</div><div class="card-title">Goblin Bombardment Sacrifice Timing</div><div class="card-body">Practice sacrificing creatures in response to their board wipe. They cast Pyroclasm: before it resolves, sacrifice all your creatures to Bombardment for face damage. Each sacrifice is free damage.</div></div>
+      <div class="card"><div class="card-label">Block 04</div><div class="card-title">Eidolon Damage Tracking</div><div class="card-body">Practice tracking Eidolon damage. Every cantrip, every removal spell they cast deals 2 damage to them. Count the Eidolon hits â€” a 5-spell interactive hand deals 10 damage from Eidolon alone.</div></div>
+  </div>
+
+  <h2>Matchday Routine</h2>
+  <ol class="heuristic-list">
+      <li><div class="heuristic-num">01</div><div class="heuristic-body">T1 creature is mandatory. Any hand without a T1 play is a mulliganed hand. Never keep a 1-drop-less 7.</div></li>
+      <li><div class="heuristic-num">02</div><div class="heuristic-body">Burn face vs kill blocker: do the math BEFORE your attack step. If your burn kills the blocker and attacks for more than the burn face, kill the blocker.</div></li>
+      <li><div class="heuristic-num">03</div><div class="heuristic-body">Eidolon tracking: count their spell casts. A control opponent casting 5 spells takes 10 damage from Eidolon alone before your creatures deal any damage.</div></li>
+      <li><div class="heuristic-num">04</div><div class="heuristic-body">Between rounds: identify whether you miscounted your kill math. Going one turn slow is the most common way to lose this matchup.</div></li>
+      <li><div class="heuristic-num">05</div><div class="heuristic-body">Goblin Bombardment is your trump card vs sweepers. Always attack before sacrificing â€” sacrifice in response to their sweeper, not proactively.</div></li>
+  </ol>
 </div>
 
   <div id="sb-print-zone">

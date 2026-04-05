@@ -740,7 +740,18 @@ span.c:hover{border-bottom-style:solid;}
   <p><strong>T1 land tells:</strong> Plains or Mountain = aggro or Boros — shift to reactive mode, hold removal. Island = Dimir, control, or mirror — set up engine normally, hold It'll Quench Ya for Monument. Forest = Mono-Green or Bant Rhythm — Iroh's Demonstration is your game-winner, hold it for their board state.</p>
 
   <button class="print-btn" onclick="printSB()">&#9113; Print Event Reference</button>
-  <div id="sb-print-zone">
+  
+  <h2>20-Minute Crash Course</h2>
+  <p>If you're sitting down in 20 minutes, run through this in order:</p>
+  <ul class="checklist" id="crash-checklist">
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Mulligan rule:</strong> Keep any 7 with Artist's Talent + a land OR Stormchaser's Talent + 2 lands. Never keep a 7 without a Talent â€” your whole engine depends on them.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Artist's Talent rule:</strong> Artist's Talent levels up each turn you cast instants/sorceries. Level 2 lets you surveil before drawing. Level 3 gives +1/+1 to your spells. Protect it â€” losing Talent is losing your engine.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Lesson rule:</strong> When you learn, you can reveal a Lesson card from outside the game OR discard and draw. Know which Lessons you own and which one to take in each situation.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Accumulate Wisdom rule:</strong> Accumulate Wisdom draws cards equal to the number of Wisdom cards in your GY. Cast the first one early to set up future casts for 2-3 cards.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Abrade rule:</strong> Abrade has two modes: 3 damage to a creature OR destroy an artifact. Know before casting which mode you need. Don't default to the damage mode when the artifact mode is better.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Board rule:</strong> Pyroclasm ({1}{R}) deals 2 damage to each creature. Deploy it when they have 3+ creatures with 2 toughness or less. Your own Eddymurk Crab (0/4) survives Pyroclasm â€” board wipe and keep your blocker.</span></li>
+  </ul>
+<div id="sb-print-zone">
     <div style="font-family:'DM Mono',monospace;font-size:12px;">
       <strong>IZZET LESSONS — Event Reference · Manfield World Championship 31 (1st Place)</strong><br><br>
       <strong>KEY MATH:</strong> 3 Lessons in GY = {3} discount (max) | Monument damage = 3 per activation | 4 activations per turn = 12 damage<br>
@@ -758,6 +769,23 @@ span.c:hover{border-bottom-style:solid;}
       <br><strong>SB:</strong> 2 Quantum Riddler · 2 Soul-Guide Lantern · 2 Negate · 1 Annul · 1 Torch the Tower · 1 Iroh's Demonstration · 1 Abandon Attachments · 1 Abrade · 1 Pyroclasm · 1 It'll Quench Ya! · 1 Spell Pierce · 1 Broadside Barrage
     </div>
   </div>
+
+  <h2>Testing Framework</h2>
+  <div class="card-grid">
+      <div class="card"><div class="card-label">Block 01</div><div class="card-title">Talent Leveling</div><div class="card-body">Practice the Artist's Talent leveling sequence. Every instant/sorcery levels it up. Know exactly what each level does and when you're one trigger away from the next level.</div></div>
+      <div class="card"><div class="card-label">Block 02</div><div class="card-title">Lesson Selection</div><div class="card-body">Practice evaluating which Lesson to take in each game state. Field Trip (land) vs Introduction to Annihilation (exile) vs Expanded Anatomy (buff). The wrong Lesson choice is a subtle mistake that compounds.</div></div>
+      <div class="card"><div class="card-label">Block 03</div><div class="card-title">Accumulate Wisdom Chains</div><div class="card-body">Practice the Accumulate Wisdom draw chain. First cast draws 1. Second draws 2. Third draws 3. Know when to hold Wisdom for future casts vs cast it immediately for 1 card.</div></div>
+      <div class="card"><div class="card-label">Block 04</div><div class="card-title">Pyroclasm Windows</div><div class="card-body">Practice the Pyroclasm window: 3+ creatures at 2 toughness. Know which matchups generate the right board state and wait for the threshold rather than casting it early.</div></div>
+  </div>
+
+  <h2>Matchday Routine</h2>
+  <ol class="heuristic-list">
+      <li><div class="heuristic-num">01</div><div class="heuristic-body">Artist's Talent is your entire engine. Protect it from removal by holding countermagic when it's in play.</div></li>
+      <li><div class="heuristic-num">02</div><div class="heuristic-body">Lesson selection: know your Lesson sideboard cold. The wrong Lesson in the wrong spot is a one-card mistake that loses games.</div></li>
+      <li><div class="heuristic-num">03</div><div class="heuristic-body">Accumulate Wisdom sequencing: cast the first one early to build your GY. The second and third casts are where you pull ahead.</div></li>
+      <li><div class="heuristic-num">04</div><div class="heuristic-body">Between rounds: identify if you misused Abrade (damage vs artifact). The artifact mode is often correct when they have a key artifact in play.</div></li>
+      <li><div class="heuristic-num">05</div><div class="heuristic-body">Pyroclasm timing: 3+ creatures at 2 toughness. Count their board before casting â€” a Pyroclasm that kills 2 is inefficient.</div></li>
+  </ol>
 </div>
 
   <div id="sb-print-zone">

@@ -546,7 +546,18 @@ span.c:hover{border-bottom-style:solid;}
   <p>T1 land tells: <strong>Steam Vents or Spirebluff Canal</strong> = Izzet something (Prowess, Lessons, or mirror) — name Elemental on Cavern, hold interaction. <strong>Forest or Fabled Passage</strong> = likely Mono-Green — get Roaming Throne down fast. <strong>Island or Watery Grave</strong> = Dimir — play your Cavern game freely.</p>
 
   <button class="print-btn" onclick="printSB()">&#9113; Print Event Reference</button>
-  <div id="sb-print-zone">
+  
+  <h2>20-Minute Crash Course</h2>
+  <p>If you're sitting down in 20 minutes, run through this in order:</p>
+  <ul class="checklist" id="crash-checklist">
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Mulligan rule:</strong> Keep any 7 with a cantrip + Hearth Elemental or 2 lands + Eddymurk Crab. Never keep a hand without a cantrip chain or a defensive creature.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Hearth Elemental rule:</strong> Hearth Elemental (2/3 flying) reduces elemental spell costs. With each other elemental in play, it reduces by 1. Know how many elementals reduce the cost before casting.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Eddymurk Crab rule:</strong> Flash 0/4 that taps a creature on ETB. Flash it at their attack step to tap their best attacker. It also serves as a blocker that survives Pyroclasm. Always flash.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Sunderflock rule:</strong> Your sweeper â€” deals 4-5 damage to each creature at sorcery speed. Sunderflock at 5 damage kills most threats. Board in vs wide strategies. Cast only when they have 3+ creatures.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Board rule:</strong> Pyroclasm ({1}{R}) hits all 2-toughness creatures simultaneously. Board in vs Mono-Red and Simic Rhythm. Your Eddymurk Crab (0/4) survives Pyroclasm. Sequence: Pyroclasm, then flash in Crab.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Disdainful Stroke rule:</strong> Counters MV â‰¥ 4. Board in vs Jeskai Control (board wipes MV 4+) and Dimir Excruciator (their expensive counters). Hard counter â€” they can't pay through it.</span></li>
+  </ul>
+<div id="sb-print-zone">
     <h2 style="font-family:'DM Mono',monospace;font-size:14px;margin-bottom:12px;">IZZET SPELLEMENTALS — Event Reference · 5.26% Standard April 2026</h2>
     <p style="font-size:11px;font-family:'DM Mono',monospace;margin-bottom:12px;">ALWAYS: Name Elemental on Cavern of Souls | Sunderflock math: (Elementals × 2 with Throne) damage each creature</p>
     <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:12px;font-size:11px;font-family:'DM Mono',monospace;">
@@ -558,6 +569,23 @@ span.c:hover{border-bottom-style:solid;}
       <div><strong>vs BOROS AGGRO (Fav)</strong><br>IN: +1 Pyroclasm, +1 Abrade | OUT: −2 Winternight</div>
     </div>
   </div>
+
+  <h2>Testing Framework</h2>
+  <div class="card-grid">
+      <div class="card"><div class="card-label">Block 01</div><div class="card-title">Cantrip Chain Into Hearth</div><div class="card-body">Practice chaining cantrips until Hearth Elemental is in play. The chain: Opt â†’ consider casting efficiency as each elemental reduces costs. Know when you have critical mass.</div></div>
+      <div class="card"><div class="card-label">Block 02</div><div class="card-title">Eddymurk Flash Timing</div><div class="card-body">Practice flashing Eddymurk at their attack step. Always flash, never main phase. The tap-on-ETB is the entire value of this card â€” it prevents one attack for free.</div></div>
+      <div class="card"><div class="card-label">Block 03</div><div class="card-title">Sunderflock Decision</div><div class="card-body">Practice deciding when to deploy Sunderflock. 3+ creatures at 3 toughness or less: Sunderflock. 1-2 creatures: hold Sunderflock and use a cheaper answer. Know the threshold.</div></div>
+      <div class="card"><div class="card-label">Block 04</div><div class="card-title">Counter Targets</div><div class="card-body">Practice identifying the correct Disdainful Stroke target by matchup. Jeskai: board wipe (MV 4+). Dimir Excruciator: Harbinger of the Seas (MV 3... wait, that's not Disdainful). Know the exact MV of their key threats.</div></div>
+  </div>
+
+  <h2>Matchday Routine</h2>
+  <ol class="heuristic-list">
+      <li><div class="heuristic-num">01</div><div class="heuristic-body">Hearth Elemental cost reduction: count your elementals. Each reduces cost by 1. Know the discount before casting.</div></li>
+      <li><div class="heuristic-num">02</div><div class="heuristic-body">Eddymurk Crab: always flash at their attack step. Main phase deployment wastes the tap trigger.</div></li>
+      <li><div class="heuristic-num">03</div><div class="heuristic-body">Sunderflock threshold: 3 creatures. Sweeping 1-2 creatures with a 4-mana sorcery is card disadvantage.</div></li>
+      <li><div class="heuristic-num">04</div><div class="heuristic-body">Between rounds: identify if you cast Sunderflock correctly. Did you wait for the threshold? Did you target the right board state?</div></li>
+      <li><div class="heuristic-num">05</div><div class="heuristic-body">Your chain ceiling: with Hearth + other elementals in play, what's your maximum spell density per turn? Know this number for each game state.</div></li>
+  </ol>
 </div>
 
   <div id="sb-print-zone">

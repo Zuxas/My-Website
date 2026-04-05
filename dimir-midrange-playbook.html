@@ -1551,6 +1551,17 @@
 
   <button class="print-btn" onclick="window.print()">&#9113; Print This Sheet</button>
 
+  <h2>20-Minute Crash Course</h2>
+  <p>If you're sitting down in 20 minutes, run through this in order:</p>
+  <ul class="checklist" id="crash-checklist">
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Mulligan rule:</strong> Keep any 7 with Psychic Frog + {U} mana OR Floodpits Drowner + a counter. Never keep a 7 without either a creature or a counterspell.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Psychic Frog rule:</strong> Psychic Frog draws a card when it deals combat damage. Protect Frog with Counterspell — it generates card advantage every turn it connects. Winning combat with Frog is a 2-for-1.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Floodpits Drowner rule:</strong> Flash 2/3 that bounces a creature on ETB. Deploy at their EOT to bounce their most dangerous permanent before your turn. They lose tempo and mana.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Kaito rule:</strong> Kaito, Dancing Shadow creates a Ninja token when it deals damage. Protect Kaito with counterspells and connect once — the Ninja token starts generating cards.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Counterspell priority:</strong> Counter their key win condition, not their setup. Against Mono-Green: counter Earthbender Ascension (MV 2, Spell Snare). Against Control: counter their board wipe.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Spell Snare rule:</strong> Spell Snare hard counters MV exactly 2 for {U}. Against Mono-Green: Badgermole Cub AND Earthbender Ascension are MV 2. Do NOT cut Spell Snare vs Mono-Green.</span></li>
+  </ul>
+
   <div class="print-section">
     <div class="print-title">Dimir Midrange</div>
     <div class="print-sub">Team Resolve · Standard 2026 · Zuxas's List</div>
@@ -1733,6 +1744,23 @@
     </div>
   </div>
 </div>
+
+  <h2>Testing Framework</h2>
+  <div class="card-grid">
+      <div class="card"><div class="card-label">Block 01</div><div class="card-title">Psychic Frog Attacks</div><div class="card-body">Practice evaluating when Frog can attack safely. They need a blocker with 3+ power to kill Frog in combat. Identify their blockers, calculate combat, attack when safe — and keep mana open to protect with Counterspell.</div></div>
+      <div class="card"><div class="card-label">Block 02</div><div class="card-title">Flash Creature Sequencing</div><div class="card-body">Practice deploying Floodpits Drowner at their EOT, not your main phase. EOT bounce lets you untap with tempo. Main phase bounce gives them a full draw step to recast the bounced threat — always deploy at their EOT.</div></div>
+      <div class="card"><div class="card-label">Block 03</div><div class="card-title">Counterspell Priority Drills</div><div class="card-body">Practice deciding between countering their key spell vs developing your board. The rule: counter the thing that wins them the game, develop when nothing threatens to win immediately. Wrong counter assignment is the most common mistake.</div></div>
+      <div class="card"><div class="card-label">Block 04</div><div class="card-title">Spell Snare Matchup Drills</div><div class="card-body">Practice Spell Snare targets by matchup. Mono-Green: Badgermole Cub MV 2 and Earthbender Ascension MV 2 — both hard-countered by Snare for {U}. Know every relevant MV-2 spell in the format and whether Snare catches it.</div></div>
+  </div>
+
+  <h2>Matchday Routine</h2>
+  <ol class="heuristic-list">
+      <li><div class="heuristic-num">01</div><div class="heuristic-body">Psychic Frog attack priority: connect once per turn for the card draw. Protect it with counter mana open on combat.</div></li>
+      <li><div class="heuristic-num">02</div><div class="heuristic-body">Floodpits Drowner timing: their EOT is always better than your main phase. The tempo difference is one full turn.</div></li>
+      <li><div class="heuristic-num">03</div><div class="heuristic-body">Spell Snare targets: know every MV-2 spell in the format that matters. Snap-counter without thinking.</div></li>
+      <li><div class="heuristic-num">04</div><div class="heuristic-body">Between rounds: how many times did you counter the wrong spell? The most common loss condition is wasting a Counterspell on a cantrip.</div></li>
+      <li><div class="heuristic-num">05</div><div class="heuristic-body">Your T1 plan by matchup: vs Mono-Green (hold Spell Snare), vs Izzet (hold Counterspell for Slickshot), vs Control (Duress before committing).</div></li>
+  </ol>
 
 </div><!-- end .page -->
 

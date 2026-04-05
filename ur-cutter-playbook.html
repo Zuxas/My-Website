@@ -554,7 +554,18 @@ span.c:hover{border-bottom-style:solid;}
   </div>
 </div>
 
-  <div id="sb-print-zone">
+  
+  <h2>20-Minute Crash Course</h2>
+  <p>If you're sitting down in 20 minutes, run through this in order:</p>
+  <ul class="checklist" id="crash-checklist">
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Mulligan rule:</strong> Keep any 7 with Cori-Steel Cutter + a cantrip OR 2 free spells + a land drop. Never keep a hand without Cutter or the free-spell density to enable Cutter.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Cutter rule:</strong> Cori-Steel Cutter (a Vehicle) is crewed by a creature with power â‰¥ 2. When it attacks, each instance of prowess on your creatures triggers for every spell you cast. The trigger count multiplies fast.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Slickshot rule:</strong> Slickshot Show-Off gets +2/+0 for each instant/sorcery cast on the turn it attacks. Plot it EOT, then chain cantrips before attacking. At 3 spells Slickshot is a 7/4 evasion creature.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Free spell rule:</strong> Your deck runs multiple free spells (Mutagenic Growth, Force of Negation). These chain without mana and trigger Cutter's prowess on each creature. Know your free spell count before the combat step.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Dreadhorde Arcanist rule:</strong> Arcanist casts instants/sorceries with MV â‰¤ Arcanist's power from GY when it attacks. Keep cheap spells in GY for Arcanist's attack trigger â€” don't exile them unnecessarily.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Board rule:</strong> Spell Pierce ({U}) counters their key noncreature spell unless they pay {2}. Board in vs UW Control and Greasefang. Maximum value in turns 1-4 before they have excess mana.</span></li>
+  </ul>
+<div id="sb-print-zone">
     <h2>Printable Sideboard Reference</h2>
     <p>All matchup ins/outs on one sheet. Print and take to the event.</p>
     <button class="print-btn" onclick="printSB()">&#x2259; Print SB Reference</button>
@@ -704,6 +715,23 @@ span.c:hover{border-bottom-style:solid;}
     </div>
     </div>
   </div>
+
+  <h2>Testing Framework</h2>
+  <div class="card-grid">
+      <div class="card"><div class="card-label">Block 01</div><div class="card-title">Cutter Crew Timing</div><div class="card-body">Practice identifying when to crew Cutter. Crew only when you can protect the attacker OR when Cutter attacking is worth the risk. Know which creatures have 2+ power for crewing.</div></div>
+      <div class="card"><div class="card-label">Block 02</div><div class="card-title">Slickshot Plot Sequence</div><div class="card-body">Practice the Slickshot attack line. Plot EOT â†’ T+1: cast cantrip (+2/+0), cantrip (+2/+0), Slickshot attacks as 7/4 evasion. Know the exact spell count needed for lethal.</div></div>
+      <div class="card"><div class="card-label">Block 03</div><div class="card-title">Free Spell Chain</div><div class="card-body">Practice identifying your free spells and chaining them. Mutagenic Growth (free), Force of Negation (free), Mishra's Bauble (free ETB draw). Know exactly which spells are free and when to chain them.</div></div>
+      <div class="card"><div class="card-label">Block 04</div><div class="card-title">Arcanist GY Management</div><div class="card-body">Practice building the correct GY for Arcanist attacks. Keep MV â‰¤ 1 spells in GY (Opt, Lightning Bolt). Don't exile them with fetchlands or Mishra's Bauble. Know your GY targets before each combat.</div></div>
+  </div>
+
+  <h2>Matchday Routine</h2>
+  <ol class="heuristic-list">
+      <li><div class="heuristic-num">01</div><div class="heuristic-body">Cutter crew timing: crew only when you have a plan. A crewed Cutter in combat needs either a pump spell ready or Cutter's damage needs to be lethal.</div></li>
+      <li><div class="heuristic-num">02</div><div class="heuristic-body">Slickshot sequencing: plot it EOT, then chain cantrips before attacking. Count the spell count before the attack step.</div></li>
+      <li><div class="heuristic-num">03</div><div class="heuristic-body">Free spell chain: know your free spells by memory. Chaining them before combat with Cutter active generates massive damage and card advantage simultaneously.</div></li>
+      <li><div class="heuristic-num">04</div><div class="heuristic-body">Between rounds: count how many prowess triggers Cutter generated per turn. If it's under 3, you're underusing Cutter's multiplier effect.</div></li>
+      <li><div class="heuristic-num">05</div><div class="heuristic-body">Arcanist GY management: every time you exile a GY card, evaluate whether Arcanist might want it. Don't exile spells Arcanist can cast for free.</div></li>
+  </ol>
 
 </div>
 

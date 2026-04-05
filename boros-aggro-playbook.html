@@ -698,6 +698,56 @@
       </div>
     </div>
   </div>
+
+  
+  <h2>20-Minute Crash Course</h2>
+  <p>If you're sitting down in 20 minutes, run through this in order:</p>
+  <ul class="checklist" id="crash-checklist">
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Mulligan rule:</strong> Keep any 7 with a 1-drop + a 2-drop. Never keep a hand without at least two early plays.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Clock rule:</strong> You need to close by turn 5. If your board isn't applying lethal pressure by turn 4, something went wrong.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Monstrous Rage rule:</strong> Monstrous Rage + Escape Tunnel (unblockable) is your combo kill. Double strike means counting twice: a 4/1 with double strike = 8 damage unblocked.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Voice rule:</strong> Voice of Victory during your attack makes them unable to block it. Attack first, then deploy your other threats after you know their blockers.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Board rule:</strong> Invasion of Gobakhan strips their best answer from hand before you commit. Cast it T1 before they have interaction mana.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Sunfall rule:</strong> Sunfall (exile all creatures + incubate) is your reset. Cast it when they have 3+ creatures and you need to restart with incubate tokens ready to flip.</span></li>
+  </ul>
+<div id="sb-print-zone">
+    <h2>Printable Sideboard Reference</h2>
+    <p>All matchup ins/outs on one sheet. Print and take to the event.</p>
+    <button class="print-btn" onclick="printSB()">&#x2259; Print SB Reference</button>
+    <div class="print-grid">
+    <div class="print-mu">
+      <div class="print-mu-name">Izzet Lessons <span class="diff-hard">Unfavorable</span></div>
+      <div class="print-cols">
+        <div><div class="print-col-label">In</div>
+          <div class="print-row"><span>Rest in Peace</span><span class="print-qty">+2</span></div>
+          <div class="print-row"><span>Clarion Conqueror</span><span class="print-qty">+2</span></div>
+        </div>
+        <div><div class="print-col-label">Out</div>
+          <div class="print-row"><span>High Noon</span><span class="print-qty">-2</span></div>
+          <div class="print-row"><span>Spectacular Tactics</span><span class="print-qty">-2</span></div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
+  <h2>Testing Framework</h2>
+  <div class="card-grid">
+      <div class="card"><div class="card-label">Block 01</div><div class="card-title">Monstrous Rage + Tunnel</div><div class="card-body">Practice Monstrous Rage + Escape Tunnel kill. Double strike means the creature deals damage twice. Calculate lethal before attacking.</div></div>
+      <div class="card"><div class="card-label">Block 02</div><div class="card-title">T1 Invasion Timing</div><div class="card-body">Evaluate: T1 Invasion of Gobakhan vs T1 creature. Against interactive decks: Invasion. Against aggro: creature. Know the default by matchup.</div></div>
+      <div class="card"><div class="card-label">Block 03</div><div class="card-title">Attack Sequencing</div><div class="card-body">Lead with your largest threat, not your most important one. Make them commit removal before you attack with your real kill condition.</div></div>
+      <div class="card"><div class="card-label">Block 04</div><div class="card-title">Post-Wipe Rebuilding</div><div class="card-body">Practice the Sunfall line: exile their board, take incubate tokens (you pick), flip them into 2/2 artifacts. Re-establish board presence from one sweeper.</div></div>
+  </div>
+
+  <h2>Matchday Routine</h2>
+  <ol class="heuristic-list">
+      <li><div class="heuristic-num">01</div><div class="heuristic-body">Confirm your 1-drop curve. A creature on T1 or your clock slips a full turn.</div></li>
+      <li><div class="heuristic-num">02</div><div class="heuristic-body">Monstrous Rage + Escape Tunnel math: double strike means counting twice. Know the lethal number before attacking.</div></li>
+      <li><div class="heuristic-num">03</div><div class="heuristic-body">Invasion of Gobakhan T1 vs creature T1: default to Invasion against slow interactive decks.</div></li>
+      <li><div class="heuristic-num">04</div><div class="heuristic-body">Between rounds: was it a clock issue, removal issue, or sequencing issue? Identify the failure mode.</div></li>
+      <li><div class="heuristic-num">05</div><div class="heuristic-body">Track their GY removal. Exile-based removal (Bitter Triumph) means your creatures don't come back — play around it.</div></li>
+  </ol>
+
+
 </div>
 
 <footer>

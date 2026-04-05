@@ -791,7 +791,18 @@ span.c:hover{border-bottom-style:solid;}
   <p>T1 land tells: <strong>Island or Swamp</strong> = likely Dimir Midrange or control — hold Seam Rip for their key spell. <strong>Plains or Mountain</strong> = aggro — deploy your spider wall immediately. <strong>Forest</strong> = could be mirror, Mono-Green, or a ramp deck — watch for their T1 dork to identify.</p>
 
   <button class="print-btn" onclick="printSB()">&#9113; Print Event-Day Reference</button>
-  <div id="sb-print-zone">
+  
+  <h2>20-Minute Crash Course</h2>
+  <p>If you're sitting down in 20 minutes, run through this in order:</p>
+  <ul class="checklist" id="crash-checklist">
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Mulligan rule:</strong> Keep any 7 with 2 lands + Pollinator Wasp OR Spider Manifestation + any threat. Never keep a hand without at least one token generator.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Pollinator rule:</strong> Pollinator Wasp creates a 1/1 insect token each time you make another token. Chain your token effects â€” each one creates another, which creates another.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Spider rule:</strong> Spider Manifestation is flash â€” deploy at end of their turn to create a 1/4 Spider with reach that immediately blocks their fliers. Never deploy at sorcery speed if you can avoid it.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Craterhoof rule:</strong> Craterhoof Behemoth gives ALL your creatures +X/+X and trample where X = number of your creatures. Count your board before casting it â€” need 4+ creatures for a lethal swing.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Board rule:</strong> Oko, Lorwyn Liege in the SB is your trump in grindy matchups. Deploy it when they're trying to go card-for-card â€” it generates threats passively every turn.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Seam Rip rule:</strong> Seam Rip counters their key sorcery (Earthbender Ascension, Sunderflock sweepers). Hold it until their main phase when they cast the spell you need to counter.</span></li>
+  </ul>
+<div id="sb-print-zone">
     <h2 style="font-family:'DM Mono',monospace;font-size:14px;margin-bottom:12px;">BANT RHYTHM — Event Reference · Fortunati RC Turin 2026 (1st, 15-2)</h2>
     <p style="font-size:11px;font-family:'DM Mono',monospace;margin-bottom:16px;">KEY LINES: T1 dork → T2 Nature's Rhythm → T3 Pollinator → T4 EOT Manifestation (4 spiders w/ Pollinator) → T5 lethal | Craterhoof at 5+ creatures</p>
     <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:12px;font-size:11px;font-family:'DM Mono',monospace;">
@@ -959,6 +970,23 @@ span.c:hover{border-bottom-style:solid;}
     </div>
     </div>
   </div>
+
+  <h2>Testing Framework</h2>
+  <div class="card-grid">
+      <div class="card"><div class="card-label">Block 01</div><div class="card-title">Pollinator Token Chains</div><div class="card-body">Practice the token chain: each token creates another, which creates another. How many tokens do you generate from a single Pollinator + Spider Manifestation? Count the chain and know it cold.</div></div>
+      <div class="card"><div class="card-label">Block 02</div><div class="card-title">Craterhoof Math</div><div class="card-body">Practice Craterhoof lethal calculations. With 5 creatures and Hoof: all get +5/+5 and trample. At 20 life, what board state kills them? Know this without calculating at the table.</div></div>
+      <div class="card"><div class="card-label">Block 03</div><div class="card-title">Spider Flash Timing</div><div class="card-body">Practice deploying Spider Manifestation at their end step vs your main phase. When do you deploy early to block vs late to create a surprise blocker? The flash timing is what makes this card good.</div></div>
+      <div class="card"><div class="card-label">Block 04</div><div class="card-title">Grindy Matchup Mode</div><div class="card-body">Practice switching to Oko, Lorwyn Liege mode when Pollinator lines are blocked. Oko generates threats passively â€” know when to pivot from aggressive to attrition.</div></div>
+  </div>
+
+  <h2>Matchday Routine</h2>
+  <ol class="heuristic-list">
+      <li><div class="heuristic-num">01</div><div class="heuristic-body">Count your token generators before game 1. Pollinator + Spider Manifestation + any Pollinator trigger = massive board.</div></li>
+      <li><div class="heuristic-num">02</div><div class="heuristic-body">Craterhoof math: how many creatures do you need for lethal? Always calculate before casting â€” don't hope.</div></li>
+      <li><div class="heuristic-num">03</div><div class="heuristic-body">Flash discipline: Spider Manifestation at their end step, not your main phase. The extra turn of tapping matters.</div></li>
+      <li><div class="heuristic-num">04</div><div class="heuristic-body">Between rounds: did you correctly identify when to stop being aggressive? Oko mode vs Pollinator mode has a clear pivot point.</div></li>
+      <li><div class="heuristic-num">05</div><div class="heuristic-body">Their T1 reveals their interaction density. Breeding Pool = flash interaction (play around it); Sacred Foundry = burn (apply fast pressure).</div></li>
+  </ol>
 
 </div>
 

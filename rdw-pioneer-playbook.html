@@ -530,7 +530,18 @@ span.c:hover{border-bottom-style:solid;}
   </div>
 </div>
 
-  <div id="sb-print-zone">
+  
+  <h2>20-Minute Crash Course</h2>
+  <p>If you're sitting down in 20 minutes, run through this in order:</p>
+  <ul class="checklist" id="crash-checklist">
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Mulligan rule:</strong> Keep any 7 with a 1-drop + a 2-drop burn spell. Never keep a hand without a turn 1 creature.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Clock rule:</strong> Your optimal kill is T4. If they're above 8 life on T4, map your burn math immediately. If you can't close, consider whether you're racing or if they've stabilized.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Monastery Swiftspear rule:</strong> Monastery Swiftspear has prowess (+1/+1 for each instant/sorcery). Cast burn spells BEFORE attacking â€” Swiftspear at 3/4 is much better than 1/2.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Eidolon rule:</strong> Eidolon of the Great Revel deals 2 damage to players when they cast spells with MV â‰¤ 3. Against cantrip-heavy opponents, Eidolon often deals 8-10 damage before they remove it.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Goblin Guide rule:</strong> Goblin Guide reveals their top card when it attacks. If they reveal a land, they get it for free. The free land is the downside â€” attack with Guide anyway. Their life is more important than their land.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Roiling Vortex rule:</strong> Roiling Vortex prevents opponents from gaining life AND deals 1 damage per spell they cast. Deploy it on T1 against any lifegain deck â€” it negates all their life gain sources.</span></li>
+  </ul>
+<div id="sb-print-zone">
     <h2>Printable Sideboard Reference</h2>
     <p>All matchup ins/outs on one sheet. Print and take to the event.</p>
     <button class="print-btn" onclick="printSB()">&#x2259; Print SB Reference</button>
@@ -674,6 +685,23 @@ span.c:hover{border-bottom-style:solid;}
     </div>
     </div>
   </div>
+
+  <h2>Testing Framework</h2>
+  <div class="card-grid">
+      <div class="card"><div class="card-label">Block 01</div><div class="card-title">T4 Goldfish Kill</div><div class="card-body">Practice your T4 goldfish. T1: Goblin Guide (attack for 2). T2: Monastery Swiftspear + burn spell (attack for 6+2=8). T3: burn + attack (16). T4: burn for 4 = lethal. Know the sequence cold.</div></div>
+      <div class="card"><div class="card-label">Block 02</div><div class="card-title">Swiftspear Pump Sequencing</div><div class="card-body">Practice casting burn BEFORE attacking with Swiftspear. Cast Lightning Bolt (Swiftspear 2/3), cast Burst Lightning (Swiftspear 3/4), then attack. Never attack first then cast burn.</div></div>
+      <div class="card"><div class="card-label">Block 03</div><div class="card-title">Eidolon Damage Tracking</div><div class="card-body">Practice tracking Eidolon damage. Every cantrip, every removal spell they cast deals 2 damage. Count: their hand has 3 spells of MV â‰¤ 3 = 6 damage from Eidolon triggers before their next draw step.</div></div>
+      <div class="card"><div class="card-label">Block 04</div><div class="card-title">Burn Math at Low Life</div><div class="card-body">Practice the burn math at low life totals. At 4 life: Lightning Bolt (3) + Burst Lightning (2) = 5, lethal. Know the exact burn hands that close from low life without needing another attack.</div></div>
+  </div>
+
+  <h2>Matchday Routine</h2>
+  <ol class="heuristic-list">
+      <li><div class="heuristic-num">01</div><div class="heuristic-body">T1 creature: mandatory. Goblin Guide on T1 applies clock immediately. Every hand without a T1 creature is a slower clock.</div></li>
+      <li><div class="heuristic-num">02</div><div class="heuristic-body">Swiftspear sequencing: burn BEFORE attacking, always. Swiftspear at 3/4 vs 1/2 is the difference between lethal and not lethal.</div></li>
+      <li><div class="heuristic-num">03</div><div class="heuristic-body">Eidolon tracking: every spell they cast under Eidolon deals 2 damage. Track their spell count mentally â€” a control opponent casting 5 spells takes 10 from Eidolon alone.</div></li>
+      <li><div class="heuristic-num">04</div><div class="heuristic-body">Between rounds: identify what your actual kill turn was. If it was T5+, identify one decision you could change to accelerate the clock.</div></li>
+      <li><div class="heuristic-num">05</div><div class="heuristic-body">Roiling Vortex: board it in against ANY deck that gains life (UW Control, Selesnya Company, Greasefang). Lifegain makes your math impossible â€” Vortex negates it entirely.</div></li>
+  </ol>
 
 </div>
 

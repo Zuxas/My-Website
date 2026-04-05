@@ -530,7 +530,18 @@ span.c:hover{border-bottom-style:solid;}
   </div>
 </div>
 
-  <div id="sb-print-zone">
+  
+  <h2>20-Minute Crash Course</h2>
+  <p>If you're sitting down in 20 minutes, run through this in order:</p>
+  <ul class="checklist" id="crash-checklist">
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Mulligan rule:</strong> Keep any 7 with Collected Company + 2 mana OR a 2-drop + a 3-drop. Never keep a hand without Collected Company or an early creature curve.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Company rule:</strong> Collected Company (4 mana instant) puts the top 2 creatures with MV â‰¤ 3 from the top 6 into play. Cast at their EOT when they're tapped â€” you instantly have two more creatures.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Voice of Resurgence rule:</strong> Voice of Resurgence creates an Elemental token (with power equal to your creature count) when opponents cast spells on YOUR turn. Cast your key spells on THEIR turn to avoid the trigger.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Knight of Autumn rule:</strong> Knight of Autumn has three ETB modes: gain 4 life (vs burn), put +1/+1 counters (vs aggro), destroy artifact/enchantment (vs hate pieces). Know which mode you need before Company resolves.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Extraction Specialist rule:</strong> Extraction Specialist returns a creature with MV â‰¤ 2 from your GY when it enters. Against removal-heavy decks, recurring your small creatures is a key resource engine.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Board rule:</strong> Damping Sphere shuts off Lotus Field (their lands produce colorless). Board it in every game vs Lotus Field â€” it's a near-instant lock on their combo.</span></li>
+  </ul>
+<div id="sb-print-zone">
     <h2>Printable Sideboard Reference</h2>
     <p>All matchup ins/outs on one sheet. Print and take to the event.</p>
     <button class="print-btn" onclick="printSB()">&#x2259; Print SB Reference</button>
@@ -673,6 +684,23 @@ span.c:hover{border-bottom-style:solid;}
     </div>
     </div>
   </div>
+
+  <h2>Testing Framework</h2>
+  <div class="card-grid">
+      <div class="card"><div class="card-label">Block 01</div><div class="card-title">Company Target Selection</div><div class="card-body">Practice evaluating which two creatures you want to hit with Collected Company. Know your top 6 and the probability of hitting your target. Knight of Autumn (4-of) vs Fauna Shaman (2-of) â€” know your hit probability.</div></div>
+      <div class="card"><div class="card-label">Block 02</div><div class="card-title">Voice Trigger Timing</div><div class="card-body">Practice identifying when to trigger Voice of Resurgence. Opponents must cast spells on YOUR turn for the trigger. Know your sequencing: if you need to cast a spell, cast it on their turn. If they need to cast, wait.</div></div>
+      <div class="card"><div class="card-label">Block 03</div><div class="card-title">Knight of Autumn Mode Selection</div><div class="card-body">Practice the Knight of Autumn mode decision. At low life: take life. Vs aggro: take counters. Vs Rest in Peace: take destroy. The wrong mode against a Rest in Peace means your GY strategy is offline.</div></div>
+      <div class="card"><div class="card-label">Block 04</div><div class="card-title">Extraction Specialist Chains</div><div class="card-body">Practice the Extraction Specialist recursion chain. Specialist enters â†’ returns a MV â‰¤ 2 creature from GY â†’ that creature ETBs and triggers its effect â†’ recurse again next turn. Know your recursion targets.</div></div>
+  </div>
+
+  <h2>Matchday Routine</h2>
+  <ol class="heuristic-list">
+      <li><div class="heuristic-num">01</div><div class="heuristic-body">Company at their EOT: the most important timing decision in your deck. Against tapped-out opponents, Company is free tempo and two creatures.</div></li>
+      <li><div class="heuristic-num">02</div><div class="heuristic-body">Voice of Resurgence sequencing: cast your spells on THEIR turn to trigger Voice. Know before each turn whether you're the one casting or waiting.</div></li>
+      <li><div class="heuristic-num">03</div><div class="heuristic-body">Knight of Autumn mode: identify before you cast Company which mode you need. The mode decision is made when Knight enters â€” you can't change it.</div></li>
+      <li><div class="heuristic-num">04</div><div class="heuristic-body">Between rounds: count how many Company hits generated two relevant creatures vs one relevant + one irrelevant. Hit quality is a skill metric.</div></li>
+      <li><div class="heuristic-num">05</div><div class="heuristic-body">Damping Sphere vs Lotus Field: board it in every game. Lotus Field cannot win with lands producing only colorless â€” it's a near-instant win condition.</div></li>
+  </ol>
 
 </div>
 

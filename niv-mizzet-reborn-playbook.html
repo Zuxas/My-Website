@@ -513,7 +513,18 @@ span.c:hover{border-bottom-style:solid;}
   </div>
 </div>
 
-  <div id="sb-print-zone">
+  
+  <h2>20-Minute Crash Course</h2>
+  <p>If you're sitting down in 20 minutes, run through this in order:</p>
+  <ul class="checklist" id="crash-checklist">
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Mulligan rule:</strong> Keep any 7 with 5 different mana + Niv-Mizzet Reborn OR a tutor. Never keep a hand that can't cast Niv by T5.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Niv rule:</strong> Niv-Mizzet Reborn draws a card for each color pair (WU, WB, WR, WG, UB, UR, UG, BR, BG, RG) among permanents when it enters. With 5-color permanents you draw up to 10 cards.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Fetch rule:</strong> Fetch lands (Windswept Heath, etc.) find shocklands. Always fetch on T2 for the dual that covers your most urgent colors. Never float fetch uses â€” use them when you need the color.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Unmoored Ego rule:</strong> Unmoored Ego names a card and exiles all copies from their hand, GY, and library. Use it proactively on your T2 â€” name their win condition before they draw it.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Damping Sphere rule:</strong> Damping Sphere in your SB shuts off Lotus Field (their lands produce only colorless). Board it in whenever you face Lotus Field â€” it's a hard lock.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Board rule:</strong> Mystical Dispute ({U} for blue spells) counters their blue threats for one mana. Board in vs UW Control and UR Cutter â€” free counter for all their blue spells.</span></li>
+  </ul>
+<div id="sb-print-zone">
     <h2>Printable Sideboard Reference</h2>
     <p>All matchup ins/outs on one sheet. Print and take to the event.</p>
     <button class="print-btn" onclick="printSB()">&#x2259; Print SB Reference</button>
@@ -660,6 +671,23 @@ span.c:hover{border-bottom-style:solid;}
     </div>
     </div>
   </div>
+
+  <h2>Testing Framework</h2>
+  <div class="card-grid">
+      <div class="card"><div class="card-label">Block 01</div><div class="card-title">Niv Draw Calculation</div><div class="card-body">Practice counting Niv ETB draws. With a WU permanent, WB permanent, WR permanent: you draw for WU, WB, WR = 3 cards on Niv ETB. Build your board to maximize Niv draws before casting him.</div></div>
+      <div class="card"><div class="card-label">Block 02</div><div class="card-title">Mana Fixing Sequence</div><div class="card-body">Practice the mana fixing sequence through fetch lands. T1: fetch for the correct dual. T2: play the next color you need. Know which dual lands cover which colors and find them efficiently.</div></div>
+      <div class="card"><div class="card-label">Block 03</div><div class="card-title">Unmoored Ego Timing</div><div class="card-body">Practice timing Unmoored Ego. T2 vs Lotus Field: name Hidden Strings â€” exile all copies permanently. T2 vs Greasefang: name Parhelion II. Know your target before casting.</div></div>
+      <div class="card"><div class="card-label">Block 04</div><div class="card-title">Niv Protection</div><div class="card-body">Practice protecting Niv after it resolves. You just drew 5-10 cards â€” now what? Deploy your answers immediately before they can deal with Niv. Know your post-Niv sequence.</div></div>
+  </div>
+
+  <h2>Matchday Routine</h2>
+  <ol class="heuristic-list">
+      <li><div class="heuristic-num">01</div><div class="heuristic-body">Niv ETB draw count: count your color pairs before casting Niv. A 5-color board with overlapping pairs can draw 6-8 cards. Know the number.</div></li>
+      <li><div class="heuristic-num">02</div><div class="heuristic-body">Mana fixing: every fetch land matters. Use them for the exact color you need, at the exact time you need it.</div></li>
+      <li><div class="heuristic-num">03</div><div class="heuristic-body">Unmoored Ego timing: T2 is often correct. Strip their win condition before they draw it. Know the target for each matchup in advance.</div></li>
+      <li><div class="heuristic-num">04</div><div class="heuristic-body">Between rounds: count how many cards Niv drew. If it's less than 4, your board needed more color diversity before casting.</div></li>
+      <li><div class="heuristic-num">05</div><div class="heuristic-body">Damping Sphere vs Lotus Field: board it in every game. Lotus Field cannot function while Sphere is in play â€” it's a near-instant win.</div></li>
+  </ol>
 
 </div>
 

@@ -552,7 +552,18 @@ span.c:hover{border-bottom-style:solid;}
   </div>
 
   <button class="print-btn" onclick="printSB()">&#9113; Print Event Reference</button>
-  <div id="sb-print-zone">
+  
+  <h2>20-Minute Crash Course</h2>
+  <p>If you're sitting down in 20 minutes, run through this in order:</p>
+  <ul class="checklist" id="crash-checklist">
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Mulligan rule:</strong> Keep any 7 with 2 lands + Voice of Victory OR 2 lands + 2 flash creatures. Never keep a hand without a flash creature.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Flash rule:</strong> All your creatures are flash â€” deploy at end of their turn or in response to their key play. Never deploy at sorcery speed unless you need the attack immediately.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Voice rule:</strong> Voice of Victory (3/3 flying) attacks and can't be targeted by spells or abilities while attacking. Deploy it T3 and attack immediately â€” they have one turn to answer it.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>High Noon rule:</strong> Your High Noon makes all sorcery-speed plays illegal for both players. Deploy it when they're about to cast a key sorcery â€” timing is everything.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Board rule:</strong> Seam Rip counters sorceries; Tishana's Tidebinder counters activated/triggered abilities. Know which counter answers their specific threat before sideboarding.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Kill rule:</strong> Aven Interrupter flashed in counters their key spell and becomes a 5/4 attacker. Cast it when they tap out for their most important play.</span></li>
+  </ul>
+<div id="sb-print-zone">
     <h2 style="font-family:'DM Mono',monospace;font-size:14px;margin-bottom:12px;">AZORIUS FLASH — Event Reference · 3.03% Standard April 2026</h2>
     <p style="font-size:11px;font-family:'DM Mono',monospace;margin-bottom:12px;">ALWAYS: Pass T1-T2 at full mana | Deploy on THEIR end step | High Noon limits YOU to 1 spell/turn too | Aven holds spell until it dies (spell → GY)</p>
     <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:12px;font-size:11px;font-family:'DM Mono',monospace;">
@@ -564,6 +575,23 @@ span.c:hover{border-bottom-style:solid;}
       <div><strong>vs JESKAI CONTROL (Even)</strong><br>IN: +2 Disdainful, +1 Wan Shi Tong | OUT: −2 Avatar's Wrath, −1 Get Lost</div>
     </div>
   </div>
+
+  <h2>Testing Framework</h2>
+  <div class="card-grid">
+      <div class="card"><div class="card-label">Block 01</div><div class="card-title">Flash Window Drills</div><div class="card-body">Practice deploying at their end step vs your main phase. When do you flash in Glen Elendra Guardian vs when do you commit before they can interact? The answer: always flash unless you need haste.</div></div>
+      <div class="card"><div class="card-label">Block 02</div><div class="card-title">Voice of Victory Attack Lines</div><div class="card-body">Practice the Voice lock: they can't target it while attacking. Identify what removes Voice (board wipes, sacrifice effects) vs what doesn't (targeted removal). Know their outs before you commit.</div></div>
+      <div class="card"><div class="card-label">Block 03</div><div class="card-title">High Noon Timing</div><div class="card-body">Practice identifying when to cast High Noon. Most effective when they're about to cast their one important sorcery. Too early and they play around it; too late and the damage is done.</div></div>
+      <div class="card"><div class="card-label">Block 04</div><div class="card-title">G2 Counter Wars</div><div class="card-body">Practice holding Glen Elendra Guardian + Tishana's Tidebinder + Seam Rip. Know which counter goes on which spell. Wrong counter assignment loses the game.</div></div>
+  </div>
+
+  <h2>Matchday Routine</h2>
+  <ol class="heuristic-list">
+      <li><div class="heuristic-num">01</div><div class="heuristic-body">Confirm all your flash creatures are recognized. Remind yourself: all your creatures deploy at instant speed.</div></li>
+      <li><div class="heuristic-num">02</div><div class="heuristic-body">High Noon timing: identify their key sorcery before casting it. The optimal window is when they're tapped and committed.</div></li>
+      <li><div class="heuristic-num">03</div><div class="heuristic-body">Voice of Victory attack window: once it's attacking, they need a board wipe or sacrifice effect. Count their outs.</div></li>
+      <li><div class="heuristic-num">04</div><div class="heuristic-body">Between rounds: check your SB assignments. Seam Rip vs sorceries, Disdainful Stroke vs MV 4+. Don't mix them.</div></li>
+      <li><div class="heuristic-num">05</div><div class="heuristic-body">Their T1 land tells you their deck: Breeding Pool = Simic, Godless Shrine = white/black, Sacred Foundry = Jeskai/Boros.</div></li>
+  </ol>
 </div>
 
   <div id="sb-print-zone">

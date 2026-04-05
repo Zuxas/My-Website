@@ -538,7 +538,18 @@ span.c:hover{border-bottom-style:solid;}
   </div>
 
   <button class="print-btn" onclick="printSB()">&#9113; Print Event Reference</button>
-  <div id="sb-print-zone">
+  
+  <h2>20-Minute Crash Course</h2>
+  <p>If you're sitting down in 20 minutes, run through this in order:</p>
+  <ul class="checklist" id="crash-checklist">
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Mulligan rule:</strong> Keep any 7 with 2-3 lands + Dragonhawk or Temur Battlecrier. Never keep a hand that can't deploy a threat by turn 3.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Dragonhawk rule:</strong> Dragonhawk has haste â€” it attacks the turn it enters. Attack immediately before they can deploy blockers. Their flash blockers come AFTER Dragonhawk attacks.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Temur Battlecrier rule:</strong> Temur Battlecrier gives your Dragons +2/+0 when you control a Dragon. Deploy it after Dragonhawk is in play for maximum bonus â€” don't deploy it on an empty board.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Worldsoul's Rage rule:</strong> Worldsoul's Rage deals X damage where X = lands in play. At 6 lands: 6 damage, kills most creatures. At 8+ lands: 8+ damage, kills almost everything. Track your land count.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Board rule:</strong> Devastating Onslaught (+X/+X and trample) on Dragonhawk closes games. At 5 lands: Dragonhawk becomes an 8/6 trample with haste â€” usually lethal in one hit.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Requisition Raid rule:</strong> Requisition Raid creates two 1/1 Soldiers and a 2/2 Dragon with flying. Use it when their sweeper has cleared your board â€” three bodies from one spell.</span></li>
+  </ul>
+<div id="sb-print-zone">
     <h2 style="font-family:'DM Mono',monospace;font-size:14px;margin-bottom:12px;">BOROS DRAGONS — Event Reference · 2.44% Standard April 2026</h2>
     <p style="font-size:11px;font-family:'DM Mono',monospace;margin-bottom:12px;">ALWAYS: Sarkhan attacks FIRST every combat | Cavern = Dragon | Indestructible ≠ exile | Torpor Orb also stops YOUR ETBs</p>
     <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:12px;font-size:11px;font-family:'DM Mono',monospace;">
@@ -550,6 +561,23 @@ span.c:hover{border-bottom-style:solid;}
       <div><strong>vs DIMIR MIDRANGE (Even)</strong><br>IN: +2 Rest in Peace, +1 Doorkeeper | OUT: −1 Dust, −1 Twinmaw, −1 Voice</div>
     </div>
   </div>
+
+  <h2>Testing Framework</h2>
+  <div class="card-grid">
+      <div class="card"><div class="card-label">Block 01</div><div class="card-title">Dragonhawk Attack Timing</div><div class="card-body">Practice attacking with Dragonhawk the turn it enters before opponents can deploy flash blockers. Know their flash creatures (Floodpits Drowner, Spider Manifestation) and when they're available to counter.</div></div>
+      <div class="card"><div class="card-label">Block 02</div><div class="card-title">Worldsoul's Rage Kill Math</div><div class="card-body">Practice calculating Worldsoul's Rage damage at various land counts. At 5 lands: 5 damage face. At 7 lands: 7 damage to their key blocker. Know the math without calculating at the table.</div></div>
+      <div class="card"><div class="card-label">Block 03</div><div class="card-title">Temur Battlecrier Sequencing</div><div class="card-body">Practice deploying Battlecrier AFTER your Dragon is in play. Battlecrier on an empty board is just a vanilla creature. Battlecrier on Dragonhawk gives +2/+0 and means Dragonhawk is a 5/3 haste flier.</div></div>
+      <div class="card"><div class="card-label">Block 04</div><div class="card-title">Post-Wipe Recovery</div><div class="card-body">Practice the Requisition Raid recovery line after a sweeper. Three bodies immediately puts pressure back on. Know when to rebuild slowly vs go back in immediately.</div></div>
+  </div>
+
+  <h2>Matchday Routine</h2>
+  <ol class="heuristic-list">
+      <li><div class="heuristic-num">01</div><div class="heuristic-body">Dragonhawk is your best threat â€” it attacks the turn it enters. Deploy it and attack immediately, don't hold for backup.</div></li>
+      <li><div class="heuristic-num">02</div><div class="heuristic-body">Worldsoul's Rage damage math: count your lands before casting it. Know the damage output before targeting.</div></li>
+      <li><div class="heuristic-num">03</div><div class="heuristic-body">Temur Battlecrier is a support card, not a threat. Only deploy after your Dragon is established.</div></li>
+      <li><div class="heuristic-num">04</div><div class="heuristic-body">Between rounds: identify if games were won through haste (Dragonhawk closing early) or through Worldsoul's Rage (late game). Adjust sequencing accordingly.</div></li>
+      <li><div class="heuristic-num">05</div><div class="heuristic-body">Their T1 land tells you their deck: Breeding Pool = Simic/Bant, Island = blue flash, Plains = white aggro. Know your boarding before G2.</div></li>
+  </ol>
 </div>
 
   <div id="sb-print-zone">

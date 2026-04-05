@@ -478,7 +478,18 @@ span.c:hover{border-bottom-style:solid;}
   </div>
 </div>
 
-  <div id="sb-print-zone">
+  
+  <h2>20-Minute Crash Course</h2>
+  <p>If you're sitting down in 20 minutes, run through this in order:</p>
+  <ul class="checklist" id="crash-checklist">
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Mulligan rule:</strong> Keep any 7 with Monument to Endurance + a land drop OR Moonshadow + discard outlet. Never keep a hand without the Monument engine.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Monument rule:</strong> Monument to Endurance has three trigger modes: deal 1 damage + gain 1 life (Damage), draw 1 card (Draw), or put a 4/4 into play (Creature). Use Damage mode early to accumulate life; use Creature mode as a clock.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Moonshadow rule:</strong> Moonshadow (Ayara, the Widow) grows with discard. Equip Bloodthorn Flail, draw cards, then discard to make Moonshadow larger. A 5+ power menace creature forces two blockers.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Flamewake Phoenix rule:</strong> Flamewake Phoenix (2/2 flying haste) returns from GY each upkeep if you control a creature with 4+ power. Keep a 4+ power creature in play between turns â€” Phoenix comes back free.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Iron-Shield Elf rule:</strong> Iron-Shield Elf becomes indestructible until EOT when you discard a card. In response to their removal or combat: discard a card to make it indestructible. The discard is the cost.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Board rule:</strong> Sunspine Lynx (3/3) deals 3 damage to opponents whenever they play a nonbasic land. Against greedy manabases, one Sunspine Lynx can deal 9-12 damage from land drops alone.</span></li>
+  </ul>
+<div id="sb-print-zone">
     <h2>Printable Sideboard Reference</h2>
     <p>All matchup ins/outs on one sheet. Print and take to the event.</p>
     <button class="print-btn" onclick="printSB()">&#x2259; Print SB Reference</button>
@@ -627,6 +638,23 @@ span.c:hover{border-bottom-style:solid;}
     </div>
     </div>
   </div>
+
+  <h2>Testing Framework</h2>
+  <div class="card-grid">
+      <div class="card"><div class="card-label">Block 01</div><div class="card-title">Monument Mode Selection</div><div class="card-body">Practice selecting Monument to Endurance's trigger mode each turn. Early game: Damage mode for life buffer. Mid game: Draw mode to dig for answers. Late game: Creature mode for the closing 4/4.</div></div>
+      <div class="card"><div class="card-label">Block 02</div><div class="card-title">Phoenix Return Threshold</div><div class="card-body">Practice maintaining the 4+ power creature for Phoenix return. Moonshadow at 5+ power enables Phoenix. If Moonshadow is killed, you need another 4+ power creature by your upkeep for Phoenix to return.</div></div>
+      <div class="card"><div class="card-label">Block 03</div><div class="card-title">Iron-Shield Elf Protection</div><div class="card-body">Practice the Iron-Shield Elf indestructible activation. They target Elf with removal: in response, discard a card â†’ Elf becomes indestructible until EOT â†’ their removal does nothing.</div></div>
+      <div class="card"><div class="card-label">Block 04</div><div class="card-title">Sunspine Lynx Timing</div><div class="card-body">Practice deploying Sunspine Lynx before they play their nonbasic lands. Deploy on T3 before their T3 nonbasic for maximum damage. Lynx on T5 misses 2-3 nonbasic land drops.</div></div>
+  </div>
+
+  <h2>Matchday Routine</h2>
+  <ol class="heuristic-list">
+      <li><div class="heuristic-num">01</div><div class="heuristic-body">Monument mode selection: know which mode is correct for each life total. Damage mode at 20+ life; Draw mode when you need cards; Creature mode at 10+ life when you need a closer.</div></li>
+      <li><div class="heuristic-num">02</div><div class="heuristic-body">Flamewake Phoenix threshold: always have a 4+ power creature in play before your upkeep. Phoenix returning is free value â€” never lose it to forgetting the threshold.</div></li>
+      <li><div class="heuristic-num">03</div><div class="heuristic-body">Iron-Shield Elf response timing: activate BEFORE their removal resolves. Discard â†’ indestructible â†’ their spell fizzles.</div></li>
+      <li><div class="heuristic-num">04</div><div class="heuristic-body">Between rounds: count how many damage triggers Monument generated. If it's generating 1+ damage per turn from T3 onward, you're winning the long game.</div></li>
+      <li><div class="heuristic-num">05</div><div class="heuristic-body">Sunspine Lynx deployment: T3 is optimal. Count how many nonbasics they have left to play â€” if they've already played 3, your Lynx window is closing.</div></li>
+  </ol>
 
 </div>
 
