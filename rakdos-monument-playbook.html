@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" href="images/tab32.png" type="image/png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rakdos Monument — Team Resolve Standard Playbook</title>
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+html{overflow-y:scroll;}
+:root{
+  --primary:#1a0505;
+  --ink:#0e0e0e;
+  --paper:#f2ede6;
+  --paper-dark:#e8e1d6;
+  --rule:#c8bfb0;
+  --accent:#991b1b;
+  --accent-light:rgba(153,27,27,0.08);
+  --mid:#5a5248;
+  --card:#ffffff;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--paper);color:var(--ink);font-family:'Crimson Pro',Georgia,serif;font-size:17px;line-height:1.6;}
+nav{position:sticky;top:0;z-index:100;background:var(--primary);border-bottom:2px solid var(--accent);display:flex;align-items:center;padding:0 32px;height:48px;gap:4px;overflow-x:auto;scrollbar-width:none;}
+nav::-webkit-scrollbar{display:none;}
+.nav-brand{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);margin-right:16px;white-space:nowrap;}
+.nav-link{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(248,250,252,0.55);background:none;border:none;border-bottom:2px solid transparent;padding:0 12px;height:48px;cursor:pointer;white-space:nowrap;display:flex;align-items:center;text-decoration:none;transition:color 0.15s,border-color 0.15s;}
+.nav-link:hover{color:rgba(248,250,252,0.85);}
+.nav-link.active{color:#fff;border-bottom-color:var(--accent);}
+.header-band{background:var(--primary);border-bottom:3px solid var(--accent);padding:48px 80px 40px;position:relative;overflow:hidden;}
+.header-band,.header-band *{color:#f1f5f9;}
+.header-band::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 80% 50%,rgba(153,27,27,0.2) 0%,transparent 70%);pointer-events:none;}
+.header-inner{max-width:1080px;margin:0 auto;display:grid;grid-template-columns:1fr auto;gap:40px;align-items:start;position:relative;}
+.header-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(248,250,252,0.4);margin-bottom:12px;}
+.header-title{font-family:'DM Mono',monospace;font-size:clamp(32px,4vw,52px);font-weight:500;letter-spacing:0.06em;line-height:1.05;text-transform:uppercase;}
+.header-title span{color:var(--accent);}
+.header-tagline{font-size:15px;font-style:italic;color:rgba(248,250,252,0.5);margin-top:12px;max-width:520px;line-height:1.5;}
+.meta-row{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(248,250,252,0.4);margin-bottom:4px;}
+.meta-row span{color:rgba(248,250,252,0.8);margin-left:6px;}
+.section{display:none;animation:fadeIn 0.3s ease;}
+.section.active{display:block;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
+.content{max-width:1080px;margin:0 auto;padding:56px 80px 80px;}
+.section-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--mid);margin-bottom:8px;display:block;}
+h1{font-family:'DM Mono',monospace;font-size:clamp(32px,4vw,48px);font-weight:500;letter-spacing:0.06em;text-transform:uppercase;line-height:1.05;margin-bottom:32px;}
+h2{font-family:'DM Mono',monospace;font-size:13px;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);margin:48px 0 16px;padding-bottom:8px;border-bottom:1px solid var(--rule);}
+h3{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--mid);margin:24px 0 8px;}
+p{font-size:16px;line-height:1.7;color:var(--ink);margin-bottom:14px;font-weight:300;}
+strong{font-weight:600;}
+.mantra{background:var(--accent-light);border-left:3px solid var(--accent);padding:20px 24px;margin:0 0 40px;font-style:italic;font-size:17px;color:var(--ink);line-height:1.6;}
+.card-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule);margin:16px 0;}
+.card-grid-2{grid-template-columns:repeat(2,1fr)!important;}
+.card-grid-3{grid-template-columns:repeat(3,1fr)!important;}
+.card{background:var(--card);padding:20px;transition:background 0.15s;}
+.card:hover{background:#faf7f2;}
+.card-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:var(--mid);margin-bottom:6px;}
+.card-title{font-family:'DM Mono',monospace;font-size:13px;letter-spacing:0.05em;color:var(--accent);margin-bottom:8px;font-weight:500;}
+.card-body{font-size:14px;color:var(--mid);line-height:1.55;font-weight:300;}
+.matchup-block{border:1px solid var(--rule);margin:24px 0;background:var(--card);}
+.matchup-header{background:var(--paper-dark);padding:16px 20px;display:flex;align-items:center;justify-content:space-between;cursor:pointer;user-select:none;}
+.matchup-header h3{margin:0;font-size:11px;letter-spacing:0.15em;color:var(--ink);}
+.verdict{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.15em;text-transform:uppercase;padding:3px 10px;}
+.verdict-good{background:rgba(22,163,74,0.1);color:#14532d;}
+.verdict-even{background:rgba(90,82,72,0.12);color:var(--mid);}
+.verdict-hard{background:rgba(153,27,27,0.1);color:#7f1d1d;}
+.matchup-body{padding:20px;display:none;}
+.matchup-body.open{display:block;}
+.sb-table{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--rule);margin:12px 0;}
+.sb-col{background:var(--paper);padding:12px 16px;}
+.sb-col-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.15em;text-transform:uppercase;color:var(--mid);margin-bottom:8px;}
+.sb-item{display:flex;justify-content:space-between;align-items:baseline;font-size:14px;padding:2px 0;font-weight:300;}
+.sb-qty{font-family:'DM Mono',monospace;font-size:11px;color:var(--mid);}
+.heuristic-list{list-style:none;margin:16px 0;}
+.heuristic-list li{padding:14px 0;border-bottom:1px solid var(--rule);display:flex;gap:16px;align-items:start;}
+.heuristic-list li:last-child{border-bottom:none;}
+.h-num{font-family:'DM Mono',monospace;font-size:10px;color:var(--accent);flex-shrink:0;padding-top:2px;min-width:28px;}
+.h-text{font-size:15px;font-weight:300;color:var(--ink);}
+.h-text strong{font-weight:600;}
+.deck-row{display:flex;justify-content:space-between;padding:3px 0;border-bottom:1px solid rgba(200,191,176,0.4);font-size:15px;}
+.deck-count{font-family:'DM Mono',monospace;font-size:12px;color:var(--mid);min-width:20px;}
+.edge-case{background:var(--card);border:1px solid var(--rule);border-left:3px solid var(--accent);padding:16px 20px;margin:12px 0;}
+.edge-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:6px;}
+.edge-body{font-size:14px;font-weight:300;color:var(--ink);line-height:1.65;}
+.engine-block{background:#1a0505;border:1px solid var(--accent);padding:20px 24px;margin:16px 0;font-family:'DM Mono',monospace;font-size:13px;line-height:1.9;}
+.engine-step{color:rgba(153,27,27,0.7);margin-right:8px;}
+.engine-card{color:#fca5a5;}
+.card-tip{position:fixed;z-index:9999;pointer-events:none;width:220px;border-radius:8px;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,0.6);opacity:0;transition:opacity 0.15s ease;background:#1a1a2e;}
+.card-tip.visible{opacity:1;}
+.card-tip img{width:220px;height:auto;display:block;}
+.card-tip-loading{width:220px;height:310px;display:flex;align-items:center;justify-content:center;color:#94a3b8;font-size:12px;font-family:monospace;background:#1e293b;}
+span.c{cursor:help;border-bottom:1px dashed var(--accent);}
+span.c:hover{border-bottom-style:solid;}
+.edge-case{background:var(--card,#fff);border:1px solid var(--rule,#c8bfb0);border-left:3px solid var(--accent);padding:16px 20px;margin:16px 0;}
+.edge-case-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:8px;font-weight:500;}
+.edge-case-body{font-size:14px;font-weight:300;color:var(--ink,#0e0e0e);line-height:1.65;}
+.edge-case-body strong{font-weight:600;}
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-brand">Rakdos Monument</div>
+  <a class="nav-link" href="deck-guides.html" style="text-decoration:none;">&#8592; Guides</a>
+  <button class="nav-link active" onclick="show('identity')">Overview</button>
+  <button class="nav-link" onclick="show('decklist')">Decklist</button>
+  <button class="nav-link" onclick="show('gameplan')">Game Flow</button>
+  <button class="nav-link" onclick="show('engines')">Engines</button>
+  <button class="nav-link" onclick="show('lines')">Lines</button>
+  <button class="nav-link" onclick="show('roles')">Roles</button>
+  <button class="nav-link" onclick="show('matchups')">Matchups</button>
+  <button class="nav-link" onclick="show('sideboard')">Sideboard</button>
+  <button class="nav-link" onclick="show('heuristics')">Heuristics</button>
+  <button class="nav-link" onclick="show('tuning')">Tuning</button>
+  <button class="nav-link" onclick="show('prep')">Prep</button>
+</nav>
+<div class="header-band">
+  <div class="header-inner">
+    <div>
+      <div class="header-label">Team Resolve · Standard · RC Prep 2026</div>
+      <div class="header-title">RAKDOS<br><span>MONUMENT</span></div>
+      <div class="header-tagline">"Discard Bloodghast. Trigger Monument. Deal 1, gain 1. Bloodghast returns on your land drop. Discard it again. Monument triggers again. They run out of life before you run out of cards."</div>
+    </div>
+    <div>
+      <div class="meta-row">META SHARE<span>1.99%</span></div>
+      <div class="meta-row">ROLE<span>Aggro-Midrange</span></div>
+      <div class="meta-row">COLORS<span>B R</span></div>
+      <div class="meta-row">KILL TURN<span>3–5</span></div>
+      <div class="meta-row">REFERENCE<span>Hamuda 9-0 MTGO Standard Challenge Feb 1 2026</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- CH01 IDENTITY -->
+<div id="identity" class="section active">
+<div class="content">
+  <span class="section-label">Chapter 01</span>
+  <h1>DECK<br>IDENTITY</h1>
+  <div class="mantra">"Three paths to victory in one 60-card shell: T1-T3 aggressive curve, recursive creatures that never stay dead, and Monument to Endurance grinding out 1-damage triggers they can't race."</div>
+
+  <p>Rakdos Monument is Standard's most resilient aggro-midrange deck. It wins three distinct ways simultaneously: pure aggro pressure from Moonshadow and Marauding Mako, graveyard recursion from Bloodghast and Flamewake Phoenix, and <span class="c">Monument to Endurance</span> converting every discard into 1 damage + 1 life. Opponents who try to answer one axis find themselves losing to another.</p>
+
+  <p>The deck's defining card is <span class="c">Monument to Endurance</span> ({2}): at the beginning of each end step, you may discard a card. If you do, Monument deals 1 damage to each opponent and you gain 1 life. The engine runs on free or near-free discard sources — Iron-Shield Elf discards for {0}, Bloodthorn Flail discards to equip, Restless Vents discards as an activated ability. Discard payoffs compound: discarded Bloodghast returns on your next land drop. Discarded Flamewake Phoenix returns to attack if you have a 4-power creature. Discarded Moonshadow or Marauding Mako grows their own power for future turns.</p>
+
+  <p>Lorwyn Eclipsed added exactly what Monument needed: <span class="c">Iron-Shield Elf</span> ({G} — wait, it's {1B}) provides a consistent free discard outlet that also gains indestructible (letting it survive most combat and removal), and Moonshadow ({B}) — a 1-drop that scales with permanents in your GY — gives the deck a better T1 threat than anything it had before.</p>
+
+  <h2>Why Rakdos Over Jund or Mono-Black Monument</h2>
+  <div class="card-grid card-grid-3">
+    <div class="card"><div class="card-label">Red Payoff</div><div class="card-title">Flamewake Phoenix + Bitter Triumph</div><div class="card-body">Red provides Flamewake Phoenix (recursive flying 2/2 haste for {1RR} that returns from GY if you attacked with 4-power or greater) and Bitter Triumph ({1B}: exile target creature or PW, discard a card or lose 3 life). Bitter Triumph is unconditional exile removal that also fuels Monument. Without red the removal suite relies on non-exile options, and Flamewake Phoenix is the deck's best recursive flying threat.</div></div>
+    <div class="card"><div class="card-label">Blood Crypt Baseline</div><div class="card-title">Reprinted in Lorwyn Eclipsed</div><div class="card-body">Blood Crypt's reprint in Lorwyn Eclipsed gives Rakdos Monument a clean, consistent mana base. The deck now runs 4 Blood Crypt + 4 Blazemire Verge (enters untapped if you control a swamp) + Starting Town (cycles) + Multiversal Passage (flexible MDFC). The two-color mana base is more consistent than three-color Monument variants. Every land enters untapped most of the time.</div></div>
+    <div class="card"><div class="card-label">Sunspine Lynx</div><div class="card-title">Punishes Greedy Mana Bases</div><div class="card-body">Sunspine Lynx ({1R}) 2/1 first strike: whenever an opponent plays a nonbasic land, Lynx deals 1 damage to them. Standard's mana bases are greedy — Mono-Green, Izzet Lessons, Dimir Excruciator all run 10-15 nonbasics. Lynx in the SB punishes this brutally in slower matchups. Rakdos runs relatively few nonbasics itself (Blood Crypt + Blazemire Verge are the main dual sources) — be aware you still have nonbasics.</div></div>
+  </div>
+
+  <h2>Matchup Overview</h2>
+  <div class="card-grid card-grid-2">
+    <div class="card"><div class="card-label">Favorable</div><div class="card-title">Fair Midrange, Slow Control</div><div class="card-body">Dimir Midrange (resilient threats they can't permanently answer), slower control builds (Monument generates sustained damage they can't race), Izzet Spellementals (your creatures are in a different size class post-Monument). Your recursive threats exhaust their removal eventually.</div></div>
+    <div class="card"><div class="card-label">Unfavorable</div><div class="card-title">Graveyard Hate, Fast Combo</div><div class="card-body">Soul-Guide Lantern exiles Bloodghast and Flamewake Phoenix — your recursion engine turns off. Izzet Prowess races before Monument gets going. Mono-Green Landfall generates boards too large to race through once Earthbender Ascension triggers. Dimir Excruciator can bounce your Monument permanently.</div></div>
+  </div>
+</div>
+</div>
+
+<!-- CH02 DECKLIST -->
+<div id="decklist" class="section">
+<div class="content">
+  <span class="section-label">Chapter 02</span>
+  <h1>DECKLIST</h1>
+  <div class="mantra">"Reference: Hamuda 9-0, MTGO Standard Challenge Feb 1 2026. Adria Martin 7-3, Pro Tour Lorwyn Eclipsed Jan 30 2026."</div>
+  <div class="card-grid card-grid-3">
+    <div class="card">
+      <h3>Creatures (18)</h3>
+      <div class="deck-row"><span class="deck-count">4</span><span><span class="c">Moonshadow</span></span></div>
+      <div class="deck-row"><span class="deck-count">4</span><span><span class="c">Marauding Mako</span></span></div>
+      <div class="deck-row"><span class="deck-count">4</span><span><span class="c">Bloodghast</span></span></div>
+      <div class="deck-row"><span class="deck-count">3</span><span><span class="c">Flamewake Phoenix</span></span></div>
+      <div class="deck-row"><span class="deck-count">3</span><span><span class="c">Iron-Shield Elf</span></span></div>
+      <div class="deck-row"><span class="deck-count">3</span><span><span class="c">Inti, Seneschal of the Sun</span></span></div>
+      <div class="deck-row"><span class="deck-count">1</span><span><span class="c">Sunspine Lynx</span></span></div>
+      <h3 style="margin-top:12px;">Artifacts / Equipment (4)</h3>
+      <div class="deck-row"><span class="deck-count">4</span><span><span class="c">Monument to Endurance</span></span></div>
+      <h3 style="margin-top:12px;">Equipment (4)</h3>
+      <div class="deck-row"><span class="deck-count">4</span><span><span class="c">Bloodthorn Flail</span></span></div>
+    </div>
+    <div class="card">
+      <h3>Instants / Sorceries (6)</h3>
+      <div class="deck-row"><span class="deck-count">3</span><span><span class="c">Tersa Lightshatter</span></span></div>
+      <div class="deck-row"><span class="deck-count">2</span><span><span class="c">Bitter Triumph</span></span></div>
+      <div class="deck-row"><span class="deck-count">1</span><span><span class="c">Greasewrench Goblin</span></span></div>
+      <h3 style="margin-top:12px;">Lands (22)</h3>
+      <div class="deck-row"><span class="deck-count">4</span><span><span class="c">Blood Crypt</span></span></div>
+      <div class="deck-row"><span class="deck-count">4</span><span><span class="c">Blazemire Verge</span></span></div>
+      <div class="deck-row"><span class="deck-count">4</span><span><span class="c">Multiversal Passage</span></span></div>
+      <div class="deck-row"><span class="deck-count">4</span><span>Starting Town</span></div>
+      <div class="deck-row"><span class="deck-count">4</span><span>Mountain</span></div>
+      <div class="deck-row"><span class="deck-count">2</span><span>Swamp</span></div>
+      <div class="deck-row"><span class="deck-count">1</span><span><span class="c">Restless Vents</span></span></div>
+      <div class="deck-row"><span class="deck-count">1</span><span><span class="c">Sunspine Lynx</span> (land slot flex)</span></div>
+    </div>
+    <div class="card">
+      <h3>Sideboard (15)</h3>
+      <div class="deck-row"><span class="deck-count">3</span><span><span class="c">Sunspine Lynx</span></span></div>
+      <div class="deck-row"><span class="deck-count">3</span><span><span class="c">Requiting Hex</span></span></div>
+      <div class="deck-row"><span class="deck-count">3</span><span><span class="c">Soul-Guide Lantern</span></span></div>
+      <div class="deck-row"><span class="deck-count">2</span><span><span class="c">Case of the Crimson Pulse</span></span></div>
+      <div class="deck-row"><span class="deck-count">2</span><span>Pyroclasm</span></div>
+      <div class="deck-row"><span class="deck-count">2</span><span><span class="c">Vengeful Possession</span></span></div>
+    </div>
+  </div>
+
+  <h2>Monument Engine Line</h2>
+  <div class="engine-block">
+    <div style="color:#fca5a5;font-size:12px;letter-spacing:0.15em;margin-bottom:12px;">MONUMENT TO ENDURANCE LOOP</div>
+    <div><span class="engine-step">T1.</span><span class="engine-card">Moonshadow</span> <span style="color:#f1f5f9">or Bloodghast enters. Apply early pressure.</span></div>
+    <div><span class="engine-step">T2.</span><span class="engine-card">Monument to Endurance</span> <span style="color:#f1f5f9">({2}) resolves.</span></div>
+    <div><span class="engine-step">T2.</span><span class="engine-card">Bloodthorn Flail</span> <span style="color:#f1f5f9">equips by discarding a card → Bloodghast goes to GY → Monument trigger at EOT: 1 damage, +1 life.</span></div>
+    <div><span class="engine-step">T3.</span><span class="engine-card">Bloodghast</span> <span style="color:#f1f5f9">returns on land drop (Landfall). Swing for 2. Monument EOT: discard again, 1 more damage.</span></div>
+    <div><span class="engine-step">T3+</span><span style="color:#f1f5f9">With Iron-Shield Elf: discard at {0} cost each turn. Monument pings for 1 every EOT for free. They die.</span></div>
+    <div style="color:rgba(252,165,165,0.5);font-size:11px;margin-top:8px;">Priority: Draw → Damage → Treasure (unless specific trigger wins immediately)</div>
+  </div>
+</div>
+</div>
+
+<!-- CH03 GAME FLOW -->
+<div id="gameplan" class="section">
+<div class="content">
+  <span class="section-label">Chapter 03</span>
+  <h1>GAME<br>FLOW</h1>
+  <div class="mantra">"T1 threat. T2 Monument. T3 recursive attack. Repeat until they're at 0. The deck has no dead draws — every discard fuels the engine."</div>
+  <div class="card-grid card-grid-2">
+    <div class="card"><div class="card-label">Ideal Line</div><div class="card-title">T1 Moonshadow → T2 Monument + Flail</div><div class="card-body">T1: Moonshadow ({B}) — 1/1 with evasion that grows with each permanent you put in GY. T2: Play Monument to Endurance ({2}), equip Bloodthorn Flail discarding Bloodghast. EOT: Monument triggers (discard Flail'd card) — 1 damage + 1 life. T3: Bloodghast returns on land drop (Landfall). Iron-Shield Elf provides a free discard for Monument each turn from here. By T5 with Monument pinging 1 per EOT + Moonshadow + Phoenix swinging, their life total collapses.</div></div>
+    <div class="card"><div class="card-label">Fair Mode</div><div class="card-title">No Monument — Pure Aggro</div><div class="card-body">Without Monument: play the aggro game. Moonshadow into Iron-Shield Elf (indestructible blocker) into Flamewake Phoenix (haste flyer). Tersa Lightshatter handles large blockers. Bitter Triumph exiles their key permanent. Inti, Seneschal of the Sun generates card advantage whenever you discard. Even without Monument the deck is a legitimate aggro deck — creatures that recur, fly, and generate evasion win games purely on combat damage.</div></div>
+    <div class="card"><div class="card-label">Mulligan</div><div class="card-title">Need: 2 Lands + Monument OR 3 Threats</div><div class="card-body">Keep: any hand with Monument + 2 lands + one discard outlet. OR any hand with 3 creatures + 2 lands (aggro the Monument draws). Mulligan: 1 land hands (too risky), 5+ land hands with no threats, hands with Monument but zero discard sources. At 6: 2 lands + Monument + Iron-Shield Elf = snap keep. At 5: 2 lands + Moonshadow + Bloodghast = keep (they recur, you need momentum).</div></div>
+    <div class="card"><div class="card-label">Monument Priority Order</div><div class="card-title">Draw → Damage → Treasure</div><div class="card-body">Monument to Endurance at each end step: first choose Draw (draw a card) unless you already have too many cards. Then choose Damage (deal 1 to opponent + gain 1 life) to accrue reach and life buffer. Treasure only when you need the mana for a key play next turn. The default is Draw → Damage on subsequent triggers. Never reflexively take Treasure — the card advantage and reach from Draw + Damage is almost always better.</div></div>
+  </div>
+</div>
+</div>
+
+<!-- CH04 ENGINES -->
+<div id="engines" class="section">
+<div class="content">
+  <span class="section-label">Chapter 04</span>
+  <h1>CORE<br>ENGINES</h1>
+  <div class="mantra">"Monument is the engine. Bloodthorn Flail is the fuel line. Bloodghast and Phoenix are the renewable fuel."</div>
+  <div class="card-grid card-grid-3">
+    <div class="card"><div class="card-label">Engine 1 — Value Generator</div><div class="card-title">Monument to Endurance</div><div class="card-body">Monument ({2}) artifact: at the beginning of each end step, choose one — you draw a card, Monument deals 1 damage to each opponent and you gain 1 life, or you add {C}. The 1-damage trigger doesn't look like much but across 8-10 turns it generates 8-10 damage + 8-10 life. Combined with recursive creatures providing pressure, it creates a clock opponents can't ignore. Use Monument's triggers to set up your turns — Draw when your hand is low, Damage when their life is in range, Treasure when you need mana for a key play.</div></div>
+    <div class="card"><div class="card-label">Engine 2 — Free Fuel</div><div class="card-title">Iron-Shield Elf + Bloodthorn Flail</div><div class="card-body">Iron-Shield Elf ({1B}) 2/2: whenever you discard a card, Iron-Shield Elf gains indestructible until end of turn. Tap it for {0}, discard a card — Iron-Shield Elf becomes indestructible and Monument sees the discard for its EOT trigger. Bloodthorn Flail (equipment): equip by discarding a card, giving +1/+0 and menace. Equip at instant speed during combat. These two are free discard outlets — Iron-Shield Elf in particular enables the Monument loop at zero mana cost every turn.</div></div>
+    <div class="card"><div class="card-label">Engine 3 — Recursive Threats</div><div class="card-title">Bloodghast + Flamewake Phoenix</div><div class="card-body">Bloodghast ({BB}) 2/1 haste: can't block. Returns from GY to battlefield whenever a land enters under your control (Landfall). Discard Bloodghast to Monument/Flail → play a land next turn → Bloodghast returns → attacks → discard again. Flamewake Phoenix ({1RR}) 2/2 haste flying: returns from GY at upkeep if you control a 4+ power creature. With Moonshadow growing large or Marauding Mako as a 4/3, Flamewake recurs every turn it's in GY. Both together make the board extremely hard to permanently clear.</div></div>
+  </div>
+</div>
+</div>
+
+<!-- CH05 LINES -->
+<div id="lines" class="section">
+<div class="content">
+  <span class="section-label">Chapter 05</span>
+  <h1>LINES &amp;<br>TACTICS</h1>
+  <div class="mantra">"Best opening: Moonshadow → Bloodthorn Flail equip discarding Bloodghast → Bloodghast swings as a 3/1 menace with haste."</div>
+  <div class="edge-case"><div class="edge-case-label">Line 01 — T1 Moonshadow + T2 Bloodthorn Flail = T2 4-Power Attacker</div><div class="edge-case-body">T1: Moonshadow (1/1). T2: Bloodthorn Flail. Equip by discarding Bloodghast (Moonshadow grows: +1/+0 for each permanent put in your GY this turn → now 2/1). Flail gives +1/+0 and menace. Moonshadow attacks as a 3/1 with menace on T2. Bloodghast returns on T3 land drop as a 2/1 haste attacker. This opening applies 5+ damage by T3 and establishes Monument fuel immediately.</div></div>
+  <div class="edge-case"><div class="edge-case-label">Line 02 — Flamewake Phoenix Returns at Upkeep, Not EOT</div><div class="edge-case-body">Flamewake Phoenix returns from the GY at the beginning of your upkeep if you controlled a creature with power 4 or greater at the beginning of upkeep. Check your board state BEFORE upkeep starts. If Moonshadow has grown to 4+ power (via GY permanents) or Marauding Mako is 4/3, Flamewake returns. This means: don't block with your 4-power creature to save a different creature — protect the 4-power permanent that enables Phoenix recursion. Phoenix attacks the same turn it returns (haste).</div></div>
+  <div class="edge-case"><div class="edge-case-label">Line 03 — Iron-Shield Elf Gains Indestructible When You Discard — Use Combat</div><div class="edge-case-body">Iron-Shield Elf gains indestructible until end of turn whenever you discard a card. Activate its tap ability (discard a card) in your combat step — before blockers are declared. Iron-Shield Elf attacks as an indestructible 2/2, meaning it can't be killed in combat. They can't block it profitably. Use this line every attack step: tap → discard → indestructible → attack. The discarded card fuels Monument EOT trigger simultaneously.</div></div>
+  <div class="edge-case"><div class="edge-case-label">Line 04 — Inti, Seneschal of the Sun Doesn't Draw — It Impulses</div><div class="edge-case-body">Inti, Seneschal of the Sun ({RW}) 2/1 first strike: whenever you discard a card, exile the top card of your library. Until end of your next turn, you may play it. This is an impulse draw, not a real draw — the exiled card must be played by the end of your next turn or it's gone. Keep track of what's exiled. If you impulse into a land, play it that turn. If you impulse into a creature, decide if you need it now or can afford to lose it. Don't discard recklessly with Inti — make sure you have mana to use what it finds.</div></div>
+</div>
+</div>
+
+<!-- CH06 ROLES -->
+<div id="roles" class="section">
+<div class="content">
+  <span class="section-label">Chapter 06</span>
+  <h1>ROLE<br>ASSIGNMENT</h1>
+  <div class="mantra">"vs Aggro: be the bigger aggro. Your creatures recur. Theirs don't. vs Control: Monument and recursive threats are attrition machines."</div>
+  <div class="card-grid card-grid-3">
+    <div class="card"><div class="card-label">vs Aggro (Prowess, Mono-Red)</div><div class="card-title">Recursive Beatdown</div><div class="card-body">Your creatures recur from the GY — theirs don't. Bloodghast comes back every land drop. Flamewake Phoenix comes back every upkeep. Trade freely in combat: you have more threats coming back than they can generate. Iron-Shield Elf with indestructible is an unkillable blocker in aggressive mirrors. Monument gaining 1 life per trigger buys you enough time to establish the recursion loop. Their removal doesn't stick — your GY refills your board every turn.</div></div>
+    <div class="card"><div class="card-label">vs Midrange (Dimir, Simic)</div><div class="card-title">Pressure + Monument Reach</div><div class="card-body">Against Dimir Midrange: Bloodghast is hard for them to answer permanently (no exile in most main decks). Flamewake Phoenix flies over Psychic Frog. Monument's sustained damage kills around their interaction plan. Against Simic Rhythm: you're the faster deck. Sunspine Lynx in the SB punishes their nonbasic-heavy mana base. Requiting Hex removes their Earthbender Ascension or Badgermole Cub at instant speed.</div></div>
+    <div class="card"><div class="card-label">vs Control (Dimir Excruciator)</div><div class="card-title">Grind With Monument</div><div class="card-body">Monument generates value every turn for free — they can't counter it. Bloodghast bypasses their countermagic (lands trigger it from GY, not spells). Flamewake Phoenix returns through Floodpits Drowner bounce — they bounce it, it goes to GY, comes back at upkeep. Case of the Crimson Pulse (SB) fuels Monument every turn even when your hand is empty. Vengeful Possession (SB) gives your creatures ward — more resistance to their targeted removal.</div></div>
+  </div>
+</div>
+</div>
+
+<!-- CH07 MATCHUPS -->
+<div id="matchups" class="section">
+<div class="content">
+  <span class="section-label">Chapter 07</span>
+  <h1>MATCHUP<br>GUIDE</h1>
+  <div class="mantra">"Know their graveyard hate plan. If they exile Bloodghast and Phoenix your recursion engine is off — pivot to pure Monument + Moonshadow aggro."</div>
+
+  <div class="matchup-block">
+    <div class="matchup-header" onclick="toggle('mu-mono-green')"><h3>MONO-GREEN LANDFALL</h3><span class="verdict verdict-hard">Unfavorable</span></div>
+    <div id="mu-mono-green" class="matchup-body">
+      <p>They block forever with large Icetill Explorer (2/4) and Earthbender Ascension creatures while building to a Lumra kill. You need to deal damage faster than they can stabilize. Requiting Hex removes Llanowar Elves and Badgermole Cub before they can enable Earthbender Ascension. Bitter Triumph exiles their Icetill Explorer. Your best path: Moonshadow growing large through Flail discards + Flamewake Phoenix flying over their ground board. They often have no flying defense before Lumra.</p>
+      <p><strong>Key:</strong> Attack flying first, attack face — don't waste resources on their ground blockers. Monument pinging 1 per turn doesn't scale with their life gain from Blossoming Tortoise. Race the clock.</p>
+      <div class="sb-table">
+        <div class="sb-col"><div class="sb-col-label">In</div><div class="sb-item"><span><span class="c">Requiting Hex</span></span><span class="sb-qty">+3</span></div><div class="sb-item"><span>Pyroclasm</span><span class="sb-qty">+2</span></div></div>
+        <div class="sb-col"><div class="sb-col-label">Out</div><div class="sb-item"><span><span class="c">Iron-Shield Elf</span></span><span class="sb-qty">&minus;2</span></div><div class="sb-item"><span><span class="c">Greasewrench Goblin</span></span><span class="sb-qty">&minus;1</span></div><div class="sb-item"><span><span class="c">Sunspine Lynx</span></span><span class="sb-qty">&minus;1</span></div><div class="sb-item"><span><span class="c">Inti, Seneschal of the Sun</span></span><span class="sb-qty">&minus;1</span></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="matchup-block">
+    <div class="matchup-header" onclick="toggle('mu-izzet-prowess')"><h3>IZZET PROWESS</h3><span class="verdict verdict-hard">Unfavorable</span></div>
+    <div id="mu-izzet-prowess" class="matchup-body">
+      <p>Their clock is T3-4. Your Monument engine takes 2-3 turns to establish. Iron-Shield Elf with indestructible is your best blocker — gains indestructible whenever you discard, making it survive their combat tricks. Flamewake Phoenix (2/2 haste flying) races over their ground offense. Pyroclasm (SB) sweeps Swiftspear, Dragon's Rage Channeler, and all 2-toughness threats simultaneously. Soul-Guide Lantern (SB) exiles their GY before they can capitalize on delirium or flashback.</p>
+      <p><strong>Key:</strong> T2 Iron-Shield Elf activated = indestructible blocker. Don't tap out for Monument on T2 if they have an empty board — wait until you can protect it with a creature in play to trade.</p>
+      <div class="sb-table">
+        <div class="sb-col"><div class="sb-col-label">In</div><div class="sb-item"><span>Pyroclasm</span><span class="sb-qty">+2</span></div><div class="sb-item"><span><span class="c">Soul-Guide Lantern</span></span><span class="sb-qty">+3</span></div></div>
+        <div class="sb-col"><div class="sb-col-label">Out</div><div class="sb-item"><span><span class="c">Inti, Seneschal of the Sun</span></span><span class="sb-qty">&minus;3</span></div><div class="sb-item"><span><span class="c">Greasewrench Goblin</span></span><span class="sb-qty">&minus;1</span></div><div class="sb-item"><span><span class="c">Bitter Triumph</span></span><span class="sb-qty">&minus;1</span></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="matchup-block">
+    <div class="matchup-header" onclick="toggle('mu-dimir-exc')"><h3>DIMIR EXCRUCIATOR</h3><span class="verdict verdict-even">Even</span></div>
+    <div id="mu-dimir-exc" class="matchup-body">
+      <p>They counter your spells and bounce your permanents. Bloodghast bypasses countermagic — it enters from GY via Landfall, not from a spell. Flamewake Phoenix returns from GY at upkeep — bounce doesn't permanently answer it. Monument to Endurance is the key threat: it costs {2} and generates value every EOT without requiring additional mana. Counter it if they can — but {2} slips under Counterspell ({UU}) timing for most early game lines. Vengeful Possession (SB) gives your creatures ward protection against their targeted removal.</p>
+      <div class="sb-table">
+        <div class="sb-col"><div class="sb-col-label">In</div><div class="sb-item"><span><span class="c">Case of the Crimson Pulse</span></span><span class="sb-qty">+2</span></div><div class="sb-item"><span><span class="c">Vengeful Possession</span></span><span class="sb-qty">+2</span></div><div class="sb-item"><span><span class="c">Sunspine Lynx</span></span><span class="sb-qty">+3</span></div></div>
+        <div class="sb-col"><div class="sb-col-label">Out</div><div class="sb-item"><span><span class="c">Tersa Lightshatter</span></span><span class="sb-qty">&minus;3</span></div><div class="sb-item"><span><span class="c">Greasewrench Goblin</span></span><span class="sb-qty">&minus;1</span></div><div class="sb-item"><span><span class="c">Iron-Shield Elf</span></span><span class="sb-qty">&minus;1</span></div><div class="sb-item"><span><span class="c">Sunspine Lynx</span> main</span><span class="sb-qty">&minus;1</span></div><div class="sb-item"><span><span class="c">Bitter Triumph</span></span><span class="sb-qty">&minus;1</span></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="matchup-block">
+    <div class="matchup-header" onclick="toggle('mu-izzet-lessons')"><h3>IZZET LESSONS</h3><span class="verdict verdict-even">Even</span></div>
+    <div id="mu-izzet-lessons" class="matchup-body">
+      <p>Soul-Guide Lantern targets their GY heavily — they need lessons in GY to enable full value. Your Bloodghast and Phoenix returning reduces the effectiveness of their removal package. Resolving Monument is better for you than for them — your Monument generates more total damage in an aggro context than their slower Lessons engine. Their Gran-Gran can answer Iron-Shield Elf — keep one more threat in reserve if they're representing Gran-Gran mana.</p>
+      <div class="sb-table">
+        <div class="sb-col"><div class="sb-col-label">In</div><div class="sb-item"><span><span class="c">Soul-Guide Lantern</span></span><span class="sb-qty">+3</span></div><div class="sb-item"><span><span class="c">Sunspine Lynx</span></span><span class="sb-qty">+3</span></div></div>
+        <div class="sb-col"><div class="sb-col-label">Out</div><div class="sb-item"><span><span class="c">Tersa Lightshatter</span></span><span class="sb-qty">&minus;3</span></div><div class="sb-item"><span><span class="c">Greasewrench Goblin</span></span><span class="sb-qty">&minus;1</span></div><div class="sb-item"><span><span class="c">Sunspine Lynx</span> main</span><span class="sb-qty">&minus;1</span></div><div class="sb-item"><span><span class="c">Iron-Shield Elf</span></span><span class="sb-qty">&minus;1</span></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="matchup-block">
+    <div class="matchup-header" onclick="toggle('mu-dimir-mid')"><h3>DIMIR MIDRANGE</h3><span class="verdict verdict-good">Favorable</span></div>
+    <div id="mu-dimir-mid" class="matchup-body">
+      <p>Your creatures recur — their removal doesn't exile permanently (most main deck Dimir removal is non-exile). Bloodghast comes back every land drop. Flamewake Phoenix comes back every upkeep. Monument generates 1 damage per EOT they can't interact with. Bitter Triumph exiles their Psychic Frog or Quantum Riddler. Your best G1 is Moonshadow + Monument + recursive threats. Post-board they bring Soul-Guide Lantern for Bloodghast and Phoenix — board Requiting Hex to answer their key threats before they can set up.</p>
+      <div class="sb-table">
+        <div class="sb-col"><div class="sb-col-label">In</div><div class="sb-item"><span><span class="c">Vengeful Possession</span></span><span class="sb-qty">+2</span></div><div class="sb-item"><span><span class="c">Case of the Crimson Pulse</span></span><span class="sb-qty">+2</span></div></div>
+        <div class="sb-col"><div class="sb-col-label">Out</div><div class="sb-item"><span><span class="c">Tersa Lightshatter</span></span><span class="sb-qty">&minus;2</span></div><div class="sb-item"><span><span class="c">Greasewrench Goblin</span></span><span class="sb-qty">&minus;1</span></div><div class="sb-item"><span><span class="c">Sunspine Lynx</span> main</span><span class="sb-qty">&minus;1</span></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- CH08 SIDEBOARD -->
+<div id="sideboard" class="section">
+<div class="content">
+  <span class="section-label">Chapter 08</span>
+  <h1>SIDEBOARD<br>GUIDE</h1>
+  <div class="mantra">"Sunspine Lynx for mana-hungry decks. Soul-Guide Lantern for GY mirrors. Requiting Hex for enchantments. Case of the Crimson Pulse for long games."</div>
+  <div class="card-grid card-grid-2">
+    <div class="card"><div class="card-label">P1 — vs Nonbasic-Heavy Decks</div><div class="card-title">Sunspine Lynx ×3</div><div class="card-body">Sunspine Lynx ({1R}) 2/1 first strike: whenever an opponent plays a nonbasic land, deals 1 damage to them. Standard's greedy mana bases (10-15 nonbasics per deck) mean Lynx generates 3-5+ damage just from their land drops across a game. Against Izzet Lessons (Botanical Sanctum, Steam Vents, etc.), Dimir Excruciator (Watery Grave, Underground Mortuary), and Mono-Green Landfall (Stomping Ground, Breeding Pool): Lynx forces them to take damage for doing nothing wrong. Boards in whenever opponent has 8+ nonbasics.</div></div>
+    <div class="card"><div class="card-label">P2 — vs GY Decks / Mirrors</div><div class="card-title">Soul-Guide Lantern ×3</div><div class="card-body">{1} artifact: when it enters, exile target card from a GY. Tap, sacrifice: exile all cards from target GY. Against Sultai Reanimator and GY-dependent strategies: exile their graveyard entire in one activation. Against decks using Doom or Spider-Man (superior spider-man) with GY recursion: exile the key card they're targeting. Also relevant in the mirror — exile their Bloodghast and Flamewake Phoenix when they've discarded them, turning off their recursion engine.</div></div>
+    <div class="card"><div class="card-label">P3 — vs Enchantments</div><div class="card-title">Requiting Hex ×3</div><div class="card-body">Requiting Hex ({1B}) instant: destroy target enchantment. Deals damage equal to its MV to its controller. Against Mono-Green Landfall: destroys Earthbender Ascension (MV 2) for {1B} at instant speed, dealing 2 damage. Against Izzet Lessons: destroys Artist's Talent. Against Simic Rhythm: destroys Badgermole Cub's enchantment payoffs. Requiting Hex is strictly better than generic enchantment removal because it deals damage simultaneously — relevant for Monument's reach math.</div></div>
+    <div class="card"><div class="card-label">P4 — Long Games</div><div class="card-title">Case of the Crimson Pulse ×2 + Vengeful Possession ×2</div><div class="card-body">Case of the Crimson Pulse ({1R}) enchantment: at the beginning of your upkeep, discard a card. Case is solved when you've discarded 3+ cards. While unsolved: draw an extra card and discard. Fuels Monument to Endurance every upkeep for free, even when your hand is empty (you draw then discard). Against control: Case + Monument = 2 triggers per turn. Vengeful Possession ({2B}) aura: enchanted creature has ward — "when target, opponent discards a card." Makes your key creatures cost extra to interact with. Stacks with Monument's attrition game.</div></div>
+  </div>
+</div>
+</div>
+
+<!-- CH09 HEURISTICS -->
+<div id="heuristics" class="section">
+<div class="content">
+  <span class="section-label">Chapter 09</span>
+  <h1>HEURISTICS</h1>
+  <div class="mantra">"Default Monument: Draw → Damage → Treasure. Iron-Shield Elf taps before attackers. Don't exile Bloodghast yourself — let it die and return."</div>
+  <ol class="heuristic-list">
+    <li><span class="h-num">01</span><span class="h-text"><strong>Monument trigger order: Draw first, Damage second, Treasure only when needed.</strong> Draw refills your hand for more discard fuel. Damage accrues reach and life buffer simultaneously. Treasure is lowest priority — you usually have enough mana. Deviate from this only when you have lethal reach from Damage or need mana for a specific next-turn play.</span></li>
+    <li><span class="h-num">02</span><span class="h-text"><strong>Activate Iron-Shield Elf's tap ability BEFORE declaring attackers.</strong> The indestructible gained triggers on the discard — do it before combat so Elf attacks as indestructible. They can't kill it in combat math. The discard also triggers Monument at EOT simultaneously. One tap, two payoffs.</span></li>
+    <li><span class="h-num">03</span><span class="h-text"><strong>Don't use exile removal on your own Bloodghast.</strong> Bloodghast returns from GY via Landfall. Never use Bitter Triumph or other exile effects on it — put it in the GY through combat, discarding (Flail, Iron-Shield Elf, Monument), or letting it die to removal. Once exiled, it never returns. This sounds obvious but comes up when you're deciding whether to "cycle" it with Tersa.</span></li>
+    <li><span class="h-num">04</span><span class="h-text"><strong>Flamewake Phoenix needs a 4-power creature at the START of your upkeep — check before upkeep triggers resolve.</strong> If your 4-power creature died on their turn, Phoenix doesn't return. Don't count on Phoenix returning through Bloodthorn Flail's temporary pump (pump wears off at EOT before your next upkeep). The 4-power creature must be naturally 4 power — Moonshadow with GY permanents, Marauding Mako (4/3), or a Flail-pumped creature that lived to your upkeep.</span></li>
+    <li><span class="h-num">05</span><span class="h-text"><strong>Inti, Seneschal of the Sun impulses — play the exiled card immediately or lose it.</strong> Whenever you discard, Inti exiles the top card of your library. You may play it until end of your NEXT turn. Track what's exiled. If it's a land, play it immediately for Monument fuel + Bloodghast Landfall trigger. If it's a creature, deploy it if you need board presence. If you can't use it, it's lost — don't discard recklessly with Inti when your exile zone already has an unplayed card.</span></li>
+    <li><span class="h-num">06</span><span class="h-text"><strong>Sunspine Lynx (SB) triggers on THEIR nonbasic land plays — board it in versus 8+ nonbasic decks.</strong> Izzet Lessons, Dimir Excruciator, Temur Landfall, Simic Rhythm all run 12-15 nonbasics. Lynx deals 1 per land drop without you doing anything. In a 7-turn game against these decks Lynx generates 5-7 "free" damage. Always board it in against three-color or dual-heavy mana bases. Be aware: you also run Blood Crypt and Blazemire Verge — you take damage too, but far less than them.</span></li>
+    <li><span class="h-num">07</span><span class="h-text"><strong>Bloodthorn Flail equips at instant speed — use it in their attack step to make a blocker into a menace attacker next turn.</strong> Equip Bloodthorn Flail during their attack step after they've declared attackers. Your creature can't attack this turn (summoning sickness or already declared as non-attacker) but next turn it attacks with menace from the Flail. Also: equip discards a card in the process — triggering Monument at EOT and potentially enabling Flamewake Phoenix recursion.</span></li>
+    <li><span class="h-num">08</span><span class="h-text"><strong>Restless Vents is both a land and a Monument fuel source — use its activated ability last, not first.</strong> Restless Vents can tap to discard and loot. Use it after Monument's EOT trigger resolves in scenarios where you want to set up your hand for next turn. Don't use it on your main phase casually — the timing matters for Monument's "beginning of end step" trigger window.</span></li>
+    <li><span class="h-num">09</span><span class="h-text"><strong>Moonshadow grows with EACH permanent put in your GY this turn — combo with Bloodthorn Flail discards.</strong> Moonshadow ({B}) gets +1/+0 for each permanent card put into your GY this turn. Bloodthorn Flail discard = one permanent in GY = Moonshadow +1/+0. Multiple Flail equips in one turn stack. With two discards via Flail + Iron-Shield Elf, Moonshadow is a 3/1 on T2 before it attacks. Know the math before you attack — an unexpected 4/1 Moonshadow enables Flamewake Phoenix recursion immediately.</span></li>
+    <li><span class="h-num">10</span><span class="h-text"><strong>Soul-Guide Lantern exiles ALL cards from a GY in one activation — hold it for when their GY is fully loaded, not early.</strong> Soul-Guide Lantern sacrifices to exile an entire GY. Don't fire it after they've discarded two cards. Wait until they've fully loaded their GY with all their recursion targets, then exile the whole thing at once. Timing: use it at the end of your upkeep, before Phoenix's return trigger resolves, if you're in a mirror — exile their GY before Phoenix comes back.</span></li>
+  </ol>
+</div>
+</div>
+
+<!-- CH10 TUNING -->
+<div id="tuning" class="section">
+<div class="content">
+  <span class="section-label">Chapter 10</span>
+  <h1>TUNING<br>NOTES</h1>
+  <div class="mantra">"4 Monument and 4 Moonshadow are locked. Bloodghast and Flail are locked. Everything else adjusts to your expected meta."</div>
+  <div class="card-grid card-grid-3">
+    <div class="card"><div class="card-label">Lock</div><div class="card-title">4 Monument + 4 Moonshadow + 4 Bloodghast + 4 Bloodthorn Flail</div><div class="card-body">These 16 cards are the deck's engine. Monument is the payoff. Moonshadow is the scaling T1 threat. Bloodghast is the free recursive fuel. Bloodthorn Flail is the free discard outlet. Never reduce any below 4.</div></div>
+    <div class="card"><div class="card-label">Flex 3–4</div><div class="card-title">Flamewake Phoenix</div><div class="card-body">3 is correct for most metas. Go to 4 in midrange-heavy fields where your 4-power creature is reliably in play every upkeep. Cut to 2 in aggro-heavy metas where you need more main deck interaction (Tersa Lightshatter counts) rather than recursive threats.</div></div>
+    <div class="card"><div class="card-label">Flex 2–4</div><div class="card-title">Iron-Shield Elf</div><div class="card-body">3 main is the reference. Go to 4 in Monument-centric builds where you want maximum free discard triggers. The indestructible blocker effect is also relevant against creature-heavy fields. Cut to 2 in graveyard-hate-heavy metas where you want faster threats.</div></div>
+    <div class="card"><div class="card-label">Meta Call</div><div class="card-title">Sunspine Lynx (0–2 main)</div><div class="card-body">1 main is the current reference. Go to 2 main in metas where 80%+ of decks run 8+ nonbasics (current Standard is close to this). 0 main if you're expecting Boros energy or Mono-Red (basics-heavy). Never more than 2 main — it's a punisher card, not a proactive threat.</div></div>
+    <div class="card"><div class="card-label">Flex</div><div class="card-title">Inti, Seneschal of the Sun (2–3)</div><div class="card-body">3 is the reference. Cut to 2 in matchups where you want more direct interaction (Bitter Triumph slots). Inti generates card advantage but requires careful tracking. In fast metas where games end T4-5, the impulse draw doesn't have time to generate value — cut to 2 and add Requiting Hex or Tersa Lightshatter.</div></div>
+    <div class="card"><div class="card-label">Consideration</div><div class="card-title">Case of the Crimson Pulse</div><div class="card-body">Currently SB only (2 copies). Move 1 to main in control-heavy metas where the sustained Monument fuel across 10+ turns generates crushing advantage. Don't main it in aggro-heavy metas — it's too slow. 2 SB is the right home for most environments.</div></div>
+  </div>
+</div>
+</div>
+
+<!-- CH11 PREP -->
+<div id="prep" class="section">
+<div class="content">
+  <span class="section-label">Chapter 11</span>
+  <h1>EVENT<br>PREP</h1>
+  <div class="mantra">"Know your Phoenix trigger timing. Know Inti's impulse tracking. Know Sunspine Lynx's nonbasic check."</div>
+  <div class="card-grid card-grid-2">
+    <div class="card"><div class="card-label">Know Cold</div><div class="card-title">Monument Priority: Draw → Damage → Treasure</div><div class="card-body">Internalize this before the event. You will be prompted for Monument's choice dozens of times per round. Default: Draw when hand &lt;3 cards. Damage when hand 3+ cards. Treasure only when you need mana next turn for a specific play. Never take Treasure reflexively — Draw and Damage compound across a game in ways Treasure doesn't.</div></div>
+    <div class="card"><div class="card-label">Know Cold</div><div class="card-title">Flamewake Phoenix Return Check</div><div class="card-body">At the beginning of EACH of your upkeeps: look at your board. Do you control a creature with power 4+? (Moonshadow with 3+ GY permanents, Marauding Mako, Bloodthorn Flail-pumped creature that survived). If yes AND Phoenix is in GY: announce Phoenix return before any other upkeep triggers. If you miss it, the trigger is still there if noticed before the next step. Don't shortcut upkeep — this matters.</div></div>
+    <div class="card"><div class="card-label">Round 1 Tell</div><div class="card-title">T1 Land Read</div><div class="card-body">Forest / Stomping Ground = Mono-Green or Temur → board Requiting Hex. Steam Vents / Botanical Sanctum = Izzet → board Soul-Guide Lantern + Pyroclasm. Breeding Pool / Watery Grave = Dimir → board Sunspine Lynx + Vengeful Possession. Swamp only = Dimir Midrange → board Vengeful Possession. Mountain only = Mono-Red Aggro → board Pyroclasm + keep Iron-Shield Elf for blocking. No nonbasics T1 = Boros or Mono → Sunspine Lynx might miss, check before boarding.</div></div>
+    <div class="card"><div class="card-label">Event Checklist</div><div class="card-title">Pre-Round</div><div class="card-body">Count their nonbasics after G1 — is Sunspine Lynx correct G2? Did they use graveyard recursion G1? → Soul-Guide Lantern G2. Did they have enchantments that mattered? → Requiting Hex G2. Did their creatures have more than 2 toughness on avg? → Pyroclasm is weak, consider Case of the Crimson Pulse instead. Track your own GY carefully — Inti's impulse exile disappears end of next turn.</div></div>
+  </div>
+</div>
+</div>
+
+<footer style="border-top:1px solid var(--rule);padding:24px 80px;display:flex;justify-content:space-between;font-family:'DM Mono',monospace;font-size:10px;color:var(--mid);">
+  <span>Team Resolve &middot; Standard RC Prep 2026</span>
+  <span>Rakdos Monument &mdash; April 2026</span>
+  <span>Hamuda 9-0 MTGO Standard Challenge Feb 1 2026</span>
+</footer>
+
+<script>
+function show(id){
+  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.nav-link').forEach(b=>b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  event.target.classList.add('active');
+  window.scrollTo(0,0);
+}
+function toggle(id){document.getElementById(id).classList.toggle('open');}
+</script>
+<script>
+(function(){
+  const TIP=document.createElement('div');TIP.className='card-tip';
+  TIP.innerHTML='<div class="card-tip-loading">loading...</div>';
+  document.body.appendChild(TIP);
+  const CACHE={};let hideTimer=null;const PAD=24,W=220,H=310;
+  function pos(e){let x=e.clientX+PAD,y=e.clientY-H/2;
+    if(x+W>window.innerWidth)x=e.clientX-W-PAD;if(y<8)y=8;
+    if(y+H>window.innerHeight)y=window.innerHeight-H-8;
+    TIP.style.left=x+'px';TIP.style.top=y+'px';}
+  async function showTip(name,e){
+    clearTimeout(hideTimer);TIP.innerHTML='<div class="card-tip-loading">loading...</div>';
+    TIP.classList.add('visible');pos(e);
+    if(CACHE[name]){TIP.innerHTML=`<img src="${CACHE[name]}" alt="${name}">`;return;}
+    try{const r=await fetch(`https://api.scryfall.com/cards/named?fuzzy=${encodeURIComponent(name)}`);
+      const d=await r.json();const img=d.image_uris?.normal||d.card_faces?.[0]?.image_uris?.normal;
+      if(!img){TIP.classList.remove('visible');return;}
+      CACHE[name]=img;TIP.innerHTML=`<img src="${img}" alt="${name}">`;}
+    catch(err){TIP.classList.remove('visible');}
+  }
+  function hide(){hideTimer=setTimeout(()=>TIP.classList.remove('visible'),80);}
+  document.addEventListener('mouseover',e=>{const el=e.target.closest('span.c');if(!el)return;showTip(el.textContent.trim(),e);});
+  document.addEventListener('mousemove',e=>{if(TIP.classList.contains('visible'))pos(e);});
+  document.addEventListener('mouseout',e=>{if(e.target.closest('span.c'))hide();});
+})();
+</script>
+</body>
+</html>
