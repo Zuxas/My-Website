@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Team Resolve — competitive MTG team roster. Five players grinding Modern toward the Pro Tour." />
-<title>Team Resolve — The Roster</title>
+<meta name="description" content="Team Resolve — competitive MTG team. Who we are, what we play, and what we're working on." />
+<title>Team Resolve — Who We Are</title>
 <link rel="stylesheet" href="styles.css">
 <link rel="icon" href="images/tab32.png" type="image/png">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
@@ -20,6 +20,19 @@
   .team-page { max-width:1100px; margin:0 auto; padding:80px 80px; }
   h2 { font-family:'Bebas Neue',sans-serif; font-size:36px; letter-spacing:0.02em; color:#0e0e0e; margin:56px 0 20px; padding-bottom:8px; border-bottom:2px solid #0e0e0e; }
   p { margin-bottom:16px; color:#0e0e0e; font-weight:300; }
+  .philosophy { border-left:4px solid #C2851F; padding:24px 32px; background:#fdf0dc; margin:32px 0; font-style:italic; font-size:20px; color:#C2851F; line-height:1.5; }
+  .mission-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:#c8bfb0; border:1px solid #c8bfb0; margin:24px 0; }
+  .mission-cell { background:#f2ede6; padding:24px; }
+  .mission-word { font-family:'Bebas Neue',sans-serif; font-size:32px; color:#C2851F; margin-bottom:8px; }
+  .mission-body { font-size:15px; font-weight:300; color:#5a5248; line-height:1.5; }
+  .wip-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:1px; background:#c8bfb0; border:1px solid #c8bfb0; margin:24px 0; }
+  .wip-cell { background:#f2ede6; padding:28px 32px; }
+  .wip-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:#C2851F; margin-bottom:8px; }
+  .wip-title { font-family:'Bebas Neue',sans-serif; font-size:26px; color:#0e0e0e; margin-bottom:10px; }
+  .wip-body { font-size:15px; font-weight:300; color:#5a5248; line-height:1.5; }
+  .wip-status { display:inline-block; margin-top:12px; font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; padding:3px 10px; border:1px solid; }
+  .status-active { color:#2d6a2d; border-color:#2d6a2d; background:rgba(45,106,45,0.08); }
+  .status-prep { color:#C2851F; border-color:#C2851F; background:rgba(194,133,31,0.08); }
   .player-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(320px,1fr)); gap:1px; background:#c8bfb0; border:1px solid #c8bfb0; margin:32px 0; }
   .player-card { background:#f2ede6; padding:40px 32px; text-decoration:none; display:block; position:relative; transition:background 0.2s; }
   .player-card:hover { background:#e8e1d6; }
@@ -28,14 +41,7 @@
   .player-role { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:#5a5248; margin-bottom:16px; }
   .player-bio { font-size:15px; font-weight:300; color:#5a5248; line-height:1.6; margin-bottom:20px; }
   .player-link { font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:#C2851F; }
-  .philosophy { border-left:4px solid #C2851F; padding:24px 32px; background:#fdf0dc; margin:32px 0; font-style:italic; font-size:20px; color:#C2851F; line-height:1.5; }
-  .mission-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:#c8bfb0; border:1px solid #c8bfb0; margin:24px 0; }
-  .mission-cell { background:#f2ede6; padding:24px; }
-  .mission-word { font-family:'Bebas Neue',sans-serif; font-size:32px; color:#C2851F; margin-bottom:8px; }
-  .mission-body { font-size:15px; font-weight:300; color:#5a5248; line-height:1.5; }
-  footer { background:#0e0e0e; color:rgba(242,237,230,0.3); padding:40px 80px; display:flex; justify-content:space-between; align-items:center; }
-  footer span { font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.1em; text-transform:uppercase; }
-  @media (max-width:768px) { .team-header, .team-page, footer { padding-left:24px; padding-right:24px; } .team-title { font-size:48px; } .player-grid, .mission-grid { grid-template-columns:1fr; } }
+  @media (max-width:768px) { .team-header, .team-page, footer { padding-left:24px; padding-right:24px; } .team-title { font-size:48px; } .player-grid, .mission-grid, .wip-grid { grid-template-columns:1fr; } }
 </style>
 </head>
 <body>
@@ -48,12 +54,12 @@
     <li><a href="analyze.html"><i class="fas fa-search"></i> Analyze Deck Lists</a></li>
     <li><a href="deck-guides.html"><i class="fas fa-book"></i> Guides</a></li>
     <li><a href="team.html"><i class="fas fa-users"></i> Team</a></li>
-    </ul>
+  </ul>
 </nav>
 
 <div class="team-header">
   <div class="team-header-inner">
-    <div class="team-eyebrow">Competitive Magic: The Gathering · Modern · 2026</div>
+    <div class="team-eyebrow">Competitive Magic: The Gathering · Modern &amp; Standard · 2026</div>
     <div class="team-title">Team<br><span>Resolve</span></div>
     <div class="team-sub">Five players. One goal. Regional Championship qualification and a path to the Pro Tour. The process is structured, the data is live, and the grind is ongoing.</div>
   </div>
@@ -64,6 +70,8 @@
   <div class="philosophy">"Endure. Adapt. Delve." — The three principles that govern how we prepare, test, and compete.</div>
 
   <h2>The Mission</h2>
+  <p>Team Resolve exists to compete at the highest level of local and regional Magic: The Gathering. Every decision we make — deck selection, sideboard construction, event scheduling — runs through a structured preparation process backed by real match data. The goal is Pro Tour qualification. The process is what gets us there.</p>
+
   <div class="mission-grid">
     <div class="mission-cell">
       <div class="mission-word">Endure</div>
@@ -79,14 +87,46 @@
     </div>
   </div>
 
+  <h2>What We're Working On</h2>
+  <p>The new Modern season is kicking off. Here's where the team's focus is right now.</p>
+
+  <div class="wip-grid">
+    <div class="wip-cell">
+      <div class="wip-label">Season Prep</div>
+      <div class="wip-title">Modern Gauntlet Build</div>
+      <div class="wip-body">Building and running structured gauntlets against the top 8 expected archetypes for the new RC season. Boros Energy, Izzet Affinity, Jeskai Blink, and Eldrazi Tron are the pillars we're testing around. Win rates tracked across sessions before any deck gets locked.</div>
+      <span class="wip-status status-active">Active</span>
+    </div>
+    <div class="wip-cell">
+      <div class="wip-label">Site</div>
+      <div class="wip-title">Playbook Coverage — 44 Decks</div>
+      <div class="wip-body">Full playbook coverage across Modern, Standard, and Pioneer. Every playbook includes matchup guides, sideboard plans with exact ins and outs, sequencing heuristics, tuning notes, and a printable event prep sheet. All 44 are live and updated for April 2026 meta numbers.</div>
+      <span class="wip-status status-active">Live</span>
+    </div>
+    <div class="wip-cell">
+      <div class="wip-label">Tools</div>
+      <div class="wip-title">MTG Meta Analyzer</div>
+      <div class="wip-body">Custom Python tool tracking archetype performance across 100+ tournaments. Feeds the live meta table on this site. Pulls deck frequency, win rates, and trend data to inform gauntlet construction and deck selection before each event cycle.</div>
+      <span class="wip-status status-active">Running</span>
+    </div>
+    <div class="wip-cell">
+      <div class="wip-label">Next Event</div>
+      <div class="wip-title">RC Qualification Push</div>
+      <div class="wip-body">Regional Championship qualification is the immediate target for the new season. Identifying the right events, locking 75-card configurations no later than the week before, and completing full matchup prep guides before registration. No flex slots left undecided the morning of.</div>
+      <span class="wip-status status-prep">In Prep</span>
+    </div>
+  </div>
+
+
   <h2>The Roster</h2>
+
   <div class="player-grid">
 
     <a class="player-card" href="zuxas.html">
       <div class="player-accent" style="background:#C2851F;"></div>
       <div class="player-handle">Zuxas</div>
-      <div class="player-role">Captain · Modern & Standard</div>
-      <div class="player-bio">Jermey Wallace. Navy veteran, husband, father. Five-time RC qualifier across formats. 23 RCQ Top 8s last Standard season on Dimir Midrange. 17 last Modern season on Boros Energy. Primary author of all Team Resolve playbooks and the MTG Meta Analyzer — a custom Python tool tracking archetype performance across 100+ tournaments. Pet deck: 5-Color Humans.</div>
+      <div class="player-role">Captain · Modern &amp; Standard</div>
+      <div class="player-bio">Five-time RC qualifier across formats. 23 RCQ Top 8s last Standard season. 17 last Modern season on Boros Energy. Primary author of all Team Resolve playbooks and the MTG Meta Analyzer. Favors midrange and aggressive tempo strategies — decks that apply pressure while maintaining interaction. Plays the meta, not the favorite. If Boros Energy is the right call, it gets sleeved. If something else is better, that goes to the table instead.</div>
       <div class="player-link">View Profile →</div>
     </a>
 
@@ -102,7 +142,7 @@
       <div class="player-accent" style="background:#1a3a5c;"></div>
       <div class="player-handle">Urbae</div>
       <div class="player-role">Garrison · Control · Best Stock List</div>
-      <div class="player-bio">Garrison doesn't fall in love with decks — he falls in love with correct decisions. Brick-and-mortar control player who will sleeve up the best stock list in any format without hesitation. If the meta calls for blue-white control, that's what he brings. If it calls for something else, he'll play that instead. The skill is in reading the meta correctly and executing without deviation.</div>
+      <div class="player-bio">Garrison doesn't fall in love with decks — he falls in love with correct decisions. Brick-and-mortar control player who will sleeve up the best stock list in any format without hesitation. The skill is in reading the meta correctly and executing without deviation.</div>
       <div class="player-link">View Profile →</div>
     </a>
 
@@ -110,7 +150,7 @@
       <div class="player-accent" style="background:#1a4a2a;"></div>
       <div class="player-handle">Tien</div>
       <div class="player-role">Tien · Greedy Combo · "Just Cut a Land"</div>
-      <div class="player-bio">Tien is a greedy combo gamer. His advice on any mana problem: just cut a land. He knows the fastest theoretical kill turn of every combo deck in the format and exactly how many more lands he needs to go off. He is always one land short. The upside: deep mechanical knowledge of stack interactions, timing windows, and combo sequencing at a level most players never develop. When the deck works, it's untouchable.</div>
+      <div class="player-bio">Tien is a greedy combo gamer. His advice on any mana problem: just cut a land. He knows the fastest theoretical kill turn of every combo deck in the format and exactly how many more lands he needs to go off. He is always one land short. The upside: deep mechanical knowledge of stack interactions, timing windows, and combo sequencing at a level most players never develop.</div>
       <div class="player-link">View Profile →</div>
     </a>
 
