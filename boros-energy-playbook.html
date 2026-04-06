@@ -1568,32 +1568,6 @@ function toggleDeep(header) {
 </script>
 <script src="matchup-data-loader.js"></script>
 <script src="card-tooltips.js"></script>
-<script>
-(function(){
-  const TIP=document.createElement('div');TIP.className='card-tip';
-  TIP.innerHTML='<div class="card-tip-loading">loading...</div>';
-  document.body.appendChild(TIP);
-  const CACHE={};let hideTimer=null;
-  function pos(e){const PAD=24,W=220,H=310;let x=e.clientX+PAD,y=e.clientY-H/2;
-    if(x+W>window.innerWidth)x=e.clientX-W-PAD;if(y<8)y=8;
-    if(y+H>window.innerHeight)y=window.innerHeight-H-8;
-    TIP.style.left=x+'px';TIP.style.top=y+'px';}
-  async function showTip(name,e){
-    clearTimeout(hideTimer);TIP.innerHTML='<div class="card-tip-loading">loading...</div>';
-    TIP.classList.add('visible');pos(e);
-    if(CACHE[name]){TIP.innerHTML=`<img src="${CACHE[name]}" alt="${name}">`;return;}
-    try{const r=await fetch(`https://api.scryfall.com/cards/named?fuzzy=${encodeURIComponent(name)}`);
-      if(!r.ok){TIP.classList.remove('visible');return;}
-      const d=await r.json();const img=d.image_uris?.normal||d.card_faces?.[0]?.image_uris?.normal;
-      if(!img){TIP.classList.remove('visible');return;}
-      CACHE[name]=img;TIP.innerHTML=`<img src="${img}" alt="${name}">`;}
-    catch(err){TIP.classList.remove('visible');}
-  }
-  function hide(){hideTimer=setTimeout(()=>TIP.classList.remove('visible'),80);}
-  document.addEventListener('mouseover',e=>{const el=e.target.closest('span.c');if(!el)return;showTip(el.textContent.trim(),e);});
-  document.addEventListener('mousemove',e=>{if(TIP.classList.contains('visible'))pos(e);});
-  document.addEventListener('mouseout',e=>{if(e.target.closest('span.c'))hide();});
-})();
-</script>
+
 </body>
 </html>
