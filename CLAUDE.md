@@ -1,11 +1,11 @@
 # CLAUDE.md — Team Resolve Project State
-*Last updated: April 5, 2026 — commit 5957225*
+*Last updated: April 7, 2026 — commit 75a9296*
 
 ## PROJECT
 - Live: https://zuxas.github.io/TeamResolve/
 - Repo: Zuxas/TeamResolve, branch: main
 - Local: E:\vscode ai project\My-Website\
-- Current commit: 5957225
+- Current commit: 75a9296
 
 ## SITE — 44 PLAYBOOKS, ALL COMPLETE
 Modern (17): amulet-titan, boros-energy, dimir-oculus, domain-zoo, eldrazi-tron,
@@ -21,23 +21,44 @@ Pioneer (11): UR Cutter, Greasefang, RDW, Selesnya Company, UW Control,
 Arclight Phoenix, Lotus Field, Izzet Creativity, Niv-Mizzet Reborn,
 Rakdos Boomer, Mono-White Humans
 
+## LDXP SEA26 AUDIT — ALL 8 QUEUE DECKS PASS (April 7, 2026)
+Criteria: SB plans>=10 balanced, card entries>=6, print-mu grid present
+Domain Zoo:       PASS | plans=11, cards=17, print-mu=✅, balance=✅
+Eldrazi Tron:     PASS | plans=12, cards=16, print-mu=✅, balance=✅
+Glockulous:       PASS | plans=11, cards=16, print-mu=✅, balance=✅
+Jeskai Blink:     PASS | plans=11, cards=18, print-mu=✅, balance=✅
+Living End:       PASS | plans=11, cards=16, print-mu=✅, balance=✅
+Neoform:          PASS | plans=11, cards=20, print-mu=✅, balance=✅
+Izzet Prowess:    PASS | plans=11, cards=17, print-mu=✅, balance=✅
+Golgari Yawgmoth: PASS | plans=11, cards=16, print-mu=✅, balance=✅
+
+## INDEX.HTML — COMPLETE (April 7, 2026)
+All visual fixes committed:
+- Logo: tight-cropped transparent PNG (brightness-as-alpha)
+- Hero: outside main, renders against body bg image
+- Stat bar: count-up animation on scroll, 44/3/5/40
+- Cards: glassmorphic, high contrast bg rgba(20,24,40,0.85)
+- Conclusion: white text var(--text), gold CTA link var(--gold)
+- Footer: spans at var(--text-muted), dark navy bg
+- Back-to-top: z-index 9999, bottom-left, no footer clip
+- Tab title: &mdash; entity (renders as —)
+- Section spacing: 28px margins throughout
+
 ## QUALITY — 44/44 PASSING ALL CRITERIA
 div=0, lines>=800, ratio>=1.4, SB>=9 entries, tuning>=3 entries,
 prep: print-mu + checklist + testing + matchday, SB plans>=10 balanced
 
 ## RECENT COMMITS
-ea59544 — Matchup depth expansion (7 thin files)
-167216d — Meta refresh (modern-meta.json + meta.html + glockulous SB)
-e16d412 — deck-guides meta % refresh + copyright year fixes
-919cf96 — Tuning expansion (5 playbooks)
-96128a9 — Tuning expansion (11 more playbooks)
-5957225 — SB tab expansion: 19 files to 9+ entries [CURRENT]
+75a9296 — index: fix inline style conclusion color + link to gold [CURRENT]
+aba28d6 — index: fix footer + conclusion visibility, gold CTA link
+3c08bae — index: increase card contrast, tighten column + card padding
+0aec7d8 — index: tighten section spacing, fix dead grey space
+dd07bad — index: fix tab title encoding, back-to-top z-index
 
 ## NEXT OPTIONS
-1. Matchup depth: 7 Pioneer files at ~155 MU lines (passing but could be richer)
-2. SB entries: some files at exactly 9, could push to 10+
-3. Ratio buffer: a few files at exactly 1.4
-4. New decks: monitor for new archetypes crossing 2% in any format
+1. Apply meta % updates to Standard playbooks (numbers captured April 5)
+2. Matchup depth: 7 Pioneer files at ~155 MU lines (passing but could be richer)
+3. Monitor for new archetypes crossing 2% in any format
 
 ## META (April 5, 2026)
 Modern (mtgdecks.net): Boros Energy 16.37%, Izzet Affinity 8.68%, Jeskai Blink 7.60%,
@@ -53,4 +74,6 @@ Jeskai Control 2.48%, Boros Dragons 2.42%, Temur Landfall 2.11%, Bant Rhythm 1.9
 ## TECHNICAL
 - Scripts: write _a.py, run via DC start_process powershell, delete after
 - Commit: git add -A ; git commit -m "..." ; git push origin main (25s timeout)
-- Keep sessions short — one commit per session to avoid context window errors
+- Encoding: open files with encoding='utf-8', use sys.stdout.reconfigure(encoding='utf-8')
+- SB balance bug: regex r'sb-out[^>]*>.*?(\d+)' is BUGGY — use row-by-row parsing instead
+- Index inline styles override styles.css — always check both when color isn't applying
