@@ -224,25 +224,6 @@
   }
   .browse-link:hover { color: var(--text); gap: 12px; }
 
-  /* ── STAGGER FADE-IN ── */
-  .fade-card {
-    opacity: 0;
-    transform: translateY(16px);
-    transition: opacity 0.4s ease, transform 0.4s ease;
-  }
-  .fade-card.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  /* ── STAT COUNT-UP ── */
-  .stat-num {
-    transition: color 0.3s;
-  }
-  .stat-bar.counted .stat-num {
-    color: var(--gold);
-  }
-
   /* ── NAV ACTIVE ── */
   .main-nav ul li a.active {
     color: var(--text) !important;
@@ -465,19 +446,7 @@ if (statBar) {
   obs.observe(statBar);
 }
 
-// STAGGER FADE-IN — only if IntersectionObserver available and no reduced motion
-if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-  document.querySelectorAll('.card').forEach(function(card, i) {
-    card.classList.add('fade-card');
-    card.style.transitionDelay = (i % 4) * 80 + 'ms';
-  });
-  var cardObs = new IntersectionObserver(function(entries) {
-    entries.forEach(function(e) {
-      if (e.isIntersecting) { e.target.classList.add('visible'); cardObs.unobserve(e.target); }
-    });
-  }, { threshold: 0.05, rootMargin: '0px 0px 0px 0px' });
-  document.querySelectorAll('.fade-card').forEach(function(c) { cardObs.observe(c); });
-}
+
 </script>
 </body>
 </html>
