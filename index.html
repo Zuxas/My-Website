@@ -22,31 +22,23 @@
     font-family: 'Chakra Petch', sans-serif;
   }
 
-  /* ── HERO ── */
+  /* Hero: sits outside .column, renders directly on background image */
   .hero-section {
     text-align: center;
-    padding: 24px 0 40px;
-    margin-bottom: 0;
-    position: relative;
+    padding: 32px 40px 40px;
+    background: transparent;
+    border: none;
   }
   .hero-logo {
     width: 100%;
-    max-width: 620px;
+    max-width: 580px;
     height: auto;
     display: block;
     margin: 0 auto 24px;
-    background: none;
+    background: transparent;
+    border-radius: 0;
     filter: drop-shadow(0 0 40px rgba(101,188,213,0.5));
     transition: filter 0.3s ease;
-  }
-  /* Kill any inherited card/panel background on hero section */
-  .hero-section, .hero-section * {
-    background-color: transparent !important;
-    border: none !important;
-    box-shadow: none !important;
-  }
-  .hero-section img {
-    border-radius: 0 !important;
   }
   .hero-logo:hover {
     filter: drop-shadow(0 0 60px rgba(101,188,213,0.75));
@@ -260,14 +252,16 @@
     </nav>
 
     <main class="fade-in-top-to-bottom">
-        <section id="top" class="column">
 
-            <!-- HERO -->
-            <section class="hero-section">
-                <img src="images/team-resolve-logo.png" alt="Team Resolve" class="hero-logo">
-                <p class="hero-sub">A competitive Magic: The Gathering team focused on Modern, Standard, and Pioneer. We build the deepest playbooks in each format, run full gauntlet testing before every RC, and share everything we learn publicly.</p>
-                <p class="hero-tagline">Five players. One goal. <strong>Regional Championship qualification and a path to the Pro Tour.</strong></p>
-            </section>
+        <!-- HERO: outside the column panel so background shows through -->
+        <section class="hero-section" id="top">
+            <img src="images/team-resolve-logo.png" alt="Team Resolve" class="hero-logo">
+            <p class="hero-sub">A competitive Magic: The Gathering team focused on Modern, Standard, and Pioneer. We build the deepest playbooks in each format, run full gauntlet testing before every RC, and share everything we learn publicly.</p>
+            <p class="hero-tagline">Five players. One goal. <strong>Regional Championship qualification and a path to the Pro Tour.</strong></p>
+        </section>
+
+        <section class="column">
+            <div id="top-anchor"></div>
 
             <!-- STAT BAR -->
             <div class="stat-bar">
