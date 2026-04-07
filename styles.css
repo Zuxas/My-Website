@@ -512,8 +512,8 @@ footer p, footer span {
 /* ── BACK TO TOP ── */
 .back-to-top {
     position: fixed;
-    bottom: 16px;
-    left: 16px;
+    bottom: 24px;
+    left: 24px;
     padding: 8px 16px;
     background: var(--accent);
     color: var(--bg-dark);
@@ -523,12 +523,17 @@ footer p, footer span {
     letter-spacing: 0.1em;
     text-transform: uppercase;
     text-decoration: none;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-    transition: background 0.2s, color 0.2s;
-    z-index: 500;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+    transition: background 0.2s, color 0.2s, transform 0.2s;
+    z-index: 9999;
 }
 
-.back-to-top:hover { background: var(--accent-hover); color: var(--text); text-decoration: none; }
+.back-to-top:hover {
+    background: var(--accent-hover);
+    color: var(--text);
+    text-decoration: none;
+    transform: translateY(-2px);
+}
 
 /* ── ANIMATIONS ── */
 @keyframes fadeInTopToBottom {
