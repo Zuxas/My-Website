@@ -183,7 +183,14 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
     backdrop-filter: blur(4px);
 }
 
-/* ── CARD GRID ── */
+/* ── HERO OVERRIDE: full viewport width ── */
+.hero-section {
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    box-sizing: border-box;
+}
 .card-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
