@@ -224,6 +224,31 @@
   }
   .browse-link:hover { color: var(--text); gap: 12px; }
 
+  /* ── STAGGER FADE-IN ── */
+  .fade-card {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+  }
+  .fade-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ── STAT COUNT-UP ── */
+  .stat-num {
+    transition: color 0.3s;
+  }
+  .stat-bar.counted .stat-num {
+    color: var(--gold);
+  }
+
+  /* ── NAV ACTIVE ── */
+  .main-nav ul li a.active {
+    color: var(--text) !important;
+    border-bottom-color: var(--accent) !important;
+  }
+
   @media (max-width: 768px) {
     .stat-bar { flex-wrap: wrap; }
     .stat-item { min-width: 50%; border-bottom: 1px solid rgba(101,188,213,0.1); }
@@ -412,6 +437,51 @@
         <span>&copy; 2026</span>
     </footer>
 
+
+<script>
+// NAV ACTIVE STATE
+document.querySelector('.main-nav a[href="index.html"]').classList.add('active');
+
+// STAT COUNT-UP ON SCROLL
+function countUp(el, target, duration) {
+  var start = 0, step = target / (duration / 16);
+  var timer = setInterval(function() {
+    start += step;
+    if (start >= target) { el.textContent = target; clearInterval(timer); return; }
+    el.textContent = Math.floor(start);
+  }, 16);
+}
+var statBar = document.querySelector('.stat-bar');
+if (statBar) {
+  var nums = statBar.querySelectorAll('.stat-num');
+  var targets = Array.from(nums).map(function(n) { return parseInt(n.textContent); });
+  var counted = false;
+  var obs = new IntersectionObserver(function(entries) {
+    if (entries[0].isIntersecting && !counted) {
+      counted = true;
+      nums.forEach(function(el, i) { el.textContent = '0'; countUp(el, targets[i], 800); });
+    }
+  }, { threshold: 0.5 });
+  obs.observe(statBar);
+}
+
+// STAGGER FADE-IN
+document.querySelectorAll('.card').forEach(function(card, i) {
+  card.classList.add('fade-card');
+  card.style.transitionDelay = (i % 4) * 80 + 'ms';
+});
+var cardObs = new IntersectionObserver(function(entries) {
+  entries.forEach(function(e) {
+    if (e.isIntersecting) { e.target.classList.add('visible'); cardObs.unobserve(e.target); }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.fade-card').forEach(function(c) { cardObs.observe(c); });
+
+// REDUCED MOTION
+if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  document.querySelectorAll('.fade-card').forEach(function(c) { c.classList.add('visible'); c.style.transitionDelay = '0ms'; });
+}
+</script>
 </body>
 </html>
 
