@@ -35,8 +35,18 @@
     height: auto;
     display: block;
     margin: 0 auto 24px;
+    background: none;
     filter: drop-shadow(0 0 40px rgba(101,188,213,0.5));
     transition: filter 0.3s ease;
+  }
+  /* Kill any inherited card/panel background on hero section */
+  .hero-section, .hero-section * {
+    background-color: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+  }
+  .hero-section img {
+    border-radius: 0 !important;
   }
   .hero-logo:hover {
     filter: drop-shadow(0 0 60px rgba(101,188,213,0.75));
