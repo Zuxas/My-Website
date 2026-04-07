@@ -25,37 +25,37 @@
   /* ── HERO ── */
   .hero-section {
     text-align: center;
-    padding: 56px 0 64px;
+    padding: 24px 0 40px;
     margin-bottom: 0;
     position: relative;
   }
   .hero-logo {
     width: 100%;
-    max-width: 520px;
+    max-width: 620px;
     height: auto;
     display: block;
-    margin: 0 auto 32px;
-    filter: drop-shadow(0 0 32px rgba(101,188,213,0.35));
+    margin: 0 auto 24px;
+    filter: drop-shadow(0 0 40px rgba(101,188,213,0.5));
     transition: filter 0.3s ease;
   }
   .hero-logo:hover {
-    filter: drop-shadow(0 0 48px rgba(101,188,213,0.55));
+    filter: drop-shadow(0 0 60px rgba(101,188,213,0.75));
   }
   .hero-sub {
-    max-width: 620px;
-    margin: 0 auto 14px;
-    font-size: 15px;
+    max-width: 580px;
+    margin: 0 auto 12px;
+    font-size: 14px;
     line-height: 1.8;
     color: var(--text-muted);
     font-weight: 300;
   }
   .hero-tagline {
-    max-width: 620px;
-    margin: 0 auto 40px;
-    font-size: 13px;
+    max-width: 580px;
+    margin: 0 auto 32px;
+    font-size: 11px;
     color: var(--text-dim);
     font-family: 'DM Mono', monospace;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
   }
   .hero-tagline strong { color: var(--gold); font-weight: 500; }
@@ -65,25 +65,28 @@
     display: flex;
     justify-content: center;
     gap: 0;
-    border-top: 1px solid rgba(101,188,213,0.15);
-    border-bottom: 1px solid rgba(101,188,213,0.15);
-    margin-bottom: 64px;
-    background: rgba(0,0,0,0.2);
+    border: 1px solid rgba(101,188,213,0.2);
+    border-radius: 6px;
+    margin-bottom: 56px;
+    background: rgba(0,0,0,0.25);
+    backdrop-filter: blur(8px);
+    overflow: hidden;
   }
   .stat-item {
     flex: 1;
     max-width: 220px;
-    padding: 24px 16px;
+    padding: 20px 16px;
     text-align: center;
     border-right: 1px solid rgba(101,188,213,0.1);
   }
   .stat-item:last-child { border-right: none; }
   .stat-num {
     font-family: 'Russo One', sans-serif;
-    font-size: 36px;
+    font-size: 40px;
     color: var(--gold);
     line-height: 1;
     margin-bottom: 6px;
+    text-shadow: 0 0 20px rgba(212,168,75,0.4);
   }
   .stat-label {
     font-family: 'DM Mono', monospace;
@@ -98,18 +101,19 @@
     display: flex;
     align-items: center;
     gap: 16px;
-    margin: 0 0 28px;
+    margin: 0 0 24px;
   }
   .section-header h2 {
-    font-size: 22px;
+    font-size: 20px;
     color: var(--text);
     margin: 0;
+    white-space: nowrap;
   }
   .section-header::after {
     content: '';
     flex: 1;
     height: 1px;
-    background: linear-gradient(to right, rgba(101,188,213,0.3), transparent);
+    background: linear-gradient(to right, rgba(101,188,213,0.4), transparent);
   }
   .section-eyebrow {
     font-family: 'DM Mono', monospace;
@@ -117,18 +121,22 @@
     letter-spacing: 0.25em;
     text-transform: uppercase;
     color: var(--accent);
-    margin-bottom: 10px;
+    margin-bottom: 8px;
   }
 
-  /* ── CARDS upgrade ── */
+  /* ── CARDS: glassmorphic upgrade ── */
   .card {
     cursor: pointer;
-    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    background: rgba(30,35,55,0.6) !important;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(101,188,213,0.12) !important;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease, background 0.2s ease;
   }
   .card:hover {
     transform: translateY(-3px);
-    box-shadow: 0 8px 32px rgba(0,0,0,0.4), 0 0 0 1px rgba(101,188,213,0.25);
-    border-color: rgba(101,188,213,0.3);
+    background: rgba(40,48,72,0.75) !important;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.5), 0 0 0 1px rgba(101,188,213,0.3);
+    border-color: rgba(101,188,213,0.3) !important;
   }
   a.card { text-decoration: none; }
 
@@ -162,20 +170,21 @@
     content: '';
     position: absolute;
     top: 0; left: 0;
-    width: 100%; height: 3px;
+    width: 100%; height: 2px;
     background: linear-gradient(90deg, var(--accent), transparent);
     opacity: 0;
     transition: opacity 0.2s;
   }
   .player-card:hover::before { opacity: 1; }
 
-  /* ── RESULTS ── */
+  /* ── RESULTS: big number style ── */
   .result-card .card-num {
     font-family: 'Russo One', sans-serif;
-    font-size: 48px;
+    font-size: 52px;
     line-height: 1;
     color: var(--gold);
     margin-bottom: 4px;
+    text-shadow: 0 0 24px rgba(212,168,75,0.35);
   }
 
   /* ── CONCLUSION ── */
@@ -202,7 +211,7 @@
   .conclusion-section a:hover { color: var(--text); border-color: var(--text); }
 
   /* ── SECTION SPACING ── */
-  .index-section { margin-bottom: 56px; }
+  .index-section { margin-bottom: 52px; }
 
   /* ── BROWSE LINK ── */
   .browse-link {
@@ -223,7 +232,7 @@
   @media (max-width: 768px) {
     .stat-bar { flex-wrap: wrap; }
     .stat-item { min-width: 50%; border-bottom: 1px solid rgba(101,188,213,0.1); }
-    .hero-logo { max-width: 340px; }
+    .hero-logo { max-width: 360px; }
   }
 </style>
 </head>
