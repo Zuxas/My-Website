@@ -1,0 +1,1365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" href="../images/tab32.png" type="image/png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eldrazi Tron — Team Resolve Playbook</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+  html { overflow-y: scroll; }
+  /* ═══ B2B SERVICE PALETTE — UI UX Pro Max Row 5 ═══ */
+  /* pri=#0F172A acc=#0369A1 bg=#F8FAFC fg=#020617 */
+  :root { --ink:#0e0e0e; --paper:#f2ede6; --paper-dark:#e8e1d6; --rule:#c8bfb0; --primary:#03050a; --accent:#0369A1; --accent-light:rgba(3,105,161,0.15); --danger:#8f1a1a; --danger-light:rgba(143,26,26,0.12); --gold:#0369A1; --gold-light:rgba(3,105,161,0.15); --mid:#5a5248; --card:#ffffff; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:var(--paper); color:var(--ink); font-family:'Crimson Pro',Georgia,serif; font-size:17px; line-height:1.6; }
+  .header-band { background:var(--primary); border-bottom:3px solid var(--accent); padding:48px 80px 40px;position:relative;overflow:hidden;}
+  .header-band { color: #f1f5f9; }
+  .header-band,.header-band *{color:#f1f5f9;}
+  .header-band p, .header-band span, .header-band div { color: #f1f5f9; }
+
+  .header-inner { max-width:1080px; margin:0 auto; display:flex; justify-content:space-between; align-items:flex-end; gap:40px; }
+  .header-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:rgba(248,250,252,0.35); margin-bottom:8px; }
+  .header-title{font-family:'DM Mono',monospace;font-size:clamp(32px,4vw,52px);font-weight:500;letter-spacing:0.06em;line-height:1.05;text-transform:uppercase;}
+  .header-title span{color:var(--accent);}
+  .header-tagline { font-family:'Crimson Pro',serif; font-style:italic; font-size:15px; color:rgba(248,250,252,0.4); margin-top:8px; }
+  .header-right { display:flex; flex-direction:column; gap:8px; text-align:right; padding-bottom:4px; }
+  .header-stat { display:flex; gap:12px; align-items:center; justify-content:flex-end; }
+  .hs-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; color:rgba(248,250,252,0.3); }
+  .hs-val { font-family:'DM Mono',monospace; font-size:12px; color:var(--paper); }
+  nav { position:sticky; top:0; z-index:100; background:var(--primary); border-bottom:2px solid var(--accent); padding:0 80px; display:flex; align-items:center; gap:0; overflow-x:auto; scrollbar-width:none; }
+  nav::-webkit-scrollbar { display:none; }
+  .nav-brand { font-family:'Bebas Neue',sans-serif; font-size:18px; color:#A78BFA; letter-spacing:0.05em; margin-right:40px; white-space:nowrap; padding:16px 0;  color:var(--accent); }
+  .nav-link { font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:rgba(248,250,252,0.55); padding:20px 16px; cursor:pointer; white-space:nowrap; border-bottom:2px solid transparent; transition:all 0.2s; background:none; border-top:none; border-left:none; border-right:none; }
+  .nav-link:hover, .nav-link.active { color:rgba(248,250,252,1); border-bottom-color:#475569; }
+  .page { max-width:1100px; margin:0 auto; padding:80px 80px; }
+  .section { display:none; animation:fadeIn 0.3s ease; }
+  .section.active { display:block; }
+  @keyframes fadeIn { from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:translateY(0);} }
+  .section-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.25em; text-transform:uppercase; color:var(--mid); margin-bottom:8px; }
+  h1 { font-family:'Bebas Neue',sans-serif; font-size:64px; line-height:0.9; letter-spacing:0.01em; color:var(--ink); margin-bottom:40px; }
+  h2 { font-family:'Bebas Neue',sans-serif; font-size:36px; letter-spacing:0.02em; color:var(--ink); margin:56px 0 20px; padding-bottom:8px; border-bottom:2px solid var(--ink); }
+  h3 { font-family:'DM Mono',monospace; font-size:12px; letter-spacing:0.15em; text-transform:uppercase; color:var(--accent); margin:32px 0 12px; }
+  p { margin-bottom:16px; color:var(--ink); font-weight:300; }
+  strong { font-weight:600; }
+  em { font-style:italic; color:var(--mid); }
+  .mantra { border-left:4px solid var(--accent); padding:24px 32px; background:var(--accent-light); margin:32px 0; font-style:italic; font-size:20px; color:var(--accent); line-height:1.5; }
+  .card-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); gap:1px; background:var(--rule); border:1px solid var(--rule); margin:24px 0; }
+  .card-grid-2 { grid-template-columns:repeat(2,1fr) !important; }
+  .card-grid-3 { grid-template-columns:repeat(3,1fr) !important; }
+  .card { background:var(--paper); padding:24px; }
+  .card:hover { background:var(--paper-dark); }
+  .card-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--mid); margin-bottom:8px; }
+  .card-title { font-family:'Bebas Neue',sans-serif; font-size:22px; letter-spacing:0.03em; color:var(--ink); margin-bottom:8px; }
+  .card-body { font-size:15px; font-weight:300; color:var(--mid); line-height:1.5; }
+  .decklist { display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--rule); border:1px solid var(--rule); margin:24px 0; }
+  .dl-section { background:var(--paper); padding:24px; }
+  .dl-section-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--mid); margin-bottom:16px; }
+  .dl-group { margin-bottom:20px; }
+  .dl-group-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; color:var(--ink); background:var(--paper-dark); padding:4px 8px; margin-bottom:8px; display:inline-block; }
+  .dl-card-row { display:flex; justify-content:space-between; align-items:baseline; padding:3px 0; border-bottom:1px solid rgba(200,191,176,0.3); font-size:15px; font-weight:300; }
+  .dl-card-row:last-child { border-bottom:none; }
+  .dl-qty { font-family:'DM Mono',monospace; font-size:12px; color:var(--mid); flex-shrink:0; margin-left:8px; }
+  .matchup-table { width:100%; border-collapse:collapse; margin:24px 0; table-layout:fixed; }
+  .matchup-table colgroup col:nth-child(1) { width:42%; }
+  .matchup-table colgroup col:nth-child(2) { width:16%; }
+  .matchup-table colgroup col:nth-child(3) { width:16%; }
+  .matchup-table colgroup col:nth-child(4) { width:26%; }
+  .matchup-table th { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; padding:10px 16px; background:var(--ink); color:rgba(248,250,252,0.6); text-align:left; }
+  .matchup-table td { padding:12px 16px; border-bottom:1px solid var(--rule); font-size:15px; font-weight:300; }
+  .matchup-table tr:hover td { background:var(--paper-dark); cursor:pointer; }
+    .matchup-detail { display:none; border:1px solid var(--rule); background:var(--paper-dark); padding:32px 40px; margin:0 0 2px; animation:fadeIn 0.2s ease; }
+
+  .matchup-detail.open { display:block; }
+  .verdict { display:inline-block; font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; padding:4px 10px; border:1px solid; }
+  .verdict-dog { background:var(--danger-light); color:var(--danger); border-color:var(--danger); }
+  .verdict-even { background:var(--gold-light); color:var(--gold); border-color:var(--gold); }
+  .verdict-favor { background:#e8f5e9; color:#1a6b1a; border-color:#1a6b1a; }
+  .verdict-hard { background:var(--danger-light); color:var(--danger); border-color:var(--danger); }
+  .sb-col { background:var(--paper); padding:20px; }
+    .sb-item { font-size:13px; font-weight:300; padding:4px 0; border-bottom:1px solid rgba(200,191,176,0.2); }
+  .sb-col-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--mid); margin-bottom:12px; }
+  .sb-table { display:flex; gap:1px; background:var(--rule); border:1px solid var(--rule); margin:16px 0; }
+  .sb-table th { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; padding:8px 12px; background:var(--paper-dark); color:var(--mid); text-align:left; border-bottom:2px solid var(--rule); }
+  .sb-table td { padding:10px 12px; border-bottom:1px solid var(--rule); font-size:14px; font-weight:300; }
+  .sb-out { color:var(--danger); font-family:'DM Mono',monospace; font-size:12px; }
+  .sb-in { color:#1a6b1a; font-family:'DM Mono',monospace; font-size:12px; }
+  .sb-note { font-size:13px; font-weight:300; color:var(--mid); font-style:italic; margin-top:6px; }
+  .sb-card-guide { border:1px solid var(--rule); margin:24px 0; }
+  .sb-guide-row { display:grid; grid-template-columns:180px 1fr; gap:0; border-bottom:1px solid var(--rule); }
+  .sb-guide-row:last-child { border-bottom:none; }
+  .sb-guide-name { font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.08em; text-transform:uppercase; padding:16px; background:var(--paper-dark); color:var(--ink); border-right:1px solid var(--rule); display:flex; align-items:flex-start; }
+  .sb-guide-body { padding:16px; font-size:14px; font-weight:300; line-height:1.6; color:var(--mid); }
+  .role-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--rule); border:1px solid var(--rule); margin:24px 0; }
+  .role-card { background:var(--paper); padding:24px; }
+  .role-name { font-family:'Bebas Neue',sans-serif; font-size:28px; letter-spacing:0.02em; margin-bottom:8px; }
+  .role-name-primary { color:var(--accent); }
+  .role-name-secondary { color:var(--gold); }
+  .role-name-tertiary { color:var(--mid); }
+  .role-desc { font-size:14px; font-weight:300; color:var(--mid); line-height:1.5; margin-bottom:12px; }
+  .role-matchups { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.1em; text-transform:uppercase; color:var(--mid); }
+  .engine-block { border:1px solid var(--rule); margin:32px 0; }
+  .engine-header { background:var(--ink); padding:20px 24px; display:flex; align-items:center; gap:16px; }
+  .engine-letter { font-family:'Bebas Neue',sans-serif; font-size:40px; color:#A78BFA; line-height:1; }
+  .engine-name { font-family:'Bebas Neue',sans-serif; font-size:24px; color:var(--paper); letter-spacing:0.03em; }
+  .engine-body { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--rule); }
+  .engine-step { background:var(--paper); padding:20px; }
+  .engine-step-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--mid); margin-bottom:6px; }
+  .engine-step-title { font-family:'Bebas Neue',sans-serif; font-size:20px; color:var(--ink); margin-bottom:8px; }
+  .engine-step-body { font-size:14px; font-weight:300; color:var(--mid); line-height:1.5; }
+  .tricks-list { list-style:none; margin:0; padding:0; border:1px solid var(--rule); }
+  .tricks-list li { padding:14px 20px; border-bottom:1px solid var(--rule); font-size:15px; font-weight:300; padding-left:36px; position:relative; }
+  .tricks-list li:last-child { border-bottom:none; }
+  .tricks-list li::before { content:"▸"; position:absolute; left:14px; color:var(--accent); }
+  .tuning-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--rule); border:1px solid var(--rule); margin:24px 0; }
+  .tuning-card { background:var(--paper); padding:20px; }
+  .tuning-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--mid); margin-bottom:8px; }
+  .tuning-condition { font-family:'Bebas Neue',sans-serif; font-size:18px; color:var(--ink); margin-bottom:12px; }
+  .tuning-up { font-size:14px; font-weight:300; margin-bottom:6px; }
+  .tuning-up::before { content:"▲ "; color:#1a6b1a; font-size:12px; }
+  .tuning-down { font-size:14px; font-weight:300; margin-bottom:6px; }
+  .tuning-down::before { content:"▼ "; color:var(--danger); font-size:12px; }
+  .heuristic-list { list-style:none; margin:0; padding:0; counter-reset:heuristic; }
+  .heuristic-list li { counter-increment:heuristic; display:grid; grid-template-columns:48px 1fr; gap:16px; padding:20px 0; border-bottom:1px solid var(--rule); align-items:start; }
+  .heuristic-list li:last-child { border-bottom:none; }
+  .heuristic-list li::before { content:counter(heuristic,decimal-leading-zero); font-family:'DM Mono',monospace; font-size:22px; color:var(--rule); font-weight:500; }
+  .heuristic-text strong { display:block; font-size:16px; font-weight:600; margin-bottom:4px; color:var(--ink); }
+  .heuristic-text span { font-size:14px; font-weight:300; color:var(--mid); line-height:1.5; }
+  .pd-grid { display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--rule); border:1px solid var(--rule); margin:16px 0; }
+  .pd-col { background:var(--paper); padding:20px; }
+  .pd-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--mid); margin-bottom:6px; }
+  .pd-title { font-family:'Bebas Neue',sans-serif; font-size:18px; color:var(--ink); margin-bottom:8px; }
+  .pd-body { font-size:14px; font-weight:300; color:var(--mid); line-height:1.5; }
+  .print-btn { display:inline-flex; align-items:center; gap:8px; font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.12em; text-transform:uppercase; background:var(--ink); color:var(--paper); border:none; padding:10px 20px; cursor:pointer; margin-bottom:32px; }
+  .print-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--rule); border:1px solid var(--rule); }
+  .print-mu { background:var(--paper); padding:16px; }
+  .print-mu-name { font-family:'Bebas Neue',sans-serif; font-size:16px; color:var(--ink); margin-bottom:4px; }
+  .print-mu-role { font-family:'DM Mono',monospace; font-size:9px; letter-spacing:0.1em; text-transform:uppercase; color:var(--mid); margin-bottom:10px; }
+  .print-cols { display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+  .print-col-label { font-family:'DM Mono',monospace; font-size:9px; letter-spacing:0.15em; text-transform:uppercase; color:var(--mid); margin-bottom:4px; }
+  .print-row { font-size:12px; font-weight:300; display:flex; justify-content:space-between; padding:1px 0; border-bottom:1px solid rgba(200,191,176,0.4); }
+  .print-qty { font-family:'DM Mono',monospace; font-size:11px; color:var(--mid); flex-shrink:0; margin-left:4px; }
+  .print-needle { font-family:'DM Mono',monospace; font-size:9px; letter-spacing:0.06em; color:var(--danger); margin-top:6px; text-transform:uppercase; }
+  .c { color:var(--accent); font-weight:400; }
+  footer { background:var(--ink); color:rgba(248,250,252,0.3); padding:40px 80px; margin-top:80px; display:flex; justify-content:space-between; align-items:center; }
+  footer span { font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.1em; text-transform:uppercase; }
+  @media (max-width:768px) { .header-inner,nav,.page,footer { padding-left:24px; padding-right:24px; } .header-right { display:none; } .decklist,.role-grid,.engine-body,.tuning-grid,.pd-grid { grid-template-columns:1fr; } nav { padding:0 24px; } }
+  @media print { nav,.print-btn,footer { display:none;   /* SB-only print mode */
+  body.printing-sb .header-band,
+  body.printing-sb nav,
+  body.printing-sb footer { display:none !important; }
+  body.printing-sb .section:not(#prep) { display:none !important; }
+  body.printing-sb #prep > *:not(#sb-print-zone) { display:none !important; }
+  body.printing-sb #sb-print-zone { display:block !important; }
+  body.printing-sb #sb-print-zone h2,
+  body.printing-sb #sb-print-zone p,
+  body.printing-sb .print-btn { display:none !important; }
+  body.printing-sb .print-grid { display:grid !important; grid-template-columns:repeat(3,1fr) !important; }
+  body.printing-sb .print-cols { display:grid !important; }
+  body.printing-sb .print-row { display:flex !important; }
+  body.printing-sb .print-mu { display:block !important; }
+  body.printing-sb .print-mu > * { display:block !important; }
+  body.printing-sb .print-qty { font-family:monospace; }
+  @page { size: portrait; margin: 0.35in; }
+  body.printing-sb { zoom: 0.62; }
+  body.printing-sb #sb-print-zone { page-break-after: avoid; }
+} .section { display:block !important; } }
+
+  .checklist { list-style:none; padding:0; margin:24px 0; }
+  .checklist li { display:flex; align-items:flex-start; gap:16px; padding:12px 0; border-bottom:1px solid var(--rule); font-weight:300; font-size:15px; }
+  .check-box { width:20px; height:20px; border:2px solid var(--accent); flex-shrink:0; cursor:pointer; margin-top:2px; transition:background 0.15s; }
+  .check-box.checked { background:var(--accent); }
+
+  /* ── CARD IMAGE TOOLTIP ─────────────────────────────────── */
+.card-tip {
+  position:fixed; z-index:9999; pointer-events:none;
+  width:220px; border-radius:8px; overflow:hidden;
+  box-shadow:0 8px 32px rgba(0,0,0,0.6);
+  opacity:0; transition:opacity 0.15s ease;
+  background:#1a1a2e;
+}
+.card-tip.visible { opacity:1; }
+.card-tip img { width:220px; height:auto; display:block; }
+.card-tip-loading {
+  width:220px; height:308px; display:flex;
+  align-items:center; justify-content:center;
+  color:#94a3b8; font-size:12px; font-family:monospace;
+  background:#1e293b;
+}
+span.c {
+  cursor:help;
+  border-bottom:1px dashed var(--accent,#CA8A04);
+}
+span.c:hover { border-bottom-style:solid; }
+
+  /* ── EDGE CASES ──────────────────────────────────────────── */
+  .edge-case{background:var(--card,#fff);border:1px solid var(--rule,#c8bfb0);border-left:3px solid var(--accent);padding:16px 20px;margin:16px 0;}
+  .edge-case-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:8px;font-weight:500;}
+  .edge-case-body{font-size:14px;font-weight:300;color:var(--ink,#0e0e0e);line-height:1.65;}
+  .edge-case-body strong{font-weight:600;}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-brand">Eldrazi Tron</div>
+  <a class="nav-link" href="../deck-guides.html" style="text-decoration:none;">&#8592; Guides</a>
+  <button class="nav-link active" onclick="show('identity')">Overview</button>
+  <button class="nav-link" onclick="show('decklist')">Decklist</button>
+  <button class="nav-link" onclick="show('gameplan')">Game Flow</button>
+  <button class="nav-link" onclick="show('engines')">Engines</button>
+  <button class="nav-link" onclick="show('lines')">Lines</button>
+  <button class="nav-link" onclick="show('roles')">Roles</button>
+  <button class="nav-link" onclick="show('matchups')">Matchups</button>
+  <button class="nav-link" onclick="show('sideboard')">Sideboard</button>
+  <button class="nav-link" onclick="show('heuristics')">Heuristics</button>
+  <button class="nav-link" onclick="show('tuning')">Tuning</button>
+  <button class="nav-link" onclick="show('prep')">Prep</button>
+</nav>
+<div class="header-band">
+  <div class="header-inner">
+    <div>
+      <div class="header-label">Team Resolve · Modern · April 2026</div>
+      <div class="header-title">Eldrazi<br><span>Tron</span></div>
+      <div class="header-tagline">"Assemble Tron. Resolve Karn. Win from any position."</div>
+    </div>
+    <div class="header-right">
+      <div class="header-stat"><span class="hs-label">Meta Share</span><span class="hs-val">5.5%</span></div>
+      <div class="header-stat"><span class="hs-label">Role</span><span class="hs-val">Big-Mana Prison</span></div>
+      <div class="header-stat"><span class="hs-label">Colors</span><span class="hs-val">Colorless (Green splash)</span></div>
+      <div class="header-stat"><span class="hs-label">Kill Turn</span><span class="hs-val">3–5</span></div>
+    </div>
+  </div>
+</div>
+<div class="page">
+
+<!-- CH01: OVERVIEW -->
+<div id="identity" class="section active">
+  <div class="section-label">Chapter 01</div>
+  <h1>Overview</h1>
+
+  <div class="mantra">"You don't need to interact with them. You need to be faster than their interaction."</div>
+
+  <p>Eldrazi Tron is Modern's premier big-mana strategy — a deck that combines the explosive mana acceleration of Urza's Tron lands with the raw power of colorless Eldrazi threats and the flexible toolbox of <span class="c">Karn, the Great Creator</span>. When it works, it presents threats on turn 3 that most decks in the format simply can't answer. <span class="c">Thought-Knot Seer</span> strips the opponent's key piece and applies a 4/4 clock. <span class="c">Ugin, Eye of the Storms</span> exiles colored permanents as a cast trigger then again for every subsequent colorless spell. <span class="c">Ulamog, the Ceaseless Hunger</span> eats two permanents on cast and attacks for indestructible 10/10 value.</p>
+
+  <p>The deck's strongest attribute is inevitability — in long games, colorless threats scale better than most decks in Modern can handle. Its weakness is speed: against combo decks that kill on turn 2–3 and against aggressive decks with removal that answers early creatures, Eldrazi Tron can be too slow. The post-board Karn toolbox partially addresses this, letting you fetch specific hate artifacts (Ensnaring Bridge, Trinisphere, Disruptor Flute) to answer any game plan.</p>
+
+  <p>The current build, piloted by Lucas Giggs to 5 consecutive MTGO Challenge Top 8s in December 2025, dropped Glaring Fleshraker for <span class="c">Sowing Mycospawn</span> — a massive upgrade that ramps, provides a relevant body against aggro, and punishes slow opponents by exiling their lands when kicked.</p>
+
+  <h2>Deck Identity</h2>
+  <div class="card-grid">
+    <div class="card">
+      <div class="card-label">Primary Win Condition</div>
+      <div class="card-title">Karn Toolbox + Threats</div>
+      <div class="card-body">Karn fetches silver bullets from the sideboard for any game plan, while threatening a +1 that turns any artifact into an attacker. The actual threats (Ulamog, Ugin, TKS) close games that Karn stabilizes. Together they form a complete game plan.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Mana Acceleration</div>
+      <div class="card-title">Three Layers</div>
+      <div class="card-body">Urza Tron (7 mana when assembled), Ugin's Labyrinth (ETB exile MV 7+ for {C}{C}), and Eldrazi Temple ({C}{C} for colorless Eldrazi). With any two of these plus a Talisman, you can have 5–7 mana on turn 3 without Tron assembled.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Disruption Package</div>
+      <div class="card-title">Karn Static + TKS</div>
+      <div class="card-body">Karn's static shuts off activated abilities of opponents' artifacts. Thought-Knot Seer strips a card from hand on entry. Together they disrupt nearly every game plan in Modern without spending additional mana after they resolve.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Blind Spot</div>
+      <div class="card-title">Linear Combo Speed</div>
+      <div class="card-body">Ruby Storm kills turn 2–3. Tameshi Belcher kills turn 4. Simic Neoform kills turn 2–3. Eldrazi Tron's clock is too slow to race these in game 1 without Karn + hate piece. Post-board Disruptor Flute and Trinisphere dramatically improve these matchups.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Key Strength</div>
+      <div class="card-title">Resilient to Removal</div>
+      <div class="card-body">Colorless threats are immune to color-based hate. Ulamog has indestructible. Karn's artifacts survive Supreme Verdict. The deck plays through most removal suites by simply casting another threat — the mana is always there to refill.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Meta Position</div>
+      <div class="card-title">Tier 2 · 5.5%</div>
+      <div class="card-body">Consistent performer at RCQs. Excellent against midrange and fair blue decks. Struggles against fast combo and Affinity. LucasGiggs' December 2025 run (5 top 8s) validated the Sowing Mycospawn build as optimal for the current meta.</div>
+    </div>
+  </div>
+
+  <h2>Oracle Accuracy — Critical Interactions</h2>
+  <div class="card-grid">
+    <div class="card">
+      <div class="card-label">Karn, the Great Creator</div>
+      <div class="card-title">{4} · Planeswalker</div>
+      <div class="card-body">Static: activated abilities of artifacts YOUR OPPONENTS control can't be activated. This shuts Mox Opal (opponent's), Springleaf Drum, Aether Spellbomb, etc. Your own Mox Opal/artifacts still activate normally. −2: reveal artifact from outside the game (your SB) OR choose face-up artifact in exile → put into hand. Karn can fetch artifacts you exiled with Devourer of Destiny, Relic of Progenitus, or Ugin's Labyrinth return.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Ugin, Eye of the Storms</div>
+      <div class="card-title">{7} · Planeswalker</div>
+      <div class="card-body">Two exile triggers: (1) cast trigger exiles up to 1 colored permanent, (2) whenever you cast a colorless spell, exile up to 1 colored permanent. Every Eldrazi, every Talisman activation being paid by tapping for colored mana... wait — the trigger says "cast a colorless spell." Talismans aren't spells. But Expedition Map, Kozilek's Command, Thought-Knot Seer, Sowing Mycospawn (devoid = colorless) all trigger it. Ugin doesn't trigger on lands.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Ugin's Labyrinth</div>
+      <div class="card-title">Land</div>
+      <div class="card-body">ETB: you MAY exile a colorless card with MV 7+ from your hand. If you do, {T} adds {C}{C}. Without an exiled card, it only adds {C} — a basic wastes slot. The exiled card can be returned at any time by tapping Labyrinth. Return the card when you want to cast it or to reuse Labyrinth's "exile" slot with a different card. Critically: Ulamog, Ugin, Devourer are all MV 7+ and qualify.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Sowing Mycospawn</div>
+      <div class="card-title">{3}{G} · Devoid</div>
+      <div class="card-body">Devoid = colorless spell (triggers Ugin). When you CAST (not ETB): search library for a land, put it onto battlefield, shuffle. Kicker {1}{C}: when cast if kicked, exile target land. The land search is unconditional — even unkicked, this is a {3}{G} 3/3 that ramps. Kicked, it also permanently removes an opponent's land — stunning in Amulet, Living End, and Storm matchups where the opponent has few lands.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Devourer of Destiny</div>
+      <div class="card-title">{5}{C}{C} · 6/6</div>
+      <div class="card-body">Reveal from opening hand → at your first upkeep, look at top 4, exile 3, keep 1. The exiled 3 cards go to exile, not hand — Karn can retrieve them with −2 later. When you cast Devourer, exile target colored permanent. Karn can fetch the exiled Devourer-exiled cards back. This creates a two-card loop: Devourer opens exiling their permanent → Karn retrieves useful exile zone cards.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Kozilek's Command</div>
+      <div class="card-title">{X}{C}{C} · Kindred Instant</div>
+      <div class="card-body">Choose TWO of four modes: create X Spawn tokens, scry X then draw, exile creature MV ≤ X, exile up to X cards from graveyards. Minimum cost {2}{C}{C} for X=0 (two modes at 0). With Eldrazi Temple: {C}{C} + {2} from land = X=2 on turn 2. Against aggro: X=2 creates 2 tokens (blockers) AND exiles the biggest threat. Versatile removal + ramp + GY hate in one card.</div>
+    </div>
+  </div>
+</div>
+
+<!-- CH02: DECKLIST -->
+<div id="decklist" class="section">
+  <div class="section-label">Chapter 02</div>
+  <h1>The 75</h1>
+  <p>LucasGiggs build (December 2025 — 5 MTGO Challenge Top 8s). Sowing Mycospawn over Glaring Fleshraker is the key innovation. Full Karn toolbox in the sideboard.</p>
+
+  <div class="decklist">
+    <div class="dl-section">
+      <div class="dl-section-label">Maindeck — 60 cards</div>
+      <div class="dl-group">
+        <div class="dl-group-label">Threats</div>
+        <div class="dl-card-row"><span><span class="c">Thought-Knot Seer</span></span><span class="dl-qty">4</span></div>
+        <div class="dl-card-row"><span><span class="c">Sowing Mycospawn</span></span><span class="dl-qty">4</span></div>
+        <div class="dl-card-row"><span><span class="c">Devourer of Destiny</span></span><span class="dl-qty">4</span></div>
+        <div class="dl-card-row"><span><span class="c">Ulamog, the Ceaseless Hunger</span></span><span class="dl-qty">2</span></div>
+      </div>
+      <div class="dl-group">
+        <div class="dl-group-label">Planeswalkers</div>
+        <div class="dl-card-row"><span><span class="c">Karn, the Great Creator</span></span><span class="dl-qty">4</span></div>
+        <div class="dl-card-row"><span><span class="c">Ugin, Eye of the Storms</span></span><span class="dl-qty">4</span></div>
+      </div>
+      <div class="dl-group">
+        <div class="dl-group-label">Interaction</div>
+        <div class="dl-card-row"><span><span class="c">Kozilek's Command</span></span><span class="dl-qty">4</span></div>
+        <div class="dl-card-row"><span><span class="c">Dismember</span></span><span class="dl-qty">2</span></div>
+      </div>
+      <div class="dl-group">
+        <div class="dl-group-label">Acceleration / Utility</div>
+        <div class="dl-card-row"><span>Talisman of Resilience</span><span class="dl-qty">4</span></div>
+        <div class="dl-card-row"><span>Talisman of Impulse</span><span class="dl-qty">2</span></div>
+        <div class="dl-card-row"><span><span class="c">Expedition Map</span></span><span class="dl-qty">4</span></div>
+        <div class="dl-card-row"><span><span class="c">Relic of Progenitus</span></span><span class="dl-qty">1</span></div>
+      </div>
+      <div class="dl-group">
+        <div class="dl-group-label">Lands — 21</div>
+        <div class="dl-card-row"><span>Urza's Tower</span><span class="dl-qty">4</span></div>
+        <div class="dl-card-row"><span>Urza's Power Plant</span><span class="dl-qty">4</span></div>
+        <div class="dl-card-row"><span>Urza's Mine</span><span class="dl-qty">4</span></div>
+        <div class="dl-card-row"><span><span class="c">Ugin's Labyrinth</span></span><span class="dl-qty">4</span></div>
+        <div class="dl-card-row"><span>Eldrazi Temple</span><span class="dl-qty">4</span></div>
+        <div class="dl-card-row"><span>Forest</span><span class="dl-qty">1</span></div>
+      </div>
+    </div>
+    <div class="dl-section">
+      <div class="dl-section-label">Sideboard — 15 cards</div>
+      <div class="dl-group">
+        <div class="dl-group-label">Karn Toolbox (fetchable)</div>
+        <div class="dl-card-row"><span><span class="c">Ensnaring Bridge</span></span><span class="dl-qty">1</span></div>
+        <div class="dl-card-row"><span>Trinisphere</span><span class="dl-qty">1</span></div>
+        <div class="dl-card-row"><span>Disruptor Flute</span><span class="dl-qty">3</span></div>
+        <div class="dl-card-row"><span>Walking Ballista</span><span class="dl-qty">1</span></div>
+        <div class="dl-card-row"><span>Damping Sphere</span><span class="dl-qty">1</span></div>
+        <div class="dl-card-row"><span>Grafdigger's Cage</span><span class="dl-qty">1</span></div>
+        <div class="dl-card-row"><span>Torpor Orb</span><span class="dl-qty">1</span></div>
+        <div class="dl-card-row"><span>Haywire Mite</span><span class="dl-qty">1</span></div>
+        <div class="dl-card-row"><span>Liquimetal Coating</span><span class="dl-qty">1</span></div>
+        <div class="dl-card-row"><span>The Filigree Sylex</span><span class="dl-qty">1</span></div>
+        <div class="dl-card-row"><span>Tormod's Crypt</span><span class="dl-qty">1</span></div>
+        <div class="dl-card-row"><span>Extinguisher Battleship</span><span class="dl-qty">1</span></div>
+      </div>
+      <div class="dl-group">
+        <div class="dl-group-label">Board Cards</div>
+        <div class="dl-card-row"><span>Vexing Bauble</span><span class="dl-qty">1</span></div>
+      </div>
+
+      <h3>Why One Forest?</h3>
+      <p style="font-size:14px;font-weight:300;color:var(--mid);">The single Forest is the green mana source for <span class="c">Sowing Mycospawn</span> ({3}{G}). It's fetchable via <span class="c">Expedition Map</span> when needed. The minimal green splash means you almost never need to sequence around it — Talismans provide {G} in a pinch via their colored output.</p>
+    </div>
+  </div>
+</div>
+
+<!-- CH03: GAME FLOW -->
+<div id="gameplan" class="section">
+  <div class="section-label">Chapter 03</div>
+  <h1>Game<br>Flow</h1>
+
+  <p>Eldrazi Tron's game plan has one core requirement: get to 7+ mana before your opponent kills you or locks you out. Everything else — the threats, the disruption, the toolbox — follows from having a dominant mana advantage. The three accelerants (Tron, Labyrinth, Temple) each contribute differently, and learning when to prioritize each is the deck's fundamental skill.</p>
+
+  <h2>Mana Acceleration Priority</h2>
+  <div class="card-grid card-grid-3">
+    <div class="card">
+      <div class="card-label">Priority 1</div>
+      <div class="card-title">Urza's Tron</div>
+      <div class="card-body">All three Urza lands = 7 mana from 3 land slots. Expedition Map tutors any piece. Assembled by turn 3, Tron enables Karn, Ugin, and Ulamog all in the same turn. Without Tron, the deck is a slower Eldrazi deck. With Tron, it's the most mana-efficient deck in Modern. Always map for the missing piece when you have two.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Priority 2</div>
+      <div class="card-title">Ugin's Labyrinth</div>
+      <div class="card-body">Exile a colorless MV 7+ card → {C}{C} per turn. With Ulamog or Devourer of Destiny in opening hand: Labyrinth turn 1 = 2 mana immediately. The exiled card returns to hand when you tap Labyrinth to return it — don't forget this. Sequence Labyrinth before other lands when holding a qualifying card.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Priority 3</div>
+      <div class="card-title">Eldrazi Temple</div>
+      <div class="card-body">{C}{C} for casting colorless Eldrazi spells or activating abilities of colorless Eldrazi. Critically: this mana can pay for <span class="c">Kozilek's Command</span> (colorless cost) and for Thought-Knot Seer's {C} requirement. With Temple + a Talisman turn 2, Thought-Knot Seer drops on turn 2.</div>
+    </div>
+  </div>
+
+  <h2>Turn-by-Turn Blueprint</h2>
+  <div class="sb-card-guide">
+    <div class="sb-guide-row"><div class="sb-guide-name">Turn 1</div><div class="sb-guide-body">Play your best mana land. Priority: Ugin's Labyrinth if holding Ulamog/Ugin/Devourer. Otherwise Eldrazi Temple for the immediate {C}{C}. Reveal <span class="c">Devourer of Destiny</span> if in opening hand — your upkeep, look at top 4 and exile 3 (find missing Tron piece, Karn, or key threat). Map if you have two Tron pieces and need the third immediately.</div></div>
+    <div class="sb-guide-row"><div class="sb-guide-name">Turn 2</div><div class="sb-guide-body">Ideal play: Talisman of Resilience + pass. With Temple: Thought-Knot Seer ({3}{C} = Temple {C}{C} + Talisman {1} + one land {1}) — this is the fastest disruption play. With two Labyrinth + Talisman: 5 mana available. Expedition Map if you have two Tron pieces and need the third. Play Sowing Mycospawn if ramping is more important than disrupting.</div></div>
+    <div class="sb-guide-row"><div class="sb-guide-name">Turn 3</div><div class="sb-guide-body">With Tron assembled: 7 mana. Cast Karn (4 mana, fetch hate artifact or +1 to make blocker). OR cast Ugin, Eye of the Storms (7 mana, immediately exile colored permanent on cast, then exile more on each colorless spell). With Mycospawn ramp but no Tron: still 5-6 mana available for Karn or multiple smaller threats.</div></div>
+    <div class="sb-guide-row"><div class="sb-guide-name">Turn 4+</div><div class="sb-guide-body">Ulamog on turn 4 (10 mana from Tron + Temple + Talisman). Cast trigger exiles two permanents. Indestructible 10/10 that mills 20 cards per attack. At this point the game should be over or close to it. Ugin's −11 (exile top of library, cast all for free) closes unwinnable board states.</div></div>
+  </div>
+
+  <h2>Mulligan Framework</h2>
+  <p>Keep any hand that can assemble Tron by turn 3 OR present a meaningful threat by turn 2. The deck can function without Tron assembled — Temple + Talisman + Thought-Knot Seer on turn 2 is a legitimate non-Tron game plan. Always keep hands with <span class="c">Expedition Map</span> + two Tron pieces.</p>
+
+  <div class="card-grid card-grid-2">
+    <div class="card">
+      <div class="card-label">Keep</div>
+      <div class="card-title">Tron Hands</div>
+      <div class="card-body">Any hand with 2+ Tron pieces and Expedition Map. Even with slow other cards, the Map finds the third piece on turn 2, enabling Karn/Ugin on turn 3. Karn from turn 3 wins most games singlehandedly — it doesn't need support.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Keep</div>
+      <div class="card-title">Temple + Threat Hands</div>
+      <div class="card-body">Eldrazi Temple + Talisman + Thought-Knot Seer is a legitimate turn-2 Seer hand. Strip their key piece before they can act. Even if Tron never assembles, a sequence of TKS → Karn → Ugin pressures most decks out of the game.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Mulligan</div>
+      <div class="card-title">Pure Threat Floods</div>
+      <div class="card-body">4+ expensive threats with no acceleration. Ulamog in hand without Labyrinth or Tron pieces means you can't cast it until turn 10. Always ship back hands that can't develop mana — the threats are only good when you can cast them.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Conditional Keep</div>
+      <div class="card-title">Karn Hands</div>
+      <div class="card-body">Karn on turn 3 is often enough to win. Keep if you have 4+ mana available by turn 3 and Karn in hand. Even without Tron, Temple + Talisman + a third source = 4 mana on turn 3. Karn fetching Ensnaring Bridge wins most aggro games immediately.</div>
+    </div>
+  </div>
+  <h2>Play vs Draw</h2>
+  <div class="card-grid card-grid-2">
+    <div class="card"><div class="card-label">On the Play</div><div class="card-title">T1 Chalice or Map</div><div class="card-body">On the play, T1 Chalice of the Void on 1 shuts down every 1-CMC spell your opponent planned. T1 Expedition Map tutors a Tron piece for T2 assembly. Both are correct depending on their deck — if you saw their hand via T1 Duress in their SB, deploy accordingly. Against aggro: Chalice at 1 immediately. Against combo or control: Expedition Map to race to Tron.</div></div>
+    <div class="card"><div class="card-label">On the Draw</div><div class="card-title">Extra Card Finds Tron Piece</div><div class="card-body">On the draw you see 8 cards, dramatically improving Tron assembly odds. Keep slightly looser hands on the draw — two Tron pieces + Map is a keep on draw even without a third piece. Against aggro on the draw: Chalice at 1 is urgent — they’ve had a T1 and may have deployed already. Prioritize Chalice over Tron development if their board is ahead.</div></div>
+  </div>
+  <h2>When Disrupted</h2>
+  <div class="card-grid card-grid-2">
+    <div class="card"><div class="card-label">Tron Disrupted</div><div class="card-title">Map + Karn Rebuild</div><div class="card-body">Spreading Seas or Blood Moon disrupts Tron. Pivot: Expedition Map finds Eye of Ugin or the missing Tron piece anyway (basic land types don’t apply to colorless utility lands). Karn, the Great Creator fetches any artifact from SB including Ensnaring Bridge or Trinisphere. Eldrazi still cast from colorless mana — you can still function on colorless even without full Tron assembly.</div></div>
+    <div class="card"><div class="card-label">Key Threats Answered</div><div class="card-title">Karn Tutor Chain</div><div class="card-body">TKS and Ulamog both answered: Karn, the Great Creator’s -2 fetches any artifact from outside the game (your SB). Fetch Ensnaring Bridge to lock out their attacks, Trinisphere to tax their spells, or Relic of Progenitus for GY hate. Karn’s +1 makes their artifacts unable to activate — shut off their Mox Opal, Aether Vial, or Chalice they set against you.</div></div>
+  </div>
+</div>
+
+<!-- CH04: ENGINES -->
+<div id="engines" class="section">
+  <div class="section-label">Chapter 04</div>
+  <h1>Core<br>Engines</h1>
+
+  <div class="engine-block">
+    <div class="engine-header">
+      <div class="engine-letter">1</div>
+      <div><div class="engine-name">Tron Assembly Engine</div><div style="font-family:'DM Mono',monospace;font-size:11px;color:rgba(248,250,252,0.4);letter-spacing:0.1em;text-transform:uppercase;">Primary Mana Engine</div></div>
+    </div>
+    <div class="engine-body">
+      <div class="engine-step">
+        <div class="engine-step-label">Setup</div>
+        <div class="engine-step-title">Find All Three Pieces</div>
+        <div class="engine-step-body">Urza's Mine + Urza's Power Plant + Urza's Tower = 7 mana from 3 land slots. Run 4 of each (12 total). <span class="c">Expedition Map</span> ({1} artifact, sacrifice for {2}: search any land) finds the missing piece. Devourer of Destiny's opening-hand ability lets you look 4 deep on upkeep to find missing pieces. With 12 Tron lands + 4 Maps, consistency is high.</div>
+      </div>
+      <div class="engine-step">
+        <div class="engine-step-label">Execution</div>
+        <div class="engine-step-title">Turn-3 Seven Mana</div>
+        <div class="engine-step-body">Turn 1: one Tron piece. Turn 2: second Tron piece + Map. Turn 3: sacrifice Map, find third piece, play it. Now 7 mana available. Cast <span class="c">Karn, the Great Creator</span> (4 mana) + activate, OR cast <span class="c">Ugin, Eye of the Storms</span> (7 mana) for an immediate exile of their best permanent. Tron makes both of these possible on the same turn.</div>
+      </div>
+      <div class="engine-step">
+        <div class="engine-step-label">Result</div>
+        <div class="engine-step-title">Dominant Mana Advantage</div>
+        <div class="engine-step-body">With Tron assembled, you're generating 7+ mana every turn while opponents generate 3–5. Each subsequent turn allows a bigger threat or more toolbox fetches from Karn. Blood Moon destroys this engine — plan alternative lines (Eldrazi Temple + Talisman) for Moon matchups, and always fetch a basic Forest with Sowing Mycospawn when Moon is a threat.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="engine-block">
+    <div class="engine-header">
+      <div class="engine-letter">2</div>
+      <div><div class="engine-name">Karn Toolbox Engine</div><div style="font-family:'DM Mono',monospace;font-size:11px;color:rgba(248,250,252,0.4);letter-spacing:0.1em;text-transform:uppercase;">Adaptable Answer Engine</div></div>
+    </div>
+    <div class="engine-body">
+      <div class="engine-step">
+        <div class="engine-step-label">Setup</div>
+        <div class="engine-step-title">Resolve Karn on Turn 3</div>
+        <div class="engine-step-body"><span class="c">Karn, the Great Creator</span> costs {4}. With Tron: 3 mana remaining after Karn for +1 or activations. Karn's static immediately shuts off all activated abilities of opponents' artifacts — Mox Opal stops tapping, Aether Spellbomb can't bounce, Springleaf Drum stops tapping. Then the −2 fetches the perfect answer from the sideboard.</div>
+      </div>
+      <div class="engine-step">
+        <div class="engine-step-label">Execution</div>
+        <div class="engine-step-title">Fetch the Right Silver Bullet</div>
+        <div class="engine-step-body">−2 puts the SB artifact into your hand. Immediately cast it (you still have 3 mana after Karn on Tron). Ensnaring Bridge vs aggro (they can't attack with 0 cards in hand). Trinisphere vs Storm/Storm-adjacent combo. Disruptor Flute vs Kappa Cannoneer or specific combo pieces. Damping Sphere vs Amulet, Tron mirrors, and Storm. Walking Ballista as removal or finisher.</div>
+      </div>
+      <div class="engine-step">
+        <div class="engine-step-label">Result</div>
+        <div class="engine-step-title">Game-Specific Lockout</div>
+        <div class="engine-step-body">Each artifact fetched by Karn addresses a specific matchup's win condition. Ensnaring Bridge combined with zero cards in hand (discard Labyrinth target, spend hand) = they literally cannot attack. Trinisphere = Storm spells cost 3+ mana each, combo chains collapse. The toolbox means Eldrazi Tron has an answer to almost every game plan in the format.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="engine-block">
+    <div class="engine-header">
+      <div class="engine-letter">3</div>
+      <div><div class="engine-name">Ugin Exile Cascade</div><div style="font-family:'DM Mono',monospace;font-size:11px;color:rgba(248,250,252,0.4);letter-spacing:0.1em;text-transform:uppercase;">Board Clear Engine</div></div>
+    </div>
+    <div class="engine-body">
+      <div class="engine-step">
+        <div class="engine-step-label">Setup</div>
+        <div class="engine-step-title">Resolve Ugin on Turn 3–4</div>
+        <div class="engine-step-body"><span class="c">Ugin, Eye of the Storms</span> costs {7} — requires Tron or significant acceleration. The cast trigger immediately exiles one colored permanent (opponent chooses which). Ugin enters with loyalty. Every subsequent colorless spell you cast exiles another colored permanent. This includes Talismans, Map activations producing mana — no wait, those are abilities not spells. Actual colorless spells: Eldrazi, Dismember, Kozilek's Command, Map itself.</div>
+      </div>
+      <div class="engine-step">
+        <div class="engine-step-label">Execution</div>
+        <div class="engine-step-title">Cascade of Exiles</div>
+        <div class="engine-step-body">Turn 3 Ugin (cast trigger: exile their best permanent). Turn 4: cast Thought-Knot Seer (colorless spell → exile another colored permanent) + Kozilek's Command (another colorless → exile another). In 2 turns, you've exiled 3 of their permanents while presenting a board of threats. Ugin's +2 gains 3 life and draws a card — strong in longer games. −11 ultimate ends games immediately.</div>
+      </div>
+      <div class="engine-step">
+        <div class="engine-step-label">Result</div>
+        <div class="engine-step-title">Opponent's Board Evaporates</div>
+        <div class="engine-step-body">Against non-colorless decks (everything except the mirror), Ugin creates an asymmetric board state where their permanents disappear while yours remain. Against Affinity (mostly colorless artifacts), Ugin's exile triggers mostly whiff — this is one of the rare times Ugin underperforms. Against Boros Energy, Blink, or any heavily colored deck, Ugin is devastating.</div>
+      </div>
+    </div>
+  </div>
+
+  <h2>Lines &amp; Tricks</h2>
+  <ul class="tricks-list">
+    <li><strong>Devourer of Destiny + Karn retrieval:</strong> Reveal Devourer from opening hand. At upkeep, look at 4 cards, exile 3, keep 1. The 3 exiled cards sit in exile. Later, <span class="c">Karn, the Great Creator</span> −2 can retrieve artifact cards among them. This lets you effectively "choose 1 and store 3 useful artifacts for Karn" from your opening hand look.</li>
+    <li><strong>Relic of Progenitus + Karn recovery loop:</strong> If an artifact goes to your graveyard (destroyed by artifact removal), exile it with Relic. Then Karn −2 retrieves it from exile. This recovers destroyed Karn toolbox pieces that would otherwise be gone permanently.</li>
+    <li><strong>Ugin's Labyrinth return timing:</strong> You can return the exiled card by tapping Labyrinth as a cost. Do this on the turn you want to cast Ulamog — tap Labyrinth, return Ulamog to hand (now Labyrinth produces only {C}), then play another land and cast Ulamog normally with Tron mana. The "lose {C}" from Labyrinth is worth it to cast the threat.</li>
+    <li><strong>Eldrazi Temple for Kozilek's Command:</strong> Kozilek's Command is {X}{C}{C}. Eldrazi Temple provides {C}{C} for colorless Eldrazi spells. Command is a Kindred Instant — Eldrazi. So Temple's {C}{C} applies. With Temple + one mana source on turn 2: X=1, two modes at 1 = create 1 Spawn AND exile 1-MV creature (kills Ragavan on turn 2).</li>
+    <li><strong>Sowing Mycospawn land sequencing:</strong> The land Mycospawn searches goes directly onto the battlefield (no summoning sickness for a land). Use this to find the missing Tron piece mid-turn, then play another land drop normally. This gives you Tron on the turn Mycospawn resolves even if you were one piece short.</li>
+    <li><strong>Prioritize early Eldrazi Temple over Tron piece 1:</strong> Sometimes your turn-1 choice is Temple vs a Tron land. If you're planning to cast Thought-Knot Seer or Kozilek's Command on turn 2, Temple is the better opening — it accelerates your actual plays. If you're setting up for Karn on turn 3, a Tron piece is correct since you need two pieces for Map to function.</li>
+    <li><strong>Disruptor Flute as a Karn fetch vs combo:</strong> In game 1 vs Storm or Belcher, Karn can fetch Disruptor Flute from the SB. Name Ral, Monsoon Mage to shut down the flip trigger (Ral's activated abilities can't be activated). OR name Goblin Charbelcher to shut off the activation. Flute's static makes chosen cards cost {3} more AND their activated abilities are locked — two different effects.</li>
+  </ul>
+  <h2>Engine Priority Order</h2>
+  <div class="card-grid card-grid-3">
+    <div class="card"><div class="card-label">Priority 01</div><div class="card-title">Assemble Tron</div><div class="card-body">Urza’s Mine + Urza’s Power Plant + Urza’s Tower = 7 colorless mana on T3. This is the foundation of everything. Before deploying threats or interaction, always advance Tron assembly. Expedition Map tutors any land — fetch the missing Tron piece. Ancient Stirrings finds any colorless card including Tron lands. Prioritize assembly over any other action.</div></div>
+    <div class="card"><div class="card-label">Priority 02</div><div class="card-title">Karn/Ugin Planeswalker</div><div class="card-body">Once Tron is assembled, the T3 play is Karn, the Great Creator or Ugin, the Spirit Dragon. Karn immediately +1s to lock their artifacts or -2s to fetch from SB. Ugin at -X wipes all colored permanents. These are your primary threats and engines — Eldrazi cast alongside them but the walkers generate ongoing value the Eldrazi don’t.</div></div>
+    <div class="card"><div class="card-label">Priority 03</div><div class="card-title">TKS / Ulamog Clock</div><div class="card-body">Thought-Knot Seer (4 mana) exiles a card from hand and provides a 4/4 body. Ulamog (10 mana) exiles two permanents on cast and attacks with annihilator 4. TKS is your primary disruptive threat and clock. Ulamog is the game-ending threat. Deploy TKS when Tron is online and you need to strip their answer before your Karn resolves.</div></div>
+  </div>
+  <h2>Speed Math</h2>
+  <div class="card-grid card-grid-3">
+    <div class="card"><div class="card-label">T3 Karn/Ugin</div><div class="card-title">The Dream</div><div class="card-body">T1: Expedition Map.<br>T2: Crack Map, find missing Tron piece. All 3 Tron lands in play.<br>T3: 7 mana. Cast Karn (4) or Ugin (8 — needs 1 more land) or TKS (4) + Chalice (1).<br>Karn T3 immediately -2 fetches Ensnaring Bridge or Trinisphere from SB.<br><strong>This is the default goldfish.</strong> Any hand with 2 Tron pieces + Map achieves this.</div></div>
+    <div class="card"><div class="card-label">T4 Without Map</div><div class="card-title">Stirrings Line</div><div class="card-body">T1: Ancient Stirrings (find Tron piece or Chalice).<br>T2: Deploy Tron piece + Stirrings again.<br>T3: Missing piece found, 7 mana assembles.<br>T4: Ugin (10 mana with 7+3) or TKS + Karn.<br>Without Map, Stirrings is your tutor. Ancient Stirrings finds ANY colorless card including all Eldrazi, walkers, and Tron lands.</div></div>
+    <div class="card"><div class="card-label">Key Decision</div><div class="card-title">Chalice vs Tron First</div><div class="card-body"><strong>Chalice first (T1):</strong> Vs aggro (Boros, Prowess, Domain Zoo). Their T1 spells are MV 1 and Chalice stops them immediately.<br><br><strong>Tron first:</strong> Vs combo (Storm, Living End, Amulet). Map T1 to race their kill turn — you need 7 mana before they combo, not just to stop their interaction.</div></div>
+  </div>
+</div>
+
+<!-- CH05: LINES -->
+<div id="lines" class="section">
+  <div class="section-label">Lines &amp; Tactics</div>
+  <h1>Lines &amp;<br>Tactics</h1>
+  <div class="mantra">"Chalice, TKS, and All Is Dust all have non-obvious rules. Know them before you sit down."</div>
+
+  <h2>Three Lines You Must Know Cold</h2>
+  <div class="card-grid card-grid-3">
+    <div class="card"><div class="card-label">Critical</div><div class="card-title">TKS Leaving Gives Them a Draw</div><div class="card-body">When Thought-Knot Seer enters, it exiles a card from their hand. When TKS LEAVES the battlefield, the opponent draws a card — any card, not the exiled one. Killing your own TKS (sacrifice to dodge removal) gives them a card. Bouncing TKS returns the exiled card AND triggers the draw. Never bounce TKS with a card exiled unless it’s worth giving them a card.</div></div>
+    <div class="card"><div class="card-label">Critical</div><div class="card-title">Chalice at 1 Stops Your Own Interaction Too</div><div class="card-body">Chalice of the Void on 1 counters ALL spells with MV 1, including your Walking Ballista at 0 (pays 0 then enters as a 0/0), your Dismember, and any MV-1 SB card. Set Chalice after you’ve deployed your own MV-1 pieces. Chalice at 0 stops free spells: Force of Negation alternate cost, suspend spells being cast for free. Know what each setting stops before placing.</div></div>
+    <div class="card"><div class="card-label">Critical</div><div class="card-title">All Is Dust Hits Only Colored Permanents</div><div class="card-body">All Is Dust makes each player sacrifice all colored permanents. Your Eldrazi, your lands, your Chalice, your Karn, your Ulamog — all colorless, all survive. Their colored creatures, planeswalkers, enchantments die. This is not a symmetrical Wrath. Cast it when they have a colored board and you have a colorless one. Your colorless board survives their response to it.</div></div>
+  </div>
+
+  <h2>Timing Windows</h2>
+  <div class="edge-case">
+    <div class="edge-label">When to Hold Mana vs Spend It</div>
+    <div class="edge-body">The core timing decision for this deck: every land drop and every spell cast is a commitment. Know before your upkeep which lines require open mana this turn and which don’t. Holding mana = passing priority; spending it = committing to a plan. Make this decision in your upkeep, not in response to their action.</div>
+  </div>
+  <div class="edge-case">
+    <div class="edge-label">When to Cast at Their End Step vs Your Main Phase</div>
+    <div class="edge-body">End-step casts maximize information: you’ve seen their full turn, they’re often tapped out. Main-phase casts maximize mana availability for follow-up. Know which of your key spells gain most from end-step timing and which need main-phase mana backup.</div>
+  </div>
+
+</div>
+
+<!-- CH06: ROLES -->
+<div id="roles" class="section">
+  <div class="section-label">Chapter 05</div>
+  <h1>Role<br>Assignment</h1>
+
+  <div class="role-grid">
+    <div class="role-card">
+      <div class="role-name role-name-primary">RAMP & THREATEN</div>
+      <div class="role-desc">Your default role vs midrange and control. Assemble Tron, resolve a threat that demands an immediate answer, then follow up with another. The opponent can't keep up with the mana advantage. Don't overcommit with both Karn and Ugin before seeing how they respond — resolve one, see their answer, then apply the second pressure.</div>
+      <div class="role-matchups">vs Boros Energy, UW Control, Jeskai Blink</div>
+    </div>
+    <div class="role-card">
+      <div class="role-name role-name-secondary">DISRUPT & LOCKOUT</div>
+      <div class="role-desc">Vs combo, aggro, and speed. Prioritize Karn → silver bullet over raw threats. Ensnaring Bridge locks out creature decks before they assemble a lethal board. Trinisphere stops Storm/Belcher before they can chain. Thought-Knot Seer strips the combo piece. The Karn toolbox is a answers the specific deck you're facing, not a generic threat.</div>
+      <div class="role-matchups">vs Ruby Storm, Belcher, Affinity, Aggro</div>
+    </div>
+    <div class="role-card">
+      <div class="role-name role-name-tertiary">PIVOT</div>
+      <div class="role-desc">When Tron isn't assembling and you're behind on board, pivot to Eldrazi Temple + Talisman mana for turn-2 Thought-Knot Seer. This non-Tron plan is slower but still viable. Kozilek's Command on turn 2 via Temple is a legitimate early-game stabilization play. Don't sacrifice all your resources trying to force-assemble Tron when the Temple plan is more immediate.</div>
+      <div class="role-matchups">vs fast clocks when Tron is offline</div>
+    </div>
+  </div>
+  <h2>Role Mistakes to Avoid</h2>
+  <ul class="heuristic-list">
+    <li><div class="heuristic-num">01</div><div class="heuristic-body"><strong>Deploying TKS when Tron isn’t assembled yet.</strong> TKS costs 4 mana and gives them a card when it dies. Casting TKS on 4 non-Tron mana when you could spend that turn assembling Tron is usually wrong. The exception: you need to strip their GY hate or counter before they can use it on your next turn.</div></li>
+    <li><div class="heuristic-num">02</div><div class="heuristic-body"><strong>Chalice at 1 when you still need to cast MV-1 cards yourself.</strong> Set Chalice after you’ve deployed all your MV-1 spells (Expedition Map, Relic of Progenitus). A Chalice at 1 that counters your own Map is worse than no Chalice at all.</div></li>
+    <li><div class="heuristic-num">03</div><div class="heuristic-body"><strong>Bouncing TKS without checking the draw trigger.</strong> When TKS leaves the battlefield, opponent draws a card. If you bounce your own TKS (vs removal), the draw trigger still fires. Evaluate whether the draw they get is worse than losing TKS permanently.</div></li>
+    <li><div class="heuristic-num">04</div><div class="heuristic-body"><strong>Not fetching Ensnaring Bridge with Karn vs aggro.</strong> Karn -2 fetches Ensnaring Bridge from the SB when your hand is empty. Bridge locks out all attackers with power greater than the number of cards in your hand. The moment you empty your hand, all their attacks are stopped. Karn + empty hand + Bridge = locked board.</div></li>
+  </ul>
+  <h2>Role-Switching Signals</h2>
+  <div class="card-grid card-grid-2">
+    <div class="card"><div class="card-label">Switch to Lockdown When</div><div class="card-title">Their Board Is Faster Than Yours</div><div class="card-body">Tron isn’t assembled by T3 and they have a creature board. Karn -2 fetches Ensnaring Bridge immediately. Trinisphere taxes every spell they cast. Chalice at 1 stops their interaction. Switch from developing Tron to deploying hate pieces that slow them enough to assemble on T4.</div></div>
+    <div class="card"><div class="card-label">Switch to Full Gas When</div><div class="card-title">Tron Is Online</div><div class="card-body">Tron assembled, 7+ mana available. Stop developing, start threatening. Karn T3, TKS T4, Ulamog T5 if the game goes long. Every turn you have 7+ mana is a turn they should be losing. Don’t pass without casting something impactful.</div></div>
+    <div class="card"><div class="card-label">Never Slow Down When</div><div class="card-title">Karn + Empty Hand Available</div><div class="card-body">Karn in play + 0 cards in hand = fetch Ensnaring Bridge immediately. This position is often a clean lock — they can’t attack (Bridge), you have Karn generating ongoing value. Execute this line the moment the conditions are met.</div></div>
+    <div class="card"><div class="card-label">Identify Before T1</div><div class="card-title">Race vs Lock</div><div class="card-body">Their deck races you (Boros, Prowess, Domain) → Chalice T1, lock them out of interaction. Their deck combos you (Storm, Living End) → Map T1, race to Tron faster than they kill. Their deck controls you (Jeskai, UWC) → TKS T4 to strip counters, Ulamog T5 to close.</div></div>
+  </div>
+</div>
+
+<!-- CH06: MATCHUPS -->
+<div id="matchups" class="section">
+  <div class="section-label">Chapter 06</div>
+  <h1>Matchup<br>Deep Dives</h1>
+  <p>Feb–Mar 2026 meta. Win rates from matchup matrix. Source: LucasGiggs Dec 2025 guide + MTGO challenge data.</p>
+
+  <table class="matchup-table">
+    <tr><th>Opponent</th><th>Share</th><th>Assessment</th><th>G1</th><th>Post-Board</th></tr>
+
+    <tr onclick="toggle('mu-boros')"><td>Boros Energy</td><td>16%</td><td><span class="verdict verdict-favor">Favorable</span></td><td>Favor</td><td>Favor</td></tr>
+    <tr><td colspan="5" class="matchup-detail" id="mu-boros">
+      <strong>The Matchup:</strong> Boros Energy is generally favorable — your threats are too large for their removal package (Lightning Helix, Galvanic Discharge). Kappa Cannoneer is rare in their list, and Goblin Bombardment requires time to accumulate enough creatures. The catch: some Boros lists run Blood Moon main deck, which destroys your Tron mana base. A Moon on turn 3 with no answer can lose you the game on the spot.<br><br>
+      <strong>Key Threats:</strong> Ragavan, Nimble Pilferer is the primary concern — it attacks, generates Treasure (mana), and impulses your cards. A turn-1 Ragavan backed by a Lightning Helix can steal enough tempo to kill you. Either block with Thought-Knot Seer or answer with Kozilek's Command (exile mode for small creatures). Sowing Mycospawn's 3/3 body blocks and survives Galvanic Discharge.<br><br>
+      <strong>Blood Moon Warning:</strong> If opponent leads with Sacred Foundry → Mountain → Blood Moon, all your Urza lands become Mountains (non-basic). Your Eldrazi Temple also becomes a Mountain. Only Eldrazi Temple and basic Forest survive Blood Moon (Ugin's Labyrinth does not — it's a nonbasic). Fetch the Forest with Sowing Mycospawn to maintain green mana.<br><br>
+      <div class="sb-table">
+        <div class="sb-col">
+          <div class="sb-col-label">Out</div>
+          <div class="sb-item"><span>−2 Ulamog, the Ceaseless Hunger (too slow)</span></div>
+          <div class="sb-item"><span>−1 Relic of Progenitus</span></div>
+          <div class="sb-item"><span>−1 Thought-Knot Seer (dies easily, gives them card)</span></div>
+        </div>
+        <div class="sb-col">
+          <div class="sb-col-label">In</div>
+          <div class="sb-item"><span>+1 Walking Ballista (kills Ragavan)</span></div>
+          <div class="sb-item"><span>+1 Torpor Orb (stops Guide of Souls, Voice of Victory ETBs)</span></div>
+          <div class="sb-item"><span>+1 Ensnaring Bridge (vs token swarms)</span></div>
+        </div>
+      </div>
+      <div class="sb-note">Walking Ballista with counters kills Ragavan on turn 2 via Eldrazi Temple. Torpor Orb shuts off all ETB triggers — Guide of Souls doesn't gain life, Voice of Victory doesn't make tokens. Ensnaring Bridge after dumping your hand = they can't attack through it.</div>
+    </td></tr>
+
+    <tr onclick="toggle('mu-jeskai')"><td>Jeskai Blink</td><td>7%</td><td><span class="verdict verdict-favor">Favorable</span></td><td>Favor</td><td>Favor</td></tr>
+    <tr><td colspan="5" class="matchup-detail" id="mu-jeskai">
+      <strong>The Matchup:</strong> Jeskai Blink struggles against colorless threats. Consign to Memory counters colored spells only — it cannot counter Thought-Knot Seer, Ugin, Ulamog, or any of your Eldrazi. Solitude can exile TKS, but at the cost of a card and 2 life. Teferi, Time Raveler stops instant-speed interaction — but your threats are cast at sorcery speed anyway so Teferi barely affects you.<br><br>
+      <strong>Key Play:</strong> Vexing Bauble from the SB forces them to "play fair" — Force of Negation, Solitude, and Subtlety all have pitch costs that Bauble taxes. They have to pay the actual mana cost. Against a deck that relies on pitch elementals for free interaction, taxing those cards dramatically slows them down.<br><br>
+      <strong>TKS Timing:</strong> Cast TKS on turn 2 (via Temple + Talisman) to strip a key piece before they can set up. If they're holding Ephemerate + Solitude, stripping Ephemerate makes their Solitude much weaker. Read their hand before choosing what to exile.<br><br>
+      <div class="sb-table">
+        <div class="sb-col">
+          <div class="sb-col-label">Out</div>
+          <div class="sb-item"><span>−2 Dismember (less relevant vs non-creature-reliant deck)</span></div>
+          <div class="sb-item"><span>−1 Relic of Progenitus</span></div>
+        </div>
+        <div class="sb-col">
+          <div class="sb-col-label">In</div>
+          <div class="sb-item"><span>+1 Vexing Bauble</span></div>
+          <div class="sb-item"><span>+1 Torpor Orb (stops Phelia, Quantum Riddler ETBs)</span></div>
+        </div>
+      </div>
+      <div class="sb-note">Torpor Orb shuts down the entire Blink engine — Phelia doesn't untap, Quantum Riddler doesn't draw, Solitude ETB exiles nothing. One card that costs them their entire game plan.</div>
+    </td></tr>
+
+    <tr onclick="toggle('mu-affinity')"><td>Izzet Affinity</td><td>8%</td><td><span class="verdict verdict-hard">Hard</span></td><td>Dog</td><td>Dog</td></tr>
+    <tr><td colspan="5" class="matchup-detail" id="mu-affinity">
+      <strong>The Matchup:</strong> Izzet Affinity is one of Eldrazi Tron's worst matchups. Their threats are mostly colorless (Kappa Cannoneer, Constructs, Drones) — Ugin's exile triggers miss. Kappa Cannoneer with Ward 4 is expensive to answer. The Weapons Manufacturing + EE burst can kill from nowhere. Pinnacle Emissary floods the board before you can set up.<br><br>
+      <strong>Karn Value:</strong> Karn's static shuts off Mox Opal (opponent's), Aether Spellbomb, Springleaf Drum. This is meaningful — Affinity loses significant mana acceleration under Karn. But their artifact-creature threats (Kappa, constructs) still attack and grow. You need Karn + immediate pressure to race their board.<br><br>
+      <strong>Disruptor Flute:</strong> Name Kappa Cannoneer to shut off its activated ability (the +1/+1 counter trigger is a triggered ability, not activated — Flute doesn't stop it). Better: name Pinnacle Emissary to shut off its Warp ability. Or name Urza's Saga to make Chapter II/III cost {3} more each — effectively shutting down Saga's Construct production and artifact tutor.<br><br>
+      <div class="sb-table">
+        <div class="sb-col">
+          <div class="sb-col-label">Out</div>
+          <div class="sb-item"><span>−2 Ulamog (too slow)</span></div>
+          <div class="sb-item"><span>−4 Ugin, Eye of the Storms (misses on colorless)</span></div>
+          <div class="sb-item"><span>−1 Relic of Progenitus</span></div>
+        </div>
+        <div class="sb-col">
+          <div class="sb-col-label">In</div>
+          <div class="sb-item"><span>+1 Vexing Bauble (disrupts their free artifacts)</span></div>
+          <div class="sb-item"><span>+1 Ensnaring Bridge (if you can empty hand)</span></div>
+          <div class="sb-item"><span>+3 Disruptor Flute</span></div>
+        </div>
+      </div>
+    </td></tr>
+
+    <tr onclick="toggle('mu-storm')"><td>Ruby Storm</td><td>6.2%</td><td><span class="verdict verdict-dog">Dog</span></td><td>Dog</td><td>Even</td></tr>
+    <tr><td colspan="5" class="matchup-detail" id="mu-storm">
+      <strong>The Matchup:</strong> Ruby Storm kills turn 2–3. Eldrazi Tron's disruption (Thought-Knot Seer) requires 4 mana on turn 2 — one turn too slow. G1 is a race you usually lose. Post-board, the Karn toolbox dramatically improves the matchup with the right hate pieces.<br><br>
+      <strong>Karn Lines:</strong> Fetch Trinisphere (all spells cost at least {3}) — this completely shuts down Storm's ritual chain at {1}{R} each. Fetch Damping Sphere (each spell costs +1 per prior spell this turn) — devastating for chaining 20 spells. Fetch Disruptor Flute, name Ruby Medallion (costs {3} more to cast) or Ral, Monsoon Mage. The Flute's activated ability lock also stops Medallion's static... wait, Ruby Medallion's cost reduction is a static ability not an activated one — Flute only locks activated abilities. Name Ral to lock the coin flip activated trigger? No — those are triggered abilities. Better to just tax the spell by naming Ral for +{3} cast cost.<br><br>
+      <strong>Sowing Mycospawn:</strong> Kicking Mycospawn exiles one of their lands. Storm runs only 18–20 lands and needs at least 3 by turn 3. Exiling their Sacred Foundry removes their only white mana for Orim's Chant. Exiling a fetch land reduces their reach for mana sources.<br><br>
+      <div class="sb-table">
+        <div class="sb-col">
+          <div class="sb-col-label">Out</div>
+          <div class="sb-item"><span>−2 Ulamog (far too slow)</span></div>
+          <div class="sb-item"><span>−4 Ugin, Eye of the Storms (7 mana, they're dead turn 3)</span></div>
+          <div class="sb-item"><span>−1 Relic (wrong graveyard hate)</span></div>
+        </div>
+        <div class="sb-col">
+          <div class="sb-col-label">In</div>
+          <div class="sb-item"><span>+1 Trinisphere</span></div>
+          <div class="sb-item"><span>+1 Damping Sphere</span></div>
+          <div class="sb-item"><span>+3 Disruptor Flute</span></div>
+        </div>
+      </div>
+      <div class="sb-note">With Trinisphere in play via Karn, every Storm spell costs at least 3 mana. Their rituals still generate 3 mana each, but with a reducer making spells cost 1 less, they net only 0 mana per ritual under Trinisphere. The combo grinds to a halt.</div>
+    </td></tr>
+
+    <tr onclick="toggle('mu-belcher')"><td>Tameshi Belcher</td><td>2%</td><td><span class="verdict verdict-dog">Dog</span></td><td>Dog</td><td>Even</td></tr>
+    <tr><td colspan="5" class="matchup-detail" id="mu-belcher">
+      <strong>The Matchup:</strong> Tameshi Belcher assembles a 12-mana turn on turn 4 and activates Goblin Charbelcher for lethal. Karn is the key card — its static shuts off the Belcher's activated ability entirely (Belcher is an artifact the opponent controls, its tap ability is an activated ability). With Karn in play, they literally cannot win via Belcher.<br><br>
+      <strong>Sowing Mycospawn Land Denial:</strong> Belcher runs a very low land count (5–8 lands total). Kicking Mycospawn to exile a land is devastating — they may not be able to make their land drops for the rest of the game. Exiling Simic Growth Chamber (a key Tameshi target) is especially strong.<br><br>
+      <strong>Thought-Knot Seer:</strong> Strip Tameshi or Lotus Bloom from hand. Removing either card significantly delays or prevents their combo. TKS on turn 2 via Temple is a meaningful disruption play against a turn-4 kill deck.<br><br>
+      <div class="sb-table">
+        <div class="sb-col">
+          <div class="sb-col-label">Out</div>
+          <div class="sb-item"><span>−2 Ulamog (too slow)</span></div>
+          <div class="sb-item"><span>−4 Ugin (too slow, misses on blue artifacts)</span></div>
+          <div class="sb-item"><span>−1 Dismember</span></div>
+        </div>
+        <div class="sb-col">
+          <div class="sb-col-label">In</div>
+          <div class="sb-item"><span>+1 Trinisphere (min 3 mana per spell)</span></div>
+          <div class="sb-item"><span>+3 Disruptor Flute (name Belcher or Tameshi)</span></div>
+          <div class="sb-item"><span>+1 Damping Sphere</span></div>
+        </div>
+      </div>
+    </td></tr>
+
+    <tr onclick="toggle('mu-amulet')"><td>Amulet Titan</td><td>3.1%</td><td><span class="verdict verdict-even">Even</span></td><td>Even</td><td>Even</td></tr>
+    <tr><td colspan="5" class="matchup-detail" id="mu-amulet">
+      <strong>The Matchup:</strong> A true mirror of mana acceleration strategies. Amulet Titan kills by finding Primeval Titan and tutoring Slayer's Stronghold + Sunhome for a same-turn kill. Their interaction pieces are Endurance, Boseiju, and The One Ring. Your Karn static shuts off Amulet of Vigor's triggered ability... wait — Amulet is a triggered ability, not activated. Karn doesn't stop Amulet triggers. But Karn can fetch Damping Sphere (bounce lands produce {C} instead of {W} or {G}) — this partially disrupts but doesn't fully shut down Amulet.<br><br>
+      <strong>Sowing Mycospawn as Kicker:</strong> Kicking Mycospawn to exile a bounce land (Simic Growth Chamber, Gruul Turf) severs the core Amulet engine. Without bounce lands, Amulet becomes just a tapper-untapper with no mana advantage. This is the most impactful play in the matchup if you can kick Mycospawn early.<br><br>
+      <strong>Thought-Knot Seer:</strong> Strip Primeval Titan from hand before they can play it. Even if they Summoner's Pact for it, stripping the actual copy means Pact triggers next turn for another 4 mana to find a different win — buying you more time.<br><br>
+      <div class="sb-table">
+        <div class="sb-col">
+          <div class="sb-col-label">Out</div>
+          <div class="sb-item"><span>−2 Ugin (underwhelming vs mostly green deck)</span></div>
+          <div class="sb-item"><span>−1 Relic of Progenitus</span></div>
+        </div>
+        <div class="sb-col">
+          <div class="sb-col-label">In</div>
+          <div class="sb-item"><span>+1 Damping Sphere (bounce lands produce C)</span></div>
+          <div class="sb-item"><span>+1 Grafdigger's Cage (stops Summoner's Pact creature entering)</span></div>
+        </div>
+      </div>
+    </td></tr>
+
+    <tr onclick="toggle('mu-prowess')"><td>Izzet Prowess</td><td>4%</td><td><span class="verdict verdict-dog">Dog</span></td><td>Dog</td><td>Even</td></tr>
+    <tr><td colspan="5" class="matchup-detail" id="mu-prowess">
+      <strong>The Matchup:</strong> Izzet Prowess presents the fastest clock in Modern alongside meaningful interaction (Lightning Bolt kills Thought-Knot Seer profitably since they draw a card anyway). Slickshot Show-Off makes their threats evasive and difficult to block. Without a fast Karn + Ensnaring Bridge line, this matchup is brutal.<br><br>
+      <strong>Kozilek's Command:</strong> On turn 2 with Eldrazi Temple, X=2: create 2 Spawn tokens (0/1 chump blockers) AND exile 2 cards from graveyard (hitting Lava Dart and flashback pieces). This is the best early play in the matchup — it both slows the clock and disrupts the graveyard engine.<br><br>
+      <strong>Ensnaring Bridge:</strong> Fetch with Karn immediately. Discard your hand down to 2–3 cards (you're likely behind anyway), and Prowess creatures can't attack through it if they have power > your hand size. The combo of Karn + Bridge on turn 3 wins a large percentage of games where opponents aren't ready for it.<br><br>
+      <div class="sb-table">
+        <div class="sb-col">
+          <div class="sb-col-label">Out</div>
+          <div class="sb-item"><span>−2 Ulamog (too slow)</span></div>
+          <div class="sb-item"><span>−4 Ugin (7 mana, they're dead turn 4)</span></div>
+          <div class="sb-item"><span>−2 Thought-Knot Seer (gives them a card)</span></div>
+          <div class="sb-item"><span>−1 Expedition Map (not needed)</span></div>
+        </div>
+        <div class="sb-col">
+          <div class="sb-col-label">In</div>
+          <div class="sb-item"><span>+1 Ensnaring Bridge</span></div>
+          <div class="sb-item"><span>+1 Walking Ballista (kills 1-toughness threats)</span></div>
+          <div class="sb-item"><span>+1 The Filigree Sylex (board wipe)</span></div>
+          <div class="sb-item"><span>+1 Vexing Bauble</span></div>
+        </div>
+      </div>
+    </td></tr>
+
+    <tr onclick="toggle('mu-reanimator')"><td>Grixis Reanimator</td><td>1.5%</td><td><span class="verdict verdict-even">Even</span></td><td>Even</td><td>Favor</td></tr>
+    <tr><td colspan="5" class="matchup-detail" id="mu-reanimator">
+      <strong>The Matchup:</strong> Grixis Reanimator wins by getting Archon of Cruelty into play on turn 2–3 via Persist + Emperor of Bones or Goryo's Vengeance. Archon has a finality counter, so it's exiled when it dies — your Ulamog's cast trigger can exile it (two permanents on cast: exile Archon preemptively). Thought-Knot Seer strips Persist or the Archon before they can combo.<br><br>
+      <strong>Karn Lines:</strong> Karn fetches Grafdigger's Cage (creatures can't enter from GY — stops Persist and Goryo's Vengeance both). Tormod's Crypt from SB also exiles their graveyard in response to Persist targeting Archon. Fetching the right hate piece on turn 3 shuts down the entire combo.<br><br>
+      <strong>Consign to Memory Note:</strong> Post-board, Grixis Reanimator often runs Consign to Memory (counters colorless spells). This hits your Thought-Knot Seer, Expedition Map, and Kozilek's Command. Play around Consign by waiting until they tap out for their combo before deploying key pieces.<br><br>
+      <div class="sb-table">
+        <div class="sb-col">
+          <div class="sb-col-label">Out</div>
+          <div class="sb-item"><span>−2 Dismember (less relevant)</span></div>
+          <div class="sb-item"><span>−1 Kozilek's Command (less relevant)</span></div>
+        </div>
+        <div class="sb-col">
+          <div class="sb-col-label">In</div>
+          <div class="sb-item"><span>+1 Grafdigger's Cage</span></div>
+          <div class="sb-item"><span>+1 Tormod's Crypt</span></div>
+        </div>
+      </div>
+    </td></tr>
+
+    <tr onclick="toggle('mu-uwc')"><td>UW Control</td><td>2%</td><td><span class="verdict verdict-favor">Favorable</span></td><td>Favor</td><td>Favor</td></tr>
+    <tr><td colspan="5" class="matchup-detail" id="mu-uwc">
+      <strong>The Matchup:</strong> UW Control struggles to answer colorless threats with their removal package (Solitude exiles creatures, Path to Exile). They lack answers to planeswalkers (Karn, Ugin) that don't cost them significant tempo. Ugin on turn 3 exiles their Teferi or Snapcaster on cast, then continues exiling any colored permanent they play. The mana advantage is simply too large for them to overcome.<br><br>
+      <strong>Vexing Bauble:</strong> Shuts off Force of Negation and Solitude — their primary ways to interact for free. With Bauble in play, they must pay the full mana cost for all interaction. They can't pitch a card to counter your Ulamog. This dramatically slows their ability to answer your threats.<br><br>
+      <strong>TKS Targeting:</strong> Strip Counterspell, Cryptic Command, or Force of Negation. Leaving them with only Solitude is manageable — Solitude costs 5 mana normally, and Karn's mana advantage overwhelms that cost quickly.<br><br>
+      <div class="sb-table">
+        <div class="sb-col">
+          <div class="sb-col-label">Out</div>
+          <div class="sb-item"><span>−2 Dismember (they're not a creature deck)</span></div>
+          <div class="sb-item"><span>−1 Relic of Progenitus (wrong hate)</span></div>
+        </div>
+        <div class="sb-col">
+          <div class="sb-col-label">In</div>
+          <div class="sb-item"><span>+1 Vexing Bauble</span></div>
+          <div class="sb-item"><span>+1 Disruptor Flute (name Counterspell)</span></div>
+        </div>
+      </div>
+    </td></tr>
+
+    <tr onclick="toggle('mu-domain')"><td>Domain Aggro</td><td>2.6%</td><td><span class="verdict verdict-even">Even</span></td><td>Even</td><td>Favor</td></tr>
+    <tr><td colspan="5" class="matchup-detail" id="mu-domain">
+      <strong>The Matchup:</strong> Domain Aggro presents Scion of Draco (hexproof, lifelink, double strike on their turn with Leyline of the Guildpact) and fast Atraxa threats. Scion at 2 mana attacks for 4+ the turn after it resolves and has hexproof from targeted removal. Kozilek's Command X=4 can exile Scion (MV 6 but X needs to be ≥ 6 — too expensive). Your Dismember kills it (−5/−5).<br><br>
+      <strong>Key Interaction:</strong> Dismember kills Scion of Draco and most other Domain threats. Kozilek's Command at X=2 creates blockers and deals with smaller threats. Thought-Knot Seer strips Atraxa or Scion before it resolves. Ensnaring Bridge from the SB stops all attacks once you've deployed your hand.<br><br>
+      <div class="sb-table">
+        <div class="sb-col">
+          <div class="sb-col-label">Out</div>
+          <div class="sb-item"><span>−2 Ulamog (too slow, their clock is fast)</span></div>
+          <div class="sb-item"><span>−4 Ugin (too slow)</span></div>
+          <div class="sb-item"><span>−1 Relic</span></div>
+        </div>
+        <div class="sb-col">
+          <div class="sb-col-label">In</div>
+          <div class="sb-item"><span>+1 Ensnaring Bridge</span></div>
+          <div class="sb-item"><span>+1 Walking Ballista</span></div>
+          <div class="sb-item"><span>+1 Torpor Orb (stops ETB hexproof/lifelink from Leyline)</span></div>
+        </div>
+      </div>
+    </td></tr>
+
+    <tr onclick="toggle('mu-living')"><td>Living End</td><td>2.4%</td><td><span class="verdict verdict-favor">Favorable</span></td><td>Favor</td><td>Favor</td></tr>
+    <tr><td colspan="5" class="matchup-detail" id="mu-living">
+      <strong>The Matchup:</strong> Living End cascades into the namesake card via Violent Outburst or Ardent Plea. Your graveyard hate disrupts both the cycling fill-up phase (Relic exiles their GY incrementally) and the cascade turn (Grafdigger's Cage → creatures can't enter from GY → Living End resolves but does nothing). Karn fetching either piece game 1 via his static is enough to win most games.<br><br>
+      <strong>Sowing Mycospawn Land Exile:</strong> Kicking Mycospawn to exile a forest or cycling land further disrupts their mana for casting cascade spells. Living End runs only 16–18 lands — losing one is significant. Combined with early Relic slowly taxing their GY resources, you can grind them out of the game they need to win.<br><br>
+      <div class="sb-table">
+        <div class="sb-col">
+          <div class="sb-col-label">Out</div>
+          <div class="sb-item"><span>−2 Dismember (less relevant)</span></div>
+          <div class="sb-item"><span>−2 Kozilek's Command (GY exile mode is weak here)</span></div>
+        </div>
+        <div class="sb-col">
+          <div class="sb-col-label">In</div>
+          <div class="sb-item"><span>+1 Grafdigger's Cage</span></div>
+          <div class="sb-item"><span>+1 Tormod's Crypt</span></div>
+        </div>
+      </div>
+    </td></tr>
+
+    <tr onclick="toggle('mu-mirror')"><td>Eldrazi Tron Mirror</td><td>5.5%</td><td><span class="verdict verdict-even">Even</span></td><td>Even</td><td>Even</td></tr>
+    <tr><td colspan="5" class="matchup-detail" id="mu-mirror">
+      <strong>The Matchup:</strong> Both players are playing the same mana development game. First to assemble Tron has the mana advantage. First Thought-Knot Seer strips the opponent's Karn or a key Tron piece. Karn is the most important card — whoever resolves Karn first and fetches Ensnaring Bridge or Trinisphere likely wins, since the other player can't profitably attack through Bridge.<br><br>
+      <strong>Disruptor Flute:</strong> Name Karn in the mirror — makes their Karn cost {7} to cast and shuts off Karn's activated abilities (the −2). This is the strongest play. Or name their Ugin (costs {10}) to lock them out of board wipes. The Flute from SB turns an even matchup into a decisive advantage.<br><br>
+      <strong>Sowing Mycospawn Tempo:</strong> Kicking Mycospawn to exile a Tron piece is game-winning if they haven't assembled Tron. They lose a land that can never be replaced, and you're now way ahead on mana development.<br><br>
+      <div class="sb-table">
+        <div class="sb-col">
+          <div class="sb-col-label">Out</div>
+          <div class="sb-item"><span>−2 Dismember (not relevant)</span></div>
+          <div class="sb-item"><span>−1 Relic of Progenitus</span></div>
+        </div>
+        <div class="sb-col">
+          <div class="sb-col-label">In</div>
+          <div class="sb-item"><span>+3 Disruptor Flute (name Karn)</span></div>
+          <div class="sb-item"><span>+1 Damping Sphere (disrupts opponent's Tron)</span></div>
+        </div>
+      </div>
+    </td></tr>
+  </table>
+</div>
+
+<!-- CH07: SIDEBOARD -->
+<div id="edges" class="section">
+  <div class="section-label">Lines &amp; Tactics</div>
+  <h1>Edge Cases &amp;<br>Rules Precision</h1>
+  <div class="mantra">"Tron wins on inevitability. Understand exactly what stops you and what doesn't."</div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Chalice of the Void — Counters on Cast, Not on Resolution</div>
+    <div class="edge-case-body">Chalice of the Void says "counter target spell with mana value equal to X." This counter fires when a spell with that MV is CAST — before it resolves. Chalice at 1 counters every MV-1 spell your opponents cast. Important: Chalice only counters SPELLS — it doesn't stop activated or triggered abilities, and it doesn't stop creatures entering the battlefield via non-spell means (Aether Vial, reanimation). Against humans with Vial: Chalice at 2 stops them casting 2-drops, but Vial at 2 puts them directly onto the battlefield without casting — Chalice doesn't care. Set Chalice at the MV where their most critical spells cluster.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Thought-Knot Seer — Two Separate Triggers</div>
+    <div class="edge-case-body">TKS has two triggered abilities: (1) "When this enters the battlefield, look at target opponent's hand. You may exile a nonland card from it" — fires on ETB, (2) "When this leaves the battlefield, target opponent draws a card" — fires on leaving. These are two separate triggers that resolve independently. If TKS is exiled or bounced, the second trigger fires and they draw. If you flicker TKS with Ephemerate, BOTH triggers fire — they lose a card on the first ETB and draw a card when TKS blinks out, netting zero. Never flicker TKS frivolously. The ETB exile trigger can be countered by Consign to Memory (it's a triggered ability).</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Reality Smasher — Discard Only When Targeted, Not When Swept</div>
+    <div class="edge-case-body">Reality Smasher says "Whenever Reality Smasher becomes the target of a spell or ability an opponent controls, counter it unless its controller discards a card." This ONLY fires when something TARGETS Smasher specifically. Non-targeting removal bypasses it entirely: Supreme Verdict ("destroy all creatures" — no target), All Is Dust ("each player sacrifices" — no target), Wrath of God, bounce effects that hit "all" or "each." Against Smasher: use sweepers over targeted removal to avoid the discard tax. If you must use targeted removal, have a disposable discard fodder ready.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">All Is Dust — Only Colored Permanents; Artifacts and Lands Survive</div>
+    <div class="edge-case-body">All Is Dust says "each player sacrifices all colored permanents they control." The key word is COLORED. Colorless permanents are unaffected — your own Chalice of the Void, Expedition Map, Sol Ring, Tron lands, Walking Ballista all survive All Is Dust. Opponents lose their colored creatures, enchantments, and planeswalkers, but keep any colorless permanents. Against decks with colorless threats (Eldrazi mirrors, other Tron): All Is Dust doesn't help. Against every fair colored deck: it's a one-sided board wipe that preserves your entire mana base and artifacts.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Karn Liberated — -3 Permanently Exiles; Ult Restarts the Game</div>
+    <div class="edge-case-body">Karn's -3 exiles target permanent. Unlike most exile effects, there's no "until Karn leaves" clause — the exile is permanent. The ultimate (+14 to 5 loyalty, then restart the game with exiled cards in play) is not just a game-restart — any cards exiled by Karn's -3 ability (from any game state, including cards opponents exiled from your hand on previous turns) enter the new game under your control. In long games, track what's been exiled. Karn's -3 can also exile your own permanents to set up the ultimate, pulling back key pieces like Ulamog or Emrakul that may have been answered.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Ulamog's Cast Trigger Fires on CAST, Not ETB</div>
+    <div class="edge-case-body">Ulamog, the Ceaseless Hunger says "when you cast this spell, exile the top twenty cards of target player's library." This triggers on CAST — if Ulamog is put onto the battlefield without casting (reanimation, Goryo's Vengeance, Show and Tell), the cast trigger DOES NOT fire. You get the body but not the exile. However, Ulamog's annihilator 4 and indestructibility are ETB-independent — those are static abilities that are always active when the creature is in play. The cast trigger is also a triggered ability — opponents with Consign to Memory can counter it (preventing the exile while Ulamog still enters).</div>
+  </div>
+
+</div>
+
+<div id="sideboard" class="section">
+  <div class="section-label">Chapter 07</div>
+  <h1>Sideboard<br>Guide</h1>
+  <p>The entire SB is a Karn toolbox. Every artifact is fetchable via Karn −2. The goal is to have one answer for every format archetype, fetchable at instant speed on turn 3 when Karn resolves.</p>
+
+  <div class="sb-card-guide">
+    <div class="sb-guide-row"><div class="sb-guide-name">Disruptor Flute ×3</div><div class="sb-guide-body">{2} artifact with Flash. Enter choosing a card name. Two effects: named cards cost {3} more to cast + activated abilities of sources with that name are locked (except mana abilities). Most impactful names: Karn (mirror — locks their toolbox and costs {7} to cast), Pinnacle Emissary (costs {4} instead of {3} and Warp locked), Goblin Charbelcher (Belcher can't activate). The Flash means you can cast it proactively or in response to them finding the named card.</div></div>
+    <div class="sb-guide-row"><div class="sb-guide-name">Ensnaring Bridge ×1</div><div class="sb-guide-body">{3} artifact. Creatures with power greater than the number of cards in your hand can't attack. The classic aggro lock — fetch with Karn, then gradually empty your hand. Against creature-based decks (Boros Energy, Affinity, Prowess), this artifact single-handedly locks out their primary win condition. Combine with a minimal hand (2–3 cards) to block most relevant attackers. Note: Bridge doesn't stop activated abilities or noncombat damage.</div></div>
+    <div class="sb-guide-row"><div class="sb-guide-name">Trinisphere ×1</div><div class="sb-guide-body">{3} artifact. As long as untapped, every spell that costs less than {3} costs exactly {3}. Devastating against Ruby Storm (rituals become {3} each, no net mana), Storm mirrors, and any deck with lots of cheap spells. Also relevant against Affinity's free artifacts (Memnite, Ornithopter — now cost {3}). Must be answered by the opponent or they lose on the spot. Karn fetches this immediately on turn 3 in Storm matchups.</div></div>
+    <div class="sb-guide-row"><div class="sb-guide-name">Walking Ballista ×1</div><div class="sb-guide-body">{X}{X} 0/0 artifact creature. Enters with X +1/+1 counters. Remove counter: deal 1 damage to any target. With Tron: cast for X=5 on turn 3 (5 counters), ping Ragavan, Guide of Souls, Voice of Victory repeatedly. Also closes games as a direct damage win condition. Can be fetched mid-game via Karn when you need precision removal.</div></div>
+    <div class="sb-guide-row"><div class="sb-guide-name">Damping Sphere ×1</div><div class="sb-guide-body">{2} artifact. Two effects: bounce lands tapped for 2+ mana produce {C} instead (disrupts Amulet's engine), and each spell costs {1} more per spell cast by that player this turn (disrupts Storm chains). Fetch with Karn in Amulet and Storm matchups. Important: Damping Sphere also affects YOUR spells — be careful about casting multiple Eldrazi in one turn under your own Sphere.</div></div>
+    <div class="sb-guide-row"><div class="sb-guide-name">Grafdigger's Cage ×1</div><div class="sb-guide-body">{1} artifact. Creatures can't enter the battlefield from GYs or libraries. Players can't cast from GYs or libraries. Shuts down: Living End (creatures can't enter from GY), Reanimator (creatures can't enter from GY), Persist (Archon can't be put onto battlefield from GY), and Emry + PIF flashback. Against Affinity: doesn't stop Emry (she casts from GY which Cage prevents) but Karn's static already disrupts Affinity artifacts.</div></div>
+    <div class="sb-guide-row"><div class="sb-guide-name">Torpor Orb ×1</div><div class="sb-guide-body">{2} artifact. Creatures don't have enters-the-battlefield abilities. Shuts off: Guide of Souls (no ETB life gain), Voice of Victory (no token), Thought-Knot Seer opponent's (no strip — wait, Torpor Orb also shuts off YOUR TKS. Don't fetch this when you're planning to cast TKS). Best vs Jeskai Blink (shuts off Phelia, Quantum Riddler, all blink value). Against Boros: stops Guide and Voice ETBs entirely.</div></div>
+    <div class="sb-guide-row"><div class="sb-guide-name">Haywire Mite ×1</div><div class="sb-guide-body">{1} 1/1 insect. When it dies, gain 2 life. {G}, sacrifice: exile target noncreature artifact or noncreature enchantment. Green mana from Talisman activates it. Fetch with Karn to answer a specific hate artifact (Blood Moon, Ensnaring Bridge in mirror, specific enchantments). The on-board instant-speed answer that doesn't require waiting for your main phase.</div></div>
+    <div class="sb-guide-row"><div class="sb-guide-name">Vexing Bauble ×1</div><div class="sb-guide-body">{1} artifact. If a player cast a spell from anywhere other than their hand this turn, counter it. Counters: Force of Negation (pitched from hand = not from hand), Solitude (evoked from hand is still from hand — wait, evoke is cast from hand so Bauble doesn't stop it), Emry's GY casts, Flashback spells. Most relevant: stops Force of Negation from pitching to counter your key plays.</div></div>
+  </div>
+</div>
+
+<!-- CH08: HEURISTICS -->
+<div id="heuristics" class="section">
+  <div class="section-label">Chapter 08</div>
+  <h1>Heuristics</h1>
+
+  <ol class="heuristic-list">
+    <li><div class="heuristic-text"><strong>Karn's static only affects opponents' artifacts.</strong> <span>Your own Mox Opal, Talisman, and other artifacts still activate normally under your own Karn. Only the opponent's artifact activated abilities are locked. This is why Karn is safe to cast even when you have active artifacts on board.</span></div></li>
+    <li><div class="heuristic-text"><strong>Expedition Map on turn 2, always, with two Tron pieces.</strong> <span>If you have any two Tron lands in hand or play plus a Map, activate Map on turn 2. Don't wait to "save" it. Tron on turn 3 enables Karn or Ugin — delaying Map by one turn costs you an entire combo-level play.</span></div></li>
+    <li><div class="heuristic-text"><strong>Ugin's Labyrinth: exile your most powerful card, not your most convenient one.</strong> <span>Ulamog gives you {C}{C} per turn and can be recast from hand later via the return ability. Always prioritize the highest-MV card you'll want to cast eventually. Exiling a Talisman in Labyrinth is wrong — Talismans cast for 2, not 7+.</span></div></li>
+    <li><div class="heuristic-text"><strong>Sowing Mycospawn land search before playing your land drop.</strong> <span>Mycospawn's land search triggers on CAST, and the land ETBs immediately. Play Mycospawn before your land drop — the searched land counts as a land entering this turn and can be the land drop you would have played anyway, saving you one land from hand.</span></div></li>
+    <li><div class="heuristic-text"><strong>Thought-Knot Seer gives them a card when it LEAVES, not when it enters.</strong> <span>This means bouncing TKS with your own effects (or replaying it) triggers the leave ability, giving them a card. Don't blink or bounce TKS carelessly. In the mirror, if they TKS you and you kill their TKS, they draw a card — factor this into your combat math.</span></div></li>
+    <li><div class="heuristic-text"><strong>Karn can fetch exile zone artifacts via Devourer of Destiny interaction.</strong> <span>Devourer reveals from opening hand, exiles 3 cards to exile zone. Later, Karn −2 can retrieve artifact cards from that exile zone. This creates a slow hand-selection engine: keep 1 card from 4 with Devourer, retrieve useful artifacts later with Karn.</span></div></li>
+    <li><div class="heuristic-text"><strong>Disruptor Flute: name cards, not archetypes.</strong> <span>You name a specific card name. "Izzet Affinity" is not a card. Name the specific card that wins them the game: "Kappa Cannoneer" (their key threat), "Pinnacle Emissary" (their key enabler), "Ruby Medallion" (their key reducer). Think one card ahead of what they need to execute their game plan.</span></div></li>
+    <li><div class="heuristic-text"><strong>Eldrazi Temple + Kozilek's Command on turn 2 vs aggro.</strong> <span>Temple {C}{C} + one land {1} + one mana source {1} = {X}{C}{C} with X=2. Mode 1: create 2 Spawn tokens (0/1 blockers). Mode 4: exile 2 cards from graveyard. Against Prowess, this creates blockers AND strips Lava Dart from GY in the same turn for {4} total mana.</span></div></li>
+    <li><div class="heuristic-text"><strong>Prioritize Temple over Tron piece 1 when planning T2 TKS.</strong> <span>Temple provides {C}{C} for TKS's colorless mana requirement. A hand of Temple + Talisman + TKS + Tower can cast TKS on turn 2 ({3}{C} = Tower {1} + Talisman tap {1} + Temple {C}{C}). This disruption play is often more valuable than a slow Tron build that presents no threat until turn 3.</span></div></li>
+    <li><div class="heuristic-text"><strong>Relic of Progenitus recovers destroyed artifacts for Karn.</strong> <span>If an important artifact (a Karn toolbox piece you already cast) gets destroyed and goes to your GY, tap Relic to exile your own GY. Then Karn −2 retrieves the artifact from exile. This two-card loop recovers key pieces that would otherwise be permanently lost.</span></div></li>
+    <li><div class="heuristic-text"><strong>Blood Moon destroys your Tron mana base — always Mycospawn for Forest.</strong> <span>Under Blood Moon, all your nonbasic lands become Mountains. Only your basic Forest produces green mana. Sowing Mycospawn can find the Forest before Moon resolves (or after if you have green from Talisman). Talisman of Resilience produces {G} as a colored option — use this to cast Mycospawn under Moon.</span></div></li>
+    <li><div class="heuristic-text"><strong>Kozilek's Command is Eldrazi tribal — Eldrazi Temple pays {C}{C} for it.</strong> <span>Kozilek's Command is an Eldrazi spell. Eldrazi Temple's {C}{C} applies. This means on turn 2, Temple + any one-mana source = {X=1}{C}{C} for Command (X=1). Mode 3 exiles a 1-MV creature (Ragavan, DRC, Monastery Swiftspear). This is the cleanest turn-2 answer to the most dangerous 1-drops in the format.</span></div></li>
+    <li><div class="heuristic-text"><strong>Ugin, Eye of the Storms doesn't trigger on mana abilities or activated abilities.</strong> <span>The trigger says "whenever you cast a colorless SPELL." Tapping Talisman for mana isn't casting a spell. Playing a land isn't casting a spell. Only actual casting of colorless cards (Eldrazi, artifacts, colorless instants) triggers Ugin's exile ability. Plan your turns to maximize the number of colorless spells cast while Ugin is in play.</span></div></li>
+    <li><div class="heuristic-text"><strong>Torpor Orb shuts off YOUR Thought-Knot Seer too.</strong> <span>Don't fetch Torpor Orb if you're planning to cast Thought-Knot Seer. With Orb in play, TKS enters as a 4/4 with no ETB — they don't reveal their hand, you don't exile a card. Only fetch Orb when your game plan no longer requires TKS's ETB, or when the matchup's threats are entirely ETB-based.</span></div></li>
+    <li><div class="heuristic-text"><strong>Sowing Mycospawn's land search is on CAST, not on resolution.</strong> <span>If Mycospawn gets countered or removed in response, you've already searched for and put the land onto the battlefield (the land search triggered and resolved before the creature entered or the counter could stop the land trigger). Only the creature entering is prevented — the land is already in play.</span></div></li>
+    <li><div class="heuristic-text"><strong>In the mirror, first Karn wins.</strong> <span>Whoever resolves Karn first gets to fetch Disruptor Flute (naming opponent's Karn) or Ensnaring Bridge. Either play creates a game-deciding lock. Race to Karn by prioritizing Tron assembly over threats in the first 3 turns. Don't play TKS over developing Tron unless TKS steals their missing Tron piece.</span></div></li>
+  </ol>
+</div>
+
+<!-- CH09: TUNING -->
+<div id="tuning" class="section">
+  <div class="section-label">Chapter 09</div>
+  <h1>Tuning<br>Notes</h1>
+  <p>The flex slots are Dismember (2), Ulamog (2), Relic of Progenitus (1), and one Thought-Knot Seer. The SB toolbox structure is essentially fixed — swap individual hate pieces based on expected meta.</p>
+  <div class="tuning-grid">
+    <div class="tuning-card">
+      <div class="tuning-label">Condition</div>
+      <div class="tuning-condition">Storm / Belcher Heavy Field</div>
+      <div class="tuning-up">+1 Trinisphere in SB (up to 2)</div>
+      <div class="tuning-up">+1 Damping Sphere in SB (up to 2)</div>
+      <div class="tuning-down">−1 Extinguisher Battleship (less needed)</div>
+      <div class="tuning-down">−1 Torpor Orb (less relevant)</div>
+    </div>
+    <div class="tuning-card">
+      <div class="tuning-label">Condition</div>
+      <div class="tuning-condition">Aggro-Heavy Field (Boros, Prowess)</div>
+      <div class="tuning-up">+1 Ensnaring Bridge in SB (up to 2)</div>
+      <div class="tuning-up">+4 Dismember main (up to 4)</div>
+      <div class="tuning-down">−2 Ulamog (too slow vs aggro)</div>
+      <div class="tuning-down">−1 Relic (wrong hate)</div>
+    </div>
+    <div class="tuning-card">
+      <div class="tuning-label">Condition</div>
+      <div class="tuning-condition">Reanimator / Graveyard Field</div>
+      <div class="tuning-up">+2 Grafdigger's Cage in SB (up to 2)</div>
+      <div class="tuning-up">+2 Tormod's Crypt in SB (up to 2)</div>
+      <div class="tuning-down">−1 Torpor Orb (less needed)</div>
+      <div class="tuning-down">−1 Liquimetal Coating</div>
+    </div>
+    <div class="tuning-card">
+      <div class="tuning-label">Condition</div>
+      <div class="tuning-condition">Affinity / Artifact-Heavy Field</div>
+      <div class="tuning-up">+1 The Filigree Sylex (wipes small artifacts)</div>
+      <div class="tuning-up">+1 Haywire Mite (instant-speed exile)</div>
+      <div class="tuning-down">−1 Torpor Orb (wrong hate vs artifacts)</div>
+      <div class="tuning-down">−1 Extinguisher Battleship</div>
+    </div>
+    <div class="tuning-card">
+      <div class="tuning-label">Condition</div>
+      <div class="tuning-condition">Blood Moon Prevalent</div>
+      <div class="tuning-up">+2 Sowing Mycospawn main (fetch Forest proactively)</div>
+      <div class="tuning-up">+1 Forest in main (up to 2 basics)</div>
+      <div class="tuning-down">−2 Ulamog (too high MV to cast off basics)</div>
+      <div class="tuning-down">−1 Ugin (7 mana impossible under Moon)</div>
+    </div>
+    <div class="tuning-card">
+      <div class="tuning-label">Condition</div>
+      <div class="tuning-condition">Mirror / Eldrazi Field</div>
+      <div class="tuning-up">+3 Disruptor Flute in SB (name Karn)</div>
+      <div class="tuning-up">+1 Damping Sphere (disrupts Tron)</div>
+      <div class="tuning-down">−1 Torpor Orb (wrong hate)</div>
+      <div class="tuning-down">−1 Grafdigger's Cage (not needed)</div>
+    </div>
+  </div>
+  <h2>Register Conditions</h2>
+  <div class="card-grid card-grid-2">
+    <div class="card"><div class="card-label">Register When</div><div class="card-title">Green Lights</div><div class="card-body">Midrange and fair interactive fields — your Tron threats are too large for their answers. Low Damping Sphere density (shuts off multiple untaps per bounce land, but for you: limits to 1 mana per land). Combo-heavy fields (Storm, Living End) — TKS strips their key card. You’ve practiced the Karn SB tutor chains for the top 5 matchups.</div></div>
+    <div class="card"><div class="card-label">Avoid When</div><div class="card-title">Red Lights</div><div class="card-body">Heavy Blood Moon meta — Blood Moon makes all nonbasic lands Mountains, turning your Tron lands into Mountains that produce R, breaking assembly. High Spreading Seas density (turns your land into an Island, breaking Tron). You haven’t practiced the Karn tutor chain for the expected matchups — wrong SB fetch under pressure costs games.</div></div>
+    <div class="card"><div class="card-label">Never Cut</div><div class="card-title">Chalice of the Void ×4</div><div class="card-body">The whole reason to play Eldrazi Tron. Chalice on 1 shuts off every 1-drop in the format — Ragavan, Spell Pierce, Fatal Push. Never cut.</div></div>
+    <div class="card"><div class="card-label">Never Cut</div><div class="card-title">Karn, the Great Creator ×4</div><div class="card-body">Your toolbox win condition. Karn finding the exact hate piece for each matchup is what separates Eldrazi Tron from other big-mana decks. Four copies ensures you see it.</div></div>
+    <div class="card"><div class="card-label">Flex 2–4</div><div class="card-title">Reality Smasher</div><div class="card-body">3 in creature-removal-light metas. 4 when you expect lots of midrange where a 5/5 trample haste demands two spells to answer. Cut to 2 when the format is burn-heavy (dies to Bolt + Bolt).</div></div>
+    <div class="card"><div class="card-label">Flex 1–2</div><div class="card-title">Ensnaring Bridge (Karn Wish Target)</div><div class="card-body">1 copy in the sideboard as Karn's best wish target vs creature decks. 2 copies vs heavy aggro metas. Never main deck — only accessed through Karn.</div></div>
+    <div class="card"><div class="card-label">Meta Call</div><div class="card-title">Walking Ballista count</div><div class="card-body">2 as a Karn wish target and finisher. 3 in combo metas where pinging for 1 repeatedly matters. Ballista also functions as an answer to 1/1 tokens — increase when tokens are everywhere.</div></div>
+  </div>
+  <h2>SB Slot Priority Order</h2>
+  <ol class="heuristic-list">
+    <li><div class="heuristic-num">01</div><div class="heuristic-body"><strong>Ensnaring Bridge (1 copy in SB, tutored by Karn)</strong> — Locks out all attackers when your hand is empty. The primary lockdown piece vs aggro. Never cut — Karn fetches it on demand.</div></li>
+    <li><div class="heuristic-num">02</div><div class="heuristic-body"><strong>Trinisphere (2 copies)</strong> — Every spell costs at least {3}. Devastating vs Storm (can’t chain cheap rituals), Living End (cascade costs more), Jeskai Blink (all interaction taxed). Bring in vs any spell-heavy interactive deck.</div></li>
+    <li><div class="heuristic-num">03</div><div class="heuristic-body"><strong>Disruptor Flute (3 copies)</strong> — Name a card; spells with that name can’t be cast. Goes in vs Tameshi Belcher (name Belcher), Ruby Storm (name Grapeshot), UW Control (name Counterspell). Replaces Meddling Mage for colorless decks.</div></li>
+    <li><div class="heuristic-num">04</div><div class="heuristic-body"><strong>Grafdigger’s Cage + Tormod’s Crypt (2 copies)</strong> — GY hate for Living End, Goryo’s, Neoform. Cage prevents creature cards entering from GY. Crypt exiles entire GY at instant speed. Both are MV 0-1 so Karn tutors either.</div></li>
+    <li><div class="heuristic-num">05</div><div class="heuristic-body"><strong>Flex (Vexing Bauble, Torpor Orb, Walking Ballista, The Filigree Sylex)</strong> — Torpor Orb prevents ETB triggers (shuts off TKS for them, Restoration Angel, Guide of Souls). Sylex is a board wipe. Ballista kills small creatures. Adjust per field.</div></li>
+  </ol>
+</div>
+
+<!-- CH10: PREP SHEET -->
+<div id="prep" class="section">
+  <div class="section-label">Chapter 10</div>
+  <h1>Prep<br>Sheet</h1>
+  <button class="print-btn" onclick="printSB()">⎙ Print This Sheet</button>
+    <h2>20-Minute Crash Course</h2>
+    <p>If you're sitting down in 20 minutes, run through this in order:</p>
+    <ul class="checklist" id="crash-checklist">
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Mulligan rule:</strong> Keep any hand that assembles Tron by T3 OR has a T2-3 threat. Don't keep all Eldrazi and no Tron.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Tron rule:</strong> Urza's Mine + Tower + Power Plant. You need all three. Map and Expedition Map find missing pieces.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Chalice rule:</strong> Chalice at 1 on T1 is your best G1 play against most Modern decks. Lead with it when possible.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>TKS rule:</strong> Thought-Knot Seer on T2 via Sol land + Tron piece. Take their best card. Always.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>All Is Dust rule:</strong> Sorcery speed — attack BEFORE casting All Is Dust if you want to deal combat damage first.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Sideboard rule:</strong> Karn's wish: name a specific answer. Know your Karn targets for each matchup before G2.</span></li>
+    </ul>
+
+    <h2>Testing Framework</h2>
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-label">Block 01</div>
+        <div class="card-title">T2 TKS Lines</div>
+        <div class="card-body">Practice assembling T2 Thought-Knot Seer. Sol land + Expedition Map or Eye of Ugin.</div>
+      </div>
+      <div class="card">
+        <div class="card-label">Block 02</div>
+        <div class="card-title">Chalice Decision</div>
+        <div class="card-body">Drill setting Chalice at the right number for each matchup. 1 vs most, 0 vs Dredge.</div>
+      </div>
+      <div class="card">
+        <div class="card-label">Block 03</div>
+        <div class="card-title">All Is Dust Timing</div>
+        <div class="card-body">Practice when to hold All Is Dust vs deploy it. Sorcery speed = attack first.</div>
+      </div>
+      <div class="card">
+        <div class="card-label">Block 04</div>
+        <div class="card-title">Clock Practice</div>
+        <div class="card-body">Tron can flood — count real turns to lethal and commit to the kill.</div>
+      </div>
+    </div>
+
+    <h2>Matchday Routine</h2>
+    <ol class="heuristic-list">
+      <li><div class="heuristic-num">01</div><div class="heuristic-body">Register carefully. Confirm Chalice count and Walking Ballista count. Critical cards.</div></li>
+      <li><div class="heuristic-num">02</div><div class="heuristic-body">Set your Chalice number based on the matchup before casting it. Don't set it and change your mind.</div></li>
+      <li><div class="heuristic-num">03</div><div class="heuristic-body">Between rounds: review your mulligan patterns. Tron mulligans are format-specific. Know the keeps.</div></li>
+      <li><div class="heuristic-num">04</div><div class="heuristic-body">All Is Dust is sorcery speed. Attack before casting it when the board has a race.</div></li>
+      <li><div class="heuristic-num">05</div><div class="heuristic-body">Don't be passive. Tron's late game is dominant — commit to winning it.</div></li>
+    </ol>
+
+
+
+  <h3>Karn Toolbox Quick Reference</h3>
+  <div class="card-grid card-grid-3" style="margin-bottom:40px;">
+    <div class="card"><div class="card-label">vs Aggro / Creature Attack</div><div class="card-title">Ensnaring Bridge</div><div class="card-body">Empty your hand. Creatures with power greater than hand size can't attack. Fetch immediately on turn 3.</div></div>
+    <div class="card"><div class="card-label">vs Storm / Belcher</div><div class="card-title">Trinisphere</div><div class="card-body">All spells cost at least {3}. Ritual chains collapse. Storm can't chain under Trinisphere.</div></div>
+    <div class="card"><div class="card-label">vs Specific Threats</div><div class="card-title">Disruptor Flute</div><div class="card-body">Choose name. That spell costs {3} more + activated abilities blanked. Name the opponent's win condition.</div></div>
+    <div class="card"><div class="card-label">vs Small Creatures</div><div class="card-title">Walking Ballista</div><div class="card-body">Cast for X, get X counters, ping for 1 each. Kills Ragavan, Guide of Souls, 1-drops.</div></div>
+    <div class="card"><div class="card-label">vs Amulet / Bounce Lands</div><div class="card-title">Damping Sphere</div><div class="card-body">Bounce lands produce {C}. Each spell +1 per prior spell. Disrupts Amulet and Storm chains.</div></div>
+    <div class="card"><div class="card-label">vs Reanimator / Living End</div><div class="card-title">Grafdigger's Cage</div><div class="card-body">Creatures can't enter from GY. Stops Persist, Goryo's, Living End all at once.</div></div>
+  </div>
+
+  <h3>Tournament Day Quick Reference</h3>
+  <div class="print-grid">
+    <div class="print-mu">
+      <div class="print-mu-name">Boros Energy</div>
+      <div class="print-mu-role">Favorable · Kill Ragavan early</div>
+      <div class="print-cols">
+        <div><div class="print-col-label">Out</div>
+          <div class="print-row"><span>Ulamog ×2</span><span class="print-qty">−2</span></div>
+          <div class="print-row"><span>Relic</span><span class="print-qty">−1</span></div>
+          <div class="print-row"><span>TKS ×1</span><span class="print-qty">−1</span></div>
+        </div>
+        <div><div class="print-col-label">In</div>
+          <div class="print-row"><span>Walking Ballista</span><span class="print-qty">+1</span></div>
+          <div class="print-row"><span>Torpor Orb</span><span class="print-qty">+1</span></div>
+          <div class="print-row"><span>Ensnaring Bridge</span><span class="print-qty">+1</span></div>
+          <div class="print-row"><span>Haywire Mite</span><span class="print-qty">+1</span></div>
+        </div>
+      </div>
+      <div class="print-needle">NEEDLE: Blood Moon main deck</div>
+    </div>
+    <div class="print-mu">
+      <div class="print-mu-name">Jeskai Blink</div>
+      <div class="print-mu-role">Favorable · Vexing Bauble shuts FoN</div>
+      <div class="print-cols">
+        <div><div class="print-col-label">Out</div>
+          <div class="print-row"><span>Dismember ×2</span><span class="print-qty">−2</span></div>
+          <div class="print-row"><span>Relic</span><span class="print-qty">−1</span></div>
+        </div>
+        <div><div class="print-col-label">In</div>
+          <div class="print-row"><span>Vexing Bauble</span><span class="print-qty">+1</span></div>
+          <div class="print-row"><span>Torpor Orb</span><span class="print-qty">+1</span></div>
+          <div class="print-row"><span>Disruptor Flute</span><span class="print-qty">+1</span></div>
+        </div>
+      </div>
+      <div class="print-needle">NEEDLE: Consign (colorless) · Torpor kills Phelia engine</div>
+    </div>
+    <div class="print-mu">
+      <div class="print-mu-name">Izzet Affinity</div>
+      <div class="print-mu-role">Hard · Race with Karn</div>
+      <div class="print-cols">
+        <div><div class="print-col-label">Out</div>
+          <div class="print-row"><span>Ulamog ×2</span><span class="print-qty">−2</span></div>
+          <div class="print-row"><span>Ugin ×4</span><span class="print-qty">−4</span></div>
+          <div class="print-row"><span>Relic ×1</span><span class="print-qty">−1</span></div>
+        </div>
+        <div><div class="print-col-label">In</div>
+          <div class="print-row"><span>Vexing Bauble</span><span class="print-qty">+1</span></div>
+          <div class="print-row"><span>Ensnaring Bridge</span><span class="print-qty">+1</span></div>
+          <div class="print-row"><span>Disruptor Flute ×3</span><span class="print-qty">+3</span></div>
+          <div class="print-row"><span>Filigree Sylex</span><span class="print-qty">+1</span></div>
+          <div class="print-row"><span>Grafdigger's Cage</span><span class="print-qty">+1</span></div>
+        </div>
+      </div>
+      <div class="print-needle">FLUTE: Pinnacle Emissary or Urza's Saga</div>
+    </div>
+    <div class="print-mu">
+      <div class="print-mu-name">Ruby Storm</div>
+      <div class="print-mu-role">Dog G1 · Trinisphere wins G2</div>
+      <div class="print-cols">
+        <div><div class="print-col-label">Out</div>
+          <div class="print-row"><span>Ulamog ×2</span><span class="print-qty">−2</span></div>
+          <div class="print-row"><span>Ugin ×4</span><span class="print-qty">−4</span></div>
+          <div class="print-row"><span>Relic ×1</span><span class="print-qty">−1</span></div>
+        </div>
+        <div><div class="print-col-label">In</div>
+          <div class="print-row"><span>Trinisphere</span><span class="print-qty">+1</span></div>
+          <div class="print-row"><span>Damping Sphere</span><span class="print-qty">+1</span></div>
+          <div class="print-row"><span>Disruptor Flute ×3</span><span class="print-qty">+3</span></div>
+        </div>
+      </div>
+      <div class="print-needle">FLUTE: Ral, Monsoon Mage or Ruby Medallion</div>
+    </div>
+    <div class="print-mu">
+      <div class="print-mu-name">UW Control</div>
+      <div class="print-mu-role">Favorable · Colorless threats rule</div>
+      <div class="print-cols">
+        <div><div class="print-col-label">Out</div>
+          <div class="print-row"><span>Dismember ×2</span><span class="print-qty">−2</span></div>
+          <div class="print-row"><span>Relic ×1</span><span class="print-qty">−1</span></div>
+        </div>
+        <div><div class="print-col-label">In</div>
+          <div class="print-row"><span>Vexing Bauble</span><span class="print-qty">+1</span></div>
+          <div class="print-row"><span>Disruptor Flute</span><span class="print-qty">+1</span></div>
+          <div class="print-row"><span>Liquimetal Coating</span><span class="print-qty">+1</span></div>
+        </div>
+      </div>
+      <div class="print-needle">NEEDLE: Consign (colorless) can hit your Eldrazi</div>
+    </div>
+    <div class="print-mu">
+      <div class="print-mu-name">Izzet Prowess</div>
+      <div class="print-mu-role">Dog · Karn + Bridge turn 3</div>
+      <div class="print-cols">
+        <div><div class="print-col-label">Out</div>
+          <div class="print-row"><span>Ulamog ×2</span><span class="print-qty">−2</span></div>
+          <div class="print-row"><span>Ugin ×4</span><span class="print-qty">−4</span></div>
+          <div class="print-row"><span>TKS ×2</span><span class="print-qty">−2</span></div>
+          <div class="print-row"><span>Expedition Map</span><span class="print-qty">−1</span></div>
+        </div>
+        <div><div class="print-col-label">In</div>
+          <div class="print-row"><span>Ensnaring Bridge</span><span class="print-qty">+1</span></div>
+          <div class="print-row"><span>Walking Ballista</span><span class="print-qty">+1</span></div>
+          <div class="print-row"><span>Filigree Sylex</span><span class="print-qty">+1</span></div>
+          <div class="print-row"><span>Vexing Bauble</span><span class="print-qty">+1</span></div>
+        </div>
+      </div>
+      <div class="print-needle">PRIORITY: Fetch Bridge. TKS gives them card on death.</div>
+    </div>
+    <div class="print-mu">
+      <div class="print-mu-name">Grixis Reanimator</div>
+      <div class="print-mu-role">Even · Cage stops Persist</div>
+      <div class="print-cols">
+        <div><div class="print-col-label">Out</div>
+          <div class="print-row"><span>Dismember ×2</span><span class="print-qty">−2</span></div>
+          <div class="print-row"><span>Kozilek's Cmd</span><span class="print-qty">−1</span></div>
+        </div>
+        <div><div class="print-col-label">In</div>
+          <div class="print-row"><span>Grafdigger's Cage</span><span class="print-qty">+1</span></div>
+          <div class="print-row"><span>Tormod's Crypt</span><span class="print-qty">+1</span></div>
+          <div class="print-row"><span>Extinguisher Battleship</span><span class="print-qty">+1</span></div>
+        </div>
+      </div>
+      <div class="print-needle">NEEDLE: Consign to Memory post-board</div>
+    </div>
+    <div class="print-mu">
+      <div class="print-mu-name">Amulet Titan</div>
+      <div class="print-mu-role">Even · Kick Mycospawn for bounce</div>
+      <div class="print-cols">
+        <div><div class="print-col-label">Out</div>
+          <div class="print-row"><span>Ugin ×2</span><span class="print-qty">−2</span></div>
+          <div class="print-row"><span>Relic ×1</span><span class="print-qty">−1</span></div>
+        </div>
+        <div><div class="print-col-label">In</div>
+          <div class="print-row"><span>Damping Sphere</span><span class="print-qty">+1</span></div>
+          <div class="print-row"><span>Grafdigger's Cage</span><span class="print-qty">+1</span></div>
+          <div class="print-row"><span>Disruptor Flute</span><span class="print-qty">+1</span></div>
+        </div>
+      </div>
+      <div class="print-needle">KICK Mycospawn, exile their bounce land</div>
+    </div>
+    <div class="print-mu">
+      <div class="print-mu-name">Living End</div>
+      <div class="print-mu-role">Favorable · Cage shuts it down</div>
+      <div class="print-cols">
+        <div><div class="print-col-label">Out</div>
+          <div class="print-row"><span>Dismember ×2</span><span class="print-qty">−2</span></div>
+          <div class="print-row"><span>Kozilek's Cmd ×2</span><span class="print-qty">−2</span></div>
+        </div>
+        <div><div class="print-col-label">In</div>
+          <div class="print-row"><span>Grafdigger's Cage</span><span class="print-qty">+1</span></div>
+          <div class="print-row"><span>Tormod's Crypt</span><span class="print-qty">+1</span></div>
+          <div class="print-row"><span>Disruptor Flute ×2</span><span class="print-qty">+2</span></div>
+        </div>
+      </div>
+      <div class="print-needle">CAGE: creatures can't enter from GY</div>
+    </div>
+    <div class="print-mu">
+      <div class="print-mu-name">Mirror Match</div>
+      <div class="print-mu-role">Even · First Karn wins</div>
+      <div class="print-cols">
+        <div><div class="print-col-label">Out</div>
+          <div class="print-row"><span>Dismember ×2</span><span class="print-qty">−2</span></div>
+          <div class="print-row"><span>Relic ×1</span><span class="print-qty">−1</span></div>
+          <div class="print-row"><span>TKS ×1</span><span class="print-qty">−1</span></div>
+        </div>
+        <div><div class="print-col-label">In</div>
+          <div class="print-row"><span>Disruptor Flute ×3</span><span class="print-qty">+3</span></div>
+          <div class="print-row"><span>Damping Sphere</span><span class="print-qty">+1</span></div>
+        </div>
+      </div>
+      <div class="print-needle">FLUTE: Karn, the Great Creator</div>
+    </div>
+  </div>
+</div>
+
+</div><!-- end .page -->
+<footer>
+  <span>Team Resolve · Modern · 2026</span>
+  <span>Eldrazi Tron — 5.5% Meta Share</span>
+  <span>Last Updated: March 30, 2026 · Palette: B2B Service (slate) (UI UX Pro Max Row 5)</span>
+</footer>
+
+<script>
+function printSB() {
+  document.body.classList.add('printing-sb');
+  window.addEventListener('afterprint', function cleanup() {
+    document.body.classList.remove('printing-sb');
+    window.removeEventListener('afterprint', cleanup);
+  });
+  window.print();
+}
+function toggleCheck(el) { el.classList.toggle('checked'); }
+function show(id) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.nav-link').forEach(b => b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  event.target.classList.add('active');
+  window.scrollTo(0, 0);
+}
+function toggle(id) {
+  const el = document.getElementById(id);
+  if (el) el.classList.toggle('open');
+}
+</script>
+
+<script>
+/* card tooltip JS — injected before </body> */
+(function() {
+  const TIP = document.createElement('div');
+  TIP.className = 'card-tip';
+  TIP.innerHTML = '<div class="card-tip-loading">loading...</div>';
+  document.body.appendChild(TIP);
+
+  const CACHE = {};
+  let hideTimer = null;
+
+  function pos(e) {
+    const PAD=24,W=220,H=310;
+    let x = e.clientX + PAD;
+    let y = e.clientY - H / 2;
+    if (x + W > window.innerWidth)  x = e.clientX - W - PAD;
+    if (y < 8)                       y = 8;
+    if (y + H > window.innerHeight)  y = window.innerHeight - H - 8;
+    TIP.style.left = x + 'px';
+    TIP.style.top  = y + 'px';
+  }
+
+  async function show(name, e) {
+    clearTimeout(hideTimer);
+    TIP.innerHTML = '<div class="card-tip-loading">loading...</div>';
+    TIP.classList.add('visible');
+    pos(e);
+    if (CACHE[name]) {
+      TIP.innerHTML = `<img src="${CACHE[name]}" alt="${name}">`;
+      return;
+    }
+    try {
+      const url = `https://api.scryfall.com/cards/named?fuzzy=${encodeURIComponent(name)}`;
+      const r = await fetch(url);
+      if (!r.ok) { TIP.classList.remove('visible'); return; }
+      const d = await r.json();
+      // Handle double-faced cards
+      const img = d.image_uris?.normal ||
+                  d.card_faces?.[0]?.image_uris?.normal ||
+                  d.image_uris?.small;
+      if (!img) { TIP.classList.remove('visible'); return; }
+      CACHE[name] = img;
+      TIP.innerHTML = `<img src="${img}" alt="${name}">`;
+    } catch(err) {
+      TIP.classList.remove('visible');
+    }
+  }
+
+  function hide() {
+    hideTimer = setTimeout(() => TIP.classList.remove('visible'), 80);
+  }
+
+  document.addEventListener('mouseover', e => {
+    const el = e.target.closest('span.c');
+    if (!el) return;
+    showTip(el.textContent.trim(), e);
+  });
+  document.addEventListener('mousemove', e => {
+    if (TIP.classList.contains('visible')) pos(e);
+  });
+  document.addEventListener('mouseout', e => {
+    if (e.target.closest('span.c')) hide();
+  });
+})();
+</script>
+</body>
+</html>

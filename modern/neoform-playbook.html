@@ -1,0 +1,1502 @@
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" href="../images/tab32.png" type="image/png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Simic <span class="c">Neoform</span> — Team Resolve Playbook</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+  html { overflow-y: scroll; }
+  /* ═══ MICRO SAAS PALETTE — UI UX Pro Max Row 2 ═══ */
+  /* pri=#6366F1 acc=#059669 bg=#F5F3FF fg=#1E1B4B */
+  :root { --ink:#0e0e0e; --paper:#f2ede6; --paper-dark:#e8e1d6; --rule:#c8bfb0; --primary:#18193c; --accent:#059669; --accent-light:rgba(5,150,105,0.15); --danger:#8f1a1a; --danger-light:rgba(143,26,26,0.12); --gold:#059669; --gold-light:rgba(5,150,105,0.15); --mid:#5a5248; --card:#ffffff; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:var(--paper); color:var(--ink); font-family:'Crimson Pro',Georgia,serif; font-size:17px; line-height:1.6; }
+  .header-band { background:var(--primary); border-bottom:3px solid var(--accent); padding:48px 80px 40px;position:relative;overflow:hidden;}
+  .header-band { color: #f1f5f9; }
+  .header-band,.header-band *{color:#f1f5f9;}
+  .header-band p, .header-band span, .header-band div { color: #f1f5f9; }
+
+  .header-inner { max-width:1080px; margin:0 auto; display:flex; justify-content:space-between; align-items:flex-end; gap:40px; }
+  .header-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:rgba(245,243,255,0.35); margin-bottom:8px; }
+  .header-title{font-family:'DM Mono',monospace;font-size:clamp(32px,4vw,52px);font-weight:500;letter-spacing:0.06em;line-height:1.05;text-transform:uppercase;}
+  .header-title span{color:var(--accent);}
+  .header-tagline { font-family:'Crimson Pro',serif; font-style:italic; font-size:15px; color:rgba(245,243,255,0.4); margin-top:8px; }
+  .header-right { display:flex; flex-direction:column; gap:8px; text-align:right; padding-bottom:4px; }
+  .header-stat { display:flex; gap:12px; align-items:center; justify-content:flex-end; }
+  .hs-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; color:rgba(245,243,255,0.3); }
+  .hs-val { font-family:'DM Mono',monospace; font-size:12px; color:var(--paper); }
+  nav { position:sticky; top:0; z-index:100; background:var(--primary); border-bottom:2px solid var(--accent); padding:0 80px; display:flex; align-items:center; gap:0; overflow-x:auto; scrollbar-width:none; }
+  nav::-webkit-scrollbar { display:none; }
+  .nav-brand { font-family:'Bebas Neue',sans-serif; font-size:18px; color:#6ee7b7; letter-spacing:0.05em; margin-right:40px; white-space:nowrap; padding:16px 0;  color:var(--accent); }
+  .nav-link { font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:rgba(248,250,252,0.55); padding:20px 16px; cursor:pointer; white-space:nowrap; border-bottom:2px solid transparent; transition:all 0.2s; background:none; border-top:none; border-left:none; border-right:none; }
+  .nav-link:hover, .nav-link.active { color:rgba(248,250,252,1); border-bottom-color:#047857; }
+  .page { max-width:1100px; margin:0 auto; padding:80px 80px; }
+  .section { display:none; animation:fadeIn 0.3s ease; }
+  .section.active { display:block; }
+  @keyframes fadeIn { from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:translateY(0);} }
+  .section-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.25em; text-transform:uppercase; color:var(--mid); margin-bottom:8px; }
+  h1 { font-family:'Bebas Neue',sans-serif; font-size:64px; line-height:0.9; letter-spacing:0.01em; color:var(--ink); margin-bottom:40px; }
+  h2 { font-family:'Bebas Neue',sans-serif; font-size:36px; letter-spacing:0.02em; color:var(--ink); margin:56px 0 20px; padding-bottom:8px; border-bottom:2px solid var(--ink); }
+  h3 { font-family:'DM Mono',monospace; font-size:12px; letter-spacing:0.15em; text-transform:uppercase; color:var(--accent); margin:32px 0 12px; }
+  p { margin-bottom:16px; color:var(--ink); font-weight:300; }
+  strong { font-weight:600; }
+  .mantra { border-left:4px solid var(--accent); padding:24px 32px; background:var(--accent-light); margin:32px 0; font-style:italic; font-size:20px; color:var(--accent); line-height:1.5; }
+  .card-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); gap:1px; background:var(--rule); border:1px solid var(--rule); margin:24px 0; }
+  .card-grid-2 { grid-template-columns:repeat(2,1fr) !important; }
+  .card-grid-3 { grid-template-columns:repeat(3,1fr) !important; }
+  .card { background:var(--paper); padding:24px; }
+  .card:hover { background:var(--paper-dark); }
+  .card-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--mid); margin-bottom:8px; }
+  .card-title { font-family:'Bebas Neue',sans-serif; font-size:22px; letter-spacing:0.03em; color:var(--ink); margin-bottom:8px; }
+  .card-body { font-size:15px; font-weight:300; color:var(--mid); line-height:1.5; }
+  .decklist { display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--rule); border:1px solid var(--rule); margin:24px 0; }
+  .dl-section { background:var(--paper); padding:24px; }
+  .dl-section-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--mid); margin-bottom:16px; }
+  .dl-group { margin-bottom:20px; }
+  .dl-group-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; color:var(--ink); background:var(--paper-dark); padding:4px 8px; margin-bottom:8px; display:inline-block; }
+  .dl-card-row { display:flex; justify-content:space-between; align-items:baseline; padding:3px 0; border-bottom:1px solid rgba(200,191,176,0.3); font-size:15px; font-weight:300; }
+  .dl-card-row:last-child { border-bottom:none; }
+  .dl-qty { font-family:'DM Mono',monospace; font-size:12px; color:var(--mid); flex-shrink:0; margin-left:8px; }
+  .matchup-table { width:100%; border-collapse:collapse; margin:24px 0; table-layout:fixed; }
+  .matchup-table colgroup col:nth-child(1) { width:42%; }
+  .matchup-table colgroup col:nth-child(2) { width:16%; }
+  .matchup-table colgroup col:nth-child(3) { width:16%; }
+  .matchup-table colgroup col:nth-child(4) { width:26%; }
+  .matchup-table th { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; padding:10px 16px; background:var(--ink); color:rgba(245,243,255,0.6); text-align:left; }
+  .matchup-table td { padding:12px 16px; border-bottom:1px solid var(--rule); font-size:15px; font-weight:300; }
+  .matchup-table tr:hover td { background:var(--paper-dark); cursor:pointer; }
+    .matchup-detail { display:none; border:1px solid var(--rule); background:var(--paper-dark); padding:32px 40px; margin:0 0 2px; animation:fadeIn 0.2s ease; }
+
+  .matchup-detail.open { display:block; }
+  .verdict { display:inline-block; font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; padding:4px 10px; border:1px solid; }
+  .verdict-dog { background:var(--danger-light); color:var(--danger); border-color:var(--danger); }
+  .verdict-even { background:var(--gold-light); color:var(--gold); border-color:var(--gold); }
+  .verdict-favor { background:#d1fae5; color:#065f46; border-color:#065f46; }
+  .verdict-hard { background:var(--danger-light); color:var(--danger); border-color:var(--danger); }
+  .sb-col { background:var(--paper); padding:20px; }
+  .sb-col-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--mid); margin-bottom:12px; }
+  .sb-table { width:100%; border-collapse:collapse; margin:16px 0; }
+  .sb-table th { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; padding:8px 12px; background:var(--paper-dark); color:var(--mid); text-align:left; border-bottom:2px solid var(--rule); }
+  .sb-table td { padding:10px 12px; border-bottom:1px solid var(--rule); font-size:14px; font-weight:300; }
+  .sb-out { color:var(--danger); font-family:'DM Mono',monospace; font-size:12px; }
+  .sb-in { color:#065f46; font-family:'DM Mono',monospace; font-size:12px; }
+  .sb-note { font-size:13px; font-weight:300; color:var(--mid); font-style:italic; margin-top:6px; }
+  .sb-card-guide { border:1px solid var(--rule); margin:24px 0; }
+  .sb-guide-row { display:grid; grid-template-columns:180px 1fr; gap:0; border-bottom:1px solid var(--rule); }
+  .sb-guide-row:last-child { border-bottom:none; }
+  .sb-guide-name { font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.08em; text-transform:uppercase; padding:16px; background:var(--paper-dark); color:var(--ink); border-right:1px solid var(--rule); display:flex; align-items:flex-start; }
+  .sb-guide-body { padding:16px; font-size:14px; font-weight:300; line-height:1.6; color:var(--mid); }
+  .role-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--rule); border:1px solid var(--rule); margin:24px 0; }
+  .role-card { background:var(--paper); padding:24px; }
+  .role-name { font-family:'Bebas Neue',sans-serif; font-size:28px; letter-spacing:0.02em; margin-bottom:8px; }
+  .role-name-primary { color:var(--accent); }
+  .role-name-secondary { color:var(--gold); }
+  .role-name-tertiary { color:var(--mid); }
+  .role-body { font-size:15px; font-weight:300; color:var(--mid); line-height:1.5; }
+  .heuristic-list { list-style:none; counter-reset:heuristic; margin:24px 0; }
+  .heuristic-list li { counter-increment:heuristic; display:flex; gap:20px; padding:16px 0; border-bottom:1px solid var(--rule); }
+  .heuristic-list li:last-child { border-bottom:none; }
+  .heuristic-num { font-family:'Bebas Neue',sans-serif; font-size:36px; color:var(--accent); line-height:1; flex-shrink:0; width:40px; }
+  .heuristic-body { font-size:16px; font-weight:300; color:var(--ink); line-height:1.6; }
+  .heuristic-body strong { display:block; font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:var(--ink); margin-bottom:4px; font-weight:500; }
+  .tuning-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--rule); border:1px solid var(--rule); margin:24px 0; }
+  .tuning-cell { background:var(--paper); padding:24px; }
+  .tuning-cell-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--mid); margin-bottom:8px; }
+  .tuning-cell-title { font-family:'Bebas Neue',sans-serif; font-size:22px; letter-spacing:0.03em; color:var(--ink); margin-bottom:8px; }
+  .tuning-cell-body { font-size:14px; font-weight:300; color:var(--mid); line-height:1.5; }
+  .print-section { background:var(--ink); color:var(--paper); padding:40px; border-radius:0; font-family:'DM Mono',monospace; }
+  .print-title { font-family:'Bebas Neue',sans-serif; font-size:48px; letter-spacing:0.02em; color:#6ee7b7; margin-bottom:4px; }
+  .print-sub { font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:rgba(245,243,255,0.4); margin-bottom:32px; }
+  .print-grid { display:grid; grid-template-columns:1fr 1fr; gap:32px; }
+  .print-col-title { font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:#6ee7b7; margin-bottom:12px; border-bottom:1px solid rgba(110,231,183,0.3); padding-bottom:6px; }
+  .print-line { display:flex; justify-content:space-between; padding:3px 0; font-size:12px; border-bottom:1px solid rgba(245,243,255,0.07); }
+  .print-line:last-child { border-bottom:none; }
+  .print-needle { font-size:11px; color:rgba(245,243,255,0.5); font-style:italic; margin-top:4px; }
+  .print-mu { margin-bottom:16px; padding-bottom:16px; border-bottom:1px solid rgba(245,243,255,0.1); }
+  .print-mu:last-child { border-bottom:none; margin-bottom:0; }
+  .print-mu-name { font-size:13px; letter-spacing:0.08em; text-transform:uppercase; color:var(--paper); margin-bottom:2px; }
+  .print-mu-role { font-size:11px; color:rgba(245,243,255,0.4); margin-bottom:6px; }
+  .print-cols { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+  .print-col-label { font-size:10px; letter-spacing:0.15em; text-transform:uppercase; color:#6ee7b7; margin-bottom:4px; }
+  .print-row { display:flex; justify-content:space-between; font-size:12px; padding:1px 0; }
+  .print-qty { color:#6ee7b7; }
+  .oracle-box { background:var(--paper-dark); border:1px solid var(--rule); border-left:4px solid var(--accent); padding:16px 20px; margin:12px 0; font-size:14px; font-weight:300; color:var(--mid); line-height:1.6; }
+  .oracle-box .oracle-name { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; color:var(--ink); margin-bottom:6px; font-weight:500; }
+  .engine-block { border:1px solid var(--rule); margin:24px 0; }
+  .engine-header { background:var(--ink); color:var(--paper); padding:16px 24px; font-family:'Bebas Neue',sans-serif; font-size:24px; letter-spacing:0.05em; }
+  .engine-row { display:grid; grid-template-columns:120px 1fr; gap:0; border-bottom:1px solid var(--rule); }
+  .engine-row:last-child { border-bottom:none; }
+  .engine-step { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; padding:16px; background:var(--paper-dark); color:var(--accent); border-right:1px solid var(--rule); display:flex; align-items:flex-start; font-weight:500; }
+  .engine-body { padding:16px 20px; font-size:15px; font-weight:300; line-height:1.6; color:var(--ink); }
+  .c { border-bottom:1px solid var(--accent); cursor:default; }
+
+  .checklist { list-style:none; padding:0; margin:24px 0; }
+  .checklist li { display:flex; align-items:flex-start; gap:16px; padding:12px 0; border-bottom:1px solid var(--rule); font-weight:300; font-size:15px; }
+  .check-box { width:20px; height:20px; border:2px solid var(--accent); flex-shrink:0; cursor:pointer; margin-top:2px; transition:background 0.15s; }
+  .check-box.checked { background:var(--accent); }
+
+  .print-btn { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; background:var(--ink); color:var(--paper); border:none; padding:10px 20px; cursor:pointer; margin-bottom:32px; }
+  @media print {
+  /* SB-only print mode */
+  body.printing-sb .header-band,
+  body.printing-sb nav,
+  body.printing-sb footer { display:none !important; }
+  body.printing-sb .section:not(#prep) { display:none !important; }
+  body.printing-sb #prep > *:not(#sb-print-zone) { display:none !important; }
+  body.printing-sb #sb-print-zone { display:block !important; }
+  body.printing-sb #sb-print-zone h2,
+  body.printing-sb #sb-print-zone p,
+  body.printing-sb .print-btn { display:none !important; }
+  body.printing-sb .print-grid { display:grid !important; grid-template-columns:repeat(3,1fr) !important; }
+  body.printing-sb .print-cols { display:grid !important; }
+  body.printing-sb .print-row { display:flex !important; }
+  body.printing-sb .print-mu { display:block !important; }
+  body.printing-sb .print-mu > * { display:block !important; }
+  body.printing-sb .print-qty { font-family:monospace; }
+  @page { size: portrait; margin: 0.35in; }
+  body.printing-sb { zoom: 0.62; }
+  body.printing-sb #sb-print-zone { page-break-after: avoid; }
+  }
+
+  /* ── CARD IMAGE TOOLTIP ─────────────────────────────────── */
+.card-tip {
+  position:fixed; z-index:9999; pointer-events:none;
+  width:220px; border-radius:8px; overflow:hidden;
+  box-shadow:0 8px 32px rgba(0,0,0,0.6);
+  opacity:0; transition:opacity 0.15s ease;
+  background:#1a1a2e;
+}
+.card-tip.visible { opacity:1; }
+.card-tip img { width:220px; height:auto; display:block; }
+.card-tip-loading {
+  width:220px; height:308px; display:flex;
+  align-items:center; justify-content:center;
+  color:#94a3b8; font-size:12px; font-family:monospace;
+  background:#1e293b;
+}
+span.c {
+  cursor:help;
+  border-bottom:1px dashed var(--accent,#CA8A04);
+}
+span.c:hover { border-bottom-style:solid; }
+
+  /* ── EDGE CASES ──────────────────────────────────────────── */
+  .edge-case{background:var(--card,#fff);border:1px solid var(--rule,#c8bfb0);border-left:3px solid var(--accent);padding:16px 20px;margin:16px 0;}
+  .edge-case-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:8px;font-weight:500;}
+  .edge-case-body{font-size:14px;font-weight:300;color:var(--ink,#0e0e0e);line-height:1.65;}
+  .edge-case-body strong{font-weight:600;}
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-brand">G/U <span class="c">Neoform</span></div>
+  <a class="nav-link" href="../deck-guides.html" style="text-decoration:none;">&#8592; Guides</a>
+  <button class="nav-link active" onclick="show('identity')">Overview</button>
+  <button class="nav-link" onclick="show('decklist')">Decklist</button>
+  <button class="nav-link" onclick="show('gameplan')">Gameplan</button>
+  <button class="nav-link" onclick="show('engines')">Engines</button>
+  <button class="nav-link" onclick="show('lines')">Lines</button>
+  <button class="nav-link" onclick="show('roles')">Roles</button>
+  <button class="nav-link" onclick="show('matchups')">Matchups</button>
+  <button class="nav-link" onclick="show('sideboard')">Sideboard</button>
+  <button class="nav-link" onclick="show('heuristics')">Heuristics</button>
+  <button class="nav-link" onclick="show('tuning')">Tuning</button>
+  <button class="nav-link" onclick="show('prep')">Prep</button>
+</nav>
+<div class="header-band">
+  <div class="header-inner">
+    <div>
+      <div class="header-label">Team Resolve · Modern · April 2026</div>
+      <div class="header-title">Simic <span><span class="c">Neoform</span></span></div>
+      <div class="header-tagline">Exile two, find eight — before they can say no.</div>
+    </div>
+    <div class="header-right">
+      <div class="header-stat"><span class="hs-label">Meta Share</span><span class="hs-val">2.7%</span></div>
+      <div class="header-stat"><span class="hs-label">Combo Kill</span><span class="hs-val">Turn 2</span></div>
+      <div class="header-stat"><span class="hs-label">Colors</span><span class="hs-val">G/U</span></div>
+      <div class="header-stat"><span class="hs-label">Role</span><span class="hs-val">All-In Combo</span></div>
+    </div>
+  </div>
+</div>
+<div class="page">
+
+
+
+<!-- IDENTITY -->
+<div id="identity" class="section active">
+  <div class="section-label">Chapter 01</div>
+  <h1>Deck Identity</h1>
+  <div class="mantra">Simic <span class="c">Neoform</span> is Modern's purest kill-you-before-you-react combo deck. One free creature, one two-mana spell, one 12/12 trampler with haste. Turn two. Good game.</div>
+  <p><span class="c">Neoform</span>'s entire architecture points at a single moment: exile two green cards from your hand, drop <span class="c">Allosaurus Rider</span> for free, cast <span class="c">Neoform</span> or <span class="c">Eldritch Evolution</span>, find <span class="c">Ghalta, Stampede Tyrant</span> or <span class="c">Griselbrand</span>, and close the game before most decks have established anything. The deck competes with Tameshi Belcher for the title of Modern's fastest consistent kill.</p>
+  <p>Unlike cascade-based combo decks, <span class="c">Neoform</span> operates at sorcery speed — you must initiate the combo on your own turn, which means the entire game hinges on protecting a two-second window. <span class="c">Pact of Negation</span>, <span class="c">Veil of Summer</span>, and <span class="c">Consign to Memory</span> are your armor. The deck's weakness is also its identity: it has almost no interaction. If you don't win fast, you lose slow.</p>
+  <p>At Pro Tour <em>Edge of Eternities</em> (September 2025), <span class="c">Neoform</span> placed multiple copies in the top 32, cementing itself as a legitimate tier archetype. Modern lists now run <span class="c">Planar Genesis</span> as an instant-speed land-finding tool that also digs for the combo, and MDFCs like <span class="c">Disciple of Freyalise</span> and <span class="c">Bridgeworks Battle</span> double as both exile fodder for Rider's alternate cost and mana sources.</p>
+
+  <h2>Oracle Accuracy — Critical Interactions</h2>
+  <div class="oracle-box">
+    <div class="oracle-name"><span class="c">Allosaurus Rider</span> — MV 7</div>
+    You may exile two green cards from your hand rather than pay this spell's mana cost. Power and toughness each equal 1 plus the number of lands you control. <strong>The alternate cost does not change the mana value.</strong> Rider's MV is always 7. <span class="c">Neoform</span> therefore finds exactly MV 8 (Ghalta or <span class="c">Griselbrand</span>). <span class="c">Eldritch Evolution</span> finds MV ≤ 9 (any target, including Atraxa at MV 7).
+  </div>
+  <div class="oracle-box">
+    <div class="oracle-name"><span class="c">Neoform</span> — Sorcery speed. Critical timing restriction.</div>
+    "Search your library for a creature card with mana value equal to 1 plus the sacrificed creature's mana value, put that card onto the battlefield with an additional +1/+1 counter on it." <span class="c">Neoform</span> is a <strong>sorcery</strong> — you can only cast it on your own main phase. There is no instant-speed combo line in this deck. Protect your window or lose it.
+  </div>
+  <div class="oracle-box">
+    <div class="oracle-name"><span class="c">Ghalta, Stampede Tyrant</span> — ETB from hand, not library</div>
+    "When Ghalta enters, put any number of creature cards from your hand onto the battlefield." The creatures come from your <strong>hand</strong>, not your library. You must have <span class="c">Xenagos, God of Revels</span> (or another haste enabler) in hand at the time Ghalta resolves for the kill to happen on the spot.
+  </div>
+  <div class="oracle-box">
+    <div class="oracle-name"><span class="c">Xenagos, God of Revels</span> — at the beginning of combat, not on ETB</div>
+    "At the beginning of combat on your turn, another target creature you control gains haste and gets +X/+X until end of turn, where X is that creature's power." Xenagos triggers <strong>at the beginning of combat</strong> — the creature must already be in play when the combat step begins. Because Ghalta's ETB puts Xenagos directly onto the battlefield, Xenagos's combat trigger fires immediately (since you move to combat after your main phase). Ghalta (13/13 with <span class="c">Neoform</span>'s counter) becomes 26/26 hasty trampler. Swing for lethal.
+  </div>
+  <div class="oracle-box">
+    <div class="oracle-name"><span class="c">Consign to Memory</span> — counters colorless spells AND triggered abilities only</div>
+    "Counter target triggered ability or colorless spell." <span class="c">Consign to Memory</span> counters <span class="c">Summoner's Pact</span> (MV 0, colorless), <span class="c">Pact of Negation</span> (MV 0, colorless), and triggered abilities like <span class="c">Goblin Charbelcher</span>'s activation... wait — Charbelcher is an <em>activated</em> ability, not a triggered ability. <span class="c">Consign to Memory</span> <strong>cannot</strong> counter activated abilities. It <strong>cannot</strong> counter <span class="c">Neoform</span> (green spell) or <span class="c">Eldritch Evolution</span> (green spell). Your opponents' <span class="c">Consign to Memory</span> can counter your <span class="c">Summoner's Pact</span> or <span class="c">Pact of Negation</span> — plan around this.
+  </div>
+  <div class="oracle-box">
+    <div class="oracle-name"><span class="c">Veil of Summer</span> — protects everything, then draws</div>
+    "Draw a card if an opponent has cast a blue or black spell this turn. Spells you control can't be countered this turn. You and permanents you control gain hexproof from blue and from black until end of turn." One green mana makes your entire combo uncounterable by blue interaction. It also blanks <span class="c">Thoughtseize</span> (black). Draw only triggers if they've cast blue or black before you cast Veil.
+  </div>
+  <div class="oracle-box">
+    <div class="oracle-name"><span class="c">Summoner's Pact</span> and <span class="c">Pact of Negation</span> — win or die next upkeep</div>    Both Pacts have upkeep payment triggers. If you use <span class="c">Summoner's Pact</span> to find <span class="c">Allosaurus Rider</span> and don't win that turn, you pay {2}{G}{G} at your next upkeep or lose. If you use <span class="c">Pact of Negation</span> to protect your combo and survive, you pay {3}{U}{U} next upkeep or lose. <strong>These are not optional — if you cast a Pact and don't win, you must have the mana.</strong> Do not Pact on turn one unless you're winning turn two.
+  </div>
+  <div class="oracle-box">
+    <div class="oracle-name"><span class="c">Planar Genesis</span> — instant-speed dig</div>
+    "Look at the top four cards of your library. You may put a land card from among them onto the battlefield tapped. If you don't, put a card from among them into your hand. Put the rest on the bottom of your library in a random order." Instant speed. Finds <span class="c">Hedge Maze</span> (Forest Island, enters tapped), <span class="c">Bridgeworks Battle</span>, Garden of Freyalise, or digs for a combo piece. Use end-of-opponent's-turn to set up next turn's combo.
+  </div>
+  <div class="oracle-box">
+    <div class="oracle-name"><span class="c">Disciple of Freyalise</span> // Garden of Freyalise — MDFC exile fuel + ramp</div>
+    The creature side (MV 6): when enters, may sacrifice another creature — gain X life + draw X cards where X = that creature's power. The land side: pay 3 life to enter untapped, {T}: Add {G}. Both sides count as a green card to exile for <span class="c">Allosaurus Rider</span>'s alternate cost. <strong>Disciple on the creature side is also a fantastic follow-up after a Ghalta that gets answered</strong> — sacrifice a leftover token or creature to draw 4–8 cards.
+  </div>
+
+  <h2>Matchup Overview</h2>
+  <table class="matchup-table">
+    <colgroup><col><col><col><col></colgroup>
+    <thead><tr><th>Matchup</th><th>Meta%</th><th>Verdict</th><th>Key Factor</th></tr></thead>
+    <tbody>
+      <tr><td>Boros Energy</td><td>15.8%</td><td><span class="verdict verdict-dog">Unfavorable</span></td><td>Fast clock + post-board disruption</td></tr>
+      <tr><td>Tameshi Belcher</td><td>11.1%</td><td><span class="verdict verdict-favor">Favorable</span></td><td>You're faster; protect your turn</td></tr>
+      <tr><td>Eldrazi Tron</td><td>10.5%</td><td><span class="verdict verdict-even">Even</span></td><td>Race before Chalice/Tron lands</td></tr>
+      <tr><td>Esper Goryo's</td><td>5.7%</td><td><span class="verdict verdict-favor">Favorable</span></td><td>Speed advantage game 1</td></tr>
+      <tr><td>Izzet Affinity</td><td>5.7%</td><td><span class="verdict verdict-favor">Favorable</span></td><td>Minimal disruption G1</td></tr>
+      <tr><td>Esper Blink</td><td>5.7%</td><td><span class="verdict verdict-dog">Unfavorable</span></td><td><span class="c">Solitude</span>, <span class="c">Thoughtseize</span> strip combo</td></tr>
+      <tr><td>Izzet Prowess</td><td>5.2%</td><td><span class="verdict verdict-favor">Favorable</span></td><td>Too fast G1; Veil post-board</td></tr>
+      <tr><td>Domain Zoo</td><td>4.3%</td><td><span class="verdict verdict-favor">Favorable</span></td><td>Their clock is slower</td></tr>
+      <tr><td>Ruby Storm</td><td>3.9%</td><td><span class="verdict verdict-even">Even</span></td><td>Pure race on the play</td></tr>
+      <tr><td>Amulet Titan</td><td>2.7%</td><td><span class="verdict verdict-favor">Favorable</span></td><td>Faster; Ureni sweeps their board</td></tr>
+      <tr><td>Dimir Frog / Control</td><td>2.3%</td><td><span class="verdict verdict-dog">Unfavorable</span></td><td><span class="c">Thoughtseize</span> + counterspells</td></tr>
+    </tbody>
+  </table>
+</div>
+<!-- DECKLIST -->
+<div id="decklist" class="section">
+  <div class="section-label">Chapter 02</div>
+  <h1>Decklist</h1>
+  <div class="decklist">
+    <div class="dl-section">
+      <div class="dl-section-label">Main Deck — 60 Cards</div>
+      <div class="dl-group">
+        <div class="dl-group-label">Combo Engine</div>
+        <div class="dl-card-row"><span><span class="c">Allosaurus Rider</span></span><span class="dl-qty">4</span></div>
+        <div class="dl-card-row"><span><span class="c">Neoform</span></span><span class="dl-qty">4</span></div>
+        <div class="dl-card-row"><span><span class="c">Eldritch Evolution</span></span><span class="dl-qty">4</span></div>
+      </div>
+      <div class="dl-group">
+        <div class="dl-group-label">Tutor / Pacts</div>
+        <div class="dl-card-row"><span><span class="c">Summoner's Pact</span></span><span class="dl-qty">4</span></div>
+        <div class="dl-card-row"><span><span class="c">Pact of Negation</span></span><span class="dl-qty">3</span></div>
+        <div class="dl-card-row"><span><span class="c">Consign to Memory</span></span><span class="dl-qty">4</span></div>
+      </div>
+      <div class="dl-group">
+        <div class="dl-group-label">Dig / Protection</div>
+        <div class="dl-card-row"><span><span class="c">Planar Genesis</span></span><span class="dl-qty">4</span></div>
+        <div class="dl-card-row"><span><span class="c">Veil of Summer</span></span><span class="dl-qty">3</span></div>
+        <div class="dl-card-row"><span><span class="c">Nourishing Shoal</span></span><span class="dl-qty">1</span></div>
+      </div>
+      <div class="dl-group">
+        <div class="dl-group-label">Exile Fodder / Targets</div>
+        <div class="dl-card-row"><span><span class="c">Generous Ent</span></span><span class="dl-qty">3</span></div>
+        <div class="dl-card-row"><span><span class="c">Disciple of Freyalise</span> // Garden of Freyalise</span><span class="dl-qty">2</span></div>
+        <div class="dl-card-row"><span><span class="c">Ghalta, Stampede Tyrant</span></span><span class="dl-qty">2</span></div>
+        <div class="dl-card-row"><span><span class="c">Hooting Mandrills</span></span><span class="dl-qty">1</span></div>
+        <div class="dl-card-row"><span><span class="c">Griselbrand</span></span><span class="dl-qty">1</span></div>
+        <div class="dl-card-row"><span><span class="c">Atraxa, Grand Unifier</span></span><span class="dl-qty">1</span></div>
+        <div class="dl-card-row"><span><span class="c">Xenagos, God of Revels</span></span><span class="dl-qty">1</span></div>
+        <div class="dl-card-row"><span><span class="c">Ureni, the Song Unending</span></span><span class="dl-qty">1</span></div>
+      </div>
+    </div>
+    <div class="dl-section">
+      <div class="dl-section-label">Lands — 17</div>
+      <div class="dl-group">
+        <div class="dl-group-label">Fetchlands</div>
+        <div class="dl-card-row"><span>Misty Rainforest</span><span class="dl-qty">4</span></div>
+        <div class="dl-card-row"><span>Flooded Strand</span><span class="dl-qty">2</span></div>
+        <div class="dl-card-row"><span>Windswept Heath</span><span class="dl-qty">1</span></div>
+        <div class="dl-card-row"><span>Polluted Delta</span><span class="dl-qty">1</span></div>
+      </div>
+      <div class="dl-group">
+        <div class="dl-group-label">Duals / MDFC Lands</div>
+        <div class="dl-card-row"><span><span class="c">Hedge Maze</span></span><span class="dl-qty">3</span></div>
+        <div class="dl-card-row"><span><span class="c">Bridgeworks Battle</span> // Tanglespan Bridgeworks</span><span class="dl-qty">2</span></div>
+        <div class="dl-card-row"><span>Breeding Pool</span><span class="dl-qty">1</span></div>
+      </div>
+      <div class="dl-group">
+        <div class="dl-group-label">Utility</div>
+        <div class="dl-card-row"><span>Boseiju, Who Endures</span><span class="dl-qty">1</span></div>
+        <div class="dl-card-row"><span>Forest</span><span class="dl-qty">1</span></div>
+        <div class="dl-card-row"><span>Island</span><span class="dl-qty">1</span></div>
+      </div>
+      <div class="dl-section-label" style="margin-top:32px;">Sideboard — 15 Cards</div>
+      <div class="dl-group">
+        <div class="dl-group-label">Counter Package</div>
+        <div class="dl-card-row"><span><span class="c">Mystical Dispute</span></span><span class="dl-qty">4</span></div>
+        <div class="dl-card-row"><span><span class="c">Into the Flood Maw</span></span><span class="dl-qty">2</span></div>
+        <div class="dl-card-row"><span><span class="c">Pact of Negation</span></span><span class="dl-qty">1</span></div>
+      </div>
+      <div class="dl-group">
+        <div class="dl-group-label">Removal / Hate</div>
+        <div class="dl-card-row"><span><span class="c">Nature's Claim</span></span><span class="dl-qty">2</span></div>
+        <div class="dl-card-row"><span><span class="c">Endurance</span></span><span class="dl-qty">1</span></div>
+        <div class="dl-card-row"><span><span class="c">Dismember</span></span><span class="dl-qty">1</span></div>
+      </div>
+      <div class="dl-group">
+        <div class="dl-group-label">Alternate Threats</div>
+        <div class="dl-card-row"><span><span class="c">Hooting Mandrills</span></span><span class="dl-qty">2</span></div>
+        <div class="dl-card-row"><span><span class="c">Hexdrinker</span></span><span class="dl-qty">1</span></div>
+        <div class="dl-card-row"><span><span class="c">Elesh Norn, Grand Cenobite</span></span><span class="dl-qty">1</span></div>
+      </div>
+    </div>
+  </div>
+
+  <h2>Card Notes</h2>
+  <div class="card-grid card-grid-3">
+    <div class="card">
+      <div class="card-label">Exile Fodder + Combo Piece</div>
+      <div class="card-title"><span class="c">Allosaurus Rider</span></div>
+      <div class="card-body">MV 7. Exile two green cards from hand — <em>not pay</em>. P/T = 1 + lands. The MV stays 7 regardless of how you paid. <span class="c">Neoform</span> finds MV 8 (Ghalta, <span class="c">Griselbrand</span>). <span class="c">Eldritch Evolution</span> finds MV ≤ 9. Always the creature you sacrifice.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Win Condition</div>
+      <div class="card-title"><span class="c">Ghalta, Stampede Tyrant</span></div>
+      <div class="card-body">MV 8, 12/12 trample. ETB: put any number of creature cards from <em>your hand</em> onto the battlefield. Put Xenagos into play → beginning of combat trigger → Ghalta gets haste and +13/+13 (<span class="c">Neoform</span> adds a counter) = 26/26 trampler. T2 lethal.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Haste Enabler</div>
+      <div class="card-title"><span class="c">Xenagos, God of Revels</span></div>
+      <div class="card-body">MV 5, indestructible. At the beginning of combat on your turn, target creature gets haste and +X/+X where X = its power. Fires immediately after Ghalta puts him into play. Does not require devotion to trigger — the trigger fires regardless of whether Xenagos is a creature.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Dig / Instant Speed</div>
+      <div class="card-title"><span class="c">Planar Genesis</span></div>
+      <div class="card-body">MV 2, instant. Look at top 4 — put a land onto battlefield tapped, OR put any card into hand. Does not draw (not a replacement effect). Use EOT to set up combo next turn or find a key piece.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">MDFC — Exile Fuel + Draw</div>
+      <div class="card-title"><span class="c">Disciple of Freyalise</span></div>
+      <div class="card-body">Creature side MV 6: enters, sac another creature → gain X life, draw X cards (X = that creature's power). Land side: Forest — pay 3 life or enters tapped. Both sides count as a green card to exile for Rider. Creature side is a powerful refuel engine after a resolved Ghalta is answered.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">MDFC — Exile Fuel + Land</div>
+      <div class="card-title"><span class="c">Bridgeworks Battle</span></div>
+      <div class="card-body">Sorcery side: target creature gets +2/+2, fights another. Land side: pay 3 life or enters tapped, {T}: Add {G}. Primarily used as exile fodder for Rider (green card) that can also be played as a land on mulligans with no green sources.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Exile Fodder + Cycling</div>
+      <div class="card-title"><span class="c">Generous Ent</span></div>
+      <div class="card-body">MV 6, 5/7 reach. Forestcycling {1} — discard to search for a Forest. Key exile fodder for Rider and a 5-power creature that <span class="c">Disciple of Freyalise</span> loves to sacrifice (gain 5, draw 5). Run 3 in most builds.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Backup Target (Delve)</div>
+      <div class="card-title"><span class="c">Hooting Mandrills</span></div>
+      <div class="card-body">MV 6, 4/4 trample, delve. In the graveyard-heavy opening, Mandrills can be cast cheaply as an alternative sacrifice target when Rider is unavailable. Can be found with <span class="c">Summoner's Pact</span>.</div>
+    </div>
+    <div class="card">
+      <div class="card-label"><span class="c">Griselbrand</span> — Draw Engine</div>
+      <div class="card-title"><span class="c">Griselbrand</span></div>
+      <div class="card-body">MV 8, 7/7 flying lifelink. Pay 7 life: draw 7 cards. When cheated in, use <span class="c">Nourishing Shoal</span> (exile large green card, gain MV life) to refuel life and keep drawing. Can draw through your entire deck. Backup win over Ghalta when you lack Xenagos in hand.</div>
+    </div>
+  </div>
+</div>
+<!-- GAME FLOW -->
+<div id="gameplan" class="section">
+  <div class="section-label">Chapter 03</div>
+  <h1>Gameplan</h1>
+  <div class="mantra">Every game is a countdown. Know your fastest line, know your protection, know when to go.</div>
+
+  <h2>The Kill Line — Ghalta Route (Turn 2)</h2>
+  <p><strong>Requirements:</strong> <span class="c">Allosaurus Rider</span> + two other green cards in hand, <span class="c">Neoform</span> or <span class="c">Eldritch Evolution</span>, <span class="c">Xenagos, God of Revels</span> in hand, two mana (one green, one blue for <span class="c">Neoform</span> or {1}{G}{G} for <span class="c">Eldritch Evolution</span>).</p>
+  <div class="card-grid card-grid-2">
+    <div class="card">
+      <div class="card-label">Step 1 — Deploy the Rider</div>
+      <div class="card-body">Cast <span class="c">Allosaurus Rider</span> by exiling two green cards from your hand. Rider enters as a creature whose P/T = 1 + lands you control. Typically a 2/2 or 3/3 at this point — doesn't matter. It's just the sacrifice target.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Step 2 — <span class="c">Neoform</span> or <span class="c">Eldritch Evolution</span></div>
+      <div class="card-body">Sacrifice Rider (MV 7) to <span class="c">Neoform</span> ({G}{U}) — find MV 8 (Ghalta). Or sacrifice Rider (MV 7) to <span class="c">Eldritch Evolution</span> ({1}{G}{G}) — find MV ≤ 9 (Ghalta, <span class="c">Griselbrand</span>, or Atraxa). Ghalta enters with +1/+1 counter from <span class="c">Neoform</span> (13/13).</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Step 3 — Ghalta ETB</div>
+      <div class="card-body">Ghalta's ETB triggers: "Put any number of creature cards from your hand onto the battlefield." Put <span class="c">Xenagos, God of Revels</span> onto the battlefield. You now have both in play simultaneously.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Step 4 — Beginning of Combat Trigger</div>
+      <div class="card-body">Declare attackers step has a preceding "beginning of combat" step. Xenagos triggers: target Ghalta. Ghalta gains haste and gets +13/+13 (its power = 13 after <span class="c">Neoform</span>'s counter). Ghalta attacks as a 26/26 trampler. Opponent at 20 life. Lethal damage.</div>
+    </div>
+  </div>
+
+  <h2>The <span class="c">Griselbrand</span> Route — When You Lack Xenagos</h2>
+  <p>If Xenagos is stuck in your library, find <span class="c">Griselbrand</span> instead. <span class="c">Griselbrand</span> (7/7 flying lifelink) doesn't kill immediately but generates overwhelming advantage. Use <span class="c">Nourishing Shoal</span> — exile a large green card from hand (like <span class="c">Generous Ent</span> at MV 6 = gain 6 life), then activate <span class="c">Griselbrand</span>'s "Pay 7 life: draw 7" repeatedly. You will eventually find Xenagos or another route to victory. Run the <span class="c">Griselbrand</span> line when your opening hand has the combo but no Xenagos — the draw-7 usually finds one.</p>
+
+  <h2>The Atraxa Route — Through <span class="c">Eldritch Evolution</span></h2>
+  <p><span class="c">Eldritch Evolution</span> finds MV ≤ 9 — so <span class="c">Atraxa, Grand Unifier</span> (MV 7) is a valid target. Atraxa's ETB reveals the top 10 cards and lets you take one of each card type. This often finds an instant (<span class="c">Veil of Summer</span>, <span class="c">Pact of Negation</span>), a creature (Xenagos), a land, and more — effectively rebuilding your entire hand. Atraxa then serves as a 7/7 flying vigilance deathtouch lifelink threat that demands an immediate answer. Use this route when you need to rebuild rather than kill immediately.</p>
+
+  <h2>The Ureni Route — Against Creature-Heavy Boards</h2>
+  <p><span class="c">Ureni, the Song Unending</span> (MV 8, 10/10 flying, protection from white and black) ETB deals X damage split among creatures and planeswalkers your opponents control, where X = lands you control. By turn 3+ with <span class="c">Eldritch Evolution</span>, this can sweep an entire board. Ureni's protection from white and black makes it resilient to <span class="c">Solitude</span> and <span class="c">Fatal Push</span>. This is the route against Boros Energy or Esper Blink when you can't race but can clear the board and stabilize.</p>
+
+  <h2>When to Go Vs. When to Wait</h2>
+  <div class="card-grid card-grid-2">
+    <div class="card">
+      <div class="card-label">Go Now — Conditions to Combo Immediately</div>
+      <div class="card-body">
+        • You have the full combo in hand (Rider + 2 green + <span class="c">Neoform</span> + Xenagos or <span class="c">Griselbrand</span>)<br>
+        • Opponent is tapped out or at 1-2 mana<br>
+        • You're on the play and they have no known interaction<br>
+        • Their deck has minimal main-deck disruption (Affinity, Domain, Storm)<br>
+        • <span class="c">Pact of Negation</span> or <span class="c">Veil of Summer</span> in hand to protect
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-label">Wait a Turn — Set Up with <span class="c">Planar Genesis</span></div>
+      <div class="card-body">
+        • Missing one piece (Xenagos not in hand, or only one green card to exile)<br>
+        • Opponent has shown counterspell mana open<br>
+        • You need a land drop to make the mana work<br>
+        • Use <span class="c">Planar Genesis</span> end-of-opponent's-turn to find the missing piece<br>
+        • <span class="c">Summoner's Pact</span> the missing green creature on your turn, then immediately combo
+      </div>
+    </div>
+  </div>
+
+  <h2>Mulligan Framework</h2>
+  <p>This deck mulligans to the nuts. A seven-card hand that doesn't contain a kill line or a clear path to one by turn three is a mulligan. Keep hands that have: <strong><span class="c">Allosaurus Rider</span></strong> (or <span class="c">Summoner's Pact</span> to find it), <strong>at least two other green cards</strong> to exile, and <strong><span class="c">Neoform</span> or <span class="c">Eldritch Evolution</span></strong>. The mana requirement is low — you need one green and one blue (or two green and one generic) plus a land to fetch either color.</p>
+  <p>Paris mulligans to five are common. The deck is designed to win from five cards if they are the right five. Never keep a hand that is all protection and no combo. Protection is worthless without a kill.</p>
+
+  <h2>Lines and Tricks</h2>
+  <div class="card-grid card-grid-2">
+    <div class="card">
+      <div class="card-label"><span class="c">Summoner's Pact</span> Timing</div>
+      <div class="card-body">Cast <span class="c">Summoner's Pact</span> on your main phase immediately before comboing. Find <span class="c">Allosaurus Rider</span>. Now cast <span class="c">Neoform</span> with your remaining mana. If you win (you should), the Pact upkeep never arrives. Only Pact if you're winning this turn or have the mana to pay next upkeep.</div>
+    </div>
+    <div class="card">
+      <div class="card-label"><span class="c">Veil of Summer</span> Before Going Off</div>
+      <div class="card-body">If opponent has blue mana up, cast <span class="c">Veil of Summer</span> first. It costs only {G}. Veil makes all your spells uncounterable this turn. Then cast <span class="c">Neoform</span> into open blue mana with confidence. Veil also draws if they cast blue/black before it resolves.</div>
+    </div>
+    <div class="card">
+      <div class="card-label"><span class="c">Pact of Negation</span> as Combat Protection</div>
+      <div class="card-body">After Ghalta resolves and you're in combat, your opponent may try to <span class="c">Solitude</span> or Path to Exile Ghalta. Hold <span class="c">Pact of Negation</span> until that removal targets Ghalta in combat. Counter it. You're winning this turn anyway — the upkeep cost is irrelevant.</div>
+    </div>
+    <div class="card">
+      <div class="card-label"><span class="c">Disciple of Freyalise</span> as Post-Disruption Recovery</div>
+      <div class="card-body">If your Ghalta resolves but then gets answered (<span class="c">Solitude</span>, etc.), you may still have creatures in play from Ghalta's ETB. Cast <span class="c">Disciple of Freyalise</span> on the creature side, sacrifice your largest creature (<span class="c">Hooting Mandrills</span> at 4 power = gain 4, draw 4). Find another combo line.</div>
+    </div>
+    <div class="card">
+      <div class="card-label"><span class="c">Generous Ent</span> Forestcycling</div>
+      <div class="card-body">Forestcycling for {1} searches a Forest — this includes <span class="c">Hedge Maze</span> (Forest Island) and Breeding Pool (Forest Shock). Use Ent forestcycle to find colored mana in the early game even when not going for the kill yet. The Ent itself is excellent exile fuel.</div>
+    </div>
+    <div class="card">
+      <div class="card-label"><span class="c">Hooting Mandrills</span> — Surprise Second Sacrifice Target</div>
+      <div class="card-body">If <span class="c">Allosaurus Rider</span> is stuck in your library, <span class="c">Hooting Mandrills</span> (MV 6, delve) can be cast cheaply using graveyard cards. Sacrifice Mandrills (MV 6) to <span class="c">Neoform</span> → find MV 7 (Atraxa). Or to <span class="c">Eldritch Evolution</span> → find MV ≤ 8 (Ghalta). This is the backup combo line when Rider isn't available.</div>
+    </div>
+  </div>
+  <h2>Play vs Draw</h2>
+  <div class="card-grid card-grid-2">
+    <div class="card"><div class="card-label">On the Play</div><div class="card-title">T1 Mana Dork, T2 Kill</div><div class="card-body">On the play, T1 mana dork (Birds of Paradise or Ignoble Hierarch) into T2 Neoform is your baseline kill line. Sacrifice the dork, find Grist or Devoted Druid, then find Ghalta and Mavren or the full combo. On the play: always lead mana dork over cantrip. Every turn you delay the T2 line gives opponents an untap step to find interaction.</div></div>
+    <div class="card"><div class="card-label">On the Draw</div><div class="card-title">Extra Card Finds Protection</div><div class="card-body">On the draw you see 8 cards which dramatically improves finding Pact of Negation backup. Keep slightly looser dork hands on the draw since the extra card often finds the missing combo piece. Against blue decks on the draw: hold Pact of Negation until they try to counter your Neoform, then Pact for free. The extra card makes protection more available.</div></div>
+  </div>
+
+  <h2>When Disrupted</h2>
+  <div class="card-grid card-grid-2">
+    <div class="card"><div class="card-label">Neoform Countered</div><div class="card-title">Second Neoform or Eldritch Evolution</div><div class="card-body">They counter Neoform: assess your hand. Do you have a second Neoform or Eldritch Evolution? If yes, rebuild the creature base (another dork + any creature) and try again next turn with backup Pact of Negation held. If no second tutor, pivot to fair green value: Grist generates tokens and removal, Devoted Druid combo can still close in fair mode.</div></div>
+    <div class="card"><div class="card-label">Key Creature Removed</div><div class="card-title">Green Sun’s Zenith Rebuild</div><div class="card-body">Ghalta answered or Grist removed: Green Sun’s Zenith tutors any green creature from your deck directly into play. Zenith for Grist ({2}{G}) reestablishes the combo engine. Zenith for Devoted Druid ({1}{G}) restarts the mana engine. Neoform can still chain through replacements — you have redundancy in both tutors and targets.</div></div>
+  </div>
+</div>
+<!-- ENGINES -->
+<div id="engines" class="section">
+  <div class="section-label">Chapter 04</div>
+  <h1>Core Engines</h1>
+
+  <div class="engine-block">
+    <div class="engine-header">Engine 01 — The Ghalta Kill</div>
+    <div class="engine-row">
+      <div class="engine-step">Setup</div>
+      <div class="engine-body">Hand contains: <span class="c">Allosaurus Rider</span>, two other green cards (<span class="c">Generous Ent</span>, Disciple, Bridgeworks, Veil, etc.), <span class="c">Neoform</span> or <span class="c">Eldritch Evolution</span>, <span class="c">Xenagos, God of Revels</span>, and enough mana for the evo spell. <span class="c">Summoner's Pact</span> can replace Rider in hand if you have mana to Pact and immediately combo.</div>
+    </div>
+    <div class="engine-row">
+      <div class="engine-step">Execution</div>
+      <div class="engine-body">Exile two green cards → cast <span class="c">Allosaurus Rider</span> for free. Cast <span class="c">Neoform</span> ({G}{U}), sacrificing Rider (MV 7) → search library for MV 8 → put <span class="c">Ghalta, Stampede Tyrant</span> onto battlefield with +1/+1 counter (now 13/13). Ghalta ETB fires: put <span class="c">Xenagos, God of Revels</span> from hand onto battlefield. Move to combat — Xenagos's beginning-of-combat trigger targets Ghalta → Ghalta gains haste and gets +13/+13.</div>
+    </div>
+    <div class="engine-row">
+      <div class="engine-step">Result</div>
+      <div class="engine-body">26/26 hasty trampling Ghalta attacks for lethal damage from 20 life. Game ends turn two (on the play) or turn three (on the draw). No spell your opponent casts at this point matters unless it targets Ghalta or gains life above 26.</div>
+    </div>
+  </div>
+
+  <div class="engine-block">
+    <div class="engine-header">Engine 02 — The <span class="c">Griselbrand</span> Draw Engine</div>
+    <div class="engine-row">
+      <div class="engine-step">Setup</div>
+      <div class="engine-body">Hand has the <span class="c">Allosaurus Rider</span> combo but lacks Xenagos. Or: you need to find a protection piece before going for Ghalta. <span class="c">Griselbrand</span> is the flexible finisher for hands that have combo mana but an incomplete payload.</div>
+    </div>
+    <div class="engine-row">
+      <div class="engine-step">Execution</div>
+      <div class="engine-body"><span class="c">Neoform</span> + Rider (MV 7) → <span class="c">Griselbrand</span> (MV 8). <span class="c">Griselbrand</span> enters as a 7/7 flying lifelinker. Pay 7 life → draw 7 cards. Cast <span class="c">Nourishing Shoal</span> from hand by exiling <span class="c">Generous Ent</span> (MV 6 = gain 6 life) or another large green card. Regain life. Pay 7 again → draw 7. Repeat until you find Xenagos (put him into play via another Ghalta, or just attack with <span class="c">Griselbrand</span> repeatedly).</div>
+    </div>
+    <div class="engine-row">
+      <div class="engine-step">Result</div>
+      <div class="engine-body">Drawing through the deck finds all remaining Pacts for protection, extra <span class="c">Veil of Summer</span>, and eventually Xenagos or another kill. <span class="c">Griselbrand</span> also attacks for 7 lifelink — opponent at 20 life takes three hits minimum, but you'll usually find a faster close in the drawn cards.</div>
+    </div>
+  </div>
+
+  <div class="engine-block">
+    <div class="engine-header">Engine 03 — <span class="c">Planar Genesis</span> + Pact Setup</div>
+    <div class="engine-row">
+      <div class="engine-step">Setup</div>
+      <div class="engine-body">End of opponent's turn 1 or 2 with {G}{U} available. You have most of the combo but are missing one piece — a land, a green card to exile, or a key creature. Instead of forcing a bad combo attempt, you set up.</div>
+    </div>
+    <div class="engine-row">
+      <div class="engine-step">Execution</div>
+      <div class="engine-body">Cast <span class="c">Planar Genesis</span> at end of opponent's turn. Look at top 4 — if you see a land (<span class="c">Hedge Maze</span>, Breeding Pool, <span class="c">Disciple of Freyalise</span> land side), put it onto the battlefield tapped. Otherwise, take the best combo piece into hand. On your next main phase: cast <span class="c">Summoner's Pact</span> to find <span class="c">Allosaurus Rider</span>, then immediately combo with <span class="c">Neoform</span> or <span class="c">Eldritch Evolution</span>.</div>
+    </div>
+    <div class="engine-row">
+      <div class="engine-step">Result</div>
+      <div class="engine-body">You convert a "missing one piece" hand into a reliable turn-3 kill while denying your opponent the chance to set up interaction on their turn 2. The extra land from <span class="c">Planar Genesis</span> also increases <span class="c">Allosaurus Rider</span>'s P/T — at 3 lands, Rider is a 4/4, making <span class="c">Neoform</span> find MV 8 the same as always, but <span class="c">Eldritch Evolution</span>'s math doesn't change.</div>
+    </div>
+  </div>
+  <h2>Engine Priority Order</h2>
+  <div class="card-grid card-grid-3">
+    <div class="card"><div class="card-label">Priority 01</div><div class="card-title">Neoform Chain (T2 Kill)</div><div class="card-body">Neoform sacrifices a creature and puts a creature with exactly 1 more mana value into play from your deck. T1 dork (MV 1) → T2 Neoform → find MV 2 creature → Neoform again → find MV 3+ → chain to Ghalta and Mavren. This is the primary engine. Execute when you have T1 dork + T2 Neoform + blue mana for Pact backup. Every card in the deck supports this chain.</div></div>
+    <div class="card"><div class="card-label">Priority 02</div><div class="card-title">Grist + Devoted Druid</div><div class="card-body">Grist, the Hunger Tide mills cards and can ultimate for a creature army. Devoted Druid + Vizier of Remedies generates infinite green mana. This is your backup when Neoform is countered — it’s slower (T3–4) but still wins. The Devoted Druid engine requires Druid + Vizier + any outlet. Green Sun’s Zenith finds either piece.</div></div>
+    <div class="card"><div class="card-label">Priority 03</div><div class="card-title">Koma Lockdown</div><div class="card-body">Koma, World-Eater (SB) comes in vs controlling decks. Koma generates Coil tokens each upkeep and can tap permanents or make itself indestructible. A resolved Koma vs UW Control or Esper Blink is effectively unkillable — they can’t target it, it taps their counterspell lands, and it generates a clock. This engine is the anti-control finisher when the fast combo is disrupted.</div></div>
+  </div>
+
+  <h2>Speed Math</h2>
+  <div class="card-grid card-grid-3">
+    <div class="card"><div class="card-label">T2 Kill (Ghalta Route)</div><div class="card-title">The Primary Line</div><div class="card-body">T1: Ignoble Hierarch or Birds of Paradise (MV 1).<br>T2: Neoform sacrificing the dork → find Grist, the Hunger Tide (MV 3) — wait, Neoform gets MV+1, so dork (MV 1) → finds MV 2. Then chain: find MV 2 creature → Neoform again from hand → find Ghalta and Mavren (MV 7). Ghalta enters with haste (if you have 7+ power in play) and attacks T2.<br><strong>Requires:</strong> T1 dork + 2 Neoforms or Neoform chain.</div></div>
+    <div class="card"><div class="card-label">T2 Kill (Ureni Route)</div><div class="card-title">Vs Creature-Heavy Boards</div><div class="card-body">Same Neoform chain but finding Ureni, Firstborn of Ulamog instead of Ghalta. Ureni is an Eldrazi with annihilator and enters with specific triggers based on board state. Use this route when Ghalta’s haste condition isn’t met or when you need Eldrazi protection rather than pure damage.</div></div>
+    <div class="card"><div class="card-label">T2 vs T3 Decision</div><div class="card-title">When to Hold for Pact</div><div class="card-body"><strong>Go T2:</strong> Opponent has no open mana, no blue sources visible, fair deck. Race immediately.<br><br><strong>Hold for T3:</strong> They have 1–2 open blue mana. Pass T2 with Pact of Negation held. On T3, execute the chain with Pact backup. Losing a turn to protect the combo is correct vs any blue deck.</div></div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════ LINES -->
+<div id="lines" class="section">
+  <div class="section-label">Lines & Tactics</div>
+  <h1>Lines &<br>Tactics</h1>
+  <div class="mantra">"The chain works if every link is correct. One wrong MV calculation breaks the whole line."</div>
+
+  <h2>Three Lines You Must Know Cold</h2>
+  <div class="card-grid card-grid-3">
+    <div class="card"><div class="card-label">Line 01 — Critical</div><div class="card-title">Neoform Finds MV + 1 Exactly</div><div class="card-body">Neoform says “search your library for a creature card with mana value equal to 1 plus the sacrificed creature’s mana value.” This is exactly MV + 1, not MV + 1 or less. Know every creature’s exact MV before building your chain. Ignoble Hierarch is MV 1 → finds MV 2. A 2-drop dork finds MV 3. Missing the MV by 1 breaks the entire kill line and you’ve sacrificed your creature for nothing.</div></div>
+    <div class="card"><div class="card-label">Line 02 — Critical</div><div class="card-title">Pact of Negation Has a Payback Trigger</div><div class="card-body">Pact of Negation counters any spell for free — but at the beginning of your NEXT upkeep, you must pay {3}{U}{U} or you lose the game. This means if you Pact to protect Neoform on T2 and you don’t win that turn, you need {3}{U}{U} on T3 or you lose. Plan: either win T2–3 OR have the Pact payment ready. Don’t Pact if you can’t pay next turn AND can’t win this turn.</div></div>
+    <div class="card"><div class="card-label">Line 03 — Critical</div><div class="card-title">Neoform Puts the Creature in Play Directly</div><div class="card-body">Unlike Chord of Calling, Neoform puts the creature directly into play — it doesn’t cast it. This means ETB triggers resolve and the creature has summoning sickness (can’t attack) unless it has haste. Ghalta and Mavren has haste if you control 7+ power — calculate your total power before executing the chain. If Ghalta enters without meeting the haste condition, you can’t attack until next turn.</div></div>
+  </div>
+
+  <div class="mantra">"The fastest consistent kill in Modern. Every edge case can mean the difference between a T2 win and a fizzle."</div>
+
+  <h2>The T2 Kill Line — Step by Step</h2>
+  <div class="card-grid card-grid-3">
+    <div class="card">
+      <div class="card-label">Step 1 — Free Creature</div>
+      <div class="card-title">Allosaurus Rider for {0}</div>
+      <div class="card-body">Exile two green cards from hand instead of paying {5}{G}{G}. Rider enters as a 1+*/1+* (1 + lands you control). On T1 with 1 land: it's a 2/2. The exile is an ALTERNATIVE COST, not an additional cost — you choose to pay either {5}{G}{G} or exile 2 green cards. You can exile ANY green cards: lands (if they're green, e.g. Dryad Arbor), creatures, instants. The cards go to exile, not GY.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Step 2 — Sacrifice + Tutor</div>
+      <div class="card-title">Neoform Rider into Craterhoof</div>
+      <div class="card-body"><span class="c">Neoform</span> ({G}{U} sorcery): sacrifice Rider (MV 7) → search for creature MV 8 with +1/+1 counter. <span class="c">Eldritch Evolution</span> ({1}{G}{G} sorcery): sacrifice Rider (MV 7) → search for creature MV ≤ 9. Both find <span class="c">Craterhoof Behemoth</span> (MV 8). Neoform gives Craterhoof an extra +1/+1 counter (6/6 base). Evolution exiles itself after resolving.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Step 3 — Kill</div>
+      <div class="card-title">Craterhoof = Lethal</div>
+      <div class="card-body">Craterhoof enters: "creatures you control gain trample and get +X/+X where X = creatures you control." With just Craterhoof in play: X=1 → it's a 6/6 haste trample (or 7/7 with Neoform counter). That's not lethal alone — you need another creature. With a mana dork surviving: X=2 → Craterhoof is 7/7, dork is 2+/2+ → lethal if opponent is at 20. Multiple dorks = overkill.</div>
+    </div>
+  </div>
+
+  <h2>Oracle-Verified Edge Cases</h2>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Allosaurus Rider — Exile Cost Is Alternative, Not Additional</div>
+    <div class="edge-case-body">"You may exile two green cards from your hand rather than pay this spell's mana cost." This is an ALTERNATIVE cost. You choose: pay {5}{G}{G} OR exile 2 green cards. You cannot do both. If you choose the exile route and it's countered: the 2 green cards are exiled permanently (they don't return). The cards must be green — check the color indicator or color identity. Lands are colorless unless they have a color indicator (Dryad Arbor is green). Manamorphose is red AND green — it can be exiled.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Neoform vs Eldritch Evolution — Key Differences</div>
+    <div class="edge-case-body"><strong>Neoform</strong> ({G}{U}): finds MV EQUAL to sacrificed +1. Rider (MV 7) → must find exactly MV 8. Puts a +1/+1 counter on the creature. Does NOT exile itself — goes to GY. <strong>Evolution</strong> ({1}{G}{G}): finds MV LESS THAN OR EQUAL TO sacrificed +2. Rider (MV 7) → can find MV ≤ 9. No counter. EXILES ITSELF — goes to exile, not GY. <strong>Both:</strong> sacrifice is additional cost — if countered, you still lose the creature. Don't cast into open Counterspell mana.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Summoner's Pact — Lose the Game on Upkeep</div>
+    <div class="edge-case-body">{0} instant: search for a green creature, put in hand. At beginning of your NEXT upkeep: pay {2}{G}{G} or lose. The upkeep trigger goes on the stack — it CAN be responded to. If you combo off before your next upkeep (T2 kill): you never pay and never lose. If you use Pact and DON'T combo: you need {2}{G}{G} next upkeep or you're dead. Pact of Negation works the same way: {0} counter, pay {3}{U}{U} next upkeep or lose. Both Pacts are free protection during your combo turn.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Chancellor of the Tangle — Reveal from Opening Hand</div>
+    <div class="edge-case-body">"You may reveal this card from your opening hand. If you do, at the beginning of your first main phase, add {G}." The {G} is added at first MAIN PHASE, not upkeep. It doesn't use the stack — it just happens. This free {G} enables T1 plays that normally require 2 mana (like a land + Chancellor → {G}{G} for a 2-drop mana creature). Chancellor is also a 6/7 vigilance reach creature that can be hard-cast as a backup plan, but at {4}{G}{G}{G} that's almost never the line.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Simian Spirit Guide — Exile from Hand for {R}</div>
+    <div class="edge-case-body">"Exile this card from your hand: Add {R}." This is a mana ability — it doesn't use the stack and can't be responded to. Provides {R} for Manamorphose, Wild Cantor, or Grinning Ignus. The exile is permanent — the card goes to exile, not GY. In post-board games, Simian can be hard-cast as a 2/2 for {2}{R} in emergencies (almost never correct).</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Manamorphose — Free Cantrip That Fixes Colors</div>
+    <div class="edge-case-body">{1}{R/G} instant: add 2 mana of any color combination, draw a card. Net mana: +0 (you spent 2, you get 2 back). Net cards: +0 (you spent Manamorphose, you drew 1). But it fixes your colors AND triggers Birgi ({R} on cast). With Birgi: Manamorphose becomes mana-positive ({1}{R/G} cast → Birgi gives {R} → Manamorphose gives 2 mana → net +1 mana and a card drawn). This is the combo fuel that chains spells together.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Grinning Ignus + Birgi — Infinite Mana and Storm</div>
+    <div class="edge-case-body"><span class="c">Grinning Ignus</span> ({2}{R}): "{R}, return to hand: add {C}{C}{R}. Activate only as sorcery." <span class="c">Birgi</span>: "whenever you cast a spell, add {R}." Loop: cast Ignus for {2}{R} → Birgi triggers (add {R}) → you have {R}. Activate Ignus: return to hand, add {C}{C}{R}. Pool: {C}{C}{R}{R} → recast Ignus for {2}{R} using {C}{C}{R} → Birgi triggers again → net +{R} each loop. Infinite mana, infinite storm count. Win with Walking Ballista (X = infinite) or Craterhoof.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Eldritch Evolution Exiles Itself — Can't Be Recurred</div>
+    <div class="edge-case-body">"Exile Eldritch Evolution." After resolving, it goes to exile permanently. Can't be Snapcastered, can't be E-Witnessed, doesn't fuel delve. The sacrifice is ADDITIONAL cost — if it's countered, you lost the creature AND the spell. Against open counter mana: Neoform is safer (doesn't exile itself, costs less). Evolution is better when you need the wider search range (MV+2 vs MV+1 exact).</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Wild Cantor — Sacrifice for Any Color</div>
+    <div class="edge-case-body">{R/G} 1/1 Human Druid. "Sacrifice: add one mana of any color." The sacrifice is a mana ability — doesn't use the stack, can't be responded to. Cantor does double duty: it's a creature to sacrifice to Neoform/Evolution AND a mana source. Neoform sacrificing Cantor (MV 1) finds MV 2 creatures. Evolution sacrificing Cantor finds MV ≤ 3 creatures. Neither finds Craterhoof from Cantor alone — you need Rider.</div>
+  </div>
+</div>
+
+
+<!-- ROLES -->
+<div id="roles" class="section">
+  <div class="section-label">Chapter 05</div>
+  <h1>Roles</h1>
+  <div class="mantra"><span class="c">Neoform</span> has one role in game one and three roles post-board. Know which game you're in.</div>
+
+  <div class="role-grid">
+    <div class="role-card">
+      <div class="role-name role-name-primary">Pure Aggressor</div>
+      <div class="role-body"><strong>Game 1 vs. everything.</strong> Your job is to kill faster than they can react. You are not a control deck. You are not an interactive deck. You have one goal: find the combo, protect it with one piece, resolve a lethal attacker by turn two or three. Play your fastest line. Do not slow down to interact unless you have <span class="c">Consign to Memory</span> up against an Eldrazi activation.</div>
+    </div>
+    <div class="role-card">
+      <div class="role-name role-name-secondary">Protected Aggressor</div>
+      <div class="role-body"><strong>Game 1 vs. known counters / Game 2-3 vs. blue decks.</strong> You know they have interaction — <span class="c">Solitude</span>, <span class="c">Force of Negation</span>, <span class="c">Thoughtseize</span>. Wait one extra turn to hold <span class="c">Veil of Summer</span> or <span class="c">Pact of Negation</span> alongside the combo. The protected aggressor accepts a slightly slower kill (T3 instead of T2) in exchange for immunity to one piece of disruption.</div>
+    </div>
+    <div class="role-card">
+      <div class="role-name role-name-tertiary">Bait-and-Switch Aggressor</div>
+      <div class="role-body"><strong>Games 2-3 vs. heavy disruption.</strong> Against decks loaded with <span class="c">Thoughtseize</span>, Consign, and counterspells, you play <span class="c">Hexdrinker</span> on T1 as a legitimate threat that levels up to protection from everything. Force them to answer the snake. While they do, find the combo in the background. Post-board Koma (can't be countered) is a similar trump card.</div>
+    </div>
+  </div>
+
+  <h2>Positional Awareness</h2>
+  <p><span class="c">Neoform</span> is almost never the control player. The one exception is against other all-in combo decks (Tameshi Belcher, Ruby Storm) where you are coincidentally faster — in those matchups you are both aggressors, and the first one to execute wins. Against those decks, play <span class="c">Consign to Memory</span> only if you believe your combo is faster and you need to stop their kill before you set up yours.</p>
+  <p>Against midrange and control (Boros Energy, Esper Blink, Dimir), do not attempt to out-attrition them. You will lose that game. Your only game is the speed game. If they slow you down enough that you can't kill them by turn four, reassess whether you have an alternate <span class="c">Hexdrinker</span> plan to fall back on post-board.</p>
+  <h2>Role Mistakes to Avoid</h2>
+  <ul class="heuristic-list">
+    <li><div class="heuristic-num">01</div><div class="heuristic-body"><strong>Executing the Neoform chain without Pact of Negation vs blue decks.</strong> Against any deck with open blue mana, going all-in on Neoform without Pact backup is a coin flip. Hold the chain one turn, keep Pact in hand, execute on T3 when they tap out for a spell. The correct play is always to gather information before committing.</div></li>
+    <li><div class="heuristic-num">02</div><div class="heuristic-body"><strong>Forgetting Pact of Negation’s payback trigger.</strong> You Pact on T2, win is not guaranteed this turn. You’re now dead on upkeep T3 if you don’t have {3}{U}{U}. Calculate payment availability before Pacting. If you can’t pay and can’t win this turn, don’t Pact — take the counter and rebuild.</div></li>
+    <li><div class="heuristic-num">03</div><div class="heuristic-body"><strong>Sacrificing the wrong creature in the chain.</strong> Neoform finds MV+1. Sacrificing a MV 2 dork finds MV 3. Know which creature to sacrifice based on what you need next in the chain. Drawing the chain in the wrong order (sacrificing the MV 2 when you need to find MV 2 next) breaks the line. Map the full chain before casting Neoform on the first sacrifice.</div></li>
+    <li><div class="heuristic-num">04</div><div class="heuristic-body"><strong>Not pivoting to Mystical Dispute vs control when Neoform is answered twice.</strong> Post-board vs Esper Blink or Dimir, they have multiple counterspells. Don’t keep casting Neoform into 4 open mana. Play Mystical Dispute to counter their counterspell, then resolve Neoform. The dispute resolves for {U} vs any blue spell — their Force of Negation is a blue spell.</div></li>
+  </ul>
+
+  <h2>Role-Switching Signals</h2>
+  <div class="card-grid card-grid-2">
+    <div class="card"><div class="card-label">Execute T2 When</div><div class="card-title">No Visible Interaction</div><div class="card-body">No open blue mana. Fair deck with no counterspells. You have Pact of Negation in hand anyway. They’re on Storm or Living End (must race). Go immediately — waiting only gives them a draw step to find interaction.</div></div>
+    <div class="card"><div class="card-label">Hold for T3 When</div><div class="card-title">Counter Mana Visible</div><div class="card-body">1–2 open blue mana, they passed without casting anything — Force of Negation read. Pass T2 with Pact of Negation held. On T3 execute with Pact backup. The delay costs one turn but converts a coin flip into near-certainty.</div></div>
+    <div class="card"><div class="card-label">Switch to Dispute Mode When</div><div class="card-title">Neoform Countered Twice</div><div class="card-body">They’ve countered Neoform twice. Rebuild: bring in Mystical Dispute (free counter vs blue spells for {U}). Cast Dispute on their counter, then resolve Neoform. This mode is slower but converts the permission war in your favor.</div></div>
+    <div class="card"><div class="card-label">Switch to Koma Mode When</div><div class="card-title">Fast Combo Is Locked Out</div><div class="card-body">Post-board vs heavy interaction decks: Koma, World-Eater on T5+ via GSZ or Neoform chain is effectively unkillable. It taps their lands every Coil token activation, generates a clock, and can make itself indestructible. This is the long-game win condition when T2 is impossible.</div></div>
+  </div>
+</div>
+<!-- MATCHUPS -->
+<div id="matchups" class="section">
+  <div class="section-label">Chapter 06</div>
+  <h1>Matchup Deep Dives</h1>
+  <div class="mantra">You don't win matchups. You win turns. Know what turn they can beat you, and kill them before it.</div>
+
+  <!-- BOROS ENERGY -->
+  <h2>Boros Energy <span style="font-size:18px;font-weight:300;font-family:'Crimson Pro',serif"> — 15.8% meta · <span class="verdict verdict-dog">Unfavorable</span></span></h2>
+  <p>Boros Energy is your hardest non-blue matchup. They kill faster than you expect: Ocelot Pride on turn one can produce a lethal board by turn four, and Goblin Bombardment turns any token into a sacrifice damage outlet that bypasses combat entirely. Their main deck has no hard disruption (no <span class="c">Thoughtseize</span>, no counterspells), so game one is winnable — you simply need to execute before they've assembled enough bodies to race your 26/26 trampler. The critical problem arrives post-board: they bring in <span class="c">Clarion Conqueror</span>, which shuts off all activated abilities of artifacts, creatures, and planeswalkers. <strong>Note: Xenagos's trigger is a triggered ability (fires at the beginning of combat), not an activated ability. Clarion does NOT stop Xenagos from giving Ghalta haste and +13/+13.</strong> However, Clarion does stop <span class="c">Griselbrand</span>'s "pay 7 life: draw 7" activated ability entirely. Plan accordingly — if you see Clarion post-board, go for the Ghalta line, not <span class="c">Griselbrand</span>.</p>
+  <div class="matchup-detail open">
+    <table class="sb-table">
+      <thead><tr><th>Out</th><th>In</th></tr></thead>
+      <tbody>
+        <tr><td class="sb-out">−2 <span class="c">Pact of Negation</span></td><td class="sb-in">+2 <span class="c">Into the Flood Maw</span></td></tr>
+        <tr><td class="sb-out">−1 <span class="c">Nourishing Shoal</span></td><td class="sb-in">+1 <span class="c">Dismember</span></td></tr>
+        <tr><td class="sb-out">−1 <span class="c">Griselbrand</span></td><td class="sb-in">+1 <span class="c">Elesh Norn, Grand Cenobite</span></td></tr>
+      </tbody>
+    </table>
+    <p class="sb-note">Post-board plan: <span class="c">Pact of Negation</span> is bad (they don't counter). <span class="c">Griselbrand</span> is bad (Clarion shuts it). <span class="c">Into the Flood Maw</span> buys a tempo turn vs their aggression. Elesh Norn via <span class="c">Eldritch Evolution</span> wipes their entire board (-2/-2 to all opponent creatures kills most of their 1/1 and 2/2 tokens). <span class="c">Dismember</span> cleans up a Ragavan or Ocelot Pride that slips through.</p>
+    <p class="sb-note"><strong>Key needle:</strong> <span class="c">Clarion Conqueror</span> stops <span class="c">Griselbrand</span>'s draw ability but NOT Xenagos's combat trigger. If they resolve Clarion, switch to the Ghalta+Xenagos line exclusively.</p>
+  </div>
+
+  <!-- TAMESHI BELCHER -->
+  <h2>Tameshi Belcher <span style="font-size:18px;font-weight:300;font-family:'Crimson Pro',serif"> — 11.1% meta · <span class="verdict verdict-favor">Favorable</span></span></h2>
+  <p>A pure speed race. Tameshi Belcher typically wins on turn four with a Whir of Invention into Lotus Bloom into Charbelcher activation. You win on turn two or three. Game one is heavily in your favor — they have almost no interaction (their disruption is the Disrupting Shoal / counterspell suite, but those cost mana they'd rather spend on setup). The key oracle note: <span class="c">Consign to Memory</span> counters triggered abilities, NOT activated abilities. <span class="c">Goblin Charbelcher</span>'s win condition is an activated ability — Consign cannot counter it directly. However, Consign CAN counter Tameshi's ETB trigger (when Lotus Bloom enters from the graveyard via Tameshi's ability, that's a triggered ability). Use Consign to disrupt their engine, not their final activation.</p>
+  <div class="matchup-detail open">
+    <table class="sb-table">
+      <thead><tr><th>Out</th><th>In</th></tr></thead>
+      <tbody>
+        <tr><td class="sb-out">−1 <span class="c">Disciple of Freyalise</span></td><td class="sb-in">+1 <span class="c">Pact of Negation</span></td></tr>
+        <tr><td class="sb-out">−1 <span class="c">Nourishing Shoal</span></td><td class="sb-in">+1 <span class="c">Nature's Claim</span></td></tr>
+      </tbody>
+    </table>
+    <p class="sb-note"><span class="c">Nature's Claim</span> destroys <span class="c">Goblin Charbelcher</span> (artifact) if you somehow need to interact — but mostly stay on plan and kill them first. Extra Pact protects your combo if they're on a counter package.</p>
+    <p class="sb-note"><strong>Key needle:</strong> You are faster. Kill them. Don't over-sideboard against a deck you beat by going under.</p>
+  </div>
+
+  <!-- ELDRAZI TRON -->
+  <h2>Eldrazi Tron <span style="font-size:18px;font-weight:300;font-family:'Crimson Pro',serif"> — 10.5% meta · <span class="verdict verdict-even">Even</span></span></h2>
+  <p>Eldrazi Tron's danger comes from two cards: <span class="c">Chalice of the Void</span> (at 2 counters, blanks both <span class="c">Neoform</span> and <span class="c">Eldritch Evolution</span>) and <span class="c">Thought-Knot Seer</span> (MV 4, exiles a card from your hand on ETB). A turn-two Thought-Knot taking your only <span class="c">Neoform</span> or Evolution can strand you completely. The good news: they're mostly colorless, their disruption is slow, and you can frequently combo before they set up. <span class="c">Karn, the Great Creator</span>'s static ability doesn't directly interact with your combo — it shuts opponent's activated abilities on artifacts, but you have none. Race before Tron assembles or Chalice lands.</p>
+  <div class="matchup-detail open">
+    <table class="sb-table">
+      <thead><tr><th>Out</th><th>In</th></tr></thead>
+      <tbody>
+        <tr><td class="sb-out">−1 <span class="c">Veil of Summer</span></td><td class="sb-in">+2 <span class="c">Nature's Claim</span></td></tr>
+        <tr><td class="sb-out">−1 <span class="c">Nourishing Shoal</span></td><td class="sb-in">+1 <span class="c">Endurance</span></td></tr>
+        <tr><td class="sb-out">−1 <span class="c">Generous Ent</span></td><td class="sb-in"></td></tr>
+      </tbody>
+    </table>
+    <p class="sb-note"><span class="c">Nature's Claim</span> destroys <span class="c">Chalice of the Void</span> for {G} (they gain 4 — irrelevant). <span class="c">Veil of Summer</span> is weak here since they're colorless — it won't draw a card and hexproof from blue/black doesn't help vs Thought-Knot. <span class="c">Endurance</span> can be cast via <span class="c">Eldritch Evolution</span> as an alternate threat (flash 3/4, though at MV 3 it's Rider → Evo → find ≤5, not standard line).</p>
+    <p class="sb-note"><strong>Key needle:</strong> If they Chalice for 2, your only evo spell left is <span class="c">Eldritch Evolution</span> (MV 3, not hit). Keep at least one Evolution in your opening hand if you see Chalice game 2.</p>
+  </div>
+
+  <!-- ESPER GORYO'S -->
+  <h2>Esper Goryo's <span style="font-size:18px;font-weight:300;font-family:'Crimson Pro',serif"> — 5.7% meta · <span class="verdict verdict-favor">Favorable</span></span></h2>
+  <p><span class="c">Goryo's Vengeance</span> requires Atraxa in the graveyard and a reanimation spell — typically a turn-three or turn-four kill. You're killing on turn two or three. Game one is a comfortable speed advantage. The matchup tightens post-board when they bring in <span class="c">Thoughtseize</span> and <span class="c">Consign to Memory</span>. <span class="c">Consign to Memory</span> can counter your <span class="c">Summoner's Pact</span> upkeep trigger (the "pay {2}{G}{G} or lose" is a triggered ability) — if they counter it, you lose on your next upkeep. <span class="c">Veil of Summer</span> pre-emptively blanks their entire post-board package.</p>
+  <div class="matchup-detail open">
+    <table class="sb-table">
+      <thead><tr><th>Out</th><th>In</th></tr></thead>
+      <tbody>
+        <tr><td class="sb-out">−2 <span class="c">Generous Ent</span></td><td class="sb-in">+4 <span class="c">Mystical Dispute</span></td></tr>
+        <tr><td class="sb-out">−1 <span class="c">Nourishing Shoal</span></td><td class="sb-in">+1 <span class="c">Pact of Negation</span></td></tr>
+        <tr><td class="sb-out">−2 <span class="c">Planar Genesis</span></td><td class="sb-in"></td></tr>
+      </tbody>
+    </table>
+    <p class="sb-note"><span class="c">Mystical Dispute</span> counters <span class="c">Goryo's Vengeance</span>, <span class="c">Ephemerate</span>, <span class="c">Force of Negation</span> for {U}. <span class="c">Veil of Summer</span> stays in — best card post-board vs their black/blue disruption package.</p>
+    <p class="sb-note"><strong>Key needle:</strong> <span class="c">Consign to Memory</span> counters your <span class="c">Summoner's Pact</span> upkeep trigger. If you Pact and they have {U} open, protect with <span class="c">Veil of Summer</span> before you enter your next upkeep.</p>
+  </div>
+
+  <!-- IZZET AFFINITY -->
+  <h2>Izzet Affinity <span style="font-size:18px;font-weight:300;font-family:'Crimson Pro',serif"> — 5.7% meta · <span class="verdict verdict-favor">Favorable</span></span></h2>
+  <p>Izzet Affinity goldfishes to around turn four with a large <span class="c">Kappa Cannoneer</span>. They have <span class="c">Metallic Rebuke</span> as soft disruption (counter unless pay {3}) and post-board <span class="c">Force of Negation</span> and <span class="c">Blood Moon</span>. <span class="c">Force of Negation</span> cannot be cast on your turn for free — they must pay {1}{U}{U} to counter on your turn. <span class="c">Blood Moon</span> converts your duals to Mountains — before comboing, fetch your basic Forest and Island so your colored mana is protected.</p>
+  <div class="matchup-detail open">
+    <table class="sb-table">
+      <thead><tr><th>Out</th><th>In</th></tr></thead>
+      <tbody>
+        <tr><td class="sb-out">−1 <span class="c">Nourishing Shoal</span></td><td class="sb-in">+2 <span class="c">Nature's Claim</span></td></tr>
+        <tr><td class="sb-out">−1 <span class="c">Disciple of Freyalise</span></td><td class="sb-in">+2 <span class="c">Mystical Dispute</span></td></tr>
+        <tr><td class="sb-out">−1 <span class="c">Veil of Summer</span></td><td class="sb-in"></td></tr>
+        <tr><td class="sb-out">−1 <span class="c">Generous Ent</span></td><td class="sb-in"></td></tr>
+      </tbody>
+    </table>
+    <p class="sb-note"><span class="c">Nature's Claim</span> destroys <span class="c">Blood Moon</span> (enchantment) or <span class="c">Mox Opal</span>. <span class="c">Mystical Dispute</span> counters <span class="c">Force of Negation</span> for {U}. Stay on the fast combo plan.</p>
+    <p class="sb-note"><strong>Key needle:</strong> Fetch basics before comboing if you suspect <span class="c">Blood Moon</span>. Basic Forest + basic Island protects your mana completely against Moon.</p>
+  </div>
+
+  <!-- ESPER BLINK -->
+  <h2>Esper Blink <span style="font-size:18px;font-weight:300;font-family:'Crimson Pro',serif"> — 5.7% meta · <span class="verdict verdict-dog">Unfavorable</span></span></h2>
+  <p>Your hardest post-board matchup. <span class="c">Thoughtseize</span> strips combo pieces on turn one. <span class="c">Solitude</span> (evoke: exile a white card) removes <span class="c">Allosaurus Rider</span> from the battlefield for free the moment it resolves — before you can cast <span class="c">Neoform</span>. <span class="c">Fatal Push</span> kills Rider once it's in play. <span class="c">Consign to Memory</span> can counter Ghalta's ETB trigger (a triggered ability) even if the Ghalta resolves. Every step of the combo is vulnerable to a different piece of disruption. <span class="c">Veil of Summer</span> on your combo turn blanks <span class="c">Thoughtseize</span> (black) and all blue counters simultaneously. This is the matchup where Veil is mandatory.</p>
+  <div class="matchup-detail open">
+    <table class="sb-table">
+      <thead><tr><th>Out</th><th>In</th></tr></thead>
+      <tbody>
+        <tr><td class="sb-out">−2 <span class="c">Generous Ent</span></td><td class="sb-in">+4 <span class="c">Mystical Dispute</span></td></tr>
+        <tr><td class="sb-out">−1 <span class="c">Nourishing Shoal</span></td><td class="sb-in">+2 <span class="c">Into the Flood Maw</span></td></tr>
+        <tr><td class="sb-out">−2 <span class="c">Planar Genesis</span></td><td class="sb-in">+1 <span class="c">Pact of Negation</span></td></tr>
+        <tr><td class="sb-out">−2 <span class="c">Disciple of Freyalise</span></td><td class="sb-in">+1 <span class="c">Hexdrinker</span></td></tr>
+        <tr><td class="sb-out">−1 <span class="c">Bridgeworks Battle</span></td><td class="sb-in"></td></tr>
+      </tbody>
+    </table>
+    <p class="sb-note">Full disruption package. <span class="c">Hexdrinker</span> T1 demands an answer (<span class="c">Thoughtseize</span>, <span class="c">Fatal Push</span>), buying time for the combo. <span class="c">Into the Flood Maw</span> bounces <span class="c">Overlord of the Balemurk</span> or Phelia before they value-blink them. <span class="c">Mystical Dispute</span> counters <span class="c">Force of Negation</span> and <span class="c">Consign to Memory</span> for {U}.</p>
+    <p class="sb-note"><strong>Key needle:</strong> Cast <span class="c">Veil of Summer</span> before <span class="c">Summoner's Pact</span> or <span class="c">Neoform</span> on your combo turn. It blanks <span class="c">Thoughtseize</span> AND all blue counterspells for {G}. The {G} cost is the cheapest insurance available.</p>
+  </div>
+
+  <!-- IZZET PROWESS -->
+  <h2>Izzet Prowess <span style="font-size:18px;font-weight:300;font-family:'Crimson Pro',serif"> — 5.2% meta · <span class="verdict verdict-favor">Favorable</span></span></h2>
+  <p>Prowess runs zero main-deck disruption for your combo. They're a pure aggro deck — <span class="c">Dragon's Rage Channeler</span>, <span class="c">Monastery Swiftspear</span>, Mutagenic Growth. Their kill is turn three or four on a good draw. You kill on turn two or three. Clean game one. Post-board they bring <span class="c">Consign to Memory</span> (counter your triggered abilities) and <span class="c">Into the Flood Maw</span> (bounce Rider). <span class="c">Veil of Summer</span> answers both for one mana. <span class="c">Lava Dart</span> flashback (sacrifice a Mountain) deals 1 damage — Rider at 2 lands is a 3/3 and survives.</p>
+  <div class="matchup-detail open">
+    <table class="sb-table">
+      <thead><tr><th>Out</th><th>In</th></tr></thead>
+      <tbody>
+        <tr><td class="sb-out">−1 <span class="c">Nourishing Shoal</span></td><td class="sb-in">+2 <span class="c">Mystical Dispute</span></td></tr>
+        <tr><td class="sb-out">−1 <span class="c">Generous Ent</span></td><td class="sb-in">+1 <span class="c">Endurance</span></td></tr>
+        <tr><td class="sb-out">−1 <span class="c">Veil of Summer</span></td><td class="sb-in"></td></tr>
+      </tbody>
+    </table>
+    <p class="sb-note">Light sideboard — you're favored. <span class="c">Mystical Dispute</span> counters Consign and <span class="c">Into the Flood Maw</span>. <span class="c">Endurance</span> disrupts DRC delirium if needed.</p>
+    <p class="sb-note"><strong>Key needle:</strong> <span class="c">Lava Dart</span> flashback deals 1 damage — can't kill Rider unless you're at 0 lands (Rider would be 1/1). Always fetch a land before comboing if you suspect Dart.</p>
+  </div>
+
+  <!-- DOMAIN ZOO -->
+  <h2>Domain Zoo <span style="font-size:18px;font-weight:300;font-family:'Crimson Pro',serif"> — 4.3% meta · <span class="verdict verdict-favor">Favorable</span></span></h2>
+  <p>Domain Zoo presses hard with <span class="c">Territorial Kavu</span>, Doorkeeper Thrull, and <span class="c">Leyline of the Guildpact</span>. Their disruption is mostly <span class="c">Stubborn Denial</span> (ferocious counter — requires a 4+ power creature in play) and Lightning Bolt. Bolt deals 3 — Rider at 2 lands is 3/3, survives. <span class="c">Stubborn Denial</span> without ferocious is just a Force Spike (pay {1} to fizzle). Check whether they have a 4+ power creature before deciding to protect. You are cleanly faster than their clock.</p>
+  <div class="matchup-detail open">
+    <table class="sb-table">
+      <thead><tr><th>Out</th><th>In</th></tr></thead>
+      <tbody>
+        <tr><td class="sb-out">−1 <span class="c">Nourishing Shoal</span></td><td class="sb-in">+1 <span class="c">Dismember</span></td></tr>
+        <tr><td class="sb-out">−1 <span class="c">Consign to Memory</span></td><td class="sb-in">+1 <span class="c">Endurance</span></td></tr>
+      </tbody>
+    </table>
+    <p class="sb-note">Minimal sideboarding. <span class="c">Dismember</span> handles a <span class="c">Territorial Kavu</span> threatening to win before you combo. Consign is weak here — they don't have many relevant triggered abilities.</p>
+    <p class="sb-note"><strong>Key needle:</strong> <span class="c">Stubborn Denial</span> with ferocious counters your <span class="c">Neoform</span> for free. Check their board. If they have a 4-power creature, hold <span class="c">Veil of Summer</span> or <span class="c">Pact of Negation</span> as protection before comboing.</p>
+  </div>
+
+  <!-- RUBY STORM -->
+  <h2>Ruby Storm <span style="font-size:18px;font-weight:300;font-family:'Crimson Pro',serif"> — 3.9% meta · <span class="verdict verdict-even">Even</span></span></h2>
+  <p>Pure race. Ruby Storm wins turn three or four via <span class="c">Desperate Ritual</span> + Pyretic Ritual chains into <span class="c">Grapeshot</span> or Empty the Warrens. You win turn two or three. On the play you're faster. On the draw it's genuinely even. <span class="c">Consign to Memory</span> can counter <span class="c">Grapeshot</span>'s storm copies (which are triggered abilities placed onto the stack), but by the time you're countering storm copies you've already lost the race. The correct approach: kill them before they reach critical mass. <span class="c">Mystical Dispute</span> is weak here — Ruby Storm runs almost zero blue spells. <span class="c">Endurance</span> disrupts <span class="c">Past in Flames</span> (exiles their graveyard). <span class="c">Veil of Summer</span> draws a card if they've looted with <span class="c">Faithless Looting</span> (red) — the draw trigger only fires vs blue or black spells.</p>
+  <div class="matchup-detail open">
+    <table class="sb-table">
+      <thead><tr><th>Out</th><th>In</th></tr></thead>
+      <tbody>
+        <tr><td class="sb-out">−2 <span class="c">Generous Ent</span></td><td class="sb-in">+1 <span class="c">Endurance</span></td></tr>
+        <tr><td class="sb-out">−1 <span class="c">Nourishing Shoal</span></td><td class="sb-in">+1 <span class="c">Pact of Negation</span></td></tr>
+        <tr><td class="sb-out">−1 <span class="c">Consign to Memory</span></td><td class="sb-in">+1 <span class="c">Koma, World-Eater</span></td></tr>
+        <tr><td class="sb-out"></td><td class="sb-in">+1 <span class="c">Mystical Dispute</span></td></tr>
+      </tbody>
+    </table>
+    <p class="sb-note"><span class="c">Endurance</span> exiles their graveyard at instant speed, blanking <span class="c">Past in Flames</span>. Koma (this spell can't be countered, ward {4}) is an uncounterable mid-game threat if needed. Keep <span class="c">Mystical Dispute</span> in the board — it's almost dead here (Ruby Storm is nearly monored).</p>
+    <p class="sb-note"><strong>Key needle:</strong> On the play, combo turn two without hesitation. On the draw, add one piece of protection (Pact or Veil) and kill turn three. Do not try to out-grind a deck that goes off explosively.</p>
+  </div>
+
+  <!-- AMULET TITAN -->
+  <h2>Amulet Titan <span style="font-size:18px;font-weight:300;font-family:'Crimson Pro',serif"> — 2.7% meta · <span class="verdict verdict-favor">Favorable</span></span></h2>
+  <p>Amulet Titan typically wins on turn three or four by chaining bounce lands with <span class="c">Amulet of Vigor</span> into <span class="c">Primeval Titan</span> finding Valakut. You kill on turn two or three. Game one is a clean speed advantage. They have almost no main-deck disruption for your combo — <span class="c">Force of Vigor</span> destroys artifacts/enchantments (irrelevant vs you), <span class="c">Summoner's Pact</span> finds green creatures (their tool), <span class="c">Defense Grid</span> makes your opponents' spells cost {3} more but does nothing for them against you. If the game goes long, <span class="c">Ureni, the Song Unending</span> (MV 8 via <span class="c">Eldritch Evolution</span>) enters and deals X damage to all their creatures and planeswalkers where X = your land count, sweeping their battlefield.</p>
+  <div class="matchup-detail open">
+    <table class="sb-table">
+      <thead><tr><th>Out</th><th>In</th></tr></thead>
+      <tbody>
+        <tr><td class="sb-out">−1 <span class="c">Nourishing Shoal</span></td><td class="sb-in">+1 <span class="c">Koma, World-Eater</span></td></tr>
+      </tbody>
+    </table>
+    <p class="sb-note">Near-bye. Stay on combo plan. Koma as a backup uncounterable threat if the game drags. Don't sideboard heavily against a deck you outrace.</p>
+    <p class="sb-note"><strong>Key needle:</strong> Ureni (MV 8 via <span class="c">Eldritch Evolution</span> — Rider MV 7 → find ≤ 9) deals X damage to all their creatures where X = lands you control. At 5 lands that's 5 damage, killing <span class="c">Primeval Titan</span> (6/6 — barely not enough). More useful as a 10/10 flying blocker with protection from white and black.</p>
+  </div>
+
+  <!-- DIMIR FROG / CONTROL -->
+  <h2>Dimir Frog / Control <span style="font-size:18px;font-weight:300;font-family:'Crimson Pro',serif"> — 2.3% meta · <span class="verdict verdict-dog">Unfavorable</span></span></h2>
+  <p>Your hardest matchup. <span class="c">Psychic Frog</span> discards your hand to pump itself while applying clock pressure. <span class="c">Thoughtseize</span> strips combo pieces. <span class="c">Counterspell</span> and <span class="c">Consign to Memory</span> backstop everything. <span class="c">Murktide Regent</span> threatens to close the game as a large flying threat before you reassemble. Post-board they add more interaction and you run out of combo pieces. The only winning line is <span class="c">Veil of Summer</span> → combo on the same turn, or <span class="c">Hexdrinker</span> leveling up to protection from everything while you find the combo in the background. Patience and sequencing are everything — do not tap out for <span class="c">Planar Genesis</span> when <span class="c">Thoughtseize</span> mana is up.</p>
+  <div class="matchup-detail open">
+    <table class="sb-table">
+      <thead><tr><th>Out</th><th>In</th></tr></thead>
+      <tbody>
+        <tr><td class="sb-out">−2 <span class="c">Generous Ent</span></td><td class="sb-in">+4 <span class="c">Mystical Dispute</span></td></tr>
+        <tr><td class="sb-out">−1 <span class="c">Nourishing Shoal</span></td><td class="sb-in">+2 <span class="c">Into the Flood Maw</span></td></tr>
+        <tr><td class="sb-out">−2 <span class="c">Planar Genesis</span></td><td class="sb-in">+1 <span class="c">Pact of Negation</span></td></tr>
+        <tr><td class="sb-out">−2 <span class="c">Bridgeworks Battle</span></td><td class="sb-in">+1 <span class="c">Hexdrinker</span></td></tr>
+        <tr><td class="sb-out">−1 <span class="c">Disciple of Freyalise</span></td><td class="sb-in"></td></tr>
+      </tbody>
+    </table>
+    <p class="sb-note"><span class="c">Mystical Dispute</span> counters <span class="c">Counterspell</span>, <span class="c">Force of Negation</span>, <span class="c">Consign to Memory</span> for {U}. <span class="c">Into the Flood Maw</span> bounces Murktide or <span class="c">Psychic Frog</span>. <span class="c">Hexdrinker</span> is a sustained threat that eventually reaches protection from everything (level 8) — requires 8 mana total across multiple turns, but buys time.</p>
+    <p class="sb-note"><strong>Key needle:</strong> Cast <span class="c">Veil of Summer</span> on your combo turn if they've cast any blue or black spell that turn. It makes your entire combo sequence uncounterable and draws if they used black (<span class="c">Thoughtseize</span>) or blue (any counter). This is frequently the only way through their disruption.</p>
+  </div>
+
+</div>
+<!-- SIDEBOARD -->
+<div id="sideboard" class="section">
+  <div class="section-label">Chapter 07</div>
+  <h1>Sideboard Guide</h1>
+  <div class="mantra">You have 15 cards to solve one problem: they know what you're doing. Make them wrong anyway.</div>
+
+  <h2>Sideboard Card-by-Card</h2>
+  <div class="sb-card-guide">
+    <div class="sb-guide-row">
+      <div class="sb-guide-name"><span class="c">Mystical Dispute</span> ×4</div>
+      <div class="sb-guide-body">Your best post-board card vs blue decks. Counters any blue spell for {U} (or {1}{U} if they don't control an Island). Hits <span class="c">Force of Negation</span>, <span class="c">Consign to Memory</span>, <span class="c">Counterspell</span>, <span class="c">Goryo's Vengeance</span>, <span class="c">Ephemerate</span>. Comes in vs Esper Blink, Dimir Frog, Esper Goryo's, and any blue-heavy deck. Stays out vs Boros Energy, Eldrazi Tron, Ruby Storm, Domain Zoo.</div>
+    </div>
+    <div class="sb-guide-row">
+      <div class="sb-guide-name"><span class="c">Into the Flood Maw</span> ×2</div>
+      <div class="sb-guide-body">Instant-speed bounce for a creature an opponent controls. Without gift: return target creature to hand. With gift (promise an opponent a 1/1 Fish): return any nonland permanent. Use to bounce a <span class="c">Murktide Regent</span>, <span class="c">Psychic Frog</span>, <span class="c">Solitude</span>, or an aggressive creature attacking you before you can combo. Gives you one extra turn.</div>
+    </div>
+    <div class="sb-guide-row">
+      <div class="sb-guide-name"><span class="c">Nature's Claim</span> ×2</div>
+      <div class="sb-guide-body">Destroy target artifact or enchantment — opponent gains 4 life. One green mana. Destroys <span class="c">Chalice of the Void</span> (the card that hard-stops <span class="c">Neoform</span> at 2 counters), <span class="c">Blood Moon</span> (prevents you making blue), Leyline of the Void (hates your GY-based lines), Stony Silence (shuts nothing relevant to you — but you might face it from opponent's board). Comes in vs Eldrazi Tron (Chalice), Izzet Affinity (<span class="c">Blood Moon</span>), any artifact/enchantment disruption.</div>
+    </div>
+    <div class="sb-guide-row">
+      <div class="sb-guide-name"><span class="c">Pact of Negation</span> ×1</div>
+      <div class="sb-guide-body">A fourth copy of Pact for matchups where you need maximum counter protection. Counters any spell for free — pay {3}{U}{U} next upkeep or lose. Use only on the turn you're killing them or you'll lose to the trigger. Comes in vs heavy counter decks (Dimir, Esper) or matchups where you need four pieces of protection.</div>
+    </div>
+    <div class="sb-guide-row">
+      <div class="sb-guide-name"><span class="c">Endurance</span> ×1</div>
+      <div class="sb-guide-body">Flash 3/4 for {2}{G}. ETB: exile all cards from target player's GY, shuffle them into their library. Stops <span class="c">Past in Flames</span> (Ruby Storm), disrupts <span class="c">Goryo's Vengeance</span> setup (GY-dependent), and is a flash creature that can block. Also a valid <span class="c">Eldritch Evolution</span> target — sacrifice a MV 1 creature to find MV ≤ 3 creatures including <span class="c">Endurance</span>. Can't find Rider (MV 7) so doesn't fit into the main combo line.</div>
+    </div>
+    <div class="sb-guide-row">
+      <div class="sb-guide-name"><span class="c">Dismember</span> ×1</div>
+      <div class="sb-guide-body">Instant, {1}{B/P}{B/P} — pay 4 life and no mana, or {3}{B}{B}. Target creature gets -5/-5 until EOT. Kills Ragavan (2/1), <span class="c">Murktide Regent</span> (before triggers), <span class="c">Psychic Frog</span>, almost any threat. Colorless for payment purposes — you can cast it off a Forest or Island. Comes in vs Boros Energy, Dimir, Prowess when you need a removal answer.</div>
+    </div>
+    <div class="sb-guide-row">
+      <div class="sb-guide-name"><span class="c">Hooting Mandrills</span> ×2</div>
+      <div class="sb-guide-body">MV 6, 4/4 trample, delve. Alternate sacrifice target for <span class="c">Neoform</span> (finds MV 7 — Atraxa) or <span class="c">Eldritch Evolution</span> (finds MV ≤ 8 — Ghalta). Comes in when <span class="c">Allosaurus Rider</span> is being heavily disrupted (<span class="c">Thoughtseize</span> strips, GY exile, etc.) and you need a second reliable sacrifice target. Delve makes them cheap once you've cycled or discarded.</div>
+    </div>
+    <div class="sb-guide-row">
+      <div class="sb-guide-name"><span class="c">Hexdrinker</span> ×1</div>
+      <div class="sb-guide-body">MV 1, 2/1 snake. Level up {1}: Level 3–7: 4/4, protection from instants. Level 8+: 6/6, protection from everything. A legitimate alternate threat that doesn't care about <span class="c">Thoughtseize</span> (it's already in play), <span class="c">Counterspell</span> (already resolved), or removal at level 8. Costs 8 total mana to max (1 + 7 more level counters) but can be done across multiple turns. Buys time and forces answers.</div>
+    </div>
+    <div class="sb-guide-row">
+      <div class="sb-guide-name"><span class="c">Elesh Norn, Grand Cenobite</span> ×1</div>
+      <div class="sb-guide-body">MV 7, 4/7 vigilance. Other creatures you control get +2/+2. Opponent creatures get -2/-2. Via <span class="c">Eldritch Evolution</span>: sacrifice <span class="c">Allosaurus Rider</span> (MV 7) → find MV ≤ 9 → Elesh Norn. On ETB, all opponent creatures with 2 or fewer toughness die instantly (kills most Boros Energy token board: 1/1 Cats, Voice of Victory 2/2). Alternative to Ghalta when you need a board wipe instead of a single attacker.</div>
+    </div>
+    <div class="sb-guide-row">
+      <div class="sb-guide-name"><span class="c">Koma, World-Eater</span> ×1</div>
+      <div class="sb-guide-body">MV 7, 8/12, trample, ward {4}. "This spell can't be countered." Via <span class="c">Eldritch Evolution</span>: sacrifice Rider (MV 7) → find MV ≤ 9 → Koma. Koma is uncounterable — <span class="c">Consign to Memory</span>, <span class="c">Force of Negation</span>, and <span class="c">Counterspell</span> all fail. Ward {4} makes it expensive to target after. Generates 3/3 Serpent tokens on combat damage. The go-to target when you know they're holding counterspells and Ghalta would be countered.</div>
+    </div>
+  </div>
+
+  <h2>What Comes Out First</h2>
+  <div class="card-grid card-grid-3">
+    <div class="card">
+      <div class="card-label">Always Cut vs Non-Blue Decks</div>
+      <div class="card-title"><span class="c">Consign to Memory</span> (1–2)</div>
+      <div class="card-body">Consign counters triggered abilities and colorless spells. Against non-blue decks without triggered ability chains (Boros Energy, Domain Zoo, Ruby Storm), Consign is mostly dead. Cut 1–2 copies first.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Cut vs Non-Graveyard Decks</div>
+      <div class="card-title"><span class="c">Nourishing Shoal</span> (1)</div>
+      <div class="card-body">Shoal's purpose is to regain life after <span class="c">Griselbrand</span> activations. Against decks where you're not running the <span class="c">Griselbrand</span> line (most post-board games where <span class="c">Griselbrand</span> is too slow), Shoal is dead. Always the first cut.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Cut vs Interactive Decks</div>
+      <div class="card-title"><span class="c">Planar Genesis</span> / <span class="c">Generous Ent</span></div>
+      <div class="card-body">Against heavy interaction, these slow pieces (setup tools that take a turn) become liabilities. Cut them for hard counterspells and threats. Against goldfish matchups keep them — they're your best setup tools.</div>
+    </div>
+  </div>
+</div>
+<!-- HEURISTICS -->
+<div id="heuristics" class="section">
+  <div class="section-label">Chapter 08</div>
+  <h1>Heuristics</h1>
+  <div class="mantra">Sixteen rules that survive the pressure of the tournament table.</div>
+  <ol class="heuristic-list">
+    <li><span class="heuristic-num">01</span><div class="heuristic-body"><strong><span class="c">Neoform</span> is a Sorcery. Period.</strong> You cannot cascade into it. You cannot cast it at instant speed. Your combo window is your main phase. Protect that window before you open it.</div></li>
+    <li><span class="heuristic-num">02</span><div class="heuristic-body"><strong><span class="c">Veil of Summer</span> costs {G}. Cast it before you cast anything else on your combo turn.</strong> If they've cast a blue or black spell, you draw a card too. If they haven't, it still makes everything uncounterable. One mana for total combo protection is always correct when you suspect interaction.</div></li>
+    <li><span class="heuristic-num">03</span><div class="heuristic-body"><strong>Never Pact unless you're winning that turn or you have the mana.</strong> <span class="c">Summoner's Pact</span>: pay {2}{G}{G} next upkeep or lose. <span class="c">Pact of Negation</span>: pay {3}{U}{U} next upkeep or lose. Pacting into a turn-three kill when you can't pay on upkeep is a death sentence. Calculate your mana before activating.</div></li>
+    <li><span class="heuristic-num">04</span><div class="heuristic-body"><strong>Xenagos must be in hand when Ghalta resolves.</strong> Ghalta's ETB puts creature cards from your hand onto the battlefield — not from your library. If Xenagos is in your library, find <span class="c">Griselbrand</span> instead and draw into Xenagos or a second kill line.</div></li>
+    <li><span class="heuristic-num">05</span><div class="heuristic-body"><strong><span class="c">Allosaurus Rider</span>'s MV is always 7, regardless of how you paid.</strong> Alternate costs don't change mana value. <span class="c">Neoform</span> finds exactly MV 8 (Ghalta or <span class="c">Griselbrand</span>). <span class="c">Eldritch Evolution</span> finds MV ≤ 9. Know the math before you sacrifice.</div></li>
+    <li><span class="heuristic-num">06</span><div class="heuristic-body"><strong><span class="c">Consign to Memory</span> counters triggered abilities and colorless spells only.</strong> It cannot counter <span class="c">Neoform</span> (green), <span class="c">Eldritch Evolution</span> (green), or <span class="c">Allosaurus Rider</span> (green). It CAN counter your <span class="c">Summoner's Pact</span> upkeep trigger, Ghalta's ETB trigger, and any colorless Pact. Know what your opponent's Consign can and cannot do to you.</div></li>
+    <li><span class="heuristic-num">07</span><div class="heuristic-body"><strong>Fetch your basics before comboing if <span class="c">Blood Moon</span> is a possibility.</strong> Basic Forest gives you {G}. Basic Island gives you {U}. Once basics are in play, <span class="c">Blood Moon</span> only hurts your Breeding Pool and <span class="c">Hedge Maze</span> — your colored sources are safe. One fetch decision can protect your entire mana base.</div></li>
+    <li><span class="heuristic-num">08</span><div class="heuristic-body"><strong><span class="c">Clarion Conqueror</span> does NOT stop Xenagos.</strong> Xenagos's combat trigger is a triggered ability, not an activated ability. Clarion only shuts activated abilities of artifacts, creatures, and planeswalkers. Clarion DOES stop <span class="c">Griselbrand</span>'s "pay 7 life: draw 7" activated ability. If they resolve Clarion, switch to the Ghalta+Xenagos line.</div></li>
+    <li><span class="heuristic-num">09</span><div class="heuristic-body"><strong><span class="c">Hooting Mandrills</span> is your backup sacrifice target.</strong> Sacrifice Mandrills (MV 6) to <span class="c">Neoform</span> → finds MV 7 (Atraxa). To <span class="c">Eldritch Evolution</span> → finds MV ≤ 8 (Ghalta, <span class="c">Griselbrand</span>). Use when <span class="c">Allosaurus Rider</span> is disrupted, exiled, or stuck in your library. Delve makes Mandrills cheap — cast it for {G} or even free if you have 5 graveyard cards.</div></li>
+    <li><span class="heuristic-num">10</span><div class="heuristic-body"><strong><span class="c">Generous Ent</span>'s Forestcycling finds <span class="c">Hedge Maze</span>.</strong> <span class="c">Hedge Maze</span> is a Forest Island — it's a Forest. Forestcycling for {1} searches it out. Use this to fix your blue mana early when you have {G} available but no blue source yet.</div></li>
+    <li><span class="heuristic-num">11</span><div class="heuristic-body"><strong>Against combo races, kill first — don't interact.</strong> Against Ruby Storm and Tameshi Belcher, your <span class="c">Consign to Memory</span> is mostly irrelevant (Belcher's activation is activated, not triggered; Storm copies are triggered but you'd rather be killing). Play your fastest combo line. The deck that goes first wins.</div></li>
+    <li><span class="heuristic-num">12</span><div class="heuristic-body"><strong><span class="c">Disciple of Freyalise</span> draws X cards where X = sacrificed creature's power.</strong> After a Ghalta that resolves but gets answered, you may have <span class="c">Hooting Mandrills</span> (4 power) or another creature in play. Sacrifice it to Disciple: gain 4, draw 4. This refuels immediately and is often enough to find a second combo attempt.</div></li>
+    <li><span class="heuristic-num">13</span><div class="heuristic-body"><strong><span class="c">Planar Genesis</span> at end of opponent's turn is your best setup action.</strong> It's instant speed — use it EOT to set up next turn's combo. Finding a <span class="c">Hedge Maze</span> (enters tapped but still counts as a land for Rider's P/T tomorrow) or a key creature into hand is often better than any main-phase action.</div></li>
+    <li><span class="heuristic-num">14</span><div class="heuristic-body"><strong>Against Eldrazi Tron: Chalice at 2 blanks <span class="c">Neoform</span> and <span class="c">Eldritch Evolution</span>. <span class="c">Eldritch Evolution</span> (MV 3) is not hit by Chalice at 2.</strong> Wait — Chalice at 2 counters spells with MV exactly 2. <span class="c">Neoform</span> is MV 2 (hit). <span class="c">Eldritch Evolution</span> is MV 3 (not hit). If Chalice resolves at 2, switch entirely to <span class="c">Eldritch Evolution</span>. Keep at least one in hand from game 2 onward.</div></li>
+    <li><span class="heuristic-num">15</span><div class="heuristic-body"><strong><span class="c">Koma, World-Eater</span> resolves through counterspells.</strong> "This spell can't be countered." If they're holding <span class="c">Consign to Memory</span> or <span class="c">Force of Negation</span>, find Koma via <span class="c">Eldritch Evolution</span> instead of Ghalta. They cannot counter Koma. Ward {4} protects it post-resolution. This is the correct call when you've seen multiple counterspells.</div></li>
+    <li><span class="heuristic-num">16</span><div class="heuristic-body"><strong>Mulligan to the combo, not to protection.</strong> A hand with four pieces of protection and no combo wins zero games. A hand with <span class="c">Allosaurus Rider</span>, two green exiles, and <span class="c">Neoform</span> wins most games. Protection is the secondary consideration — find the kill first, then assess whether it needs armor.</div></li>
+  </ol>
+</div>
+<!-- TUNING -->
+<div id="tuning" class="section">
+  <div class="section-label">Chapter 09</div>
+  <h1>Tuning Notes</h1>
+  <div class="mantra">The decklist is a starting point. The meta is what determines the final 75.</div>
+  <div class="tuning-grid">
+    <div class="tuning-cell">
+      <div class="tuning-cell-label">If Blue Decks Are Prevalent</div>
+      <div class="tuning-cell-title">+1 <span class="c">Veil of Summer</span> MD</div>
+      <div class="tuning-cell-body">A third main-deck <span class="c">Veil of Summer</span> (or fourth) is justified when Dimir Frog, Esper Blink, and Esper Goryo's represent 15%+ of the field. One green mana making your combo uncounterable is too good to leave in the sideboard when blue is everywhere. Trim the 3rd <span class="c">Generous Ent</span> or the <span class="c">Nourishing Shoal</span>.</div>
+    </div>
+    <div class="tuning-cell">
+      <div class="tuning-cell-label">If Eldrazi Tron Is Dominant</div>
+      <div class="tuning-cell-title">+2 <span class="c">Nature's Claim</span> MD</div>
+      <div class="tuning-cell-body"><span class="c">Chalice of the Void</span> at 2 is your hardest non-blue hate card. If Eldrazi Tron makes up 12%+ of the field, consider moving 1–2 <span class="c">Nature's Claim</span> main deck. Trim the <span class="c">Nourishing Shoal</span> (already a 1-of) and possibly one <span class="c">Consign to Memory</span> (weak vs colorless).</div>
+    </div>
+    <div class="tuning-cell">
+      <div class="tuning-cell-label">Speed vs. Resilience Dial</div>
+      <div class="tuning-cell-title">Pact Count (3→4)</div>
+      <div class="tuning-cell-body">Main-deck <span class="c">Pact of Negation</span> count is a speed vs. resilience decision. Three Pacts means faster combo setup (less dead weight). Four Pacts means more protection in interactive fields. A field of fast aggro decks (Prowess, Domain) argues for 3. A field of blue midrange argues for 4.</div>
+    </div>
+    <div class="tuning-cell">
+      <div class="tuning-cell-label">Target Diversification</div>
+      <div class="tuning-cell-title">Ghalta Count (2→3)</div>
+      <div class="tuning-cell-body">Running 3 Ghalta instead of 2 increases the probability of finding her via <span class="c">Neoform</span> when you're blind-searching. Consider if you're finding yourself frequently on the <span class="c">Griselbrand</span> line and prefer the Ghalta kill. The tradeoff is one fewer exile fodder card (typically cut the 3rd <span class="c">Generous Ent</span>).</div>
+    </div>
+    <div class="tuning-cell">
+      <div class="tuning-cell-label"><span class="c">Hooting Mandrills</span> Main</div>
+      <div class="tuning-cell-title">1→2 If Rider Is Targeted</div>
+      <div class="tuning-cell-body">If opponents are sideboarding <span class="c">Thoughtseize</span> and hand disruption heavily (Esper Blink, Dimir Frog meta), a second main-deck <span class="c">Hooting Mandrills</span> gives you a second, cheaper sacrifice target. Mandrills (delve, often free) is harder to strip from your hand than Rider because it costs less and can be cast at near-zero mana cost.</div>
+    </div>
+    <div class="tuning-cell">
+      <div class="tuning-cell-label">Sideboard Flex Slots</div>
+      <div class="tuning-cell-title"><span class="c">Hexdrinker</span> + Koma Count</div>
+      <div class="tuning-cell-body">The 1-of <span class="c">Hexdrinker</span> and 1-of Koma occupy the "alternate threat" flex slots. In a field without heavy disruption, these are cuttable for a 4th <span class="c">Mystical Dispute</span>, a 2nd <span class="c">Endurance</span>, or a 3rd <span class="c">Nature's Claim</span>. Adjust to what your local meta punishes hardest.</div>
+    </div>
+  </div>
+  <h2>Register Conditions</h2>
+  <div class="card-grid card-grid-2">
+    <div class="card"><div class="card-label">Register When</div><div class="card-title">Green Lights</div><div class="card-body">Low Force of Negation density in expected sideboards. Midrange-heavy field — no deck can interact with a T2 Ghalta. Combo mirror fields (Amulet, Living End) where your clock is comparable and your interaction is better. You’ve practiced the full Neoform chain blindfolded and know every MV in the deck.</div></div>
+    <div class="card"><div class="card-label">Avoid When</div><div class="card-title">Red Lights</div><div class="card-body">Heavy Force of Negation + Endurance builds (Esper Blink, UW Control) dominating the field. Multiple Solitude builds — kills your dork at instant speed on T1 before you can Neoform. You haven’t practiced the Pact of Negation timing windows (when to Pact, when to rebuild). A misfired Pact with no payment costs the game instantly.</div></div>
+    <div class="card"><div class="card-label">Never Cut</div><div class="card-title">Neoform ×4</div><div class="card-body">Your combo piece. Without Neoform, you cannot find Atraxa. Four copies non-negotiable.</div></div>
+    <div class="card"><div class="card-label">Never Cut</div><div class="card-title">Eldritch Evolution ×4</div><div class="card-body">Your second set of combo pieces. Four copies of redundancy means your combo line is consistent from hand 1.</div></div>
+    <div class="card"><div class="card-label">Flex 2–3</div><div class="card-title">Atraxa, Grand Unifier</div><div class="card-body">2 is sufficient (you only need to find one). Run 3 as a hedge against Surgical Extraction. The third copy exists specifically because opponents will Extraction the first one.</div></div>
+    <div class="card"><div class="card-label">Flex 0–2</div><div class="card-title">Endurance (SB)</div><div class="card-body">2 copies vs heavy GY metas (Living End, Glockulous). Endurance at flash speed resets their GY. Cut entirely when GY decks are absent from your expected field.</div></div>
+    <div class="card"><div class="card-label">Meta Call</div><div class="card-title">Grist, the Hunger Tide count</div><div class="card-body">2 in interactive metas where a planeswalker that finds creatures matters. 1 in fast metas where the 3-drop is too slow. Grist's main role is being findable by Neoform at MV 3.</div></div>
+  </div>
+
+  <h2>SB Slot Priority Order</h2>
+  <ol class="heuristic-list">
+    <li><div class="heuristic-num">01</div><div class="heuristic-body"><strong>Mystical Dispute (4 copies)</strong> — Counter any blue spell for {U} (or {1}{U}{U} vs non-blue). Goes in vs any blue deck. Disputes their Force of Negation (blue spell), their Counterspell (blue spell), their Solitude (blue card). The most impactful SB card vs control. Never cut below 4 when blue decks are expected.</div></li>
+    <li><div class="heuristic-num">02</div><div class="heuristic-body"><strong>Into the Flood Maw (2 copies)</strong> — Return target nonland permanent an opponent controls to its owner’s hand and draws you a card. Goes in vs Boros Energy (bounce Goblin Bombardment), Esper Blink (bounce their Teferi), any permanent-based threat. Instant speed makes it a combat trick and hand refiller simultaneously.</div></li>
+    <li><div class="heuristic-num">03</div><div class="heuristic-body"><strong>Nature’s Claim (2 copies)</strong> — Destroy target artifact or enchantment, opponent gains 4 life. The 4 life is irrelevant when you’re killing them T2–3. Goes in vs any artifact/enchantment hate piece (Grafdigger’s Cage, Leyline of Sanctity, Damping Sphere). The cheapest possible answer for hate pieces that would stop your combo.</div></li>
+    <li><div class="heuristic-num">04</div><div class="heuristic-body"><strong>Endurance (1–2 copies)</strong> — Flash 3/4 body + exile target GY. Goes in vs Living End (exile their GY before cascade resolves), Goryo’s Vengeance (exile their GY target). Also a legitimate blocker vs aggro when you need to survive to T3. The body matters in fair games.</div></li>
+    <li><div class="heuristic-num">05</div><div class="heuristic-body"><strong>Koma, World-Eater + Hexdrinker (flex)</strong> — Koma is the unbeatable late-game threat vs control. Hexdrinker levels up to protection from everything. Both go in vs blue interactive decks when the fast combo is too risky. Shift based on how controlling vs aggressive their build is.</div></li>
+  </ol>
+</div>
+<!-- PREP SHEET -->
+<div id="prep" class="section">
+  <div class="section-label">Chapter 10</div>
+  <h1>Tournament Prep Sheet</h1>
+    <button class="print-btn" onclick="printSB()">&#x2259; Print This Sheet</button>
+
+
+    <h2>20-Minute Crash Course</h2>
+    <p>If you're sitting down in 20 minutes, run through this in order:</p>
+    <ul class="checklist" id="crash-checklist">
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Mulligan rule:</strong> Keep any hand with Allosaurus Rider + a green card to pitch, or Neoform + a 1-drop creature.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Allosaurus rule:</strong> Allosaurus Rider's alternative cost: exile 2 green cards from hand. Must be green card types, not just green mana.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Neoform rule:</strong> Neoform sacrifices a creature and finds one with exactly 1 more MV. Sacrifice a 1-drop: find a 2-drop (Clever Lumimancer).</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Kill line rule:</strong> T2 kill: T1 dork, T2 Neoform sacrifice dork → Lumimancer, then pitch Allosaurus for free → Neoform Lumimancer → Ghalta.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Pact rule:</strong> Cast Summoner's Pact only when you win before your next upkeep OR you have {2}{G}{G} available.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Sideboard rule:</strong> Consign counters cascade triggers. Know your counter targets for each matchup before sitting down.</span></li>
+    </ul>
+
+      <div id="sb-print-zone">
+    <h2>Printable Sideboard Reference</h2>
+  <p>All 10 matchup ins/outs on one page. Hit Print and take it to the event.</p>
+  <button class="print-btn" onclick="printSB()">&#x2259; Print SB Reference</button>
+  <div class="print-grid">
+    <div class="print-mu">
+      <div class="print-mu-name">Boros Energy <span class="diff-hard">Unfavorable</span></div>
+      <div class="print-mu-role">Race — Kill before they stabilize</div>
+      <div class="print-cols">
+        <div><div class="print-col-label">In</div>
+          <div class="print-row"><span>Into the Flood Maw</span><span class="print-qty">+2</span></div>
+          <div class="print-row"><span>Dismember</span><span class="print-qty">+1</span></div>
+          <div class="print-row"><span>Elesh Norn, Grand Cenobite</span><span class="print-qty">+1</span></div>
+        </div>
+        <div><div class="print-col-label">Out</div>
+          <div class="print-row"><span>Pact of Negation</span><span class="print-qty">−2</span></div>
+          <div class="print-row"><span>Nourishing Shoal</span><span class="print-qty">−1</span></div>
+          <div class="print-row"><span>Griselbrand</span><span class="print-qty">−1</span></div>
+        </div>
+      </div>
+      <div class="print-needle">Elesh Norn kills their whole creature base on ETB. Race kills before Ocelot floods</div>
+    </div>
+    <div class="print-mu">
+      <div class="print-mu-name">Tameshi Belcher <span class="diff-good">Favorable</span></div>
+      <div class="print-mu-role">Race — You’re faster</div>
+      <div class="print-cols">
+        <div><div class="print-col-label">In</div>
+          <div class="print-row"><span>Pact of Negation</span><span class="print-qty">+1</span></div>
+          <div class="print-row"><span>Nature's Claim</span><span class="print-qty">+1</span></div>
+        </div>
+        <div><div class="print-col-label">Out</div>
+          <div class="print-row"><span>Disciple of Freyalise</span><span class="print-qty">−1</span></div>
+          <div class="print-row"><span>Nourishing Shoal</span><span class="print-qty">−1</span></div>
+        </div>
+      </div>
+      <div class="print-needle">Nature’s Claim destroys their key artifact. Your T2 kill beats their combo</div>
+    </div>
+    <div class="print-mu">
+      <div class="print-mu-name">Eldrazi Tron <span class="diff-even">Even</span></div>
+      <div class="print-mu-role">Race — T2 before TKS resolves</div>
+      <div class="print-cols">
+        <div><div class="print-col-label">In</div>
+          <div class="print-row"><span>Nature's Claim</span><span class="print-qty">+2</span></div>
+          <div class="print-row"><span>Endurance</span><span class="print-qty">+1</span></div>
+          <div class="print-row"><span>Mystical Dispute</span><span class="print-qty">+4</span></div>
+        </div>
+        <div><div class="print-col-label">Out</div>
+          <div class="print-row"><span>Veil of Summer</span><span class="print-qty">−1</span></div>
+          <div class="print-row"><span>Nourishing Shoal</span><span class="print-qty">−1</span></div>
+          <div class="print-row"><span>Generous Ent</span><span class="print-qty">−2</span></div>
+          <div class="print-row"><span>Planar Genesis</span><span class="print-qty">−2</span></div>
+        </div>
+      </div>
+      <div class="print-needle">Go T2. Dispute counters their Chalice or Thought-Knot Seer cast trigger</div>
+    </div>
+    <div class="print-mu">
+      <div class="print-mu-name">Izzet Affinity <span class="diff-good">Favorable</span></div>
+      <div class="print-mu-role">Race — Faster than their Kappa clock</div>
+      <div class="print-cols">
+        <div><div class="print-col-label">In</div>
+          <div class="print-row"><span>Nature's Claim</span><span class="print-qty">+2</span></div>
+          <div class="print-row"><span>Mystical Dispute</span><span class="print-qty">+2</span></div>
+        </div>
+        <div><div class="print-col-label">Out</div>
+          <div class="print-row"><span>Nourishing Shoal</span><span class="print-qty">−1</span></div>
+          <div class="print-row"><span>Disciple of Freyalise</span><span class="print-qty">−1</span></div>
+        </div>
+      </div>
+      <div class="print-needle">Nature’s Claim destroys Grafdigger’s Cage. Dispute counters their counter</div>
+    </div>
+    <div class="print-mu">
+      <div class="print-mu-name">Esper Blink <span class="diff-hard">Unfavorable</span></div>
+      <div class="print-mu-role">Control — Dispute their counters</div>
+      <div class="print-cols">
+        <div><div class="print-col-label">In</div>
+          <div class="print-row"><span>Mystical Dispute</span><span class="print-qty">+4</span></div>
+          <div class="print-row"><span>Into the Flood Maw</span><span class="print-qty">+2</span></div>
+          <div class="print-row"><span>Pact of Negation</span><span class="print-qty">+1</span></div>
+          <div class="print-row"><span>Hexdrinker</span><span class="print-qty">+1</span></div>
+        </div>
+        <div><div class="print-col-label">Out</div>
+          <div class="print-row"><span>Generous Ent</span><span class="print-qty">−2</span></div>
+          <div class="print-row"><span>Nourishing Shoal</span><span class="print-qty">−1</span></div>
+          <div class="print-row"><span>Planar Genesis</span><span class="print-qty">−2</span></div>
+          <div class="print-row"><span>Disciple of Freyalise</span><span class="print-qty">−2</span></div>
+          <div class="print-row"><span>Bridgeworks Battle</span><span class="print-qty">−1</span></div>
+        </div>
+      </div>
+      <div class="print-needle">Hold Pact until they tap out. Dispute their FoN for {U}. Go T3 not T2</div>
+    </div>
+    <div class="print-mu">
+      <div class="print-mu-name">Izzet Prowess <span class="diff-good">Favorable</span></div>
+      <div class="print-mu-role">Race — T2 kill wins outright</div>
+      <div class="print-cols">
+        <div><div class="print-col-label">In</div>
+          <div class="print-row"><span>Mystical Dispute</span><span class="print-qty">+2</span></div>
+          <div class="print-row"><span>Endurance</span><span class="print-qty">+1</span></div>
+        </div>
+        <div><div class="print-col-label">Out</div>
+          <div class="print-row"><span>Nourishing Shoal</span><span class="print-qty">−1</span></div>
+          <div class="print-row"><span>Generous Ent</span><span class="print-qty">−1</span></div>
+        </div>
+      </div>
+      <div class="print-needle">Go T2 aggressively — no interaction before your combo turn. Dispute their Spell Pierce</div>
+    </div>
+    <div class="print-mu">
+      <div class="print-mu-name">Domain Zoo <span class="diff-good">Favorable</span></div>
+      <div class="print-mu-role">Race — T2 faster than their clock</div>
+      <div class="print-cols">
+        <div><div class="print-col-label">In</div>
+          <div class="print-row"><span>Dismember</span><span class="print-qty">+1</span></div>
+          <div class="print-row"><span>Endurance</span><span class="print-qty">+1</span></div>
+        </div>
+        <div><div class="print-col-label">Out</div>
+          <div class="print-row"><span>Nourishing Shoal</span><span class="print-qty">−1</span></div>
+          <div class="print-row"><span>Consign to Memory</span><span class="print-qty">−1</span></div>
+        </div>
+      </div>
+      <div class="print-needle">T2 Ghalta kills before Kavu gets large enough. Dismember handles their dork</div>
+    </div>
+    <div class="print-mu">
+      <div class="print-mu-name">Ruby Storm <span class="diff-even">Even</span></div>
+      <div class="print-mu-role">Race — Who kills first</div>
+      <div class="print-cols">
+        <div><div class="print-col-label">In</div>
+          <div class="print-row"><span>Endurance</span><span class="print-qty">+1</span></div>
+          <div class="print-row"><span>Pact of Negation</span><span class="print-qty">+1</span></div>
+          <div class="print-row"><span>Koma, World-Eater</span><span class="print-qty">+1</span></div>
+        </div>
+        <div><div class="print-col-label">Out</div>
+          <div class="print-row"><span>Generous Ent</span><span class="print-qty">−2</span></div>
+          <div class="print-row"><span>Nourishing Shoal</span><span class="print-qty">−1</span></div>
+          <div class="print-row"><span>Consign to Memory</span><span class="print-qty">−1</span></div>
+        </div>
+      </div>
+      <div class="print-needle">Go T2. Endurance shuffles their Past in Flames GY. Pure race — you’re often faster</div>
+    </div>
+    <div class="print-mu">
+      <div class="print-mu-name">Amulet Titan <span class="diff-good">Favorable</span></div>
+      <div class="print-mu-role">Race — T2 beats T3 Titan</div>
+      <div class="print-cols">
+        <div><div class="print-col-label">In</div>
+          <div class="print-row"><span>Koma, World-Eater</span><span class="print-qty">+1</span></div>
+        </div>
+        <div><div class="print-col-label">Out</div>
+          <div class="print-row"><span>Nourishing Shoal</span><span class="print-qty">−1</span></div>
+        </div>
+      </div>
+      <div class="print-needle">Your T2 kill beats their T3. Go immediately — no reason to wait</div>
+    </div>
+    <div class="print-mu">
+      <div class="print-mu-name">Dimir Frog / Control <span class="diff-hard">Unfavorable</span></div>
+      <div class="print-mu-role">Control — Dispute their counters</div>
+      <div class="print-cols">
+        <div><div class="print-col-label">In</div>
+          <div class="print-row"><span>Mystical Dispute</span><span class="print-qty">+4</span></div>
+          <div class="print-row"><span>Into the Flood Maw</span><span class="print-qty">+2</span></div>
+          <div class="print-row"><span>Pact of Negation</span><span class="print-qty">+1</span></div>
+          <div class="print-row"><span>Hexdrinker</span><span class="print-qty">+1</span></div>
+        </div>
+        <div><div class="print-col-label">Out</div>
+          <div class="print-row"><span>Generous Ent</span><span class="print-qty">−2</span></div>
+          <div class="print-row"><span>Nourishing Shoal</span><span class="print-qty">−1</span></div>
+          <div class="print-row"><span>Planar Genesis</span><span class="print-qty">−2</span></div>
+          <div class="print-row"><span>Bridgeworks Battle</span><span class="print-qty">−2</span></div>
+          <div class="print-row"><span>Disciple of Freyalise</span><span class="print-qty">−1</span></div>
+        </div>
+      </div>
+      <div class="print-needle">Dispute their FoN or Counterspell for {U}. Hold until T3 with Pact backup ready</div>
+    </div>
+  </div>
+  </div>
+
+<h2>Testing Framework</h2>
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-label">Block 01</div>
+        <div class="card-title">T2 Kill Line</div>
+        <div class="card-body">Execute the T2 Ghalta line at tournament speed. Allosaurus pitch → Neoform chain → kill.</div>
+      </div>
+      <div class="card">
+        <div class="card-label">Block 02</div>
+        <div class="card-title">Consign Timing</div>
+        <div class="card-body">Drill holding Consign for opponent's disruption. Know which spell to counter.</div>
+      </div>
+      <div class="card">
+        <div class="card-label">Block 03</div>
+        <div class="card-title">Pact Math</div>
+        <div class="card-body">Practice knowing exactly when you can and cannot cast Summoner's Pact safely.</div>
+      </div>
+      <div class="card">
+        <div class="card-label">Block 04</div>
+        <div class="card-title">Resilience Lines</div>
+        <div class="card-body">Practice what you do after T1 interaction hits your setup. The deck has multiple lines.</div>
+      </div>
+    </div>
+
+    <h2>Matchday Routine</h2>
+    <ul class="heuristic-list">
+      <li>Register with Consign confirmed. Counter the disruption, execute the combo.</li>
+      <li>Know your kill line before Round 1. T2 or T3? Which route based on your hand?</li>
+      <li>Between rounds: Pact timing review. Can you pay {2}{G}{G} next upkeep? If unsure, don't cast it.</li>
+      <li>Don't cast Pact as a desperation play. Only cast when you know the outcome.</li>
+      <li>The deck is fast. Trust the speed and don't slow down to play around disruption you haven't confirmed.</li>
+    </ul>
+
+  <div class="print-section">
+    <div class="print-title">Simic <span class="c">Neoform</span></div>
+    <div class="print-sub">Team Resolve · Tournament Reference · 2026</div>
+    <div class="print-grid">
+      <div>
+        <div class="print-col-title">Kill Line (Ghalta Route)</div>
+        <div class="print-line"><span>1. Exile 2 green cards → <span class="c">Allosaurus Rider</span> (free)</span></div>
+        <div class="print-line"><span>2. <span class="c">Neoform</span> ({G}{U}) → sacrifice Rider (MV 7) → find Ghalta (MV 8)</span></div>
+        <div class="print-line"><span>3. Ghalta ETB → put Xenagos from hand onto battlefield</span></div>
+        <div class="print-line"><span>4. Beginning of combat → Xenagos gives Ghalta haste + +13/+13</span></div>
+        <div class="print-line"><span>5. 26/26 trample → attack for lethal from 20</span></div>
+
+        <div class="print-col-title" style="margin-top:16px;">Oracle Reminders</div>
+        <div class="print-line"><span><span class="c">Neoform</span> = sorcery (main phase only)</span></div>
+        <div class="print-line"><span>Rider MV always 7 (alt cost doesn't change MV)</span></div>
+        <div class="print-line"><span>Xenagos = triggered (beginning of combat), not activated</span></div>
+        <div class="print-line"><span>Consign counters triggered abilities / colorless spells only</span></div>
+        <div class="print-line"><span>Consign CANNOT counter <span class="c">Neoform</span> or <span class="c">Eldritch Evolution</span> (green)</span></div>
+        <div class="print-line"><span>Consign CAN counter <span class="c">Summoner's Pact</span> upkeep trigger</span></div>
+        <div class="print-line"><span><span class="c">Veil of Summer</span> = cast before combo if blue mana is open</span></div>
+        <div class="print-line"><span>Pact = win this turn or pay next upkeep or lose</span></div>
+        <div class="print-line"><span><span class="c">Clarion Conqueror</span> stops <span class="c">Griselbrand</span>, NOT Xenagos</span></div>
+        <div class="print-line"><span>Ghalta ETB = from hand, not library (need Xenagos in hand)</span></div>
+
+        <div class="print-col-title" style="margin-top:16px;"><span class="c">Eldritch Evolution</span> Math</div>
+        <div class="print-line"><span>Sacrifice Rider (MV 7) → find MV ≤ 9</span></div>
+        <div class="print-line"><span>Sacrifice Mandrills (MV 6, delve) → find MV ≤ 8</span></div>
+        <div class="print-line"><span>Chalice at 2 hits <span class="c">Neoform</span> (MV 2), NOT Eldritch Evo (MV 3)</span></div>
+      </div>
+
+      <div>
+        <div class="print-col-title">Matchup Sideboard Quick-Reference</div>
+
+        <div class="print-mu">
+          <div class="print-mu-name">Boros Energy</div>
+          <div class="print-mu-role">Unfavorable · Go Ghalta not <span class="c">Griselbrand</span> post-board</div>
+          <div class="print-cols">
+            <div><div class="print-col-label">Out</div>
+              <div class="print-row"><span><span class="c">Pact of Negation</span> ×2</span><span class="print-qty">−2</span></div>
+              <div class="print-row"><span><span class="c">Nourishing Shoal</span></span><span class="print-qty">−1</span></div>
+              <div class="print-row"><span><span class="c">Griselbrand</span></span><span class="print-qty">−1</span></div>
+            </div>
+            <div><div class="print-col-label">In</div>
+              <div class="print-row"><span><span class="c">Into the Flood Maw</span> ×2</span><span class="print-qty">+2</span></div>
+              <div class="print-row"><span><span class="c">Dismember</span></span><span class="print-qty">+1</span></div>
+              <div class="print-row"><span>Elesh Norn</span><span class="print-qty">+1</span></div>
+            </div>
+          </div>
+          <div class="print-needle">Clarion stops <span class="c">Griselbrand</span>, not Xenagos — stay on Ghalta line</div>
+        </div>
+
+        <div class="print-mu">
+          <div class="print-mu-name">Eldrazi Tron</div>
+          <div class="print-mu-role">Even · Race Chalice / Thought-Knot</div>
+          <div class="print-cols">
+            <div><div class="print-col-label">Out</div>
+              <div class="print-row"><span><span class="c">Veil of Summer</span></span><span class="print-qty">−1</span></div>
+              <div class="print-row"><span><span class="c">Nourishing Shoal</span></span><span class="print-qty">−1</span></div>
+            </div>
+            <div><div class="print-col-label">In</div>
+              <div class="print-row"><span><span class="c">Nature's Claim</span> ×2</span><span class="print-qty">+2</span></div>
+            </div>
+          </div>
+          <div class="print-needle"><span class="c">Nature's Claim</span> destroys Chalice for {G}. Eldritch Evo dodges Chalice at 2.</div>
+        </div>
+
+        <div class="print-mu">
+          <div class="print-mu-name">Esper Blink</div>
+          <div class="print-mu-role">Unfavorable · Full disruption package</div>
+          <div class="print-cols">
+            <div><div class="print-col-label">Out</div>
+              <div class="print-row"><span><span class="c">Generous Ent</span> ×2</span><span class="print-qty">−2</span></div>
+              <div class="print-row"><span><span class="c">Nourishing Shoal</span></span><span class="print-qty">−1</span></div>
+              <div class="print-row"><span><span class="c">Planar Genesis</span> ×2</span><span class="print-qty">−2</span></div>
+              <div class="print-row"><span>Disciple ×2</span><span class="print-qty">−2</span></div>
+              <div class="print-row"><span>Bridgeworks</span><span class="print-qty">−1</span></div>
+            </div>
+            <div><div class="print-col-label">In</div>
+              <div class="print-row"><span><span class="c">Mystical Dispute</span> ×4</span><span class="print-qty">+4</span></div>
+              <div class="print-row"><span><span class="c">Into the Flood Maw</span> ×2</span><span class="print-qty">+2</span></div>
+              <div class="print-row"><span><span class="c">Pact of Negation</span></span><span class="print-qty">+1</span></div>
+              <div class="print-row"><span><span class="c">Hexdrinker</span></span><span class="print-qty">+1</span></div>
+            </div>
+          </div>
+          <div class="print-needle"><span class="c">Veil of Summer</span> before combo — blanks <span class="c">Thoughtseize</span> + all blue counters</div>
+        </div>
+
+        <div class="print-mu">
+          <div class="print-mu-name">Dimir Frog / Control</div>
+          <div class="print-mu-role">Unfavorable · Hardest matchup</div>
+          <div class="print-cols">
+            <div><div class="print-col-label">Out</div>
+              <div class="print-row"><span><span class="c">Generous Ent</span> ×2</span><span class="print-qty">−2</span></div>
+              <div class="print-row"><span><span class="c">Nourishing Shoal</span></span><span class="print-qty">−1</span></div>
+              <div class="print-row"><span><span class="c">Planar Genesis</span> ×2</span><span class="print-qty">−2</span></div>
+              <div class="print-row"><span>Bridgeworks ×2</span><span class="print-qty">−2</span></div>
+              <div class="print-row"><span>Disciple</span><span class="print-qty">−1</span></div>
+            </div>
+            <div><div class="print-col-label">In</div>
+              <div class="print-row"><span><span class="c">Mystical Dispute</span> ×4</span><span class="print-qty">+4</span></div>
+              <div class="print-row"><span><span class="c">Into the Flood Maw</span> ×2</span><span class="print-qty">+2</span></div>
+              <div class="print-row"><span><span class="c">Pact of Negation</span></span><span class="print-qty">+1</span></div>
+              <div class="print-row"><span><span class="c">Hexdrinker</span></span><span class="print-qty">+1</span></div>
+            </div>
+          </div>
+          <div class="print-needle">Veil + Dispute = only route through their disruption</div>
+        </div>
+
+        <div class="print-mu">
+          <div class="print-mu-name">Esper Goryo's</div>
+          <div class="print-mu-role">Favorable G1 · Tighter post-board</div>
+          <div class="print-cols">
+            <div><div class="print-col-label">Out</div>
+              <div class="print-row"><span><span class="c">Generous Ent</span> ×2</span><span class="print-qty">−2</span></div>
+              <div class="print-row"><span><span class="c">Nourishing Shoal</span></span><span class="print-qty">−1</span></div>
+              <div class="print-row"><span><span class="c">Planar Genesis</span> ×2</span><span class="print-qty">−2</span></div>
+            </div>
+            <div><div class="print-col-label">In</div>
+              <div class="print-row"><span><span class="c">Mystical Dispute</span> ×4</span><span class="print-qty">+4</span></div>
+              <div class="print-row"><span><span class="c">Pact of Negation</span></span><span class="print-qty">+1</span></div>
+            </div>
+          </div>
+          <div class="print-needle">Consign can counter <span class="c">Summoner's Pact</span> trigger — protect with Veil</div>
+        </div>
+
+        <div class="print-mu">
+          <div class="print-mu-name">Tameshi Belcher / Ruby Storm / Amulet</div>
+          <div class="print-mu-role">Favorable / Even · Minimal SB</div>
+          <div class="print-cols">
+            <div><div class="print-col-label">Out</div>
+              <div class="print-row"><span><span class="c">Nourishing Shoal</span></span><span class="print-qty">−1</span></div>
+            </div>
+            <div><div class="print-col-label">In</div>
+              <div class="print-row"><span><span class="c">Endurance</span></span><span class="print-qty">+1</span></div>
+            </div>
+          </div>
+          <div class="print-needle">Kill first. Do not over-sideboard against decks you beat by going under.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div><!-- end .page -->
+<footer>
+  <span>Team Resolve · Modern · 2026</span>
+  <span>Simic <span class="c">Neoform</span> — 2.7% Meta Share</span>
+  <span>Last Updated: April 2026 · Palette: Micro SaaS (UI UX Pro Max Row 2)</span>
+</footer>
+
+<script>
+function show(id, e) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.nav-link').forEach(b => b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  if(e && e.target) e.target.classList.add('active');
+  window.scrollTo(0, 0);
+}
+function toggle(id) {
+  const el = document.getElementById(id);
+  if (el) el.classList.toggle('open');
+}
+</script>
+
+<script>
+/* card tooltip JS — injected before </body> */
+(function() {
+  const TIP = document.createElement('div');
+  TIP.className = 'card-tip';
+  TIP.innerHTML = '<div class="card-tip-loading">loading...</div>';
+  document.body.appendChild(TIP);
+
+  const CACHE = {};
+  let hideTimer = null;
+
+  function pos(e) {
+    const PAD=24,W=220,H=310;
+    let x = e.clientX + PAD;
+    let y = e.clientY - H / 2;
+    if (x + W > window.innerWidth)  x = e.clientX - W - PAD;
+    if (y < 8)                       y = 8;
+    if (y + H > window.innerHeight)  y = window.innerHeight - H - 8;
+    TIP.style.left = x + 'px';
+    TIP.style.top  = y + 'px';
+  }
+
+  async function show(name, e) {
+    clearTimeout(hideTimer);
+    TIP.innerHTML = '<div class="card-tip-loading">loading...</div>';
+    TIP.classList.add('visible');
+    pos(e);
+    if (CACHE[name]) {
+      TIP.innerHTML = `<img src="${CACHE[name]}" alt="${name}">`;
+      return;
+    }
+    try {
+      const url = `https://api.scryfall.com/cards/named?fuzzy=${encodeURIComponent(name)}`;
+      const r = await fetch(url);
+      if (!r.ok) { TIP.classList.remove('visible'); return; }
+      const d = await r.json();
+      // Handle double-faced cards
+      const img = d.image_uris?.normal ||
+                  d.card_faces?.[0]?.image_uris?.normal ||
+                  d.image_uris?.small;
+      if (!img) { TIP.classList.remove('visible'); return; }
+      CACHE[name] = img;
+      TIP.innerHTML = `<img src="${img}" alt="${name}">`;
+    } catch(err) {
+      TIP.classList.remove('visible');
+    }
+  }
+
+  function hide() {
+    hideTimer = setTimeout(() => TIP.classList.remove('visible'), 80);
+  }
+
+  document.addEventListener('mouseover', e => {
+    const el = e.target.closest('span.c');
+    if (!el) return;
+    showTip(el.textContent.trim(), e);
+  });
+  document.addEventListener('mousemove', e => {
+    if (TIP.classList.contains('visible')) pos(e);
+  });
+  document.addEventListener('mouseout', e => {
+    if (e.target.closest('span.c')) hide();
+  });
+})();
+</script>
+</body>
+</html>

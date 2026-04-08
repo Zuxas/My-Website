@@ -1,0 +1,1490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" href="../images/tab32.png" type="image/png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Golgari Yawgmoth — Team Resolve Playbook</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+  html { overflow-y: scroll; }
+  /* ═══ DEVELOPER TOOL / IDE PALETTE — UI UX Pro Max Row 81 ═══ */
+  /* pri=#1E293B acc=#22C55E bg=#0F172A fg=#F8FAFC */
+  :root { --ink:#0e0e0e; --paper:#f2ede6; --paper-dark:#e8e1d6; --rule:#c8bfb0; --primary:#083117; --accent:#22C55E; --accent-light:rgba(34,197,94,0.15); --danger:#8f1a1a; --danger-light:rgba(143,26,26,0.12); --gold:#22C55E; --gold-light:rgba(34,197,94,0.15); --mid:#5a5248; --card:#ffffff; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:var(--paper); color:var(--ink); font-family:'Crimson Pro',Georgia,serif; font-size:17px; line-height:1.6; }
+  .header-band { background:var(--primary); border-bottom:3px solid var(--accent); padding:48px 80px 40px;position:relative;overflow:hidden;}
+  .header-band { color: #f1f5f9; }
+  .header-band,.header-band *{color:#f1f5f9;}
+  .header-band p, .header-band span, .header-band div { color: #f1f5f9; }
+
+  .header-inner { max-width:1080px; margin:0 auto; display:flex; justify-content:space-between; align-items:flex-end; gap:40px; }
+  .header-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:rgba(15,23,42,0.35); margin-bottom:8px; }
+  .header-title{font-family:'DM Mono',monospace;font-size:clamp(32px,4vw,52px);font-weight:500;letter-spacing:0.06em;line-height:1.05;text-transform:uppercase;}
+  .header-title span{color:var(--accent);}
+  .header-tagline { font-family:'Crimson Pro',serif; font-style:italic; font-size:15px; color:rgba(15,23,42,0.4); margin-top:8px; }
+  .header-right { display:flex; flex-direction:column; gap:8px; text-align:right; padding-bottom:4px; }
+  .header-stat { display:flex; gap:12px; align-items:center; justify-content:flex-end; }
+  .hs-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; color:rgba(15,23,42,0.3); }
+  .hs-val { font-family:'DM Mono',monospace; font-size:12px; color:var(--paper); }
+  nav { position:sticky; top:0; z-index:100; background:var(--primary); border-bottom:2px solid var(--accent); padding:0 80px; display:flex; align-items:center; gap:0; overflow-x:auto; scrollbar-width:none; }
+  nav::-webkit-scrollbar { display:none; }
+  .nav-brand { font-family:'Bebas Neue',sans-serif; font-size:18px; color:#9ca3af; letter-spacing:0.05em; margin-right:40px; white-space:nowrap; padding:16px 0;  color:var(--accent); }
+  .nav-link { font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:rgba(248,250,252,0.55); padding:20px 16px; cursor:pointer; white-space:nowrap; border-bottom:2px solid transparent; transition:all 0.2s; background:none; border-top:none; border-left:none; border-right:none; }
+  .nav-link:hover, .nav-link.active { color:rgba(248,250,252,1); border-bottom-color:#272F42; }
+  .page { max-width:1100px; margin:0 auto; padding:80px 80px; }
+  .section { display:none; animation:fadeIn 0.3s ease; }
+  .section.active { display:block; }
+  @keyframes fadeIn { from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:translateY(0);} }
+  .section-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.25em; text-transform:uppercase; color:var(--mid); margin-bottom:8px; }
+  h1 { font-family:'Bebas Neue',sans-serif; font-size:64px; line-height:0.9; letter-spacing:0.01em; color:var(--ink); margin-bottom:40px; }
+  h2 { font-family:'Bebas Neue',sans-serif; font-size:36px; letter-spacing:0.02em; color:var(--ink); margin:56px 0 20px; padding-bottom:8px; border-bottom:2px solid var(--ink); }
+  h3 { font-family:'DM Mono',monospace; font-size:12px; letter-spacing:0.15em; text-transform:uppercase; color:var(--accent); margin:32px 0 12px; }
+  p { margin-bottom:16px; color:var(--ink); font-weight:300; }
+  strong { font-weight:600; }
+  .mantra { border-left:4px solid var(--accent); padding:24px 32px; background:var(--accent-light); margin:32px 0; font-style:italic; font-size:20px; color:var(--accent); line-height:1.5; }
+  .card-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); gap:1px; background:var(--rule); border:1px solid var(--rule); margin:24px 0; }
+  .card-grid-2 { grid-template-columns:repeat(2,1fr) !important; }
+  .card-grid-3 { grid-template-columns:repeat(3,1fr) !important; }
+  .card { background:var(--paper); padding:24px; }
+  .card:hover { background:var(--paper-dark); }
+  .card-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--mid); margin-bottom:8px; }
+  .card-title { font-family:'Bebas Neue',sans-serif; font-size:22px; letter-spacing:0.03em; color:var(--ink); margin-bottom:8px; }
+  .card-body { font-size:15px; font-weight:300; color:var(--mid); line-height:1.5; }
+  .decklist { display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--rule); border:1px solid var(--rule); margin:24px 0; }
+  .dl-section { background:var(--paper); padding:24px; }
+  .dl-section-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--mid); margin-bottom:16px; }
+  .dl-group { margin-bottom:20px; }
+  .dl-group-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; color:var(--ink); background:var(--paper-dark); padding:4px 8px; margin-bottom:8px; display:inline-block; }
+  .dl-card-row { display:flex; justify-content:space-between; align-items:baseline; padding:3px 0; border-bottom:1px solid rgba(200,191,176,0.3); font-size:15px; font-weight:300; }
+  .dl-card-row:last-child { border-bottom:none; }
+  .dl-qty { font-family:'DM Mono',monospace; font-size:12px; color:var(--mid); flex-shrink:0; margin-left:8px; }
+  .matchup-table { width:100%; border-collapse:collapse; margin:24px 0; table-layout:fixed; }
+  .matchup-table colgroup col:nth-child(1) { width:42%; }
+  .matchup-table colgroup col:nth-child(2) { width:16%; }
+  .matchup-table colgroup col:nth-child(3) { width:16%; }
+  .matchup-table colgroup col:nth-child(4) { width:26%; }
+  .matchup-table th { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; padding:10px 16px; background:var(--ink); color:rgba(15,23,42,0.6); text-align:left; }
+  .matchup-table td { padding:12px 16px; border-bottom:1px solid var(--rule); font-size:15px; font-weight:300; }
+  .matchup-table tr:hover td { background:var(--paper-dark); cursor:pointer; }
+    .matchup-detail { display:none; border:1px solid var(--rule); background:var(--paper-dark); padding:32px 40px; margin:0 0 2px; animation:fadeIn 0.2s ease; }
+
+  .matchup-detail.open { display:block; }
+  .verdict { display:inline-block; font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; padding:4px 10px; border:1px solid; }
+  .verdict-dog { background:var(--danger-light); color:var(--danger); border-color:var(--danger); }
+  .verdict-even { background:var(--gold-light); color:var(--gold); border-color:var(--gold); }
+  .verdict-favor { background:#d1fae5; color:#065f46; border-color:#065f46; }
+  .verdict-hard { background:var(--danger-light); color:var(--danger); border-color:var(--danger); }
+  .sb-col { background:var(--paper); padding:20px; }
+    .sb-item { font-size:13px; font-weight:300; padding:4px 0; border-bottom:1px solid rgba(200,191,176,0.2); }
+  .sb-col-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--mid); margin-bottom:12px; }
+  .sb-table { display:flex; gap:1px; background:var(--rule); border:1px solid var(--rule); margin:16px 0; }
+  .sb-table th { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; padding:8px 12px; background:var(--paper-dark); color:var(--mid); text-align:left; border-bottom:2px solid var(--rule); }
+  .sb-table td { padding:10px 12px; border-bottom:1px solid var(--rule); font-size:14px; font-weight:300; }
+  .sb-out { color:var(--danger); font-family:'DM Mono',monospace; font-size:12px; }
+  .sb-in { color:#065f46; font-family:'DM Mono',monospace; font-size:12px; }
+  .sb-note { font-size:13px; font-weight:300; color:var(--mid); font-style:italic; margin-top:6px; }
+  .sb-card-guide { border:1px solid var(--rule); margin:24px 0; }
+  .sb-guide-row { display:grid; grid-template-columns:180px 1fr; gap:0; border-bottom:1px solid var(--rule); }
+  .sb-guide-row:last-child { border-bottom:none; }
+  .sb-guide-name { font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.08em; text-transform:uppercase; padding:16px; background:var(--paper-dark); color:var(--ink); border-right:1px solid var(--rule); display:flex; align-items:flex-start; }
+  .sb-guide-body { padding:16px; font-size:14px; font-weight:300; line-height:1.6; color:var(--mid); }
+  .role-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--rule); border:1px solid var(--rule); margin:24px 0; }
+  .role-card { background:var(--paper); padding:24px; }
+  .role-name { font-family:'Bebas Neue',sans-serif; font-size:28px; letter-spacing:0.02em; margin-bottom:8px; }
+  .role-name-primary { color:var(--accent); }
+  .role-name-secondary { color:var(--gold); }
+  .role-name-tertiary { color:var(--mid); }
+  .role-desc { font-size:14px; font-weight:300; color:var(--mid); line-height:1.5; margin-bottom:12px; }
+  .role-matchups { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.1em; text-transform:uppercase; color:var(--mid); }
+  .engine-block { border:1px solid var(--rule); margin:32px 0; }
+  .engine-header { background:var(--ink); padding:20px 24px; display:flex; align-items:center; gap:16px; }
+  .engine-letter { font-family:'Bebas Neue',sans-serif; font-size:40px; color:#9ca3af; line-height:1; }
+  .engine-name { font-family:'Bebas Neue',sans-serif; font-size:24px; color:var(--paper); letter-spacing:0.03em; }
+  .engine-body { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--rule); }
+  .engine-step { background:var(--paper); padding:20px; }
+  .engine-step-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--mid); margin-bottom:6px; }
+  .engine-step-title { font-family:'Bebas Neue',sans-serif; font-size:20px; color:var(--ink); margin-bottom:8px; }
+  .engine-step-body { font-size:14px; font-weight:300; color:var(--mid); line-height:1.5; }
+  .tricks-list { list-style:none; margin:0; padding:0; border:1px solid var(--rule); }
+  .tricks-list li { padding:14px 20px 14px 36px; border-bottom:1px solid var(--rule); font-size:15px; font-weight:300; position:relative; }
+  .tricks-list li:last-child { border-bottom:none; }
+  .tricks-list li::before { content:"▸"; position:absolute; left:14px; color:#272F42; }
+  .tuning-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--rule); border:1px solid var(--rule); margin:24px 0; }
+  .tuning-card { background:var(--paper); padding:20px; }
+  .tuning-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--mid); margin-bottom:8px; }
+  .tuning-condition { font-family:'Bebas Neue',sans-serif; font-size:18px; color:var(--ink); margin-bottom:12px; }
+  .tuning-up { font-size:14px; font-weight:300; margin-bottom:6px; }
+  .tuning-up::before { content:"▲ "; color:#065f46; font-size:12px; }
+  .tuning-down { font-size:14px; font-weight:300; margin-bottom:6px; }
+  .tuning-down::before { content:"▼ "; color:var(--danger); font-size:12px; }
+  .heuristic-list { list-style:none; margin:0; padding:0; counter-reset:heuristic; }
+  .heuristic-list li { counter-increment:heuristic; display:grid; grid-template-columns:48px 1fr; gap:16px; padding:20px 0; border-bottom:1px solid var(--rule); align-items:start; }
+  .heuristic-list li:last-child { border-bottom:none; }
+  .heuristic-list li::before { content:counter(heuristic,decimal-leading-zero); font-family:'DM Mono',monospace; font-size:22px; color:var(--rule); font-weight:500; }
+  .heuristic-text strong { display:block; font-size:16px; font-weight:600; margin-bottom:4px; color:var(--ink); }
+  .heuristic-text span { font-size:14px; font-weight:300; color:var(--mid); line-height:1.5; }
+  .print-btn { display:inline-flex; align-items:center; gap:8px; font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.12em; text-transform:uppercase; background:var(--ink); color:var(--paper); border:none; padding:10px 20px; cursor:pointer; margin-bottom:32px; }
+  .print-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--rule); border:1px solid var(--rule); }
+  .print-mu { background:var(--paper); padding:16px; }
+  .print-mu-name { font-family:'Bebas Neue',sans-serif; font-size:16px; color:var(--ink); margin-bottom:4px; }
+  .print-mu-role { font-family:'DM Mono',monospace; font-size:9px; letter-spacing:0.1em; text-transform:uppercase; color:var(--mid); margin-bottom:10px; }
+  .print-cols { display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+  .print-col-label { font-family:'DM Mono',monospace; font-size:9px; letter-spacing:0.15em; text-transform:uppercase; color:var(--mid); margin-bottom:4px; }
+  .print-row { font-size:12px; font-weight:300; display:flex; justify-content:space-between; padding:1px 0; border-bottom:1px solid rgba(200,191,176,0.4); }
+  .print-qty { font-family:'DM Mono',monospace; font-size:11px; color:var(--mid); flex-shrink:0; margin-left:4px; }
+  .print-needle { font-family:'DM Mono',monospace; font-size:9px; letter-spacing:0.06em; color:var(--danger); margin-top:6px; text-transform:uppercase; }
+  .combo-diagram { border:1px solid var(--rule); background:var(--paper-dark); padding:24px; margin:24px 0; font-family:'DM Mono',monospace; font-size:13px; line-height:2; }
+  .combo-step { display:flex; gap:16px; align-items:flex-start; margin-bottom:8px; }
+  .combo-num { color:#9ca3af; font-size:11px; flex-shrink:0; width:24px; }
+  .combo-arrow { color:#272F42; margin:0 8px; }
+  .c { color:#166534; font-weight:500; }
+  footer { background:var(--ink); color:rgba(15,23,42,0.3); padding:40px 80px; margin-top:80px; display:flex; justify-content:space-between; align-items:center; }
+  footer span { font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.1em; text-transform:uppercase; }
+  @media (max-width:768px) { .header-inner,nav,.page,footer { padding-left:24px; padding-right:24px; } .header-right { display:none; } .decklist,.role-grid,.engine-body,.tuning-grid { grid-template-columns:1fr; } nav { padding:0 24px; } }
+  @media print { nav,.print-btn,footer { display:none;   /* SB-only print mode */
+  body.printing-sb .header-band,
+  body.printing-sb nav,
+  body.printing-sb footer { display:none !important; }
+  body.printing-sb .section:not(#prep) { display:none !important; }
+  body.printing-sb #prep > *:not(#sb-print-zone) { display:none !important; }
+  body.printing-sb #sb-print-zone { display:block !important; }
+  body.printing-sb #sb-print-zone h2,
+  body.printing-sb #sb-print-zone p,
+  body.printing-sb .print-btn { display:none !important; }
+  body.printing-sb .print-grid { display:grid !important; grid-template-columns:repeat(3,1fr) !important; }
+  body.printing-sb .print-cols { display:grid !important; }
+  body.printing-sb .print-row { display:flex !important; }
+  body.printing-sb .print-mu { display:block !important; }
+  body.printing-sb .print-mu > * { display:block !important; }
+  body.printing-sb .print-qty { font-family:monospace; }
+  @page { size: portrait; margin: 0.35in; }
+  body.printing-sb { zoom: 0.62; }
+  body.printing-sb #sb-print-zone { page-break-after: avoid; }
+} .section { display:block !important; } }
+  .edge-case { border:1px solid var(--accent); background:var(--accent-light); padding:16px 20px; margin:16px 0; font-size:14px; }
+  .edge-case-label { font-family:'DM Mono',monospace; font-size:9px; letter-spacing:0.15em; text-transform:uppercase; color:var(--accent); margin-bottom:6px; }
+  .edge-case-body { font-weight:300; color:var(--ink); line-height:1.5; }
+
+  .checklist { list-style:none; padding:0; margin:24px 0; }
+  .checklist li { display:flex; align-items:flex-start; gap:16px; padding:12px 0; border-bottom:1px solid var(--rule); font-weight:300; font-size:15px; }
+  .check-box { width:20px; height:20px; border:2px solid var(--accent); flex-shrink:0; cursor:pointer; margin-top:2px; transition:background 0.15s; }
+  .check-box.checked { background:var(--accent); }
+
+  /* ── CARD IMAGE TOOLTIP ─────────────────────────────────── */
+.card-tip {
+  position:fixed; z-index:9999; pointer-events:none;
+  width:220px; border-radius:8px; overflow:hidden;
+  box-shadow:0 8px 32px rgba(0,0,0,0.6);
+  opacity:0; transition:opacity 0.15s ease;
+  background:#1a1a2e;
+}
+.card-tip.visible { opacity:1; }
+.card-tip img { width:220px; height:auto; display:block; }
+.card-tip-loading {
+  width:220px; height:308px; display:flex;
+  align-items:center; justify-content:center;
+  color:#94a3b8; font-size:12px; font-family:monospace;
+  background:#1e293b;
+}
+span.c {
+  cursor:help;
+  border-bottom:1px dashed var(--accent,#CA8A04);
+}
+span.c:hover { border-bottom-style:solid; }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-brand">G/B Yawgmoth</div>
+  <a class="nav-link" href="../deck-guides.html" style="text-decoration:none;">&#8592; Guides</a>
+  <button class="nav-link active" onclick="show('identity')">Overview</button>
+  <button class="nav-link" onclick="show('decklist')">Decklist</button>
+  <button class="nav-link" onclick="show('gameplan')">Gameplan</button>
+  <button class="nav-link" onclick="show('engines')">Engines</button>
+  <button class="nav-link" onclick="show('lines')">Lines</button>
+  <button class="nav-link" onclick="show('roles')">Roles</button>
+  <button class="nav-link" onclick="show('matchups')">Matchups</button>
+  <button class="nav-link" onclick="show('sideboard')">Sideboard</button>
+  <button class="nav-link" onclick="show('heuristics')">Heuristics</button>
+  <button class="nav-link" onclick="show('tuning')">Tuning</button>
+  <button class="nav-link" onclick="show('prep')">Prep</button>
+</nav>
+<div class="header-band">
+  <div class="header-inner">
+    <div>
+      <div class="header-label">Team Resolve · Modern · April 2026</div>
+      <div class="header-title">Golgari<br><span>Yawgmoth</span></div>
+      <div class="header-tagline">"Two undying creatures. One Melira. Infinite death triggers. Game over."</div>
+    </div>
+    <div class="header-right">
+      <div class="header-stat"><span class="hs-label">Meta Share</span><span class="hs-val">2.0%</span></div>
+      <div class="header-stat"><span class="hs-label">Role</span><span class="hs-val">Creature Combo</span></div>
+      <div class="header-stat"><span class="hs-label">Colors</span><span class="hs-val">Golgari</span></div>
+      <div class="header-stat"><span class="hs-label">Kill Turn</span><span class="hs-val">3–5</span></div>
+    </div>
+  </div>
+</div>
+<div class="page">
+
+
+<!-- CH01: OVERVIEW -->
+<div id="identity" class="section active">
+  <div class="section-label">Chapter 01</div>
+  <h1>Deck<br>Identity</h1>
+
+  <div class="mantra">"The deck has two modes: fair creature midrange that grinds with Collected Company and Chord of Calling, and an infinite combo engine that kills on the spot. You're always one Chord of Calling away from either finding the missing combo piece or closing the game."</div>
+
+  <p>Golgari Yawgmoth is a creature combo deck built around <span class="c">Yawgmoth, Thran Physician</span> and the undying mechanic. The infinite loop requires Yawgmoth, two creatures with undying (like Young Wolf + Geralf's Messenger), and <span class="c">Melira, Sylvok Outcast</span>: Melira prevents -1/-1 counters from being placed on your creatures. Undying creatures return with a +1/+1 counter — but Melira prevents -1/-1 counters, not +1/+1 counters, so they still return. However, Yawgmoth's ability places a -1/-1 counter and Melira prevents that counter from being placed — so the undying creature's +1/+1 counter is never removed, meaning it can keep dying and returning infinitely.</p>
+
+  <p>The practical loop: Sacrifice undying creature A to Yawgmoth → A gets -1/-1 counter (Melira prevents it — A dies with no counters) → A returns with +1/+1 counter (undying, since it had no counters when it died) → sacrifice undying creature B → B returns similarly → repeat. Each loop draws a card and puts a -1/-1 counter on a target creature (usually opponent's creatures or opponent directly). With <span class="c">Blood Artist</span> or <span class="c">Zulaport Cutthroat</span> on board: each death triggers life drain. The loop kills the opponent from any life total.</p>
+
+  <h2>Deck Identity</h2>
+  <div class="card-grid">
+    <div class="card">
+      <div class="card-label">The Combo</div>
+      <div class="card-title">Yawgmoth + Melira + 2 Undying</div>
+      <div class="card-body">Yawgmoth + Melira + Young Wolf + Geralf's Messenger + Blood Artist. Sacrifice Wolf: -1/-1 counter prevented (Melira), Wolf dies with no counters, returns (undying). Draw a card. Target opponent with -1/-1. Sacrifice Messenger: same. Repeat infinitely. Blood Artist drains 1 per death = infinite life loss.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Why Just One Undying Works</div>
+      <div class="card-title">Melira + 1 Undying = Infinite</div>
+      <div class="card-body">With Melira in play, even ONE undying creature is enough for the infinite loop: sacrifice it, -1/-1 counter is prevented, it dies with no counters, returns with +1/+1 (undying), sacrifice again. Each loop: draw a card, place -1/-1 on a target. You need a drain outlet (Blood Artist) to convert this into a kill. Without a drain outlet, you can draw your whole deck.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">The Tutor Package</div>
+      <div class="card-title">Chord + Evolution + CoCo</div>
+      <div class="card-body">Chord of Calling (instant, convoke) finds any creature at sorcery speed. Eldritch Evolution (sorcery) sacrifices a creature to find one with MV ≤ sacrifice MV + 2. Collected Company hits up to two creatures with MV ≤ 3 at instant speed. The density of creature tutors makes the combo reliably findable by turn 3–4 even without opening the pieces.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Fair Midrange Mode</div>
+      <div class="card-title">Beats Without Combo</div>
+      <div class="card-body">When the combo is disrupted, the deck plays fair: Young Wolf and Geralf's Messenger are resilient threats (undying makes them permanent value). Hapatra, Vizier of Poisons creates Snake tokens when -1/-1 counters are placed. Yawgmoth's protection from Humans makes him hard to answer with the most common removal. The midrange plan is often enough to win against unprepared opponents.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Oracle Precision</div>
+      <div class="card-title">Protection From Humans</div>
+      <div class="card-body">Yawgmoth has protection from Humans — not from creatures in general, not from black. Many players incorrectly try to target Yawgmoth with Solitude (exiles a creature) or Swords to Plowshares (exile a creature). Protection means: can't be blocked, targeted, dealt damage, or enchanted by Humans. Solitude and StP are Human spells/effects from non-Human permanents — they CAN target Yawgmoth.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Meta Position</div>
+      <div class="card-title">2.0% · Resilient Specialist</div>
+      <div class="card-body">Golgari Yawgmoth has been a Modern staple since Yawgmoth's printing. Low meta share reflects the narrow meta slot but consistent performance. Strong against creature-based midrange, weak against Clarion Conqueror (shuts activated abilities) and fast combo that kills before the loop assembles. A skilled pilot wins matchups others lose.</div>
+    </div>
+  </div>
+
+  <h2>Oracle Accuracy — Critical Interactions</h2>
+  <div class="card-grid">
+    <div class="card">
+      <div class="card-label">Yawgmoth, Thran Physician</div>
+      <div class="card-title">{2}{B}{B} · 2/4 Legendary</div>
+      <div class="card-body">Protection from Humans. Pay 1 life, sacrifice another creature: put a -1/-1 counter on up to one target creature and draw a card. {B}{B}, discard a card: proliferate. The sacrifice ability is an ACTIVATED ability (cost: pay life + sacrifice). Clarion Conqueror shuts this off completely. Yawgmoth can activate the turn he enters — no summoning sickness on activated abilities. Protection from Humans: can't be targeted by Humans (creature type), not by Human spells.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Melira, Sylvok Outcast</div>
+      <div class="card-title">{1}{G} · 2/2 Legendary</div>
+      <div class="card-body">You can't get poison counters. Creatures you control can't have -1/-1 counters placed on them. The "can't have counters placed" clause is what enables the loop — when Yawgmoth tries to place a -1/-1 counter on the undying creature (as part of his activation cost — wait, the counter IS placed on a target creature, not on the creature being sacrificed). Key: Yawgmoth places -1/-1 on "up to one target creature." When targeting your undying creature, Melira prevents that counter. Without a counter, the undying trigger fires when it dies with no counters.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Undying (Young Wolf / Geralf's Messenger)</div>
+      <div class="card-title">Returns With +1/+1 Counter</div>
+      <div class="card-body">When this creature dies, if it had no +1/+1 counters on it, return it to the battlefield under its owner's control with a +1/+1 counter on it. In the loop: the undying creature is sacrificed to Yawgmoth (not targeted, just sacrificed). Yawgmoth places a -1/-1 counter on a target (which can be the opposing creature, or another target). The undying creature died with no counters (Melira blocks -1/-1, and it had no +1/+1). Undying fires: returns with +1/+1 counter. Next sacrifice: now has +1/+1 counter. Sacrifice again: Yawgmoth places -1/-1 on the +1/+1 creature (they cancel out) → it now has 0 counters → undying fires if it dies again.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Blood Artist</div>
+      <div class="card-title">{1}{B} · 0/1 Vampire</div>
+      <div class="card-body">Whenever this creature OR another creature dies, target player loses 1 life and you gain 1 life. Blood Artist triggers on ANY creature dying — including your own undying creatures. Each infinite loop iteration: one creature death = Blood Artist trigger = 1 life loss for opponent. Infinite loops = infinite drain. With two Blood Artists: 2 life per loop. Compare Zulaport Cutthroat: triggers only on YOUR creatures, hits EACH opponent (relevant in multiplayer). Blood Artist is better in 1v1 for the loop.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Eldritch Evolution</div>
+      <div class="card-title">{1}{G}{G} · Sorcery</div>
+      <div class="card-body">Sacrifice a creature. Search for a creature with MV ≤ sacrifice MV + 2. Sacrifice Young Wolf (MV 1): find MV ≤ 3. Can find Melira (MV 2), Hapatra (MV 2), Grist (MV 3), Bloodline Cultivator (MV 3). CANNOT find Yawgmoth (MV 4). Sacrifice Geralf's Messenger (MV 3): find MV ≤ 5. Can find Yawgmoth (MV 4), Nissa (MV 4), or Endurance (MV 3). The tutor chain: Evolution on Wolf → Melira. Evolution on Messenger → Yawgmoth.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Grist, the Hunger Tide</div>
+      <div class="card-title">{1}{B}{G} · Legendary Planeswalker</div>
+      <div class="card-body">Grist is a creature in all zones except the battlefield. This means Chord of Calling and Collected Company can find him (both look for "creature cards"). Grist's +1: each opponent mills 1, you create a 1/1 Insect if a creature was milled. −2: destroy target creature with MV ≤ number of Insects you control. −5: each opponent loses life equal to the number of creature cards in their GY. A planeswalker that acts as a creature tutor target is uniquely powerful for this deck's search package.</div>
+    </div>
+  </div>
+</div>
+
+<!-- CH02: DECKLIST -->
+<div id="decklist" class="section">
+  <div class="section-label">Chapter 02</div>
+  <h1>The 75</h1>
+
+  <div class="decklist">
+    <div class="dl-section">
+      <div class="dl-section-label">Maindeck — 60 cards</div>
+      <div class="dl-group">
+        <div class="dl-group-label">The Combo Engine</div>
+        <div class="dl-card-row"><span><span class="c">Yawgmoth, Thran Physician</span></span><span class="dl-qty">3</span></div>
+        <div class="dl-card-row"><span><span class="c">Melira, Sylvok Outcast</span></span><span class="dl-qty">2</span></div>
+        <div class="dl-card-row"><span><span class="c">Blood Artist</span></span><span class="dl-qty">2</span></div>
+        <div class="dl-card-row"><span>Zulaport Cutthroat</span><span class="dl-qty">1</span></div>
+      </div>
+      <div class="dl-group">
+        <div class="dl-group-label">Undying Creatures</div>
+        <div class="dl-card-row"><span>Young Wolf</span><span class="dl-qty">4</span></div>
+        <div class="dl-card-row"><span>Geralf's Messenger</span><span class="dl-qty">4</span></div>
+        <div class="dl-card-row"><span>Renata, Called to the Hunt</span><span class="dl-qty">2</span></div>
+      </div>
+      <div class="dl-group">
+        <div class="dl-group-label">Tutors</div>
+        <div class="dl-card-row"><span>Collected Company</span><span class="dl-qty">4</span></div>
+        <div class="dl-card-row"><span><span class="c">Chord of Calling</span></span><span class="dl-qty">4</span></div>
+        <div class="dl-card-row"><span><span class="c">Eldritch Evolution</span></span><span class="dl-qty">3</span></div>
+      </div>
+      <div class="dl-group">
+        <div class="dl-group-label">Support Creatures</div>
+        <div class="dl-card-row"><span>Hapatra, Vizier of Poisons</span><span class="dl-qty">2</span></div>
+        <div class="dl-card-row"><span><span class="c">Grist, the Hunger Tide</span></span><span class="dl-qty">2</span></div>
+        <div class="dl-card-row"><span>Bloodline Cultivator</span><span class="dl-qty">2</span></div>
+        <div class="dl-card-row"><span>Postmaster Pell</span><span class="dl-qty">1</span></div>
+      </div>
+      <div class="dl-group">
+        <div class="dl-group-label">Lands — 22</div>
+        <div class="dl-card-row"><span>Overgrown Tomb</span><span class="dl-qty">3</span></div>
+        <div class="dl-card-row"><span>Verdant Catacombs</span><span class="dl-qty">4</span></div>
+        <div class="dl-card-row"><span>Misty Rainforest</span><span class="dl-qty">2</span></div>
+        <div class="dl-card-row"><span>Forest</span><span class="dl-qty">4</span></div>
+        <div class="dl-card-row"><span>Swamp</span><span class="dl-qty">2</span></div>
+        <div class="dl-card-row"><span>Boseiju, Who Endures</span><span class="dl-qty">2</span></div>
+        <div class="dl-card-row"><span>Yavimaya, Cradle of Growth</span><span class="dl-qty">1</span></div>
+        <div class="dl-card-row"><span>Urborg, Tomb of Yawgmoth</span><span class="dl-qty">1</span></div>
+        <div class="dl-card-row"><span>Westvale Abbey</span><span class="dl-qty">1</span></div>
+        <div class="dl-card-row"><span>Castle Locthwain</span><span class="dl-qty">1</span></div>
+        <div class="dl-card-row"><span>Nurturing Peatland</span><span class="dl-qty">1</span></div>
+      </div>
+    </div>
+    <div class="dl-section">
+      <div class="dl-section-label">Sideboard — 15 cards</div>
+      <div class="dl-group">
+        <div class="dl-group-label">GY Hate</div>
+        <div class="dl-card-row"><span>Endurance</span><span class="dl-qty">2</span></div>
+      </div>
+      <div class="dl-group">
+        <div class="dl-group-label">Artifact / Enchantment Answers</div>
+        <div class="dl-card-row"><span>Force of Vigor</span><span class="dl-qty">2</span></div>
+        <div class="dl-card-row"><span>Haywire Mite</span><span class="dl-qty">2</span></div>
+      </div>
+      <div class="dl-group">
+        <div class="dl-group-label">vs Creature Decks</div>
+        <div class="dl-card-row"><span>Fulminator Mage</span><span class="dl-qty">2</span></div>
+        <div class="dl-card-row"><span>Reclamation Sage</span><span class="dl-qty">1</span></div>
+      </div>
+      <div class="dl-group">
+        <div class="dl-group-label">Disruption</div>
+        <div class="dl-card-row"><span>Thoughtseize</span><span class="dl-qty">3</span></div>
+        <div class="dl-card-row"><span>Veil of Summer</span><span class="dl-qty">2</span></div>
+      </div>
+      <div class="dl-group">
+        <div class="dl-group-label">Combo Redundancy</div>
+        <div class="dl-card-row"><span>Agatha's Soul Cauldron</span><span class="dl-qty">1</span></div>
+      </div>
+
+      <h3>The Eldritch Evolution Tutor Chain</h3>
+      <div style="font-family:'DM Mono',monospace;font-size:12px;line-height:2;color:var(--mid);border:1px solid var(--rule);padding:16px;margin-top:12px;">
+        Sacrifice Wolf (MV1) → find MV≤3: Melira, Hapatra, Grist, Bloodline Cultivator<br>
+        Sacrifice Messenger (MV3) → find MV≤5: Yawgmoth (MV4), Endurance (MV3)<br>
+        Sacrifice Renata (MV3) → find MV≤5: same targets<br>
+        Chord X=4 → find Yawgmoth (tap creatures for convoke)
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CH03: GAME FLOW -->
+<div id="gameplan" class="section">
+  <div class="section-label">Chapter 03</div>
+  <h1>Game<br>Flow</h1>
+
+  <p>Yawgmoth plays fair until it doesn't. Turns 1–3 build a creature base: Young Wolf on turn 1, Bloodline Cultivator on turn 2, Eldritch Evolution or Chord on turn 3 to assemble combo pieces. The ideal kill is turn 4, but strong hands can goldfish turn 3 with the Evolution chain.</p>
+
+  <h2>The Primary Combo Kill</h2>
+  <div class="sb-card-guide">
+    <div class="sb-guide-row"><div class="sb-guide-name">Requirements</div><div class="sb-guide-body">Yawgmoth + Melira in play + at least 1 undying creature in play + Blood Artist (or Zulaport) in play. This is the minimum: 4 pieces. The tutor package allows assembling this from a single Chord of Calling or Collected Company hit, provided 2–3 pieces are already in play.</div></div>
+    <div class="sb-guide-row"><div class="sb-guide-name">The Loop</div><div class="sb-guide-body">
+      1. Sacrifice undying creature to Yawgmoth: pay 1 life, place -1/-1 on target (use opponent or their creature as target). Draw a card.<br>
+      2. Undying creature died with no counters (Melira prevented -1/-1 from being placed). Undying triggers: return with +1/+1 counter.<br>
+      3. Sacrifice again: Yawgmoth places -1/-1 on the undying creature's +1/+1 (they cancel — creature now has 0 counters). Draw another card.<br>
+      4. Undying creature dies with no +1/+1 counters → undying triggers again. Repeat.<br>
+      Each loop: Blood Artist triggers (creature died) = opponent loses 1 life.
+    </div></div>
+    <div class="sb-guide-row"><div class="sb-guide-name">With 2 Undying</div><div class="sb-guide-body">With 2 undying creatures (Wolf + Messenger), alternate sacrificing them. Sacrifice Wolf → Wolf returns → sacrifice Messenger → Messenger returns → repeat. Wolf starts clean (no counters), loops cleanly. Messenger has "ETB: target opponent loses 2 life" — each time it enters, opponent loses 2 more life. The Messenger line can kill extremely fast even with a slow Blood Artist.</div></div>
+    <div class="sb-guide-row"><div class="sb-guide-name">Killing Without Loop</div><div class="sb-guide-body">Yawgmoth's -1/-1 ability is also a legitimate tool without the infinite. Against a creature deck: sacrifice a creature to put -1/-1 on their best creature. With Hapatra on board: each -1/-1 counter placed creates a 1/1 deathtouch Snake. Multiple Snakes + Yawgmoth can overrun opponents without needing Melira at all. This is the fair midrange mode.</div></div>
+  </div>
+
+  <h2>Mulligan Framework</h2>
+  <div class="card-grid card-grid-2">
+    <div class="card">
+      <div class="card-label">Keep</div>
+      <div class="card-title">Tutor + 2 Lands + Creatures</div>
+      <div class="card-body">Any hand with a Chord of Calling, Eldritch Evolution, or Collected Company + 2 lands + early creatures is a keep. The tutors find any missing combo piece by turn 3–4. You don't need to open with all 4 combo pieces — you just need the infrastructure to find them.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Keep</div>
+      <div class="card-title">Wolf + Messenger + Yawgmoth Line</div>
+      <div class="card-body">Wolf T1 + Messenger T3 + Yawgmoth (from Evolution on Messenger) T4 is the baseline gold standard. If your hand has the first two pieces and 4 mana available (Eldritch Evolution on Messenger costs {1}{G}{G} + 3 lands to cast Messenger), this is a clean line.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Mulligan</div>
+      <div class="card-title">No Tutors + No Undying</div>
+      <div class="card-body">Hands with Yawgmoth + Melira but no undying creatures and no tutors cannot win — they need the undying part of the combo. Hands with all undying but no Yawgmoth and no tutors are just attacking with small creatures. Both are mulligans.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">On the Draw</div>
+      <div class="card-title">Prioritize Disruption Hands</div>
+      <div class="card-body">On the draw against known fast combo (Ruby Storm, Living End, Amulet Titan): keep hands with Thoughtseize (SB) or disruption. Post-board, disruption hands take priority over pure combo speed — the opponent is likely faster than you in game 1 if you're drawing second.</div>
+    </div>
+  </div>
+  <h2>Mulligan Guide</h2>
+  <div class="card-grid card-grid-3">
+    <div class="card"><div class="card-label">Snap Keep</div><div class="card-title">Auto-Keep Conditions</div><div class="card-body"><strong>Undying creature + black source + any tutor.</strong> Young Wolf or Strangleroot Geist + Evolution/Chord/CoCo = you can assemble the combo. Keep.<br><br><strong>Two undying creatures + 2 lands.</strong> You’ll find the tutors. Keep.<br><br><strong>CoCo + 3 lands + undying creature.</strong> Blind CoCo hits Melira + Yawgmoth often enough. Keep.</div></div>
+    <div class="card"><div class="card-label">Snap Mull</div><div class="card-title">Auto-Ship Conditions</div><div class="card-body"><strong>No undying creatures AND no tutors.</strong> You can’t assemble the combo without an undying creature. Ship.<br><br><strong>No black source.</strong> Can’t cast Yawgmoth, Evolution, or Thoughtseize. Ship.<br><br><strong>No creatures at all.</strong> Tutors without bodies to find are dead cards. Ship.</div></div>
+    <div class="card"><div class="card-label">Borderline</div><div class="card-title">Context-Dependent</div><div class="card-body"><strong>Yawgmoth + 2 lands, no undying:</strong> Keep vs slow midrange, ship vs aggro (need the blocker on T1).<br><br><strong>All tutors, no threats:</strong> Keep on draw (extra card finds the body), ship on play vs aggro.<br><br><strong>Six-card hands:</strong> Keep any 6 with undying + tutor + 2 mana sources.</div></div>
+  </div>
+
+  <h2>Play vs Draw</h2>
+  <div class="card-grid card-grid-2">
+    <div class="card"><div class="card-label">On the Play</div><div class="card-title">T1 Wolf, T4 Combo</div><div class="card-body">T1 Young Wolf establishes the blocker and combo piece simultaneously. T2 Bloodline Cultivator (mana filter). T3 Evolution into Geralf’s Messenger (3/2 zombie = more undying bodies). T4 Chord for Yawgmoth. This is your cleanest line. On the play: never skip T1 Young Wolf if it’s in hand — it’s too important for blocking AND combo.</div></div>
+    <div class="card"><div class="card-label">On the Draw</div><div class="card-title">T1 Wolf Still Correct</div><div class="card-body">The extra draw can find Melira, Blood Artist, or a missing combo piece. T1 Wolf is still correct. On the draw: you can keep slightly more speculative hands (6-land hands with CoCo) since you see more cards. T2 CoCo is a strong line on draw — you’ve seen 8 cards and CoCo hits roughly 60% of the time with the right deck configuration.</div></div>
+  </div>
+
+  <h2>When Disrupted</h2>
+  <div class="card-grid card-grid-2">
+    <div class="card"><div class="card-label">Yawgmoth Answered</div><div class="card-title">Rebuild via Chord</div><div class="card-body">They Solitude or Path your Yawgmoth: don’t immediately recast. First assess: do you have 2 undying creatures and Melira still in play? If yes, Chord for Yawgmoth again next turn. If no, spend the turn rebuilding the creature base with CoCo or Evolution before tutoring Yawgmoth again.</div></div>
+    <div class="card"><div class="card-label">GY Hate Active</div><div class="card-title">Pivot to Beatdown</div><div class="card-body">Rest in Peace or Grafdigger’s Cage shuts off undying. Pivot to CoCo fair value plan: undying creatures still attack and block profitably. Yawgmoth is still a 2/4 that draws cards. Melira + Blood Artist can race in this mode. Find Haywire Mite from SB to clear the hate piece before going back to combo.</div></div>
+  </div>
+</div>
+
+<!-- CH04: ENGINES -->
+<div id="engines" class="section">
+  <div class="section-label">Chapter 04</div>
+  <h1>Core<br>Engines</h1>
+
+  <div class="engine-block">
+    <div class="engine-header">
+      <div class="engine-letter">1</div>
+      <div><div class="engine-name">Yawgmoth + Melira Infinite Loop</div><div style="font-family:'DM Mono',monospace;font-size:11px;color:rgba(15,23,42,0.4);letter-spacing:0.1em;text-transform:uppercase;">Primary Win Engine</div></div>
+    </div>
+    <div class="engine-body">
+      <div class="engine-step"><div class="engine-step-label">Setup</div><div class="engine-step-title">4 Pieces in Play</div><div class="engine-step-body">Yawgmoth (activated ability, protection from Humans) + Melira (prevents -1/-1 counters on your creatures) + 1–2 undying creatures (Young Wolf, Geralf's Messenger) + Blood Artist (drain 1 per creature death). You can reach this by turn 3 with Evolution: Wolf on T1 → Evolution T3 (sacrifice Wolf, find Melira MV≤3) → Chord T4 for Yawgmoth.</div></div>
+      <div class="engine-step"><div class="engine-step-label">Execution</div><div class="engine-step-title">Infinite Death Loop</div><div class="engine-step-body">Sacrifice undying creature to Yawgmoth (pay 1 life, target an opponent's creature with -1/-1). Melira prevents -1/-1 counters on your undying creature — it died clean (no counters). Undying returns it with +1/+1. Sacrifice it again: this time Yawgmoth targets the undying creature with -1/-1 — Melira prevents → 0 net counters → dies clean → undying again. Draw a card each iteration.</div></div>
+      <div class="engine-step"><div class="engine-step-label">Result</div><div class="engine-step-title">Drain From Any Life Total</div><div class="engine-step-body">Blood Artist: "whenever a creature dies, target player loses 1 life." Each iteration = 1 drain. Infinite iterations = infinite drain. Win from any life total. You also draw your entire deck if you want (infinite draw). With Geralf's Messenger: each time it enters, opponent loses 2 life from its ETB in addition to Blood Artist. Messenger-based loops are faster.</div></div>
+    </div>
+  </div>
+
+  <div class="engine-block">
+    <div class="engine-header">
+      <div class="engine-letter">2</div>
+      <div><div class="engine-name">Tutor Chain Engine</div><div style="font-family:'DM Mono',monospace;font-size:11px;color:rgba(15,23,42,0.4);letter-spacing:0.1em;text-transform:uppercase;">Consistency Engine</div></div>
+    </div>
+    <div class="engine-body">
+      <div class="engine-step"><div class="engine-step-label">Setup</div><div class="engine-step-title">12 Tutor Spells</div><div class="engine-step-body">Chord of Calling (instant, convoke — tap creatures to help pay X), Eldritch Evolution (sorcery, sacrifice a creature, find up to MV X+2), Collected Company (instant, look at top 6, put up to 2 MV≤3 creatures into play). 11 total tutors. With a 60-card deck and 22 creatures, CoCo typically hits 2 creatures from the top 6. The tutors find every critical piece on demand.</div></div>
+      <div class="engine-step"><div class="engine-step-label">Execution</div><div class="engine-step-title">Chain to Combo</div><div class="engine-step-body">Classic chain: Wolf (MV1) → Evolution → find Melira (MV2). Bloodline Cultivator (MV3) → Evolution → find Yawgmoth (MV4, ≤5). Or: Chord X=4 with 4 mana + convoke from tapping creatures = instant-speed Yawgmoth at EOT. CoCo at instant speed can hit 2 of the MV≤3 pieces (Young Wolf, Melira, Blood Artist, Hapatra, Grist) in one shot during opponent's turn.</div></div>
+      <div class="engine-step"><div class="engine-step-label">Result</div><div class="engine-step-title">Redundancy and Speed</div><div class="engine-step-body">12 tutors means the combo assembles by turn 3–4 with high consistency even when opening with only 1–2 pieces. The silver bullets in the sideboard (Endurance, Fulminator Mage, Reclamation Sage) are all tutorable via Chord — you have instant-speed access to whatever answer you need mid-game. The tutor suite makes the deck both a combo AND a toolbox.</div></div>
+    </div>
+  </div>
+
+  <div class="engine-block">
+    <div class="engine-header">
+      <div class="engine-letter">3</div>
+      <div><div class="engine-name">Hapatra Snake Token Engine</div><div style="font-family:'DM Mono',monospace;font-size:11px;color:rgba(15,23,42,0.4);letter-spacing:0.1em;text-transform:uppercase;">Secondary Win Engine</div></div>
+    </div>
+    <div class="engine-body">
+      <div class="engine-step"><div class="engine-step-label">Setup</div><div class="engine-step-title">Hapatra on Board</div><div class="engine-step-body">Hapatra, Vizier of Poisons (MV2): whenever you place a -1/-1 counter on a creature, create a 1/1 black and green Snake creature with deathtouch. With Yawgmoth activating and placing -1/-1 on opponent's creatures: each activation = 1 Snake token. Each Yawgmoth activation draws a card + places counter (Snake) + deals with their creature (if it hits -1/-1 to 0).</div></div>
+      <div class="engine-step"><div class="engine-step-label">Execution</div><div class="engine-step-title">Loop Without Melira</div><div class="engine-step-body">Even without Melira, Yawgmoth + Hapatra creates value: sacrifice a Young Wolf (it's in GY, comes back with undying — wait, it was sacrificed not killed by counter. Sacrificed creatures don't trigger undying — undying only triggers when the creature "dies" in general. Sacrifice IS death). So: sacrifice Wolf → dies → Hapatra triggers if -1/-1 was placed on something → Wolf returns (undying). Each loop with Hapatra: 1 Snake token + 1 draw + 1 -1/-1 placed.</div></div>
+      <div class="engine-step"><div class="engine-step-label">Result</div><div class="engine-step-title">Deathtouch Swarm</div><div class="engine-step-body">Against creature-heavy decks: Yawgmoth + Hapatra generates a deathtouch Snake board that trades with anything. Even without Blood Artist to drain, you can win through combat with 8+ deathtouch Snakes. Against Boros Energy's large attackers, deathtouch Snakes brick the attack step. The Hapatra engine wins games where the Melira combo is being disrupted.</div></div>
+    </div>
+  </div>
+
+  <h2>Lines &amp; Tricks</h2>
+  <ul class="tricks-list">
+    <li><strong>Sacrifice is a cost — it can't be responded to:</strong> Yawgmoth's activation cost is "pay 1 life, sacrifice another creature." Sacrifice happens as part of paying the activation cost — before the ability goes on the stack. Opponents can't respond to the sacrifice itself (it already happened). They CAN respond to the ability on the stack by killing Yawgmoth before the -1/-1 counter is placed and the card is drawn.</li>
+    <li><strong>Yawgmoth can activate the turn he enters — no summoning sickness:</strong> Summoning sickness prevents creatures from attacking or using {T} abilities. Yawgmoth's activated ability doesn't use the tap symbol. He can activate the same turn he enters the battlefield (via Chord or Eldritch Evolution). This makes instant-speed Chord of Calling for Yawgmoth an instant kill during opponent's end step if the other 3 pieces are in play.</li>
+    <li><strong>Geralf's Messenger ETB loss triggers each time it returns:</strong> Messenger's ETB says "target opponent loses 2 life." This fires each time Messenger enters — including each undying return. In the infinite loop, Messenger gains you 2 life per loop iteration (from Blood Artist) + drains opponent 2 from ETB = net 3 life swing per loop (opponent loses 2 from ETB + loses 1 from Blood Artist). Extremely fast kill with Messenger.</li>
+    <li><strong>Chord of Calling finds Grist — he's a creature in zones other than battlefield:</strong> Grist, the Hunger Tide is a legendary Planeswalker on the battlefield but a creature card everywhere else (hand, library, GY). Chord of Calling looks for "a creature card." Grist in the library qualifies — Chord can find him even at CMC X=3. This is unique to Grist among planeswalkers.</li>
+    <li><strong>Eldritch Evolution exiles itself:</strong> Eldritch Evolution says "then shuffle. Exile Eldritch Evolution." It removes itself from the game after resolving. You can't find another copy in the same library search turn, and you can't retrieve it from GY. Run 3–4 copies since each one is a one-shot tutor.</li>
+    <li><strong>Agatha's Soul Cauldron as backup combo with Yawgmoth in GY:</strong> If Yawgmoth dies, Agatha's Soul Cauldron can exile him from GY and grant his activated ability to any tapped creature you control. Other creatures with counters now have Yawgmoth's ability. This is the backup combo line when Yawgmoth is removed. Watch for Boseiju from opponents targeting the Cauldron — destroy it before it exiles Yawgmoth if you want to prevent this.</li>
+    <li><strong>Clarion Conqueror shuts Yawgmoth's activated ability — and yours:</strong> Clarion Conqueror from the opponent's board means Yawgmoth's sacrifice ability can't be activated. Force of Vigor (SB) destroys Clarion (it's a creature, not artifact/enchantment — wait, Clarion Conqueror is a Dragon creature. Force of Vigor destroys artifacts and enchantments, not creatures. To answer Clarion: use your own removal (Doom Blade effects) or return it via Karakas effects. Chord for a creature that destroys creatures: Reclamation Sage only hits artifacts/enchantments. Use Grist's -2 (destroy creature with MV ≤ Insect count).</li>
+    <li><strong>Hapatra's Snakes get deathtouch — use them aggressively:</strong> Each Snake Hapatra creates has deathtouch. Against an opponent with large creatures (Primeval Titan, Kappa Cannoneer), block with Snakes. They trade with anything regardless of toughness. This means your token generation doubles as removal. Don't hold Snakes back on defense — attack to pressure life totals and let deathtouchers discourage blocks.</li>
+  </ul>
+  <h2>Engine Priority Order</h2>
+  <div class="card-grid card-grid-3">
+    <div class="card"><div class="card-label">Priority 01</div><div class="card-title">Full Combo Loop</div><div class="card-body">Yawgmoth + Melira + 2 undying + Blood Artist. This is the win condition. Execute the loop: sacrifice undying creature → puts -1/-1 on opponent → Blood Artist drains 1 → undying returns → repeat. Infinite life drain, infinite -1/-1. If you have all four pieces, execute. Don’t wait for a “better” turn.</div></div>
+    <div class="card"><div class="card-label">Priority 02</div><div class="card-title">Yawgmoth Draw Engine</div><div class="card-body">Yawgmoth + 2 undying creatures (no Blood Artist yet). Sacrifice undying → draw a card → undying returns → sacrifice again. This cycles through your deck for Blood Artist or Melira. You’re not winning yet but you’re finding the missing piece. Activate this as soon as Yawgmoth is in play with 2 undying bodies.</div></div>
+    <div class="card"><div class="card-label">Priority 03</div><div class="card-title">Fair Creature Plan</div><div class="card-body">CoCo or Chord for value creatures when the combo is disrupted. Undying creatures still attack and block profitably. Yawgmoth is a 2/4 that draws a card per {1}{B} activation. Melira + Blood Artist generate incremental drain. You can win games entirely fair. This is not a surrender — it’s a different route to the same destination.</div></div>
+  </div>
+
+  <h2>Speed Math</h2>
+  <div class="card-grid card-grid-3">
+    <div class="card"><div class="card-label">T3 Kill (Optimal)</div><div class="card-title">Evolution Chain</div><div class="card-body">T1: Young Wolf.<br>T2: Bloodline Cultivator (filter {G} to {B}).<br>T2 also: discard to get Messenger in GY (if CoCo plan).<br>T3: Eldritch Evolution sacrificing Wolf → find Geralf’s Messenger (3/2 undying). Evolution again → find Melira. Chord → find Blood Artist.<br><strong>Needs:</strong> Evolution + Wolf T1 + Messenger + Melira + Blood Artist accessible. Rare but real.</div></div>
+    <div class="card"><div class="card-label">T4 Kill (Standard)</div><div class="card-title">The Default Line</div><div class="card-body">T1: Young Wolf.<br>T2: Bloodline Cultivator.<br>T3: Eldritch Evolution sacrificing Wolf → find Geralf’s Messenger. OR CoCo for Melira + undying.<br>T4: Chord for Yawgmoth ({4} with 4 creatures) OR second Evolution → Melira → Chord → Yawgmoth.<br><strong>This is your baseline.</strong> If you can’t kill T4, something went wrong or they disrupted.</div></div>
+    <div class="card"><div class="card-label">T3 vs T4 Decision</div><div class="card-title">When to Wait</div><div class="card-body"><strong>Rush T3:</strong> They’re on Storm, Amulet Titan, or Living End — any deck that wins T3 themselves. Force the issue.<br><br><strong>Wait for T4:</strong> They have open mana for Solitude or Force of Negation. Cast Thoughtseize T3 to clear the counterspell, then execute T4 cleanly. Don’t walk Chord into Solitude.</div></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════════ LINES -->
+<div id="lines" class="section">
+  <div class="section-label">Lines & Tactics</div>
+  <h1>Lines &<br>Tactics</h1>
+  <div class="mantra">"These are the rules that cost you games if you don’t know them cold before sitting down."</div>
+
+  <h2>Three Lines You Must Know Cold</h2>
+  <div class="card-grid card-grid-3">
+    <div class="card"><div class="card-label">Line 01 — Critical</div><div class="card-title">Exiled Creatures Don’t Trigger Undying</div><div class="card-body">Undying triggers on death — meaning the creature goes to the graveyard. Solitude, Path to Exile, and Prismatic Ending EXILE the creature. Exiled creatures skip the graveyard, so undying doesn’t trigger. Your Young Wolf stays dead permanently when Pathed. Galvanic Discharge deals damage (they die normally, undying works). Know the difference.</div></div>
+    <div class="card"><div class="card-label">Line 02 — Critical</div><div class="card-title">Yawgmoth Can Target ANY Creature</div><div class="card-body">Yawgmoth says “target creature.” That’s any creature — yours OR theirs. You can put -1/-1 counters on their creatures by sacrificing one of your undying creatures. Kill their 1/1 tokens. Run a 3/3 down to a 2/2 before blocks. Draw a card doing it. This is not a rare line — use Yawgmoth actively to answer their threats while assembling your combo.</div></div>
+    <div class="card"><div class="card-label">Line 03 — Critical</div><div class="card-title">Protect Melira — She’s the Loop</div><div class="card-body">Melira prevents -1/-1 counters on creatures YOU control. If Melira is removed between loop activations, the next undying creature returns WITH a -1/-1 counter and immediately dies as a 0/0, breaking the loop. Protect Melira above Yawgmoth. A Melira + 2 undying board without Yawgmoth still wins with one Chord. A Yawgmoth board without Melira is just a draw engine.</div></div>
+  </div>
+
+
+  <div class="mantra">"Every edge case documented. Every 1-in-5000 interaction verified. This is the section you pull up between rounds when something weird happened and you need to know if you were right."</div>
+
+  <h2>The Core Combo — Step by Step</h2>
+  <div class="card-grid card-grid-2">
+    <div class="card">
+      <div class="card-label">Setup Required</div>
+      <div class="card-title">Yawgmoth + 2 Undying Creatures</div>
+      <div class="card-body"><span class="c">Yawgmoth, Thran Physician</span> in play. Two undying creatures — typically <span class="c">Young Wolf</span> (1/1) and <span class="c">Strangleroot Geist</span> (2/1 haste). One has a +1/+1 counter from undying, one doesn't. Sacrifice the creature WITHOUT the counter. Put the -1/-1 counter on the creature WITH the +1/+1 counter. Counters cancel via CR 122.3. The sacrificed creature returns via undying with a fresh +1/+1. Repeat. Each cycle: draw 1 card, pay 1 life.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">The Kill</div>
+      <div class="card-title">Blood Artist / Zulaport / Geralf's Messenger</div>
+      <div class="card-body">With <span class="c">Blood Artist</span>: each sacrifice = opponent loses 1, you gain 1. Life gain offsets Yawgmoth's payment. Draw your entire deck, opponent loses life = your starting total. With <span class="c">Geralf's Messenger</span> as an undying creature: each return = "target opponent loses 2 life." Messenger enters TAPPED (can't block), but drain stacks infinitely. With <span class="c">Zulaport Cutthroat</span>: same as Artist but "each opponent" — can't be redirected, hits through hexproof.</div>
+    </div>
+  </div>
+
+  <h2>Oracle-Verified Edge Cases</h2>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Yawgmoth Has Protection from Humans</div>
+    <div class="edge-case-body">Often forgotten. Can't be targeted, damaged, enchanted, or blocked by Humans. <strong>Thalia</strong> can't block him. <strong>Reflector Mage</strong> can't bounce him. <strong>Meddling Mage</strong> can still name him (naming doesn't target). In the mirror: YOUR Yawgmoth can't target THEIR Yawgmoth with -1/-1 counters (both Humans). Only answers: Grist's -2 (sacrifice, not target), Cauldron-granted ability on a non-Human creature (CAN target the real Yawgmoth), or post-board removal.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Yawgmoth's -1/-1 Is "Up to One Target" — Can Choose Zero</div>
+    <div class="edge-case-body">You can activate and choose ZERO targets for the -1/-1 counter. You still sacrifice + draw. Per Scryfall ruling: "You may activate Yawgmoth's first activated ability without choosing a target creature. You'll just draw a card." Use when: no enemy creatures, don't want to shrink your own board, just need to dig for combo pieces.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">+1/+1 and -1/-1 Counters Cancel as State-Based Actions (CR 122.3)</div>
+    <div class="edge-case-body">Cancellation happens BETWEEN ability resolutions, not during. If multiple Yawgmoth activations are stacked: each resolves, state-based actions check (counters cancel), then next resolves. This means you can safely stack multiple activations targeting the same creature — the counters cancel correctly between each resolution.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Cauldron + Yawgmoth Exiled — Bypasses Protection from Humans</div>
+    <div class="edge-case-body">Cauldron grants Yawgmoth's abilities to non-Human creatures with +1/+1 counters. A Young Wolf with Yawgmoth's ability does NOT have protection from Humans. It CAN target the opponent's Yawgmoth with -1/-1. Critical mirror tech — the only way to directly kill an opposing Yawgmoth without Grist or sideboard cards.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Cauldron + Grist — One Loyalty Ability Per Turn Per Creature (Rule 606.3)</div>
+    <div class="edge-case-body">If 3 Grists are exiled under Cauldron, a creature with a +1/+1 counter still only gets ONE Grist activation per turn. However, DIFFERENT creatures each get their own activation. Board of 5 creatures with +1/+1 counters = 5 Grist activations per turn across different creatures. This is NOT the same as Wall of Roots (which uses a per-card "once each turn" restriction, not the loyalty rule).</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Cauldron + Walking Ballista — Infinite Damage Loop</div>
+    <div class="edge-case-body">Exile Ballista under Cauldron. Undying creature with +1/+1 counter gains "Remove a +1/+1 counter: deal 1 damage to any target." Remove the counter → creature has no +1/+1 counters → sacrifice to Yawgmoth or it dies from 0 toughness → undying returns it with fresh +1/+1 → repeat. With Blood Artist: infinite damage + life gain. The creature shoots itself, dies, returns, shoots again. Each loop = 1 damage from Ballista + 1 drain from Artist.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Wall of Roots Under Cauldron — Multiple Activations Per Creature</div>
+    <div class="edge-case-body">"Put a -0/-1 counter: Add {G}. Activate only once each turn." The restriction applies PER COPY of Wall exiled. 3 Walls under Cauldron = a single creature can activate 3 times per turn, adding {G}{G}{G} and getting 3 -0/-1 counters. This is different from Grist (Rule 606.3 for loyalty). A creature with Yawgmoth's ability + 3 Walls can generate {G}{G}{G} AND use Yawgmoth's proliferate (costs {B}{B} but Cauldron allows any color) in the same turn.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Grist Is a Creature Everywhere Except the Battlefield</div>
+    <div class="edge-case-body">"As long as Grist isn't on the battlefield, it's a 1/1 Insect creature in addition to its other types." On the STACK: creature spell — Chord of Calling and Eldritch Evolution can find it. Spell Pierce CANNOT counter it (creature spell). Essence Scatter CAN. In the GRAVEYARD: creature card — Cauldron can exile it. Grist's -5 ("each opponent loses life equal to creatures in your GY") counts Grist if it's in the GY when the ability resolves. In your LIBRARY: Chord for X=3 can find Grist (MV 3 creature).</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Pithing Needle on "Yawgmoth" Doesn't Stop Cauldron Copies</div>
+    <div class="edge-case-body">Needle names a card. "Yawgmoth, Thran Physician" stops the REAL Yawgmoth. But a Young Wolf with Yawgmoth's ability via Cauldron is named "Young Wolf" — Needle doesn't affect it. To stop Cauldron-granted abilities: name Agatha's Soul Cauldron itself (stops tap-to-exile, preventing new creatures from being exiled), or remove Cauldron directly.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Geralf's Messenger Enters Tapped — Every Time</div>
+    <div class="edge-case-body">Messenger enters tapped including via undying. Can never block the turn it returns. The "opponent loses 2 life" trigger fires on EVERY entry. With Yawgmoth combo: infinite 2-life drains. The tapped clause is irrelevant during combo — you're draining, not blocking.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Proliferate + Cauldron — Instant-Speed Board Pump</div>
+    <div class="edge-case-body">Yawgmoth's proliferate ({B}{B}, discard): choose permanents with counters, give each another of each kind. Cauldron allows mana of any color, so {G}{G} works. Board of 4 creatures with +1/+1 counters: proliferate = +4/+4 across the board at instant speed. Also adds loyalty counters to Grist — multiple proliferates set up surprise Grist ultimate (-5: opponents lose life = creatures in your GY).</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Endurance as Self-Reset</div>
+    <div class="edge-case-body"><span class="c">Endurance</span> ({1}{G}{G} 3/4 Flash Reach): "Target player puts all cards from their graveyard on the bottom of their library." Can target YOURSELF. After drawing deep with Yawgmoth and running low on library: flash Endurance → shuffle GY back → reset library. Evoke (exile green card) = free. Endurance itself can be sacrificed to Yawgmoth after use.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Chord of Calling — End-of-Turn Yawgmoth</div>
+    <div class="edge-case-body">Chord ({X}{G}{G}{G}, Convoke, Instant): at their end step with 4+ creatures — tap all for Convoke, Chord X=4, find Yawgmoth. He enters at their end step. Untap with Yawgmoth + undying creatures ready. Combo on YOUR turn before sorcery-speed answers. Primary "surprise combo" line — opponents who tap out die next turn.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Eldritch Evolution Exiles Itself</div>
+    <div class="edge-case-body">"Exile Eldritch Evolution." Can't be flashbacked, recurred, or counted for Grist's ultimate (not a creature in GY). The sacrifice is an ADDITIONAL COST — if countered, you still lost the creature but get nothing. Don't cast into open counter mana without bait or protection.</div>
+  </div>
+</div>
+
+
+<!-- CH05: ROLES -->
+<div id="roles" class="section">
+  <div class="section-label">Chapter 05</div>
+  <h1>Role<br>Assignment</h1>
+
+  <div class="role-grid">
+    <div class="role-card">
+      <div class="role-name role-name-primary">COMBO AGGRESSOR</div>
+      <div class="role-desc">Assemble the 4-piece combo (Yawgmoth + Melira + undying + Blood Artist) as fast as possible via the tutor chain. Turn-3 Evolution into turn-4 Chord for Yawgmoth. Most efficient in game 1 when opponents have no sideboard hate. Go fast, don't interact — every turn you spend interacting is a turn they're setting up answers.</div>
+      <div class="role-matchups">vs Aggro G1, vs Unprepared Opponents, G1 Generally</div>
+    </div>
+    <div class="role-card">
+      <div class="role-name role-name-secondary">TOOLBOX MIDRANGE</div>
+      <div class="role-desc">When the combo is disrupted: Chord for silver bullets. Fulminator Mage destroys their non-basic land. Endurance shuffles their GY. Reclamation Sage destroys their hate piece. You have instant-speed access to almost every answer in the game. The deck is a swiss army knife — adapt the tutor target to whatever the game needs.</div>
+      <div class="role-matchups">vs Interaction-Heavy Decks, G2–G3 with SB In</div>
+    </div>
+    <div class="role-card">
+      <div class="role-name role-name-tertiary">SNAKE SWARM</div>
+      <div class="role-desc">When Melira is unavailable or the loop is being disrupted: Yawgmoth + Hapatra generates a deathtouch Snake board. Attack with Snakes, shrink their creatures with -1/-1, draw cards from each activation. This role is slower but works against aggressive decks where 5 deathtouch Snakes end the game in 2 attacks.</div>
+      <div class="role-matchups">vs Creature Decks Without GY Hate, When Melira Is Gone</div>
+    </div>
+  </div>
+  <h2>Role Mistakes to Avoid</h2>
+  <ul class="heuristic-list">
+    <li><div class="heuristic-num">01</div><div class="heuristic-body"><strong>Sacrificing Young Wolf to Evolution when you need the blocker.</strong> Young Wolf blocking Ragavan every turn buys 2–3 turns to assemble the combo. Don’t sacrifice it to Evolution unless you have another undying creature in hand or can find one immediately. The blocker is often worth more than the tutor.</div></li>
+    <li><div class="heuristic-num">02</div><div class="heuristic-body"><strong>Activating Yawgmoth draw engine without Blood Artist, burning through undying creatures.</strong> If you sacrifice both undying creatures drawing cards and Blood Artist isn’t on the battlefield, you’ve emptied your loop. Only draw-loop when you’re actively finding a specific piece. Know how many undying creatures you have before activating.</div></li>
+    <li><div class="heuristic-num">03</div><div class="heuristic-body"><strong>Recasting Yawgmoth immediately after removal instead of rebuilding first.</strong> They Solitude’d Yawgmoth. Now you have no creatures. Recasting Yawgmoth into an empty board is just paying {3}{B} for a 2/4. Spend the next turn rebuilding creature base via CoCo or Evolution, THEN Chord for Yawgmoth when you have undying bodies to protect his value.</div></li>
+    <li><div class="heuristic-num">04</div><div class="heuristic-body"><strong>Fighting through GY hate instead of pivoting to beatdown.</strong> Rest in Peace is in play. You keep trying to find Haywire Mite while losing on board. Switch immediately: Yawgmoth + undying + Blood Artist is still a legitimate combat + drain plan without undying ETBs. Melira keeps your creatures alive in combat. Pivot fast, don’t lose while searching.</div></li>
+  </ul>
+
+  <h2>Role-Switching Signals</h2>
+  <div class="card-grid card-grid-2">
+    <div class="card"><div class="card-label">Switch to Fair Creature Plan When</div><div class="card-title">Combo Window Is Closed</div><div class="card-body">Yawgmoth has been answered twice. They have Solitude + open mana. GY hate is in play and you haven’t found Haywire Mite. In these scenarios: CoCo for value, undying bodies in combat, Yawgmoth draw engine (not loop). You can still win — just differently.</div></div>
+    <div class="card"><div class="card-label">Switch Back to Combo When</div><div class="card-title">The Window Re-Opens</div><div class="card-body">GY hate gets answered (Haywire Mite / Force of Vigor). Their hand is empty from your Thoughtseizes. They tap out for a threat. When the window opens again, immediately pivot back to assembling the 4-piece loop. Don’t stay in fair mode out of habit — the combo is always the better line when available.</div></div>
+    <div class="card"><div class="card-label">Never Switch When</div><div class="card-title">You Have 4 Pieces</div><div class="card-body">Yawgmoth + Melira + 2 undying + Blood Artist all in play. Execute the loop. There is no scenario where you should delay the win — they can draw Solitude on their next draw step. Activate Yawgmoth on your main phase, drain them to 0.</div></div>
+    <div class="card"><div class="card-label">Rush the Combo When</div><div class="card-title">Opponent Is Faster</div><div class="card-body">Storm goldfishes T3. Amulet Titan goldfishes T3. Living End goes off T3. When facing decks that win T3, don’t wait for the perfect hand. Chord for Yawgmoth on T3 with whatever you have and hope for the best. A 60% T3 kill is better than a 95% T4 kill when they’re T3 themselves.</div></div>
+  </div>
+</div>
+
+<!-- CH06: MATCHUPS -->
+<div id="matchups" class="section">
+  <div class="section-label">Chapter 06</div>
+  <h1>Matchup<br>Deep Dives</h1>
+
+  <table class="matchup-table">
+    <tr><th>Opponent</th><th>Share</th><th>Assessment</th><th>G1</th><th>Post-Board</th></tr>
+
+    <tr onclick="toggle('mu-boros')"><td>Boros Energy</td><td>16%</td><td><span class="verdict verdict-even">Even</span></td><td>Even</td><td>Even</td></tr>
+    <tr><td colspan="5" class="matchup-detail" id="mu-boros">
+      <strong>The Matchup:</strong> Boros Energy is a race. They present Ragavan, Goblin Pilferer and fast threats while you assemble the 4-piece combo. Their Lightning Bolt kills Young Wolf (1/1) before undying resolves. Galvanic Discharge exiles creatures — exiled creatures don't trigger undying (undying only triggers on death, and exile isn't "dying" — actually: Galvanic Discharge deals damage and if they die from damage, it IS dying. But "exile" on death effects specifically exile instead of moving to GY, preventing undying... let me clarify: Galvanic Discharge doesn't exile — it deals damage equal to energy. The creature dies normally from lethal damage and undying triggers). Rest in Peace hosing the undying creatures' return is their key hate piece.<br><br>
+      <strong>Young Wolf Value:</strong> Young Wolf blocks Ragavan every turn — it returns with undying, trade again next turn. This buys you 2–3 turns to assemble the combo. Don't sacrifice Young Wolf early unless needed for Evolution — his blocking role is critical against Boros's turn-1 threats.<br><br>
+      <div class="sb-table">
+        <div class="sb-col">
+          <div class="sb-col-label">Out</div>
+          <div class="sb-item"><span>−1 Postmaster Pell</span></div>
+          <div class="sb-item"><span>−1 Zulaport Cutthroat</span></div>
+        </div>
+        <div class="sb-col">
+          <div class="sb-col-label">In</div>
+          <div class="sb-item"><span>+2 Haywire Mite (vs RIP / Relic)</span></div>
+          <div class="sb-item"><span>+2 Endurance (survive aggro, block Ragavan)</span></div>
+        </div>
+      </div>
+    </td></tr>
+
+    <tr onclick="toggle('mu-jeskai')"><td>Jeskai Blink</td><td>7%</td><td><span class="verdict verdict-dog">Dog</span></td><td>Dog</td><td>Dog</td></tr>
+    <tr><td colspan="5" class="matchup-detail" id="mu-jeskai">
+      <strong>The Matchup:</strong> Jeskai Blink runs Solitude (exile a creature, lifelink) and Prismatic Ending (exile a permanent with MV ≤ number of basic types). Both exile rather than kill — exiled creatures don't trigger undying. Solitude exiles Yawgmoth or Melira cleanly. The blink package (Ephemerate) lets them re-use Solitude to exile multiple combo pieces. Consign to Memory counters colorless activated abilities — does it hit Yawgmoth's activated ability? Consign counters spells; activated abilities on the stack could be seen as spells... but Yawgmoth's ability isn't a spell, it's an activated ability. Consign counters colorless SPELLS, not abilities. Yawgmoth's ability isn't stopped by Consign.<br><br>
+      <strong>Veil of Summer SB:</strong> Veil of Summer (SB) — draw a card, spells your opponents control can't target you or your permanents, they can't be countered this turn. Blanks Solitude (targets your Yawgmoth) and counterspells for the turn. Cast Veil, then Chord for Yawgmoth.<br><br>
+      <div class="sb-table">
+        <div class="sb-col">
+          <div class="sb-col-label">Out</div>
+          <div class="sb-item"><span>−2 Hapatra, Vizier of Poisons</span></div>
+          <div class="sb-item"><span>−1 Grist</span></div>
+        </div>
+        <div class="sb-col">
+          <div class="sb-col-label">In</div>
+          <div class="sb-item"><span>+2 Veil of Summer</span></div>
+          <div class="sb-item"><span>+3 Thoughtseize (strips Solitude from hand)</span></div>
+        </div>
+      </div>
+    </td></tr>
+
+    <tr onclick="toggle('mu-affinity')"><td>Izzet Affinity</td><td>8%</td><td><span class="verdict verdict-even">Even</span></td><td>Favor</td><td>Even</td></tr>
+    <tr><td colspan="5" class="matchup-detail" id="mu-affinity">
+      <strong>The Matchup:</strong> Izzet Affinity has limited creature interaction. Their main threats (Kappa Cannoneer, artifact creatures) are dealt with by Yawgmoth's -1/-1 placement and Hapatra's deathtouch Snakes. G1 you're faster. Post-board, Affinity brings Leyline of the Void (GY exile) — prevents undying from returning creatures. Force of Vigor from your SB handles Leyline. Their Karn can fetch Tormenting Voice? No — Karn fetches artifacts. Damping Sphere slows you significantly ({1} mana from each mana source means your convoke for Chord costs more mana real-land).<br><br>
+      <strong>Haywire Mite SB:</strong> Against Karn, the Great Creator — Karn's static says opponents can't activate artifact abilities, not YOUR creature abilities. Karn doesn't affect Yawgmoth. But Karn can fetch Grafdigger's Cage (stops creatures from entering from GY = stops undying). Haywire Mite: exile target noncreature artifact (Cage is an artifact). Perfect answer.<br><br>
+      <div class="sb-table">
+        <div class="sb-col">
+          <div class="sb-col-label">Out</div>
+          <div class="sb-item"><span>−2 Melira (less relevant vs artifacts)</span></div>
+          <div class="sb-item"><span>−1 Zulaport Cutthroat</span></div>
+        </div>
+        <div class="sb-col">
+          <div class="sb-col-label">In</div>
+          <div class="sb-item"><span>+2 Force of Vigor (Leyline)</span></div>
+          <div class="sb-item"><span>+2 Haywire Mite (Cage/Sphere)</span></div>
+        </div>
+      </div>
+    </td></tr>
+
+    <tr onclick="toggle('mu-storm')"><td>Ruby Storm</td><td>6.2%</td><td><span class="verdict verdict-dog">Dog</span></td><td>Dog</td><td>Even</td></tr>
+    <tr><td colspan="5" class="matchup-detail" id="mu-storm">
+      <strong>The Matchup:</strong> Ruby Storm kills turn 2–3. Your combo kills turn 3–4. They're faster. G1 is difficult — you have no meaningful interaction with their combo. Post-board: Thoughtseize strips their key spells (Ral, Ruby Medallion), Veil of Summer protects your own combo from their interaction. You want to present a fast clock and also strip their best card from hand on turn 1.<br><br>
+      <strong>Fulminator Mage:</strong> Chord for Fulminator Mage destroys their Sacred Foundry or another key nonbasic. Without the correct mana base, Storm struggles to produce the colored mana needed for specific spell combinations. This is a soft disruption that buys time.<br><br>
+      <div class="sb-table">
+        <div class="sb-col">
+          <div class="sb-col-label">Out</div>
+          <div class="sb-item"><span>−2 Hapatra</span></div>
+          <div class="sb-item"><span>−1 Bloodline Cultivator</span></div>
+        </div>
+        <div class="sb-col">
+          <div class="sb-col-label">In</div>
+          <div class="sb-item"><span>+3 Thoughtseize</span></div>
+          <div class="sb-item"><span>+2 Veil of Summer</span></div>
+        </div>
+      </div>
+    </td></tr>
+
+    <tr onclick="toggle('mu-etron')"><td>Eldrazi Tron</td><td>5.5%</td><td><span class="verdict verdict-even">Even</span></td><td>Favor</td><td>Even</td></tr>
+    <tr><td colspan="5" class="matchup-detail" id="mu-etron">
+      <strong>The Matchup:</strong> Eldrazi Tron's primary interaction is Thought-Knot Seer (ETB exile a card from hand — exiled cards don't come back). TKS on turn 2 strips your Yawgmoth or a key tutor. Kozilek's Command can exile your GY (which includes undying creatures). Karn's static doesn't affect Yawgmoth (he's a creature, not an artifact). G1 is favorable because their deck doesn't interact efficiently with creature combos beyond TKS.<br><br>
+      <strong>Fulminator Mage:</strong> Chord for Fulminator Mage destroys a Tron land, disrupting their {7}+ mana assemby. This is the primary disruption tool against Tron strategies — destroying one Tron piece (Urza's Tower, Mine, Power Plant) delays them 2 turns.<br><br>
+      <div class="sb-table">
+        <div class="sb-col">
+          <div class="sb-col-label">Out</div>
+          <div class="sb-item"><span>−2 Hapatra</span></div>
+          <div class="sb-item"><span>−1 Zulaport Cutthroat</span></div>
+        </div>
+        <div class="sb-col">
+          <div class="sb-col-label">In</div>
+          <div class="sb-item"><span>+2 Fulminator Mage (destroy Tron lands)</span></div>
+          <div class="sb-item"><span>+3 Thoughtseize (strip TKS or Ugin)</span></div>
+        </div>
+      </div>
+    </td></tr>
+
+    <tr onclick="toggle('mu-living')"><td>Living End</td><td>2.8%</td><td><span class="verdict verdict-even">Even</span></td><td>Dog</td><td>Even</td></tr>
+    <tr><td colspan="5" class="matchup-detail" id="mu-living">
+      <strong>The Matchup:</strong> Living End board-wipes your combo setup and brings back whatever creatures they've cycled. If Yawgmoth survives Living End (he was in play — he gets sacrificed by Living End, then comes back if he's in your GY — yes, Living End returns all creatures from both GYs including yours). After their Living End: they get their 5 cycled creatures back AND you get Yawgmoth + your undying back too. Race to win post-LE.<br><br>
+      <strong>Endurance SB:</strong> Chord for Endurance in response to their Violent Outburst cascade. Endurance ETB: shuffle their GY. Now their Living End finds nothing to return (their creatures are shuffled back to library). This is the key counter-play.<br><br>
+      <div class="sb-table">
+        <div class="sb-col">
+          <div class="sb-col-label">Out</div>
+          <div class="sb-item"><span>−2 Grist</span></div>
+          <div class="sb-item"><span>−1 Bloodline Cultivator</span></div>
+        </div>
+        <div class="sb-col">
+          <div class="sb-col-label">In</div>
+          <div class="sb-item"><span>+2 Endurance (counter their Living End)</span></div>
+          <div class="sb-item"><span>+3 Thoughtseize (strip Violent Outburst)</span></div>
+        </div>
+      </div>
+      <div class="sb-note">Chord for Endurance in response to their cascade. Endurance shuffles their GY — Living End returns nothing. Protect your own GY.</div>
+    </td></tr>
+
+    <tr onclick="toggle('mu-amulet')"><td>Amulet Titan</td><td>3.1%</td><td><span class="verdict verdict-favor">Favorable</span></td><td>Favor</td><td>Favor</td></tr>
+    <tr><td colspan="5" class="matchup-detail" id="mu-amulet">
+      <strong>The Matchup:</strong> Amulet Titan has almost no creature interaction. Their primary win condition (Primeval Titan) is a 6/6 trample — killable with Young Wolf + Yawgmoth -1/-1 sequence (place -1/-1 on Titan each activation). Cursed Totem from their SB shuts Yawgmoth entirely. Force of Vigor from your SB destroys Cursed Totem (Force of Vigor destroys artifacts/enchantments). The matchup is good G1 and manageable post-board.<br><br>
+      <strong>Boseiju vs Agatha's Soul Cauldron:</strong> If you have Agatha's Soul Cauldron and Yawgmoth is in GY: Boseiju from their hand can destroy Cauldron in response to its exile trigger. Don't activate Cauldron to exile Yawgmoth if they have Boseiju mana available.<br><br>
+      <div class="sb-table">
+        <div class="sb-col">
+          <div class="sb-col-label">Out</div>
+          <div class="sb-item"><span>−1 Grist</span></div>
+          <div class="sb-item"><span>−1 Zulaport Cutthroat</span></div>
+        </div>
+        <div class="sb-col">
+          <div class="sb-col-label">In</div>
+          <div class="sb-item"><span>+2 Force of Vigor (destroy Cursed Totem)</span></div>
+          <div class="sb-item"><span>+2 Haywire Mite (instant exile of Totem)</span></div>
+        </div>
+      </div>
+    </td></tr>
+
+    <tr onclick="toggle('mu-uwc')"><td>UW Control</td><td>2%</td><td><span class="verdict verdict-dog">Dog</span></td><td>Dog</td><td>Even</td></tr>
+    <tr><td colspan="5" class="matchup-detail" id="mu-uwc">
+      <strong>The Matchup:</strong> UW Control exiles creatures (Solitude, Prismatic Ending, Teferi bounces). Exile effects circumvent undying. Force of Negation counters Eldritch Evolution on your combo turn. Post-board Thoughtseize strips their key answers before you combo. Veil of Summer blanks their targeted removal for a turn, allowing a combo turn without interaction.<br><br>
+      <strong>Convoke for Chord:</strong> When using Chord of Calling with convoke (tapping creatures to help pay {G} costs), do so on their end step to avoid Counterspell. Tap your creatures for convoke — they become tapped (can't block) but Chord at instant speed finds Yawgmoth into their end step with no sorcery-speed answers.<br><br>
+      <div class="sb-table">
+        <div class="sb-col">
+          <div class="sb-col-label">Out</div>
+          <div class="sb-item"><span>−2 Hapatra</span></div>
+          <div class="sb-item"><span>−1 Bloodline Cultivator</span></div>
+        </div>
+        <div class="sb-col">
+          <div class="sb-col-label">In</div>
+          <div class="sb-item"><span>+3 Thoughtseize</span></div>
+          <div class="sb-item"><span>+2 Veil of Summer</span></div>
+        </div>
+      </div>
+    </td></tr>
+
+    <tr onclick="toggle('mu-reanimator')"><td>Grixis Reanimator</td><td>1.5%</td><td><span class="verdict verdict-favor">Favorable</span></td><td>Favor</td><td>Favor</td></tr>
+    <tr><td colspan="5" class="matchup-detail" id="mu-reanimator">
+      <strong>The Matchup:</strong> Grixis Reanimator's main threat (Archon of Cruelty) has an ETB that forces you to sacrifice a creature, discard a card, and lose 3 life. You can sacrifice the undying creature (it returns!), discard a non-essential card, and still have the Archon on their side as a blocker. Your Yawgmoth places -1/-1 on Archon each activation — eventually killing it. Endurance from your SB shuffles their GY before Persist or Goryo's Vengeance resolves.<br><br>
+      <div class="sb-table">
+        <div class="sb-col">
+          <div class="sb-col-label">Out</div>
+          <div class="sb-item"><span>−1 Bloodline Cultivator</span></div>
+          <div class="sb-item"><span>−1 Grist</span></div>
+        </div>
+        <div class="sb-col">
+          <div class="sb-col-label">In</div>
+          <div class="sb-item"><span>+2 Endurance (counter reanimation)</span></div>
+          <div class="sb-item"><span>+2 Thoughtseize (strip Persist)</span></div>
+        </div>
+      </div>
+    </td></tr>
+
+    <tr onclick="toggle('mu-domain')"><td>Domain Aggro</td><td>2.6%</td><td><span class="verdict verdict-even">Even</span></td><td>Favor</td><td>Even</td></tr>
+    <tr><td colspan="5" class="matchup-detail" id="mu-domain">
+      <strong>The Matchup:</strong> Domain Aggro presents Scion of Draco with hexproof (from opponent targeting). Yawgmoth's -1/-1 ability targets a creature — hexproof prevents Yawgmoth from targeting Scion. Hapatra's Snakes have deathtouch and block Scion in combat (Scion gets +2/+2 for each basic type you control — it's likely very large). Without being able to target Scion, you need to win through the combo drain before they kill you.<br><br>
+      <strong>Speed:</strong> Your combo kills faster than they can deal 20 damage if you assemble by turn 3–4. Young Wolf blocking Ragavan/early threats while you tutor up combo is the key line. Post-board Thoughtseize strips Scion or Leyline of the Guildpact (which gives Scion hexproof).<br><br>
+      <div class="sb-table">
+        <div class="sb-col">
+          <div class="sb-col-label">Out</div>
+          <div class="sb-item"><span>−1 Grist</span></div>
+          <div class="sb-item"><span>−2 Hapatra</span></div>
+        </div>
+        <div class="sb-col">
+          <div class="sb-col-label">In</div>
+          <div class="sb-item"><span>+3 Thoughtseize (strip Scion or Leyline)</span></div>
+          <div class="sb-item"><span>+2 Endurance (3/4 body, blocks attackers)</span></div>
+        </div>
+      </div>
+    </td></tr>
+
+    <tr onclick="toggle('mu-mirror')"><td>Yawgmoth Mirror</td><td>2%</td><td><span class="verdict verdict-even">Even</span></td><td>Even</td><td>Even</td></tr>
+    <tr><td colspan="5" class="matchup-detail" id="mu-mirror">
+      <strong>The Matchup:</strong> Mirror is about who assembles the combo first and whether their Blood Artist triggers before your loop begins. Key interaction: if they start the infinite loop, you can sacrifice a creature in response to each Yawgmoth activation to trigger your own Blood Artist (if you have one). The player who goes first usually wins — priority in the same board state wins the mirror by establishing the loop before the other player can respond.<br><br>
+      <strong>Agatha's Soul Cauldron:</strong> In the mirror, Cauldron exiling the opponent's Yawgmoth from GY removes their best recursion. Activate Cauldron to exile their Yawgmoth before they can use it — prevents them from using Cauldron on their own side later.<br><br>
+      <div class="sb-table">
+        <div class="sb-col">
+          <div class="sb-col-label">Out</div>
+          <div class="sb-item"><span>−2 Hapatra</span></div>
+          <div class="sb-item"><span>−1 Bloodline Cultivator</span></div>
+        </div>
+        <div class="sb-col">
+          <div class="sb-col-label">In</div>
+          <div class="sb-item"><span>+3 Thoughtseize (strip their Yawgmoth)</span></div>
+          <div class="sb-item"><span>+2 Veil of Summer</span></div>
+        </div>
+      </div>
+    </td></tr>
+  </table>
+</div>
+
+<!-- CH07: SIDEBOARD -->
+<div id="sideboard" class="section">
+  <div class="section-label">Chapter 07</div>
+  <h1>Sideboard<br>Guide</h1>
+
+  <div class="sb-card-guide">
+    <div class="sb-guide-row"><div class="sb-guide-name">Thoughtseize ×3</div><div class="sb-guide-body">{B}: Target player reveals hand; you choose a nonland card; they discard it; you lose 2 life. The primary hand disruption. Strip Solitude (exile Yawgmoth), Force of Negation (counter Evolution), or Clarion Conqueror (shut activated abilities) from their hand before your combo turn. Thoughtseize + Chord/Evolution on consecutive turns is the cleanest post-board line: T1 Thoughtseize, T3 Evolution into combo. The 2 life loss is irrelevant against combo decks; pay close attention to life total against aggro.</div></div>
+    <div class="sb-guide-row"><div class="sb-guide-name">Veil of Summer ×2</div><div class="sb-guide-body">{G}: Draw a card. Until end of turn, spells your opponents control can't target you or permanents you control, and your spells and permanents can't be countered by blue or black spells. Cast on your combo turn: Solitude targeting Yawgmoth is blanked (can't target your permanents), Force of Negation is blanked (can't counter), Thoughtseize is blanked (can't target you). Effectively gives your whole combo turn "protection." The draw a card makes it free card advantage even if not fully utilized.</div></div>
+    <div class="sb-guide-row"><div class="sb-guide-name">Force of Vigor ×2</div><div class="sb-guide-body">{2}{G}{G} instant. If not your turn: exile a green card, free. Destroy up to 2 artifacts/enchantments. Key targets: Cursed Totem (shuts Yawgmoth), Grafdigger's Cage (prevents undying returning from GY — wait: undying returns creatures "to the battlefield." Grafdigger's Cage says "creature cards can't enter the battlefield from graveyards or libraries." Yes, Cage blocks undying! The returning creature tries to enter from GY, Cage prevents it). Leyline of the Void (exiles creatures as they die = no undying). Force of Vigor at instant speed handles all three.</div></div>
+    <div class="sb-guide-row"><div class="sb-guide-name">Haywire Mite ×2</div><div class="sb-guide-body">{1} 1/1 insect. {G}, sacrifice: exile target noncreature artifact/enchantment. Instant exile of Cursed Totem or Grafdigger's Cage. Unlike Force of Vigor, Haywire Mite is a creature — tutorable via Chord of Calling (instant, find MV ≤ X at X=1). This makes it immediately available at any point in the game. Chord for Mite → Mite exiles Cage → combo proceeds. The 2 life gained on death is minor but noted.</div></div>
+    <div class="sb-guide-row"><div class="sb-guide-name">Endurance ×2</div><div class="sb-guide-body">{1}{G}{G} 3/4 Flash Reach. Evoke: exile a green card. ETB: up to one target player shuffles all GY cards to bottom. Against Living End: Chord for Endurance in response to their cascade trigger. Endurance ETB fires before Living End resolves — shuffles their GY of cycled creatures. Living End returns nothing. Also tutorable via Eldritch Evolution (sacrifice a MV3 creature → find Endurance MV3 ≤ 5). The 3/4 reach body is relevant against Murktide and Curator of Mysteries type fliers.</div></div>
+    <div class="sb-guide-row"><div class="sb-guide-name">Fulminator Mage ×2</div><div class="sb-guide-body">{1}{B}{R} 2/2. Sacrifice: destroy target nonbasic land. Against Eldrazi Tron: destroys Urza's Tower, Mine, or Power Plant (all nonbasics). Against Amulet Titan: destroys Simic Growth Chamber or Slayers' Stronghold. Tutorable via Chord of Calling (MV3, X=3 with convoke). This is the toolbox land-destruction piece. BG has no traditional Stone Rain effect — Fulminator is the substitute.</div></div>
+    <div class="sb-guide-row"><div class="sb-guide-name">Reclamation Sage ×1</div><div class="sb-guide-body">{2}{G} 2/1 Elf Shaman. ETB: destroy target artifact or enchantment. Tutorable via Chord (MV3, X=3). An extra answer to Grafdigger's Cage, Leyline of the Void, or any problematic enchantment. Unlike Haywire Mite, Rec Sage DESTROYS (doesn't exile) — relevant because exile prevents recursion. Against Agatha's Soul Cauldron: destroy it (don't exile — if they want Yawgmoth exiled, they'll do it themselves. You destroy the Cauldron to prevent them from using it).</div></div>
+    <div class="sb-guide-row"><div class="sb-guide-name">Agatha's Soul Cauldron ×1</div><div class="sb-guide-body">{2}: Exile target card from a graveyard. If you exiled a creature card, create a Treasure. Creatures you control with +1/+1 counters have each activated ability of each creature card exiled with this artifact. The Yawgmoth backup plan: if Yawgmoth is in GY, activate Cauldron to exile him (creating a Treasure). Any creature you control with a +1/+1 counter (like an undying creature that returned) now has Yawgmoth's activated ability. This provides a second Yawgmoth activation source when the original is dead. Watch for Boseiju destroying Cauldron in response to the exile activation.</div></div>
+  </div>
+    <div class="sb-guide-row">
+      <div class="sb-guide-name"><span class="c">Thoughtseize</span></div>
+      <div class="sb-guide-body"><strong>2 copies.</strong> {B} sorcery: target player reveals hand, choose nonland card, they discard it, you lose 2 life. Your T1 disruption to protect your combo window. Against Jeskai Blink: take their Ephemerate (they can't blink your key creatures away). Against Living End: take their cascade piece. Against Izzet Affinity: take their Stony Silence before it enters. Board in vs interactive decks that can disrupt your combo. Mistake: taking a card you can already answer with your removal — take only cards you CANNOT answer.</div>
+    </div>
+</div>
+
+<!-- CH08: HEURISTICS -->
+<div id="heuristics" class="section">
+  <div class="section-label">Chapter 08</div>
+  <h1>Heuristics</h1>
+
+  <ol class="heuristic-list">
+    <li><div class="heuristic-text"><strong>Yawgmoth has protection from Humans, not from creatures generally.</strong> <span>Many players assume Yawgmoth can't be targeted by removal. He can be targeted by Solitude (the card itself is cast by a non-Human), Prismatic Ending, and most removal spells — they're cast by Humans but the spell itself is the targeting source, not the Human casting it. Protection from Humans means: can't be blocked, targeted, damaged, or enchanted by Human CREATURE CARDS (and their effects). Non-Human sources target him freely.</span></div></li>
+    <li><div class="heuristic-text"><strong>Sacrifice is a cost — happens before the ability goes on stack.</strong> <span>When activating Yawgmoth's ability, the cost is "pay 1 life, sacrifice another creature." This cost is paid before the ability goes on the stack. Opponents cannot respond to the sacrifice — the creature is already gone. They can respond to the ability itself (before -1/-1 placement and draw) by killing Yawgmoth. But the sacrificed creature is gone regardless.</span></div></li>
+    <li><div class="heuristic-text"><strong>Yawgmoth can activate the turn he enters — use Chord EOT for the combo.</strong> <span>Yawgmoth has no summoning sickness restriction on his activated ability. Chord for Yawgmoth at end of opponent's turn: he enters with haste (in terms of activated abilities), immediately enabling the loop if Melira, undying creature, and Blood Artist are already in play. This is the ideal line for instant-speed combo assembly.</span></div></li>
+    <li><div class="heuristic-text"><strong>Eldritch Evolution finds MV ≤ sacrifice MV + 2, not exactly MV X.</strong> <span>You can find any creature with MV UP TO sacrifice MV + 2. Sacrificing Young Wolf (MV 1) finds MV ≤ 3 — that's any creature with MV 1, 2, or 3. You're not locked into finding exactly MV 3. This flexibility lets you find the most situationally appropriate piece.</span></div></li>
+    <li><div class="heuristic-text"><strong>Sacrificing Young Wolf to Evolution to find Melira (MV 2) is the core chain.</strong> <span>Wolf (MV 1) → Evolution → find Melira (MV 2, ≤ 3). Then find Yawgmoth via Chord or a second Evolution sacrificing a MV 3 creature. The Wolf-to-Melira chain is the critical step because Melira is the hardest piece to draw naturally — only 2 copies in the deck.</span></div></li>
+    <li><div class="heuristic-text"><strong>Grafdigger's Cage prevents undying — Force of Vigor destroys it at instant speed for free.</strong> <span>Grafdigger's Cage says "creature cards can't enter the battlefield from graveyards or libraries." When an undying creature dies and tries to return from GY with undying, Cage prevents this. Your entire combo engine breaks down. Force of Vigor on their turn: exile a green card, destroy Cage for free. Haywire Mite (Chord-tutorable MV 1) also exiles Cage at instant speed.</span></div></li>
+    <li><div class="heuristic-text"><strong>Clarion Conqueror shuts YOUR activated abilities too — never Chord for it in mirror.</strong> <span>Clarion Conqueror shuts activated abilities of artifacts, creatures, AND planeswalkers — for ALL players. If you Chord for Clarion Conqueror to stop Yawgmoth in a mirror, you also shut your own Yawgmoth. Only board Clarion into matchups where the benefit (shutting their abilities) outweighs the cost (shutting yours). Against Living End: safe to use since LE has no key activated abilities.</span></div></li>
+    <li><div class="heuristic-text"><strong>Grist is a creature in all zones except the battlefield — Chord and CoCo find him.</strong> <span>This unique property (Grist is a planeswalker creature) means your 12-tutor package can find him. Chord X=3 at instant speed can find Grist. CoCo (reveal top 6, put up to 2 MV≤3 creatures) can hit Grist. Grist's +1 mills and makes Insects, −2 destroys creatures with MV ≤ Insects, −5 drains based on GY. The −2 on Clarion Conqueror (MV 3) requires 3+ Insects — achievable after a couple turns.</span></div></li>
+    <li><div class="heuristic-text"><strong>Blood Artist triggers on ANY creature dying — including your opponent's.</strong> <span>Blood Artist: "whenever this creature OR another creature dies." Not just your creatures. In combat, when their creatures die, Blood Artist also triggers. Against creature-heavy boards, combat becomes incremental life drain. Zulaport Cutthroat only triggers on YOUR creatures — Blood Artist is better for the infinite loop (triggers on your own undying dying each iteration).</span></div></li>
+    <li><div class="heuristic-text"><strong>The infinite loop with 2 undying: alternate sacrificing Wolf and Messenger.</strong> <span>With Wolf (no counters) + Messenger (no counters) + Melira + Yawgmoth: sacrifice Wolf → Yawgmoth places -1/-1 on Messenger's +1/+1 counter (they cancel, Messenger at 0) → Wolf returns (undying, was clean). Sacrifice Messenger → Yawgmoth targets Wolf's +1/+1 (cancel) → Messenger returns. Alternate. Both creatures cycle through undying, drawing cards and triggering Blood Artist each iteration.</span></div></li>
+    <li><div class="heuristic-text"><strong>Veil of Summer on your combo turn blanks targeted removal AND counterspells.</strong> <span>Veil of Summer: spells can't target you or your permanents, your spells can't be countered by blue or black. The turn you cast Veil, Solitude can't target Yawgmoth, Force of Negation can't counter Evolution, Thoughtseize can't target you. This creates a "free turn" window for the combo. The single green mana cost makes it easily castable alongside your combo pieces.</span></div></li>
+    <li><div class="heuristic-text"><strong>Agatha's Soul Cauldron — destroy it before it exiles Yawgmoth, not after.</strong> <span>Agatha's Soul Cauldron's ability to exile a creature from GY and grant its abilities to other creatures is powerful. Against you: if Yawgmoth is in GY and opponent uses Cauldron to exile him, their creatures gain his ability. Destroy Cauldron proactively — before they activate it. Once Yawgmoth is exiled, the ability has already been granted and destroying Cauldron doesn't remove the granted abilities.</span></div></li>
+    <li><div class="heuristic-text"><strong>Collected Company at instant speed hits up to 2 MV≤3 creatures — use it to surprise combo pieces.</strong> <span>CoCo reveals top 6, puts up to 2 MV≤3 creatures onto battlefield. Cast at end of opponent's turn when they're tapped out. Hitting both Melira and Blood Artist (or Blood Artist and Young Wolf) can suddenly present the entire combo with only Yawgmoth missing — Chord for Yawgmoth in response to their next spell. The instant speed means you dodge sorcery-speed answers.</span></div></li>
+    <li><div class="heuristic-text"><strong>Young Wolf's job G1 is blocking Ragavan — don't sacrifice it early in aggro matchups.</strong> <span>Against Boros Energy, Young Wolf is your critical early blocker. Ragavan, Nimble Pilferer attacking on turn 1 is devastating — Young Wolf blocks and trades (Ragavan dies, Wolf returns from undying). Don't sacrifice Young Wolf to Eldritch Evolution on turn 2 against Boros unless you're immediately going for the combo — you need the blocker.</span></div></li>
+    <li><div class="heuristic-text"><strong>Fulminator Mage via Chord destroys their nonbasic land at instant speed.</strong> <span>Chord for Fulminator Mage (MV 3, X=3 with convoke from creatures) at end of opponent's turn destroys a nonbasic land. Against Amulet Titan: destroy their Simic Growth Chamber or Slayers' Stronghold to prevent the haste kill. Against Eldrazi Tron: destroy a Tron piece. This is the deck's toolbox land destruction, instantly available via Chord at any point in the game.</span></div></li>
+    <li><div class="heuristic-text"><strong>Protect against exile effects — they circumvent undying.</strong> <span>Undying returns creatures from the graveyard. If a creature is EXILED instead of going to the GY (Solitude, Prismatic Ending, Leyline of the Void), undying never triggers. Against exile-heavy decks, the combo can sputter out without the loop regenerating. Prioritize Thoughtseize or Veil of Summer to protect key pieces. Haywire Mite and Force of Vigor handle Leyline before it becomes active.</span></div></li>
+  </ol>
+</div>
+
+<!-- CH09: TUNING -->
+<div id="tuning" class="section">
+  <div class="section-label">Chapter 09</div>
+  <h1>Tuning<br>Notes</h1>
+  <p>Core (3 Yawgmoth, 4 Young Wolf, 4 Geralf's Messenger, 2 Melira, 2–3 Blood Artist/Zulaport, 4 CoCo, 4 Chord, 3 Evolution) is fixed at 20+ cards. Flex: Hapatra counts, Grist counts, Bloodline Cultivator, SB mix.</p>
+
+  <div class="tuning-grid">
+    <div class="tuning-card">
+      <div class="tuning-label">Condition</div>
+      <div class="tuning-condition">Control-Heavy Field</div>
+      <div class="tuning-up">+3 Thoughtseize SB (strip Solitude pre-combo)</div>
+      <div class="tuning-up">+2 Veil of Summer SB (blank targeted removal)</div>
+      <div class="tuning-down">−2 Fulminator Mage SB (wrong matchup)</div>
+      <div class="tuning-down">−1 Reclamation Sage SB (less artifact/enchant hate)</div>
+    </div>
+    <div class="tuning-card">
+      <div class="tuning-label">Condition</div>
+      <div class="tuning-condition">GY Hate Heavy</div>
+      <div class="tuning-up">+2 Force of Vigor SB (destroy Cage/Leyline)</div>
+      <div class="tuning-up">+2 Haywire Mite SB (exile Cage)</div>
+      <div class="tuning-down">−2 Fulminator Mage SB (less urgent)</div>
+      <div class="tuning-down">−1 Thoughtseize SB (less useful)</div>
+    </div>
+    <div class="tuning-card">
+      <div class="tuning-label">Condition</div>
+      <div class="tuning-condition">Fast Combo (Storm, Living End)</div>
+      <div class="tuning-up">+3 Thoughtseize SB (strip their kill piece)</div>
+      <div class="tuning-up">+2 Endurance SB (shuffle their GY)</div>
+      <div class="tuning-down">−2 Hapatra main (too slow to matter)</div>
+      <div class="tuning-down">−1 Grist main (toolbox less relevant)</div>
+    </div>
+    <div class="tuning-card">
+      <div class="tuning-label">Condition</div>
+      <div class="tuning-condition">Tron Heavy</div>
+      <div class="tuning-up">+2 Fulminator Mage SB (destroy Tron piece)</div>
+      <div class="tuning-up">+3 Thoughtseize SB (strip Ulamog from hand)</div>
+      <div class="tuning-down">−2 Haywire Mite SB (wrong matchup)</div>
+      <div class="tuning-down">−1 Reclamation Sage SB</div>
+    </div>
+    <div class="tuning-card">
+      <div class="tuning-label">Condition</div>
+      <div class="tuning-condition">Aggro-Heavy Meta</div>
+      <div class="tuning-up">+4 Young Wolf main (already 4)</div>
+      <div class="tuning-up">+2 Endurance SB (3/4 reach blocker)</div>
+      <div class="tuning-down">−1 Grist main (MV 3 PW less relevant)</div>
+      <div class="tuning-down">−1 Bloodline Cultivator (cut slowest piece)</div>
+    </div>
+    <div class="tuning-card">
+      <div class="tuning-label">Condition</div>
+      <div class="tuning-condition">Exile Effects Everywhere</div>
+      <div class="tuning-up">+3 Thoughtseize SB (strip Solitude/Prismatic Ending pre-turn)</div>
+      <div class="tuning-up">+2 Veil of Summer SB</div>
+      <div class="tuning-down">−2 Fulminator Mage SB</div>
+      <div class="tuning-down">−1 Reclamation Sage SB</div>
+    </div>
+  </div>
+  <h2>Register Conditions</h2>
+  <div class="card-grid card-grid-2">
+    <div class="card">
+      <div class="card-label">Register When</div>
+      <div class="card-title">Green Lights</div>
+      <div class="card-body">Midrange-heavy field (Boros Energy, Domain Zoo, Amulet) — you combo through their interaction. Exile-based removal is below 15% of SB cards in the room (Path, Solitude). No Surgical Extraction in the metagame. You’ve practiced the T3 execution blindfolded. The field has few Grafdigger’s Cage or Leyline of the Void builds.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Avoid When</div>
+      <div class="card-title">Red Lights</div>
+      <div class="card-body">Heavy exile removal in the field (Solitude and Path on every SB). Surgical Extraction is common — one copy targeting Young Wolf ends your game. Chalice of the Void at 1 shuts off Young Wolf, Haywire Mite, and Chord. You haven’t practiced the draw-engine line (Yawgmoth without Blood Artist) — you’ll mismanage your undying creature count under pressure.</div>
+    </div>
+    <div class="card"><div class="card-label">Never Cut</div><div class="card-title">Yawgmoth, Thran Physician ×4</div><div class="card-body">Your entire combo engine. Four copies non-negotiable — the deck is named after this card.</div></div>
+    <div class="card"><div class="card-label">Never Cut</div><div class="card-title">Young Wolf ×4</div><div class="card-body">Your Undying enabler. Young Wolf + Yawgmoth + another Undying creature generates infinite loops. Four copies ensures the combo is online.</div></div>
+    <div class="card"><div class="card-label">Flex 2–4</div><div class="card-title">Strangleroot Geist</div><div class="card-body">3 in most metas. 4 when you need faster aggressive starts — Geist as a 2/1 haste with Undying applies early pressure. Cut to 2 in slower metas where its haste is irrelevant.</div></div>
+    <div class="card"><div class="card-label">Flex 0–2</div><div class="card-title">Thoughtseize (SB)</div><div class="card-body">2 in combo-heavy metas where stripping their key piece T1 wins the game. Cut entirely in creature-based metas where their threats are on the board, not in their hand.</div></div>
+    <div class="card"><div class="card-label">Meta Call</div><div class="card-title">Grist, the Hunger Tide count</div><div class="card-body">2 as a findable threat via Chord of Calling. Grist's -1 kills a creature AND mills a card (helping fill GY for Yawgmoth). 3 in grindy metas where card advantage matters more than speed.</div></div>
+  </div>
+
+  <h2>SB Slot Priority Order</h2>
+  <ol class="heuristic-list">
+    <li><div class="heuristic-num">01</div><div class="heuristic-body"><strong>Thoughtseize (3 copies minimum)</strong> — Your primary interaction. Strip Solitude, Force of Negation, or Grafdigger’s Cage before your combo turn. The most important SB card. Never cut below 3. Goes in vs every interactive deck.</div></li>
+    <li><div class="heuristic-num">02</div><div class="heuristic-body"><strong>Veil of Summer (2 copies)</strong> — Counter targeted removal and draw a card for {G}. Mostly relevant vs UW Control and Jeskai Blink which run Solitude + Path. Also blanks Thoughtseize mirror situations. Never cut if blue/white control is above 10% of the expected field.</div></li>
+    <li><div class="heuristic-num">03</div><div class="heuristic-body"><strong>Endurance (2 copies)</strong> — 3/4 flash body + exile target GY. Critical vs Living End (exile their creatures before cascade resolves), Glockulous (counter the reanimate), and Goryo’s Vengeance (exile the target). Also a reasonable combat creature vs aggro. Bring in wherever GY hate matters.</div></li>
+    <li><div class="heuristic-num">04</div><div class="heuristic-body"><strong>Haywire Mite / Force of Vigor (2 copies)</strong> — Answer Grafdigger’s Cage, Leyline of the Void, Rest in Peace, and Cursed Totem. Without these, GY hate completely shuts off undying. Always include at least 2 artifact/enchantment answers. Haywire Mite is preferable (also survives removal to come back with undying).</div></li>
+    <li><div class="heuristic-num">05</div><div class="heuristic-body"><strong>Flex (3–4 slots)</strong> — Fulminator Mage (vs Eldrazi Tron, destroy land), Grist (removal + value), additional Hapatra copies (vs creature-heavy fields). Shift these based on your expected field composition. Never cut the top 4 priorities to fit flex slots.</div></li>
+  </ol>
+</div>
+
+<!-- CH10: PREP SHEET -->
+<div id="prep" class="section">
+  <div class="section-label">Chapter 10</div>
+  <h1>Prep<br>Sheet</h1>
+  <button class="print-btn" onclick="printSB()">⎙ Print This Sheet</button>
+    <h2>20-Minute Crash Course</h2>
+    <p>If you're sitting down in 20 minutes, run through this in order:</p>
+    <ul class="checklist" id="crash-checklist">
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Mulligan rule:</strong> Keep any hand with Young Wolf or Strangleroot Geist + a black source. Undying is your engine.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Yawgmoth rule:</strong> {1}{B}: sacrifice a creature, target gets -1/-1 counter, draw a card. This loops infinitely with two undying creatures.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Combo rule:</strong> Two undying creatures + Yawgmoth + Blood Artist or Zulaport Cutthroat = kill. Sacrifice one, it comes back, sacrifice the other, it comes back. Loop.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Protect rule:</strong> Chord of Calling and Collected Company find your missing pieces. Chord for Yawgmoth at instant speed during their EOT.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Viscera Seer rule:</strong> Viscera Seer scrys when you sacrifice a creature. In the combo, scry before drawing to set up the next card.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Sideboard rule:</strong> Endurance and Collected Company are your post-board resilience. Know which matchups want which.</span></li>
+    </ul>
+
+      <div id="sb-print-zone">
+    <h2>Printable Sideboard Reference</h2>
+  <p>All 11 matchup ins/outs on one page. Hit Print and take it to the event.</p>
+  <button class="print-btn" onclick="printSB()">&#x2259; Print SB Reference</button>
+
+  <div class="print-grid">
+
+    <div class="print-mu">
+      <div class="print-mu-name">Boros Energy <span class="diff-even">Even</span></div>
+      <div class="print-mu-role">Combo — Assemble before they stabilize</div>
+      <div class="print-cols">
+        <div><div class="print-col-label">In</div>
+          <div class="print-row"><span>Haywire Mite</span><span class="print-qty">+2</span></div>
+          <div class="print-row"><span>Endurance</span><span class="print-qty">+2</span></div>
+        </div>
+        <div><div class="print-col-label">Out</div>
+          <div class="print-row"><span>Postmaster Pell</span><span class="print-qty">−1</span></div>
+          <div class="print-row"><span>Zulaport Cutthroat</span><span class="print-qty">−1</span></div>
+        </div>
+      </div>
+      <div class="print-needle">T1 Wolf blocks Ragavan every turn — don’t sacrifice it early</div>
+    </div>
+
+    <div class="print-mu">
+      <div class="print-mu-name">Jeskai Blink <span class="diff-hard">Unfavorable</span></div>
+      <div class="print-mu-role">Combo — T1 Thoughtseize strips Solitude</div>
+      <div class="print-cols">
+        <div><div class="print-col-label">In</div>
+          <div class="print-row"><span>Veil of Summer</span><span class="print-qty">+2</span></div>
+          <div class="print-row"><span>Thoughtseize</span><span class="print-qty">+3</span></div>
+        </div>
+        <div><div class="print-col-label">Out</div>
+          <div class="print-row"><span>Hapatra, Vizier of Poisons</span><span class="print-qty">−2</span></div>
+          <div class="print-row"><span>Grist</span><span class="print-qty">−1</span></div>
+        </div>
+      </div>
+      <div class="print-needle">Thoughtseize T1 before Evolution. Veil counters their Solitude response</div>
+    </div>
+
+    <div class="print-mu">
+      <div class="print-mu-name">Izzet Affinity <span class="diff-good">Favorable</span></div>
+      <div class="print-mu-role">Combo — Faster than their clock</div>
+      <div class="print-cols">
+        <div><div class="print-col-label">In</div>
+          <div class="print-row"><span>Force of Vigor</span><span class="print-qty">+2</span></div>
+          <div class="print-row"><span>Haywire Mite</span><span class="print-qty">+2</span></div>
+        </div>
+        <div><div class="print-col-label">Out</div>
+          <div class="print-row"><span>Melira</span><span class="print-qty">−2</span></div>
+          <div class="print-row"><span>Zulaport Cutthroat</span><span class="print-qty">−1</span></div>
+        </div>
+      </div>
+      <div class="print-needle">Answer Leyline of the Void or Grafdigger’s Cage before comboing</div>
+    </div>
+
+    <div class="print-mu">
+      <div class="print-mu-name">Ruby Storm <span class="diff-good">Favorable</span></div>
+      <div class="print-mu-role">Race — You’re faster G1</div>
+      <div class="print-cols">
+        <div><div class="print-col-label">In</div>
+          <div class="print-row"><span>Thoughtseize</span><span class="print-qty">+3</span></div>
+          <div class="print-row"><span>Veil of Summer</span><span class="print-qty">+2</span></div>
+        </div>
+        <div><div class="print-col-label">Out</div>
+          <div class="print-row"><span>Hapatra</span><span class="print-qty">−2</span></div>
+          <div class="print-row"><span>Bloodline Cultivator</span><span class="print-qty">−1</span></div>
+        </div>
+      </div>
+      <div class="print-needle">T1 Thoughtseize — take Past in Flames or Grapeshot</div>
+    </div>
+
+    <div class="print-mu">
+      <div class="print-mu-name">Eldrazi Tron <span class="diff-even">Even</span></div>
+      <div class="print-mu-role">Race — Before they assemble Tron</div>
+      <div class="print-cols">
+        <div><div class="print-col-label">In</div>
+          <div class="print-row"><span>Fulminator Mage</span><span class="print-qty">+2</span></div>
+          <div class="print-row"><span>Thoughtseize</span><span class="print-qty">+3</span></div>
+        </div>
+        <div><div class="print-col-label">Out</div>
+          <div class="print-row"><span>Hapatra</span><span class="print-qty">−2</span></div>
+          <div class="print-row"><span>Zulaport Cutthroat</span><span class="print-qty">−1</span></div>
+        </div>
+      </div>
+      <div class="print-needle">Thoughtseize T1 — take TKS or Chalice. Fulminator disrupts Tron assembly</div>
+    </div>
+
+    <div class="print-mu">
+      <div class="print-mu-name">Living End <span class="diff-good">Favorable</span></div>
+      <div class="print-mu-role">Race — Combo before their T3 cascade</div>
+      <div class="print-cols">
+        <div><div class="print-col-label">In</div>
+          <div class="print-row"><span>Endurance</span><span class="print-qty">+2</span></div>
+          <div class="print-row"><span>Thoughtseize</span><span class="print-qty">+3</span></div>
+        </div>
+        <div><div class="print-col-label">Out</div>
+          <div class="print-row"><span>Grist</span><span class="print-qty">−2</span></div>
+          <div class="print-row"><span>Bloodline Cultivator</span><span class="print-qty">−1</span></div>
+        </div>
+      </div>
+      <div class="print-needle">Endurance in response to cascade counters Living End. Thoughtseize strips Outburst</div>
+    </div>
+
+    <div class="print-mu">
+      <div class="print-mu-name">Amulet Titan <span class="diff-even">Even</span></div>
+      <div class="print-mu-role">Race — T4 combo vs T3 Titan</div>
+      <div class="print-cols">
+        <div><div class="print-col-label">In</div>
+          <div class="print-row"><span>Force of Vigor</span><span class="print-qty">+2</span></div>
+          <div class="print-row"><span>Haywire Mite</span><span class="print-qty">+2</span></div>
+        </div>
+        <div><div class="print-col-label">Out</div>
+          <div class="print-row"><span>Grist</span><span class="print-qty">−1</span></div>
+          <div class="print-row"><span>Zulaport Cutthroat</span><span class="print-qty">−1</span></div>
+        </div>
+      </div>
+      <div class="print-needle">Answer Cursed Totem immediately. It shuts off Yawgmoth’s activated ability</div>
+    </div>
+
+    <div class="print-mu">
+      <div class="print-mu-name">UW Control <span class="diff-hard">Unfavorable</span></div>
+      <div class="print-mu-role">Combo — Through their counterspells</div>
+      <div class="print-cols">
+        <div><div class="print-col-label">In</div>
+          <div class="print-row"><span>Thoughtseize</span><span class="print-qty">+3</span></div>
+          <div class="print-row"><span>Veil of Summer</span><span class="print-qty">+2</span></div>
+        </div>
+        <div><div class="print-col-label">Out</div>
+          <div class="print-row"><span>Hapatra</span><span class="print-qty">−2</span></div>
+          <div class="print-row"><span>Bloodline Cultivator</span><span class="print-qty">−1</span></div>
+        </div>
+      </div>
+      <div class="print-needle">Thoughtseize before Evolution. Veil on the stack when they respond to Chord</div>
+    </div>
+
+    <div class="print-mu">
+      <div class="print-mu-name">Goryo’s / Esper Reanimator <span class="diff-good">Favorable</span></div>
+      <div class="print-mu-role">Race — You’re more consistent T4</div>
+      <div class="print-cols">
+        <div><div class="print-col-label">In</div>
+          <div class="print-row"><span>Endurance</span><span class="print-qty">+2</span></div>
+          <div class="print-row"><span>Thoughtseize</span><span class="print-qty">+2</span></div>
+        </div>
+        <div><div class="print-col-label">Out</div>
+          <div class="print-row"><span>Bloodline Cultivator</span><span class="print-qty">−1</span></div>
+          <div class="print-row"><span>Grist</span><span class="print-qty">−1</span></div>
+        </div>
+      </div>
+      <div class="print-needle">Endurance at their EOT exiles their GY before Goryo’s targets it</div>
+    </div>
+
+    <div class="print-mu">
+      <div class="print-mu-name">Domain Zoo <span class="diff-even">Even</span></div>
+      <div class="print-mu-role">Race — Wolf blocks their early threats</div>
+      <div class="print-cols">
+        <div><div class="print-col-label">In</div>
+          <div class="print-row"><span>Thoughtseize</span><span class="print-qty">+3</span></div>
+          <div class="print-row"><span>Endurance</span><span class="print-qty">+2</span></div>
+        </div>
+        <div><div class="print-col-label">Out</div>
+          <div class="print-row"><span>Grist</span><span class="print-qty">−1</span></div>
+          <div class="print-row"><span>Hapatra</span><span class="print-qty">−2</span></div>
+        </div>
+      </div>
+      <div class="print-needle">Thoughtseize takes Leyline of the Void. Their exile removal hits undying — play around it</div>
+    </div>
+
+    <div class="print-mu">
+      <div class="print-mu-name">Mirror (Yawgmoth) <span class="diff-even">Even</span></div>
+      <div class="print-mu-role">Race — Whoever has Yawgmoth first wins</div>
+      <div class="print-cols">
+        <div><div class="print-col-label">In</div>
+          <div class="print-row"><span>Thoughtseize</span><span class="print-qty">+3</span></div>
+          <div class="print-row"><span>Veil of Summer</span><span class="print-qty">+2</span></div>
+        </div>
+        <div><div class="print-col-label">Out</div>
+          <div class="print-row"><span>Hapatra</span><span class="print-qty">−2</span></div>
+          <div class="print-row"><span>Bloodline Cultivator</span><span class="print-qty">−1</span></div>
+        </div>
+      </div>
+      <div class="print-needle">Thoughtseize their Yawgmoth. Veil protects yours when they Thoughtseize back</div>
+    </div>
+
+  </div>
+  </div>
+
+<h2>Testing Framework</h2>
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-label">Block 01</div>
+        <div class="card-title">Combo Loop</div>
+        <div class="card-body">Drill the Yawgmoth loop until it's mechanical: sacrifice, -1/-1 counter, draw, undying returns, loop.</div>
+      </div>
+      <div class="card">
+        <div class="card-label">Block 02</div>
+        <div class="card-title">CoCo Timing</div>
+        <div class="card-body">Practice casting Collected Company at opponents' EOT. Know exactly what you can and can't find.</div>
+      </div>
+      <div class="card">
+        <div class="card-label">Block 03</div>
+        <div class="card-title">Protect Yawgmoth</div>
+        <div class="card-body">Practice keeping disruption specifically for Yawgmoth protection. He's the only piece that matters.</div>
+      </div>
+      <div class="card">
+        <div class="card-label">Block 04</div>
+        <div class="card-title">G2 Hate Lines</div>
+        <div class="card-body">Practice through Grafdigger's Cage (stops Persist/CoCo), Solitude, and Endurance.</div>
+      </div>
+    </div>
+
+    <h2>Matchday Routine</h2>
+    <ol class="heuristic-list">
+      <li><div class="heuristic-num">01</div><div class="heuristic-body">Register and confirm Chord of Calling count. It's your primary tutor.</div></li>
+      <li><div class="heuristic-num">02</div><div class="heuristic-body">Know the exact loop sequence before Round 1. Sacrifice, -1/-1, draw, undying, repeat. Mechanical.</div></li>
+      <li><div class="heuristic-num">03</div><div class="heuristic-body">Between rounds: did you protect Yawgmoth? He's the one piece that matters. Everything else is support.</div></li>
+      <li><div class="heuristic-num">04</div><div class="heuristic-body">Chord at EOT is almost always correct. Instant speed Yawgmoth is the line.</div></li>
+      <li><div class="heuristic-num">05</div><div class="heuristic-body">The combo is clean. If you're taking a long time executing it, practice more reps.</div></li>
+    </ol>
+
+
+
+  <h3>The Combo Requirements — Never Forget</h3>
+  <div class="card-grid card-grid-2" style="margin-bottom:40px;">
+    <div class="card">
+      <div class="card-label">4 Pieces Needed</div>
+      <div class="card-title">Yawgmoth + Melira + Undying + Drain</div>
+      <div class="card-body">Yawgmoth (activated ability: pay life, sacrifice, -1/-1, draw) + Melira (prevents -1/-1 on your creatures) + 1 undying creature (Young Wolf, Geralf's Messenger) + Blood Artist or Zulaport Cutthroat. Missing any one = no infinite loop. But missing just Melira = still functional midrange.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Key Evolution Chain</div>
+      <div class="card-title">Wolf → Melira → Chord → Yawgmoth</div>
+      <div class="card-body">T1 Young Wolf. T3 Eldritch Evolution (sacrifice Wolf MV1 → find Melira MV≤3). T4+ Chord of Calling X=4 with convoke from tapping creatures → find Yawgmoth. Blood Artist in play = combo active. Instant-speed Chord at EOT is the clean kill line.</div>
+    </div>
+  </div>
+
+  <h3>Tournament Day Quick Reference</h3>
+  <div class="print-grid">
+    <div class="print-mu">
+      <div class="print-mu-name">Boros Energy</div>
+      <div class="print-mu-role">Even · Wolf blocks Ragavan</div>
+      <div class="print-cols">
+        <div><div class="print-col-label">Out</div>
+          <div class="print-row"><span>Postmaster Pell</span><span class="print-qty">−1</span></div>
+          <div class="print-row"><span>Zulaport Cutthroat</span><span class="print-qty">−1</span></div>
+        </div>
+        <div><div class="print-col-label">In</div>
+          <div class="print-row"><span>Haywire Mite</span><span class="print-qty">+2</span></div>
+          <div class="print-row"><span>Endurance</span><span class="print-qty">+2</span></div>
+        </div>
+      </div>
+      <div class="print-needle">Don't sac Wolf early — it blocks Ragavan</div>
+    </div>
+    <div class="print-mu">
+      <div class="print-mu-name">Jeskai Blink</div>
+      <div class="print-mu-role">Dog · Exile wrecks undying</div>
+      <div class="print-cols">
+        <div><div class="print-col-label">Out</div>
+          <div class="print-row"><span>Hapatra ×2</span><span class="print-qty">−2</span></div>
+          <div class="print-row"><span>Grist</span><span class="print-qty">−1</span></div>
+        </div>
+        <div><div class="print-col-label">In</div>
+          <div class="print-row"><span>Veil of Summer</span><span class="print-qty">+2</span></div>
+          <div class="print-row"><span>Thoughtseize</span><span class="print-qty">+3</span></div>
+        </div>
+      </div>
+      <div class="print-needle">Thoughtseize → Solitude before combo turn</div>
+    </div>
+    <div class="print-mu">
+      <div class="print-mu-name">Izzet Affinity</div>
+      <div class="print-mu-role">Even · Leyline is game over</div>
+      <div class="print-cols">
+        <div><div class="print-col-label">Out</div>
+          <div class="print-row"><span>Melira ×2</span><span class="print-qty">−2</span></div>
+          <div class="print-row"><span>Zulaport</span><span class="print-qty">−1</span></div>
+        </div>
+        <div><div class="print-col-label">In</div>
+          <div class="print-row"><span>Force of Vigor</span><span class="print-qty">+2</span></div>
+          <div class="print-row"><span>Haywire Mite</span><span class="print-qty">+2</span></div>
+        </div>
+      </div>
+      <div class="print-needle">Cage prevents undying! Force of Vigor it.</div>
+    </div>
+    <div class="print-mu">
+      <div class="print-mu-name">Ruby Storm</div>
+      <div class="print-mu-role">Dog → Even post-board</div>
+      <div class="print-cols">
+        <div><div class="print-col-label">Out</div>
+          <div class="print-row"><span>Hapatra ×2</span><span class="print-qty">−2</span></div>
+          <div class="print-row"><span>Bloodline Cultivator</span><span class="print-qty">−1</span></div>
+        </div>
+        <div><div class="print-col-label">In</div>
+          <div class="print-row"><span>Thoughtseize</span><span class="print-qty">+3</span></div>
+          <div class="print-row"><span>Veil of Summer</span><span class="print-qty">+2</span></div>
+        </div>
+      </div>
+      <div class="print-needle">T1 Thoughtseize strips their setup</div>
+    </div>
+    <div class="print-mu">
+      <div class="print-mu-name">Eldrazi Tron</div>
+      <div class="print-mu-role">Even · TKS strips combo</div>
+      <div class="print-cols">
+        <div><div class="print-col-label">Out</div>
+          <div class="print-row"><span>Hapatra ×2</span><span class="print-qty">−2</span></div>
+          <div class="print-row"><span>Zulaport</span><span class="print-qty">−1</span></div>
+        </div>
+        <div><div class="print-col-label">In</div>
+          <div class="print-row"><span>Fulminator Mage</span><span class="print-qty">+2</span></div>
+          <div class="print-row"><span>Thoughtseize</span><span class="print-qty">+3</span></div>
+        </div>
+      </div>
+      <div class="print-needle">Chord for Fulminator → destroy Tron piece</div>
+    </div>
+    <div class="print-mu">
+      <div class="print-mu-name">Living End</div>
+      <div class="print-mu-role">Dog G1 → Even post</div>
+      <div class="print-cols">
+        <div><div class="print-col-label">Out</div>
+          <div class="print-row"><span>Grist ×2</span><span class="print-qty">−2</span></div>
+          <div class="print-row"><span>Bloodline Cultivator</span><span class="print-qty">−1</span></div>
+        </div>
+        <div><div class="print-col-label">In</div>
+          <div class="print-row"><span>Endurance</span><span class="print-qty">+2</span></div>
+          <div class="print-row"><span>Thoughtseize</span><span class="print-qty">+3</span></div>
+        </div>
+      </div>
+      <div class="print-needle">CHORD ENDURANCE in response to cascade!</div>
+    </div>
+    <div class="print-mu">
+      <div class="print-mu-name">UW Control</div>
+      <div class="print-mu-role">Dog → Even post-board</div>
+      <div class="print-cols">
+        <div><div class="print-col-label">Out</div>
+          <div class="print-row"><span>Hapatra ×2</span><span class="print-qty">−2</span></div>
+          <div class="print-row"><span>Bloodline Cultivator</span><span class="print-qty">−1</span></div>
+        </div>
+        <div><div class="print-col-label">In</div>
+          <div class="print-row"><span>Thoughtseize</span><span class="print-qty">+3</span></div>
+          <div class="print-row"><span>Veil of Summer</span><span class="print-qty">+2</span></div>
+        </div>
+      </div>
+      <div class="print-needle">Veil on combo turn → Solitude can't target</div>
+    </div>
+    <div class="print-mu">
+      <div class="print-mu-name">Amulet Titan</div>
+      <div class="print-mu-role">Favorable · Cursed Totem = game</div>
+      <div class="print-cols">
+        <div><div class="print-col-label">Out</div>
+          <div class="print-row"><span>Grist</span><span class="print-qty">−1</span></div>
+          <div class="print-row"><span>Zulaport</span><span class="print-qty">−1</span></div>
+        </div>
+        <div><div class="print-col-label">In</div>
+          <div class="print-row"><span>Force of Vigor</span><span class="print-qty">+2</span></div>
+          <div class="print-row"><span>Haywire Mite</span><span class="print-qty">+2</span></div>
+        </div>
+      </div>
+      <div class="print-needle">Cursed Totem shuts Yawgmoth — kill it first</div>
+    </div>
+    <div class="print-mu">
+      <div class="print-mu-name">Grixis Reanimator</div>
+      <div class="print-mu-role">Favorable · Faster grind</div>
+      <div class="print-cols">
+        <div><div class="print-col-label">Out</div>
+          <div class="print-row"><span>Bloodline Cultivator</span><span class="print-qty">−1</span></div>
+          <div class="print-row"><span>Grist</span><span class="print-qty">−1</span></div>
+        </div>
+        <div><div class="print-col-label">In</div>
+          <div class="print-row"><span>Endurance</span><span class="print-qty">+2</span></div>
+          <div class="print-row"><span>Thoughtseize</span><span class="print-qty">+2</span></div>
+        </div>
+      </div>
+      <div class="print-needle">Chord Endurance before Persist resolves</div>
+    </div>
+  </div>
+</div>
+
+</div><!-- end .page -->
+<footer>
+  <span>Team Resolve · Modern · 2026</span>
+  <span>Golgari Yawgmoth — 2.0% Meta Share</span>
+  <span>Last Updated: April 2026 · Palette: Developer Tool/IDE (UI UX Pro Max Row 81)</span>
+</footer>
+
+<script>
+function show(id, e) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.nav-link').forEach(b => b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  if(e && e.target) e.target.classList.add('active');
+  window.scrollTo(0, 0);
+}
+function toggle(id) {
+  const el = document.getElementById(id);
+  if (el) el.classList.toggle('open');
+}
+</script>
+
+<script>
+/* card tooltip JS — injected before </body> */
+(function() {
+  const TIP = document.createElement('div');
+  TIP.className = 'card-tip';
+  TIP.innerHTML = '<div class="card-tip-loading">loading...</div>';
+  document.body.appendChild(TIP);
+
+  const CACHE = {};
+  let hideTimer = null;
+
+  function pos(e) {
+    const PAD=24,W=220,H=310;
+    let x = e.clientX + PAD;
+    let y = e.clientY - H / 2;
+    if (x + W > window.innerWidth)  x = e.clientX - W - PAD;
+    if (y < 8)                       y = 8;
+    if (y + H > window.innerHeight)  y = window.innerHeight - H - 8;
+    TIP.style.left = x + 'px';
+    TIP.style.top  = y + 'px';
+  }
+
+  async function show(name, e) {
+    clearTimeout(hideTimer);
+    TIP.innerHTML = '<div class="card-tip-loading">loading...</div>';
+    TIP.classList.add('visible');
+    pos(e);
+    if (CACHE[name]) {
+      TIP.innerHTML = `<img src="${CACHE[name]}" alt="${name}">`;
+      return;
+    }
+    try {
+      const url = `https://api.scryfall.com/cards/named?fuzzy=${encodeURIComponent(name)}`;
+      const r = await fetch(url);
+      if (!r.ok) { TIP.classList.remove('visible'); return; }
+      const d = await r.json();
+      // Handle double-faced cards
+      const img = d.image_uris?.normal ||
+                  d.card_faces?.[0]?.image_uris?.normal ||
+                  d.image_uris?.small;
+      if (!img) { TIP.classList.remove('visible'); return; }
+      CACHE[name] = img;
+      TIP.innerHTML = `<img src="${img}" alt="${name}">`;
+    } catch(err) {
+      TIP.classList.remove('visible');
+    }
+  }
+
+  function hide() {
+    hideTimer = setTimeout(() => TIP.classList.remove('visible'), 80);
+  }
+
+  document.addEventListener('mouseover', e => {
+    const el = e.target.closest('span.c');
+    if (!el) return;
+    showTip(el.textContent.trim(), e);
+  });
+  document.addEventListener('mousemove', e => {
+    if (TIP.classList.contains('visible')) pos(e);
+  });
+  document.addEventListener('mouseout', e => {
+    if (e.target.closest('span.c')) hide();
+  });
+})();
+</script>
+</body>
+</html>

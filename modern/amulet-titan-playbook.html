@@ -1,0 +1,1674 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" href="../images/tab32.png" type="image/png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Amulet Titan — Team Resolve Playbook</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+  html { overflow-y: scroll; }
+  /* ═══ EV/CHARGING ECOSYSTEM PALETTE — UI UX Pro Max Row 25 ═══ */
+  /* pri=#0891B2 acc=#16A34A bg=#ECFEFF fg=#164E63 */
+  :root { --ink:#0e0e0e; --paper:#f2ede6; --paper-dark:#e8e1d6; --rule:#c8bfb0; --primary:#02242c; --accent:#16A34A; --accent-light:rgba(22,163,74,0.15); --danger:#8f1a1a; --danger-light:rgba(143,26,26,0.12); --gold:#16A34A; --gold-light:rgba(22,163,74,0.15); --mid:#5a5248; --card:#ffffff; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:var(--paper); color:var(--ink); font-family:'Crimson Pro',Georgia,serif; font-size:17px; line-height:1.6; }
+  .header-band { background:var(--primary); border-bottom:3px solid var(--accent); padding:48px 80px 40px;position:relative;overflow:hidden;}
+  .header-band { color: #f1f5f9; }
+  .header-band,.header-band *{color:#f1f5f9;}
+  .header-band p, .header-band span, .header-band div { color: #f1f5f9; }
+
+  .header-inner { max-width:1080px; margin:0 auto; display:flex; justify-content:space-between; align-items:flex-end; gap:40px; }
+  .header-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:rgba(236,254,255,0.35); margin-bottom:8px; }
+  .header-title{font-family:'DM Mono',monospace;font-size:clamp(32px,4vw,52px);font-weight:500;letter-spacing:0.06em;line-height:1.05;text-transform:uppercase;}
+  .header-title span{color:var(--accent);}
+  .header-tagline { font-family:'Crimson Pro',serif; font-style:italic; font-size:15px; color:rgba(236,254,255,0.4); margin-top:8px; }
+  .header-right { display:flex; flex-direction:column; gap:8px; text-align:right; padding-bottom:4px; }
+  .header-stat { display:flex; gap:12px; align-items:center; justify-content:flex-end; }
+  .hs-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; color:rgba(236,254,255,0.3); }
+  .hs-val { font-family:'DM Mono',monospace; font-size:12px; color:var(--paper); }
+  nav { position:sticky; top:0; z-index:100; background:var(--primary); border-bottom:2px solid var(--accent); padding:0 80px; display:flex; align-items:center; gap:0; overflow-x:auto; scrollbar-width:none; }
+  nav::-webkit-scrollbar { display:none; }
+  .nav-brand { font-family:'Bebas Neue',sans-serif; font-size:18px; color:#34D399; letter-spacing:0.05em; margin-right:40px; white-space:nowrap; padding:16px 0;  color:var(--accent); }
+  .nav-link { font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:rgba(248,250,252,0.55); padding:20px 16px; cursor:pointer; white-space:nowrap; border-bottom:2px solid transparent; transition:all 0.2s; background:none; border-top:none; border-left:none; border-right:none; }
+  .nav-link:hover, .nav-link.active { color:rgba(248,250,252,1); border-bottom-color:#059669; }
+  .page { max-width:1100px; margin:0 auto; padding:80px 80px; }
+  .section { display:none; animation:fadeIn 0.3s ease; }
+  .section.active { display:block; }
+  @keyframes fadeIn { from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:translateY(0);} }
+  .section-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.25em; text-transform:uppercase; color:var(--mid); margin-bottom:8px; }
+  h1 { font-family:'Bebas Neue',sans-serif; font-size:64px; line-height:0.9; letter-spacing:0.01em; color:var(--ink); margin-bottom:40px; }
+  h2 { font-family:'Bebas Neue',sans-serif; font-size:36px; letter-spacing:0.02em; color:var(--ink); margin:56px 0 20px; padding-bottom:8px; border-bottom:2px solid var(--ink); }
+  h3 { font-family:'DM Mono',monospace; font-size:12px; letter-spacing:0.15em; text-transform:uppercase; color:var(--accent); margin:32px 0 12px; }
+  p { margin-bottom:16px; color:var(--ink); font-weight:300; }
+  strong { font-weight:600; }
+  .mantra { border-left:4px solid var(--accent); padding:24px 32px; background:var(--accent-light); margin:32px 0; font-style:italic; font-size:20px; color:var(--accent); line-height:1.5; }
+  .card-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); gap:1px; background:var(--rule); border:1px solid var(--rule); margin:24px 0; }
+  .card-grid-2 { grid-template-columns:repeat(2,1fr) !important; }
+  .card-grid-3 { grid-template-columns:repeat(3,1fr) !important; }
+  .card { background:var(--paper); padding:24px; }
+  .card:hover { background:var(--paper-dark); }
+  .card-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--mid); margin-bottom:8px; }
+  .card-title { font-family:'Bebas Neue',sans-serif; font-size:22px; letter-spacing:0.03em; color:var(--ink); margin-bottom:8px; }
+  .card-body { font-size:15px; font-weight:300; color:var(--mid); line-height:1.5; }
+  .decklist { display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--rule); border:1px solid var(--rule); margin:24px 0; }
+  .dl-section { background:var(--paper); padding:24px; }
+  .dl-section-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--mid); margin-bottom:16px; }
+  .dl-group { margin-bottom:20px; }
+  .dl-group-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; color:var(--ink); background:var(--paper-dark); padding:4px 8px; margin-bottom:8px; display:inline-block; }
+  .dl-card-row { display:flex; justify-content:space-between; align-items:baseline; padding:3px 0; border-bottom:1px solid rgba(200,191,176,0.3); font-size:15px; font-weight:300; }
+  .dl-card-row:last-child { border-bottom:none; }
+  .dl-qty { font-family:'DM Mono',monospace; font-size:12px; color:var(--mid); flex-shrink:0; margin-left:8px; }
+  .matchup-table { width:100%; border-collapse:collapse; margin:24px 0; table-layout:fixed; }
+  .matchup-table colgroup col:nth-child(1) { width:42%; }
+  .matchup-table colgroup col:nth-child(2) { width:16%; }
+  .matchup-table colgroup col:nth-child(3) { width:16%; }
+  .matchup-table colgroup col:nth-child(4) { width:26%; }
+  .matchup-table th { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; padding:10px 16px; background:var(--ink); color:rgba(236,254,255,0.6); text-align:left; }
+  .matchup-table td { padding:12px 16px; border-bottom:1px solid var(--rule); font-size:15px; font-weight:300; }
+  .matchup-table tr:hover td { background:var(--paper-dark); cursor:pointer; }
+    .matchup-detail { display:none; border:1px solid var(--rule); background:var(--paper-dark); padding:32px 40px; margin:0 0 2px; animation:fadeIn 0.2s ease; }
+
+  .matchup-detail.open { display:block; }
+  .verdict { display:inline-block; font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; padding:4px 10px; border:1px solid; }
+  .verdict-dog { background:var(--danger-light); color:var(--danger); border-color:var(--danger); }
+  .verdict-even { background:var(--gold-light); color:var(--gold); border-color:var(--gold); }
+  .verdict-favor { background:#d1fae5; color:#065f46; border-color:#065f46; }
+  .verdict-hard { background:var(--danger-light); color:var(--danger); border-color:var(--danger); }
+  .sb-col { background:var(--paper); padding:20px; }
+    .sb-item { font-size:13px; font-weight:300; padding:4px 0; border-bottom:1px solid rgba(200,191,176,0.2); }
+  .sb-col-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--mid); margin-bottom:12px; }
+  .sb-table { display:flex; gap:1px; background:var(--rule); border:1px solid var(--rule); margin:16px 0; }
+  .sb-table th { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; padding:8px 12px; background:var(--paper-dark); color:var(--mid); text-align:left; border-bottom:2px solid var(--rule); }
+  .sb-table td { padding:10px 12px; border-bottom:1px solid var(--rule); font-size:14px; font-weight:300; }
+  .sb-out { color:var(--danger); font-family:'DM Mono',monospace; font-size:12px; }
+  .sb-in { color:#065f46; font-family:'DM Mono',monospace; font-size:12px; }
+  .sb-note { font-size:13px; font-weight:300; color:var(--mid); font-style:italic; margin-top:6px; }
+  .sb-card-guide { border:1px solid var(--rule); margin:24px 0; }
+  .sb-guide-row { display:grid; grid-template-columns:180px 1fr; gap:0; border-bottom:1px solid var(--rule); }
+  .sb-guide-row:last-child { border-bottom:none; }
+  .sb-guide-name { font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.08em; text-transform:uppercase; padding:16px; background:var(--paper-dark); color:var(--ink); border-right:1px solid var(--rule); display:flex; align-items:flex-start; }
+  .sb-guide-body { padding:16px; font-size:14px; font-weight:300; line-height:1.6; color:var(--mid); }
+  .role-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--rule); border:1px solid var(--rule); margin:24px 0; }
+  .role-card { background:var(--paper); padding:24px; }
+  .role-name { font-family:'Bebas Neue',sans-serif; font-size:28px; letter-spacing:0.02em; margin-bottom:8px; }
+  .role-name-primary { color:var(--accent); }
+  .role-name-secondary { color:var(--gold); }
+  .role-name-tertiary { color:var(--mid); }
+  .role-desc { font-size:14px; font-weight:300; color:var(--mid); line-height:1.5; margin-bottom:12px; }
+  .role-matchups { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.1em; text-transform:uppercase; color:var(--mid); }
+  .engine-block { border:1px solid var(--rule); margin:32px 0; }
+  .engine-header { background:var(--ink); padding:20px 24px; display:flex; align-items:center; gap:16px; }
+  .engine-letter { font-family:'Bebas Neue',sans-serif; font-size:40px; color:#34D399; line-height:1; }
+  .engine-name { font-family:'Bebas Neue',sans-serif; font-size:24px; color:var(--paper); letter-spacing:0.03em; }
+  .engine-body { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--rule); }
+  .engine-step { background:var(--paper); padding:20px; }
+  .engine-step-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--mid); margin-bottom:6px; }
+  .engine-step-title { font-family:'Bebas Neue',sans-serif; font-size:20px; color:var(--ink); margin-bottom:8px; }
+  .engine-step-body { font-size:14px; font-weight:300; color:var(--mid); line-height:1.5; }
+  .tricks-list { list-style:none; margin:0; padding:0; border:1px solid var(--rule); }
+  .tricks-list li { padding:14px 20px 14px 36px; border-bottom:1px solid var(--rule); font-size:15px; font-weight:300; position:relative; }
+  .tricks-list li:last-child { border-bottom:none; }
+  .tricks-list li::before { content:"▸"; position:absolute; left:14px; color:var(--accent); }
+  .tuning-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--rule); border:1px solid var(--rule); margin:24px 0; }
+  .tuning-card { background:var(--paper); padding:20px; }
+  .tuning-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--mid); margin-bottom:8px; }
+  .tuning-condition { font-family:'Bebas Neue',sans-serif; font-size:18px; color:var(--ink); margin-bottom:12px; }
+  .tuning-up { font-size:14px; font-weight:300; margin-bottom:6px; }
+  .tuning-up::before { content:"▲ "; color:#065f46; font-size:12px; }
+  .tuning-down { font-size:14px; font-weight:300; margin-bottom:6px; }
+  .tuning-down::before { content:"▼ "; color:var(--danger); font-size:12px; }
+  .heuristic-list { list-style:none; margin:0; padding:0; counter-reset:heuristic; }
+  .heuristic-list li { counter-increment:heuristic; display:grid; grid-template-columns:48px 1fr; gap:16px; padding:20px 0; border-bottom:1px solid var(--rule); align-items:start; }
+  .heuristic-list li:last-child { border-bottom:none; }
+  .heuristic-list li::before { content:counter(heuristic,decimal-leading-zero); font-family:'DM Mono',monospace; font-size:22px; color:var(--rule); font-weight:500; }
+  .heuristic-text strong { display:block; font-size:16px; font-weight:600; margin-bottom:4px; color:var(--ink); }
+  .heuristic-text span { font-size:14px; font-weight:300; color:var(--mid); line-height:1.5; }
+  .print-btn { display:inline-flex; align-items:center; gap:8px; font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.12em; text-transform:uppercase; background:var(--ink); color:var(--paper); border:none; padding:10px 20px; cursor:pointer; margin-bottom:32px; }
+  .print-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--rule); border:1px solid var(--rule); }
+  .print-mu { background:var(--paper); padding:16px; }
+  .print-mu-name { font-family:'Bebas Neue',sans-serif; font-size:16px; color:var(--ink); margin-bottom:4px; }
+  .print-mu-role { font-family:'DM Mono',monospace; font-size:9px; letter-spacing:0.1em; text-transform:uppercase; color:var(--mid); margin-bottom:10px; }
+  .print-cols { display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+  .print-col-label { font-family:'DM Mono',monospace; font-size:9px; letter-spacing:0.15em; text-transform:uppercase; color:var(--mid); margin-bottom:4px; }
+  .print-row { font-size:12px; font-weight:300; display:flex; justify-content:space-between; padding:1px 0; border-bottom:1px solid rgba(200,191,176,0.4); }
+  .print-qty { font-family:'DM Mono',monospace; font-size:11px; color:var(--mid); flex-shrink:0; margin-left:4px; }
+  .print-needle { font-family:'DM Mono',monospace; font-size:9px; letter-spacing:0.06em; color:var(--danger); margin-top:6px; text-transform:uppercase; }
+  .c { color:var(--accent); font-weight:400; }
+  footer { background:var(--ink); color:rgba(236,254,255,0.3); padding:40px 80px; margin-top:80px; display:flex; justify-content:space-between; align-items:center; }
+  footer span { font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.1em; text-transform:uppercase; }
+  @media (max-width:768px) { .header-inner,nav,.page,footer { padding-left:24px; padding-right:24px; } .header-right { display:none; } .decklist,.role-grid,.engine-body,.tuning-grid { grid-template-columns:1fr; } nav { padding:0 24px; } }
+  @media print { nav,.print-btn,footer { display:none;   /* SB-only print mode */
+  body.printing-sb .header-band,
+  body.printing-sb nav,
+  body.printing-sb footer { display:none !important; }
+  body.printing-sb .section:not(#prep) { display:none !important; }
+  body.printing-sb #prep > *:not(#sb-print-zone) { display:none !important; }
+  body.printing-sb #sb-print-zone { display:block !important; }
+  body.printing-sb #sb-print-zone h2,
+  body.printing-sb #sb-print-zone p,
+  body.printing-sb .print-btn { display:none !important; }
+  body.printing-sb .print-grid { display:grid !important; grid-template-columns:repeat(3,1fr) !important; }
+  body.printing-sb .print-cols { display:grid !important; }
+  body.printing-sb .print-row { display:flex !important; }
+  body.printing-sb .print-mu { display:block !important; }
+  body.printing-sb .print-mu > * { display:block !important; }
+  body.printing-sb .print-qty { font-family:monospace; }
+  @page { size: portrait; margin: 0.35in; }
+  body.printing-sb { zoom: 0.62; }
+  body.printing-sb #sb-print-zone { page-break-after: avoid; }
+} .section { display:block !important; } }
+  .edge-case { border:1px solid var(--accent); background:var(--accent-light); padding:16px 20px; margin:16px 0; font-size:14px; }
+  .edge-case-label { font-family:'DM Mono',monospace; font-size:9px; letter-spacing:0.15em; text-transform:uppercase; color:var(--accent); margin-bottom:6px; }
+  .edge-case-body { font-weight:300; color:var(--ink); line-height:1.5; }
+
+  .checklist { list-style:none; padding:0; margin:24px 0; }
+  .checklist li { display:flex; align-items:flex-start; gap:16px; padding:12px 0; border-bottom:1px solid var(--rule); font-weight:300; font-size:15px; }
+  .check-box { width:20px; height:20px; border:2px solid var(--accent); flex-shrink:0; cursor:pointer; margin-top:2px; transition:background 0.15s; }
+  .check-box.checked { background:var(--accent); }
+
+  /* ── CARD IMAGE TOOLTIP ─────────────────────────────────── */
+.card-tip {
+  position:fixed; z-index:9999; pointer-events:none;
+  width:220px; border-radius:8px; overflow:hidden;
+  box-shadow:0 8px 32px rgba(0,0,0,0.6);
+  opacity:0; transition:opacity 0.15s ease;
+  background:#1a1a2e;
+}
+.card-tip.visible { opacity:1; }
+.card-tip img { width:220px; height:auto; display:block; }
+.card-tip-loading {
+  width:220px; height:308px; display:flex;
+  align-items:center; justify-content:center;
+  color:#94a3b8; font-size:12px; font-family:monospace;
+  background:#1e293b;
+}
+span.c {
+  cursor:help;
+  border-bottom:1px dashed var(--accent,#CA8A04);
+}
+span.c:hover { border-bottom-style:solid; }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-brand">Amulet Titan</div>
+  <a class="nav-link" href="../deck-guides.html" style="text-decoration:none;">&#8592; Guides</a>
+  <button class="nav-link active" onclick="show('identity')">Overview</button>
+  <button class="nav-link" onclick="show('decklist')">Decklist</button>
+  <button class="nav-link" onclick="show('gameplan')">Gameplan</button>
+  <button class="nav-link" onclick="show('engines')">Engines</button>
+  <button class="nav-link" onclick="show('lines')">Lines</button>
+  <button class="nav-link" onclick="show('roles')">Roles</button>
+  <button class="nav-link" onclick="show('matchups')">Matchups</button>
+  <button class="nav-link" onclick="show('sideboard')">Sideboard</button>
+  <button class="nav-link" onclick="show('heuristics')">Heuristics</button>
+  <button class="nav-link" onclick="show('tuning')">Tuning</button>
+  <button class="nav-link" onclick="show('prep')">Prep</button>
+</nav>
+<div class="header-band">
+  <div class="header-inner">
+    <div>
+      <div class="header-label">Team Resolve · Modern · April 2026</div>
+      <div class="header-title">Amulet<br><span>Titan</span></div>
+      <div class="header-tagline">"One Titan attack. Six triggers. They dead."</div>
+    </div>
+    <div class="header-right">
+      <div class="header-stat"><span class="hs-label">Meta Share</span><span class="hs-val">3.1%</span></div>
+      <div class="header-stat"><span class="hs-label">Role</span><span class="hs-val">Land Combo-Ramp</span></div>
+      <div class="header-stat"><span class="hs-label">Colors</span><span class="hs-val">Green (splash)</span></div>
+      <div class="header-stat"><span class="hs-label">Kill Turn</span><span class="hs-val">2–4</span></div>
+    </div>
+  </div>
+</div>
+<div class="page">
+
+
+<!-- CH01: OVERVIEW -->
+<div id="identity" class="section active">
+  <div class="section-label">Chapter 01</div>
+  <h1>Deck<br>Identity</h1>
+
+  <div class="mantra">"Amulet of Vigor turns every bounce land into a ritual. With two Amulets, a single land drop generates four mana. Primeval Titan finds two more lands on entry and two more every attack. The math gets out of hand very fast."</div>
+
+  <p>Amulet Titan is Modern's most technically demanding land combo deck. The deck wins by exploiting <span class="c">Amulet of Vigor</span>'s interaction with bounce lands (Simic Growth Chamber, Gruul Turf, Boros Garrison): every tapped permanent entering immediately untaps, so a bounce land that normally costs you a land drop instead produces a net mana surplus. With multiple Amulets this compounds rapidly — two Amulets plus one bounce land can generate four mana from a single land drop.</p>
+
+  <p>The primary win condition is <span class="c">Primeval Titan</span>. When Titan enters or attacks, it searches for two lands from the library and puts them onto the battlefield tapped — which Amulet immediately untaps. The standard kill line: Titan enters, fetch Slayers' Stronghold + bounce land. Activate Stronghold (giving Titan haste + vigilance), attack, fetch Sunhome + Vesuva (copying another bounce land). Sunhome gives Titan double strike. Titan deals 12 trample damage and kills from full health.</p>
+
+  <p>The deck's secondary kill through <span class="c">Valakut, the Molten Pinnacle</span> is particularly important against ground stalls. <span class="c">Dryad of the Ilysian Grove</span> makes all lands every basic land type, so every land you play counts as a Mountain for Valakut triggers. A Titan attack fetching two Mountains with two Valakuts in play deals 12+ damage from nowhere.</p>
+
+  <h2>Deck Identity</h2>
+  <div class="card-grid">
+    <div class="card">
+      <div class="card-label">Primary Win</div>
+      <div class="card-title">Titan Haste Kill</div>
+      <div class="card-body">Cast Primeval Titan (turn 2–4). On entry, fetch Hanweir Battlements + bounce land. Tap Hanweir: give Titan haste. Titan attacks as 6/6 trample. Attack trigger: fetch utility lands — Mirrorpool to create a second Titan token (another ETB trigger, 2 more lands), Boseiju to answer a threat, or more bounce lands for Scapeshift setup. Usually takes 2 attacks to close.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Secondary Win</div>
+      <div class="card-title">Scapeshift</div>
+      <div class="card-body">Sacrifice any number of lands. Search your library for that many land cards, put them onto the battlefield tapped. With Amulet in play all those lands untap immediately — including bounce lands, which chain to produce massive surplus mana in a single resolution. Four copies ensures you can assemble the Scapeshift line when Titan is answered.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Tertiary Win</div>
+      <div class="card-title">Cultivator Colossus</div>
+      <div class="card-body">When it enters, put a land from hand onto the battlefield tapped, draw a card, repeat. With 6+ lands in hand and Amulet active: each tapped land untaps immediately, produces mana, and the chain draws the next. Creates a massive threat while flooding the battlefield with mana. The GSZ-toolbox line finds it when needed.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Mana Engine</div>
+      <div class="card-title">Amulet + Bounce Lands</div>
+      <div class="card-body">Each Amulet trigger is a separate untap. Two Amulets + bounce land = 4 mana from one land drop. Three Amulets + bounce land = 6 mana. The bounce land returning a land gives an additional land drop next turn (playing the returned land). This creates mana surpluses that dwarf any other Modern mana source.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Skill Ceiling</div>
+      <div class="card-title">Highest in Modern</div>
+      <div class="card-body">CrisMTG77: "The deck has nearly infinite lines of play." Stack triggers correctly (Amulet resolves before bounce return), choose correct lands to fetch, sequence Titan attacks to maximize damage. New pilots cost themselves 20–30% win rate on sequencing alone — this deck rewards hundreds of reps.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Meta Position</div>
+      <div class="card-title">3.1% · Specialist Pick</div>
+      <div class="card-body">Low meta share because the deck requires deep knowledge to pilot. Expert pilots post 55–60% win rates; novices post 40–45%. Best choice for players who commit to learning one deck deeply. March 28, 2026 Challenge first place (8-1 record). Consistent top-table presence at major events.</div>
+    </div>
+  </div>
+
+  <h2>Oracle Accuracy — Critical Interactions</h2>
+  <div class="card-grid">
+    <div class="card">
+      <div class="card-label">Amulet of Vigor</div>
+      <div class="card-title">{1} · Artifact</div>
+      <div class="card-body">Whenever a permanent you control enters TAPPED, untap it. This is a triggered ability — each Amulet is a separate trigger. With two Amulets and a bounce land: play the bounce land (ETB tapped), two Amulet triggers go on stack. Both resolve, untapping the bounce land twice (redundant but both fire). The bounce land's "return a land" trigger is separate — put it on stack after the Amulet triggers, so you can tap the bounce land for mana between triggers resolving.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Primeval Titan</div>
+      <div class="card-title">{4}{G}{G} · 6/6 Trample</div>
+      <div class="card-body">Whenever this creature enters OR attacks, search library for up to 2 land cards, put them onto battlefield TAPPED, shuffle. With Amulet in play, the lands immediately untap. On entry: fetch Slayers' Stronghold + bounce land (untap both). On each attack: fetch two more lands. This means a Titan that survives to attack multiple times generates 4+ free lands over two turns. The "or attacks" trigger is why Titan wins games even without haste.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Scapeshift</div>
+      <div class="card-title">{3}{G} · Sorcery</div>
+      <div class="card-body">Sacrifice any number of lands. Search your library for that many land cards, put them onto the battlefield tapped, then shuffle. With Amulet in play: every fetched land immediately untaps. Fetch bounce lands → each untaps via Amulet, taps for mana, bounce trigger returns a land to hand. A Scapeshift sacrificing 6 lands into the right mix of bounce lands and utility lands can generate 12+ mana in a single resolution. Key rule: lands enter simultaneously from Scapeshift, so all Amulet triggers go on stack together — let them resolve before the bounce triggers to tap each land for mana.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Malevolent Rumble</div>
+      <div class="card-title">{1}{G} · Sorcery</div>
+      <div class="card-body">Look at the top four cards, put one permanent into your hand, put the rest into the graveyard. The key word is permanent — this finds Amulet of Vigor, Spelunking, Arboreal Grazer, Primeval Titan, or any land. Three copies makes the deck remarkably consistent at finding its engine pieces. Discarding the other three also fuels Aftermath Analyst's death trigger, which returns all lands from the GY to hand.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Green Sun's Zenith</div>
+      <div class="card-title">{X}{G} · Sorcery</div>
+      <div class="card-body">Search for a green creature with mana value X or less, put it onto the battlefield, shuffle GSZ into your library. At X=0: finds Dryad Arbor (a 1/1 Forest creature land) — an instant land drop that costs only {G}. At X=3: finds Arboreal Grazer, Aftermath Analyst. At X=6: finds Primeval Titan. Shuffles itself back — effectively a 4th copy of Titan and a 5th copy of Grazer over the course of a game. Three copies means you have reliable access to any green creature in the 75.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Simic Growth Chamber</div>
+      <div class="card-title">Bounce Land</div>
+      <div class="card-body">ETB tapped. When it enters, return a land you control to its owner's hand. The trigger order on stack: Amulet trigger (untap Chamber) is separate from the bounce trigger (return a land). Let Amulet resolve first → tap Chamber for {G}{U} → then the bounce trigger resolves, returning a land. You don't have to return Chamber itself — return a Forest for an extra land drop next turn. This is the fundamental Amulet sequencing lesson.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Spelunking</div>
+      <div class="card-title">{2}{G} · Enchantment</div>
+      <div class="card-body">ETB: draw a card, you may put a land from hand onto the battlefield. Lands you control enter untapped. The "enter untapped" clause applies to ALL your lands, including bounce lands. With Spelunking but no Amulet, your bounce lands still ETB untapped — they tap for mana immediately, and the bounce trigger fires normally. Two Spelunkings means a second effect, but the untap is redundant. Spelunking is essentially a second Amulet of Vigor for ETB purposes, plus it cantrips.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Summoner's Pact</div>
+      <div class="card-title">{0} · Instant</div>
+      <div class="card-body">Search library for a green creature, put in hand. At beginning of your next upkeep, pay {2}{G}{G} or lose the game. The Pact cost is owed at your NEXT upkeep — if you win this turn, the upkeep never comes. If you Pact for Titan on your turn 3, win via the Titan kill line, you never owe the {2}{G}{G}. DO NOT Pact if you can't pay next turn and don't have a guaranteed kill. Pacting for Dryad or Arboreal Grazer on a turn when you're not going to win sets up a later kill safely.</div>
+    </div>
+  </div>
+</div>
+
+<!-- CH02: DECKLIST -->
+<div id="decklist" class="section">
+  <div class="section-label">Chapter 02</div>
+  <h1>The 75</h1>
+  <p style="font-style:italic;color:var(--mid);font-size:15px;margin-bottom:8px;">Two reference lists from LDXP SEA26 (March 2026). Both share the same engine — the differences are in the flex slots and sideboard philosophy. <strong>Option B (aljce) is the primary reference</strong> — 1st place, 13-1-2.</p>
+  <p style="font-size:14px;font-weight:300;color:var(--mid);margin-bottom:24px;">
+    Option A — Devon Straub, LDXP SEA26 PTQ (Mar 27): <a href="https://melee.gg/Decklist/View/3f63eb45-ce53-47fc-b221-b41a010d5291" style="color:var(--accent);">melee.gg →</a> &nbsp;|&nbsp;
+    Option B — aljce, LDXP SEA26 10k Winner (13-1-2, Mar 28): <a href="https://melee.gg/Decklist/View/2a4efd5e-3fcd-45d1-86bf-b41a0128ba82" style="color:var(--accent);">melee.gg →</a>
+  </p>
+
+  <h2>Option B — aljce (10k Winner · 13-1-2 · Primary Reference)</h2>
+  <div class="decklist">
+    <div class="dl-section">
+      <div class="dl-section-label">Maindeck — 61 cards</div>
+      <div class="dl-group">
+        <div class="dl-group-label">Creatures (10)</div>
+        <div class="dl-card-row"><span><span class="c">Arboreal Grazer</span></span><span class="dl-qty">4</span></div>
+        <div class="dl-card-row"><span><span class="c">Primeval Titan</span></span><span class="dl-qty">3</span></div>
+        <div class="dl-card-row"><span>Aftermath Analyst</span><span class="dl-qty">1</span></div>
+        <div class="dl-card-row"><span><span class="c">Cultivator Colossus</span></span><span class="dl-qty">1</span></div>
+        <div class="dl-card-row"><span>Dryad Arbor</span><span class="dl-qty">1</span></div>
+      </div>
+      <div class="dl-group">
+        <div class="dl-group-label">Sorceries (10)</div>
+        <div class="dl-card-row"><span>Scapeshift</span><span class="dl-qty">4</span></div>
+        <div class="dl-card-row"><span>Green Sun's Zenith</span><span class="dl-qty">3</span></div>
+        <div class="dl-card-row"><span>Malevolent Rumble</span><span class="dl-qty">3</span></div>
+      </div>
+      <div class="dl-group">
+        <div class="dl-group-label">Instants (2)</div>
+        <div class="dl-card-row"><span><span class="c">Summoner's Pact</span></span><span class="dl-qty">2</span></div>
+      </div>
+      <div class="dl-group">
+        <div class="dl-group-label">Artifacts (5)</div>
+        <div class="dl-card-row"><span><span class="c">Amulet of Vigor</span></span><span class="dl-qty">4</span></div>
+        <div class="dl-card-row"><span>Vexing Bauble</span><span class="dl-qty">1</span></div>
+      </div>
+      <div class="dl-group">
+        <div class="dl-group-label">Enchantments (8)</div>
+        <div class="dl-card-row"><span><span class="c">Spelunking</span></span><span class="dl-qty">4</span></div>
+        <div class="dl-card-row"><span><span class="c">Urza's Saga</span></span><span class="dl-qty">4</span></div>
+      </div>
+      <div class="dl-group">
+        <div class="dl-group-label">Lands (26)</div>
+        <div class="dl-card-row"><span>Crumbling Vestige</span><span class="dl-qty">4</span></div>
+        <div class="dl-card-row"><span>Gruul Turf</span><span class="dl-qty">4</span></div>
+        <div class="dl-card-row"><span>Boseiju, Who Endures</span><span class="dl-qty">3</span></div>
+        <div class="dl-card-row"><span>Forest</span><span class="dl-qty">3</span></div>
+        <div class="dl-card-row"><span>Lotus Field</span><span class="dl-qty">2</span></div>
+        <div class="dl-card-row"><span>Simic Growth Chamber</span><span class="dl-qty">2</span></div>
+        <div class="dl-card-row"><span>Echoing Deeps</span><span class="dl-qty">1</span></div>
+        <div class="dl-card-row"><span>Hanweir Battlements</span><span class="dl-qty">1</span></div>
+        <div class="dl-card-row"><span>Mirrorpool</span><span class="dl-qty">1</span></div>
+        <div class="dl-card-row"><span>Otawara, Soaring City</span><span class="dl-qty">1</span></div>
+        <div class="dl-card-row"><span>Shifting Woodland</span><span class="dl-qty">1</span></div>
+        <div class="dl-card-row"><span>Tolaria West</span><span class="dl-qty">1</span></div>
+        <div class="dl-card-row"><span>Urza's Cave</span><span class="dl-qty">1</span></div>
+        <div class="dl-card-row"><span>Vesuva</span><span class="dl-qty">1</span></div>
+      </div>
+    </div>
+    <div class="dl-section">
+      <div class="dl-section-label">Sideboard — 15 cards</div>
+      <div class="dl-group">
+        <div class="dl-group-label">Sweepers / Removal</div>
+        <div class="dl-card-row"><span>Fire Magic</span><span class="dl-qty">3</span></div>
+        <div class="dl-card-row"><span>Dismember</span><span class="dl-qty">2</span></div>
+      </div>
+      <div class="dl-group">
+        <div class="dl-group-label">Artifact / Enchantment Hate</div>
+        <div class="dl-card-row"><span><span class="c">Force of Vigor</span></span><span class="dl-qty">3</span></div>
+      </div>
+      <div class="dl-group">
+        <div class="dl-group-label">Lock Pieces</div>
+        <div class="dl-card-row"><span>Trinisphere</span><span class="dl-qty">2</span></div>
+      </div>
+      <div class="dl-group">
+        <div class="dl-group-label">Utility</div>
+        <div class="dl-card-row"><span>Bojuka Bog</span><span class="dl-qty">1</span></div>
+        <div class="dl-card-row"><span>Collector Ouphe</span><span class="dl-qty">1</span></div>
+        <div class="dl-card-row"><span>Icetill Explorer</span><span class="dl-qty">1</span></div>
+        <div class="dl-card-row"><span>Six</span><span class="dl-qty">1</span></div>
+        <div class="dl-card-row"><span>The Wandering Minstrel</span><span class="dl-qty">1</span></div>
+      </div>
+      <h3>Key Differences vs. Option A</h3>
+      <p style="font-size:13px;font-weight:300;color:var(--mid);line-height:1.5;">+4 Scapeshift (vs 3) · +3 GSZ (vs 2) · Dryad Arbor as GSZ-0 target · Fire Magic (3x sweeper) replaces Defense Grid · Trinisphere as the lock piece vs interactive decks. Winner's list — validate before each event.</p>
+    </div>
+  </div>
+
+  <h2>Option A — Devon Straub (PTQ · 3-0-3)</h2>
+  <div class="decklist">
+    <div class="dl-section">
+      <div class="dl-section-label">Maindeck — 60 cards</div>
+      <div class="dl-group">
+        <div class="dl-group-label">Creatures (10)</div>
+        <div class="dl-card-row"><span><span class="c">Arboreal Grazer</span></span><span class="dl-qty">4</span></div>
+        <div class="dl-card-row"><span><span class="c">Primeval Titan</span></span><span class="dl-qty">4</span></div>
+        <div class="dl-card-row"><span>Aftermath Analyst</span><span class="dl-qty">2</span></div>
+      </div>
+      <div class="dl-group">
+        <div class="dl-group-label">Sorceries (9)</div>
+        <div class="dl-card-row"><span>Malevolent Rumble</span><span class="dl-qty">4</span></div>
+        <div class="dl-card-row"><span>Scapeshift</span><span class="dl-qty">3</span></div>
+        <div class="dl-card-row"><span>Green Sun's Zenith</span><span class="dl-qty">2</span></div>
+      </div>
+      <div class="dl-group">
+        <div class="dl-group-label">Instants (2)</div>
+        <div class="dl-card-row"><span><span class="c">Summoner's Pact</span></span><span class="dl-qty">2</span></div>
+      </div>
+      <div class="dl-group">
+        <div class="dl-group-label">Artifacts (5)</div>
+        <div class="dl-card-row"><span><span class="c">Amulet of Vigor</span></span><span class="dl-qty">4</span></div>
+        <div class="dl-card-row"><span>Vexing Bauble</span><span class="dl-qty">1</span></div>
+      </div>
+      <div class="dl-group">
+        <div class="dl-group-label">Enchantments (8)</div>
+        <div class="dl-card-row"><span><span class="c">Spelunking</span></span><span class="dl-qty">4</span></div>
+        <div class="dl-card-row"><span><span class="c">Urza's Saga</span></span><span class="dl-qty">4</span></div>
+      </div>
+      <div class="dl-group">
+        <div class="dl-group-label">Lands (26)</div>
+        <div class="dl-card-row"><span>Forest</span><span class="dl-qty">4</span></div>
+        <div class="dl-card-row"><span>Boseiju, Who Endures</span><span class="dl-qty">3</span></div>
+        <div class="dl-card-row"><span>Crumbling Vestige</span><span class="dl-qty">3</span></div>
+        <div class="dl-card-row"><span>Gruul Turf</span><span class="dl-qty">3</span></div>
+        <div class="dl-card-row"><span>Simic Growth Chamber</span><span class="dl-qty">2</span></div>
+        <div class="dl-card-row"><span>Lotus Field</span><span class="dl-qty">2</span></div>
+        <div class="dl-card-row"><span>Echoing Deeps</span><span class="dl-qty">1</span></div>
+        <div class="dl-card-row"><span>Hanweir Battlements</span><span class="dl-qty">1</span></div>
+        <div class="dl-card-row"><span>Mirrorpool</span><span class="dl-qty">1</span></div>
+        <div class="dl-card-row"><span>Otawara, Soaring City</span><span class="dl-qty">1</span></div>
+        <div class="dl-card-row"><span>Shifting Woodland</span><span class="dl-qty">1</span></div>
+        <div class="dl-card-row"><span>Tolaria West</span><span class="dl-qty">1</span></div>
+        <div class="dl-card-row"><span>Urza's Cave</span><span class="dl-qty">1</span></div>
+        <div class="dl-card-row"><span>Vesuva</span><span class="dl-qty">1</span></div>
+      </div>
+    </div>
+    <div class="dl-section">
+      <div class="dl-section-label">Sideboard — 15 cards</div>
+      <div class="dl-group">
+        <div class="dl-group-label">Artifact / Enchantment Hate</div>
+        <div class="dl-card-row"><span><span class="c">Force of Vigor</span></span><span class="dl-qty">2</span></div>
+      </div>
+      <div class="dl-group">
+        <div class="dl-group-label">Creature Removal</div>
+        <div class="dl-card-row"><span>Dismember</span><span class="dl-qty">2</span></div>
+      </div>
+      <div class="dl-group">
+        <div class="dl-group-label">Utility Creatures</div>
+        <div class="dl-card-row"><span>Collector Ouphe</span><span class="dl-qty">1</span></div>
+        <div class="dl-card-row"><span>Dosan the Falling Leaf</span><span class="dl-qty">1</span></div>
+        <div class="dl-card-row"><span>Green Sun's Zenith</span><span class="dl-qty">1</span></div>
+        <div class="dl-card-row"><span>Insidious Fungus</span><span class="dl-qty">1</span></div>
+        <div class="dl-card-row"><span>Six</span><span class="dl-qty">1</span></div>
+        <div class="dl-card-row"><span>The Wandering Minstrel</span><span class="dl-qty">1</span></div>
+        <div class="dl-card-row"><span>Tireless Tracker</span><span class="dl-qty">1</span></div>
+      </div>
+      <div class="dl-group">
+        <div class="dl-group-label">Lands</div>
+        <div class="dl-card-row"><span>Bojuka Bog</span><span class="dl-qty">1</span></div>
+        <div class="dl-card-row"><span>Boseiju, Who Endures</span><span class="dl-qty">1</span></div>
+        <div class="dl-card-row"><span>Otawara, Soaring City</span><span class="dl-qty">1</span></div>
+        <div class="dl-card-row"><span>Vampires' Vengeance</span><span class="dl-qty">1</span></div>
+      </div>
+      <h3>Key Differences vs. Option B</h3>
+      <p style="font-size:13px;font-weight:300;color:var(--mid);line-height:1.5;">4 Titan (vs 3) · 4 Malevolent Rumble (vs 3) · Aftermath Analyst (2x) for GY recursion · Dosan the Falling Leaf + Insidious Fungus as lock pieces vs interaction. More toolboxy SB, less raw power.</p>
+    </div>
+  </div>
+</div>
+
+<!-- CH03: GAME FLOW -->
+<div id="gameplan" class="section">
+  <div class="section-label">Chapter 03</div>
+  <h1>Game<br>Flow</h1>
+
+  <p>Every Amulet Titan game follows the same structure: set up the Amulet engine early, ramp through bounce lands, resolve Dryad or Titan, then attack for lethal. The skill is in sequencing the triggers correctly and knowing when to go for the kill vs. when to develop more.</p>
+
+  <h2>The Standard Kill Line (Turn 3)</h2>
+  <div class="sb-card-guide">
+    <div class="sb-guide-row"><div class="sb-guide-name">Turn 1</div><div class="sb-guide-body">Play <span class="c">Amulet of Vigor</span>. With a bounce land in hand: play the bounce land, Amulet untap trigger resolves, tap for {G}{U}, bounce trigger returns a Forest to hand. You've now seen 8 cards and have 1 mana available. Alternatively: play <span class="c">Arboreal Grazer</span>, use its ETB to put a bounce land from hand onto the battlefield. Amulet untap fires. If no Amulet: just play a Forest or Saga. Surveil lands via Spelunking and Urza's Saga to find key pieces.</div></div>
+    <div class="sb-guide-row"><div class="sb-guide-name">Turn 2</div><div class="sb-guide-body">With Amulet from T1: replay the bounce land you returned → untap, tap, bounce again. With 2 bounce land plays and 1 Amulet you've generated 4+ mana across two turns. Cast <span class="c">Spelunking</span> (cantrips + makes all your lands enter untapped) or <span class="c">Malevolent Rumble</span> to dig for Titan. In best case: Summoner's Pact for Titan (no upkeep cost if you kill this turn), or Green Sun's Zenith for Dryad Arbor as a free extra land drop.</div></div>
+    <div class="sb-guide-row"><div class="sb-guide-name">Turn 3 — Kill</div><div class="sb-guide-body">Cast <span class="c">Primeval Titan</span> (6 mana from Amulet ramp). ETB trigger: fetch <span class="c">Hanweir Battlements</span> + a bounce land (Gruul Turf). With Amulet, both ETB untapped. Tap Hanweir Battlements: {R}{W}{T} — target creature (Titan) gains haste. Titan attacks as 6/6 trample. Attack trigger: fetch <span class="c">Mirrorpool</span> + another bounce land. Tap Mirrorpool sacrificing it: copy Titan — the token ETB fires, fetching 2 more lands. Those fetch Boseiju (for protection) + another utility land. The Titan and its copy dealing 12 trample damage, plus 4 more fetched lands entering = often lethal on this turn or the next.</div></div>
+    <div class="sb-guide-row"><div class="sb-guide-name">Key Rule</div><div class="sb-guide-body">Vesuva can copy ANY land already on the battlefield — but cannot copy a land that entered simultaneously with it. When Titan fetches two lands at once, Vesuva can only copy lands already on the battlefield before those two entered. Use Vesuva to copy Gruul Turf or Simic Growth Chamber for a second bounce land providing another Amulet untap trigger and more mana. Mirrorpool is strictly better than Vesuva in most lines because the Titan token provides a second full ETB trigger (2 more land fetches).</div></div>
+  </div>
+
+  <h2>Mulligan Framework</h2>
+  <div class="card-grid card-grid-2">
+    <div class="card">
+      <div class="card-label">Keep</div>
+      <div class="card-title">Amulet + Bounce + Land</div>
+      <div class="card-body">Any hand with Amulet of Vigor + a bounce land + a second land source is a keep. The Amulet hand snowballs immediately — you're generating surplus mana by turn 2 and have lines to Titan by turn 3. The hand doesn't need Titan, just the mana infrastructure.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Keep</div>
+      <div class="card-title">Grazer + Bounce + Land</div>
+      <div class="card-body">Arboreal Grazer on turn 1 puts a bounce land from hand directly into play (tapped, triggering Amulet). This effectively gives you two land drops on turn 1. With any green source + Grazer + bounce land + any other card, you're ahead of curve by turn 2. Particularly strong if the bounce land is Simic Growth Chamber (taps for two colors).</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Risky Keep</div>
+      <div class="card-title">Summoner's Pact Hands</div>
+      <div class="card-body">A hand with Summoner's Pact can find any green creature — Dryad, Titan, Grazer, or Colossus. But the {2}{G}{G} upkeep must be paid next turn. Keep only if you can either (a) kill this turn or (b) generate 4 green mana on turn 2 to pay upkeep. Never Pact speculatively on turn 1 without a concrete plan for the payment.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Mulligan</div>
+      <div class="card-title">No Amulet + No Grazer</div>
+      <div class="card-body">Hands with only regular green ramp (Dryad, Spelunking) but no Amulet and no Grazer are too slow without the mana engine. These hands develop slowly, hit land drops normally, and cast a turn-4 Titan at best. Mulligan aggressively to find Amulet — the deck is built around the {1} artifact, not around being a standard ramp deck.</div>
+    </div>
+  </div>
+
+  <h2>Reading the Board — When to Go</h2>
+  <div class="card-grid card-grid-3">
+    <div class="card">
+      <div class="card-label">Go Now</div>
+      <div class="card-title">Turn 3 Kill Available</div>
+      <div class="card-body">You have Titan + 6+ mana + Hanweir Battlements accessible. Opponents on fair decks haven't set up disruption yet. Execute the haste kill line without hesitation. Don't develop more land or draw cards when the kill is available.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Develop</div>
+      <div class="card-title">Turn 4 Is Safer</div>
+      <div class="card-body">Against counterspell decks with open mana, develop first: cast Spelunking to cantrip and make lands enter untapped, bounce a land to keep the loop going, and use Urza's Saga to build Constructs. Make them use interaction on non-threats, then jam Titan when they're tapped out.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Discard Line</div>
+      <div class="card-title">vs Living End / Cascade</div>
+      <div class="card-body">Against Living End: on the draw, play a bounce land on turn 2, end turn with 8 cards, discard Titan or Colossus at end step. This puts a high-power creature in the GY that Living End would reanimate for them — but more importantly, it extends the game past their turn-3 cascade kill, giving you time to stabilize.</div>
+    </div>
+  </div>
+  <h2>Play vs Draw</h2>
+  <div class="card-grid card-grid-2">
+    <div class="card"><div class="card-label">On the Play</div><div class="card-title">T1 Amulet Is the Dream</div><div class="card-body">T1 Amulet of Vigor is your highest-impact play. T2 bounce land with Amulet in play untaps immediately and gives you 3 mana on turn 2. That's T3 Titan territory. On the play, mulligan more aggressively for Amulet hands. A hand without Amulet on the play is a T4 deck at best. On the play you want: Amulet + bounce land + any ramp piece.</div></div>
+    <div class="card"><div class="card-label">On the Draw</div><div class="card-title">T1 Spelunking Is Fine</div><div class="card-body">On the draw you see 8 cards, which finds Amulet more reliably. T1 Spelunking (makes bounce lands enter untapped, cantrips) is a strong draw-side play since it generates card advantage while setting up the bounce engine. Keep slightly looser hands on draw — a Grazer or Malevolent Rumble hand that would ship on the play can keep on draw because you'll find the missing piece.</div></div>
+  </div>
+
+  <h2>When Disrupted</h2>
+  <div class="card-grid card-grid-3">
+    <div class="card"><div class="card-label">Titan Answered</div><div class="card-title">Pivot to Scapeshift</div><div class="card-body">Titan countered or removed: count your lands. 7 lands + Dryad of the Ilysian Grove (making all lands Forests/Mountains) = Scapeshift wins immediately. Scapeshift sacrifices all lands, finds 6 Mountains + Valakut — 18 triggers at 3 damage each = 54 damage. You don't need Titan to win. If you have 7+ lands, lead with Scapeshift threat before committing Titan.</div></div>
+    <div class="card"><div class="card-label">Amulet Hated</div><div class="card-title">Dryad + Valakut Plan</div><div class="card-body">Damping Sphere or Collector Ouphe hurts the Amulet mana engine. Pivot to the Dryad + Valakut ramp plan: every land you play is a Bolt when Dryad is in play. This is slower (T5–6 kill range) but still wins. Force of Vigor or Haywire Mite answers the hate piece. Spelunking still makes bounce lands enter untapped and cantrips — the engine is slower but functional without Amulet.</div></div>
+    <div class="card"><div class="card-label">Both Answered</div><div class="card-title">Urza’s Saga Beatdown</div><div class="card-body">Titan answered AND Amulet hated: Urza’s Saga generates 3/3 Construct tokens and tutors for Amulet or Spelunking from the deck. A 3/3 + 3/3 + attack each turn is still a reasonable clock. Green Sun’s Zenith for Dryad makes every land drop a Bolt. This is the slowest mode but it’s real — Amulet Titan can close games with Constructs + land damage.</div></div>
+  </div>
+</div>
+
+<!-- CH04: ENGINES -->
+<div id="engines" class="section">
+  <div class="section-label">Chapter 04</div>
+  <h1>Core<br>Engines</h1>
+
+  <div class="engine-block">
+    <div class="engine-header">
+      <div class="engine-letter">1</div>
+      <div><div class="engine-name">Amulet + Bounce Land Mana Engine</div><div style="font-family:'DM Mono',monospace;font-size:11px;color:rgba(236,254,255,0.4);letter-spacing:0.1em;text-transform:uppercase;">Primary Mana Engine</div></div>
+    </div>
+    <div class="engine-body">
+      <div class="engine-step">
+        <div class="engine-step-label">Setup</div>
+        <div class="engine-step-title">Amulet T1, Bounce T2</div>
+        <div class="engine-step-body">Play <span class="c">Amulet of Vigor</span> on turn 1. On turn 2, play any bounce land (Simic Growth Chamber, Gruul Turf, Boros Garrison, Golgari Rot Farm, Selesnya Sanctuary). Amulet's trigger fires: untap the bounce land. The bounce land's own ETB trigger then fires: return a land to hand. Tap the bounce land for 2 mana before the bounce resolves. Net: 2 mana produced, 1 land returned to hand (replay next turn).</div>
+      </div>
+      <div class="engine-step">
+        <div class="engine-step-label">Execution</div>
+        <div class="engine-step-title">Stack Triggers Correctly</div>
+        <div class="engine-step-body">When the bounce land enters: Amulet trigger goes on stack, then the bounce land's "return a land" trigger also goes on stack. Let AMULET resolve first (untap the bounce land). Now tap the bounce land for {G}{U} (or whatever its colors are). Then let the bounce trigger resolve — return a Forest. Next turn: replay the Forest as your land drop, having "used" the bounce land for 2 mana. With 2 Amulets, both untap triggers resolve separately, letting you tap twice for 4 mana.</div>
+      </div>
+      <div class="engine-step">
+        <div class="engine-step-label">Result</div>
+        <div class="engine-step-title">Mana Surplus by T2</div>
+        <div class="engine-step-body">Turn 1: Amulet, 0 floating. Turn 2: Play bounce land, tap for 2 (from Amulet), bounce Forest, play bounce land again (from where you bounced Forest to hand — wait, you bounced Forest, so replay Forest as land drop). By turn 3 you've produced 6+ mana. Primeval Titan costs {4}{G}{G} = 6. With even minimal Amulet support, turn-3 Titan is consistently achievable. The surplus only grows with additional Amulets and Spelunking.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="engine-block">
+    <div class="engine-header">
+      <div class="engine-letter">2</div>
+      <div><div class="engine-name">Primeval Titan Kill Engine</div><div style="font-family:'DM Mono',monospace;font-size:11px;color:rgba(236,254,255,0.4);letter-spacing:0.1em;text-transform:uppercase;">Primary Win Engine</div></div>
+    </div>
+    <div class="engine-body">
+      <div class="engine-step">
+        <div class="engine-step-label">Setup</div>
+        <div class="engine-step-title">Titan ETB — Fetch Hanweir</div>
+        <div class="engine-step-body">When Titan enters, fetch <span class="c">Hanweir Battlements</span> + any bounce land. With Amulet: both ETB untapped. Tap Hanweir Battlements: {R}{W}{T}: target creature (Titan) gains haste until end of turn. Titan can now attack the turn it enters. A 6/6 trample with haste attacking into most boards is already threatening — add the upcoming attack trigger and this snowballs fast.</div>
+      </div>
+      <div class="engine-step">
+        <div class="engine-step-label">Execution</div>
+        <div class="engine-step-title">Attack — Fetch Mirrorpool</div>
+        <div class="engine-step-body">Titan attacks. Attack trigger: fetch <span class="c">Mirrorpool</span> + a second bounce land. Both ETB untapped via Amulet. Tap Mirrorpool: {2}, sacrifice Mirrorpool — copy target creature spell you control that's attacking OR copy Titan's triggered ability. The most common line: sacrifice Mirrorpool to create a 6/6 Titan token that also triggers ETB — that token fetches 2 more lands. Chains of land fetches accumulate mana, Constructs from Saga, and more triggers.</div>
+      </div>
+      <div class="engine-step">
+        <div class="engine-step-label">Result</div>
+        <div class="engine-step-title">Lethal Combat or Scapeshift</div>
+        <div class="engine-step-body">A real Titan + a Mirrorpool copy both attacking: 12 trample damage plus Boseiju or utility lands fetched as backup. Even without one-shotting, the land acceleration from multiple Titan triggers generates enough mana to Scapeshift for lethal next turn. Fetch Boseiju with an attack trigger to answer a problematic permanent mid-combat. The line doesn't require any specific land configuration beyond Hanweir Battlements existing in the library.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="engine-block">
+    <div class="engine-header">
+      <div class="engine-letter">3</div>
+      <div><div class="engine-name">Scapeshift + Amulet Burst Engine</div><div style="font-family:'DM Mono',monospace;font-size:11px;color:rgba(236,254,255,0.4);letter-spacing:0.1em;text-transform:uppercase;">Secondary Win Engine</div></div>
+    </div>
+    <div class="engine-body">
+      <div class="engine-step">
+        <div class="engine-step-label">Setup</div>
+        <div class="engine-step-title">Lands in Play + Amulet Active</div>
+        <div class="engine-step-body">Scapeshift requires you to sacrifice your lands and fetch replacements from the library. With Amulet of Vigor active: every land you fetch ETBs tapped and immediately untaps. Fetch bounce lands — each one untaps, taps for 2 mana, then the bounce trigger fires returning a land to hand. More Amulets = more untap triggers per land. The setup is simply: have Amulet in play, have Scapeshift in hand, have enough lands on the battlefield to sacrifice.</div>
+      </div>
+      <div class="engine-step">
+        <div class="engine-step-label">Execution</div>
+        <div class="engine-step-title">Cast Scapeshift, Chain the Triggers</div>
+        <div class="engine-step-body">Cast Scapeshift. Sacrifice 6 lands. Fetch: 3 bounce lands + Hanweir Battlements + Mirrorpool + Forest. All 6 ETB tapped simultaneously. Amulet triggers: 6 untap triggers go on stack. Let them resolve — tap each bounce land for {G}{U} before the bounce triggers fire. Bounce triggers return 3 lands to hand. You've net gained ~12 mana from the Scapeshift resolution. Cast Primeval Titan with that floating mana if you had 6 already — the deck can chain Scapeshift into Titan into another ETB trigger.</div>
+      </div>
+      <div class="engine-step">
+        <div class="engine-step-label">Result</div>
+        <div class="engine-step-title">Mana Explosion or Direct Win</div>
+        <div class="engine-step-body">Scapeshift is both a mana burst AND an alternate closer when Titan has been countered or killed. Sacrificing 10 lands and fetching 4 bounce lands with 2 Amulets generates 16+ mana in a single resolution — cast Titan off that, attack twice, win. Against graveyard hate that shuts off creature lines: Scapeshift doesn't require creatures in play at all. Against Ensnaring Bridge: Scapeshift generates mana to cast Boseiju to destroy the Bridge, then Titan next turn. Four copies ensures you draw it in extended games.</div>
+      </div>
+    </div>
+  </div>
+
+  <h2>Lines &amp; Tricks</h2>
+  <ul class="tricks-list">
+    <li><strong>Stack Amulet before Bounce:</strong> Always let Amulet's untap trigger resolve before the bounce land's "return a land" trigger. This lets you tap the bounce land for mana between the two triggers resolving. The order: play bounce land → Amulet trigger on stack → bounce trigger on stack → let Amulet resolve (untap) → tap for mana → let bounce trigger resolve (return a land).</li>
+    <li><strong>GSZ at X=0 for Dryad Arbor is a free land drop:</strong> Green Sun's Zenith at X=0 costs {G} and puts Dryad Arbor directly onto the battlefield. Dryad Arbor is a Forest creature land — it counts as a land drop AND adds a green creature to your board. With Amulet: Dryad Arbor ETBs tapped (it's a Forest, which normally ETBs untapped, but Arbor itself says it ETBs tapped when played as a land... actually check: "Dryad Arbor is a Forest creature land. If you play Dryad Arbor as a land, it enters tapped." But GSZ puts it onto the battlefield, not "plays" it as a land, so it might not ETB tapped. Either way, GSZ-0 into Arbor is a mana-efficient way to hit a land drop and generate a creature blocker or Amulet trigger target.</li>
+    <li><strong>Malevolent Rumble mills for Aftermath Analyst:</strong> When Malevolent Rumble puts three cards into the graveyard, Aftermath Analyst's death trigger can fire if Analyst dies later — it returns all lands from the GY to hand. A Rumble that discards 2+ lands sets up an explosive Analyst turn. Also: Rumble puts Titan itself into the GY, enabling Green Sun's Zenith lines that find Aftermath Analyst to chain into finding Titan from the library.</li>
+    <li><strong>Tolaria West transmutes for Summoner's Pact (MV 0):</strong> Tolaria West's Transmute ability ({1}{U}{U}, discard Tolaria West) searches for any card with mana value 0. Summoner's Pact has MV 0 — transmute finds it, which then finds Titan. Also finds Vexing Bauble (MV 0). Note: Amulet of Vigor has MV 1, not 0 — Tolaria West cannot find Amulet directly, only Pact or Bauble.</li>
+    <li><strong>Vesuva copies a land already on the battlefield — not one fetched simultaneously:</strong> When Titan's ETB fetches two lands at once, both enter simultaneously. Vesuva cannot copy a land that entered "with it" in the same batch. Always copy a bounce land that was already on the battlefield before the Titan trigger resolved. The copy enters tapped (since it's copying a land that was tapped), which immediately triggers Amulet to untap it.</li>
+    <li><strong>Boseiju timing against Agatha's Soul Cauldron:</strong> Destroy Cauldron IN RESPONSE to its "exile a creature" trigger — before the exile resolves. If you wait until the ability fully resolves and the creature is already exiled, Cauldron's granting of that creature's abilities persists even after Cauldron dies. Destroy Cauldron while the "exile" trigger is still on the stack to prevent the ability from ever setting up.</li>
+    <li><strong>Discard Titan to survive Living End:</strong> If Living End's cascade window is coming and you can't stop it, hold 8 cards and discard to hand size at end of turn. Discarding Titan or Colossus fills your GY — Living End exiles all GYs when it resolves, so their cascade into Living End removes your Titan from the GY rather than reanimating it for them. This also extends the game past their turn-3 window, giving you time to find Trinisphere or develop your own kill.</li>
+    <li><strong>Trinisphere is your best interactive piece vs Storm and Neoform:</strong> Trinisphere makes every spell cost at least {3}. Ruby Storm cannot chain rituals cheaply — Pyretic Ritual ({1}{R}) becomes {3}, Manamorphose becomes {3}. Neoform ({1}{G}) becomes {3}. Post-board, Trinisphere on turn 2 completely stops their kill turn. The catch: Titan costs {4}{G}{G} = 6, which is already above 3, so Trinisphere doesn't hurt you at all.</li>
+  </ul>
+  <h2>Engine Priority Order</h2>
+  <div class="card-grid card-grid-3">
+    <div class="card"><div class="card-label">Priority 01</div><div class="card-title">Amulet + Bounce Land</div><div class="card-body">The primary speed engine. Amulet of Vigor untaps the bounce land the moment it enters, giving 2 mana from a single land drop. With 2 Amulets, a single bounce land generates 3 mana. This is what enables T3 Titan. Execute this engine first when Amulet is in play. Every land drop with Amulet online should be a bounce land if possible.</div></div>
+    <div class="card"><div class="card-label">Priority 02</div><div class="card-title">Dryad + Valakut</div><div class="card-body">The damage engine. Dryad makes ALL lands Forests and Mountains in addition to their other types. Every land entering the battlefield triggers Valakut — deal 3 damage to any target. With Titan fetching 4 lands on ETB + attack, that’s 12 damage per Titan swing with Dryad active. Execute this engine when Amulet is disrupted or when Titan is online without haste.</div></div>
+    <div class="card"><div class="card-label">Priority 03</div><div class="card-title">Scapeshift</div><div class="card-body">The instant-win backup. At 7 lands with Dryad active: Scapeshift sacrifices all lands, finds 6 Mountains + Valakut = 18 triggers at 3 each = 54 damage. Doesn’t need Titan at all. Execute when Titan has been answered twice, when you have 7+ lands and Dryad, or as a surprise finish when they think they’ve stabilised. Don’t Scapeshift below 7 lands.</div></div>
+  </div>
+
+  <h2>Speed Math</h2>
+  <div class="card-grid card-grid-3">
+    <div class="card"><div class="card-label">T3 Kill</div><div class="card-title">Amulet + Haste</div><div class="card-body">T1: Amulet of Vigor.<br>T2: Bounce land (untaps via Amulet = 3 mana). Play a second land.<br>T3: 6+ mana available. Cast Primeval Titan (6 mana). ETB: find Hanweir Battlements + bounce land. Bounce land untaps = more mana. Battlements gives Titan haste. Attack: ETB trigger finds 2 more lands. Swing for 6 + Valakut triggers.<br><strong>Requires:</strong> Amulet T1 + bounce land T2 + Titan T3. Real but tight.</div></div>
+    <div class="card"><div class="card-label">T4 Kill (Default)</div><div class="card-title">Spelunking Line</div><div class="card-body">T1: Spelunking (makes bounce lands enter untapped, cantrips for a land).<br>T2: Amulet of Vigor.<br>T3: Bounce land + Grazer/ramp piece. 5+ mana available.<br>T4: Primeval Titan. ETB + attack finds 4 lands — Hanweir Battlements, Valakut, bounce land, utility.<br><strong>This is your baseline.</strong> Spelunking into Amulet is more consistent than Amulet-first and still enables T4 cleanly.</div></div>
+    <div class="card"><div class="card-label">T3 vs T4 Decision</div><div class="card-title">When to Force vs Wait</div><div class="card-body"><strong>Force T3:</strong> Opponent is on a T3 combo (Storm, Goryo’s, Neoform). Race them. Any Titan on T3 is better than a perfect Titan on T4 when they win T3.<br><br><strong>Wait for T4:</strong> They have 2+ open mana and no spells cast (counterspell read). Cast a cantrip on T3 to make them react, then resolve Titan T4 on a tapped-out opponent.</div></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════════ LINES -->
+<div id="lines" class="section">
+  <div class="section-label">Lines & Tactics</div>
+  <h1>Lines &<br>Tactics</h1>
+  <div class="mantra">"The highest decision density in Modern. But these three rules determine whether your engine fires at all."</div>
+
+  <h2>Three Lines You Must Know Cold</h2>
+  <div class="card-grid card-grid-3">
+    <div class="card"><div class="card-label">Line 01 — Critical</div><div class="card-title">Amulet Triggers on Each Bounce Land ETB</div><div class="card-body">Each Amulet of Vigor triggers separately when a bounce land enters. Two Amulets in play = two untap triggers per bounce land = net 3 mana from one land drop. The untap trigger goes on the stack before you return the land, so you get the mana even if they respond by destroying the bounce land. Always account for multi-Amulet math before deciding your mana is insufficient for Titan.</div></div>
+    <div class="card"><div class="card-label">Line 02 — Critical</div><div class="card-title">Dryad Makes ALL Your Lands Mountains</div><div class="card-body">Dryad of the Ilysian Grove gives all lands you control every basic land type. This means Urza’s Saga, bounce lands, Amulet fetchlands — they’re all Mountains now. Valakut, the Molten Pinnacle triggers whenever a Mountain enters and you control 6+ other Mountains. With Dryad, every single land drop is a Valakut trigger. This is why Dryad+Valakut wins games without Titan.</div></div>
+    <div class="card"><div class="card-label">Line 03 — Critical</div><div class="card-title">Titan ETB Finds 2 Lands, Attack Finds 2 More</div><div class="card-body">Primeval Titan has two separate land-fetch triggers: ETB finds 2, and attack trigger finds 2 more. That’s 4 total land ETBs in one turn. Find pattern: ETB → Hanweir Battlements + bounce land (untap with Amulet = mana + haste source). Attack → Valakut + another bounce land. With Dryad active, all 4 land entries are Valakut triggers. Calculate your damage before attacking, not after.</div></div>
+  </div>
+
+  <div class="mantra">"The highest decision density in Modern. Every land drop is a puzzle. Amulet + bounce land = extra mana. Dryad + Valakut = Lightning Bolts on land entry. Titan finds the right 2 lands to win."</div>
+
+  <h2>Oracle-Verified Edge Cases</h2>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Amulet of Vigor + Bounce Land = Extra Mana</div>
+    <div class="edge-case-body">Bounce land (e.g. Simic Growth Chamber) enters tapped → Amulet trigger: untap it → tap it for {G}{U} → bounce-land ETB trigger: return a land you control to hand. With 2 Amulets: Amulet triggers twice → untap twice → tap for {G}{U}, untap again, tap for {G}{U} again → 4 mana from one land drop. The bounce trigger returns ANY land — return the bounce land itself to replay next turn. This is the deck's mana engine.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Amulet + Bounce Land — Trigger Ordering Matters</div>
+    <div class="edge-case-body">When a bounce land enters: TWO triggers go on the stack — Amulet's untap trigger AND the bounce land's "return a land" trigger. YOU choose the order (you control both). <strong>Correct order:</strong> put bounce trigger on stack first, then Amulet untap on top. Amulet resolves first (untap, tap for mana), then bounce trigger resolves (return a land). If you stack it wrong (bounce first): you return the land before untapping it → no mana.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Primeval Titan — Searches on ETB AND Attack</div>
+    <div class="edge-case-body">"Whenever this creature enters OR attacks, search for up to two lands, put onto battlefield tapped." The lands enter tapped — with Amulet they untap immediately. Titan ETB: find 2 bounce lands. Each enters tapped → Amulet untaps each → tap for mana → bounce triggers return lands to hand → replay them. A single Titan ETB with Amulet can generate 8+ mana. On attack: search again for 2 more lands. Titan on T3 with Amulet active often wins immediately.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Dryad of the Ilysian Grove + Valakut = Lightning Bolts</div>
+    <div class="edge-case-body">Dryad: "Lands you control are every basic land type in addition to their other types." Every land is a Mountain. Valakut: "Whenever a Mountain enters, if you control at least 5 other Mountains, deal 3 damage." With Dryad + Valakut + 5 other lands: every future land drop deals 3 damage. Titan searching for 2 lands = 6 damage. This is the Valakut kill — play lands, deal damage, don't need to attack.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Dryad — Extra Land Drop + Every Basic Type</div>
+    <div class="edge-case-body">"You may play an additional land on each of your turns." + "Lands you control are every basic land type." Two effects in one creature. The extra land drop stacks with Azusa (Azusa = +2 lands, Dryad = +1, total = 4 land drops per turn). The "every basic type" enables Valakut kills AND makes fetch lands find anything (Windswept Heath finds a "Forest" — with Dryad, every land is a Forest).</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Mycosynth Gardens Copies Amulet — Two Amulets for {0}</div>
+    <div class="edge-case-body">{X}, {T}: This land becomes a copy of target nontoken artifact with MV X. Amulet of Vigor is MV 1. Activate Gardens for {1}{T}: Gardens becomes a copy of Amulet. Now you have 2 Amulets — bounce lands untap twice, generating double mana. The copy is permanent (until Gardens copies something else). Gardens producing {C} or colored mana is lost once it becomes an Amulet (it's no longer a land — wait, it IS still a land that's also a copy of Amulet). It retains its land types but gains Amulet's abilities.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Tolaria West Transmute — Finds Pact, Amulet, EE, Walking Ballista</div>
+    <div class="edge-case-body">"Transmute {1}{U}{U}: search for a card with MV 0." MV 0 targets in the deck: Summoner's Pact (finds Titan or Dryad), Pact of Negation (free counter), Engineered Explosives (sweeper), Walking Ballista (removal or win-con). Transmute only as sorcery — can't surprise opponents. Transmute discards Tolaria West (it goes to GY, not exile). The versatility makes Tolaria West one of the most important lands in the deck.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Cultivator Colossus — Chain Lands Until You Miss</div>
+    <div class="edge-case-body">"When this enters, put a land from hand onto battlefield tapped. If you do, draw a card and repeat." This loops: land from hand → draw → if you drew a land, play it → draw → repeat. With 5-6 lands in hand: dump them all, draw 5-6 cards, end with a massive board + full hand. Colossus's P/T = lands you control — after chaining, it's often a 12/12+ trampler. The lands enter tapped — with Amulet they untap. Without Amulet they're tapped but you're still drawing cards and building the board.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Spelunking — Lands Enter Untapped (Second Amulet Effect)</div>
+    <div class="edge-case-body">"Lands you control enter untapped." This replaces the "enters tapped" clause on bounce lands and Titan-searched lands. Unlike Amulet (which is a triggered ability that untaps), Spelunking is a static replacement effect — the land never enters tapped in the first place. This means: no Amulet trigger (already untapped), but also no window for opponent to respond before you tap for mana. Spelunking also draws a card on ETB and puts a land from hand onto battlefield — it's ramp + card advantage + Amulet effect in one.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Summoner's Pact — Lose the Game if You Don't Pay</div>
+    <div class="edge-case-body">{0}: search for green creature → hand. Next upkeep: pay {2}{G}{G} or lose. With Titan + bounce lands + Amulet: generating {2}{G}{G} is trivial. Without Titan: you MUST have 4 mana next turn or you're dead. Don't Pact unless you can pay OR you're winning this turn. The upkeep trigger is mandatory — you can't "forget" it. It goes on the stack — opponent CAN respond to it (e.g., with Stifle to counter the payment and force the loss).</div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════════ LINES -->
+<div id="edges" class="section">
+  <div class="section-label">Lines & Tactics</div>
+  <h1>Lines &<br>Tactics</h1>
+  <div class="mantra">"The highest decision density in Modern. Every land drop is a puzzle. Amulet + bounce land = extra mana. Dryad + Valakut = Lightning Bolts on land entry. Titan finds the right 2 lands to win."</div>
+
+  <h2>Oracle-Verified Edge Cases</h2>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Amulet of Vigor + Bounce Land = Extra Mana</div>
+    <div class="edge-case-body">Bounce land (e.g. Simic Growth Chamber) enters tapped → Amulet trigger: untap it → tap it for {G}{U} → bounce-land ETB trigger: return a land you control to hand. With 2 Amulets: Amulet triggers twice → untap twice → tap for {G}{U}, untap again, tap for {G}{U} again → 4 mana from one land drop. The bounce trigger returns ANY land — return the bounce land itself to replay next turn. This is the deck's mana engine.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Amulet + Bounce Land — Trigger Ordering Matters</div>
+    <div class="edge-case-body">When a bounce land enters: TWO triggers go on the stack — Amulet's untap trigger AND the bounce land's "return a land" trigger. YOU choose the order (you control both). <strong>Correct order:</strong> put bounce trigger on stack first, then Amulet untap on top. Amulet resolves first (untap, tap for mana), then bounce trigger resolves (return a land). If you stack it wrong (bounce first): you return the land before untapping it → no mana.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Primeval Titan — Searches on ETB AND Attack</div>
+    <div class="edge-case-body">"Whenever this creature enters OR attacks, search for up to two lands, put onto battlefield tapped." The lands enter tapped — with Amulet they untap immediately. Titan ETB: find 2 bounce lands. Each enters tapped → Amulet untaps each → tap for mana → bounce triggers return lands to hand → replay them. A single Titan ETB with Amulet can generate 8+ mana. On attack: search again for 2 more lands. Titan on T3 with Amulet active often wins immediately.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Dryad of the Ilysian Grove + Valakut = Lightning Bolts</div>
+    <div class="edge-case-body">Dryad: "Lands you control are every basic land type in addition to their other types." Every land is a Mountain. Valakut: "Whenever a Mountain enters, if you control at least 5 other Mountains, deal 3 damage." With Dryad + Valakut + 5 other lands: every future land drop deals 3 damage. Titan searching for 2 lands = 6 damage. This is the Valakut kill — play lands, deal damage, don't need to attack.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Dryad — Extra Land Drop + Every Basic Type</div>
+    <div class="edge-case-body">"You may play an additional land on each of your turns." + "Lands you control are every basic land type." Two effects in one creature. The extra land drop stacks with Azusa (Azusa = +2 lands, Dryad = +1, total = 4 land drops per turn). The "every basic type" enables Valakut kills AND makes fetch lands find anything (Windswept Heath finds a "Forest" — with Dryad, every land is a Forest).</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Mycosynth Gardens Copies Amulet — Two Amulets for {0}</div>
+    <div class="edge-case-body">{X}, {T}: This land becomes a copy of target nontoken artifact with MV X. Amulet of Vigor is MV 1. Activate Gardens for {1}{T}: Gardens becomes a copy of Amulet. Now you have 2 Amulets — bounce lands untap twice, generating double mana. The copy is permanent (until Gardens copies something else). Gardens producing {C} or colored mana is lost once it becomes an Amulet (it's no longer a land — wait, it IS still a land that's also a copy of Amulet). It retains its land types but gains Amulet's abilities.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Tolaria West Transmute — Finds Pact, Amulet, EE, Walking Ballista</div>
+    <div class="edge-case-body">"Transmute {1}{U}{U}: search for a card with MV 0." MV 0 targets in the deck: Summoner's Pact (finds Titan or Dryad), Pact of Negation (free counter), Engineered Explosives (sweeper), Walking Ballista (removal or win-con). Transmute only as sorcery — can't surprise opponents. Transmute discards Tolaria West (it goes to GY, not exile). The versatility makes Tolaria West one of the most important lands in the deck.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Cultivator Colossus — Chain Lands Until You Miss</div>
+    <div class="edge-case-body">"When this enters, put a land from hand onto battlefield tapped. If you do, draw a card and repeat." This loops: land from hand → draw → if you drew a land, play it → draw → repeat. With 5-6 lands in hand: dump them all, draw 5-6 cards, end with a massive board + full hand. Colossus's P/T = lands you control — after chaining, it's often a 12/12+ trampler. The lands enter tapped — with Amulet they untap. Without Amulet they're tapped but you're still drawing cards and building the board.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Spelunking — Lands Enter Untapped (Second Amulet Effect)</div>
+    <div class="edge-case-body">"Lands you control enter untapped." This replaces the "enters tapped" clause on bounce lands and Titan-searched lands. Unlike Amulet (which is a triggered ability that untaps), Spelunking is a static replacement effect — the land never enters tapped in the first place. This means: no Amulet trigger (already untapped), but also no window for opponent to respond before you tap for mana. Spelunking also draws a card on ETB and puts a land from hand onto battlefield — it's ramp + card advantage + Amulet effect in one.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Summoner's Pact — Lose the Game if You Don't Pay</div>
+    <div class="edge-case-body">{0}: search for green creature → hand. Next upkeep: pay {2}{G}{G} or lose. With Titan + bounce lands + Amulet: generating {2}{G}{G} is trivial. Without Titan: you MUST have 4 mana next turn or you're dead. Don't Pact unless you can pay OR you're winning this turn. The upkeep trigger is mandatory — you can't "forget" it. It goes on the stack — opponent CAN respond to it (e.g., with Stifle to counter the payment and force the loss).</div>
+  </div>
+</div>
+
+
+<!-- CH05: ROLES -->
+<div id="roles" class="section">
+  <div class="section-label">Chapter 05</div>
+  <h1>Role<br>Assignment</h1>
+
+  <div class="role-grid">
+    <div class="role-card">
+      <div class="role-name role-name-primary">COMBO AGGRESSOR</div>
+      <div class="role-desc">Your default role in 70% of games. You're executing a combo that bypasses opponent's interaction by sheer speed. Kill on turn 3 before they can set up graveyard hate, Blood Moon, or counterspells. Don't slow down to "protect" your combo — just execute it as fast as possible. Speed beats interaction.</div>
+      <div class="role-matchups">vs Most decks G1, vs unprepared opponents</div>
+    </div>
+    <div class="role-card">
+      <div class="role-name role-name-secondary">VALUE GRINDER</div>
+      <div class="role-desc">Against heavy interaction. Use Urza's Saga to build Constructs, chain Malevolent Rumble to find key pieces, cycle through Spelunking to gain card advantage. When they spend counters on your early plays, your later Titans resolve cleanly. Trinisphere post-board on your combo turn taxes their counterspells heavily. The grind axis is surprisingly strong — you have more "free" cards than most decks.</div>
+      <div class="role-matchups">vs UW Control, Jeskai Blink, heavy-counter decks</div>
+    </div>
+    <div class="role-card">
+      <div class="role-name role-name-tertiary">RACE + DISRUPT</div>
+      <div class="role-desc">Against opposing fast combos (Living End, Storm, Neoform). You can't interact on their axis most of the time. Your role: race to kill before they do, and use sideboard pieces (Trinisphere vs Storm/Neoform, Collector Ouphe vs artifact decks, Force of Vigor to destroy their Damping Sphere). Bojuka Bog from the SB fetched with Titan ETB is your GY hate in games 2/3.</div>
+      <div class="role-matchups">vs Living End, Ruby Storm, Neoform</div>
+    </div>
+  </div>
+  <h2>Role Mistakes to Avoid</h2>
+  <ul class="heuristic-list">
+    <li><div class="heuristic-num">01</div><div class="heuristic-body"><strong>Fetching Hanweir Battlements when haste doesn’t matter.</strong> If there are no blockers and they’re at 12+ life, fetching Battlements wastes a land slot. Fetch Valakut + bounce land instead — the extra Valakut trigger deals 3 damage and sets up more damage on the attack trigger. Only fetch Battlements when you need haste to survive their next turn.</div></li>
+    <li><div class="heuristic-num">02</div><div class="heuristic-body"><strong>Casting Scapeshift without Dryad in play.</strong> Scapeshift without Dryad means only basic Mountains trigger Valakut. If you have 3 Mountains in play out of 7 lands, Scapeshift finds 6 more Mountains = only 9 total triggers from the fetched Mountains. With Dryad, ALL 13 fetched lands trigger Valakut. Never Scapeshift without Dryad unless you have enough real Mountains to kill (7+ fetched Mountains).</div></li>
+    <li><div class="heuristic-num">03</div><div class="heuristic-body"><strong>Not bouncing a land at EOT to reset Amulet triggers.</strong> When Amulet is in play, you can replay a bounce land during your turn to get an extra untap trigger (extra mana). Some players forget to replay the bounced land mid-combo and leave mana on the table. Every land bounce with Amulet is free mana. Account for it in your math before deciding you’re short on mana for Titan.</div></li>
+    <li><div class="heuristic-num">04</div><div class="heuristic-body"><strong>Spending all lands before considering Green Sun’s Zenith for Dryad.</strong> Green Sun’s Zenith for {2}{G} finds Dryad of the Ilysian Grove. Once Dryad is in play, every land you’ve already played also becomes a Mountain retroactively (Dryad’s effect is continuous, not an ETB). Don’t play out your whole hand of lands before tutoring Dryad — you want her in play before the land drops that matter.</div></li>
+  </ul>
+
+  <h2>Role-Switching Signals</h2>
+  <div class="card-grid card-grid-2">
+    <div class="card"><div class="card-label">Switch to Scapeshift When</div><div class="card-title">Titan Keeps Getting Answered</div><div class="card-body">Titan has been countered or removed twice. You have 7+ lands in play and Dryad is active (or findable). At this point, Scapeshift wins the game immediately from a tapped-out position. They’ve exhausted interaction on Titan — they may not have an answer for Scapeshift. Cast it as a surprise rather than jamming a third Titan.</div></div>
+    <div class="card"><div class="card-label">Switch to Dryad+Valakut When</div><div class="card-title">Amulet Is Hated Out</div><div class="card-body">Damping Sphere or Collector Ouphe is in play. Force of Vigor or Haywire Mite didn’t find them. Pivot: Green Sun’s Zenith for Dryad, then play lands. Every land entry is a Lightning Bolt. Spelunking still cantrips and makes bounce lands enter untapped. You can close a game entirely via land-based damage without ever resolving Titan or using Amulet triggers.</div></div>
+    <div class="card"><div class="card-label">Switch to Constructs When</div><div class="card-title">Everything Is Locked</div><div class="card-body">Titan answered, Scapeshift answered, Dryad answered. Urza’s Saga on the battlefield generates a 3/3 Construct each chapter and tutors for Amulet, Spelunking, or any 0/1-mana artifact. Two Constructs attacking each turn is a 6-turn clock — slower but real. This is mode 3, not a concession.</div></div>
+    <div class="card"><div class="card-label">Never Switch When</div><div class="card-title">T3 Kill Is Available</div><div class="card-body">Amulet in play, bounce land in hand, Titan accessible, Hanweir Battlements fetchable. Execute the T3 kill. There is no “better” line. Don’t think about Scapeshift, don’t develop another turn. Amulet Titan’s highest win rate comes from executing the kill the turn it’s first available — not from waiting for perfection.</div></div>
+  </div>
+</div>
+
+<!-- CH06: MATCHUPS -->
+<div id="matchups" class="section">
+  <div class="section-label">Chapter 06</div>
+  <h1>Matchup<br>Deep Dives</h1>
+  <p>Source: CrisMTG77 Pro Tour Ghent guide (Feb 2024, updated approach) + March 2026 Challenge data. Amulet's matchup equity is uniquely skill-dependent — an expert pilot will have dramatically different numbers than a novice.</p>
+
+  <table class="matchup-table">
+    <tr><th>Opponent</th><th>Share</th><th>Assessment</th><th>G1</th><th>Post-Board</th></tr>
+
+    <tr onclick="toggle('mu-boros')"><td>Boros Energy</td><td>16%</td><td><span class="verdict verdict-favor">Favorable</span></td><td>Favor</td><td>Favor</td></tr>
+    <tr><td colspan="5" class="matchup-detail" id="mu-boros">
+      <strong>The Matchup:</strong> Boros Energy is generally a favorable matchup. Their removal package (Lightning Helix, Galvanic Discharge) struggles to answer Primeval Titan (6/6 trample survives Discharge at 3 damage; Helix can't kill it). Kappa Cannoneer is rare in their lists. Your primary concern is Blood Moon — some Boros lists run it main deck post-2025. A turn-2 Blood Moon with no Forest in hand loses the game.<br><br>
+      <strong>Key Play:</strong> Handle Ragavan, Nimble Pilferer — if it connects, they gain mana and impulse your cards. Arboreal Grazer or a Saga Construct blocks it cleanly. Either keep an interaction piece or be ahead on board development such that Ragavan blocking doesn't hurt you.<br><br>
+      <strong>Blood Moon:</strong> Always keep basic Forest accessible. Arboreal Grazer finding Forest before Moon resolves survives Moon (basics aren't affected). Even under Moon, green mana from basics can cast Titan eventually.<br><br>
+      <div class="sb-table">
+        <div class="sb-col">
+          <div class="sb-col-label">Out</div>
+          <div class="sb-item"><span>−1 Cultivator Colossus (too slow vs aggro)</span></div>
+          <div class="sb-item"><span>−2 Malevolent Rumble (draw step matters less)</span></div>
+        </div>
+        <div class="sb-col">
+          <div class="sb-col-label">In</div>
+          <div class="sb-item"><span>+2 Dismember (kills Ragavan, Phlage)</span></div>
+          <div class="sb-item"><span>+2 Fire Magic (sweeps their creature board)</span></div>
+        </div>
+      </div>
+    </td></tr>
+
+    <tr onclick="toggle('mu-jeskai')"><td>Jeskai Blink</td><td>7%</td><td><span class="verdict verdict-dog">Dog</span></td><td>Dog</td><td>Even</td></tr>
+    <tr><td colspan="5" class="matchup-detail" id="mu-jeskai">
+      <strong>The Matchup:</strong> Jeskai Blink has Consign to Memory (counters colorless spells — this hits Amulet of Vigor, Engineered Explosives, but NOT Primeval Titan), Force of Negation (counters Titan), Teferi, Time Raveler (bounces your permanents at sorcery speed). Solitude with evoke exiles Titan for free. They have the full toolkit to disrupt.<br><br>
+      <strong>Consign Note:</strong> Consign to Memory is a colored-spell filter — it cannot counter Primeval Titan (green). It CAN counter Amulet of Vigor (colorless), Spelunking is green but Amulet is {1} colorless. Watch for Consign targeting Amulet on turn 1. Don't expose Amulet into open Consign mana if possible.<br><br>
+      <strong>Trinisphere:</strong> Post-board the key card in this matchup. Trinisphere makes every spell cost at least {3} — their Consign to Memory ({2}{U}), Force of Negation, Solitude evoke (normally free) all cost more. Deploy Trinisphere before your kill turn to tax everything they try to do. It doesn't affect Titan at all (costs 6).<br><br>
+      <div class="sb-table">
+        <div class="sb-col">
+          <div class="sb-col-label">Out</div>
+          <div class="sb-item"><span>−2 Scapeshift (slower, they have counters)</span></div>
+          <div class="sb-item"><span>−1 Vexing Bauble</span></div>
+        </div>
+        <div class="sb-col">
+          <div class="sb-col-label">In</div>
+          <div class="sb-item"><span>+2 Trinisphere (taxes all their interaction)</span></div>
+          <div class="sb-item"><span>+2 Force of Vigor (answers Damping Sphere)</span></div>
+        </div>
+      </div>
+    </td></tr>
+
+    <tr onclick="toggle('mu-affinity')"><td>Izzet Affinity</td><td>8%</td><td><span class="verdict verdict-even">Even</span></td><td>Even</td><td>Even</td></tr>
+    <tr><td colspan="5" class="matchup-detail" id="mu-affinity">
+      <strong>The Matchup:</strong> Affinity's clock is fast but Primeval Titan blocks Kappa Cannoneer in combat. Their primary interaction is Metallic Rebuke and Consign — neither hits Titan. The Weapons Manufacturing + EE burst kill is the real threat: if they can accumulate 10 Munitions tokens and EE at 0, they can kill from 20 without attacking. Your Titan needs to attack and kill before they assemble the burst.<br><br>
+      <strong>Collector Ouphe:</strong> Collector Ouphe shuts off activated abilities of ALL artifacts — including their Mox Opal, Arcbound Ravager, and Claws of Gix. A green 2/2 that completely freezes their board is devastating. Fetch it with Green Sun's Zenith (X=2) or bring it in from the SB.<br><br>
+      <div class="sb-table">
+        <div class="sb-col">
+          <div class="sb-col-label">Out</div>
+          <div class="sb-item"><span>−1 Cultivator Colossus</span></div>
+          <div class="sb-item"><span>−2 Malevolent Rumble</span></div>
+        </div>
+        <div class="sb-col">
+          <div class="sb-col-label">In</div>
+          <div class="sb-item"><span>+1 Collector Ouphe (shuts off Mox Opal, Arcbound)</span></div>
+          <div class="sb-item"><span>+3 Force of Vigor (destroys Damping Sphere, Weapons Manufacturing)</span></div>
+        </div>
+      </div>
+    </td></tr>
+
+    <tr onclick="toggle('mu-storm')"><td>Ruby Storm</td><td>6.2%</td><td><span class="verdict verdict-even">Even</span></td><td>Favor</td><td>Even</td></tr>
+    <tr><td colspan="5" class="matchup-detail" id="mu-storm">
+      <strong>The Matchup:</strong> Ruby Storm has almost no interaction in game 1 — they can't stop Primeval Titan. G1 is strongly favorable: they need to kill turn 2–3, and a Titan blocking stops them from racing. Post-board they bring Orim's Chant and Damping Sphere. Damping Sphere is devastating — bounce lands produce {C} instead of their colors, completely breaking the Amulet engine.<br><br>
+      <strong>Trinisphere vs Storm post-board:</strong> Trinisphere is the clean answer. Every spell costs at least {3} — Ruby Medallion ({2}) becomes {3}, Pyretic Ritual ({1}{R}) becomes {3}, Manamorphose ({1}{G/R}) becomes {3}. Storm can't chain rituals. Trinisphere turn 2 off Amulet mana wins this matchup cleanly.<br><br>
+      <div class="sb-table">
+        <div class="sb-col">
+          <div class="sb-col-label">Out</div>
+          <div class="sb-item"><span>−1 Cultivator Colossus</span></div>
+          <div class="sb-item"><span>−2 Scapeshift (slower line)</span></div>
+        </div>
+        <div class="sb-col">
+          <div class="sb-col-label">In</div>
+          <div class="sb-item"><span>+2 Trinisphere (locks them out of chaining)</span></div>
+          <div class="sb-item"><span>+3 Force of Vigor (destroys Damping Sphere)</span></div>
+        </div>
+      </div>
+    </td></tr>
+
+    <tr onclick="toggle('mu-etron')"><td>Eldrazi Tron</td><td>5.5%</td><td><span class="verdict verdict-even">Even</span></td><td>Even</td><td>Even</td></tr>
+    <tr><td colspan="5" class="matchup-detail" id="mu-etron">
+      <strong>The Matchup:</strong> Eldrazi Tron's key threat is Thought-Knot Seer stripping your Titan or Summoner's Pact. Karn, the Great Creator's static shuts off Amulet of Vigor (artifact activated ability — wait, Amulet's trigger is a TRIGGERED ability, not an activated ability. Karn's static only affects activated abilities. Amulet is safe under Karn!). However, Karn can fetch Damping Sphere from SB, which does break the bounce land engine.<br><br>
+      <strong>Sowing Mycospawn Note:</strong> Eldrazi Tron runs Sowing Mycospawn, which kicked exiles a land. If they kick it to exile a bounce land (Simic Growth Chamber, Gruul Turf), that land is permanently gone. Losing a key bounce land significantly reduces your mana output. Prioritize finding multiple copies of bounce lands, or use Tolaria West to find another copy.<br><br>
+      <strong>Speed:</strong> You're faster. Kill on turn 3 before they can assemble Tron and fetch hate. Sowing Mycospawn kicked can exile a bounce land permanently — losing Gruul Turf or Simic Growth Chamber hurts your mana engine.<br><br>
+      <div class="sb-table">
+        <div class="sb-col">
+          <div class="sb-col-label">Out</div>
+          <div class="sb-item"><span>−1 Cultivator Colossus</span></div>
+          <div class="sb-item"><span>−2 Scapeshift</span></div>
+        </div>
+        <div class="sb-col">
+          <div class="sb-col-label">In</div>
+          <div class="sb-item"><span>+2 Dismember (kills TKS before its ETB resolves)</span></div>
+          <div class="sb-item"><span>+3 Force of Vigor (destroys Damping Sphere)</span></div>
+        </div>
+      </div>
+      <div class="sb-note">Karn's static DOES NOT affect Amulet of Vigor — Amulet's untap is a triggered ability, not an activated ability. Karn only blanks activated abilities. Don't misplay around a non-existent interaction.</div>
+    </td></tr>
+
+    <tr onclick="toggle('mu-yawg')"><td>Golgari Yawgmoth</td><td>2%</td><td><span class="verdict verdict-hard">Hard</span></td><td>Dog</td><td>Hard</td></tr>
+    <tr><td colspan="5" class="matchup-detail" id="mu-yawg">
+      <strong>The Matchup:</strong> CrisMTG77: "I believe it's the worst pairing we could currently have in the metagame." Post-board they run Force of Vigor (destroys Amulet), Fulminator Mage (destroys Tron lands — wait, we have bounce lands not Tron), and Haywire Mite. The combo presents a fast clock and meaningful disruption. Cursed Totem from your SB shuts off Yawgmoth's activated ability entirely — without being able to activate Yawgmoth, they're just attacking with creatures.<br><br>
+      <strong>Cursed Totem:</strong> "Activated abilities of creatures can't be activated." This blanks Yawgmoth (sacrifice + draw is an activated ability), Hapatra (no tap abilities), and Eldritch Evolution's sacrifice cost (wait — Eldritch Evolution sacrifices as a cost of the spell, not an activated ability). Totem is specifically for Yawgmoth and Hapatra.<br><br>
+      <strong>Boseiju:</strong> Keep Boseiju in hand to destroy Agatha's Soul Cauldron in response to its "exile a creature" trigger. Timing: destroy Cauldron as soon as it targets a creature (before exile resolves).<br><br>
+      <div class="sb-table">
+        <div class="sb-col">
+          <div class="sb-col-label">Out</div>
+          <div class="sb-item"><span>−1 Cultivator Colossus</span></div>
+          <div class="sb-item"><span>−2 Scapeshift</span></div>
+          <div class="sb-item"><span>−1 Vexing Bauble</span></div>
+        </div>
+        <div class="sb-col">
+          <div class="sb-col-label">In</div>
+          <div class="sb-item"><span>+2 Dismember (kills Yawgmoth, Hapatra)</span></div>
+          <div class="sb-item"><span>+2 Fire Magic (sweeps Young Wolf, Geralf's Messenger boards)</span></div>
+          <div class="sb-item"><span>+1 Collector Ouphe (shuts off Yawgmoth's activated ability)</span></div>
+        </div>
+      </div>
+      <div class="sb-note">Collector Ouphe — "activated abilities of artifacts can't be activated" — does NOT apply to Yawgmoth (he's a creature). But Ouphe does shut off any artifact-based activated abilities in their deck.</div>
+    </td></tr>
+
+    <tr onclick="toggle('mu-living')"><td>Living End</td><td>2.4%</td><td><span class="verdict verdict-hard">Hard</span></td><td>Hard</td><td>Dog</td></tr>
+    <tr><td colspan="5" class="matchup-detail" id="mu-living">
+      <strong>The Matchup:</strong> One of the worst matchups. Living End has cheap discard (Grief, cycling), a turn-3 cascade kill, and Force of Negation for protection. Your only G1 interaction is Bojuka Bog (ETB exile a GY). The discard line (bouncing a land on turn 2 to hold 8 cards, discarding Titan at end step) extends the game past their turn-3 cascade but doesn't stop it.<br><br>
+      <strong>Bojuka Bog (SB):</strong> Bojuka Bog in the SB is fetchable with Titan ETB in games 2/3. When you bring it in, use Titan's ETB trigger to fetch Bojuka Bog — it ETBs immediately and exiles their GY before they cascade. Alternatively, fetch it as a land drop with Green Sun's Zenith (since Bog is a land)... wait, GSZ finds creatures. Just fetch Bog with Titan.<br><br>
+      <div class="sb-table">
+        <div class="sb-col">
+          <div class="sb-col-label">Out</div>
+          <div class="sb-item"><span>−1 Cultivator Colossus</span></div>
+          <div class="sb-item"><span>−2 Scapeshift (slower line)</span></div>
+        </div>
+        <div class="sb-col">
+          <div class="sb-col-label">In</div>
+          <div class="sb-item"><span>+1 Bojuka Bog (fetch with Titan ETB to exile their GY)</span></div>
+          <div class="sb-item"><span>+2 Trinisphere (taxes Force of Negation and Violent Outburst)</span></div>
+        </div>
+      </div>
+    </td></tr>
+
+    <tr onclick="toggle('mu-mirror')"><td>Amulet Mirror</td><td>3.1%</td><td><span class="verdict verdict-even">Even</span></td><td>Even</td><td>Even</td></tr>
+    <tr><td colspan="5" class="matchup-detail" id="mu-mirror">
+      <strong>The Matchup:</strong> Whoever casts Titan first wins. The mirror is about (a) not falling behind on Amulet development and (b) using Boseiju to destroy the opponent's key land (usually targeting their Slayers' Stronghold to prevent the haste kill, or targeting their Simic Growth Chamber to break their mana). CrisMTG77: "It's vital to correctly detect your opponent's intentions." Leave a bounce land on the table early to signal aggression and see how they respond.<br><br>
+      <strong>Force of Vigor:</strong> Best mirror card. Destroys their Amulet(s) at instant speed with no mana cost (pitch a green card). Removing their Amulets while yours remain means your bounce lands produce surplus mana and theirs don't. Three copies in the SB means high probability of drawing one naturally.<br><br>
+      <div class="sb-table">
+        <div class="sb-col">
+          <div class="sb-col-label">Out</div>
+          <div class="sb-item"><span>−1 Cultivator Colossus</span></div>
+          <div class="sb-item"><span>−2 Scapeshift</span></div>
+        </div>
+        <div class="sb-col">
+          <div class="sb-col-label">In</div>
+          <div class="sb-item"><span>+3 Force of Vigor (destroy their Amulets)</span></div>
+          <div class="sb-item"><span>+2 Dismember (kill their Titan before ETB)</span></div>
+        </div>
+      </div>
+    </td></tr>
+
+    <tr onclick="toggle('mu-uwc')"><td>UW Control</td><td>2%</td><td><span class="verdict verdict-even">Even</span></td><td>Favor</td><td>Even</td></tr>
+    <tr><td colspan="5" class="matchup-detail" id="mu-uwc">
+      <strong>The Matchup:</strong> UW Control has Counterspell, Force of Negation, and Solitude. Post-board they may add specific land hate. G1 is favorable: they have limited answers to a resolved Titan and struggle to counter through the Amulet mana advantage. Defense Grid post-board makes their counterspells cost {3} more on your turn — essentially locking out all their interaction while you combo.<br><br>
+      <strong>Trinisphere:</strong> Post-board, Trinisphere taxes their Counterspell ({U}{U} → {3}), Force of Negation → {3}, Orim's Chant → {3}. Deploy Trinisphere before your combo turn. It doesn't affect Titan (costs 6).<br><br>
+      <div class="sb-table">
+        <div class="sb-col">
+          <div class="sb-col-label">Out</div>
+          <div class="sb-item"><span>−1 Vexing Bauble</span></div>
+          <div class="sb-item"><span>−2 Scapeshift</span></div>
+        </div>
+        <div class="sb-col">
+          <div class="sb-col-label">In</div>
+          <div class="sb-item"><span>+2 Trinisphere (taxes all their counters)</span></div>
+          <div class="sb-item"><span>+3 Force of Vigor (answer specific hate pieces)</span></div>
+        </div>
+      </div>
+    </td></tr>
+
+    <tr onclick="toggle('mu-reanimator')"><td>Grixis Reanimator</td><td>1.5%</td><td><span class="verdict verdict-even">Even</span></td><td>Favor</td><td>Even</td></tr>
+    <tr><td colspan="5" class="matchup-detail" id="mu-reanimator">
+      <strong>The Matchup:</strong> Grixis Reanimator wins by reanimating Archon of Cruelty on turn 2–3. Their disruption is Thoughtseize (strips Titan or Amulet from hand). G1 speed wins — your turn-3 Titan with the kill line is faster than their turn-3 Archon in most hands. Bojuka Bog (a land in your deck!) can ETB exile their graveyard when you fetch it with Titan, shutting down Persist or Goryo's Vengeance on the spot.<br><br>
+      <strong>Bojuka Bog Line:</strong> Bojuka Bog is in the SB — bring it in for game 2/3. When you cast Primeval Titan, use the ETB trigger to fetch Bojuka Bog + any utility land. Bog ETBs immediately, exiling their GY, shutting down Persist or Goryo's Vengeance before they can use it. This is why Bog in the SB is still a functional answer — Titan finds it for free mid-game.<br><br>
+      <div class="sb-table">
+        <div class="sb-col">
+          <div class="sb-col-label">Out</div>
+          <div class="sb-item"><span>−1 Cultivator Colossus</span></div>
+          <div class="sb-item"><span>−2 Scapeshift</span></div>
+        </div>
+        <div class="sb-col">
+          <div class="sb-col-label">In</div>
+          <div class="sb-item"><span>+1 Bojuka Bog (Titan fetches it → exile their GY)</span></div>
+          <div class="sb-item"><span>+2 Trinisphere (taxes Thoughtseize? no — but taxes their reanimation spells)</span></div>
+        </div>
+      </div>
+    </td></tr>
+
+    <tr onclick="toggle('mu-domain')"><td>Domain Aggro</td><td>2.6%</td><td><span class="verdict verdict-favor">Favorable</span></td><td>Favor</td><td>Favor</td></tr>
+    <tr><td colspan="5" class="matchup-detail" id="mu-domain">
+      <strong>The Matchup:</strong> Domain Aggro presents Scion of Draco (hexproof with Leyline of the Guildpact, double strike). Scion has hexproof from targeted removal but can be blocked by Primeval Titan (6/6 trample). Arboreal Grazer (0/3 reach) can block and survive Lightning Bolt — relevant blocker in the early turns. Your Titan is the most powerful threat on the board by turn 3, and their threats have no answer for it in combat.<br><br>
+      <strong>Dismember:</strong> Kills Scion of Draco (−5/−5 = 1/1 first strike, then combat cleanup). Despite paying 4 life, killing a hexproof double-striker is worth the life loss. Keep Dismember for their hexproof threats.<br><br>
+      <div class="sb-table">
+        <div class="sb-col">
+          <div class="sb-col-label">Out</div>
+          <div class="sb-item"><span>−1 Cultivator Colossus (too slow vs aggro)</span></div>
+          <div class="sb-item"><span>−2 Scapeshift</span></div>
+        </div>
+        <div class="sb-col">
+          <div class="sb-col-label">In</div>
+          <div class="sb-item"><span>+2 Dismember (kills Scion with Boseiju removing hexproof first)</span></div>
+          <div class="sb-item"><span>+2 Fire Magic (sweeps their creature board)</span></div>
+        </div>
+      </div>
+    </td></tr>
+  </table>
+</div>
+
+<!-- CH07: SIDEBOARD -->
+<div id="sideboard" class="section">
+  <div class="section-label">Chapter 07</div>
+  <h1>Sideboard<br>Guide</h1>
+
+  <div class="sb-card-guide">
+    <div class="sb-guide-row"><div class="sb-guide-name">Fire Magic ×3</div><div class="sb-guide-body">{R}{W} instant. Fire Magic deals 2 damage to each creature your opponents control. Board wipe for small creatures at instant speed for just 2 mana. Against Boros Energy: kills Ocelot Pride tokens, Ragavan, Guide of Souls in one shot. Against Yawgmoth: kills Young Wolf, Geralf's Messenger, Hapatra before the combo assembles. Against Affinity: kills Pinnacle Emissary (3/3 dies to 2+2? No — Fire Magic deals 2 to each creature, and Emissary has 3 toughness. Won't kill Emissary but kills 1/1 Drones). Key: this is an instant — cast at end of their turn before your combo turn to clear the board and then Titan through without blockers.</div></div>
+    <div class="sb-guide-row"><div class="sb-guide-name">Force of Vigor ×3</div><div class="sb-guide-body">{2}{G}{G} instant. If not your turn: exile a green card from your hand, cast for free instead. Destroy up to 2 target artifacts and/or enchantments. Three copies at instant speed, free on opponents' turns. Primary targets: Damping Sphere (completely disables your mana engine — this is the #1 priority target), Amulet of Vigor in the mirror, Collector Ouphe, Blood Moon, Stony Silence. The free activation means you can hold all your mana for Scapeshift or Titan while still having interaction. In the mirror: Force of Vigor on their Amulet during their upkeep removes their key piece while keeping yours intact.</div></div>
+    <div class="sb-guide-row"><div class="sb-guide-name">Dismember ×2</div><div class="sb-guide-body">{1}{B/P}{B/P}: −5/−5 until end of turn. Pay 4 life instead of colored mana. Kills Thought-Knot Seer (4/4 → −1/−1), Ragavan (1/1), opposing Titan tokens, Primeval Titan in the mirror (6/6 → 1/1 then blocks clean). The 4-life payment is real against aggressive decks — use Dismember defensively to remove key threats, not aggressively. Against Scion of Draco: Dismember can't target hexproof Scion unless you destroy their Leyline of the Guildpact with Boseiju first.</div></div>
+    <div class="sb-guide-row"><div class="sb-guide-name">Trinisphere ×2</div><div class="sb-guide-body">{3} artifact. Each spell costs at least {3} to cast. Your primary lock piece against Storm, Neoform, and any cheap-spell deck. Against Ruby Storm: Pyretic Ritual ({1}{R}) → costs {3}, Manamorphose ({1}{G/R}) → {3}, Ruby Medallion ({2}) → {3}. Storm cannot chain rituals to generate mana. Against Jeskai Blink: Consign to Memory ({2}{U}) → still {3}, Orim's Chant ({W}) → {3}, their evoke cards become more expensive. Against your own deck: Titan costs 6, Scapeshift costs 4, Spelunking costs 3 — Trinisphere doesn't affect any of your key spells. Deploy Trinisphere on your turn 2-3 before going for the kill.</div></div>
+    <div class="sb-guide-row"><div class="sb-guide-name">Bojuka Bog ×1</div><div class="sb-guide-body">Land. ETB: exile target player's graveyard. Fetchable via Primeval Titan's ETB or attack trigger — use one of Titan's two fetches on Bojuka Bog to immediately exile a graveyard while also developing your mana. Against Grixis Reanimator: fetch Bog with Titan ETB before they can activate Persist or Goryo's Vengeance. Against Living End: if Bog is in play when Living End resolves, you can respond to the cascade trigger by playing Bog as a land drop to exile their GY — but timing is tight. The key is that Titan can tutor it mid-game as a free response.</div></div>
+    <div class="sb-guide-row"><div class="sb-guide-name">Collector Ouphe ×1</div><div class="sb-guide-body">{1}{G} 2/2. Activated abilities of artifacts can't be activated. Fetched by Green Sun's Zenith at X=2. Against Izzet Affinity: shuts off Mox Opal (can't tap for mana), Arcbound Ravager (can't sacrifice artifacts), Claws of Gix (can't sacrifice permanents), Urza's Saga Chapter II and III (both are activated abilities of an enchantment land — wait, Saga chapters aren't activated abilities, they're triggered abilities on the Saga. Ouphe doesn't stop Saga). Ouphe specifically targets artifact activated abilities — Saga chapters are triggered, not activated, so Ouphe doesn't stop them. Still excellent against Mox Opal and Ravager.</div></div>
+    <div class="sb-guide-row"><div class="sb-guide-name">Icetill Explorer ×1</div><div class="sb-guide-body">Snow creature. ETB: you may put a snow land from your hand or library onto the battlefield tapped. A utility creature that's fetchable via Green Sun's Zenith and provides an additional land drop of any snow land. Particularly useful for finding Bojuka Bog (which is a snow swamp) or just accelerating mana development in longer games. The GSZ toolbox nature means you have access to it in any game where you draw or tutor GSZ.</div></div>
+    <div class="sb-guide-row"><div class="sb-guide-name">Six ×1</div><div class="sb-guide-body">{5}{G} 6/6. ETB: draw cards equal to the number of lands you control minus the number of cards in your hand. In a game where you've flooded lands (Amulet games often get to 8-12 lands) with a depleted hand: Six draws 6-10 cards off a single ETB. This refuels the entire hand in one shot. GSZ-fetchable at X=6. Against control where the game has gone long and you need card advantage, Six is the catch-up mechanism. Pair with Spelunking's cantrip to have even more mana before casting Six.</div></div>
+    <div class="sb-guide-row"><div class="sb-guide-name">The Wandering Minstrel ×1</div><div class="sb-guide-body">Creature — Elf Bard. ETB: reveal cards from the top of your library until you reveal a land card. Put that land card onto the battlefield tapped, then shuffle the rest back. A land-fetching creature fetchable by Green Sun's Zenith (X = its MV). Provides guaranteed land development in games where you need specific lands — particularly useful for finding Hanweir Battlements or Mirrorpool when you need the specific utility. Also functions as an Amulet trigger target (land entering tapped = Amulet untaps it).</div></div>
+  </div>
+</div>
+
+<!-- CH08: HEURISTICS -->
+<div id="heuristics" class="section">
+  <div class="section-label">Chapter 08</div>
+  <h1>Heuristics</h1>
+
+  <ol class="heuristic-list">
+    <li><div class="heuristic-text"><strong>Amulet trigger resolves before bounce trigger — tap the land between them.</strong> <span>When a bounce land enters, both the Amulet untap trigger and the bounce land's "return a land" trigger go on the stack. Always let the Amulet trigger resolve first (untapping the bounce land). Then tap the now-untapped bounce land for mana. Then let the bounce trigger resolve. This is the foundational Amulet sequencing rule that new pilots consistently miss.</span></div></li>
+    <li><div class="heuristic-text"><strong>Never Summoner's Pact speculatively.</strong> <span>Summoner's Pact requires you to pay {2}{G}{G} at your next upkeep or lose. Only Pact when you can either (a) win this turn or (b) have 4 green mana reliably on the next turn. Pacting for Titan on turn 1 with no kill line and 2 mana available loses to Storm kill on turn 2 or your own Pact trigger.</span></div></li>
+    <li><div class="heuristic-text"><strong>Karn, the Great Creator does NOT shut off Amulet of Vigor.</strong> <span>Karn's static says activated abilities of artifacts opponents control can't be activated. Amulet of Vigor has a TRIGGERED ability (whenever a permanent enters tapped, untap it). Triggered abilities are not activated abilities. Karn does nothing to Amulet. Don't play around a non-existent interaction. Karn CAN fetch Damping Sphere from his SB — that's the real threat, not Karn's static.</span></div></li>
+    <li><div class="heuristic-text"><strong>Vesuva copies a land already on the battlefield — not one fetched simultaneously.</strong> <span>When Titan's ETB fetches two lands at once, both enter at the same time. Vesuva cannot copy a land that entered "with it" in the same batch. Copy a bounce land that was already on the battlefield before the Titan trigger resolved. The copy enters tapped, Amulet untaps it, and the bounce trigger fires giving you additional mana and a land return.</span></div></li>
+    <li><div class="heuristic-text"><strong>Boseiju destroys Agatha's Soul Cauldron IN RESPONSE to the exile trigger.</strong> <span>If you wait until the Cauldron's ability fully resolves and the creature is exiled, the granted abilities persist even after Cauldron dies. Destroy Cauldron while the "exile a creature" trigger is still on the stack — the ability fizzles without a target in exile, and Cauldron is permanently gone.</span></div></li>
+    <li><div class="heuristic-text"><strong>Trinisphere is your best interactive piece — deploy it before your combo turn.</strong> <span>Trinisphere makes every spell cost at least {3}. Against Storm: Pyretic Ritual ({1}{R}) becomes {3}, Manamorphose ({1}{G/R}) becomes {3}. Against blue decks: Counterspell ({U}{U}) becomes {3}, Force of Negation also becomes more expensive. Against Neoform: Neoform itself ({1}{G}) becomes {3}. Titan costs 6 — Trinisphere doesn't affect you at all. Deploy it on turn 2 before jamming Titan.</span></div></li>
+    <li><div class="heuristic-text"><strong>Three Forests mainboard protects against Blood Moon.</strong> <span>Blood Moon turns nonbasic lands into Mountains. Your basic Forests survive Blood Moon and continue producing green mana. Always have a path to find Forests via Arboreal Grazer (puts land from hand to battlefield) or normal land drops. Even under Moon with just 3 Forests, you can eventually hardcast Titan if you hit land drops.</span></div></li>
+    <li><div class="heuristic-text"><strong>Bojuka Bog in the SB is fetchable with Titan ETB — it's still a mainboard-quality answer.</strong> <span>Bojuka Bog is in the SB for games 2/3. When you cast Primeval Titan, one of the two land fetches can grab Bojuka Bog. It ETBs immediately, exiling the target GY before opponents can respond. Against Reanimator and Living End, this is a free GY hate that costs you nothing but one of Titan's two fetch slots. The SB distinction just means it's not in game 1.</span></div></li>
+    <li><div class="heuristic-text"><strong>GSZ at X=0 is a free land drop via Dryad Arbor.</strong> <span>Green Sun's Zenith at X=0 costs {G} and puts Dryad Arbor (a 1/1 Forest creature land) directly onto the battlefield. This counts as both a creature and a land entering, triggering Amulet of Vigor since Dryad Arbor enters tapped when put onto the battlefield this way. Three GSZ copies means you have three additional land drop "spells" built into the deck.</span></div></li>
+    <li><div class="heuristic-text"><strong>Malevolent Rumble is your primary consistency engine — use it to find Amulet early.</strong> <span>Rumble looks at 4 cards and keeps any permanent. In a deck of 35+ permanents, Rumble almost always finds either Amulet of Vigor, Spelunking, a bounce land, or Primeval Titan. The 3 cards it discards fuel Aftermath Analyst — if Analyst dies later, those discarded lands all return to hand. Never hold Rumble waiting for a "better" time; cast it as soon as you have 2 mana and aren't otherwise tapped out for interaction.</span></div></li>
+    <li><div class="heuristic-text"><strong>Discard Titan against Living End — their cascade exiles all GYs, so your Titan is gone.</strong> <span>Living End when it resolves: exiles all creature cards from all graveyards and puts them onto the battlefield. If your Titan is in the GY it enters under YOUR control — actually fine. But the cascade window is instant-speed and Violent Outburst fires on their turn. Discarding Titan to hold 8 cards extends the game past their turn-3 window and sets up Trinisphere or your own kill on the following turn.</span></div></li>
+    <li><div class="heuristic-text"><strong>Spelunking provides the same untap effect as Amulet but doesn't stack exponentially.</strong> <span>Spelunking is a static effect: "lands you control enter untapped." Multiple Spelunkings don't stack — "untapped" is binary. Amulet is a triggered ability — each copy fires separately, letting you tap between triggers for extra mana. One Spelunking = one Amulet for ETB purposes but without the mana-between-triggers upside. Four Amulets + one Spelunking = five sources of land untapping, with the Amulets providing extra tap windows.</span></div></li>
+    <li><div class="heuristic-text"><strong>Tolaria West transmutes for Summoner's Pact (MV 0), not Amulet (MV 1).</strong> <span>Tolaria West's Transmute ({1}{U}{U}, discard) finds any card with MV exactly 0. Summoner's Pact has MV 0 — transmute finds it, which then tutors any green creature including Titan. Vexing Bauble has MV 0. Amulet of Vigor has MV 1 — NOT 0. Common mistake: trying to transmute for Amulet. You cannot. Use Tolaria West specifically for emergency Pact access or Vexing Bauble.</span></div></li>
+    <li><div class="heuristic-text"><strong>Otawara bounces problematic permanents through its channel ability — no mana required.</strong> <span>Otawara, Soaring City can be channeled: discard it and pay {3}{U} (or just play it as a land). Channel: return target nonland permanent with MV ≤ X to its owner's hand, where X = number of Islands you control. Against Reanimator, channel Otawara to bounce Archon of Cruelty before it attacks. Against any deck with an untargetable threat: Otawara bounces rather than targets, so hexproof doesn't apply.</span></div></li>
+    <li><div class="heuristic-text"><strong>Mirrorpool creates a Titan token that provides a second full ETB trigger — use it over Vesuva.</strong> <span>When Titan's attack trigger fires, fetching Mirrorpool lets you sacrifice it to copy Titan as an attacking creature. That token's ETB trigger fires — fetching 2 more lands. Total: 4 lands fetched across the two Titan triggers (entry + attack token ETB). Vesuva only copies a land and gives another Amulet trigger. Mirrorpool nearly doubles Titan's land output in a single attack step.</span></div></li>
+    <li><div class="heuristic-text"><strong>Fire Magic kills boards at instant speed for 2 mana — hold it for their attack step.</strong> <span>Fire Magic deals 2 damage to each creature opponents control at instant speed for {R}{W}. Against Boros Energy: cast it at end of their attack step or on their end step when they've tapped out on offense. Against Yawgmoth: use it before their combo turn to clear Young Wolf and Geralf's Messenger. The instant speed matters enormously — this isn't a sorcery-speed sweep, it can interrupt their combat math.</span></div></li>
+  </ol>
+</div>
+
+<!-- CH09: TUNING -->
+<div id="tuning" class="section">
+  <div class="section-label">Chapter 09</div>
+  <h1>Tuning<br>Notes</h1>
+  <p>The core (4 Amulet, 4 Spelunking, 3 Titan, 4 Scapeshift, 3 GSZ, 3 Malevolent Rumble, 4 Grazer) is fixed. Flex: Colossus count, bounce land distribution, Vexing Bauble count.</p>
+
+  <div class="tuning-grid">
+    <div class="tuning-card">
+      <div class="tuning-label">Condition</div>
+      <div class="tuning-condition">Blood Moon Heavy Field</div>
+      <div class="tuning-up">+1 Forest main (up to 4 basics)</div>
+      <div class="tuning-up">+2 Force of Vigor SB (destroys Blood Moon)</div>
+      <div class="tuning-down">−1 Gruul Turf (becomes Mountain under Moon)</div>
+      <div class="tuning-down">−1 Lotus Field (nonbasic, also affected)</div>
+    </div>
+    <div class="tuning-card">
+      <div class="tuning-label">Condition</div>
+      <div class="tuning-condition">Graveyard-Heavy Field</div>
+      <div class="tuning-up">+1 Bojuka Bog SB (fetchable with Titan ETB)</div>
+      <div class="tuning-up">+1 Collector Ouphe SB (versatile utility)</div>
+      <div class="tuning-down">−1 Icetill Explorer SB</div>
+      <div class="tuning-down">−1 The Wandering Minstrel SB</div>
+    </div>
+    <div class="tuning-card">
+      <div class="tuning-label">Condition</div>
+      <div class="tuning-condition">Counter-Heavy Blue Field</div>
+      <div class="tuning-up">+2 Trinisphere SB (taxes all their interaction)</div>
+      <div class="tuning-up">+3 Force of Vigor SB (destroys Damping Sphere)</div>
+      <div class="tuning-down">−1 Vexing Bauble main</div>
+      <div class="tuning-down">−1 Scapeshift (slower line vs heavy counters)</div>
+    </div>
+    <div class="tuning-card">
+      <div class="tuning-label">Condition</div>
+      <div class="tuning-condition">Creature-Heavy Aggro Field</div>
+      <div class="tuning-up">+3 Fire Magic SB (instant creature wipe)</div>
+      <div class="tuning-up">+2 Dismember SB (kills key threats)</div>
+      <div class="tuning-down">−1 Cultivator Colossus (too slow)</div>
+      <div class="tuning-down">−1 Trinisphere SB (less needed vs aggro)</div>
+    </div>
+    <div class="tuning-card">
+      <div class="tuning-label">Condition</div>
+      <div class="tuning-condition">Damping Sphere Prevalent</div>
+      <div class="tuning-up">+3 Force of Vigor SB (destroys Sphere at instant speed)</div>
+      <div class="tuning-up">+1 Collector Ouphe SB</div>
+      <div class="tuning-down">−1 Icetill Explorer SB</div>
+      <div class="tuning-down">−1 The Wandering Minstrel SB</div>
+    </div>
+    <div class="tuning-card">
+      <div class="tuning-label">Condition</div>
+      <div class="tuning-condition">Storm / Neoform Heavy Field</div>
+      <div class="tuning-up">+2 Trinisphere SB (core lock vs spell-chaining)</div>
+      <div class="tuning-up">+1 Vexing Bauble main (taxes 0-mana spells)</div>
+      <div class="tuning-down">−1 Cultivator Colossus main</div>
+      <div class="tuning-down">−1 Simic Growth Chamber (bounce land redundancy)</div>
+    </div>
+  </div>
+  <h2>Register Conditions</h2>
+  <div class="card-grid card-grid-2">
+    <div class="card"><div class="card-label">Register When</div><div class="card-title">Green Lights</div><div class="card-body">Midrange-heavy field (Boros Energy, Domain Zoo, Yawgmoth) — your T3–4 kill is faster than their clock. Low Damping Sphere density in expected sideboards (below 15%). Few Chalice of the Void builds in the room. Goryo’s and Storm variants are present — you have good matchups there. You’ve practiced the Scapeshift line so you can switch plans mid-game without thinking.</div></div>
+    <div class="card"><div class="card-label">Avoid When</div><div class="card-title">Red Lights</div><div class="card-body">Heavy Damping Sphere meta — it shuts off multiple bounce land untaps per turn (you can only untap one land per turn while Sphere is in play). Chalice of the Void at 1 shuts off Spelunking and Elvish Reclaimer. High Endurance density hurts Amulet’s GY synergies. You haven’t practiced the Dryad+Valakut line as a backup — you’ll autopilot the Titan plan and lose when it’s disrupted.</div></div>
+    <div class="card"><div class="card-label">Never Cut</div><div class="card-title">Amulet of Vigor ×4</div><div class="card-body">The deck's namesake and engine. Four copies non-negotiable — Amulet makes your bounce lands tap for mana the turn they enter. Without 4 Amulets, the T2-T3 Titan line is unreliable.</div></div>
+    <div class="card"><div class="card-label">Never Cut</div><div class="card-title">Primeval Titan ×4</div><div class="card-body">Your win condition. Four copies ensures you see Titan every game. Titan entering finds two lands (Bojuka Bog for GY hate, Cavern of Souls for uncounterable Titan, Vesuva for second Titan activation).</div></div>
+    <div class="card"><div class="card-label">Flex 1–2</div><div class="card-title">Cultivator Colossus</div><div class="card-body">2 as a backup Titan that snowballs with land-play triggers. 1 when your land count is lower and you don't want multiple dead draws. Colossus at 1 copy ensures you find it with Titan but don't see it in opening hands.</div></div>
+    <div class="card"><div class="card-label">Flex 0–2</div><div class="card-title">Force of Vigor (SB)</div><div class="card-body">2 vs Chalice of the Void and enchantment-based hate (Blood Moon, Damping Sphere). Force of Vigor destroys two artifacts/enchantments for free — the pitch cost of a green card is nothing when Chalice is shutting off your deck.</div></div>
+    <div class="card"><div class="card-label">Meta Call</div><div class="card-title">Bounce land count</div><div class="card-body">12 bounce lands is the maximum. Cut to 10 when the meta is aggro-heavy and entering tapped matters more than the extra mana. The "Simic Growth Chamber" count adjusts based on whether you need speed or power.</div></div>
+  </div>
+
+  <h2>SB Slot Priority Order</h2>
+  <ol class="heuristic-list">
+    <li><div class="heuristic-num">01</div><div class="heuristic-body"><strong>Force of Vigor (3 copies minimum)</strong> — Destroys Damping Sphere, Grafdigger’s Cage, Collector Ouphe, and Leyline of Sanctity for free at instant speed. The most important hate piece answer. Goes in vs any deck that brings artifact/enchantment hate. Never cut below 3.</div></li>
+    <li><div class="heuristic-num">02</div><div class="heuristic-body"><strong>Trinisphere (2 copies)</strong> — Taxes all interactive decks. Every spell costs at least {3}. Devastating vs UW Control (Counterspell becomes {3}, Force of Negation can’t be cast for free), Storm (can’t chain cheap spells), and Jeskai Blink. Bring in whenever they’re the spell-heavy interactive deck.</div></li>
+    <li><div class="heuristic-num">03</div><div class="heuristic-body"><strong>Dismember (2 copies)</strong> — Kills Ragavan, Phlage, Thalia, and Thought-Knot Seer before their ETB resolves (for TKS: pay {4}{U/B} life before the trigger resolves). Essential vs aggro and Eldrazi Tron. Also kills Yawgmoth’s entire creature base.</div></li>
+    <li><div class="heuristic-num">04</div><div class="heuristic-body"><strong>Fire Magic (2 copies)</strong> — Sweeps creature boards with damage. Vs Boros Energy: clears Ragavan + 1/1 tokens. Vs Domain Zoo: clears early threats. Vs Yawgmoth: clears Young Wolf and Geralf’s Messenger simultaneously. Bring in vs any creature-based aggro deck.</div></li>
+    <li><div class="heuristic-num">05</div><div class="heuristic-body"><strong>Flex (Bojuka Bog, Collector Ouphe, Six)</strong> — Bojuka Bog is a free answer to GY decks (Titan fetches it on ETB — trigger resolves before Titan attacks). Collector Ouphe shuts off Izzet Affinity’s Mox Opal and Arcbound Ravager. Shift these based on expected field. The top 4 slots are fixed.</div></li>
+  </ol>
+</div>
+
+<!-- CH10: PREP SHEET -->
+<div id="prep" class="section">
+  <div class="section-label">Chapter 10</div>
+  <h1>Prep<br>Sheet</h1>
+  <button class="print-btn" onclick="printSB()">⎙ Print This Sheet</button>
+    <h2>20-Minute Crash Course</h2>
+    <p>If you're sitting down in 20 minutes, run through this in order:</p>
+    <ul class="checklist" id="crash-checklist">
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Mulligan rule:</strong> Keep any hand with Amulet of Vigor + a bounce land, or any hand with Spelunking. Ship any hand with no acceleration.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Kill line rule:</strong> Know which line you're on before T1: Haste Titan via Hanweir Battlements, or bounce-land burst. Don't improvise mid-game.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Pact rule:</strong> Cast Summoner's Pact only when you can pay {2}{G}{G} next upkeep OR you win before your next upkeep. No exceptions.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Bounce land rule:</strong> Never tap a bounce land for mana unless you have no choice. Every untap = more mana next turn.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Sideboard rule:</strong> Know your Needle target before G2. Slayers' Stronghold vs most, Valakut vs Scapeshift lines.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Consign rule:</strong> Counter Titan's ETB trigger, not the Titan itself. Let it enter, then Consign the land-fetch trigger.</span></li>
+    </ul>
+
+      <div id="sb-print-zone">
+    <h2>Printable Sideboard Reference</h2>
+  <p>All 11 matchup ins/outs on one page. Hit Print and take it to the event.</p>
+  <button class="print-btn" onclick="printSB()">&#x2259; Print SB Reference</button>
+  <div class="print-grid">
+
+    <div class="print-mu">
+      <div class="print-mu-name">Boros Energy <span class="diff-even">Even</span></div>
+      <div class="print-mu-role">Race — T4 Titan before they stabilize</div>
+      <div class="print-cols">
+        <div><div class="print-col-label">In</div>
+          <div class="print-row"><span>Dismember</span><span class="print-qty">+2</span></div>
+          <div class="print-row"><span>Fire Magic</span><span class="print-qty">+2</span></div>
+        </div>
+        <div><div class="print-col-label">Out</div>
+          <div class="print-row"><span>Cultivator Colossus</span><span class="print-qty">−1</span></div>
+          <div class="print-row"><span>Malevolent Rumble</span><span class="print-qty">−2</span></div>
+        </div>
+      </div>
+      <div class="print-needle">Dismember kills Ragavan before it connects. Fire Magic sweeps their board</div>
+    </div>
+
+    <div class="print-mu">
+      <div class="print-mu-name">Jeskai Blink <span class="diff-hard">Unfavorable</span></div>
+      <div class="print-mu-role">Combo — Trinisphere taxes their counters</div>
+      <div class="print-cols">
+        <div><div class="print-col-label">In</div>
+          <div class="print-row"><span>Trinisphere</span><span class="print-qty">+2</span></div>
+          <div class="print-row"><span>Force of Vigor</span><span class="print-qty">+2</span></div>
+        </div>
+        <div><div class="print-col-label">Out</div>
+          <div class="print-row"><span>Scapeshift</span><span class="print-qty">−2</span></div>
+          <div class="print-row"><span>Vexing Bauble</span><span class="print-qty">−1</span></div>
+        </div>
+      </div>
+      <div class="print-needle">T1 Trinisphere — every counter now costs {3}. They can’t chain interaction</div>
+    </div>
+
+    <div class="print-mu">
+      <div class="print-mu-name">Izzet Affinity <span class="diff-even">Even</span></div>
+      <div class="print-mu-role">Race — Answer Damping Sphere first</div>
+      <div class="print-cols">
+        <div><div class="print-col-label">In</div>
+          <div class="print-row"><span>Collector Ouphe</span><span class="print-qty">+1</span></div>
+          <div class="print-row"><span>Force of Vigor</span><span class="print-qty">+3</span></div>
+        </div>
+        <div><div class="print-col-label">Out</div>
+          <div class="print-row"><span>Cultivator Colossus</span><span class="print-qty">−1</span></div>
+          <div class="print-row"><span>Malevolent Rumble</span><span class="print-qty">−2</span></div>
+        </div>
+      </div>
+      <div class="print-needle">Force of Vigor destroys Damping Sphere at instant speed. Ouphe shuts off Mox Opal</div>
+    </div>
+
+    <div class="print-mu">
+      <div class="print-mu-name">Ruby Storm <span class="diff-good">Favorable</span></div>
+      <div class="print-mu-role">Race — You’re faster than their kill</div>
+      <div class="print-cols">
+        <div><div class="print-col-label">In</div>
+          <div class="print-row"><span>Trinisphere</span><span class="print-qty">+2</span></div>
+          <div class="print-row"><span>Force of Vigor</span><span class="print-qty">+3</span></div>
+        </div>
+        <div><div class="print-col-label">Out</div>
+          <div class="print-row"><span>Cultivator Colossus</span><span class="print-qty">−1</span></div>
+          <div class="print-row"><span>Scapeshift</span><span class="print-qty">−2</span></div>
+        </div>
+      </div>
+      <div class="print-needle">T1 Trinisphere locks out chaining. Force of Vigor kills Damping Sphere</div>
+    </div>
+
+    <div class="print-mu">
+      <div class="print-mu-name">Eldrazi Tron <span class="diff-even">Even</span></div>
+      <div class="print-mu-role">Race — T4 Titan before TKS + Ugin</div>
+      <div class="print-cols">
+        <div><div class="print-col-label">In</div>
+          <div class="print-row"><span>Dismember</span><span class="print-qty">+2</span></div>
+          <div class="print-row"><span>Force of Vigor</span><span class="print-qty">+3</span></div>
+        </div>
+        <div><div class="print-col-label">Out</div>
+          <div class="print-row"><span>Cultivator Colossus</span><span class="print-qty">−1</span></div>
+          <div class="print-row"><span>Scapeshift</span><span class="print-qty">−2</span></div>
+        </div>
+      </div>
+      <div class="print-needle">Dismember kills TKS before ETB resolves. Force of Vigor destroys Damping Sphere</div>
+    </div>
+
+    <div class="print-mu">
+      <div class="print-mu-name">Yawgmoth <span class="diff-hard">Unfavorable</span></div>
+      <div class="print-mu-role">Race — T3 Titan before T4 combo</div>
+      <div class="print-cols">
+        <div><div class="print-col-label">In</div>
+          <div class="print-row"><span>Dismember</span><span class="print-qty">+2</span></div>
+          <div class="print-row"><span>Fire Magic</span><span class="print-qty">+2</span></div>
+          <div class="print-row"><span>Collector Ouphe</span><span class="print-qty">+1</span></div>
+        </div>
+        <div><div class="print-col-label">Out</div>
+          <div class="print-row"><span>Cultivator Colossus</span><span class="print-qty">−1</span></div>
+          <div class="print-row"><span>Scapeshift</span><span class="print-qty">−2</span></div>
+          <div class="print-row"><span>Vexing Bauble</span><span class="print-qty">−1</span></div>
+        </div>
+      </div>
+      <div class="print-needle">Ouphe shuts off Yawgmoth’s {1}{B} activated ability. Dismember kills Yawgmoth</div>
+    </div>
+
+    <div class="print-mu">
+      <div class="print-mu-name">Living End <span class="diff-good">Favorable</span></div>
+      <div class="print-mu-role">Race — Titan before their T3 cascade</div>
+      <div class="print-cols">
+        <div><div class="print-col-label">In</div>
+          <div class="print-row"><span>Bojuka Bog</span><span class="print-qty">+1</span></div>
+          <div class="print-row"><span>Trinisphere</span><span class="print-qty">+2</span></div>
+        </div>
+        <div><div class="print-col-label">Out</div>
+          <div class="print-row"><span>Cultivator Colossus</span><span class="print-qty">−1</span></div>
+          <div class="print-row"><span>Scapeshift</span><span class="print-qty">−2</span></div>
+        </div>
+      </div>
+      <div class="print-needle">Titan ETB fetches Bojuka Bog — exile their GY before they cascade. Trinisphere taxes Outburst</div>
+    </div>
+
+    <div class="print-mu">
+      <div class="print-mu-name">Mirror (Amulet) <span class="diff-even">Even</span></div>
+      <div class="print-mu-role">Race — Destroy their Amulets</div>
+      <div class="print-cols">
+        <div><div class="print-col-label">In</div>
+          <div class="print-row"><span>Force of Vigor</span><span class="print-qty">+3</span></div>
+          <div class="print-row"><span>Dismember</span><span class="print-qty">+2</span></div>
+        </div>
+        <div><div class="print-col-label">Out</div>
+          <div class="print-row"><span>Cultivator Colossus</span><span class="print-qty">−1</span></div>
+          <div class="print-row"><span>Scapeshift</span><span class="print-qty">−2</span></div>
+        </div>
+      </div>
+      <div class="print-needle">Force of Vigor destroys their Amulet. Dismember kills Titan before ETB resolves</div>
+    </div>
+
+    <div class="print-mu">
+      <div class="print-mu-name">UW Control <span class="diff-hard">Unfavorable</span></div>
+      <div class="print-mu-role">Combo — Resolve Titan through counters</div>
+      <div class="print-cols">
+        <div><div class="print-col-label">In</div>
+          <div class="print-row"><span>Trinisphere</span><span class="print-qty">+2</span></div>
+          <div class="print-row"><span>Force of Vigor</span><span class="print-qty">+3</span></div>
+        </div>
+        <div><div class="print-col-label">Out</div>
+          <div class="print-row"><span>Vexing Bauble</span><span class="print-qty">−1</span></div>
+          <div class="print-row"><span>Scapeshift</span><span class="print-qty">−2</span></div>
+        </div>
+      </div>
+      <div class="print-needle">T1 Trinisphere — Counterspell becomes {3}. Force answers Damping Sphere</div>
+    </div>
+
+    <div class="print-mu">
+      <div class="print-mu-name">Goryo’s / Esper Reanimator <span class="diff-good">Favorable</span></div>
+      <div class="print-mu-role">Race — T4 Titan vs their T2 combo</div>
+      <div class="print-cols">
+        <div><div class="print-col-label">In</div>
+          <div class="print-row"><span>Bojuka Bog</span><span class="print-qty">+1</span></div>
+          <div class="print-row"><span>Trinisphere</span><span class="print-qty">+2</span></div>
+        </div>
+        <div><div class="print-col-label">Out</div>
+          <div class="print-row"><span>Cultivator Colossus</span><span class="print-qty">−1</span></div>
+          <div class="print-row"><span>Scapeshift</span><span class="print-qty">−2</span></div>
+        </div>
+      </div>
+      <div class="print-needle">Titan ETB fetches Bojuka Bog — exile their GY on their end step before their combo</div>
+    </div>
+
+    <div class="print-mu">
+      <div class="print-mu-name">Domain Zoo <span class="diff-even">Even</span></div>
+      <div class="print-mu-role">Race — T4 Titan before Scion + Kavu kill</div>
+      <div class="print-cols">
+        <div><div class="print-col-label">In</div>
+          <div class="print-row"><span>Dismember</span><span class="print-qty">+2</span></div>
+          <div class="print-row"><span>Fire Magic</span><span class="print-qty">+2</span></div>
+        </div>
+        <div><div class="print-col-label">Out</div>
+          <div class="print-row"><span>Cultivator Colossus</span><span class="print-qty">−1</span></div>
+          <div class="print-row"><span>Scapeshift</span><span class="print-qty">−2</span></div>
+        </div>
+      </div>
+      <div class="print-needle">Dismember kills Scion before it connects. Fire Magic sweeps Kavu + other threats</div>
+    </div>
+
+  </div>
+  </div>
+
+<h2>Testing Framework</h2>
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-label">Block 01</div>
+        <div class="card-title">Drill the Kill Line</div>
+        <div class="card-body">Practice T3 Titan kills with different land configurations. If you stumble in G1, it's sequencing.</div>
+      </div>
+      <div class="card">
+        <div class="card-label">Block 02</div>
+        <div class="card-title">Pact Timing</div>
+        <div class="card-body">Practice knowing when you can and can't cast Summoner's Pact. One wrong Pact loses the match.</div>
+      </div>
+      <div class="card">
+        <div class="card-label">Block 03</div>
+        <div class="card-title">G2/G3 Blood Moon Lines</div>
+        <div class="card-body">They bring Blood Moon. Your basic Forest + Islands still win. Practice finding lines through it.</div>
+      </div>
+      <div class="card">
+        <div class="card-label">Block 04</div>
+        <div class="card-title">Clock Practice</div>
+        <div class="card-body">Kill in 20 minutes or time out. Amulet draws can be long — be deliberate and fast.</div>
+      </div>
+    </div>
+
+    <h2>Matchday Routine</h2>
+    <ol class="heuristic-list">
+      <li><div class="heuristic-num">01</div><div class="heuristic-body">Register your list carefully. Confirm bounce land count and Pact count. Both are critical.</div></li>
+      <li><div class="heuristic-num">02</div><div class="heuristic-body">Know your kill line before Round 1. Which line are you on today? Have an answer.</div></li>
+      <li><div class="heuristic-num">03</div><div class="heuristic-body">Between rounds: review Pact timing rules. One wrong Pact loses a match you controlled.</div></li>
+      <li><div class="heuristic-num">04</div><div class="heuristic-body">Don't let the complexity slow you down. If you stall, it's sequencing. Practice more reps.</div></li>
+      <li><div class="heuristic-num">05</div><div class="heuristic-body">Hydrate and eat. Titan draws are cognitively demanding. 12 rounds is an athletic event.</div></li>
+    </ol>
+
+
+
+  <h3>Standard Kill Line Reference</h3>
+  <div class="card-grid card-grid-2" style="margin-bottom:40px;">
+    <div class="card">
+      <div class="card-label">Primary Kill Line (With Amulet)</div>
+      <div class="card-title">Titan Haste via Hanweir Battlements</div>
+      <div class="card-body">ETB: fetch Hanweir Battlements + bounce land (both untap). Tap Hanweir: Titan gains haste. Attack. Attack trigger: fetch Mirrorpool + bounce land. Sacrifice Mirrorpool: copy Titan as attacking token. Token ETB fires, fetching 2 more lands. Two 6/6 tramplers = 12 damage + land acceleration.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Secondary Kill Line</div>
+      <div class="card-title">Scapeshift + Amulet Burst</div>
+      <div class="card-body">Sacrifice 6+ lands via Scapeshift. Fetch bounce lands — each ETB tapped, Amulet untaps immediately, tap for mana before bounce trigger resolves. Generates 12+ mana in a single resolution. Cast Titan off that mana, or finish with a second Scapeshift the following turn.</div>
+    </div>
+  </div>
+
+  <h3>Tournament Day Quick Reference</h3>
+  <div class="print-grid">
+    <div class="print-mu">
+      <div class="print-mu-name">Boros Energy</div>
+      <div class="print-mu-role">Favorable · Kill T3 · Fire Magic key</div>
+      <div class="print-cols">
+        <div><div class="print-col-label">Out</div>
+          <div class="print-row"><span>Cultivator Colossus</span><span class="print-qty">−1</span></div>
+          <div class="print-row"><span>Malevolent Rumble x2</span><span class="print-qty">−2</span></div>
+        </div>
+        <div><div class="print-col-label">In</div>
+          <div class="print-row"><span>Dismember</span><span class="print-qty">+2</span></div>
+          <div class="print-row"><span>Fire Magic</span><span class="print-qty">+2</span></div>
+        </div>
+      </div>
+      <div class="print-needle">NEEDLE: Blood Moon main deck</div>
+    </div>
+    <div class="print-mu">
+      <div class="print-mu-name">Jeskai Blink</div>
+      <div class="print-mu-role">Dog · Trinisphere taxes interaction</div>
+      <div class="print-cols">
+        <div><div class="print-col-label">Out</div>
+          <div class="print-row"><span>Scapeshift x2</span><span class="print-qty">−2</span></div>
+          <div class="print-row"><span>Vexing Bauble</span><span class="print-qty">−1</span></div>
+        </div>
+        <div><div class="print-col-label">In</div>
+          <div class="print-row"><span>Trinisphere</span><span class="print-qty">+2</span></div>
+          <div class="print-row"><span>Force of Vigor</span><span class="print-qty">+2</span></div>
+        </div>
+      </div>
+      <div class="print-needle">Consign can't hit Titan (green). Trinisphere taxes everything.</div>
+    </div>
+    <div class="print-mu">
+      <div class="print-mu-name">Izzet Affinity</div>
+      <div class="print-mu-role">Even · Titan blocks Kappa · Ouphe key</div>
+      <div class="print-cols">
+        <div><div class="print-col-label">Out</div>
+          <div class="print-row"><span>Colossus</span><span class="print-qty">−1</span></div>
+          <div class="print-row"><span>Malevolent Rumble x2</span><span class="print-qty">−2</span></div>
+        </div>
+        <div><div class="print-col-label">In</div>
+          <div class="print-row"><span>Collector Ouphe</span><span class="print-qty">+1</span></div>
+          <div class="print-row"><span>Force of Vigor</span><span class="print-qty">+3</span></div>
+        </div>
+      </div>
+      <div class="print-needle">KARN static doesn't stop Amulet (triggered!)</div>
+    </div>
+    <div class="print-mu">
+      <div class="print-mu-name">Ruby Storm</div>
+      <div class="print-mu-role">Even · Trinisphere wins G2/3</div>
+      <div class="print-cols">
+        <div><div class="print-col-label">Out</div>
+          <div class="print-row"><span>Colossus</span><span class="print-qty">−1</span></div>
+          <div class="print-row"><span>Scapeshift x2</span><span class="print-qty">−2</span></div>
+        </div>
+        <div><div class="print-col-label">In</div>
+          <div class="print-row"><span>Trinisphere</span><span class="print-qty">+2</span></div>
+          <div class="print-row"><span>Force of Vigor</span><span class="print-qty">+3</span></div>
+        </div>
+      </div>
+      <div class="print-needle">Trinisphere T2 locks their chain completely</div>
+    </div>
+    <div class="print-mu">
+      <div class="print-mu-name">Eldrazi Tron</div>
+      <div class="print-mu-role">Even · Race to T3 Titan</div>
+      <div class="print-cols">
+        <div><div class="print-col-label">Out</div>
+          <div class="print-row"><span>Colossus</span><span class="print-qty">−1</span></div>
+          <div class="print-row"><span>Scapeshift x2</span><span class="print-qty">−2</span></div>
+        </div>
+        <div><div class="print-col-label">In</div>
+          <div class="print-row"><span>Dismember</span><span class="print-qty">+2</span></div>
+          <div class="print-row"><span>Force of Vigor</span><span class="print-qty">+3</span></div>
+        </div>
+      </div>
+      <div class="print-needle">Karn CAN'T stop Amulet. Sphere CAN.</div>
+    </div>
+    <div class="print-mu">
+      <div class="print-mu-name">Golgari Yawgmoth</div>
+      <div class="print-mu-role">Hard · Fire Magic + Dismember key</div>
+      <div class="print-cols">
+        <div><div class="print-col-label">Out</div>
+          <div class="print-row"><span>Colossus</span><span class="print-qty">−1</span></div>
+          <div class="print-row"><span>Scapeshift x2</span><span class="print-qty">−2</span></div>
+          <div class="print-row"><span>Vexing Bauble</span><span class="print-qty">−1</span></div>
+        </div>
+        <div><div class="print-col-label">In</div>
+          <div class="print-row"><span>Dismember</span><span class="print-qty">+2</span></div>
+          <div class="print-row"><span>Fire Magic</span><span class="print-qty">+2</span></div>
+          <div class="print-row"><span>Collector Ouphe</span><span class="print-qty">+1</span></div>
+        </div>
+      </div>
+      <div class="print-needle">BOSEIJU: destroy Cauldron on exile trigger</div>
+    </div>
+    <div class="print-mu">
+      <div class="print-mu-name">Living End</div>
+      <div class="print-mu-role">Hard · Bojuka Bog + Trinisphere key</div>
+      <div class="print-cols">
+        <div><div class="print-col-label">Out</div>
+          <div class="print-row"><span>Colossus</span><span class="print-qty">−1</span></div>
+          <div class="print-row"><span>Scapeshift x2</span><span class="print-qty">−2</span></div>
+        </div>
+        <div><div class="print-col-label">In</div>
+          <div class="print-row"><span>Bojuka Bog</span><span class="print-qty">+1</span></div>
+          <div class="print-row"><span>Trinisphere</span><span class="print-qty">+2</span></div>
+        </div>
+      </div>
+      <div class="print-needle">Discard Titan T2 to extend game</div>
+    </div>
+    <div class="print-mu">
+      <div class="print-mu-name">UW Control</div>
+      <div class="print-mu-role">Even · Trinisphere taxes counters</div>
+      <div class="print-cols">
+        <div><div class="print-col-label">Out</div>
+          <div class="print-row"><span>Vexing Bauble</span><span class="print-qty">−1</span></div>
+          <div class="print-row"><span>Scapeshift x2</span><span class="print-qty">−2</span></div>
+        </div>
+        <div><div class="print-col-label">In</div>
+          <div class="print-row"><span>Trinisphere</span><span class="print-qty">+2</span></div>
+          <div class="print-row"><span>Force of Vigor</span><span class="print-qty">+3</span></div>
+        </div>
+      </div>
+      <div class="print-needle">Trinisphere: Counterspell becomes 3-mana</div>
+    </div>
+    <div class="print-mu">
+      <div class="print-mu-name">Grixis Reanimator</div>
+      <div class="print-mu-role">Even · Bojuka Bog SB key</div>
+      <div class="print-cols">
+        <div><div class="print-col-label">Out</div>
+          <div class="print-row"><span>Colossus</span><span class="print-qty">−1</span></div>
+          <div class="print-row"><span>Scapeshift x2</span><span class="print-qty">−2</span></div>
+        </div>
+        <div><div class="print-col-label">In</div>
+          <div class="print-row"><span>Bojuka Bog</span><span class="print-qty">+1</span></div>
+          <div class="print-row"><span>Trinisphere</span><span class="print-qty">+2</span></div>
+        </div>
+      </div>
+      <div class="print-needle">Fetch Bojuka Bog w/ Titan ETB → exile their GY</div>
+    </div>
+    <div class="print-mu">
+      <div class="print-mu-name">Amulet Mirror</div>
+      <div class="print-mu-role">Even · First Titan wins · FoV key</div>
+      <div class="print-cols">
+        <div><div class="print-col-label">Out</div>
+          <div class="print-row"><span>Colossus</span><span class="print-qty">−1</span></div>
+          <div class="print-row"><span>Scapeshift x2</span><span class="print-qty">−2</span></div>
+        </div>
+        <div><div class="print-col-label">In</div>
+          <div class="print-row"><span>Force of Vigor</span><span class="print-qty">+3</span></div>
+          <div class="print-row"><span>Dismember</span><span class="print-qty">+2</span></div>
+        </div>
+      </div>
+      <div class="print-needle">FoV destroys their Amulet at instant speed free</div>
+    </div>
+  </div>
+</div>
+
+</div><!-- end .page -->
+<footer>
+  <span>Team Resolve · Modern · 2026</span>
+  <span>Amulet Titan — 3.1% Meta Share</span>
+  <span>Last Updated: April 2026 · Palette: EV/Charging Ecosystem (UI UX Pro Max Row 25)</span>
+</footer>
+
+<script>
+function printSB() {
+  document.body.classList.add('printing-sb');
+  window.addEventListener('afterprint', function cleanup() {
+    document.body.classList.remove('printing-sb');
+    window.removeEventListener('afterprint', cleanup);
+  });
+  window.print();
+}
+function toggleCheck(el) { el.classList.toggle('checked'); }
+function show(id) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.nav-link').forEach(b => b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  event.target.classList.add('active');
+  window.scrollTo(0, 0);
+}
+function toggle(id) {
+  const el = document.getElementById(id);
+  if (el) el.classList.toggle('open');
+}
+</script>
+
+<script>
+/* card tooltip JS — injected before </body> */
+(function() {
+  const TIP = document.createElement('div');
+  TIP.className = 'card-tip';
+  TIP.innerHTML = '<div class="card-tip-loading">loading...</div>';
+  document.body.appendChild(TIP);
+
+  const CACHE = {};
+  let hideTimer = null;
+
+  function pos(e) {
+    const PAD=24,W=220,H=310;
+    let x = e.clientX + PAD;
+    let y = e.clientY - H / 2;
+    if (x + W > window.innerWidth)  x = e.clientX - W - PAD;
+    if (y < 8)                       y = 8;
+    if (y + H > window.innerHeight)  y = window.innerHeight - H - 8;
+    TIP.style.left = x + 'px';
+    TIP.style.top  = y + 'px';
+  }
+
+  async function show(name, e) {
+    clearTimeout(hideTimer);
+    TIP.innerHTML = '<div class="card-tip-loading">loading...</div>';
+    TIP.classList.add('visible');
+    pos(e);
+    if (CACHE[name]) {
+      TIP.innerHTML = `<img src="${CACHE[name]}" alt="${name}">`;
+      return;
+    }
+    try {
+      const url = `https://api.scryfall.com/cards/named?fuzzy=${encodeURIComponent(name)}`;
+      const r = await fetch(url);
+      if (!r.ok) { TIP.classList.remove('visible'); return; }
+      const d = await r.json();
+      // Handle double-faced cards
+      const img = d.image_uris?.normal ||
+                  d.card_faces?.[0]?.image_uris?.normal ||
+                  d.image_uris?.small;
+      if (!img) { TIP.classList.remove('visible'); return; }
+      CACHE[name] = img;
+      TIP.innerHTML = `<img src="${img}" alt="${name}">`;
+    } catch(err) {
+      TIP.classList.remove('visible');
+    }
+  }
+
+  function hide() {
+    hideTimer = setTimeout(() => TIP.classList.remove('visible'), 80);
+  }
+
+  document.addEventListener('mouseover', e => {
+    const el = e.target.closest('span.c');
+    if (!el) return;
+    showTip(el.textContent.trim(), e);
+  });
+  document.addEventListener('mousemove', e => {
+    if (TIP.classList.contains('visible')) pos(e);
+  });
+  document.addEventListener('mouseout', e => {
+    if (e.target.closest('span.c')) hide();
+  });
+})();
+</script>
+</body>
+</html>

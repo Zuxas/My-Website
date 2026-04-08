@@ -1,0 +1,1483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" href="../images/tab32.png" type="image/png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dimir Oculus — Team Resolve Playbook</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+  html { overflow-y: scroll; }
+  /* ═══ RIDE HAILING / TRANSPORTATION PALETTE — UI UX Pro Max Row 96 ═══ */
+  /* pri=#1E293B acc=#2563EB bg=#0F172A fg=#FFFFFF */
+  :root { --ink:#0e0e0e; --paper:#f2ede6; --paper-dark:#e8e1d6; --rule:#c8bfb0; --primary:#09183a; --accent:#2563EB; --accent-light:rgba(37,99,235,0.15); --danger:#8f1a1a; --danger-light:rgba(143,26,26,0.12); --gold:#2563EB; --gold-light:rgba(37,99,235,0.15); --mid:#5a5248; --card:#ffffff; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:var(--paper); color:var(--ink); font-family:'Crimson Pro',Georgia,serif; font-size:17px; line-height:1.6; }
+  .header-band { background:var(--primary); border-bottom:3px solid var(--accent); padding:48px 80px 40px;position:relative;overflow:hidden;}
+  .header-band { color: #f1f5f9; }
+  .header-band,.header-band *{color:#f1f5f9;}
+  .header-band p, .header-band span, .header-band div { color: #f1f5f9; }
+
+  .header-inner { max-width:1080px; margin:0 auto; display:flex; justify-content:space-between; align-items:flex-end; gap:40px; }
+  .header-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:rgba(15,23,42,0.35); margin-bottom:8px; }
+  .header-title{font-family:'DM Mono',monospace;font-size:clamp(32px,4vw,52px);font-weight:500;letter-spacing:0.06em;line-height:1.05;text-transform:uppercase;}
+  .header-title span{color:var(--accent);}
+  .header-tagline { font-family:'Crimson Pro',serif; font-style:italic; font-size:15px; color:rgba(15,23,42,0.4); margin-top:8px; }
+  .header-right { display:flex; flex-direction:column; gap:8px; text-align:right; padding-bottom:4px; }
+  .header-stat { display:flex; gap:12px; align-items:center; justify-content:flex-end; }
+  .hs-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; color:rgba(15,23,42,0.3); }
+  .hs-val { font-family:'DM Mono',monospace; font-size:12px; color:var(--paper); }
+  nav { position:sticky; top:0; z-index:100; background:var(--primary); border-bottom:2px solid var(--accent); padding:0 80px; display:flex; align-items:center; gap:0; overflow-x:auto; scrollbar-width:none; }
+  nav::-webkit-scrollbar { display:none; }
+  .nav-brand { font-family:'Bebas Neue',sans-serif; font-size:18px; color:#60a5fa; letter-spacing:0.05em; margin-right:40px; white-space:nowrap; padding:16px 0; text-decoration:none;  color:var(--accent); }
+  .nav-link { font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:rgba(248,250,252,0.55); padding:20px 16px; cursor:pointer; white-space:nowrap; border-bottom:2px solid transparent; transition:all 0.2s; background:none; border-top:none; border-left:none; border-right:none; }
+  .nav-link:hover, .nav-link.active { color:rgba(248,250,252,1); border-bottom-color:#60a5fa; }
+  .page { max-width:1100px; margin:0 auto; padding:80px 80px; }
+  .section { display:none; animation:fadeIn 0.3s ease; }
+  .section.active { display:block; }
+  @keyframes fadeIn { from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:translateY(0);} }
+  .section-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.25em; text-transform:uppercase; color:var(--mid); margin-bottom:8px; }
+  h1 { font-family:'Bebas Neue',sans-serif; font-size:64px; line-height:0.9; letter-spacing:0.01em; color:var(--ink); margin-bottom:40px; }
+  h2 { font-family:'Bebas Neue',sans-serif; font-size:36px; letter-spacing:0.02em; color:var(--ink); margin:56px 0 20px; padding-bottom:8px; border-bottom:2px solid var(--ink); }
+  h3 { font-family:'DM Mono',monospace; font-size:12px; letter-spacing:0.15em; text-transform:uppercase; color:var(--accent); margin:32px 0 12px; }
+  p { margin-bottom:16px; color:var(--ink); font-weight:300; }
+  strong { font-weight:600; }
+  .c { color:var(--accent); font-weight:400; }
+  .mantra { border-left:4px solid var(--accent); padding:24px 32px; background:var(--accent-light); margin:32px 0; font-style:italic; font-size:20px; color:var(--accent); line-height:1.5; }
+  .card-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); gap:1px; background:var(--rule); border:1px solid var(--rule); margin:24px 0; }
+  .card-grid-2 { grid-template-columns:repeat(2,1fr) !important; }
+  .card-grid-3 { grid-template-columns:repeat(3,1fr) !important; }
+  .card { background:var(--paper); padding:24px; }
+  .card:hover { background:var(--paper-dark); }
+  .card-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--mid); margin-bottom:8px; }
+  .card-title { font-family:'Bebas Neue',sans-serif; font-size:22px; letter-spacing:0.03em; color:var(--ink); margin-bottom:8px; }
+  .card-body { font-size:15px; font-weight:300; color:var(--mid); line-height:1.5; }
+  .decklist { display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--rule); border:1px solid var(--rule); margin:24px 0; }
+  .dl-section { background:var(--paper); padding:24px; }
+  .dl-section-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--mid); margin-bottom:16px; }
+  .dl-group { margin-bottom:20px; }
+  .dl-group-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; color:var(--ink); background:var(--paper-dark); padding:4px 8px; margin-bottom:8px; display:inline-block; }
+  .dl-card-row { display:flex; justify-content:space-between; align-items:baseline; padding:3px 0; border-bottom:1px solid rgba(200,191,176,0.3); font-size:15px; font-weight:300; }
+  .dl-card-row:last-child { border-bottom:none; }
+  .dl-qty { font-family:'DM Mono',monospace; font-size:12px; color:var(--mid); flex-shrink:0; margin-left:8px; }
+  .matchup-table { width:100%; border-collapse:collapse; margin:24px 0; table-layout:fixed; }
+  .matchup-table colgroup col:nth-child(1) { width:42%; }
+  .matchup-table colgroup col:nth-child(2) { width:16%; }
+  .matchup-table colgroup col:nth-child(3) { width:16%; }
+  .matchup-table colgroup col:nth-child(4) { width:26%; }
+  .matchup-table th { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; padding:10px 16px; background:var(--ink); color:rgba(15,23,42,0.6); text-align:left; }
+  .matchup-table td { padding:12px 16px; border-bottom:1px solid var(--rule); font-size:15px; font-weight:300; }
+  .matchup-table tr:hover td { background:var(--paper-dark); cursor:pointer; }
+    .matchup-detail { display:none; border:1px solid var(--rule); background:var(--paper-dark); padding:32px 40px; margin:0 0 2px; animation:fadeIn 0.2s ease; }
+
+  .matchup-detail.open { display:block; }
+  .verdict { display:inline-block; font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; padding:4px 10px; border:1px solid; }
+  .verdict-dog { background:var(--danger-light); color:var(--danger); border-color:var(--danger); }
+  .verdict-even { background:var(--gold-light); color:var(--gold); border-color:var(--gold); }
+  .verdict-favor { background:#d1fae5; color:#065f46; border-color:#065f46; }
+  .sb-col { background:var(--paper); padding:20px; }
+  .sb-item { font-size:13px; font-weight:300; padding:4px 0; border-bottom:1px solid rgba(200,191,176,0.2); }
+  .sb-col-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--mid); margin-bottom:12px; }
+  .sb-table { display:flex; gap:1px; background:var(--rule); border:1px solid var(--rule); margin:16px 0; }
+  .sb-table th { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; padding:8px 12px; background:var(--paper-dark); color:var(--mid); text-align:left; border-bottom:2px solid var(--rule); }
+  .sb-table td { padding:10px 12px; border-bottom:1px solid var(--rule); font-size:14px; font-weight:300; }
+  .sb-out { color:var(--danger); font-family:'DM Mono',monospace; font-size:12px; }
+  .sb-in { color:#065f46; font-family:'DM Mono',monospace; font-size:12px; }
+  .sb-note { font-size:13px; font-weight:300; color:var(--mid); font-style:italic; margin-top:6px; }
+  .role-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--rule); border:1px solid var(--rule); margin:24px 0; }
+  .role-card { background:var(--paper); padding:24px; }
+  .role-name { font-family:'Bebas Neue',sans-serif; font-size:28px; letter-spacing:0.02em; margin-bottom:8px; }
+  .role-name-primary { color:var(--accent); }
+  .role-name-secondary { color:var(--gold); }
+  .role-name-tertiary { color:var(--mid); }
+  .role-desc { font-size:14px; font-weight:300; color:var(--mid); line-height:1.5; margin-bottom:12px; }
+  .role-matchups { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.1em; text-transform:uppercase; color:var(--mid); }
+  .engine-block { border:1px solid var(--rule); margin:32px 0; }
+  .engine-header { background:var(--ink); padding:20px 24px; display:flex; align-items:center; gap:16px; }
+  .engine-letter { font-family:'Bebas Neue',sans-serif; font-size:40px; color:#60a5fa; line-height:1; }
+  .engine-name { font-family:'Bebas Neue',sans-serif; font-size:24px; color:var(--paper); letter-spacing:0.03em; }
+  .engine-body { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--rule); }
+  .engine-step { background:var(--paper); padding:20px; }
+  .engine-step-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--mid); margin-bottom:6px; }
+  .engine-step-title { font-family:'Bebas Neue',sans-serif; font-size:20px; color:var(--ink); margin-bottom:8px; }
+  .engine-step-body { font-size:14px; font-weight:300; color:var(--mid); line-height:1.5; }
+  .heuristic-list { list-style:none; margin:0; padding:0; counter-reset:heuristic; }
+  .heuristic-list li { counter-increment:heuristic; display:grid; grid-template-columns:48px 1fr; gap:16px; padding:20px 0; border-bottom:1px solid var(--rule); align-items:start; }
+  .heuristic-list li:last-child { border-bottom:none; }
+  .heuristic-num { font-family:'DM Mono',monospace; font-size:22px; color:var(--rule); font-weight:500; }
+  .heuristic-body strong { display:block; font-size:16px; font-weight:600; margin-bottom:4px; color:var(--ink); }
+  .heuristic-body { font-size:14px; font-weight:300; color:var(--mid); line-height:1.5; }
+  .tuning-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--rule); border:1px solid var(--rule); margin:24px 0; }
+  .tuning-cell { background:var(--paper); padding:20px; }
+  .tuning-cell-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; color:var(--mid); margin-bottom:8px; }
+  .tuning-cell-title { font-family:'Bebas Neue',sans-serif; font-size:20px; color:var(--ink); margin-bottom:8px; }
+  .tuning-cell-body { font-size:14px; font-weight:300; color:var(--mid); line-height:1.5; }
+  .curve-strip { display:flex; gap:1px; background:var(--rule); border:1px solid var(--rule); margin:24px 0; }
+  .curve-slot { flex:1; background:var(--paper); padding:16px 12px; text-align:center; }
+  .curve-cmc { font-family:'Bebas Neue',sans-serif; font-size:32px; color:var(--accent); line-height:1; }
+  .curve-count { font-family:'DM Mono',monospace; font-size:11px; color:var(--mid); letter-spacing:0.1em; margin-top:4px; }
+  .curve-bar { height:4px; background:var(--accent); margin:8px auto 0; border-radius:2px; opacity:0.5; }
+  .print-btn { display:inline-flex; align-items:center; gap:8px; font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.12em; text-transform:uppercase; background:var(--ink); color:var(--paper); border:none; padding:10px 20px; cursor:pointer; margin-bottom:32px; }
+  .print-section { border:1px solid var(--rule); padding:32px; margin:24px 0; }
+  .print-title { font-family:'Bebas Neue',sans-serif; font-size:48px; color:var(--ink); }
+  .print-sub { font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.15em; text-transform:uppercase; color:var(--mid); margin-bottom:24px; }
+  .print-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+  .print-mu { margin-bottom:16px; }
+  .print-mu-name { font-family:'Bebas Neue',sans-serif; font-size:18px; color:var(--ink); }
+  .print-mu-role { font-family:'DM Mono',monospace; font-size:9px; letter-spacing:0.1em; text-transform:uppercase; color:var(--mid); margin-bottom:6px; }
+  .print-cols { display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+  .print-col-label { font-family:'DM Mono',monospace; font-size:9px; letter-spacing:0.15em; text-transform:uppercase; color:var(--mid); margin-bottom:4px; }
+  .print-row { font-size:12px; font-weight:300; display:flex; justify-content:space-between; padding:1px 0; border-bottom:1px solid rgba(200,191,176,0.4); }
+  .print-qty { font-family:'DM Mono',monospace; font-size:11px; color:var(--mid); }
+  .print-needle { font-family:'DM Mono',monospace; font-size:9px; letter-spacing:0.06em; color:var(--danger); margin-top:6px; text-transform:uppercase; }
+  .edge-case { border:1px solid var(--accent); background:var(--accent-light); padding:16px 20px; margin:16px 0; font-size:14px; }
+  .edge-case-label { font-family:'DM Mono',monospace; font-size:9px; letter-spacing:0.15em; text-transform:uppercase; color:var(--accent); margin-bottom:6px; }
+  .edge-case-body { font-weight:300; color:var(--ink); line-height:1.5; }
+  footer { background:var(--ink); color:rgba(15,23,42,0.3); padding:40px 80px; margin-top:80px; display:flex; justify-content:space-between; align-items:center; }
+  footer span { font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.1em; text-transform:uppercase; }
+  @media (max-width:768px) { .header-inner,nav,.page,footer { padding-left:24px; padding-right:24px; } .header-right { display:none; } .decklist,.role-grid,.engine-body,.tuning-grid,.print-grid { grid-template-columns:1fr; } nav { padding:0 24px; } }
+  @media print { nav,.print-btn,footer { display:none;   /* SB-only print mode */
+  body.printing-sb .header-band,
+  body.printing-sb nav,
+  body.printing-sb footer { display:none !important; }
+  body.printing-sb .section:not(#prep) { display:none !important; }
+  body.printing-sb #prep > *:not(#sb-print-zone) { display:none !important; }
+  body.printing-sb #sb-print-zone { display:block !important; }
+  body.printing-sb #sb-print-zone h2,
+  body.printing-sb #sb-print-zone p,
+  body.printing-sb .print-btn { display:none !important; }
+  body.printing-sb .print-grid { display:grid !important; grid-template-columns:repeat(3,1fr) !important; }
+  body.printing-sb .print-cols { display:grid !important; }
+  body.printing-sb .print-row { display:flex !important; }
+  body.printing-sb .print-mu { display:block !important; }
+  body.printing-sb .print-mu > * { display:block !important; }
+  body.printing-sb .print-qty { font-family:monospace; }
+  @page { size: portrait; margin: 0.35in; }
+  body.printing-sb { zoom: 0.62; }
+  body.printing-sb #sb-print-zone { page-break-after: avoid; }
+} .section { display:block !important; } }
+
+  .checklist { list-style:none; padding:0; margin:24px 0; }
+  .checklist li { display:flex; align-items:flex-start; gap:16px; padding:12px 0; border-bottom:1px solid var(--rule); font-weight:300; font-size:15px; }
+  .check-box { width:20px; height:20px; border:2px solid var(--accent); flex-shrink:0; cursor:pointer; margin-top:2px; transition:background 0.15s; }
+  .check-box.checked { background:var(--accent); }
+
+  /* ── CARD IMAGE TOOLTIP ─────────────────────────────────── */
+.card-tip {
+  position:fixed; z-index:9999; pointer-events:none;
+  width:220px; border-radius:8px; overflow:hidden;
+  box-shadow:0 8px 32px rgba(0,0,0,0.6);
+  opacity:0; transition:opacity 0.15s ease;
+  background:#1a1a2e;
+}
+.card-tip.visible { opacity:1; }
+.card-tip img { width:220px; height:auto; display:block; }
+.card-tip-loading {
+  width:220px; height:308px; display:flex;
+  align-items:center; justify-content:center;
+  color:#94a3b8; font-size:12px; font-family:monospace;
+  background:#1e293b;
+}
+span.c {
+  cursor:help;
+  border-bottom:1px dashed var(--accent,#CA8A04);
+}
+span.c:hover { border-bottom-style:solid; }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-brand">Dimir Oculus</div>
+  <a class="nav-link" href="../deck-guides.html" style="text-decoration:none;">&#8592; Guides</a>
+  <button class="nav-link active" onclick="show('identity')">Overview</button>
+  <button class="nav-link" onclick="show('decklist')">Decklist</button>
+  <button class="nav-link" onclick="show('gameplan')">Gameplan</button>
+  <button class="nav-link" onclick="show('engines')">Engines</button>
+  <button class="nav-link" onclick="show('lines')">Lines</button>
+  <button class="nav-link" onclick="show('roles')">Roles</button>
+  <button class="nav-link" onclick="show('matchups')">Matchups</button>
+  <button class="nav-link" onclick="show('sideboard')">Sideboard</button>
+  <button class="nav-link" onclick="show('heuristics')">Heuristics</button>
+  <button class="nav-link" onclick="show('tuning')">Tuning</button>
+  <button class="nav-link" onclick="show('prep')">Prep</button>
+</nav>
+<div class="header-band">
+  <div class="header-inner">
+    <div>
+      <div class="header-label">Team Resolve · Modern · April 2026</div>
+      <div class="header-title">Dimir<br><span>Oculus</span></div>
+      <div class="header-tagline">"T1 fetch into surveil land. T2 Psychic Frog. T3 discard Oculus, Unearth it, hold Counterspell. The game is already over — they just don't know it yet."</div>
+    </div>
+    <div class="header-right">
+      <div class="header-stat"><span class="hs-label">Meta Share</span><span class="hs-val">~3.5% (Frog + Midrange)</span></div>
+      <div class="header-stat"><span class="hs-label">Role</span><span class="hs-val">Tempo-Control + Reanimator</span></div>
+      <div class="header-stat"><span class="hs-label">Colors</span><span class="hs-val">U B</span></div>
+      <div class="header-stat"><span class="hs-label">Kill Turn</span><span class="hs-val">4–6</span></div>
+      <div class="header-stat"><span class="hs-label">Author</span><span class="hs-val">Zuxas</span></div>
+    </div>
+  </div>
+</div>
+<div class="page">
+
+<!-- ══════════════════════════════════════════════════════════ CH01 IDENTITY -->
+<div id="identity" class="section active">
+  <div class="section-label">Chapter 01</div>
+  <h1>Deck<br>Identity</h1>
+
+  <div class="mantra">"A Delver deck with a reanimator backup plan. Every cantrip fills the graveyard for three different payoffs. Every discard is both a pump spell and a setup spell. Nothing in this deck does only one thing."</div>
+
+  <p>Dimir Oculus is Modern's premier tempo-control deck with a reanimator subtheme. It evolved from UR Murktide through three distinct generations: first, Psychic Frog replaced Ragavan as the two-drop engine (MH3, June 2024). Then Abhorrent Oculus replaced Murktide Regent as the primary finisher (Duskmourn, September 2024). Now the deck exists in a mature form where all three threats coexist, each consuming graveyard resources in different ways — creating the most demanding resource-management puzzle in Modern.</p>
+
+  <p>The deck's identity is defined by a single tension: <strong>every card in your graveyard is currency for three different banks.</strong> <span class="c">Psychic Frog</span> wants to exile cards for flying. <span class="c">Abhorrent Oculus</span> needs six cards exiled to hardcast (but bypasses this via <span class="c">Unearth</span>). <span class="c">Murktide Regent</span> delves instants and sorceries for +1/+1 counters. The elite pilot tracks their graveyard contents the way a poker player tracks the deck — every card accounted for, every exile deliberate.</p>
+
+  <p>The other half of the identity is the interaction suite. <span class="c">Counterspell</span>, <span class="c">Force of Negation</span>, <span class="c">Spell Snare</span>, <span class="c">Fatal Push</span> — 14+ interactive spells that protect your threats and deny the opponent's plan. You deploy a threat, then hide behind a wall of countermagic and removal. The opponent has to fight through your permission to answer your Frog or Oculus, and every turn they spend doing that is a turn your threats are generating card advantage.</p>
+
+  <h2>The Three Threat Axes</h2>
+  <div class="card-grid card-grid-3">
+    <div class="card">
+      <div class="card-label">Axis 1 — The Engine</div>
+      <div class="card-title">Psychic Frog</div>
+      <div class="card-body"><strong>{U}{B} · 1/2 Frog.</strong> Whenever it deals combat damage to a player or planeswalker, draw a card. Discard a card: put a +1/+1 counter on it. Exile three cards from your graveyard: it gains flying until end of turn. This is the deck's heart. The discard grows Frog AND fills the GY for Unearth/Murktide. The combat draw replaces the discarded card. The flying converts late-game GY resources into evasion. Every ability feeds another ability. Frog is The One Ring of this deck — once it starts generating value, the opponent drowns.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Axis 2 — The Unfair Angle</div>
+      <div class="card-title">Abhorrent Oculus</div>
+      <div class="card-body"><strong>{2}{U} · 5/5 Eye · Flying.</strong> Additional cost: exile 6 cards from GY. At beginning of each opponent's upkeep, manifest dread. The hardcast cost is real ({2}{U} + exile 6), but the primary play is <span class="c">Unearth</span> ({B} sorcery: return creature MV ≤ 3 to battlefield). Oculus is MV 3. Unearth does NOT cast — the additional cost of exiling 6 from GY doesn't apply. A T2 Unearth on a milled Oculus = free 5/5 flying that generates 2/2 manifest tokens every opponent upkeep. <strong>Unearth (the card) has NO exile clause</strong> — unlike the Unearth keyword. The creature stays permanently.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Axis 3 — The Legacy Finisher</div>
+      <div class="card-title">Murktide Regent</div>
+      <div class="card-body"><strong>{5}{U}{U} · 3/3 Dragon · Flying, Delve.</strong> Enters with a +1/+1 counter for each instant/sorcery exiled via delve. Whenever an instant or sorcery leaves your GY, put a +1/+1 counter on it. Typically an 8/8 flying for {U}{U}. Demoted to 2 copies in modern builds because Oculus is more efficient, but Murktide is still the best standalone closer. <strong>Key tension:</strong> Frog exiling cards from GY for flying competes with Murktide's delve — exile lands/creatures with Frog, save instants/sorceries for Murktide.</div>
+    </div>
+  </div>
+
+  <h2>Oracle Accuracy — Every Card, Every Edge Case</h2>
+  <div class="card-grid card-grid-2">
+    <div class="card">
+      <div class="card-label">Psychic Frog — Critical Rulings</div>
+      <div class="card-title">3 Abilities, All Instant Speed</div>
+      <div class="card-body">All three abilities activate at instant speed. <strong>Combat draw:</strong> triggers on damage to player OR planeswalker — relevant when attacking an Oko or Jace. <strong>Discard:</strong> can discard in response to removal (Frog gets bigger, card goes to GY for later). Can discard multiple cards at once — each discard is a separate activation. <strong>Flying:</strong> exile 3 cards as one activation. Can activate multiple times per turn (exile 6 for two instances of flying — redundant for flying itself, but relevant for depleting GY before opponent's Surgical). <strong>Anti-Surgical play:</strong> opponent targets Oculus in your GY with Surgical Extraction → exile Oculus to Frog's flying ability in response → Surgical fizzles (target left zone). The exile is a COST, not an effect — opponent cannot respond to the exile itself.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Abhorrent Oculus — Manifest Dread Rules</div>
+      <div class="card-title">Every Card Type Behaves Differently</div>
+      <div class="card-body"><strong>Manifest dread:</strong> look at top 2, one enters face-down as 2/2, other goes to GY. The face-down 2/2 can be turned face up by paying its mana cost IF it's a creature card. <strong>Instant/sorcery manifested:</strong> stays face-down as 2/2 FOREVER — cannot be turned face up. Revealing it just shows it's not a creature. <strong>Murktide manifested:</strong> CAN be turned face up by paying {5}{U}{U} (its mana cost). Delve does NOT apply when turning face up — only when casting. <strong>DFC manifested (Sink into Stupor):</strong> enters face-down, cannot transform while face-down. Front face is an instant — cannot be turned face up. <strong>Land manifested:</strong> stays face-down as 2/2, cannot flip. <strong>Turning face up doesn't trigger ETB</strong> — the creature was already on the battlefield.</div>
+    </div>
+  </div>
+  <div class="card-grid card-grid-2">
+    <div class="card">
+      <div class="card-label">Unearth (the Card) vs Unearth (the Keyword)</div>
+      <div class="card-title">CRITICAL DISTINCTION</div>
+      <div class="card-body"><strong>Unearth the card</strong> ({B} sorcery): "Return target creature card with mana value 3 or less from your graveyard to the battlefield." That's it. No exile clause. No end-of-turn clause. No "if it would leave the battlefield, exile it instead." The creature returns permanently. An Oculus returned via the Unearth card stays on the battlefield forever unless killed/bounced normally. <strong>The Unearth keyword</strong> (on cards like Nethergoyf) HAS an exile clause: "If it would leave the battlefield, exile it instead. At end of turn, exile it." These are completely different mechanics that share a name. Modern Dimir Oculus uses the CARD, not the keyword. Your Oculus stays.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Oculus Additional Cost</div>
+      <div class="card-title">When Does Exile-6 Apply?</div>
+      <div class="card-body">Per Scryfall ruling (2024-09-20): "Abhorrent Oculus's additional cost must be paid even if it's cast 'without paying its mana cost' or for any alternative cost." This means: <strong>Cascade into Oculus</strong> — still pay exile 6. <strong>Collected Company hitting Oculus</strong> — CoCo puts it onto the battlefield, doesn't cast it, so NO additional cost. <strong>Unearth</strong> — returns to battlefield, doesn't cast, NO additional cost. <strong>Manifest dread</strong> — enters face-down, wasn't cast, NO additional cost. The additional cost ONLY applies when CASTING the spell from any zone.</div>
+    </div>
+  </div>
+  <div class="card-grid card-grid-2">
+    <div class="card">
+      <div class="card-label">Force of Negation — Turn Restriction</div>
+      <div class="card-title">Free Only on Opponent's Turns</div>
+      <div class="card-body">"If it's not your turn, you may exile a blue card from your hand rather than pay this spell's mana cost." <strong>Your upkeep:</strong> still your turn — can't free-cast. <strong>Your end step:</strong> still your turn — can't free-cast. <strong>Opponent's upkeep:</strong> their turn — CAN free-cast. This means casting spells during your opponent's upkeep dodges their Force of Negation (they can't free-cast on your turn either). <strong>Exile clause:</strong> FoN exiles the countered spell. This permanently removes flashback targets (Past in Flames), cascade targets (Living End), and escape cards. The exile is part of the counter, not a replacement — if the spell is already countered by something else, FoN's exile doesn't apply.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Harbinger of the Seas — Self-Damage</div>
+      <div class="card-title">Your Own Mana Gets Hit</div>
+      <div class="card-body">{1}{U}{U} 2/2 Merfolk Wizard. "Nonbasic lands are Islands." ALL nonbasic lands — yours too. Your Watery Graves, Polluted Deltas, Undercity Sewers, Gloomlake Verges = all Islands (only produce {U}). <strong>You lose access to {B}</strong> from all nonbasics. Only your basic Swamp (1 copy in most lists) produces {B} under Harbinger. Pre-fetch Swamp BEFORE deploying Harbinger if you need {B} for Fatal Push or Bowmasters later. <strong>Fetches under Harbinger:</strong> Polluted Delta is an Island under Harbinger — it CAN still be cracked to search for an Island or Swamp (the fetch ability isn't an activated ability of the land-type). You can fetch your basic Swamp through Harbinger.</div>
+    </div>
+  </div>
+  <div class="card-grid card-grid-2">
+    <div class="card">
+      <div class="card-label">Sink into Stupor // Undercity Sewers</div>
+      <div class="card-title">MDFC — Spell and Land in One</div>
+      <div class="card-body"><strong>Front:</strong> {1}{U}{U} instant — return target spell or nonland permanent opponent controls to owner's hand. Hits spells ON THE STACK (pseudo-counter that returns to hand) AND permanents in play. <strong>Back:</strong> Undercity Sewers — land, enters tapped, surveil 1, produces {U} or {B}. The deck counts this as land #20-21 even though it's also interaction. <strong>Edge case:</strong> If you Sink a spell on the stack, the spell returns to hand — it was never countered. This matters against "can't be countered" spells like Cavern of Souls creatures or Supreme Verdict — Sink doesn't counter them, it bounces them. Supreme Verdict says "can't be countered" but Sink doesn't counter — it returns to hand. This is a legal play.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Orcish Bowmasters — Army Stacking</div>
+      <div class="card-title">Second Copy Grows the Existing Army</div>
+      <div class="card-body">{1}{B} 1/1 Orc Archer · Flash. ETB + whenever opponent draws extra: deal 1 damage to any target, then amass Orcs 1. <strong>Amass Orcs 1:</strong> if you control an Army, put a +1/+1 counter on it. If you don't, create a 0/0 Orc Army token and put a counter on it. <strong>Second Bowmasters:</strong> the ETB trigger of the second one grows the EXISTING Army. You don't get two Army tokens. Over a long game a single Army can become a 5/5 or 6/6. <strong>Flash timing:</strong> deploy at opponent's draw step — their draw is the "extra draw" that triggers Bowmasters. Also triggers on: Wrenn and Six +1 (draw), any "draw a card" effect, opponent's Psychic Frog combat damage draw (in the mirror).</div>
+    </div>
+  </div>
+  <div class="card-grid card-grid-2">
+    <div class="card">
+      <div class="card-label">Counterspell vs Spell Snare vs Spell Pierce</div>
+      <div class="card-title">When to Hold Which Counter</div>
+      <div class="card-body"><strong>Counterspell</strong> ({U}{U}): hard counter, no conditions. Hold when you need certainty — their must-answer spell resolving loses the game. Requires 2 blue mana, which means T2 at earliest with correct lands. <strong>Spell Snare</strong> ({U}): counters MV 2 exactly. In current Modern: Bowmasters, Stoneforge Mystic, Wrenn and Six, Lightning Helix, Coppercoat Vanguard, Tarmogoyf. Best on T2 — deploy Frog AND hold Snare with {U}{B} + {U}. <strong>Spell Pierce</strong> ({U}): counter noncreature unless pay {2}. Best T1-T3 before opponent has excess mana. Falls off hard in late game. Board in against combo/control, board out against creature aggro.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Consider vs Thought Scour — Sequencing</div>
+      <div class="card-title">Controlled vs Random GY Fill</div>
+      <div class="card-body"><strong>Consider</strong> ({U} instant): surveil 1 (choose whether top card goes to GY), then draw. You CHOOSE what enters the GY. Use when you need a SPECIFIC card in GY (an Oculus sitting on top). <strong>Thought Scour</strong> ({U} instant): target player mills 2, draw a card. RANDOM — you don't choose what's milled. But mills 2 vs Consider's 1. Use when you need GY VOLUME (filling for Murktide delve or Oculus hardcast). <strong>Sequencing rule:</strong> if you have both, Consider first when you need to find something specific. Scour first when you need maximum GY count and plan to Consider afterward to filter. <strong>Thought Scour can target the OPPONENT</strong> — relevant for milling their key cards or denying a known topdeck after a scry. This comes up maybe 1 in 200 games but wins when it does.</div>
+    </div>
+  </div>
+
+  <h2>Meta Position — April 2026</h2>
+  <p>Dimir Oculus/Frog sits at approximately 3.5% of the Modern metagame when combining "Dimir Frog" (1.46% on MTGDecks) with "Dimir Midrange" (2.3% on MTGGoldfish). It's the highest-performing tempo deck in the format after the December 2025 bans removed The One Ring and weakened Boros Energy. The deck was unaffected by the ban announcement and gained equity as its worst matchups (pre-ban Boros with One Ring) lost their best card.</p>
+  <p>The current top tables: Boros Energy (16%), Izzet Affinity (8%), Jeskai Blink (7%), Eldrazi Tron (5.3%), Ruby Storm (5%). Dimir Oculus is favorable against spell-heavy decks (Storm, Living End), even against midrange (Jeskai Blink, mirrors), and unfavorable against fast aggro that goes under its interaction (Boros Energy on the play, Prowess with a nut draw).</p>
+  <p><strong>Why play this deck:</strong> you want the highest decision density in Modern. Every game is different. You're rewarded for knowing every matchup, every edge case, every timing window. The deck's ceiling is the highest in the format — in the hands of an expert, it has no unwinnable matchups. The floor is also punishing: missequence your lands or mismanage your GY, and you lose games you should have won.</p>
+
+  <h2>Why Play / Why Skip</h2>
+  <div class="card-grid card-grid-2">
+    <div class="card">
+      <div class="card-label">Play This If</div>
+      <div class="card-title">You Want Maximum Agency</div>
+      <div class="card-body">You enjoy making 15+ meaningful decisions per game. You like tracking hidden information (GY contents, opponent's hand after Thoughtseize). You want a deck that rewards knowing every card in the format because your interaction suite needs to answer everything. You find the puzzle of GY resource allocation satisfying. You like winning games by outplaying, not out-topdecking.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Skip This If</div>
+      <div class="card-title">You Need Autopilot Consistency</div>
+      <div class="card-body">The deck is unforgiving of mistakes. Wrong land sequencing T1 can cost you the game on T4. Wrong counter target can lose the counter war. Wrong GY management means your Murktide enters as a 4/4 instead of an 8/8. If you're playing on 4 hours of sleep at a day-2 event, the decision fatigue is real. Also: graveyard hate is everywhere in Modern. Nihil Spellbomb, Surgical Extraction, Leyline of the Void — one well-timed piece of GY hate can collapse your entire game plan.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════ CH02 DECKLIST -->
+<div id="decklist" class="section">
+  <div class="section-label">Chapter 02</div>
+  <h1>Decklist</h1>
+  <p style="font-style:italic;color:var(--mid);font-size:15px;margin-bottom:24px;">532at's Challenge-winning build (9-1, 126 players, Jan 2025) — Updated with Dack_Fayden07's June 2025 refinements</p>
+
+  <div class="decklist">
+    <div class="dl-section">
+      <div class="dl-section-label">Maindeck (60)</div>
+
+      <div class="dl-group">
+        <div class="dl-group-label">Threats (14)</div>
+        <div class="dl-card-row"><span><span class="c">Psychic Frog</span></span><span class="dl-qty">4</span></div>
+        <div class="dl-card-row"><span><span class="c">Abhorrent Oculus</span></span><span class="dl-qty">4</span></div>
+        <div class="dl-card-row"><span><span class="c">Murktide Regent</span></span><span class="dl-qty">2</span></div>
+        <div class="dl-card-row"><span><span class="c">Orcish Bowmasters</span></span><span class="dl-qty">2</span></div>
+        <div class="dl-card-row"><span><span class="c">Harbinger of the Seas</span></span><span class="dl-qty">2</span></div>
+      </div>
+
+      <div class="dl-group">
+        <div class="dl-group-label">Cantrips (8)</div>
+        <div class="dl-card-row"><span><span class="c">Consider</span></span><span class="dl-qty">4</span></div>
+        <div class="dl-card-row"><span><span class="c">Thought Scour</span></span><span class="dl-qty">4</span></div>
+      </div>
+
+      <div class="dl-group">
+        <div class="dl-group-label">Removal (5)</div>
+        <div class="dl-card-row"><span><span class="c">Fatal Push</span></span><span class="dl-qty">4</span></div>
+        <div class="dl-card-row"><span><span class="c">Shoot the Sheriff</span></span><span class="dl-qty">1</span></div>
+      </div>
+
+      <div class="dl-group">
+        <div class="dl-group-label">Countermagic (10)</div>
+        <div class="dl-card-row"><span><span class="c">Counterspell</span></span><span class="dl-qty">4</span></div>
+        <div class="dl-card-row"><span><span class="c">Spell Snare</span></span><span class="dl-qty">2</span></div>
+        <div class="dl-card-row"><span><span class="c">Force of Negation</span></span><span class="dl-qty">2</span></div>
+        <div class="dl-card-row"><span><span class="c">Sink into Stupor</span></span><span class="dl-qty">2</span></div>
+      </div>
+
+      <div class="dl-group">
+        <div class="dl-group-label">Reanimation (4)</div>
+        <div class="dl-card-row"><span><span class="c">Unearth</span></span><span class="dl-qty">4</span></div>
+      </div>
+    </div>
+
+    <div class="dl-section">
+      <div class="dl-section-label">Lands (19 + 2 MDFC)</div>
+      <div class="dl-group">
+        <div class="dl-card-row"><span><span class="c">Polluted Delta</span></span><span class="dl-qty">4</span></div>
+        <div class="dl-card-row"><span><span class="c">Watery Grave</span></span><span class="dl-qty">3</span></div>
+        <div class="dl-card-row"><span><span class="c">Undercity Sewers</span> (MDFC back of Sink)</span><span class="dl-qty">2</span></div>
+        <div class="dl-card-row"><span><span class="c">Gloomlake Verge</span></span><span class="dl-qty">2</span></div>
+        <div class="dl-card-row"><span><span class="c">Flooded Strand</span></span><span class="dl-qty">2</span></div>
+        <div class="dl-card-row"><span><span class="c">Marsh Flats</span></span><span class="dl-qty">2</span></div>
+        <div class="dl-card-row"><span>Island</span><span class="dl-qty">3</span></div>
+        <div class="dl-card-row"><span>Swamp</span><span class="dl-qty">1</span></div>
+      </div>
+
+      <div class="dl-section-label" style="margin-top:24px;">Sideboard (15)</div>
+      <div class="dl-group">
+        <div class="dl-card-row"><span><span class="c">Consign to Memory</span></span><span class="dl-qty">3</span></div>
+        <div class="dl-card-row"><span><span class="c">Nihil Spellbomb</span></span><span class="dl-qty">3</span></div>
+        <div class="dl-card-row"><span><span class="c">Toxic Deluge</span></span><span class="dl-qty">1</span></div>
+        <div class="dl-card-row"><span><span class="c">Accursed Marauder</span></span><span class="dl-qty">1</span></div>
+        <div class="dl-card-row"><span><span class="c">Harbinger of the Seas</span></span><span class="dl-qty">1</span></div>
+        <div class="dl-card-row"><span><span class="c">Shoot the Sheriff</span></span><span class="dl-qty">1</span></div>
+        <div class="dl-card-row"><span><span class="c">Orcish Bowmasters</span></span><span class="dl-qty">1</span></div>
+        <div class="dl-card-row"><span><span class="c">Stern Scolding</span></span><span class="dl-qty">1</span></div>
+        <div class="dl-card-row"><span><span class="c">Glistening Deluge</span></span><span class="dl-qty">1</span></div>
+        <div class="dl-card-row"><span><span class="c">Force of Negation</span></span><span class="dl-qty">1</span></div>
+        <div class="dl-card-row"><span><span class="c">Spell Pierce</span></span><span class="dl-qty">1</span></div>
+      </div>
+    </div>
+  </div>
+
+  <h2>Mana Curve</h2>
+  <div class="curve-strip">
+    <div class="curve-slot"><div class="curve-cmc">1</div><div class="curve-count">20 spells</div><div class="curve-bar" style="width:100%"></div></div>
+    <div class="curve-slot"><div class="curve-cmc">2</div><div class="curve-count">12 spells</div><div class="curve-bar" style="width:60%"></div></div>
+    <div class="curve-slot"><div class="curve-cmc">3</div><div class="curve-count">7 spells</div><div class="curve-bar" style="width:35%"></div></div>
+    <div class="curve-slot"><div class="curve-cmc">7+</div><div class="curve-count">2 spells</div><div class="curve-bar" style="width:10%"></div></div>
+  </div>
+  <p style="font-size:14px;color:var(--mid);">Extremely low effective curve. 20 spells at MV 1 (cantrips + Fatal Push + Unearth + Spell Snare). Murktide costs {5}{U}{U} on paper but effectively costs {U}{U} with delve. Oculus costs {2}{U}+exile 6 when hardcast but {B} via Unearth. The deck operates on 2-3 lands and actively doesn't want to draw more. Every land drawn past the third is a dead card — that's why the cantrip density is so high and the land count so low (19+2 MDFCs).</p>
+
+  <h2>GY Resource Allocation Map</h2>
+  <div class="edge-case">
+    <div class="edge-case-label">The Most Important Skill in the Deck</div>
+    <div class="edge-case-body">Every card in your graveyard is currency for three different threats. Track these allocations constantly:<br><br>
+    <strong>Psychic Frog flying:</strong> exile ANY 3 cards. Prioritize lands and creatures (irrelevant to Murktide).<br>
+    <strong>Murktide Regent delve:</strong> exile instants/sorceries ONLY (each one = +1/+1 counter). Never waste instants/sorceries on Frog flying if Murktide is coming.<br>
+    <strong>Oculus hardcast:</strong> exile ANY 6 cards. This is the most expensive cost — only relevant in long games when Unearth isn't available.<br>
+    <strong>Unearth target:</strong> needs a creature with MV ≤ 3 IN the GY. Don't exile Oculus or Bowmasters to Frog if you haven't used Unearth yet.<br><br>
+    <strong>The heuristic:</strong> exile lands and creatures to Frog. Save instants/sorceries for Murktide. Keep at least one Unearth target in GY until you've used both copies of Unearth or hardcast your Oculus.</div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════ CH03 GAMEPLAN -->
+<div id="gameplan" class="section">
+  <div class="section-label">Chapter 03</div>
+  <h1>Gameplan</h1>
+
+  <div class="mantra">"The first three turns define the game. T1 land sequencing. T2 threat or hold. T3 close the door or grind. Every decision after that flows from what you established in those three turns."</div>
+
+  <h2>The Critical First Three Turns</h2>
+  <p>From competitive primers: "I cannot emphasize enough how important the first three turns are and the decisions you make during those turns, starting with land drops." This is the framework:</p>
+
+  <div class="card-grid card-grid-3">
+    <div class="card">
+      <div class="card-label">Turn 1 — Always a Land Decision</div>
+      <div class="card-title">Fetch → Surveil Land</div>
+      <div class="card-body"><strong>Ideal:</strong> Fetch-land → crack → find <span class="c">Undercity Sewers</span> (enters tapped, surveil 1). This removes the tapped land from your deck AND fills GY with the surveil. <strong>Do NOT lead with Consider or Thought Scour T1</strong> even if you have them — the surveil land is more important because it takes a tapped land out of your deck for future draws. <strong>If no fetch:</strong> play Gloomlake Verge (untapped, produces {U}). <strong>If opening with Undercity Sewers in hand:</strong> play it tapped T1, surveil an Oculus to GY → set up T2 Unearth. <strong>Never play basic Swamp T1 unless you must</strong> — it's your only {B} source under Harbinger and you want it available later.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Turn 2 — Deploy or Hold</div>
+      <div class="card-title">Frog vs Open Mana</div>
+      <div class="card-body"><strong>Deploy Frog</strong> when: you have protection (Spell Snare, Spell Pierce backup), OR they tapped out T1, OR their deck can't efficiently answer a 1/2 (combo, Tron, Storm). <strong>Hold open</strong> when: they have {1} open for removal (Boros with Galvanic Discharge), OR you have Counterspell + threat for T3, OR you milled an Oculus and can Unearth it this turn instead. <strong>T2 Unearth on Oculus:</strong> the nut draw. Requires Oculus in GY from T1 surveil or a lucky Thought Scour. A 5/5 flying on T2 with mana open for protection is often game-winning.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Turn 3 — The Pivot</div>
+      <div class="card-title">Discard Oculus → Unearth</div>
+      <div class="card-body"><strong>The standard line:</strong> T2 Frog resolved. T3: discard Oculus to Frog (+1/+1 counter, Oculus goes to GY). Cast <span class="c">Unearth</span> for {B} (Oculus returns permanently). Hold {U} for Spell Snare or Spell Pierce. Board state: 2/3 Frog + 5/5 flying Oculus + 1 open mana. <strong>Alternative:</strong> if no Oculus, T3 hold up Counterspell ({U}{U}) and attack with Frog. Draw a card off combat damage. Rebuild hand for T4 Murktide. <strong>Against fast decks:</strong> T3 might be Fatal Push + Spell Snare — pure defense, no threat deployment.</div>
+    </div>
+  </div>
+
+  <h2>Mulligan Guide</h2>
+  <div class="card-grid card-grid-2">
+    <div class="card">
+      <div class="card-label">Always Keep</div>
+      <div class="card-title">Fetch + Frog + Interaction</div>
+      <div class="card-body">Any hand with a fetch-land (for surveil sequencing), Psychic Frog (your primary engine), and at least one piece of interaction (counter, removal, or Force). Example: Polluted Delta, Watery Grave, Frog, Fatal Push, Counterspell, Consider, Thought Scour = snap keep. Even without Oculus or Murktide — Frog generates enough value to find your finishers.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Situational Keep</div>
+      <div class="card-title">Unearth + Mill + Land</div>
+      <div class="card-body">A hand with Unearth, Thought Scour, and 2 lands is keepable if you're willing to gamble on milling an Oculus or Harbinger. The T1 Scour → T2 Unearth line is powerful enough to justify. But if Scour misses all creatures, Unearth is a dead card until you find another way to fill the GY. Riskier on the draw than the play.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Mulligan</div>
+      <div class="card-title">No Threat, No Cantrip</div>
+      <div class="card-body">A hand of 3 lands, 2 Counterspells, Fatal Push, Force of Negation = mulligan. All interaction, no proactive plan. You can't win by countering forever — you need a threat to close. Also mulligan: hands with only Murktide as the threat and no way to fill the GY (no cantrips, no Thought Scour). Murktide without GY fuel enters as a 3/3 for 7 mana — unplayable.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">The Swamp Trap</div>
+      <div class="card-title">Basic Swamp in Opening Hand</div>
+      <div class="card-body">From MythicMaria's guide: "This is a very awkward hand... mostly because of the basic Swamp. In most cases I don't want to fetch for it, so having it in a starting hand could seriously damage your spell-sequencing." The deck is heavily blue — your T1 and T2 plays are almost always blue. A Swamp in your opener means one of your first two land drops produces only {B}, which can't cast Consider, Thought Scour, Spell Snare, or deploy Frog's {U} half. Mulligan aggressively if Swamp is your only black source AND you have no fetch to find an Island.</div>
+    </div>
+  </div>
+  <h2>Play vs Draw</h2>
+  <div class="card-grid card-grid-2">
+    <div class="card"><div class="card-label">On the Play</div><div class="card-title">T2 Frog Is the Line</div><div class="card-body">On the play, T2 Psychic Frog is your highest-value action. It comes down before they can assemble interaction, and they have to answer it immediately or lose to the discard-grow loop. Mulligan more aggressively for hands with a T2 Frog play. A hand without Frog or a way to find Frog by T2 is a slow hand that gets outpaced against combo decks.</div></div>
+    <div class="card"><div class="card-label">On the Draw</div><div class="card-title">Counter-Mana Hands Are Fine</div><div class="card-body">On the draw you see 8 cards and can keep counter-heavy hands (Force of Negation + Counterspell + land) since you have time to deploy them. T1 Spell Snare or Stern Scolding on their T1 threat is a legitimate draw-side opening. Against aggro on the draw, Fatal Push + Shoot the Sheriff hands are keepable even without Frog — you need to survive to T3 before deploying your threats.</div></div>
+  </div>
+
+  <h2>When Disrupted</h2>
+  <div class="card-grid card-grid-2">
+    <div class="card"><div class="card-label">Frog Killed</div><div class="card-title">Murktide as Backup Finisher</div><div class="card-body">Frog answered: deploy Murktide Regent as the backup closer. Murktide is effectively a 4/4+ flying for {2}{U} after GY fills. It survives Fatal Push and Lightning Bolt. If Murktide is also unavailable, Orcish Bowmasters + opponent draw triggers creates a drain clock. You have three closing threats — exhaust their answers before scooping.</div></div>
+    <div class="card"><div class="card-label">GY Hate Active</div><div class="card-title">Tempo + Value Plan</div><div class="card-body">Nihil Spellbomb or Surgical Extraction is in play. Pivot to Harbinger of the Seas + Bowmasters value: Harbinger locks opponents off multiple islands, Bowmasters generates bodies every time they draw. This plan doesn’t need the GY to function. Sink into Stupor bounces their permanents and generates disruption. You can win without any GY synergies in this mode.</div></div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════ CH04 ENGINES -->
+<div id="engines" class="section">
+  <div class="section-label">Chapter 04</div>
+  <h1>Core Engines</h1>
+
+  <div class="engine-block">
+    <div class="engine-header">
+      <div class="engine-letter">A</div>
+      <div class="engine-name">The Frog Value Loop</div>
+    </div>
+    <div class="engine-body">
+      <div class="engine-step">
+        <div class="engine-step-label">Deploy</div>
+        <div class="engine-step-title">T2 Psychic Frog</div>
+        <div class="engine-step-body"><span class="c">Psychic Frog</span> enters as a 1/2 for {U}{B}. Immediately threatens: discard to pump (instant speed), combat draw on connection, GY exile for flying. The opponent must answer it NOW or it snowballs. Every turn Frog lives, it generates more cards, grows bigger, and depletes resources the opponent needs to track.</div>
+      </div>
+      <div class="engine-step">
+        <div class="engine-step-label">Generate</div>
+        <div class="engine-step-title">Attack → Draw → Discard</div>
+        <div class="engine-step-body">Attack with Frog. If it deals combat damage: draw a card. Now discard that card (or another) to put a +1/+1 counter on Frog AND fill the GY. Net result: Frog is +1/+1 bigger, GY has one more card for Murktide/Unearth, and you've filtered your hand. The drawn card replaces the discarded card — you never go down on cards. This is The One Ring on a creature body.</div>
+      </div>
+      <div class="engine-step">
+        <div class="engine-step-label">Close</div>
+        <div class="engine-step-title">Exile 3 → Flying</div>
+        <div class="engine-step-body">When ground blockers appear: exile 3 cards from GY for flying until end of turn. A 5/6 flying Frog represents lethal in 2 swings. Prioritize exiling lands and creatures (not instants/sorceries — save those for Murktide delve). If no Murktide in hand, exile anything. Flying activates at instant speed — declare attackers, opponent doesn't block thinking Frog is grounded, then activate flying after blocks.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="engine-block">
+    <div class="engine-header">
+      <div class="engine-letter">B</div>
+      <div class="engine-name">The Unearth-Oculus Combo</div>
+    </div>
+    <div class="engine-body">
+      <div class="engine-step">
+        <div class="engine-step-label">Mill</div>
+        <div class="engine-step-title">Put Oculus in GY</div>
+        <div class="engine-step-body">Methods: (1) T1 surveil land puts Oculus in GY directly. (2) Thought Scour mills 2 — ~15% chance to hit Oculus if 4 copies in 53 remaining cards. (3) Consider surveil 1 — you CHOOSE to put Oculus in GY if it's on top. (4) Discard Oculus to Psychic Frog's pump ability — guaranteed, costs a card from hand but grows Frog AND sets up the combo.</div>
+      </div>
+      <div class="engine-step">
+        <div class="engine-step-label">Reanimate</div>
+        <div class="engine-step-title">Unearth for {B}</div>
+        <div class="engine-step-body"><span class="c">Unearth</span> ({B} sorcery): return target creature MV ≤ 3 from GY to battlefield. Oculus is MV 3 ({2}{U}). The additional cost of exiling 6 from GY does NOT apply — Unearth returns, it doesn't cast. The creature stays permanently — Unearth (the card) has NO exile clause. A 5/5 flying for {B} that manifests dread every opponent upkeep. If you have Frog in play: T3 discard Oculus → Unearth → 2/3 Frog + 5/5 Oculus + 1 open mana.</div>
+      </div>
+      <div class="engine-step">
+        <div class="engine-step-label">Manifest</div>
+        <div class="engine-step-title">Free 2/2s Every Upkeep</div>
+        <div class="engine-step-body">Once Oculus is in play: each opponent's upkeep, manifest dread. Look at top 2, one enters face-down as 2/2, other goes to GY. The 2/2 can be turned face up if it's a creature (pay mana cost). If it's Murktide face-down: pay {5}{U}{U} to flip (delve doesn't work for face-up, only casting). If it's an instant/sorcery: stays as 2/2 forever. The GY card fuels future Murktide delve or Frog exile. Every upkeep = free board presence + free GY fuel.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="engine-block">
+    <div class="engine-header">
+      <div class="engine-letter">C</div>
+      <div class="engine-name">The Murktide Delve Finisher</div>
+    </div>
+    <div class="engine-body">
+      <div class="engine-step">
+        <div class="engine-step-label">Fill</div>
+        <div class="engine-step-title">8+ Instants/Sorceries in GY</div>
+        <div class="engine-step-body">The cantrip suite (Consider ×4, Thought Scour ×4) plus interaction (Fatal Push, Counterspell, Spell Snare) rapidly fills the GY. By T4-5, you typically have 8-10 instants/sorceries in GY. Each one exiled via delve = +1/+1 counter on Murktide. A Murktide that delves 5 cards enters as an 8/8 flying for {U}{U}.</div>
+      </div>
+      <div class="engine-step">
+        <div class="engine-step-label">Cast</div>
+        <div class="engine-step-title">{U}{U} for an 8/8 Flier</div>
+        <div class="engine-step-body">Delve exiles cards from GY as part of casting. You choose WHICH cards to exile. <strong>Always exile instants/sorceries over lands/creatures</strong> — each one becomes a +1/+1 counter. Lands and creatures exiled to delve don't generate counters. If Frog has already exiled some instants for flying: Murktide enters smaller. This is the core GY tension — plan your Frog exiles around whether Murktide is coming this game.</div>
+      </div>
+      <div class="engine-step">
+        <div class="engine-step-label">Grow</div>
+        <div class="engine-step-title">Passive Growth</div>
+        <div class="engine-step-body">"Whenever an instant or sorcery card leaves your graveyard, put a +1/+1 counter on Murktide Regent." This triggers on: cards exiled by Psychic Frog (if they're instants/sorceries), cards exiled by opponent's Surgical Extraction, cards exiled by your own Nihil Spellbomb (if targeting yourself — rare but relevant). Murktide grows passively even after entering. A resolved Murktide with Frog in play gets bigger every time Frog exiles an instant/sorcery for flying.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="engine-block">
+    <div class="engine-header">
+      <div class="engine-letter">D</div>
+      <div class="engine-name">The Harbinger Cheese Lock</div>
+    </div>
+    <div class="engine-body">
+      <div class="engine-step">
+        <div class="engine-step-label">Deploy</div>
+        <div class="engine-step-title">T2-T3 Harbinger</div>
+        <div class="engine-step-body"><span class="c">Harbinger of the Seas</span> ({1}{U}{U} 2/2 Merfolk): "Nonbasic lands are Islands." Against greedy manabases (Boros Energy 0-1 basics, Domain Zoo, 4C): this locks them out of non-blue mana entirely. Castable T2 off Unearth if milled ({B} to return a MV 3 creature). T3 off natural mana. Even a T3 Harbinger against Boros can strand 3-4 cards in hand permanently.</div>
+      </div>
+      <div class="engine-step">
+        <div class="engine-step-label">Self-Manage</div>
+        <div class="engine-step-title">Pre-Fetch Your Swamp</div>
+        <div class="engine-step-body">YOUR nonbasics become Islands too. Before deploying Harbinger: crack a fetch for your basic Swamp. Now you have {B} from Swamp and {U} from everything else. If you didn't pre-fetch: you lose access to Fatal Push, Bowmasters, Unearth, Shoot the Sheriff — everything black. Harbinger is a symmetric effect that punishes you if you didn't sequence correctly. <strong>Fetch Swamp T1 or T2 if you see Harbinger in your opener.</strong></div>
+      </div>
+      <div class="engine-step">
+        <div class="engine-step-label">Edge Cases</div>
+        <div class="engine-step-title">What Still Works</div>
+        <div class="engine-step-body">Fetches under Harbinger: Polluted Delta is an "Island" but still has its sacrifice ability (fetch abilities aren't land type abilities). You CAN crack it to find basic Swamp even under your own Harbinger. Gloomlake Verge under Harbinger: becomes an Island, loses its printed abilities, only taps for {U}. Undercity Sewers: already an Island Swamp — under Harbinger it's just an Island (loses Swamp). Surveil trigger still fired on entry (ETB, not a land type ability).</div>
+      </div>
+    </div>
+  </div>
+  <h2>Engine Priority Order</h2>
+  <div class="card-grid card-grid-3">
+    <div class="card"><div class="card-label">Priority 01</div><div class="card-title">Frog + Faithless Looting</div><div class="card-body">Discard 2 cards = 2 counters on Frog in one activation. Frog becomes a 3/4 flying on T3 after a T2 deploy + T3 Looting. This is your fastest threat-growth engine. Execute whenever Frog is in play and Looting is in hand. The card selection is a bonus — the primary goal is growing Frog to a size they can’t race.</div></div>
+    <div class="card"><div class="card-label">Priority 02</div><div class="card-title">Bowmasters + Opponent Draw</div><div class="card-body">Every card they draw creates a Rabbit token and deals 1 damage. Against draw-heavy decks (Storm, UW Control, Living End), Bowmasters generates massive value passively. Deploy Bowmasters before their big draw turn for maximum impact. This engine wins games where Frog has been answered — they can’t stop drawing and the damage accumulates.</div></div>
+    <div class="card"><div class="card-label">Priority 03</div><div class="card-title">Harbinger Tempo Lock</div><div class="card-body">Harbinger of the Seas makes all islands legendary — opponent can only keep one. Against blue decks, this halves their mana immediately. Deploy when they’re tapped out to maximize the tempo hit. This engine is not a finisher but it creates a window: their mana is restricted, your threats connect. Follow Harbinger immediately with a threat or counter-up to capitalise on the tempo swing.</div></div>
+  </div>
+
+  <h2>Speed Math</h2>
+  <div class="card-grid card-grid-3">
+    <div class="card"><div class="card-label">Frog Clock</div><div class="card-title">How Fast Does Frog Kill?</div><div class="card-body">T2 Frog (1/2 flying). T3 Faithless Looting → Frog is 3/4 flying. T4 swing for 3. T5 another discard outlet → Frog grows, swing for 4+. Starting from T3, Frog closes in 4–5 attack steps without buffs. With additional discard triggers (Sink into Stupor on their EOT), Frog can be 5/6+ by T4 — that’s a 3-turn clock at 20 life.</div></div>
+    <div class="card"><div class="card-label">Bowmasters Clock</div><div class="card-title">Passive Drain Rate</div><div class="card-body">Against draw-heavy decks: T3 Bowmasters. They cast Brainstorm (draw 3, lose 3 life, 3 Rabbits). They cast Preordain (draw 2 more). By T4-5 in a draw-heavy game, Bowmasters has often dealt 8–10 damage passively. Combined with 1/1 Rabbit attacks, this is a realistic 5–6 turn clock that doesn’t require you to ever attack with Frog.</div></div>
+    <div class="card"><div class="card-label">T2 vs T3 Threat Decision</div><div class="card-title">When to Hold Mana</div><div class="card-body"><strong>Deploy T2:</strong> They’re on an aggro or combo deck. Frog must hit play before they establish their clock.<br><br><strong>Hold mana T2:</strong> They have 2 open mana and haven’t cast anything — Force of Negation read. Pass T2 with Force up, deploy Frog on T3 when they’ve used mana on their end step.</div></div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════ CH05 LINES -->
+<div id="lines" class="section">
+  <div class="section-label">Chapter 05</div>
+  <h1>Lines &<br>Tactics</h1>
+  <div class="mantra">"Every discard is a Frog counter. Every opponent draw is a drain. Know which interactions fire when."</div>
+
+  <h2>Three Lines You Must Know Cold</h2>
+  <div class="card-grid card-grid-3">
+    <div class="card"><div class="card-label">Line 01 — Critical</div><div class="card-title">Frog Triggers on ANY Discard</div><div class="card-body">Psychic Frog gets a +1/+1 counter whenever ANY card is discarded — including cards you discard to hand size, Faithless Looting’s discard 2, and even opponent’s Thoughtseize stripping your hand. Each individual card discarded is one trigger. Faithless Looting = 2 triggers = 2 counters at instant speed. You can activate this on their combat step to make Frog large enough to survive blocks.</div></div>
+    <div class="card"><div class="card-label">Line 02 — Critical</div><div class="card-title">Harbinger Applies to ALL Islands</div><div class="card-body">Harbinger of the Seas makes ALL islands legendary — including their Hallowed Fountain, Scalding Tarn after fetching, Flooded Strand after cracking, and any island-type dual. If they already have two islands in play when Harbinger resolves, they choose one and the other is sacrificed immediately. This is not a "enters tapped" effect — it’s an immediate sacrifice for the duplicate. Know which of their lands are islands before deploying.</div></div>
+    <div class="card"><div class="card-label">Line 03 — Critical</div><div class="card-title">Sink into Stupor at Their EOT</div><div class="card-body">Sink into Stupor / Sinister Monologue is a two-card adventure: cast the adventure first (draw-then-discard + Frog trigger), THEN cast the sorcery next turn to bounce a permanent. You can also hold Sink into Stupor and cast the bounce on your main phase when they’re tapped out for maximum tempo. Casting on your own end step gets you the adventure; saving it for their permanents gets the bounce. Decide before T3 which you need.</div></div>
+  </div>
+
+
+  <h2>Anti-Graveyard Hate Plays</h2>
+  <div class="card-grid card-grid-2">
+    <div class="card">
+      <div class="card-label">vs Surgical Extraction</div>
+      <div class="card-title">Exile Your Own Card to Frog</div>
+      <div class="card-body">Opponent casts <span class="c">Surgical Extraction</span> targeting Abhorrent Oculus in your GY. <strong>Response:</strong> activate Psychic Frog's flying ability, exiling Oculus (plus 2 other cards) as COST. Surgical fizzles — its target left the graveyard. The exile is a cost, meaning the opponent can't respond to the exile itself; by the time they get priority, Oculus is already in exile. Frog gained flying as a bonus. <strong>Note:</strong> this only works if you have 3+ cards in GY (need 3 total to activate flying). If GY has only the Oculus, you can't exile it to Frog.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">vs Nihil Spellbomb / Rest in Peace</div>
+      <div class="card-title">Prioritize Unearth Timing</div>
+      <div class="card-body">If you suspect GY hate: use Unearth BEFORE they get mana to deploy hate. A T2 Unearth on Oculus resolves before their T2 Rest in Peace. Once Oculus is on the battlefield, GY hate doesn't affect it — it's already out. Against Nihil Spellbomb (sacrifice to exile GY): they can fire it in response to Unearth. <strong>Counter-play:</strong> hold Spell Snare (counters MV 2 artifacts on cast) or Counterspell for their Spellbomb trigger (the sacrifice-to-exile is an activated ability, not a spell — but the draw mode IS an activated ability you can't counter with Counterspell). Best answer: race them. Deploy threats faster than they can hate.</div>
+    </div>
+  </div>
+
+  <h2>Sink into Stupor — When to Bounce vs Counter</h2>
+  <div class="card-grid card-grid-2">
+    <div class="card">
+      <div class="card-label">Bounce a Spell on the Stack</div>
+      <div class="card-title">Pseudo-Counter That Returns to Hand</div>
+      <div class="card-body">Sink bounces a SPELL on the stack back to hand. Unlike Counterspell, the spell was never "countered" — it just returned to hand. This matters against: <strong>"Can't be countered" spells:</strong> Supreme Verdict says "can't be countered" but Sink doesn't counter it — it returns it to hand. Legal play. <strong>Cascade:</strong> bounce the cascade spell after Living End resolves (the cascade card goes back to hand, not GY). <strong>Suspend:</strong> bounce a spell cast from suspend — it returns to hand, not exile. <strong>Downside vs Counterspell:</strong> they get the card back. Against a control opponent with 10 mana, bouncing buys one turn. Counterspell denies the card permanently.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Bounce a Permanent in Play</div>
+      <div class="card-title">Tempo Removal That Dodges Indestructible</div>
+      <div class="card-body">Sink bounces any nonland permanent opponent controls. This hits: creatures (even indestructible ones), planeswalkers, artifacts, enchantments. Unlike Fatal Push which destroys (stopped by indestructible), Sink returns to hand regardless of indestructible, hexproof, or protection. <strong>Best targets:</strong> expensive permanents they spent their whole turn deploying (Karn, Primeval Titan, Murktide). <strong>Worst targets:</strong> cheap creatures they'll just recast next turn (Guide of Souls, Ragavan). Use on permanents where the tempo gain matters more than the card disadvantage.</div>
+    </div>
+  </div>
+
+  <h2>1-in-5000 Edge Cases</h2>
+  <div class="edge-case">
+    <div class="edge-case-label">Thought Scour Targeting the Opponent</div>
+    <div class="edge-case-body">Thought Scour says "target player mills two cards." It can target your opponent. Use cases: (1) They scried to top and you want to deny a known topdeck — Scour them to mill it. (2) In the mirror, milling their Oculus into their GY could be dangerous (they could Unearth it) but sometimes denying their draw step card matters more. (3) Against Lantern Control / top-of-deck manipulation: disrupting their known top card. (4) Against Tron: milling an Urza land they searched for. This comes up maybe once every 200 games but wins when it does.</div>
+  </div>
+  <div class="edge-case">
+    <div class="edge-case-label">Spell Pierce as Graveyard Fuel</div>
+    <div class="edge-case-body">Spell Pierce can be cast even when it won't counter anything — the opponent simply pays {2} and their spell resolves. But YOUR Spell Pierce still goes to the graveyard as a resolved instant. This feeds Murktide delve (+1/+1 counter). In late-game board stalls where you need one more counter for Murktide: cast Spell Pierce on their spell knowing they'll pay {2}. Your Murktide grows. The {2} they paid was worth less than the +1/+1 counter.</div>
+  </div>
+  <div class="edge-case">
+    <div class="edge-case-label">Manifested Murktide Regent — Can It Flip?</div>
+    <div class="edge-case-body">If Oculus's manifest dread puts Murktide face-down as a 2/2: YES, you can turn it face up by paying its mana cost {5}{U}{U}. However, delve does NOT apply when turning face up — delve only works when casting a spell. You must pay the full {5}{U}{U}. The creature enters the battlefield with 0 +1/+1 counters (the ETB counter ability triggers on entering, and Murktide entered face-down, so no counters were added). BUT: once face-up, Murktide's "whenever an instant or sorcery leaves your GY" trigger is active. Future Frog exiles of instants will grow it.</div>
+  </div>
+  <div class="edge-case">
+    <div class="edge-case-label">Manifest Dread with 1 Card in Library</div>
+    <div class="edge-case-body">Per Scryfall ruling: "If your library contains only one card when you manifest dread, you'll look at that card and put it onto the battlefield face down. You won't have the option to put it into your graveyard instead." You MUST manifest the one remaining card. If your library has 0 cards: manifest dread does nothing (no trigger failure, the ability just has no effect). You don't lose the game from an empty library during manifest dread — you only lose if you try to DRAW from an empty library.</div>
+  </div>
+  <div class="edge-case">
+    <div class="edge-case-label">Force of Negation During Your Own Upkeep</div>
+    <div class="edge-case-body">"If it's not your turn" — your upkeep IS your turn. You CANNOT free-cast Force of Negation during your own upkeep, even though it feels like you should be able to. If something triggers during your upkeep that you need to counter (opponent's Pact of Negation trigger, for example), you must pay {1}{U}{U} for Force. Conversely: casting your spells during the OPPONENT'S upkeep means THEY can't free-cast their Force of Negation either (it's their turn).</div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════ CH06 ROLES -->
+<div id="roles" class="section">
+  <div class="section-label">Chapter 06</div>
+  <h1>Role Assignment</h1>
+
+  <div class="mantra">"You're a tempo deck with three modes. The wrong mode loses. The right mode wins games you shouldn't."</div>
+
+  <div class="role-grid">
+    <div class="role-card">
+      <div class="role-name role-name-primary">Tempo</div>
+      <div class="role-desc">Your default mode. Deploy Frog T2, protect it, attack, draw cards, grow it. Counter their key spell, Push their key creature, attack through the hole. Every turn you're both threatening and protecting. This is the deck at its best — doing two things at once.</div>
+      <div class="role-matchups">vs Boros Energy · vs Jeskai Blink · vs Midrange · vs Mirror</div>
+    </div>
+    <div class="role-card">
+      <div class="role-name role-name-secondary">Control</div>
+      <div class="role-desc">When the opponent is faster than you (Prowess nut draw, Storm). Hold all interaction, don't deploy threats until you've stabilized. Counter their key spell, Push their attacker, then slam Oculus or Murktide on a clear board. You're playing draw-go until the coast is clear.</div>
+      <div class="role-matchups">vs Storm · vs Prowess · vs Belcher · vs Fast Combo</div>
+    </div>
+    <div class="role-card">
+      <div class="role-name role-name-tertiary">Unfair</div>
+      <div class="role-desc">T2 Unearth Oculus. T2 Harbinger locking them off colors. When you have the nut reanimation draw, ignore the fair game and slam the unfair angle. This mode wins games that no amount of "good Magic" could win — against Tron, against combo, against anyone who stumbles for one turn.</div>
+      <div class="role-matchups">vs Tron · vs Slow Combo · vs Greedy Manabases</div>
+    </div>
+  </div>
+  <h2>Role Mistakes to Avoid</h2>
+  <ul class="heuristic-list">
+    <li><div class="heuristic-num">01</div><div class="heuristic-body"><strong>Not growing Frog on opponent’s attack step.</strong> Faithless Looting is an instant. When they attack into Frog, you can cast Looting in response to damage — Frog gets 2 counters and may now be too large to trade with their attacker. Always ask “can I make Frog bigger before damage resolves?” on their attack step.</div></li>
+    <li><div class="heuristic-num">02</div><div class="heuristic-body"><strong>Casting Sink into Stupor on your own turn when you need the adventure.</strong> The adventure (Sinister Monologue) is a sorcery. You must cast it on your own main phase anyway. Stop holding it for their turn — the adventure and the bounce are separate cards. Cast the adventure main phase for the Frog trigger and card selection, then the bounce is a separate future decision.</div></li>
+    <li><div class="heuristic-num">03</div><div class="heuristic-body"><strong>Deploying Harbinger into non-island decks.</strong> Harbinger of the Seas is a 3/2 for {2}{U} with no text against Boros Energy, Jund, or Eldrazi Tron. Don’t bring it in and don’t play it in matchups where they have no islands. Check their deck’s manabase before playing Harbinger — it’s dead in some game ones.</div></li>
+    <li><div class="heuristic-num">04</div><div class="heuristic-body"><strong>Holding Force of Negation for the wrong threat.</strong> Force counters any non-creature spell for free — but it’s a 2-for-1 when you pay the alternate cost. Save it for game-ending threats (Grapeshot, Living End, Violent Outburst, Titan) not for turn-2 cantrips. Misforcing costs the game when the real threat arrives two turns later with no answer available.</div></li>
+  </ul>
+
+  <h2>Role-Switching Signals</h2>
+  <div class="card-grid card-grid-2">
+    <div class="card"><div class="card-label">Switch to Control Mode When</div><div class="card-title">Your Threats Are Answered</div><div class="card-body">Frog and Murktide are both answered. Bowmasters is in play. Switch: draw-go with counters + Bowmasters passive drain. Every time they draw a card you advance your position. Hold mana open every turn, counter the important spells, let Bowmasters accumulate damage over 6–8 turns. This is a real win condition.</div></div>
+    <div class="card"><div class="card-label">Switch to Aggro Mode When</div><div class="card-title">Frog Is Big and They’re Low</div><div class="card-body">Frog is 5/6+ flying. They’re below 12 life. Stop developing, stop counterspelling — attack. Two swings with a 5/6 kills from 10 life. Don’t waste mana on extra interaction when the game is already decided by the air. Tap out, attack, hold Priority only to prevent exile effects.</div></div>
+    <div class="card"><div class="card-label">Never Switch When</div><div class="card-title">Frog + Counter Backup Is Online</div><div class="card-body">You have Frog in play, Force of Negation in hand, opponent is at 12 or below. This position wins. Don’t pivot to anything else. Attack with Frog, Force anything that answers it. The counter backup converts a 60% position into a 90% position.</div></div>
+    <div class="card"><div class="card-label">Identify Mode Before T1</div><div class="card-title">Read Their Opening</div><div class="card-body">Aggro deck: lead interaction (Fatal Push, Spell Snare), Frog at T2 to block. Combo deck: lead Force of Negation backup, Frog at T2 to race. Control deck: lead Harbinger at T3 to cut their mana, deploy threats when they tap out for a sweeper. The deck changes shape based on what they’re doing.</div></div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════ CH07 MATCHUPS -->
+<div id="matchups" class="section">
+  <div class="section-label">Chapter 07</div>
+  <h1>Matchup Guide</h1>
+
+  <table class="matchup-table">
+    <colgroup><col><col><col><col></colgroup>
+    <thead><tr><th>Matchup</th><th>Role</th><th>Verdict</th><th>Key Card</th></tr></thead>
+    <tbody>
+
+      <tr onclick="toggle('mu-boros')"><td><strong>Boros Energy</strong></td><td>Tempo</td><td><span class="verdict verdict-even">Even (Slightly Favored Post-Ban)</span></td><td>Fatal Push — their creatures are all MV ≤ 2</td></tr>
+      <tr><td colspan="4" class="matchup-detail" id="mu-boros">
+        <p>The format's #1 deck at 16% meta. Post-ban (One Ring gone), Boros lost its grind engine. Your Fatal Push kills every creature they play for {B}. Bowmasters punishes Guide of Souls triggers. The key question is whether you can stabilize against their explosive T1-T2 curve before your card advantage takes over. Frog on T2 is risky if they have Galvanic Discharge — consider holding T2 open for Push + Snare instead, then deploying Frog T3 with protection.</p>
+        <p><strong>Harbinger wins this matchup.</strong> Most Boros lists run 0-1 basic Plains. A resolved Harbinger locks them off {R} and {W} from most of their manabase. Pre-fetch your Swamp, then slam Harbinger T3. If it sticks, they're drawing dead.</p>
+        <div class="sb-table">
+        <div class="sb-col">
+          <div class="sb-col-label">Out</div>
+          <div class="sb-item"><span>−2 Force of Negation</span></div>
+          <div class="sb-item"><span>−2 Sink into Stupor</span></div>
+          <div class="sb-item"><span>−1 Counterspell</span></div>
+        </div>
+        <div class="sb-col">
+          <div class="sb-col-label">In</div>
+          <div class="sb-item"><span>+1 Harbinger of the Seas</span></div>
+          <div class="sb-item"><span>+1 Shoot the Sheriff</span></div>
+          <div class="sb-item"><span>+1 Orcish Bowmasters</span></div>
+        </div>
+      </div>
+        <p class="sb-note">Force of Negation is weak — their spells are cheap creatures, not noncreature threats. Sink at {1}{U}{U} is too slow for their curve. Bring in maximum removal density. Stern Scolding at {U} counters Guide of Souls (0/2), Ocelot Pride (1/1), Ajani (1/2) — every key creature. Toxic Deluge at 2 life wipes their board without caring about indestructible or protection.</p>
+        <h3>% Point Edges</h3>
+        <p class="sb-note"><strong>+3–4 pts: Harbinger on T3 with Swamp pre-fetched.</strong> If Harbinger resolves and they don't have basic Plains in play, their turns 4+ are effectively blanked. This converts an even matchup into a soft lock.</p>
+        <p class="sb-note"><strong>+2 pts: Bowmasters on their T1 Guide of Souls.</strong> Flash Bowmasters during their end step after Guide entered — deals 1 damage to Guide (killing it), creates an Orc Army. They lost their engine card, you gained a board presence.</p>
+      </td></tr>
+
+      <tr onclick="toggle('mu-jeskai')"><td><strong>Jeskai Blink</strong></td><td>Tempo</td><td><span class="verdict verdict-even">Even</span></td><td>Counterspell on Ephemerate — denies their engine</td></tr>
+      <tr><td colspan="4" class="matchup-detail" id="mu-jeskai">
+        <p>Their plan: Ephemerate Solitude for free removal, Stoneforge for equipment, Phelia for value. Your plan: counter Ephemerate (deny their entire engine), Push their creatures, race with Frog. Frog is excellent here — Solitude can exile it, but if they used evoke they lose Solitude too. A protected Frog that draws cards every attack outraces their value engine. Murktide is your best finisher — an 8/8 flying that Solitude can exile but they need to spend a full card (not evoke) to do it.</p>
+        <div class="sb-table">
+        <div class="sb-col">
+          <div class="sb-col-label">Out</div>
+          <div class="sb-item"><span>−2 Harbinger of the Seas</span></div>
+          <div class="sb-item"><span>−1 Shoot the Sheriff</span></div>
+          <div class="sb-item"><span>−1 Spell Snare</span></div>
+        </div>
+        <div class="sb-col">
+          <div class="sb-col-label">In</div>
+          <div class="sb-item"><span>+1 Force of Negation</span></div>
+          <div class="sb-item"><span>+1 Spell Pierce</span></div>
+          <div class="sb-item"><span>+1 Accursed Marauder</span></div>
+        </div>
+      </div>
+        <p class="sb-note">Harbinger is less useful — they run enough basics for Blink to function under it. Accursed Marauder is your answer to a Solitude they managed to stick permanently — the edict bypasses Solitude's exile ability. Force #3 improves your counter density for their key noncreature spells (Ephemerate, Prismatic Ending).</p>
+        <h3>% Point Edges</h3>
+        <p class="sb-note"><strong>+3 pts: Counter Ephemerate, not Solitude.</strong> Solitude without Ephemerate is a one-shot exile. Ephemerate on Solitude is a recurring exile engine. Always prioritize countering the Ephemerate.</p>
+      </td></tr>
+
+      <tr onclick="toggle('mu-storm')"><td><strong>Ruby Storm</strong></td><td>Control</td><td><span class="verdict verdict-favor">Favorable</span></td><td>Force of Negation — free counter on their combo turn</td></tr>
+      <tr><td colspan="4" class="matchup-detail" id="mu-storm">
+        <p>You have everything Storm hates: free countermagic (Force of Negation), cheap interaction (Spell Pierce, Counterspell), and a clock that punishes them for not going off immediately. Frog on T2 means they need to combo T3 or die to card advantage. Force of Negation is your best card — exiles Past in Flames (removes it permanently, can't flashback from exile) and counters their key rituals for free. <span class="c">Spell Snare</span> counters Ruby Medallion (MV 2).</p>
+        <div class="sb-table">
+        <div class="sb-col">
+          <div class="sb-col-label">Out</div>
+          <div class="sb-item"><span>−4 Fatal Push</span></div>
+          <div class="sb-item"><span>−2 Orcish Bowmasters</span></div>
+          <div class="sb-item"><span>−1 Shoot the Sheriff</span></div>
+        </div>
+        <div class="sb-col">
+          <div class="sb-col-label">In</div>
+          <div class="sb-item"><span>+3 Consign to Memory</span></div>
+          <div class="sb-item"><span>+1 Force of Negation</span></div>
+          <div class="sb-item"><span>+1 Spell Pierce</span></div>
+        </div>
+      </div>
+        <p class="sb-note">All creature removal is dead — they play 0-2 creatures. Consign to Memory is your best SB card: counters triggered abilities (Storm trigger on Grapeshot), counters colorless spells (Ruby Medallion), and has Replicate to counter multiple copies. Force #3 ensures you always have a free counter available.</p>
+        <h3>% Point Edges</h3>
+        <p class="sb-note"><strong>+4 pts: Consign to Memory on the Storm trigger.</strong> Grapeshot's Storm trigger creates copies. Consign counters triggered abilities. Counter the Storm trigger = 0 copies. They spent their entire hand on rituals for a single Grapeshot dealing 1 damage.</p>
+        <p class="sb-note"><strong>+2 pts: Force of Negation exiles Past in Flames.</strong> FoN exiles the countered spell. Past in Flames in exile can never be flashbacked. This removes their primary recursion engine permanently.</p>
+      </td></tr>
+
+      <tr onclick="toggle('mu-affinity')"><td><strong>Izzet Affinity</strong></td><td>Tempo</td><td><span class="verdict verdict-even">Even</span></td><td>Fatal Push + Spell Snare on their key pieces</td></tr>
+      <tr><td colspan="4" class="matchup-detail" id="mu-affinity">
+        <p>Affinity dumps cheap artifacts and draws with Thought Monitor. Your Fatal Push kills their creatures efficiently. Spell Snare counters their MV 2 payoffs. Bowmasters punishes Thought Monitor's draw trigger. The matchup is about denying their draw engine while establishing your own — first player to pull ahead on cards wins. Post-board, Consign to Memory counters triggered abilities AND colorless spells (Thought Monitor, Sojourner's Companion).</p>
+        <div class="sb-table">
+        <div class="sb-col">
+          <div class="sb-col-label">Out</div>
+          <div class="sb-item"><span>−2 Harbinger of the Seas</span></div>
+          <div class="sb-item"><span>−2 Force of Negation</span></div>
+          <div class="sb-item"><span>−1 Sink into Stupor</span></div>
+        </div>
+        <div class="sb-col">
+          <div class="sb-col-label">In</div>
+          <div class="sb-item"><span>+3 Consign to Memory</span></div>
+          <div class="sb-item"><span>+1 Orcish Bowmasters</span></div>
+          <div class="sb-item"><span>+1 Stern Scolding</span></div>
+        </div>
+      </div>
+        <p class="sb-note">Harbinger doesn't help — their mana is artifact-based, not land-based. Force is less useful because their key spells are cheap (payable for {1}{U}{U}). Consign is your MVP: counters Thought Monitor ({7} colorless, often cast for {0}-{1}), counters Cranial Plating equip trigger, counters any triggered ability from their artifacts.</p>
+      </td></tr>
+
+      <tr onclick="toggle('mu-etron')"><td><strong>Eldrazi Tron</strong></td><td>Unfair</td><td><span class="verdict verdict-dog">Unfavorable</span></td><td>Unearth Oculus T2 — race before Tron assembles</td></tr>
+      <tr><td colspan="4" class="matchup-detail" id="mu-etron">
+        <p>Their late game is unbeatable — All Is Dust, Ugin, Ulamog. Your interaction (Push, Counterspell) barely touches their threats. Fatal Push doesn't kill anything relevant (all MV 4+). Counterspell can stop one threat but they have 8+. <strong>Your only path to winning is speed.</strong> T2 Unearth Oculus or T2 Frog into T3 protected Murktide = lethal before they assemble Tron. If the game goes to T6+, you lose. Harbinger from SB can buy time by turning their Tron lands into Islands (no {C}{C}{C} from Urza lands).</p>
+        <div class="sb-table">
+        <div class="sb-col">
+          <div class="sb-col-label">Out</div>
+          <div class="sb-item"><span>−4 Fatal Push</span></div>
+          <div class="sb-item"><span>−1 Shoot the Sheriff</span></div>
+          <div class="sb-item"><span>−2 Spell Snare</span></div>
+        </div>
+        <div class="sb-col">
+          <div class="sb-col-label">In</div>
+          <div class="sb-item"><span>+1 Harbinger of the Seas</span></div>
+          <div class="sb-item"><span>+3 Consign to Memory</span></div>
+          <div class="sb-item"><span>+1 Spell Pierce</span></div>
+        </div>
+      </div>
+        <p class="sb-note">All creature removal is dead — nothing they play dies to Push or Sheriff. Consign counters ALL their colorless spells (Karn, All Is Dust, Walking Ballista, Chalice of the Void) AND triggered abilities (Thought-Knot Seer ETB, Ulamog cast trigger). Harbinger turns Tron lands into Islands — they produce {U} instead of {C}{C}. This delays their big spells by 2-3 turns.</p>
+        <h3>% Point Edges</h3>
+        <p class="sb-note"><strong>+3 pts: Consign to Memory on their Karn cast or All Is Dust.</strong> For {U} (+replicate), you deny their most impactful spells. Replicate means you can counter BOTH Karn AND the follow-up All Is Dust in the same turn for {U}{U}{1}.</p>
+      </td></tr>
+
+      <tr onclick="toggle('mu-living')"><td><strong>Living End</strong></td><td>Control</td><td><span class="verdict verdict-favor">Favorable</span></td><td>Counterspell on cascade spell — deny the whole combo</td></tr>
+      <tr><td colspan="4" class="matchup-detail" id="mu-living">
+        <p>They cascade into Living End — a sorcery that destroys all creatures and returns all creature cards from all graveyards to the battlefield. Your counterspell suite stops this cleanly: Counterspell the cascade spell (Living End never triggers), Force of Negation on their turn (free counter, AND FoN exiles the cascade spell — preventing future recursion), Consign to Memory counters the Living End trigger itself (it's a triggered ability from cascade). Multiple redundant counter axes.</p>
+        <p><strong>Key:</strong> your own GY matters. If Living End resolves, YOUR creatures return too (Frog, Bowmasters, Oculus). But theirs are bigger (Striped Riverwinder, Architects of Will). Best plan: counter the cascade spell and never let it resolve.</p>
+        <div class="sb-table">
+        <div class="sb-col">
+          <div class="sb-col-label">Out</div>
+          <div class="sb-item"><span>−4 Fatal Push</span></div>
+          <div class="sb-item"><span>−1 Shoot the Sheriff</span></div>
+          <div class="sb-item"><span>−2 Orcish Bowmasters</span></div>
+        </div>
+        <div class="sb-col">
+          <div class="sb-col-label">In</div>
+          <div class="sb-item"><span>+3 Nihil Spellbomb</span></div>
+          <div class="sb-item"><span>+3 Consign to Memory</span></div>
+          <div class="sb-item"><span>+1 Force of Negation</span></div>
+        </div>
+      </div>
+        <p class="sb-note">All creature removal is dead — they don't cast creatures, they cycle them. Nihil Spellbomb exiles their GY at instant speed in response to Living End trigger — they get nothing back. Consign counters the cascade trigger OR Living End itself. Force #3 ensures you always have a free answer.</p>
+        <h3>% Point Edges</h3>
+        <p class="sb-note"><strong>+3 pts: Nihil Spellbomb in response to Living End.</strong> Living End resolves: destroys all creatures, then returns all creatures from GY. If you Spellbomb their GY AFTER the destroy but BEFORE the return (both happen as part of the same spell), they get nothing back. Your creatures return (if any were in your GY), theirs don't.</p>
+        <p class="sb-note"><strong>+2 pts: FoN exiles the cascade spell.</strong> Force counters and EXILES. Their Violent Outburst or Shardless Agent is gone permanently — one fewer cascade spell in their deck for game 3.</p>
+      </td></tr>
+
+      <tr onclick="toggle('mu-mirror')"><td><strong>Dimir Mirror</strong></td><td>Tempo</td><td><span class="verdict verdict-even">Even — Skill Dependent</span></td><td>Stern Scolding — kills Frog and Bowmasters for {U}</td></tr>
+      <tr><td colspan="4" class="matchup-detail" id="mu-mirror">
+        <p>The mirror is defined by who resolves the first Frog and protects it. Both sides have identical interaction — the player who sequences better wins. <span class="c">Stern Scolding</span> from SB is devastating: {U} instant that counters any creature spell with power or toughness 2 or less. Kills: Psychic Frog (1/2), Orcish Bowmasters (1/1), Harbinger (2/2). <span class="c">Long Goodbye</span> from their side (if they have it) kills Frog through your counters because it "can't be countered." Track whether they've shown Long Goodbye G1 — if yes, don't expose Frog without backup.</p>
+        <div class="sb-table">
+        <div class="sb-col">
+          <div class="sb-col-label">Out</div>
+          <div class="sb-item"><span>−2 Harbinger of the Seas</span></div>
+          <div class="sb-item"><span>−1 Shoot the Sheriff</span></div>
+          <div class="sb-item"><span>−1 Spell Snare</span></div>
+          <div class="sb-item"><span>−2 Force of Negation</span></div>
+        </div>
+        <div class="sb-col">
+          <div class="sb-col-label">In</div>
+          <div class="sb-item"><span>+1 Stern Scolding</span></div>
+          <div class="sb-item"><span>+1 Spell Pierce</span></div>
+          <div class="sb-item"><span>+3 Nihil Spellbomb</span></div>
+          <div class="sb-item"><span>+1 Accursed Marauder</span></div>
+        </div>
+      </div>
+        <p class="sb-note">Harbinger is symmetric — hurts both of you equally. Force is less useful because their key spells are creatures (Frog, Oculus). Nihil Spellbomb denies their Unearth angle entirely — fire it before their T3 Unearth window. Stern Scolding is your best SB card: kills Frog and Bowmasters for {U} at instant speed. Accursed Marauder is your edict for a resolved Oculus/Murktide you can't otherwise kill.</p>
+        <h3>% Point Edges</h3>
+        <p class="sb-note"><strong>+3 pts: Nihil Spellbomb before their T3 Unearth window.</strong> If they deployed Frog T2 and plan to discard Oculus + Unearth T3: crack Spellbomb during their upkeep to exile their entire GY. No Oculus to Unearth. No instants for future Murktide. Devastating.</p>
+        <p class="sb-note"><strong>+2 pts: First Frog to connect and draw wins.</strong> If your Frog hits and draws a card, you're immediately ahead on resources. Protect Frog with Counterspell and prioritize attacking over holding defensive mana.</p>
+      </td></tr>
+    <tr onclick="toggle('mu-titan')"><td><strong>Amulet Titan</strong></td><td>Race Their Setup</td><td><span class="verdict verdict-dog">Unfavorable</span></td><td>Amulet Titan assembles Primeval Titan + bounce lands by turn 3-4. Your clock is too slow without Frog online. Harbinger ...</td></tr>
+    <tr><td colspan="5" class="matchup-detail" id="mu-titan">
+        <p>Amulet Titan assembles Primeval Titan + bounce lands by turn 3-4. Your clock is too slow without Frog online. Harbinger of the Seas is your best card — it makes all nonbasic lands enter tapped, completely disabling their Amulet of Vigor combo. Harbinger deployed on turn 3 before they assemble Tron is a near-auto-win.</p>
+        <table class="sb-table"><thead><tr><th>Out</th><th>In</th></tr></thead><tbody>
+          <tr><td class="sb-out">−2 Spell Snare</td><td class="sb-in">+ 2 Harbinger of the Seas</td></tr>
+          <tr><td class="sb-out">−1 Shoot the Sheriff</td><td class="sb-in">+1 Nihil Spellbomb</td></tr>
+        </tbody></table>
+        <p class="sb-note">Harbinger of the Seas enters tapped lands neutralizes Amulet of Vigor — their bounce lands enter tapped regardless, buying 1-2 extra turns. Spellbomb exiles Spelunking from GY or disrupts their Arboreal Grazer. Spell Snare does nothing here (no MV2 spells that matter).</p>
+      </td></tr>
+    <tr onclick="toggle('mu-prowess-mu')"><td><strong>Izzet Prowess</strong></td><td>React + Counter</td><td><span class="verdict verdict-even">Even</span></td><td>Modern Prowess kills on T3 with Slickshot Show-Off + Cori-Steel Cutter + cantrip chains. Your flash creatures plus Count...</td></tr>
+    <tr><td colspan="5" class="matchup-detail" id="mu-prowess-mu">
+        <p>Modern Prowess kills on T3 with Slickshot Show-Off + Cori-Steel Cutter + cantrip chains. Your flash creatures plus Counterspell are the best interaction suite in the format against this. Force of Negation counters their key spell for free. Frog on T2 into Counterspell open is your ideal G1 line — Frog races their cantrip-buffed creatures through flying.</p>
+        <table class="sb-table"><thead><tr><th>Out</th><th>In</th></tr></thead><tbody>
+          <tr><td class="sb-out">−2 Harbinger of the Seas</td><td class="sb-in">+2 Stern Scolding</td></tr>
+          <tr><td class="sb-out">−1 Shoot the Sheriff</td><td class="sb-in">+1 Spell Pierce</td></tr>
+        </tbody></table>
+        <p class="sb-note">Stern Scolding hard-counters anything they want to cast that has 2 or less power — DRC (1/1), Swiftspear (1/2), and 1-drops all die to it. Harbinger does nothing to a basic-heavy mana base. Spell Pierce taxes their key pump spells (Mutagenic Growth, Wild Ride) early.</p>
+      </td></tr>
+    <tr onclick="toggle('mu-humans')"><td><strong>Humans</strong></td><td>Survive Thalia Tax</td><td><span class="verdict verdict-dog">Unfavorable</span></td><td>Thalia, Guardian of Thraben taxes ALL your spells by {1} — your 3-drop plan becomes a 4-drop plan. Counterspell goes fro...</td></tr>
+    <tr><td colspan="5" class="matchup-detail" id="mu-humans">
+        <p>Thalia, Guardian of Thraben taxes ALL your spells by {1} — your 3-drop plan becomes a 4-drop plan. Counterspell goes from {UU} to {UU1}. Force of Negation still works free but uses a card. The key: play around Thalia by deploying Frog before it resolves (T2 Frog), then use Frog's flying to kill Thalia in combat. Without Thalia their clock is slow enough that Kaito + Frog wins.</p>
+        <table class="sb-table"><thead><tr><th>Out</th><th>In</th></tr></thead><tbody>
+          <tr><td class="sb-out">−2 Harbinger of the Seas</td><td class="sb-in">+2 Nihil Spellbomb</td></tr>
+          <tr><td class="sb-out">−1 Phantom Interference</td><td class="sb-in">+1 Stern Scolding</td></tr>
+        </tbody></table>
+        <p class="sb-note">Nihil Spellbomb at {1} enters under Thalia for only {2} total — still efficient graveyard hate. Stern Scolding kills Thalia (2/1) and Meddling Mage (2/2) exactly. Harbinger does nothing to their basic-heavy mana base. Kill Thalia and Meddling Mage the turn they come down.</p>
+      </td></tr>
+
+
+    </tbody>
+  </table>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════ CH08 SIDEBOARD -->
+<div id="sideboard" class="section">
+  <div class="section-label">Chapter 08</div>
+  <h1>Sideboard Guide</h1>
+
+  <div class="mantra">"15 mostly-singletons. Every slot answers a specific axis. Consign to Memory is the linchpin — it does everything."</div>
+
+  <div class="card-grid card-grid-2">
+    <div class="card">
+      <div class="card-label">The Linchpin ×3</div>
+      <div class="card-title">Consign to Memory</div>
+      <div class="card-body">{U} instant. Replicate {1}. Counter target triggered ability or colorless spell. The most versatile SB card in Modern. Counters: Storm triggers (Grapeshot), cascade triggers (Living End), Karn, Walking Ballista, Chalice of the Void, Thought-Knot Seer ETB, Urza's Saga chapter triggers, Ruby Medallion, The One Ring (if it returns). Replicate means {U}{U}{1} counters TWO things in the same turn. Board in against: combo (Storm, Living End), artifacts (Affinity, Tron, Belcher), any colorless threat.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">GY Hate ×3</div>
+      <div class="card-title">Nihil Spellbomb</div>
+      <div class="card-body">{1} artifact. {T}, sacrifice: exile target player's graveyard. When it goes to YOUR graveyard from battlefield: you may pay {B} to draw a card. Never dead — against non-GY decks, sacrifice it and pay {B} to draw. Against GY decks: fire in response to their reanimation/Unearth/Living End. The "draw a card when sacrificed" mode means the 3 Spellbombs are essentially 3 cantrips in matchups where GY hate isn't needed. Best against: mirror, Living End, Yawgmoth, Goryo's Vengeance.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Sweeper ×1</div>
+      <div class="card-title">Toxic Deluge</div>
+      <div class="card-body">{2}{B} sorcery. Pay X life: all creatures get -X/-X until EOT. Kills indestructible creatures (doesn't destroy, gives -X/-X). Kills any size creature if you're willing to pay enough life. Against Boros go-wide: pay 2 life for -2/-2 wipes their board of 1/1 and 2/2 tokens. Against Murktide in the mirror: pay 8+ life to kill an 8/8 if necessary. The life payment is real — against aggro this is a last resort. Against midrange/combo it's a clean reset.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Edict ×1</div>
+      <div class="card-title">Accursed Marauder</div>
+      <div class="card-body">{1}{B} 2/1 Zombie Warrior. ETB: each player sacrifices a nontoken creature. Your answer to Sanctifier en-Vec (pro black AND red — untargetable by all your removal), Kaldra Compleat (indestructible), Bogles (hexproof), and any creature that dodges targeted removal. The "each player" clause means you sacrifice too — deploy when you have a manifest token or nothing relevant to lose. Unearthable at MV 2.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Extra Threat ×1</div>
+      <div class="card-title">Harbinger of the Seas (3rd copy)</div>
+      <div class="card-body">Main runs 2. The 3rd SB copy comes in against any deck with a greedy manabase: Boros Energy (0-1 basics), Domain Zoo (5c), 4C piles, Amulet Titan (bounce lands lose abilities). Turning their nonbasics into Islands locks them off most of their mana. The 2/2 body blocks and attacks. Board in when Harbinger cheese is a realistic game plan — skip against decks with plenty of basics (mono-color, 2C with good mana).</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Extra Removal ×1</div>
+      <div class="card-title">Shoot the Sheriff</div>
+      <div class="card-body">{1}{B} instant. Destroy target non-outlaw creature. "Outlaws" = Assassins, Mercenaries, Pirates, Rogues, Warlocks. Most Modern creatures are NOT outlaws — this hits almost everything. Board in when you need removal density beyond Fatal Push ×4. The "non-outlaw" restriction rarely matters in Modern. Clean answer to any creature Push doesn't cover (MV 3+ without revolt).</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Extra Bowmasters ×1</div>
+      <div class="card-title">Orcish Bowmasters (3rd copy)</div>
+      <div class="card-body">Board in against creature-heavy matchups where the flash + ping + Orc Army matters: Boros Energy, Humans, Prowess, mirror. The 3rd Bowmasters increases your chance of having the flash answer for their T1 play. Remember: second Bowmasters grows the existing Army — you want both copies in play against wide boards.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Anti-Small Creatures ×1</div>
+      <div class="card-title">Stern Scolding</div>
+      <div class="card-body">{U} instant. Counter target creature spell with power or toughness 2 or less. Kills in the mirror: Psychic Frog (1/2), Bowmasters (1/1), Harbinger (2/2). Kills in other matchups: Guide of Souls (1/2), Ocelot Pride (1/1), Stoneforge Mystic (1/2), Ragavan (2/1). At {U} it's the most mana-efficient creature counter available. Board in against any deck with critical small creatures you need to stop before they resolve.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Anti-Green/White ×1</div>
+      <div class="card-title">Glistening Deluge</div>
+      <div class="card-body">{1}{B}{B} sorcery. All creatures get -1/-1 until EOT. Creatures that are green AND/OR white get an additional -2/-2. Total: -3/-3 to green/white creatures, -1/-1 to everything else. Devastating against: Boros (white creatures get -3/-3), Yawgmoth (green creatures), Humans (most creatures are white). Your own Frog (1/2 base, often 3/4+ with counters) survives at -1/-1. The {B}{B} cost requires basic Swamp in play.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Free Counter ×1</div>
+      <div class="card-title">Force of Negation (3rd copy)</div>
+      <div class="card-body">Board in against combo and control — any matchup where free interaction on their turn is critical. The 3rd Force ensures you statistically have a free answer available in your opener ~35% of games (up from ~24% with 2 copies). Against Storm, Living End, and Belcher: having a Force in your opener is often the difference between winning and losing G1.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Soft Counter ×1</div>
+      <div class="card-title">Spell Pierce</div>
+      <div class="card-body">{U} instant. Counter noncreature spell unless they pay {2}. Best T1-T3 before they have excess mana. Board in against: control (counter their sweeper/counter), combo (counter their setup spell), any deck with expensive noncreature spells. Falls off hard after T4 when they can always pay {2}. Consider it a T1-T3 tempo piece, not a late-game answer.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════ CH09 HEURISTICS -->
+<div id="heuristics" class="section">
+  <div class="section-label">Chapter 09</div>
+  <h1>Heuristics</h1>
+
+  <ol class="heuristic-list">
+    <li><div class="heuristic-num">01</div><div class="heuristic-body"><strong>T1 fetch into surveil land, not cantrip.</strong> Even if you have Consider in hand, play the fetch-land and crack for Undercity Sewers. The surveil puts a chosen card in GY AND removes a tapped land from your deck. Consider T1 mills 1 random card and draws — less controlled, doesn't thin tapped lands. Surveil land first, cantrips second.</div></li>
+    <li><div class="heuristic-num">02</div><div class="heuristic-body"><strong>Exile lands and creatures to Frog. Save instants/sorceries for Murktide.</strong> When activating Frog's flying (exile 3 from GY), choose lands and creatures. Every instant/sorcery you exile is a +1/+1 counter Murktide doesn't get. Exception: if Murktide isn't in your hand or foreseeable future, exile anything.</div></li>
+    <li><div class="heuristic-num">03</div><div class="heuristic-body"><strong>Unearth (the card) has NO exile clause. Your creature stays permanently.</strong> Unlike the Unearth keyword on creatures like Nethergoyf, the sorcery Unearth just returns the creature to the battlefield. No end-of-turn exile. No "if it would leave, exile instead." If someone tells you your Unearthed Oculus exiles at end of turn, they are wrong. Call a judge.</div></li>
+    <li><div class="heuristic-num">04</div><div class="heuristic-body"><strong>Activate Frog's flying AFTER blocks are declared, not before.</strong> Declare Frog as an attacker (grounded). Opponent doesn't assign a blocker (Frog is "just a 3/4 ground creature"). After blocks: activate flying. Frog is now unblocked AND flying. If you activate flying before attacks, the opponent knows to assign a flier to block. The instant-speed activation is the trick.</div></li>
+    <li><div class="heuristic-num">05</div><div class="heuristic-body"><strong>Pre-fetch Swamp before deploying Harbinger.</strong> Harbinger turns ALL nonbasics into Islands — including yours. If you don't have basic Swamp in play: you lose access to {B} permanently while Harbinger is alive. Fetch Swamp T1 or T2 if Harbinger is in your opener. A Harbinger without Swamp locks YOU out of Fatal Push, Bowmasters, and Unearth.</div></li>
+    <li><div class="heuristic-num">06</div><div class="heuristic-body"><strong>Second Bowmasters grows the existing Army. Don't expect two tokens.</strong> If you already control an Orc Army token: the second Bowmasters' amass puts a +1/+1 counter on the existing Army. You don't get a second token. Plan your board state accordingly — one growing Army is better than two 1/1s in most situations.</div></li>
+    <li><div class="heuristic-num">07</div><div class="heuristic-body"><strong>Frog can exile cards in response to Surgical Extraction.</strong> They target Oculus with Surgical → exile Oculus (plus 2 others) to Frog's flying ability as cost → Surgical fizzles. The exile is a COST — opponent cannot respond to it. But you need 3+ total cards in GY to activate (Oculus + 2 others). If your GY has only the Oculus, you can't save it.</div></li>
+    <li><div class="heuristic-num">08</div><div class="heuristic-body"><strong>Sink into Stupor bounces "can't be countered" spells.</strong> Sink doesn't counter — it returns to hand. Supreme Verdict says "can't be countered" but Sink legally returns it to their hand. This is YOUR answer to uncounterable spells. Sink also bounces permanents in play — use it on expensive threats they tapped out to deploy.</div></li>
+    <li><div class="heuristic-num">09</div><div class="heuristic-body"><strong>Manifested instant/sorcery stays as 2/2 forever.</strong> If Oculus manifests a Consider or Counterspell face-down: it's a 2/2 creature. It cannot be turned face up (it's not a creature card). It stays face-down permanently. This is free board presence but can't attack profitably into anything bigger than a 2/2. Use these tokens as chump blockers or sacrifice fodder.</div></li>
+    <li><div class="heuristic-num">10</div><div class="heuristic-body"><strong>Thought Scour can target the opponent.</strong> "Target player mills two." Use against: known topdecks (they scried, you mill their chosen card), Lantern effects (disrupt their top-of-deck manipulation), mirror (mill their Oculus before they can draw it — risky, puts it in their GY for Unearth). 1-in-200 games, but game-winning when correct.</div></li>
+    <li><div class="heuristic-num">11</div><div class="heuristic-body"><strong>Spell Pierce as intentional GY fuel.</strong> Cast Spell Pierce on their spell knowing they'll pay {2}. Your Spell Pierce resolves (goes to GY as an instant) — fuels Murktide delve (+1/+1 counter). The {2} they paid was worth less than the counter. Only do this in board stalls where one more Murktide counter = lethal flying damage.</div></li>
+    <li><div class="heuristic-num">12</div><div class="heuristic-body"><strong>Cast spells during their upkeep to dodge their Force of Negation.</strong> FoN only works "if it's not your turn." Their upkeep IS their turn — they can't free-cast Force. Your spells during their upkeep are protected from free Force. Use this window to resolve key threats or interaction when they have Force in hand. They must pay {1}{U}{U} during their own turn.</div></li>
+    <li><div class="heuristic-num">13</div><div class="heuristic-body"><strong>Don't deploy Murktide into empty GY.</strong> Without instants/sorceries to exile, Murktide enters as a 3/3 for {U}{U} (after delving lands/creatures for cost reduction). A 3/3 flier for {U}{U} is acceptable in emergencies but bad in most situations. Wait until you have 5+ instants/sorceries in GY before casting Murktide. An 8/8 wins games; a 3/3 trades down.</div></li>
+    <li><div class="heuristic-num">14</div><div class="heuristic-body"><strong>Oculus's additional cost applies when cast from any zone — even "without paying mana cost."</strong> Cascade into Oculus? Still exile 6. Collected Company? CoCo puts it onto battlefield (doesn't cast) — no cost. Unearth? Returns (doesn't cast) — no cost. The distinction: "cast" triggers the additional cost. "Put onto battlefield" doesn't.</div></li>
+    <li><div class="heuristic-num">15</div><div class="heuristic-body"><strong>Manifest dread with 1 card in library: you MUST manifest it.</strong> No choice — the last card goes face-down. With 0 cards: manifest dread does nothing (you don't lose). You only lose from drawing on an empty library, not from manifesting. If you're low on library cards, stop attacking with Frog (combat draw is mandatory if Frog deals damage). Manifest doesn't draw.</div></li>
+  </ol>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════ CH10 TUNING -->
+<div id="tuning" class="section">
+  <div class="section-label">Chapter 10</div>
+  <h1>Tuning</h1>
+
+  <h2>Murktide Count — 2 vs 0</h2>
+  <div class="card-grid card-grid-2">
+    <div class="card">
+      <div class="card-label">Keep 2 Murktide</div>
+      <div class="card-title">When You Need an Unkillable Finisher</div>
+      <div class="card-body">Murktide survives Fatal Push, Lightning Bolt, and most damage-based removal. An 8/8 flying that grows passively is the best standalone closer in the deck. Keep 2 copies when: the meta is midrange-heavy (Murktide outclasses their threats), when GY hate is low (Murktide delve is reliable), or when you need a card that wins the game in 2-3 attack steps without any additional support.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Cut to 0 Murktide</div>
+      <div class="card-title">When GY Hate Is Everywhere</div>
+      <div class="card-body">Some builds have dropped Murktide entirely. The argument: Oculus is a better payoff (Unearthable for {B}, doesn't need GY cards to be large), and Murktide competes with Frog for GY resources. In a meta full of Nihil Spellbomb and Surgical Extraction, Murktide often enters as a 4/4 or 5/5 — not the 8/8 you need. Replace with: 3rd Bowmasters + extra interaction, or Tamiyo, Inquisitive Student for a different card advantage axis.</div>
+    </div>
+  </div>
+
+  <h2>Harbinger Count — 2 vs 3 Main</h2>
+  <div class="card-grid card-grid-2">
+    <div class="card">
+      <div class="card-label">2 Main + 1 SB (Current)</div>
+      <div class="card-title">Cheese Angle Without Dilution</div>
+      <div class="card-body">2 main means you see Harbinger in ~25% of games. Against the right opponent (Boros, Domain) it's game-winning. Against the wrong opponent (mono-color, 2C with basics) it's a 2/2 for 3 mana. The SB copy comes in when you know Harbinger is live. This split balances the cheese potential against the risk of a dead card.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">3 Main, 0 SB</div>
+      <div class="card-title">All-In on the Mana Lock</div>
+      <div class="card-body">In a meta where 70%+ of decks have greedy manabases: 3 main Harbinger increases your odds of the T2-T3 lock. The trade-off is more dead draws against Eldrazi Tron (they run Wastes/colorless basics) and mirror (both players are blue). Only go to 3 main if your local meta is dominated by Boros/Domain/4C and you want to maximize free wins from the cheese angle.</div>
+    </div>
+  </div>
+
+  <h2>The Faithless Looting Splash</h2>
+  <div class="card-grid card-grid-2">
+    <div class="card">
+      <div class="card-label">Grixis / Sultai Splash</div>
+      <div class="card-title">Adding a Third Color</div>
+      <div class="card-body">Some players splash red for <span class="c">Faithless Looting</span> (unbanned Dec 2025): draw 2, discard 2 for {R}. This directly discards Oculus to GY (guaranteeing the Unearth combo) and fills GY faster for Murktide. Also enables <span class="c">Tamiyo, Inquisitive Student</span> flips (draw 3 in a turn). The cost: a third color in a 19-land deck. You need red sources (Steam Vents, Scalding Tarn) which dilute your {U}{B} consistency. Verdict: powerful but risky. The mana is already tight — adding a third color increases your mulligan rate.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Straight Dimir</div>
+      <div class="card-title">Maximum Consistency</div>
+      <div class="card-body">The straight UB build never has color issues. Every land produces {U} or {B} or both. You never lose to your own mana. The trade-off: you rely on Thought Scour / Consider / surveil lands / Frog discard to put Oculus in GY — all less reliable than Faithless Looting. Verdict: better for an open field where you can't predict what you'll face. The consistency of never stumbling on mana outweighs the explosiveness of the Looting draw in most tournaments.</div>
+    </div>
+  </div>
+  <h2>Register Conditions</h2>
+  <div class="card-grid card-grid-2">
+    <div class="card"><div class="card-label">Register When</div><div class="card-title">Green Lights</div><div class="card-body">Draw-heavy decks are well-represented (Storm, UW Control, Living End) — Bowmasters generates massive value passively. Many blue decks in the room — Harbinger tempo lock is live in more matchups. Low Surgical Extraction density in expected sideboards. Midrange-heavy meta where Frog is not a known target heading into the event.</div></div>
+    <div class="card"><div class="card-label">Avoid When</div><div class="card-title">Red Lights</div><div class="card-body">Heavy graveyard hate meta — Nihil Spellbomb, Surgical Extraction, Rest in Peace shut off Murktide and GY synergies. Very creature-heavy field where Bowmasters drain is irrelevant — pure aggro decks rarely draw enough to matter. You’re not comfortable with the three-mode role switching — this deck punishes pilots who default to one plan.</div></div>
+  </div>
+
+  <h2>SB Slot Priority Order</h2>
+  <ol class="heuristic-list">
+    <li><div class="heuristic-num">01</div><div class="heuristic-body"><strong>Consign to Memory (3 copies)</strong> — Versatile: counters any spell AND exiles target GY. Goes in vs combo (Storm, Living End), Affinity (counter the combo piece), and any GY deck. The most flexible SB card. Never cut below 3.</div></li>
+    <li><div class="heuristic-num">02</div><div class="heuristic-body"><strong>Nihil Spellbomb (3 copies)</strong> — Exile entire GY at instant speed + draw a card. Goes in vs Living End, Goryo’s Vengeance, Neoform, any reanimation strategy. Cast on their end step before their combo turn. The draw a card mode means it’s never a pure blank even without a GY target.</div></li>
+    <li><div class="heuristic-num">03</div><div class="heuristic-body"><strong>Force of Negation (extra copies)</strong> — Free counter for non-creature spells. Goes in vs Storm (counter Past in Flames), Living End (counter cascade), Amulet (counter Titan). Never cut vs combo decks. Consider keeping in vs any deck where their 1-card win conditions matter.</div></li>
+    <li><div class="heuristic-num">04</div><div class="heuristic-body"><strong>Harbinger of the Seas (2 copies)</strong> — Tempo piece vs island-dependent decks. Goes in vs Jeskai Blink, UW Control, any blue-heavy deck. Completely dead vs Boros, Jund, Eldrazi Tron. Check their manabase before bringing it in.</div></li>
+    <li><div class="heuristic-num">05</div><div class="heuristic-body"><strong>Flex (Stern Scolding, Accursed Marauder, Spell Pierce)</strong> — Stern Scolding vs creature-light decks with small creatures. Accursed Marauder as a recursive threat vs grindy matchups. Spell Pierce vs non-creature spell decks. Adjust based on field composition.</div></li>
+  </ol>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════ CH11 PREP -->
+<div id="prep" class="section">
+  <div class="section-label">Chapter 11</div>
+  <h1>Prep Sheet</h1>
+  <button class="print-btn" onclick="printSB()">Print This Sheet</button>
+    <h2>20-Minute Crash Course</h2>
+    <p>If you're sitting down in 20 minutes, run through this in order:</p>
+    <ul class="checklist" id="crash-checklist">
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Mulligan rule:</strong> Keep any hand with 2 lands + interaction. Discard-heavy hands without threats are mulligans.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Role rule:</strong> Before T1: are you the aggressor or the control player? Frog + disruption = aggressor. Disruption only = control.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Frog rule:</strong> Never grant Frog flying unless the combat result is worth losing 3 GY cards.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Solitude rule:</strong> Evoke + Ephemerate for 3 exiles across 2 turns. Never waste Solitude on a 1/1.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Stack rule:</strong> Never cast Ephemerate first in a stack war. Let them commit, then respond.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Sideboard rule:</strong> Name the correct Meddling Mage target before G2. Write it on your deck box.</span></li>
+    </ul>
+
+      <div id="sb-print-zone">
+    <h2>Printable Sideboard Reference</h2>
+  <p>All 7 matchup ins/outs on one page. Hit Print and take it to the event.</p>
+  <button class="print-btn" onclick="printSB()">&#x2259; Print SB Reference</button>
+  <div class="print-grid">
+
+    <div class="print-mu">
+      <div class="print-mu-name">Boros Energy <span class="diff-even">Even</span></div>
+      <div class="print-mu-role">Tempo — Frog blocks, then closes</div>
+      <div class="print-cols">
+        <div><div class="print-col-label">In</div>
+          <div class="print-row"><span>Harbinger of the Seas</span><span class="print-qty">+1</span></div>
+          <div class="print-row"><span>Shoot the Sheriff</span><span class="print-qty">+1</span></div>
+          <div class="print-row"><span>Orcish Bowmasters</span><span class="print-qty">+1</span></div>
+        </div>
+        <div><div class="print-col-label">Out</div>
+          <div class="print-row"><span>Force of Negation</span><span class="print-qty">−2</span></div>
+          <div class="print-row"><span>Sink into Stupor</span><span class="print-qty">−2</span></div>
+          <div class="print-row"><span>Counterspell</span><span class="print-qty">−1</span></div>
+        </div>
+      </div>
+      <div class="print-needle">T2 Frog blocks Ragavan every turn. Keep Fatal Push for their follow-up threats</div>
+    </div>
+
+    <div class="print-mu">
+      <div class="print-mu-name">Jeskai Blink <span class="diff-even">Even</span></div>
+      <div class="print-mu-role">Tempo — Harbinger cuts their mana</div>
+      <div class="print-cols">
+        <div><div class="print-col-label">In</div>
+          <div class="print-row"><span>Force of Negation</span><span class="print-qty">+1</span></div>
+          <div class="print-row"><span>Spell Pierce</span><span class="print-qty">+1</span></div>
+          <div class="print-row"><span>Accursed Marauder</span><span class="print-qty">+1</span></div>
+        </div>
+        <div><div class="print-col-label">Out</div>
+          <div class="print-row"><span>Harbinger of the Seas</span><span class="print-qty">−2</span></div>
+          <div class="print-row"><span>Shoot the Sheriff</span><span class="print-qty">−1</span></div>
+          <div class="print-row"><span>Spell Snare</span><span class="print-qty">−1</span></div>
+        </div>
+      </div>
+      <div class="print-needle">Harbinger makes their Hallowed Fountain legendary. Cuts their blink mana in half</div>
+    </div>
+
+    <div class="print-mu">
+      <div class="print-mu-name">Ruby Storm <span class="diff-good">Favorable</span></div>
+      <div class="print-mu-role">Control — Counter their key spells</div>
+      <div class="print-cols">
+        <div><div class="print-col-label">In</div>
+          <div class="print-row"><span>Consign to Memory</span><span class="print-qty">+3</span></div>
+          <div class="print-row"><span>Force of Negation</span><span class="print-qty">+1</span></div>
+          <div class="print-row"><span>Spell Pierce</span><span class="print-qty">+1</span></div>
+        </div>
+        <div><div class="print-col-label">Out</div>
+          <div class="print-row"><span>Fatal Push</span><span class="print-qty">−4</span></div>
+          <div class="print-row"><span>Orcish Bowmasters</span><span class="print-qty">−2</span></div>
+          <div class="print-row"><span>Shoot the Sheriff</span><span class="print-qty">−1</span></div>
+        </div>
+      </div>
+      <div class="print-needle">Counter Past in Flames. Consign exiles their GY + counters the recast</div>
+    </div>
+
+    <div class="print-mu">
+      <div class="print-mu-name">Izzet Affinity <span class="diff-even">Even</span></div>
+      <div class="print-mu-role">Control — Counter their combo pieces</div>
+      <div class="print-cols">
+        <div><div class="print-col-label">In</div>
+          <div class="print-row"><span>Consign to Memory</span><span class="print-qty">+3</span></div>
+          <div class="print-row"><span>Orcish Bowmasters</span><span class="print-qty">+1</span></div>
+          <div class="print-row"><span>Stern Scolding</span><span class="print-qty">+1</span></div>
+        </div>
+        <div><div class="print-col-label">Out</div>
+          <div class="print-row"><span>Harbinger of the Seas</span><span class="print-qty">−2</span></div>
+          <div class="print-row"><span>Force of Negation</span><span class="print-qty">−2</span></div>
+          <div class="print-row"><span>Sink into Stupor</span><span class="print-qty">−1</span></div>
+        </div>
+      </div>
+      <div class="print-needle">Consign counters Kappa Cannoneer. Stern Scolding kills Ornithopter + small threats</div>
+    </div>
+
+    <div class="print-mu">
+      <div class="print-mu-name">Eldrazi Tron <span class="diff-hard">Unfavorable</span></div>
+      <div class="print-mu-role">Tempo — Answer TKS before ETB</div>
+      <div class="print-cols">
+        <div><div class="print-col-label">In</div>
+          <div class="print-row"><span>Harbinger of the Seas</span><span class="print-qty">+1</span></div>
+          <div class="print-row"><span>Consign to Memory</span><span class="print-qty">+3</span></div>
+          <div class="print-row"><span>Spell Pierce</span><span class="print-qty">+1</span></div>
+        </div>
+        <div><div class="print-col-label">Out</div>
+          <div class="print-row"><span>Fatal Push</span><span class="print-qty">−4</span></div>
+          <div class="print-row"><span>Shoot the Sheriff</span><span class="print-qty">−1</span></div>
+          <div class="print-row"><span>Spell Snare</span><span class="print-qty">−2</span></div>
+        </div>
+      </div>
+      <div class="print-needle">Consign exiles TKS before ETB resolves. Spell Pierce taxes their big spells</div>
+    </div>
+
+    <div class="print-mu">
+      <div class="print-mu-name">Living End <span class="diff-good">Favorable</span></div>
+      <div class="print-mu-role">Control — Counter cascade + exile GY</div>
+      <div class="print-cols">
+        <div><div class="print-col-label">In</div>
+          <div class="print-row"><span>Nihil Spellbomb</span><span class="print-qty">+3</span></div>
+          <div class="print-row"><span>Consign to Memory</span><span class="print-qty">+3</span></div>
+          <div class="print-row"><span>Force of Negation</span><span class="print-qty">+1</span></div>
+        </div>
+        <div><div class="print-col-label">Out</div>
+          <div class="print-row"><span>Fatal Push</span><span class="print-qty">−4</span></div>
+          <div class="print-row"><span>Shoot the Sheriff</span><span class="print-qty">−1</span></div>
+          <div class="print-row"><span>Orcish Bowmasters</span><span class="print-qty">−2</span></div>
+        </div>
+      </div>
+      <div class="print-needle">Nihil at their EOT. Consign counters Violent Outburst on the stack</div>
+    </div>
+
+    <div class="print-mu">
+      <div class="print-mu-name">Mirror (Dimir Oculus) <span class="diff-even">Even</span></div>
+      <div class="print-mu-role">Tempo — Exile their GY, grow Frog faster</div>
+      <div class="print-cols">
+        <div><div class="print-col-label">In</div>
+          <div class="print-row"><span>Stern Scolding</span><span class="print-qty">+1</span></div>
+          <div class="print-row"><span>Spell Pierce</span><span class="print-qty">+1</span></div>
+          <div class="print-row"><span>Nihil Spellbomb</span><span class="print-qty">+3</span></div>
+          <div class="print-row"><span>Accursed Marauder</span><span class="print-qty">+1</span></div>
+        </div>
+        <div><div class="print-col-label">Out</div>
+          <div class="print-row"><span>Harbinger of the Seas</span><span class="print-qty">−2</span></div>
+          <div class="print-row"><span>Shoot the Sheriff</span><span class="print-qty">−1</span></div>
+          <div class="print-row"><span>Spell Snare</span><span class="print-qty">−1</span></div>
+          <div class="print-row"><span>Force of Negation</span><span class="print-qty">−2</span></div>
+        </div>
+      </div>
+      <div class="print-needle">Nihil their Murktide GY. Whoever grows Frog to 4+ counters first wins</div>
+    </div>
+
+  </div>
+  </div>
+
+<h2>Testing Framework</h2>
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-label">Block 01</div>
+        <div class="card-title">Frog Beats Plan</div>
+        <div class="card-body">Practice winning with just Psychic Frog when Archon is answered. It's a real win condition.</div>
+      </div>
+      <div class="card">
+        <div class="card-label">Block 02</div>
+        <div class="card-title">Solitude Timing</div>
+        <div class="card-body">Drill Solitude evoke + Ephemerate on the exact right target. Two wrong exiles loses games.</div>
+      </div>
+      <div class="card">
+        <div class="card-label">Block 03</div>
+        <div class="card-title">G2 GY Hate Lines</div>
+        <div class="card-body">Practice playing through Rest in Peace and Endurance. These are your hardest post-board situations.</div>
+      </div>
+      <div class="card">
+        <div class="card-label">Block 04</div>
+        <div class="card-title">Clock Practice</div>
+        <div class="card-body">Count turns to lethal. Dimir can draw games by overvaluing setup over closing.</div>
+      </div>
+    </div>
+
+    <h2>Matchday Routine</h2>
+    <ol class="heuristic-list">
+      <li><div class="heuristic-num">01</div><div class="heuristic-body">Register your list. Confirm Needle targets are in the SB. Write them on your deck box.</div></li>
+      <li><div class="heuristic-num">02</div><div class="heuristic-body">Know your Meddling Mage names before Round 1. Have the list memorized.</div></li>
+      <li><div class="heuristic-num">03</div><div class="heuristic-body">Between rounds: think about whether you played the correct role. Not the correct cards — the role.</div></li>
+      <li><div class="heuristic-num">04</div><div class="heuristic-body">Don't over-sideboard. 5-7 cards is the range. More than 7 means you're diluting the plan.</div></li>
+      <li><div class="heuristic-num">05</div><div class="heuristic-body">The Frog beats them when Archon can't. Recognize when to switch plans and commit early.</div></li>
+    </ol>
+
+
+
+  <div class="print-section">
+    <div class="print-title">Dimir Oculus</div>
+    <div class="print-sub">Modern April 2026 · Team Resolve</div>
+
+    <div class="print-grid">
+      <div>
+        <div class="print-col-title">Aggro / Tempo</div>
+        <div class="print-mu">
+          <div class="print-mu-name">Boros Energy</div>
+          <div class="print-mu-role">Even · Tempo Mode</div>
+          <div class="print-cols">
+            <div><div class="print-col-label">Out</div>
+              <div class="print-row"><span>Force of Negation ×2</span><span class="print-qty">−2</span></div>
+              <div class="print-row"><span>Sink into Stupor ×2</span><span class="print-qty">−2</span></div>
+              <div class="print-row"><span>Counterspell ×1</span><span class="print-qty">−1</span></div>
+            </div>
+            <div><div class="print-col-label">In</div>
+              <div class="print-row"><span>Harbinger #3</span><span class="print-qty">+1</span></div>
+              <div class="print-row"><span>Shoot the Sheriff</span><span class="print-qty">+1</span></div>
+              <div class="print-row"><span>Bowmasters #3</span><span class="print-qty">+1</span></div>
+              <div class="print-row"><span>Stern Scolding</span><span class="print-qty">+1</span></div>
+              <div class="print-row"><span>Toxic Deluge</span><span class="print-qty">+1</span></div>
+            </div>
+          </div>
+          <div class="print-needle">Harbinger T3 = lock if no basic Plains · Bowmasters kills Guide · Pre-fetch Swamp</div>
+        </div>
+        <div class="print-mu">
+          <div class="print-mu-name">Dimir Mirror</div>
+          <div class="print-mu-role">Even · Tempo Mode</div>
+          <div class="print-cols">
+            <div><div class="print-col-label">Out</div>
+              <div class="print-row"><span>Harbinger ×2</span><span class="print-qty">−2</span></div>
+              <div class="print-row"><span>Sheriff ×1</span><span class="print-qty">−1</span></div>
+              <div class="print-row"><span>Snare ×1</span><span class="print-qty">−1</span></div>
+              <div class="print-row"><span>Force ×2</span><span class="print-qty">−2</span></div>
+            </div>
+            <div><div class="print-col-label">In</div>
+              <div class="print-row"><span>Stern Scolding</span><span class="print-qty">+1</span></div>
+              <div class="print-row"><span>Spell Pierce</span><span class="print-qty">+1</span></div>
+              <div class="print-row"><span>Nihil Spellbomb ×3</span><span class="print-qty">+3</span></div>
+              <div class="print-row"><span>Accursed Marauder</span><span class="print-qty">+1</span></div>
+            </div>
+          </div>
+          <div class="print-needle">Spellbomb before T3 Unearth · Stern Scolding kills Frog for {U} · First Frog to connect wins</div>
+        </div>
+      </div>
+
+      <div>
+        <div class="print-col-title">Combo</div>
+        <div class="print-mu">
+          <div class="print-mu-name">Ruby Storm</div>
+          <div class="print-mu-role">Favorable · Control Mode</div>
+          <div class="print-cols">
+            <div><div class="print-col-label">Out</div>
+              <div class="print-row"><span>Fatal Push ×4</span><span class="print-qty">−4</span></div>
+              <div class="print-row"><span>Bowmasters ×2</span><span class="print-qty">−2</span></div>
+              <div class="print-row"><span>Sheriff ×1</span><span class="print-qty">−1</span></div>
+            </div>
+            <div><div class="print-col-label">In</div>
+              <div class="print-row"><span>Consign to Memory ×3</span><span class="print-qty">+3</span></div>
+              <div class="print-row"><span>Force #3</span><span class="print-qty">+1</span></div>
+              <div class="print-row"><span>Spell Pierce</span><span class="print-qty">+1</span></div>
+            </div>
+          </div>
+          <div class="print-needle">Consign counters Storm trigger · FoN EXILES Past in Flames · Snare hits Ruby Medallion</div>
+        </div>
+        <div class="print-mu">
+          <div class="print-mu-name">Living End</div>
+          <div class="print-mu-role">Favorable · Control Mode</div>
+          <div class="print-cols">
+            <div><div class="print-col-label">Out</div>
+              <div class="print-row"><span>Fatal Push ×4</span><span class="print-qty">−4</span></div>
+              <div class="print-row"><span>Sheriff ×1</span><span class="print-qty">−1</span></div>
+              <div class="print-row"><span>Bowmasters ×2</span><span class="print-qty">−2</span></div>
+            </div>
+            <div><div class="print-col-label">In</div>
+              <div class="print-row"><span>Nihil Spellbomb ×3</span><span class="print-qty">+3</span></div>
+              <div class="print-row"><span>Consign to Memory ×3</span><span class="print-qty">+3</span></div>
+              <div class="print-row"><span>Force #3</span><span class="print-qty">+1</span></div>
+            </div>
+          </div>
+          <div class="print-needle">Spellbomb in response to Living End · Consign counters cascade trigger · FoN exiles cascade spell</div>
+        </div>
+      </div>
+
+      <div>
+        <div class="print-col-title">Midrange / Big Mana</div>
+        <div class="print-mu">
+          <div class="print-mu-name">Jeskai Blink</div>
+          <div class="print-mu-role">Even · Tempo Mode</div>
+          <div class="print-cols">
+            <div><div class="print-col-label">Out</div>
+              <div class="print-row"><span>Harbinger ×2</span><span class="print-qty">−2</span></div>
+              <div class="print-row"><span>Sheriff ×1</span><span class="print-qty">−1</span></div>
+              <div class="print-row"><span>Snare ×1</span><span class="print-qty">−1</span></div>
+            </div>
+            <div><div class="print-col-label">In</div>
+              <div class="print-row"><span>Force #3</span><span class="print-qty">+1</span></div>
+              <div class="print-row"><span>Spell Pierce</span><span class="print-qty">+1</span></div>
+              <div class="print-row"><span>Accursed Marauder</span><span class="print-qty">+1</span></div>
+            </div>
+          </div>
+          <div class="print-needle">Counter Ephemerate not Solitude · Marauder edicts resolved Solitude</div>
+        </div>
+        <div class="print-mu">
+          <div class="print-mu-name">Eldrazi Tron</div>
+          <div class="print-mu-role">Unfavorable · Unfair Mode</div>
+          <div class="print-cols">
+            <div><div class="print-col-label">Out</div>
+              <div class="print-row"><span>Fatal Push ×4</span><span class="print-qty">−4</span></div>
+              <div class="print-row"><span>Sheriff ×1</span><span class="print-qty">−1</span></div>
+              <div class="print-row"><span>Snare ×2</span><span class="print-qty">−2</span></div>
+            </div>
+            <div><div class="print-col-label">In</div>
+              <div class="print-row"><span>Harbinger #3</span><span class="print-qty">+1</span></div>
+              <div class="print-row"><span>Consign ×3</span><span class="print-qty">+3</span></div>
+              <div class="print-row"><span>Spell Pierce</span><span class="print-qty">+1</span></div>
+            </div>
+          </div>
+          <div class="print-needle">Consign counters ALL colorless spells · Harbinger = Tron lands produce {U} only · Race before T6</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div><!-- end .page -->
+
+<footer>
+  <span><a href="../zuxas.html" style="color:rgba(15,23,42,0.3);text-decoration:none;">Zuxas</a> · Team Resolve</span>
+  <span>Modern 2026 · Dimir Oculus</span>
+  <span>April 2026 · Palette: Ride Hailing/Transport (UI UX Pro Max Row 96)</span>
+</footer>
+
+<script>
+function printSB() {
+  document.body.classList.add('printing-sb');
+  window.addEventListener('afterprint', function cleanup() {
+    document.body.classList.remove('printing-sb');
+    window.removeEventListener('afterprint', cleanup);
+  });
+  window.print();
+}
+function toggleCheck(el) { el.classList.toggle('checked'); }
+function show(id) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  event.target.classList.add('active');
+  window.scrollTo(0,0);
+}
+function toggle(id) {
+  const el = document.getElementById(id);
+  el.classList.toggle('open');
+}
+</script>
+
+<script>
+/* card tooltip JS — injected before </body> */
+(function() {
+  const TIP = document.createElement('div');
+  TIP.className = 'card-tip';
+  TIP.innerHTML = '<div class="card-tip-loading">loading...</div>';
+  document.body.appendChild(TIP);
+
+  const CACHE = {};
+  let hideTimer = null;
+
+  function pos(e) {
+    const PAD=24,W=220,H=310;
+    let x = e.clientX + PAD;
+    let y = e.clientY - H / 2;
+    if (x + W > window.innerWidth)  x = e.clientX - W - PAD;
+    if (y < 8)                       y = 8;
+    if (y + H > window.innerHeight)  y = window.innerHeight - H - 8;
+    TIP.style.left = x + 'px';
+    TIP.style.top  = y + 'px';
+  }
+
+  async function show(name, e) {
+    clearTimeout(hideTimer);
+    TIP.innerHTML = '<div class="card-tip-loading">loading...</div>';
+    TIP.classList.add('visible');
+    pos(e);
+    if (CACHE[name]) {
+      TIP.innerHTML = `<img src="${CACHE[name]}" alt="${name}">`;
+      return;
+    }
+    try {
+      const url = `https://api.scryfall.com/cards/named?fuzzy=${encodeURIComponent(name)}`;
+      const r = await fetch(url);
+      if (!r.ok) { TIP.classList.remove('visible'); return; }
+      const d = await r.json();
+      // Handle double-faced cards
+      const img = d.image_uris?.normal ||
+                  d.card_faces?.[0]?.image_uris?.normal ||
+                  d.image_uris?.small;
+      if (!img) { TIP.classList.remove('visible'); return; }
+      CACHE[name] = img;
+      TIP.innerHTML = `<img src="${img}" alt="${name}">`;
+    } catch(err) {
+      TIP.classList.remove('visible');
+    }
+  }
+
+  function hide() {
+    hideTimer = setTimeout(() => TIP.classList.remove('visible'), 80);
+  }
+
+  document.addEventListener('mouseover', e => {
+    const el = e.target.closest('span.c');
+    if (!el) return;
+    showTip(el.textContent.trim(), e);
+  });
+  document.addEventListener('mousemove', e => {
+    if (TIP.classList.contains('visible')) pos(e);
+  });
+  document.addEventListener('mouseout', e => {
+    if (e.target.closest('span.c')) hide();
+  });
+})();
+</script>
+</body>
+</html>

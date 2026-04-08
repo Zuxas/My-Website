@@ -1,0 +1,995 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Izzet Lessons — Team Resolve Standard Playbook</title>
+<link rel="icon" href="../images/tab32.png" type="image/png">
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+html{overflow-y:scroll;}
+/* ═══ IZZET LESSONS — SaaS General Row 1 palette ═══ */
+:root{
+  --primary:    #09183a;
+  --ink:        #0e0e0e;
+  --paper:      #f2ede6;
+  --paper-dark: #e8e1d6;
+  --rule:       #c8bfb0;
+  --accent:     #EA580C;
+  --accent-light:rgba(234,88,12,0.12);
+  --danger:     #8f1a1a;
+  --danger-light:rgba(143,26,26,0.12);
+  --gold:       #EA580C;
+  --gold-light: rgba(234,88,12,0.12);
+  --mid:        #5a5248;
+  --card:       #ffffff;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--paper);color:var(--ink);font-family:'Crimson Pro',Georgia,serif;font-size:17px;line-height:1.6;}
+nav{position:sticky;top:0;z-index:100;background:var(--primary);border-bottom:2px solid var(--accent);display:flex;align-items:center;padding:0 32px;height:48px;gap:4px;overflow-x:auto;scrollbar-width:none;}
+nav::-webkit-scrollbar{display:none;}
+.nav-brand{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);margin-right:16px;white-space:nowrap;flex-shrink:0;}
+.nav-link{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(248,250,252,0.55);background:none;border:none;border-bottom:2px solid transparent;padding:0 11px;height:48px;cursor:pointer;white-space:nowrap;display:flex;align-items:center;text-decoration:none;transition:color 0.15s,border-color 0.15s;flex-shrink:0;}
+.nav-link:hover{color:rgba(248,250,252,0.85);}
+.nav-link.active{color:rgba(248,250,252,1);border-bottom-color:var(--accent);}
+.header-band{background:var(--primary);border-bottom:3px solid var(--accent);padding:48px 80px 40px;color:#f1f5f9;}
+.header-band,.header-band *{color:#f1f5f9;}
+.header-inner{max-width:1080px;margin:0 auto;display:grid;grid-template-columns:1fr auto;gap:40px;align-items:start;}
+.header-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(241,245,249,0.4);margin-bottom:12px;}
+.header-title{font-family:'DM Mono',monospace;font-size:clamp(32px,4vw,52px);font-weight:500;letter-spacing:0.06em;line-height:1.05;text-transform:uppercase;}
+.header-title .acc{color:var(--accent);}
+.header-tagline{font-size:15px;font-style:italic;color:rgba(241,245,249,0.5);margin-top:12px;max-width:520px;line-height:1.5;}
+.header-meta{text-align:right;}
+.meta-row{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(241,245,249,0.4);margin-bottom:4px;}
+.meta-row span{color:rgba(241,245,249,0.85);margin-left:6px;}
+.section{display:none;animation:fadeIn 0.3s ease;}
+.section.active{display:block;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:none;}}
+.content{max-width:1080px;margin:0 auto;padding:56px 80px 80px;}
+.section-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--mid);margin-bottom:8px;display:block;}
+h1{font-family:'DM Mono',monospace;font-size:clamp(32px,4vw,48px);font-weight:500;letter-spacing:0.06em;text-transform:uppercase;line-height:1.05;margin-bottom:32px;}
+h2{font-family:'DM Mono',monospace;font-size:13px;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);margin:48px 0 16px;padding-bottom:8px;border-bottom:1px solid var(--rule);}
+h3{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--mid);margin:24px 0 8px;}
+p{font-size:16px;line-height:1.7;color:var(--ink);margin-bottom:14px;font-weight:300;}
+a{color:var(--accent);}
+strong{font-weight:600;}
+.mantra{background:var(--accent-light);border-left:3px solid var(--accent);padding:20px 24px;margin:0 0 40px;font-style:italic;font-size:17px;color:var(--ink);line-height:1.6;}
+.card-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule);margin:16px 0;}
+.card-grid-2{grid-template-columns:repeat(2,1fr)!important;}
+.card-grid-3{grid-template-columns:repeat(3,1fr)!important;}
+.card{background:var(--card);padding:20px;transition:background 0.15s;}
+.card:hover{background:#faf7f2;}
+.card-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:var(--mid);margin-bottom:6px;}
+.card-title{font-family:'DM Mono',monospace;font-size:13px;letter-spacing:0.05em;color:var(--accent);margin-bottom:8px;font-weight:500;}
+.card-body{font-size:14px;color:var(--mid);line-height:1.55;font-weight:300;}
+.deck-row{display:flex;justify-content:space-between;padding:3px 0;border-bottom:1px solid rgba(200,191,176,0.4);font-size:15px;}
+.deck-count{font-family:'DM Mono',monospace;font-size:12px;color:var(--mid);min-width:24px;}
+.matchup-block{border:1px solid var(--rule);margin:24px 0;background:var(--card);}
+.matchup-header{background:var(--paper-dark);padding:16px 20px;display:flex;align-items:center;gap:12px;cursor:pointer;justify-content:space-between;}
+.matchup-header h3{margin:0;font-size:11px;letter-spacing:0.15em;color:var(--ink);}
+.verdict{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.15em;text-transform:uppercase;padding:3px 10px;border-radius:2px;}
+.verdict-good{background:rgba(22,163,74,0.15);color:#15803d;}
+.verdict-even{background:rgba(90,82,72,0.12);color:var(--mid);}
+.verdict-hard{background:rgba(143,26,26,0.12);color:#991b1b;}
+.matchup-body{padding:20px;display:none;}
+.matchup-body.open{display:block;}
+.sb-table{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--rule);margin:12px 0;}
+.sb-col{background:var(--paper);padding:12px 16px;}
+.sb-col-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.15em;text-transform:uppercase;color:var(--mid);margin-bottom:8px;}
+.sb-item{display:flex;justify-content:space-between;align-items:baseline;font-size:14px;padding:2px 0;font-weight:300;}
+.sb-qty{font-family:'DM Mono',monospace;font-size:11px;color:var(--mid);}
+.heuristic-list{list-style:none;margin:16px 0;}
+.heuristic-list li{padding:14px 0;border-bottom:1px solid var(--rule);display:flex;gap:16px;align-items:start;}
+.heuristic-list li:last-child{border-bottom:none;}
+.h-num{font-family:'DM Mono',monospace;font-size:10px;color:var(--accent);flex-shrink:0;padding-top:2px;min-width:28px;}
+.h-text{font-size:15px;font-weight:300;color:var(--ink);line-height:1.6;}
+.h-text strong{font-weight:600;}
+.edge-case{background:var(--card);border:1px solid var(--rule);border-left:3px solid var(--accent);padding:16px 20px;margin:12px 0;}
+.edge-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:6px;}
+.edge-body{font-size:14px;font-weight:300;color:var(--ink);line-height:1.6;}
+.print-btn{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;background:var(--accent);color:#fff;border:none;padding:10px 20px;cursor:pointer;margin:16px 0;}
+#sb-print-zone{display:none;}
+@media print{nav,.header-band{display:none!important;}#sb-print-zone{display:block!important;}body{background:#fff;}}
+/* TOOLTIP */
+.card-tip{position:fixed;z-index:9999;pointer-events:none;width:220px;border-radius:8px;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,0.6);opacity:0;transition:opacity 0.15s;background:#1a1a2e;}
+.card-tip.visible{opacity:1;}
+.card-tip img{width:220px;height:auto;display:block;}
+.card-tip-loading{width:220px;height:308px;display:flex;align-items:center;justify-content:center;color:#94a3b8;font-size:12px;font-family:monospace;background:#1e293b;}
+span.c{cursor:help;border-bottom:1px dashed var(--accent);}
+span.c:hover{border-bottom-style:solid;}
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-brand">Izzet Lessons</div>
+  <a class="nav-link" href="../deck-guides.html" style="text-decoration:none;">&#8592; Guides</a>
+  <button class="nav-link active" onclick="show('identity')">Overview</button>
+  <button class="nav-link" onclick="show('decklist')">Decklist</button>
+  <button class="nav-link" onclick="show('gameplan')">Game Flow</button>
+  <button class="nav-link" onclick="show('engines')">Engines</button>
+  <button class="nav-link" onclick="show('lines')">Lines</button>
+  <button class="nav-link" onclick="show('roles')">Roles</button>
+  <button class="nav-link" onclick="show('matchups')">Matchups</button>
+  <button class="nav-link" onclick="show('sideboard')">Sideboard</button>
+  <button class="nav-link" onclick="show('heuristics')">Heuristics</button>
+  <button class="nav-link" onclick="show('tuning')">Tuning</button>
+  <button class="nav-link" onclick="show('prep')">Prep</button>
+</nav>
+<div class="header-band">
+  <div class="header-inner">
+    <div>
+      <div class="header-label">Team Resolve · Standard · April 2026</div>
+      <div class="header-title">IZZET<br><span class="acc">LESSONS</span></div>
+      <div class="header-tagline">"Gran-Gran on one. Three Lessons by three. Accumulate Wisdom draws three cards for one mana. Monument kills them while you draw more."</div>
+    </div>
+    <div class="header-meta">
+      <div class="meta-row">META SHARE<span>9.78%</span></div>
+      <div class="meta-row">ROLE<span>Combo-Control</span></div>
+      <div class="meta-row">COLORS<span>U R</span></div>
+      <div class="meta-row">KILL TURN<span>4–6</span></div>
+      <div class="meta-row">REFERENCE<span>Manfield — World Champ 31</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- CH01: IDENTITY -->
+<div id="identity" class="section active">
+<div class="content">
+  <span class="section-label">Chapter 01</span>
+  <h1>DECK<br>IDENTITY</h1>
+  <div class="mantra">"You win by drawing three cards for one mana, making Treasure tokens to cast more spells, and pinging them for three every turn — all from one artifact."</div>
+
+  <p><span class="c">Izzet Lessons</span> won the 2025 Magic: The Gathering World Championship in Seth Manfield's hands and has remained one of the top two decks in Standard ever since. The deck is built around a single artifact — <span class="c">Monument to Endurance</span> — and an engine that makes it work as early as turn 3.</p>
+
+  <p>The engine: every <span class="c">Lesson</span> subtype card in your graveyard (Firebending Lesson, Abandon Attachments, Combustion Technique, Iroh's Demonstration, Boomerang Basics) powers two discount engines. <span class="c">Gran-Gran</span> reduces the cost of each spell you cast by one mana when you have 3+ Lessons in the GY. <span class="c">Artist's Talent</span> does the same. With both active and 3 Lessons in the GY, every spell costs two less. Monument to Endurance drops to one mana. <span class="c">Accumulate Wisdom</span> drops to free and draws three cards.</p>
+
+  <p>Once Monument is in play, every spell you cast triggers a discard → you choose: draw a card, make a Treasure token, or deal 3 damage to any target. Three spells in a turn = 9 damage from nowhere. Monument triggers on both turns — their turn and yours — so a resolved Monument is effectively dealing 6+ damage per full turn cycle while drawing you cards and making mana.</p>
+
+  <p>The deck has only one creature (Gran-Gran, 4 copies). Everything else is instants, sorceries, and enchantments. There are no creatures to block your spells with — no Thoughtseize, no Removal-friendly targets. Opponents who come in with creature removal have dead cards.</p>
+
+  <h2>The Three Axes</h2>
+  <div class="card-grid card-grid-3">
+    <div class="card">
+      <div class="card-label">Axis 1 — Resource Engine</div>
+      <div class="card-title">Accumulate Wisdom: Draw 3 for Free</div>
+      <div class="card-body">With 3+ Lessons in GY and Gran-Gran or Artist's Talent active, Accumulate Wisdom ({1}{U} normally) costs {U} or even {0}. Drawing 3 cards for effectively free is Ancestral Recall territory. You hit this condition by turn 3 routinely — your entire spell package is Lessons. Once you can draw 3 per Wisdom cast, you never run out of resources.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Axis 2 — Win Condition</div>
+      <div class="card-title">Monument to Endurance: 3 Damage Per Discard</div>
+      <div class="card-body">Monument says: discard a card, choose — draw, make Treasure, or opponent loses 3 life. Three discards in a turn = 9 damage. Monument triggers on both players' turns. With Artist's Talent leveled, you discard whenever you cast a spell. A chain of 3 spells on your turn = 9 damage. They untap, you hold up It'll Quench Ya, they cast something = 3 more damage on their turn. Monument kills from full life in 2-3 turns once active.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Axis 3 — Protection</div>
+      <div class="card-title">It'll Quench Ya + Stormchaser's Talent</div>
+      <div class="card-body">It'll Quench Ya ({U}, counter unless they pay {3}) protects Monument and Artist's Talent at minimal cost. Stormchaser's Talent provides an alternate win condition — Level 3 creates 1/1 Otters per spell, and with the Lessons engine active you're casting 4-6 spells per turn. Stormchaser's also generates Otters to block early aggression, buying time for the Monument engine to come online.</div>
+    </div>
+  </div>
+
+  <h2>Register Conditions</h2>
+  <div class="card-grid card-grid-2">
+    <div class="card">
+      <div class="card-label">Register When</div>
+      <div class="card-title">Midrange and Creature Decks Dominate</div>
+      <div class="card-body">Izzet Lessons is at its best when opponents are leaning on creatures and targeted removal — both of which do nothing against your 30+ noncreature spells. If the field is Dimir Midrange, Boros Aggro, Mono-Green, and Bant Rhythm, you're favored in most matchups and drawing 3 cards per Accumulate Wisdom while they have dead removal in hand.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Consider Other Options When</div>
+      <div class="card-title">Artifact/Enchantment Hate Is Widespread</div>
+      <div class="card-body">Annul, Ancient Vendetta, Abrade, and Graveyard exile (Rest in Peace) all hurt you. If the metagame shifts to heavy hate for artifacts and enchantments specifically, the engine is more fragile. Also consider alternatives when the mirror (Izzet Lessons) is above 15% of the field — the mirror is a technical grind that depends heavily on Monument hitting the table first.</div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- CH02: DECKLIST -->
+<div id="decklist" class="section">
+<div class="content">
+  <span class="section-label">Chapter 02</span>
+  <h1>DECKLIST</h1>
+  <div class="mantra">"Seth Manfield — World Championship 31, 1st Place (Monument version: 61% WR)"</div>
+
+  <div class="card-grid card-grid-3">
+    <div class="card">
+      <h3>Creatures (4)</h3>
+      <div class="deck-row"><span class="deck-count">4</span><span><span class="c">Gran-Gran</span></span></div>
+      <h3 style="margin-top:16px;">Artifacts (4)</h3>
+      <div class="deck-row"><span class="deck-count">4</span><span><span class="c">Monument to Endurance</span></span></div>
+      <h3 style="margin-top:16px;">Enchantments (8)</h3>
+      <div class="deck-row"><span class="deck-count">4</span><span><span class="c">Artist's Talent</span></span></div>
+      <div class="deck-row"><span class="deck-count">4</span><span><span class="c">Stormchaser's Talent</span></span></div>
+    </div>
+    <div class="card">
+      <h3>Spells — Lessons (15)</h3>
+      <div class="deck-row"><span class="deck-count">4</span><span><span class="c">Firebending Lesson</span></span></div>
+      <div class="deck-row"><span class="deck-count">4</span><span><span class="c">Combustion Technique</span></span></div>
+      <div class="deck-row"><span class="deck-count">3</span><span><span class="c">Iroh's Demonstration</span></span></div>
+      <div class="deck-row"><span class="deck-count">3</span><span><span class="c">Abandon Attachments</span></span></div>
+      <div class="deck-row"><span class="deck-count">1</span><span><span class="c">Boomerang Basics</span></span></div>
+      <h3 style="margin-top:16px;">Spells — Other (5)</h3>
+      <div class="deck-row"><span class="deck-count">4</span><span><span class="c">Accumulate Wisdom</span></span></div>
+      <div class="deck-row"><span class="deck-count">1</span><span><span class="c">It'll Quench Ya!</span></span></div>
+    </div>
+    <div class="card">
+      <h3>Lands (24)</h3>
+      <div class="deck-row"><span class="deck-count">7</span><span>Island</span></div>
+      <div class="deck-row"><span class="deck-count">2</span><span>Mountain</span></div>
+      <div class="deck-row"><span class="deck-count">4</span><span><span class="c">Riverpyre Verge</span></span></div>
+      <div class="deck-row"><span class="deck-count">4</span><span><span class="c">Spirebluff Canal</span></span></div>
+      <div class="deck-row"><span class="deck-count">4</span><span><span class="c">Multiversal Passage</span></span></div>
+      <div class="deck-row"><span class="deck-count">1</span><span><span class="c">Agna Qel'a</span></span></div>
+      <h3 style="margin-top:16px;">Sideboard (15)</h3>
+      <div class="deck-row"><span class="deck-count">2</span><span><span class="c">Quantum Riddler</span></span></div>
+      <div class="deck-row"><span class="deck-count">2</span><span><span class="c">Soul-Guide Lantern</span></span></div>
+      <div class="deck-row"><span class="deck-count">2</span><span><span class="c">Negate</span></span></div>
+      <div class="deck-row"><span class="deck-count">1</span><span><span class="c">Annul</span></span></div>
+      <div class="deck-row"><span class="deck-count">1</span><span><span class="c">Torch the Tower</span></span></div>
+      <div class="deck-row"><span class="deck-count">1</span><span><span class="c">Iroh's Demonstration</span></span></div>
+      <div class="deck-row"><span class="deck-count">1</span><span><span class="c">Abandon Attachments</span></span></div>
+      <div class="deck-row"><span class="deck-count">1</span><span><span class="c">Abrade</span></span></div>
+      <div class="deck-row"><span class="deck-count">1</span><span><span class="c">Pyroclasm</span></span></div>
+      <div class="deck-row"><span class="deck-count">1</span><span><span class="c">It'll Quench Ya!</span></span></div>
+      <div class="deck-row"><span class="deck-count">1</span><span><span class="c">Spell Pierce</span></span></div>
+      <div class="deck-row"><span class="deck-count">1</span><span><span class="c">Broadside Barrage</span></span></div>
+    </div>
+  </div>
+
+  <h2>Key Card Notes</h2>
+  <div class="card-grid card-grid-2">
+    <div class="card">
+      <div class="card-label">The Cost Reducer</div>
+      <div class="card-title">Gran-Gran</div>
+      <div class="card-body">Legendary Creature — Legendary {1}{U}. 1/3. When Gran-Gran attacks, you may discard a card. Spells you cast cost {1} less for each differently named Lesson card in your GY (max {3} reduction). T1 Gran-Gran → T2 one Lesson spell → T3 with 3 Lessons in GY, everything costs 2 less. Monument costs {1}, Accumulate Wisdom costs {0}. Gran-Gran is the engine ignition — protect it on turns 1-3 at all costs.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">The Win Condition</div>
+      <div class="card-title">Monument to Endurance</div>
+      <div class="card-body">Artifact {3}. {T}: Discard a card, then choose — draw a card, create a Treasure, or target player loses 3 life. The ability triggers ONCE per turn. With Artist's Talent (discard per spell cast), you trigger Monument with each spell. Three spells = three Monument triggers = 9 damage + 3 Treasures + 3 cards drawn. Monument triggers on both turns. Bounce Monument with Boomerang Basics to reset it as a new object and replay the arrive trigger.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">The Card Engine</div>
+      <div class="card-title">Accumulate Wisdom</div>
+      <div class="card-body">Instant {1}{U}. Draw a card. If you have 3+ Lessons in your GY, draw 3 cards instead. With Gran-Gran + Artist's Talent active (2 discount total) and 3 Lessons in GY: Accumulate Wisdom costs {0} and draws 3. This is Ancestral Recall. Four copies means you draw 12 cards per average game just from this card alone. The condition is trivially met by turn 3 since all your interaction is Lessons.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">The Discard Engine</div>
+      <div class="card-title">Artist's Talent</div>
+      <div class="card-body">Enchantment — Class {1}{U}. Level 1: discard a card when you cast a spell. Level 2 ({3}{U}): spells cost {1} less. Level 3 ({5}{U}): each spell also creates a 1/1 Otter. Level 1 is always active from the moment you cast it — every spell triggers Monument. Level 2 stacks with Gran-Gran for up to {2} cost reduction. Level 3 creates an army of Otters from your spell chain. Artist's Talent Level 1 is the core Monument enabler.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">The Removal Suite</div>
+      <div class="card-title">Lessons (Removal)</div>
+      <div class="card-body">Firebending Lesson: {R} Lesson — 2 damage to creature or planeswalker. With Gran-Gran at 3 Lessons in GY: free. Combustion Technique: {2}{R} Lesson — 3 damage, scales with Lessons in GY (+1 per Lesson, up to 6). Iroh's Demonstration: {2}{R}{R} Lesson — deals damage equal to Lessons in GY to each creature opponent controls. All three are Lessons, so casting them fuels the discount engine and counts toward the Accumulate Wisdom threshold.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">The Graveyard Enabler</div>
+      <div class="card-title">Abandon Attachments</div>
+      <div class="card-body">Sorcery — Lesson {2}{U}. Look at top 4, put 2 into hand, 2 into GY. A key turn-2 play: cast Abandon Attachments, bin 2 Lessons into GY. Now on turn 3 you already have 3 Lessons in GY (the two from Attachments + Abandon Attachments itself). Gran-Gran full discount is active by turn 3 routinely. Also digs for Monument or missing pieces. Three copies in main, one in SB.</div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- CH03: GAMEPLAN -->
+<div id="gameplan" class="section">
+<div class="content">
+  <span class="section-label">Chapter 03</span>
+  <h1>GAME<br>FLOW</h1>
+  <div class="mantra">"T1 Gran-Gran. T2 Abandon Attachments (bin 2 Lessons). T3 Artist's Talent + Accumulate Wisdom (free, draw 3). T4 Monument."</div>
+
+  <h2>Turn-by-Turn Blueprint</h2>
+  <div class="card-grid card-grid-2">
+    <div class="card"><div class="card-label">Turn 1</div><div class="card-title">Gran-Gran</div><div class="card-body">Always T1 Gran-Gran if it's in hand. It's a 1/3 that blocks early aggression, its attack trigger discards to fuel Monument later, and it's the cost reduction engine. Every hand without Gran-Gran T1 is a slower hand. Gran-Gran on T1 means full cost reduction is available by T3.</div></div>
+    <div class="card"><div class="card-label">Turn 2</div><div class="card-title">Abandon Attachments</div><div class="card-body">Cast Abandon Attachments ({2}{U}, reduced to {1}{U} with Gran-Gran). Look at top 4, bin 2 Lessons. Now you have 3 Lessons in GY (Attachments + 2 binned). Full cost reduction is LIVE on T3. Alternatively: cast Artist's Talent Level 1 on T2 to set up Monument triggers earlier.</div></div>
+    <div class="card"><div class="card-label">Turn 3</div><div class="card-title">Artist's Talent + Free Wisdom</div><div class="card-body">Cast Artist's Talent Level 1 ({1}{U}, free with Gran-Gran). Every spell now triggers Monument when it resolves. Then cast Accumulate Wisdom for free — draw 3 cards. You're now up 3 cards from Wisdom + maintaining hand size. If you drew Monument, deploy it. If not, hold up It'll Quench Ya or cast Firebending Lesson to keep binning Lessons.</div></div>
+    <div class="card"><div class="card-label">Turn 4+</div><div class="card-title">Monument + Chain</div><div class="card-body">Cast Monument to Endurance ({3}, reduced to {1}). It resolves. Now every spell you cast triggers Artist's Talent (discard) which triggers Monument (choose: draw/Treasure/3 damage). Cast Firebending Lesson (free) → discard → Monument → 3 damage. Cast Combustion Technique (free) → discard → Monument → Treasure. Cast Accumulate Wisdom (free, draw 3) → discard → Monument → 3 more damage. You're doing 6-9 damage per turn while refueling.</div></div>
+  </div>
+
+  <h2>Play vs Draw</h2>
+  <div class="card-grid card-grid-2">
+    <div class="card">
+      <div class="card-label">On the Play</div>
+      <div class="card-title">T1 Gran-Gran is Non-Negotiable</div>
+      <div class="card-body">On the play, Gran-Gran on T1 means you're one full turn ahead on the engine. T2 Abandon Attachments fills the GY. T3 you have full discount live and can cast Accumulate Wisdom for free. Any hand with T1 Gran-Gran and 3 lands is a keep. Prioritize the T1 Gran-Gran line over any other consideration.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">On the Draw</div>
+      <div class="card-title">Extra Card Buys Flexibility</div>
+      <div class="card-body">On the draw, you have an extra card — this makes hands without T1 Gran-Gran more keepable. A hand with Artist's Talent T2 + Abandon Attachments T3 still hits the engine by T4. The extra card often means you draw Gran-Gran by T2 anyway. Looser keeps on the draw, but still mulligan hands with 0 or 1 lands.</div>
+    </div>
+  </div>
+
+  <h2>When Disrupted</h2>
+  <div class="card-grid card-grid-2">
+    <div class="card">
+      <div class="card-label">If Gran-Gran Dies</div>
+      <div class="card-title">Rebuild Through Artist's Talent</div>
+      <div class="card-body">Gran-Gran dying is painful but not game-ending. Artist's Talent Level 2 provides cost reduction independently. If you have Artist's Talent Level 2 active, you still get {1} discount per spell. A second Gran-Gran from hand restores the full engine. Don't overextend trying to protect Gran-Gran — let them spend removal on it and rebuild. Their removal is sorcery-speed in most cases.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">If Monument is Destroyed</div>
+      <div class="card-title">Use Boomerang Basics to Replay</div>
+      <div class="card-body">If Monument is Annulled or Abrade'd, bounce it with Boomerang Basics before they destroy it — return it to hand as a new object. Recast next turn. If it's destroyed before you can Boomerang it, deploy the second copy. Four copies means you typically have one in hand or draw it quickly. Use It'll Quench Ya to protect Monument resolution.</div>
+    </div>
+  </div>
+
+  <h2>Mulligan Framework</h2>
+  <p><strong>Snap keeps:</strong> Any 7 with Gran-Gran + 3 lands + any Lesson spell. Any 7 with Artist's Talent + Abandon Attachments + 3 lands.</p>
+  <p><strong>Keep on 7:</strong> 3 lands + Gran-Gran + any 3 spells. 3 lands + Abandon Attachments + any enchantment. Hands with Monument but no engine setup are keeps if you have 3 lands and a Lesson.</p>
+  <p><strong>Mulligan:</strong> 0-1 lands. 5+ lands. Any hand without at least one Lesson spell (Firebending, Combustion, Iroh's, Abandon, Boomerang Basics). Any hand with 4+ copies of the same card.</p>
+  <p><strong>To 6:</strong> Keep any 6 with 2-3 lands + Gran-Gran OR any 6 with 3 lands + Artist's Talent + 2 Lessons. At 5, you need Gran-Gran + 2 lands + 2 spells minimum.</p>
+</div>
+</div>
+
+<!-- CH04: ENGINES -->
+<div id="engines" class="section">
+<div class="content">
+  <span class="section-label">Chapter 04</span>
+  <h1>CORE<br>ENGINES</h1>
+  <div class="mantra">"The engine has three gears: lesson accumulation, cost reduction, and Monument activation. All three run simultaneously once assembled."</div>
+
+  <h2>Engine Priority Order</h2>
+  <div class="card-grid card-grid-3">
+    <div class="card"><div class="card-label">Engine P1</div><div class="card-title">Lesson Accumulation (GY Setup)</div><div class="card-body">Priority one is getting 3+ differently named Lessons into your GY. Abandon Attachments bins 2 at once. Firebending Lesson, Combustion Technique, Iroh's Demonstration, Boomerang Basics all count. This is the prerequisite for everything else. Actively cast cheap Lessons early even if they don't do much — you're fueling Gran-Gran and Accumulate Wisdom.</div></div>
+    <div class="card"><div class="card-label">Engine P2</div><div class="card-title">Cost Reduction Active</div><div class="card-body">Gran-Gran (up to {3} reduction) + Artist's Talent Level 2 ({1} reduction) = up to {4} total cost reduction. In practice with 3 Lessons in GY: {2} from Gran-Gran + {1} from Talent = {3}. Monument costs {0}. Accumulate Wisdom costs {0}. Get both discount engines active before deploying Monument for maximum efficiency.</div></div>
+    <div class="card"><div class="card-label">Engine P3</div><div class="card-title">Monument Loop</div><div class="card-body">Monument active + Artist's Talent Level 1 + spells in hand = the kill engine. Each spell triggers Talent (discard) which gives you a Monument activation. Three spells = 3 activations = choose from: 9 damage, 3 Treasures (3 mana), 3 cards, or any combination. The correct mode depends on your board state — Treasure when you need mana, damage when they're at 9 or below, draw when you need gas.</div></div>
+  </div>
+
+  <h2>Speed Math</h2>
+  <div class="card-grid card-grid-2">
+    <div class="card">
+      <div class="card-label">Standard Kill</div>
+      <div class="card-title">Monument Deals 18-24 Damage in 2 Turns</div>
+      <div class="card-body">T4 Monument resolves. T5: Cast Accumulate Wisdom (free, draw 3) → Monument ping 3. Cast Firebending Lesson (free) → Monument ping 3. Cast Combustion Technique (free) → Monument ping 3. Total: 9 damage T5. On their T5 turn they cast something → you hold It'll Quench Ya, they spend {3}, Monument doesn't trigger OR they cast something else → another 3 damage. T6 you cast 3 more spells → 9 more damage. 18-21 total from T5-T6.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Accumulate Wisdom Math</div>
+      <div class="card-title">Drawing 12+ Cards Per Game</div>
+      <div class="card-body">4 copies × 3 cards each = 12 cards drawn from Wisdom alone. With cost reduction active, each Wisdom costs {0}. You can cast multiple Wisdoms per turn when you have the mana or Treasure tokens from Monument. A full Wisdom chain (all 4 copies in one extended game) means you've seen an additional 12 cards — nearly half the deck — in addition to normal draws.</div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- CH05: LINES -->
+<div id="lines" class="section">
+<div class="content">
+  <span class="section-label">Chapter 05</span>
+  <h1>LINES &amp;<br>TACTICS</h1>
+  <div class="mantra">"Bounce Monument with Boomerang Basics to reset it as a new object. It re-enters the battlefield and you get the ETB trigger — but Monument has no ETB. The point is to make it a new permanent that hasn't been tracked for removal."</div>
+
+  <h2>Three Lines You Must Know Cold</h2>
+  <div class="card-grid card-grid-3">
+    <div class="card">
+      <div class="card-label">Line 01 — Critical</div>
+      <div class="card-title">Monument Triggers ONCE Per Activation — You Choose the Mode</div>
+      <div class="card-body">Monument to Endurance's activated ability is: {T}: discard a card, then choose one — draw a card, create a Treasure, or opponent loses 3 life. This is ONE activation per tap. Artist's Talent Level 1 says "whenever you cast a spell, discard a card" — that discard does NOT automatically trigger Monument. Monument requires you to TAP it as an activated ability. Artist's Talent gives you the discard trigger, but you must then separately activate Monument using that discarded card or another. Plan: cast spell → Talent triggers (discard) → separately tap Monument → choose mode.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Line 02 — Critical</div>
+      <div class="card-title">Gran-Gran Discount Counts DIFFERENTLY Named Lessons</div>
+      <div class="card-body">Gran-Gran reduces spell costs by {1} for each DIFFERENTLY named Lesson card in your GY. Having 4 Firebending Lessons in GY = {1} discount (they're all the same name). Having Firebending Lesson + Combustion Technique + Iroh's Demonstration = {3} discount (3 differently named). Your 5 Lesson card types (Firebending, Combustion, Iroh's, Abandon Attachments, Boomerang Basics) are all differently named. With all 5 types in GY = maximum {3} discount (capped at 3). Sequence Abandon Attachments T2 to bin 2 differently named Lessons immediately.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Line 03 — Critical</div>
+      <div class="card-title">It'll Quench Ya Counters Spells Unless {3} — Not Just {1}</div>
+      <div class="card-body">It'll Quench Ya! costs {U} and counters target spell unless its controller pays {3}. This is a "soft counter" — opponents CAN pay {3} to get through it. Against Monument to Endurance on T3 (they cast for {3}): hold It'll Quench Ya but recognize they CAN pay {3} to force it through. The best use is against cheap removal like Annul ({U}) or Abrade ({1}{R}) where paying {3} extra is prohibitive. Don't rely on It'll Quench Ya against expensive spells where they have mana available.</div>
+    </div>
+  </div>
+
+  <h2>Timing Windows</h2>
+  <div class="edge-case"><div class="edge-label">When to Use Monument's Damage Mode vs Draw vs Treasure</div><div class="edge-body">Damage mode (opponent loses 3 life): use when they're at 12 or below and you can chain 3-4 activations in a turn to kill. Never use damage mode when they're at full life — you need at least 7 turns of 3 damage each to kill from 20. Treasure mode: use when you need to cast more spells this turn (generate mana to chain). Draw mode: use when you're low on cards and not in immediate kill range. The optimal pattern mid-game: Treasure → cast another spell → Treasure → cast another spell → Damage when in kill range.</div></div>
+  <div class="edge-case"><div class="edge-label">Boomerang Basics — Return Monument to Reset vs Return Their Permanent</div><div class="edge-body">Boomerang Basics returns ANY nonland permanent. Two main uses: (1) return your own Monument if they target it with removal — it goes to hand as a new object, can be redeployed next turn. (2) Return their key permanent — Sapling Nursery, Stormchaser's Talent in the mirror, Gene Pollinator. The self-return mode is correct when Monument is about to die. The tempo mode is correct when their permanent would end the game before you can stabilize.</div></div>
+  <div class="edge-case"><div class="edge-label">Artist's Talent Level Timing</div><div class="edge-body">Level 1 ({1}{U}) is always correct to deploy early — the discard engine is live immediately. Level 2 ({3}{U}) — pay when you have excess mana and want cheaper spells. Don't level up if you need to hold mana for It'll Quench Ya. Level 3 ({5}{U}) — extremely expensive; only correct in very long games where Otter tokens close out the game. Never level 3 when they have counterspell mana open.</div></div>
+</div>
+</div>
+
+<!-- CH06: ROLES -->
+<div id="roles" class="section">
+<div class="content">
+  <span class="section-label">Chapter 06</span>
+  <h1>ROLE<br>ASSIGNMENT</h1>
+  <div class="mantra">"You are always the inevitability player. They run out of answers before you run out of resources."</div>
+
+  <div class="card-grid card-grid-3">
+    <div class="card">
+      <div class="card-label">Primary Role</div>
+      <div class="card-title">Resource Grind</div>
+      <div class="card-body">Set up your engine, draw cards, stay ahead on resources. Don't rush Monument — deploy it when you have It'll Quench Ya backup or they're tapped out. You win by having more cards than they have answers. Gran-Gran + Accumulate Wisdom generates 3+ card advantage per turn.</div>
+      <div class="card-body" style="margin-top:8px;font-style:italic;font-size:13px;">vs Control, Midrange</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Secondary Role</div>
+      <div class="card-title">Reactive Control</div>
+      <div class="card-body">Hold Firebending Lesson, Combustion Technique, and Iroh's Demonstration as interaction rather than deploying them for Lesson count. Answer their key threats before they can pressure you. Gran-Gran's 1/3 body blocks early aggression. Iroh's Demonstration wipes token boards.</div>
+      <div class="card-body" style="margin-top:8px;font-style:italic;font-size:13px;">vs Aggro, Token Decks</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Endgame Role</div>
+      <div class="card-title">Monument Kill Machine</div>
+      <div class="card-body">Once Monument is active and they're at 12 or below, switch all Monument modes to Damage. Three activations per turn at 3 damage each = 9 per turn. They die in 2 more turns. Cast spells specifically to generate Monument activations rather than for their effect.</div>
+      <div class="card-body" style="margin-top:8px;font-style:italic;font-size:13px;">vs All, Late Game</div>
+    </div>
+  </div>
+
+  <h2>Role Mistakes to Avoid</h2>
+  <ol class="heuristic-list">
+    <li><span class="h-num">01</span><span class="h-text"><strong>Deploying Monument into open blue mana.</strong> They have It'll Quench Ya or Annul. Wait until they're tapped or at sorcery speed. Monument into a counter is a {3} wasted resource and sets your engine back two turns.</span></li>
+    <li><span class="h-num">02</span><span class="h-text"><strong>Using Monument's damage mode when they're at full life.</strong> 3 damage at 20 life does almost nothing. Use Treasure or Draw mode when they're above 12. Switch to Damage only when you can see a kill within 2-3 turns.</span></li>
+    <li><span class="h-num">03</span><span class="h-text"><strong>Casting all Lessons early just for GY count.</strong> Firebending Lesson and Combustion Technique are real removal spells. Sometimes holding them as interaction is better than binning them for a {1} discount on turn 2. Read what your opponent is doing before firing off all your removal.</span></li>
+    <li><span class="h-num">04</span><span class="h-text"><strong>Leveling Artist's Talent into open countermagic.</strong> Leveling is a sorcery-speed action. Level 1 into sorcery-speed blue mana = your Talent gets Annulled for {U}. Level up EOT or when they're tapped out.</span></li>
+  </ol>
+
+  <h2>Role-Switching Signals</h2>
+  <div class="card-grid card-grid-2">
+    <div class="card"><div class="card-label">Switch to Kill Mode When</div><div class="card-title">They're at 12 or Below With Monument Active</div><div class="card-body">Three Monument activations at 3 damage each = 9 damage. From 12 life, two full turns of three activations each = dead. Switch ALL Monument modes to Damage once they're at 12. Don't take Treasure or Draw — every activation must deal damage until they're dead.</div></div>
+    <div class="card"><div class="card-label">Stay Reactive When</div><div class="card-title">Aggro Has Early Board Presence</div><div class="card-body">When Boros Aggro or Izzet Prowess has a 4-6 power board by T3, don't try to set up your engine. Use your Lesson spells as removal (Firebending Lesson kills 2-toughness creatures for free), use Iroh's Demonstration to sweep their board, and only deploy Monument when the board is stabilized.</div></div>
+  </div>
+</div>
+</div>
+
+<!-- CH07: MATCHUPS -->
+<div id="matchups" class="section">
+<div class="content">
+  <span class="section-label">Chapter 07</span>
+  <h1>MATCHUP<br>GUIDE</h1>
+  <div class="mantra">"Every matchup has one question: can they disrupt Monument before you draw enough cards to rebuild?"</div>
+
+  <!-- DIMIR MIDRANGE -->
+  <div class="matchup-block">
+    <div class="matchup-header" onclick="toggle('mu-dimir')">
+      <h3>DIMIR MIDRANGE</h3><span class="verdict verdict-good">Favorable</span>
+    </div>
+    <div id="mu-dimir" class="matchup-body">
+      <p>Their removal is creature-targeted (Shoot the Sheriff, Requiting Hex) — nearly useless against your 30+ noncreature spells. The only relevant hate is Kaito's discard effects and Deep-Cavern Bat stripping a card. Your engine generates so many resources that even a Bat clearing one card is irrelevant by T3.</p>
+      <p><strong>Key threat:</strong> <span class="c">Floodpits Drowner</span> bouncing Monument is their best play. Respond by holding Boomerang Basics — if they target Monument with Drowner, you Boomerang Monument first (return it to hand, Drowner has no target). Alternatively hold It'll Quench Ya for Drowner itself.</p>
+      <p><strong>Plan:</strong> T1 Gran-Gran. T2 Abandon Attachments — bin 2 Lessons before Deep-Cavern Bat can strip them from hand. T3 full engine live. Deploy Monument when they tap for Kaito — they'll have no mana for Into the Flood Maw. Win on Monument damage by T6.</p>
+      <div class="sb-table">
+        <div class="sb-col"><div class="sb-col-label">In</div>
+          <div class="sb-item"><span><span class="c">Quantum Riddler</span></span><span class="sb-qty">+2</span></div>
+          <div class="sb-item"><span><span class="c">Negate</span></span><span class="sb-qty">+2</span></div>
+        </div>
+        <div class="sb-col"><div class="sb-col-label">Out</div>
+          <div class="sb-item"><span><span class="c">Iroh's Demonstration</span></span><span class="sb-qty">&minus;2</span></div>
+          <div class="sb-item"><span><span class="c">Pyroclasm</span> (SB)</span><span class="sb-qty">&minus;1</span></div>
+          <div class="sb-item"><span><span class="c">Boomerang Basics</span></span><span class="sb-qty">&minus;1</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- IZZET PROWESS -->
+  <div class="matchup-block">
+    <div class="matchup-header" onclick="toggle('mu-prowess')">
+      <h3>IZZET PROWESS</h3><span class="verdict verdict-even">Even</span>
+    </div>
+    <div id="mu-prowess" class="matchup-body">
+      <p>They kill on T3-4 before Monument is active. This is your hardest aggro matchup. Gran-Gran's 1/3 body blocks Slickshot Show-Off (1/2 becomes 7/2 with spells — can't be blocked by 1-toughness). Your removal (Firebending Lesson at free) kills their 1-drops. Iroh's Demonstration at instant speed wipes their token board.</p>
+      <p><strong>Priority:</strong> Survive to T4 with enough life to deploy Monument. Use Firebending Lesson and Combustion Technique as removal, not as GY fuel. Iroh's Demonstration is your sweeper — hold it until they have 2+ small creatures. Grand-Gran blocking means they have to commit more resources to kill it.</p>
+      <p><strong>Post-board:</strong> Pyroclasm kills every 1-toughness creature they have for {1}{R}. Their entire board of Otters and Gran-Gran tokens dies to one spell. This is your most impactful SB card in this matchup.</p>
+      <div class="sb-table">
+        <div class="sb-col"><div class="sb-col-label">In</div>
+          <div class="sb-item"><span><span class="c">Pyroclasm</span></span><span class="sb-qty">+1</span></div>
+          <div class="sb-item"><span><span class="c">Torch the Tower</span></span><span class="sb-qty">+1</span></div>
+          <div class="sb-item"><span><span class="c">Abrade</span></span><span class="sb-qty">+1</span></div>
+        </div>
+        <div class="sb-col"><div class="sb-col-label">Out</div>
+          <div class="sb-item"><span><span class="c">It'll Quench Ya!</span></span><span class="sb-qty">&minus;1</span></div>
+          <div class="sb-item"><span><span class="c">Abandon Attachments</span></span><span class="sb-qty">&minus;1</span></div>
+          <div class="sb-item"><span><span class="c">Quantum Riddler</span></span><span class="sb-qty">&minus;1</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BOROS AGGRO -->
+  <div class="matchup-block">
+    <div class="matchup-header" onclick="toggle('mu-boros')">
+      <h3>BOROS AGGRO</h3><span class="verdict verdict-even">Even</span>
+    </div>
+    <div id="mu-boros" class="matchup-body">
+      <p>Similar to Prowess — they kill fast, but your removal suite handles their creatures efficiently. Firebending Lesson kills their 1-drops for free. Combustion Technique at full power (6 damage with 5 Lessons in GY) kills their 4-toughness threats. Gran-Gran's 1/3 holds off early pressure.</p>
+      <p><strong>Priority:</strong> Don't let Ojer Axonil resolve unanswered. Combustion Technique with 3 Lessons in GY does 4 damage — enough to kill Ojer (4/4). Iroh's Demonstration clears token floods from Goblin Bombardment setups. Use Monument's Treasure mode to generate mana for casting multiple removal spells in one turn.</p>
+      <div class="sb-table">
+        <div class="sb-col"><div class="sb-col-label">In</div>
+          <div class="sb-item"><span><span class="c">Pyroclasm</span></span><span class="sb-qty">+1</span></div>
+          <div class="sb-item"><span><span class="c">Torch the Tower</span></span><span class="sb-qty">+1</span></div>
+          <div class="sb-item"><span><span class="c">Abrade</span></span><span class="sb-qty">+1</span></div>
+        </div>
+        <div class="sb-col"><div class="sb-col-label">Out</div>
+          <div class="sb-item"><span><span class="c">It'll Quench Ya!</span></span><span class="sb-qty">&minus;1</span></div>
+          <div class="sb-item"><span><span class="c">Abandon Attachments</span></span><span class="sb-qty">&minus;1</span></div>
+          <div class="sb-item"><span><span class="c">Negate</span> (SB)</span><span class="sb-qty">&minus;1</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MONO-GREEN LANDFALL -->
+  <div class="matchup-block">
+    <div class="matchup-header" onclick="toggle('mu-monogreen')">
+      <h3>MONO-GREEN LANDFALL</h3><span class="verdict verdict-good">Favorable</span>
+    </div>
+    <div id="mu-monogreen" class="matchup-body">
+      <p>Iroh's Demonstration is backbreaking in this matchup — it deals damage to EACH creature they control equal to Lessons in your GY. With 5 Lessons in GY, Iroh's does 5 damage to every creature. Their entire board dies. Their Sapling Nursery tokens, their Badgermole Cubs, their Icetill Explorers — all dead for {2}{R}{R} (or less with Gran-Gran).</p>
+      <p><strong>Priority:</strong> Don't let the combo kill connect. Their Icetill Explorer + Mightform Harmonizer + Escape Tunnel is an instant win combo. Counter Escape Tunnel with It'll Quench Ya (they must pay {3} — likely can't afford it early). Use Iroh's Demonstration the turn before their combo turn. Monument's damage mode easily races their clock once their board is cleared.</p>
+      <div class="sb-table">
+        <div class="sb-col"><div class="sb-col-label">In</div>
+          <div class="sb-item"><span><span class="c">Soul-Guide Lantern</span></span><span class="sb-qty">+2</span></div>
+          <div class="sb-item"><span><span class="c">Torch the Tower</span></span><span class="sb-qty">+1</span></div>
+        </div>
+        <div class="sb-col"><div class="sb-col-label">Out</div>
+          <div class="sb-item"><span><span class="c">Abandon Attachments</span></span><span class="sb-qty">&minus;1</span></div>
+          <div class="sb-item"><span><span class="c">Negate</span> (SB)</span><span class="sb-qty">&minus;2</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BANT RHYTHM -->
+  <div class="matchup-block">
+    <div class="matchup-header" onclick="toggle('mu-bant')">
+      <h3>BANT RHYTHM</h3><span class="verdict verdict-good">Favorable</span>
+    </div>
+    <div id="mu-bant" class="matchup-body">
+      <p>Iroh's Demonstration and Pyroclasm are both excellent here. Gene Pollinator doubles their token production — Iroh's Demonstration at 5 Lessons in GY deals 5 to every creature, killing everything including Gene Pollinator. Their Seam Rip can counter your Monument but you have 4 copies and It'll Quench Ya to force it through.</p>
+      <p><strong>Priority:</strong> Kill Gene Pollinator before it doubles their board. Combustion Technique (scaling damage) or Iroh's Demonstration (board wipe) are your tools. Once their doubling engine is off, their token production drops to normal speed and you easily out-resource them through Accumulate Wisdom.</p>
+      <div class="sb-table">
+        <div class="sb-col"><div class="sb-col-label">In</div>
+          <div class="sb-item"><span><span class="c">Pyroclasm</span></span><span class="sb-qty">+1</span></div>
+          <div class="sb-item"><span><span class="c">Abrade</span></span><span class="sb-qty">+1</span></div>
+        </div>
+        <div class="sb-col"><div class="sb-col-label">Out</div>
+          <div class="sb-item"><span><span class="c">Abandon Attachments</span></span><span class="sb-qty">&minus;1</span></div>
+          <div class="sb-item"><span><span class="c">Negate</span> (SB)</span><span class="sb-qty">&minus;1</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- IZZET LESSONS MIRROR -->
+  <div class="matchup-block">
+    <div class="matchup-header" onclick="toggle('mu-mirror')">
+      <h3>IZZET LESSONS MIRROR</h3><span class="verdict verdict-even">Even</span>
+    </div>
+    <div id="mu-mirror" class="matchup-body">
+      <p>First Monument wins. The entire mirror resolves around which player gets Monument to Endurance active first, protected, and generating damage. Use It'll Quench Ya to counter their Monument resolution. Use Abrade to destroy their resolved Monument. Annul from SB answers both Monument and Artist's Talent for {U}.</p>
+      <p><strong>Priority:</strong> Don't tap out. Hold {U} for It'll Quench Ya every turn. Deploy Monument on their end step when they've tapped for spells. Use Boomerang Basics to bounce their Artist's Talent (resets the Level back to 1 and removes the discard trigger temporarily). Soul-Guide Lantern exiles their GY — removes all their Lesson discount and Accumulate Wisdom bonus.</p>
+      <div class="sb-table">
+        <div class="sb-col"><div class="sb-col-label">In</div>
+          <div class="sb-item"><span><span class="c">Annul</span></span><span class="sb-qty">+1</span></div>
+          <div class="sb-item"><span><span class="c">Soul-Guide Lantern</span></span><span class="sb-qty">+2</span></div>
+          <div class="sb-item"><span><span class="c">Abrade</span></span><span class="sb-qty">+1</span></div>
+          <div class="sb-item"><span><span class="c">Negate</span></span><span class="sb-qty">+2</span></div>
+        </div>
+        <div class="sb-col"><div class="sb-col-label">Out</div>
+          <div class="sb-item"><span><span class="c">Iroh's Demonstration</span></span><span class="sb-qty">&minus;3</span></div>
+          <div class="sb-item"><span><span class="c">Firebending Lesson</span></span><span class="sb-qty">&minus;1</span></div>
+          <div class="sb-item"><span><span class="c">Combustion Technique</span></span><span class="sb-qty">&minus;2</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- JESKAI CONTROL -->
+  <div class="matchup-block">
+    <div class="matchup-header" onclick="toggle('mu-jeskai')">
+      <h3>JESKAI CONTROL</h3><span class="verdict verdict-even">Even</span>
+    </div>
+    <div id="mu-jeskai" class="matchup-body">
+      <p>Both decks generate card advantage and counter each other's key spells. You have more cards per turn (Accumulate Wisdom + Lessons) but they have Hard counters and High Noon (slows your spell chain). Monument wins if it resolves and they can't answer it. Their Wan Shi Tong generates advantage faster than your base rate — you must maintain pressure.</p>
+      <p><strong>Priority:</strong> Force them to use counters on setup spells before deploying Monument. Cast Artist's Talent first — they counter it? Now Monument resolves. They let Talent resolve? Now Monument is harder to stop (Talent Level 1 discards per spell, Monument pings from each). Use Quantum Riddler from SB — surveil 2 every turn it attacks, draws cards, demands an immediate answer.</p>
+      <div class="sb-table">
+        <div class="sb-col"><div class="sb-col-label">In</div>
+          <div class="sb-item"><span><span class="c">Quantum Riddler</span></span><span class="sb-qty">+2</span></div>
+          <div class="sb-item"><span><span class="c">Negate</span></span><span class="sb-qty">+2</span></div>
+          <div class="sb-item"><span><span class="c">Spell Pierce</span> (SB)</span><span class="sb-qty">+1</span></div>
+        </div>
+        <div class="sb-col"><div class="sb-col-label">Out</div>
+          <div class="sb-item"><span><span class="c">Iroh's Demonstration</span></span><span class="sb-qty">&minus;3</span></div>
+          <div class="sb-item"><span><span class="c">Firebending Lesson</span></span><span class="sb-qty">&minus;2</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="matchup-block">
+    <div class="matchup-header" onclick="toggle('mu-excruciator')">
+      <h3>DIMIR EXCRUCIATOR</h3><span class="verdict verdict-even">Even</span>
+    </div>
+    <div id="mu-excruciator" class="matchup-body">
+      <p>Dimir Excruciator counters your Lessons and bounces your permanents. Artist's Talent is your most important card — they must counter it or fall behind on cards permanently. Cast Artist's Talent when they're tapped. Accumulate Wisdom through open mana is fine — hold it until after they've tapped for removal. Their Floodpits Drowner bounce of your Talent or Stormchaser's is a huge tempo swing; have a second copy ready.</p>
+      <div class="sb-table">
+        <div class="sb-col"><div class="sb-col-label">In</div><div class="sb-item"><span><span class="c">Ral, Crackling Wit</span></span><span class="sb-qty">+2</span></div><div class="sb-item"><span><span class="c">Wan Shi Tong, Librarian</span></span><span class="sb-qty">+1</span></div></div>
+        <div class="sb-col"><div class="sb-col-label">Out</div><div class="sb-item"><span><span class="c">Abandon Attachments</span></span><span class="sb-qty">-2</span></div><div class="sb-item"><span><span class="c">Broadside Barrage</span></span><span class="sb-qty">-1</span></div></div>
+      </div>
+      <p class="sb-note">Ral generates card advantage every spell you cast — their counterspells can't profitably trade one-for-one with Ral. Wan Shi Tong tutors for your key lessons when they've disrupted your Artist's Talent package. Abandon Attachments and Broadside Barrage are weak — they have few enchantments and their creatures outsize the damage.</p>
+    </div>
+  </div>
+
+  <div class="matchup-block">
+    <div class="matchup-header" onclick="toggle('mu-simic')">
+      <h3>SIMIC RHYTHM</h3><span class="verdict verdict-good">Favorable</span>
+    </div>
+    <div id="mu-simic" class="matchup-body">
+      <p>Simic Rhythm goes wide with Badgermole Cub tokens but has no interaction for your spells. Slagstorm at 3 damage sweeps their entire token board — Cub tokens are 1/1 and 2/2 at best. Accumulate Wisdom into a Slagstorm turn stabilizes the board completely. Gran-Gran (bouncing their biggest creature) combined with Slagstorm leaves them with nothing. Your lesson package generates too much card advantage for their creature strategy to keep up.</p>
+      <div class="sb-table">
+        <div class="sb-col"><div class="sb-col-label">In</div><div class="sb-item"><span><span class="c">Slagstorm</span></span><span class="sb-qty">+2</span></div><div class="sb-item"><span><span class="c">Flashfreeze</span></span><span class="sb-qty">+1</span></div></div>
+        <div class="sb-col"><div class="sb-col-label">Out</div><div class="sb-item"><span><span class="c">Broadside Barrage</span></span><span class="sb-qty">-2</span></div><div class="sb-item"><span><span class="c">Disdainful Stroke</span></span><span class="sb-qty">-1</span></div></div>
+      </div>
+      <p class="sb-note">Slagstorm sweeps their Cub token board at 3 damage — nothing they play in the early game survives. Flashfreeze hard-counters any green or white spell for {1U}. Broadside Barrage is too expensive. Cut Disdainful Stroke (their big spells come too late to matter).</p>
+    </div>
+  </div>
+
+  <div class="matchup-block">
+    <div class="matchup-header" onclick="toggle('mu-monored')">
+      <h3>MONO-RED AGGRO</h3><span class="verdict verdict-dog">Unfavorable</span>
+    </div>
+    <div id="mu-monored" class="matchup-body">
+      <p>Mono-Red kills by T3-4 and your Lessons are too slow. Abandon Attachments is your best answer at {R} — instant speed, kills their key creature or enchantment. Stormchaser's Talent on T2 generates cantrip loops that let you cycle through your deck for interaction. The critical skill: use Accumulate Wisdom to chain into another Accumulate Wisdom rather than holding mana — you need to draw through your deck to find Sear and Pyroclasm.</p>
+      <div class="sb-table">
+        <div class="sb-col"><div class="sb-col-label">In</div><div class="sb-item"><span><span class="c">Pyroclasm</span></span><span class="sb-qty">+2</span></div><div class="sb-item"><span><span class="c">Sear</span></span><span class="sb-qty">+1</span></div></div>
+        <div class="sb-col"><div class="sb-col-label">Out</div><div class="sb-item"><span><span class="c">Wan Shi Tong, Librarian</span></span><span class="sb-qty">-2</span></div><div class="sb-item"><span><span class="c">Disdainful Stroke</span></span><span class="sb-qty">-1</span></div></div>
+      </div>
+      <p class="sb-note">Pyroclasm sweeps their 2-toughness threats simultaneously — kills their entire turn 1-2 board in one spell. Sear at {1R} deals 2 damage (kills 2-toughness threats) or 4 damage if kicked. Wan Shi Tong is too expensive. Disdainful Stroke misses their entire curve (everything is MV 1-3).</p>
+    </div>
+  </div>
+
+
+</div>
+</div>
+
+<!-- CH08: SIDEBOARD -->
+<div id="sideboard" class="section">
+<div class="content">
+  <span class="section-label">Chapter 08</span>
+  <h1>SIDEBOARD<br>GUIDE</h1>
+  <div class="mantra">"Soul-Guide Lantern exiles their GY — every Lesson discount disappears. In the mirror this is a {1} game-winner."</div>
+
+  <h2>SB Slot Priority</h2>
+  <div class="card-grid card-grid-2">
+    <div class="card"><div class="card-label">Priority 1</div><div class="card-title">Pyroclasm + Abrade + Torch the Tower</div><div class="card-body">Anti-aggro package. Pyroclasm kills every 1-toughness creature for {1}{R}. Abrade destroys artifacts (hits Monument in the mirror, hits their equipment) or deals 3 damage to a creature. Torch the Tower exiles on death — prevents creature recursion. Board all three vs Izzet Prowess and Boros Aggro.</div></div>
+    <div class="card"><div class="card-label">Priority 2</div><div class="card-title">Soul-Guide Lantern ×2</div><div class="card-body">Exiles opponent's GY — devastating in the mirror (removes their Lesson discount) and vs any GY-based deck. Also a {1} artifact that can fuel Monument activations. Board in: mirror, any GY deck. Consider vs Dimir Midrange to exile their Enduring Curiosity recursion targets.</div></div>
+    <div class="card"><div class="card-label">Priority 3</div><div class="card-title">Negate ×2 + Spell Pierce + Annul</div><div class="card-body">Counter package. Negate hits noncreature spells hard — counters Monument, enchantments, sorceries. Spell Pierce is cheap but conditional (pay {2}). Annul is hard-counters artifacts and enchantments for {U}. Board the package vs control and in the mirror where you need stack interaction beyond It'll Quench Ya.</div></div>
+    <div class="card"><div class="card-label">Priority 4</div><div class="card-title">Quantum Riddler ×2 + Broadside Barrage</div><div class="card-body">Late-game threat package. Quantum Riddler generates card advantage every turn it attacks (surveil 2, draw a card with 2+ instants/sorceries in GY — trivially met). Board vs control and midrange where the game goes long. Broadside Barrage deals 5 damage to a creature/planeswalker for {2}{R}{R} while drawing a card — premium removal for hard-to-kill threats.</div></div>
+  </div>
+
+  <h2>What Comes Out</h2>
+  <div class="card-grid card-grid-3">
+    <div class="card"><div class="card-label">First Cuts vs Aggro</div><div class="card-title">Abandon Attachments + It'll Quench Ya</div><div class="card-body">Abandon Attachments is a slow sorcery-speed card that doesn't interact with their board. It'll Quench Ya doesn't stop creatures. Against fast aggro, these are your weakest cards — out first.</div></div>
+    <div class="card"><div class="card-label">First Cuts vs Control/Mirror</div><div class="card-title">Iroh's + Firebending Lesson + Combustion</div><div class="card-body">Removal spells are weak vs control (no creatures to kill) and less relevant in the mirror (their only creature is Gran-Gran, 1/3). Cut the lower-impact removal and bring in stack interaction and threats.</div></div>
+    <div class="card"><div class="card-label">Never Cut</div><div class="card-title">Gran-Gran + Monument + Accumulate Wisdom</div><div class="card-body">The core engine. Never cut Gran-Gran (4), Monument (4), or Accumulate Wisdom (4) in any configuration. These are the reason the deck works. Everything else is support.</div></div>
+    <div class="card"><div class="card-label">Key Card</div><div class="card-title">Pyroclasm Threshold</div><div class="card-body">Pyroclasm ({1}{R}) deals 2 damage to each creature. You deploy it when they have 3+ creatures at 2 or less toughness. Your key calculation: which of your own creatures survive Pyroclasm? Your Eddymurk Crab (0/4) survives (4 toughness). Your Artist's Talent (enchantment, not creature) survives. The Pyroclasm threshold is 3 opponent creatures — below that, point removal is more efficient.</div></div>
+    <div class="sb-guide-row">
+      <div class="sb-guide-name"><span class="c">Winternight Stories</span></div>
+      <div class="sb-guide-body"><strong>1 copy.</strong> {2}{U} instant: draw 3 cards. Your burst card draw when you need to dig quickly. Cast at their EOT to draw 3 without tapping out on your turn. Pairs with Monument to Endurance: cast Winternight, draw 3, trigger Monument's level-up. Mistake: casting it on your own main phase — always cast it on their end step to maintain untapped mana for responses.</div>
+    </div>
+  </div>
+
+  <button class="print-btn" onclick="printSB()">&#9113; Print SB Reference</button>
+  <div id="sb-print-zone">
+    <h2 style="font-family:'DM Mono',monospace;margin-bottom:16px;">IZZET LESSONS — SB Reference (Manfield World Champ 31)</h2>
+    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:16px;font-size:12px;font-family:'DM Mono',monospace;">
+      <div><strong>vs DIMIR MIDRANGE (Favorable)</strong><br>IN: +2 Quantum Riddler, +2 Negate<br>OUT: −2 Iroh's Demonstration, −1 Pyroclasm, −1 Boomerang Basics</div>
+      <div><strong>vs IZZET PROWESS (Even)</strong><br>IN: +1 Pyroclasm, +1 Torch Tower, +1 Abrade<br>OUT: −1 It'll Quench Ya, −1 Abandon Attachments, −1 Quantum Riddler</div>
+      <div><strong>vs BOROS AGGRO (Even)</strong><br>IN: +1 Pyroclasm, +1 Torch Tower, +1 Abrade<br>OUT: −1 It'll Quench Ya, −1 Abandon Attachments, −1 Negate</div>
+      <div><strong>vs MONO-GREEN (Favorable)</strong><br>IN: +2 Soul-Guide Lantern, +1 Torch Tower<br>OUT: −1 Abandon Attachments, −2 Negate</div>
+      <div><strong>vs BANT RHYTHM (Favorable)</strong><br>IN: +1 Pyroclasm, +1 Abrade<br>OUT: −1 Abandon Attachments, −1 Negate</div>
+      <div><strong>vs IZZET MIRROR (Even)</strong><br>IN: +1 Annul, +2 Soul-Guide, +1 Abrade, +2 Negate<br>OUT: −3 Iroh's Demo, −1 Firebending, −2 Combustion</div>
+      <div><strong>vs JESKAI CONTROL (Even)</strong><br>IN: +2 Quantum Riddler, +2 Negate, +1 Spell Pierce<br>OUT: −3 Iroh's Demo, −2 Firebending Lesson</div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- CH09: HEURISTICS -->
+<div id="heuristics" class="section">
+<div class="content">
+  <span class="section-label">Chapter 09</span>
+  <h1>HEURISTICS</h1>
+  <div class="mantra">"Internalize these before round 1."</div>
+  <ol class="heuristic-list">
+    <li><span class="h-num">01</span><span class="h-text"><strong>T1 Gran-Gran always, on the play.</strong> Gran-Gran on T1 means full cost reduction by T3. Every other T1 play delays your engine by a full turn cycle.</span></li>
+    <li><span class="h-num">02</span><span class="h-text"><strong>Gran-Gran reduces cost by {1} per DIFFERENTLY named Lesson.</strong> 4 copies of Firebending Lesson in GY = {1} reduction, not {4}. Sequence Abandon Attachments T2 to bin 2 different Lessons immediately.</span></li>
+    <li><span class="h-num">03</span><span class="h-text"><strong>Accumulate Wisdom draws 3 cards for free when the engine is live.</strong> With Gran-Gran + Artist's Talent (Level 2) + 3 Lessons in GY, Wisdom costs {0}. This is Ancestral Recall. Use it freely — you have 4 copies.</span></li>
+    <li><span class="h-num">04</span><span class="h-text"><strong>Monument needs to be tapped as an activated ability — Artist's Talent gives you the discard.</strong> Artist's Talent Level 1 says "when you cast a spell, discard a card." That discard fuels Monument's activation (you tap Monument and spend a discard to activate it). The sequence is: cast spell → Talent triggers (discard) → tap Monument → choose mode.</span></li>
+    <li><span class="h-num">05</span><span class="h-text"><strong>Use Monument's Treasure mode when you need mana, Damage when they're at 12 or below.</strong> Never use Damage mode at full life — it takes 7 activations to kill from 20. Use Treasure to chain more spells, use Damage only in the final 2-turn window.</span></li>
+    <li><span class="h-num">06</span><span class="h-text"><strong>Hold It'll Quench Ya for Monument resolution — not for their removal spells.</strong> Letting them Annul your Artist's Talent is painful but survivable. Letting them counter Monument wastes your {3} mana AND sets back your entire engine. Protect Monument at all costs.</span></li>
+    <li><span class="h-num">07</span><span class="h-text"><strong>Boomerang Basics returning Monument makes it a new object.</strong> If they target Monument with removal, respond with Boomerang Basics — return Monument to hand. The removal spell fizzles (no target). Redeploy Monument next turn. This requires having {1}{U} available.</span></li>
+    <li><span class="h-num">08</span><span class="h-text"><strong>Iroh's Demonstration deals damage to EACH creature equal to Lessons in GY.</strong> With 5 Lessons in GY, Iroh's deals 5 to every creature. This is a full board wipe against Bant Rhythm and token strategies. Save it for maximum impact — don't fire it when they have 1 creature when you need it as a sweeper on turn 5.</span></li>
+    <li><span class="h-num">09</span><span class="h-text"><strong>Soul-Guide Lantern exiles their GY in the mirror — all Lesson discounts disappear.</strong> Their Gran-Gran loses all discount, their Accumulate Wisdom draws 1 instead of 3. This is game-defining for {1} mana in the mirror. Deploy it T1 or T2 before they have 3 Lessons in GY.</span></li>
+    <li><span class="h-num">10</span><span class="h-text"><strong>Don't level Artist's Talent into open blue mana.</strong> Leveling is a sorcery-speed action. Level on their end step when they tap out, not during your main phase against a player holding {U}.</span></li>
+    <li><span class="h-num">11</span><span class="h-text"><strong>Agna Qel'a turns extra lands into discard fuel.</strong> When you have lands to spare in the late game, Agna Qel'a converts them to {U}{U} that can also trigger Monument activations via the discard. Never discard Agna Qel'a to Monument — keep it as a mana source and land converter.</span></li>
+    <li><span class="h-num">12</span><span class="h-text"><strong>Quantum Riddler in the SB needs 2+ instants/sorceries in GY to draw.</strong> You hit this condition by T3 trivially. Once active, Riddler attacks = surveil 2 + draw 1 every turn. Against control where games go long, Riddler generates more card advantage per turn than any other threat you have.</span></li>
+  </ol>
+</div>
+</div>
+
+<!-- CH10: TUNING -->
+<div id="tuning" class="section">
+<div class="content">
+  <span class="section-label">Chapter 10</span>
+  <h1>TUNING<br>NOTES</h1>
+  <div class="mantra">"The deck is rigid. Don't cut Monument, don't cut Gran-Gran, don't cut Accumulate Wisdom. Everything else is tunable."</div>
+
+  <h2>Register Conditions</h2>
+  <div class="card-grid card-grid-2">
+    <div class="card"><div class="card-label">Register When</div><div class="card-title">Field is Creatures and Midrange</div><div class="card-body">Izzet Lessons is built to beat creature decks — your 30+ noncreature spells make their removal dead. Dimir Midrange, Boros Aggro, Mono-Green, and Bant Rhythm are all matchups where you're drawing 3 cards for free while they have Shoot the Sheriff in hand with no targets. Register when you expect 60%+ of the field to be creature-based strategies.</div></div>
+    <div class="card"><div class="card-label">Be Cautious When</div><div class="card-title">Mirror and Control Are Heavy</div><div class="card-body">In a field heavy with Izzet Lessons mirrors and Jeskai Control, both of which can answer Monument efficiently, your SB needs to be heavily skewed toward the mirror and counter-heavy configurations. This is also when Quantum Riddler becomes more important than Pyroclasm in the 15.</div></div>
+  </div>
+
+  <h2>Flex Slots</h2>
+  <div class="card-grid card-grid-3">
+    <div class="card"><div class="card-label">Boomerang Basics: 1-3</div><div class="card-title">Context Dependent</div><div class="card-body">Manfield's list runs 1. More copies mean more Monument protection and tempo plays, but the deck needs Lesson density for discount. 1 is the minimum. Run 2 if you expect a lot of Mirror and control. The Lesson subtype matters — each copy in GY counts toward Gran-Gran discount.</div></div>
+    <div class="card"><div class="card-label">Abandon Attachments: 3-4</div><div class="card-title">GY Engine Fuel</div><div class="card-body">Manfield's list runs 3 main + 1 SB. 4 main is viable in a wide-open meta where you need the GY setup as fast as possible. 3 is correct when you expect matchups where holding interaction is better than binning cards on T2.</div></div>
+    <div class="card"><div class="card-label">Iroh's Demonstration: 2-4</div><div class="card-title">Meta Dependent Sweeper</div><div class="card-body">Manfield runs 3 main + 1 SB. In aggro-heavy metas, run 4 main. In control-heavy metas, move copies to SB or cut entirely — the sweeper does nothing against noncreature decks. The most meta-sensitive card in the deck.</div></div>
+  </div>
+</div>
+</div>
+
+<!-- CH11: PREP -->
+<div id="prep" class="section">
+<div class="content">
+  <span class="section-label">Chapter 11</span>
+  <h1>EVENT<br>PREP</h1>
+  <div class="mantra">"Know the Monument math before you sit down. Know the GY count before you activate Accumulate Wisdom."</div>
+
+  <h2>Night Before Checklist</h2>
+  <div class="card-grid card-grid-2">
+    <div class="card"><div class="card-label">Know Cold</div><div class="card-title">Discount Math by GY Count</div><div class="card-body">0 Lessons in GY: no discount. 1 Lesson: {1} off. 2 Lessons: {2} off. 3+ Lessons: {3} off (max). Monument base cost {3}, at {3} discount = free. Accumulate Wisdom base {1}{U}, at {3} discount = free, draws 3. Firebending Lesson base {R}, at {3} discount = free with red available.</div></div>
+    <div class="card"><div class="card-label">Know Cold</div><div class="card-title">Monument Kill Range</div><div class="card-body">3 activations/turn × 3 damage = 9/turn. From 20 life: 3 turns to kill with Monument damage only. From 9 life: 1 activation kills them. Use damage mode when they're at 12 or below AND you have 4+ spells to cast (4 Monument activations = 12 damage = lethal from 12). Know this before game 1.</div></div>
+    <div class="card"><div class="card-label">Verify</div><div class="card-title">Lesson Count by Name</div><div class="card-body">5 differently named Lesson cards in the deck: Firebending Lesson (4), Combustion Technique (4), Iroh's Demonstration (3), Abandon Attachments (3), Boomerang Basics (1). Maximum Gran-Gran discount = {3} (after 3 different names in GY). You reach this by T3 routinely with Abandon Attachments on T2.</div></div>
+    <div class="card"><div class="card-label">Confirm</div><div class="card-title">SB Configuration</div><div class="card-body">Expected field aggro-heavy: +3 sweepers (Pyroclasm, Torch, Abrade) in SB at the expense of Negate/Quantum Riddler. Expected field control/mirror-heavy: +2 Negate, +2 Quantum Riddler, +2 Soul-Guide Lantern priority. Verify your 15 matches the expected meta breakdown before leaving.</div></div>
+  </div>
+
+  <h2>Round 1 Read</h2>
+  <p><strong>T1 land tells:</strong> Plains or Mountain = aggro or Boros — shift to reactive mode, hold removal. Island = Dimir, control, or mirror — set up engine normally, hold It'll Quench Ya for Monument. Forest = Mono-Green or Bant Rhythm — Iroh's Demonstration is your game-winner, hold it for their board state.</p>
+
+  <button class="print-btn" onclick="printSB()">&#9113; Print Event Reference</button>
+  
+  <h2>20-Minute Crash Course</h2>
+  <p>If you're sitting down in 20 minutes, run through this in order:</p>
+  <ul class="checklist" id="crash-checklist">
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Mulligan rule:</strong> Keep any 7 with Artist's Talent + a land OR Stormchaser's Talent + 2 lands. Never keep a 7 without a Talent â€” your whole engine depends on them.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Artist's Talent rule:</strong> Artist's Talent levels up each turn you cast instants/sorceries. Level 2 lets you surveil before drawing. Level 3 gives +1/+1 to your spells. Protect it â€” losing Talent is losing your engine.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Lesson rule:</strong> When you learn, you can reveal a Lesson card from outside the game OR discard and draw. Know which Lessons you own and which one to take in each situation.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Accumulate Wisdom rule:</strong> Accumulate Wisdom draws cards equal to the number of Wisdom cards in your GY. Cast the first one early to set up future casts for 2-3 cards.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Abrade rule:</strong> Abrade has two modes: 3 damage to a creature OR destroy an artifact. Know before casting which mode you need. Don't default to the damage mode when the artifact mode is better.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Board rule:</strong> Pyroclasm ({1}{R}) deals 2 damage to each creature. Deploy it when they have 3+ creatures with 2 toughness or less. Your own Eddymurk Crab (0/4) survives Pyroclasm â€” board wipe and keep your blocker.</span></li>
+  </ul>
+<div id="sb-print-zone">
+    <div style="font-family:'DM Mono',monospace;font-size:12px;">
+      <strong>IZZET LESSONS — Event Reference · Manfield World Championship 31 (1st Place)</strong><br><br>
+      <strong>KEY MATH:</strong> 3 Lessons in GY = {3} discount (max) | Monument damage = 3 per activation | 4 activations per turn = 12 damage<br>
+      Accumulate Wisdom at full discount = FREE, draws 3 cards<br><br>
+      <strong>ENGINE ORDER:</strong> T1 Gran-Gran → T2 Abandon Attachments (bin 2 Lessons) → T3 Artist's Talent + free Accumulate Wisdom (draw 3) → T4 Monument<br><br>
+      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:8px;">
+        <div><strong>vs DIMIR MR (FAVORABLE)</strong><br>IN: +2 Quantum Riddler, +2 Negate<br>OUT: −2 Iroh's, −1 Pyroclasm, −1 Boomerang Basics</div>
+        <div><strong>vs IZZET PROWESS (EVEN)</strong><br>IN: +1 Pyroclasm, +1 Torch, +1 Abrade<br>OUT: −1 It'll Quench Ya, −1 Abandon, −1 Quantum Riddler</div>
+        <div><strong>vs BOROS AGGRO (EVEN)</strong><br>IN: +1 Pyroclasm, +1 Torch, +1 Abrade<br>OUT: −1 It'll Quench Ya, −1 Abandon, −1 Negate</div>
+        <div><strong>vs MONO-GREEN (FAVORABLE)</strong><br>IN: +2 Soul-Guide, +1 Torch Tower<br>OUT: −1 Abandon, −2 Negate</div>
+        <div><strong>vs BANT RHYTHM (FAVORABLE)</strong><br>IN: +1 Pyroclasm, +1 Abrade<br>OUT: −1 Abandon, −1 Negate</div>
+        <div><strong>vs MIRROR (EVEN)</strong><br>IN: +1 Annul, +2 Soul-Guide, +1 Abrade, +2 Negate<br>OUT: −3 Iroh's, −1 Firebending, −2 Combustion</div>
+        <div><strong>vs JESKAI CONTROL (EVEN)</strong><br>IN: +2 Quantum Riddler, +2 Negate, +1 Spell Pierce<br>OUT: −3 Iroh's, −2 Firebending Lesson</div>
+      </div>
+      <br><strong>SB:</strong> 2 Quantum Riddler · 2 Soul-Guide Lantern · 2 Negate · 1 Annul · 1 Torch the Tower · 1 Iroh's Demonstration · 1 Abandon Attachments · 1 Abrade · 1 Pyroclasm · 1 It'll Quench Ya! · 1 Spell Pierce · 1 Broadside Barrage
+    </div>
+  </div>
+
+  <h2>Testing Framework</h2>
+  <div class="card-grid">
+      <div class="card"><div class="card-label">Block 01</div><div class="card-title">Talent Leveling</div><div class="card-body">Practice the Artist's Talent leveling sequence. Every instant/sorcery levels it up. Know exactly what each level does and when you're one trigger away from the next level.</div></div>
+      <div class="card"><div class="card-label">Block 02</div><div class="card-title">Lesson Selection</div><div class="card-body">Practice evaluating which Lesson to take in each game state. Field Trip (land) vs Introduction to Annihilation (exile) vs Expanded Anatomy (buff). The wrong Lesson choice is a subtle mistake that compounds.</div></div>
+      <div class="card"><div class="card-label">Block 03</div><div class="card-title">Accumulate Wisdom Chains</div><div class="card-body">Practice the Accumulate Wisdom draw chain. First cast draws 1. Second draws 2. Third draws 3. Know when to hold Wisdom for future casts vs cast it immediately for 1 card.</div></div>
+      <div class="card"><div class="card-label">Block 04</div><div class="card-title">Pyroclasm Windows</div><div class="card-body">Practice the Pyroclasm window: 3+ creatures at 2 toughness. Know which matchups generate the right board state and wait for the threshold rather than casting it early.</div></div>
+  </div>
+
+  <h2>Matchday Routine</h2>
+  <ol class="heuristic-list">
+      <li><div class="heuristic-num">01</div><div class="heuristic-body">Artist's Talent is your entire engine. Protect it from removal by holding countermagic when it's in play.</div></li>
+      <li><div class="heuristic-num">02</div><div class="heuristic-body">Lesson selection: know your Lesson sideboard cold. The wrong Lesson in the wrong spot is a one-card mistake that loses games.</div></li>
+      <li><div class="heuristic-num">03</div><div class="heuristic-body">Accumulate Wisdom sequencing: cast the first one early to build your GY. The second and third casts are where you pull ahead.</div></li>
+      <li><div class="heuristic-num">04</div><div class="heuristic-body">Between rounds: identify if you misused Abrade (damage vs artifact). The artifact mode is often correct when they have a key artifact in play.</div></li>
+      <li><div class="heuristic-num">05</div><div class="heuristic-body">Pyroclasm timing: 3+ creatures at 2 toughness. Count their board before casting â€” a Pyroclasm that kills 2 is inefficient.</div></li>
+  </ol>
+</div>
+
+  <div id="sb-print-zone">
+    <h2>Printable Sideboard Reference</h2>
+    <p>All matchup ins/outs on one sheet. Print and take to the event.</p>
+    <button class="print-btn" onclick="printSB()">&#x2259; Print SB Reference</button>
+    <div class="print-grid">
+    <div class="print-mu">
+      <div class="print-mu-name">DIMIR MIDRANGE <span class="diff-good">Favorable</span></div>
+      <div class="print-cols">
+        <div><div class="print-col-label">In</div>
+          <div class="print-row"><span>Quantum Riddler</span><span class="print-qty">+2</span></div>
+          <div class="print-row"><span>Negate</span><span class="print-qty">+2</span></div>
+        </div>
+        <div><div class="print-col-label">Out</div>
+          <div class="print-row"><span>Iroh's Demonstration</span><span class="print-qty">-2</span></div>
+          <div class="print-row"><span>Boomerang Basics</span><span class="print-qty">-1</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="print-mu">
+      <div class="print-mu-name">IZZET PROWESS <span class="diff-even">Even</span></div>
+      <div class="print-cols">
+        <div><div class="print-col-label">In</div>
+          <div class="print-row"><span>Pyroclasm</span><span class="print-qty">+1</span></div>
+          <div class="print-row"><span>Torch the Tower</span><span class="print-qty">+1</span></div>
+          <div class="print-row"><span>Abrade</span><span class="print-qty">+1</span></div>
+        </div>
+        <div><div class="print-col-label">Out</div>
+          <div class="print-row"><span>It'll Quench Ya!</span><span class="print-qty">-1</span></div>
+          <div class="print-row"><span>Abandon Attachments</span><span class="print-qty">-1</span></div>
+          <div class="print-row"><span>Quantum Riddler</span><span class="print-qty">-1</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="print-mu">
+      <div class="print-mu-name">BOROS AGGRO <span class="diff-even">Even</span></div>
+      <div class="print-cols">
+        <div><div class="print-col-label">In</div>
+          <div class="print-row"><span>Pyroclasm</span><span class="print-qty">+1</span></div>
+          <div class="print-row"><span>Torch the Tower</span><span class="print-qty">+1</span></div>
+          <div class="print-row"><span>Abrade</span><span class="print-qty">+1</span></div>
+        </div>
+        <div><div class="print-col-label">Out</div>
+          <div class="print-row"><span>It'll Quench Ya!</span><span class="print-qty">-1</span></div>
+          <div class="print-row"><span>Abandon Attachments</span><span class="print-qty">-1</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="print-mu">
+      <div class="print-mu-name">MONO-GREEN LANDFALL <span class="diff-good">Favorable</span></div>
+      <div class="print-cols">
+        <div><div class="print-col-label">In</div>
+          <div class="print-row"><span>Soul-Guide Lantern</span><span class="print-qty">+2</span></div>
+          <div class="print-row"><span>Torch the Tower</span><span class="print-qty">+1</span></div>
+        </div>
+        <div><div class="print-col-label">Out</div>
+          <div class="print-row"><span>Abandon Attachments</span><span class="print-qty">-1</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="print-mu">
+      <div class="print-mu-name">BANT RHYTHM <span class="diff-good">Favorable</span></div>
+      <div class="print-cols">
+        <div><div class="print-col-label">In</div>
+          <div class="print-row"><span>Pyroclasm</span><span class="print-qty">+1</span></div>
+          <div class="print-row"><span>Abrade</span><span class="print-qty">+1</span></div>
+        </div>
+        <div><div class="print-col-label">Out</div>
+          <div class="print-row"><span>Abandon Attachments</span><span class="print-qty">-1</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="print-mu">
+      <div class="print-mu-name">IZZET LESSONS MIRROR <span class="diff-even">Even</span></div>
+      <div class="print-cols">
+        <div><div class="print-col-label">In</div>
+          <div class="print-row"><span>Annul</span><span class="print-qty">+1</span></div>
+          <div class="print-row"><span>Soul-Guide Lantern</span><span class="print-qty">+2</span></div>
+          <div class="print-row"><span>Abrade</span><span class="print-qty">+1</span></div>
+          <div class="print-row"><span>Negate</span><span class="print-qty">+2</span></div>
+        </div>
+        <div><div class="print-col-label">Out</div>
+          <div class="print-row"><span>Iroh's Demonstration</span><span class="print-qty">-3</span></div>
+          <div class="print-row"><span>Firebending Lesson</span><span class="print-qty">-1</span></div>
+          <div class="print-row"><span>Combustion Technique</span><span class="print-qty">-2</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="print-mu">
+      <div class="print-mu-name">JESKAI CONTROL <span class="diff-even">Even</span></div>
+      <div class="print-cols">
+        <div><div class="print-col-label">In</div>
+          <div class="print-row"><span>Quantum Riddler</span><span class="print-qty">+2</span></div>
+          <div class="print-row"><span>Negate</span><span class="print-qty">+2</span></div>
+        </div>
+        <div><div class="print-col-label">Out</div>
+          <div class="print-row"><span>Iroh's Demonstration</span><span class="print-qty">-3</span></div>
+          <div class="print-row"><span>Firebending Lesson</span><span class="print-qty">-2</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="print-mu">
+      <div class="print-mu-name">DIMIR EXCRUCIATOR <span class="diff-even">Even</span></div>
+      <div class="print-cols">
+        <div><div class="print-col-label">In</div>
+          <div class="print-row"><span>Ral, Crackling Wit</span><span class="print-qty">+2</span></div>
+          <div class="print-row"><span>Wan Shi Tong, Librarian</span><span class="print-qty">+1</span></div>
+        </div>
+        <div><div class="print-col-label">Out</div>
+          <div class="print-row"><span>Abandon Attachments</span><span class="print-qty">-2</span></div>
+          <div class="print-row"><span>Broadside Barrage</span><span class="print-qty">-1</span></div>
+        </div>
+      </div>
+      <div class="print-needle">Ral generates card advantage every spell you cast — their counterspells can't profitably t</div>
+    </div>
+    <div class="print-mu">
+      <div class="print-mu-name">SIMIC RHYTHM <span class="diff-good">Favorable</span></div>
+      <div class="print-cols">
+        <div><div class="print-col-label">In</div>
+          <div class="print-row"><span>Slagstorm</span><span class="print-qty">+2</span></div>
+          <div class="print-row"><span>Flashfreeze</span><span class="print-qty">+1</span></div>
+        </div>
+        <div><div class="print-col-label">Out</div>
+          <div class="print-row"><span>Broadside Barrage</span><span class="print-qty">-2</span></div>
+          <div class="print-row"><span>Disdainful Stroke</span><span class="print-qty">-1</span></div>
+        </div>
+      </div>
+      <div class="print-needle">Slagstorm sweeps their Cub token board at 3 damage — nothing they play in the early game s</div>
+    </div>
+    <div class="print-mu">
+      <div class="print-mu-name">MONO-RED AGGRO <span class="diff-hard">Unfavorable</span></div>
+      <div class="print-cols">
+        <div><div class="print-col-label">In</div>
+          <div class="print-row"><span>Pyroclasm</span><span class="print-qty">+2</span></div>
+          <div class="print-row"><span>Sear</span><span class="print-qty">+1</span></div>
+        </div>
+        <div><div class="print-col-label">Out</div>
+          <div class="print-row"><span>Wan Shi Tong, Librarian</span><span class="print-qty">-2</span></div>
+          <div class="print-row"><span>Disdainful Stroke</span><span class="print-qty">-1</span></div>
+        </div>
+      </div>
+      <div class="print-needle">Pyroclasm sweeps their 2-toughness threats simultaneously — kills their entire turn 1-2 bo</div>
+    </div>
+    </div>
+  </div>
+
+</div>
+
+<footer style="border-top:1px solid var(--rule);padding:24px 80px;display:flex;justify-content:space-between;align-items:center;font-family:'DM Mono',monospace;font-size:10px;color:var(--mid);">
+  <span>Team Resolve · Standard 2026</span>
+  <span>Palette: SaaS General (UI UX Pro Max Row 1) — April 2026</span>
+  <span>Reference: Manfield World Championship 31 (1st Place)</span>
+</footer>
+
+<script>
+function show(id) {
+  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.nav-link').forEach(b=>b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  event.target.classList.add('active');
+  window.scrollTo(0,0);
+}
+function toggle(id) {
+  document.getElementById(id).classList.toggle('open');
+}
+function printSB() {
+  document.body.classList.add('printing-sb');
+  window.print();
+  document.body.classList.remove('printing-sb');
+}
+</script>
+<script>
+(function(){
+  const TIP=document.createElement('div');TIP.className='card-tip';
+  TIP.innerHTML='<div class="card-tip-loading">loading...</div>';
+  document.body.appendChild(TIP);
+  const CACHE={};let ht=null;
+  function pos(e){const PAD=24,W=220,H=310;let x=e.clientX+PAD,y=e.clientY-H/2;
+    if(x+W>window.innerWidth)x=e.clientX-W-PAD;if(y<8)y=8;
+    if(y+H>window.innerHeight)y=window.innerHeight-H-8;
+    TIP.style.left=x+'px';TIP.style.top=y+'px';}
+  async function show2(name,e){
+    clearTimeout(ht);TIP.innerHTML='<div class="card-tip-loading">loading...</div>';
+    TIP.classList.add('visible');pos(e);
+    if(CACHE[name]){TIP.innerHTML=`<img src="${CACHE[name]}" alt="${name}">`;return;}
+    try{const r=await fetch(`https://api.scryfall.com/cards/named?fuzzy=${encodeURIComponent(name)}`);
+      if(!r.ok){TIP.classList.remove('visible');return;}
+      const d=await r.json();
+      const img=d.image_uris?.normal||d.card_faces?.[0]?.image_uris?.normal;
+      if(!img){TIP.classList.remove('visible');return;}
+      CACHE[name]=img;TIP.innerHTML=`<img src="${img}" alt="${name}">`;}
+    catch(err){TIP.classList.remove('visible');}
+  }
+  function hide(){ht=setTimeout(()=>TIP.classList.remove('visible'),80);}
+  document.addEventListener('mouseover',e=>{const el=e.target.closest('span.c');if(!el)return;show2(el.textContent.trim(),e);});
+  document.addEventListener('mousemove',e=>{if(TIP.classList.contains('visible'))pos(e);});
+  document.addEventListener('mouseout',e=>{if(e.target.closest('span.c'))hide();});
+})();
+</script>
+</body>
+</html>

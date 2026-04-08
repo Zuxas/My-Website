@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" href="../images/tab32.png" type="image/png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Temur Landfall — Team Resolve Standard Playbook</title>
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+html{overflow-y:scroll;}
+:root{
+  --primary:#0d1f0d;
+  --ink:#0e0e0e;
+  --paper:#f2ede6;
+  --paper-dark:#e8e1d6;
+  --rule:#c8bfb0;
+  --accent:#16A34A;
+  --accent2:#DC2626;
+  --accent-light:rgba(22,163,74,0.09);
+  --mid:#5a5248;
+  --card:#ffffff;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--paper);color:var(--ink);font-family:'Crimson Pro',Georgia,serif;font-size:17px;line-height:1.6;}
+nav{position:sticky;top:0;z-index:100;background:var(--primary);border-bottom:2px solid var(--accent);display:flex;align-items:center;padding:0 32px;height:48px;gap:4px;}
+.nav-brand{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);margin-right:16px;white-space:nowrap;}
+.nav-link{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(248,250,252,0.55);background:none;border:none;border-bottom:2px solid transparent;padding:0 12px;height:48px;cursor:pointer;white-space:nowrap;display:flex;align-items:center;text-decoration:none;transition:color 0.15s,border-color 0.15s;}
+.nav-link:hover{color:rgba(248,250,252,0.85);}
+.nav-link.active{color:#fff;border-bottom-color:var(--accent);}
+.header-band{background:var(--primary);border-bottom:3px solid var(--accent);padding:48px 80px 40px;position:relative;overflow:hidden;}
+.header-band,.header-band *{color:#f1f5f9;}
+.header-band::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 10% 50%,rgba(22,163,74,0.15) 0%,transparent 70%);pointer-events:none;}
+.header-inner{max-width:1080px;margin:0 auto;display:grid;grid-template-columns:1fr auto;gap:40px;align-items:start;position:relative;}
+.header-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(248,250,252,0.4);margin-bottom:12px;}
+.header-title{font-family:'DM Mono',monospace;font-size:clamp(32px,4vw,52px);font-weight:500;letter-spacing:0.06em;line-height:1.05;text-transform:uppercase;}
+.header-title span{color:var(--accent);}
+.header-tagline{font-size:15px;font-style:italic;color:rgba(248,250,252,0.5);margin-top:12px;max-width:520px;line-height:1.5;}
+.meta-row{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(248,250,252,0.4);margin-bottom:4px;}
+.meta-row span{color:rgba(248,250,252,0.8);margin-left:6px;}
+.section{display:none;animation:fadeIn 0.3s ease;}
+.section.active{display:block;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
+.content{max-width:1080px;margin:0 auto;padding:56px 80px 80px;}
+.section-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--mid);margin-bottom:8px;display:block;}
+h1{font-family:'DM Mono',monospace;font-size:clamp(32px,4vw,48px);font-weight:500;letter-spacing:0.06em;text-transform:uppercase;line-height:1.05;margin-bottom:32px;}
+h2{font-family:'DM Mono',monospace;font-size:13px;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);margin:48px 0 16px;padding-bottom:8px;border-bottom:1px solid var(--rule);}
+h3{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--mid);margin:24px 0 8px;}
+p{font-size:16px;line-height:1.7;color:var(--ink);margin-bottom:14px;font-weight:300;}
+strong{font-weight:600;}
+.mantra{background:var(--accent-light);border-left:3px solid var(--accent);padding:20px 24px;margin:0 0 40px;font-style:italic;font-size:17px;color:var(--ink);line-height:1.6;}
+.card-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule);margin:16px 0;}
+.card-grid-2{grid-template-columns:repeat(2,1fr)!important;}
+.card-grid-3{grid-template-columns:repeat(3,1fr)!important;}
+.card{background:var(--card);padding:20px;transition:background 0.15s;}
+.card:hover{background:#faf7f2;}
+.card-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:var(--mid);margin-bottom:6px;}
+.card-title{font-family:'DM Mono',monospace;font-size:13px;letter-spacing:0.05em;color:var(--accent);margin-bottom:8px;font-weight:500;}
+.card-body{font-size:14px;color:var(--mid);line-height:1.55;font-weight:300;}
+.matchup-block{border:1px solid var(--rule);margin:24px 0;background:var(--card);}
+.matchup-header{background:var(--paper-dark);padding:16px 20px;display:flex;align-items:center;justify-content:space-between;cursor:pointer;}
+.matchup-header h3{margin:0;font-size:11px;letter-spacing:0.15em;color:var(--ink);}
+.verdict{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.15em;text-transform:uppercase;padding:3px 10px;border-radius:2px;}
+.verdict-good{background:rgba(22,163,74,0.1);color:#14532d;}
+.verdict-even{background:rgba(90,82,72,0.12);color:var(--mid);}
+.verdict-hard{background:rgba(180,35,24,0.1);color:#991b1b;}
+.matchup-body{padding:20px;display:none;}
+.matchup-body.open{display:block;}
+.sb-table{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--rule);margin:12px 0;}
+.sb-col{background:var(--paper);padding:12px 16px;}
+.sb-col-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.15em;text-transform:uppercase;color:var(--mid);margin-bottom:8px;}
+.sb-item{display:flex;justify-content:space-between;align-items:baseline;font-size:14px;padding:2px 0;font-weight:300;}
+.sb-qty{font-family:'DM Mono',monospace;font-size:11px;color:var(--mid);}
+.heuristic-list{list-style:none;margin:16px 0;}
+.heuristic-list li{padding:14px 0;border-bottom:1px solid var(--rule);display:flex;gap:16px;align-items:start;}
+.heuristic-list li:last-child{border-bottom:none;}
+.h-num{font-family:'DM Mono',monospace;font-size:10px;color:var(--accent);flex-shrink:0;padding-top:2px;min-width:28px;}
+.h-text{font-size:15px;font-weight:300;color:var(--ink);}
+.h-text strong{font-weight:600;}
+.deck-row{display:flex;justify-content:space-between;padding:3px 0;border-bottom:1px solid rgba(200,191,176,0.4);font-size:15px;}
+.deck-count{font-family:'DM Mono',monospace;font-size:12px;color:var(--mid);min-width:20px;}
+.edge-case{background:var(--card);border:1px solid var(--rule);border-left:3px solid var(--accent);padding:16px 20px;margin:12px 0;}
+.edge-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:6px;}
+.edge-body{font-size:14px;font-weight:300;color:var(--ink);line-height:1.65;}
+.kill-line{background:#0d1f0d;border:1px solid var(--accent);padding:20px 24px;margin:16px 0;font-family:'DM Mono',monospace;font-size:13px;line-height:1.9;}
+.kill-line .step{color:rgba(22,163,74,0.6);margin-right:8px;}
+.kill-line .card-name{color:#86efac;}
+.print-btn{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;background:var(--accent);color:#fff;border:none;padding:10px 20px;cursor:pointer;margin:16px 0;}
+span.c{cursor:help;border-bottom:1px dashed var(--accent);}
+span.c:hover{border-bottom-style:solid;}
+.card-tip{position:fixed;z-index:9999;pointer-events:none;width:220px;border-radius:8px;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,0.6);opacity:0;transition:opacity 0.15s ease;background:#1a1a2e;}
+.card-tip.visible{opacity:1;}
+.card-tip img{width:220px;height:auto;display:block;}
+.card-tip-loading{width:220px;height:310px;display:flex;align-items:center;justify-content:center;color:#94a3b8;font-size:12px;font-family:monospace;background:#1e293b;}
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-brand">Temur Landfall</div>
+  <a class="nav-link" href="../deck-guides.html" style="text-decoration:none;">&#8592; Guides</a>
+  <button class="nav-link active" onclick="show('identity')">Overview</button>
+  <button class="nav-link" onclick="show('decklist')">Decklist</button>
+  <button class="nav-link" onclick="show('gameplan')">Game Flow</button>
+  <button class="nav-link" onclick="show('engines')">Engines</button>
+  <button class="nav-link" onclick="show('lines')">Lines</button>
+  <button class="nav-link" onclick="show('roles')">Roles</button>
+  <button class="nav-link" onclick="show('matchups')">Matchups</button>
+  <button class="nav-link" onclick="show('sideboard')">Sideboard</button>
+  <button class="nav-link" onclick="show('heuristics')">Heuristics</button>
+  <button class="nav-link" onclick="show('tuning')">Tuning</button>
+  <button class="nav-link" onclick="show('prep')">Prep</button>
+</nav>
+<div class="header-band">
+  <div class="header-inner">
+    <div>
+      <div class="header-label">Team Resolve · Standard · RC Prep 2026</div>
+      <div class="header-title">TEMUR<br><span>LANDFALL</span></div>
+      <div class="header-tagline">"Spelunking makes every land an untapped dual. Icetill Explorer doubles your land drops. Lumra enters and returns every land from your graveyard to the battlefield. The board is bigger than they can answer."</div>
+    </div>
+    <div>
+      <div class="meta-row">META SHARE<span>2.11%</span></div>
+      <div class="meta-row">ROLE<span>Midrange-Combo</span></div>
+      <div class="meta-row">COLORS<span>G U R</span></div>
+      <div class="meta-row">KILL TURN<span>4–6</span></div>
+      <div class="meta-row">REFERENCE<span>Collins Mullen 1st — PTQ Pro Tour Lorwyn Eclipsed Jan 31 2026</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- CH01 IDENTITY -->
+<div id="identity" class="section active">
+<div class="content">
+  <span class="section-label">Chapter 01</span>
+  <h1>DECK<br>IDENTITY</h1>
+  <div class="mantra">"You play lands. Then you play more lands. Then Lumra enters and returns all of them. You have a 12/12 and twenty lands in play. They have seven cards in their hand and none of them matter."</div>
+
+  <p>Temur Landfall is Standard's midrange-combo hybrid that weaponizes land drops into an overwhelming board state. The deck operates on two overlapping plans: a fair midrange plan where <span class="c">Icetill Explorer</span> and <span class="c">Spelunking</span> generate land-drop acceleration, and a combo plan where <span class="c">Lumra, Bellow of the Woods</span> enters the battlefield and immediately returns every land card from your graveyard back to the battlefield — triggering landfall for each one.</p>
+
+  <p><span class="c">Spelunking</span> is the deck's most important setup card. It makes each land you control a copy of all lands you control — meaning every basic land you play enters as an untapped triome. More critically, Spelunking means cycling lands (sacrificed fetches, Fabled Passage) enter untapped rather than tapped. <span class="c">Icetill Explorer</span> provides the acceleration: whenever a land enters from your graveyard (triggered by Lumra, Spelunking activations, or fetch cracks), you may search your library for another land and put it onto the battlefield tapped.</p>
+
+  <p>The payoff is <span class="c">Lumra, Bellow of the Woods</span>: a creature whose power and toughness equal the number of lands you control. When it enters, it mills four cards, then returns all land cards from your graveyard to the battlefield tapped — each triggering Icetill Explorer, each triggering any landfall payoffs in play. A single Lumra with five lands in your GY enters as a 10+ power creature and generates 5-10 more landfall triggers.</p>
+
+  <h2>Why Temur Over Gruul or Simic Landfall</h2>
+  <div class="card-grid card-grid-3">
+    <div class="card"><div class="card-label">Blue Splash</div><div class="card-title">Spelunking + Canyon Crab</div><div class="card-body">Blue adds Spelunking (the combo's core enabler) and Canyon Crab — an instant-speed 0/4 blocker with flash that mills cards when it enters (feeding Lumra's GY). Spelunking alone justifies the blue splash: it converts every land into a fixing land and enables Icetill Explorer's graveyard triggers. Without blue you're playing a slower Gruul version that can't combo as consistently.</div></div>
+    <div class="card"><div class="card-label">Red Splash</div><div class="card-title">Sear + Soul Immolation + Worldsoul's Rage</div><div class="card-body">Red provides removal and reach. Sear ({1R}) deals 2 damage to any creature or planeswalker — instant speed. Soul Immolation exiles a creature and deals damage equal to its power. Worldsoul's Rage deals damage to any target equal to lands you control — with 8+ lands it's a 8+ damage finisher or kills any creature. These red spells answer threats the Gruul version can't handle.</div></div>
+    <div class="card"><div class="card-label">The Combo</div><div class="card-title">Lumra Returns Every Land From GY</div><div class="card-body">Lumra, Bellow of the Woods enters, mills 4, then returns ALL land cards from your GY to battlefield tapped. With Spelunking in play and 5 GY lands, Lumra enters as a 5+5=10/10 (lands in play + GY lands), returns them all, and each triggers Icetill Explorer for additional land searches. The board state after one Lumra is almost impossible to overcome.</div></div>
+  </div>
+</div>
+</div>
+
+<!-- CH02 DECKLIST -->
+<div id="decklist" class="section">
+<div class="content">
+  <span class="section-label">Chapter 02</span>
+  <h1>DECKLIST</h1>
+  <div class="mantra">"Reference: Ranked Traditional Standard (magic.gg, Feb 23 2026). Collins Mullen 1st — PTQ Pro Tour Lorwyn Eclipsed (6-0-2), Jan 31 2026."</div>
+  <div class="card-grid card-grid-3">
+    <div class="card">
+      <h3>Creatures (14)</h3>
+      <div class="deck-row"><span class="deck-count">3</span><span><span class="c">Icetill Explorer</span></span></div>
+      <div class="deck-row"><span class="deck-count">3</span><span><span class="c">Lumra, Bellow of the Woods</span></span></div>
+      <div class="deck-row"><span class="deck-count">3</span><span><span class="c">Canyon Crab</span></span></div>
+      <div class="deck-row"><span class="deck-count">2</span><span><span class="c">Eumidian Terrabotanist</span></span></div>
+      <div class="deck-row"><span class="deck-count">2</span><span><span class="c">Blossoming Tortoise</span></span></div>
+      <div class="deck-row"><span class="deck-count">1</span><span><span class="c">Famished Worldsire</span></span></div>
+      <h3 style="margin-top:12px;">Enchantments (3)</h3>
+      <div class="deck-row"><span class="deck-count">3</span><span><span class="c">Spelunking</span></span></div>
+      <h3 style="margin-top:12px;">Instants / Sorceries (9)</h3>
+      <div class="deck-row"><span class="deck-count">2</span><span><span class="c">Inspiration from Beyond</span></span></div>
+      <div class="deck-row"><span class="deck-count">2</span><span><span class="c">Sear</span></span></div>
+      <div class="deck-row"><span class="deck-count">2</span><span><span class="c">Soul Immolation</span></span></div>
+      <div class="deck-row"><span class="deck-count">2</span><span><span class="c">Seismic Sense</span></span></div>
+      <div class="deck-row"><span class="deck-count">1</span><span><span class="c">Consult the Star Charts</span></span></div>
+    </div>
+    <div class="card">
+      <h3>Artifacts (4)</h3>
+      <div class="deck-row"><span class="deck-count">2</span><span><span class="c">Worldsoul's Rage</span></span></div>
+      <div class="deck-row"><span class="deck-count">2</span><span><span class="c">Tannuk, Memorial Ensign</span></span></div>
+      <h3 style="margin-top:12px;">Lands (30)</h3>
+      <div class="deck-row"><span class="deck-count">4</span><span>Forest</span></div>
+      <div class="deck-row"><span class="deck-count">4</span><span><span class="c">Stomping Ground</span></span></div>
+      <div class="deck-row"><span class="deck-count">3</span><span><span class="c">Steam Vents</span></span></div>
+      <div class="deck-row"><span class="deck-count">3</span><span>Mountain</span></div>
+      <div class="deck-row"><span class="deck-count">2</span><span><span class="c">Breeding Pool</span></span></div>
+      <div class="deck-row"><span class="deck-count">2</span><span><span class="c">Thornspire Verge</span></span></div>
+      <div class="deck-row"><span class="deck-count">2</span><span><span class="c">Rugged Highlands</span></span></div>
+      <div class="deck-row"><span class="deck-count">2</span><span><span class="c">Commercial District</span></span></div>
+      <div class="deck-row"><span class="deck-count">1</span><span><span class="c">Demolition Field</span></span></div>
+      <div class="deck-row"><span class="deck-count">1</span><span><span class="c">Soulstone Sanctuary</span></span></div>
+      <div class="deck-row"><span class="deck-count">1</span><span>Island</span></div>
+      <div class="deck-row"><span class="deck-count">1</span><span><span class="c">Frontier Bivouac</span></span></div>
+      <div class="deck-row"><span class="deck-count">1</span><span><span class="c">Swiftwater Cliffs</span></span></div>
+      <div class="deck-row"><span class="deck-count">1</span><span><span class="c">Fountainport</span></span></div>
+      <div class="deck-row"><span class="deck-count">1</span><span><span class="c">Fabled Passage</span></span></div>
+      <div class="deck-row"><span class="deck-count">1</span><span><span class="c">Thornwood Falls</span></span></div>
+    </div>
+    <div class="card">
+      <h3>Sideboard (15)</h3>
+      <div class="deck-row"><span class="deck-count">3</span><span><span class="c">Mossborn Hydra</span></span></div>
+      <div class="deck-row"><span class="deck-count">3</span><span><span class="c">Sazh's Chocobo</span></span></div>
+      <div class="deck-row"><span class="deck-count">3</span><span><span class="c">Pick Your Poison</span></span></div>
+      <div class="deck-row"><span class="deck-count">2</span><span><span class="c">Bristly Bill, Spine Sower</span></span></div>
+      <div class="deck-row"><span class="deck-count">2</span><span><span class="c">Keen-Eyed Curator</span></span></div>
+      <div class="deck-row"><span class="deck-count">2</span><span><span class="c">Obliterating Bolt</span></span></div>
+    </div>
+  </div>
+
+  <h2>Lumra Combo Line</h2>
+  <div class="kill-line">
+    <div style="color:#86efac;font-size:12px;letter-spacing:0.15em;margin-bottom:12px;">LUMRA COMBO SEQUENCE</div>
+    <div><span class="step">01.</span><span class="card-name">Spelunking</span> <span style="color:#f1f5f9">in play — every land you control gains all types of all lands you control</span></div>
+    <div><span class="step">02.</span><span class="card-name">Icetill Explorer</span> <span style="color:#f1f5f9">in play — whenever a land enters from your GY, search for a land and put it onto battlefield tapped</span></div>
+    <div><span class="step">03.</span><span class="card-name">Fabled Passage</span> <span style="color:#f1f5f9">+ other lands cycled/fetched → GY accumulates 3-5 land cards</span></div>
+    <div><span class="step">04.</span><span class="card-name">Lumra, Bellow of the Woods</span> <span style="color:#f1f5f9">enters → mills 4 cards (adding more lands to GY) → returns ALL GY lands to battlefield tapped</span></div>
+    <div><span class="step">05.</span><span style="color:#f1f5f9">Each returned land triggers Icetill Explorer → search another land → chain until deck is exhausted of lands</span></div>
+    <div><span class="step">06.</span><span class="card-name">Lumra</span> <span style="color:#f1f5f9">is now a 15-20/15-20 (= number of lands in play). Attack for lethal.</span></div>
+    <div style="color:rgba(248,250,252,0.4);font-size:11px;margin-top:8px;">Worldsoul's Rage (= lands in play damage) finishes if Lumra is blocked</div>
+  </div>
+</div>
+</div>
+
+<!-- CH03 GAME FLOW -->
+<div id="gameplan" class="section">
+<div class="content">
+  <span class="section-label">Chapter 03</span>
+  <h1>GAME<br>FLOW</h1>
+  <div class="mantra">"T2 Spelunking. T3 Icetill Explorer. T4 start filling GY with fetch lands. T5 Lumra — board is enormous. Win."</div>
+  <div class="card-grid card-grid-2">
+    <div class="card"><div class="card-label">Early (T1–T3)</div><div class="card-title">Setup Phase</div><div class="card-body">T1: Land. T2: Spelunking ({1G}) — the most important play in the deck. With Spelunking in play every land you control gains all land types, enabling Icetill Explorer triggers and making all fetches more efficient. T3: Icetill Explorer ({3G}) — 2/4 body that adds the cascade engine. With Spelunking + Icetill online, every land entering from your GY chains into another search. Start cycling fetches and activating Fabled Passage to fill your GY.</div></div>
+    <div class="card"><div class="card-label">Mid (T4–T5)</div><div class="card-title">GY Loading + Lumra</div><div class="card-body">T4-T5: Use Canyon Crab (flash 0/4 that mills on ETB), Inspiration from Beyond (mill + draw), and Seismic Sense (landfall trigger cards) to load lands into GY. Play Lumra, Bellow of the Woods — it mills 4, then returns all GY lands to battlefield. Icetill triggers chain. Lumra is now massive. Worldsoul's Rage at end step (= your land count) finishes what Lumra can't.</div></div>
+    <div class="card"><div class="card-label">Combat</div><div class="card-title">Lumra + Worldsoul's Rage Close</div><div class="card-body">After the Lumra chain, your lands in play = Lumra's P/T. 12-20 power trample is typically lethal. If Lumra is blocked: Worldsoul's Rage targets face for X damage where X = lands you control — with 15 lands that's 15 damage for {2RG} sorcery speed. The combo can kill through blockers, life gain, and most interaction because it generates so much board presence simultaneously.</div></div>
+    <div class="card"><div class="card-label">Mulligan</div><div class="card-title">Need: Spelunking + 3 Lands</div><div class="card-body">Keep: any hand with Spelunking or Icetill Explorer and 3 lands (at least one green source). Spelunking on T2 is the ideal line — hands without it are slower but functional. Mulligan: 1-2 land hands, all Lumra and no setup, hands with 5+ lands and no spells. At 6: Spelunking + 3 lands + any creature = keep. At 5: Icetill Explorer + 2 lands + Spelunking = keep.</div></div>
+  </div>
+</div>
+</div>
+
+<!-- CH04 ENGINES -->
+<div id="engines" class="section">
+<div class="content">
+  <span class="section-label">Chapter 04</span>
+  <h1>CORE<br>ENGINES</h1>
+  <div class="mantra">"Spelunking enables Icetill. Icetill chains. Lumra converts the chain into a kill. Three engines, one turn."</div>
+  <div class="card-grid card-grid-3">
+    <div class="card"><div class="card-label">Engine 1 — Enabler</div><div class="card-title">Spelunking — Every Land Is Everything</div><div class="card-body">Spelunking ({1G}) enchantment: each land you control gains all subtypes of all lands you control AND all activated abilities of all lands you control. Mechanically: with one Plains + one Island + Spelunking, every land you control is Plains Island Swamp Mountain Forest simultaneously. This means: (1) Icetill Explorer triggers off ANY land entering from GY, not just basic types. (2) Fabled Passage enters untapped if you control 4+ lands. (3) Every tap for mana can produce any color.</div></div>
+    <div class="card"><div class="card-label">Engine 2 — Cascade</div><div class="card-title">Icetill Explorer — Chain Every GY Land</div><div class="card-body">Icetill Explorer ({3G}) 2/4: whenever a land card enters from your graveyard, you may search your library for a land card and put it onto the battlefield tapped. With Spelunking in play making every land a fetch-land type, Icetill fires on: Lumra's return trigger, Fabled Passage sacrifice, and Canyon Crab mill hits. Each Icetill trigger finds another land, which if it enters from GY triggers Icetill again. A single Lumra trigger with Icetill cascades through 5-10+ land searches.</div></div>
+    <div class="card"><div class="card-label">Engine 3 — Payoff</div><div class="card-title">Lumra, Bellow of the Woods — The Kill</div><div class="card-body">Lumra ({5GG}) creature: P/T = number of lands you control. When it enters, mill 4 cards, then return ALL land cards from your GY to battlefield tapped. The ETB: (1) mills 4 — adds more lands to GY, (2) returns ALL GY lands simultaneously. With 5 GY lands + Icetill: each returned land triggers Icetill searching more, those enter tapped. Lumra's P/T updates after ALL land ETBs resolve. A typical Lumra play ends with 12-20 lands in play and Lumra at 12/12–20/20.</div></div>
+  </div>
+</div>
+</div>
+
+<!-- CH05 LINES -->
+<div id="lines" class="section">
+<div class="content">
+  <span class="section-label">Chapter 05</span>
+  <h1>LINES &amp;<br>TACTICS</h1>
+  <div class="mantra">"Spelunking before Icetill. Canyon Crab at instant speed during their turn to mill lands. Stack Lumra triggers carefully."</div>
+  <div class="edge-case"><div class="edge-label">Line 01 — Deploy Spelunking Before Icetill Explorer</div><div class="edge-body">Spelunking must be in play before Icetill Explorer for the cascade to work. Icetill says "whenever a land card enters from your graveyard" — with Spelunking, every land you control has the fetch-land subtype, so cycling or activating a land that enters from GY counts. Without Spelunking, Icetill only fires on literal Basic land types. Always sequence Spelunking (T2) before Icetill (T3-T4). A T3 Icetill with no Spelunking is a 2/4 body that rarely chains.</div></div>
+  <div class="edge-case"><div class="edge-label">Line 02 — Canyon Crab at Instant Speed to Mill Lands Pre-Lumra</div><div class="edge-body">Canyon Crab is a 0/4 flash creature that mills X cards where X = its power (0 unless buffed). Wait — actually Canyon Crab mills cards equal to the number of lands you control when it enters. Cast Canyon Crab on your opponent's end step before your Lumra turn to mill 4-6 cards, loading more lands into your GY before Lumra fires. More lands in GY = more lands returned by Lumra = bigger Lumra + more Icetill chains. This is the critical sequencing decision: Canyon Crab should be cast the turn before Lumra, not after.</div></div>
+  <div class="edge-case"><div class="edge-label">Line 03 — Stacking Lumra's Triggers in the Right Order</div><div class="edge-body">When Lumra enters: (1) mill 4 trigger goes on stack, (2) "return all GY lands" trigger goes on stack. Let the mill resolve first (it may add more lands to GY), then let the return trigger resolve. When the return trigger resolves, all GY lands enter simultaneously as a batch — each one triggers Icetill separately. Resolve Icetill triggers one at a time, searching lands for each. At the end of the Icetill chain, count your lands: Lumra's P/T has updated in real time. This ordering maximizes the GY before the return fires.</div></div>
+  <div class="edge-case"><div class="edge-label">Line 04 — Worldsoul's Rage as Both Removal and Finisher</div><div class="edge-body">Worldsoul's Rage ({1RG}) sorcery: deals damage equal to lands you control to any target. With 8+ lands this kills any creature in Standard. With 15+ lands it deals lethal to face. Use it: (1) as removal for large threats (Lumra, Earthbender Ascension) mid-game, (2) as a finisher when Lumra is blocked or they have multiple blockers, (3) targeting face the turn after Lumra when they tap out to cast a Spell Snare or answer. Don't cast it for less than 5 damage — there are better removal spells below that threshold.</div></div>
+</div>
+</div>
+
+<!-- CH06 ROLES -->
+<div id="roles" class="section">
+<div class="content">
+  <span class="section-label">Chapter 06</span>
+  <h1>ROLE<br>ASSIGNMENT</h1>
+  <div class="mantra">"You are always developing your board toward the Lumra turn. Every action either fills the GY, adds lands, or sets up the combo."</div>
+  <div class="card-grid card-grid-3">
+    <div class="card"><div class="card-label">vs Aggro</div><div class="card-title">Survive to Lumra</div><div class="card-body">Against Izzet Prowess and Mono-Red: Canyon Crab (0/4 flash) blocks their one-drops indefinitely. Sear kills their small threats. Soul Immolation exiles their key threat. Blossoming Tortoise gains life. Your goal is reaching 7 mana for Lumra with enough GY loaded to end the game immediately. You cannot answer every threat — stabilize with Canyon Crab and one removal spell, then combo kill.</div></div>
+    <div class="card"><div class="card-label">vs Midrange</div><div class="card-title">Out-Value and Overpower</div><div class="card-body">Against Mono-Green Landfall and Dimir Midrange: your Lumra is bigger than their Lumra or their largest creature. Eumidian Terrabotanist generates additional land drops to accelerate. Worldsoul's Rage answers their 5-6 toughness threats. Seismic Sense draws cards on landfall triggers. Your strategy: deploy Spelunking + Icetill faster, get Lumra one turn earlier than them, win the battle of large creatures.</div></div>
+    <div class="card"><div class="card-label">vs Control</div><div class="card-title">Bait Counters, Then Combo</div><div class="card-body">Against Dimir Excruciator and Izzet Spellementals: Spelunking and Icetill Explorer are low-priority targets — let them counter those and play Lumra into a depleted counterbank. Tannuk, Memorial Ensign protects your spells (ward effect). Consult the Star Charts provides additional card selection. Mossborn Hydra (SB) is uncounterable via Cavern of Souls and forces them to use permanent removal instead of counters.</div></div>
+  </div>
+</div>
+</div>
+
+<!-- CH07 MATCHUPS -->
+<div id="matchups" class="section">
+<div class="content">
+  <span class="section-label">Chapter 07</span>
+  <h1>MATCHUP<br>GUIDE</h1>
+  <div class="mantra">"Know their clock. Time Lumra for when they're tapped out or have no counterspells available."</div>
+
+  <div class="matchup-block">
+    <div class="matchup-header" onclick="toggle('mu-mono-green')"><h3>MONO-GREEN LANDFALL</h3><span class="verdict verdict-even">Even</span></div>
+    <div id="mu-mono-green" class="matchup-body">
+      <p>The mirror of landfall strategies. They have Earthbender Ascension making all their creatures enormous and Icetill Explorer the same as yours. Your advantage: Lumra with Spelunking + Icetill generates a larger board in a single turn than their incremental approach. Their advantage: Mossborn Hydra (SB) is a 7/7 trample that's very hard to kill. Race them to the combo turn.</p>
+      <p><strong>Priority:</strong> Spelunking must resolve — they have no enchantment removal main. Get Icetill + Spelunking online one turn faster than their Earthbender Ascension. Worldsoul's Rage kills their Lumra or large Icetill. Pick Your Poison (SB) destroys their Earthbender Ascension or other enchantments.</p>
+      <p>You race their Earthbender Ascension counter strategy with your Spelunking + Lumra engine. Your Mossborn Hydra at 7 lands is uncounterable and 7/7 trample â€” their Ascension creatures can't profitably block it. You win by assembling Lumra (returning all GY lands) before they reach critical Ascension counter mass. Your Icetill Explorer gives you one extra land drop each turn â€” reach 7 lands before them.</p>
+      <p class="sb-note">Your Mossborn Hydra at 7 lands is uncounterable — Mono-Green has no answer to a 7/7 trample.</p>
+      <div class="sb-table">
+        <div class="sb-col"><div class="sb-col-label">In</div><div class="sb-item"><span><span class="c">Mossborn Hydra</span></span><span class="sb-qty">+3</span></div><div class="sb-item"><span><span class="c">Pick Your Poison</span></span><span class="sb-qty">+3</span></div></div>
+        <div class="sb-col"><div class="sb-col-label">Out</div><div class="sb-item"><span><span class="c">Canyon Crab</span></span><span class="sb-qty">&minus;3</span></div><div class="sb-item"><span><span class="c">Tannuk, Memorial Ensign</span></span><span class="sb-qty">&minus;2</span></div><div class="sb-item"><span><span class="c">Famished Worldsire</span></span><span class="sb-qty">&minus;1</span></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="matchup-block">
+    <div class="matchup-header" onclick="toggle('mu-izzet-prowess')"><h3>IZZET PROWESS</h3><span class="verdict verdict-hard">Unfavorable</span></div>
+    <div id="mu-izzet-prowess" class="matchup-body">
+      <p>Their clock is T3-4. Yours is T5-6. Canyon Crab (0/4 flash) is your best blocker — it costs them multiple creatures to kill it and it mills lands into your GY simultaneously. Sear kills their Icetill Explorer (if they're running it) or their early prowess creatures. You need to survive three turns of aggression with Canyon Crab + Sear + Soul Immolation, then combo kill the turn you've stabilized.</p>
+      <p><strong>Priority:</strong> Flash Canyon Crab on their T2 attack. Soul Immolation your own Canyon Crab to exile their 4/4+ and deal damage. Obliterating Bolt (SB) exiles their key threat. Bristly Bill (SB) adds reach through counter generation. Don't try to answer everything — survive to Lumra.</p>
+      <p>Your Mossborn Hydra (uncounterable at 7 lands) attacks through their creatures and Slickshot Show-Off. Your Spelunking fills your GY with lands for Lumra. You win by applying a ground threat they cannot counter or efficiently block â€” their creatures have evasion but not enough power to block a 7/7 trample. Close before their DRC + Slickshot chain goes infinite on damage.</p>
+      <p class="sb-note">Your Worldsoul's Rage at 5 lands deals 5 to their Slickshot Show-Off in combat — kills it cleanly.</p>
+      <div class="sb-table">
+        <div class="sb-col"><div class="sb-col-label">In</div><div class="sb-item"><span><span class="c">Obliterating Bolt</span></span><span class="sb-qty">+2</span></div><div class="sb-item"><span><span class="c">Sazh's Chocobo</span></span><span class="sb-qty">+3</span></div></div>
+        <div class="sb-col"><div class="sb-col-label">Out</div><div class="sb-item"><span><span class="c">Famished Worldsire</span></span><span class="sb-qty">&minus;1</span></div><div class="sb-item"><span><span class="c">Inspiration from Beyond</span></span><span class="sb-qty">&minus;2</span></div><div class="sb-item"><span><span class="c">Tannuk, Memorial Ensign</span></span><span class="sb-qty">&minus;2</span></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="matchup-block">
+    <div class="matchup-header" onclick="toggle('mu-dimir-exc')"><h3>DIMIR EXCRUCIATOR</h3><span class="verdict verdict-even">Even</span></div>
+    <div id="mu-dimir-exc" class="matchup-body">
+      <p>They counter your Spelunking and Icetill. Let them — resolve Lumra into tapped-out mana. Their Floodpits Drowner bounces your creatures to hand: after Lumra fires and you have 15 lands in play, bouncing Lumra just means it re-enters next turn at 15/15. Tannuk, Memorial Ensign's ward effect forces them to pay extra to target your key pieces. Seismic Sense provides card draw through their interaction.</p>
+      <p>Their Harbinger of the Seas enters tapped and locks your nonbasic lands â€” your Breeding Pools and other duals enter tapped under Harbinger. Your basic Forest + basic Mountain sideboard helps here. You win through your basic land count: Spelunking works on any land entering (basics included). Your Lumra still returns GY lands even under Harbinger. Apply pressure with tramplers before Harbinger compounds.</p>
+      <p class="sb-note">Your basic land count matters here — Spelunking works on basics, bypassing their Harbinger of the Seas lock.</p>
+      <div class="sb-table">
+        <div class="sb-col"><div class="sb-col-label">In</div><div class="sb-item"><span><span class="c">Mossborn Hydra</span></span><span class="sb-qty">+3</span></div><div class="sb-item"><span><span class="c">Keen-Eyed Curator</span></span><span class="sb-qty">+2</span></div></div>
+        <div class="sb-col"><div class="sb-col-label">Out</div><div class="sb-item"><span><span class="c">Canyon Crab</span></span><span class="sb-qty">&minus;3</span></div><div class="sb-item"><span><span class="c">Sear</span></span><span class="sb-qty">&minus;2</span></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="matchup-block">
+    <div class="matchup-header" onclick="toggle('mu-izzet-lessons')"><h3>IZZET LESSONS</h3><span class="verdict verdict-even">Even</span></div>
+    <div id="mu-izzet-lessons" class="matchup-body">
+      <p>Izzet Lessons uses Mightform Harmonizer + Icetill Explorer combo for its own landfall kill. Your Lumra is a faster, higher-ceiling version. They have Spell Snare to counter your 2-mana spells — Spelunking at {1G} is 2 MV, Spell Snare-able. Play Spelunking when they're tapped out or have less than UU available. Canyon Crab at flash speed mills cards into your GY efficiently. Worldsoul's Rage kills their Harmonizer or Icetill Explorer.</p>
+      <p>Your Spelunking + Lumra engine outpaces their cantrip value if you reach 6+ lands. Their Pyroclasm kills your small creatures (3 toughness and below) â€” your Mossborn Hydra (enters as a large threat) survives. You win by racing their Artist's Talent value generation with pure board presence: a 7/7 trampler closes games before their card draw generates enough answers.</p>
+      <p class="sb-note">Mossborn Hydra at 7 lands closes this game — their Artist's Talent can't generate enough answers.</p>
+      <div class="sb-table">
+        <div class="sb-col"><div class="sb-col-label">In</div><div class="sb-item"><span><span class="c">Pick Your Poison</span></span><span class="sb-qty">+3</span></div><div class="sb-item"><span><span class="c">Obliterating Bolt</span></span><span class="sb-qty">+2</span></div></div>
+        <div class="sb-col"><div class="sb-col-label">Out</div><div class="sb-item"><span><span class="c">Tannuk, Memorial Ensign</span></span><span class="sb-qty">&minus;2</span></div><div class="sb-item"><span><span class="c">Famished Worldsire</span></span><span class="sb-qty">&minus;1</span></div><div class="sb-item"><span><span class="c">Consult the Star Charts</span></span><span class="sb-qty">&minus;1</span></div><div class="sb-item"><span><span class="c">Seismic Sense</span></span><span class="sb-qty">&minus;1</span></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="matchup-block">
+    <div class="matchup-header" onclick="toggle('mu-simic')"><h3>SIMIC RHYTHM</h3><span class="verdict verdict-good">Favorable</span></div>
+    <div id="mu-simic" class="matchup-body">
+      <p>Simic Rhythm's Badgermole Cub + Earthbender Ascension engine is strong but slower than Lumra. Your 15/15 Lumra attacks into their 8/8 and wins. Worldsoul's Rage for 12 kills their Badgermole Cub. Pick Your Poison destroys Earthbender Ascension. Their lack of interaction means your Spelunking + Icetill setup resolves safely every game. The primary threat is them getting a very fast Earthbender Ascension on T2 into a wide board — Sear handles their mana dorks before Ascension gets big.</p>
+      <p>You both run landfall engines â€” your Spelunking + Lumra is faster than their Pollinator token chain. Your Worldsoul's Rage at 8 lands deals 8 damage to their entire board simultaneously. Win by racing: your larger individual threats (Hydra, Lumra) outclass their wide token board, and Worldsoul's Rage resets their entire token chain in one sorcery.</p>
+      <p class="sb-note">Worldsoul's Rage at 8 lands deals 8 to their entire token board — wipes Pollinator chains instantly.</p>
+      <div class="sb-table">
+        <div class="sb-col"><div class="sb-col-label">In</div><div class="sb-item"><span><span class="c">Pick Your Poison</span></span><span class="sb-qty">+3</span></div><div class="sb-item"><span><span class="c">Bristly Bill, Spine Sower</span></span><span class="sb-qty">+2</span></div></div>
+        <div class="sb-col"><div class="sb-col-label">Out</div><div class="sb-item"><span><span class="c">Canyon Crab</span></span><span class="sb-qty">&minus;3</span></div><div class="sb-item"><span><span class="c">Tannuk, Memorial Ensign</span></span><span class="sb-qty">&minus;2</span></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+  <div class="matchup-block">
+    <div class="matchup-header" onclick="toggle('mu-dimir')">
+      <h3>DIMIR MIDRANGE</h3><span class="verdict verdict-even">Even</span>
+    </div>
+    <div id="mu-dimir" class="matchup-body">
+      <p>Dimir Midrange uses Psychic Frog + Floodpits Drowner to bounce your Lumra before it fires. With Spelunking in play, bounced Lumra can be recast the following turn into a LARGER Lumra (more GY lands). Their Floodpits Drowner costs {2UB} — deploy Lumra when they tap below 3 mana. Canyon Crab (flash 0/4) blocks their Frog indefinitely. Worldsoul's Rage at 12 lands kills their Frog.</p>
+      <p>Your Mossborn Hydra (uncounterable at 7 lands) dodges their Counterspell. Your Spelunking fills GY faster than their Floodpits Drowner can bounce your threats. You win by reaching the uncounterable Hydra window (7 lands) before they stabilize. Keep spare land drops available: each Floodpits bounce costs them their EOT mana but doesn't reset your land count.</p>
+      <p class="sb-note">Mossborn Hydra is uncounterable at 7 lands — Dimir's counter suite is offline against your Hydra.</p>
+      <div class="sb-table">
+        <div class="sb-col"><div class="sb-col-label">In</div><div class="sb-item"><span><span class="c">Keen-Eyed Curator</span></span><span class="sb-qty">+2</span></div><div class="sb-item"><span><span class="c">Obliterating Bolt</span></span><span class="sb-qty">+1</span></div></div>
+        <div class="sb-col"><div class="sb-col-label">Out</div><div class="sb-item"><span><span class="c">Canyon Crab</span></span><span class="sb-qty">-2</span></div><div class="sb-item"><span><span class="c">Famished Worldsire</span></span><span class="sb-qty">-1</span></div></div>
+      </div>
+      <p class="sb-note">Keen-Eyed Curator finds your missing Lumra or Spelunking. Obliterating Bolt exiles Psychic Frog (MV 1) before it grows. Canyon Crab is weak here — their threats are too large to block profitably. Cut Worldsire (too slow in a counter war).</p>
+    </div>
+  </div>
+
+  <div class="matchup-block">
+    <div class="matchup-header" onclick="toggle('mu-dragons')">
+      <h3>BOROS DRAGONS</h3><span class="verdict verdict-even">Even</span>
+    </div>
+    <div id="mu-dragons" class="matchup-body">
+      <p>Boros Dragons deploys haste fliers before your combo assembles. Canyon Crab (0/4 flash) blocks their Dragonhawk indefinitely. Spelunking + Icetill + Lumra by T5 is bigger than any dragon they have. Worldsoul's Rage at 10+ lands kills their key dragon and deals face damage simultaneously.</p>
+      <p>Their Dragonhawk (haste flying) races your landfall setup. You need to survive until T5 when your engine comes online. Your Worldsoul's Rage at 5 lands deals 5 damage to their flying Dragon â€” kills most fliers. Your Mossborn Hydra blocks their ground Dragons. Win by surviving their aggressive early turns and overwhelming them with land-count-scaled threats.</p>
+      <p class="sb-note">Worldsoul's Rage kills their airborne Dragons if you're at 5+ lands — 5 damage kills most fliers.</p>
+      <div class="sb-table">
+        <div class="sb-col"><div class="sb-col-label">In</div><div class="sb-item"><span><span class="c">Obliterating Bolt</span></span><span class="sb-qty">+2</span></div><div class="sb-item"><span><span class="c">Sazh's Chocobo</span></span><span class="sb-qty">+1</span></div></div>
+        <div class="sb-col"><div class="sb-col-label">Out</div><div class="sb-item"><span><span class="c">Inspiration from Beyond</span></span><span class="sb-qty">-2</span></div><div class="sb-item"><span><span class="c">Famished Worldsire</span></span><span class="sb-qty">-1</span></div></div>
+      </div>
+      <p class="sb-note">Obliterating Bolt exiles their key dragon (MV 4+) at instant speed. Sazh's Chocobo (4/4 haste) applies pressure while you set up. Cut Inspiration from Beyond (card draw less urgent than removal) and Worldsire.</p>
+    </div>
+  </div>
+
+  <div class="matchup-block">
+    <div class="matchup-header" onclick="toggle('mu-jeskai')">
+      <h3>JESKAI CONTROL</h3><span class="verdict verdict-dog">Unfavorable</span>
+    </div>
+    <div id="mu-jeskai" class="matchup-body">
+      <p>Jeskai Control counters your Spelunking and Icetill Explorer then Seam Rips your Lumra. Mossborn Hydra is uncounterable at 7+ lands — deploy it once you've loaded the land count. Tannuk Memorial Ensign's ward effect protects your key pieces. Race: get to 7 lands before they can counter Hydra, then follow with Lumra.</p>
+      <p>Their Dovin's Veto and Aven Interrupter counter your Lumra and Mossborn Hydra at sorcery/instant speed. Your Mossborn Hydra is uncounterable at 7 lands â€” time your deployment. Your Keen-Eyed Curator tutors a replacement when they counter your key spell. Win by reaching 7 lands before they stabilize their counter suite, then resolve an uncounterable Hydra they cannot answer.</p>
+      <p class="sb-note">Mossborn Hydra at 7 lands dodges their Aven Interrupter and Dovin's Veto — deploy at the threshold.</p>
+      <div class="sb-table">
+        <div class="sb-col"><div class="sb-col-label">In</div><div class="sb-item"><span><span class="c">Mossborn Hydra</span></span><span class="sb-qty">+3</span></div><div class="sb-item"><span><span class="c">Keen-Eyed Curator</span></span><span class="sb-qty">+2</span></div></div>
+        <div class="sb-col"><div class="sb-col-label">Out</div><div class="sb-item"><span><span class="c">Sear</span></span><span class="sb-qty">-2</span></div><div class="sb-item"><span><span class="c">Soul Immolation</span></span><span class="sb-qty">-2</span></div><div class="sb-item"><span><span class="c">Famished Worldsire</span></span><span class="sb-qty">-1</span></div></div>
+      </div>
+      <p class="sb-note">Mossborn Hydra uncounterable at 7+ lands — their entire counter package becomes irrelevant. Keen-Eyed Curator finds Lumra or Spelunking through disruption. Cut all removal and Worldsire.</p>
+    </div>
+  </div>
+
+  <div class="matchup-block">
+    <div class="matchup-header" onclick="toggle('mu-monored')">
+      <h3>MONO-RED AGGRO</h3><span class="verdict verdict-hard">Unfavorable</span>
+    </div>
+    <div id="mu-monored" class="matchup-body">
+      <p>Mono-Red kills turn 3-4 before your Lumra combo can fire. Canyon Crab (0/4 flash) blocks their one-drops indefinitely. Sear kills their 2-toughness creatures at instant speed. Survive to T5 with enough GY loaded to fire Lumra and win on the spot. Sazh's Chocobo (4/4 haste) provides a racing threat while you set up.</p>
+      <p>Your Worldsoul's Rage at 5 lands deals 5 damage to their creatures and face simultaneously. Their Eidolon of the Great Revel taxes your spells â€” answer it with your fight effects (Meltstrider's Resolve) or your Lumra entry killing their small creatures in combat. Win by surviving to 5 lands with Worldsoul's Rage online, then sweeping their board while maintaining your own land count.</p>
+      <p class="sb-note">Worldsoul's Rage at 5 lands deals 5 to their Eidolon — kills it cleanly and deals face damage.</p>
+      <div class="sb-table">
+        <div class="sb-col"><div class="sb-col-label">In</div><div class="sb-item"><span><span class="c">Sazh's Chocobo</span></span><span class="sb-qty">+3</span></div><div class="sb-item"><span><span class="c">Obliterating Bolt</span></span><span class="sb-qty">+2</span></div></div>
+        <div class="sb-col"><div class="sb-col-label">Out</div><div class="sb-item"><span><span class="c">Inspiration from Beyond</span></span><span class="sb-qty">-2</span></div><div class="sb-item"><span><span class="c">Tannuk, Memorial Ensign</span></span><span class="sb-qty">-2</span></div><div class="sb-item"><span><span class="c">Consult the Star Charts</span></span><span class="sb-qty">-1</span></div></div>
+      </div>
+      <p class="sb-note">Sazh's Chocobo provides haste pressure while you survive. Obliterating Bolt kills their key creature at instant speed. Cut card draw and setup — you need survival tools, not card selection.</p>
+    </div>
+  </div>
+
+  <div class="matchup-block">
+    <div class="matchup-header" onclick="toggle('mu-spellementals')">
+      <h3>IZZET SPELLEMENTALS</h3><span class="verdict verdict-good">Favorable</span>
+    </div>
+    <div id="mu-spellementals" class="matchup-body">
+      <p>Izzet Spellementals builds slowly to Hearth Elemental — your Lumra fires faster. Canyon Crab (0/4 flash) blocks their Hearth Elemental (2/3) indefinitely. Spelunking + Icetill + Lumra by T5 creates a board they cannot answer. Worldsoul's Rage at 10 lands kills Hearth and deals face damage simultaneously.</p>
+      <p>Your Sunderflock (4-5 damage to all creatures) kills their 0/4 Eddymurk Crab and their other creatures simultaneously. Your Mossborn Hydra outclasses their Hearth Elemental in ground combat. Win by clearing their board with Sunderflock when they commit 3+ creatures, then applying Hydra beats. Their Spell Pierce counters Sunderflock if cast on curve â€” wait for their mana to be committed.</p>
+      <p class="sb-note">Sunderflock wipes their Eddymurk Crab board — deploy after they commit 3+ creatures.</p>
+      <div class="sb-table">
+        <div class="sb-col"><div class="sb-col-label">In</div><div class="sb-item"><span><span class="c">Keen-Eyed Curator</span></span><span class="sb-qty">+2</span></div><div class="sb-item"><span><span class="c">Obliterating Bolt</span></span><span class="sb-qty">+1</span></div></div>
+        <div class="sb-col"><div class="sb-col-label">Out</div><div class="sb-item"><span><span class="c">Sear</span></span><span class="sb-qty">-2</span></div><div class="sb-item"><span><span class="c">Tannuk, Memorial Ensign</span></span><span class="sb-qty">-1</span></div></div>
+      </div>
+      <p class="sb-note">Keen-Eyed Curator finds your missing combo piece. Obliterating Bolt kills Hearth Elemental (MV 5). Cut Sear (threats too large for 2 damage) and a Tannuk (ward less relevant vs non-interactive opponents).</p>
+    </div>
+  </div>
+
+
+<!-- CH08 SIDEBOARD -->
+<div id="sideboard" class="section">
+<div class="content">
+  <span class="section-label">Chapter 08</span>
+  <h1>SIDEBOARD<br>GUIDE</h1>
+  <div class="mantra">"Mossborn Hydra for control. Pick Your Poison for enchantments. Obliterating Bolt for large threats."</div>
+  <div class="card-grid card-grid-2">
+    <div class="card"><div class="card-label">P1 — vs Control / Blue Decks</div><div class="card-title">Mossborn Hydra ×3</div><div class="card-body">Mossborn Hydra ({4GG}) 7/7 trample: can't be countered if cast while you control seven or more lands. Against Dimir Excruciator and Izzet Lessons: drops after Spelunking + Icetill have loaded your land count past 7. Uncounterable at that point. Forces them to use permanent removal (exile, bounce) instead of counters — buying time for Lumra. Keen-Eyed Curator (SB) provides card selection in grindy matchups where you need to find Lumra quickly.</div></div>
+    <div class="card"><div class="card-label">P2 — vs Enchantments / Artifacts</div><div class="card-title">Pick Your Poison ×3</div><div class="card-body">{G} instant: choose — destroy target artifact, destroy target enchantment, or target creature gets -1/-1 until EOT (kills 1-toughness mana dorks). Against Mono-Green Landfall: destroys Earthbender Ascension before it generates counters. Against Izzet Lessons: destroys Artist's Talent. Against Simic: destroys Earthbender Ascension. {G} instant speed means you can hold mana for Lumra and still answer their enchantment on the same turn. Bristly Bill, Spine Sower (SB) adds +1/+1 counter pressure and grows with your own landfall triggers.</div></div>
+    <div class="card"><div class="card-label">P3 — vs Aggro / Large Threats</div><div class="card-title">Obliterating Bolt ×2 + Sazh's Chocobo ×3</div><div class="card-body">Obliterating Bolt ({2R}) instant: exile target creature or planeswalker with MV 4 or greater. Hits the big threats that Sear misses — Lumra, Mossborn Hydra, Earthbender Ascension + creature. Against Izzet Prowess: board Obliterating Bolt for their Icetill Explorer (MV 4). Sazh's Chocobo ({4RG}) 4/4 haste: attacks immediately for pressure + generates Mounts that can attack while you set up the Lumra combo. Provides a second attack vector when the combo is disrupted.</div></div>
+    <div class="card"><div class="card-label">P4 — Flex</div><div class="card-title">Keen-Eyed Curator ×2</div><div class="card-body">Keen-Eyed Curator ({2U}) 2/2: when it enters, look at top 3, put one into hand and the rest on bottom. Provides card selection in matchups where finding Lumra or Spelunking is critical and your draw hasn't cooperated. Replaces Canyon Crab in non-aggro matchups where the 0/4 flash blocker is irrelevant. Stack your deck for the Lumra turn — Curator finds Lumra when you're one card away from going off.</div></div>
+    <div class="card"><div class="card-label">P5 â€” vs Aggro</div><div class="card-title">Soul Immolation Ã—2</div><div class="card-body">{1}{R}{G} Instant: Deals 3 damage to target creature. If that creature is destroyed this way, you gain 3 life. Board in vs Mono-Red Aggro (kills their 3-toughness threats AND gains you 3 life â€” a 6-life swing), Boros Dragons (kills their smaller Dragon support creatures). The lifegain clause is critical in racing matchups where your 3 life difference is often exactly what matters.</div></div>
+    <div class="card"><div class="card-label">P6 â€” vs Mirrors</div><div class="card-title">Bristly Bill, Spine Sower Ã—1</div><div class="card-body">{1}{G} 2/2. Whenever you play a land, put a +1/+1 counter on target creature you control. Board in vs Simic Rhythm when you need additional counter generation that isn't Earthbender Ascension. Every land drop (including Lumra's ETB mass land-drop) puts a counter on a creature. In landfall-heavy turns, Bristly Bill can generate 6-8 counters in one sequence.</div></div>
+    <div class="card"><div class="card-label">P7 â€” vs Big Threats</div><div class="card-title">Inspiration from Beyond Ã—2</div><div class="card-body">{3}{U} Instant: Draw three cards. Board in vs Dimir Midrange and Jeskai Control when the game goes long and you need raw card advantage to find Lumra or Spelunking. Three cards at instant speed â€” deploy at their EOT to have full mana available on your turn for the combo. Only board in when you have time to cast a 4-mana instant without tapping out.</div></div>
+    <div class="card"><div class="card-label">P8 â€” vs ETB Decks</div><div class="card-title">Tannuk, Memorial Ensign Ã—2</div><div class="card-body">{2}{G}{U} 2/4 Flash. Other creatures you control have ward {2}. Board in vs Boros Dragons (ward {2} makes all your creatures cost {2} more to target with removal â€” their targeted interaction becomes much less efficient) and Dimir Midrange (their Floodpits Drowner bounce now costs {2} extra to target your creatures). A 2/4 flash body also blocks their key threats.</div></div>
+    <div class="card"><div class="card-label">Key Card</div><div class="card-title">Spelunking vs Bounce Lands</div><div class="card-body">Spelunking ({1}{G}): lands you control lose "enters tapped" and each time a land enters, you may draw a card. Your primary engine enabler — makes your bounce lands (Simic Growth Chamber) untap AND draw a card on entry. Without Spelunking, bounce lands are tempo-negative. With Spelunking, each bounce land ETB draws a card. Board in a second copy when your matchup grinds long and card advantage matters. Mistake: playing bounce lands before Spelunking resolves — play Spelunking first, then bounce lands.</div></div>
+
+  </div>
+</div>
+</div>
+
+<!-- CH09 HEURISTICS -->
+<div id="heuristics" class="section">
+<div class="content">
+  <span class="section-label">Chapter 09</span>
+  <h1>HEURISTICS</h1>
+  <div class="mantra">"Spelunking before Icetill. Canyon Crab the turn before Lumra. Stack triggers: mill first, then return. Worldsoul's Rage targets face when you have 10+ lands."</div>
+  <ol class="heuristic-list">
+    <li><span class="h-num">01</span><span class="h-text"><strong>Always play Spelunking before Icetill Explorer.</strong> Spelunking is what makes Icetill Explorer's trigger fire. Without Spelunking, Icetill only chains off basic-typed lands entering from GY — very limited. With Spelunking, every land has every type. T2 Spelunking, T3/T4 Icetill is the correct sequencing. Reversing this loses the cascade engine.</span></li>
+    <li><span class="h-num">02</span><span class="h-text"><strong>Canyon Crab should be cast the turn before Lumra, not after.</strong> Canyon Crab mills X cards where X = number of lands you control when it enters. Casting it at your opponent's EOT the turn before you play Lumra loads more lands into GY — Lumra then returns more lands and grows bigger. Cast Canyon Crab after Lumra and those milled lands don't help Lumra's ETB at all.</span></li>
+    <li><span class="h-num">03</span><span class="h-text"><strong>Stack Lumra's triggers: resolve mill first, then return GY lands.</strong> Both abilities trigger on Lumra's ETB and go on the stack. Let the mill resolve first (adds more lands to GY). THEN let the return trigger resolve (returns all GY lands to battlefield). This maximizes the number of lands returned. The mill-then-return order is the only correct order.</span></li>
+    <li><span class="h-num">04</span><span class="h-text"><strong>Worldsoul's Rage hits face when you have 10+ lands — use it as a finisher not just removal.</strong> At 10 lands it deals 10 damage. At 15 lands it deals 15 damage. After the Lumra chain you will almost always have 10+ lands. If Lumra is being blocked or chump-attacked to death, Worldsoul's Rage to face for 12-15 wins the game around blockers. Don't cast it for less than 6 damage unless you're killing a must-answer creature.</span></li>
+    <li><span class="h-num">05</span><span class="h-text"><strong>Icetill Explorer's trigger is optional — don't chain if you'd deck yourself.</strong> Icetill says "you may search your library." In the late game with very few library cards, choose not to search to avoid decking. Count your library before starting the Lumra chain and make sure you have enough lands left for the chain you plan. This is rare but important to be aware of.</span></li>
+    <li><span class="h-num">06</span><span class="h-text"><strong>Fabled Passage should be cracked when Icetill Explorer is in play for double landfall.</strong> Cracking Fabled Passage puts a land from library onto battlefield — that's one landfall trigger. The Passage itself then goes to your GY (it's a land card) — with Icetill + Spelunking, you search for another land from the Icetill trigger. Two land drops for one Passage activation. Save Passage cracks for turns when Icetill is in play.</span></li>
+    <li><span class="h-num">07</span><span class="h-text"><strong>Blossoming Tortoise accelerates your land curve by one — deploy it on T3 when behind.</strong> Blossoming Tortoise ({2GG}) reduces the activation costs of lands you control. With Spelunking, all your lands have each other's activated abilities — Blossoming Tortoise reduces all of them by {1G}. It also allows land taps for {1} less. Useful for reducing Fabled Passage's sacrifice cost (from {0} to free — doesn't apply, already free) and for getting to 7 mana for Lumra one turn faster.</span></li>
+    <li><span class="h-num">08</span><span class="h-text"><strong>Soul Immolation is your best removal — exile prevents landfall recursion against Mono-Green.</strong> Soul Immolation exiles a creature and deals damage equal to its power to any target. Against Mono-Green Landfall: exile their Lumra (prevents it from being recurred or entering GY for their own chain). Against Izzet Prowess: exile their 4/4 Icetill Explorer and deal 4 damage to face simultaneously. The exile clause matters specifically against decks with GY recursion.</span></li>
+    <li><span class="h-num">09</span><span class="h-text"><strong>Famished Worldsire is a win condition, not ramp — deploy it only when lethal is on board.</strong> Famished Worldsire ({5GG}) 7/7 trample: when it attacks, sacrifice all your lands, then return them all to play. This is a massive landfall trigger generator for landfall-payoff decks, but in this deck it primarily serves as a secondary Lumra-sized threat. Don't sacrifice lands to it unless you're confident the resulting board wins the game — losing all lands and not winning is catastrophic.</span></li>
+    <li><span class="h-num">10</span><span class="h-text"><strong>Eumidian Terrabotanist lets you play two lands per turn — deploy before your main combo turn.</strong> Terrabotanist ({2G}) 2/3: you may play an additional land on each of your turns. An extra land drop the turn before Lumra means one more land entering your battlefield, one more potential Icetill chain, and one more land for Lumra's P/T. Deploy on T3 if you have it — the earlier it's in play, the more bonus lands you accumulate before the combo turn.</span></li>
+  </ol>
+</div>
+</div>
+
+<!-- CH10 TUNING -->
+<div id="tuning" class="section">
+<div class="content">
+  <span class="section-label">Chapter 10</span>
+  <h1>TUNING<br>NOTES</h1>
+  <div class="mantra">"3 Spelunking, 3 Icetill, 3 Lumra are immovable. Everything else adjusts to meta speed."</div>
+  <div class="card-grid card-grid-3">
+    <div class="card"><div class="card-label">Lock</div><div class="card-title">3 Spelunking + 3 Icetill + 3 Lumra</div><div class="card-body">These nine cards are the deck's entire reason for existing. Spelunking enables Icetill; Icetill enables Lumra to chain. Never cut below 3 of any. More than 3 is redundant (too many in opening hand without the others).</div></div>
+    <div class="card"><div class="card-label">Lock</div><div class="card-title">3 Canyon Crab</div><div class="card-body">Flash 0/4 that mills and blocks — the best defensive piece and GY loader simultaneously. 3 is correct. 4 risks flooding in hands where you need spells. Cut to 0 in post-board matchups with no relevant aggro (vs pure control).</div></div>
+    <div class="card"><div class="card-label">Flex 1–2</div><div class="card-title">Famished Worldsire</div><div class="card-body">1 copy is the reference. A second copy in slower metas where you need a second massive threat. Cut entirely vs aggro (too expensive, lands matter more). The 7/7 trample body and attack trigger are powerful but the deck already wins with Lumra — Worldsire is a redundant closer.</div></div>
+    <div class="card"><div class="card-label">Flex 1–3</div><div class="card-title">Consult the Star Charts</div><div class="card-body">1 main is the reference. Go to 2-3 in metas where finding Spelunking on T2 is critical (heavy aggro where a slow start loses). Consult finds any land including Spelunking's targets and adds draw. Cut in slower metas where you have time to find your pieces naturally.</div></div>
+    <div class="card"><div class="card-label">Meta Call</div><div class="card-title">Removal Suite (Sear / Soul Immolation)</div><div class="card-body">Current 2/2 split is correct for a balanced field. Heavy aggro: go 3/3. Heavy combo/control: cut all removal and add Consult + Inspiration from Beyond for speed. The removal exists to survive — if you don't need survival, replace with card selection.</div></div>
+    <div class="card"><div class="card-label">Land Count</div><div class="card-title">30 Lands Is Correct</div><div class="card-body">High land count is mandatory — Lumra's P/T = lands in play. More lands = bigger Lumra. 30 lands in a 60-card deck means 50% of your deck is lands. The deck wants to find land every turn. Never cut below 28, optimal is 30-31 depending on the number of cycling/fetch lands.</div></div>
+    <div class="card"><div class="card-label">Rule 01</div><div class="card-title">Spelunking GY Protocol</div><div class="card-body">You count your GY lands before casting Lumra. Each land in your GY that enters play via Lumra ETB generates a landfall trigger AND increases Lumra's P/T. Lumra is better with 8+ GY lands than 4. You never rush Lumra — you wait until your GY is loaded enough to generate a dominant board state.</div></div>
+    <div class="card"><div class="card-label">Rule 02</div><div class="card-title">Icetill Explorer Defense Priority</div><div class="card-body">You spend your counterspells specifically on protecting Icetill Explorer. Explorer = double land drops = faster Lumra setup. Your priority order: protect Explorer with Counterspell, protect your GY enablers second, protect your win condition (Lumra) third. Explorer is the engine; everything else is a piece.</div></div>
+    <div class="card"><div class="card-label">Rule 03</div><div class="card-title">Worldsoul's Rage Timing</div><div class="card-body">You cast Worldsoul's Rage when your land count exceeds their creature's toughness OR when their life total is below your land count. At 10 lands: Rage for 10 face damage (lethal from 10). At 8 lands: Rage kills their 8/8 (if they have one). You know the damage threshold before tapping mana.</div></div>
+    <div class="card"><div class="card-label">Rule 04</div><div class="card-title">Mossborn Hydra Backup Plan</div><div class="card-body">When they're countering everything, you pivot to Mossborn Hydra at 7+ lands. Hydra is uncounterable at 7 lands — you deploy it regardless of their counter mana. You don't fight through counters with your other spells; you accelerate to 7 lands and deploy the uncounterable threat.</div></div>
+    <div class="card"><div class="card-label">Tune 01</div><div class="card-title">Spelunking Copies</div><div class="card-body">You run 4 Spelunking (lands you play go to GY, you may play lands from GY) as your primary Lumra enabler. You never cut Spelunking — without it, Lumra enters as a much smaller creature. In testing, you find that any Spelunking reduction dramatically reduces your Lumra consistency. Run 4.</div></div>
+    <div class="card"><div class="card-label">Tune 02</div><div class="card-title">Sazh's Chocobo as Backup Threat</div><div class="card-body">Sazh's Chocobo (4/4 haste) is your backup plan when your primary combo is disrupted. You run 2-3 Chocobos in metas where your Spelunking + Lumra plan is heavily disrupted. You cut Chocobo copies in metas where your primary plan goes uninterrupted — the haste threat is a safety valve, not a core piece.</div></div>
+    <div class="card"><div class="card-label">Tune 03</div><div class="card-title">Obliterating Bolt Count</div><div class="card-body">Obliterating Bolt (4 damage, if it would die exile it instead) is your primary removal. You run 3-4 copies as your main removal spell. In control-heavy metas: cut 1 Bolt for a Keen-Eyed Curator (the tutor is more valuable than extra removal when your threats are being answered). In creature-heavy metas: run 4 Bolts.</div></div>
+    <div class="card"><div class="card-label">Tune 04</div><div class="card-title">Canyon Crab as Meta Call</div><div class="card-body">Canyon Crab (0/4 flash: tap a creature on ETB) is your defensive piece. You run 2-3 Crabs in metas with many aggressive threats. You cut Crab in control-heavy metas where tapping one creature is insufficient and you need real interaction. Crab is a speed bump, not a threat — adjust based on how much speed you need.</div></div>
+    <div class="card">
+      <div class="card-label">Win Condition</div>
+      <div class="card-title">Overwhelm Through Lands</div>
+      <div class="card-body">Your win condition is a board state so large that no individual answer matters. 12 lands in play means Worldsoul's Rage deals 12 face damage. Lumra as a 12/12 means combat is impossible. You win by making the game reach a point where the size of your board is unjawnable.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Your Ideal Game</div>
+      <div class="card-title">Turn 7 Board State</div>
+      <div class="card-body">Your ideal T7: Lumra is in play (10/10+), 12+ lands are in play (multiple from Lumra's GY return), Mossborn Hydra is uncounterable, and Worldsoul's Rage deals 12 damage to their face. You build toward this state from T1 and map deviations from it as the game progresses.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Your T3 Goal</div>
+      <div class="card-title">Spelunking Active Early</div>
+      <div class="card-body">Your T3 goal: Spelunking is in play and your lands are starting to fill your GY. With Spelunking active from T3, every subsequent land drop fills your GY. At T5: you have 2-3 GY lands ready for Lumra. At T7: you have 5+ GY lands for a dominant Lumra.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Keen-Eyed Curator</div>
+      <div class="card-title">Finding Your Missing Piece</div>
+      <div class="card-body">Keen-Eyed Curator (4/4: ETB tutors for a creature or land) finds your missing combo piece. Against counter-heavy opponents: Curator finds Mossborn Hydra. Against GY-hate opponents: Curator finds Icetill Explorer. You use Curator as a toolbox tutor.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Defiant Aeronaut</div>
+      <div class="card-title">Flash 2/2 Reach</div>
+      <div class="card-body">Defiant Aeronaut (2/2 flash, reach, ETB: target creature gets -1/-0 until EOT) is your flash defensive piece. You deploy Aeronaut at their attack step to block their flier and reduce another attacker's power. Flash means you hold your mana for this during their turn.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Lumra Timing Window</div>
+      <div class="card-title">GY Full, Then Cast</div>
+      <div class="card-body">You never cast Lumra with fewer than 6 GY lands. At 6+ lands: Lumra enters as a 6+ power creature and your board floods with lands. At 3 GY lands: Lumra enters as a 3/3 — not worth the mana investment. You build your GY explicitly before casting Lumra.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Sazh's Chocobo Backup</div>
+      <div class="card-title">When Combo is Disrupted</div>
+      <div class="card-body">Sazh's Chocobo (4/4 haste) is your backup win condition when Spelunking + Lumra is disrupted. You board it in against counter-heavy matchups as a haste threat they must answer immediately. Three Chocobos attacking on T5 deals 12 damage when your primary plan is offline.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Obliterating Bolt Priority</div>
+      <div class="card-title">Exile over Destroy</div>
+      <div class="card-body">Obliterating Bolt exiles the creature instead of destroying it when it would die. This is critical against decks with GY recursion. You use Bolt over other removal when your target has GY recursion potential — the exile clause prevents any comeback.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Your T5 Goal</div>
+      <div class="card-title">Lumra on the Battlefield</div>
+      <div class="card-body">Your T5 goal: Lumra, Bellow of the Woods is in play with 8+ lands returning from your GY. A T5 Lumra with Spelunking active and 8 GY lands enters as an 8/8+, your board floods with 8 lands, and each land triggers your Icetill Explorer for additional searches. This is your ideal goldfish turn.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Mossborn Hydra vs Counters</div>
+      <div class="card-title">Seven Lands = Uncounterable</div>
+      <div class="card-body">You track your land count specifically for Mossborn Hydra deployment. At 7+ lands, Hydra is uncounterable. You never deploy Hydra at 6 lands against counter-heavy opponents — hold for the 7th land drop. The one-land difference is the difference between losing Hydra to a counter and deploying it safely.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Spelunking Prerequisite</div>
+      <div class="card-title">GY Load Before Lumra</div>
+      <div class="card-body">You never cast Lumra without Spelunking active and 5+ lands in GY. Lumra's power = lands in play; ETB returns GY lands. Without Spelunking GY load: Lumra enters small. With Spelunking + 8 GY lands: Lumra enters as a massive, game-ending bomb.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Explorer Protection</div>
+      <div class="card-title">Spend Counters to Protect It</div>
+      <div class="card-body">You spend your counters to protect Icetill Explorer, not to counter their threats. Explorer = double land drops = faster Lumra. A protected Explorer is worth more than any counter spent on their draw spell. Only exception: their card would win the game immediately.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Worldsoul's Rage Threshold</div>
+      <div class="card-title">Count Lands Before Targeting</div>
+      <div class="card-body">Before casting Worldsoul's Rage: count your lands exactly. 8 lands = 8 damage. You target their creature only if their toughness is ≤ your land count. You target face only if their life total is ≤ your land count. Calculate before tapping mana.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Mossborn Hydra Safety Net</div>
+      <div class="card-title">Deploy at Exactly 7 Lands</div>
+      <div class="card-body">Mossborn Hydra can't be countered when you control 7+ lands. At 6 lands: counterable. At 7: uncounterable. You count your lands before deploying Hydra. In counter-heavy matchups: you wait for the 7th land drop specifically to deploy Hydra safely.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Canyon Crab Flash Discipline</div>
+      <div class="card-title">Their Attack Step Only</div>
+      <div class="card-body">Canyon Crab (0/4 flash: tap target creature on ETB) flashes in at their attack step. The tap prevents their attacker from attacking. If you deploy during your main phase, you waste the tap timing — they tap THEIR creature but haven't declared attackers yet.</div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- CH11 PREP -->
+<div id="prep" class="section">
+<div class="content">
+  <span class="section-label">Chapter 11</span>
+  <h1>EVENT<br>PREP</h1>
+  <div class="mantra">"Know the Lumra chain. Know trigger order. Know what Worldsoul's Rage kills at each land count."</div>
+  <div class="card-grid card-grid-2">
+    <div class="card"><div class="card-label">Know Cold</div><div class="card-title">Lumra Trigger Resolution Order</div><div class="card-body">Step 1: Lumra ETB — put mill trigger AND return-GY trigger on stack. Step 2: Mill trigger resolves first — mill 4 cards, add more lands to GY. Step 3: Return-GY trigger resolves — all GY land cards enter battlefield tapped simultaneously. Step 4: Each entering land triggers Icetill Explorer separately (if in play) — resolve each Icetill trigger for additional land search. Step 5: After all triggers resolve, Lumra's P/T = total lands in play. This ordering is the entire deck's payoff — practice it until it's automatic.</div></div>
+    <div class="card"><div class="card-label">Know Cold</div><div class="card-title">Worldsoul's Rage Damage Chart</div><div class="card-body">5 lands = 5 damage (kills most 5-toughness creatures). 8 lands = 8 damage (kills Lumra, Mossborn Hydra). 10 lands = 10 damage (kills face from 10). 12 lands = 12 (kills from 12). 15 lands = 15 (kills from 15 after Lumra chain). Know this before each event — it determines whether you cast Worldsoul's Rage as removal, a combat trick, or a finisher. At 12+ always target face unless they're at more than 12 life.</div></div>
+    <div class="card"><div class="card-label">Verify</div><div class="card-title">SB Matches Expected Field</div><div class="card-body">Heavy aggro (Izzet Prowess, Mono-Red): board Obliterating Bolt + Sazh's Chocobo, cut Tannuk + Famished Worldsire. Heavy control (Dimir Excruciator): board Mossborn Hydra + Keen-Eyed Curator, cut Canyon Crab + Sear. Heavy Landfall mirror: board Pick Your Poison + Mossborn Hydra, cut Canyon Crab + Tannuk. Confirm 15 cards map to expected matchups.</div></div>
+    <div class="card"><div class="card-label">Round 1 Tell</div><div class="card-title">T1 Land Read</div><div class="card-body">Forest only = Mono-Green Landfall or Simic Rhythm (Pick Your Poison G2). Steam Vents / Stomping Ground = Izzet Prowess or Temur Harmonizer (board Obliterating Bolt, keep Canyon Crab). Watery Grave / Breeding Pool = Dimir Excruciator (board Mossborn Hydra, cut Sear). Botanical Sanctum = Izzet Lessons (board Pick Your Poison for Artist's Talent). Swamp / Island = Dimir Midrange (board Keen-Eyed Curator for speed).</div></div>
+  </div>
+
+  <button class="print-btn" onclick="window.print()">&#9113; Print Event Reference</button>
+  <div style="font-family:'DM Mono',monospace;font-size:11px;margin-top:16px;">
+    <div style="font-weight:500;margin-bottom:8px;">TEMUR LANDFALL — Event Reference · Standard RC Prep 2026</div>
+    <p style="font-size:11px;margin-bottom:8px;">Spelunking before Icetill | Canyon Crab EOT before Lumra turn | Mill trigger first, return second | Worldsoul's Rage = lands in play | Mossborn Hydra uncounterable at 7+ lands</p>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+      <div><strong>vs MONO-GREEN (Even)</strong> — Pick Your Poison + Mossborn Hydra</div>
+      <div><strong>vs IZZET PROWESS (Unfav)</strong> — Obliterating Bolt + Sazh's Chocobo</div>
+      <div><strong>vs DIMIR EXCRUCIATOR (Even)</strong> — Mossborn Hydra + Keen-Eyed Curator</div>
+      <div><strong>vs IZZET LESSONS (Even)</strong> — Pick Your Poison for Artist's Talent</div>
+      <div><strong>vs SIMIC RHYTHM (Fav)</strong> — Pick Your Poison + Bristly Bill</div>
+    </div>
+  </div>
+</div>
+
+  
+  <h2>20-Minute Crash Course</h2>
+  <p>If you're sitting down in 20 minutes, run through this in order:</p>
+  <ul class="checklist" id="crash-checklist">
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Mulligan rule:</strong> Keep any 7 with Spelunking + a land OR Icetill Explorer + 2 lands. Never keep a hand without one piece of your combo enabling package.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Spelunking rule:</strong> Spelunking puts additional land cards into your GY when lands enter. Each land drop fills your GY. With Lumra in hand, each Spelunking-filled land drop = one more counter on Lumra.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Icetill Explorer rule:</strong> Icetill Explorer lets you play an additional land this turn by tapping. With Explorer, T3 is a double land drop turn. T4 triple. Protect Explorer at all costs â€” it's your most important card.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Lumra rule:</strong> Lumra, Bellow of the Woods enters and returns all lands from your GY to play tapped. Each land entering generates a landfall trigger and another Spelunking GY fill. Lumra's power = total lands in play.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Worldsoul's Rage rule:</strong> Worldsoul's Rage deals X damage where X = your land count. At 10 lands = 10 damage. At 12 = 12. Track your land count and know your Rage damage output.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Board rule:</strong> Keen-Eyed Curator tutors for your missing combo piece when they've disrupted your setup. Against counter-heavy decks, Curator finds Lumra or Spelunking through disruption.</span></li>
+  </ul>
+<div id="sb-print-zone">
+    <h2>Printable Sideboard Reference</h2>
+    <p>All matchup ins/outs on one sheet. Print and take to the event.</p>
+    <button class="print-btn" onclick="printSB()">&#x2259; Print SB Reference</button>
+    <div class="print-grid">
+    <div class="print-mu">
+      <div class="print-mu-name">MONO-GREEN LANDFALL <span class="diff-even">Even</span></div>
+      <div class="print-cols">
+        <div><div class="print-col-label">In</div>
+          <div class="print-row"><span>Mossborn Hydra</span><span class="print-qty">+3</span></div>
+          <div class="print-row"><span>Pick Your Poison</span><span class="print-qty">+3</span></div>
+        </div>
+        <div><div class="print-col-label">Out</div>
+          <div class="print-row"><span>Canyon Crab</span><span class="print-qty">-3</span></div>
+          <div class="print-row"><span>Tannuk, Memorial Ensign</span><span class="print-qty">-2</span></div>
+          <div class="print-row"><span>Famished Worldsire</span><span class="print-qty">-1</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="print-mu">
+      <div class="print-mu-name">IZZET PROWESS <span class="diff-hard">Unfavorable</span></div>
+      <div class="print-cols">
+        <div><div class="print-col-label">In</div>
+          <div class="print-row"><span>Obliterating Bolt</span><span class="print-qty">+2</span></div>
+          <div class="print-row"><span>Sazh's Chocobo</span><span class="print-qty">+3</span></div>
+        </div>
+        <div><div class="print-col-label">Out</div>
+          <div class="print-row"><span>Famished Worldsire</span><span class="print-qty">-1</span></div>
+          <div class="print-row"><span>Inspiration from Beyond</span><span class="print-qty">-2</span></div>
+          <div class="print-row"><span>Tannuk, Memorial Ensign</span><span class="print-qty">-2</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="print-mu">
+      <div class="print-mu-name">DIMIR EXCRUCIATOR <span class="diff-even">Even</span></div>
+      <div class="print-cols">
+        <div><div class="print-col-label">In</div>
+          <div class="print-row"><span>Mossborn Hydra</span><span class="print-qty">+3</span></div>
+          <div class="print-row"><span>Keen-Eyed Curator</span><span class="print-qty">+2</span></div>
+        </div>
+        <div><div class="print-col-label">Out</div>
+          <div class="print-row"><span>Canyon Crab</span><span class="print-qty">-3</span></div>
+          <div class="print-row"><span>Sear</span><span class="print-qty">-2</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="print-mu">
+      <div class="print-mu-name">IZZET LESSONS <span class="diff-even">Even</span></div>
+      <div class="print-cols">
+        <div><div class="print-col-label">In</div>
+          <div class="print-row"><span>Pick Your Poison</span><span class="print-qty">+3</span></div>
+          <div class="print-row"><span>Obliterating Bolt</span><span class="print-qty">+2</span></div>
+        </div>
+        <div><div class="print-col-label">Out</div>
+          <div class="print-row"><span>Tannuk, Memorial Ensign</span><span class="print-qty">-2</span></div>
+          <div class="print-row"><span>Famished Worldsire</span><span class="print-qty">-1</span></div>
+          <div class="print-row"><span>Consult the Star Charts</span><span class="print-qty">-1</span></div>
+          <div class="print-row"><span>Seismic Sense</span><span class="print-qty">-1</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="print-mu">
+      <div class="print-mu-name">SIMIC RHYTHM <span class="diff-good">Favorable</span></div>
+      <div class="print-cols">
+        <div><div class="print-col-label">In</div>
+          <div class="print-row"><span>Pick Your Poison</span><span class="print-qty">+3</span></div>
+          <div class="print-row"><span>Bristly Bill, Spine Sower</span><span class="print-qty">+2</span></div>
+        </div>
+        <div><div class="print-col-label">Out</div>
+          <div class="print-row"><span>Canyon Crab</span><span class="print-qty">-3</span></div>
+          <div class="print-row"><span>Tannuk, Memorial Ensign</span><span class="print-qty">-2</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="print-mu">
+      <div class="print-mu-name">DIMIR MIDRANGE <span class="diff-even">Even</span></div>
+      <div class="print-cols">
+        <div><div class="print-col-label">In</div>
+          <div class="print-row"><span>Keen-Eyed Curator</span><span class="print-qty">+2</span></div>
+          <div class="print-row"><span>Obliterating Bolt</span><span class="print-qty">+1</span></div>
+        </div>
+        <div><div class="print-col-label">Out</div>
+          <div class="print-row"><span>Canyon Crab</span><span class="print-qty">-2</span></div>
+          <div class="print-row"><span>Famished Worldsire</span><span class="print-qty">-1</span></div>
+        </div>
+      </div>
+      <div class="print-needle">Keen-Eyed Curator finds your missing Lumra or Spelunking. Obliterating Bolt exiles Psychic</div>
+    </div>
+    <div class="print-mu">
+      <div class="print-mu-name">BOROS DRAGONS <span class="diff-even">Even</span></div>
+      <div class="print-cols">
+        <div><div class="print-col-label">In</div>
+          <div class="print-row"><span>Obliterating Bolt</span><span class="print-qty">+2</span></div>
+          <div class="print-row"><span>Sazh's Chocobo</span><span class="print-qty">+1</span></div>
+        </div>
+        <div><div class="print-col-label">Out</div>
+          <div class="print-row"><span>Inspiration from Beyond</span><span class="print-qty">-2</span></div>
+          <div class="print-row"><span>Famished Worldsire</span><span class="print-qty">-1</span></div>
+        </div>
+      </div>
+      <div class="print-needle">Obliterating Bolt exiles their key dragon (MV 4+) at instant speed. Sazh's Chocobo (4/4 ha</div>
+    </div>
+    <div class="print-mu">
+      <div class="print-mu-name">JESKAI CONTROL <span class="diff-hard">Unfavorable</span></div>
+      <div class="print-cols">
+        <div><div class="print-col-label">In</div>
+          <div class="print-row"><span>Mossborn Hydra</span><span class="print-qty">+3</span></div>
+          <div class="print-row"><span>Keen-Eyed Curator</span><span class="print-qty">+2</span></div>
+        </div>
+        <div><div class="print-col-label">Out</div>
+          <div class="print-row"><span>Sear</span><span class="print-qty">-2</span></div>
+          <div class="print-row"><span>Soul Immolation</span><span class="print-qty">-2</span></div>
+          <div class="print-row"><span>Famished Worldsire</span><span class="print-qty">-1</span></div>
+        </div>
+      </div>
+      <div class="print-needle">Mossborn Hydra uncounterable at 7+ lands — their entire counter package becomes irrelevant</div>
+    </div>
+    <div class="print-mu">
+      <div class="print-mu-name">MONO-RED AGGRO <span class="diff-hard">Unfavorable</span></div>
+      <div class="print-cols">
+        <div><div class="print-col-label">In</div>
+          <div class="print-row"><span>Sazh's Chocobo</span><span class="print-qty">+3</span></div>
+          <div class="print-row"><span>Obliterating Bolt</span><span class="print-qty">+2</span></div>
+        </div>
+        <div><div class="print-col-label">Out</div>
+          <div class="print-row"><span>Inspiration from Beyond</span><span class="print-qty">-2</span></div>
+          <div class="print-row"><span>Tannuk, Memorial Ensign</span><span class="print-qty">-2</span></div>
+          <div class="print-row"><span>Consult the Star Charts</span><span class="print-qty">-1</span></div>
+        </div>
+      </div>
+      <div class="print-needle">Sazh's Chocobo provides haste pressure while you survive. Obliterating Bolt kills their ke</div>
+    </div>
+    <div class="print-mu">
+      <div class="print-mu-name">IZZET SPELLEMENTALS <span class="diff-good">Favorable</span></div>
+      <div class="print-cols">
+        <div><div class="print-col-label">In</div>
+          <div class="print-row"><span>Keen-Eyed Curator</span><span class="print-qty">+2</span></div>
+          <div class="print-row"><span>Obliterating Bolt</span><span class="print-qty">+1</span></div>
+        </div>
+        <div><div class="print-col-label">Out</div>
+          <div class="print-row"><span>Sear</span><span class="print-qty">-2</span></div>
+          <div class="print-row"><span>Tannuk, Memorial Ensign</span><span class="print-qty">-1</span></div>
+        </div>
+      </div>
+      <div class="print-needle">Keen-Eyed Curator finds your missing combo piece. Obliterating Bolt kills Hearth Elemental</div>
+    </div>
+    </div>
+  </div>
+
+  <h2>Testing Framework</h2>
+  <div class="card-grid">
+      <div class="card"><div class="card-label">Block 01</div><div class="card-title">Spelunking GY Fill</div><div class="card-body">Practice counting GY lands with Spelunking in play. Each land you play goes to GY via Spelunking. After 5 lands: 5 cards in GY. Know your GY land count at each turn.</div></div>
+      <div class="card"><div class="card-label">Block 02</div><div class="card-title">Lumra Trigger Chain</div><div class="card-body">Practice the Lumra trigger chain. Lumra ETB â†’ returns all GY lands â†’ each land ETB triggers Icetill Explorer separately â†’ resolve each search trigger â†’ Lumra grows. Execute without pausing.</div></div>
+      <div class="card"><div class="card-label">Block 03</div><div class="card-title">Worldsoul's Rage Math</div><div class="card-body">Practice Worldsoul's Rage damage at each land count. At 8 lands: 8 damage. At 10: 10. Know the damage output at each land count without calculating at the table.</div></div>
+      <div class="card"><div class="card-label">Block 04</div><div class="card-title">Counter-heavy Adaptation</div><div class="card-body">Practice the counter-heavy plan: Mossborn Hydra at 7 lands is uncounterable. When they're countering everything, pivot to Hydra as your win condition. Know the transition point.</div></div>
+  </div>
+
+  <h2>Matchday Routine</h2>
+  <ol class="heuristic-list">
+      <li><div class="heuristic-num">01</div><div class="heuristic-body">Spelunking GY fill: each land you play fills your GY. Know your exact GY count before casting Lumra â€” it determines Lumra's entry power.</div></li>
+      <li><div class="heuristic-num">02</div><div class="heuristic-body">Icetill Explorer protection: it's your best card. Spend counters and removal specifically to protect Explorer.</div></li>
+      <li><div class="heuristic-num">03</div><div class="heuristic-body">Lumra trigger chain: practice it until it's automatic. The chain executes without pausing or second-guessing.</div></li>
+      <li><div class="heuristic-num">04</div><div class="heuristic-body">Between rounds: count your land total when you won. If you won before T7, you're ahead of schedule. If T8+, identify what slowed you.</div></li>
+      <li><div class="heuristic-num">05</div><div class="heuristic-body">Mossborn Hydra backup plan: when they're countering everything, switch to Hydra as your win condition. It's uncounterable at 7 lands.</div></li>
+  </ol>
+
+</div>
+
+<footer style="border-top:1px solid var(--rule);padding:24px 80px;display:flex;justify-content:space-between;font-family:'DM Mono',monospace;font-size:10px;color:var(--mid);">
+  <span>Team Resolve &middot; Standard RC Prep 2026</span>
+  <span>Temur Green &mdash; April 2026</span>
+  <span>Collins Mullen 1st PTQ Lorwyn Eclipsed &middot; Jan 31 2026</span>
+</footer>
+
+<script>
+function show(id){
+  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.nav-link').forEach(b=>b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  event.target.classList.add('active');
+  window.scrollTo(0,0);
+}
+function toggle(id){document.getElementById(id).classList.toggle('open');}
+</script>
+<script>
+(function(){
+  const TIP=document.createElement('div');TIP.className='card-tip';
+  TIP.innerHTML='<div class="card-tip-loading">loading...</div>';
+  document.body.appendChild(TIP);
+  const CACHE={};let hideTimer=null;const PAD=24,W=220,H=310;
+  function pos(e){let x=e.clientX+PAD,y=e.clientY-H/2;
+    if(x+W>window.innerWidth)x=e.clientX-W-PAD;if(y<8)y=8;
+    if(y+H>window.innerHeight)y=window.innerHeight-H-8;
+    TIP.style.left=x+'px';TIP.style.top=y+'px';}
+  async function showTip(name,e){
+    clearTimeout(hideTimer);TIP.innerHTML='<div class="card-tip-loading">loading...</div>';
+    TIP.classList.add('visible');pos(e);
+    if(CACHE[name]){TIP.innerHTML=`<img src="${CACHE[name]}" alt="${name}">`;return;}
+    try{const r=await fetch(`https://api.scryfall.com/cards/named?fuzzy=${encodeURIComponent(name)}`);
+      const d=await r.json();const img=d.image_uris?.normal||d.card_faces?.[0]?.image_uris?.normal;
+      if(!img){TIP.classList.remove('visible');return;}
+      CACHE[name]=img;TIP.innerHTML=`<img src="${img}" alt="${name}">`;}
+    catch(err){TIP.classList.remove('visible');}
+  }
+  function hide(){hideTimer=setTimeout(()=>TIP.classList.remove('visible'),80);}
+  document.addEventListener('mouseover',e=>{const el=e.target.closest('span.c');if(!el)return;showTip(el.textContent.trim(),e);});
+  document.addEventListener('mousemove',e=>{if(TIP.classList.contains('visible'))pos(e);});
+  document.addEventListener('mouseout',e=>{if(e.target.closest('span.c'))hide();});
+})();
+</script>
+</body>
+</html>

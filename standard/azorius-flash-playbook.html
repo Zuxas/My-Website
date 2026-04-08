@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Azorius Flash — Team Resolve Playbook</title>
+<link rel="icon" href="../images/tab32.png" type="image/png">
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+html{overflow-y:scroll;}
+:root{
+  --primary:    #0c1a2e;
+  --ink:        #0e0e0e;
+  --paper:      #f2ede6;
+  --paper-dark: #e8e1d6;
+  --rule:       #c8bfb0;
+  --accent:     #60A5FA;
+  --accent-light:rgba(96,165,250,0.12);
+  --danger:     #8f1a1a;
+  --danger-light:rgba(143,26,26,0.12);
+  --gold:       #60A5FA;
+  --gold-light: rgba(96,165,250,0.12);
+  --mid:        #5a5248;
+  --card:       #ffffff;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--paper);color:var(--ink);font-family:'Crimson Pro',Georgia,serif;font-size:17px;line-height:1.6;}
+nav{position:sticky;top:0;z-index:100;background:var(--primary);border-bottom:2px solid var(--accent);display:flex;align-items:center;padding:0 32px;height:48px;gap:4px;}
+.nav-brand{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);margin-right:16px;white-space:nowrap;}
+.nav-link{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(248,250,252,0.55);background:none;border:none;border-bottom:2px solid transparent;padding:0 12px;height:48px;cursor:pointer;white-space:nowrap;display:flex;align-items:center;text-decoration:none;transition:color 0.15s,border-color 0.15s;}
+.nav-link:hover{color:rgba(248,250,252,0.85);}
+.nav-link.active{color:rgba(248,250,252,1);border-bottom-color:var(--accent);}
+.header-band{background:var(--primary);border-bottom:3px solid var(--accent);padding:48px 80px 40px;position:relative;overflow:hidden;color:#f1f5f9;}
+.header-band,.header-band *{color:#f1f5f9;}
+.header-band::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 20% 50%,rgba(96,165,250,0.08) 0%,transparent 70%);pointer-events:none;}
+.header-inner{max-width:1080px;margin:0 auto;display:grid;grid-template-columns:1fr auto;gap:40px;align-items:start;position:relative;}
+.header-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(248,250,252,0.4);margin-bottom:12px;}
+.header-title{font-family:'DM Mono',monospace;font-size:clamp(32px,4vw,52px);font-weight:500;letter-spacing:0.06em;line-height:1.05;text-transform:uppercase;}
+.header-title .accent{color:var(--accent);}
+.header-tagline{font-size:15px;font-style:italic;color:rgba(248,250,252,0.5);margin-top:12px;max-width:520px;line-height:1.5;}
+.meta-row{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(248,250,252,0.4);margin-bottom:4px;}
+.meta-row span{color:rgba(248,250,252,0.8);margin-left:6px;}
+.section{display:none;animation:fadeIn 0.3s ease;}
+.section.active{display:block;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
+.content{max-width:1080px;margin:0 auto;padding:56px 80px 80px;}
+.section-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--mid);margin-bottom:8px;display:block;}
+h1{font-family:'DM Mono',monospace;font-size:clamp(32px,4vw,48px);font-weight:500;letter-spacing:0.06em;text-transform:uppercase;line-height:1.05;margin-bottom:32px;}
+h2{font-family:'DM Mono',monospace;font-size:13px;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);margin:48px 0 16px;padding-bottom:8px;border-bottom:1px solid var(--rule);}
+h3{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--mid);margin:24px 0 8px;}
+p{font-size:16px;line-height:1.7;color:var(--ink);margin-bottom:14px;font-weight:300;}
+strong{font-weight:600;}
+.mantra{background:var(--accent-light);border-left:3px solid var(--accent);padding:20px 24px;margin:0 0 40px;font-style:italic;font-size:17px;color:var(--ink);line-height:1.6;}
+.card-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule);margin:16px 0;}
+.card-grid-2{grid-template-columns:repeat(2,1fr)!important;}
+.card-grid-3{grid-template-columns:repeat(3,1fr)!important;}
+.card{background:var(--card);padding:20px;transition:background 0.15s;}
+.card:hover{background:#faf7f2;}
+.card-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:var(--mid);margin-bottom:6px;}
+.card-title{font-family:'DM Mono',monospace;font-size:13px;letter-spacing:0.05em;color:var(--accent);margin-bottom:8px;font-weight:500;}
+.card-body{font-size:14px;color:var(--mid);line-height:1.55;font-weight:300;}
+.matchup-block{border:1px solid var(--rule);margin:24px 0;background:var(--card);}
+.matchup-header{background:var(--paper-dark);padding:16px 20px;display:flex;align-items:center;justify-content:space-between;cursor:pointer;}
+.matchup-header h3{margin:0;font-size:11px;letter-spacing:0.15em;color:var(--ink);}
+.verdict{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.15em;text-transform:uppercase;padding:3px 10px;border-radius:2px;}
+.verdict-good{background:rgba(96,165,250,0.12);color:#1d4ed8;}
+.verdict-even{background:rgba(90,82,72,0.12);color:var(--mid);}
+.verdict-hard{background:rgba(143,26,26,0.12);color:#991b1b;}
+.matchup-body{padding:20px;display:none;}
+.matchup-body.open{display:block;}
+.sb-table{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--rule);margin:12px 0;}
+.sb-col{background:var(--paper);padding:12px 16px;}
+.sb-col-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.15em;text-transform:uppercase;color:var(--mid);margin-bottom:8px;}
+.sb-item{display:flex;justify-content:space-between;align-items:baseline;font-size:14px;padding:2px 0;font-weight:300;}
+.sb-qty{font-family:'DM Mono',monospace;font-size:11px;color:var(--mid);}
+.heuristic-list{list-style:none;margin:16px 0;}
+.heuristic-list li{padding:14px 0;border-bottom:1px solid var(--rule);display:flex;gap:16px;align-items:start;}
+.heuristic-list li:last-child{border-bottom:none;}
+.h-num{font-family:'DM Mono',monospace;font-size:10px;color:var(--accent);flex-shrink:0;padding-top:2px;min-width:28px;}
+.h-text{font-size:15px;font-weight:300;color:var(--ink);}
+.h-text strong{font-weight:600;}
+.deck-row{display:flex;justify-content:space-between;padding:3px 0;border-bottom:1px solid rgba(200,191,176,0.4);font-size:15px;}
+.deck-count{font-family:'DM Mono',monospace;font-size:12px;color:var(--mid);min-width:20px;}
+.edge-case{background:var(--card);border:1px solid var(--rule);border-left:3px solid var(--accent);padding:16px 20px;margin:12px 0;}
+.edge-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:6px;}
+.edge-body{font-size:14px;font-weight:300;color:var(--ink);line-height:1.65;}
+.print-btn{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;background:var(--accent);color:#fff;border:none;padding:10px 20px;cursor:pointer;margin:16px 0;}
+span.c{cursor:help;border-bottom:1px dashed var(--accent);}
+span.c:hover{border-bottom-style:solid;}
+.card-tip{position:fixed;z-index:9999;pointer-events:none;width:220px;border-radius:8px;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,0.6);opacity:0;transition:opacity 0.15s ease;background:#1a1a2e;}
+.card-tip.visible{opacity:1;}
+.card-tip img{width:220px;height:auto;display:block;}
+.card-tip-loading{width:220px;height:308px;display:flex;align-items:center;justify-content:center;color:#94a3b8;font-size:12px;font-family:monospace;background:#1e293b;}
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-brand">Azorius Flash</div>
+  <a class="nav-link" href="../deck-guides.html" style="text-decoration:none;">&#8592; Guides</a>
+  <button class="nav-link active" onclick="show('identity')">Overview</button>
+  <button class="nav-link" onclick="show('decklist')">Decklist</button>
+  <button class="nav-link" onclick="show('gameplan')">Game Flow</button>
+  <button class="nav-link" onclick="show('engines')">Engines</button>
+  <button class="nav-link" onclick="show('lines')">Lines</button>
+  <button class="nav-link" onclick="show('roles')">Roles</button>
+  <button class="nav-link" onclick="show('matchups')">Matchups</button>
+  <button class="nav-link" onclick="show('sideboard')">Sideboard</button>
+  <button class="nav-link" onclick="show('heuristics')">Heuristics</button>
+  <button class="nav-link" onclick="show('tuning')">Tuning</button>
+  <button class="nav-link" onclick="show('prep')">Prep</button>
+</nav>
+<div class="header-band">
+  <div class="header-inner">
+    <div>
+      <div class="header-label">Team Resolve · Standard · April 2026</div>
+      <div class="header-title">AZORIUS<br><span class="accent">FLASH</span></div>
+      <div class="header-tagline">"Every spell they cast is slower than yours. Your creatures hold up interaction while dealing damage every combat."</div>
+    </div>
+    <div class="header-meta">
+      <div class="meta-row">META SHARE<span>3.00%</span></div>
+      <div class="meta-row">ROLE<span>Tempo</span></div>
+      <div class="meta-row">COLORS<span>W U</span></div>
+      <div class="meta-row">KILL TURN<span>4–6</span></div>
+      <div class="meta-row">REFERENCE<span>Faust PT 9-1 · Pinheiro SA RC Top4</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- CH01 IDENTITY -->
+<div id="identity" class="section active">
+<div class="content">
+  <span class="section-label">Chapter 01</span>
+  <h1>DECK<br>IDENTITY</h1>
+  <div class="mantra">"You are the permission deck that can also attack. Every creature does two things: puts a clock on them AND holds up interaction."</div>
+
+  <p>Azorius Flash is the tempo deck of Standard 2026. Every creature in the deck has flash or plays at instant speed, meaning you never have to choose between developing your board and holding up interaction. <span class="c">Floodpits Drowner</span> bounces a permanent on entry and connects for two damage. <span class="c">Aven Interrupter</span> exiles a spell for a turn when it enters. <span class="c">Aang, Swift Savior</span> bounces a creature (yours or theirs) and can airbend permanents to reset value. All while presenting a clock.</p>
+
+  <p><span class="c">Voice of Victory</span> is the engine. A 2/1 lifelink flier for two mana that draws you a card when it enters means every copy of Voice is a two-for-one. <span class="c">Enduring Curiosity</span> turns all your creatures into card draw whenever they connect. <span class="c">High Noon</span> is the lock — your opponent can only cast one spell per turn, but your flash creatures give you the tempo advantage at that parity.</p>
+
+  <p>The deck punishes opponents who tap out. Your whole gameplan is: develop on their end step, hold up counters and bounce on your turn, attack. They have to choose between developing their game plan and answering your threats. If they develop, Aven Interrupter and Seam Rip counter their key spells. If they answer, you flash in a replacement at end of turn.</p>
+
+  <h2>Why Flash Matters</h2>
+  <div class="card-grid card-grid-3">
+    <div class="card"><div class="card-label">Flash Advantage 1</div><div class="card-title">Deploy on Their End Step</div><div class="card-body">Flash creatures can be cast at instant speed — on their end step after they've spent their mana. You untap with your new creature already in play and full mana available. Opponent taps out for their T3 play → you cast Floodpits Drowner at their EOT, bounce their permanent, untap, and attack. They have nothing to show for T3.</div></div>
+    <div class="card"><div class="card-label">Flash Advantage 2</div><div class="card-title">Always Have Mana Up</div><div class="card-body">Because your creatures are flash, you never need to tap out during your main phase to develop your board. Every turn you can hold up Seam Rip, No More Lies, or Spell Snare AND deploy creatures if they don't use their mana. Opponents can never safely tap out against you.</div></div>
+    <div class="card"><div class="card-label">Flash Advantage 3</div><div class="card-title">High Noon Asymmetry</div><div class="card-body">High Noon limits each player to one spell per turn. But your creatures are one spell each — one creature entry puts a permanent on board AND potentially bounces/exiles their permanent. At High Noon parity, your one "spell" does two things while theirs does one. The enchantment is asymmetrically good for you.</div></div>
+  </div>
+
+  <h2>The Three Pillars</h2>
+  <div class="card-grid card-grid-3">
+    <div class="card"><div class="card-label">Pillar 1</div><div class="card-title">Aggressive Clock</div><div class="card-body">Voice of Victory (2/1 flying lifelink), Floodpits Drowner (3/2 flying), Aven Interrupter (2/2 flying), Aang (2/2 flying). All your threats fly or have evasion. You win through the air while they're stuck blocking or answering ground threats.</div></div>
+    <div class="card"><div class="card-label">Pillar 2</div><div class="card-title">Permanent Interaction</div><div class="card-body">Every creature enters doing something: Drowner bounces, Aven Interrupter exiles a spell, Aang bounces a creature. Plus Seam Rip (counter), No More Lies (counter), Spell Snare (counter 2CMC), Avatar's Wrath (board wipe). You have answers at every point on the curve.</div></div>
+    <div class="card"><div class="card-label">Pillar 3</div><div class="card-title">Card Advantage Engine</div><div class="card-body">Voice of Victory draws on ETB. Enduring Curiosity draws whenever a creature deals combat damage. Wan Shi Tong (SB) draws at EOT if you have the most cards. Ajani, Outland Chaperone generates tokens while gaining life. You never run out of gas because every attack step draws cards.</div></div>
+  </div>
+</div>
+</div>
+
+<!-- CH02 DECKLIST -->
+<div id="decklist" class="section">
+<div class="content">
+  <span class="section-label">Chapter 02</span>
+  <h1>DECKLIST</h1>
+  <div class="mantra">"Pinheiro SA RC Top4 / Faust PT 9-1 — magic.gg March 2026 Ranked Decklists"</div>
+  <div class="card-grid card-grid-3">
+    <div class="card">
+      <h3>Creatures (18)</h3>
+      <div class="deck-row"><span class="deck-count">4</span><span><span class="c">Voice of Victory</span></span></div>
+      <div class="deck-row"><span class="deck-count">4</span><span><span class="c">Floodpits Drowner</span></span></div>
+      <div class="deck-row"><span class="deck-count">4</span><span><span class="c">Aven Interrupter</span></span></div>
+      <div class="deck-row"><span class="deck-count">4</span><span><span class="c">Aang, Swift Savior</span></span></div>
+      <div class="deck-row"><span class="deck-count">1</span><span><span class="c">Elspeth, Storm Slayer</span></span></div>
+      <div class="deck-row"><span class="deck-count">1</span><span><span class="c">Ajani, Outland Chaperone</span></span></div>
+    </div>
+    <div class="card">
+      <h3>Spells (17)</h3>
+      <div class="deck-row"><span class="deck-count">4</span><span><span class="c">High Noon</span></span></div>
+      <div class="deck-row"><span class="deck-count">3</span><span><span class="c">Seam Rip</span></span></div>
+      <div class="deck-row"><span class="deck-count">2</span><span><span class="c">Enduring Curiosity</span></span></div>
+      <div class="deck-row"><span class="deck-count">2</span><span><span class="c">Avatar's Wrath</span></span></div>
+      <div class="deck-row"><span class="deck-count">2</span><span><span class="c">No More Lies</span></span></div>
+      <div class="deck-row"><span class="deck-count">2</span><span><span class="c">Ajani, Outland Chaperone</span></span></div>
+      <div class="deck-row"><span class="deck-count">2</span><span><span class="c">Spell Snare</span></span></div>
+      <div class="deck-row"><span class="deck-count">1</span><span><span class="c">Get Lost</span></span></div>
+      <h3 style="margin-top:16px;">Lands (25)</h3>
+      <div class="deck-row"><span class="deck-count">5</span><span>Plains</span></div>
+      <div class="deck-row"><span class="deck-count">4</span><span><span class="c">Starting Town</span></span></div>
+      <div class="deck-row"><span class="deck-count">4</span><span><span class="c">Hallowed Fountain</span></span></div>
+      <div class="deck-row"><span class="deck-count">4</span><span><span class="c">Floodfarm Verge</span></span></div>
+      <div class="deck-row"><span class="deck-count">3</span><span>Island</span></div>
+      <div class="deck-row"><span class="deck-count">2</span><span><span class="c">Abandoned Air Temple</span></span></div>
+      <div class="deck-row"><span class="deck-count">2</span><span><span class="c">Multiversal Passage</span></span></div>
+      <div class="deck-row"><span class="deck-count">1</span><span><span class="c">Restless Anchorage</span></span></div>
+    </div>
+    <div class="card">
+      <h3>Sideboard (15)</h3>
+      <div class="deck-row"><span class="deck-count">2</span><span><span class="c">Soul-Guide Lantern</span></span></div>
+      <div class="deck-row"><span class="deck-count">2</span><span><span class="c">Glen Elendra Guardian</span></span></div>
+      <div class="deck-row"><span class="deck-count">2</span><span><span class="c">Tishana's Tidebinder</span></span></div>
+      <div class="deck-row"><span class="deck-count">2</span><span><span class="c">Avatar's Wrath</span></span></div>
+      <div class="deck-row"><span class="deck-count">2</span><span><span class="c">Disdainful Stroke</span></span></div>
+      <div class="deck-row"><span class="deck-count">1</span><span><span class="c">Requisition Raid</span></span></div>
+      <div class="deck-row"><span class="deck-count">1</span><span><span class="c">Rest in Peace</span></span></div>
+      <div class="deck-row"><span class="deck-count">1</span><span><span class="c">Wan Shi Tong, Librarian</span></span></div>
+      <div class="deck-row"><span class="deck-count">1</span><span><span class="c">Ajani, Outland Chaperone</span></span></div>
+      <div class="deck-row"><span class="deck-count">1</span><span><span class="c">Seam Rip</span></span></div>
+    </div>
+  </div>
+  <h2>Key Card Notes</h2>
+  <div class="card-grid card-grid-2">
+    <div class="card"><div class="card-label">The Clock + Draw</div><div class="card-title">Voice of Victory</div><div class="card-body">2/1 flying lifelink that draws a card on ETB. Every copy is a two-for-one — a body that attacks in the air for 2 damage AND replaces itself in your hand. The lifelink means racing is favored: a stalled board slowly gains you life while you build card advantage. Play this turn 2 on their end step whenever possible.</div></div>
+    <div class="card"><div class="card-label">The Bounce Engine</div><div class="card-title">Floodpits Drowner</div><div class="card-body">3/2 flying flash. ETB: target player returns a permanent they control to their hand. This is unconditional permanent removal at instant speed attached to a 3/2 flier. On their end step: bounce their best permanent AND get a 3/2 attacker. Works on any permanent — land, creature, enchantment, planeswalker. The no-gift mode bounces your own permanents (resets Aven Interrupter for another exile).</div></div>
+    <div class="card"><div class="card-label">The Permission Creature</div><div class="card-title">Aven Interrupter</div><div class="card-body">2/2 flying flash. ETB: exile target spell from the stack until Aven leaves play. When Aven dies, the spell goes to the GY (not the hand). This is a Spell Queller — counter their spell AND get a 2/2 flier. Critical: the exiled spell is NOT countered. If Aven dies, the spell resolves. Protect Aven at all costs in control matchups. Don't bounce it with Drowner while it's holding a spell.</div></div>
+    <div class="card"><div class="card-label">The Lock</div><div class="card-title">High Noon</div><div class="card-body">Each player can only cast one spell per turn. This is asymmetrically good for you: your one "spell" is a flash creature that does two things on ETB. Their one spell is just a spell. Under High Noon, your Floodpits Drowner = bounce a permanent AND put a 3/2 in play. Their sorcery = just a sorcery. The asymmetry compounds every turn.</div></div>
+  </div>
+</div>
+</div>
+
+<!-- CH03 GAME FLOW -->
+<div id="gameplan" class="section">
+<div class="content">
+  <span class="section-label">Chapter 03</span>
+  <h1>GAME<br>PLAN</h1>
+  <div class="mantra">"Pass. Let them act first. Deploy on their end step. Untap with full mana and a new threat. Repeat."</div>
+  <div class="card-grid card-grid-2">
+    <div class="card"><div class="card-label">Turns 1–2</div><div class="card-title">Establish Presence</div><div class="card-body">T1: Land, pass. T2: Their end step → Voice of Victory (2/1 flying lifelink, draw a card). Untap with Voice + 2 mana. T2 on the draw you can play High Noon on your main phase (limiting them to 1 spell per turn immediately). Never tap out on your own turn if you can deploy EOT instead — staying at full mana maximizes your interaction windows.</div></div>
+    <div class="card"><div class="card-label">Turns 3–4</div><div class="card-title">Stack the Board</div><div class="card-body">T3 EOT: Aven Interrupter or Floodpits Drowner. Each holds up Seam Rip or Spell Snare backup. T4: If they cast a key spell on T3, Aven Interrupter exiles it (they get it back when Aven dies, but you bought a turn). If they don't, Drowner bounces their best permanent + you now have 4 power flying + mana up for counters.</div></div>
+    <div class="card"><div class="card-label">Turns 5+</div><div class="card-title">Close with Card Advantage</div><div class="card-body">Enduring Curiosity attached to any flier means every attack draws a card. Aang, Swift Savior bouncing your own Voice of Victory resets the ETB draw. Ajani, Outland Chaperone makes Cat tokens + life. The deck doesn't close fast but generates so much card advantage that attrition is impossible. Elspeth, Storm Slayer as the one-of finisher when the board is locked.</div></div>
+    <div class="card"><div class="card-label">Mulligan Framework</div><div class="card-title">Snap Keeps and Hard Cuts</div><div class="card-body">Snap keep: 2 lands + Voice + any interaction (Seam Rip/Snare/NoMoreLies) + any 3-drop. Mulligan: 0-1 land. 5+ land. All interaction and no threats. All threats and no interaction. You need the threat-interaction balance. Never keep a hand that's pure one type.</div></div>
+    <div class="card"><div class="card-label">Flash Discipline</div><div class="card-title">Your Deployment Rule</div><div class="card-body">Your rule: every creature deploys at instant speed on their turn, never your main phase. Voice of Victory at their EOT → you untap and attack T4. Glen Elendra Guardian at instant speed counters their key spell → you keep mana open for more interaction. Spider Manifestation at their combat step creates a blocker before they can attack. You surrender the tempo of sorcery-speed deployment in exchange for the information of their play first.</div></div>
+    <div class="card"><div class="card-label">Voice Protection</div><div class="card-title">Your Clock</div><div class="card-body">Voice of Victory (3/3 flying, can't be targeted while attacking) is your only clock. You attack with Voice every turn it's in play. Your remaining mana holds Seam Rip (counter their key sorcery), Disdainful Stroke (counter their MV 4+ threats), or Wan Shi Tong activation. Voice demands an answer — board wipe or sacrifice effect. You count their outs before committing Voice.</div></div>
+    <div class="card"><div class="card-label">Aven Interrupter</div><div class="card-title">Your Flash Counterspell</div><div class="card-body">Aven Interrupter (5/4 flash, ETB counters a spell) is your best single card. You flash it in when they tap for their most important spell — Earthbender Ascension, Sunderflock, Craterhoof Behemoth. Aven ETB counters on resolution, not on the stack — it's a hard counter at instant speed that also leaves a 5/4 blocker. You protect Aven with Tishana's Tidebinder if they try to remove it.</div></div>
+    <div class="card"><div class="card-label">Interaction Sequencing</div><div class="card-title">Your Counter Priority</div><div class="card-body">You maintain a mental hierarchy of counters. First priority: Seam Rip for their key sorcery (the one that wins them the game). Second: Disdainful Stroke for their MV 4+ threats. Third: Glen Elendra Guardian for their key instant. Never waste your best counter on their setup piece when their win condition is still in hand. Identify their win condition and protect that counter.</div></div>
+  </div>
+</div>
+</div>
+
+<!-- CH04 ENGINES -->
+<div id="engines" class="section">
+<div class="content">
+  <span class="section-label">Chapter 04</span>
+  <h1>CORE<br>ENGINES</h1>
+  <div class="mantra">"Enduring Curiosity turns every attack into a draw step. With four fliers, you're drawing 4 cards per attack."</div>
+  <div class="card-grid card-grid-3">
+    <div class="card"><div class="card-label">Engine 1</div><div class="card-title">ETB Value Chain</div><div class="card-body">Voice of Victory draws on ETB. Aven Interrupter exiles a spell. Floodpits Drowner bounces a permanent. Aang bounces a creature. Every creature entering provides immediate value before combat. The ETB chain compounds: Drowner bounces their threat → your T4 is threat-free → Aven Interrupter deployed safely → exiles their T4 play.</div></div>
+    <div class="card"><div class="card-label">Engine 2</div><div class="card-title">High Noon Lock</div><div class="card-body">With High Noon in play + 3+ fliers, you're typically at 6/8+ flying power attacking per turn. They can only cast one blocker per turn. Each turn the board state tilts further in your favor. The "one spell per turn" limitation means they can't develop AND interact — they must choose. You choose for them by holding up counters.</div></div>
+    <div class="card"><div class="card-label">Engine 3</div><div class="card-title">Enduring Curiosity Combat Loop</div><div class="card-body">Enduring Curiosity: whenever a creature with this attached deals combat damage, draw a card. Attach to any flier — Voice of Victory, Drowner, Interrupter. Every unblocked attack is a draw. With 4 fliers and Curiosity, you draw 4 cards per attack step if unblocked. The card advantage in the mid-game is overwhelming.</div></div>
+  </div>
+</div>
+</div>
+
+<!-- CH05 LINES -->
+<div id="lines" class="section">
+<div class="content">
+  <span class="section-label">Chapter 05</span>
+  <h1>LINES &amp;<br>TACTICS</h1>
+  <div class="mantra">"Don't tap out on your main phase. The instant-speed information is priceless."</div>
+  <div class="edge-case"><div class="edge-label">Line 01 — Aven Interrupter: Exiled Spell Returns When Aven Leaves</div><div class="edge-body">Aven Interrupter exiles a spell from the stack. The spell is NOT countered — it's exiled temporarily. When Aven leaves the battlefield (dies, bounced, exiled), the exiled spell goes to the graveyard (not their hand). Critical implications: (1) Never bounce your own Aven with Drowner while it's holding an important spell — the spell will go to GY. (2) If they can kill Aven, the exiled spell is lost to GY — which is actually fine for you. (3) Aang's airbend targets creatures you control — don't accidentally bounce Aven with Aang if it's holding something.</div></div>
+  <div class="edge-case"><div class="edge-label">Line 02 — Floodpits Drowner No-Gift Mode Returns YOUR Permanents</div><div class="edge-body">Floodpits Drowner has two modes: "target player returns a permanent they control to their hand" (the standard use) or "without gift" mode which returns a permanent YOU control. The no-gift mode is used to: (1) Reset Aven Interrupter — bounce Aven (not while it's holding a spell), replay it to exile their next threat. (2) Reset Voice of Victory to draw another card. (3) Save a threatened permanent from removal by returning it to hand. The no-gift mode is underused by most Drowner pilots.</div></div>
+  <div class="edge-case"><div class="edge-label">Line 03 — High Noon: "One Spell Per Turn" Counts From Your Opponents Perspective Too</div><div class="edge-body">High Noon limits each PLAYER to one spell per turn. You are also limited to one spell per turn. This means: don't cast High Noon AND a creature on the same turn (that's your one spell used). The correct line is: T2 High Noon on your main phase, then PASS (you used your spell). T3 EOT opponent's turn: cast a flash creature (your one spell for THEIR turn — it's a new turn for you). You get T3 EOT + T4 main phase. Precise spell counting is critical under High Noon.</div></div>
+  <div class="edge-case"><div class="edge-label">Line 04 — Aang Airbend: Bounce at Instant Speed, Including Your Own Creatures</div><div class="edge-body">Aang, Swift Savior's first ability: whenever Aang attacks, you may return target creature to its owner's hand (at instant speed during combat). Aang's ETB: return target creature to its owner's hand. This bounces your own creatures for ETB resets (Voice draws again, Aven Interrupter exiles again) or bounces their creatures as a pseudo-removal. Transform Aang into Aang and La: 5/5 that pumps your whole team. Don't transform until you have 3+ other creatures in play.</div></div>
+    <div class="card"><div class="card-label">Line 01</div><div class="card-title">Your Flash-First Rule</div><div class="card-body">You never deploy a creature at sorcery speed unless you're closing the game immediately. Every creature you control deploys at their EOT (flash) or in response to their key play. You hold Voice of Victory in hand until T4+ and deploy at their EOT — you untap and attack immediately. Flash discipline is your most important skill; it separates correct play from incorrect play.</div></div>
+    <div class="card"><div class="card-label">Line 02</div><div class="card-title">Your Counter Selection Line</div><div class="card-body">You keep the right counter for their deck's specific threats. Against Izzet Spellementals: Tishana's Tidebinder (counter activated ability + remove it). Against Mono-Green: Seam Rip (counter Earthbender Ascension at sorcery speed). Against Jeskai Control: Disdainful Stroke (counter their MV 4+ sweepers). You pre-identify your counter target before the game starts and hold the right mana.</div></div>
+    <div class="card"><div class="card-label">Line 03</div><div class="card-title">Your High Noon Timing</div><div class="card-body">You cast High Noon when they're about to cast their key sorcery — the turn they tap for Earthbender Ascension or their board wipe. You don't cast High Noon T3 blindly; you wait for the specific turn it matters. You identify their key sorcery in their deck before round 1 and deploy High Noon specifically when they're about to cast it.</div></div>
+    <div class="card"><div class="card-label">Line 04</div><div class="card-title">Your Wan Shi Tong Activation</div><div class="card-body">Wan Shi Tong (5/5 that draws a card when you draw your second each turn): you cantrip on their turn (Opt → draw, second draw triggers Wan Shi Tong → third draw). You generate a 3-card turn without spending your main phase. You protect Wan Shi Tong with Glen Elendra Guardian (counter their removal targeting it). Every cantrip you cast generates one extra draw from Wan Shi Tong.</div></div>
+    <div class="card"><div class="card-label">Line 05</div><div class="card-title">Your Disdainful Stroke Timing</div><div class="card-body">You hold Disdainful Stroke ({1}{U}) for their MV 4+ spells: their Sunderflock sweeper, their Craterhoof Behemoth, their Lumra, Bellow of the Woods. You never Stroke their early plays. You identify the one MV 4+ spell that wins them the game and hold your Stroke specifically for that spell. You pre-identify their biggest threat before game 1 and keep {1}{U} open from T4 onward.</div></div>
+    <div class="card"><div class="card-label">Line 06</div><div class="card-title">Your Tishana's Tidebinder Timing</div><div class="card-body">Tishana's Tidebinder counters an activated or triggered ability when it enters. You deploy it in response to: Earthbender Ascension's trigger (counter the +1/+1 counter), Lumra's ETB trigger (counter the land returns), or any planeswalker ability. You hold Tidebinder mana ({1}{U}) from T3 onward when their key ability is about to resolve.</div></div>
+</div>
+</div>
+
+<!-- CH06 ROLES -->
+<div id="roles" class="section">
+<div class="content">
+  <span class="section-label">Chapter 06</span>
+  <h1>ROLE<br>ASSIGNMENT</h1>
+  <div class="mantra">"You are never the control player and never the pure aggro player. You are always tempo."</div>
+  <div class="card-grid card-grid-3">
+    <div class="card"><div class="card-label">Primary</div><div class="card-title">Tempo Above All</div><div class="card-body">Deploy threats while holding up answers. Never tap out completely. Every turn: deploy on their EOT, untap with mana for their turn's interaction. Your threats generate immediate value so you're never "just developing" — every creature is also removing something.</div><p style="font-size:13px;color:var(--mid);margin-top:8px;">vs ALL matchups</p></div>
+    <div class="card"><div class="card-label">vs Aggro</div><div class="card-title">Defensive Tempo</div><div class="card-body">Against Boros Aggro and Izzet Prowess: lifelink from Voice of Victory gains life while attacking. Avatar's Wrath sweeps their board. Aang bounces their key threat. You're not racing — you're stabilizing. Get to 4 fliers and they cannot attack profitably through your air-defense wall.</div><p style="font-size:13px;color:var(--mid);margin-top:8px;">vs Boros · Prowess · Red Aggro</p></div>
+    <div class="card"><div class="card-label">vs Midrange/Control</div><div class="card-title">Aggressive Tempo</div><div class="card-body">Against Dimir Midrange and Jeskai Control: you're the aggressor. High Noon limits their development. Aven Interrupter holds their key spell. Drowner bounces their finisher. 12 power flying hits for lethal faster than they can sweep. Counter their sweeper with Seam Rip and win.</div><p style="font-size:13px;color:var(--mid);margin-top:8px;">vs Dimir · Jeskai · Lessons</p></div>
+  </div>
+</div>
+</div>
+
+<!-- CH07 MATCHUPS -->
+<div id="matchups" class="section">
+<div class="content">
+  <span class="section-label">Chapter 07</span>
+  <h1>MATCHUP<br>GUIDE</h1>
+  <div class="mantra">"High Noon + 3 fliers = they solve a puzzle every turn. Usually they can't."</div>
+
+  <div class="matchup-block">
+    <div class="matchup-header" onclick="toggle('mu-prowess')">
+      <h3>IZZET PROWESS</h3><span class="verdict verdict-even">Even</span>
+    </div>
+    <div id="mu-prowess" class="matchup-body">
+      <p>Their Slickshot Show-Off flies. Your fliers can't block it without dying to the +2/+0 pump. But Aven Interrupter on their Stormchaser's Talent exiles it for a turn — that tempo swing plus your lifelink board often stabilizes. Avatar's Wrath sweeps their token flood.</p>
+      <p><strong>Priority:</strong> Land Enduring Curiosity early — every unblocked flier draws a card and outraces their damage engine. Get to 3+ blockers to wall off their non-flying threats. Seam Rip on their Talent or Slickshot stops the chain. Voice of Victory lifelink racing math often works in your favor.</p>
+      <p><strong>Needle:</strong> High Noon is very good here — they need to chain multiple spells per turn for prowess, and High Noon limits them to one. With High Noon active, their T3 is cast one spell and pray. Your T3 EOT is still a full Floodpits Drowner bouncing their key threat.</p>
+      <div class="sb-table">
+        <div class="sb-col"><div class="sb-col-label">In</div>
+          <div class="sb-item"><span><span class="c">Avatar's Wrath</span></span><span class="sb-qty">+2</span></div>
+          <div class="sb-item"><span><span class="c">Glen Elendra Guardian</span></span><span class="sb-qty">+2</span></div>
+        </div>
+        <div class="sb-col"><div class="sb-col-label">Out</div>
+          <div class="sb-item"><span><span class="c">No More Lies</span></span><span class="sb-qty">&minus;2</span></div>
+          <div class="sb-item"><span><span class="c">Ajani, Outland Chaperone</span></span><span class="sb-qty">&minus;2</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="matchup-block">
+    <div class="matchup-header" onclick="toggle('mu-lessons')">
+      <h3>IZZET LESSONS</h3><span class="verdict verdict-good">Favorable</span>
+    </div>
+    <div id="mu-lessons" class="matchup-body">
+      <p>High Noon completely shuts down their strategy. Lessons players chain spells (Accumulate Wisdom → Firebending Lesson → Monument) — all sorceries and instants. Under High Noon they cast ONE spell per turn. Their entire plan falls apart. Meanwhile your 12 flying power attacks for lethal around T5-6.</p>
+      <p><strong>Priority:</strong> Land High Noon as early as possible. Keep Seam Rip specifically for Monument to Endurance — it's their only way to outlast your clock. Aven Interrupter on their Combustion Technique or Gran-Gran buys another turn. Tishana's Tidebinder (SB) permanently locks their Monument trigger or stifles Accumulate Wisdom's extra draw.</p>
+      <p><strong>Needle:</strong> Their Abandon Attachments destroys High Noon and Enduring Curiosity. Don't put both on the board simultaneously — play High Noon first, let them spend Abandon Attachments, then deploy Enduring Curiosity. Disdainful Stroke counters Monument to Endurance (4 mana) efficiently.</p>
+      <div class="sb-table">
+        <div class="sb-col"><div class="sb-col-label">In</div>
+          <div class="sb-item"><span><span class="c">Tishana's Tidebinder</span></span><span class="sb-qty">+2</span></div>
+          <div class="sb-item"><span><span class="c">Disdainful Stroke</span></span><span class="sb-qty">+2</span></div>
+        </div>
+        <div class="sb-col"><div class="sb-col-label">Out</div>
+          <div class="sb-item"><span><span class="c">Avatar's Wrath</span></span><span class="sb-qty">&minus;2</span></div>
+          <div class="sb-item"><span><span class="c">Get Lost</span></span><span class="sb-qty">&minus;1</span></div>
+          <div class="sb-item"><span><span class="c">Elspeth, Storm Slayer</span></span><span class="sb-qty">&minus;1</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="matchup-block">
+    <div class="matchup-header" onclick="toggle('mu-monogreen')">
+      <h3>MONO-GREEN LANDFALL</h3><span class="verdict verdict-hard">Unfavorable</span>
+    </div>
+    <div id="mu-monogreen" class="matchup-body">
+      <p>Their Mightform Harmonizer is an 8/8 flier that trades with your entire board. Their Icetill combo kills faster than you can set up. Drowner bounces their key creature — it just comes back. Avatar's Wrath sweeps their ground board but Harmonizer often survives (8 toughness). This is your hardest matchup.</p>
+      <p><strong>Priority:</strong> Seam Rip their Sapling Nursery before it generates tokens. Requisition Raid (SB) destroys Sapling Nursery permanently. Drowner bounces their Harmonizer at their EOT before they can attack. Get Lost exiles Harmonizer at instant speed — your best answer. Build up enough fliers that even if Harmonizer attacks, your 12+ flying power racing math is close.</p>
+      <p><strong>Needle:</strong> Tishana's Tidebinder shuts off Icetill Explorer's trigger permanently — their combo is nullified. Get Lost exiles their 8/8 flier. These are your two must-boards. Without them, Mono-Green Landfall can simply overwhelm you before you establish High Noon.</p>
+      <div class="sb-table">
+        <div class="sb-col"><div class="sb-col-label">In</div>
+          <div class="sb-item"><span><span class="c">Tishana's Tidebinder</span></span><span class="sb-qty">+2</span></div>
+          <div class="sb-item"><span><span class="c">Requisition Raid</span></span><span class="sb-qty">+1</span></div>
+          <div class="sb-item"><span><span class="c">Disdainful Stroke</span></span><span class="sb-qty">+2</span></div>
+        </div>
+        <div class="sb-col"><div class="sb-col-label">Out</div>
+          <div class="sb-item"><span><span class="c">Spell Snare</span></span><span class="sb-qty">&minus;2</span></div>
+          <div class="sb-item"><span><span class="c">High Noon</span></span><span class="sb-qty">&minus;2</span></div>
+          <div class="sb-item"><span><span class="c">Elspeth, Storm Slayer</span></span><span class="sb-qty">&minus;1</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="matchup-block">
+    <div class="matchup-header" onclick="toggle('mu-dimir')">
+      <h3>DIMIR MIDRANGE</h3><span class="verdict verdict-even">Even</span>
+    </div>
+    <div id="mu-dimir" class="matchup-body">
+      <p>Your flying threats hit them while Floodpits Drowner bounces their Kaito or Enduring Curiosity engine. They have Requiting Hex and Floodpits Drowner for your Aven — if your Aven dies with a spell exiled, that spell goes to GY (fine). High Noon slows their deep interactive plan significantly.</p>
+      <p><strong>Priority:</strong> Kill Kaito, Bane of Nightmares before his +1 builds up — it ninjutsus Deep-Cavern Bat to strip your hand. Drowner bouncing Kaito or their Enduring Curiosity is a high-value play. Get your Enduring Curiosity online with their limited removal — once Curiosity is generating draws, you out-resource them.</p>
+      <p><strong>Needle:</strong> Spell Snare counters Deep-Cavern Bat ({1}{B} = 2 mana, hits Snare) and Bitter Triumph. Don't let Bat strip your Aven Interrupter — play Interrupter proactively on their end step before Bat can ninjutsu in.</p>
+      <div class="sb-table">
+        <div class="sb-col"><div class="sb-col-label">In</div>
+          <div class="sb-item"><span><span class="c">Wan Shi Tong, Librarian</span></span><span class="sb-qty">+1</span></div>
+          <div class="sb-item"><span><span class="c">Glen Elendra Guardian</span></span><span class="sb-qty">+2</span></div>
+        </div>
+        <div class="sb-col"><div class="sb-col-label">Out</div>
+          <div class="sb-item"><span><span class="c">Avatar's Wrath</span></span><span class="sb-qty">&minus;2</span></div>
+          <div class="sb-item"><span><span class="c">Get Lost</span></span><span class="sb-qty">&minus;1</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="matchup-block">
+    <div class="matchup-header" onclick="toggle('mu-boros')">
+      <h3>BOROS AGGRO</h3><span class="verdict verdict-good">Favorable</span>
+    </div>
+    <div id="mu-boros" class="matchup-body">
+      <p>Voice of Victory lifelink outgains their damage. Your fliers block their non-flying threats cleanly (they're mostly ground-based Warriors and Goblins). Avatar's Wrath sweeps their whole board. This is a matchup you should win consistently — your defensive tools line up perfectly against their strategy.</p>
+      <p><strong>Priority:</strong> Get Voice of Victory down T2 EOT. The lifelink starts immediately and the 2/1 flying makes blocking their ground attackers irrelevant. Aang bouncing their key attacker buys a full turn. By T4, your 3+ lifelink fliers mean their damage math doesn't work anymore.</p>
+      <p><strong>Needle:</strong> Their High Noon (if they run it) also limits you to one spell per turn. Play around it by prioritizing flash creatures over sorcery-speed spells. Seam Rip counters Emberheart Challenger — their best threat that can noncombat pings you.</p>
+      <div class="sb-table">
+        <div class="sb-col"><div class="sb-col-label">In</div>
+          <div class="sb-item"><span><span class="c">Avatar's Wrath</span></span><span class="sb-qty">+2</span></div>
+          <div class="sb-item"><span><span class="c">Glen Elendra Guardian</span></span><span class="sb-qty">+2</span></div>
+        </div>
+        <div class="sb-col"><div class="sb-col-label">Out</div>
+          <div class="sb-item"><span><span class="c">Ajani, Outland Chaperone</span></span><span class="sb-qty">&minus;2</span></div>
+          <div class="sb-item"><span><span class="c">Elspeth, Storm Slayer</span></span><span class="sb-qty">&minus;1</span></div>
+          <div class="sb-item"><span><span class="c">No More Lies</span></span><span class="sb-qty">&minus;1</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="matchup-block">
+    <div class="matchup-header" onclick="toggle('mu-jeskai')">
+      <h3>JESKAI CONTROL</h3><span class="verdict verdict-even">Even</span>
+    </div>
+    <div id="mu-jeskai" class="matchup-body">
+      <p>Mirror-ish — both decks have counterspells and flash/instant interaction. Your threats are cheaper and you have more of them. They have Day of Judgment and Avatar's Wrath. The key is not overcommitting into their sweeper: deploy one threat at a time, keep one in hand for after the wipe.</p>
+      <p><strong>Priority:</strong> Never deploy all your creatures. Always hold one flash creature. After their Avatar's Wrath or Day of Judgment, immediately deploy from flash EOT. Aven Interrupter on their sweeper buys a critical turn. High Noon slows their big spells significantly — they can't Atraxa AND sweep the same turn.</p>
+      <p><strong>Needle:</strong> Drowner bouncing their Atraxa or Elspeth the moment it resolves is the key play. Seam Rip counters their sweeper — hold it specifically for that, not for tempo plays. Disdainful Stroke (SB) counters their 4+ mana spells efficiently.</p>
+      <div class="sb-table">
+        <div class="sb-col"><div class="sb-col-label">In</div>
+          <div class="sb-item"><span><span class="c">Disdainful Stroke</span></span><span class="sb-qty">+2</span></div>
+          <div class="sb-item"><span><span class="c">Wan Shi Tong, Librarian</span></span><span class="sb-qty">+1</span></div>
+        </div>
+        <div class="sb-col"><div class="sb-col-label">Out</div>
+          <div class="sb-item"><span><span class="c">Avatar's Wrath</span></span><span class="sb-qty">&minus;2</span></div>
+          <div class="sb-item"><span><span class="c">Get Lost</span></span><span class="sb-qty">&minus;1</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="matchup-block">
+    <div class="matchup-header" onclick="toggle('mu-excruciator')">
+      <h3>DIMIR EXCRUCIATOR</h3><span class="verdict verdict-hard">Unfavorable</span>
+    </div>
+    <div id="mu-excruciator" class="matchup-body">
+      <p>Dimir Excruciator counters your Voice of Victory and your blink triggers simultaneously — their Floodpits Drowner bounces your permanents before they stick. The key insight: your Aven Interrupter is flash, so cast it in their main phase when they tap for Excruciator. Voice of Victory protected by High Noon (preventing their sorcery-speed interaction) is your best game plan. Their Harbinger of the Seas is a 4/4 flash creature that makes your nonbasics enter tapped — deploy your basics first.</p>
+      <div class="sb-table">
+        <div class="sb-col"><div class="sb-col-label">In</div><div class="sb-item"><span><span class="c">High Noon</span></span><span class="sb-qty">+2</span></div><div class="sb-item"><span><span class="c">Clarion Conqueror</span></span><span class="sb-qty">+1</span></div></div>
+        <div class="sb-col"><div class="sb-col-label">Out</div><div class="sb-item"><span><span class="c">Aven Interrupter</span></span><span class="sb-qty">-2</span></div><div class="sb-item"><span><span class="c">Get Lost</span></span><span class="sb-qty">-1</span></div></div>
+      </div>
+      <p class="sb-note">High Noon makes all sorcery-speed plays illegal — they can't cast Harbinger or Excruciator at sorcery speed. Clarion Conqueror generates board presence they can't answer one-for-one. Cut Aven Interrupter (too expensive) and Get Lost (they have no enchantments to exile efficiently).</p>
+    </div>
+  </div>
+
+  <div class="matchup-block">
+    <div class="matchup-header" onclick="toggle('mu-simic')">
+      <h3>SIMIC RHYTHM</h3><span class="verdict verdict-good">Favorable</span>
+    </div>
+    <div id="mu-simic" class="matchup-body">
+      <p>Simic Rhythm has no interaction for your spells — your Voice of Victory curves out without disruption. Stormplain Detainment (tapping their attackers) buys time while you deploy fliers. Their Earthbender Ascension generates +1/+1 counters on all their creatures — Seam Rip counters it at instant speed when they tap for it. Your evasive threats (Voice, Ajani) outrace their ground-based token strategy.</p>
+      <div class="sb-table">
+        <div class="sb-col"><div class="sb-col-label">In</div><div class="sb-item"><span><span class="c">Ajani, Outland Chaperone</span></span><span class="sb-qty">+2</span></div><div class="sb-item"><span><span class="c">Seam Rip</span></span><span class="sb-qty">+1</span></div></div>
+        <div class="sb-col"><div class="sb-col-label">Out</div><div class="sb-item"><span><span class="c">High Noon</span></span><span class="sb-qty">-2</span></div><div class="sb-item"><span><span class="c">Clarion Conqueror</span></span><span class="sb-qty">-1</span></div></div>
+      </div>
+      <p class="sb-note">Ajani generates creatures and buffs every turn — they have no flying removal. Seam Rip counters Earthbender Ascension (sorcery speed — High Noon alternative). Cut High Noon (they don't play sorceries that matter) and Clarion (your natural board presence is enough).</p>
+    </div>
+  </div>
+
+  <div class="matchup-block">
+    <div class="matchup-header" onclick="toggle('mu-spellementals')">
+      <h3>IZZET SPELLEMENTALS</h3><span class="verdict verdict-even">Even</span>
+    </div>
+    <div id="mu-spellementals" class="matchup-body">
+      <p>Izzet Spellementals counters your key pieces with Spell Snare (MV 2 targets your Stormplain Detainment and Sheltered by Ghosts). Their Hearth Elemental is a must-answer threat — your Get Lost exiles it at instant speed for {W}. Race them: your fliers (Voice of Victory, Ajani tokens) go over their ground elementals. Their Sunderflock sweeper is sorcery speed — Seam Rip counters it at instant speed.</p>
+      <div class="sb-table">
+        <div class="sb-col"><div class="sb-col-label">In</div><div class="sb-item"><span><span class="c">Seam Rip</span></span><span class="sb-qty">+2</span></div><div class="sb-item"><span><span class="c">Tishana's Tidebinder</span></span><span class="sb-qty">+1</span></div></div>
+        <div class="sb-col"><div class="sb-col-label">Out</div><div class="sb-item"><span><span class="c">Stormplain Detainment</span></span><span class="sb-qty">-2</span></div><div class="sb-item"><span><span class="c">Sheltered by Ghosts</span></span><span class="sb-qty">-1</span></div></div>
+      </div>
+      <p class="sb-note">Seam Rip counters Sunderflock and their key spells at instant speed. Tidebinder enters and removes the activated ability from Hearth Elemental (preventing triggered free spells). Cut Stormplain (Spell Snare catches it) and one Sheltered (less relevant when they have no creature pump).</p>
+    </div>
+  </div>
+
+  <div class="matchup-block">
+    <div class="matchup-header" onclick="toggle('mu-monored')">
+      <h3>MONO-RED AGGRO</h3><span class="verdict verdict-dog">Unfavorable</span>
+    </div>
+    <div id="mu-monored" class="matchup-body">
+      <p>Mono-Red kills before you stabilize. Their turn-1 one-drops backed by Goblin Bombardment sacrifice triggers bypass your blockers. Stormplain Detainment (tap all their attackers until EOT) is your single best stabilizer — deploy it on their attack step when their board is fully tapped. Voice of Victory (3/3 flier) races their burn clock but needs to connect early. Sheltered by Ghosts protecting Voice from their damage spells is the defensive plan.</p>
+      <div class="sb-table">
+        <div class="sb-col"><div class="sb-col-label">In</div><div class="sb-item"><span><span class="c">Ajani, Outland Chaperone</span></span><span class="sb-qty">+2</span></div><div class="sb-item"><span><span class="c">Clarion Conqueror</span></span><span class="sb-qty">+1</span></div></div>
+        <div class="sb-col"><div class="sb-col-label">Out</div><div class="sb-item"><span><span class="c">High Noon</span></span><span class="sb-qty">-2</span></div><div class="sb-item"><span><span class="c">Seam Rip</span></span><span class="sb-qty">-1</span></div></div>
+      </div>
+      <p class="sb-note">Ajani's lifelink token generation and life buffer outpaces their burn math. Clarion Conqueror creates an army when any creature connects. High Noon is dead — they play all instant-speed burn. Seam Rip is weak — no key sorceries to counter.</p>
+    </div>
+  </div>
+
+
+</div>
+</div>
+
+<!-- CH08 SIDEBOARD -->
+<div id="sideboard" class="section">
+<div class="content">
+  <span class="section-label">Chapter 08</span>
+  <h1>SIDEBOARD<br>GUIDE</h1>
+  <div class="mantra">"Tishana's Tidebinder permanently locks the trigger it targets — use it on Monument, Icetill, or Ouroboroid."</div>
+  <div class="card-grid card-grid-2">
+    <div class="card"><div class="card-label">P1</div><div class="card-title">Tishana's Tidebinder ×2</div><div class="card-body">Flash 2/3 that counters a triggered or activated ability and locks it permanently. Use on: Monument to Endurance (locks their recursion), Icetill Explorer (nullifies their combo), Ouroboroid ETB (no 4/4 tokens), Gene Pollinator (no token doubling). This is the most versatile answer in the SB — boards in vs any deck with a key trigger.</div></div>
+    <div class="card"><div class="card-label">P2</div><div class="card-title">Avatar's Wrath ×2</div><div class="card-body">Sweeper for token and go-wide strategies. Kills all creatures with toughness 2 or less. Main deck already has 2 — SB adds 2 more for aggro matchups. Use on: Boros Aggro (kills their whole board), Izzet Prowess tokens (Stormchaser Talent Otters are 1/1s), Mono-Green dorks (Llanowar Elves 1/1, Badgermole Cub 2/2 survives).</div></div>
+    <div class="card"><div class="card-label">P3</div><div class="card-title">Glen Elendra Guardian ×2</div><div class="card-body">Flash flying creature that counters spells. The specific counter text matters — check oracle. Boards in vs any spell-based combo strategy and vs aggro decks where you need an extra counter. Provides another flash threat that also interacts.</div></div>
+    <div class="card"><div class="card-label">P4</div><div class="card-title">Disdainful Stroke ×2</div><div class="card-body">Counter target spell with MV 4 or more for {1}{U}. Efficient hard counter for expensive threats: Monument to Endurance, Sapling Nursery (4 mana), Ouroboroid (4 mana), Brightglass Gearhulk (6 mana), Day of Judgment (4 mana). Boards in vs control, Mono-Green, and any deck whose key plays cost 4+.</div></div>
+    <div class="card"><div class="card-label">P5 â€” vs Aggro</div><div class="card-title">Settle the Wreckage Ã—2</div><div class="card-body">{2}{W}{W} Instant: Exile all attacking creatures. They may search for basic lands. Board in vs Mono-Red (exile their entire attacking board at instant speed â€” the basic land search is a minor upside for them but completely negates their combat). Exile means no GY recursion and no triggers. Hold up the mana, let them attack, then fire at instant speed.</div></div>
+    <div class="card"><div class="card-label">P6 â€” vs Mirrors</div><div class="card-title">Narset, Parter of Veils Ã—1</div><div class="card-body">{1}{U}{U} Planeswalker. âˆ’2: Look at top 4, take a noncreature nonland card. Opponents can't draw extra cards. Board in vs any cantrip-heavy opponent â€” Izzet Spellementals (each opponent cantrip draws nothing extra), Dimir Midrange (Kaito's draw trigger does nothing under Narset). The static ability completely shuts off their card advantage engines.</div></div>
+    <div class="card"><div class="card-label">P7 â€” vs Big Creatures</div><div class="card-title">Dovin's Veto Ã—2</div><div class="card-body">{W}{U} Instant: Counter target noncreature spell. This spell can't be countered. Uncounterable hard counter. Board in vs Jeskai Control (can't be Seam Ripped, counters their key spells) and Dimir Excruciator (counters Harbinger of the Seas before it ETBs, and it can't be countered back). The uncounterable clause is what makes this worth the two-color cost.</div></div>
+    <div class="card"><div class="card-label">P8 â€” vs Flash Mirrors</div><div class="card-title">Linvala, Keeper of Silence Ã—1</div><div class="card-body">{2}{W}{W} 3/4 Flying. Opponents' creatures with activated abilities can't use those abilities. Board in vs Izzet Spellementals (shuts off Hearth Elemental's free-spell activation), Mono-Green Landfall (shuts off Icetill Explorer's search ability). The flying body also pressures their life total.</div></div>
+    <div class="sb-guide-row">
+      <div class="sb-guide-name"><span class="c">Stormplain Detainment</span></div>
+      <div class="sb-guide-body"><strong>2 copies.</strong> {2}{W} instant: tap all creatures target opponent controls until EOT. Your mass tap at their declare-attackers step — they commit to attacking, you flash this in, their entire attack is cancelled. Best vs wide boards (Mono-Green tokens, Simic Rhythm). Mistake: casting it on your own turn — the tempo value comes from cancelling their declared attack.</div>
+    </div>
+
+  </div>
+
+  <button class="print-btn" onclick="printSB()">&#9113; Print SB Reference</button>
+  <div id="sb-print-zone">
+    <h2 style="font-family:'DM Mono',monospace;font-size:14px;margin-bottom:12px;">AZORIUS FLASH — SB Reference · 3.03% Standard April 2026</h2>
+    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:12px;font-size:11px;font-family:'DM Mono',monospace;">
+      <div><strong>vs IZZET PROWESS (Even)</strong><br>IN: +2 Avatar's Wrath, +2 Glen Elendra | OUT: −2 No More Lies, −2 Ajani</div>
+      <div><strong>vs IZZET LESSONS (Fav)</strong><br>IN: +2 Tidebinder, +2 Disdainful | OUT: −2 Avatar's Wrath, −1 Get Lost, −1 Elspeth</div>
+      <div><strong>vs MONO-GREEN (Unfav)</strong><br>IN: +2 Tidebinder, +1 Raid, +2 Disdainful | OUT: −2 Snare, −2 High Noon, −1 Elspeth</div>
+      <div><strong>vs DIMIR MIDRANGE (Even)</strong><br>IN: +1 Wan Shi Tong, +2 Glen Elendra | OUT: −2 Avatar's Wrath, −1 Get Lost</div>
+      <div><strong>vs BOROS AGGRO (Fav)</strong><br>IN: +2 Avatar's Wrath, +2 Glen Elendra | OUT: −2 Ajani, −1 Elspeth, −1 No More Lies</div>
+      <div><strong>vs JESKAI CONTROL (Even)</strong><br>IN: +2 Disdainful, +1 Wan Shi Tong | OUT: −2 Avatar's Wrath, −1 Get Lost</div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- CH09 HEURISTICS -->
+<div id="heuristics" class="section">
+<div class="content">
+  <span class="section-label">Chapter 09</span>
+  <h1>HEURISTICS</h1>
+  <div class="mantra">"If you tapped out on your own main phase, you played wrong."</div>
+  <ol class="heuristic-list">
+    <li><span class="h-num">01</span><span class="h-text"><strong>Deploy flash creatures on their end step, not your main phase.</strong> Every flash creature deployed at their EOT means you untap with full mana AND a new threat. Deploying on your main phase wastes the flash — you get the threat but forfeit your interaction window for their turn.</span></li>
+    <li><span class="h-num">02</span><span class="h-text"><strong>Aven Interrupter does NOT counter the exiled spell — it delays it.</strong> When Aven dies, the exiled spell goes to the graveyard. This is still good — they don't get the spell back. But don't bounce your own Aven with Drowner while it's holding an important spell. The spell will go to GY permanently.</span></li>
+    <li><span class="h-num">03</span><span class="h-text"><strong>High Noon also limits YOU to one spell per turn.</strong> Plan around it. Cast High Noon on T2 main phase and pass. Your next "spell" is a flash creature on their EOT. Don't cast High Noon and a creature on the same turn — that wastes the lock symmetry.</span></li>
+    <li><span class="h-num">04</span><span class="h-text"><strong>Floodpits Drowner's no-gift mode bounces YOUR permanents — use it to reset Aven Interrupter.</strong> After Aven has held a spell long enough (the spell went to GY when they killed the original threat), bounce Aven with Drowner's no-gift, replay Aven to exile their next threat. This is a recurring interaction loop.</span></li>
+    <li><span class="h-num">05</span><span class="h-text"><strong>Enduring Curiosity on Voice of Victory = 1 lifelink damage + 1 card per attack.</strong> Prioritize getting Curiosity onto your most evasive creature first. In most matchups, Voice of Victory (flying) or Floodpits Drowner (flying) is the best target — they're the least likely to be blocked.</span></li>
+    <li><span class="h-num">06</span><span class="h-text"><strong>Tishana's Tidebinder permanently locks the triggered/activated ability.</strong> Not just this turn — permanently, until Tidebinder leaves. Using Tidebinder on Monument to Endurance's upkeep trigger means Monument never triggers again while Tidebinder is in play. Protect Tidebinder in these matchups.</span></li>
+    <li><span class="h-num">07</span><span class="h-text"><strong>Never overcommit to the board vs control.</strong> Deploy one threat at a time. Always hold a flash creature in hand. After their sweeper, immediately deploy from hand at their EOT. Two threats in play at once vs control is the maximum safe number.</span></li>
+    <li><span class="h-num">08</span><span class="h-text"><strong>Aang transforms when he attacks with 3+ other creatures.</strong> Aang and La, Ocean's Fury is a 5/5 that pumps your whole team +1/+1 when attacking. Don't transform Aang until you have enough creatures for the pump to be lethal or near-lethal. Premature transformation wastes the timing.</span></li>
+    <li><span class="h-num">09</span><span class="h-text"><strong>Spell Snare hits 2-mana spells — know the relevant targets.</strong> Deep-Cavern Bat ({1}{B}), Bitter Triumph ({1}{B}{B}... actually 3 CMC), Requiting Hex ({1}{B}), Kaito, Bane of Nightmares ({3}{U}{B}... 5 CMC). Double-check CMC before attempting Snare — don't waste it on spells with MV other than 2.</span></li>
+    <li><span class="h-num">10</span><span class="h-text"><strong>Ajani, Outland Chaperone's +1 makes a Cat Warrior token.</strong> The token is a 2/1 with lifelink and vigilance. This token gains you life on attack AND can block. In slow games, stacking Cat tokens makes Avatar's Wrath correct for the opponent — but you still lose them. In aggressive matchups, use Ajani's +1 every turn to build the life cushion.</span></li>
+  </ol>
+</div>
+</div>
+
+<!-- CH10 TUNING -->
+<div id="tuning" class="section">
+<div class="content">
+  <span class="section-label">Chapter 10</span>
+  <h1>TUNING<br>NOTES</h1>
+  <div class="mantra">"4 High Noon + 4 Drowner + 4 Aven Interrupter + 4 Voice is your lock core. Everything else adjusts."</div>
+  <div class="card-grid card-grid-3">
+    <div class="card"><div class="card-label">Lock — Never Cut</div><div class="card-title">4 High Noon</div><div class="card-body">The asymmetric lock that defines the deck. Without High Noon, you're just an aggressive tempo deck — still good, but you lose the core identity. Four copies ensures you see it by turn 2-3 consistently.</div></div>
+    <div class="card"><div class="card-label">Lock — Never Cut</div><div class="card-title">4 Drowner + 4 Aven + 4 Voice</div><div class="card-body">Your 12 flash threats. Each does something on ETB that justifies the tempo play. Below 4 of any of these and the deck's consistency drops dramatically. These are your core — every other slot adjusts around them.</div></div>
+    <div class="card"><div class="card-label">Flex 2–4</div><div class="card-title">Aang, Swift Savior</div><div class="card-body">Run 3-4. Four copies gives maximum consistency but you sometimes brick on multiples in hand when you need interaction. Three copies is the floor — Aang's airbend resetting Interrupters is too good to reduce further.</div></div>
+    <div class="card"><div class="card-label">Flex 0–2</div><div class="card-title">Ajani, Outland Chaperone</div><div class="card-body">Two copies main is standard. In aggro-heavy metas, Ajani's lifegain and Cat tokens are valuable. In control-heavy metas, cut both — sorcery-speed planeswalkers are slow. Replace with Disdainful Stroke main or Wan Shi Tong main.</div></div>
+    <div class="card"><div class="card-label">Flex 1–3</div><div class="card-title">Seam Rip</div><div class="card-body">Three copies main is the consensus. A fourth copy is correct in control-heavy metas where the counter is always relevant. Trim to two in aggro-heavy metas where the 2-mana counter is less impactful than Avatar's Wrath.</div></div>
+    <div class="card"><div class="card-label">Register When</div><div class="card-title">High Noon Is Underplayed</div><div class="card-body">If opponents aren't specifically preparing for High Noon (running enchantment removal or Requisition Raid main), register Azorius Flash. The lock is devastating vs unprepared opponents. If you see a lot of Wistfulness (destroys High Noon) or Reclamation Sage in the expected field, reconsider.</div></div>
+  </div>
+</div>
+</div>
+
+<!-- CH11 PREP -->
+<div id="prep" class="section">
+<div class="content">
+  <span class="section-label">Chapter 11</span>
+  <h1>EVENT<br>PREP</h1>
+  <div class="mantra">"Every turn you pass at full mana is a turn you're threatening everything in your hand."</div>
+  <div class="card-grid card-grid-2">
+    <div class="card"><div class="card-label">Know Cold</div><div class="card-title">High Noon Spell Counting</div><div class="card-body">You AND your opponent are limited to one spell per turn under High Noon. Your flash creatures are spells. Casting High Noon + a creature = 2 spells (illegal under High Noon once it resolves). Cast High Noon on T2. Pass. Next spell is on their EOT (different turn). Plan every turn under High Noon carefully.</div></div>
+    <div class="card"><div class="card-label">Know Cold</div><div class="card-title">Aven Interrupter ETB Timing</div><div class="card-body">Aven Interrupter exiles "target spell" — it can only target a spell on the STACK. You can't cast Aven at sorcery speed and hope a spell was there. Flash Aven in response to their spell: they cast X, you cast Aven in response (on the stack above X), Aven ETB exiles X. Aven resolves, they get X back when Aven dies (to GY).</div></div>
+    <div class="card"><div class="card-label">Verify</div><div class="card-title">SB Configuration for Meta</div><div class="card-body">Heavy aggro (Boros/Prowess): +4 Avatar's Wrath total, +2 Glen Elendra. Heavy control (Jeskai): +2 Disdainful, trim Avatar's Wrath. Heavy Mono-Green: +2 Tidebinder (locks Icetill) mandatory. Confirm your 15 matches the expected room.</div></div>
+    <div class="card"><div class="card-label">Round 1 Tell</div><div class="card-title">T1 Land Read</div><div class="card-body">Steam Vents/Spirebluff = Izzet (hold Seam Rip for High Noon to resolve). Fabled Passage/Forest = Mono-Green (board in Tidebinder + Disdainful immediately). Watery Grave = Dimir (board in Glen Elendra + Wan Shi Tong). Sacred Foundry = Boros (board in full Avatar's Wrath package).</div></div>
+  </div>
+
+  <button class="print-btn" onclick="printSB()">&#9113; Print Event Reference</button>
+  
+  <h2>20-Minute Crash Course</h2>
+  <p>If you're sitting down in 20 minutes, run through this in order:</p>
+  <ul class="checklist" id="crash-checklist">
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Mulligan rule:</strong> Keep any 7 with 2 lands + Voice of Victory OR 2 lands + 2 flash creatures. Never keep a hand without a flash creature.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Flash rule:</strong> All your creatures are flash â€” deploy at end of their turn or in response to their key play. Never deploy at sorcery speed unless you need the attack immediately.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Voice rule:</strong> Voice of Victory (3/3 flying) attacks and can't be targeted by spells or abilities while attacking. Deploy it T3 and attack immediately â€” they have one turn to answer it.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>High Noon rule:</strong> Your High Noon makes all sorcery-speed plays illegal for both players. Deploy it when they're about to cast a key sorcery â€” timing is everything.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Board rule:</strong> Seam Rip counters sorceries; Tishana's Tidebinder counters activated/triggered abilities. Know which counter answers their specific threat before sideboarding.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Kill rule:</strong> Aven Interrupter flashed in counters their key spell and becomes a 5/4 attacker. Cast it when they tap out for their most important play.</span></li>
+  </ul>
+<div id="sb-print-zone">
+    <h2 style="font-family:'DM Mono',monospace;font-size:14px;margin-bottom:12px;">AZORIUS FLASH — Event Reference · 3.03% Standard April 2026</h2>
+    <p style="font-size:11px;font-family:'DM Mono',monospace;margin-bottom:12px;">ALWAYS: Pass T1-T2 at full mana | Deploy on THEIR end step | High Noon limits YOU to 1 spell/turn too | Aven holds spell until it dies (spell → GY)</p>
+    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:12px;font-size:11px;font-family:'DM Mono',monospace;">
+      <div><strong>vs IZZET PROWESS (Even)</strong><br>IN: +2 Avatar's Wrath, +2 Glen Elendra | OUT: −2 No More Lies, −2 Ajani</div>
+      <div><strong>vs IZZET LESSONS (Fav)</strong><br>IN: +2 Tidebinder, +2 Disdainful | OUT: −2 Avatar's Wrath, −1 Get Lost, −1 Elspeth</div>
+      <div><strong>vs MONO-GREEN (Unfav)</strong><br>IN: +2 Tidebinder, +1 Raid, +2 Disdainful | OUT: −2 Snare, −2 High Noon, −1 Elspeth</div>
+      <div><strong>vs DIMIR MIDRANGE (Even)</strong><br>IN: +1 Wan Shi Tong, +2 Glen Elendra | OUT: −2 Avatar's Wrath, −1 Get Lost</div>
+      <div><strong>vs BOROS AGGRO (Fav)</strong><br>IN: +2 Avatar's Wrath, +2 Glen Elendra | OUT: −2 Ajani, −1 Elspeth, −1 No More Lies</div>
+      <div><strong>vs JESKAI CONTROL (Even)</strong><br>IN: +2 Disdainful, +1 Wan Shi Tong | OUT: −2 Avatar's Wrath, −1 Get Lost</div>
+    </div>
+  </div>
+
+  <h2>Testing Framework</h2>
+  <div class="card-grid">
+      <div class="card"><div class="card-label">Block 01</div><div class="card-title">Flash Window Drills</div><div class="card-body">Practice deploying at their end step vs your main phase. When do you flash in Glen Elendra Guardian vs when do you commit before they can interact? The answer: always flash unless you need haste.</div></div>
+      <div class="card"><div class="card-label">Block 02</div><div class="card-title">Voice of Victory Attack Lines</div><div class="card-body">Practice the Voice lock: they can't target it while attacking. Identify what removes Voice (board wipes, sacrifice effects) vs what doesn't (targeted removal). Know their outs before you commit.</div></div>
+      <div class="card"><div class="card-label">Block 03</div><div class="card-title">High Noon Timing</div><div class="card-body">Practice identifying when to cast High Noon. Most effective when they're about to cast their one important sorcery. Too early and they play around it; too late and the damage is done.</div></div>
+      <div class="card"><div class="card-label">Block 04</div><div class="card-title">G2 Counter Wars</div><div class="card-body">Practice holding Glen Elendra Guardian + Tishana's Tidebinder + Seam Rip. Know which counter goes on which spell. Wrong counter assignment loses the game.</div></div>
+  </div>
+
+  <h2>Matchday Routine</h2>
+  <ol class="heuristic-list">
+      <li><div class="heuristic-num">01</div><div class="heuristic-body">Confirm all your flash creatures are recognized. Remind yourself: all your creatures deploy at instant speed.</div></li>
+      <li><div class="heuristic-num">02</div><div class="heuristic-body">High Noon timing: identify their key sorcery before casting it. The optimal window is when they're tapped and committed.</div></li>
+      <li><div class="heuristic-num">03</div><div class="heuristic-body">Voice of Victory attack window: once it's attacking, they need a board wipe or sacrifice effect. Count their outs.</div></li>
+      <li><div class="heuristic-num">04</div><div class="heuristic-body">Between rounds: check your SB assignments. Seam Rip vs sorceries, Disdainful Stroke vs MV 4+. Don't mix them.</div></li>
+      <li><div class="heuristic-num">05</div><div class="heuristic-body">Their T1 land tells you their deck: Breeding Pool = Simic, Godless Shrine = white/black, Sacred Foundry = Jeskai/Boros.</div></li>
+  </ol>
+</div>
+
+  <div id="sb-print-zone">
+    <h2>Printable Sideboard Reference</h2>
+    <p>All matchup ins/outs on one sheet. Print and take to the event.</p>
+    <button class="print-btn" onclick="printSB()">&#x2259; Print SB Reference</button>
+    <div class="print-grid">
+    <div class="print-mu">
+      <div class="print-mu-name">IZZET PROWESS <span class="diff-even">Even</span></div>
+      <div class="print-cols">
+        <div><div class="print-col-label">In</div>
+          <div class="print-row"><span>Avatar's Wrath</span><span class="print-qty">+2</span></div>
+          <div class="print-row"><span>Glen Elendra Guardian</span><span class="print-qty">+2</span></div>
+        </div>
+        <div><div class="print-col-label">Out</div>
+          <div class="print-row"><span>No More Lies</span><span class="print-qty">-2</span></div>
+          <div class="print-row"><span>Ajani, Outland Chaperone</span><span class="print-qty">-2</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="print-mu">
+      <div class="print-mu-name">IZZET LESSONS <span class="diff-good">Favorable</span></div>
+      <div class="print-cols">
+        <div><div class="print-col-label">In</div>
+          <div class="print-row"><span>Tishana's Tidebinder</span><span class="print-qty">+2</span></div>
+          <div class="print-row"><span>Disdainful Stroke</span><span class="print-qty">+2</span></div>
+        </div>
+        <div><div class="print-col-label">Out</div>
+          <div class="print-row"><span>Avatar's Wrath</span><span class="print-qty">-2</span></div>
+          <div class="print-row"><span>Get Lost</span><span class="print-qty">-1</span></div>
+          <div class="print-row"><span>Elspeth, Storm Slayer</span><span class="print-qty">-1</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="print-mu">
+      <div class="print-mu-name">MONO-GREEN LANDFALL <span class="diff-hard">Unfavorable</span></div>
+      <div class="print-cols">
+        <div><div class="print-col-label">In</div>
+          <div class="print-row"><span>Tishana's Tidebinder</span><span class="print-qty">+2</span></div>
+          <div class="print-row"><span>Requisition Raid</span><span class="print-qty">+1</span></div>
+          <div class="print-row"><span>Disdainful Stroke</span><span class="print-qty">+2</span></div>
+        </div>
+        <div><div class="print-col-label">Out</div>
+          <div class="print-row"><span>Spell Snare</span><span class="print-qty">-2</span></div>
+          <div class="print-row"><span>High Noon</span><span class="print-qty">-2</span></div>
+          <div class="print-row"><span>Elspeth, Storm Slayer</span><span class="print-qty">-1</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="print-mu">
+      <div class="print-mu-name">DIMIR MIDRANGE <span class="diff-even">Even</span></div>
+      <div class="print-cols">
+        <div><div class="print-col-label">In</div>
+          <div class="print-row"><span>Wan Shi Tong, Librarian</span><span class="print-qty">+1</span></div>
+          <div class="print-row"><span>Glen Elendra Guardian</span><span class="print-qty">+2</span></div>
+        </div>
+        <div><div class="print-col-label">Out</div>
+          <div class="print-row"><span>Avatar's Wrath</span><span class="print-qty">-2</span></div>
+          <div class="print-row"><span>Get Lost</span><span class="print-qty">-1</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="print-mu">
+      <div class="print-mu-name">BOROS AGGRO <span class="diff-good">Favorable</span></div>
+      <div class="print-cols">
+        <div><div class="print-col-label">In</div>
+          <div class="print-row"><span>Avatar's Wrath</span><span class="print-qty">+2</span></div>
+          <div class="print-row"><span>Glen Elendra Guardian</span><span class="print-qty">+2</span></div>
+        </div>
+        <div><div class="print-col-label">Out</div>
+          <div class="print-row"><span>Ajani, Outland Chaperone</span><span class="print-qty">-2</span></div>
+          <div class="print-row"><span>Elspeth, Storm Slayer</span><span class="print-qty">-1</span></div>
+          <div class="print-row"><span>No More Lies</span><span class="print-qty">-1</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="print-mu">
+      <div class="print-mu-name">JESKAI CONTROL <span class="diff-even">Even</span></div>
+      <div class="print-cols">
+        <div><div class="print-col-label">In</div>
+          <div class="print-row"><span>Disdainful Stroke</span><span class="print-qty">+2</span></div>
+          <div class="print-row"><span>Wan Shi Tong, Librarian</span><span class="print-qty">+1</span></div>
+        </div>
+        <div><div class="print-col-label">Out</div>
+          <div class="print-row"><span>Avatar's Wrath</span><span class="print-qty">-2</span></div>
+          <div class="print-row"><span>Get Lost</span><span class="print-qty">-1</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="print-mu">
+      <div class="print-mu-name">DIMIR EXCRUCIATOR <span class="diff-hard">Unfavorable</span></div>
+      <div class="print-cols">
+        <div><div class="print-col-label">In</div>
+          <div class="print-row"><span>High Noon</span><span class="print-qty">+2</span></div>
+          <div class="print-row"><span>Clarion Conqueror</span><span class="print-qty">+1</span></div>
+        </div>
+        <div><div class="print-col-label">Out</div>
+          <div class="print-row"><span>Aven Interrupter</span><span class="print-qty">-2</span></div>
+          <div class="print-row"><span>Get Lost</span><span class="print-qty">-1</span></div>
+        </div>
+      </div>
+      <div class="print-needle">High Noon makes all sorcery-speed plays illegal — they can't cast Harbinger or Excruciator</div>
+    </div>
+    <div class="print-mu">
+      <div class="print-mu-name">SIMIC RHYTHM <span class="diff-good">Favorable</span></div>
+      <div class="print-cols">
+        <div><div class="print-col-label">In</div>
+          <div class="print-row"><span>Ajani, Outland Chaperone</span><span class="print-qty">+2</span></div>
+          <div class="print-row"><span>Seam Rip</span><span class="print-qty">+1</span></div>
+        </div>
+        <div><div class="print-col-label">Out</div>
+          <div class="print-row"><span>High Noon</span><span class="print-qty">-2</span></div>
+          <div class="print-row"><span>Clarion Conqueror</span><span class="print-qty">-1</span></div>
+        </div>
+      </div>
+      <div class="print-needle">Ajani generates creatures and buffs every turn — they have no flying removal. Seam Rip cou</div>
+    </div>
+    <div class="print-mu">
+      <div class="print-mu-name">IZZET SPELLEMENTALS <span class="diff-even">Even</span></div>
+      <div class="print-cols">
+        <div><div class="print-col-label">In</div>
+          <div class="print-row"><span>Seam Rip</span><span class="print-qty">+2</span></div>
+          <div class="print-row"><span>Tishana's Tidebinder</span><span class="print-qty">+1</span></div>
+        </div>
+        <div><div class="print-col-label">Out</div>
+          <div class="print-row"><span>Stormplain Detainment</span><span class="print-qty">-2</span></div>
+          <div class="print-row"><span>Sheltered by Ghosts</span><span class="print-qty">-1</span></div>
+        </div>
+      </div>
+      <div class="print-needle">Seam Rip counters Sunderflock and their key spells at instant speed. Tidebinder enters and</div>
+    </div>
+    <div class="print-mu">
+      <div class="print-mu-name">MONO-RED AGGRO <span class="diff-hard">Unfavorable</span></div>
+      <div class="print-cols">
+        <div><div class="print-col-label">In</div>
+          <div class="print-row"><span>Ajani, Outland Chaperone</span><span class="print-qty">+2</span></div>
+          <div class="print-row"><span>Clarion Conqueror</span><span class="print-qty">+1</span></div>
+        </div>
+        <div><div class="print-col-label">Out</div>
+          <div class="print-row"><span>High Noon</span><span class="print-qty">-2</span></div>
+          <div class="print-row"><span>Seam Rip</span><span class="print-qty">-1</span></div>
+        </div>
+      </div>
+      <div class="print-needle">Ajani's lifelink token generation and life buffer outpaces their burn math. Clarion Conque</div>
+    </div>
+    </div>
+  </div>
+
+</div>
+
+<footer style="border-top:1px solid var(--rule);padding:24px 80px;display:flex;justify-content:space-between;font-family:'DM Mono',monospace;font-size:10px;color:var(--mid);">
+  <span>Team Resolve &middot; Standard 2026</span>
+  <span>Palette: Sky Blue &mdash; April 2026</span>
+  <span>Reference: Faust PT 9-1 &middot; Pinheiro SA RC Top4</span>
+</footer>
+
+<script>
+function show(id){
+  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.nav-link').forEach(b=>b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  event.target.classList.add('active');
+  window.scrollTo(0,0);
+}
+function toggle(id){document.getElementById(id).classList.toggle('open');}
+function printSB(){window.print();}
+</script>
+<script>
+(function(){
+  const TIP=document.createElement('div');TIP.className='card-tip';
+  TIP.innerHTML='<div class="card-tip-loading">loading...</div>';
+  document.body.appendChild(TIP);
+  const CACHE={};let hideTimer=null;
+  function pos(e){const PAD=24,W=220,H=310;let x=e.clientX+PAD,y=e.clientY-H/2;
+    if(x+W>window.innerWidth)x=e.clientX-W-PAD;if(y<8)y=8;
+    if(y+H>window.innerHeight)y=window.innerHeight-H-8;
+    TIP.style.left=x+'px';TIP.style.top=y+'px';}
+  async function showTip(name,e){
+    clearTimeout(hideTimer);TIP.innerHTML='<div class="card-tip-loading">loading...</div>';
+    TIP.classList.add('visible');pos(e);
+    if(CACHE[name]){TIP.innerHTML=`<img src="${CACHE[name]}" alt="${name}">`;return;}
+    try{const r=await fetch(`https://api.scryfall.com/cards/named?fuzzy=${encodeURIComponent(name)}`);
+      if(!r.ok){TIP.classList.remove('visible');return;}
+      const d=await r.json();const img=d.image_uris?.normal||d.card_faces?.[0]?.image_uris?.normal;
+      if(!img){TIP.classList.remove('visible');return;}
+      CACHE[name]=img;TIP.innerHTML=`<img src="${img}" alt="${name}">`;}
+    catch(err){TIP.classList.remove('visible');}
+  }
+  function hide(){hideTimer=setTimeout(()=>TIP.classList.remove('visible'),80);}
+  document.addEventListener('mouseover',e=>{const el=e.target.closest('span.c');if(!el)return;showTip(el.textContent.trim(),e);});
+  document.addEventListener('mousemove',e=>{if(TIP.classList.contains('visible'))pos(e);});
+  document.addEventListener('mouseout',e=>{if(e.target.closest('span.c'))hide();});
+})();
+</script>
+</body>
+</html>

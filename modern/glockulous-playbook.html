@@ -1,0 +1,1600 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" href="../images/tab32.png" type="image/png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Glockulous — Team Resolve Playbook</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+  html { overflow-y: scroll; }
+  /* ═══ FINTECH/CRYPTO PALETTE — UI UX Pro Max Row 14 ═══ */
+  /* pri=#F59E0B acc=#8B5CF6 bg=#0F172A fg=#F8FAFC */
+  :root { --ink:#0e0e0e; --paper:#f2ede6; --paper-dark:#e8e1d6; --rule:#c8bfb0; --primary:#22173d; --accent:#8B5CF6; --accent-light:rgba(139,92,246,0.15); --danger:#8f1a1a; --danger-light:rgba(143,26,26,0.12); --gold:#8B5CF6; --gold-light:rgba(139,92,246,0.15); --mid:#5a5248; --card:#ffffff; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:var(--paper); color:var(--ink); font-family:'Crimson Pro',Georgia,serif; font-size:17px; line-height:1.6; }
+  .header-band { background:var(--primary); border-bottom:3px solid var(--accent); padding:48px 80px 40px;position:relative;overflow:hidden;}
+  .header-band { color: #f1f5f9; }
+  .header-band,.header-band *{color:#f1f5f9;}
+  .header-band p, .header-band span, .header-band div { color: #f1f5f9; }
+
+  .header-inner { max-width:1080px; margin:0 auto; display:flex; justify-content:space-between; align-items:flex-end; gap:40px; }
+  .header-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:rgba(15,23,42,0.35); margin-bottom:8px; }
+  .header-title{font-family:'DM Mono',monospace;font-size:clamp(32px,4vw,52px);font-weight:500;letter-spacing:0.06em;line-height:1.05;text-transform:uppercase;}
+  .header-title span{color:var(--accent);}
+  .header-tagline { font-family:'Crimson Pro',serif; font-style:italic; font-size:15px; color:rgba(15,23,42,0.4); margin-top:8px; }
+  .header-right { display:flex; flex-direction:column; gap:8px; text-align:right; padding-bottom:4px; }
+  .header-stat { display:flex; gap:12px; align-items:center; justify-content:flex-end; }
+  .hs-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; color:rgba(15,23,42,0.3); }
+  .hs-val { font-family:'DM Mono',monospace; font-size:12px; color:var(--paper); }
+  nav { position:sticky; top:0; z-index:100; background:var(--primary); border-bottom:2px solid var(--accent); padding:0 80px; display:flex; align-items:center; gap:0; overflow-x:auto; scrollbar-width:none; }
+  nav::-webkit-scrollbar { display:none; }
+  .nav-brand { font-family:'Bebas Neue',sans-serif; font-size:18px; color:#5a5adf; letter-spacing:0.05em; margin-right:40px; white-space:nowrap; padding:16px 0;  color:var(--accent); }
+  .nav-link { font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:rgba(248,250,252,0.55); padding:20px 16px; cursor:pointer; white-space:nowrap; border-bottom:2px solid transparent; transition:all 0.2s; background:none; border-top:none; border-left:none; border-right:none; }
+  .nav-link:hover, .nav-link.active { color:rgba(248,250,252,1); border-bottom-color:#1a1a8f; }
+  .page { max-width:1100px; margin:0 auto; padding:80px 80px; }
+  .section { display:none; animation:fadeIn 0.3s ease; }
+  .section.active { display:block; }
+  @keyframes fadeIn { from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:translateY(0);} }
+  .section-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.25em; text-transform:uppercase; color:var(--mid); margin-bottom:8px; }
+  h1 { font-family:'Bebas Neue',sans-serif; font-size:64px; line-height:0.9; letter-spacing:0.01em; color:var(--ink); margin-bottom:40px; }
+  h2 { font-family:'Bebas Neue',sans-serif; font-size:36px; letter-spacing:0.02em; color:var(--ink); margin:56px 0 20px; padding-bottom:8px; border-bottom:2px solid var(--ink); }
+  h3 { font-family:'DM Mono',monospace; font-size:12px; letter-spacing:0.15em; text-transform:uppercase; color:var(--accent); margin:32px 0 12px; }
+  p { margin-bottom:16px; color:var(--ink); font-weight:300; }
+  strong { font-weight:600; }
+  em { font-style:italic; color:var(--mid); }
+  .mantra { border-left:4px solid var(--accent); padding:24px 32px; background:var(--accent-light); margin:32px 0; font-style:italic; font-size:20px; color:var(--accent); line-height:1.5; }
+  .mantra cite { display:block; font-family:'DM Mono',monospace; font-size:11px; font-style:normal; letter-spacing:0.1em; text-transform:uppercase; color:var(--mid); margin-top:12px; }
+  .card-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); gap:1px; background:var(--rule); border:1px solid var(--rule); margin:24px 0; }
+  .card-grid-2 { grid-template-columns:repeat(2,1fr) !important; }
+  .card { background:var(--paper); padding:24px; }
+  .card:hover { background:var(--paper-dark); }
+  .card-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--mid); margin-bottom:8px; }
+  .card-title { font-family:'Bebas Neue',sans-serif; font-size:22px; letter-spacing:0.03em; color:var(--ink); margin-bottom:8px; }
+  .card-body { font-size:15px; font-weight:300; color:var(--mid); line-height:1.5; }
+  .decklist { display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--rule); border:1px solid var(--rule); margin:24px 0; }
+  .dl-section { background:var(--paper); padding:24px; }
+  .dl-section-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--mid); margin-bottom:16px; }
+  .dl-group { margin-bottom:20px; }
+  .dl-group-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; color:var(--ink); background:var(--paper-dark); padding:4px 8px; margin-bottom:8px; display:inline-block; }
+  .dl-card-row { display:flex; justify-content:space-between; padding:4px 0; border-bottom:1px solid rgba(200,191,176,0.3); font-size:15px; font-weight:300; }
+  .dl-qty { font-family:'DM Mono',monospace; font-size:12px; color:var(--accent); }
+  .role-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--rule); border:1px solid var(--rule); margin:24px 0; }
+  .role-card { background:var(--paper); padding:24px; }
+  .role-card:hover { background:var(--paper-dark); }
+  .role-name { font-family:'Bebas Neue',sans-serif; font-size:26px; letter-spacing:0.03em; margin-bottom:8px; }
+  .role-name-reanimate { color:#1a1a8f; }
+  .role-name-midrange { color:#8f6a1a; }
+  .role-name-combo { color:#8f1a1a; }
+  .role-desc { font-size:15px; font-weight:300; color:var(--mid); line-height:1.5; margin-bottom:12px; }
+  .role-matchups { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.08em; color:rgba(14,14,14,0.4); }
+  .matchup-table { width:100%; border-collapse:collapse; margin:24px 0; font-size:15px;  table-layout:fixed; }
+  .matchup-table thead tr { background:var(--ink); color:var(--paper); }
+  .matchup-table th { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; padding:12px 16px; text-align:left; font-weight:400; }
+  .matchup-table td { padding:12px 16px; border-bottom:1px solid var(--rule); font-weight:300; vertical-align:top; }
+  .matchup-table tr:hover td { background:var(--paper-dark); cursor:pointer; }
+  .matchup-table tr.selected td { background:var(--accent-light); }
+  .diff-hard { font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.08em; text-transform:uppercase; color:var(--danger); background:var(--danger-light); padding:2px 8px; border-radius:2px; }
+  .diff-medium { font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.08em; text-transform:uppercase; color:var(--gold); background:var(--gold-light); padding:2px 8px; border-radius:2px; }
+  .diff-even { font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.08em; text-transform:uppercase; color:#1a3a8f; background:#d6e0f7; padding:2px 8px; border-radius:2px; }
+  .diff-good { font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.08em; text-transform:uppercase; color:#1a6b1a; background:#d4f0d4; padding:2px 8px; border-radius:2px; border:1px solid #a0d4a0; }
+  .matchup-detail { display:none; border:1px solid var(--rule); background:var(--paper-dark); padding:40px; margin:0 0 24px; animation:fadeIn 0.2s ease; border-top:3px solid var(--accent); }
+  .matchup-detail.open { display:block; }
+  .sb-table { display:flex; gap:1px; background:var(--rule); border:1px solid var(--rule); margin:16px 0; }
+  .sb-col { background:var(--paper); padding:20px; }
+  .sb-col-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--mid); margin-bottom:12px; }
+  .sb-item { font-size:14px; font-weight:400; padding:4px 0; border-bottom:1px solid var(--rule); display:flex; justify-content:space-between; align-items:center; }
+  .sb-item:last-child { border-bottom:none; }
+  .sb-qty { font-family:'DM Mono',monospace; font-size:12px; color:var(--mid); }
+  .ifthen-list { list-style:none; margin:12px 0; }
+  .ifthen-list li { padding:10px 0; border-bottom:1px solid var(--rule); display:flex; flex-direction:row; gap:12px; align-items:flex-start; font-size:15px; font-weight:300; line-height:1.6; }
+  .ifthen-list li span { flex:1; min-width:0; }
+  .ifthen-list li:last-child { border-bottom:none; }
+  .if-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.1em; text-transform:uppercase; color:var(--danger); background:var(--danger-light); padding:2px 6px; white-space:nowrap; margin-top:2px; flex-shrink:0; }
+  .sb-card-guide { border:1px solid var(--rule); margin:24px 0; }
+  .sb-guide-row { display:flex; gap:0; border-bottom:1px solid var(--rule); }
+  .sb-guide-row:last-child { border-bottom:none; }
+  .sb-guide-name { font-family:'DM Mono',monospace; font-size:12px; font-weight:500; letter-spacing:0.05em; color:var(--ink); background:var(--paper-dark); padding:14px 20px; min-width:220px; width:220px; flex-shrink:0; border-right:1px solid var(--rule); display:flex; align-items:center; }
+  .sb-guide-body { padding:14px 20px; font-size:15px; font-weight:300; line-height:1.5; flex:1; }
+  .sb-deep { border:1px solid var(--rule); margin:12px 0; }
+  .sb-deep-header { display:flex; justify-content:space-between; align-items:center; padding:16px 24px; background:var(--paper-dark); cursor:pointer; user-select:none; transition:background 0.15s; }
+  .sb-deep-header:hover { background:var(--rule); }
+  .sb-deep-title { display:flex; align-items:center; gap:12px; flex-wrap:wrap; }
+  .sb-deep-name { font-family:'Bebas Neue',sans-serif; font-size:20px; letter-spacing:0.03em; color:var(--ink); }
+  .sb-deep-meta { font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.08em; text-transform:uppercase; color:var(--mid); }
+  .sb-deep-toggle { font-family:'DM Mono',monospace; font-size:18px; color:var(--mid); transition:transform 0.2s; line-height:1; }
+  .sb-deep.open .sb-deep-toggle { transform:rotate(45deg); }
+  .sb-deep-body { display:none; padding:32px; border-top:1px solid var(--rule); animation:fadeIn 0.2s ease; }
+  .sb-deep.open .sb-deep-body { display:block; }
+  .sb-deep-mantra { font-family:'Crimson Pro',serif; font-style:italic; font-size:17px; color:var(--accent); border-left:3px solid var(--accent); padding:8px 16px; background:var(--accent-light); margin-bottom:24px; }
+  .sb-deep-grid { display:grid; grid-template-columns:1fr 1fr; gap:32px; }
+  .heuristic-list { list-style:none; counter-reset:h; }
+  .heuristic-list li { counter-increment:h; display:block; overflow:hidden; padding:14px 0; border-bottom:1px solid var(--rule); font-size:16px; font-weight:300; line-height:1.6; }
+  .heuristic-list li::before { content:counter(h,decimal-leading-zero); font-family:'DM Mono',monospace; font-size:20px; line-height:1.6; color:rgba(58,95,160,0.2); float:left; width:48px; margin-right:0; }
+  .print-btn { display:inline-flex; align-items:center; gap:8px; font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.12em; text-transform:uppercase; background:var(--ink); color:var(--paper); border:none; padding:10px 20px; cursor:pointer; margin-bottom:32px; transition:background 0.15s; }
+  .print-btn:hover { background:var(--accent); }
+  .print-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--rule); border:1px solid var(--rule); }
+  .print-mu { background:var(--paper); padding:16px; }
+  .print-mu-name { font-family:'Bebas Neue',sans-serif; font-size:16px; letter-spacing:0.03em; color:var(--ink); margin-bottom:4px; display:flex; align-items:center; gap:8px; }
+  .print-mu-role { font-family:'DM Mono',monospace; font-size:9px; letter-spacing:0.1em; text-transform:uppercase; color:var(--mid); margin-bottom:10px; }
+  .print-cols { display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+  .print-col-label { font-family:'DM Mono',monospace; font-size:9px; letter-spacing:0.15em; text-transform:uppercase; color:var(--mid); margin-bottom:4px; }
+  .print-row { font-size:12px; font-weight:300; display:flex; justify-content:space-between; padding:1px 0; border-bottom:1px solid rgba(200,191,176,0.4); line-height:1.5; }
+  .print-row:last-child { border-bottom:none; }
+  .print-qty { font-family:'DM Mono',monospace; font-size:11px; color:var(--mid); flex-shrink:0; margin-left:4px; }
+  .print-needle { font-family:'DM Mono',monospace; font-size:9px; letter-spacing:0.06em; color:var(--danger); margin-top:6px; text-transform:uppercase; }
+  .print-note { font-size:11px; font-style:italic; color:var(--mid); margin-top:6px; border-top:1px solid var(--rule); padding-top:4px; line-height:1.4; }
+  .engine-block { border:1px solid var(--rule); margin:32px 0; }
+  .engine-header { background:var(--ink); color:var(--paper); padding:16px 24px; display:flex; align-items:center; gap:16px; }
+  .engine-letter { font-family:'Bebas Neue',sans-serif; font-size:40px; line-height:1; color:#5a5adf; }
+  .engine-name { font-family:'Bebas Neue',sans-serif; font-size:24px; letter-spacing:0.03em; }
+  .engine-body { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--rule); }
+  .engine-step { background:var(--paper); padding:24px; }
+  .engine-step-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--mid); margin-bottom:8px; }
+  .engine-step-title { font-family:'Bebas Neue',sans-serif; font-size:20px; color:var(--ink); margin-bottom:8px; }
+  .engine-step-body { font-size:14px; font-weight:300; color:var(--mid); line-height:1.5; }
+  .tricks-list { list-style:none; margin:12px 0; }
+  .tricks-list li { padding:12px 0; border-bottom:1px solid var(--rule); font-size:15px; font-weight:300; line-height:1.6; display:flex; gap:12px; }
+  .tricks-list li:last-child { border-bottom:none; }
+  .trick-tag { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.1em; text-transform:uppercase; background:var(--paper-dark); border:1px solid var(--rule); padding:2px 6px; white-space:nowrap; margin-top:2px; flex-shrink:0; color:var(--mid); }
+  .tuning-grid { display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--rule); border:1px solid var(--rule); margin:24px 0; }
+  .tuning-cell { background:var(--paper); padding:24px; }
+  .tuning-cell:hover { background:var(--paper-dark); }
+  .tuning-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--mid); margin-bottom:8px; }
+  .tuning-condition { font-family:'Bebas Neue',sans-serif; font-size:20px; color:var(--ink); margin-bottom:12px; }
+  .tuning-up { font-size:14px; font-weight:300; margin-bottom:6px; }
+  .tuning-up::before { content:"▲ "; color:#1a6b1a; font-size:12px; }
+  .tuning-down { font-size:14px; font-weight:300; margin-bottom:6px; }
+  .tuning-down::before { content:"▼ "; color:var(--danger); font-size:12px; }
+  footer { background:var(--ink); color:rgba(15,23,42,0.3); padding:40px 80px; margin-top:80px; display:flex; justify-content:space-between; align-items:center; }
+  footer span { font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.1em; text-transform:uppercase; }
+  @media (max-width:768px) { .header-inner,nav,.page,footer { padding-left:24px; padding-right:24px; } .header-right { display:none; } .decklist,.role-grid,.sb-table,.sb-deep-grid { grid-template-columns:1fr; } nav { padding:0 24px; } }
+  @media print {
+    * { visibility:hidden !important;   /* SB-only print mode */
+  body.printing-sb .header-band,
+  body.printing-sb nav,
+  body.printing-sb footer { display:none !important; }
+  body.printing-sb .section:not(#prep) { display:none !important; }
+  body.printing-sb #prep > *:not(#sb-print-zone) { display:none !important; }
+  body.printing-sb #sb-print-zone { display:block !important; }
+  body.printing-sb #sb-print-zone h2,
+  body.printing-sb #sb-print-zone p,
+  body.printing-sb .print-btn { display:none !important; }
+  body.printing-sb .print-grid { display:grid !important; grid-template-columns:repeat(3,1fr) !important; }
+  body.printing-sb .print-cols { display:grid !important; }
+  body.printing-sb .print-row { display:flex !important; }
+  body.printing-sb .print-mu { display:block !important; }
+  body.printing-sb .print-mu > * { display:block !important; }
+  body.printing-sb .print-qty { font-family:monospace; }
+  @page { size: portrait; margin: 0.35in; }
+  body.printing-sb { zoom: 0.62; }
+  body.printing-sb #sb-print-zone { page-break-after: avoid; }
+}
+    .print-grid, .print-grid * { visibility:visible !important; }
+    .print-grid {
+      position:fixed !important; top:0 !important; left:0 !important;
+      width:100vw !important; height:auto !important;
+      background:#c8bfb0 !important; border:none !important;
+      display:grid !important; grid-template-columns:repeat(3,1fr) !important;
+      gap:1px !important;
+    }
+    .print-mu { background:#f2ede6 !important; padding:14px !important; }
+  }
+
+  .checklist { list-style:none; padding:0; margin:24px 0; }
+  .checklist li { display:flex; align-items:flex-start; gap:16px; padding:12px 0; border-bottom:1px solid var(--rule); font-weight:300; font-size:15px; }
+  .check-box { width:20px; height:20px; border:2px solid var(--accent); flex-shrink:0; cursor:pointer; margin-top:2px; transition:background 0.15s; }
+  .check-box.checked { background:var(--accent); }
+
+  /* ── CARD IMAGE TOOLTIP ─────────────────────────────────── */
+.card-tip {
+  position:fixed; z-index:9999; pointer-events:none;
+  width:220px; border-radius:8px; overflow:hidden;
+  box-shadow:0 8px 32px rgba(0,0,0,0.6);
+  opacity:0; transition:opacity 0.15s ease;
+  background:#1a1a2e;
+}
+.card-tip.visible { opacity:1; }
+.card-tip img { width:220px; height:auto; display:block; }
+.card-tip-loading {
+  width:220px; height:308px; display:flex;
+  align-items:center; justify-content:center;
+  color:#94a3b8; font-size:12px; font-family:monospace;
+  background:#1e293b;
+}
+span.c {
+  cursor:help;
+  border-bottom:1px dashed var(--accent,#CA8A04);
+}
+span.c:hover { border-bottom-style:solid; }
+
+  /* ── EDGE CASES ──────────────────────────────────────────── */
+  .edge-case{background:var(--card,#fff);border:1px solid var(--rule,#c8bfb0);border-left:3px solid var(--accent);padding:16px 20px;margin:16px 0;}
+  .edge-case-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:8px;font-weight:500;}
+  .edge-case-body{font-size:14px;font-weight:300;color:var(--ink,#0e0e0e);line-height:1.65;}
+  .edge-case-body strong{font-weight:600;}
+</style>
+</head>
+<body>
+
+<nav>
+  <span class="nav-brand">GLOCKULOUS</span>
+  <a class="nav-link" href="../deck-guides.html" style="text-decoration:none;">&#8592; Guides</a>
+  <button class="nav-link active" onclick="show('identity')">Overview</button>
+  <button class="nav-link" onclick="show('decklist')">Decklist</button>
+  <button class="nav-link" onclick="show('gameplan')">Game Flow</button>
+  <button class="nav-link" onclick="show('engines')">Engines</button>
+  <button class="nav-link" onclick="show('lines')">Lines</button><button class="nav-link" onclick="show('roles')">Roles</button>
+  <button class="nav-link" onclick="show('matchups')">Matchups</button>
+  <button class="nav-link" onclick="show('sideboard')">Sideboard</button>
+  <button class="nav-link" onclick="show('heuristics')">Heuristics</button>
+  <button class="nav-link" onclick="show('tuning')">Tuning</button><button class="nav-link" onclick="show('prep')">Prep</button>
+</nav>
+<div class="header-band">
+  <div class="header-inner">
+    <div class="header-left">
+      <div class="header-label">Team Resolve · Modern · April 2026</div>
+      <div class="header-title">Glock<span>ulous</span></div>
+      <div class="header-tagline">"Discard the Archon. Return the Archon. They lose."</div>
+    </div>
+    <div class="header-right">
+      <div class="header-stat"><span class="hs-label">Identity</span><span class="hs-val">Graveyard Midrange</span></div>
+      <div class="header-stat"><span class="hs-label">Complexity</span><span class="hs-val">★★★★☆</span></div>
+      <div class="header-stat"><span class="hs-label">Captain</span><span class="hs-val">Zuxas</span></div>
+      <div class="header-stat"><span class="hs-label">Colors</span><span class="hs-val">Blue · Black · Red</span></div>
+    </div>
+  </div>
+</div>
+<div class="page">
+
+<!-- IDENTITY -->
+<div id="identity" class="section active">
+  <div class="section-label">Chapter 01</div>
+  <h1>Identity &amp;<br>Philosophy</h1>
+
+  <div class="mantra">
+    "Discard the Archon. Return the Archon. They lose."
+    <cite>— Core Mantra</cite>
+  </div>
+
+  <p>Glockulous is a <strong>graveyard midrange</strong> deck built around one axis: get <span class="c">Archon of Cruelty</span> into the graveyard as fast as possible, then return it repeatedly for 2 mana. The Archon ETB + attack trigger is a 6-point life swing per occurrence — opponent sacrifices a creature or planeswalker, discards a card, loses 3 life; you draw a card and gain 3 life. Against most decks, two Archon triggers is a functional win.</p>
+
+  <p>What makes Glockulous better than pure Grixis Reanimator is its <strong>dual-axis structure</strong>. <span class="c">Psychic Frog</span> and <span class="c">Emperor of Bones</span> are legitimate standalone threats that win games independently of the Archon plan. <span class="c">Psychic Frog</span> draws on combat damage and grows as a discard outlet — but its role as a "setup piece" undersells it. A Frog that has discarded 4-5 cards is a 5/6+ flying creature that draws a card every time it connects. It is the correct primary win condition when the GY plan is disrupted: pivot to Frog immediately when you see <span class="c">Rest in Peace</span>, <span class="c">Surgical Extraction</span>, or repeated <span class="c">Counterspell</span>s on your <span class="c">Persist</span>. Protect Frog with <span class="c">Mystical Dispute</span> and <span class="c">Thoughtseize</span> the same way you would protect Archon. <span class="c">Emperor of Bones</span> reanimates any creature from any graveyard as a combat ability — not a spell, not counterable by <span class="c">Consign to Memory</span>. This resilience means graveyard hate alone doesn't shut you down — you play through it on the fair axis.</p>
+
+  <p>The third axis is <strong><span class="c">Harbinger of the Seas</span> as a land-hate piece</strong>. Against Boros Energy, Amulet Titan, and Jeskai Blink, a Harbinger entering the battlefield means all their nonbasic lands immediately become Islands. No red mana. No white mana. A midrange 2/2 that collapses three-color manabases is the cleanest form of disruption available at 3 mana.</p>
+
+  <h2>Core Engines</h2>
+  <div class="card-grid">
+    <div class="card">
+      <div class="card-label">The Target</div>
+      <div class="card-title"><span class="c">Archon of Cruelty</span></div>
+      <div class="card-body">{6}{B}{B} 6/6 flying. <strong>Not legendary</strong> — multiple can coexist. Triggers on <strong>enter OR attack</strong> each time: opponent sacrifices creature or planeswalker, discards a card, loses 3 life; you draw, gain 3. This is a 6-point life swing per trigger, not 7. A Persisted Archon fires the ETB on entry, then again on attack — two triggers from one return, 12 life swings total.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">The Return — 2 Mana</div>
+      <div class="card-title"><span class="c">Persist</span></div>
+      <div class="card-body">{1}{B} sorcery. Return target nonlegendary creature card from graveyard to battlefield with a -1/-1 counter. Archon enters as a 5/5 flier (6/6 base minus -1/-1). Still triggers the full ETB swing at 5/5. <span class="c">Persist</span> is a <strong>colored sorcery</strong> — <span class="c">Consign to Memory</span> cannot counter it. Only <span class="c">Counterspell</span>, <span class="c">Force of Negation</span>, and similar spell counters can answer it. This matters enormously when planning your protection.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">The Enabler</div>
+      <div class="card-title"><span class="c">Faithless Looting</span></div>
+      <div class="card-body">{R} sorcery: draw 2, discard 2. Flashback {2}{R}. Primary graveyard filler. The draw and discard are simultaneous in a sense — you draw 2 first, then discard 2. You cannot draw Archon then discard it in the same Looting. Ideal discard: Archon + <span class="c">Troll of Khazad-dûm</span>. Flashback {2}{R} later for additional filtering. One Looting on turn 1 can have Archon in the yard ready for <span class="c">Persist</span> on turn 3.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">The Midrange Threat</div>
+      <div class="card-title"><span class="c">Psychic Frog</span></div>
+      <div class="card-body">{U}{B} 1/2. Combat damage to player or planeswalker → draw a card. Discard a card: put a +1/+1 counter on it (activated ability). Exile 3 cards from GY: flying until EOT. The Frog simultaneously draws cards, discards Archon into the graveyard, and grows as a threat. A Frog that connects twice in a game represents both a 3/3+ attacker and two free Archon discards. Its flying ability requires 3 graveyard exiles — plan that resource carefully.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">The Combat Reanimator</div>
+      <div class="card-title"><span class="c">Emperor of Bones</span></div>
+      <div class="card-body">{1}{B} 2/2. At beginning of combat: exile up to one target card from any graveyard. {1}{B}: Adapt 2 (activated ability). When +1/+1 counters are placed on it, put the exiled creature onto the battlefield under your control with a finality counter and haste. Sacrifice it at beginning of next end step. The Adapt is an <strong>activated ability</strong> — <span class="c">Consign to Memory</span> cannot counter it. The creature enters with a <strong>finality counter</strong>: when it dies it is permanently exiled.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">The Hate Piece</div>
+      <div class="card-title"><span class="c">Harbinger of the Seas</span></div>
+      <div class="card-body">{1}{U}{U} 2/2 Merfolk Wizard. Nonbasic lands are Islands — continuous static effect, not a trigger. Doesn't destroy or return lands. It changes their subtype. When Harbinger enters, every nonbasic land in play immediately becomes an Island. <span class="c">Sanctifier en-Vec</span> on a board with Harbinger in play cannot generate W from converted nonbasics. Boros Energy loses access to red and white mana from their shocks and fetches. Amulet Titan's bounce lands become Islands.</div>
+    </div>
+  </div>
+
+  <h2>The Cycling Package — <span class="c">Troll of Khazad-dûm</span></h2>
+  <p><span class="c">Troll of Khazad-dûm</span> is {5}{B} 6/5 — can't be blocked except by 3 or more creatures. Its role in this deck is not as a castable card but as a two-function utility: in hand with no Looting, swampcycle it for {1} to find a black source (<span class="c">Watery Grave</span>, <span class="c">Blood Crypt</span>, basic Swamp). With Looting in hand, discard Troll and Archon together — don't swampcycle when Looting is available, since Looting is far superior. A Troll in the yard is a large threat that can be Persisted (nonlegendary, qualifies) as a 5/4 that can't be blocked except by 3+ creatures.</p>
+
+  <h2>Strengths &amp; Weaknesses</h2>
+  <div class="card-grid card-grid-2">
+    <div class="card">
+      <div class="card-label">Strengths</div>
+      <div class="card-title">What You Do Well</div>
+      <div class="card-body"><span class="c">Archon of Cruelty</span> is the single strongest per-trigger effect in Modern — one trigger stabilizes from losing positions.<br><br>Dual axis: graveyard hate doesn't shut you down because Frog + Emperor win on the fair game.<br><br><span class="c">Harbinger of the Seas</span> is the most efficient land hate piece in the format — 3 mana collapses three-color manabases.<br><br><span class="c">Thoughtseize</span> clears the path for <span class="c">Persist</span> or Emperor Adapt.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Weaknesses</div>
+      <div class="card-title">What Beats You</div>
+      <div class="card-body"><span class="c">Rest in Peace</span> and <span class="c">Leyline of the Void</span> shut off both <span class="c">Persist</span> and <span class="c">Emperor of Bones</span> entirely — you're forced onto the pure fair axis.<br><br>Finality counter means Emperor-reanimated Archon goes to exile on death — no second <span class="c">Persist</span>.<br><br>Fast aggro (Prowess) kills before Archon can stabilize.<br><br><span class="c">Galvanic Discharge</span> at 3 energy minimum kills <span class="c">Psychic Frog</span> (2/2) and <span class="c">Emperor of Bones</span> (2/2) cleanly.</div>
+    </div>
+  </div>
+</div>
+
+<!-- DECKLIST -->
+<div id="decklist" class="section">
+  <div class="section-label">Chapter 02</div>
+  <h1>The 75</h1>
+  <p style="font-style:italic;color:var(--mid);font-size:15px;margin-bottom:24px;">Reference shell — verify your exact 75 and update before each RC.</p>
+
+  <div class="decklist">
+    <div class="dl-section">
+      <div class="dl-section-label">Main Deck · 60 Cards</div>
+      <div class="dl-group">
+        <div class="dl-group-label">Creatures</div>
+        <div class="dl-card-row"><span><span class="c">Psychic Frog</span></span><span class="dl-qty">4</span></div>
+        <div class="dl-card-row"><span><span class="c">Emperor of Bones</span></span><span class="dl-qty">4</span></div>
+        <div class="dl-card-row"><span><span class="c">Harbinger of the Seas</span></span><span class="dl-qty">2</span></div>
+        <div class="dl-card-row"><span><span class="c">Troll of Khazad-dûm</span></span><span class="dl-qty">2</span></div>
+        <div class="dl-card-row"><span><span class="c">Archon of Cruelty</span></span><span class="dl-qty">4</span></div>
+      </div>
+      <div class="dl-group">
+        <div class="dl-group-label">Spells</div>
+        <div class="dl-card-row"><span><span class="c">Thoughtseize</span></span><span class="dl-qty">4</span></div>
+        <div class="dl-card-row"><span><span class="c">Fatal Push</span></span><span class="dl-qty">4</span></div>
+        <div class="dl-card-row"><span><span class="c">Thought Scour</span></span><span class="dl-qty">4</span></div>
+        <div class="dl-card-row"><span><span class="c">Faithless Looting</span></span><span class="dl-qty">4</span></div>
+        <div class="dl-card-row"><span><span class="c">Persist</span></span><span class="dl-qty">4</span></div>
+        <div class="dl-card-row"><span><span class="c">Unearth</span></span><span class="dl-qty">2</span></div>
+      </div>
+      <div class="dl-group">
+        <div class="dl-group-label">Lands</div>
+        <div class="dl-card-row"><span><span class="c">Polluted Delta</span></span><span class="dl-qty">4</span></div>
+        <div class="dl-card-row"><span><span class="c">Bloodstained Mire</span></span><span class="dl-qty">2</span></div>
+        <div class="dl-card-row"><span><span class="c">Scalding Tarn</span></span><span class="dl-qty">2</span></div>
+        <div class="dl-card-row"><span><span class="c">Watery Grave</span></span><span class="dl-qty">3</span></div>
+        <div class="dl-card-row"><span><span class="c">Blood Crypt</span></span><span class="dl-qty">2</span></div>
+        <div class="dl-card-row"><span><span class="c">Steam Vents</span></span><span class="dl-qty">1</span></div>
+        <div class="dl-card-row"><span><span class="c">Raucous Theater</span></span><span class="dl-qty">1</span></div>
+        <div class="dl-card-row"><span><span class="c">Undercity Sewers</span></span><span class="dl-qty">2</span></div>
+        <div class="dl-card-row"><span>Swamp</span><span class="dl-qty">2</span></div>
+        <div class="dl-card-row"><span>Island</span><span class="dl-qty">1</span></div>
+      </div>
+    </div>
+    <div class="dl-section">
+      <div class="dl-section-label">Sideboard · 15 Cards</div>
+      <div class="dl-group">
+        <div class="dl-group-label">Graveyard Hate</div>
+        <div class="dl-card-row"><span><span class="c">Nihil Spellbomb</span></span><span class="dl-qty">3</span></div>
+      </div>
+      <div class="dl-group">
+        <div class="dl-group-label">Stack Interaction</div>
+        <div class="dl-card-row"><span><span class="c">Mystical Dispute</span></span><span class="dl-qty">3</span></div>
+        <div class="dl-card-row"><span><span class="c">Spell Pierce</span></span><span class="dl-qty">2</span></div>
+      </div>
+      <div class="dl-group">
+        <div class="dl-group-label">Removal</div>
+        <div class="dl-card-row"><span>Drown in the Loch</span><span class="dl-qty">2</span></div>
+        <div class="dl-card-row"><span><span class="c">Surgical Extraction</span></span><span class="dl-qty">2</span></div>
+      </div>
+      <div class="dl-group">
+        <div class="dl-group-label">Hate Pieces</div>
+        <div class="dl-card-row"><span><span class="c">Harbinger of the Seas</span></span><span class="dl-qty">2</span></div>
+        <div class="dl-card-row"><span><span class="c">Blood Moon</span></span><span class="dl-qty">1</span></div>
+      </div>
+    </div>
+  </div>
+
+  <h2>Key Card Notes</h2>
+  <div class="card-grid">
+    <div class="card">
+      <div class="card-label">Critical Rules</div>
+      <div class="card-title"><span class="c">Archon of Cruelty</span></div>
+      <div class="card-body">Not legendary — multiple can be on the battlefield. Triggers on enter AND on attack — a Persisted Archon fires ETB on entry (5/5 with -1/-1 counter), then fires attack trigger when it attacks. Two triggers from one return = 12-point life swing in one turn. Each subsequent <span class="c">Persist</span> adds another -1/-1 counter (5/5 → 4/4 → 3/3 etc.).</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Finality Counter Rule</div>
+      <div class="card-title"><span class="c">Emperor of Bones</span></div>
+      <div class="card-body">The exile happens at the beginning of combat — exile any card from any graveyard, including opponents'. Then Adapt ({1}{B}: Adapt 2) is an activated ability, not a spell — <span class="c">Consign to Memory</span> cannot counter it. The creature enters with a finality counter: if it dies it is permanently exiled, not put in the graveyard. Cannot be Persisted again after Emperor reanimates it.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">The Cycling Trick</div>
+      <div class="card-title"><span class="c">Troll of Khazad-dûm</span></div>
+      <div class="card-body">Swampcycling {1}: discard this card from your hand, search for a Swamp card (any Swamp subtype — includes <span class="c">Watery Grave</span> and <span class="c">Blood Crypt</span>), put it in your hand. This is <em>not</em> drawing a card. With Looting in hand, always discard Troll via Looting instead — you keep the land and get to filter. Only swampcycle when you need a land and don't have Looting.</div>
+    </div>
+    <div class="card">
+      <div class="card-label"><span class="c">Unearth</span> Targets</div>
+      <div class="card-title"><span class="c">Unearth</span></div>
+      <div class="card-body">{B} sorcery: return target creature card with mana value 3 or less from GY to battlefield. Cycling {2}. Targets: <span class="c">Psychic Frog</span> (MV 2) ✓, <span class="c">Emperor of Bones</span> (MV 2) ✓, <span class="c">Harbinger of the Seas</span> (MV 3) ✓. Does NOT target Archon (MV 8), Troll (MV 6). <span class="c">Persist</span> is the card for Archon — <span class="c">Unearth</span> is for your 2-3 mana threats. The cycling {2} lets you pitch it for a fresh draw when the target isn't relevant.</div>
+    </div>
+  </div>
+</div>
+
+<!-- GAMEPLAN -->
+<div id="gameplan" class="section">
+  <div class="section-label">Chapter 03</div>
+  <h1>The Game Plan</h1>
+
+  <div class="mantra">
+    "Fill the yard on 1. Threaten on 2. <span class="c">Persist</span> on 3. They concede."
+    <cite>— Execution Principle</cite>
+  </div>
+
+  <h2>Turn-by-Turn Framework</h2>
+  <div class="card-grid">
+    <div class="card">
+      <div class="card-label">Turn 1</div>
+      <div class="card-title">Fill or Disrupt</div>
+      <div class="card-body">Option A: <span class="c">Faithless Looting</span> — draw 2, discard Archon + Troll. Archon is now in the yard with 1 mana spent. Option B: <span class="c">Thought Scour</span> target player — mill 2 (yourself), draw 1. If you mill Archon, even better. Option C: <span class="c">Thoughtseize</span> their removal spell or <span class="c">Solitude</span> to protect your turn 3. Option D: Swampcycle Troll if you need a black source. In order of priority: Looting > <span class="c">Thoughtseize</span> > <span class="c">Thought Scour</span> > Swampcycle.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Turn 2</div>
+      <div class="card-title">Deploy a Threat</div>
+      <div class="card-body"><span class="c">Psychic Frog</span> ({U}{B}) or <span class="c">Emperor of Bones</span> ({1}{B}). Emperor on turn 2 means on turn 3: exile Archon at beginning of combat, Adapt for {1}{B}, Archon enters with finality counter and haste, attacks immediately — two Archon triggers total on turn 3. <span class="c">Psychic Frog</span> turn 2 means turn 3 you attack, deal damage, draw a card, and then <span class="c">Persist</span> Archon — a full midrange turn plus combo payoff.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Turn 3</div>
+      <div class="card-title"><span class="c">Persist</span> or Emperor Trigger</div>
+      <div class="card-body">Ideal: cast <span class="c">Persist</span> ({1}{B}), Archon enters as a 5/5 flier, ETB fires. Opponent sacrifices a permanent, discards a card, loses 3. You draw and gain 3. At 17 life with one fewer permanent and one fewer card — the game is nearly won. Attack with Archon on turn 4 for the second trigger. Alternatively: <span class="c">Emperor of Bones</span> Adapt resolves, Archon enters with haste, attacks — both triggers on the same turn.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Turn 4+</div>
+      <div class="card-title">Close or Rebuild</div>
+      <div class="card-body">Attack with Archon (second trigger if Persisted on 3). If Archon was answered, <span class="c">Psychic Frog</span> continues drawing into the second copy. <span class="c">Faithless Looting</span> flashback ({2}{R}) refills. <span class="c">Unearth</span> returns <span class="c">Harbinger of the Seas</span> (MV 3) at instant speed if needed. Second <span class="c">Persist</span> or second Emperor reanimates again. You have 4 Archons, 4 Persists, 4 Emperors — the redundancy outlasts most hate.</div>
+    </div>
+  </div>
+
+  <h2>The <span class="c">Faithless Looting</span> Sequence in Detail</h2>
+  <p>Draw two, then discard two — this is the correct order. You cannot draw Archon and then discard it in the same Looting. You draw your two new cards, then make your discard decisions with full information. Optimal discard: <strong><span class="c">Archon of Cruelty</span> + <span class="c">Troll of Khazad-dûm</span></strong>. Archon goes in the yard ready for <span class="c">Persist</span>. Troll goes in the yard as a threat (<span class="c">Persist</span>-able for a 5/4 that can't be blocked by fewer than 3 creatures). You keep your actionable spells and lands. Flashback Looting later for {2}{R} to filter again — the double-dip is what makes Looting better than any other enabler.</p>
+  <p><strong>When not to discard Troll:</strong> If you have 2 lands and no other black source, swampcycle Troll for {1} to find a <span class="c">Watery Grave</span> or Swamp. You cannot cast <span class="c">Persist</span> without black mana — finding the black source is more important than the yard synergy in this edge case.</p>
+
+  <h2>The <span class="c">Emperor of Bones</span> Full Sequence</h2>
+  <p><strong>Turn 2:</strong> Cast <span class="c">Emperor of Bones</span> ({1}{B}). 2/2 enters.</p>
+  <p><strong>Turn 3 — Beginning of Combat Step:</strong> Emperor's triggered ability fires — exile up to one target card from a graveyard. Target <span class="c">Archon of Cruelty</span> in your yard.</p>
+  <p><strong>Turn 3 — Priority in Beginning of Combat:</strong> Activate Adapt ({1}{B}: Adapt 2). This is an activated ability — it goes on the stack. Opponent can respond, but <span class="c">Consign to Memory</span> cannot counter it (it's not a triggered ability or colorless spell). If Adapt resolves, two +1/+1 counters are placed on Emperor.</p>
+  <p><strong>Turn 3 — Trigger from Adapt:</strong> "Whenever +1/+1 counters are placed on <span class="c">Emperor of Bones</span>, put the exiled creature card onto the battlefield under your control with a finality counter and haste." Archon enters as a 6/6 flier with a finality counter and haste. ETB trigger fires immediately — opponent sacrifices, discards, loses 3. You draw, gain 3.</p>
+  <p><strong>Turn 3 — Declare Attackers:</strong> Archon attacks (it has haste). Attack trigger fires — a second sacrifice, discard, lose 3 / draw, gain 3 trigger. Two full Archon triggers on turn 3 from one <span class="c">Emperor of Bones</span>.</p>
+  <p><strong>Critical:</strong> The Archon reanimated via Emperor has a finality counter. If it dies in combat or to removal, it goes to exile permanently — <span class="c">Persist</span> cannot return it. Only attack into situations where Archon will not die unless the game is already won.</p>
+
+  <h2>Mulligan Philosophy</h2>
+  <p><strong>Snap keep:</strong> Any 7 with <span class="c">Faithless Looting</span> (or <span class="c">Thought Scour</span>) + a black source + <span class="c">Persist</span> or Emperor. This hand wins on turns 3-4 regardless of the other 4 cards.</p>
+  <p><strong>Snap mulligan:</strong> Any hand where Archon can't get to the graveyard by turn 2, or any hand with 0 return mechanisms and 0 ways to draw into them.</p>
+  <p><strong>The Frog keep:</strong> <span class="c">Psychic Frog</span> + <span class="c">Thoughtseize</span> + 2 lands + any spell is a legitimate keep. You play the fair midrange game: <span class="c">Thoughtseize</span> their answer on turn 1, Frog on turn 2, attack for cards. You'll draw into the combo line naturally.</p>
+  <p><strong>Troll in opening hand rule:</strong> With Looting → keep and discard via Looting. Without Looting and 2 lands → swampcycle for black source. Without Looting and only 1 land → keep and swampcycle on turn 1 to find a second land. A castable Troll (6 mana) is never the plan.</p>
+  <h2>Play vs Draw</h2>
+  <div class="card-grid card-grid-2">
+    <div class="card"><div class="card-label">On the Play</div><div class="card-title">T1 Faithless Looting Sets Everything</div><div class="card-body">On the play, T1 Faithless Looting mills 2 cards and discards 2 — filling your GY with Griselbrand and the fatties you want to reanimate while finding your reanimation spell. The sooner Griselbrand is in the GY, the sooner you can reanimate it. On the play: Looting > any other T1. Never spend T1 on a land-pass if Looting is in hand.</div></div>
+    <div class="card"><div class="card-label">On the Draw</div><div class="card-title">Grief First on Draw</div><div class="card-body">On the draw, opponents have had a T1. They may have deployed a threat or GY hate. Consider T1 Grief (evoke for {B}) to strip their Endurance, Relic, or key spell from hand before you try to reanimate T2. The extra card on draw makes Grief+reanimate lines more consistent. On draw vs blue decks: always consider Grief first to clear the counter before attempting reanimation.</div></div>
+  </div>
+  <h2>When Disrupted</h2>
+  <div class="card-grid card-grid-2">
+    <div class="card"><div class="card-label">GY Exiled</div><div class="card-title">Fair Mode — Grief + Drown</div><div class="card-body">Nihil Spellbomb or Endurance exiles your GY. Pivot: Grief (3/1 menace body), Drown in the Loch (counter or destroy at instant speed), and Unearth targets that aren’t in the GY yet (small creatures). Surveil aggressively to fill GY again for a second reanimation window. Don’t scoop to GY exile — the fair plan is real.</div></div>
+    <div class="card"><div class="card-label">Griselbrand Answered</div><div class="card-title">Second Target from Hand</div><div class="card-body">Griselbrand removed: look for your second reanimation target in hand or GY. Troll of Khazad-dûm is a backup large threat. Persist creatures (Kitchen Finks) generate ETB value. Grief is a 3/1 body. Chain reanimation attempts — you have multiple fatties and multiple reanimation spells. The second reanimation is almost always available.</div></div>
+  </div>
+</div>
+
+<!-- ROLES -->
+<div id="engines" class="section">
+  <div class="section-label">Chapter 04</div>
+  <h1>Core<br>Engines</h1>
+  <p>Three engines win games with Glockulous. Engine A is the primary plan. Engine B is the advanced line that turns Engine A into a permanent threat. Engine C is the backup plan when the GY plan is shut off.</p>
+
+  <div class="engine-block">
+    <div class="engine-header"><div class="engine-letter">A</div>
+      <div><div class="engine-name">Faithless Looting → Persist → Archon ETB</div>
+      <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(15,23,42,0.4);margin-top:4px;">The primary combo. Draw, pitch Archon, reanimate next turn. One trigger often wins.</div></div>
+    </div>
+    <div class="engine-body">
+      <div class="engine-step"><div class="engine-step-label">Setup</div><div class="engine-step-title">Archon in the Graveyard</div>
+      <div class="engine-step-body"><span class="c">Faithless Looting</span> draws two cards then discards two. Cast on turn 1 — discard <span class="c">Archon of Cruelty</span> (MV 8, impossible to hardcast) and one other card. Archon is now in the GY as a Persist target. <span class="c">Thought Scour</span> mills 2 cards — if Archon is in those 2, it goes directly to the GY without spending a card from hand. Both cards set up turn 2 Persist.</div></div>
+      <div class="engine-step"><div class="engine-step-label">Execution</div><div class="engine-step-title">Persist on Turn 2</div>
+      <div class="engine-step-body"><span class="c">Persist</span> (MV 2, black sorcery): return target nonlegendary creature card from your GY to the battlefield with a finality counter. Archon enters — ETB triggers: target opponent sacrifices a permanent or planeswalker, discards a card, loses 3 life. You draw a card and gain 3 life. This single trigger swings the game state by 6 life and removes their best card and permanent simultaneously. Archon is also an 8/8 flying lifelink attacking next turn.</div></div>
+      <div class="engine-step"><div class="engine-step-label">Result</div><div class="engine-step-title">One Trigger = Winning Position</div>
+      <div class="engine-step-body">A single Archon ETB from Persist puts you so far ahead that most decks cannot recover. You gained 3 life, drew a card, they lost 3 life, discarded their best card, and sacrificed a permanent — all for 2 mana. If Archon attacks next turn (8/8 flying lifelink, gains you 8 more life), the game is effectively over. The finality counter means if Archon dies it goes to exile — not back to the GY for a second Persist.</div></div>
+    </div>
+  </div>
+
+  <div class="engine-block">
+    <div class="engine-header"><div class="engine-letter">B</div>
+      <div><div class="engine-name">Emperor Adapt → Consign the Sacrifice Trigger → Permanent Archon</div>
+      <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(15,23,42,0.4);margin-top:4px;">The advanced line. Archon enters with haste, ETB fires, attacks — then Consign counters the sacrifice trigger in your end step. Archon stays permanently.</div></div>
+    </div>
+    <div class="engine-body">
+      <div class="engine-step"><div class="engine-step-label">Setup</div><div class="engine-step-title">Emperor + Archon in Exile</div>
+      <div class="engine-step-body"><span class="c">Emperor of Bones</span> has two relevant abilities: (1) At beginning of combat, exile up to one target card from any GY. (2) {1}{B}: Adapt 2 — put two +1/+1 counters on Emperor if it has none. Whenever counters are placed on Emperor, put the exiled creature card onto the battlefield with a finality counter — it gains haste and is sacrificed at beginning of next end step. The sacrifice clause is a delayed triggered ability that fires in your end step.</div></div>
+      <div class="engine-step"><div class="engine-step-label">Execution</div><div class="engine-step-title">Consign the End Step Sacrifice Trigger</div>
+      <div class="engine-step-body">Emperor exiles Archon at combat. You Adapt — counters placed, trigger fires, Archon enters with haste + finality counter. Archon ETB fires (they sacrifice, discard, lose 3 — you draw, gain 3). Archon attacks for 8 flying lifelink. In your end step, the delayed sacrifice trigger fires: "sacrifice Archon at the beginning of the next end step." This sacrifice trigger is a triggered ability. Fire <span class="c">Consign to Memory</span> at your own sacrifice trigger. It resolves. Archon is never sacrificed.</div></div>
+      <div class="engine-step"><div class="engine-step-label">Result</div><div class="engine-step-title">Permanent 8/8 Flying Lifelink for {1}{B}</div>
+      <div class="engine-step-body">Total cost: {1}{B} for Adapt plus {U} for Consign = 3 mana. Result: a permanent 8/8 flying lifelink with a finality counter (if it dies to removal later, it goes to exile — cannot be Persisted back against you). This is the primary reason Consign to Memory is in the main deck. You are not just protecting — you are creating an unstoppable threat for 3 mana total.</div></div>
+    </div>
+  </div>
+
+  <div class="engine-block">
+    <div class="engine-header"><div class="engine-letter">C</div>
+      <div><div class="engine-name">Psychic Frog Backup Finisher</div>
+      <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(15,23,42,0.4);margin-top:4px;">When the GY plan is shut off, Frog is not a consolation prize — it is a legitimate primary win condition. Recognize the signal and pivot immediately.</div></div>
+    </div>
+    <div class="engine-body">
+      <div class="engine-step"><div class="engine-step-label">Setup</div><div class="engine-step-title">Recognize When to Pivot</div>
+      <div class="engine-step-body">When you see <span class="c">Rest in Peace</span>, <span class="c">Leyline of the Void</span>, or <span class="c">Surgical Extraction</span> on all copies of Archon — stop trying to fight through graveyard hate with a graveyard deck. The pivot signal is immediate. Stop treating your hand as Archon fuel. Start treating every card in hand as Frog growth. Every discard goes toward growing Frog's power and enabling its flying ability.</div></div>
+      <div class="engine-step"><div class="engine-step-label">Execution</div><div class="engine-step-title">Discard to Grow, Exile to Fly</div>
+      <div class="engine-step-body"><span class="c">Psychic Frog</span>: {1}{B}, 2/2. Whenever it deals combat damage, draw a card. Discard a card: put a +1/+1 counter on it. Exile three cards from your GY: gains flying until end of turn. Discard your lands, redundant <span class="c">Thoughtseize</span> copies, excess removal — anything that grows Frog. Exile your own GY cards (now useless under RiP anyway) to enable flying. By turn 4-5, Frog is commonly a 5/5 or 6/6 flying creature.</div></div>
+      <div class="engine-step"><div class="engine-step-label">Result</div><div class="engine-step-title">Self-Sustaining Card Engine</div>
+      <div class="engine-step-body">A 6/6 flying Frog that connects for a card every attack is a better threat than most decks' primary win conditions. The drawn card is often discarded back to grow Frog further — the engine is self-sustaining. Protect Frog with <span class="c">Mystical Dispute</span> and <span class="c">Thoughtseize</span> exactly as you would protect Archon. Frog backed by disruption wins games that Archon cannot win once the GY is locked.</div></div>
+    </div>
+  </div>
+
+  <h2>Lines &amp; Tricks</h2>
+  <ul class="tricks-list">
+    <li><span class="trick-tag">Stack</span><span><strong>Consign to Memory — the two offensive lines:</strong> (1) Emperor sacrifice trigger in your end step: fire Consign at the "sacrifice Archon" delayed triggered ability to keep it permanently. (2) Future testing — Quantum Riddler Warp exile trigger: Warp creates a delayed triggered ability (exile at next end step). Consign can counter it, keeping the permanent. The Warp bait line (cast Persist with Riddler, Consign your own Warp copy trigger to force their counter) may enter the 75 once testing is complete.</span></li>
+    <li><span class="trick-tag">Stack</span><span><strong>Thoughtseize before Persist, always:</strong> If they're holding up UU and you cannot see their hand, assume <span class="c">Counterspell</span>. Thoughtseize the turn before Persist. If you can't Thoughtseize first, use <span class="c">Mystical Dispute</span> to fight through their counter on the chain. One Persist countered with no follow-up is close to a game loss.</span></li>
+    <li><span class="trick-tag">Sequence</span><span><strong>Faithless Looting draws THEN discards — full information discard:</strong> You draw two new cards before making your discard decision. You see your entire new hand before choosing what to pitch. This means you always have perfect information on the discard — never pitch a card you just drew unless it's worse than what you're keeping. Common mistake: treating Looting like a blind discard and pitching incorrectly.</span></li>
+    <li><span class="trick-tag">Avoid</span><span><strong>Don't exile GY cards for Frog flying when you still need those cards for Persist:</strong> Frog's flying cost is three GY cards — those might be the Archon, a Persist target, and your Emperor. Evaluate: is connecting with Frog this turn (drawing one card) worth permanently removing three key GY resources? Only grant flying when the combat result is more valuable than the three cards you're exiling.</span></li>
+  </ul>
+  <h2>Engine Priority Order</h2>
+  <div class="card-grid card-grid-3">
+    <div class="card"><div class="card-label">Priority 01</div><div class="card-title">GY Fill + Reanimate Griselbrand</div><div class="card-body">Faithless Looting + reanimation spell is the primary engine. Looting puts Griselbrand in GY on T1, reanimate on T2. Griselbrand enters with haste (no — 7/7 lifelink, no haste). Pay 7 life: draw 7. Find your protection (Grief strips their answer). This is the engine that wins in 1-2 turns — execute as fast as possible.</div></div>
+    <div class="card"><div class="card-label">Priority 02</div><div class="card-title">Griselbrand Draw Chain</div><div class="card-body">Griselbrand in play: pay 7, draw 7. Find Animate Dead, Living End, or another protection piece. Pay 7 again (14 life spent total). Find your next threat. Each activation draws 7 — at 21 starting life, you can activate 3 times for 21 cards. Stop when you have what you need. This engine converts a resolved Griselbrand into an instant-win with enough life.</div></div>
+    <div class="card"><div class="card-label">Priority 03</div><div class="card-title">Persist Loop (Backup)</div><div class="card-body">Kitchen Finks or other Persist creatures + a sacrifice outlet = recursive life gain and ETB triggers. Finks returns with -1/-1 counter, dies again, counter goes to +1/+1 via Melira (if in build) or just loops for 2 life per cycle. This is the fair backup when Griselbrand is exiled and the GY is empty — grind with Persist until a reanimation window opens.</div></div>
+  </div>
+  <h2>Speed Math</h2>
+  <div class="card-grid card-grid-3">
+    <div class="card"><div class="card-label">T2 Griselbrand</div><div class="card-title">The Dream</div><div class="card-body">T1: Faithless Looting — discard Griselbrand + any other fatty.<br>T2: Any reanimation spell targeting Griselbrand.<br>Griselbrand enters (7/7 lifelink). Pay 7 life, draw 7. Find Grief to strip their answer. Pay 7 again. Now at 7 life but with 14 extra cards drawn. Win condition in hand.<br><strong>This T2 line is real</strong> and must be answered or they lose.</div></div>
+    <div class="card"><div class="card-label">T3 Standard</div><div class="card-title">Grief First Then Reanimate</div><div class="card-body">T1: Looting or Grief (strip their Endurance/counter).<br>T2: Continue GY fill or second discard.<br>T3: Reanimate Griselbrand or fatty.<br>This is the default vs interactive decks. The extra turn spent on Grief protection converts the coin flip (will they Endurance?) into a near-certain resolution.</div></div>
+    <div class="card"><div class="card-label">When to Rush vs Wait</div><div class="card-title">Blue Mana Check</div><div class="card-body"><strong>Rush T2:</strong> No blue sources visible. Fair deck (Boros, Prowess). Race their clock.<br><br><strong>Wait for T3:</strong> They have open blue mana. T1 Grief strips Endurance or Force of Negation from hand, THEN reanimate T3 safely. The one-turn delay is worth the protection.</div></div>
+  </div>
+</div>
+
+<!-- CH05: LINES -->
+<div id="lines" class="section">
+  <div class="section-label">Lines &amp; Tactics</div>
+  <h1>Lines &amp;<br>Tactics</h1>
+  <div class="mantra">"Reanimation timing and Griselbrand’s activations win or lose games in narrow windows."</div>
+
+  <h2>Three Lines You Must Know Cold</h2>
+  <div class="card-grid card-grid-3">
+    <div class="card"><div class="card-label">Critical</div><div class="card-title">GY Exile in Response = Fizzle</div><div class="card-body">Reanimation spells target a creature card in a graveyard. If the GY is exiled in response — Endurance flash, Nihil Spellbomb, Relic of Progenitus — the target is illegal and the reanimation spell fizzles. Griselbrand does not enter. The spell is countered by rules (illegal target). This is why your Grief must strip Endurance before you attempt reanimation vs blue decks.</div></div>
+    <div class="card"><div class="card-label">Critical</div><div class="card-title">Griselbrand Draws 7 Can Be Repeated</div><div class="card-body">Griselbrand’s ability costs 7 life and has no mana cost. You can activate it multiple times per turn as long as you have 7+ life each time. At 21 life: activate 3 times = draw 21 cards. Use this to find your combo pieces, protection, or second reanimation target. After activation 1, you have 14 life — activate again. At 14: activate again, 7 life left. Optimal: stop at 1 activation if you already have what you need.</div></div>
+    <div class="card"><div class="card-label">Critical</div><div class="card-title">Persist/Undying Counters Cancel Each Other</div><div class="card-body">If a creature has both Persist (-1/-1 counter on return) and a +1/+1 counter already on it, the -1/-1 and +1/+1 cancel and the creature returns clean without either counter. Kitchen Finks with a +1/+1 counter on it that dies: Persist triggers, returns, the counters cancel = clean Finks. This enables infinite ETB loops with sacrifice outlets: sac Finks (+1/+1 counter), Persist returns it clean, sac again.</div></div>
+  </div>
+
+  <h2>Timing Windows</h2>
+  <div class="edge-case">
+    <div class="edge-label">When to Hold Mana vs Spend It</div>
+    <div class="edge-body">The core timing decision for this deck: every land drop and every spell cast is a commitment. Know before your upkeep which lines require open mana this turn and which don’t. Holding mana = passing priority; spending it = committing to a plan. Make this decision in your upkeep, not in response to their action.</div>
+  </div>
+  <div class="edge-case">
+    <div class="edge-label">When to Cast at Their End Step vs Your Main Phase</div>
+    <div class="edge-body">End-step casts maximize information: you’ve seen their full turn, they’re often tapped out. Main-phase casts maximize mana availability for follow-up. Know which of your key spells gain most from end-step timing and which need main-phase mana backup.</div>
+  </div>
+
+</div>
+
+
+<div id="roles" class="section">
+  <div class="section-label">Chapter 05</div>
+  <h1>Role Assignment</h1>
+
+  <p>Glockulous has three modes. The biggest mistake is staying in Reanimate mode when the game has shifted to requiring Midrange or Disrupt. Read the board state before committing every turn.</p>
+
+  <div class="role-grid">
+    <div class="role-card">
+      <div class="role-name role-name-reanimate">Reanimate</div>
+      <div class="role-desc">Default mode. Fill the yard on turn 1, return Archon on turn 3. Every decision evaluated by "does this get Archon into play faster?" <span class="c">Thoughtseize</span> clears the way. <span class="c">Faithless Looting</span> fills the yard.</div>
+      <div class="role-matchups">vs: Boros Energy (race) · Amulet Titan (race) · Any slow or midrange deck</div>
+    </div>
+    <div class="role-card">
+      <div class="role-name role-name-midrange">Fair Midrange</div>
+      <div class="role-desc">When graveyard hate is active or the Archon plan is disrupted. <span class="c">Psychic Frog</span> as a legitimate card advantage engine — it grows via Frog discard outlet and draws every combat. <span class="c">Harbinger of the Seas</span> shuts off mana. Emperor reanimates from their graveyard too.</div>
+      <div class="role-matchups">vs: Any deck sideboarding <span class="c">Rest in Peace</span> · Mirrors · Grindy control games</div>
+    </div>
+    <div class="role-card">
+      <div class="role-name role-name-combo">Disrupt + Kill</div>
+      <div class="role-desc">When they have specific answers to your plan. <span class="c">Thoughtseize</span> their counter before <span class="c">Persist</span>. <span class="c">Mystical Dispute</span> protects <span class="c">Persist</span> at instant speed. <span class="c">Spell Pierce</span> counters their removal turn 2 before Emperor Adapts.</div>
+      <div class="role-matchups">vs: Jeskai Blink · Azorius Control · Any counterspell deck</div>
+    </div>
+  </div>
+
+  <h2>Role Mistakes to Avoid</h2>
+  <ol class="heuristic-list">
+    <li><strong>Swampcycling Troll when you have <span class="c">Faithless Looting</span>.</strong> Looting is categorically better than swampcycling. Looting puts Troll in the yard (where it's a <span class="c">Persist</span> target), draws two cards, and discards your second unwanted card. Swampcycling only puts a land in your hand. If you have Looting, always use it to pitch Troll — never swampcycle first.</li>
+    <li><strong>Persisting Archon into open blue mana.</strong> If they're holding up UU with no information, you're walking into <span class="c">Counterspell</span>. Cast <span class="c">Thoughtseize</span> the turn before <span class="c">Persist</span>. If you didn't clear their hand, wait or use <span class="c">Mystical Dispute</span> to fight through. One <span class="c">Persist</span> countered with no follow-up is close to a loss.</li>
+    <li><strong>Attacking with Emperor-reanimated Archon recklessly.</strong> That Archon has a finality counter. If it dies in combat or to removal, it goes to exile permanently. Only attack into clear boards or situations where death is impossible. The ETB trigger already fired — the attack trigger is a bonus, not a requirement.</li>
+    <li><strong>Exiling three graveyard cards for Frog flying carelessly.</strong> Those three cards might be the Archon, a <span class="c">Persist</span> target, and an Emperor target you need later. Only grant Frog flying when the combat result (connecting for a card) is more valuable than those three graveyard resources.</li>
+    <li><strong><span class="c">Psychic Frog</span> is not just a setup piece — it is a legitimate primary win condition.</strong> A fully powered Frog is a 5/5, 6/6, or larger flying creature that deals combat damage to draw cards, growing faster than opponents can answer it. When the <span class="c">Persist</span> plan is disrupted by <span class="c">Rest in Peace</span>, <span class="c">Surgical Extraction</span>, or <span class="c">Counterspell</span> — pivot immediately to the Frog plan. Discard aggressively into the GY to fuel its power, grant flying once combat kills are guaranteed, and close the game. Frog backed by <span class="c">Thoughtseize</span> and <span class="c">Mystical Dispute</span> protection wins games that Archon cannot.</li>
+    <li><strong><span class="c">Consign to Memory</span> is an offensive tool — the primary reason it is in the main deck.</strong> Two proactive lines that win games:<br><br>
+      <strong>Line 1 — Counter the <span class="c">Emperor of Bones</span> sacrifice trigger in your own end step to keep Archon on the field permanently.</strong> Emperor's trigger reads: Archon enters the battlefield with a finality counter, gains haste, and is sacrificed at the beginning of the <em>next</em> end step. That sacrifice clause is a delayed triggered ability — it fires in your end step after Archon has already attacked. When that sacrifice trigger goes on the stack in your end step, fire <span class="c">Consign to Memory</span> at it. Consign counters triggered abilities — the sacrifice trigger is countered, Archon is never sacrificed, and it remains on the battlefield permanently. The result: a 6/6 flying lifelink with haste that attacked this turn and now stays forever. The finality counter means if it does die to removal later, it goes to exile rather than their graveyard — it cannot be Persisted back against you. This is the flagship offensive Consign line and the core reason the card is in the main deck at all.<br><br>
+      <strong>Line 2 — Counter your own <span class="c">Quantum Riddler</span> Warp trigger to bait out their countermagic.</strong> Riddler's Warp keyword copies the spell you cast as a triggered ability on the stack. Concrete line: you cast <span class="c">Persist</span> with Riddler in play and two Consigns in hand. The Warp trigger goes on the stack, creating a copy of Persist. Fire Consign at your own Warp copy trigger. Opponent now faces a decision: counter your Consign (Warp copy resolves, Archon enters off the copy — the original Persist is still on the stack and also resolves) or let Consign resolve (Warp copy is countered, but the original Persist is untouched and resolves). Either way Archon enters. They cannot counter both the original and the copy in the same window with one counterspell. This forces their interaction at the worst possible time for them.</li>
+    <li><strong>Forgetting that <span class="c">Faithless Looting</span> draws before discarding.</strong> You can't "loot away" Archon to then draw it back. You draw two, keeping the best two, then discard. The discard decision is made with full information on your new hand — use this correctly and you'll always pitch the right two cards.</li>
+  </ol>
+
+  <h2>Role Mistakes to Avoid</h2>
+  <ul class="heuristic-list">
+    <li><div class="heuristic-num">01</div><div class="heuristic-body"><strong>Not Griefing before reanimating vs blue decks.</strong> Open blue mana = Endurance or Force possible. T1 Grief strips the hate piece. T3 reanimate safely after stripping their answer.</div></li>
+    <li><div class="heuristic-num">02</div><div class="heuristic-body"><strong>Paying too many Griselbrand activations at low life.</strong> 3 activations = 21 life. At 20 life, 3 activations puts you at -1 — you die. Stop at 2 activations (14 life spent) and hold 6 life as a combat buffer against their remaining threats.</div></li>
+    <li><div class="heuristic-num">03</div><div class="heuristic-body"><strong>Discarding the reanimation spell instead of the fatty.</strong> Faithless Looting: discard Griselbrand, keep Animate Dead. Never discard the spell that returns your target. Double-check your discard choices under time pressure.</div></li>
+    <li><div class="heuristic-num">04</div><div class="heuristic-body"><strong>Reanimating into active Grafdigger’s Cage.</strong> Cage prevents creatures entering from GY. Answer Cage with Mystical Dispute (counter it) or remove it before the reanimate resolves. Never tap out for reanimate into visible Cage.</div></li>
+  </ul>
+  <h2>Role-Switching Signals</h2>
+  <div class="card-grid card-grid-2">
+    <div class="card"><div class="card-label">Go Fast</div><div class="card-title">No Blue, Fair Deck</div><div class="card-body">Boros, Prowess, Domain Zoo: no counterspells or instant GY exile. Race with T2 Griselbrand immediately. Every turn they draw is a turn closer to finding hate.</div></div>
+    <div class="card"><div class="card-label">Grief First</div><div class="card-title">Blue Mana Visible</div><div class="card-body">Strip Endurance or Force of Negation T1 with Grief. Reanimate T3 safely. One-turn delay converts a coin flip into a near-certain resolution.</div></div>
+    <div class="card"><div class="card-label">Fair Mode</div><div class="card-title">GY Locked</div><div class="card-body">Multiple hate pieces active. Switch to Grief+Drown value plan. Surveil to rebuild GY for the next reanimate window. Drown kills their key creature or counters their spell.</div></div>
+    <div class="card"><div class="card-label">Never Into</div><div class="card-title">Active Cage or Relic</div><div class="card-body">Grafdigger’s Cage = no reanimation. Relic of Progenitus will exile your GY end step. Answer hate pieces with Mystical Dispute or Nihil Spellbomb before attempting reanimation.</div></div>
+  </div>
+</div>
+
+<!-- MATCHUPS -->
+<div id="matchups" class="section">
+  <div class="section-label">Chapter 06</div>
+  <h1>Matchup<br>Matrix</h1>
+  <p>Click any matchup to expand. Win rates from Team Resolve gauntlet data + 262k-match DB.</p>
+
+  <table class="matchup-table">
+    <colgroup><col><col><col><col></colgroup>
+    <thead><tr><th>Matchup</th><th>Meta Share</th><th>Difficulty</th><th>Your Role</th></tr></thead>
+    <tbody>
+      <tr onclick="toggleMatchup('mu_boros')"><td><strong>Boros Energy</strong></td><td>~20%</td><td><span class="diff-medium">Slight Dog</span></td><td>Reanimate — <span class="c">Persist</span> on 3 before they stabilize</td></tr>
+      <tr onclick="toggleMatchup('mu_blink')"><td><strong>Jeskai Blink</strong></td><td>~18%</td><td><span class="diff-even">Even</span></td><td>Disrupt + Kill — <span class="c">Thoughtseize</span> then <span class="c">Persist</span></td></tr>
+      <tr onclick="toggleMatchup('mu_prowess')"><td><strong>Izzet Prowess</strong></td><td>~10%</td><td><span class="diff-hard">Hard</span></td><td>Reanimate — Archon on 3 stabilizes the board</td></tr>
+      <tr onclick="toggleMatchup('mu_control')"><td><strong>Azorius Control</strong></td><td>~10%</td><td><span class="diff-good">Favored</span></td><td>Disrupt + Kill — <span class="c">Thoughtseize</span> then resolve threats</td></tr>
+      <tr onclick="toggleMatchup('mu_titan')"><td><strong>Amulet Titan</strong></td><td>~9%</td><td><span class="diff-even">Even</span></td><td>Race + Harbinger — lock their mana, Archon closes</td></tr>
+      <tr onclick="toggleMatchup('mu_mirror')"><td><strong>Grixis Reanimator</strong></td><td>~8%</td><td><span class="diff-even">Even</span></td><td>Midrange — <span class="c">Nihil Spellbomb</span> + Frog grind wins</td></tr>
+          <tr onclick="toggleMatchup('mu_affinity_g')"><td><strong>Izzet Affinity</strong></td><td>6.1%</td><td><span class="diff-good">Favored</span></td><td>Frog + Emperor win before their artifact engine assembles</td></tr>
+      <tr onclick="toggleMatchup('mu_etron_g')"><td><strong>Eldrazi Tron</strong></td><td>5.0%</td><td><span class="diff-medium">Slight Dog</span></td><td>TKS strips Persist — Chalice at 1 shuts Looting</td></tr>
+      <tr onclick="toggleMatchup('mu_zoo_g')"><td><strong>Domain Zoo</strong></td><td>4.3%</td><td><span class="diff-hard">Hard</span></td><td>Faster clock than your setup — Archon too slow</td></tr>
+      <tr onclick="toggleMatchup('mu_esper_g')"><td><strong>Esper Reanimator</strong></td><td>3.5%</td><td><span class="diff-even">Even</span></td><td>Graveyard mirror — RiP hurts both, Frog wins fair game</td></tr>
+      <tr onclick="toggleMatchup('mu_storm_g')"><td><strong>Ruby Storm</strong></td><td>6.5%</td><td><span class="diff-medium">Slight Dog</span></td><td>Thoughtseize strips payoff — race with Frog beats Grapeshot</td></tr>
+    </tbody>
+  </table>
+
+  <!-- BOROS -->
+  <div id="mu_boros" class="matchup-detail">
+    <h3>Boros Energy — The Race</h3>
+    <p>Boros kills on turn 4 on average. <span class="c">Archon of Cruelty</span> ETB on turn 3 is your answer: the sacrifice + discard + lose 3 swing is often 7-10 damage of tempo in addition to the life swing. The problem is their <span class="c">Galvanic Discharge</span> permanently deals at minimum 3 damage (generates 3 energy on cast, spend 0) — killing both <span class="c">Psychic Frog</span> and <span class="c">Emperor of Bones</span> cleanly at 3 damage. You need to resolve Archon before their engine is fully online. <span class="c">Goblin Bombardment</span> converts creature advantage into reach damage that bypasses your life total advantage from Archon.</p>
+
+    <h3>Play vs Draw</h3>
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-label">On the Play</div>
+        <div class="card-title">Looting T1, <span class="c">Persist</span> T3</div>
+        <div class="card-body">T1 <span class="c">Faithless Looting</span>, discard Archon + Troll. T2 <span class="c">Emperor of Bones</span>. T3 beginning of combat: exile Archon. Adapt: Archon enters with haste. ETB fires, attack trigger fires. They're at 14 life, one card down, one permanent short before turn 4. Apply maximum pressure from the first turn.</div>
+      </div>
+      <div class="card">
+        <div class="card-label">On the Draw</div>
+        <div class="card-title"><span class="c">Thoughtseize</span> Ragavan</div>
+        <div class="card-body">They'll have Ragavan on turn 1 before you. <span class="c">Thoughtseize</span> it out of their hand if possible, or <span class="c">Fatal Push</span> when it attacks. A Ragavan that connects generates mana + cards that accelerates <span class="c">Goblin Bombardment</span>. Prioritize removing Ragavan even if it delays your Archon plan by one turn.</div>
+      </div>
+    </div>
+
+    <h3>Sideboard</h3>
+    <div class="sb-table">
+      <div class="sb-col">
+        <div class="sb-col-label">In</div>
+        <div class="sb-item"><span><span class="c">Nihil Spellbomb</span></span><span class="sb-qty">+3</span></div>
+        <div class="sb-item"><span><span class="c">Mystical Dispute</span></span><span class="sb-qty">+2</span></div>
+        <div class="sb-item"><span><span class="c">Harbinger of the Seas</span></span><span class="sb-qty">+2</span></div>
+      </div>
+      <div class="sb-col">
+        <div class="sb-col-label">Out</div>
+        <div class="sb-item"><span><span class="c">Thought Scour</span></span><span class="sb-qty">−3</span></div>
+        <div class="sb-item"><span><span class="c">Unearth</span></span><span class="sb-qty">−2</span></div>
+        <div class="sb-item"><span><span class="c">Troll of Khazad-dûm</span></span><span class="sb-qty">−2</span></div>
+      </div>
+    </div>
+
+    <h3>If X → Do Y</h3>
+    <ul class="ifthen-list">
+      <li><span class="if-label">If</span><span><strong><span class="c">Goblin Bombardment</span> resolves:</strong> This is now the priority threat above everything else. Bombardment converts their creature army into direct damage reach that your life total cannot race. <span class="c">Fatal Push</span> cannot kill Bombardment (enchantment). Drown in the Loch (postboard) can counter Bombardment if you have enough cards in play/yard. Race harder — Archon ETB swings large enough to overcome Bombardment if you resolve it before they generate 5+ tokens.</span></li>
+      <li><span class="if-label">If</span><span><strong><span class="c">Galvanic Discharge</span> targets <span class="c">Psychic Frog</span> or Emperor:</strong> Discharge generates 3 energy on cast so it always deals at minimum 3 damage — your 2/2 creatures die. <span class="c">Thoughtseize</span> it out of their hand before they can cast it. If you can't, <span class="c">Fatal Push</span> their smaller creatures to keep your creature count up. Discharge also hits planeswalkers but not you directly.</span></li>
+      <li><span class="if-label">If</span><span><strong><span class="c">Harbinger of the Seas</span> resolves postboard:</strong> Their <span class="c">Sacred Foundry</span>, <span class="c">Inspiring Vantage</span>, and all nonbasics become Islands. They lose access to red mana (<span class="c">Galvanic Discharge</span>) and white mana (<span class="c">Sanctifier en-Vec</span>, <span class="c">Goblin Bombardment</span>). Their <span class="c">Goblin Bombardment</span> activation requires no mana — Harbinger doesn't stop Bombardment but cuts off <span class="c">Galvanic Discharge</span>. Priority difference shifts.</span></li>
+      <li><span class="if-label">If</span><span><strong><span class="c">Archon of Cruelty</span> ETB resolves:</strong> They sacrifice a creature or planeswalker, discard a card, lose 3 life. You draw a card, gain 3. Their board shrinks by one, their hand shrinks by one, they're at 17 or less. Attack with Archon next turn for the second trigger. Two triggers = game over in most board states.</span></li>
+      <li><span class="if-label">If</span><span><strong>Phlage is escaped:</strong> Phlage is a 5/5 haste flier that generates energy and deals 3 damage to each player and each creature. <span class="c">Archon of Cruelty</span> as a 5/5+ (via <span class="c">Persist</span> counter) survives Phlage's damage (takes 3, stays alive if 5/5). Their Phlage escape requires exile 5 cards from the graveyard — <span class="c">Nihil Spellbomb</span> preemptively denies the escape condition. Pop Spellbomb before they attempt escape.</span></li>
+      <li><span class="if-label">If</span><span><strong>They have <span class="c">Sanctifier en-Vec</span>:</strong> Sanctifier has protection from black and red. <span class="c">Fatal Push</span> (black) cannot kill it. <span class="c">Faithless Looting</span> (red) is not affected — you can still cast it. <span class="c">Thought Scour</span> (blue/black mill) doesn't target Sanctifier. Drown in the Loch (blue/black) can counter their next red/white spell. Harbinger makes their mana base Islands — Sanctifier can't be paid for with Islands if they don't have basic Plains or basic Mountains left.</span></li>
+    </ul>
+  </div>
+
+  <!-- BLINK -->
+  <div id="mu_blink" class="matchup-detail">
+    <h3>Jeskai Blink — Why It's Even</h3>
+    <p><span class="c">Thoughtseize</span> on T1 to take their <span class="c">Solitude</span> — that's the key card that exiles Archon for zero mana. With Solitude gone, your <span class="c">Persist</span> resolves into a clean ETB. Hold <span class="c">Mystical Dispute</span> for their <span class="c">Counterspell</span> or <span class="c">Force of Negation</span> — Dispute counters blue spells for {U} when they control an Island, which they always do. One Dispute protecting your Persist wins the game. Be aware: their Consign counters triggered abilities, so your Emperor Adapt trigger can be countered — fire Consign at your own Warp copy if you have Riddler in play to split their interaction window.</p>
+
+    <h3>Play vs Draw</h3>
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-label">On the Play</div>
+        <div class="card-title"><span class="c">Thoughtseize</span> on 1</div>
+        <div class="card-body"><span class="c">Thoughtseize</span> turn 1 to see their hand and take the <span class="c">Solitude</span> or <span class="c">Force of Negation</span>. Then Looting turn 1 if you have it. Emperor turn 2, Archon via Emperor on turn 3. With <span class="c">Solitude</span> gone, Archon enters freely. Their only answer is <span class="c">Consign to Memory</span> — which cannot stop the Emperor Adapt or the Archon ETB itself (only triggered abilities from resolved spells).</div>
+      </div>
+      <div class="card">
+        <div class="card-label">On the Draw</div>
+        <div class="card-title">Hold <span class="c">Mystical Dispute</span></div>
+        <div class="card-body">They develop <span class="c">Guide of Souls</span> and <span class="c">White Orchid Phantom</span> before you can act. Hold <span class="c">Mystical Dispute</span> for their <span class="c">Counterspell</span> — Dispute counters blue spells for {U} when they control an Island. <span class="c">Counterspell</span> is blue. <span class="c">Force of Negation</span> is blue. One Dispute protecting your <span class="c">Persist</span> resolves the game. Fire it in response to their counter.</div>
+      </div>
+    </div>
+
+    <h3>Sideboard</h3>
+    <div class="sb-table">
+      <div class="sb-col">
+        <div class="sb-col-label">In</div>
+        <div class="sb-item"><span><span class="c">Mystical Dispute</span></span><span class="sb-qty">+3</span></div>
+        <div class="sb-item"><span><span class="c">Spell Pierce</span></span><span class="sb-qty">+2</span></div>
+        <div class="sb-item"><span><span class="c">Harbinger of the Seas</span></span><span class="sb-qty">+2</span></div>
+        <div class="sb-item"><span>Drown in the Loch</span><span class="sb-qty">+2</span></div>
+      </div>
+      <div class="sb-col">
+        <div class="sb-col-label">Out</div>
+        <div class="sb-item"><span><span class="c">Thought Scour</span></span><span class="sb-qty">−4</span></div>
+        <div class="sb-item"><span><span class="c">Troll of Khazad-dûm</span></span><span class="sb-qty">−2</span></div>
+        <div class="sb-item"><span><span class="c">Unearth</span></span><span class="sb-qty">−2</span></div>
+        <div class="sb-item"><span><span class="c">Faithless Looting</span></span><span class="sb-qty">−1</span></div>
+      </div>
+    </div>
+
+    <h3>If X → Do Y</h3>
+    <ul class="ifthen-list">
+      <li><span class="if-label">If</span><span><strong><span class="c">Solitude</span> is in their hand (<span class="c">Thoughtseize</span> revealed):</strong> Take <span class="c">Solitude</span> — it is the primary answer to your Archon. <span class="c">Force of Negation</span> is secondary. <span class="c">Counterspell</span> is tertiary. With <span class="c">Solitude</span> gone, Archon enters freely. The Archon ETB alone puts the game in a winning position even if they stabilize the board afterward.</span></li>
+      <li><span class="if-label">If</span><span><strong>They counter <span class="c">Persist</span> with <span class="c">Counterspell</span>:</strong> <span class="c">Mystical Dispute</span> counters <span class="c">Counterspell</span> for {U} if they control any Island. Fire Dispute in response to their <span class="c">Counterspell</span> on the stack. You paid 1 blue, they paid 2 blue — you converted Dispute into a {U} <span class="c">Counterspell</span> while they spent their full UU. Repeat this pattern.</span></li>
+      <li><span class="if-label">If</span><span><strong><span class="c">Consign to Memory</span> targets a triggered ability from Archon:</strong> Consign cannot counter the Archon ETB trigger itself — Archon's ETB trigger is from a permanent, not from a spell. Consign counters triggered abilities from spells being cast (like <span class="c">Summoner's Pact</span> upkeep) or ETB abilities from ETB events. Wait — Consign CAN counter Archon's ETB trigger. Be aware: they can use Consign on the "when Archon enters" trigger. If they have {2}{U} available, play around it by Thoughtseizing Consign first.</span></li>
+      <li><span class="if-label">If</span><span><strong><span class="c">Harbinger of the Seas</span> resolves postboard:</strong> Their <span class="c">Sacred Foundry</span> becomes an Island. They lose white and red mana from shocks. <span class="c">Solitude</span> (white pitch cost) still works — <span class="c">Solitude</span> is pitched from hand for free using a white card, not through the mana base. Harbinger doesn't stop <span class="c">Solitude</span>'s alternative cost. What it does stop: <span class="c">Galvanic Discharge</span>, <span class="c">Ocelot Pride</span> tokens generating energy.</span></li>
+      <li><span class="if-label">If</span><span><strong><span class="c">White Orchid Phantom</span> destroys your land:</strong> Phantom destroys a nonbasic land when it enters — your <span class="c">Watery Grave</span> or <span class="c">Blood Crypt</span> is gone. They get to search for a basic in compensation. Fetch a basic Swamp or Island next turn. This makes your mana base slightly worse but <span class="c">Harbinger of the Seas</span> postboard actually helps you here — more of your lands are already basics compared to theirs.</span></li>
+    </ul>
+  </div>
+
+  <!-- PROWESS -->
+  <div id="mu_prowess" class="matchup-detail">
+    <h3>Izzet Prowess — Why It's Hard</h3>
+    <p>Prowess kills on turn 3 consistently. Your Archon plan is also turn 3 — but Archon's ETB doesn't stop 10+ damage already dealt. <span class="c">Galvanic Discharge</span> from Prowess kills your <span class="c">Psychic Frog</span> and <span class="c">Emperor of Bones</span> at 3 damage minimum (they generate 3 energy on cast, always spend at least 0). <span class="c">Fatal Push</span> kills most Prowess threats but <span class="c">Mutagenic Growth</span> (pay 2 life) in response keeps them alive and pumps prowess on others. You are racing at strict parity — execution matters more than strategy.</p>
+
+    <h3>Play vs Draw</h3>
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-label">On the Play</div>
+        <div class="card-title">Race with Max Aggression</div>
+        <div class="card-body">T1 Looting → Archon in yard. T2 <span class="c">Emperor of Bones</span>. T3 Archon via Emperor with haste — two triggers. Two Archon triggers from a 20-life start puts them at 14 or lower with fewer permanents. Prowess cannot generate lethal from 14 on the board they'll have after sacrificing a creature to the Archon trigger.</div>
+      </div>
+      <div class="card">
+        <div class="card-label">On the Draw</div>
+        <div class="card-title">Remove <span class="c">Dragon's Rage Channeler</span></div>
+        <div class="card-body">Their DRC at delirium is a 3/3 flier that must attack — this is the creature that deals the most damage before you can stabilize. <span class="c">Fatal Push</span> kills it cleanly (MV 1, no revolt needed). Priority: kill DRC before it achieves delirium and grows. A 1/1 DRC is a minor annoyance. A 3/3 DRC with delirium deals 9+ damage before you answer it.</div>
+      </div>
+    </div>
+
+    <h3>Sideboard</h3>
+    <div class="sb-table">
+      <div class="sb-col">
+        <div class="sb-col-label">In</div>
+        <div class="sb-item"><span>Drown in the Loch</span><span class="sb-qty">+2</span></div>
+        <div class="sb-item"><span><span class="c">Nihil Spellbomb</span></span><span class="sb-qty">+2</span></div>
+      </div>
+      <div class="sb-col">
+        <div class="sb-col-label">Out</div>
+        <div class="sb-item"><span><span class="c">Unearth</span></span><span class="sb-qty">−2</span></div>
+        <div class="sb-item"><span><span class="c">Troll of Khazad-dûm</span></span><span class="sb-qty">−2</span></div>
+      </div>
+    </div>
+
+    <h3>If X → Do Y</h3>
+    <ul class="ifthen-list">
+      <li><span class="if-label">If</span><span><strong><span class="c">Dragon's Rage Channeler</span> survives to delirium:</strong> It's now a 3/3 flier that must attack. <span class="c">Archon of Cruelty</span> blocks it at 5/5 (Persisted) — first strike interaction means DRC deals 3 to Archon, Archon survives and deals 5 back. Archon wins the trade. Prioritize resolving Archon and using it as a blocker if needed.</span></li>
+      <li><span class="if-label">If</span><span><strong><span class="c">Cori-Steel Cutter</span> resolves:</strong> Their creatures now have +1/+1, trample, and generate prowess Monks on their second spell. Archon's 5/5 body with 5 toughness can block a 3/3 trampling Monk and survive. <span class="c">Fatal Push</span> their Monk token (MV 1) to deny the equipped body.</span></li>
+      <li><span class="if-label">If</span><span><strong><span class="c">Nihil Spellbomb</span> is in hand:</strong> Pop it when their graveyard has 3+ card types — specifically targeting the moment before they cast Murktide Regent. Exiling their graveyard removes Murktide's +1/+1 counter source and reverts DRC to a 1/1. This is the highest-value Spellbomb moment in this matchup.</span></li>
+      <li><span class="if-label">If</span><span><strong>They chain three spells in one turn:</strong> <span class="c">Monastery Swiftspear</span> is now a 4/5, Slickshot Show-Off is a 7/2 flying, DRC (with delirium) is a 5/5. Archon at 5/5 can block one of these — choose wisely. They're trying to deal 10-15 damage in one turn. Archon blocks the biggest flying threat.</span></li>
+      <li><span class="if-label">If</span><span><strong><span class="c">Mutagenic Growth</span> is used to pump through <span class="c">Fatal Push</span>:</strong> They paid 2 life to give their creature +2/+2 — it now has 4 toughness, surviving your Push (requires MV 2 or less, which it already qualified for, but the toughness matters for combat). Respond with Drown in the Loch if enough cards are in their graveyard to count MV.</span></li>
+    </ul>
+  </div>
+
+  <!-- CONTROL -->
+  <div id="mu_control" class="matchup-detail">
+    <h3>Azorius Control — Why You're Favored</h3>
+    <p>Control has <span class="c">Counterspell</span> and <span class="c">Force of Negation</span> for your spells, but you have <span class="c">Thoughtseize</span> to see their entire hand and strip exactly what matters. <span class="c">Persist</span> is a black sorcery — <span class="c">Counterspell</span> stops it, but you can <span class="c">Thoughtseize</span> the <span class="c">Counterspell</span> first. <span class="c">Supreme Verdict</span> resets your board but doesn't answer Archon in the graveyard — you just <span class="c">Persist</span> again. The attrition war favors you because your threats are recursive and theirs are one-shot counters.</p>
+
+    <h3>Sideboard</h3>
+    <div class="sb-table">
+      <div class="sb-col">
+        <div class="sb-col-label">In</div>
+        <div class="sb-item"><span><span class="c">Mystical Dispute</span></span><span class="sb-qty">+3</span></div>
+        <div class="sb-item"><span><span class="c">Spell Pierce</span></span><span class="sb-qty">+2</span></div>
+        <div class="sb-item"><span>Drown in the Loch</span><span class="sb-qty">+2</span></div>
+      </div>
+      <div class="sb-col">
+        <div class="sb-col-label">Out</div>
+        <div class="sb-item"><span><span class="c">Thought Scour</span></span><span class="sb-qty">−3</span></div>
+        <div class="sb-item"><span><span class="c">Troll of Khazad-dûm</span></span><span class="sb-qty">−2</span></div>
+        <div class="sb-item"><span><span class="c">Fatal Push</span></span><span class="sb-qty">−2</span></div>
+      </div>
+    </div>
+
+    <h3>If X → Do Y</h3>
+    <ul class="ifthen-list">
+      <li><span class="if-label">If</span><span><strong>They hold up UU with open mana:</strong> <span class="c">Thoughtseize</span> the previous turn to see what they're holding. If it's <span class="c">Counterspell</span>, take it. Then cast <span class="c">Persist</span> freely. If it's <span class="c">Supreme Verdict</span>, wait — Verdict doesn't stop Archon in the yard. Archon is always coming back regardless of sweepers.</span></li>
+      <li><span class="if-label">If</span><span><strong><span class="c">Supreme Verdict</span> resolves:</strong> All your creatures are swept — including <span class="c">Psychic Frog</span> and Emperor. Archon is unaffected because Archon is in the graveyard. Cast <span class="c">Persist</span> the following turn into a board state where they tapped four mana for Verdict and have less to work with. This is often your best <span class="c">Persist</span> window.</span></li>
+      <li><span class="if-label">If</span><span><strong><span class="c">Teferi, Time Raveler</span> resolves:</strong> You are now restricted to sorcery speed. <span class="c">Persist</span> is a sorcery — no change. <span class="c">Thought Scour</span> is an instant — now a sorcery. <span class="c">Fatal Push</span> is an instant — now sorcery speed. <span class="c">Thoughtseize</span> Teferi out of their hand if you see it first. If it resolves, Drown in the Loch can counter their next blue spell at sorcery speed (awkward but valid).</span></li>
+      <li><span class="if-label">If</span><span><strong><span class="c">Mystical Dispute</span> counters their <span class="c">Counterspell</span>:</strong> You used {U} to counter their {U}{U} — you're up a mana. This is the fundamental mathematical advantage of Dispute in a blue mirror. Repeat this pattern until they run out of counters, then resolve threats freely.</span></li>
+      <li><span class="if-label">If</span><span><strong>They're at low life and have stabilized:</strong> <span class="c">Psychic Frog</span> that connects deals damage and draws a card — growing into a sizeable beater and card advantage engine. <span class="c">Harbinger of the Seas</span> postboard makes their mana base collapse. A Frog with 4+ counters is a legitimate alternate win condition when Archon is repeatedly answered.</span></li>
+    </ul>
+  </div>
+
+  <!-- TITAN -->
+  <div id="mu_titan" class="matchup-detail">
+    <h3>Amulet Titan — Harbinger Is the Key</h3>
+    <p>Amulet Titan's bounce land system collapses entirely when <span class="c">Harbinger of the Seas</span> is in play — their bounce lands become Islands and don't bounce, <span class="c">Amulet of Vigor</span> does nothing because Islands entering tapped don't have the "enters tapped" clause to replace. You race their turn 3-4 Titan with your turn 3 Archon, while Harbinger postboard shuts down the entire engine. This is a roughly even matchup that Harbinger tilts favorably.</p>
+
+    <h3>Sideboard</h3>
+    <div class="sb-table">
+      <div class="sb-col">
+        <div class="sb-col-label">In</div>
+        <div class="sb-item"><span><span class="c">Harbinger of the Seas</span></span><span class="sb-qty">+2</span></div>
+        <div class="sb-item"><span><span class="c">Surgical Extraction</span></span><span class="sb-qty">+2</span></div>
+        <div class="sb-item"><span><span class="c">Blood Moon</span></span><span class="sb-qty">+1</span></div>
+      </div>
+      <div class="sb-col">
+        <div class="sb-col-label">Out</div>
+        <div class="sb-item"><span><span class="c">Thought Scour</span></span><span class="sb-qty">−2</span></div>
+        <div class="sb-item"><span><span class="c">Troll of Khazad-dûm</span></span><span class="dl-qty">−2</span></div>
+        <div class="sb-item"><span><span class="c">Unearth</span></span><span class="sb-qty">−1</span></div>
+      </div>
+    </div>
+
+    <h3>If X → Do Y</h3>
+    <ul class="ifthen-list">
+      <li><span class="if-label">If</span><span><strong>They cast <span class="c">Summoner's Pact</span> and pass:</strong> Pact creates an upkeep trigger — pay {2}{G}{G} or lose the game. You cannot counter this trigger (you don't have Consign). But if Pact resolved, Titan is coming. Calculate whether your Archon can be Persisted before their Titan attacks. If yes: <span class="c">Persist</span>, ETB fires, they sacrifice their Titan, your Archon attacks. If no: race their damage with your board.</span></li>
+      <li><span class="if-label">If</span><span><strong><span class="c">Harbinger of the Seas</span> resolves:</strong> Their <span class="c">Simic Growth Chamber</span> and other bounce lands are now Islands that don't bounce. <span class="c">Amulet of Vigor</span> has no "enters tapped" trigger to replace. Their <span class="c">Slayers' Stronghold</span> is now an Island. <span class="c">Primeval Titan</span> can no longer search for Slayers. This is often a complete shutdown of their primary combo mechanism — they're forced to hardcast Titan for 6.</span></li>
+      <li><span class="if-label">If</span><span><strong><span class="c">Primeval Titan</span> resolves:</strong> They search for <span class="c">Slayers' Stronghold</span> (haste land) + <span class="c">Tolaria West</span>. If Harbinger isn't in play, they have haste Titan attacking on turn 4. Archon at 5/5 (Persisted) can block Titan at 6/6 — Titan wins the trade, Archon dies. Don't block a Titan with a finality-counter Archon. Only attack into their face with Archon when their life total is low enough.</span></li>
+      <li><span class="if-label">If</span><span><strong><span class="c">Surgical Extraction</span> is in hand after Pact resolves:</strong> Extract <span class="c">Summoner's Pact</span> once one is in the yard. All four copies are exiled from their hand/yard/library. They cannot search for Titan again. This is the format-warping play in this matchup — Surgical on Pact makes their game plan impossible.</span></li>
+    </ul>
+  </div>
+
+  <!-- MIRROR -->
+  <div id="mu_mirror" class="matchup-detail">
+    <h3>Grixis Reanimator — The Grind</h3>
+    <p>In the mirror (or near-mirror), whoever resolves their Archon first and has graveyard hate for the opponent's wins. <span class="c">Nihil Spellbomb</span> exiling their graveyard removes their <span class="c">Persist</span> and Emperor targets while leaving your plan intact. <span class="c">Psychic Frog</span> as a card advantage engine outlasts pure Reanimator lists that have no fair game. <span class="c">Emperor of Bones</span> can reanimate their Archon if it's in their graveyard — this is a real play.</p>
+
+    <h3>Sideboard</h3>
+    <div class="sb-table">
+      <div class="sb-col">
+        <div class="sb-col-label">In</div>
+        <div class="sb-item"><span><span class="c">Nihil Spellbomb</span></span><span class="sb-qty">+3</span></div>
+        <div class="sb-item"><span><span class="c">Surgical Extraction</span></span><span class="sb-qty">+2</span></div>
+      </div>
+      <div class="sb-col">
+        <div class="sb-col-label">Out</div>
+        <div class="sb-item"><span><span class="c">Troll of Khazad-dûm</span></span><span class="sb-qty">−2</span></div>
+        <div class="sb-item"><span><span class="c">Faithless Looting</span></span><span class="sb-qty">−2</span></div>
+        <div class="sb-item"><span><span class="c">Thought Scour</span></span><span class="sb-qty">−1</span></div>
+      </div>
+    </div>
+
+    <h3>If X → Do Y</h3>
+    <ul class="ifthen-list">
+      <li><span class="if-label">If</span><span><strong>Their Archon ETB resolves first:</strong> You sacrifice a permanent, discard a card, lose 3 life. You're now behind on board and cards. Respond by Persisting your own Archon if it's in your graveyard — your ETB fires, you recoup the card and life loss. Matching their Archon with yours is the correct response, not trying to answer their Archon with removal.</span></li>
+      <li><span class="if-label">If</span><span><strong>Their graveyard has Archon and mana for <span class="c">Persist</span>:</strong> Pop <span class="c">Nihil Spellbomb</span> immediately. Exiling their graveyard removes Archon — they cannot <span class="c">Persist</span> without a target. Do this proactively before they reach 2 mana on their turn. The Spellbomb requires {B} to draw a card on going to graveyard — pay it if you have B, skip if you don't.</span></li>
+      <li><span class="if-label">If</span><span><strong><span class="c">Emperor of Bones</span> can exile their Archon:</strong> Do it. <span class="c">Emperor of Bones</span> exiles from any graveyard — steal their Archon, Adapt, your Archon enters with haste and finality counter. Their Archon is now yours, and it fires ETB making them sacrifice, discard, lose 3 life. This is the game-winning play in a stalled mirror.</span></li>
+      <li><span class="if-label">If</span><span><strong><span class="c">Surgical Extraction</span> is in hand after any <span class="c">Persist</span>:</strong> Extract Archon once one is in the yard or has been Persisted. Their entire Archon plan collapses — all four copies leave the game. They're left with <span class="c">Psychic Frog</span> and Emperor with no Archon to return. Your plan remains fully intact.</span></li>
+    </ul>
+  </div>
+</div>
+  <!-- IZZET AFFINITY vs GLOCK -->
+  <div id="mu_affinity_g" class="matchup-detail">
+    <h3>Izzet Affinity — Fair Game Wins Before Their Engine</h3>
+    <p>Izzet Affinity is a favorable matchup because their clock is slower than yours in the fair game. <span class="c">Psychic Frog</span> on turn 2 attacks as a 3/3 flier on turn 3 after discarding one card — that's 3 damage per turn with evasion. They have no way to answer a flying <span class="c">Psychic Frog</span> efficiently: their removal is creature-based (<span class="c">Arcbound Ravager</span> sacrificing, etc.) or artifact-only. <span class="c">Thoughtseize</span> strips <span class="c">Cranial Plating</span> before they equip, denying their one-shot kill line. Their <span class="c">Arcbound Ravager</span> modular counters are irrelevant against Archon in the late game — a Persisted Archon exiles everything.</p>
+    <p>The Archon plan is available but often unnecessary — <span class="c">Psychic Frog</span> + <span class="c">Emperor of Bones</span> fair beats them in 5-6 turns before their artifact engine goes wide enough to block the air.</p>
+    <h3>Play vs Draw</h3>
+    <div class="pd-grid">
+      <div class="pd-col">
+        <div class="pd-label">On the Play</div>
+        <div class="pd-title">Frog Turn 2, Strip Plating</div>
+        <div class="pd-body"><span class="c">Thoughtseize</span> on turn 1 strips <span class="c">Cranial Plating</span> or <span class="c">Arcbound Ravager</span> — their two most dangerous cards. <span class="c">Psychic Frog</span> on turn 2 attacks as 3/3 flying on turn 3. They have no efficient answer to a flying 3+ power creature that grows with every discard.</div>
+      </div>
+      <div class="pd-col">
+        <div class="pd-label">On the Draw</div>
+        <div class="pd-title">Frog or Emperor, Don't Wait for Archon</div>
+        <div class="pd-body">On the draw they may have <span class="c">Arcbound Ravager</span> growing already. Deploy <span class="c">Psychic Frog</span> and fly over their artifact army. Don't wait to set up <span class="c">Persist</span> — their clock forces action. <span class="c">Faithless Looting</span> discards into your GY fueling Frog's flying ability while filling the yard with Archon for later.</div>
+      </div>
+    </div>
+    <h3>Sideboard</h3>
+    <div class="sb-table">
+      <div class="sb-col">
+        <div class="sb-col-label">In</div>
+        <div class="sb-item"><span><span class="c">Harvester of Misery</span></span><span class="sb-qty">+2</span></div>
+        <div class="sb-item"><span>Pyroclasm</span><span class="sb-qty">+2</span></div>
+      </div>
+      <div class="sb-col">
+        <div class="sb-col-label">Out</div>
+        <div class="sb-item"><span>Unearth</span><span class="sb-qty">&minus;2</span></div>
+        <div class="sb-item"><span>Thought Scour</span><span class="sb-qty">&minus;2</span></div>
+      </div>
+    </div>
+    <h3>If X &rarr; Do Y</h3>
+    <ul class="ifthen-list">
+      <li><span class="if-label">If</span><span><strong><span class="c">Arcbound Ravager</span> has 4+ counters and Inkmoth Nexus is untapped:</strong> This is the infect kill line — Ravager sacrifices into Inkmoth for 4+ poison. <span class="c">Thoughtseize</span> preemptively strips this plan before it assembles. In game, <span class="c">Fatal Push</span> kills Inkmoth Nexus while animated (MV 1 — revolt or not). Priority: kill Inkmoth Nexus before Ravager can transfer.</span></li>
+      <li><span class="if-label">If</span><span><strong><span class="c">Cranial Plating</span> equips to a flier at instant speed (for BB):</strong> They have BB mana open — instant equip in their combat step. <span class="c">Thoughtseize</span> this plan out of their hand before combat. Or race them — Frog attacks as a 3/3 flier this turn too. If they swing with an equipped flier, block with Frog if the math works (they deal 5+ but you get card draw and exile trigger toward Persist).</span></li>
+      <li><span class="if-label">If</span><span><strong>Their board is all ground artifacts (no fliers, no Inkmoth):</strong> This is your best board state. <span class="c">Psychic Frog</span> attacks freely for 3+ per turn ignoring the entire artifact army below it. Discard cards you don't need to fuel Frog's flying and grow its power. <span class="c">Emperor of Bones</span> as a blocker handles any ground attacker they commit.</span></li>
+      <li><span class="if-label">If</span><span><strong>Archon of Cruelty enters via Persist in the midgame:</strong> Archon's ETB exiles a card from their hand, makes them sacrifice a permanent, makes them lose 3 life — and you gain that 3 life and draw a card. Against Affinity, the sacrifice of a permanent often means losing an artifact creature, collapsing their Metalcraft and crippling <span class="c">Mox Opal</span>. One Persist trigger frequently ends the game.</span></li>
+    </ul>
+  </div>
+
+  <!-- ELDRAZI TRON vs GLOCK -->
+  <div id="mu_etron_g" class="matchup-detail">
+    <h3>Eldrazi Tron — TKS Strips Persist, Chalice Locks Looting</h3>
+    <p>T1 <span class="c">Thoughtseize</span> to strip <span class="c">Chalice of the Void</span> — this is your most important T1 play in the entire matchup. Without Chalice locking MV 1, your <span class="c">Faithless Looting</span>, <span class="c">Thoughtseize</span>, and <span class="c">Fatal Push</span> all run freely and you set up <span class="c">Persist</span> before they assemble Tron. If you can't strip Chalice, pivot: <span class="c">Psychic Frog</span> (MV 2) resolves through Chalice at 1, grows every turn, and their artifact-heavy deck has no efficient answer to a flying creature. Against <span class="c">Reality Smasher</span>: use <span class="c">Persist</span> rather than targeted removal — Archon ETB makes them sacrifice Reality Smasher as part of the trigger, bypassing the discard protection entirely.</p>
+    <h3>Play vs Draw</h3>
+    <div class="pd-grid">
+      <div class="pd-col">
+        <div class="pd-label">On the Play</div>
+        <div class="pd-title">Thoughtseize Their Chalice</div>
+        <div class="pd-body"><span class="c">Thoughtseize</span> on turn 1 targeting <span class="c">Chalice of the Void</span> prevents the lock entirely. Without Chalice, your <span class="c">Faithless Looting</span> and <span class="c">Thoughtseize</span> chain runs freely. Set up <span class="c">Persist</span> before they assemble Tron. A turn-3 Persist is faster than their turn-3 payoffs.</div>
+      </div>
+      <div class="pd-col">
+        <div class="pd-label">On the Draw</div>
+        <div class="pd-title">Pitch Archon Early, Persist Under TKS</div>
+        <div class="pd-body">If TKS exiles your <span class="c">Persist</span>, pivot to the Emperor of Bones plan: <span class="c">Faithless Looting</span> discards Archon into the GY, Emperor's Adapt trigger fires, Archon enters via the "whenever counters are placed" ETB. TKS only exiles one card — your redundancy wins.</div>
+      </div>
+    </div>
+    <h3>Sideboard</h3>
+    <div class="sb-table">
+      <div class="sb-col">
+        <div class="sb-col-label">In</div>
+        <div class="sb-item"><span><span class="c">Nihil Spellbomb</span></span><span class="sb-qty">+2</span></div>
+        <div class="sb-item"><span><span class="c">Harvester of Misery</span></span><span class="sb-qty">+2</span></div>
+      </div>
+      <div class="sb-col">
+        <div class="sb-col-label">Out</div>
+        <div class="sb-item"><span>Thought Scour</span><span class="sb-qty">&minus;2</span></div>
+        <div class="sb-item"><span>Unearth</span><span class="sb-qty">&minus;2</span></div>
+      </div>
+    </div>
+    <h3>If X &rarr; Do Y</h3>
+    <ul class="ifthen-list">
+      <li><span class="if-label">If</span><span><strong><span class="c">Chalice of the Void</span> at 1 is in play:</strong> <span class="c">Faithless Looting</span> (MV 1), <span class="c">Thoughtseize</span> (MV 1), and <span class="c">Fatal Push</span> (MV 1) are all countered. Your playable spells: <span class="c">Faithless Looting</span> flashback is MV 3 (still works), <span class="c">Persist</span> is MV 2 (not hit), Emperor of Bones is MV 3 (not hit), Archon of Cruelty is MV 8 (not hit). Pivot entirely to the Persist or Emperor plan — your MV-2+ cards are fully live.</span></li>
+      <li><span class="if-label">If</span><span><strong><span class="c">Thought-Knot Seer</span> exiles <span class="c">Persist</span>:</strong> Two options: (1) Emperor of Bones Adapt plan — get Archon in the GY via Looting flashback, let Emperor Adapt, counter the Emperor "when counters placed" trigger is NOT what you want — let it resolve to get Archon in play. (2) If you have a second Persist in hand, they've spent 4 mana on a 4/4 that left you with a live redundant copy. Cast the second Persist freely.</span></li>
+      <li><span class="if-label">If</span><span><strong><span class="c">Reality Smasher</span> is attacking and you want to block:</strong> Reality Smasher has trample and haste. If you target it with <span class="c">Fatal Push</span> or any spell, they discard a card and the targeting spell is countered. Do not target it with single spells. Options: (1) chump block with <span class="c">Psychic Frog</span> (they get no discard — blocking isn't targeting), (2) Persist Archon to sacrifice their Smasher via the ETB trigger.</span></li>
+      <li><span class="if-label">If</span><span><strong>Archon ETB fires after Persist:</strong> Archon's ETB: target opponent sacrifices a permanent — their <span class="c">Reality Smasher</span> or TKS goes. Target opponent discards a card — strips their hand. Target opponent loses 3 life. You draw a card and gain 3 life. One Archon trigger against Eldrazi Tron reverses the game state entirely: their best threat is gone, their hand is stripped, and you're at a healthier life total.</span></li>
+    </ul>
+  </div>
+
+  <!-- DOMAIN ZOO vs GLOCK -->
+  <div id="mu_zoo_g" class="matchup-detail">
+    <h3>Domain Zoo — Hard Matchup: Their Clock Outraces Your Setup</h3>
+    <p>Domain Zoo is Glockulous's hardest matchup from the live DB at 0% win rate (small sample). Their fast domain threats — <span class="c">Territorial Kavu</span> as a 5/5 on turn 2, Scion of Draco with hexproof flying lifelink on turn 2, Wild Nacatl as a 3/3 — apply lethal damage before you can set up <span class="c">Persist</span> or Emperor. Archon requires turns 2-3 of setup minimum. A 5/5 on turn 2 is attacking before you have the mana for Archon. Your only realistic plan is winning the fair game through <span class="c">Psychic Frog</span> — it flies over their ground army. <span class="c">Thoughtseize</span> disrupts their fastest openers. <span class="c">Harbinger of the Seas</span> from the board turns all their nonbasic lands into Islands, collapsing their domain permanently.</p>
+    <h3>Play vs Draw</h3>
+    <div class="pd-grid">
+      <div class="pd-col">
+        <div class="pd-label">On the Play</div>
+        <div class="pd-title">Thoughtseize Their Best Threat</div>
+        <div class="pd-body"><span class="c">Thoughtseize</span> on turn 1 stripping Scion of Draco or <span class="c">Territorial Kavu</span> buys you a full turn. <span class="c">Psychic Frog</span> on turn 2 flies over their ground army — by turn 4 Frog is a 5/5+ flier with every card discarded. Don't try to set up Archon — you die before you get there.</div>
+      </div>
+      <div class="pd-col">
+        <div class="pd-label">On the Draw</div>
+        <div class="pd-title">Frog + Block With Frog</div>
+        <div class="pd-body">On the draw they likely have a 5/5 or 3/3 attacking before you've done anything. <span class="c">Fatal Push</span> with revolt kills their one-drop Hierarchs (fetching them triggers revolt). A turn-2 <span class="c">Psychic Frog</span> that blocks a 3/3 and dies while exiling 3 GY cards for flying activation is still card-positive if Frog gained flying and attacked once.</div>
+      </div>
+    </div>
+    <h3>Sideboard</h3>
+    <div class="sb-table">
+      <div class="sb-col">
+        <div class="sb-col-label">In</div>
+        <div class="sb-item"><span>Harbinger of the Seas</span><span class="sb-qty">+3</span></div>
+        <div class="sb-item"><span>Pyroclasm</span><span class="sb-qty">+2</span></div>
+      </div>
+      <div class="sb-col">
+        <div class="sb-col-label">Out</div>
+        <div class="sb-item"><span>Persist</span><span class="sb-qty">&minus;2</span></div>
+        <div class="sb-item"><span>Unearth</span><span class="sb-qty">&minus;2</span></div>
+        <div class="sb-item"><span>Emperor of Bones</span><span class="sb-qty">&minus;1</span></div>
+      </div>
+    </div>
+    <h3>If X &rarr; Do Y</h3>
+    <ul class="ifthen-list">
+      <li><span class="if-label">If</span><span><strong><span class="c">Harbinger of the Seas</span> resolves:</strong> All nonbasic lands become Islands — static effect, immediate. Their Breeding Pool, Sacred Foundry, Godless Shrine, Overgrown Tomb all produce only blue mana. Their domain drops to 1 (blue mana = Islands = one basic land type). Scion of Draco goes from hexproof flying lifelink to a vanilla 4/4. Territorial Kavu shrinks to its base 2/2. Their entire domain scaling collapses. Protect Harbinger at all costs.</span></li>
+      <li><span class="if-label">If</span><span><strong>Scion of Draco has hexproof and Harbinger isn't in play:</strong> You cannot target it. Pyroclasm deals 2 damage to all creatures — Scion is a 4/4 with first strike, survives Pyroclasm. Do not try to remove Scion with targeted spells. Race around it: <span class="c">Psychic Frog</span> flying attacks into their life total while Scion attacks yours. Calculate which clock is faster.</span></li>
+      <li><span class="if-label">If</span><span><strong>Pyroclasm resolves into their small creatures:</strong> Pyroclasm deals 2 to all creatures — kills Ignoble Hierarch (1/1), Noble Hierarch (1/1), Wild Nacatl (3/3 — wait, 3 toughness survives). Actually Pyroclasm kills 1-2 toughness creatures: Hierarchs, tokens. Territorial Kavu is 2/2 base but gets boosted — check current power/toughness. Scion survives (4/4). Pyroclasm is best against their token and small-creature openers, not against their large domain threats.</span></li>
+      <li><span class="if-label">If</span><span><strong>Your <span class="c">Thoughtseize</span> reveals Tribal Flames in their opener:</strong> Tribal Flames at full domain deals 5 damage. Keep this in mind for life total math — 5 damage from nowhere can happen at any time they have 2 open mana. Prioritize killing them before you reach 5 life, and don't tap out at 8 or less life against Zoo with domain assembled.</span></li>
+    </ul>
+  </div>
+
+  <!-- ESPER REANIMATOR vs GLOCK -->
+  <div id="mu_esper_g" class="matchup-detail">
+    <h3>Esper Reanimator — Graveyard Mirror: Frog Wins the Fair Game</h3>
+    <p>Both decks are GY-based combo-midrange decks. The key difference: Esper Reanimator is faster on their best draw (turn 2 Goryo's Vengeance into <span class="c">Atraxa, Grand Unifier</span> or Griselbrand), but slower on average. Your <span class="c">Thoughtseize</span> strips their reanimation spell directly. <span class="c">Nihil Spellbomb</span> exiles their GY, removing all Goryo's targets. <span class="c">Psychic Frog</span> wins the fair game against their Grief/Ephemerate + fair plan — a flying 3+ power creature outclasses their 3/2 Grief. The matchup is roughly even because your disruption answers their plan, but their Grief + Ephemerate answers yours.</p>
+    <h3>Play vs Draw</h3>
+    <div class="pd-grid">
+      <div class="pd-col">
+        <div class="pd-label">On the Play</div>
+        <div class="pd-title">Thoughtseize Goryo's or Atraxa</div>
+        <div class="pd-body"><span class="c">Thoughtseize</span> on turn 1 strips either Goryo's Vengeance (removing the reanimation spell) or <span class="c">Atraxa, Grand Unifier</span> (removing the target). Either hit cripples their plan. If they have both, strip Goryo's — they can still discard Atraxa via Faithful Mending but need a second reanimation spell.</div>
+      </div>
+      <div class="pd-col">
+        <div class="pd-label">On the Draw</div>
+        <div class="pd-title">Accept Grief, Rebuild With Frog</div>
+        <div class="pd-body">Their Grief + Ephemerate on turn 1 exiles your best card twice. This hurts, but your <span class="c">Faithless Looting</span> flashback and <span class="c">Thought Scour</span> rebuild quickly. <span class="c">Psychic Frog</span> on turn 2 after being Grieved is still a 3/3 flier by turn 3 — they have no clean answer to it.</div>
+      </div>
+    </div>
+    <h3>Sideboard</h3>
+    <div class="sb-table">
+      <div class="sb-col">
+        <div class="sb-col-label">In</div>
+        <div class="sb-item"><span><span class="c">Nihil Spellbomb</span></span><span class="sb-qty">+2</span></div>
+        <div class="sb-item"><span>Surgical Extraction</span><span class="sb-qty">+2</span></div>
+      </div>
+      <div class="sb-col">
+        <div class="sb-col-label">Out</div>
+        <div class="sb-item"><span>Unearth</span><span class="sb-qty">&minus;2</span></div>
+        <div class="sb-item"><span>Thought Scour</span><span class="sb-qty">&minus;2</span></div>
+      </div>
+    </div>
+    <h3>If X &rarr; Do Y</h3>
+    <ul class="ifthen-list">
+      <li><span class="if-label">If</span><span><strong>They discard <span class="c">Atraxa, Grand Unifier</span> to Faithful Mending on turn 2:</strong> Goryo's Vengeance is live next turn. Two options: (1) <span class="c">Thoughtseize</span> to strip the Goryo's from their hand before they cast it — spend your turn 2 disrupting rather than developing. (2) Deploy <span class="c">Nihil Spellbomb</span> now, cracking it immediately to exile their GY — Goryo's has no valid target. Nihil is the cleaner answer.</span></li>
+      <li><span class="if-label">If</span><span><strong><span class="c">Atraxa, Grand Unifier</span> enters via Goryo's Vengeance:</strong> They look at top 10 and put one of each card type into hand — massive refuel. Atraxa attacks as 7/7 flying vigilance lifelink haste. Calculate: your total board damage + <span class="c">Faithless Looting</span> discard triggers + any reach — can you kill them this turn or next? If yes, commit. If no, Atraxa gains them back lethal amounts of life per attack. You need to close before it stabilizes.</span></li>
+      <li><span class="if-label">If</span><span><strong>Both players have graveyards full of key pieces:</strong> You can Persist Archon of Cruelty from your GY. They can Goryo's Vengeance or Persist Archon from theirs (if running it). <span class="c">Surgical Extraction</span> exiles all copies of Archon from their GY + hand + library permanently. Cast it the moment they discard or lose their first Archon — removes all future Persist targets too.</span></li>
+      <li><span class="if-label">If</span><span><strong>Grief steals your <span class="c">Persist</span> from hand via ETB exile:</strong> They saw your hand and stripped the kill piece. Rebuild around Emperor of Bones: <span class="c">Faithless Looting</span> to fill the GY with Archon, Emperor Adapt to generate a 10-cost spell — Archon enters when the "counters placed on Emperor" trigger fires. Their Grief plan leaves them with a 3/2 and zero disruption — your Emperor path is slower but intact.</span></li>
+    </ul>
+  </div>
+
+  <!-- RUBY STORM vs GLOCK -->
+  <div id="mu_storm_g" class="matchup-detail">
+    <h3>Ruby Storm — Thoughtseize Strips Payoff, Frog Races Grapeshot</h3>
+    <p>Ruby Storm chains red spells through <span class="c">Ruby Medallion</span> and <span class="c">Past in Flames</span> to win with Grapeshot or Empty the Warrens. Glockulous is a slight dog because Storm's kill is often faster than your Archon setup, and you have limited dedicated combo interaction. Your tools: <span class="c">Thoughtseize</span> strips Grapeshot or <span class="c">Past in Flames</span> before they go off. Spell Pierce taxes their payoff spell. <span class="c">Psychic Frog</span> applies lethal pressure at 3+ power flying, racing their burn. Grapeshot copies deal 1 damage each — if your life total is above their storm count, Grapeshot doesn't kill you.</p>
+    <h3>Play vs Draw</h3>
+    <div class="pd-grid">
+      <div class="pd-col">
+        <div class="pd-label">On the Play</div>
+        <div class="pd-title">Strip Medallion or Grapeshot T1</div>
+        <div class="pd-body"><span class="c">Thoughtseize</span> on turn 1 stripping <span class="c">Ruby Medallion</span> pushes their kill from turn 3 to turn 5+. Without cost reduction, each ritual and cantrip costs full mana — they can't chain efficiently. Stripping Grapeshot forces them to find another copy. <span class="c">Psychic Frog</span> on turn 2 applies pressure they must race against.</div>
+      </div>
+      <div class="pd-col">
+        <div class="pd-label">On the Draw</div>
+        <div class="pd-title">Race + Spell Pierce Their Payoff</div>
+        <div class="pd-body">On the draw their turn-3 kill window is before you've set up. Keep any hand with <span class="c">Thoughtseize</span> + <span class="c">Psychic Frog</span>. Apply pressure every turn. When they attempt to go off, Spell Pierce (U, counter target spell unless controller pays 2) taxes their Grapeshot — they often don't have the extra 2 mana if chains are tight.</div>
+      </div>
+    </div>
+    <h3>Sideboard</h3>
+    <div class="sb-table">
+      <div class="sb-col">
+        <div class="sb-col-label">In</div>
+        <div class="sb-item"><span><span class="c">Nihil Spellbomb</span></span><span class="sb-qty">+2</span></div>
+        <div class="sb-item"><span><span class="c">Harvester of Misery</span></span><span class="sb-qty">+2</span></div>
+      </div>
+      <div class="sb-col">
+        <div class="sb-col-label">Out</div>
+        <div class="sb-item"><span>Unearth</span><span class="sb-qty">&minus;2</span></div>
+        <div class="sb-item"><span>Emperor of Bones</span><span class="sb-qty">&minus;2</span></div>
+      </div>
+    </div>
+    <h3>If X &rarr; Do Y</h3>
+    <ul class="ifthen-list">
+      <li><span class="if-label">If</span><span><strong>They cast <span class="c">Past in Flames</span> (MV 4, flashback all instants/sorceries in GY this turn):</strong> A kill attempt is imminent this turn or next. <span class="c">Thoughtseize</span> on this turn if you haven't already — strip Grapeshot from hand. Or deploy <span class="c">Nihil Spellbomb</span> immediately, cracking it to exile their entire GY — Past in Flames requires cards in the GY to flash back. With the GY exiled, Past in Flames generated zero value even if it resolved.</span></li>
+      <li><span class="if-label">If</span><span><strong>Grapeshot is on the stack with storm count 10+ (11 copies targeting you):</strong> You take 11 damage. Is that lethal? If you're at 12+ life, you survive. <span class="c">Psychic Frog</span>'s lifelink attacks (if it attacked earlier) may have padded your life total. Track your life total against their storm count — if you're above the count, you survive the Grapeshot and can kill them next turn. If not, Spell Pierce before the chain completes.</span></li>
+      <li><span class="if-label">If</span><span><strong>They resolve Empty the Warrens with 8 storm (16 tokens):</strong> Archon of Cruelty's ETB sacrifices a permanent — one token gone. But 15 tokens remains lethal in one attack. <span class="c">Harvester of Misery</span> from the board (MV 4 — each opponent sacrifices a creature) sacrifices two tokens when it enters. That's still 14 tokens. This is a race — kill them with Frog's flying attacks before the token army kills you next turn.</span></li>
+      <li><span class="if-label">If</span><span><strong>Your <span class="c">Thoughtseize</span> reveal shows both Grapeshot and <span class="c">Past in Flames</span>:</strong> Strip <span class="c">Past in Flames</span>. Reasoning: Grapeshot has a minimum storm count requirement to be lethal, while Past in Flames refuels their entire chain. Removing Past in Flames means they have one shot at building storm count from scratch — stripping Grapeshot only forces them to draw or find the second copy. Remove their engine, not their bullet.</span></li>
+    </ul>
+  </div>
+
+<!-- end matchups -->
+
+<!-- SIDEBOARD GUIDE -->
+<div id="edges" class="section">
+  <div class="section-label">Lines &amp; Tactics</div>
+  <h1>Edge Cases &amp;<br>Rules Precision</h1>
+  <div class="mantra">"Glockulous wins on trigger sequencing. Know exactly when each fires and what counters it."</div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">The Consign Line — Counter Your Own Emperor Sacrifice Trigger</div>
+    <div class="edge-case-body">When <span class="c">Emperor of Bones</span> reanimates Archon, the Archon enters with haste and a finality counter, and a delayed triggered ability fires at the beginning of the NEXT end step: "sacrifice Archon." This sacrifice is a triggered ability on the stack. Fire <span class="c">Consign to Memory</span> at it — Consign counters triggered abilities. The sacrifice trigger is countered, Archon is never sacrificed, and it remains permanently. Result: a 6/6 flying lifelink Archon that attacked this turn and never leaves. The finality counter means if Archon ever dies later, it goes to exile (can't be Persisted) — but that's a minor cost for keeping it permanently in play.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Persist and the Finality Counter — Where Archon Goes When It Dies</div>
+    <div class="edge-case-body"><span class="c">Persist</span> says "Return target creature card from your graveyard to the battlefield. It gains haste until end of turn. Put a finality counter on it." A finality counter reads: "If a permanent has a finality counter on it, it's put into exile instead of any other zone when it leaves the battlefield." This means: Archon with a finality counter that dies goes to EXILE, not your graveyard. You cannot <span class="c">Persist</span> it again. <span class="c">Emperor of Bones</span> cannot exile it from the graveyard to reanimate (it's not in the graveyard). Track your finality counter Archons — they are one-time use. Your main-deck Archons without finality counters can be Persisted repeatedly.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Emperor of Bones Adapt Trigger — Counters Placed, Not Adapt Resolution</div>
+    <div class="edge-case-body"><span class="c">Emperor of Bones</span>'s reanimate ability fires from "Whenever one or more counters are placed on Emperor of Bones." The Adapt ability places N +1/+1 counters — and the moment those counters are placed, the "counters placed" trigger fires. This is a triggered ability, and it can be countered by <span class="c">Consign to Memory</span> (which counters triggered abilities). If your opponent has Consign up when you Adapt, they CAN counter the reanimate trigger, preventing Archon from entering. Play around this: Thoughtseize their Consign the turn before Adapting. The Adapt action itself (paying the Adapt cost) cannot be countered — only the resulting trigger.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Consign to Memory Cannot Counter Persist or Activated Abilities</div>
+    <div class="edge-case-body"><span class="c">Consign to Memory</span> counters triggered abilities or colorless spells. <span class="c">Persist</span> is a black sorcery — it is NOT a triggered ability, it IS a colored spell. Consign cannot counter Persist. Your <span class="c">Emperor of Bones</span> Adapt (paying {2} plus counters) is an activated ability — Consign cannot counter activated abilities either. What they CAN counter with Consign: your Emperor's "counters placed" reanimate trigger, Archon's ETB trigger (sacrifice, discard, lose 3). The most important opponent protection: if they have Consign up when your Archon ETB fires, they can counter the ETB trigger and you get nothing. Play around it by stripping Consign with Thoughtseize before Persisting.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Psychic Frog Flying — Exile FROM Your Graveyard Only</div>
+    <div class="edge-case-body"><span class="c">Psychic Frog</span>'s flying ability: "Pay {0}: Exile three cards from your graveyard. Psychic Frog gains flying until end of turn." The exile is from YOUR graveyard — not any graveyard, not a library, not hand. This means: (1) you need 3 cards in your own GY to activate it, (2) activating it removes your own Archon, Emperor, or Persist targets from the GY (the cost is real), (3) under <span class="c">Rest in Peace</span>, there is no graveyard and this ability cannot be activated. Calculate GY resources before granting flying — losing the 3 exiled cards may cost you future Persist or Emperor targets.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Reality Smasher Discard — Only When Targeted, Not When Swept</div>
+    <div class="edge-case-body"><span class="c">Reality Smasher</span> says "Whenever Reality Smasher becomes the target of a spell or ability an opponent controls, counter it unless its controller discards a card." This ONLY triggers when it is specifically TARGETED. Board sweepers (Supreme Verdict, Wrath of God, Archon ETB's "sacrifice a permanent") do NOT target — they affect all or use an instruction without a target. Against Smasher: use Archon's ETB sacrifice trigger (which forces them to sacrifice Smasher without targeting it), use Persist to get Archon into play and let the ETB do the work, or use untargeted sweepers. Targeted removal like Fatal Push triggers the discard. One way to "blank" the discard: use Fatal Push when their hand is already empty — they have nothing to discard so the discard is irrelevant, and the counter clause only applies if they CAN discard.</div>
+  </div>
+
+</div>
+
+<div id="sideboard" class="section">
+  <div class="section-label">Chapter 07</div>
+  <h1>Sideboard<br>Guide</h1>
+
+  <h2>Card-by-Card Notes</h2>
+  <div class="sb-card-guide">
+    <div class="sb-guide-row">
+      <div class="sb-guide-name"><span class="c">Nihil Spellbomb</span></div>
+      <div class="sb-guide-body"><strong>3 copies.</strong> {1} artifact. Tap + sacrifice: exile target player's graveyard. When put in GY from battlefield, may pay {B} to draw a card. Primary function: exile opponent's graveyard at the precise moment it matters most — before they <span class="c">Persist</span>, before they Emperor-Adapt, before they Murktide-Delve. In the mirror, pop it when Archon is in their yard. Against Prowess, pop it before they can Delve into Murktide Regent. Paying {B} to draw a card when it goes to the yard is a real consideration — if you have B open and the draw matters, pay it. Never pop it empty (no relevant targets in their yard) — wait for the right moment.</div>
+    </div>
+    <div class="sb-guide-row">
+      <div class="sb-guide-name"><span class="c">Mystical Dispute</span></div>
+      <div class="sb-guide-body"><strong>3 copies.</strong> {2}{U} instant, counter target spell. Costs {2} less if that spell is blue. Against any blue opponent: {U} to counter their <span class="c">Counterspell</span>, <span class="c">Force of Negation</span>, or any other blue spell. This is the most mana-efficient counter in your sideboard for protecting <span class="c">Persist</span> in game 2 against control and blink. Fire it in response to their counter when your <span class="c">Persist</span> is on the stack — you convert their {U}{U} <span class="c">Counterspell</span> into a loss of 1 blue for you. Board in vs any deck with <span class="c">Counterspell</span>, <span class="c">Force of Negation</span>, or <span class="c">Consign to Memory</span>.</div>
+    </div>
+    <div class="sb-guide-row">
+      <div class="sb-guide-name"><span class="c">Spell Pierce</span></div>
+      <div class="sb-guide-body"><strong>2 copies.</strong> {U} instant: counter target noncreature spell unless controller pays {1}. Excellent turns 1-3 when they can't afford the tax, nearly dead late game when they have spare mana. Board in vs Control (counter <span class="c">Counterspell</span>, <span class="c">Supreme Verdict</span> early), vs Blink (counter <span class="c">Solitude</span> alternative cast — wait, <span class="c">Solitude</span> is free — counter Teferi instead). The "pay 1" clause fails past turn 4 when they have open mana. Use it aggressively in the first three turns.</div>
+    </div>
+    <div class="sb-guide-row">
+      <div class="sb-guide-name">Drown in the Loch</div>
+      <div class="sb-guide-body"><strong>2 copies.</strong> {U}{B} instant: counter target spell if its controller has that many or more cards in their graveyard, OR destroy target creature/planeswalker with that condition. Dual-mode — counter or kill based on yard count. Against Control: counter their <span class="c">Counterspell</span> once their graveyard hits 2+ cards (often turn 2-3). Against Prowess: destroy <span class="c">Dragon's Rage Channeler</span> once their graveyard has 1 card (MV 1). Against anyone: becomes better as the game goes longer and graveyards fill. Board in when you need either removal or countermagic in the same slot.</div>
+    </div>
+    <div class="sb-guide-row">
+      <div class="sb-guide-name"><span class="c">Surgical Extraction</span></div>
+      <div class="sb-guide-body"><strong>2 copies.</strong> Pay 2 life: name a nonland card in opponent's graveyard, exile all copies from hand, graveyard, and library. Primary target: <span class="c">Archon of Cruelty</span> in the mirror (exiling all 4 Archons after one Persists), <span class="c">Summoner's Pact</span> vs Titan (exiling all Pacts after one resolves). Cast it immediately when the target first reaches the graveyard — don't wait for "the perfect moment" that may never come. Cast during their turn at instant speed if their Archon just hit the yard from a discard.</div>
+    </div>
+    <div class="sb-guide-row">
+      <div class="sb-guide-name"><span class="c">Harbinger of the Seas</span> (SB copies)</div>
+      <div class="sb-guide-body"><strong>2 copies.</strong> {1}{U}{U} 2/2 Merfolk: nonbasic lands are Islands (static). The mainboard already runs 2 — the SB copies are for matchups where 4 total is correct. Board in vs Amulet Titan (completely collapses their mana structure), Boros Energy (cuts red and white mana from their shocks), Jeskai Blink (cuts their color fixing). The static ability means it doesn't stack with multiple Harbingers — a second Harbinger doesn't change anything, but its body matters. Two Harbingers = two 2/2 bodies + same mana lock.</div>
+    </div>
+    <div class="sb-guide-row">
+      <div class="sb-guide-name"><span class="c">Blood Moon</span></div>
+      <div class="sb-guide-body"><strong>1 copy.</strong> {2}{R} enchantment: nonbasic lands are Mountains. Hits the same targets as Harbinger but changes nonbasics to Mountains instead of Islands. Harbinger is better against most targets in this deck because you already have Harbinger in the main. <span class="c">Blood Moon</span> as the 1-of is for matchups where Mountains specifically help more than Islands — primarily Amulet Titan, where Mountains don't trigger <span class="c">Amulet of Vigor</span>'s untap either. Note: you need {2}{R} to cast <span class="c">Blood Moon</span> — you must have a red source (<span class="c">Blood Crypt</span>, <span class="c">Steam Vents</span>) available before you deploy it.</div>
+    </div>
+  </div>
+
+  <h2>Matchup Deep Dives</h2>
+
+  <div class="sb-deep">
+    <div class="sb-deep-header" onclick="toggleDeep(this)">
+      <div class="sb-deep-title">
+        <div class="sb-deep-name">vs Boros Energy</div>
+        <div class="sb-deep-meta">+3 Spellbomb · +2 Dispute · +2 Harbinger / −3 Scour · −2 <span class="c">Unearth</span> · −2 Troll</div>
+      </div>
+      <div class="sb-deep-toggle">+</div>
+    </div>
+    <div class="sb-deep-body">
+      <div class="sb-deep-mantra">Harbinger cuts their mana. Archon ETB stabilizes everything.</div>
+      <div class="sb-deep-grid">
+        <div>
+          <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--mid);margin-bottom:10px;">Why Harbinger In</div>
+          <p style="font-size:15px;font-weight:300;">Boros runs <span class="c">Sacred Foundry</span>, <span class="c">Inspiring Vantage</span>, and shocklands as their primary mana. Harbinger makes all of these Islands immediately — no more red mana for <span class="c">Galvanic Discharge</span>, no more white mana for <span class="c">Sanctifier en-Vec</span>. Their primary interaction suite collapses with one 3-mana 2/2. Four total Harbingers (2 main + 2 board) means you consistently have one in hand.</p>
+        </div>
+        <div>
+          <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--mid);margin-bottom:10px;">Why Cut <span class="c">Thought Scour</span></div>
+          <p style="font-size:15px;font-weight:300;"><span class="c">Thought Scour</span> mills two — sometimes you, sometimes them. Against Boros this milling is irrelevant since neither player's graveyard matters much in this specific race. The slot is better used for Harbinger and Spellbomb. <span class="c">Troll of Khazad-dûm</span> also comes out — its 6/5 is too slow for a matchup decided by turns 3-4.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sb-deep">
+    <div class="sb-deep-header" onclick="toggleDeep(this)">
+      <div class="sb-deep-title">
+        <div class="sb-deep-name">vs Azorius Control</div>
+        <div class="sb-deep-meta">+3 Dispute · +2 Pierce · +2 Drown / −3 Scour · −2 Troll · −2 Push</div>
+      </div>
+      <div class="sb-deep-toggle">+</div>
+    </div>
+    <div class="sb-deep-body">
+      <div class="sb-deep-mantra"><span class="c">Thoughtseize</span> their counter. Then <span class="c">Persist</span> through open mana freely.</div>
+      <div class="sb-deep-grid">
+        <div>
+          <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--mid);margin-bottom:10px;">The Counter-War Plan</div>
+          <p style="font-size:15px;font-weight:300;"><span class="c">Mystical Dispute</span> counters <span class="c">Counterspell</span> for {U}. <span class="c">Spell Pierce</span> counters anything noncreature for {U} in the first three turns. Drown in the Loch counters blue spells when their graveyard count is met. Together these let you resolve threats despite their full counter suite. The core rule: <span class="c">Thoughtseize</span> the main counter first, then resolve <span class="c">Persist</span> into an empty protection hand.</p>
+        </div>
+        <div>
+          <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--mid);margin-bottom:10px;">Why Cut <span class="c">Fatal Push</span></div>
+          <p style="font-size:15px;font-weight:300;">Control lists have few or zero relevant creatures before sideboard. <span class="c">Snapcaster Mage</span> and Teferi are notable exceptions — Drown in the Loch handles both (Drown can destroy a creature as well as counter spells). <span class="c">Fatal Push</span> is nearly dead against a deck with no small creatures. Every Push cut is a counter gained.</p>
+        </div>
+      </div>
+    </div>
+    <div class="sb-guide-row">
+      <div class="sb-guide-name"><span class="c">Force of Negation</span></div>
+      <div class="sb-guide-body"><strong>2 copies.</strong> {2}{U}{U} instant, counter target noncreature spell. Alternate cost: exile a blue card from hand and pay 1 life (only on opponent's turn). Your free interaction against combo decks — you exile a blue card and counter their key spell without tapping mana. Use it on opponent's turn to counter their Goryo's Vengeance, Living End (cascade), or any critical noncreature spell while keeping your own mana open. Never use the free mode on your own turn unless absolutely necessary — you lose the exile-blue-card option on your turn. Board in vs every combo deck.</div>
+    </div>
+    <div class="sb-guide-row">
+      <div class="sb-guide-name"><span class="c">Alpine Moon</span></div>
+      <div class="sb-guide-body"><strong>1–2 copies.</strong> {R} enchantment: name a nonbasic land; it loses all land types and abilities and gains "{T}: Add {C}." Your surgical land hate — you name their Urza's Saga (removes all triggers), their Amulet of Vigor enablers (Simic Growth Chamber becomes a basic producer), or their Valakut (removes the "Mountain" type, shuts off triggers). Costs one mana vs Blood Moon's three — deploy it on T1 before they can use the problematic land. Combines with Harbinger of the Seas: Alpine Moon surgically hits one land, Harbinger taxes their entire nonbasic manabase. Board in vs Amulet Titan, Valakut, and Urza's Saga decks.</div>
+    </div>
+  </div>
+</div>
+
+<!-- HEURISTICS -->
+<div id="heuristics" class="section">
+  <div class="section-label">Chapter 08</div>
+  <h1>Heuristics &amp;<br>Quick Rules</h1>
+
+  <p>Automatic decisions drilled before the event. Glockulous has many layers of sequencing — these rules prevent the most common errors.</p>
+
+  <ol class="heuristic-list">
+    <li><strong>Looting pitches Troll to the yard; swampcycling puts a land in hand.</strong> These are different outcomes. With Looting in hand, always use it to discard Troll — the yard Troll is a <span class="c">Persist</span> target. Swampcycle Troll only when you need a land immediately and have no Looting.</li>
+    <li><strong><span class="c">Thoughtseize</span> before <span class="c">Persist</span> — always.</strong> If their hand is unknown and they have UU available, you're walking into <span class="c">Counterspell</span>. Cast <span class="c">Thoughtseize</span> the turn before <span class="c">Persist</span> to strip the counter. One <span class="c">Persist</span> countered and unrecovered is close to a loss in most matchups.</li>
+    <li><strong>Archon is not legendary — you can have multiple.</strong> Don't hesitate to <span class="c">Persist</span> a second Archon when the first is already in play. Two Archons swinging means 4 Archon triggers per turn. This wins any game that reaches this state.</li>
+    <li><strong>The Archon ETB trigger fires on enter AND on attack.</strong> A Persisted Archon fires ETB when it enters (they sacrifice, discard, lose 3, you draw, gain 3). Then it fires again when it attacks next turn. Two triggers from one return = 12-point life swing before they take combat damage.</li>
+    <li><strong><span class="c">Emperor of Bones</span> Adapt is an activated ability — <span class="c">Consign to Memory</span> cannot counter it.</strong> Consign counters triggered abilities and colorless spells. Adapt is a colored activated ability ({1}{B}). Safe from Consign. Only answers are: stop Emperor from entering the battlefield, prevent the exile during beginning of combat, or respond to the counter placement trigger by exiling Emperor (<span class="c">Solitude</span> removes Emperor before counters are placed).</li>
+    <li><strong>A creature with a finality counter goes to exile when it dies.</strong> Emperor-reanimated Archon cannot be Persisted again after dying. Only swing with finality-counter Archon into boards where it will not die. The ETB already triggered — don't risk the permanent exile for a marginal attack trigger.</li>
+    <li><strong><span class="c">Nihil Spellbomb</span> timing: pop it before they cast <span class="c">Persist</span> or Adapt, not after.</strong> If they tap 1B and cast <span class="c">Persist</span>, the Archon is already in the yard being targeted. Pop Spellbomb immediately when they pass the turn with <span class="c">Persist</span> mana and an Archon in yard. The moment to deny the <span class="c">Persist</span> is before it's cast, not in response.</li>
+    <li><strong><span class="c">Unearth</span> returns MV 3 or less only — it does not return Archon or Troll.</strong> <span class="c">Unearth</span> targets: <span class="c">Psychic Frog</span> (MV 2), <span class="c">Emperor of Bones</span> (MV 2), <span class="c">Harbinger of the Seas</span> (MV 3). <span class="c">Persist</span> targets: Archon (MV 8), Troll (MV 6), and all of the above. Don't confuse these — <span class="c">Unearth</span> is for rebuilding your fair game, <span class="c">Persist</span> is for the combo.</li>
+    <li><strong><span class="c">Psychic Frog</span>'s flying ability requires exiling 3 graveyard cards.</strong> Those 3 cards are a finite resource that might also be <span class="c">Persist</span>/Emperor targets. Only grant Frog flying when the combat damage drawn card and positional value is worth more than those 3 graveyard cards. Don't grant flying reflexively.</li>
+    <li><strong><span class="c">Thought Scour</span> mills any target player — use it on yourself to fill the yard.</strong> In nearly all cases, mill yourself. Milling Archon into your own yard sets up turn 3 <span class="c">Persist</span>. The draw (blue) + mill self = free setup for the combo. Milling the opponent is situationally useful in the mirror to deny their resources, but defaulting to self-mill is almost always correct.</li>
+    <li><strong><span class="c">Faithless Looting</span> draws first, then discards.</strong> You cannot see your new cards and then decide to discard one of them from a "pre-Looting" perspective. You draw your two new cards, then make the discard decision with full updated information. Use this information advantage — if you drew into a second <span class="c">Persist</span>, you might discard differently than if you drew two lands.</li>
+    <li><strong><span class="c">Mystical Dispute</span> costs {U} against blue spells — use it to protect <span class="c">Persist</span>, not to deny cantrips.</strong> A {U} Dispute is your cheapest <span class="c">Persist</span> protection. Don't waste it countering a Preordain or <span class="c">Thought Scour</span>. Hold it for when your <span class="c">Persist</span> is on the stack and they respond with <span class="c">Counterspell</span>. That's the exchange that matters: your {U} defeats their {U}{U}.</li>
+    <li><strong><span class="c">Harbinger of the Seas</span> is a static effect — it doesn't destroy lands, it changes their type.</strong> When Harbinger enters, nonbasic lands immediately become Islands. They don't go to the graveyard. They don't get bounced. They just lose their nonbasic mana-producing abilities and become Islands. Harbinger dying removes the effect — their lands return to normal. Protect your Harbinger.</li>
+    <li><strong><span class="c">Persist</span> is a black sorcery — not a triggered ability, not a colorless spell.</strong> This means <span class="c">Consign to Memory</span> cannot counter it. The only cards that stop <span class="c">Persist</span> are: <span class="c">Counterspell</span>, <span class="c">Force of Negation</span>, Flare of Denial, <span class="c">Spell Pierce</span> (if they can pay 1), and similar spell counters. Do not play around Consign when resolving <span class="c">Persist</span> — it's irrelevant.</li>
+    <li><strong><span class="c">Blood Moon</span> requires {2}{R} — have a red source before deploying it.</strong> You play <span class="c">Blood Crypt</span> and <span class="c">Steam Vents</span> as your red sources. Fetch <span class="c">Blood Crypt</span> before casting <span class="c">Blood Moon</span> on turn 3. A <span class="c">Blood Moon</span> you can't cast is a dead card. Check your mana carefully and ensure RR or equivalent before boarding it in.</li>
+    <li><strong><span class="c">Emperor of Bones</span> exiles from any graveyard — use it on their best threat too.</strong> In the mirror or against Prowess, Emperor can exile Archon or Murktide Regent from their graveyard and reanimate it on your side. Their best threats becoming your threats is the most efficient use of Emperor in those matchups.</li>
+  </ol>
+</div>
+
+<!-- PREP -->
+<div id="tuning" class="section">
+  <div class="section-label">Chapter 09</div>
+  <h1>Tuning<br>Notes</h1>
+  <p>Concrete card swaps triggered by metagame shifts. Check live meta data before each RC.</p>
+  <div class="tuning-grid">
+    <div class="tuning-cell"><div class="tuning-label">If This Rises</div><div class="tuning-condition">Graveyard Hate Heavy Meta</div>
+      <p class="tuning-up"><span class="c">Psychic Frog</span> becomes primary — build around it not Archon</p>
+      <p class="tuning-up"><span class="c">Mystical Dispute</span> SB +1 — protect Frog from blue removal</p>
+      <p class="tuning-down"><span class="c">Unearth</span> — less relevant when Frog is the plan</p>
+      <p class="tuning-down">Emperor of Bones — cut 1 when GY plan is unreliable</p>
+      <p style="font-size:14px;font-weight:300;margin-top:8px;">When RiP or Leyline is expected game 1, consider moving to a Frog-primary configuration in the SB. Your discard package (<span class="c">Thoughtseize</span>, <span class="c">Faithless Looting</span>) strips their hate piece before it resolves, and Frog grows from the discards. The GY hate helps you grow Frog faster.</p>
+    </div>
+    <div class="tuning-cell"><div class="tuning-label">If This Rises</div><div class="tuning-condition">Control and Blue Midrange</div>
+      <p class="tuning-up"><span class="c">Consign to Memory</span> becomes highest priority — bait counters aggressively</p>
+      <p class="tuning-up"><span class="c">Spell Pierce</span> SB +1 — tax their Counterspell window</p>
+      <p class="tuning-down"><span class="c">Fatal Push</span> main -1 — fewer targets in control mirrors</p>
+      <p style="font-size:14px;font-weight:300;margin-top:8px;">The Warp bait line (Quantum Riddler + Consign to force their countermagic) is under testing as a main deck configuration against control-heavy metas. The line forces them to counter your Consign or let Archon enter — neither option is clean for them. Testing 2 Riddler + 2 Consign as a package.</p>
+    </div>
+    <div class="tuning-cell"><div class="tuning-label">If This Rises</div><div class="tuning-condition">Aggro and Fast Clocks</div>
+      <p class="tuning-up"><span class="c">Fatal Push</span> main +1 — more cheap removal</p>
+      <p class="tuning-up"><span class="c">Harvester of Misery</span> SB — each opponent sacrifices a creature on entry</p>
+      <p class="tuning-down">Troll of Khazad-dum — too slow, Swampcycling is the only relevant mode</p>
+      <p class="tuning-down">Emperor of Bones -1 — 2 mana 2/2 is too vulnerable in aggro races</p>
+      <p style="font-size:14px;font-weight:300;margin-top:8px;">Against Boros Energy and Prowess, your primary goal is surviving to turn 3 for Persist. <span class="c">Fatal Push</span> revolt (triggered by any fetchland crack) kills Ragavan, Swiftspear, DRC, and Ocelot Pride. <span class="c">Psychic Frog</span> blocking a 3/3 and dying while exiling GY cards for flying is still card-positive if you need the blocks.</p>
+    </div>
+    <div class="tuning-cell"><div class="tuning-label">If This Rises</div><div class="tuning-condition">Land-Based or Mana-Sensitive Decks</div>
+      <p class="tuning-up"><span class="c">Harbinger of the Seas</span> main +1 — static nonbasic-to-Island effect</p>
+      <p class="tuning-up"><span class="c">Blood Moon</span> SB — converts all nonbasics to Mountains</p>
+      <p class="tuning-down"><span class="c">Nihil Spellbomb</span> SB -1 — less GY hate needed vs non-GY decks</p>
+      <p style="font-size:14px;font-weight:300;margin-top:8px;">Harbinger is best against Amulet Titan (nonbasic Tron lands all become Islands), Domain Zoo (loses all domain from nonbasic lands), and Jeskai Blink (they rely on specific color sources from nonbasics). One Harbinger collapses three-color mana bases entirely — it's the most efficient land hate piece in the format.</p>
+    </div>
+    <div class="tuning-cell"><div class="tuning-label">If This Rises</div><div class="tuning-condition">Mirror and Reanimator Decks</div>
+      <p class="tuning-up"><span class="c">Surgical Extraction</span> SB — exile their Archon after discard</p>
+      <p class="tuning-up"><span class="c">Nihil Spellbomb</span> SB +1 — exile their GY on entry, draw a card</p>
+      <p class="tuning-down"><span class="c">Blood Moon</span> SB -1 — less relevant in Grixis mirrors</p>
+      <p style="font-size:14px;font-weight:300;margin-top:8px;">In GY mirrors, the fastest GY hate wins. <span class="c">Nihil Spellbomb</span> at {1} colorless exiles their entire GY the moment it enters — the {T} sacrifice is free. Surgical after they discard Archon to Looting removes all four copies from the game permanently, making their entire Persist and Emperor plan irrelevant.</p>
+    </div>
+    <div class="tuning-cell"><div class="tuning-label">Future Testing</div><div class="tuning-condition">Quantum Riddler + Consign Package</div>
+      <p class="tuning-up">Quantum Riddler — Warp {1}{U}: 4/6 flier that draws extra cards when hellbent</p>
+      <p class="tuning-up"><span class="c">Consign to Memory</span> main — counter Emperor sacrifice trigger + Riddler Warp bait</p>
+      <p style="font-size:14px;font-weight:300;margin-top:8px;">Current 75 does not include Riddler or Consign main. Under evaluation: 2 Quantum Riddler + 2 Consign to Memory main as a counter-war package against control. The Riddler Warp bait line (cast Persist → Riddler copies it via Warp → Consign your Warp copy trigger → opponent must counter Consign or let Archon in) forces a no-win interaction for them. Testing begins next RC cycle.</p>
+    </div>
+  </div>
+  <h2>Register Conditions</h2>
+  <div class="card-grid card-grid-2">
+    <div class="card"><div class="card-label">Register When</div><div class="card-title">Green Lights</div><div class="card-body">Low Endurance density in expected SBs — flash GY exile is the hardest card to play through. Midrange-heavy field where your T2 7/7 is faster than their clock. Few Grafdigger’s Cage builds. Combo present (Storm, Living End) — your T2 Griselbrand is faster. You’ve practiced the fair-mode Grief+Drown game for when reanimate fails.</div></div>
+    <div class="card"><div class="card-label">Avoid When</div><div class="card-title">Red Lights</div><div class="card-body">Multiple Endurance builds expected — flash GY exile in response to reanimation is extremely difficult to beat. High Nihil Spellbomb density. Heavy Grafdigger’s Cage builds. You haven’t practiced the Griselbrand activation count — activating too many times at low life loses games you would have won.</div></div>
+    <div class="card"><div class="card-label">Never Cut</div><div class="card-title">Persist ×4</div><div class="card-body">Your combo piece. Without Persist, you have no way to reanimate at instant speed. Four copies non-negotiable.</div></div>
+    <div class="card"><div class="card-label">Never Cut</div><div class="card-title">Psychic Frog ×4</div><div class="card-body">Your best interactive threat and combo enabler. Frog puts cards in GY for Persist and applies a clock. Four copies — the deck doesn't function below 4.</div></div>
+    <div class="card"><div class="card-label">Flex 2–3</div><div class="card-title">Emperor of Bones</div><div class="card-body">3 in metas where ETB triggers matter (it adds a +1/+1 counter each time a nontoken creature enters). 2 when the adapt cost matters less than having more disruption.</div></div>
+    <div class="card"><div class="card-label">Flex 2–3</div><div class="card-title">Nihil Spellbomb (SB)</div><div class="card-body">3 in GY-heavy metas (Living End, Goryo's Vengeance). 2 as a general hedge. The cycling ability means it's never a dead draw — always worth at least one card.</div></div>
+    <div class="card"><div class="card-label">Meta Call</div><div class="card-title">Drown in the Loch count</div><div class="card-body">3 in counter-heavy metas where their GY fills quickly, making Drown efficient. 2 in aggro metas where their GY is typically empty early and Drown is a conditional removal spell.</div></div>
+  </div>
+  <h2>SB Slot Priority Order</h2>
+  <ol class="heuristic-list">
+    <li><div class="heuristic-num">01</div><div class="heuristic-body"><strong>Nihil Spellbomb (3 copies)</strong> — Exile target GY at instant speed + draw a card. Use offensively: exile their GY before Living End. Defensively: answers opponent GY builds. Never blank — the draw mode is always relevant.</div></li>
+    <li><div class="heuristic-num">02</div><div class="heuristic-body"><strong>Mystical Dispute (3-4 copies)</strong> — Counter any blue spell for {U}. Goes in vs Jeskai Blink, UW Control, Dimir Frog. Disputes their Force of Negation (blue), their Endurance (green — doesn’t work), their Counterspell (blue). Know what it can and can’t counter.</div></li>
+    <li><div class="heuristic-num">03</div><div class="heuristic-body"><strong>Harbinger of the Seas (2 copies)</strong> — Makes all islands legendary. Cuts their blue mana in half vs any island-heavy deck. Goes in vs Jeskai Blink, UW Control, Dimir Frog. Dead vs Boros, Prowess, ETron.</div></li>
+    <li><div class="heuristic-num">04</div><div class="heuristic-body"><strong>Drown in the Loch (2 copies)</strong> — Counter or destroy any spell/permanent if its MV ≤ cards in target GY. Goes in vs any deck with a large GY (Living End after cycling, Yawgmoth after creature loop). Grows better as the game goes long.</div></li>
+    <li><div class="heuristic-num">05</div><div class="heuristic-body"><strong>Flex (Spell Pierce, additional Grief)</strong> — Spell Pierce counters any noncreature spell for {U} early. Extra Grief strips additional hands. Adjust based on expected counter density in the room.</div></li>
+  </ol>
+</div>
+
+<div id="prep" class="section">
+  <div class="section-label">Chapter 10</div>
+  <h1>Event Day<br>Prep</h1>
+  <button class="print-btn" onclick="printSB()">⎙ Print This Sheet</button>
+    <h2>20-Minute Crash Course</h2>
+    <p>If you're sitting down in 20 minutes, run through this in order:</p>
+    <ul class="checklist" id="crash-checklist">
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Mulligan rule:</strong> Keep any hand with Faithless Looting or Thought Scour + a black source. You need GY fuel.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Persist rule:</strong> Only cast Persist when you know their counterspells are gone. Thoughtseize first, always.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Emperor rule:</strong> Emperor Adapt trigger = creature from GY with haste AND finality counter. It sacrifices at EOT. Consign that trigger.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Frog rule:</strong> Frog is a legitimate win condition. A 5/5+ flier with draw-on-connect beats control without Archon.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Consign rule:</strong> Counter Emperor's sacrifice trigger to keep Archon permanently. This is the primary Consign line.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Sideboard rule:</strong> Harbinger of the Seas collapses their nonbasic mana. Prioritize it vs any 3+ color deck.</span></li>
+    </ul>
+
+    <h2>Testing Framework</h2>
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-label">Block 01</div>
+        <div class="card-title">Persist Sequencing</div>
+        <div class="card-body">Practice Thoughtseize → Persist → Archon ETB in one smooth sequence. No pausing.</div>
+      </div>
+      <div class="card">
+        <div class="card-label">Block 02</div>
+        <div class="card-title">Consign Emperor Trigger</div>
+        <div class="card-body">Drill countering Emperor's sacrifice trigger. This is the highest-skill interaction in the deck.</div>
+      </div>
+      <div class="card">
+        <div class="card-label">Block 03</div>
+        <div class="card-title">Fair Frog Plan</div>
+        <div class="card-body">Practice winning with Frog plan when Archon is answered repeatedly. Know when to pivot.</div>
+      </div>
+      <div class="card">
+        <div class="card-label">Block 04</div>
+        <div class="card-title">GY Hate Reps</div>
+        <div class="card-body">Play through Rest in Peace and Nihil Spellbomb. These are your most common post-board obstacles.</div>
+      </div>
+    </div>
+
+    <h2>Matchday Routine</h2>
+    <ul class="heuristic-list">
+      <li>Register with Harbinger in SB confirmed. Harbinger vs multicolor is a back-breaker.</li>
+      <li>Know the Consign targets before Round 1. Archon ETB trigger, Emperor sacrifice trigger. Both are triggered abilities.</li>
+      <li>Between rounds: did you play Persist into open mana? That's the mistake. Thoughtseize first.</li>
+      <li>Nihil Spellbomb timing: crack before they untap into their combo turn, not after.</li>
+      <li>The Frog wins games Archon can't. When you're behind, pivot early.</li>
+    </ul>
+
+
+
+  <div class="print-grid">
+    <div class="print-mu">
+      <div class="print-mu-name">Boros Energy <span class="diff-medium" style="font-size:10px;">Slight Dog</span></div>
+      <div class="print-mu-role">Role: Race — <span class="c">Persist</span> on 3 before they stabilize</div>
+      <div class="print-cols">
+        <div>
+          <div class="print-col-label">In</div>
+          <div class="print-row"><span><span class="c">Nihil Spellbomb</span></span><span class="print-qty">+3</span></div>
+          <div class="print-row"><span><span class="c">Mystical Dispute</span></span><span class="print-qty">+2</span></div>
+          <div class="print-row"><span><span class="c">Harbinger of the Seas</span></span><span class="print-qty">+2</span></div>
+        </div>
+        <div>
+          <div class="print-col-label">Out</div>
+          <div class="print-row"><span><span class="c">Thought Scour</span></span><span class="print-qty">−3</span></div>
+          <div class="print-row"><span><span class="c">Unearth</span></span><span class="print-qty">−2</span></div>
+          <div class="print-row"><span><span class="c">Troll of Khazad-dûm</span></span><span class="print-qty">−2</span></div>
+        </div>
+      </div>
+      <div class="print-needle">Harbinger cuts <span class="c">Galvanic Discharge</span> mana (nonbasics → Islands)</div>
+      <div class="print-note"><span class="c">Fatal Push</span> kills Ragavan T1. Archon ETB stabilizes vs Bombardment.</div>
+    </div>
+
+    <div class="print-mu">
+      <div class="print-mu-name">Jeskai Blink <span class="diff-even" style="font-size:10px;">Even</span></div>
+      <div class="print-mu-role">Role: Disrupt + Kill — <span class="c">Thoughtseize</span>, then <span class="c">Persist</span></div>
+      <div class="print-cols">
+        <div>
+          <div class="print-col-label">In</div>
+          <div class="print-row"><span><span class="c">Mystical Dispute</span></span><span class="print-qty">+3</span></div>
+          <div class="print-row"><span><span class="c">Spell Pierce</span></span><span class="print-qty">+2</span></div>
+          <div class="print-row"><span><span class="c">Harbinger of the Seas</span></span><span class="print-qty">+2</span></div>
+          <div class="print-row"><span>Drown in the Loch</span><span class="print-qty">+2</span></div>
+        </div>
+        <div>
+          <div class="print-col-label">Out</div>
+          <div class="print-row"><span><span class="c">Thought Scour</span></span><span class="print-qty">−4</span></div>
+          <div class="print-row"><span><span class="c">Troll of Khazad-dûm</span></span><span class="print-qty">−2</span></div>
+          <div class="print-row"><span><span class="c">Unearth</span></span><span class="print-qty">−2</span></div>
+          <div class="print-row"><span><span class="c">Faithless Looting</span></span><span class="print-qty">−1</span></div>
+        </div>
+      </div>
+      <div class="print-needle"><span class="c">Persist</span> is a black sorcery — Consign cannot counter it</div>
+      <div class="print-note">Dispute counters <span class="c">Counterspell</span> for {U}. <span class="c">Thoughtseize</span> <span class="c">Solitude</span> before <span class="c">Persist</span>.</div>
+    </div>
+
+    <div class="print-mu">
+      <div class="print-mu-name">Izzet Prowess <span class="diff-hard" style="font-size:10px;">Hard</span></div>
+      <div class="print-mu-role">Role: Race — Archon on 3 stabilizes the board</div>
+      <div class="print-cols">
+        <div>
+          <div class="print-col-label">In</div>
+          <div class="print-row"><span>Drown in the Loch</span><span class="print-qty">+2</span></div>
+          <div class="print-row"><span><span class="c">Nihil Spellbomb</span></span><span class="print-qty">+2</span></div>
+        </div>
+        <div>
+          <div class="print-col-label">Out</div>
+          <div class="print-row"><span><span class="c">Unearth</span></span><span class="print-qty">−2</span></div>
+          <div class="print-row"><span><span class="c">Troll of Khazad-dûm</span></span><span class="print-qty">−2</span></div>
+        </div>
+      </div>
+      <div class="print-needle">Kill <span class="c">Dragon's Rage Channeler</span> before delirium — <span class="c">Fatal Push</span> MV 1</div>
+      <div class="print-note">Spellbomb before Murktide Delve. Archon 5/5 blocks DRC 3/3 profitably.</div>
+    </div>
+
+    <div class="print-mu">
+      <div class="print-mu-name">Azorius Control <span class="diff-good" style="font-size:10px;">Favored</span></div>
+      <div class="print-mu-role">Role: Disrupt + Kill — <span class="c">Thoughtseize</span>, then grind</div>
+      <div class="print-cols">
+        <div>
+          <div class="print-col-label">In</div>
+          <div class="print-row"><span><span class="c">Mystical Dispute</span></span><span class="print-qty">+3</span></div>
+          <div class="print-row"><span><span class="c">Spell Pierce</span></span><span class="print-qty">+2</span></div>
+          <div class="print-row"><span>Drown in the Loch</span><span class="print-qty">+2</span></div>
+        </div>
+        <div>
+          <div class="print-col-label">Out</div>
+          <div class="print-row"><span><span class="c">Thought Scour</span></span><span class="print-qty">−3</span></div>
+          <div class="print-row"><span><span class="c">Troll of Khazad-dûm</span></span><span class="print-qty">−2</span></div>
+          <div class="print-row"><span><span class="c">Fatal Push</span></span><span class="print-qty">−2</span></div>
+        </div>
+      </div>
+      <div class="print-needle">Dispute counters <span class="c">Counterspell</span> for {U} — math wins the counter war</div>
+      <div class="print-note"><span class="c">Supreme Verdict</span> doesn't stop Archon in the yard. <span class="c">Persist</span> right after Verdict.</div>
+    </div>
+
+    <div class="print-mu">
+      <div class="print-mu-name">Amulet Titan <span class="diff-even" style="font-size:10px;">Even</span></div>
+      <div class="print-mu-role">Role: Race + Harbinger — lock mana, Archon closes</div>
+      <div class="print-cols">
+        <div>
+          <div class="print-col-label">In</div>
+          <div class="print-row"><span><span class="c">Harbinger of the Seas</span></span><span class="print-qty">+2</span></div>
+          <div class="print-row"><span><span class="c">Surgical Extraction</span></span><span class="print-qty">+2</span></div>
+          <div class="print-row"><span><span class="c">Blood Moon</span></span><span class="print-qty">+1</span></div>
+        </div>
+        <div>
+          <div class="print-col-label">Out</div>
+          <div class="print-row"><span><span class="c">Thought Scour</span></span><span class="print-qty">−2</span></div>
+          <div class="print-row"><span><span class="c">Troll of Khazad-dûm</span></span><span class="print-qty">−2</span></div>
+          <div class="print-row"><span><span class="c">Unearth</span></span><span class="print-qty">−1</span></div>
+        </div>
+      </div>
+      <div class="print-needle">Harbinger: bounce lands become Islands, Amulet useless</div>
+      <div class="print-note">Surgical on <span class="c">Summoner's Pact</span> exiles all 4 — they cannot search for Titan again.</div>
+    </div>
+
+    <div class="print-mu">
+      <div class="print-mu-name">Grixis Reanimator <span class="diff-even" style="font-size:10px;">Even</span></div>
+      <div class="print-mu-role">Role: Midrange — Spellbomb + Frog grind wins</div>
+      <div class="print-cols">
+        <div>
+          <div class="print-col-label">In</div>
+          <div class="print-row"><span><span class="c">Nihil Spellbomb</span></span><span class="print-qty">+3</span></div>
+          <div class="print-row"><span><span class="c">Surgical Extraction</span></span><span class="print-qty">+2</span></div>
+        </div>
+        <div>
+          <div class="print-col-label">Out</div>
+          <div class="print-row"><span><span class="c">Troll of Khazad-dûm</span></span><span class="print-qty">−2</span></div>
+          <div class="print-row"><span><span class="c">Faithless Looting</span></span><span class="print-qty">−2</span></div>
+          <div class="print-row"><span><span class="c">Thought Scour</span></span><span class="print-qty">−1</span></div>
+        </div>
+      </div>
+      <div class="print-needle">Surgical on their Archon after first <span class="c">Persist</span> — all 4 copies exiled</div>
+      <div class="print-note">Emperor can steal their Archon from their graveyard. Do it.</div>
+    </div>
+  </div>
+
+  <h2>Non-Negotiable Rules</h2>
+  <div class="card-grid">
+    <div class="card">
+      <div class="card-label">Rule 01</div>
+      <div class="card-title"><span class="c">Thoughtseize</span> Before <span class="c">Persist</span></div>
+      <div class="card-body">If their hand is unknown and they have UU available, <span class="c">Thoughtseize</span> first. Strip the counter. Then resolve <span class="c">Persist</span> into a clear hand. One <span class="c">Persist</span> countered without a follow-up is close to a game loss.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Rule 02</div>
+      <div class="card-title">Finality Counter = Permanent Exile</div>
+      <div class="card-body">Emperor-reanimated creatures go to exile when they die. Never swing Emperor-reanimated Archon into lethal blocks unless the game is won regardless. The ETB already fired — the attack trigger is bonus, not mandatory.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Rule 03</div>
+      <div class="card-title"><span class="c">Persist</span> Counters Consign — Not Stoppped By It</div>
+      <div class="card-body"><span class="c">Persist</span> is a black sorcery. <span class="c">Consign to Memory</span> counters triggered abilities and colorless spells. <span class="c">Persist</span> is neither. Play <span class="c">Persist</span> into Consign mana with full confidence. Only <span class="c">Counterspell</span>, <span class="c">Force of Negation</span>, and similar stop it.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Rule 04</div>
+      <div class="card-title"><span class="c">Nihil Spellbomb</span> — Pop Before <span class="c">Persist</span></div>
+      <div class="card-body">Pop the Spellbomb on their upkeep or end step when Archon is in their yard. Don't wait for them to tap into <span class="c">Persist</span>. The window to deny their return is before they cast it, not in response.</div>
+    </div>
+  </div>
+</div>
+
+</div><!-- end .page -->
+
+<footer>
+  <span>Team Resolve · Modern · Glockulous Playbook</span>
+  <span>Zuxas · 2026 RC Seaso · Palette: Fintech/Crypto (UI UX Pro Max Row 14)</span>
+</footer>
+
+<script>
+function printSB() {
+  document.body.classList.add('printing-sb');
+  window.addEventListener('afterprint', function cleanup() {
+    document.body.classList.remove('printing-sb');
+    window.removeEventListener('afterprint', cleanup);
+  });
+  window.print();
+}
+function toggleCheck(el) { el.classList.toggle('checked'); }
+function show(id) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  event.target.classList.add('active');
+}
+function toggleMatchup(id) {
+  const el = document.getElementById(id);
+  const isOpen = el.classList.contains('open');
+  document.querySelectorAll('.matchup-detail').forEach(d => d.classList.remove('open'));
+  document.querySelectorAll('.matchup-table tr').forEach(r => r.classList.remove('selected'));
+  if (!isOpen) {
+    el.classList.add('open');
+    event.currentTarget.classList.add('selected');
+  }
+}
+function toggleDeep(header) {
+  header.parentElement.classList.toggle('open');
+}
+</script>
+<script src="matchup-data-loader.js"></script>
+<script src="card-tooltips.js"></script>
+
+<script>
+/* card tooltip JS — injected before </body> */
+(function() {
+  const TIP = document.createElement('div');
+  TIP.className = 'card-tip';
+  TIP.innerHTML = '<div class="card-tip-loading">loading...</div>';
+  document.body.appendChild(TIP);
+
+  const CACHE = {};
+  let hideTimer = null;
+
+  function pos(e) {
+    const PAD=24,W=220,H=310;
+    let x = e.clientX + PAD;
+    let y = e.clientY - H / 2;
+    if (x + W > window.innerWidth)  x = e.clientX - W - PAD;
+    if (y < 8)                       y = 8;
+    if (y + H > window.innerHeight)  y = window.innerHeight - H - 8;
+    TIP.style.left = x + 'px';
+    TIP.style.top  = y + 'px';
+  }
+
+  async function show(name, e) {
+    clearTimeout(hideTimer);
+    TIP.innerHTML = '<div class="card-tip-loading">loading...</div>';
+    TIP.classList.add('visible');
+    pos(e);
+    if (CACHE[name]) {
+      TIP.innerHTML = `<img src="${CACHE[name]}" alt="${name}">`;
+      return;
+    }
+    try {
+      const url = `https://api.scryfall.com/cards/named?fuzzy=${encodeURIComponent(name)}`;
+      const r = await fetch(url);
+      if (!r.ok) { TIP.classList.remove('visible'); return; }
+      const d = await r.json();
+      // Handle double-faced cards
+      const img = d.image_uris?.normal ||
+                  d.card_faces?.[0]?.image_uris?.normal ||
+                  d.image_uris?.small;
+      if (!img) { TIP.classList.remove('visible'); return; }
+      CACHE[name] = img;
+      TIP.innerHTML = `<img src="${img}" alt="${name}">`;
+    } catch(err) {
+      TIP.classList.remove('visible');
+    }
+  }
+
+  function hide() {
+    hideTimer = setTimeout(() => TIP.classList.remove('visible'), 80);
+  }
+
+  document.addEventListener('mouseover', e => {
+    const el = e.target.closest('span.c');
+    if (!el) return;
+    showTip(el.textContent.trim(), e);
+  });
+  document.addEventListener('mousemove', e => {
+    if (TIP.classList.contains('visible')) pos(e);
+  });
+  document.addEventListener('mouseout', e => {
+    if (e.target.closest('span.c')) hide();
+  });
+})();
+</script>
+</body>
+</html

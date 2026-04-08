@@ -1,0 +1,3103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" href="../images/tab32.png" type="image/png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UW Blink — Team Resolve Playbook</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+  /* ═══ DENTAL PRACTICE PALETTE — UI UX Pro Max Row 60 ═══ */
+  /* pri=#0EA5E9 acc=#0EA5E9 bg=#F0F9FF fg=#0C4A6E */
+  :root { --ink:#0e0e0e; --paper:#f2ede6; --paper-dark:#e8e1d6; --rule:#c8bfb0; --primary:#03293a; --accent:#0EA5E9; --accent-light:rgba(14,165,233,0.15); --danger:#8f1a1a; --danger-light:rgba(143,26,26,0.12); --gold:#0EA5E9; --gold-light:rgba(14,165,233,0.15); --mid:#5a5248; --card:#ffffff; }
+
+  html { overflow-y: scroll; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Crimson Pro', Georgia, serif;
+    font-size: 17px;
+    line-height: 1.6;
+  }
+
+  /* ── HEADER BAND ── */
+  .header-band {
+    background: var(--primary);
+    border-bottom:3px solid var(--accent);
+  padding:48px 80px 40px;position:relative;overflow:hidden;}
+  .header-band { color: #f1f5f9; }
+  .header-band,.header-band *{color:#f1f5f9;}
+  .header-band p, .header-band span, .header-band div { color: #f1f5f9; }
+
+
+  .header-inner {
+    max-width:1080px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 40px;
+  }
+
+  .header-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(240,249,255,0.35);
+    margin-bottom: 8px;
+  }
+
+  .header-title{font-family:'DM Mono',monospace;font-size:clamp(32px,4vw,52px);font-weight:500;letter-spacing:0.06em;line-height:1.05;text-transform:uppercase;}
+
+  .header-title span{color:var(--accent);}
+
+  .header-tagline {
+    font-family: 'Crimson Pro', serif;
+    font-style: italic;
+    font-size: 15px;
+    color: rgba(240,249,255,0.4);
+    margin-top: 8px;
+  }
+
+  .header-right {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    text-align: right;
+    padding-bottom: 4px;
+  }
+
+  .header-stat {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    justify-content: flex-end;
+  }
+
+  .hs-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(240,249,255,0.3);
+  }
+
+  .hs-val {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    color: var(--paper);
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background:var(--primary);
+    border-bottom:2px solid var(--accent);
+    padding: 0 80px;
+    display: flex;
+    align-items: center;
+    gap: 0;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  nav::-webkit-scrollbar { display: none; }
+
+  .nav-brand {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 18px;
+    color: #5b7fd4;
+    letter-spacing: 0.05em;
+    margin-right: 40px;
+    white-space: nowrap;
+    padding: 16px 0;
+   color:var(--accent); }
+
+  .nav-link {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color:rgba(248,250,252,0.55);
+    padding: 20px 16px;
+    cursor: pointer;
+    white-space: nowrap;
+    border-bottom: 2px solid transparent;
+    transition: all 0.2s;
+    background: none;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    text-decoration: none;
+  }
+
+  .nav-link:hover, .nav-link.active {
+    color:rgba(248,250,252,1);
+    border-bottom-color: #5b7fd4;
+  }
+
+  /* ── LAYOUT ── */
+  .page {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 80px 80px;
+  }
+
+  .section {
+    display: none;
+    animation: fadeIn 0.3s ease;
+  }
+
+  .section.active {
+    display: block;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── TYPOGRAPHY ── */
+  .section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--mid);
+    margin-bottom: 8px;
+  }
+
+  h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 64px;
+    line-height: 0.9;
+    letter-spacing: 0.01em;
+    color: var(--ink);
+    margin-bottom: 40px;
+  }
+
+  h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 36px;
+    letter-spacing: 0.02em;
+    color: var(--ink);
+    margin: 56px 0 20px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--ink);
+  }
+
+  h3 {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 32px 0 12px;
+  }
+
+  p {
+    margin-bottom: 16px;
+    color: var(--ink);
+    font-weight: 300;
+  }
+
+  strong {
+    font-weight: 600;
+  }
+
+  em {
+    font-style: italic;
+    color: var(--mid);
+  }
+
+  /* ── DIVIDER ── */
+  .rule {
+    border: none;
+    border-top: 1px solid var(--rule);
+    margin: 40px 0;
+  }
+
+  /* ── MANTRA ── */
+  .mantra {
+    border-left: 4px solid var(--accent);
+    padding: 24px 32px;
+    background: var(--accent-light);
+    margin: 32px 0;
+    font-style: italic;
+    font-size: 20px;
+    color: var(--accent);
+    line-height: 1.5;
+  }
+
+  .mantra cite {
+    display: block;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    font-style: normal;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--mid);
+    margin-top: 12px;
+  }
+
+  /* ── CARD GRID ── */
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+    margin: 24px 0;
+  }
+
+  .card {
+    background: var(--paper);
+    padding: 24px;
+  }
+
+  .card-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--mid);
+    margin-bottom: 8px;
+  }
+
+  .card-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px;
+    letter-spacing: 0.03em;
+    color: var(--ink);
+    margin-bottom: 8px;
+  }
+
+  .card-body {
+    font-size: 15px;
+    font-weight: 300;
+    color: var(--mid);
+    line-height: 1.5;
+  }
+
+  /* ── MATCHUP TABLE ── */
+  .matchup-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 24px 0;
+    font-size: 15px;
+   table-layout:fixed; }
+
+  .matchup-table thead tr {
+    background: var(--ink);
+    color: var(--paper);
+  }
+
+  .matchup-table th {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 12px 16px;
+    text-align: left;
+    font-weight: 400;
+  }
+
+  .matchup-table td {
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--rule);
+    font-weight: 300;
+    vertical-align: top;
+  }
+
+  .matchup-table tr:hover td {
+    background: var(--paper-dark);
+    cursor: pointer;
+  }
+
+  .matchup-table tr.selected td {
+    background: var(--accent-light);
+  }
+
+  .diff-hard {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--danger);
+    background: var(--danger-light);
+    padding: 2px 8px;
+    border-radius: 2px;
+  }
+
+  .diff-medium {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--gold);
+    background: var(--gold-light);
+    padding: 2px 8px;
+    border-radius: 2px;
+  }
+
+  .diff-even {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    background: var(--accent-light);
+    padding: 2px 8px;
+    border-radius: 2px;
+  }
+
+  /* ── MATCHUP DETAIL ── */
+  .matchup-detail {
+    display: none;
+    border: 1px solid var(--rule);
+    background: var(--paper-dark);
+    padding: 40px;
+    margin: 0 0 24px;
+    animation: fadeIn 0.2s ease;
+  }
+
+  .matchup-detail.open {
+    display: block;
+  }
+
+  .sb-table {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+    margin: 16px 0;
+  }
+
+  .sb-col {
+    flex: 1;
+    background: var(--paper);
+    padding: 20px;
+    min-width: 0;
+  }
+
+  .sb-col-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--mid);
+    margin-bottom: 12px;
+  }
+
+  .sb-item {
+    font-size: 14px;
+    font-weight: 400;
+    padding: 4px 0;
+    border-bottom: 1px solid var(--rule);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .sb-item:last-child { border-bottom: none; }
+
+  .sb-qty {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    color: var(--mid);
+  }
+
+  .ifthen-list {
+    list-style: none;
+    margin: 12px 0;
+  }
+
+  .ifthen-list li {
+    padding: 10px 0;
+    border-bottom: 1px solid var(--rule);
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+    align-items: flex-start;
+    font-size: 15px;
+    font-weight: 300;
+    line-height: 1.6;
+  }
+
+  .ifthen-list li span {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .ifthen-list li:last-child { border-bottom: none; }
+
+  .if-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--danger);
+    background: var(--danger-light);
+    padding: 2px 6px;
+    white-space: nowrap;
+    margin-top: 2px;
+  }
+
+  /* ── DECKLIST ── */
+  .decklist {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+    margin: 24px 0;
+  }
+
+  .dl-section {
+    background: var(--paper);
+    padding: 24px;
+  }
+
+  .dl-section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--mid);
+    margin-bottom: 16px;
+  }
+
+  .dl-group {
+    margin-bottom: 20px;
+  }
+
+  .dl-group-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink);
+    background: var(--paper-dark);
+    padding: 4px 8px;
+    margin-bottom: 8px;
+    display: inline-block;
+  }
+
+  .dl-card-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 3px 0;
+    border-bottom: 1px solid rgba(200,191,176,0.4);
+    font-size: 15px;
+    font-weight: 300;
+  }
+
+  .dl-card-row:last-child { border-bottom: none; }
+
+  .dl-qty {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    color: var(--mid);
+    min-width: 20px;
+  }
+
+  /* ── HEURISTIC LIST ── */
+  .heuristic-list {
+    list-style: none;
+    margin: 16px 0;
+    counter-reset: heur;
+  }
+
+  .heuristic-list li {
+    counter-increment: heur;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--rule);
+    align-items: flex-start;
+    font-weight: 300;
+    line-height: 1.6;
+  }
+
+  .heuristic-list li:last-child { border-bottom: none; }
+
+  .heuristic-list li::before {
+    content: counter(heur, decimal-leading-zero);
+    font-family: 'DM Mono', monospace;
+    font-size: 18px;
+    color: var(--rule);
+    line-height: 1.5;
+    flex-shrink: 0;
+    width: 32px;
+    display: block;
+  }
+
+  /* ── ROLE BADGES ── */
+  .role-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin: 24px 0;
+  }
+
+  .role-card {
+    background: var(--paper);
+    padding: 28px 24px;
+    border: 1px solid var(--rule);
+  }
+
+  .role-card-control { border-top: 4px solid var(--accent); }
+  .role-card-tempo { border-top: 4px solid var(--gold); }
+  .role-card-beatdown { border-top: 4px solid var(--danger); }
+
+  .role-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px;
+    letter-spacing: 0.03em;
+    margin-bottom: 8px;
+  }
+
+  .role-name-control { color: var(--accent); }
+  .role-name-tempo { color: var(--gold); }
+  .role-name-beatdown { color: var(--danger); }
+
+  .role-desc {
+    font-size: 14px;
+    font-weight: 300;
+    color: var(--mid);
+    line-height: 1.5;
+    margin-bottom: 16px;
+  }
+
+  .role-matchups {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--mid);
+    border-top: 1px solid var(--rule);
+    padding-top: 12px;
+    margin-top: 4px;
+  }
+
+  /* ── CHECKLIST ── */
+  .checklist {
+    list-style: none;
+    margin: 16px 0;
+  }
+
+  .checklist li {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--rule);
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  .checklist li:last-child { border-bottom: none; }
+
+  .checklist li span {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .check-box {
+    width: 18px;
+    height: 18px;
+    border: 1.5px solid var(--rule);
+    flex-shrink: 0;
+    margin-top: 3px;
+    cursor: pointer;
+    transition: all 0.15s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .check-box.checked {
+    background: var(--accent);
+    border-color: var(--accent);
+  }
+
+  .check-box.checked::after {
+    content: '✓';
+    color: white;
+    font-size: 11px;
+    line-height: 1;
+  }
+
+  /* ── CURVE VISUAL ── */
+  .curve-strip {
+    display: flex;
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+    margin: 24px 0;
+  }
+
+  .curve-turn {
+    flex: 1;
+    background: var(--paper);
+    padding: 20px 16px;
+  }
+
+  .curve-t {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 32px;
+    color: var(--rule);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .curve-play {
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--ink);
+    line-height: 1.4;
+    margin-bottom: 4px;
+  }
+
+  .curve-note {
+    font-size: 12px;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--mid);
+  }
+
+  /* ── TAG ── */
+  .tag {
+    display: inline-block;
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 2px 8px;
+    border: 1px solid var(--rule);
+    color: var(--mid);
+    margin: 2px;
+  }
+
+  /* ── SB CARD GUIDE ── */
+  .sb-card-guide {
+    border: 1px solid var(--rule);
+    margin: 24px 0;
+  }
+
+  .sb-guide-row {
+    display: flex;
+    gap: 0;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .sb-guide-row:last-child { border-bottom: none; }
+
+  .sb-guide-name {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    color: var(--ink);
+    background: var(--paper-dark);
+    padding: 14px 20px;
+    min-width: 200px;
+    width: 200px;
+    flex-shrink: 0;
+    border-right: 1px solid var(--rule);
+    display: flex;
+    align-items: center;
+  }
+
+  .sb-guide-body {
+    padding: 14px 20px;
+    font-size: 15px;
+    font-weight: 300;
+    line-height: 1.5;
+    flex: 1;
+  }
+
+  /* ── SB DEEP DIVE ── */
+  .sb-deep {
+    border: 1px solid var(--rule);
+    margin: 12px 0;
+  }
+
+  .sb-deep-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 24px;
+    background: var(--paper-dark);
+    cursor: pointer;
+    user-select: none;
+    transition: background 0.15s;
+  }
+
+  .sb-deep-header:hover { background: var(--rule); }
+
+  .sb-deep-title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .sb-deep-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 20px;
+    letter-spacing: 0.03em;
+    color: var(--ink);
+  }
+
+  .sb-deep-meta {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--mid);
+  }
+
+  .sb-deep-toggle {
+    font-family: 'DM Mono', monospace;
+    font-size: 18px;
+    color: var(--mid);
+    transition: transform 0.2s;
+    line-height: 1;
+  }
+
+  .sb-deep.open .sb-deep-toggle { transform: rotate(45deg); }
+
+  .sb-deep-body {
+    display: none;
+    padding: 32px;
+    border-top: 1px solid var(--rule);
+    animation: fadeIn 0.2s ease;
+  }
+
+  .sb-deep.open .sb-deep-body { display: block; }
+
+  .sb-deep-mantra {
+    font-family: 'Crimson Pro', serif;
+    font-style: italic;
+    font-size: 17px;
+    color: var(--accent);
+    border-left: 3px solid var(--accent);
+    padding: 8px 16px;
+    background: var(--accent-light);
+    margin-bottom: 24px;
+  }
+
+  .sb-deep-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+
+  .sb-deep-section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--mid);
+    margin-bottom: 10px;
+    margin-top: 4px;
+  }
+
+  @media (max-width: 768px) {
+    .sb-deep-grid { grid-template-columns: 1fr; }
+    .sb-guide-name { min-width: 120px; width: 120px; font-size: 11px; }
+  }
+
+  /* ── PRINT STYLES ── */
+  .print-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    background: var(--ink);
+    color: var(--paper);
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin-bottom: 32px;
+    transition: background 0.15s;
+  }
+
+  .print-btn:hover { background: var(--accent); }
+
+  .print-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+  }
+
+  .print-mu {
+    background: var(--paper);
+    padding: 16px;
+  }
+
+  .print-mu-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 16px;
+    letter-spacing: 0.03em;
+    color: var(--ink);
+    margin-bottom: 4px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .print-mu-role {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--mid);
+    margin-bottom: 10px;
+  }
+
+  .print-cols {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+
+  .print-col-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--mid);
+    margin-bottom: 4px;
+  }
+
+  .print-row {
+    font-size: 12px;
+    font-weight: 300;
+    display: flex;
+    justify-content: space-between;
+    padding: 1px 0;
+    border-bottom: 1px solid rgba(200,191,176,0.4);
+    line-height: 1.5;
+  }
+
+  .print-row:last-child { border-bottom: none; }
+
+  .print-qty {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--mid);
+    flex-shrink: 0;
+    margin-left: 4px;
+  }
+
+  .print-needle {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.06em;
+    color: var(--danger);
+    margin-top: 6px;
+    text-transform: uppercase;
+  }
+
+  .print-note {
+    font-size: 11px;
+    font-style: italic;
+    color: var(--mid);
+    margin-top: 6px;
+    border-top: 1px solid var(--rule);
+    padding-top: 4px;
+    line-height: 1.4;
+  }
+
+  @media print {
+    nav, .header-band, footer, .print-btn, .section:not(#prep) { display: none !important;   /* SB-only print mode */
+  body.printing-sb .header-band,
+  body.printing-sb nav,
+  body.printing-sb footer { display:none !important; }
+  body.printing-sb .section:not(#prep) { display:none !important; }
+  body.printing-sb #prep > *:not(#sb-print-zone) { display:none !important; }
+  body.printing-sb #sb-print-zone { display:block !important; }
+  body.printing-sb #sb-print-zone h2,
+  body.printing-sb #sb-print-zone p,
+  body.printing-sb .print-btn { display:none !important; }
+  body.printing-sb .print-grid { display:grid !important; grid-template-columns:repeat(3,1fr) !important; }
+  body.printing-sb .print-cols { display:grid !important; }
+  body.printing-sb .print-row { display:flex !important; }
+  body.printing-sb .print-mu { display:block !important; }
+  body.printing-sb .print-mu > * { display:block !important; }
+  body.printing-sb .print-qty { font-family:monospace; }
+  @page { size: portrait; margin: 0.35in; }
+  body.printing-sb { zoom: 0.62; }
+  body.printing-sb #sb-print-zone { page-break-after: avoid; }
+}
+    #prep { display: block !important; }
+    body { background: white; font-size: 11px; }
+    .page { padding: 0; max-width: 100%; }
+    .print-grid { grid-template-columns: repeat(3, 1fr); }
+    .section-label, h1 { display: none; }
+    h2 { font-size: 18px; margin: 12px 0 8px; }
+  }
+
+
+  footer {
+    background: var(--ink);
+    color: rgba(240,249,255,0.3);
+    padding: 40px 80px;
+    margin-top: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  footer span {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    .header-inner, nav, .page, footer {
+      padding-left: 24px;
+      padding-right: 24px;
+    }
+    .header-right { display: none; }
+    .decklist, .role-grid, .sb-table { grid-template-columns: 1fr; }
+    .curve-strip { flex-direction: column; }
+    nav { padding: 0 24px; }
+  }
+
+  /* ── CARD IMAGE TOOLTIP ─────────────────────────────────── */
+.card-tip {
+  position:fixed; z-index:9999; pointer-events:none;
+  width:220px; border-radius:8px; overflow:hidden;
+  box-shadow:0 8px 32px rgba(0,0,0,0.6);
+  opacity:0; transition:opacity 0.15s ease;
+  background:#1a1a2e;
+}
+.card-tip.visible { opacity:1; }
+.card-tip img { width:220px; height:auto; display:block; }
+.card-tip-loading {
+  width:220px; height:308px; display:flex;
+  align-items:center; justify-content:center;
+  color:#94a3b8; font-size:12px; font-family:monospace;
+  background:#1e293b;
+}
+span.c {
+  cursor:help;
+  border-bottom:1px dashed var(--accent,#CA8A04);
+}
+span.c:hover { border-bottom-style:solid; }
+
+  /* ── EDGE CASES ──────────────────────────────────────────── */
+  .edge-case{background:var(--card,#fff);border:1px solid var(--rule,#c8bfb0);border-left:3px solid var(--accent);padding:16px 20px;margin:16px 0;}
+  .edge-case-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:8px;font-weight:500;}
+  .edge-case-body{font-size:14px;font-weight:300;color:var(--ink,#0e0e0e);line-height:1.65;}
+  .edge-case-body strong{font-weight:600;}
+</style>
+<!-- updated 2026-03-31 -->
+</head>
+<body>
+
+<!-- ── HEADER BAND ── -->
+<nav>
+  <span class="nav-brand">UW BLINK</span>
+  <a class="nav-link" href="../deck-guides.html" style="text-decoration:none;">&#8592; Guides</a>
+  <button class="nav-link active" onclick="show('identity')">Overview</button>
+  <button class="nav-link" onclick="show('decklist')">Decklist</button>
+  <button class="nav-link" onclick="show('gameplan')">Gameplan</button>
+  <button class="nav-link" onclick="show('engines')">Engines</button>
+  <button class="nav-link" onclick="show('lines')">Lines</button>
+  <button class="nav-link" onclick="show('roles')">Roles</button>
+  <button class="nav-link" onclick="show('matchups')">Matchups</button>
+  <button class="nav-link" onclick="show('sideboard')">SB Guide</button>
+  <button class="nav-link" onclick="show('heuristics')">Heuristics</button>
+  <button class="nav-link" onclick="show('tuning')">Tuning</button>
+  <button class="nav-link" onclick="show('prep')">Prep</button>
+</nav>
+<div class="header-band">
+  <div class="header-inner">
+    <div class="header-left">
+      <div class="header-label">Team Resolve · Modern · April 2026</div>
+      <div class="header-title">UW <span>Blink</span></div>
+      <div class="header-tagline">"Don't just play more cards — play more turns."</div>
+    </div>
+    <div class="header-right">
+      <div class="header-stat"><span class="hs-label">Identity</span><span class="hs-val">Tempo–Control Hybrid</span></div>
+      <div class="header-stat"><span class="hs-label">Complexity</span><span class="hs-val">★★★★★</span></div>
+      <div class="header-stat"><span class="hs-label">Captain</span><span class="hs-val">Zuxas</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ── NAV ── -->
+<div class="page">
+
+  <!-- ── IDENTITY ── -->
+  <div id="identity" class="section active">
+    <div class="section-label">Chapter 01</div>
+    <h1>Identity &amp;<br>Philosophy</h1>
+
+    <div class="mantra">
+      "Don't just play more cards — play more turns."
+      <cite>— Core Mantra</cite>
+    </div>
+
+    <p>UW Blink is a <strong>tempo-control hybrid</strong> that weaponizes time. It is not all-in combo, and it is not pure control. It plays like disruptive midrange — stall, interact, then snowball with repeatable ETB value until inevitability takes over.</p>
+
+    <p>The deck's strength lies not in any one card, but in the <strong>synergy between cheap interaction and recursive ETBs</strong>. Every Ephemerate rebound, every Phelia trigger, every Starfield Shepherd warp opens multiple lines of play.</p>
+
+    <h2>Core Axes</h2>
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-label">Axis 01</div>
+        <div class="card-title">Tempo Denial</div>
+        <div class="card-body">Phelia time-walks by blinking threats. Phantom destroys nonbasics. Consign buys entire turns. You are always reaching into the opponent's next turn and stealing it.</div>
+      </div>
+      <div class="card">
+        <div class="card-label">Axis 02</div>
+        <div class="card-title">Flexible Interaction</div>
+        <div class="card-body">Solitude, Prismatic Ending, and Wrath of the Skies answer almost everything in the format. The deck is never locked into a single answer type.</div>
+      </div>
+      <div class="card">
+        <div class="card-label">Axis 03</div>
+        <div class="card-title">Resilient Engines</div>
+        <div class="card-body">Guide + Ocelot generates inevitability. Riddler and Shepherd refill your hand. Once engines are live, the deck is very hard to exhaust.</div>
+      </div>
+      <div class="card">
+        <div class="card-label">Axis 04</div>
+        <div class="card-title">Role Flexibility</div>
+        <div class="card-body">Acts as control vs Aggro, tempo vs Combo, and proactive pressure vs Control. No other archetype in the format shifts roles this cleanly.</div>
+      </div>
+    </div>
+
+    <h2>Strengths &amp; Weaknesses</h2>
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-label">Strengths</div>
+        <div class="card-title">What You Do Well</div>
+        <div class="card-body">
+          High skill ceiling — reps compound.<br><br>
+          Resilient to hate — pivots into fair midrange.<br><br>
+          Powerful bullets that are tutorable.<br><br>
+          Inevitability in every long game.
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-label">Weaknesses</div>
+        <div class="card-title">What Beats You</div>
+        <div class="card-body">
+          Decision density punishes mistakes.<br><br>
+          Very fast aggro (Burn, Prowess) on stumbles.<br><br>
+          Torpor Orb / Void Mirror require full pivots.<br><br>
+          Tournament clock — brisk play is required.
+        </div>
+      </div>
+    </div>
+
+    <h2>Who Should Play This</h2>
+    <p>UW Blink rewards players who enjoy <strong>interactive, decision-rich games</strong>, who prefer tempo-control hybrids over linear decks, and who are willing to grind reps until sequencing is automatic. If you want every match to feel like a puzzle you're solving in real time — this is your deck.</p>
+  </div>
+
+  <!-- ── DECKLIST ── -->
+  <div id="decklist" class="section">
+    <div class="section-label">Chapter 02</div>
+    <h1>The 75</h1>
+
+    <div class="decklist">
+      <div class="dl-section">
+        <div class="dl-section-label">Main Deck · 60 Cards</div>
+
+        <div class="dl-group">
+          <div class="dl-group-label">Creatures</div>
+          <div class="dl-card-row"><span>Guide of Souls</span><span class="dl-qty">4</span></div>
+          <div class="dl-card-row"><span>Ocelot Pride</span><span class="dl-qty">4</span></div>
+          <div class="dl-card-row"><span>Phelia, Exuberant Shepherd</span><span class="dl-qty">4</span></div>
+          <div class="dl-card-row"><span>White Orchid Phantom</span><span class="dl-qty">4</span></div>
+          <div class="dl-card-row"><span>Starfield Shepherd</span><span class="dl-qty">3</span></div>
+          <div class="dl-card-row"><span>Quantum Riddler</span><span class="dl-qty">3</span></div>
+          <div class="dl-card-row"><span>Sanctifier en-Vec</span><span class="dl-qty">1</span></div>
+          <div class="dl-card-row"><span>Witch Enchanter</span><span class="dl-qty">4</span></div>
+          <div class="dl-card-row"><span>Mockingbird</span><span class="dl-qty">1</span></div>
+        </div>
+
+        <div class="dl-group">
+          <div class="dl-group-label">Spells</div>
+          <div class="dl-card-row"><span>Ephemerate</span><span class="dl-qty">4</span></div>
+          <div class="dl-card-row"><span>Solitude</span><span class="dl-qty">4</span></div>
+          <div class="dl-card-row"><span>Prismatic Ending</span><span class="dl-qty">2</span></div>
+          <div class="dl-card-row"><span>Consign to Memory</span><span class="dl-qty">1</span></div>
+          <div class="dl-card-row"><span>Rest in Peace</span><span class="dl-qty">1</span></div>
+        </div>
+
+        <div class="dl-group">
+          <div class="dl-group-label">Lands</div>
+          <div class="dl-card-row"><span>Flagstones of Trokair</span><span class="dl-qty">4</span></div>
+          <div class="dl-card-row"><span>Hallowed Fountain</span><span class="dl-qty">3</span></div>
+          <div class="dl-card-row"><span>Meticulous Archive</span><span class="dl-qty">3</span></div>
+          <div class="dl-card-row"><span>Plains</span><span class="dl-qty">3</span></div>
+          <div class="dl-card-row"><span>Arid Mesa</span><span class="dl-qty">2</span></div>
+          <div class="dl-card-row"><span>Flooded Strand</span><span class="dl-qty">2</span></div>
+          <div class="dl-card-row"><span>Marsh Flats</span><span class="dl-qty">2</span></div>
+        </div>
+      </div>
+
+      <div class="dl-section">
+        <div class="dl-section-label">Sideboard · 15 Cards</div>
+
+        <div class="dl-group">
+          <div class="dl-group-label">Stack Disruption</div>
+          <div class="dl-card-row"><span>Consign to Memory</span><span class="dl-qty">3</span></div>
+          <div class="dl-card-row"><span>Teferi, Time Raveler</span><span class="dl-qty">2</span></div>
+          <div class="dl-card-row"><span>Orim's Chant</span><span class="dl-qty">1</span></div>
+        </div>
+
+        <div class="dl-group">
+          <div class="dl-group-label">Hate Creatures</div>
+          <div class="dl-card-row"><span>Sanctifier en-Vec</span><span class="dl-qty">2</span></div>
+          <div class="dl-card-row"><span>Mistcaller</span><span class="dl-qty">1</span></div>
+        </div>
+
+        <div class="dl-group">
+          <div class="dl-group-label">Artifact / Lock</div>
+          <div class="dl-card-row"><span>Stony Silence</span><span class="dl-qty">2</span></div>
+          <div class="dl-card-row"><span>Pithing Needle</span><span class="dl-qty">1</span></div>
+        </div>
+
+        <div class="dl-group">
+          <div class="dl-group-label">Sweepers</div>
+          <div class="dl-card-row"><span>Wrath of the Skies</span><span class="dl-qty">2</span></div>
+        </div>
+
+        <div class="dl-group">
+          <div class="dl-group-label">Mana</div>
+          <div class="dl-card-row"><span>Gemstone Caverns</span><span class="dl-qty">1</span></div>
+        </div>
+      </div>
+    </div>
+
+    <h2>Key Card Roles</h2>
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-label">Engine</div>
+        <div class="card-title">Ephemerate</div>
+        <div class="card-body">The heartbeat of the deck. At floor: reuse an ETB. At ceiling: counterspell, Time Walk, 4-for-1. Never fire for small gains when a big moment is coming.</div>
+      </div>
+      <div class="card">
+        <div class="card-label">Time Thief</div>
+        <div class="card-title">Phelia, Ex. Shepherd</div>
+        <div class="card-body">A Time Walk stapled to a blink engine. Use on opponents' permanents first — blink Atraxa, blink Titan, blink walkers. Offensive value comes only once you're ahead.</div>
+      </div>
+      <div class="card">
+        <div class="card-label">Sword & Shield</div>
+        <div class="card-title">Solitude</div>
+        <div class="card-body">Free removal + lifegain + lifelink clock. Save it for their payoff — never pitch early to a setup creature. With Ephemerate it becomes 2–3 removals + 6–9 life.</div>
+      </div>
+      <div class="card">
+        <div class="card-label">Land Assassin</div>
+        <div class="card-title">White Orchid Phantom</div>
+        <div class="card-body">Mana denial disguised as a 2/2 flier. On the play + Ephemerate = triple Stone Rain by T3. Strongest vs greedy mana bases (Tron, Titan, Domain).</div>
+      </div>
+      <div class="card">
+        <div class="card-label">Inevitability</div>
+        <div class="card-title">Ocelot Pride</div>
+        <div class="card-body">Lifegain factory + token engine. Once Ascend is online, every end step generates exponential board presence. Cannot lose a board stall once this is live.</div>
+      </div>
+      <div class="card">
+        <div class="card-label">Card Engine</div>
+        <div class="card-title">Quantum Riddler</div>
+        <div class="card-body">Deploy when nearly hellbent — every draw becomes +1. A 4/6 flyer that closes in 5 turns and buries Control once it sticks. Sandbag cheap spells to maximize it.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── GAMEPLAN ── -->
+  <div id="gameplan" class="section">
+    <div class="section-label">Chapter 03</div>
+    <h1>Gameplan</h1>
+
+    <h2>The Goldfish Curve</h2>
+    <div class="curve-strip">
+      <div class="curve-turn">
+        <div class="curve-t">T1</div>
+        <div class="curve-play">Guide of Souls</div>
+        <div class="curve-note">Start energy + lifegain snowball</div>
+      </div>
+      <div class="curve-turn">
+        <div class="curve-t">T2</div>
+        <div class="curve-play">Phantom (destroy land) or Phelia (flash setup)</div>
+        <div class="curve-note">Establish disruption or tempo engine</div>
+      </div>
+      <div class="curve-turn">
+        <div class="curve-t">T3</div>
+        <div class="curve-play">Shepherd (Warp → tutor) or Riddler (draw engine)</div>
+        <div class="curve-note">Build engine layer</div>
+      </div>
+      <div class="curve-turn">
+        <div class="curve-t">T4</div>
+        <div class="curve-play">Phelia blink Phantom/Shepherd + Ephemerate chain</div>
+        <div class="curve-note">Board snowballs rapidly</div>
+      </div>
+      <div class="curve-turn">
+        <div class="curve-t">T5–6</div>
+        <div class="curve-play">Ocelot Ascend → token doubles</div>
+        <div class="curve-note">Lethal in the air</div>
+      </div>
+    </div>
+
+    <h2>Mulligan Rules</h2>
+    <p>The single most important skill in this deck. Six with disruption beats seven without, every time.</p>
+
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-label">Auto-Keep</div>
+        <div class="card-title">Snap Keep</div>
+        <div class="card-body">
+          2 lands + Ephemerate + Solitude or Phelia or Phantom.<br><br>
+          Any opener with Sanctifier or Mistcaller vs known combo.<br><br>
+          Guide + Ocelot + any interaction.
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-label">Auto-Ship</div>
+        <div class="card-title">Snap Mull</div>
+        <div class="card-body">
+          0–1 landers, 5+ lands.<br><br>
+          Hands with only Shepherd/Riddler/Mockingbird and no interaction.<br><br>
+          Any hand that doesn't clock by T4 <em>and</em> doesn't disrupt by T3.
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-label">Traps</div>
+        <div class="card-title">Watch For</div>
+        <div class="card-body">
+          Mockingbird in opener without another 2-drop.<br><br>
+          RIP in opener vs unknown G1.<br><br>
+          Value-only 7s vs combo (Reanimator, Belcher, Neoform).
+        </div>
+      </div>
+    </div>
+
+    <h2>Offensive Priorities</h2>
+    <p>Your clock is <strong>4–6 turns postboard</strong>. If you cannot present lethal in that window, you are playing into the opponent's plan. Never durdle when the kill is available.</p>
+
+    <h3>Core Offensive Lines</h3>
+    <ul class="checklist" id="offensive-checklist">
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Guide + Ocelot:</strong> T1 Guide → T2 Ocelot → lifegain triggers tokens → Ascend doubles every end step. Fastest go-wide kill.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Phantom + Ephemerate:</strong> T2 Phantom destroys land → Ephemerate → rebound → 3 lands by T3 vs greedy mana.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Phelia Attack Engine:</strong> Each attack is either removal, ETB value, or mana denial. Always ask "what turn am I stealing?"</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Solitude Clock:</strong> A 3/2 lifelinker closes games on its own. Don't forget it's also a body.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Riddler Inevitability:</strong> Once hellbent, draws +1 every turn. With Ephemerate = Ancestral Recall with wings.</span></li>
+    </ul>
+
+    <h2>Defensive Priorities</h2>
+    <p>Defense in UW Blink isn't about building a wall — it's about <strong>stealing enough time</strong> to transition into inevitability. Every defensive action must aim at reaching the point where Ocelot, Riddler, or Shepherd can carry.</p>
+
+    <div class="mantra">
+      "The goal of defense is not just to survive — it's to survive while building a path to pivot."
+    </div>
+
+    <h3>Defensive Turn Examples</h3>
+    <ul class="checklist">
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Solitude + Ephemerate:</strong> Pitch Solitude → exile → blink → exile again → rebound exiles third threat. One card → 3-for-1 + 6–9 life.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Wrath of the Skies:</strong> Reset button. Don't cast for value — cast when behind to buy 2 rebuild turns.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Phelia as Time Walk:</strong> Attack → blink their Atraxa/Titan/walker. They lose that permanent's effect for the full turn cycle.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Guide + Ocelot Stabilizer:</strong> Cats chump + lifegain buys turns. Ascend online = 2+ blockers per turn.</span></li>
+    </ul>
+  
+  <h2>Play vs Draw</h2>
+  <div class="card-grid card-grid-2">
+    <div class="card"><div class="card-label">On the Play</div><div class="card-title">T2 Solitude on Their Threat</div><div class="card-body">On the play, T2 evoke Solitude to exile their key threat or T3 Restoration Angel sets up the blink loop. On the play you dictate tempo — evoke Solitude + Ephemerate on T2 converts your 2-card investment into a 5/5 body and 2 exile effects before they’ve developed. This tempo advantage compounds with Teferi’s sorcery lock on T3.</div></div>
+    <div class="card"><div class="card-label">On the Draw</div><div class="card-title">Hold Ephemerate Open</div><div class="card-body">On the draw, your extra card gives you more Ephemerate / Solitude coverage. Hold Ephemerate mana open on their T2 and T3 to respond to their threats in real time. Against aggro on the draw: Solitude T1 evoke (pay white card) to stop their T1 deployment is the highest-priority play.</div></div>
+  </div>
+  <h2>When Disrupted</h2>
+  <div class="card-grid card-grid-2">
+    <div class="card"><div class="card-label">Teferi Removed</div><div class="card-title">Reactive Ephemerate Mode</div><div class="card-body">Teferi removed: opponents interact at instant speed again. Switch to reactive: hold Ephemerate + Solitude mana open every turn. Deploy threats during their end step or in response to their attacks. Without Teferi’s lock, you play draw-go but your flash pieces still generate value without the sorcery-speed protection.</div></div>
+    <div class="card"><div class="card-label">Solitude Answered</div><div class="card-title">Angel + Riddler Rebuild</div><div class="card-body">Solitude countered or removed: rebuild with Restoration Angel (blinks any non-Angel creature you control) and Quantum Riddler (draw on each blink). Chain Angel + creature ETBs to refill hand and rebuild board. Teferi’s +1 continues generating card draw. You can win entirely through Teferi + Angel value without ever resolving another Solitude.</div></div>
+  </div>
+</div>
+
+  <!-- ── ROLES ── -->
+  
+<!-- ══ CH04 ENGINES ══ -->
+<div id="engines" class="section">
+  <div class="section-label">Chapter 04</div>
+  <h1>Core Engines</h1>
+  <div class="mantra">"Every creature in this deck does something when it enters. Your job is to make it enter as many times as possible."</div>
+
+  <div class="engine-block">
+    <div class="engine-header">
+      <div class="engine-letter">E1</div>
+      <div>
+        <div class="engine-name">Ephemerate Blink Loop</div>
+        <div style="font-size:13px;color:rgba(240,249,255,0.5);margin-top:4px;">Primary engine — fires every ETB in the deck twice, then rebounds</div>
+      </div>
+    </div>
+    <div class="engine-body">
+      <div class="engine-step">
+        <div class="engine-step-label">Trigger 1</div>
+        <div class="engine-step-title">Cast Ephemerate</div>
+        <div class="engine-step-body">Target any creature you control. That creature is exiled and immediately returns — ETB fires. Cost: {W}. Every creature in the deck has an ETB worth firing.</div>
+      </div>
+      <div class="engine-step">
+        <div class="engine-step-label">Trigger 2</div>
+        <div class="engine-step-title">Rebound</div>
+        <div class="engine-step-body">Ephemerate exiles itself as it resolves if cast from hand. At your next upkeep, it casts itself for free — firing the ETB a second time. One {W} spell = two blink triggers across two turns.</div>
+      </div>
+      <div class="engine-step">
+        <div class="engine-step-label">Best Targets</div>
+        <div class="engine-step-title">Solitude · Phantom · Shepherd</div>
+        <div class="engine-step-body">Solitude: exile two threats for free. White Orchid Phantom: destroy two nonbasic lands. Starfield Shepherd: two Warp tutors. Every target doubles its effect.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="engine-block">
+    <div class="engine-header">
+      <div class="engine-letter">E2</div>
+      <div>
+        <div class="engine-name">Phelia Attack Loop</div>
+        <div style="font-size:13px;color:rgba(240,249,255,0.5);margin-top:4px;">Tempo engine — resets permanents on attack, returns at end step</div>
+      </div>
+    </div>
+    <div class="engine-body">
+      <div class="engine-step">
+        <div class="engine-step-label">On Attack</div>
+        <div class="engine-step-title">Exile Any Nonland Permanent</div>
+        <div class="engine-step-body">Phelia's trigger fires when she attacks — exile a nonland permanent you or your opponent controls. No mana required. This fires before damage, so no connection needed.</div>
+      </div>
+      <div class="engine-step">
+        <div class="engine-step-label">End of Turn</div>
+        <div class="engine-step-title">Permanent Returns</div>
+        <div class="engine-step-body">The exiled permanent returns at end of turn. Your creatures re-enter triggering ETBs again. Opponent's permanents "reset" — Planeswalkers lose activations made this turn.</div>
+      </div>
+      <div class="engine-step">
+        <div class="engine-step-label">Best Uses</div>
+        <div class="engine-step-title">Bounce Chalice · Reset Phantom · Loop Shepherd</div>
+        <div class="engine-step-body">Exile Chalice of the Void = restore your instant-speed interaction for a full turn. Exile your own Phantom = second land destruction trigger on re-entry. Exile own Shepherd = second Warp tutor.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="engine-block">
+    <div class="engine-header">
+      <div class="engine-letter">E3</div>
+      <div>
+        <div class="engine-name">Guide of Souls Energy Loop</div>
+        <div style="font-size:13px;color:rgba(240,249,255,0.5);margin-top:4px;">Resource engine — generates energy + lifegain, fuels Ocelot Pride cats</div>
+      </div>
+    </div>
+    <div class="engine-body">
+      <div class="engine-step">
+        <div class="engine-step-label">On Creature ETB</div>
+        <div class="engine-step-title">You Gain Life</div>
+        <div class="engine-step-body">Guide of Souls: when a creature enters the battlefield under your control, you gain 1 life. In a blink deck, this fires multiple times per turn cycle. Every Ephemerate target + every Phelia loop generates life.</div>
+      </div>
+      <div class="engine-step">
+        <div class="engine-step-label">Life Threshold</div>
+        <div class="engine-step-title">Ocelot Pride Triggers</div>
+        <div class="engine-step-body">Ocelot Pride creates a 1/1 Cat token whenever you gain life above your starting total. In a single Ephemerate turn (2 ETBs = 2 life), Pride generates 2 Cat tokens. A looping engine becomes a token engine.</div>
+      </div>
+      <div class="engine-step">
+        <div class="engine-step-label">Energy Sink</div>
+        <div class="engine-step-title">+2/+2 Flying Grant</div>
+        <div class="engine-step-body">Pay {E}{E}{E}: target attacking creature gets +2/+2 and flying until end of turn. Use on your largest attacker on the turn you need to close. Guide of Souls also gains {E} when it attacks — start banking energy by turn 2.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="engine-block">
+    <div class="engine-header">
+      <div class="engine-letter">E4</div>
+      <div>
+        <div class="engine-name">Starfield Shepherd Warp Chain</div>
+        <div style="font-size:13px;color:rgba(240,249,255,0.5);margin-top:4px;">Tutor engine — ETB searches any enchantment, fueled by Ephemerate rebound</div>
+      </div>
+    </div>
+    <div class="engine-body">
+      <div class="engine-step">
+        <div class="engine-step-label">On ETB</div>
+        <div class="engine-step-title">Warp Searches Any Enchantment</div>
+        <div class="engine-step-body">Starfield Shepherd's Warp keyword lets you cast it for {1}{W} and search your library for an enchantment, putting it into your hand. The ETB tutors for the enchantment you need most: Witch Enchanter vs artifacts, Rest in Peace vs GY, Ocelot Pride vs control.</div>
+      </div>
+      <div class="engine-step">
+        <div class="engine-step-label">With Ephemerate</div>
+        <div class="engine-step-title">Two Tutors for One Card</div>
+        <div class="engine-step-body">Ephemerate Shepherd on cast = tutor #1. Rebound next upkeep = Shepherd ETB #2 = tutor #2. For {W} + {1}{W} you get two enchantment searches across two turns. This makes your sideboard functionally redundant — you find what you need.</div>
+      </div>
+      <div class="engine-step">
+        <div class="engine-step-label">Priority Targets</div>
+        <div class="engine-step-title">Context-Dependent</div>
+        <div class="engine-step-body">G1: Witch Enchanter (answers Blood Moon), Ocelot Pride (clock). G2 vs combo: Rest in Peace. G2 vs creatures: Sanctifier en-Vec. G2 vs control: Quantum Riddler (draw engine). The tutor makes every SB enchantment accessible on turn 3.</div>
+      </div>
+    </div>
+  </div>
+
+
+  <h2>Engine Priority Order</h2>
+  <div class="card-grid card-grid-3">
+    <div class="card"><div class="card-label">Priority 01</div><div class="card-title">Evoke + Ephemerate ETB Loop</div><div class="card-body">Evoke Solitude (exile white card) + Ephemerate (in response to sacrifice trigger) = 2 exile ETBs + a permanent 5/5. Ephemerate rebounds: second blink next upkeep = another exile. This loop is the highest-value engine and should be executed every time you have Solitude + Ephemerate + a relevant target.</div></div>
+    <div class="card"><div class="card-label">Priority 02</div><div class="card-title">Teferi + Sorcery Flash</div><div class="card-body">Teferi, Time Raveler locks opponents to sorcery speed while +1 draws cards. His +1 also enables sorcery-speed flash for Restoration Angel and other creatures (not directly useful since Angel is already instant-speed, but applies to other sorceries). Each Teferi +1 is +1 card and the sorcery-speed lock continues. Protect him once resolved.</div></div>
+    <div class="card"><div class="card-label">Priority 03</div><div class="card-title">Quantum Riddler Blink Draw</div><div class="card-body">Quantum Riddler draws a card each time you blink a permanent. With Ephemerate + Restoration Angel chains, Riddler generates 2-4 cards per turn. This card advantage engine makes your late game inevitably better than any fair opponent. Deploy Riddler once Teferi is in play to protect the blink chain.</div></div>
+  </div>
+  <h2>Speed Math</h2>
+  <div class="card-grid card-grid-3">
+    <div class="card"><div class="card-label">Evoke Combo Timing</div><div class="card-title">T2 Double Exile</div><div class="card-body">T2: Evoke Solitude (exile a white card) → Solitude ETB exiles their threat. Evoke sacrifice trigger on stack → Ephemerate Solitude ({W}) → Solitude exiles, sacrifice trigger fizzles, Solitude returns at end of step as 5/5. Ephemerate rebound next upkeep → blink again for second exile ETB.<br>Cost: 1 white card + {W}. Return: 2 exiles + permanent 5/5.</div></div>
+    <div class="card"><div class="card-label">Angel Chain</div><div class="card-title">T4 Value Acceleration</div><div class="card-body">T4: Restoration Angel (flash) → blinks Quantum Riddler → Riddler ETB draws a card. Flash Angel at instant speed during their EOT. Riddler drew a card. Next turn: Ephemerate Angel → blinks Riddler again → another card drawn. Chain generates 2-3 cards from 2 pieces.</div></div>
+    <div class="card"><div class="card-label">Kill Speed</div><div class="card-title">Teferi + Creatures Clock</div><div class="card-body">Teferi (3/4) + Solitude (5/5) + Restoration Angel (3/4) = 11 attack power. From 20 life: 2 attack steps while using Teferi +1 to bounce their blockers. With Teferi’s lock active, they can’t flash in blockers. The clock is fast enough that you don’t need a dedicated finisher — the value pieces are also the damage.</div></div>
+  </div>
+</div>
+
+<!-- CH05: LINES -->
+<div id="lines" class="section">
+  <div class="section-label">Lines &amp; Tactics</div>
+  <h1>Lines &amp;<br>Tactics</h1>
+  <div class="mantra">"Ephemerate’s rebound timing and Solitude evoke + blink windows define this deck’s power."</div>
+
+  <h2>Three Lines You Must Know Cold</h2>
+  <div class="card-grid card-grid-3">
+    <div class="card"><div class="card-label">Critical</div><div class="card-title">Ephemerate Rebounds at Your Next Upkeep</div><div class="card-body">Ephemerate exiles the creature, which returns at the beginning of the next end step. On your turn: exile + return at YOUR end step, then rebound copy at YOUR NEXT upkeep = exile + return again at your next end step. Total: 2 ETB blinks from one Ephemerate. On opponent’s turn (cast during their attack): exile + return at THEIR end step, rebound at YOUR upkeep = exile + return at your end step. Same 2 blinks, different timing windows.</div></div>
+    <div class="card"><div class="card-label">Critical</div><div class="card-title">Evoke + Ephemerate: Keep the Creature</div><div class="card-body">Evoke Solitude: ETB trigger (exile target creature) and evoke sacrifice trigger both go on the stack. Ephemerate Solitude in response to the sacrifice trigger: Solitude exiles before being sacrificed. Sacrifice trigger resolves with no target. Solitude returns at end of step as a full 5/5. Ephemerate’s rebound blinks it again next upkeep — another exile ETB. Two free exile effects from Solitude + one Ephemerate. Always have Ephemerate ready when evoking.</div></div>
+    <div class="card"><div class="card-label">Critical</div><div class="card-title">Restoration Angel Cannot Blink Angels</div><div class="card-body">Restoration Angel says target non-Angel creature you control. This restriction means: you cannot blink another Angel with it, and you cannot blink itself. In practice this rarely matters for UW Blink but know it so you don’t target an Angel creature incorrectly. All your value creatures (Eternal Witness, Wall of Omens, Recruiters) are non-Angel and are valid targets.</div></div>
+  </div>
+
+  <h2>Timing Windows</h2>
+  <div class="edge-case">
+    <div class="edge-label">When to Hold Mana vs Spend It</div>
+    <div class="edge-body">The core timing decision for this deck: every land drop and every spell cast is a commitment. Know before your upkeep which lines require open mana this turn and which don’t. Holding mana = passing priority; spending it = committing to a plan. Make this decision in your upkeep, not in response to their action.</div>
+  </div>
+  <div class="edge-case">
+    <div class="edge-label">When to Cast at Their End Step vs Your Main Phase</div>
+    <div class="edge-body">End-step casts maximize information: you’ve seen their full turn, they’re often tapped out. Main-phase casts maximize mana availability for follow-up. Know which of your key spells gain most from end-step timing and which need main-phase mana backup.</div>
+  </div>
+
+</div>
+
+
+<div id="roles" class="section">
+    <div class="section-label">Chapter 05</div>
+    <h1>Role<br>Assignment</h1>
+
+    <p>Before turn 1, decide your role. This is the single most important pre-game decision with UW Blink. Stick to your role — but reevaluate every two turns.</p>
+
+    <div class="mantra">
+      "By turn 2, you should know your role. If you wait until turn 4, it is often too late."
+    </div>
+
+    <div class="role-grid">
+      <div class="role-card role-card-control">
+        <div class="role-name role-name-control">Control</div>
+        <div class="role-desc">You are the stabilizer. The opponent is faster and your job is to reach the late game where your inevitability takes over.</div>
+        <div class="role-matchups">Aggro: Prowess · Zoo · Burn · Boros Energy</div>
+      </div>
+      <div class="role-card role-card-tempo">
+        <div class="role-name role-name-tempo">Tempo</div>
+        <div class="role-desc">Buy 1–2 turns with disruption, just enough to force a stumble, then race with your clock before they reset.</div>
+        <div class="role-matchups">Combo: Reanimator · Belcher · Neoform · Titan</div>
+      </div>
+      <div class="role-card role-card-beatdown">
+        <div class="role-name role-name-beatdown">Beatdown</div>
+        <div class="role-desc">You are the aggressor. Opponent is slower but more powerful long-term. Get under them and close before they stabilize.</div>
+        <div class="role-matchups">Control: Azorius · Esper Blink Mirror · Tron</div>
+      </div>
+    </div>
+
+    <h2>How to Identify Your Role</h2>
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-label">Question 01</div>
+        <div class="card-title">Are they faster?</div>
+        <div class="card-body">If yes → you are Control. Stabilize first, then pivot. Every life point matters until you have an engine online.</div>
+      </div>
+      <div class="card">
+        <div class="card-label">Question 02</div>
+        <div class="card-title">Are they more powerful long-term?</div>
+        <div class="card-body">If yes → you are Beatdown. Jam Ocelot/Phantom aggressively. Use Ephemerate offensively to push damage.</div>
+      </div>
+      <div class="card">
+        <div class="card-label">Question 03</div>
+        <div class="card-title">Neither?</div>
+        <div class="card-body">You are Tempo. Buy one critical turn with Consign, Phelia, or Phantom — then race with your modest clock before they rebuild.</div>
+      </div>
+    </div>
+
+    <h2>Role Mistakes to Avoid</h2>
+    <ul class="heuristic-list">
+      <li><strong>Misassigning the role.</strong> Treating yourself as Control vs Azorius Control — you'll lose. You have inevitability only if you pressure them early.</li>
+      <li><strong>Refusing to pivot.</strong> Against Zoo, staying Control after you've stabilized. They'll burn you out. Flip into Beatdown once you have footing.</li>
+      <li><strong>Splitting the difference.</strong> Playing Phantom T2 against Belcher <em>and</em> holding Consign, leaving you mana-pinched. Neither pressured nor disrupted.</li>
+      <li><strong>Over-durdling.</strong> Looping Shepherd without developing pressure vs combo. You are not winning by accruing value — you're losing by not clocking them.</li>
+    </ul>
+
+    <h2>Role-Switching Signals</h2>
+    <p>Reevaluate your role every two turns. Look for these triggers:</p>
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-label">Shift to Beatdown</div>
+        <div class="card-title">You're now the aggressor when:</div>
+        <div class="card-body">You've stabilized vs aggro at 10+ life. You've disrupted combo once and have 4 turns of clock available. They're hellbent and rebuilding slowly.</div>
+      </div>
+      <div class="card">
+        <div class="card-label">Stay Control</div>
+        <div class="card-title">Hold the line when:</div>
+        <div class="card-body">Life total is still in danger. They have payoffs in hand (Titan, Atraxa) you haven't answered. You don't have a clean clock established yet.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── MATCHUPS ── -->
+  <div id="matchups" class="section">
+    <div class="section-label">Chapter 06</div>
+    <h1>Matchup<br>Matrix</h1>
+    <p>Click any matchup to expand the full game plan, sideboard, and If X → Do Y guide.</p>
+
+    <table class="matchup-table">
+      <thead>
+        <tr>
+          <th>Matchup</th>
+          <th>Meta Share</th>
+          <th>Difficulty</th>
+          <th>Your Role</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr onclick="toggleMatchup('reanimator')">
+          <td><strong>Esper Reanimator</strong></td>
+          <td>17%</td>
+          <td><span class="diff-hard">Hard</span></td>
+          <td>Tempo → Pressure</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div id="reanimator" class="matchup-detail">
+      <h3>Esper Reanimator — Gameplan</h3>
+      <p>You cannot grind them. Atraxa chains refill their hand and stabilize faster than you can keep up. Your only line: <strong>buy one critical turn with disruption, then close in 4–6 turns</strong> before they reset.</p>
+      <p>Mulligan aggressively. Six with Solitude + Ephemerate beats seven with Shepherd and no answers.</p>
+
+      <h3>Sideboard</h3>
+      <div class="sb-table">
+        <div class="sb-col">
+          <div class="sb-col-label">In</div>
+          <div class="sb-item"><span>Consign to Memory</span><span class="sb-qty">+3</span></div>
+          <div class="sb-item"><span>Sanctifier en-Vec</span><span class="sb-qty">+2</span></div>
+          <div class="sb-item"><span>Teferi, Time Raveler</span><span class="sb-qty">+2</span></div>
+          <div class="sb-item"><span>Mistcaller</span><span class="sb-qty">+1</span></div>
+          <div class="sb-item"><span>Orim's Chant</span><span class="sb-qty">+1</span></div>
+        </div>
+        <div class="sb-col">
+          <div class="sb-col-label">Out</div>
+          <div class="sb-item"><span>Witch Enchanter</span><span class="sb-qty">−3</span></div>
+          <div class="sb-item"><span>Meticulous Archive</span><span class="sb-qty">−1</span></div>
+          <div class="sb-item"><span>Mockingbird</span><span class="sb-qty">−1</span></div>
+          <div class="sb-item"><span>Rest in Peace</span><span class="sb-qty">−1</span></div>
+          <div class="sb-item"><span>Ocelot Pride</span><span class="sb-qty">−2</span></div>
+        </div>
+      </div>
+
+      <h3>Needle Targets</h3>
+      <span class="tag">Griselbrand</span>
+      <span class="tag">Persist</span>
+
+      <h3>If X → Do Y</h3>
+      <ul class="ifthen-list">
+        <li><span class="if-label">If</span><span><strong>Atraxa enters:</strong> Solitude + Ephemerate exile it — or Phelia attack blink to deny ETB. Never let lifegain + draw 5 resolve.</span></li>
+        <li><span class="if-label">If</span><span><strong>Griselbrand resolves:</strong> Solitude immediately. Do not let it draw cards under any circumstance.</span></li>
+        <li><span class="if-label">If</span><span><strong>They answer Atraxa once and reload:</strong> Transition to kill mode immediately. Do not give them a third reanimate.</span></li>
+        <li><span class="if-label">If</span><span><strong>Faithful Mending T2:</strong> Hold Consign for Goryo's Vengeance. Do not tap out on your T3.</span></li>
+        <li><span class="if-label">If</span><span><strong>Psychic Frog resolves:</strong> Kill it before it scales. It is their backup grind engine.</span></li>
+      </ul>
+
+      <h3>Play vs Draw</h3>
+      <div class="card-grid">
+        <div class="card">
+          <div class="card-label">On the Play</div>
+          <div class="card-title">Aggro-Disruption</div>
+          <div class="card-body">Aggressive hands (Guide + Ocelot) force defensive reanimates. Sanctifier priority. Pressure lets you play more proactively.</div>
+        </div>
+        <div class="card">
+          <div class="card-label">On the Draw</div>
+          <div class="card-title">Disruption First</div>
+          <div class="card-body">They can Atraxa as early as T3. Always prioritize Consign or Solitude over clock cards. Mulligan harder.</div>
+        </div>
+      </div>
+    </div>
+
+    <table class="matchup-table">
+      <tbody>
+        <tr onclick="toggleMatchup('belcher')">
+          <td><strong>Tameshi Belcher</strong></td>
+          <td>15%</td>
+          <td><span class="diff-hard">Hard</span></td>
+          <td>Tempo Police</td>
+        </tr>
+      </tbody>
+    </table>
+    <div id="belcher" class="matchup-detail">
+      <h3>Tameshi Belcher — Gameplan</h3>
+      <p>Forget your value plan entirely. Their deck goes under or through anything you do in a normal game. Your job: land hate that invalidates the combo, buy one critical turn, then race with Ocelot tokens or Phantom fliers before they rebuild.</p>
+
+      <h3>Sideboard</h3>
+      <div class="sb-table">
+        <div class="sb-col">
+          <div class="sb-col-label">In</div>
+          <div class="sb-item"><span>Consign to Memory</span><span class="sb-qty">+3</span></div>
+          <div class="sb-item"><span>Teferi, Time Raveler</span><span class="sb-qty">+2</span></div>
+          <div class="sb-item"><span>Stony Silence</span><span class="sb-qty">+2</span></div>
+          <div class="sb-item"><span>Orim's Chant</span><span class="sb-qty">+1</span></div>
+          <div class="sb-item"><span>Pithing Needle</span><span class="sb-qty">+1</span></div>
+          <div class="sb-item"><span>Gemstone Caverns</span><span class="sb-qty">+1</span></div>
+        </div>
+        <div class="sb-col">
+          <div class="sb-col-label">Out</div>
+          <div class="sb-item"><span>Starfield Shepherd</span><span class="sb-qty">−2</span></div>
+          <div class="sb-item"><span>Meticulous Archive</span><span class="sb-qty">−2</span></div>
+          <div class="sb-item"><span>Mockingbird</span><span class="sb-qty">−1</span></div>
+          <div class="sb-item"><span>Witch Enchanter</span><span class="sb-qty">−1</span></div>
+          <div class="sb-item"><span>Ocelot Pride</span><span class="sb-qty">−2</span></div>
+          <div class="sb-item"><span>Plains (for Caverns)</span><span class="sb-qty">−1</span></div>
+        </div>
+      </div>
+
+      <h3>Needle Targets</h3>
+      <span class="tag">Goblin Charbelcher</span>
+      <span class="tag">Tameshi</span>
+
+      <h3>If X → Do Y</h3>
+      <ul class="ifthen-list">
+        <li><span class="if-label">If</span><span><strong>Lotus Bloom suspended T1:</strong> Always leave Consign or Chant up on T3. That's the kill window.</span></li>
+        <li><span class="if-label">If</span><span><strong>They resolve Belcher:</strong> Consign it before they activate. Don't wait.</span></li>
+        <li><span class="if-label">If</span><span><strong>Stony Silence in play:</strong> Still bring in Needle as redundancy. Force them to answer both.</span></li>
+        <li><span class="if-label">If</span><span><strong>Teferi resolves:</strong> Jam your clock. They cannot interact on your turn anymore.</span></li>
+        <li><span class="if-label">If</span><span><strong>You disrupt once:</strong> Transition to kill mode immediately. Don't assume they'll stumble twice.</span></li>
+      </ul>
+    </div>
+
+    <table class="matchup-table">
+      <tbody>
+        <tr onclick="toggleMatchup('boros')">
+          <td><strong>Boros Energy</strong></td>
+          <td>14%</td>
+          <td><span class="diff-medium">Medium</span></td>
+          <td>Control → Beatdown</td>
+        </tr>
+        <tr onclick="toggleMatchup('affinity')">
+          <td><strong>Affinity</strong></td>
+          <td>8%</td>
+          <td><span class="diff-medium">Medium</span></td>
+          <td>Control</td>
+        </tr>
+        <tr onclick="toggleMatchup('etron')">
+          <td><strong>Eldrazi Tron</strong></td>
+          <td>7%</td>
+          <td><span class="diff-medium">Med–Hard</span></td>
+          <td>Tempo → Control</td>
+        </tr>
+        <tr onclick="toggleMatchup('mirror')">
+          <td><strong>Esper / UW Blink (Mirror)</strong></td>
+          <td>6%</td>
+          <td><span class="diff-even">Even</span></td>
+          <td>Tempo First</td>
+        </tr>
+        <tr onclick="toggleMatchup('titan')">
+          <td><strong>Amulet Titan</strong></td>
+          <td>5%</td>
+          <td><span class="diff-hard">Hard</span></td>
+          <td>Disruption + Race</td>
+        </tr>
+        <tr onclick="toggleMatchup('neoform')">
+          <td><strong>Neoform</strong></td>
+          <td>5%</td>
+          <td><span class="diff-hard">Hard</span></td>
+          <td>Tempo Police</td>
+        </tr>
+        <tr onclick="toggleMatchup('domain')">
+          <td><strong>Domain Aggro</strong></td>
+          <td>4%</td>
+          <td><span class="diff-medium">Medium</span></td>
+          <td>Control → Beatdown</td>
+        </tr>
+        <tr onclick="toggleMatchup('prowess')">
+          <td><strong>Izzet Prowess</strong></td>
+          <td>3%</td>
+          <td><span class="diff-medium">Medium</span></td>
+          <td>Control</td>
+        </tr>
+        <tr onclick="toggleMatchup('azcontrol')">
+          <td><strong>Azorius Control</strong></td>
+          <td>3%</td>
+          <td><span class="diff-even">Even</span></td>
+          <td>Beatdown</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Compact detail panels for remaining matchups -->
+    <div id="boros" class="matchup-detail">
+      <h3>Boros Energy</h3>
+      <p>Kill Ragavan on sight — always. Stabilize with Solitude + Wrath, then pivot hard into Ocelot Ascend kill. Don't give them time to topdeck Discharge or Phlage.</p>
+      <div class="sb-table">
+        <div class="sb-col"><div class="sb-col-label">In</div>
+          <div class="sb-item"><span>Sanctifier en-Vec</span><span class="sb-qty">+2</span></div>
+          <div class="sb-item"><span>Wrath of the Skies</span><span class="sb-qty">+2</span></div>
+          <div class="sb-item"><span>Teferi, Time Raveler</span><span class="sb-qty">+1</span></div>
+        </div>
+        <div class="sb-col"><div class="sb-col-label">Out</div>
+          <div class="sb-item"><span>Mockingbird</span><span class="sb-qty">−1</span></div>
+          <div class="sb-item"><span>Meticulous Archive</span><span class="sb-qty">−1</span></div>
+          <div class="sb-item"><span>Starfield Shepherd</span><span class="sb-qty">−2</span></div>
+          <div class="sb-item"><span>Rest in Peace</span><span class="sb-qty">−1</span></div>
+        </div>
+      </div>
+      <h3>Needle Targets</h3><span class="tag">None primary</span>
+    </div>
+
+    <div id="affinity" class="matchup-detail">
+      <h3>Affinity</h3>
+      <p>Stony Silence is your best card. Wrath handles Kappa Cannoneer and Construct swarms. Don't waste Solitudes on fodder — save them for Kappa.</p>
+      <div class="sb-table">
+        <div class="sb-col"><div class="sb-col-label">In</div>
+          <div class="sb-item"><span>Stony Silence</span><span class="sb-qty">+2</span></div>
+          <div class="sb-item"><span>Wrath of the Skies</span><span class="sb-qty">+2</span></div>
+          <div class="sb-item"><span>Teferi, Time Raveler</span><span class="sb-qty">+2</span></div>
+          <div class="sb-item"><span>Pithing Needle</span><span class="sb-qty">+1</span></div>
+        </div>
+        <div class="sb-col"><div class="sb-col-label">Out</div>
+          <div class="sb-item"><span>Starfield Shepherd</span><span class="sb-qty">−2</span></div>
+          <div class="sb-item"><span>Mockingbird</span><span class="sb-qty">−1</span></div>
+          <div class="sb-item"><span>Meticulous Archive</span><span class="sb-qty">−2</span></div>
+          <div class="sb-item"><span>Ocelot Pride</span><span class="sb-qty">−2</span></div>
+        </div>
+      </div>
+      <h3>Needle Targets</h3>
+      <span class="tag">Urza's Saga</span><span class="tag">Cranial Plating</span><span class="tag">Springleaf Drum</span>
+    </div>
+
+    <div id="etron" class="matchup-detail">
+      <h3>Eldrazi Tron</h3>
+      <p>Phantom + Ephemerate is your win condition — killing two Tron lands locks them out for turns. Teferi protects your removal from Warping Wail. Always answer Thought-Knot Seer with Solitude.</p>
+      <div class="sb-table">
+        <div class="sb-col"><div class="sb-col-label">In</div>
+          <div class="sb-item"><span>Consign to Memory</span><span class="sb-qty">+3</span></div>
+          <div class="sb-item"><span>Teferi, Time Raveler</span><span class="sb-qty">+2</span></div>
+          <div class="sb-item"><span>Pithing Needle</span><span class="sb-qty">+1</span></div>
+          <div class="sb-item"><span>Stony Silence</span><span class="sb-qty">+1</span></div>
+        </div>
+        <div class="sb-col"><div class="sb-col-label">Out</div>
+          <div class="sb-item"><span>Rest in Peace</span><span class="sb-qty">−1</span></div>
+          <div class="sb-item"><span>Sanctifier en-Vec</span><span class="sb-qty">−1</span></div>
+          <div class="sb-item"><span>Mockingbird</span><span class="sb-qty">−1</span></div>
+          <div class="sb-item"><span>Ocelot Pride</span><span class="sb-qty">−2</span></div>
+          <div class="sb-item"><span>Starfield Shepherd</span><span class="sb-qty">−2</span></div>
+        </div>
+      </div>
+      <h3>Needle Targets</h3>
+      <span class="tag">Karn the Great Creator</span><span class="tag">Ugin</span><span class="tag">Expedition Map</span>
+    </div>
+
+    <div id="mirror" class="matchup-detail">
+      <h3>Blink Mirror</h3>
+      <p>Teferi is the trump card — whoever resolves it first usually wins. Never cast Ephemerate first in stack wars. Sandbag Riddler until you're nearly empty-handed.</p>
+      <div class="sb-table">
+        <div class="sb-col"><div class="sb-col-label">In</div>
+          <div class="sb-item"><span>Teferi, Time Raveler</span><span class="sb-qty">+2</span></div>
+          <div class="sb-item"><span>Consign to Memory</span><span class="sb-qty">+2</span></div>
+          <div class="sb-item"><span>Pithing Needle</span><span class="sb-qty">+1</span></div>
+        </div>
+        <div class="sb-col"><div class="sb-col-label">Out</div>
+          <div class="sb-item"><span>Rest in Peace</span><span class="sb-qty">−1</span></div>
+          <div class="sb-item"><span>Witch Enchanter</span><span class="sb-qty">−1</span></div>
+          <div class="sb-item"><span>Ocelot Pride</span><span class="sb-qty">−2</span></div>
+          <div class="sb-item"><span>Mockingbird</span><span class="sb-qty">−1</span></div>
+        </div>
+      </div>
+      <h3>Needle Targets</h3>
+      <span class="tag">Teferi</span><span class="tag">Phelia</span>
+    </div>
+
+    <div id="titan" class="matchup-detail">
+      <h3>Amulet Titan</h3>
+      <p>Phantom + Phelia + Ephemerate creates a soft lock on bounce lands. Always have Consign for Titan or Summoner's Pact. Consign on Pact = they lose to upkeep trigger.</p>
+      <div class="sb-table">
+        <div class="sb-col"><div class="sb-col-label">In</div>
+          <div class="sb-item"><span>Consign to Memory</span><span class="sb-qty">+3</span></div>
+          <div class="sb-item"><span>Teferi, Time Raveler</span><span class="sb-qty">+2</span></div>
+          <div class="sb-item"><span>Wrath of the Skies</span><span class="sb-qty">+2</span></div>
+          <div class="sb-item"><span>Pithing Needle</span><span class="sb-qty">+1</span></div>
+        </div>
+        <div class="sb-col"><div class="sb-col-label">Out</div>
+          <div class="sb-item"><span>Rest in Peace</span><span class="sb-qty">−1</span></div>
+          <div class="sb-item"><span>Sanctifier en-Vec</span><span class="sb-qty">−1</span></div>
+          <div class="sb-item"><span>Starfield Shepherd</span><span class="sb-qty">−2</span></div>
+          <div class="sb-item"><span>Ocelot Pride</span><span class="sb-qty">−2</span></div>
+          <div class="sb-item"><span>Mockingbird</span><span class="sb-qty">−1</span></div>
+          <div class="sb-item"><span>Witch Enchanter</span><span class="sb-qty">−1</span></div>
+        </div>
+      </div>
+      <h3>Needle Targets</h3>
+      <span class="tag">Slayers' Stronghold</span><span class="tag">Tolaria West</span><span class="tag">Amulet of Vigor</span>
+    </div>
+
+    <div id="neoform" class="matchup-detail">
+      <h3>Neoform</h3>
+      <p>Role = tempo police. Forget engines. Consign on Neoform is better than answering the payoff. Mistcaller T1 always — never hold it.</p>
+      <div class="sb-table">
+        <div class="sb-col"><div class="sb-col-label">In</div>
+          <div class="sb-item"><span>Consign to Memory</span><span class="sb-qty">+3</span></div>
+          <div class="sb-item"><span>Teferi, Time Raveler</span><span class="sb-qty">+2</span></div>
+          <div class="sb-item"><span>Orim's Chant</span><span class="sb-qty">+1</span></div>
+          <div class="sb-item"><span>Pithing Needle</span><span class="sb-qty">+1</span></div>
+        </div>
+        <div class="sb-col"><div class="sb-col-label">Out</div>
+          <div class="sb-item"><span>Starfield Shepherd</span><span class="sb-qty">−2</span></div>
+          <div class="sb-item"><span>Witch Enchanter</span><span class="sb-qty">−2</span></div>
+          <div class="sb-item"><span>Mockingbird</span><span class="sb-qty">−1</span></div>
+          <div class="sb-item"><span>Meticulous Archive</span><span class="sb-qty">−1</span></div>
+          <div class="sb-item"><span>Ocelot Pride</span><span class="sb-qty">−1</span></div>
+        </div>
+      </div>
+      <h3>Needle Targets</h3>
+      <span class="tag">Neoform</span><span class="tag">Griselbrand</span>
+    </div>
+
+    <div id="domain" class="matchup-detail">
+      <h3>Domain Aggro</h3>
+      <p>Kill Ragavan. Track Tribal Flames math — stay above 8 life. Sanctifier warps the matchup: once it's down, they must overextend into Wrath.</p>
+      <div class="sb-table">
+        <div class="sb-col"><div class="sb-col-label">In</div>
+          <div class="sb-item"><span>Wrath of the Skies</span><span class="sb-qty">+2</span></div>
+          <div class="sb-item"><span>Sanctifier en-Vec</span><span class="sb-qty">+2</span></div>
+          <div class="sb-item"><span>Teferi, Time Raveler</span><span class="sb-qty">+1</span></div>
+        </div>
+        <div class="sb-col"><div class="sb-col-label">Out</div>
+          <div class="sb-item"><span>Mockingbird</span><span class="sb-qty">−1</span></div>
+          <div class="sb-item"><span>Meticulous Archive</span><span class="sb-qty">−1</span></div>
+          <div class="sb-item"><span>Starfield Shepherd</span><span class="sb-qty">−2</span></div>
+          <div class="sb-item"><span>Rest in Peace</span><span class="sb-qty">−1</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="prowess" class="matchup-detail">
+      <h3>Izzet Prowess</h3>
+      <p>Treat it like Burn. Every point of life matters. Sanctifier is the trump — mulligan for it. Once stabilized, your engines bury them. Respect Lava Dart math always.</p>
+      <div class="sb-table">
+        <div class="sb-col"><div class="sb-col-label">In</div>
+          <div class="sb-item"><span>Sanctifier en-Vec</span><span class="sb-qty">+2</span></div>
+          <div class="sb-item"><span>Wrath of the Skies</span><span class="sb-qty">+1</span></div>
+          <div class="sb-item"><span>Orim's Chant</span><span class="sb-qty">+1</span></div>
+          <div class="sb-item"><span>Teferi, Time Raveler</span><span class="sb-qty">+1</span></div>
+        </div>
+        <div class="sb-col"><div class="sb-col-label">Out</div>
+          <div class="sb-item"><span>Rest in Peace</span><span class="sb-qty">−1</span></div>
+          <div class="sb-item"><span>Mockingbird</span><span class="sb-qty">−1</span></div>
+          <div class="sb-item"><span>Meticulous Archive</span><span class="sb-qty">−1</span></div>
+          <div class="sb-item"><span>Starfield Shepherd</span><span class="sb-qty">−1</span></div>
+          <div class="sb-item"><span>Witch Enchanter</span><span class="sb-qty">−1</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="azcontrol" class="matchup-detail">
+      <h3>Azorius Control</h3>
+      <p>You are the beatdown. Pressure with Phantom + Ocelot early, force them to Verdict ahead of curve, then reload with Shepherd. Teferi is the green light to commit threats.</p>
+      <div class="sb-table">
+        <div class="sb-col"><div class="sb-col-label">In</div>
+          <div class="sb-item"><span>Teferi, Time Raveler</span><span class="sb-qty">+2</span></div>
+          <div class="sb-item"><span>Consign to Memory</span><span class="sb-qty">+2</span></div>
+          <div class="sb-item"><span>Pithing Needle</span><span class="sb-qty">+1</span></div>
+        </div>
+        <div class="sb-col"><div class="sb-col-label">Out</div>
+          <div class="sb-item"><span>Witch Enchanter</span><span class="sb-qty">−1</span></div>
+          <div class="sb-item"><span>Rest in Peace</span><span class="sb-qty">−1</span></div>
+          <div class="sb-item"><span>Mockingbird</span><span class="sb-qty">−1</span></div>
+          <div class="sb-item"><span>Ocelot Pride</span><span class="sb-qty">−1</span></div>
+          <div class="sb-item"><span>Sanctifier en-Vec</span><span class="sb-qty">−1</span></div>
+        </div>
+      </div>
+      <h3>Needle Targets</h3>
+      <span class="tag">Teferi Hero</span><span class="tag">Wandering Emperor</span><span class="tag">Hall of Storm Giants</span>
+    </div>
+
+  </div>
+
+  <!-- ── SIDEBOARD ── -->
+  <div id="edges" class="section">
+  <div class="section-label">Lines &amp; Tactics</div>
+  <h1>Edge Cases &amp;<br>Rules Precision</h1>
+  <div class="mantra">"Blink wins on triggered ability sequencing. Every ETB is a decision point."</div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Ephemerate Rebound — Only From Hand, Not From Other Zones</div>
+    <div class="edge-case-body">Ephemerate's Rebound says "if you cast this spell from your hand, exile it as it resolves. At the beginning of your next upkeep, you may cast this card from exile without paying its mana cost." The critical qualifier: cast FROM HAND. If Ephemerate is cast from any other zone — Snapcaster Mage flashback, Eternal Witness recursion, any other zone — it does NOT rebound. Each copy of Ephemerate you cast from hand will rebound once. Never waste a hand Ephemerate on a low-value target when you have a Snapcaster copy available for that purpose.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Solitude Evoke — Ward Triggers After Cast, Before Resolution</div>
+    <div class="edge-case-body">When you evoke Solitude targeting a creature with Ward, the Ward trigger fires as Solitude is being cast (Ward says "whenever this becomes the target of a spell or ability an opponent controls"). The Ward trigger goes on the stack above Solitude. If the Ward cost isn't paid, Solitude is countered — it never resolves, and since Solitude was cast via evoke, the creature is sacrificed anyway (evoke sacrifice is a state-based action on resolution, but if Solitude is countered it doesn't resolve or sacrifice). Ward protection against evoke Solitude: they must pay the Ward cost or Solitude whiffs and they've lost nothing but the pitch card.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Stoneforge Mystic — Equip at Instant Speed During Opponent's Turn</div>
+    <div class="edge-case-body">Stoneforge Mystic's second ability: "{1}{W}, {T}: You may put an Equipment card from your hand onto the battlefield. If you do, attach it to a creature you control." This is an activated ability that can be used at instant speed at ANY time — including during your opponent's combat. Putting a Batterskull or Kaldra Compleat into play with a Germ token attached during their declare attackers step forces them to recalculate blocks and attack math with no warning. The key: SFM's ability doesn't have "sorcery speed only" or "main phase" restrictions. Use it as a combat trick, not just as a development step.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Consign to Memory — Counters ETB Triggers, Not the Creature</div>
+    <div class="edge-case-body">Consign to Memory counters triggered abilities (look for "when," "whenever," "at the beginning of") and colorless spells. When a creature with an ETB trigger enters the battlefield, its ETB trigger is a triggered ability — Consign counters it. But the CREATURE itself still entered and is on the battlefield. Consign on Archon of Cruelty's ETB: Archon is still a 8/8 flying lifelink on the board, you just prevented the sacrifice/discard/3 life trigger. Consign on Thought-Knot Seer's ETB: TKS is still a 4/4 on their board, but you kept your hand. The creature always stays — Consign only handles the trigger.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Force of Negation — Only on the Opponent's Turn, Noncreature Only</div>
+    <div class="edge-case-body">Force of Negation has two restrictions: (1) its alternative cost ("exile a blue card from your hand rather than pay this spell's mana cost") only works "during an opponent's turn" — on your own turn you must pay {1}{U}{U} normally, (2) Force of Negation can only counter noncreature spells. It cannot counter a creature being cast. This means: FoN cannot protect your creatures on your own turn for free, cannot stop an opponent's creature spell at any time, and cannot be used as free interaction during your own combat tricks. FoN is strictly for countering noncreature spells (instants, sorceries, planeswalkers, artifacts, enchantments) during the opponent's turn only.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Batterskull Germ Token — Bouncing Skull Returns Toughness, Not the Germ</div>
+    <div class="edge-case-body">Batterskull creates a 0/0 Germ token that gets equipped with Batterskull (becoming a 4/4 lifelink vigilance). If the Germ dies, Batterskull remains on the battlefield. Batterskull's built-in ability: "{3}: Return Batterskull to its owner's hand" returns the equipment card only — the Germ token is already dead, not returned. When Batterskull is re-put onto the battlefield via Stoneforge Mystic, a NEW Germ token is created and immediately gets the equipment. This bounce-and-redeploy is the correct line when opponents are trying to exile the Germ: return Skull to hand before it dies, re-enter with a fresh Germ.</div>
+  </div>
+
+</div>
+
+<div id="sideboard" class="section">
+    <div class="section-label">Chapter 07</div>
+    <h1>Sideboard<br>Deep Dive</h1>
+
+    <p>Full per-matchup breakdown — role, play/draw notes, ins/outs, key card timing, and If X → Do Y. Use this to study. Use the <strong>Prep</strong> tab for the printable quick reference.</p>
+
+    <!-- SB CARD GUIDE -->
+    <h2>Sideboard Card Timing Guide</h2>
+    <div class="sb-card-guide">
+      <div class="sb-guide-row">
+        <div class="sb-guide-name">Consign to Memory</div>
+        <div class="sb-guide-body">Target the <strong>payoff, not the setup</strong>. Atraxa ETB, Titan on cast, Belcher activation. Replicate only when they chain multiple reanimates. Never tap out on your T3 if Bloom/Vengeance is coming.</div>
+      </div>
+      <div class="sb-guide-row">
+        <div class="sb-guide-name">Teferi, Time Raveler</div>
+        <div class="sb-guide-body">Slam early — don't hold for value. Turns off their instant-speed tricks, protects your Wraths from Warping Wail, forces combo sorcery-speed. Even one activation is usually worth the slot.</div>
+      </div>
+      <div class="sb-guide-row">
+        <div class="sb-guide-name">Sanctifier en-Vec</div>
+        <div class="sb-guide-body">Hard lock vs black recursion. Play T2 always. Protect with Ephemerate — blink it to dodge removal and reset exile. Fetch white sources aggressively before deploying.</div>
+      </div>
+      <div class="sb-guide-row">
+        <div class="sb-guide-name">Mistcaller</div>
+        <div class="sb-guide-body">Always T1. Never sandbag. Disposable tempo — it buys one free turn, nothing more. Don't treat it as a win condition. If tutored with Shepherd, deploy the same turn.</div>
+      </div>
+      <div class="sb-guide-row">
+        <div class="sb-guide-name">Orim's Chant</div>
+        <div class="sb-guide-body">Cast on <strong>upkeep</strong> when you have a clock. Chant without pressure is wasted. Best use: deny the exact combo turn while advancing your board the same turn. Never mid-turn.</div>
+      </div>
+      <div class="sb-guide-row">
+        <div class="sb-guide-name">Stony Silence</div>
+        <div class="sb-guide-body">Slam on curve — never hold. Shuts off Opal, Drum, Amulet, Plating, EE, Spellbomb. High-priority mulligan target vs Affinity and Belcher. If they have Boseiju, layer with Kataki.</div>
+      </div>
+      <div class="sb-guide-row">
+        <div class="sb-guide-name">Pithing Needle</div>
+        <div class="sb-guide-body">T1 always if available. Default names: Goblin Charbelcher, Karn the Great Creator, Urza's Saga, Slayers' Stronghold, Teferi, Expedition Map, Walking Ballista. Name before fetching.</div>
+      </div>
+      <div class="sb-guide-row">
+        <div class="sb-guide-name">Wrath of the Skies</div>
+        <div class="sb-guide-body">A <strong>tempo card, not a win condition</strong>. Don't Wrath for value — Wrath to buy two turns. Hold for 3+ threats if possible. Sequence immediately into Shepherd tutor or Ocelot rebuild.</div>
+      </div>
+      <div class="sb-guide-row">
+        <div class="sb-guide-name">Gemstone Caverns</div>
+        <div class="sb-guide-body">On the draw only. Allows T1 Needle or T2 Consign/Teferi — often the critical tempo swing that decides combo matchups. Swap for an Archive or Plains, never a fetchland.</div>
+      </div>
+    </div>
+
+    <h2>Universal Rules</h2>
+    <ul class="heuristic-list">
+      <li><strong>Never board more than 7 cards.</strong> Over-boarding dilutes your clock and turns sideboard games into durdle-fests.</li>
+      <li><strong>Mockingbird is always first out.</strong> Slow, telegraphed, and irrelevant under pressure. It earns its slot in maybe one matchup in ten.</li>
+      <li><strong>Redundancy beats silver bullets.</strong> Mistcaller + Consign + Solitude overwhelms answers. Mulliganing to one "perfect" card doesn't.</li>
+      <li><strong>Phantom is play-dependent.</strong> On the play vs greedy mana: keep. On the draw vs fast combo: cut.</li>
+      <li><strong>Verify Needle targets before submitting your list.</strong> A wrong name is a wasted slot for the entire event.</li>
+    </ul>
+
+    <!-- DEEP DIVES -->
+    <h2>Matchup Deep Dives</h2>
+
+    <!-- REANIMATOR -->
+    <div class="sb-deep">
+      <div class="sb-deep-header" onclick="toggleDeep('sb-reanimator')">
+        <div class="sb-deep-title">
+          <span class="sb-deep-name">Esper Reanimator</span>
+          <span class="diff-hard">Hard</span>
+          <span class="sb-deep-meta">17% · Tempo → Pressure</span>
+        </div>
+        <span class="sb-deep-toggle">+</span>
+      </div>
+      <div id="sb-reanimator" class="sb-deep-body">
+        <div class="sb-deep-mantra">"Buy one turn. Then kill them."</div>
+        <div class="sb-deep-grid">
+          <div>
+            <div class="sb-deep-section-label">The Plan</div>
+            <p>You cannot grind Atraxa chains. Your only line: disrupt once with Solitude + Ephemerate or Consign, then close in 4–6 turns before they draw into a second reanimate. Mulligan aggressively — six with disruption beats seven without every time.</p>
+            <div class="sb-deep-section-label" style="margin-top:20px">Play vs Draw</div>
+            <p><strong>Play:</strong> Aggro-disruption hands work. Sanctifier T2 is priority. Guide + Ocelot pressure forces defensive reanimates.<br>
+            <strong>Draw:</strong> They Atraxa T3. Prioritize Consign or Solitude. Mulligan harder for interaction.</p>
+            <div class="sb-deep-section-label" style="margin-top:20px">If X → Do Y</div>
+            <ul class="ifthen-list" style="margin:0">
+              <li><span class="if-label">If</span><span><strong>Faithful Mending T2:</strong> Hold Consign for Vengeance. Don't tap out T3.</span></li>
+              <li><span class="if-label">If</span><span><strong>Atraxa enters:</strong> Solitude + Ephemerate or Phelia blink to deny ETB.</span></li>
+              <li><span class="if-label">If</span><span><strong>Griselbrand resolves:</strong> Solitude immediately. Never let it draw.</span></li>
+              <li><span class="if-label">If</span><span><strong>First Atraxa answered:</strong> Go to kill mode NOW. Don't let them reload.</span></li>
+            </ul>
+          </div>
+          <div>
+            <div class="sb-deep-section-label">Sideboard</div>
+            <div class="sb-table">
+              <div class="sb-col"><div class="sb-col-label">In</div>
+                <div class="sb-item"><span>Consign to Memory</span><span class="sb-qty">+3</span></div>
+                <div class="sb-item"><span>Sanctifier en-Vec</span><span class="sb-qty">+2</span></div>
+                <div class="sb-item"><span>Teferi, Time Raveler</span><span class="sb-qty">+2</span></div>
+                <div class="sb-item"><span>Mistcaller</span><span class="sb-qty">+1</span></div>
+                <div class="sb-item"><span>Orim's Chant</span><span class="sb-qty">+1</span></div>
+              </div>
+              <div class="sb-col"><div class="sb-col-label">Out</div>
+                <div class="sb-item"><span>Witch Enchanter</span><span class="sb-qty">−3</span></div>
+                <div class="sb-item"><span>Mockingbird</span><span class="sb-qty">−1</span></div>
+                <div class="sb-item"><span>Rest in Peace</span><span class="sb-qty">−1</span></div>
+                <div class="sb-item"><span>Ocelot Pride</span><span class="sb-qty">−2</span></div>
+                <div class="sb-item"><span>Meticulous Archive</span><span class="sb-qty">−1</span></div>
+              </div>
+            </div>
+            <div class="sb-deep-section-label" style="margin-top:16px">Needle Targets</div>
+            <span class="tag">Griselbrand</span><span class="tag">Persist</span>
+            <div class="sb-deep-section-label" style="margin-top:16px">Draw Adjustment</div>
+            <p style="font-size:14px">−1 more Shepherd, −1 Ocelot instead of Endings. Lean harder into disruption.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- BELCHER -->
+    <div class="sb-deep">
+      <div class="sb-deep-header" onclick="toggleDeep('sb-belcher')">
+        <div class="sb-deep-title">
+          <span class="sb-deep-name">Tameshi Belcher</span>
+          <span class="diff-hard">Hard</span>
+          <span class="sb-deep-meta">15% · Tempo Police</span>
+        </div>
+        <span class="sb-deep-toggle">+</span>
+      </div>
+      <div id="sb-belcher" class="sb-deep-body">
+        <div class="sb-deep-mantra">"Hate first, clock fast. One turn is all you need."</div>
+        <div class="sb-deep-grid">
+          <div>
+            <div class="sb-deep-section-label">The Plan</div>
+            <p>Forget your value plan entirely. Land hate that invalidates the combo, buy one critical turn with Consign or Chant, then race with Ocelot tokens or Phantom fliers. Every turn you delay increases your win chance — but only if you're also presenting a clock.</p>
+            <div class="sb-deep-section-label" style="margin-top:20px">Play vs Draw</div>
+            <p><strong>Play:</strong> T1 Needle naming Belcher is almost unbeatable without Boseiju. Phantom can snipe a land on curve.<br>
+            <strong>Draw:</strong> Must have Consign, Teferi, or Chant. Gemstone Caverns is critical — T1 Needle is often the game.</p>
+            <div class="sb-deep-section-label" style="margin-top:20px">If X → Do Y</div>
+            <ul class="ifthen-list" style="margin:0">
+              <li><span class="if-label">If</span><span><strong>Bloom suspended T1:</strong> Hold Consign/Chant for T3 kill window.</span></li>
+              <li><span class="if-label">If</span><span><strong>They resolve Belcher:</strong> Consign it before activation.</span></li>
+              <li><span class="if-label">If</span><span><strong>Teferi resolves:</strong> Jam clock. They can't interact on your turn.</span></li>
+              <li><span class="if-label">If</span><span><strong>You disrupt once:</strong> Kill mode immediately — don't wait for second disruption.</span></li>
+            </ul>
+          </div>
+          <div>
+            <div class="sb-deep-section-label">Sideboard</div>
+            <div class="sb-table">
+              <div class="sb-col"><div class="sb-col-label">In</div>
+                <div class="sb-item"><span>Consign to Memory</span><span class="sb-qty">+3</span></div>
+                <div class="sb-item"><span>Teferi, Time Raveler</span><span class="sb-qty">+2</span></div>
+                <div class="sb-item"><span>Stony Silence</span><span class="sb-qty">+2</span></div>
+                <div class="sb-item"><span>Orim's Chant</span><span class="sb-qty">+1</span></div>
+                <div class="sb-item"><span>Pithing Needle</span><span class="sb-qty">+1</span></div>
+                <div class="sb-item"><span>Gemstone Caverns</span><span class="sb-qty">+1</span></div>
+              </div>
+              <div class="sb-col"><div class="sb-col-label">Out</div>
+                <div class="sb-item"><span>Starfield Shepherd</span><span class="sb-qty">−2</span></div>
+                <div class="sb-item"><span>Mockingbird</span><span class="sb-qty">−1</span></div>
+                <div class="sb-item"><span>Meticulous Archive</span><span class="sb-qty">−2</span></div>
+                <div class="sb-item"><span>Witch Enchanter</span><span class="sb-qty">−1</span></div>
+                <div class="sb-item"><span>Ocelot Pride</span><span class="sb-qty">−2</span></div>
+                <div class="sb-item"><span>Plains (for Caverns)</span><span class="sb-qty">−1</span></div>
+              </div>
+            </div>
+            <div class="sb-deep-section-label" style="margin-top:16px">Needle Targets</div>
+            <span class="tag">Goblin Charbelcher</span><span class="tag">Tameshi</span>
+            <div class="sb-deep-section-label" style="margin-top:16px">Draw Adjustment</div>
+            <p style="font-size:14px">−2 Phantom instead of −2 Endings. Phantom is too slow on the draw.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- BOROS ENERGY -->
+    <div class="sb-deep">
+      <div class="sb-deep-header" onclick="toggleDeep('sb-boros')">
+        <div class="sb-deep-title">
+          <span class="sb-deep-name">Boros Energy</span>
+          <span class="diff-medium">Medium</span>
+          <span class="sb-deep-meta">14% · Control → Beatdown</span>
+        </div>
+        <span class="sb-deep-toggle">+</span>
+      </div>
+      <div id="sb-boros" class="sb-deep-body">
+        <div class="sb-deep-mantra">"Trade early, stabilize mid, bury late."</div>
+        <div class="sb-deep-grid">
+          <div>
+            <div class="sb-deep-section-label">The Plan</div>
+            <p>Kill Ragavan on sight — always. Wrath resets Ajani boards, Sanctifier blanks red removal and Discharge. Once stable, pivot hard into Ocelot Ascend kill. Don't leave the game open to topdeck Bolt + Phlage.</p>
+            <div class="sb-deep-section-label" style="margin-top:20px">Play vs Draw</div>
+            <p><strong>Play:</strong> Ocelot + Guide with removal backup is fine. Phantom can snipe a dual.<br>
+            <strong>Draw:</strong> Must have Solitude or Wrath. Phantom too slow — lean on Sanctifier.</p>
+            <div class="sb-deep-section-label" style="margin-top:20px">If X → Do Y</div>
+            <ul class="ifthen-list" style="margin:0">
+              <li><span class="if-label">If</span><span><strong>Ragavan T1:</strong> Solitude immediately. Never let it connect.</span></li>
+              <li><span class="if-label">If</span><span><strong>Ajani flips:</strong> Prioritize attacking it over life total.</span></li>
+              <li><span class="if-label">If</span><span><strong>Ocelot + Ascend:</strong> Wrath immediately. Don't let tokens double.</span></li>
+              <li><span class="if-label">If</span><span><strong>Bombardment in play:</strong> Don't blink mid-combat — only end step.</span></li>
+            </ul>
+          </div>
+          <div>
+            <div class="sb-deep-section-label">Sideboard</div>
+            <div class="sb-table">
+              <div class="sb-col"><div class="sb-col-label">In</div>
+                <div class="sb-item"><span>Sanctifier en-Vec</span><span class="sb-qty">+2</span></div>
+                <div class="sb-item"><span>Wrath of the Skies</span><span class="sb-qty">+2</span></div>
+                <div class="sb-item"><span>Teferi, Time Raveler</span><span class="sb-qty">+1</span></div>
+              </div>
+              <div class="sb-col"><div class="sb-col-label">Out</div>
+                <div class="sb-item"><span>Mockingbird</span><span class="sb-qty">−1</span></div>
+                <div class="sb-item"><span>Meticulous Archive</span><span class="sb-qty">−1</span></div>
+                <div class="sb-item"><span>Starfield Shepherd</span><span class="sb-qty">−2</span></div>
+                <div class="sb-item"><span>Rest in Peace</span><span class="sb-qty">−1</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- AFFINITY -->
+    <div class="sb-deep">
+      <div class="sb-deep-header" onclick="toggleDeep('sb-affinity')">
+        <div class="sb-deep-title">
+          <span class="sb-deep-name">Affinity</span>
+          <span class="diff-medium">Medium</span>
+          <span class="sb-deep-meta">8% · Control</span>
+        </div>
+        <span class="sb-deep-toggle">+</span>
+      </div>
+      <div id="sb-affinity" class="sb-deep-body">
+        <div class="sb-deep-mantra">"Ignore fodder, kill engines, punish overextension."</div>
+        <div class="sb-deep-grid">
+          <div>
+            <div class="sb-deep-section-label">The Plan</div>
+            <p>Stony Silence is your best card — slam it on curve, never hold. Don't waste Solitudes on Memnites. Save them for Kappa Cannoneer. Wrath handles Construct swarms and exiles through ward.</p>
+            <div class="sb-deep-section-label" style="margin-top:20px">Play vs Draw</div>
+            <p><strong>Play:</strong> Phantom into Stony is a strong curve — snipes Saga or a land before Stony locks artifacts.<br>
+            <strong>Draw:</strong> More Wrath-dependent. Don't rely on Phantom — they'll already have Opal/Drum online.</p>
+            <div class="sb-deep-section-label" style="margin-top:20px">If X → Do Y</div>
+            <ul class="ifthen-list" style="margin:0">
+              <li><span class="if-label">If</span><span><strong>Saga T2:</strong> Prepare Wrath or Needle — Constructs arrive T3/T4.</span></li>
+              <li><span class="if-label">If</span><span><strong>Kappa resolves:</strong> Solitude only. Don't bounce — it returns with counters.</span></li>
+              <li><span class="if-label">If</span><span><strong>Rebuke up:</strong> Bait with Phantom, then resolve Stony on your next turn.</span></li>
+              <li><span class="if-label">If</span><span><strong>Stony in play:</strong> Don't stop attacking — their mana is crippled, close quickly.</span></li>
+            </ul>
+          </div>
+          <div>
+            <div class="sb-deep-section-label">Sideboard</div>
+            <div class="sb-table">
+              <div class="sb-col"><div class="sb-col-label">In</div>
+                <div class="sb-item"><span>Stony Silence</span><span class="sb-qty">+2</span></div>
+                <div class="sb-item"><span>Wrath of the Skies</span><span class="sb-qty">+2</span></div>
+                <div class="sb-item"><span>Teferi, Time Raveler</span><span class="sb-qty">+2</span></div>
+                <div class="sb-item"><span>Pithing Needle</span><span class="sb-qty">+1</span></div>
+              </div>
+              <div class="sb-col"><div class="sb-col-label">Out</div>
+                <div class="sb-item"><span>Starfield Shepherd</span><span class="sb-qty">−2</span></div>
+                <div class="sb-item"><span>Mockingbird</span><span class="sb-qty">−1</span></div>
+                <div class="sb-item"><span>Meticulous Archive</span><span class="sb-qty">−2</span></div>
+                <div class="sb-item"><span>Ocelot Pride</span><span class="sb-qty">−2</span></div>
+              </div>
+            </div>
+            <div class="sb-deep-section-label" style="margin-top:16px">Needle Targets</div>
+            <span class="tag">Urza's Saga</span><span class="tag">Cranial Plating</span><span class="tag">Springleaf Drum</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ELDRAZI TRON -->
+    <div class="sb-deep">
+      <div class="sb-deep-header" onclick="toggleDeep('sb-etron')">
+        <div class="sb-deep-title">
+          <span class="sb-deep-name">Eldrazi Tron</span>
+          <span class="diff-medium">Med–Hard</span>
+          <span class="sb-deep-meta">7% · Tempo → Control</span>
+        </div>
+        <span class="sb-deep-toggle">+</span>
+      </div>
+      <div id="sb-etron" class="sb-deep-body">
+        <div class="sb-deep-mantra">"Disrupt Tron, answer Eldrazi, close before Ugin."</div>
+        <div class="sb-deep-grid">
+          <div>
+            <div class="sb-deep-section-label">The Plan</div>
+            <p>Phantom + Ephemerate is your best line — killing two Tron lands locks them out for 4+ turns. Teferi blanks Warping Wail so your Wraths resolve cleanly. Always answer Thought-Knot on sight — every card it takes matters.</p>
+            <div class="sb-deep-section-label" style="margin-top:20px">Play vs Draw</div>
+            <p><strong>Play:</strong> Phantom into Ephemerate is the nut draw. Teferi T3 locks out Wail.<br>
+            <strong>Draw:</strong> Expect TKS T2–T3. Need Solitude in opener. Phantom less reliable — lean on Stony + Consign.</p>
+            <div class="sb-deep-section-label" style="margin-top:20px">If X → Do Y</div>
+            <ul class="ifthen-list" style="margin:0">
+              <li><span class="if-label">If</span><span><strong>Expedition Map T1:</strong> Needle or Stony as fast as possible.</span></li>
+              <li><span class="if-label">If</span><span><strong>Thought-Knot resolves:</strong> Solitude immediately.</span></li>
+              <li><span class="if-label">If</span><span><strong>Karn resolves:</strong> Consign — never let it untap.</span></li>
+              <li><span class="if-label">If</span><span><strong>Tron online:</strong> Don't overextend into All Is Dust. Keep one threat back.</span></li>
+            </ul>
+          </div>
+          <div>
+            <div class="sb-deep-section-label">Sideboard</div>
+            <div class="sb-table">
+              <div class="sb-col"><div class="sb-col-label">In</div>
+                <div class="sb-item"><span>Consign to Memory</span><span class="sb-qty">+3</span></div>
+                <div class="sb-item"><span>Teferi, Time Raveler</span><span class="sb-qty">+2</span></div>
+                <div class="sb-item"><span>Stony Silence</span><span class="sb-qty">+1</span></div>
+                <div class="sb-item"><span>Pithing Needle</span><span class="sb-qty">+1</span></div>
+              </div>
+              <div class="sb-col"><div class="sb-col-label">Out</div>
+                <div class="sb-item"><span>Rest in Peace</span><span class="sb-qty">−1</span></div>
+                <div class="sb-item"><span>Sanctifier en-Vec</span><span class="sb-qty">−1</span></div>
+                <div class="sb-item"><span>Mockingbird</span><span class="sb-qty">−1</span></div>
+                <div class="sb-item"><span>Ocelot Pride</span><span class="sb-qty">−2</span></div>
+                <div class="sb-item"><span>Starfield Shepherd</span><span class="sb-qty">−2</span></div>
+              </div>
+            </div>
+            <div class="sb-deep-section-label" style="margin-top:16px">Needle Targets</div>
+            <span class="tag">Karn the Great Creator</span><span class="tag">Ugin</span><span class="tag">Expedition Map</span>
+            <div class="sb-deep-section-label" style="margin-top:16px">Draw Adjustment</div>
+            <p style="font-size:14px">−2 Phantom instead of −2 Shepherd. Phantom too slow on draw vs early TKS.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MIRROR -->
+    <div class="sb-deep">
+      <div class="sb-deep-header" onclick="toggleDeep('sb-mirror')">
+        <div class="sb-deep-title">
+          <span class="sb-deep-name">Esper / UW Blink Mirror</span>
+          <span class="diff-even">Even</span>
+          <span class="sb-deep-meta">6% · Tempo First</span>
+        </div>
+        <span class="sb-deep-toggle">+</span>
+      </div>
+      <div id="sb-mirror" class="sb-deep-body">
+        <div class="sb-deep-mantra">"Tempo first. Teferi always."</div>
+        <div class="sb-deep-grid">
+          <div>
+            <div class="sb-deep-section-label">The Plan</div>
+            <p>Whoever resolves Teferi first usually wins. Stack wars are decided by who blinks last — never cast Ephemerate first. Sandbag Riddler until nearly hellbent. Phantom land denial matters less here than in other matchups.</p>
+            <div class="sb-deep-section-label" style="margin-top:20px">Play vs Draw</div>
+            <p><strong>Play:</strong> Jam Teferi ASAP. Phantom + Ephemerate tempo wins before they set up.<br>
+            <strong>Draw:</strong> Must mull for Teferi or Consign. Can't keep slow Riddler hands.</p>
+            <div class="sb-deep-section-label" style="margin-top:20px">If X → Do Y</div>
+            <ul class="ifthen-list" style="margin:0">
+              <li><span class="if-label">If</span><span><strong>They cast Ephemerate:</strong> Don't respond — let it resolve, then blink yours after.</span></li>
+              <li><span class="if-label">If</span><span><strong>Their Teferi resolves:</strong> Needle it or kill it — don't ignore it for value.</span></li>
+              <li><span class="if-label">If</span><span><strong>Riddler in play:</strong> Kill it immediately before they empty their hand.</span></li>
+              <li><span class="if-label">If</span><span><strong>Mirror goes long:</strong> Ocelot Ascend is your tiebreaker — don't cut it too aggressively.</span></li>
+            </ul>
+          </div>
+          <div>
+            <div class="sb-deep-section-label">Sideboard</div>
+            <div class="sb-table">
+              <div class="sb-col"><div class="sb-col-label">In</div>
+                <div class="sb-item"><span>Teferi, Time Raveler</span><span class="sb-qty">+2</span></div>
+                <div class="sb-item"><span>Consign to Memory</span><span class="sb-qty">+2</span></div>
+                <div class="sb-item"><span>Pithing Needle</span><span class="sb-qty">+1</span></div>
+              </div>
+              <div class="sb-col"><div class="sb-col-label">Out</div>
+                <div class="sb-item"><span>Rest in Peace</span><span class="sb-qty">−1</span></div>
+                <div class="sb-item"><span>Witch Enchanter</span><span class="sb-qty">−1</span></div>
+                <div class="sb-item"><span>Ocelot Pride</span><span class="sb-qty">−2</span></div>
+                <div class="sb-item"><span>Mockingbird</span><span class="sb-qty">−1</span></div>
+              </div>
+            </div>
+            <div class="sb-deep-section-label" style="margin-top:16px">Needle Targets</div>
+            <span class="tag">Teferi</span><span class="tag">Phelia</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- AMULET TITAN -->
+    <div class="sb-deep">
+      <div class="sb-deep-header" onclick="toggleDeep('sb-titan')">
+        <div class="sb-deep-title">
+          <span class="sb-deep-name">Amulet Titan</span>
+          <span class="diff-hard">Hard</span>
+          <span class="sb-deep-meta">5% · Disruption + Race</span>
+        </div>
+        <span class="sb-deep-toggle">+</span>
+      </div>
+      <div id="sb-titan" class="sb-deep-body">
+        <div class="sb-deep-mantra">"Hate first, tempo second, value never."</div>
+        <div class="sb-deep-grid">
+          <div>
+            <div class="sb-deep-section-label">The Plan</div>
+            <p>Phantom + Phelia + Ephemerate soft-locks bounce lands. Always hold Consign for Titan or Summoner's Pact — Consign on Pact means they lose to upkeep trigger. Stony Silence is your highest-priority hate piece.</p>
+            <div class="sb-deep-section-label" style="margin-top:20px">Play vs Draw</div>
+            <p><strong>Play:</strong> Phantom into Ephemerate or Phelia is your best line. T3 Teferi locks off Pact tricks.<br>
+            <strong>Draw:</strong> Gemstone Caverns is the great equalizer — enables T2 Consign or T1 Needle.</p>
+            <div class="sb-deep-section-label" style="margin-top:20px">If X → Do Y</div>
+            <ul class="ifthen-list" style="margin:0">
+              <li><span class="if-label">If</span><span><strong>Amulet T1:</strong> Kill or Needle immediately.</span></li>
+              <li><span class="if-label">If</span><span><strong>Bounce land + Amulet:</strong> Hold Consign for Titan.</span></li>
+              <li><span class="if-label">If</span><span><strong>Summoner's Pact cast:</strong> Consign — they lose to upkeep if you do.</span></li>
+              <li><span class="if-label">If</span><span><strong>Titan resolves once:</strong> Clock them — don't try to answer the toolbox forever.</span></li>
+            </ul>
+          </div>
+          <div>
+            <div class="sb-deep-section-label">Sideboard</div>
+            <div class="sb-table">
+              <div class="sb-col"><div class="sb-col-label">In</div>
+                <div class="sb-item"><span>Consign to Memory</span><span class="sb-qty">+3</span></div>
+                <div class="sb-item"><span>Teferi, Time Raveler</span><span class="sb-qty">+2</span></div>
+                <div class="sb-item"><span>Wrath of the Skies</span><span class="sb-qty">+2</span></div>
+                <div class="sb-item"><span>Pithing Needle</span><span class="sb-qty">+1</span></div>
+              </div>
+              <div class="sb-col"><div class="sb-col-label">Out</div>
+                <div class="sb-item"><span>Rest in Peace</span><span class="sb-qty">−1</span></div>
+                <div class="sb-item"><span>Sanctifier en-Vec</span><span class="sb-qty">−1</span></div>
+                <div class="sb-item"><span>Starfield Shepherd</span><span class="sb-qty">−2</span></div>
+                <div class="sb-item"><span>Ocelot Pride</span><span class="sb-qty">−2</span></div>
+                <div class="sb-item"><span>Mockingbird</span><span class="sb-qty">−1</span></div>
+                <div class="sb-item"><span>Witch Enchanter</span><span class="sb-qty">−1</span></div>
+              </div>
+            </div>
+            <div class="sb-deep-section-label" style="margin-top:16px">Needle Targets</div>
+            <span class="tag">Slayers' Stronghold</span><span class="tag">Tolaria West</span><span class="tag">Amulet of Vigor</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- NEOFORM -->
+    <div class="sb-deep">
+      <div class="sb-deep-header" onclick="toggleDeep('sb-neoform')">
+        <div class="sb-deep-title">
+          <span class="sb-deep-name">Neoform</span>
+          <span class="diff-hard">Hard</span>
+          <span class="sb-deep-meta">5% · Tempo Police</span>
+        </div>
+        <span class="sb-deep-toggle">+</span>
+      </div>
+      <div id="sb-neoform" class="sb-deep-body">
+        <div class="sb-deep-mantra">"Stop the enabler. Clock them. Don't wait."</div>
+        <div class="sb-deep-grid">
+          <div>
+            <div class="sb-deep-section-label">The Plan</div>
+            <p>Role = tempo police. Consign on Neoform is better than answering the payoff. Mistcaller T1 always. Teferi locks them into sorcery-speed so Pact of Negation can't protect the combo. Gemstone Caverns on the draw is critical — one turn earlier on disruption often decides the game.</p>
+            <div class="sb-deep-section-label" style="margin-top:20px">Play vs Draw</div>
+            <p><strong>Play:</strong> Ocelot + Phantom pressure forces them to combo under fire — leads to mises.<br>
+            <strong>Draw:</strong> They combo T2–T3. Must have Gemstone Caverns or Consign in opener.</p>
+            <div class="sb-deep-section-label" style="margin-top:20px">If X → Do Y</div>
+            <ul class="ifthen-list" style="margin:0">
+              <li><span class="if-label">If</span><span><strong>Neoform cast:</strong> Consign on Neoform itself — cleaner than answering Atraxa.</span></li>
+              <li><span class="if-label">If</span><span><strong>Atraxa/Griselbrand enters anyway:</strong> Solitude + Ephemerate.</span></li>
+              <li><span class="if-label">If</span><span><strong>You disrupt once:</strong> Kill mode immediately — they can rebuild fast.</span></li>
+              <li><span class="if-label">If</span><span><strong>Hand is disruption-only:</strong> Mulligan — disruption without a clock loses.</span></li>
+            </ul>
+          </div>
+          <div>
+            <div class="sb-deep-section-label">Sideboard</div>
+            <div class="sb-table">
+              <div class="sb-col"><div class="sb-col-label">In</div>
+                <div class="sb-item"><span>Consign to Memory</span><span class="sb-qty">+3</span></div>
+                <div class="sb-item"><span>Teferi, Time Raveler</span><span class="sb-qty">+2</span></div>
+                <div class="sb-item"><span>Orim's Chant</span><span class="sb-qty">+1</span></div>
+                <div class="sb-item"><span>Pithing Needle</span><span class="sb-qty">+1</span></div>
+              </div>
+              <div class="sb-col"><div class="sb-col-label">Out</div>
+                <div class="sb-item"><span>Starfield Shepherd</span><span class="sb-qty">−2</span></div>
+                <div class="sb-item"><span>Witch Enchanter</span><span class="sb-qty">−2</span></div>
+                <div class="sb-item"><span>Mockingbird</span><span class="sb-qty">−1</span></div>
+                <div class="sb-item"><span>Meticulous Archive</span><span class="sb-qty">−1</span></div>
+                <div class="sb-item"><span>Ocelot Pride</span><span class="sb-qty">−1</span></div>
+              </div>
+            </div>
+            <div class="sb-deep-section-label" style="margin-top:16px">Needle Targets</div>
+            <span class="tag">Neoform</span><span class="tag">Griselbrand</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DOMAIN -->
+    <div class="sb-deep">
+      <div class="sb-deep-header" onclick="toggleDeep('sb-domain')">
+        <div class="sb-deep-title">
+          <span class="sb-deep-name">Domain Aggro</span>
+          <span class="diff-medium">Medium</span>
+          <span class="sb-deep-meta">4% · Control → Beatdown</span>
+        </div>
+        <span class="sb-deep-toggle">+</span>
+      </div>
+      <div id="sb-domain" class="sb-deep-body">
+        <div class="sb-deep-mantra">"Kill Ragavan. Kill Kavu. Sweep. Win."</div>
+        <div class="sb-deep-grid">
+          <div>
+            <div class="sb-deep-section-label">The Plan</div>
+            <p>Stay above 8 life to blank double Tribal Flames. Sanctifier warps the matchup — once down, they must overextend into Wrath. On the play Phantom can snipe a dual and slow their domain count. Don't overfetch into Bolt range.</p>
+            <div class="sb-deep-section-label" style="margin-top:20px">Play vs Draw</div>
+            <p><strong>Play:</strong> Phantom + Solitude curve is strong. Phantom snipes tri-lands.<br>
+            <strong>Draw:</strong> Much more Wrath and Sanctifier dependent. Phantom rarely matters.</p>
+            <div class="sb-deep-section-label" style="margin-top:20px">If X → Do Y</div>
+            <ul class="ifthen-list" style="margin:0">
+              <li><span class="if-label">If</span><span><strong>Ragavan T1:</strong> Solitude immediately.</span></li>
+              <li><span class="if-label">If</span><span><strong>Kavu attacks:</strong> Expect discard — pitch Ephemerate over threats.</span></li>
+              <li><span class="if-label">If</span><span><strong>Scion of Draco resolves:</strong> Solitude. Don't let it trade profitably.</span></li>
+              <li><span class="if-label">If</span><span><strong>Stubborn Denial up:</strong> Teferi first, then Wrath/Ending.</span></li>
+            </ul>
+          </div>
+          <div>
+            <div class="sb-deep-section-label">Sideboard</div>
+            <div class="sb-table">
+              <div class="sb-col"><div class="sb-col-label">In</div>
+                <div class="sb-item"><span>Wrath of the Skies</span><span class="sb-qty">+2</span></div>
+                <div class="sb-item"><span>Sanctifier en-Vec</span><span class="sb-qty">+2</span></div>
+                <div class="sb-item"><span>Teferi, Time Raveler</span><span class="sb-qty">+1</span></div>
+              </div>
+              <div class="sb-col"><div class="sb-col-label">Out</div>
+                <div class="sb-item"><span>Mockingbird</span><span class="sb-qty">−1</span></div>
+                <div class="sb-item"><span>Meticulous Archive</span><span class="sb-qty">−1</span></div>
+                <div class="sb-item"><span>Starfield Shepherd</span><span class="sb-qty">−2</span></div>
+                <div class="sb-item"><span>Rest in Peace</span><span class="sb-qty">−1</span></div>
+              </div>
+            </div>
+            <div class="sb-deep-section-label" style="margin-top:16px">Draw Adjustment</div>
+            <p style="font-size:14px">−2 Phantom instead of −2 Shepherd on the draw.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PROWESS -->
+    <div class="sb-deep">
+      <div class="sb-deep-header" onclick="toggleDeep('sb-prowess')">
+        <div class="sb-deep-title">
+          <span class="sb-deep-name">Izzet Prowess</span>
+          <span class="diff-medium">Medium</span>
+          <span class="sb-deep-meta">3% · Control</span>
+        </div>
+        <span class="sb-deep-toggle">+</span>
+      </div>
+      <div id="sb-prowess" class="sb-deep-body">
+        <div class="sb-deep-mantra">"Survive the fire, then burn them out."</div>
+        <div class="sb-deep-grid">
+          <div>
+            <div class="sb-deep-section-label">The Plan</div>
+            <p>Treat it like Burn — every life point matters. Sanctifier is the trump card, mulligan for it. Wrath sweeps pumped Swiftspears and Show-Offs. Once stabilized, your engines bury them. Respect Lava Dart math at all times.</p>
+            <div class="sb-deep-section-label" style="margin-top:20px">Play vs Draw</div>
+            <p><strong>Play:</strong> Sanctifier T2 locks up games immediately.<br>
+            <strong>Draw:</strong> Must interact T1–T2. No Solitude or Guide = mulligan.</p>
+            <div class="sb-deep-section-label" style="margin-top:20px">If X → Do Y</div>
+            <ul class="ifthen-list" style="margin:0">
+              <li><span class="if-label">If</span><span><strong>Swiftspear T1:</strong> Solitude immediately — don't let it snowball.</span></li>
+              <li><span class="if-label">If</span><span><strong>Sanctifier resolves:</strong> Pivot to offense — they can't touch it.</span></li>
+              <li><span class="if-label">If</span><span><strong>Lava Dart in graveyard:</strong> Never tap to a low life total unnecessarily.</span></li>
+              <li><span class="if-label">If</span><span><strong>Spell Pierce up:</strong> Don't walk Wrath or Ephemerate into it on the draw.</span></li>
+            </ul>
+          </div>
+          <div>
+            <div class="sb-deep-section-label">Sideboard</div>
+            <div class="sb-table">
+              <div class="sb-col"><div class="sb-col-label">In</div>
+                <div class="sb-item"><span>Sanctifier en-Vec</span><span class="sb-qty">+2</span></div>
+                <div class="sb-item"><span>Wrath of the Skies</span><span class="sb-qty">+1</span></div>
+                <div class="sb-item"><span>Orim's Chant</span><span class="sb-qty">+1</span></div>
+                <div class="sb-item"><span>Teferi, Time Raveler</span><span class="sb-qty">+1</span></div>
+              </div>
+              <div class="sb-col"><div class="sb-col-label">Out</div>
+                <div class="sb-item"><span>Rest in Peace</span><span class="sb-qty">−1</span></div>
+                <div class="sb-item"><span>Mockingbird</span><span class="sb-qty">−1</span></div>
+                <div class="sb-item"><span>Meticulous Archive</span><span class="sb-qty">−1</span></div>
+                <div class="sb-item"><span>Starfield Shepherd</span><span class="sb-qty">−1</span></div>
+                <div class="sb-item"><span>Witch Enchanter</span><span class="sb-qty">−1</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- AZ CONTROL -->
+    <div class="sb-deep">
+      <div class="sb-deep-header" onclick="toggleDeep('sb-azcontrol')">
+        <div class="sb-deep-title">
+          <span class="sb-deep-name">Azorius Control</span>
+          <span class="diff-even">Even</span>
+          <span class="sb-deep-meta">3% · Beatdown</span>
+        </div>
+        <span class="sb-deep-toggle">+</span>
+      </div>
+      <div id="sb-azcontrol" class="sb-deep-body">
+        <div class="sb-deep-mantra">"Pressure smart, don't overcommit."</div>
+        <div class="sb-deep-grid">
+          <div>
+            <div class="sb-deep-section-label">The Plan</div>
+            <p>You are the beatdown. Pressure with Phantom + Ocelot early, force Verdict ahead of curve, reload with Shepherd. Teferi is the green light to commit threats — it blanks counters and protects your plays. Never kill Narset with the wrong answer.</p>
+            <div class="sb-deep-section-label" style="margin-top:20px">Play vs Draw</div>
+            <p><strong>Play:</strong> Phantom T2 → Teferi T3 is your best curve. Forces Verdict prematurely.<br>
+            <strong>Draw:</strong> Hold Chant for safe threat deployment. Don't walk into Counterspell on the draw.</p>
+            <div class="sb-deep-section-label" style="margin-top:20px">If X → Do Y</div>
+            <ul class="ifthen-list" style="margin:0">
+              <li><span class="if-label">If</span><span><strong>Narset resolves:</strong> Kill it immediately — no exceptions.</span></li>
+              <li><span class="if-label">If</span><span><strong>Verdict looming:</strong> Never commit more than 2 threats at once.</span></li>
+              <li><span class="if-label">If</span><span><strong>Teferi resolves:</strong> Slam your biggest threat the same turn.</span></li>
+              <li><span class="if-label">If</span><span><strong>Hall of Storm Giants activates:</strong> Needle it or Solitude blocks.</span></li>
+            </ul>
+          </div>
+          <div>
+            <div class="sb-deep-section-label">Sideboard</div>
+            <div class="sb-table">
+              <div class="sb-col"><div class="sb-col-label">In</div>
+                <div class="sb-item"><span>Teferi, Time Raveler</span><span class="sb-qty">+2</span></div>
+                <div class="sb-item"><span>Consign to Memory</span><span class="sb-qty">+2</span></div>
+                <div class="sb-item"><span>Pithing Needle</span><span class="sb-qty">+1</span></div>
+              </div>
+              <div class="sb-col"><div class="sb-col-label">Out</div>
+                <div class="sb-item"><span>Witch Enchanter</span><span class="sb-qty">−1</span></div>
+                <div class="sb-item"><span>Rest in Peace</span><span class="sb-qty">−1</span></div>
+                <div class="sb-item"><span>Mockingbird</span><span class="sb-qty">−1</span></div>
+                <div class="sb-item"><span>Ocelot Pride</span><span class="sb-qty">−1</span></div>
+                <div class="sb-item"><span>Sanctifier en-Vec</span><span class="sb-qty">−1</span></div>
+              </div>
+            </div>
+            <div class="sb-deep-section-label" style="margin-top:16px">Needle Targets</div>
+            <span class="tag">Teferi Hero</span><span class="tag">Wandering Emperor</span><span class="tag">Hall of Storm Giants</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ── HEURISTICS ── -->
+  <div id="heuristics" class="section">
+    <div class="section-label">Chapter 08</div>
+    <h1>Master<br>Heuristics</h1>
+
+    <div class="mantra">
+      "Blink isn't just a deck. It's a way of playing Magic."
+    </div>
+
+    <h2>Ephemerate Mastery</h2>
+    <ul class="heuristic-list">
+      <li><strong>Jam when it flips the tempo of the turn cycle.</strong> Hold it when it only provides incremental value. Never fire Ephemerate first in a stack war.</li>
+      <li><strong>Rebound is delayed inevitability.</strong> Opponents must always respect the second trigger. Even representing Ephemerate reshapes their sequencing.</li>
+      <li><strong>Ephemerate as counterbait.</strong> Blinking Guide into open mana draws their Counterspell — then Riddler resolves cleanly next turn.</li>
+      <li><strong>Solitude + Ephemerate = 3-for-1 minimum.</strong> Pitch → blink → rebound. Three removals, 6–9 life, and a 3/2 lifelinker.</li>
+      <li><strong>Don't Ephemerate first in stack wars.</strong> Whoever blinks last usually wins the entire exchange.</li>
+    </ul>
+
+    <h2>Phelia &amp; Phantom Lines</h2>
+    <ul class="heuristic-list">
+      <li><strong>Phelia is Time Walk before blink engine.</strong> Use on their permanents first. Ask: "What turn am I stealing by blinking this?"</li>
+      <li><strong>Phantom is land denial before damage.</strong> A 2/2 flying first striker that destroys nonbasics — the damage is secondary.</li>
+      <li><strong>Together they create hard locks.</strong> Phelia attack → blink Phantom → destroy 2 lands in one combat step. With Ephemerate: 4 lands in 2 turns.</li>
+      <li><strong>Phantom is weaker on the draw.</strong> On the play it's game-winning vs greedy mana. On the draw, it's often too slow to matter vs fast combo.</li>
+      <li><strong>Denial &gt; value every time.</strong> Don't blink your own Shepherd when you could blink their Atraxa.</li>
+    </ul>
+
+    <h2>Sequencing Principles</h2>
+    <ul class="heuristic-list">
+      <li><strong>Identify your role before casting your first spell.</strong> Control, Tempo, or Beatdown — this decision shapes every sequence.</li>
+      <li><strong>By turn 2, your plan should be set.</strong> Phantom on 2 = you're tempo. Ocelot = you're beatdown. Holding Consign = you're disruption-control.</li>
+      <li><strong>Commit to one axis.</strong> Don't half-develop. If it's an Ocelot game, protect Guide and Ocelot. Don't scatter plays into Shepherd and Riddler.</li>
+      <li><strong>Count real turns to lethal.</strong> If it's 7+, find a way to shorten it. If it's 4–6, stop durdling and close.</li>
+      <li><strong>Stagger threats vs control.</strong> Never give Verdict free 3-for-1s. One or two threats at a time forces them to react awkwardly.</li>
+    </ul>
+
+    <h2>Playing Through Hate</h2>
+    <ul class="heuristic-list">
+      <li><strong>Pivot to fair midrange when hate sticks.</strong> Ocelot tokens, Shepherd fliers, and Solitude beats win through Torpor Orb, Void Mirror, and Blood Moon.</li>
+      <li><strong>Exploit overboarding.</strong> More hate = fewer win conditions. When they jam Chalice + Void + Orb, their clock disappears. Punish with Ocelot pressure.</li>
+      <li><strong>Fetch basics early against Moon decks.</strong> Phantom can snipe red sources to prevent Blood Moon entirely.</li>
+      <li><strong>Diversify disruption.</strong> Mistcaller + Consign overwhelms their one-for-one answers. Don't mulligan to oblivion for one perfect card.</li>
+    </ul>
+
+    <h2>Closing Games</h2>
+    <ul class="heuristic-list">
+      <li><strong>Stop durdling when lethal is 2–3 turns away.</strong> The Durdle Trap kills games. Recognize the window and step through it.</li>
+      <li><strong>After disrupting once, go immediately to kill mode.</strong> Don't give Reanimator a second Atraxa. Don't give Titan a rebuild turn.</li>
+      <li><strong>Respect the round clock.</strong> 1–0–1 is worse than 2–1. Time management is a skill as real as sequencing.</li>
+      <li><strong>Solitude + Ocelot = your fastest kills.</strong> Don't over-engineer. These two cards close games more often than any Shepherd loop.</li>
+    </ul>
+  </div>
+
+  <!-- ── PREP ── -->
+  
+<!-- ══ CH09 TUNING ══ -->
+<div id="tuning" class="section">
+  <div class="section-label">Chapter 09</div>
+  <h1>Tuning</h1>
+  <div class="mantra">"Every flex slot in UW Blink trades off one axis for another. Know what you're cutting before you cut it."</div>
+
+  <div class="card-grid card-grid-2">
+    <div class="card">
+      <div class="card-label">Quantum Riddler: 2 vs 3 vs 4</div>
+      <div class="card-title">The Draw Engine Count</div>
+      <div class="card-body">Most lists run 3. At 4: more consistent draw engine, but Riddler at Warp is slow against fast aggro and clogs blink lines. At 2: leaner, more room for interaction or Mockingbird, but you see it less in grind games. Run 4 if your meta is heavy on control or mirror. Cut to 2 if Prowess or Burn is above 15% of the room — their clock is faster than Riddler can generate value.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Mockingbird: 0 vs 1 vs 2</div>
+      <div class="card-title">The Mirror / Flex Creature</div>
+      <div class="card-body">The 1-copy is standard. Mockingbird at X copies any creature with MV ≤ X — at 2 mana it's your best mirror tool (copies their Phelia or Riddler for immediate ETB value). Cut to 0 against aggro-heavy metas where you need more interaction. Go to 2 in mirror-heavy tournament environments. Never go above 2 — dilutes your main engine density.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Consign to Memory: 0 vs 1 main</div>
+      <div class="card-title">The Main Deck Counter</div>
+      <div class="card-body">The current shell runs 1 main + 3 SB. The 1 main copy is primarily for triggered ability counters you need in G1 — Archon ETB in Glockulous, Pact upkeep trigger vs Titan. Cut the main copy if your expected field has no combo. Keep it if you expect Glockulous, Neoform, or Amulet Titan above 10% combined. The 3 SB copies are non-negotiable regardless.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Gemstone Caverns: SB vs Main</div>
+      <div class="card-title">The Speed Caverns</div>
+      <div class="card-body">Currently 1 SB copy. Caverns enters with a luck counter if it's in your opening hand (exile any other card) — you gain a free mana on turn 1 on the draw. Board in vs any combo matchup where being "on the play" for the first spell matters — Neoform, Glockulous, Storm. Consider main decking if your local meta is more than 30% combo. Never go above 1.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Sanctifier en-Vec: 1 main vs 0 main</div>
+      <div class="card-title">Flex Hate Bear Slot</div>
+      <div class="card-body">Currently 1 main. Sanctifier has protection from black and red (can't be targeted/blocked/damaged by either). In a meta with Boros Energy and Prowess it's a free threat that turns off their removal suite. Cut it to 0 main in control-heavy metas where it does nothing G1. Never cut the 2 SB copies — they're mandatory for aggro matchups.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Wrath of the Skies: 0 vs 2 SB</div>
+      <div class="card-title">The Board Wipe Count</div>
+      <div class="card-body">Currently 2 SB. X-cost sweeper that hits creatures with power ≤ X. At X=3 it clears most boards without hitting your own Kappa or large Constructs (but does hit your Phelia/Guide). Consider going 1 SB if your matchup spread has little aggro. Go 3 SB if token-wide decks like Boros Energy or Jeskai Blink are prevalent — the extra copy improves your ability to find it in G2 without Shepherd.</div>
+    </div>
+  </div>
+
+  <h2>Standard Register Conditions</h2>
+  <div class="card-grid card-grid-2">
+    <div class="card">
+      <div class="card-label">Register This Deck When</div>
+      <div class="card-title">Green Lights</div>
+      <div class="card-body">The meta is creature-based (Boros Energy, Prowess, Zoo) — your free removal and token generation outperform. Mirror matchup is high — your blink loops generate more value than anyone else. No heavy GY-hate meta that would blank your ETB loops.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Avoid When</div>
+      <div class="card-title">Red Lights</div>
+      <div class="card-body">Heavy combo meta above 25% — your disruption is tempo-based, not lock-based. Mass land destruction strategies (your Phantom is symmetric — opponent can also use Flagstones lines against you). Teferi, Time Raveler is at 15%+ of the meta (locks your instant-speed blink loops).</div>
+    </div>
+  </div>
+
+
+  <h2>SB Slot Priority Order</h2>
+  <ol class="heuristic-list">
+    <li><div class="heuristic-num">01</div><div class="heuristic-body"><strong>Sanctifier en-Vec (2 copies)</strong> — Protection from black and red. Immune to Fatal Push, Bolt, Galvanic Discharge. Goes in vs Boros Energy and Prowess — the creature they cannot answer.</div></li>
+    <li><div class="heuristic-num">02</div><div class="heuristic-body"><strong>Wrath of the Skies (2 copies)</strong> — Exile all creatures with energy counters. Full power vs Boros Energy. Goes in vs any energy-based strategy.</div></li>
+    <li><div class="heuristic-num">03</div><div class="heuristic-body"><strong>Teferi, Time Raveler (1 extra copy)</strong> — Extra Teferi for matchups where sorcery lock is critical — vs Storm, Living End, any instant-speed combo deck.</div></li>
+    <li><div class="heuristic-num">04</div><div class="heuristic-body"><strong>Rest in Peace (2 copies)</strong> — Exile all GY cards as they go there. Goes in vs Living End, Goryo’s, Yawgmoth. Blanks GY-based strategies completely.</div></li>
+    <li><div class="heuristic-num">05</div><div class="heuristic-body"><strong>Consign to Memory + Hexdrinker (flex)</strong> — Consign counters any spell and exiles GY vs combo. Hexdrinker levels up to protection from everything — unkillable by targeted removal. Adjust based on field composition.</div></li>
+  </ol>
+</div>
+
+<div id="prep" class="section">
+    <div class="section-label">Chapter 10</div>
+    <h1>Tournament<br>Prep</h1>
+
+    <h2>20-Minute Crash Course</h2>
+    <p>If you're sitting down in 20 minutes, run through this in order:</p>
+
+    <ul class="checklist" id="crash-checklist">
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Mulligan rule:</strong> If the hand doesn't clock by T4 or disrupt by T3, it's a mull. Six with Solitude + Ephemerate beats seven without.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Role rule:</strong> Before T1, decide: Control, Tempo, or Beatdown. Reevaluate every two turns.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Combo rule:</strong> Mulligan for disruption + clock. Don't keep value hands vs Reanimator or Belcher.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Ephemerate rule:</strong> Never fire first in a stack war. Hold for Solitude vs payoffs. Rebound is the real half.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Phelia rule:</strong> Blink their permanents before yours. She's a Time Walk, not a value engine.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Clock rule:</strong> Count turns to lethal. If it's 7+, accelerate. Stop durdling when it's 3.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Sideboard rule:</strong> Never bring in more than 7 cards. Mockingbird out first. Double-check Needle targets.</span></li>
+    </ul>
+
+    <h2>Testing Framework</h2>
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-label">Block 01</div>
+        <div class="card-title">20 vs Combo</div>
+        <div class="card-body">Reanimator, Belcher, Neoform. Drill mulligans and disruption sequencing. Practice keeping vs shipping with a timer running.</div>
+      </div>
+      <div class="card">
+        <div class="card-label">Block 02</div>
+        <div class="card-title">20 vs Aggro</div>
+        <div class="card-body">Energy, Prowess, Domain. Drill Solitude timing, Wrath sequencing, and the pivot to Ocelot Ascend kill after stabilization.</div>
+      </div>
+      <div class="card">
+        <div class="card-label">Block 03</div>
+        <div class="card-title">20 vs Control / Mirror</div>
+        <div class="card-body">Practice patience, Ephemerate timing, and Teferi sequencing. Learn the exact turn to commit threats after Verdict.</div>
+      </div>
+      <div class="card">
+        <div class="card-label">Block 04</div>
+        <div class="card-title">Clock Practice</div>
+        <div class="card-body">Play games under a 20-minute timer. Track kill turns. Aim for 4–6 postboard. If you're going to time, the problem is usually sequencing, not the deck.</div>
+      </div>
+    </div>
+
+    <h2>Matchday Routine</h2>
+    <ul class="heuristic-list">
+      <li>Register decklist carefully. Double-check SB counts and spellings. Needle targets must match what you've playtested.</li>
+      <li>Review the matchup matrix before Round 1. Don't open the guide mid-match.</li>
+      <li>Between rounds: breathe. Don't tunnel on mistakes. The next round starts at 0–0.</li>
+      <li>End of Day 1: hydrate, review your notes, reset mentally for Day 2.</li>
+      <li>Treat it like athletics. Body and mind both need to be ready for 12+ rounds of complex sequencing.</li>
+    </ul>
+
+    <div class="mantra">
+      "The deck gives you a shot in every matchup. The pilot determines whether you take it."
+      <cite>— Team Resolve Testing Notes</cite>
+    </div>
+
+    <h2>Printable Sideboard Reference</h2>
+    <p>All 9 matchup ins/outs on one page. Hit Print and take it to the event.</p>
+    <button class="print-btn" onclick="printSB()">⎙ Print This Page</button>
+
+    <div class="print-grid">
+
+      <div class="print-mu">
+        <div class="print-mu-name">Esper Reanimator <span class="diff-hard">Hard</span></div>
+        <div class="print-mu-role">Tempo → Pressure · 17%</div>
+        <div class="print-cols">
+          <div>
+            <div class="print-col-label">In</div>
+            <div class="print-row"><span>Consign to Memory</span><span class="print-qty">+3</span></div>
+            <div class="print-row"><span>Sanctifier en-Vec</span><span class="print-qty">+2</span></div>
+            <div class="print-row"><span>Teferi, Time Raveler</span><span class="print-qty">+2</span></div>
+            <div class="print-row"><span>Mistcaller</span><span class="print-qty">+1</span></div>
+            <div class="print-row"><span>Orim's Chant</span><span class="print-qty">+1</span></div>
+          </div>
+          <div>
+            <div class="print-col-label">Out</div>
+            <div class="print-row"><span>Witch Enchanter</span><span class="print-qty">−3</span></div>
+            <div class="print-row"><span>Mockingbird</span><span class="print-qty">−1</span></div>
+            <div class="print-row"><span>Rest in Peace</span><span class="print-qty">−1</span></div>
+            <div class="print-row"><span>Ocelot Pride</span><span class="print-qty">−2</span></div>
+            <div class="print-row"><span>Archive</span><span class="print-qty">−1</span></div>
+          </div>
+        </div>
+        <div class="print-needle">Needle: Griselbrand · Persist</div>
+      </div>
+
+      <div class="print-mu">
+        <div class="print-mu-name">Tameshi Belcher <span class="diff-hard">Hard</span></div>
+        <div class="print-mu-role">Tempo Police · 15%</div>
+        <div class="print-cols">
+          <div>
+            <div class="print-col-label">In</div>
+            <div class="print-row"><span>Consign to Memory</span><span class="print-qty">+3</span></div>
+            <div class="print-row"><span>Teferi, Time Raveler</span><span class="print-qty">+2</span></div>
+            <div class="print-row"><span>Stony Silence</span><span class="print-qty">+2</span></div>
+            <div class="print-row"><span>Orim's Chant</span><span class="print-qty">+1</span></div>
+            <div class="print-row"><span>Pithing Needle</span><span class="print-qty">+1</span></div>
+            <div class="print-row"><span>Gemstone Caverns</span><span class="print-qty">+1</span></div>
+          </div>
+          <div>
+            <div class="print-col-label">Out</div>
+            <div class="print-row"><span>Shepherd</span><span class="print-qty">−2</span></div>
+            <div class="print-row"><span>Mockingbird</span><span class="print-qty">−1</span></div>
+            <div class="print-row"><span>Archive ×2</span><span class="print-qty">−2</span></div>
+            <div class="print-row"><span>Witch Enchanter</span><span class="print-qty">−1</span></div>
+            <div class="print-row"><span>Ocelot Pride</span><span class="print-qty">−2</span></div>
+            <div class="print-row"><span>Plains (Caverns)</span><span class="print-qty">−1</span></div>
+          </div>
+        </div>
+        <div class="print-needle">Needle: Charbelcher · Tameshi</div>
+        <div class="print-note">Draw: −2 Phantom instead of −2 Endings</div>
+      </div>
+
+      <div class="print-mu">
+        <div class="print-mu-name">Boros Energy <span class="diff-medium">Medium</span></div>
+        <div class="print-mu-role">Control → Beatdown · 14%</div>
+        <div class="print-cols">
+          <div>
+            <div class="print-col-label">In</div>
+            <div class="print-row"><span>Sanctifier en-Vec</span><span class="print-qty">+2</span></div>
+            <div class="print-row"><span>Wrath of the Skies</span><span class="print-qty">+2</span></div>
+            <div class="print-row"><span>Teferi, Time Raveler</span><span class="print-qty">+1</span></div>
+          </div>
+          <div>
+            <div class="print-col-label">Out</div>
+            <div class="print-row"><span>Mockingbird</span><span class="print-qty">−1</span></div>
+            <div class="print-row"><span>Archive</span><span class="print-qty">−1</span></div>
+            <div class="print-row"><span>Shepherd</span><span class="print-qty">−2</span></div>
+            <div class="print-row"><span>Rest in Peace</span><span class="print-qty">−1</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="print-mu">
+        <div class="print-mu-name">Affinity <span class="diff-medium">Medium</span></div>
+        <div class="print-mu-role">Control · 8%</div>
+        <div class="print-cols">
+          <div>
+            <div class="print-col-label">In</div>
+            <div class="print-row"><span>Stony Silence</span><span class="print-qty">+2</span></div>
+            <div class="print-row"><span>Wrath of the Skies</span><span class="print-qty">+2</span></div>
+            <div class="print-row"><span>Teferi, Time Raveler</span><span class="print-qty">+2</span></div>
+            <div class="print-row"><span>Pithing Needle</span><span class="print-qty">+1</span></div>
+          </div>
+          <div>
+            <div class="print-col-label">Out</div>
+            <div class="print-row"><span>Shepherd</span><span class="print-qty">−2</span></div>
+            <div class="print-row"><span>Mockingbird</span><span class="print-qty">−1</span></div>
+            <div class="print-row"><span>Archive ×2</span><span class="print-qty">−2</span></div>
+            <div class="print-row"><span>Ocelot Pride</span><span class="print-qty">−2</span></div>
+          </div>
+        </div>
+        <div class="print-needle">Needle: Saga · Plating · Drum</div>
+      </div>
+
+      <div class="print-mu">
+        <div class="print-mu-name">Eldrazi Tron <span class="diff-medium">Med–Hard</span></div>
+        <div class="print-mu-role">Tempo → Control · 7%</div>
+        <div class="print-cols">
+          <div>
+            <div class="print-col-label">In</div>
+            <div class="print-row"><span>Consign to Memory</span><span class="print-qty">+3</span></div>
+            <div class="print-row"><span>Teferi, Time Raveler</span><span class="print-qty">+2</span></div>
+            <div class="print-row"><span>Stony Silence</span><span class="print-qty">+1</span></div>
+            <div class="print-row"><span>Pithing Needle</span><span class="print-qty">+1</span></div>
+          </div>
+          <div>
+            <div class="print-col-label">Out</div>
+            <div class="print-row"><span>Rest in Peace</span><span class="print-qty">−1</span></div>
+            <div class="print-row"><span>Sanctifier en-Vec</span><span class="print-qty">−1</span></div>
+            <div class="print-row"><span>Mockingbird</span><span class="print-qty">−1</span></div>
+            <div class="print-row"><span>Ocelot Pride</span><span class="print-qty">−2</span></div>
+            <div class="print-row"><span>Shepherd</span><span class="print-qty">−2</span></div>
+          </div>
+        </div>
+        <div class="print-needle">Needle: Karn · Ugin · Expedition Map</div>
+        <div class="print-note">Draw: −2 Phantom instead of −2 Shepherd</div>
+      </div>
+
+      <div class="print-mu">
+        <div class="print-mu-name">Blink Mirror <span class="diff-even">Even</span></div>
+        <div class="print-mu-role">Tempo First · 6%</div>
+        <div class="print-cols">
+          <div>
+            <div class="print-col-label">In</div>
+            <div class="print-row"><span>Teferi, Time Raveler</span><span class="print-qty">+2</span></div>
+            <div class="print-row"><span>Consign to Memory</span><span class="print-qty">+2</span></div>
+            <div class="print-row"><span>Pithing Needle</span><span class="print-qty">+1</span></div>
+          </div>
+          <div>
+            <div class="print-col-label">Out</div>
+            <div class="print-row"><span>Rest in Peace</span><span class="print-qty">−1</span></div>
+            <div class="print-row"><span>Witch Enchanter</span><span class="print-qty">−1</span></div>
+            <div class="print-row"><span>Ocelot Pride</span><span class="print-qty">−2</span></div>
+            <div class="print-row"><span>Mockingbird</span><span class="print-qty">−1</span></div>
+          </div>
+        </div>
+        <div class="print-needle">Needle: Teferi · Phelia</div>
+      </div>
+
+      <div class="print-mu">
+        <div class="print-mu-name">Amulet Titan <span class="diff-hard">Hard</span></div>
+        <div class="print-mu-role">Disruption + Race · 5%</div>
+        <div class="print-cols">
+          <div>
+            <div class="print-col-label">In</div>
+            <div class="print-row"><span>Consign to Memory</span><span class="print-qty">+3</span></div>
+            <div class="print-row"><span>Teferi, Time Raveler</span><span class="print-qty">+2</span></div>
+            <div class="print-row"><span>Wrath of the Skies</span><span class="print-qty">+2</span></div>
+            <div class="print-row"><span>Pithing Needle</span><span class="print-qty">+1</span></div>
+          </div>
+          <div>
+            <div class="print-col-label">Out</div>
+            <div class="print-row"><span>Rest in Peace</span><span class="print-qty">−1</span></div>
+            <div class="print-row"><span>Sanctifier</span><span class="print-qty">−1</span></div>
+            <div class="print-row"><span>Shepherd</span><span class="print-qty">−2</span></div>
+            <div class="print-row"><span>Ocelot Pride</span><span class="print-qty">−2</span></div>
+            <div class="print-row"><span>Mockingbird</span><span class="print-qty">−1</span></div>
+            <div class="print-row"><span>Witch Enchanter</span><span class="print-qty">−1</span></div>
+          </div>
+        </div>
+        <div class="print-needle">Needle: Stronghold · Tolaria West · Amulet</div>
+      </div>
+
+      <div class="print-mu">
+        <div class="print-mu-name">Domain / Prowess <span class="diff-medium">Medium</span></div>
+        <div class="print-mu-role">Control · 3–4%</div>
+        <div class="print-cols">
+          <div>
+            <div class="print-col-label">In (Both)</div>
+            <div class="print-row"><span>Sanctifier en-Vec</span><span class="print-qty">+2</span></div>
+            <div class="print-row"><span>Wrath of the Skies</span><span class="print-qty">+1–2</span></div>
+            <div class="print-row"><span>Teferi, Time Raveler</span><span class="print-qty">+1</span></div>
+          </div>
+          <div>
+            <div class="print-col-label">Out</div>
+            <div class="print-row"><span>Mockingbird</span><span class="print-qty">−1</span></div>
+            <div class="print-row"><span>Archive</span><span class="print-qty">−1</span></div>
+            <div class="print-row"><span>Shepherd</span><span class="print-qty">−1–2</span></div>
+            <div class="print-row"><span>Rest in Peace</span><span class="print-qty">−1</span></div>
+          </div>
+        </div>
+        <div class="print-note">Prowess also: +Orim's Chant, −Witch Enchanter</div>
+      </div>
+
+      <div class="print-mu">
+        <div class="print-mu-name">Azorius Control <span class="diff-even">Even</span></div>
+        <div class="print-mu-role">Beatdown · 3%</div>
+        <div class="print-cols">
+          <div>
+            <div class="print-col-label">In</div>
+            <div class="print-row"><span>Teferi, Time Raveler</span><span class="print-qty">+2</span></div>
+            <div class="print-row"><span>Consign to Memory</span><span class="print-qty">+2</span></div>
+            <div class="print-row"><span>Pithing Needle</span><span class="print-qty">+1</span></div>
+          </div>
+          <div>
+            <div class="print-col-label">Out</div>
+            <div class="print-row"><span>Witch Enchanter</span><span class="print-qty">−1</span></div>
+            <div class="print-row"><span>Rest in Peace</span><span class="print-qty">−1</span></div>
+            <div class="print-row"><span>Mockingbird</span><span class="print-qty">−1</span></div>
+            <div class="print-row"><span>Ocelot Pride</span><span class="print-qty">−1</span></div>
+            <div class="print-row"><span>Sanctifier</span><span class="print-qty">−1</span></div>
+          </div>
+        </div>
+        <div class="print-needle">Needle: Teferi Hero · Wandering Emperor · Hall</div>
+      </div>
+
+    </div><!-- end print-grid -->
+  </div>
+
+</div>
+
+<footer>
+  <span>Team Resolve · UW Blink Master Playbook</span>
+  <span>Zuxas · Captain · Moder · Palette: Dental Practice (UI UX Pro Max Row 60)</span>
+</footer>
+
+<script>
+  function show(id) {
+    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+    document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    event.target.classList.add('active');
+    window.scrollTo({ top: document.querySelector('nav').offsetTop, behavior: 'smooth' });
+  }
+
+  function toggleMatchup(id) {
+    const detail = document.getElementById(id);
+    const isOpen = detail.classList.contains('open');
+    document.querySelectorAll('.matchup-detail').forEach(d => d.classList.remove('open'));
+    document.querySelectorAll('.matchup-table tr').forEach(r => r.classList.remove('selected'));
+    if (!isOpen) {
+      detail.classList.add('open');
+      event.currentTarget.classList.add('selected');
+    }
+  }
+
+  function toggleDeep(id) {
+    const el = document.getElementById(id);
+    const parent = el.closest('.sb-deep');
+    const isOpen = parent.classList.contains('open');
+    document.querySelectorAll('.sb-deep').forEach(d => d.classList.remove('open'));
+    if (!isOpen) parent.classList.add('open');
+  }
+
+  function printSB() {
+  document.body.classList.add('printing-sb');
+  window.addEventListener('afterprint', function cleanup() {
+    document.body.classList.remove('printing-sb');
+    window.removeEventListener('afterprint', cleanup);
+  });
+  window.print();
+}
+function toggleCheck(el) {
+    el.classList.toggle('checked');
+  }
+</script>
+
+
+<script>
+/* card tooltip JS — injected before </body> */
+(function() {
+  const TIP = document.createElement('div');
+  TIP.className = 'card-tip';
+  TIP.innerHTML = '<div class="card-tip-loading">loading...</div>';
+  document.body.appendChild(TIP);
+
+  const CACHE = {};
+  let hideTimer = null;
+
+  function pos(e) {
+    const PAD=24,W=220,H=310;
+    let x = e.clientX + PAD;
+    let y = e.clientY - H / 2;
+    if (x + W > window.innerWidth)  x = e.clientX - W - PAD;
+    if (y < 8)                       y = 8;
+    if (y + H > window.innerHeight)  y = window.innerHeight - H - 8;
+    TIP.style.left = x + 'px';
+    TIP.style.top  = y + 'px';
+  }
+
+  async function show(name, e) {
+    clearTimeout(hideTimer);
+    TIP.innerHTML = '<div class="card-tip-loading">loading...</div>';
+    TIP.classList.add('visible');
+    pos(e);
+    if (CACHE[name]) {
+      TIP.innerHTML = `<img src="${CACHE[name]}" alt="${name}">`;
+      return;
+    }
+    try {
+      const url = `https://api.scryfall.com/cards/named?fuzzy=${encodeURIComponent(name)}`;
+      const r = await fetch(url);
+      if (!r.ok) { TIP.classList.remove('visible'); return; }
+      const d = await r.json();
+      // Handle double-faced cards
+      const img = d.image_uris?.normal ||
+                  d.card_faces?.[0]?.image_uris?.normal ||
+                  d.image_uris?.small;
+      if (!img) { TIP.classList.remove('visible'); return; }
+      CACHE[name] = img;
+      TIP.innerHTML = `<img src="${img}" alt="${name}">`;
+    } catch(err) {
+      TIP.classList.remove('visible');
+    }
+  }
+
+  function hide() {
+    hideTimer = setTimeout(() => TIP.classList.remove('visible'), 80);
+  }
+
+  document.addEventListener('mouseover', e => {
+    const el = e.target.closest('span.c');
+    if (!el) return;
+    showTip(el.textContent.trim(), e);
+  });
+  document.addEventListener('mousemove', e => {
+    if (TIP.classList.contains('visible')) pos(e);
+  });
+  document.addEventListener('mouseout', e => {
+    if (e.target.closest('span.c')) hide();
+  });
+})();
+</script>
+</body>
+</html>

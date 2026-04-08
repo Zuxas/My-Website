@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" href="../images/tab32.png" type="image/png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Jeskai Control Standard playbook — Team Resolve. Lightning Helix, Inevitable Defeat, Jeskai Revelation. RC Cincinnati / DC prep guide." />
+<title>Jeskai Control — Team Resolve Standard Playbook</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+  html { overflow-y: scroll; }
+  :root {--primary:#0a1024;  --ink:#0e0e0e; --paper:#f2ede6; --paper-dark:#e8e1d6; --rule:#c8bfb0; --accent:#1a2a5c; --accent-light:#d6ddf7; --danger:#8f1a1a; --danger-light:#f7d6d6; --gold:#8f6a1a; --gold-light:#f7ead6; --mid:#5a5248; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:var(--paper); color:var(--ink); font-family:'Crimson Pro',Georgia,serif; font-size:17px; line-height:1.6; }
+  .header-band { background:var(--primary); border-bottom:3px solid var(--accent); padding:48px 80px 40px;position:relative;overflow:hidden;}
+  .header-band,.header-band *{color:#f1f5f9;}
+  .header-inner { max-width:1080px; margin:0 auto; display:flex; justify-content:space-between; align-items:flex-end; gap:40px; }
+  .header-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:rgba(242,237,230,0.35); margin-bottom:8px; }
+  .header-title{font-family:'DM Mono',monospace;font-size:clamp(32px,4vw,52px);font-weight:500;letter-spacing:0.06em;line-height:1.05;text-transform:uppercase;}
+  .header-title span{color:var(--accent);}
+  .header-tagline { font-family:'Crimson Pro',serif; font-style:italic; font-size:15px; color:rgba(242,237,230,0.4); margin-top:8px; }
+  .header-right { display:flex; flex-direction:column; gap:8px; text-align:right; padding-bottom:4px; }
+  .header-stat { display:flex; gap:12px; align-items:center; justify-content:flex-end; }
+  .hs-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; color:rgba(242,237,230,0.3); }
+  .hs-val { font-family:'DM Mono',monospace; font-size:12px; color:var(--paper); }
+  nav { position:sticky; top:0; z-index:100; background:var(--primary); border-bottom:2px solid var(--accent); padding:0 80px; display:flex; align-items:center; gap:0; overflow-x:auto; scrollbar-width:none; }
+  nav::-webkit-scrollbar { display:none; }
+  .nav-brand { font-family:'Bebas Neue',sans-serif; font-size:18px; color:#7ba7e8; letter-spacing:0.05em; margin-right:40px; white-space:nowrap; padding:16px 0; text-decoration:none; }
+  .nav-link { font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:rgba(248,250,252,0.55); padding:20px 16px; cursor:pointer; white-space:nowrap; border-bottom:2px solid transparent; transition:all 0.2s; background:none; border-top:none; border-left:none; border-right:none; }
+  .nav-link:hover, .nav-link.active { color:var(--paper); border-bottom-color:#7ba7e8; }
+  .page { max-width:1100px; margin:0 auto; padding:80px 80px; }
+  .section { display:none; animation:fadeIn 0.3s ease; }
+  .section.active { display:block; }
+  @keyframes fadeIn { from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:translateY(0);} }
+  .section-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.25em; text-transform:uppercase; color:var(--mid); margin-bottom:8px; }
+  h1 { font-family:'Bebas Neue',sans-serif; font-size:64px; line-height:0.9; letter-spacing:0.01em; color:var(--ink); margin-bottom:40px; }
+  h2 { font-family:'Bebas Neue',sans-serif; font-size:36px; letter-spacing:0.02em; color:var(--ink); margin:56px 0 20px; padding-bottom:8px; border-bottom:2px solid var(--ink); }
+  p { margin-bottom:16px; color:var(--ink); font-weight:300; }
+  strong { font-weight:600; }
+  .c { color:var(--accent); font-weight:400; }
+  .mantra { border-left:4px solid var(--accent); padding:24px 32px; background:var(--accent-light); margin:32px 0; font-style:italic; font-size:20px; color:var(--accent); line-height:1.5; }
+  .card-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); gap:1px; background:var(--rule); border:1px solid var(--rule); margin:24px 0; }
+  .card-grid-2 { grid-template-columns:repeat(2,1fr) !important; }
+  .card-grid-3 { grid-template-columns:repeat(3,1fr) !important; }
+  .card { background:var(--paper); padding:24px; }
+  .card:hover { background:var(--paper-dark); }
+  .card-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--mid); margin-bottom:8px; }
+  .card-title { font-family:'Bebas Neue',sans-serif; font-size:22px; letter-spacing:0.03em; color:var(--ink); margin-bottom:8px; }
+  .card-body { font-size:15px; font-weight:300; color:var(--mid); line-height:1.5; }
+  .decklist { display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--rule); border:1px solid var(--rule); margin:24px 0; }
+  .dl-section { background:var(--paper); padding:24px; }
+  .dl-section-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--mid); margin-bottom:16px; }
+  .dl-group { margin-bottom:20px; }
+  .dl-group-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; color:var(--ink); background:var(--paper-dark); padding:4px 8px; margin-bottom:8px; display:inline-block; }
+  .dl-card-row { display:flex; justify-content:space-between; align-items:baseline; padding:3px 0; border-bottom:1px solid rgba(200,191,176,0.3); font-size:15px; font-weight:300; }
+  .dl-card-row:last-child { border-bottom:none; }
+  .dl-qty { font-family:'DM Mono',monospace; font-size:12px; color:var(--mid); flex-shrink:0; margin-left:8px; }
+  .matchup-table { width:100%; border-collapse:collapse; margin:24px 0; }
+  .matchup-table th { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; padding:10px 16px; background:var(--ink); color:rgba(242,237,230,0.6); text-align:left; }
+  .matchup-table td { padding:12px 16px; border-bottom:1px solid var(--rule); font-size:15px; font-weight:300; }
+  .matchup-table tr:hover td { background:var(--paper-dark); cursor:pointer; }
+  .matchup-detail { display:none; background:var(--accent-light); border-left:4px solid var(--accent); padding:24px 32px; }
+  .matchup-detail.open { display:block; }
+  .verdict { display:inline-block; font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; padding:4px 10px; border:1px solid; }
+  .verdict-dog { background:var(--danger-light); color:var(--danger); border-color:var(--danger); }
+  .verdict-even { background:var(--gold-light); color:var(--gold); border-color:var(--gold); }
+  .verdict-favor { background:#d1fae5; color:#065f46; border-color:#065f46; }
+  .sb-table { width:100%; border-collapse:collapse; margin:16px 0; }
+  .sb-table th { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; padding:8px 12px; background:var(--paper-dark); color:var(--mid); text-align:left; border-bottom:2px solid var(--rule); }
+  .sb-table td { padding:10px 12px; border-bottom:1px solid var(--rule); font-size:14px; font-weight:300; }
+  .sb-out { color:var(--danger); font-family:'DM Mono',monospace; font-size:12px; }
+  .sb-in { color:#065f46; font-family:'DM Mono',monospace; font-size:12px; }
+  .sb-note { font-size:13px; font-weight:300; color:var(--mid); font-style:italic; margin-top:6px; }
+  .sb-card-guide { border:1px solid var(--rule); margin:24px 0; }
+  .sb-guide-row { display:grid; grid-template-columns:200px 1fr; gap:0; border-bottom:1px solid var(--rule); }
+  .sb-guide-row:last-child { border-bottom:none; }
+  .sb-guide-name { font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.08em; text-transform:uppercase; padding:16px; background:var(--paper-dark); color:var(--ink); border-right:1px solid var(--rule); display:flex; align-items:flex-start; }
+  .sb-guide-body { padding:16px; font-size:14px; font-weight:300; line-height:1.6; color:var(--mid); }
+  .heuristic-list { list-style:none; margin:0; padding:0; }
+  .heuristic-list li { display:grid; grid-template-columns:48px 1fr; gap:16px; padding:20px 0; border-bottom:1px solid var(--rule); align-items:start; }
+  .heuristic-list li:last-child { border-bottom:none; }
+  .heuristic-num { font-family:'DM Mono',monospace; font-size:22px; color:var(--rule); font-weight:500; }
+  .heuristic-body strong { display:block; font-size:16px; font-weight:600; margin-bottom:4px; color:var(--ink); }
+  .heuristic-body { font-size:14px; font-weight:300; color:var(--mid); line-height:1.5; }
+  .tuning-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--rule); border:1px solid var(--rule); margin:24px 0; }
+  .tuning-cell { background:var(--paper); padding:20px; }
+  .tuning-cell-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; color:var(--mid); margin-bottom:8px; }
+  .tuning-cell-title { font-family:'Bebas Neue',sans-serif; font-size:20px; color:var(--ink); margin-bottom:8px; }
+  .tuning-cell-body { font-size:14px; font-weight:300; color:var(--mid); line-height:1.5; }
+  .curve-strip { display:flex; gap:1px; background:var(--rule); border:1px solid var(--rule); margin:24px 0; }
+  .curve-slot { flex:1; background:var(--paper); padding:16px 12px; text-align:center; }
+  .curve-cmc { font-family:'Bebas Neue',sans-serif; font-size:32px; color:var(--accent); line-height:1; }
+  .curve-count { font-family:'DM Mono',monospace; font-size:11px; color:var(--mid); letter-spacing:0.1em; margin-top:4px; }
+  .curve-bar { height:4px; background:var(--accent); margin:8px auto 0; border-radius:2px; opacity:0.5; }
+  .print-btn { display:inline-flex; align-items:center; gap:8px; font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.12em; text-transform:uppercase; background:var(--ink); color:var(--paper); border:none; padding:10px 20px; cursor:pointer; margin-bottom:32px; }
+  .print-section { border:1px solid var(--rule); padding:32px; margin:24px 0; }
+  .print-title { font-family:'Bebas Neue',sans-serif; font-size:48px; color:var(--ink); }
+  .print-sub { font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.15em; text-transform:uppercase; color:var(--mid); margin-bottom:24px; }
+  .print-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+  .print-col-title { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--mid); margin-bottom:8px; padding-bottom:4px; border-bottom:1px solid var(--rule); }
+  .print-line { font-size:13px; font-weight:300; padding:2px 0; }
+  .print-mu { margin-bottom:16px; }
+  .print-mu-name { font-family:'Bebas Neue',sans-serif; font-size:18px; color:var(--ink); }
+  .print-mu-role { font-family:'DM Mono',monospace; font-size:9px; letter-spacing:0.1em; text-transform:uppercase; color:var(--mid); margin-bottom:6px; }
+  .print-cols { display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+  .print-col-label { font-family:'DM Mono',monospace; font-size:9px; letter-spacing:0.15em; text-transform:uppercase; color:var(--mid); margin-bottom:4px; }
+  .print-row { font-size:12px; font-weight:300; display:flex; justify-content:space-between; padding:1px 0; border-bottom:1px solid rgba(200,191,176,0.4); }
+  .print-qty { font-family:'DM Mono',monospace; font-size:11px; color:var(--mid); }
+  .print-needle { font-family:'DM Mono',monospace; font-size:9px; letter-spacing:0.06em; color:var(--danger); margin-top:6px; text-transform:uppercase; }
+  footer { background:var(--ink); color:rgba(242,237,230,0.3); padding:40px 80px; margin-top:80px; display:flex; justify-content:space-between; align-items:center; }
+  footer span { font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.1em; text-transform:uppercase; }
+  @media (max-width:768px) { .header-inner,nav,.page,footer { padding-left:24px; padding-right:24px; } .header-right { display:none; } .decklist,.tuning-grid,.print-grid { grid-template-columns:1fr; } nav { padding:0 24px; } }
+  @media print { nav,.print-btn,footer { display:none; } .section { display:block !important; } }
+  .edge-case { border:1px solid var(--accent); background:var(--accent-light); padding:16px 20px; margin:16px 0; font-size:14px; }
+  .edge-case-label { font-family:'DM Mono',monospace; font-size:9px; letter-spacing:0.15em; text-transform:uppercase; color:var(--accent); margin-bottom:6px; }
+  .edge-case-body { font-weight:300; color:var(--ink); line-height:1.5; }
+
+  /* ── CARD IMAGE TOOLTIP ─────────────────────────────────── */
+  .card-tip{position:fixed;z-index:9999;pointer-events:none;width:220px;border-radius:8px;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,0.6);opacity:0;transition:opacity 0.15s ease;background:#1a1a2e;}
+  .card-tip.visible{opacity:1;}
+  .card-tip img{width:220px;height:auto;display:block;}
+  .card-tip-loading{width:220px;height:308px;display:flex;align-items:center;justify-content:center;color:#94a3b8;font-size:12px;font-family:monospace;background:#1e293b;}
+  span.c{cursor:help;border-bottom:1px dashed var(--accent);}
+  span.c:hover{border-bottom-style:solid;}
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-brand">Jeskai Control</div>
+  <a class="nav-link" href="../deck-guides.html" style="text-decoration:none;">&#8592; Guides</a>
+  <button class="nav-link active" onclick="show('identity')">Overview</button>
+  <button class="nav-link" onclick="show('decklist')">Decklist</button>
+  <button class="nav-link" onclick="show('gameflow')">Gameplan</button>
+  <button class="nav-link" onclick="show('answers')">Answer Suite</button>
+  <button class="nav-link" onclick="show('lines')">Lines</button>
+  <button class="nav-link" onclick="show('roles')">Roles</button>
+  <button class="nav-link" onclick="show('matchups')">Matchups</button>
+  <button class="nav-link" onclick="show('sideboard')">Sideboard</button>
+  <button class="nav-link" onclick="show('heuristics')">Heuristics</button>
+  <button class="nav-link" onclick="show('tuning')">Tuning</button>
+  <button class="nav-link" onclick="show('prep')">Prep</button>
+</nav>
+<div class="header-band">
+  <div class="header-inner">
+    <div>
+      <div class="header-label">Team Resolve · Standard · RC Prep 2026</div>
+      <div class="header-title">Jeskai<br><span>Control</span></div>
+      <div class="header-tagline">"Answer everything. Counter what you can't answer. Win when they run out of cards."</div>
+    </div>
+    <div class="header-right">
+      <div class="header-stat"><span class="hs-label">Meta</span><span class="hs-val">2.48%</span></div>
+      <div class="header-stat"><span class="hs-label">Archetype</span><span class="hs-val">Pure Control</span></div>
+      <div class="header-stat"><span class="hs-label">Tier</span><span class="hs-val">B (55.8% WR)</span></div>
+      <div class="header-stat"><span class="hs-label">Kill Turn</span><span class="hs-val">6–9</span></div>
+      <div class="header-stat"><span class="hs-label">Source</span><span class="hs-val">Mar 30 Ranked List</span></div>
+    </div>
+  </div>
+</div>
+<div class="page">
+
+<!-- CH01 OVERVIEW -->
+<div id="overview" class="section active">
+  <div class="section-label">Chapter 01</div>
+  <h1>Deck<br>Overview</h1>
+  <div class="mantra">"Jeskai Control is an Azorius Control variant that splashes red to take advantage of how valuable that color is in many matchups — particularly the current meta centered around creatures and combat."</div>
+  <p>Jeskai Control runs <strong>zero creatures in the main deck</strong> — the entire 60 is removal, counters, and card draw. The win condition is Jeskai Revelation, which as an instant bounces a threat, deals 4 damage, creates two 1/1 Monk tokens with prowess, draws 2 cards, and gains 4 life — essentially resetting a board state and refueling simultaneously. Lightning Helix at instant speed deals 3 damage and gains 3 life, stabilizing against aggro. Inevitable Defeat exiles any nonland permanent, uncounterable, with life swing. Against creatures, this package is nearly impossible to fight through.</p>
+  <p>The deck's weakness is creature-light strategies — Izzet Prowess flood with tokens, Mono-Green's enchantment-based threats, and combo strategies that don't use creatures. The sideboard is built around filling those gaps (Torpor Orb vs ETB-heavy, High Noon vs aggro, Pyroclasm vs tokens).</p>
+
+  <h2>Why Study This Deck</h2>
+  <p>Jeskai Control is ~5% of the Cincinnati meta — you'll face it 1-2 rounds. As Dimir Midrange, this is your best matchup (64% WR per Untapped). Knowing their counterspell suite (No More Lies, Spell Snare), their sweepers (Day of Judgment, Ultima), and their uncounterable finisher (Inevitable Defeat + Jeskai Revelation) helps you sequence correctly — hold key spells through their removal window and deploy Surrak, Elusive Hunter (can't be countered) when they tap out.</p>
+</div>
+
+<!-- CH02 DECKLIST -->
+<div id="decklist" class="section">
+  <div class="section-label">Chapter 02</div>
+  <h1>Decklist</h1>
+  <p style="font-style:italic;color:var(--mid);font-size:15px;margin-bottom:24px;">March 30 2026 Traditional Standard Ranked list — magic.gg. No main-deck creatures. Pure control with a Revelation + Helix win condition.</p>
+  <div class="decklist">
+    <div class="dl-section">
+      <div class="dl-section-label">Maindeck (60)</div>
+      <div class="dl-group">
+        <div class="dl-group-label">Removal (14)</div>
+        <div class="dl-card-row"><span><span class="c">Lightning Helix</span></span><span class="dl-qty">4</span></div>
+        <div class="dl-card-row"><span><span class="c">Get Lost</span></span><span class="dl-qty">2</span></div>
+        <div class="dl-card-row"><span><span class="c">Inevitable Defeat</span></span><span class="dl-qty">4</span></div>
+        <div class="dl-card-row"><span><span class="c">Jeskai Revelation</span></span><span class="dl-qty">4</span></div>
+      </div>
+      <div class="dl-group">
+        <div class="dl-group-label">Counterspells (6)</div>
+        <div class="dl-card-row"><span><span class="c">No More Lies</span></span><span class="dl-qty">4</span></div>
+        <div class="dl-card-row"><span><span class="c">Spell Snare</span></span><span class="dl-qty">2</span></div>
+      </div>
+      <div class="dl-group">
+        <div class="dl-group-label">Sweepers (4)</div>
+        <div class="dl-card-row"><span><span class="c">Day of Judgment</span></span><span class="dl-qty">2</span></div>
+        <div class="dl-card-row"><span><span class="c">Ultima</span></span><span class="dl-qty">2</span></div>
+      </div>
+      <div class="dl-group">
+        <div class="dl-group-label">Card Draw (7)</div>
+        <div class="dl-card-row"><span><span class="c">Stock Up</span></span><span class="dl-qty">4</span></div>
+        <div class="dl-card-row"><span><span class="c">Consult the Star Charts</span></span><span class="dl-qty">4</span></div>
+      </div>
+      <div class="dl-group">
+        <div class="dl-group-label">Utility (1)</div>
+        <div class="dl-card-row"><span><span class="c">The Unagi of Kyoshi Island</span></span><span class="dl-qty">1</span></div>
+      </div>
+    </div>
+    <div class="dl-section">
+      <div class="dl-section-label">Lands (26)</div>
+      <div class="dl-group">
+        <div class="dl-card-row"><span><span class="c">Hallowed Fountain</span></span><span class="dl-qty">4</span></div>
+        <div class="dl-card-row"><span><span class="c">Steam Vents</span></span><span class="dl-qty">4</span></div>
+        <div class="dl-card-row"><span><span class="c">Floodfarm Verge</span></span><span class="dl-qty">4</span></div>
+        <div class="dl-card-row"><span><span class="c">Thundering Falls</span></span><span class="dl-qty">4</span></div>
+        <div class="dl-card-row"><span><span class="c">Sunbillow Verge</span></span><span class="dl-qty">4</span></div>
+        <div class="dl-card-row"><span><span class="c">Gloomlake Verge</span></span><span class="dl-qty">2</span></div>
+        <div class="dl-card-row"><span><span class="c">Godless Shrine</span></span><span class="dl-qty">2</span></div>
+        <div class="dl-card-row"><span><span class="c">Mistrise Village</span></span><span class="dl-qty">2</span></div>
+      </div>
+      <div class="dl-section-label" style="margin-top:24px;">Sideboard (15)</div>
+      <div class="dl-group">
+        <div class="dl-card-row"><span><span class="c">Flashfreeze</span></span><span class="dl-qty">2</span></div>
+        <div class="dl-card-row"><span><span class="c">High Noon</span></span><span class="dl-qty">2</span></div>
+        <div class="dl-card-row"><span><span class="c">Rest in Peace</span></span><span class="dl-qty">2</span></div>
+        <div class="dl-card-row"><span><span class="c">Wan Shi Tong, Librarian</span></span><span class="dl-qty">2</span></div>
+        <div class="dl-card-row"><span><span class="c">Annul</span></span><span class="dl-qty">2</span></div>
+        <div class="dl-card-row"><span><span class="c">Torpor Orb</span></span><span class="dl-qty">2</span></div>
+        <div class="dl-card-row"><span><span class="c">Day of Judgment</span></span><span class="dl-qty">1</span></div>
+        <div class="dl-card-row"><span><span class="c">Pyroclasm</span></span><span class="dl-qty">1</span></div>
+        <div class="dl-card-row"><span><span class="c">Tishana's Tidebinder</span></span><span class="dl-qty">1</span></div>
+      </div>
+    </div>
+  </div>
+
+  <h2>Mana Curve</h2>
+  <div class="curve-strip">
+    <div class="curve-slot"><div class="curve-cmc">1</div><div class="curve-count">0 spells</div><div class="curve-bar" style="width:0%"></div></div>
+    <div class="curve-slot"><div class="curve-cmc">2</div><div class="curve-count">10 spells</div><div class="curve-bar" style="width:55%"></div></div>
+    <div class="curve-slot"><div class="curve-cmc">3</div><div class="curve-count">6 spells</div><div class="curve-bar" style="width:33%"></div></div>
+    <div class="curve-slot"><div class="curve-cmc">4</div><div class="curve-count">11 spells</div><div class="curve-bar" style="width:100%"></div></div>
+    <div class="curve-slot"><div class="curve-cmc">5+</div><div class="curve-count">7 spells</div><div class="curve-bar" style="width:40%"></div></div>
+  </div>
+  <p style="font-size:14px;color:var(--mid);">Unlike aggro, this curve is designed around holding mana open. The 2-mana slot (Helix, Spell Snare) is deployed reactively. The 4-mana slot (Inevitable Defeat, Consult kicked) is the primary interaction. Always evaluate: "can I hold up a response this turn?" If yes, hold it. Ultima at 5+ is the board wipe for when Day of Judgment isn't enough — it ends the turn entirely after destroying everything.</p>
+
+  <h2>Card Notes</h2>
+  <div class="card-grid">
+    <div class="card"><div class="card-label">The Lifegain Removal</div><div class="card-title">Lightning Helix</div><div class="card-body">{R}{W} Instant. 3 damage to any target + gain 3 life. The best red-white spell in the format. At instant speed, it answers their T1-T3 creatures AND stabilizes your life total. Against Boros Aggro, 4 Helixes = 12 damage absorbed and 12 life gained — effectively a 24-point life swing. Against Prowess, it answers Slickshot Show-Off at any stage. The most important card in the deck against aggro.</div></div>
+    <div class="card"><div class="card-label">The Uncounterable Exile</div><div class="card-title">Inevitable Defeat</div><div class="card-body">{2}{B}{W} Instant. Can't be countered. Exile target nonland permanent. Its controller loses 3 life, you gain 3 life. The answer to everything — Ojer Axonil, Mossborn Hydra, Sapling Nursery, Stormchaser's Talent. Can't be countered means it resolves through their Spell Pierce and Get Out. The life swing (+3 / −3 = 6-point swing) is meaningful in close races. 4 copies because this is the primary removal engine.</div></div>
+    <div class="card"><div class="card-label">The Win Condition</div><div class="card-title">Jeskai Revelation</div><div class="card-body">{2}{U}{R}{W} Instant. Return target spell or permanent to hand + deals 4 damage to any target + create two 1/1 Monk tokens with prowess + draw 2 cards + gain 4 life. Five effects in one instant-speed card. Cast at end of opponent's turn after they've tapped out: bounce their key permanent, create two prowess threats, refuel your hand, gain 4 life. Those Monk tokens are your win condition — they grow with Stock Up and Helix triggers on your turn.</div></div>
+    <div class="card"><div class="card-label">The Hard Counter</div><div class="card-title">No More Lies</div><div class="card-body">{U}{W} Instant. Counter target spell unless its controller pays {3}. If countered, exile it. The soft counter that's effectively hard when they're on curve. T2 Elusive Otter requires they pay {3} extra = it costs them {U}+{3} = {3}{U}. They can rarely pay {3} extra in the early turns. The exile clause prevents GY recursion for Esper Origins, Wild Ride Harmonize, and any flashback effects.</div></div>
+    <div class="card"><div class="card-label">The Early Counter</div><div class="card-title">Spell Snare</div><div class="card-body">{U} Instant. Counter target spell with mana value 2. Hard counter for one mana specifically targeting the most dangerous turn-2 plays: Stormchaser's Talent, Warleader's Call, Shocking Sharpshooter, Earthbender Ascension. The {U} efficiency means you can hold it while deploying another spell. Only 2 copies because it's dead against 3+ mana threats.</div></div>
+    <div class="card"><div class="card-label">The Sweepers</div><div class="card-title">Day of Judgment / Ultima</div><div class="card-body">Day of Judgment: {2}{W}{W} Sorcery — destroy all creatures. 2 main + 1 SB. The primary board reset. Ultima: {4}{W}{U} Sorcery — destroy all artifacts and creatures, then end the turn (exile all spells/abilities from stack, current player discards to max hand size, damage wears off, EOT effects end). Ultima destroys Warleader's Call (enchantment... wait — check: Ultima destroys artifacts AND creatures, not enchantments). Day of Judgment handles creatures only. Both are sorcery speed — must play proactively.</div></div>
+    <div class="card"><div class="card-label">The Card Engine</div><div class="card-title">Consult the Star Charts / Stock Up</div><div class="card-body">Consult the Star Charts: {1}{W} Instant. Kicker {1}{U}. Look at top X cards (X = lands you control), put 1 (or 2 if kicked) in hand. With 6 lands, unkicked = look at 6 pick 1. Kicked with 6 lands = look at 6 pick 2 for {2}{U}{W}. Stock Up: {1}{U} Sorcery — look at top 5, put 2 in hand. Consult at instant speed enables reactive digging — find the sweeper or Helix you need on their end step.</div></div>
+    <div class="card"><div class="card-label">The Mana Base</div><div class="card-title">Thundering Falls / Mistrise Village</div><div class="card-body">Thundering Falls: Island + Mountain, enters tapped, ETB surveil 1. Fixing + library manipulation. Mistrise Village: enters tapped unless you control Mountain or Forest. {U}{T}: your next spell can't be countered. The uncounterable clause on Mistrise is critical in the control mirror — deploy key Revelation or Inevitable Defeat through their countermagic. Note: Ultima can't be countered via Mistrise to blow up their board even through open blue mana.</div></div>
+  </div>
+</div>
+
+<!-- CH03 GAME FLOW -->
+<div id="gameflow" class="section">
+  <div class="section-label">Chapter 03</div>
+  <h1>Gameplan</h1>
+  <div class="mantra">"Your job for the first 4 turns: don't die. Your job turns 5-8: answer everything. Your job after that: cast Revelation and win."</div>
+  <h2>Turn-by-Turn Framework</h2>
+  <div class="card-grid card-grid-3">
+    <div class="card"><div class="card-label">Turns 1–3: Survive</div><div class="card-title">Hold Mana Open</div><div class="card-body">Hold Lightning Helix and No More Lies in hand. Deploy land + hold up {R}{W} for Helix response on their attack step. Against aggro: kill their key threats at instant speed (Sharpshooter, Slickshot Show-Off). Against midrange: counter their value engines (Stormchaser's Talent, Sapling Nursery). Never tap out unless you're drawing a land and have nothing to hold up.</div></div>
+    <div class="card"><div class="card-label">Turns 4–6: Reset</div><div class="card-title">Sweep + Refuel</div><div class="card-body">Once their board is threatening: Day of Judgment to wipe, then Consult the Star Charts kicked to refuel. Inevitable Defeat for their indestructible threats (Ojer Axonil) that Day of Judgment doesn't hit. Stock Up at instant speed on their end step before your turn. The goal: enter turn 7 with 3+ cards in hand and their board clear.</div></div>
+    <div class="card"><div class="card-label">Turns 7+: Win</div><div class="card-title">Revelation into Monks</div><div class="card-body">Cast Jeskai Revelation at instant speed (end of their turn): bounce their key permanent, deal 4 damage, create 2 Monk tokens with prowess, draw 2 cards, gain 4 life. Now you have 2 prowess 1/1 threats on board. Cast Lightning Helix next turn while attacking: each Helix is also +1/+1 on each Monk until EOT. They become 3/3s after one Helix. Win in 2-3 swings.</div></div>
+    <div class="card"><div class="card-label">Mid (T4–T6)</div><div class="card-title">Your Key Plays</div><div class="card-body">Your T4 is Voice of Victory. You attack immediately — it can't be targeted while attacking. Your T5 holds Dovin's Veto for their board wipe attempt. Your T6 is Stormplain Detainment if they've developed a wide board. You generate advantage through sustained pressure (Voice) combined with reactive answers (Aven Interrupter, Seam Rip) every turn.</div></div>
+    <div class="card"><div class="card-label">Counter Suite</div><div class="card-title">Your Interaction Depth</div><div class="card-body">Your counters each answer a specific threat type. Seam Rip ({1}{U}): counters sorceries exactly. Aven Interrupter (flash 5/4 ETB): hard counters any instant/sorcery. Dovin's Veto ({W}{U} uncounterable): noncreature spells. High Noon: prevents all sorceries for both players. You hold the right counter for their specific threat — never use Seam Rip on an instant or waste Dovin's Veto on a creature.</div></div>
+    <div class="card"><div class="card-label">The Clock</div><div class="card-title">Your T4+ Win Condition</div><div class="card-body">Voice of Victory is your clock. You deploy it at 5+ lands and attack every turn. At 3 damage per turn, you need 7 attack steps to win from 20 life. Their board wipe is the threat — you hold Dovin's Veto specifically for Supreme Verdict. Your Aven Interrupter is your backup counter for whatever their other win condition is. You attack, they spend resources answering, you counter their answer.</div></div>
+    <div class="card"><div class="card-label">Mana Management</div><div class="card-title">Your Open Mana Discipline</div><div class="card-body">Your most important skill: never tap out. Your T3: one land + {W}{U} open (Dovin's Veto). Your T4: Voice into {W}{U} or {1}{U} open (Seam Rip). Your T5+: hold the most relevant counter for their top 3 plays. You pre-identify what they can cast on their next turn and keep the mana to answer exactly that. Never tap out for development when interaction is available.</div></div>
+  </div>
+  <h2>Ultima's End the Turn Clause</h2>
+  <p><strong>Ultima ends the turn after resolution.</strong> This means: all spells and abilities currently on the stack are exiled (including Ultima itself). The current player discards to maximum hand size. All "this turn" and "until end of turn" effects end — including their prowess buffs, their creature's haste (they untap next turn), and their temporary pump spells. Use Ultima when they've tapped out to attack and pumped their creatures — you destroy everything and their pump effects vanish with the turn ending. Note: Ultima destroys artifacts AND creatures, not enchantments. Warleader's Call survives Ultima.</p>
+</div>
+
+<!-- CH04 ANSWER SUITE -->
+<div id="answers" class="section">
+  <div class="section-label">Chapter 04</div>
+  <h1>Answer Suite</h1>
+  <div class="mantra">"Know which spell answers which threat. Running out of answers because you used the wrong tool is how Jeskai Control loses."</div>
+  <div class="card-grid">
+    <div class="card"><div class="card-label">Creatures (any size)</div><div class="card-title">Lightning Helix / Inevitable Defeat</div><div class="card-body">Helix: instant, 3 damage, gain 3 life. Best against 1-3 toughness creatures early (all of Boros' 1/1-2/3 threats, Elusive Otter, Slickshot Show-Off). Inevitable Defeat: exile any nonland permanent, uncounterable. Use for: indestructible creatures, high-toughness threats Helix can't reach (Eddymurk Crab 5/5), planeswalkers, key enchantments. The rule: Helix kills efficiently (2 mana for 3 damage + 3 life), Defeat exiles anything that doesn't die to Helix.</div></div>
+    <div class="card"><div class="card-label">Enchantments</div><div class="card-title">Inevitable Defeat / Get Lost</div><div class="card-body">Inevitable Defeat exiles any nonland permanent — the only main-deck answer to enchantments like Sapling Nursery, Warleader's Call, Stormchaser's Talent. Get Lost: {1}{G} instant — destroy target creature, enchantment, or planeswalker; controller gets 2 Map tokens. The Map tokens are a concession (they get minor card advantage), but instant-speed enchantment removal is critical. Use Get Lost when Helix's 3-damage clause is irrelevant and the enchantment must die immediately.</div></div>
+    <div class="card"><div class="card-label">Counterspells</div><div class="card-title">No More Lies / Spell Snare</div><div class="card-body">No More Lies: soft counter at {U}{W}, hard counter at MV ≤ 3 effectively. Use for key threats you can't answer in play (combo pieces, uncounterable threats, things without answers in your main deck). Spell Snare: hard counter for MV 2 exactly — optimal against Stormchaser's Talent, Warleader's Call, Shocking Sharpshooter. Hold Snare when their T2 play is dangerous. Never tap out to cast a proactive spell when Snare is your only response.</div></div>
+    <div class="card"><div class="card-label">Wide Boards</div><div class="card-title">Day of Judgment / Ultima</div><div class="card-body">Day of Judgment: {2}{W}{W} sorcery, destroy all creatures. Use when they have 3+ creatures and Helix can't answer them individually. Ultima: {4}{W}{U} sorcery, destroy all artifacts and creatures, end the turn. Use when they have artifacts AND creatures threatening simultaneously (Boros Aggro with artifact-matters, any multitype board). Remember: Ultima doesn't hit enchantments — Warleader's Call survives.</div></div>
+  </div>
+
+  <h2>What Jeskai Cannot Answer in Main Deck</h2>
+  <div class="card-grid card-grid-2">
+    <div class="card"><div class="card-label">Main Deck Gap</div><div class="card-title">GY-Based Strategies</div><div class="card-body">The main deck has no graveyard hate. Izzet Spellementals using GY for Eddymurk Crab cost reduction, Reanimator returning large threats, Icetill Explorer playing lands from GY — all operate without main deck interference. Plan: counter or exile before they hit the GY. Post-board: Rest in Peace (hard exile everything) and Torpor Orb (stops ETB triggers from reanimated threats).</div></div>
+    <div class="card"><div class="card-label">Main Deck Gap</div><div class="card-title">Fast Token Floods</div><div class="card-body">A resolved Stormchaser's Talent at level 3 generating tokens per spell is difficult to answer — each Inevitable Defeat on the Talent costs {4} and they've already gotten value. Day of Judgment clears the tokens but not the Talent. Annul from the SB counters it on the way in. Post-board: Annul for Talent, Torpor Orb blanks Crab and other ETB threats. The gap: no instant-speed enchantment removal in the main.</div></div>
+    <div class="card"><div class="card-label">Engine: Voice Lock</div><div class="card-title">Your Uncounterable Clock</div><div class="card-body">Voice of Victory (3/3 flying) can't be targeted while attacking. You deploy Voice at 5+ mana and attack every turn. Your payoff: they can't point targeted removal at Voice during your attack step — they must answer it with board wipes or sacrifice effects. You hold your most relevant counter (Dovin's Veto) specifically for their board wipe attempt after Voice resolves. Voice + Veto is your primary two-card closing combination.</div></div>
+    <div class="card"><div class="card-label">Engine: Aven Interrupter</div><div class="card-title">Your Flash Counter Creature</div><div class="card-body">Aven Interrupter ({3}{W}{U} = 5 mana, 5/4 flash, ETB counters a spell) is your most efficient card. You deploy it in response to their most important noncreature spell — Earthbender Ascension, Sunderflock, their board wipe. Your payoff: their spell is countered AND you have a 5/4 in play. You follow Aven with an attack — they must spend removal instead of advancing their plan.</div></div>
+    <div class="card"><div class="card-label">Engine: Stormplain Detainment</div><div class="card-title">Your Board Lockout</div><div class="card-body">Stormplain Detainment ({2}{W}) taps all their creatures until EOT. You deploy it at their attack step when they have 3+ attackers. Your payoff: their entire attack is cancelled, they're tapped down, and you attack freely next turn. You combine it with Voice of Victory attacks: Stormplain taps their blockers, Voice attacks through them. You generate "free" attack steps every turn you cast Stormplain.</div></div>
+    <div class="card"><div class="card-label">Engine: High Noon</div><div class="card-title">Your Sorcery Shield</div><div class="card-body">High Noon prevents all sorcery-speed plays until EOT — for both players. You deploy it the turn before their key sorcery. Your payoff: they can't cast Earthbender Ascension, sweepers, or their key sorcery on their turn. You plan your own sorcery-speed actions for before High Noon resolves. You never cast High Noon blindly; you know their specific sorcery-speed threat first.</div></div>
+  </div>
+</div>
+
+<!-- CH05 ROLES -->
+<div id="roles" class="section">
+  <div class="section-label">Chapter 05</div>
+  <h1>Role Assignment</h1>
+  <p>Jeskai Control is always the reactive player — you never have a proactive "I must do X by turn Y" plan. Your role is defined by the opponent:</p>
+  <div class="card-grid card-grid-3">
+    <div class="card"><div class="card-label">vs Aggro</div><div class="card-title">Life Total Manager</div><div class="card-body">Use Lightning Helix at instant speed to both kill threats and gain life. Never tap out when they have open attack mana. Day of Judgment as the reset button. Goal: reach turn 6 with 8+ life, then Revelation stabilizes completely.</div></div>
+    <div class="card"><div class="card-label">vs Midrange</div><div class="card-title">Answer Engine</div><div class="card-body">Inevitable Defeat for their key permanents. No More Lies for their value spells. Counter their draw engines before they generate card advantage. Revelation when they're topdecking — bounce their last threat and refuel.</div></div>
+    <div class="card"><div class="card-label">vs Control Mirror</div><div class="card-title">Resource War</div><div class="card-body">Hold counterspells for their key spells. Mistrise Village makes your Inevitable Defeat uncounterable — use it to land the uncounterable exile. Revelation at instant speed EOT lets you maintain card parity while generating the Monk clock they can't answer.</div></div>
+    <div class="card"><div class="card-label">Priority Rule</div><div class="card-title">Your Interaction Hierarchy</div><div class="card-body">You pre-establish your interaction hierarchy before each game: Dovin's Veto for their board wipe, Seam Rip for their key sorcery, Aven Interrupter for their key instant, Stormplain Detainment for their wide attack. You never use your highest-priority counter on a lower-priority threat. You identify their top 3 threats and hold the right answer for each. Wrong counter assignment loses games.</div></div>
+    <div class="card"><div class="card-label">Clock Rule</div><div class="card-title">Your Attack Commitment</div><div class="card-body">Once you deploy Voice of Victory, you attack every turn. You never miss an attack step with Voice — every attack is 3 guaranteed damage through targeted-removal immunity. You hold your remaining mana for answers, not attacks. Your threat (Voice) attacks automatically; your job after Voice resolves is holding the right counter for their board wipe attempt.</div></div>
+    <div class="card"><div class="card-label">Counter Sequencing</div><div class="card-title">Your Mana Discipline</div><div class="card-body">You hold {W}{U} open on their turn every turn from T3 onward. Against a spell-heavy deck: you hold Seam Rip or Dovin's Veto every turn. You tap down to 0 only when you're deploying your own threat AND you have a Veto in hand that will protect it. You never tap out speculatively. Your power comes from untapped mana — every tapped out turn is a turn they can resolve their win condition.</div></div>
+    <div class="card"><div class="card-label">High Noon Timing</div><div class="card-title">Your Sorcery Window</div><div class="card-body">You cast High Noon when you've identified the specific sorcery you're stopping. You hold High Noon for the turn before they cast Earthbender Ascension or their sweeper. You don't cast High Noon when they have no sorceries — you save it. Once High Noon resolves, you attack freely knowing they're locked out of their key sorcery-speed play for that turn.</div></div>
+  </div>
+</div>
+
+<!-- CH06 MATCHUPS -->
+<div id="matchups" class="section">
+  <div class="section-label">Chapter 06</div>
+  <h1>Matchup Guide</h1>
+  <p style="font-style:italic;color:var(--mid);font-size:15px;margin-bottom:24px;">Written from the Jeskai Control pilot's seat. You are the reactive deck. Every matchup is about surviving long enough to execute Revelation + Monks.</p>
+
+  <table class="matchup-table">
+    <thead><tr><th>Matchup</th><th>Your Role</th><th>Verdict</th><th>Your Key Weapon</th></tr></thead>
+    <tbody>
+      <tr onclick="toggle('mu-dimir')"><td><strong>Dimir Midrange</strong></td><td>Attrition</td><td><span class="verdict verdict-dog">Unfavorable (36%)</span></td><td>Inevitable Defeat handles Kaito uncounterable. Torpor Orb from SB blanks their entire ETB disruption suite.</td></tr>
+      <tr><td colspan="4" class="matchup-detail" id="mu-dimir">
+        <p>You are the underdog at 36% — their flash creatures react to your sweeper timing and Kaito has hexproof on your turn. But you have the tools to fight back if you sequence correctly. The matchup is decided by whether you can land Revelation + Monks before they rebuild their hand via Enduring Curiosity. One successful Revelation — bounce their Kaito, deal 4 to their face, create two 1/1 prowess Monks, draw 2, gain 4 — sets you ahead on every axis: card parity, life, and board.</p>
+        <p><strong>Kaito is uncounterable on their turn:</strong> Kaito has hexproof during your turn. But on their turn, when they attack with Kaito's minus ability or when Kaito first resolves, you can Inevitable Defeat it — Inevitable Defeat is an instant and doesn't require targeting during your turn. You're exiling "target nonland permanent" which doesn't have the hexproof restriction. Get Kaito off the board with Inevitable Defeat the turn it resolves or the turn after they use his +2 ability.</p>
+        <p><strong>Torpor Orb is your game-winner:</strong> Their disruption package is entirely ETB-based: Floodpits Drowner taps your board, Tishana's Tidebinder counters your abilities, Deep-Cavern Bat strips your hand. Torpor Orb ({2} artifact) makes all entering creatures' ETBs do nothing. With Orb in play: Drowner enters as a vanilla 2/5. Tidebinder enters as a 3/3 that does nothing. Bat is a 1/1 flier. Their disruption suite is completely blank.</p>
+        <p><strong>Turn-by-turn plan:</strong> T1-T2: play lands, hold mana. T3: Spell Snare their Kaito ({U} counters MV 2 — wait, Kaito is MV 3). Spell Snare counters MV 2 exactly. Kaito is {1}{U}{B} = MV 3. Spell Snare doesn't hit Kaito. No More Lies ({U}{W}) counters Kaito unless they pay {3} — on T3 with only 3 lands, they can't pay {3} extra. Counter Kaito with No More Lies on T3 if they tap for it. T4: if they deployed a creature suite, hold up Inevitable Defeat for Enduring Curiosity (enchantment — Defeat exiles it). T5+: Revelation EOT after they tap for a spell.</p>
+        <table class="sb-table"><thead><tr><th>Out</th><th>In</th></tr></thead><tbody>
+          <tr><td class="sb-out">−2 <span class="c">Day of Judgment</span></td><td class="sb-in">+2 <span class="c">Torpor Orb</span></td></tr>
+          <tr><td class="sb-out">−1 <span class="c">Ultima</span></td><td class="sb-in">+2 <span class="c">Wan Shi Tong</span></td></tr>
+          <tr><td class="sb-out">−1 <span class="c">Spell Snare</span></td><td class="sb-in">+1 <span class="c">Tishana's Tidebinder</span></td></tr>
+        
+      <tr onclick="toggle('mu-lessons')"><td><strong>Izzet Lessons</strong></td><td>Counter + Lock</td><td><span class="verdict verdict-good">Favorable</span></td><td>Your counterspells are better than their draw. Counter Monument to Endurance and you win.</td></tr>
+      <tr><td colspan="4" class="matchup-detail" id="mu-lessons">
+        <p>Izzet Lessons plays into your gameplan perfectly — they're a spell-heavy deck trying to generate card advantage and you have counterspells to shut down every key spell. Their <span class="c">Monument to Endurance</span> is the single card that beats you; counter it. Everything else they do is manageable.</p>
+      <p><strong>Priority:</strong> Counter <span class="c">Monument to Endurance</span> above all else. After that, let their draw spells resolve (Accumulate Wisdom draws them cards but doesn't threaten you) and counter their threats. <span class="c">High Noon</span> slows their spell chains significantly — they can only cast one spell per turn under it.</p>
+      <p><strong>Needle:</strong> Don't tap out for your threats until they've spent their Abandon Attachments. Wan Shi Tong generates card advantage faster than their entire draw engine. Establish Wan Shi Tong → High Noon → win.</p>
+        <div class="sb-table">
+        <div class="sb-col"><div class="sb-col-label">In</div><div class="sb-item"><span><span class="c">Disdainful Stroke</span></span><span class="sb-qty">+1</span></div><div class="sb-item"><span><span class="c">Wan Shi Tong, Librarian</span></span><span class="sb-qty">+1</span></div></div>
+        <div class="sb-col"><div class="sb-col-label">Out</div><div class="sb-item"><span><span class="c">Seam Rip</span></span><span class="sb-qty">−1</span></div><div class="sb-item"><span><span class="c">Get Lost</span></span><span class="sb-qty">−1</span></div></div>
+      </div>
+      </td></tr>
+    </tbody></table>
+        <p class="sb-note"><strong>Needle:</strong> Torpor Orb is your best sideboard card in this matchup — deploy it before they can develop their flash package. Wan Shi Tong (3/3 that lets you put cards from hand to bottom of library when you draw) provides a threat that generates card quality in the long game — their attrition plan runs out before your library does. Trim Day of Judgment (they have few creatures) and Ultima (no artifacts to destroy). Keep Inevitable Defeat at 4 — it's your unconditional answer to Kaito and Enduring Curiosity.</p>
+      </td></tr>
+
+      <tr onclick="toggle('mu-prowess')"><td><strong>Izzet Prowess</strong></td><td>Counter + Sweep</td><td><span class="verdict verdict-dog">Unfavorable</span></td><td>Annul on Stormchaser's Talent is your only efficient answer. Pyroclasm sweeps their 1/1 Otter token board.</td></tr>
+      <tr><td colspan="4" class="matchup-detail" id="mu-prowess">
+        <p>You are the unfavorable deck here. Stormchaser's Talent at Level 3 generates a 1/1 Otter every time they cast an instant or sorcery — and they cast 10-12 spells per game. Day of Judgment kills the Otters but Talent is still in play generating new ones. Ultima kills the Otters and Talent (as a nonland permanent — wait, Ultima destroys artifacts AND creatures, not enchantments). Ultima does NOT destroy Stormchaser's Talent, which is an enchantment. Your only reliable main deck answer to Talent is Inevitable Defeat — exile it as a nonland permanent.</p>
+        <p><strong>Your kill order:</strong> 1. Counter Stormchaser's Talent on entry with Annul ({U}, SB). 2. If Talent resolves, Inevitable Defeat it immediately — don't wait for Level 3. 3. Lightning Helix kills their individual creatures (Slickshot 1/2, Otter 1/1, any 1-3 toughness threat). 4. No More Lies counters Slickshot if they try to deploy it normally (Plot bypasses this — you can't counter a spell cast from exile via Plot... actually you can counter any spell that was cast, including from exile via Plot. No More Lies works on plotted Slickshot).</p>
+        <p><strong>High Noon wins long games:</strong> High Noon ({2}{W} enchantment, SB) limits each player to one spell per turn. Their cantrip chain requires casting 4-5 spells in one turn. High Noon makes that illegal. With High Noon in play, they can cast one Opt per turn. Their Stormchaser's Talent Level 3 only generates one Otter per turn instead of four. Pyroclasm sweeps all the accumulated 1/1 Otters for {1}{R} — 2 damage to each creature wipes every 1/1 token on the board while your Revelation Monks (1/1 prowess) also die, which is acceptable if you then recast Revelation.</p>
+        <p><strong>Turn-by-turn plan:</strong> T1: land. T2: Lightning Helix on their T1 Otter — 3 damage, gain 3 life, clear the clock. T3: Annul in hand waiting for Talent. If they cast Talent, Annul it for {U}. If they deploy Slickshot instead, hold Helix for it at their attack step. T4: Revelation EOT if they're tapped — bounce their key threat, create two 1/1 prowess Monks (which get +1/+1 when you cast Helix next turn).</p>
+        <table class="sb-table"><thead><tr><th>Out</th><th>In</th></tr></thead><tbody>
+          <tr><td class="sb-out">−2 <span class="c">Get Lost</span></td><td class="sb-in">+2 <span class="c">Annul</span></td></tr>
+          <tr><td class="sb-out">−1 <span class="c">Spell Snare</span></td><td class="sb-in">+1 <span class="c">Pyroclasm</span></td></tr>
+          <tr><td class="sb-out">−1 <span class="c">Ultima</span></td><td class="sb-in">+1 <span class="c">High Noon</span></td></tr>
+        </tbody></table>
+        <p class="sb-note"><strong>Needle:</strong> Annul is your best card in this matchup — hard counter on Stormchaser's Talent for {U}. Keep {U} open every turn on T2+. Pyroclasm at {1}{R} kills all 1/1 tokens and 2/2 creatures simultaneously. Your Revelation Monks die too but that's fine — Revelation immediately recasts for new ones. Trim Get Lost (your only enchantment target is Talent, and Annul is better) and Ultima (doesn't hit enchantments).</p>
+      </td></tr>
+
+      <tr onclick="toggle('mu-boros')"><td><strong>Boros Aggro</strong></td><td>Stabilize + Close</td><td><span class="verdict verdict-favor">Favorable</span></td><td>Lightning Helix × 4 = 12 damage dealt + 12 life gained = 24-point swing. They cannot outrace your life gain.</td></tr>
+      <tr><td colspan="4" class="matchup-detail" id="mu-boros">
+        <p>You are favored. Lightning Helix at instant speed deals damage and gains life simultaneously — 4 copies mean up to 24-point life swings over the course of the game. Inevitable Defeat (uncounterable, instant) exiles Ojer Axonil before he amplifies their pings. Day of Judgment wipes their token board entirely. The keys: manage your life total carefully in the early game (they deal noncombat damage that bypasses combat — Sharpshooter pings go face), and use Get Lost on Warleader's Call immediately when it resolves (it's an enchantment, instant speed, destroy it before they generate even one attack step with it active).</p>
+        <p><strong>Voice of Victory timing:</strong> Voice prevents opponents from casting spells during Boros's turn. You must deploy all your interaction BEFORE their attack step begins. If you plan to Helix their Sharpshooter, do it during their main phase — not during combat when Voice is attacking and you can't cast anything. Hold your mana during their main phase and wait for them to finalize their board before attacking.</p>
+        <p><strong>Your removal priority order:</strong> 1. Ojer Axonil — Inevitable Defeat immediately on entry, uncounterable and can't be responded to with Voice (Inevitable Defeat is instant, you can cast it during your turn before their next attack step, or during their main phase before Voice attacks). 2. Shocking Sharpshooter — Helix for 3 (kills the 1/3 exactly with 3 damage). 3. Warleader's Call — Get Lost (destroys enchantment at instant speed). 4. Everything else — Day of Judgment when they overextend.</p>
+        <p><strong>Turn-by-turn plan:</strong> T1: land, hold {R}{W}. T2: if they deployed Sharpshooter, Helix it on their end step (3 damage kills 1/3, you gain 3 life). T3: Inevitable Defeat on their Warleader's Call if it resolved. T4: Get Lost on any remaining enchantment OR No More Lies their Ojer if you held up {U}{W}. T5: Day of Judgment on their token flood. T6+: Revelation EOT — bounce their best threat, create two prowess Monks, draw 2, gain 4. You're now ahead on every axis.</p>
+        <table class="sb-table"><thead><tr><th>Out</th><th>In</th></tr></thead><tbody>
+          <tr><td class="sb-out">−2 <span class="c">Spell Snare</span></td><td class="sb-in">+2 <span class="c">High Noon</span></td></tr>
+          <tr><td class="sb-out">−1 <span class="c">No More Lies</span></td><td class="sb-in">+1 <span class="c">Pyroclasm</span></td></tr>
+        </tbody></table>
+        <p class="sb-note"><strong>Needle:</strong> Inevitable Defeat exiles Ojer — when exiled, he doesn't transform into Temple of Power (the death trigger doesn't fire on exile). Get Lost destroys Warleader's Call at instant speed during their main phase before Voice attacks. High Noon limits them to one spell per turn — their attack-step token chain is ETB triggered abilities (not spells), so High Noon doesn't stop Mobilize tokens entering. But it does stop them casting Burst Lightning + Torch the Tower + Seam Rip in one turn to clear your defenders. Pyroclasm sweeps all their 1/1 Warriors for {1}{R}.</p>
+      </td></tr>
+
+      <tr onclick="toggle('mu-monogreen')"><td><strong>Mono-Green Landfall</strong></td><td>Counter + Answer</td><td><span class="verdict verdict-dog">Unfavorable</span></td><td>Inevitable Defeat exiles Sapling Nursery. Annul counters it on entry for {U}. Day of Judgment handles their Treefolk board.</td></tr>
+      <tr><td colspan="4" class="matchup-detail" id="mu-monogreen">
+        <p>Mono-Green is unfavorable — Sapling Nursery generates Treefolk tokens faster than you can sweep them, and their combo kill via Icetill Explorer + Mightform Harmonizer + Escape Tunnel creates a one-shot threat you have to respect every turn they have 4+ lands. Your plan: counter or exile Sapling Nursery before it generates tokens, answer the combo pieces individually, and close with Revelation Monks before their board overwhelms your sweepers.</p>
+        <p><strong>The Nursery problem:</strong> Sapling Nursery is an enchantment. Day of Judgment doesn't kill it. Ultima doesn't kill it. Your main-deck answers are: Inevitable Defeat ({2}{B}{W} instant, exile any nonland permanent — hits Nursery), Get Lost ({1}{G} instant destroy enchantment — wait, Get Lost is {1}{G}... confirming: Get Lost destroys creature, enchantment, or planeswalker, controller gets 2 Map tokens). Yes, Get Lost destroys Nursery at instant speed. Annul from SB counters it on entry for {U}.</p>
+        <p><strong>The combo threat:</strong> Icetill Explorer in play + 4 available land plays + Mightform Harmonizer + Escape Tunnel = one-shot kill. When Icetill is on the board and they have 3+ untapped lands, assume the combo is live. Hold No More Lies for the Escape Tunnel activation (Escape Tunnel's unblockable mode is an activated ability — No More Lies doesn't counter activated abilities, that's Tishana's Tidebinder. No More Lies counters spells. Use Tidebinder from SB to counter the Escape Tunnel activation).</p>
+        <p><strong>Turn-by-turn plan:</strong> T1: land + hold {U} for Annul. T2: Helix their Llanowar Elves (1/1, Helix hits creatures — 3 damage kills it, you gain 3 life). T3: if they try Sapling Nursery, Annul it for {U}. T4: if Nursery resolved, Inevitable Defeat it — but recognize this costs 4 mana and puts you behind. Better to Annul it on entry. T5: Day of Judgment on their accumulated Treefolk. T6: Revelation EOT for recovery and Monk clock.</p>
+        <table class="sb-table"><thead><tr><th>Out</th><th>In</th></tr></thead><tbody>
+          <tr><td class="sb-out">−2 <span class="c">Spell Snare</span></td><td class="sb-in">+2 <span class="c">Annul</span></td></tr>
+          <tr><td class="sb-out">−1 <span class="c">Ultima</span></td><td class="sb-in">+1 <span class="c">Torpor Orb</span></td></tr>
+        </tbody></table>
+        <p class="sb-note"><strong>Needle:</strong> Annul counters Sapling Nursery and Earthbender Ascension on entry for {U}. Keep {U} open every turn from T3 onward. Torpor Orb blanks Badgermole Cub's ETB (no earthbend), Fecund Greenshell's ETB (no land), and Leatherhead's hexproof counter entering — but Torpor Orb also blanks your own Revelation Monks' prowess. Your Monks enter as plain 1/1 Monks with no prowess. Factor this in — against Mono-Green the faster clock from Orb blanking their engine is worth losing the Monk prowess.</p>
+      </td></tr>
+
+      <tr onclick="toggle('mu-mirror')"><td><strong>Jeskai Control Mirror</strong></td><td>Resource War</td><td><span class="verdict verdict-even">Even</span></td><td>Mistrise Village makes your Inevitable Defeat uncounterable. Revelation at instant speed at their end step wins the card parity war.</td></tr>
+      <tr><td colspan="4" class="matchup-detail" id="mu-mirror">
+        <p>The mirror is pure resource management. Both players hold counterspells and avoid walking into them. The player who makes the first mistake (tapping out when the opponent has countermagic) loses a key permanent and falls behind. Revelation cast EOT when they're tapped out is the single most important play — it draws 2 cards, creates two threats, gains 4 life, and bounces their best permanent simultaneously, all at instant speed while they have nothing open.</p>
+        <p><strong>Mistrise Village is your edge:</strong> Mistrise Village ({U}{T}: next spell you cast this turn can't be countered). Activate it before casting Inevitable Defeat to make it uncounterable even beyond its printed text. Against their No More Lies, their Spell Snare, their Get Out — your Defeat resolves regardless. This is the key play to set up in the mirror: Mistrise activation + Inevitable Defeat on their key permanent or their Revelation Monks.</p>
+        <p><strong>Consult the Star Charts at instant speed:</strong> Consult ({1}{W} instant, look at top X lands you control, put 1 or 2 kicked) — use this on THEIR end step after they pass priority. You're using their turn to dig for your key cards without tapping out during your own turn. With 6 lands, unkicked Consult looks at 6 cards. Kicked for {1}{U} looks at 6 picks 2. The highest-value use: activate Consult on their end step, find Inevitable Defeat or Revelation for your upcoming turn.</p>
+        <table class="sb-table"><thead><tr><th>Out</th><th>In</th></tr></thead><tbody>
+          <tr><td class="sb-out">−1 <span class="c">Day of Judgment</span></td><td class="sb-in">+2 <span class="c">Wan Shi Tong</span></td></tr>
+          <tr><td class="sb-out">−1 <span class="c">Get Lost</span></td><td class="sb-in"></td></tr>
+        </tbody></table>
+        <p class="sb-note"><strong>Needle:</strong> Wan Shi Tong (3/3 that filters your draws — put any card from hand to bottom when you draw) is your threat in the mirror. Control can't efficiently kill a 3/3 without spending valuable removal that they need for Revelation Monks. Trim Day of Judgment (they have few creatures) and Get Lost (no enchantments to destroy — wait, they're running the same deck so they do have enchantments... they have none in the main. Keep Get Lost for their SB Torpor Orbs and enchantment answers).</p>
+      </td></tr>    <tr onclick="toggle('mu-monogreen')"><td><strong>Mono-Green Landfall</strong></td><td>Counter Their Engine</td><td><span class="verdict verdict-dog">Unfavorable</span></td><td>Mono-Green Landfall assembles Icetill Explorer + Earthbender Ascension + Lumra for a turn ...</td></tr>
+    <tr><td colspan="5" class="matchup-detail" id="mu-monogreen">
+        <p>Mono-Green Landfall assembles Icetill Explorer + Earthbender Ascension + Lumra for a turn 5-6 kill that goes over your control suite. Counterspell answers their key pieces. Badgermole Cub and Earthbender Ascension are both MV 2 — your Spell Snare hard-counters both for {U}. Mossborn Hydra (7/7, uncounterable at 7+ lands) is their best threat post-board — exile it with Stormplain Detainment or Seam Rip before it hits.</p>
+        <table class="sb-table"><thead><tr><th>Out</th><th>In</th></tr></thead><tbody>
+          <tr><td class="sb-out">−2 High Noon</td><td class="sb-in">+ 2 Spell Snare</td></tr>
+          <tr><td class="sb-out">−1 Aven Interrupter</td><td class="sb-in">+1 Three Steps Ahead</td></tr>
+        </tbody></table>
+        <p class="sb-note">Spell Snare at {U} hard-counters Badgermole Cub and Earthbender Ascension — their two most critical pieces. Three Steps Ahead provides flexible protection. High Noon is wrong here (their key plays are instant-speed ETBs, not sorceries). Cut one Aven Interrupter (5 mana is too slow in this racing matchup).</p>
+      </td></tr>
+    <tr onclick="toggle('mu-simic')"><td><strong>Simic Rhythm</strong></td><td>Sweep and Counter</td><td><span class="verdict verdict-dog">Slight Unfavorable</span></td><td>Simic Rhythm generates too wide a board for your spot removal to handle. Stormplain Detain...</td></tr>
+    <tr><td colspan="5" class="matchup-detail" id="mu-simic">
+        <p>Simic Rhythm generates too wide a board for your spot removal to handle. Stormplain Detainment taps their entire board — deploy it on their attack step when their creatures are untapped. High Noon prevents their sorcery-speed Earthbender Ascension triggers. Your Seam Rip counters their Ascension or Mossborn Hydra (the latter at MV 5 catches Disdainful Stroke). Their Badgermole Cub is MV 2 — Spell Snare handles it.</p>
+        <table class="sb-table"><thead><tr><th>Out</th><th>In</th></tr></thead><tbody>
+          <tr><td class="sb-out">−2 Aven Interrupter</td><td class="sb-in">+ 2 Seam Rip</td></tr>
+          <tr><td class="sb-out">−1 Three Steps Ahead</td><td class="sb-in">+1 Stormplain Detainment</td></tr>
+        </tbody></table>
+        <p class="sb-note">Seam Rip counters Earthbender Ascension at instant speed. Extra Stormplain taps their board mid-attack. Cut Aven Interrupter (too expensive when they have wide boards) and Three Steps Ahead (your tempo package is more important).</p>
+      </td></tr>
+    <tr onclick="toggle('mu-excruciator')"><td><strong>Dimir Excruciator</strong></td><td>Counter Wars</td><td><span class="verdict verdict-even">Even</span></td><td>Dimir Excruciator mirrors your counter suite — Counterspell, Floodpits Drowner, Spell Snar...</td></tr>
+    <tr><td colspan="5" class="matchup-detail" id="mu-excruciator">
+        <p>Dimir Excruciator mirrors your counter suite — Counterspell, Floodpits Drowner, Spell Snare. The matchup is decided by who resolves their key permanent first. Your Voice of Victory (3/3 flier that protects itself) is a must-answer threat. Their Floodpits Drowner bounces your Voice when you tap out. Sequence: deploy Voice when they're at 3 or fewer mana, then hold Seam Rip for their bounce.</p>
+        <table class="sb-table"><thead><tr><th>Out</th><th>In</th></tr></thead><tbody>
+          <tr><td class="sb-out">−2 High Noon</td><td class="sb-in">+ 2 Duress</td></tr>
+          <tr><td class="sb-out">−1 Get Lost</td><td class="sb-in">+1 Seam Rip</td></tr>
+        </tbody></table>
+        <p class="sb-note">Duress strips their key counter or Floodpits Drowner from hand before they deploy it. Extra Seam Rip protects your Voice of Victory from bounce. High Noon is wrong — their plays are all at instant speed. Get Lost is weaker when their key permanents are non-enchantments.</p>
+      </td></tr>
+    <tr onclick="toggle('mu-spellementals')"><td><strong>Izzet Spellementals</strong></td><td>Counter Their Payoffs</td><td><span class="verdict verdict-good">Favorable</span></td><td>Izzet Spellementals needs to resolve Hearth Elemental to chain free spells. Your Aven Inte...</td></tr>
+    <tr><td colspan="5" class="matchup-detail" id="mu-spellementals">
+        <p>Izzet Spellementals needs to resolve Hearth Elemental to chain free spells. Your Aven Interrupter flashed in while their chain is assembling counters their key spell. Voice of Victory flies over their elemental ground army. Stormplain Detainment taps Hearth Elemental before it can enable more free spells. Their Sunderflock (sweeper) is sorcery speed — Seam Rip hard-counters it for {1U} at instant speed.</p>
+        <table class="sb-table"><thead><tr><th>Out</th><th>In</th></tr></thead><tbody>
+          <tr><td class="sb-out">−2 High Noon</td><td class="sb-in">+ 2 Seam Rip</td></tr>
+          <tr><td class="sb-out">−1 Get Lost</td><td class="sb-in">+1 Stormplain Detainment</td></tr>
+        </tbody></table>
+        <p class="sb-note">Seam Rip counters Sunderflock (their sweeper) and Hearth Elemental's key spells. Extra Stormplain taps Hearth before it can chain. High Noon is wrong here — they chain instants not sorceries. Get Lost is weak (they have no key enchantments).</p>
+      </td></tr>
+
+    </tbody>
+  </table>
+</div>
+
+<!-- CH06b LINES -->
+<div id="lines" class="section">
+  <div class="section-label">Chapter 06b</div>
+  <h1>Disruption<br>Lines</h1>
+
+  <div class="mantra">"Hold mana every turn. Answer on their end step. Never tap out when they can attack."</div>
+
+  <h2>The Mana Hold Rule</h2>
+  <p>Control loses games in one specific way: tapping out during your own main phase when the opponent then untaps and attacks or resolves an uncounterable threat. <strong>Every turn, before you decide what to cast, ask: what is the worst thing they can do if I tap out right now?</strong> If the answer is "kill me" or "resolve something I can't answer," hold the mana.</p>
+  <div class="card-grid card-grid-2">
+    <div class="card">
+      <div class="card-label">What to Hold Mana For</div>
+      <div class="card-title">Priority Response Mana</div>
+      <div class="card-body">
+        {R}{W} = Lightning Helix — hold vs any aggro opponent with open attack mana. One Helix per turn is 6-point swing ({R}{W} mana + 3 damage + 3 life).<br><br>
+        {2}{B}{W} = Inevitable Defeat — hold whenever their key permanent could resolve. Against Dimir: Kaito. Against Boros: Ojer Axonil. Against Mono-Green: Sapling Nursery.<br><br>
+        {U}{W} = No More Lies — hold vs any key 3-drop you can't let resolve. Counters unless they pay {3} — on T3 with exactly 3 lands they almost never can.
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-label">When to Spend Mana</div>
+      <div class="card-title">Safe Windows to Tap Out</div>
+      <div class="card-body">
+        Their end step is your safest window — they've declared no blocks, used their mana, and can't respond to your sorcery-speed cards until their next turn. Use their end step for: Consult the Star Charts (instant — dig for the key card you need), Stock Up on T4+ (sorcery but you're already in their end step... wait, Stock Up is sorcery, you can't cast it at instant speed). Correct: use end step for Consult. Cast Stock Up only when you have nothing else to do on your own main phase with mana open.
+      </div>
+    </div>
+  </div>
+
+  <h2>Consult the Star Charts — Instant Speed Dig</h2>
+  <p>Consult ({1}{W} instant, kicker {1}{U}: look at top X lands you control, put 1 or 2 into hand) is your most efficient card selection tool because it's at instant speed. Use it <strong>on their end step</strong>, not on your main phase, so you untap with full mana available:</p>
+  <div class="card-grid card-grid-2">
+    <div class="card">
+      <div class="card-label">Correct Timing</div>
+      <div class="card-title">Their End Step (After They Pass)</div>
+      <div class="card-body">They pass priority in their end step. You respond: cast Consult kicked ({1}{U}{1}{W} = {2}{U}{W}). Look at top (lands you control) cards, put 2 in hand. Now you untap with a full hand and full mana. They get no response because it's still their end step — they're not untapping yet. This is the cleanest dig cycle in the deck.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Critical Oracle Rule</div>
+      <div class="card-title">X = Lands You Control at Cast Time</div>
+      <div class="card-body">You look at the top X cards where X is the number of lands you control at the time you cast Consult. With 6 lands = look at 6. With 8 lands = look at 8. This gets dramatically better as the game goes on — by turn 8 you're looking at 8 cards for {2}{U}{W}. Always wait until you have maximum lands before casting Consult for full dig depth.</div>
+    </div>
+  </div>
+
+  <h2>Revelation — When and What to Bounce</h2>
+  <p>Jeskai Revelation is your most powerful card but it costs {2}{U}{R}{W}. The five effects (bounce + 4 damage + 2 Monks + draw 2 + gain 4) all happen simultaneously. The bounce target is the highest-leverage decision:</p>
+  <div class="card-grid card-grid-3">
+    <div class="card">
+      <div class="card-label">Best Bounce Target</div>
+      <div class="card-title">Their Key Permanent When They're Tapped</div>
+      <div class="card-body">Cast Revelation on their end step when they've spent all their mana. Bounce their most dangerous permanent — not any permanent, the one they relied on most this turn. Sapling Nursery (back to hand, no tokens next turn unless they recast it). Kaito (loses all loyalty counters going back to hand). Enduring Curiosity (stops their draw engine). Time the bounce to the moment they can't immediately recast it.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">The Monk Clock</div>
+      <div class="card-title">Two Prowess 1/1s That Grow With Your Spells</div>
+      <div class="card-body">Your Revelation Monks have prowess — every spell you cast makes them +1/+1 until EOT. Lightning Helix cast while Monks are attacking = both Monks are 2/2. Consult while they're attacking = 2/2. Stock Up + Consult = 3/3. Your instants that you were going to cast anyway are free combat pump on the Monks. Revelation creates a clock that accelerates with your existing game plan.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">The Life Swing</div>
+      <div class="card-title">+4 Life at Instant Speed</div>
+      <div class="card-body">Against any aggro deck, the 4 life from Revelation plus the 3 life from a Lightning Helix in the same turn = 7 life at instant speed. That's often the turn you stabilize from "dead to their next attack" to "comfortable." Don't hold Revelation looking for the perfect bounce target — casting it purely for the life + draw + Monks is often correct against aggressive opponents.</div>
+    </div>
+  </div>
+
+  <h2>Inevitable Defeat vs Kaito Hexproof</h2>
+  <p>Kaito, Bane of Nightmares has "hexproof during your turn" — you cannot target him with spells or abilities you control during your own turn. But Inevitable Defeat is an <strong>instant</strong>. You can cast it during their turn (when Kaito's hexproof is inactive) or during their end step. The correct line:</p>
+  <div class="card-grid card-grid-2">
+    <div class="card">
+      <div class="card-label">The Timing Window</div>
+      <div class="card-title">Cast Inevitable Defeat During Their Turn</div>
+      <div class="card-body">Their main phase — after they deploy Kaito but before they end their turn. Or their end step. During their turn Kaito has NO hexproof. Inevitable Defeat: exile him. He's uncounterable (Inevitable Defeat's own text) and instant speed. They can't protect Kaito during their own turn because his hexproof only applies during YOUR turn. This is the single most important interaction rule vs Dimir.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Mistrise Village Setup</div>
+      <div class="card-title">Make Defeat Doubly Uncounterable</div>
+      <div class="card-body">Inevitable Defeat is already uncounterable by its own text. But Mistrise Village ({U}{T}: your next spell this turn can't be countered) adds a second layer. In the control mirror where they might try to counter your Defeat anyway — activate Mistrise first, then cast Defeat. It's now protected by both its own text AND the Village trigger. Use this against any opponent running countermagic who might try to get cute.</div>
+    </div>
+  </div>
+
+  <h2>Ultima — The End Turn Timing</h2>
+  <p>Ultima destroys all artifacts and creatures then ends the turn. "Ending the turn" means: exile all spells and abilities from the stack (including Ultima), the current player discards to max hand size, damage wears off, and "this turn" / "until end of turn" effects end. Critical timing implications:</p>
+  <div class="card-grid card-grid-2">
+    <div class="card">
+      <div class="card-label">Correct Use: Their Combat Step</div>
+      <div class="card-title">Cast Ultima When They Attack</div>
+      <div class="card-body">They declare attackers. You cast Ultima. Their attacking creatures die (destroyed). Their non-attackers die. The turn ends — their attack step is over, they go to their end step with an empty board and no damage dealt. This is the only sweeper in the format that also stops the attack that triggered it. Critical: they don't get to deal combat damage because the turn ending cancels the combat damage step.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">What Ultima Does NOT Hit</div>
+      <div class="card-title">Enchantments Survive Ultima</div>
+      <div class="card-body">Ultima destroys artifacts AND creatures. It does not destroy enchantments. Sapling Nursery survives. Stormchaser's Talent survives. Warleader's Call survives. Earthbender Ascension survives. After Ultima, their enchantments are still in play and will resume generating value next turn. Plan for what survives — if Nursery is in play when you cast Ultima, you've swept their board but Nursery immediately starts making tokens on their next land drop.</div>
+    </div>
+  </div>
+
+  <h2>Voice of Victory — They Cannot Cast Spells During Your Turn</h2>
+  <p>Boros Aggro runs Voice of Victory whose text includes "your opponents can't cast spells during your turn." This is <strong>their turn ability on your turn</strong> — during the Boros player's turn after Voice attacks, you cannot cast anything. All interaction must happen during Boros's main phase BEFORE Voice attacks. The specific windows:</p>
+  <div style="border:1px solid var(--rule);margin:24px 0;">
+    <div style="background:var(--ink);padding:16px 24px;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(242,237,230,0.5);">Your Response Windows vs Voice of Victory</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:var(--rule);">
+      <div style="background:var(--paper);padding:20px;">
+        <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--mid);margin-bottom:8px;">Their Main Phase (OPEN)</div>
+        <div style="font-size:14px;font-weight:300;color:var(--mid);line-height:2;">You can cast any spell. Helix kills Sharpshooter here. Inevitable Defeat hits Ojer here. This is your last chance before Voice attacks and shuts you out.</div>
+      </div>
+      <div style="background:var(--paper);padding:20px;">
+        <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--mid);margin-bottom:8px;">After Voice Attacks (LOCKED)</div>
+        <div style="font-size:14px;font-weight:300;color:var(--mid);line-height:2;">You cannot cast spells at all. Warrior tokens enter, Sharpshooter pings, Ojer amplifies — all without response. Sit and take the damage.</div>
+      </div>
+      <div style="background:var(--paper);padding:20px;">
+        <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--mid);margin-bottom:8px;">Their End Step (OPEN)</div>
+        <div style="font-size:14px;font-weight:300;color:var(--mid);line-height:2;">Voice's "your turn" restriction ends. You can now cast Helix on their end step. But any damage from this turn's combat and ETBs has already been dealt.</div>
+      </div>
+    </div>
+    <div class="card"><div class="card-label">Line 01</div><div class="card-title">Your High Noon Line</div><div class="card-body">You cast High Noon on T3 after identifying their key sorcery. High Noon prevents ALL sorcery-speed plays until EOT. You calculate: if their key play is a sorcery (Earthbender Ascension, their sweeper), you cast High Noon. If their key play is an instant (Counterspell, flash creatures), you hold High Noon. You never cast High Noon blindly — you know their specific threat first.</div></div>
+    <div class="card"><div class="card-label">Line 02</div><div class="card-title">Your Voice + Counter Line</div><div class="card-body">You deploy Voice of Victory on T5 with {W}{U} or {1}{U} open (Dovin's Veto or Seam Rip). You attack immediately — Voice can't be targeted while attacking. They must cast their board wipe. You fire Dovin's Veto on their board wipe. If they don't have a wipe, you attack every turn until they're dead. You count their outs before committing Voice.</div></div>
+    <div class="card"><div class="card-label">Line 03</div><div class="card-title">Your Aven Interrupter Flash</div><div class="card-body">You hold Aven Interrupter mana ({3}{W}{U} = 5 mana) from T5 onward. You flash Aven in when they tap for their most important non-creature spell. Aven ETB counters the spell. You now have a 5/4 in play. You follow with attack — they must spend removal on Aven instead of advancing their plan.</div></div>
+    <div class="card"><div class="card-label">Line 04</div><div class="card-title">Your Stormplain Detainment Line</div><div class="card-body">You deploy Stormplain Detainment ({2}{W}) at their combat step when they declare attackers. All their creatures are tapped until EOT — their attack is cancelled. You untap and attack with your Voice of Victory. They cannot attack back that turn. You reset the board state from "them attacking" to "you attacking" in one instant-speed card.</div></div>
+  </div>
+
+  <h2>Oracle-Verified Edge Cases</h2>
+
+  <div class="edge-case">
+    <div class="edge-case-label">No More Lies — Exiles If Countered, Not Just Counter</div>
+    <div class="edge-case-body">{W}{U} instant: "Counter unless they pay {3}. If countered this way, exile it instead of putting into graveyard." The exile matters against: flashback, escape, and GY recursion. If they DON'T pay {3}: their spell is exiled permanently. If they DO pay: their spell resolves normally and goes to GY. The {3} tax is steep early game but easy to pay T5+. Board out against decks with excess mana.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Sunfall — Exile, Not Destroy. Incubate Scales with Board Size</div>
+    <div class="edge-case-body">{3}{W}{W}: "Exile all creatures. Incubate X where X = creatures exiled." Exile bypasses indestructible, undying, death triggers, and "when dies" effects. The Incubator token has X +1/+1 counters — in a board stall with 6 creatures, you get a 6/6 for {2} to transform. Sunfall hits YOUR creatures too — don't play it with a board advantage unless the Incubator is worth more.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Tishana's Tidebinder — Permanent Ability Removal on Flash Body</div>
+    <div class="edge-case-body">{2}{U} 3/2 Flash Merfolk. ETB: "Counter up to one target activated or triggered ability. If countered this way, that permanent loses all abilities for as long as Tidebinder remains on the battlefield." This is permanent ability suppression — not until end of turn. A Tidebinder that counters Ob Nixilis's loyalty ability makes Ob lose ALL abilities while Tidebinder lives. Kill Tidebinder: Ob gets abilities back. The "up to one" means you can flash Tidebinder in with no target if you just need a 3/2 blocker.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Scrollshift as Protection — Exile Your Own Creature in Response</div>
+    <div class="edge-case-body">"Exile up to one target artifact, creature, or enchantment you control, then return it." In response to opponent's removal: Scrollshift your creature → it's exiled (removal fizzles, no legal target) → it returns. The creature is a new object: no longer targeted by anything. Also draws a card. This is a {2}{W} protection spell + cantrip that dodges ALL targeted removal.</div>
+  </div>
+
+  <div class="edge-case">
+    <div class="edge-case-label">Ob Nixilis Casualty — Copy with Lower Loyalty</div>
+    <div class="edge-case-body">"Casualty X: sacrifice creature with power X. Copy this spell. Copy isn't legendary, has starting loyalty X." If you sacrifice a 3-power creature: you get the original Ob (starting loyalty from card) AND a copy with loyalty 3. Both are planeswalkers named Ob Nixilis but the copy isn't legendary — no legend rule conflict. Two Obs on T3 is devastating. The copy can use +1 or -2 immediately.</div>
+  </div>
+</div>
+
+<!-- CH07 SIDEBOARD -->
+<div id="sideboard" class="section">
+  <div class="section-label">Chapter 07</div>
+  <h1>Sideboard Guide</h1>
+  <div class="sb-card-guide">
+    <div class="sb-guide-row"><div class="sb-guide-name">Flashfreeze ×2</div><div class="sb-guide-body">{1}{U} Instant. Counter target red or green spell. Hard counter for one color — specifically designed for Mono-Green Landfall and Boros Aggro's red package. Counters Burst Lightning, Howlsquad Heavy, Voice of Victory (white, doesn't help), Earthbender Ascension (green), Sapling Nursery (green), Mossborn Hydra. At {1}{U} it's efficiently costed. Board in: Mono-Green, Boros (for their red spells), any matchup where Helix range misses key threats.</div></div>
+    <div class="sb-guide-row"><div class="sb-guide-name">High Noon ×2</div><div class="sb-guide-body">{2}{W} Enchantment. Each player can't cast more than one spell per turn. Slows down any strategy dependent on chaining multiple spells per turn — Izzet Prowess (their cantrip chain generates all their damage), Boros Aggro (limits their burn chains). Note: doesn't stop Mobilize tokens (those aren't spells), and doesn't stop triggered abilities. Board in: any combo or spell-chain strategy.</div></div>
+    <div class="sb-guide-row"><div class="sb-guide-name">Rest in Peace ×2</div><div class="sb-guide-body">{1}{W} Enchantment. All cards go to exile instead of GY. Hard GY hate. Stops Icetill Explorer from playing lands from GY, prevents Wild Ride Harmonize, blanks Eddymurk Crab's GY cost reduction. Board in: any GY-dependent strategy (Izzet Prowess, Spellementals, any Reanimator).</div></div>
+    <div class="sb-guide-row"><div class="sb-guide-name">Wan Shi Tong, Librarian ×2</div><div class="sb-guide-body">{2}{U} Legendary Creature 3/3. Knowledge is power — when you draw a card, you may put any card from hand on bottom of library. Provides a recurring threat that also refines your hand. Board in: any midrange or control matchup where the game goes long and you need a card-quality engine. A 3/3 body that also draws is significant in a deck with no other creatures.</div></div>
+    <div class="sb-guide-row"><div class="sb-guide-name">Annul ×2</div><div class="sb-guide-body">{U} Instant. Counter target artifact or enchantment spell. Hard counter for {U}. Stormchaser's Talent (1 mana), Sapling Nursery (X mana), Warleader's Call (3 mana), Earthbender Ascension (2 mana). The cheapest possible answer to their most dangerous enchantments. Board in: Izzet Prowess, Mono-Green, Boros Aggro (Warleader's Call), any enchantment-heavy strategy.</div></div>
+    <div class="sb-guide-row"><div class="sb-guide-name">Torpor Orb ×2</div><div class="sb-guide-body">{2} Artifact. Creatures entering don't cause abilities to trigger. Blanks all ETB-based strategies. Against Dimir: Tidebinder can't counter your abilities, Drowner can't stun, Kaito's ninjutsu trigger is blanked. Against Mono-Green: Badgermole Cub's earthbend doesn't trigger, Fecund Greenshell's ETB doesn't trigger. Note: Orb also prevents Jeskai's Revelation Monks from having prowess triggered by spells — they enter as 1/1 Monks that don't get prowess buffs. Board in carefully when the ETBs you want to stop outweigh your own ETBs lost.</div></div>
+  </div>
+<
+    <div class="sb-guide-row">
+      <div class="sb-guide-name"><span class="c">Seam Rip</span></div>
+      <div class="sb-guide-body"><strong>2 copies.</strong> {1}{U} instant: counter target sorcery spell. Your specific sorcery counter — it only hits sorceries. You hold it for their key sorcery-speed plays: Earthbender Ascension (MV 2), Sunderflock (sweeper), Cultivate effects. Mistake: using Seam Rip on an instant — it specifically says sorcery. Know the difference before holding mana for it.</div>
+    </div>
+    <div class="sb-guide-row">
+      <div class="sb-guide-name"><span class="c">Dovin's Veto</span></div>
+      <div class="sb-guide-body"><strong>2 copies.</strong> {W}{U} instant: counter target noncreature spell. It <em>can't be countered</em>. Your uncounterable answer to their noncreature threats — they cannot Force of Negation it, they cannot Spell Pierce it. It always resolves. Board in vs any counter-heavy deck (mirrors, control). Mistake: using Dovin's Veto on a creature spell — it specifically says noncreature. Save it for their board wipes, their planeswalkers, their key spells.</div>
+    </div>
+    <div class="sb-guide-row">
+      <div class="sb-guide-name"><span class="c">Stormplain Detainment</span></div>
+      <div class="sb-guide-body"><strong>2 copies.</strong> {2}{W} instant: tap all creatures target opponent controls until EOT. Your mass tap — deployed at their attack step to prevent their entire attack and tap down their blockers. At 3 mana, it's your T3+ interaction that stops their wide attack. Combines with Voice of Victory: Stormplain taps their blockers, Voice attacks through. Mistake: casting Stormplain on your turn as a tap — always cast it at their declare-attackers step for maximum tempo.</div>
+    </div>
+  </div>
+
+<!-- CH08 HEURISTICS -->
+<div id="heuristics" class="section">
+  <div class="section-label">Chapter 08</div>
+  <h1>Heuristics</h1>
+  <ol class="heuristic-list">
+    <li><div class="heuristic-num">01</div><div class="heuristic-body"><strong>Never tap out when they have open attack mana — hold response mana always.</strong> Control's golden rule. Tapping out for a sorcery-speed Consult or Stock Up when they have 3 open mana means they untap and attack into an unguarded Jeskai player. The loss condition is almost always "I tapped out and they attacked for lethal." Hold {R}{W} for Helix or {U}{W} for No More Lies every single turn.</div></li>
+    <li><div class="heuristic-num">02</div><div class="heuristic-body"><strong>Inevitable Defeat is your primary removal — use it on indestructible, high-toughness, and enchantment threats that other spells miss.</strong> Helix answers toughness 3 or less. Inevitable Defeat answers everything else. Reserve Defeat for: Ojer Axonil (4 toughness, indestructible when transformed), Sapling Nursery (enchantment), Mossborn Hydra (large toughness), Eddymurk Crab (5 toughness). Don't waste Defeat on a Shocking Sharpshooter when Helix handles it.</div></li>
+    <li><div class="heuristic-num">03</div><div class="heuristic-body"><strong>Jeskai Revelation's bounce is a tempo gain, not permanent removal — bounce their best permanent, not their most permanent.</strong> Revelation returns "target spell or permanent to its owner's hand." Bouncing a Sapling Nursery delays it one turn but they replay it next turn. Bouncing a planeswalker when they have the mana to re-cast is poor value. Best targets: bounce their spell in response to ETB before it resolves (tempo gain + 4 damage + tokens + 2 draws + 4 life), or bounce their key permanent when they're at 1 land and can't re-cast.</div></li>
+    <li><div class="heuristic-num">04</div><div class="heuristic-body"><strong>Mistrise Village's uncounterable activation must be used the same turn you cast the spell — it applies to the next spell you cast this turn.</strong> Activate Mistrise Village ({U}{T}: next spell can't be countered) immediately before casting Inevitable Defeat or Jeskai Revelation in the control mirror. The activation is at sorcery speed — use it before moving to cast the spell you want to protect. The uncounterable window doesn't carry to next turn.</div></li>
+    <li><div class="heuristic-num">05</div><div class="heuristic-body"><strong>Ultima ends the turn after destroying artifacts and creatures — your own combat damage and effects end too.</strong> If you had your own permanents with "until end of turn" effects, they end. More importantly: if you were planning to attack after Ultima, you can't — the turn ends immediately after Ultima resolves. Cast Ultima BEFORE your combat step if you want to destroy their board and still attack with your Monks. Or cast it on their end step to take out their board before untapping.</div></li>
+    <li><div class="heuristic-num">06</div><div class="heuristic-body"><strong>Voice of Victory prevents opponents from casting spells during your turn — plan your removal before their attack step.</strong> When facing Boros Aggro, after Voice attacks and creates Mobilize tokens, you cannot cast Lightning Helix or Inevitable Defeat in response during their turn because Voice's ability prevents opponents from casting spells DURING their turn. You must deploy removal BEFORE they enter their attack step. If they attack with Voice and you're holding Helix, you've missed the window.</div></li>
+    <li><div class="heuristic-num">07</div><div class="heuristic-body"><strong>Consult the Star Charts at instant speed is your most efficient card selection — use it on their end step.</strong> Consult: {1}{W} instant, unkicked = look at top (lands you control), put 1 in hand. Kicked {1}{U} = put 2 in hand. On their end step when they've passed priority: cast kicked Consult to dig 6 cards deep and take 2 into your full untap. This is your primary draw engine — it's better than Stock Up (sorcery) because you can respond and dig during their turn.</div></li>
+  </ol>
+</div>
+
+<!-- CH09 TUNING -->
+<div id="tuning" class="section">
+  <div class="section-label">Chapter 09</div>
+  <h1>Tuning Notes</h1>
+  <div class="tuning-grid">
+    <div class="tuning-cell"><div class="tuning-cell-label">Revelation: 3 vs 4 copies</div><div class="tuning-cell-title">4 is correct for RC</div><div class="tuning-cell-body">Jeskai Revelation is your win condition and your stabilizer. Some lists run 3 to fit more interaction, but 4 ensures you reliably find it in games 2-3 when they've boarded in more threats. The {2}{U}{R}{W} cost is heavy but you're running 26 lands with extensive fixing. Never cut below 3.</div></div>
+    <div class="tuning-cell"><div class="tuning-cell-label">Day of Judgment: 2 main + 1 SB</div><div class="tuning-cell-title">Match the meta</div><div class="tuning-cell-body">2 main deck is correct for the current meta. In aggro-heavy metas (Boros Aggro up in meta share), run 3-4 main. In midrange-heavy metas, trim to 1 main and add more targeted removal. The SB copy gives access to 3 total against token-heavy strategies without dead draws against control.</div></div>
+    <div class="tuning-cell"><div class="tuning-cell-label">Ultima: 2 main deck</div><div class="tuning-cell-title">Use vs artifact decks</div><div class="tuning-cell-body">Ultima's value is the artifact+creature wipe combined with ending the turn. If artifact decks (Krang, Izzet Artifacts) are absent from the meta, Ultima is usually worse than a 3rd Day of Judgment. The "end the turn" clause is uniquely powerful in some situations but mostly irrelevant in the current meta. Trim to 1 if facing mostly creature-only decks.</div></div>
+    <div class="tuning-cell"><div class="tuning-cell-label">Counterspell ratio</div><div class="tuning-cell-title">6 total (4 NML + 2 Snare)</div><div class="tuning-cell-body">4 No More Lies + 2 Spell Snare is the correct ratio for a primarily reactive control deck. Against heavy countermagic metas (more control): add Get Out (modal — also returns your own permanents). Against creature-heavy metas: trim a Spell Snare for a Get Lost. The deck shouldn't run more than 8 total counterspells or it becomes too clunky in the aggro matchups.</div></div>
+    <div class="tuning-cell"><div class="tuning-cell-label">Gloomlake + Godless Shrine splash</div><div class="tuning-cell-title">Black access for Dimir SB</div><div class="tuning-cell-body">The Gloomlake Verge + Godless Shrine package provides black mana access for the sideboard. Tishana's Tidebinder is {1}{U}{G} but some builds add Duress or Thoughtseize access. The splash is minimal and doesn't affect main deck consistency. If you cut black from the SB, trim the Gloomlake Verges to 0-1.</div></div>
+    <div class="tuning-cell"><div class="tuning-cell-label">Torpor Orb: 2 copies</div><div class="tuning-cell-title">Anti-Dimir specialist</div><div class="tuning-cell-body">2 copies is enough against Dimir (your worst matchup). Their ETB package (Tidebinder, Drowner, Cub) is dismantled by Orb. Warning: Torpor Orb prevents your own Jeskai Revelation Monks from having prowess. Those 1/1 Monks remain 1/1s even while you cast spells. If you're relying on Monks as your win condition against Dimir, deploying Orb first means your Monks don't grow. Sequence: kill their ETB threats, then Revelation for Monks after or before Orb as appropriate.</div></div>
+    <div class="card"><div class="card-label">Never Cut</div><div class="card-title">Stormplain Detainment ×4</div><div class="card-body">Your most efficient mass answer. Four copies ensures you see it when they commit a wide board. Below 4 and you lose the ability to respond to their T3-T4 explosive turns.</div></div>
+    <div class="card"><div class="card-label">Never Cut</div><div class="card-title">Voice of Victory ×4</div><div class="card-body">Your clock. No copies = no win condition. Four is the correct number — you need to see it before T5 in most games.</div></div>
+    <div class="card"><div class="card-label">Flex 2–3</div><div class="card-title">High Noon</div><div class="card-body">3 in metas heavy with sorcery-speed combos and sweepers. 2 in faster metas where their key threats are instants. High Noon does nothing if they have no sorceries worth stopping.</div></div>
+    <div class="card"><div class="card-label">Flex 1–2</div><div class="card-title">Aven Interrupter</div><div class="card-body">Run 2 as the flash counter. Aven at 5 mana is expensive — 1 copy in pure aggro metas, 2 in spell-heavy metas where the ETB counter is the card that wins games.</div></div>
+    <div class="card"><div class="card-label">Meta Call</div><div class="card-title">Dovin's Veto count</div><div class="card-body">2 is the baseline. Run 3 when counter mirrors are common. Veto is uncounterable — it always resolves. The third copy becomes live when you expect multiple counter wars per game.</div></div>
+  </div>
+</div>
+
+<!-- CH10 PREP -->
+<div id="prep" class="section">
+  <div class="section-label">Chapter 10</div>
+  <h1>Prep Sheet</h1>
+  <button class="print-btn" onclick="window.print()">&#9113; Print This Sheet</button>
+  <div class="print-section">
+    <div class="print-title">Jeskai Control</div>
+    <div class="print-sub">Team Resolve · Standard RC Prep 2026 · Mar 30 Ranked List</div>
+    <div class="print-grid">
+      <div>
+        <div class="print-col-title">Key Oracle Reminders</div>
+        <div class="print-line">Lightning Helix: {R}{W} instant, 3 damage + gain 3 life</div>
+        <div class="print-line">Inevitable Defeat: UNCOUNTERABLE, exile any nonland permanent, -3/+3 life swing</div>
+        <div class="print-line">Jeskai Revelation: bounce + 4 dmg + 2 Monks (prowess) + draw 2 + gain 4</div>
+        <div class="print-line">No More Lies: counter unless pay {3}, if countered → exile (not GY)</div>
+        <div class="print-line">Ultima: destroy ALL artifacts AND creatures, then END THE TURN (not enchantments)</div>
+        <div class="print-line">Day of Judgment: destroy all creatures (SORCERY speed)</div>
+        <div class="print-line">Consult the Star Charts: INSTANT speed, look at top (land count), pick 1 (or 2 kicked {1}{U})</div>
+        <div class="print-line">Mistrise Village: {U}{T}: next spell YOU cast this turn can't be countered</div>
+        <div class="print-line">Torpor Orb: blocks prowess on your Revelation Monks — deploy carefully</div>
+        <div class="print-line">Voice of Victory: you can't cast spells during opponent's turn after they attack</div>
+        <div class="print-line">Annul: counter target ARTIFACT or ENCHANTMENT spell only</div>
+        <div class="print-col-title" style="margin-top:16px;">What to Answer With What</div>
+        <div class="print-line">≤3 toughness creature → Lightning Helix</div>
+        <div class="print-line">4+ toughness / enchantment / planeswalker → Inevitable Defeat</div>
+        <div class="print-line">MV 2 spell → Spell Snare (hard counter {U})</div>
+        <div class="print-line">Any spell → No More Lies (soft/hard)</div>
+        <div class="print-line">3+ creatures → Day of Judgment</div>
+        <div class="print-line">Stormchaser's Talent / Nursery (on cast) → Annul</div>
+      </div>
+      <div>
+        <div class="print-col-title">Matchup Quick Reference</div>
+        <div class="print-mu">
+          <div class="print-mu-name">Dimir Midrange</div>
+          <div class="print-mu-role">Unfavorable 36% · Answer Mode</div>
+          <div class="print-cols">
+            <div><div class="print-col-label">Out</div>
+              <div class="print-row"><span>Day of Judgment ×2</span><span class="print-qty">−2</span></div>
+              <div class="print-row"><span>Ultima</span><span class="print-qty">−1</span></div>
+              <div class="print-row"><span>Spell Snare</span><span class="print-qty">−1</span></div>
+            </div>
+            <div><div class="print-col-label">In</div>
+              <div class="print-row"><span>Torpor Orb ×2</span><span class="print-qty">+2</span></div>
+              <div class="print-row"><span>Wan Shi Tong ×2</span><span class="print-qty">+2</span></div>
+            </div>
+          </div>
+          <div class="print-needle">Orb blanks Tidebinder, Drowner ETBs. Defeat handles Kaito uncounterable. Monks are win con.</div>
+        </div>
+        <div class="print-mu">
+          <div class="print-mu-name">Izzet Prowess</div>
+          <div class="print-mu-role">Unfavorable · Counter Talent</div>
+          <div class="print-cols">
+            <div><div class="print-col-label">Out</div>
+              <div class="print-row"><span>Get Lost ×2</span><span class="print-qty">−2</span></div>
+              <div class="print-row"><span>Spell Snare</span><span class="print-qty">−1</span></div>
+              <div class="print-row"><span>Ultima</span><span class="print-qty">−1</span></div>
+            </div>
+            <div><div class="print-col-label">In</div>
+              <div class="print-row"><span>Annul ×2</span><span class="print-qty">+2</span></div>
+              <div class="print-row"><span>Pyroclasm</span><span class="print-qty">+1</span></div>
+              <div class="print-row"><span>High Noon</span><span class="print-qty">+1</span></div>
+            </div>
+          </div>
+          <div class="print-needle">Annul counters Talent on entry. Pyroclasm sweeps their 1/1 Otters. High Noon limits their chain.</div>
+        </div>
+        <div class="print-mu">
+          <div class="print-mu-name">Boros Aggro</div>
+          <div class="print-mu-role">Favorable · Life Management</div>
+          <div class="print-cols">
+            <div><div class="print-col-label">Out</div>
+              <div class="print-row"><span>Spell Snare ×2</span><span class="print-qty">−2</span></div>
+              <div class="print-row"><span>No More Lies</span><span class="print-qty">−1</span></div>
+            </div>
+            <div><div class="print-col-label">In</div>
+              <div class="print-row"><span>High Noon ×2</span><span class="print-qty">+2</span></div>
+              <div class="print-row"><span>Pyroclasm</span><span class="print-qty">+1</span></div>
+            </div>
+          </div>
+          <div class="print-needle">4 Helix = 12 dmg + 12 life gained. Kill Ojer with Defeat. Get Lost answers Warleader's Call.</div>
+        </div>
+      </div>
+      <div>
+        <div class="print-col-title">Mono-Green Matchup</div>
+        <div class="print-mu">
+          <div class="print-mu-name">Mono-Green Landfall</div>
+          <div class="print-mu-role">Unfavorable · Counter Their Engine</div>
+          <div class="print-cols">
+            <div><div class="print-col-label">Out</div>
+              <div class="print-row"><span>Spell Snare ×2</span><span class="print-qty">−2</span></div>
+              <div class="print-row"><span>Ultima</span><span class="print-qty">−1</span></div>
+            </div>
+            <div><div class="print-col-label">In</div>
+              <div class="print-row"><span>Annul ×2</span><span class="print-qty">+2</span></div>
+              <div class="print-row"><span>Torpor Orb</span><span class="print-qty">+1</span></div>
+            </div>
+          </div>
+          <div class="print-needle">Annul on Nursery and Ascension. Defeat handles Leatherhead and Harmonizer. Day sweeps tokens.</div>
+        </div>
+        <div class="print-col-title" style="margin-top:16px;">General Control Principles</div>
+        <div class="print-line">Never tap out when they have attack mana</div>
+        <div class="print-line">Cast Consult kicked on their end step (instant speed)</div>
+        <div class="print-line">Revelation bounces the permanent they NEED most, not just any one</div>
+        <div class="print-line">Mistrise Village → use before casting uncounterable Defeat in mirror</div>
+        <div class="print-line">Ultima: cast before your combat if Monks need to attack after board wipe</div>
+        <div class="print-line">Torpor Orb + Revelation Monks = Monks have no prowess — deploy carefully</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+  
+  <h2>20-Minute Crash Course</h2>
+  <p>If you're sitting down in 20 minutes, run through this in order:</p>
+  <ul class="checklist" id="crash-checklist">
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Mulligan rule:</strong> Keep any 7 with 2 lands + Voice of Victory OR 2 lands + Aven Interrupter + a counter. Never keep a hand that can't interact by T2.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Voice of Victory rule:</strong> Voice of Victory (3/3 flier) can't be targeted during attacks. Attack immediately — they need a board wipe or sacrifice effect to remove it while attacking.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Aven Interrupter rule:</strong> Aven Interrupter (5/4 flash) counters a target instant/sorcery on ETB. Flash it when they tap for their best spell. The counter resolves when Aven enters.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>High Noon rule:</strong> High Noon prevents all sorcery-speed plays. Deploy it when they're about to cast their key sorcery. Both players are affected — plan your own sorceries accordingly.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Stormplain Detainment rule:</strong> Stormplain Detainment taps all their creatures until EOT. Deploy at their attack step before they attack — they're tapped down and can't attack this turn.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Board rule:</strong> Spell Snare ({U}) hard counters MV exactly 2. Know their MV-2 targets: Earthbender Ascension MV 2, Badgermole Cub MV 2. Both are Spell Snare targets.</span></li>
+  </ul>
+<div id="sb-print-zone">
+    <h2>Printable Sideboard Reference</h2>
+    <p>All matchup ins/outs on one sheet. Print and take to the event.</p>
+    <button class="print-btn" onclick="printSB()">&#x2259; Print SB Reference</button>
+    <div class="print-grid">
+    <div class="print-mu">
+      <div class="print-mu-name">Izzet Lessons <span class="diff-good">Favorable</span></div>
+      <div class="print-cols">
+        <div><div class="print-col-label">In</div>
+          <div class="print-row"><span>Disdainful Stroke</span><span class="print-qty">+1</span></div>
+          <div class="print-row"><span>Wan Shi Tong, Librarian</span><span class="print-qty">+1</span></div>
+        </div>
+        <div><div class="print-col-label">Out</div>
+          <div class="print-row"><span>Seam Rip</span><span class="print-qty">-1</span></div>
+          <div class="print-row"><span>Get Lost</span><span class="print-qty">-1</span></div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
+  <h2>Testing Framework</h2>
+  <div class="card-grid">
+      <div class="card"><div class="card-label">Block 01</div><div class="card-title">Voice Attack Lines</div><div class="card-body">Practice the Voice lock: they can't target it while attacking. Identify what removes Voice — board wipes and sacrifice effects vs targeted removal.</div></div>
+      <div class="card"><div class="card-label">Block 02</div><div class="card-title">Aven Interrupter Flash Timing</div><div class="card-body">They cast a key instant: flash Aven in response. Aven ETB counters the spell. Know that Aven's ETB trigger counters on resolution, not on the stack.</div></div>
+      <div class="card"><div class="card-label">Block 03</div><div class="card-title">High Noon Windows</div><div class="card-body">Cast it when they're about to cast their key sorcery. Too early = they play around it. Too late = damage is done.</div></div>
+      <div class="card"><div class="card-label">Block 04</div><div class="card-title">Stormplain Detainment Timing</div><div class="card-body">They commit creatures to attack: tap them at their declare-attackers step. They can't attack AND they're tapped down for your swing.</div></div>
+  </div>
+
+  <h2>Matchday Routine</h2>
+  <ol class="heuristic-list">
+      <li><div class="heuristic-num">01</div><div class="heuristic-body">Voice of Victory: attack immediately when it resolves. Every turn you wait they're developing against an uncontested clock.</div></li>
+      <li><div class="heuristic-num">02</div><div class="heuristic-body">Aven Interrupter: know exactly which spell you're countering before deploying. It counters on ETB — a hard counter at instant speed.</div></li>
+      <li><div class="heuristic-num">03</div><div class="heuristic-body">High Noon: optimal window is when they're tapped and about to cast their key sorcery. Early High Noon is often wrong.</div></li>
+      <li><div class="heuristic-num">04</div><div class="heuristic-body">Between rounds: count Stormplain Detainment efficiency — preventing full attacks vs wasting it on 1-2 creatures.</div></li>
+      <li><div class="heuristic-num">05</div><div class="heuristic-body">T1 plan by matchup: vs Mono-Green (hold Spell Snare for MV 2), vs Izzet (Aven for Slickshot), vs Dimir (Duress first).</div></li>
+  </ol>
+
+
+</div><!-- end .page -->
+<footer>
+  <span><a href="../deck-guides.html" style="color:rgba(242,237,230,0.3);text-decoration:none;">Team Resolve</a></span>
+  <span>Standard 2026 · Jeskai Control</span>
+  <span>RC Prep · April 2026</span>
+</footer>
+<script>
+function show(id) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  event.target.classList.add('active');
+  window.scrollTo(0,0);
+}
+function toggle(id) {
+  const el = document.getElementById(id);
+  el.classList.toggle('open');
+}
+</script>
+<script>
+(function(){
+  const TIP=document.createElement('div');TIP.className='card-tip';
+  TIP.innerHTML='<div class="card-tip-loading">loading...</div>';
+  document.body.appendChild(TIP);
+  const CACHE={};let hideTimer=null;
+  function pos(e){const PAD=24,W=220,H=310;let x=e.clientX+PAD,y=e.clientY-H/2;
+    if(x+W>window.innerWidth)x=e.clientX-W-PAD;if(y<8)y=8;
+    if(y+H>window.innerHeight)y=window.innerHeight-H-8;
+    TIP.style.left=x+'px';TIP.style.top=y+'px';}
+  async function show(name,e){
+    clearTimeout(hideTimer);TIP.innerHTML='<div class="card-tip-loading">loading...</div>';
+    TIP.classList.add('visible');pos(e);
+    if(CACHE[name]){TIP.innerHTML=`<img src="${CACHE[name]}" alt="${name}">`;return;}
+    try{const r=await fetch(`https://api.scryfall.com/cards/named?fuzzy=${encodeURIComponent(name)}`);
+      if(!r.ok){TIP.classList.remove('visible');return;}
+      const d=await r.json();
+      const img=d.image_uris?.normal||d.card_faces?.[0]?.image_uris?.normal;
+      if(!img){TIP.classList.remove('visible');return;}
+      CACHE[name]=img;TIP.innerHTML=`<img src="${img}" alt="${name}">`;}
+    catch(err){TIP.classList.remove('visible');}
+  }
+  function hide(){hideTimer=setTimeout(()=>TIP.classList.remove('visible'),80);}
+  document.addEventListener('mouseover',e=>{const el=e.target.closest('span.c');if(!el)return;show(el.textContent.trim(),e);});
+  document.addEventListener('mousemove',e=>{if(TIP.classList.contains('visible'))pos(e);});
+  document.addEventListener('mouseout',e=>{if(e.target.closest('span.c'))hide();});
+})();
+</script>
+</body>
+</html>

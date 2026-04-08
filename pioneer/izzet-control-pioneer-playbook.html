@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" href="../images/tab32.png" type="image/png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Izzet Creativity — Team Resolve Pioneer Playbook</title>
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+html{overflow-y:scroll;}
+:root{
+  --primary:#0f1e2e;
+  --ink:#0e0e0e;
+  --paper:#f2ede6;
+  --paper-dark:#e8e1d6;
+  --rule:#c8bfb0;
+  --accent:#0EA5E9;
+  --accent-light:rgba(14,165,233,0.09);
+  --mid:#5a5248;
+  --card:#ffffff;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--paper);color:var(--ink);font-family:'Crimson Pro',Georgia,serif;font-size:17px;line-height:1.6;}
+nav{position:sticky;top:0;z-index:100;background:var(--primary);border-bottom:2px solid var(--accent);display:flex;align-items:center;padding:0 32px;height:48px;gap:4px;}
+.nav-brand{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);margin-right:16px;white-space:nowrap;}
+.nav-link{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(248,250,252,0.55);background:none;border:none;border-bottom:2px solid transparent;padding:0 12px;height:48px;cursor:pointer;white-space:nowrap;display:flex;align-items:center;text-decoration:none;transition:color 0.15s,border-color 0.15s;}
+.nav-link:hover{color:rgba(248,250,252,0.85);}
+.nav-link.active{color:#fff;border-bottom-color:var(--accent);}
+.header-band{background:var(--primary);border-bottom:3px solid var(--accent);padding:48px 80px 40px;position:relative;overflow:hidden;}
+.header-band,.header-band *{color:#f1f5f9;}
+.header-band::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 10% 50%,rgba(14,165,233,0.12) 0%,transparent 70%);pointer-events:none;}
+.header-inner{max-width:1080px;margin:0 auto;display:grid;grid-template-columns:1fr auto;gap:40px;align-items:start;position:relative;}
+.header-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(248,250,252,0.4);margin-bottom:12px;}
+.header-title{font-family:'DM Mono',monospace;font-size:clamp(32px,4vw,52px);font-weight:500;letter-spacing:0.06em;line-height:1.05;text-transform:uppercase;}
+.header-title span{color:var(--accent);}
+.header-tagline{font-size:15px;font-style:italic;color:rgba(248,250,252,0.5);margin-top:12px;max-width:520px;line-height:1.5;}
+.meta-row{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(248,250,252,0.4);margin-bottom:4px;}
+.meta-row span{color:rgba(248,250,252,0.8);margin-left:6px;}
+.section{display:none;animation:fadeIn 0.3s ease;}
+.section.active{display:block;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
+.content{max-width:1080px;margin:0 auto;padding:56px 80px 80px;}
+.section-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--mid);margin-bottom:8px;display:block;}
+h1{font-family:'DM Mono',monospace;font-size:clamp(32px,4vw,48px);font-weight:500;letter-spacing:0.06em;text-transform:uppercase;line-height:1.05;margin-bottom:32px;}
+h2{font-family:'DM Mono',monospace;font-size:13px;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);margin:48px 0 16px;padding-bottom:8px;border-bottom:1px solid var(--rule);}
+h3{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--mid);margin:24px 0 8px;}
+p{font-size:16px;line-height:1.7;color:var(--ink);margin-bottom:14px;font-weight:300;}
+strong{font-weight:600;}
+.mantra{background:var(--accent-light);border-left:3px solid var(--accent);padding:20px 24px;margin:0 0 40px;font-style:italic;font-size:17px;color:var(--ink);line-height:1.6;}
+.card-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule);margin:16px 0;}
+.card-grid-2{grid-template-columns:repeat(2,1fr)!important;}
+.card-grid-3{grid-template-columns:repeat(3,1fr)!important;}
+.card{background:var(--card);padding:20px;transition:background 0.15s;}
+.card:hover{background:#faf7f2;}
+.card-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:var(--mid);margin-bottom:6px;}
+.card-title{font-family:'DM Mono',monospace;font-size:13px;letter-spacing:0.05em;color:var(--accent);margin-bottom:8px;font-weight:500;}
+.card-body{font-size:14px;color:var(--mid);line-height:1.55;font-weight:300;}
+.matchup-block{border:1px solid var(--rule);margin:24px 0;background:var(--card);}
+.matchup-header{background:var(--paper-dark);padding:16px 20px;display:flex;align-items:center;justify-content:space-between;cursor:pointer;}
+.matchup-header h3{margin:0;font-size:11px;letter-spacing:0.15em;color:var(--ink);}
+.verdict{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.15em;text-transform:uppercase;padding:3px 10px;border-radius:2px;}
+.verdict-good{background:rgba(14,165,233,0.1);color:#0369a1;}
+.verdict-even{background:rgba(90,82,72,0.12);color:var(--mid);}
+.verdict-hard{background:rgba(180,35,24,0.1);color:#991b1b;}
+.matchup-body{padding:20px;display:none;}
+.matchup-body.open{display:block;}
+.sb-table{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--rule);margin:12px 0;}
+.sb-col{background:var(--paper);padding:12px 16px;}
+.sb-col-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.15em;text-transform:uppercase;color:var(--mid);margin-bottom:8px;}
+.sb-item{display:flex;justify-content:space-between;align-items:baseline;font-size:14px;padding:2px 0;font-weight:300;}
+.sb-qty{font-family:'DM Mono',monospace;font-size:11px;color:var(--mid);}
+.heuristic-list{list-style:none;margin:16px 0;}
+.heuristic-list li{padding:14px 0;border-bottom:1px solid var(--rule);display:flex;gap:16px;align-items:start;}
+.heuristic-list li:last-child{border-bottom:none;}
+.h-num{font-family:'DM Mono',monospace;font-size:10px;color:var(--accent);flex-shrink:0;padding-top:2px;min-width:28px;}
+.h-text{font-size:15px;font-weight:300;color:var(--ink);}
+.h-text strong{font-weight:600;}
+.deck-row{display:flex;justify-content:space-between;padding:3px 0;border-bottom:1px solid rgba(200,191,176,0.4);font-size:15px;}
+.deck-count{font-family:'DM Mono',monospace;font-size:12px;color:var(--mid);min-width:20px;}
+.edge-case{background:var(--card);border:1px solid var(--rule);border-left:3px solid var(--accent);padding:16px 20px;margin:12px 0;}
+.edge-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:6px;}
+.edge-body{font-size:14px;font-weight:300;color:var(--ink);line-height:1.65;}
+.kill-line{background:#0f1e2e;border:1px solid var(--accent);padding:20px 24px;margin:16px 0;font-family:'DM Mono',monospace;font-size:13px;line-height:1.9;}
+.kill-line .step{color:rgba(14,165,233,0.6);margin-right:8px;}
+.kill-line .card-name{color:#7dd3fc;}
+.print-btn{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;background:var(--accent);color:#fff;border:none;padding:10px 20px;cursor:pointer;margin:16px 0;}
+span.c{cursor:help;border-bottom:1px dashed var(--accent);}
+span.c:hover{border-bottom-style:solid;}
+.card-tip{position:fixed;z-index:9999;pointer-events:none;width:220px;border-radius:8px;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,0.6);opacity:0;transition:opacity 0.15s ease;background:#1a1a2e;}
+.card-tip.visible{opacity:1;}
+.card-tip img{width:220px;height:auto;display:block;}
+.card-tip-loading{width:220px;height:310px;display:flex;align-items:center;justify-content:center;color:#94a3b8;font-size:12px;font-family:monospace;background:#1e293b;}
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-brand">Izzet Creativity</div>
+  <a class="nav-link" href="../deck-guides.html" style="text-decoration:none;">&#8592; Guides</a>
+  <button class="nav-link active" onclick="show('identity')">Overview</button>
+  <button class="nav-link" onclick="show('decklist')">Decklist</button>
+  <button class="nav-link" onclick="show('gameplan')">Game Flow</button>
+  <button class="nav-link" onclick="show('engines')">Engines</button>
+  <button class="nav-link" onclick="show('lines')">Lines</button>
+  <button class="nav-link" onclick="show('roles')">Roles</button>
+  <button class="nav-link" onclick="show('matchups')">Matchups</button>
+  <button class="nav-link" onclick="show('sideboard')">Sideboard</button>
+  <button class="nav-link" onclick="show('heuristics')">Heuristics</button>
+  <button class="nav-link" onclick="show('tuning')">Tuning</button>
+  <button class="nav-link" onclick="show('prep')">Prep</button>
+</nav>
+<div class="header-band">
+  <div class="header-inner">
+    <div>
+      <div class="header-label">Team Resolve · Pioneer · April 2026</div>
+      <div class="header-title">IZZET<br><span>CREATIVITY</span></div>
+      <div class="header-tagline">"Discard Magma Opus to Fable. Target the Treasure with Indomitable Creativity. Hit Torrential Gearhulk. Flash back Magma Opus for free. Board wiped, 5/6 in play."</div>
+    </div>
+    <div>
+      <div class="meta-row">META SHARE<span>3.01%</span></div>
+      <div class="meta-row">ROLE<span>Combo-Control</span></div>
+      <div class="meta-row">COLORS<span>U R</span></div>
+      <div class="meta-row">KILL TURN<span>5–6</span></div>
+      <div class="meta-row">REFERENCE<span>Pioneer Metagame Reference — April 2026</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- CH01 IDENTITY -->
+<div id="identity" class="section active">
+<div class="content">
+  <span class="section-label">Chapter 01</span>
+  <h1>DECK<br>IDENTITY</h1>
+  <div class="mantra">"You play control until you're ready. Then you discard Magma Opus, target the Treasure token with Indomitable Creativity, Gearhulk enters, flashes Opus back for free. Their board is gone, you have a 5/6 and four mana worth of effects. The game ends."</div>
+
+  <p>Izzet Creativity is Pioneer's premier combo-control hybrid. Unlike pure aggro or pure control, it operates from a reactive position until it assembles the two-card combo — then transitions instantly into an overwhelming tempo advantage. The combo is elegant: discard <span class="c">Magma Opus</span> to create a Treasure token (via <span class="c">Fable of the Mirror-Breaker</span>'s Chapter 2 or <span class="c">Prismari Command</span>), then target that non-creature token with <span class="c">Indomitable Creativity</span>. Since <span class="c">Torrential Gearhulk</span> is the only creature in the deck, Creativity always hits it. Gearhulk's ETB flashes back Magma Opus from the GY for free — dealing 4 damage, tapping four permanents, drawing two cards, and making a Treasure. For {3RRR} you generate a free 8-mana spell and a 5/6 creature.</p>
+
+  <p>The deck's pre-combo phase looks like a standard Izzet control build: <span class="c">Fiery Impulse</span> and <span class="c">Divide by Zero</span> answer early threats. <span class="c">Make Disappear</span> and <span class="c">Prismari Command</span> provide permission and card selection. <span class="c">Fable of the Mirror-Breaker</span> generates Treasure tokens (combo enablers), loots away Magma Opus into the GY, and threatens to transform into Reflection of Kiki-Jiki for an additional win condition. The deck rewards patient play and punishes opponents who tap out at the wrong moment.</p>
+
+  <h2>Why Izzet Creativity At 3%</h2>
+  <div class="card-grid card-grid-3">
+    <div class="card"><div class="card-label">The Combo</div><div class="card-title">Combo That Doesn't Lose to Removal</div><div class="card-body">The Treasure token created by Fable or Prismari Command is not a creature — it can't be targeted by creature removal or killed in combat. Indomitable Creativity targeting a Treasure is effectively uncounterable by creature-based hate. Your combo piece is a non-creature artifact that removes itself when the combo fires. They need to counter Indomitable Creativity itself or have the Gearhulk exiled — not interact with the setup.</div></div>
+    <div class="card"><div class="card-label">The Control Shell</div><div class="card-title">Fully Interactive Until You Go Off</div><div class="card-body">Unlike Lotus Field or Greasefang that are racing on a linear path, Creativity plays real control Magic until it fires. Fiery Impulse, Make Disappear, Divide by Zero, and Prismari Command all answer threats, buy time, and enable the combo simultaneously. You never feel like you're doing nothing — every spell serves double duty as interaction and setup.</div></div>
+    <div class="card"><div class="card-label">The Power</div><div class="card-title">Magma Opus Is an 8-Mana Spell for {3RRR}</div><div class="card-body">Magma Opus at full cost is unplayable at {6UUR}. Cast for free via Gearhulk it's the most broken spell in Pioneer. Dealing 4 damage, tapping four opponent permanents, drawing 2 cards, and making a Treasure while deploying a 5/6 body in one action creates an insurmountable tempo advantage against virtually every deck. Opponents who survive need to deal with both the Gearhulk AND the aftermath.</div></div>
+  </div>
+</div>
+</div>
+
+<!-- CH02 DECKLIST -->
+<div id="decklist" class="section">
+<div class="content">
+  <span class="section-label">Chapter 02</span>
+  <h1>DECKLIST</h1>
+  <div class="mantra">"Reference build — Pioneer Metagame April 2026 · Gearhulk Creativity variant"</div>
+  <div class="card-grid card-grid-3">
+    <div class="card">
+      <h3>Combo (5)</h3>
+      <div class="deck-row"><span class="deck-count">4</span><span><span class="c">Torrential Gearhulk</span></span></div>
+      <div class="deck-row"><span class="deck-count">4</span><span><span class="c">Magma Opus</span></span></div>
+      <div class="deck-row"><span class="deck-count">3</span><span><span class="c">Indomitable Creativity</span></span></div>
+      <h3 style="margin-top:16px;">Enablers (8)</h3>
+      <div class="deck-row"><span class="deck-count">4</span><span><span class="c">Fable of the Mirror-Breaker</span></span></div>
+      <div class="deck-row"><span class="deck-count">2</span><span><span class="c">Prismari Command</span></span></div>
+      <div class="deck-row"><span class="deck-count">2</span><span><span class="c">Behold the Multiverse</span></span></div>
+    </div>
+    <div class="card">
+      <h3>Interaction (13)</h3>
+      <div class="deck-row"><span class="deck-count">4</span><span><span class="c">Fiery Impulse</span></span></div>
+      <div class="deck-row"><span class="deck-count">4</span><span><span class="c">Divide by Zero</span></span></div>
+      <div class="deck-row"><span class="deck-count">4</span><span><span class="c">Make Disappear</span></span></div>
+      <div class="deck-row"><span class="deck-count">3</span><span><span class="c">Volcanic Spite</span></span></div>
+      <h3 style="margin-top:16px;">Lands (23)</h3>
+      <div class="deck-row"><span class="deck-count">4</span><span><span class="c">Steam Vents</span></span></div>
+      <div class="deck-row"><span class="deck-count">4</span><span><span class="c">Riverglide Pathway</span></span></div>
+      <div class="deck-row"><span class="deck-count">3</span><span><span class="c">Spirebluff Canal</span></span></div>
+      <div class="deck-row"><span class="deck-count">3</span><span><span class="c">Stormcarved Coast</span></span></div>
+      <div class="deck-row"><span class="deck-count">3</span><span><span class="c">Shivan Reef</span></span></div>
+      <div class="deck-row"><span class="deck-count">2</span><span>Mountain</span></div>
+      <div class="deck-row"><span class="deck-count">1</span><span>Island</span></div>
+      <div class="deck-row"><span class="deck-count">1</span><span><span class="c">Otawara, Soaring City</span></span></div>
+      <div class="deck-row"><span class="deck-count">1</span><span><span class="c">Hall of Storm Giants</span></span></div>
+      <div class="deck-row"><span class="deck-count">1</span><span><span class="c">Den of the Bugbear</span></span></div>
+    </div>
+    <div class="card">
+      <h3>Sideboard (15)</h3>
+      <div class="deck-row"><span class="deck-count">2</span><span><span class="c">Hullbreaker Horror</span></span></div>
+      <div class="deck-row"><span class="deck-count">2</span><span><span class="c">Disdainful Stroke</span></span></div>
+      <div class="deck-row"><span class="deck-count">2</span><span><span class="c">Rending Volley</span></span></div>
+      <div class="deck-row"><span class="deck-count">1</span><span><span class="c">Brotherhood's End</span></span></div>
+      <div class="deck-row"><span class="deck-count">1</span><span><span class="c">Anger of the Gods</span></span></div>
+      <div class="deck-row"><span class="deck-count">1</span><span><span class="c">Narset, Parter of Veils</span></span></div>
+      <div class="deck-row"><span class="deck-count">1</span><span><span class="c">Chandra, Torch of Defiance</span></span></div>
+      <div class="deck-row"><span class="deck-count">1</span><span><span class="c">Aether Gust</span></span></div>
+      <div class="deck-row"><span class="deck-count">1</span><span><span class="c">Negate</span></span></div>
+      <div class="deck-row"><span class="deck-count">1</span><span><span class="c">Behold the Multiverse</span></span></div>
+      <div class="deck-row"><span class="deck-count">1</span><span><span class="c">Teachings of the Archaics</span></span></div>
+      <div class="deck-row"><span class="deck-count">1</span><span><span class="c">Mascot Exhibition</span></span></div>
+    </div>
+  </div>
+
+  <h2>The Combo Line</h2>
+  <div class="kill-line">
+    <div style="color:#7dd3fc;font-size:12px;letter-spacing:0.15em;margin-bottom:12px;">PRIMARY KILL LINE — GEARHULK + MAGMA OPUS</div>
+    <div><span class="step">01.</span><span class="card-name">Fable of the Mirror-Breaker</span> <span style="color:#f1f5f9">Chapter 2: discard Magma Opus, draw a card, create a Treasure token</span></div>
+    <div><span class="step">02.</span><span class="card-name">Indomitable Creativity</span> <span style="color:#f1f5f9">for X=1 ({3RRR}): target the Treasure token (non-creature)</span></div>
+    <div><span class="step">03.</span><span style="color:#f1f5f9">Reveal from library until hitting a creature → always hits</span> <span class="card-name">Torrential Gearhulk</span> <span style="color:#f1f5f9">(only creature)</span></div>
+    <div><span class="step">04.</span><span class="card-name">Torrential Gearhulk</span> <span style="color:#f1f5f9">ETB: cast instant/sorcery from GY for free → cast</span> <span class="card-name">Magma Opus</span> <span style="color:#f1f5f9">for free</span></div>
+    <div><span class="step">05.</span><span class="card-name">Magma Opus</span> <span style="color:#f1f5f9">resolves: deal 4 damage to any target, tap up to 4 permanents, draw 2 cards, create a Treasure</span></div>
+    <div style="color:rgba(248,250,252,0.4);font-size:11px;margin-top:10px;">Result: 5/6 Gearhulk in play + 4 dmg dealt + 4 permanents tapped + 2 cards drawn + another Treasure. Total cost: {3RRR}</div>
+    <div style="color:#7dd3fc;font-size:12px;letter-spacing:0.15em;margin-top:12px;">ALTERNATE LINE — PRISMARI COMMAND → CREATIVITY</div>
+    <div><span class="step">01.</span><span class="card-name">Prismari Command</span> <span style="color:#f1f5f9">{1UR}: discard Magma Opus and create a Treasure OR draw 2 and discard 2 → puts Opus in GY + creates artifact target</span></div>
+    <div><span class="step">02-05.</span><span style="color:#f1f5f9">Same Creativity → Gearhulk → Opus sequence</span></div>
+  </div>
+</div>
+</div>
+
+<!-- CH03 GAME FLOW -->
+<div id="gameplan" class="section">
+<div class="content">
+  <span class="section-label">Chapter 03</span>
+  <h1>GAME<br>FLOW</h1>
+  <div class="mantra">"T1-T4: play control, answer threats, set up Fable. T5: fire the combo. They die on T6-7."</div>
+  <div class="card-grid card-grid-2">
+    <div class="card"><div class="card-label">Early (T1–T3)</div><div class="card-title">Control Mode</div><div class="card-body">Answer early threats: Fiery Impulse kills MV-1 creatures (spell mastery gives 3 damage by T2). Divide by Zero bounces any nonland permanent. Make Disappear is your soft counter — {1U} Mana Leak. Don't deploy Fable yet unless you're sure the board is safe — an early Fable getting answered wastes a critical combo enabler. Play reaction, not action.</div></div>
+    <div class="card"><div class="card-label">Setup (T3–T4)</div><div class="card-title">Fable + Magma Opus in GY</div><div class="card-body">T3: Deploy Fable of the Mirror-Breaker. T4 upkeep: Chapter 2 — discard Magma Opus, draw a card, create a Treasure. This puts Opus in your GY and creates the non-creature target for Creativity. Alternatively: Prismari Command on T3 discards Opus and makes a Treasure in one shot. You need Magma Opus in GY + a non-creature token/artifact on board + {3RRR} available.</div></div>
+    <div class="card"><div class="card-label">Combo (T5)</div><div class="card-title">Indomitable Creativity → Gearhulk → Magma Opus</div><div class="card-body">Cast Indomitable Creativity targeting the Treasure (or any other non-creature token). Reveal library until you hit a creature — always Torrential Gearhulk (only creature). Gearhulk ETB: cast Magma Opus from GY for free. Tap four opponent permanents (shut down their attacks), deal 4 damage, draw 2 cards. The game is over functionally — they have a tapped board and you have a 5/6 with two cards up.</div></div>
+    <div class="card"><div class="card-label">Mulligan</div><div class="card-title">Need: Lands + Interaction + Fable/Prismari Path</div><div class="card-body">Keep: 3 lands (including at least one red source for Creativity), 1-2 interaction pieces, and either Fable or Prismari Command. Mulligan: fewer than 2 lands, 0 interaction (you die to aggro before comboing), or a hand with 2+ Magma Opus (dead cards until Fable arrives). At 6: 3 lands + Make Disappear + Fiery Impulse is keepable. At 5: 3 lands + Fable is fine — you find interaction naturally.</div></div>
+  </div>
+</div>
+</div>
+
+<!-- CH04 ENGINES -->
+<div id="engines" class="section">
+<div class="content">
+  <span class="section-label">Chapter 04</span>
+  <h1>CORE<br>ENGINES</h1>
+  <div class="mantra">"Fable creates tokens AND loads GY AND transforms into a win condition. Every chapter does something."</div>
+  <div class="card-grid card-grid-3">
+    <div class="card"><div class="card-label">Engine 1 — The Setup</div><div class="card-title">Fable of the Mirror-Breaker</div><div class="card-body">Chapter 1: create a 2/2 Goblin Shaman that makes a Treasure when it attacks. Chapter 2: discard and draw — put Magma Opus in GY and draw a card, OR discard dead cards and draw gas. Chapter 3: transform into Reflection of Kiki-Jiki — copy any nonlegendary creature you control when it enters. Reflection of Kiki-Jiki copying Torrential Gearhulk creates a 5/6 haste that flashes back another Magma Opus. Fable alone can win the game if Creativity never fires.</div></div>
+    <div class="card"><div class="card-label">Engine 2 — The Combo</div><div class="card-title">Indomitable Creativity → Gearhulk</div><div class="card-body">Indomitable Creativity ({X}{R}{R}{R}): for each target artifact/creature you control, exile it and reveal the top of your library until you find an artifact or creature with the same MV or less. Since Gearhulk is the only creature, X=1 always hits it. The Treasure token is the correct target — it can't be killed by creature removal, making the combo resilient. Gearhulk is a 5/6 that flashes back any instant or sorcery from your GY for free on ETB.</div></div>
+    <div class="card"><div class="card-label">Engine 3 — The Control Package</div><div class="card-title">Make Disappear + Divide by Zero</div><div class="card-body">Make Disappear: {1U} counter unless they pay {2} or you sacrifice a creature/artifact. Casualty 1 mode sacrifices the Goblin Shaman token from Fable to hard-counter anything. Divide by Zero: {1U} bounces any nonland permanent with MV 3 or less, then learn (access your lesson cards or draw). Flexible answers that double as card selection in the mid-game. Together they answer any permanent type without spending real resources.</div></div>
+  </div>
+</div>
+</div>
+
+<!-- CH05 LINES -->
+<div id="lines" class="section">
+<div class="content">
+  <span class="section-label">Chapter 05</span>
+  <h1>LINES &amp;<br>TACTICS</h1>
+  <div class="mantra">"Bait them into tapping out before you fire Creativity. The Treasure target is removal-proof. Creativity at instant speed if possible."</div>
+  <div class="edge-case"><div class="edge-label">Line 01 — The Perfect Creativity Turn: Bait Before Firing</div><div class="edge-body">The best Indomitable Creativity turns happen when opponents have tapped out. The sequence: end of their turn, cast Prismari Command (they might counter it, burning countermagic). Untap. Discard Magma Opus to Fable Chapter 2. Cast Creativity targeting the Treasure. They have no mana open to counter it. When you have Magma Opus in hand and a Fable in play, don't immediately fire — wait for a turn where they tap out for a big spell or you have enough mana to hold up Make Disappear as backup.</div></div>
+  <div class="edge-case"><div class="edge-label">Line 02 — Make Disappear Casualty: Sacrifice Goblin Shaman for Hard Counter</div><div class="edge-body">Make Disappear normally costs {1U} and is a Mana Leak (counter unless they pay {2}). But with Casualty 1: sacrifice a creature with power 1 or greater to copy the spell — the copy counters unconditionally. The Goblin Shaman token from Fable Chapter 1 (2/2) satisfies Casualty 1. Sacrifice it: two copies of Make Disappear trigger, but Casualty copies are hard counters. Use Casualty specifically for critical spells (Teferi, Greasefang ETB trigger, Collected Company, Emergent Ultimatum). Regular Make Disappear is fine for early drops.</div></div>
+  <div class="edge-case"><div class="edge-label">Line 03 — Targeting Your Own Permanents With Creativity for Removal</div><div class="edge-body">Indomitable Creativity can target "any number of target artifacts and/or creatures you control." This means you can target your Goblin Shaman token with Creativity — it gets exiled and you hit Gearhulk. Alternatively, if you have a Gearhulk in play already and want another one, target the Shaman to get a second Gearhulk. Two Gearhulks = two free Magma Opus casts = eight 4-damage hits, tap four permanents twice, draw four cards. The game ends immediately.</div></div>
+  <div class="edge-case"><div class="edge-label">Line 04 — Reflect Kiki-Jiki Copying Gearhulk: The Backup Win</div><div class="edge-body">Fable Chapter 3 transforms into Reflection of Kiki-Jiki — whenever a nonlegendary creature enters under your control, you may create a token copy of it with haste that's exiled at EOT. When Torrential Gearhulk enters (via Creativity or hardcast), Reflection immediately copies it — a 5/6 haste token that also triggers Gearhulk's ETB: cast another instant/sorcery from GY for free. The haste copy attacks and deals combat damage before being exiled. This double-Gearhulk line generates two free Magma Opus casts in one turn even without a second Creativity.</div></div>
+</div>
+</div>
+
+<!-- CH06 ROLES -->
+<div id="roles" class="section">
+<div class="content">
+  <span class="section-label">Chapter 06</span>
+  <h1>ROLE<br>ASSIGNMENT</h1>
+  <div class="mantra">"You play control until T5. From T5 onward you're the combo deck. Know when to switch."</div>
+  <div class="card-grid card-grid-3">
+    <div class="card"><div class="card-label">vs Aggro</div><div class="card-title">Answer Everything, Then Combo</div><div class="card-body">Against RDW and Selesnya: use ALL your removal to stay alive. Fiery Impulse + Volcanic Spite kills most threats. Brotherhood's End (SB) sweeps the board. Once stabilized at 6+ life, fire the Creativity combo — Magma Opus taps their remaining threats and the Gearhulk closes. Don't rush the combo while you're dying to their board.</div></div>
+    <div class="card"><div class="card-label">vs Midrange</div><div class="card-title">Tempo Them Out</div><div class="card-body">Against UR Cutter and Dimir Midrange: Divide by Zero bounces their key threats (Vivi Ornitier, Floodpits Drowner). Make Disappear counters their setup spells. Your Fable of the Mirror-Breaker out-values their mid-range plays. Fire the Creativity combo when they're tapped out after deploying a threat — ideally the turn after they play their most impactful card.</div></div>
+    <div class="card"><div class="card-label">vs Control</div><div class="card-title">Bait Counters, Then Resolve Creativity</div><div class="card-body">Against UW Control: their Dovin's Veto counters Indomitable Creativity (it's a noncreature spell they can counter). Bait their veto on Fable or a draw spell. Then fire Creativity when their countermagic is spent. Hullbreaker Horror (SB) is your best game 2 threat — it can't be countered by spells and bounces any permanent on each spell you cast.</div></div>
+  </div>
+</div>
+</div>
+
+<!-- CH07 MATCHUPS -->
+<div id="matchups" class="section">
+<div class="content">
+  <span class="section-label">Chapter 07</span>
+  <h1>MATCHUP<br>GUIDE</h1>
+  <div class="mantra">"Know what they're trying to counter and bait it. Fire Creativity into empty mana."</div>
+
+  <div class="matchup-block">
+    <div class="matchup-header" onclick="toggle('mu-cutter')"><h3>UR CUTTER</h3><span class="verdict verdict-even">Even</span></div>
+    <div id="mu-cutter" class="matchup-body">
+      <p>They apply pressure through Monk tokens; you remove them with Fiery Impulse and Volcanic Spite. Their Make Disappear and Into the Flood Maw can bounce Fable of the Mirror-Breaker — deploy Fable only when you have mana to protect it or immediately use Chapter 2. Fire Creativity when they tap out for Treasure Cruise (their most important refuel spell).</p>
+      <p>Your Mystical Dispute ({U} vs blue) counters their Cori-Steel Cutter and their cantrips for one mana. Your Anger of the Gods (SB) exiles their Arclight Phoenix permanently. You win the control mirror by generating more card advantage: your Narset prevents their Artist's Talent draws, your Hullbreaker Horror bounces a permanent with each spell cast. Close with Horror as an uncounterable clock.</p>
+      <p class="sb-note">Narset prevents their Artist's Talent extra draws — deploy her before they loot into their combo pieces.</p>
+      <div class="sb-table">
+        <div class="sb-col"><div class="sb-col-label">In</div><div class="sb-item"><span><span class="c">Rending Volley</span></span><span class="sb-qty">+2</span></div><div class="sb-item"><span><span class="c">Disdainful Stroke</span></span><span class="sb-qty">+2</span></div></div>
+        <div class="sb-col"><div class="sb-col-label">Out</div><div class="sb-item"><span><span class="c">Behold the Multiverse</span></span><span class="sb-qty">&minus;2</span></div><div class="sb-item"><span><span class="c">Volcanic Spite</span></span><span class="sb-qty">&minus;2</span></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="matchup-block">
+    <div class="matchup-header" onclick="toggle('mu-rdw')"><h3>RED DECK WINS</h3><span class="verdict verdict-even">Even</span></div>
+    <div id="mu-rdw" class="matchup-body">
+      <p>Their burn kills you before your combo fires unless you answer everything. Fiery Impulse and Volcanic Spite remove their one-drops. Eidolon of the Great Revel taxes every spell — answer it with Fiery Impulse (5 damage in spell mastery mode hits the 2/2). Brotherhood's End (SB) sweeps their board at {1RR}. Post-sweep, fire Creativity immediately — Magma Opus taps their remaining threats, the Gearhulk closes.</p>
+      <p>Your Anger of the Gods (SB) deals 3 to each creature and exiles them â€” their Monastery Swiftspear and Goblin Guide die and can't be recursed. Your Aether Gust (SB) returns their key red threat to library. You survive by killing their early board and stabilizing with counterspells. Win through Hullbreaker Horror after they've emptied their hand of burn. Their Eidolon taxes your spells â€” kill it immediately with Anger or Aether Gust.</p>
+      <p class="sb-note">Anger of the Gods exiles Eidolon, Monastery Swiftspear, and Goblin Guide simultaneously — resolve it ASAP.</p>
+      <div class="sb-table">
+        <div class="sb-col"><div class="sb-col-label">In</div><div class="sb-item"><span><span class="c">Brotherhood's End</span></span><span class="sb-qty">+1</span></div><div class="sb-item"><span><span class="c">Anger of the Gods</span></span><span class="sb-qty">+1</span></div></div>
+        <div class="sb-col"><div class="sb-col-label">Out</div><div class="sb-item"><span><span class="c">Make Disappear</span></span><span class="sb-qty">&minus;2</span></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="matchup-block">
+    <div class="matchup-header" onclick="toggle('mu-control')"><h3>UW CONTROL</h3><span class="verdict verdict-hard">Unfavorable</span></div>
+    <div id="mu-control" class="matchup-body">
+      <p>They have Dovin's Veto which hard-counters Indomitable Creativity. They have Supreme Verdict for Torrential Gearhulk. Their Teferi, Hero of Dominaria out-grinds your Behold the Multiverse. Plan: bait Dovin's Veto on Fable or Behold the Multiverse, then fire Creativity. Hullbreaker Horror (SB) can't be countered by spells — it bounces any permanent on each spell you cast, making it their nightmare threat that they must answer with creatures or planeswalkers.</p>
+      <p>You fight through their counter suite with Mystical Dispute and Dovin's Veto. Your Narset, Parter of Veils prevents their Teferi draw triggers. Your Hullbreaker Horror is uncounterable (can't be countered by opponent) â€” they can't answer it once it resolves. Win by deploying Horror when they're tapped and holding Dispute for their Dovin's Veto response. Their Supreme Verdict is uncounterable â€” be careful not to overextend into it.</p>
+      <p class="sb-note">Hullbreaker Horror is uncounterable once it resolves — deploy it when they're tapped and bounce each spell.</p>
+      <div class="sb-table">
+        <div class="sb-col"><div class="sb-col-label">In</div><div class="sb-item"><span><span class="c">Hullbreaker Horror</span></span><span class="sb-qty">+2</span></div><div class="sb-item"><span><span class="c">Disdainful Stroke</span></span><span class="sb-qty">+2</span></div><div class="sb-item"><span><span class="c">Negate</span></span><span class="sb-qty">+1</span></div></div>
+        <div class="sb-col"><div class="sb-col-label">Out</div><div class="sb-item"><span><span class="c">Fiery Impulse</span></span><span class="sb-qty">&minus;3</span></div><div class="sb-item"><span><span class="c">Volcanic Spite</span></span><span class="sb-qty">&minus;2</span></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="matchup-block">
+    <div class="matchup-header" onclick="toggle('mu-greasefang')"><h3>ORZHOV GREASEFANG</h3><span class="verdict verdict-good">Favorable</span></div>
+    <div id="mu-greasefang" class="matchup-body">
+      <p>Divide by Zero bounces Greasefang before its ETB resolves — the Parhelion II never returns. Make Disappear counters Monument to Endurance. Fiery Impulse kills Greasefang if you're tapped down. Rending Volley (SB) kills Greasefang at instant speed for {R} and can't be countered. Your combo kills faster than their T3-4 kill assuming you answer Greasefang once.</p>
+      <p>Your Thoughtseize (board in) strips their Parhelion II or discard outlet on T1. Your Mystical Dispute counters Greasefang for {U} (it's not blue) â€” wait, Greasefang is Mardu colored, not blue. Use Dovin's Veto instead for non-blue spells. Your Anger of the Gods exiles Greasefang when it dies. Win by disrupting their hand T1-T2 and answering whatever they assemble. Their combo fails without Greasefang in play.</p>
+      <p class="sb-note">Dovin's Veto counters Greasefang itself (it's not blue) — Veto handles all their non-blue spells.</p>
+      <div class="sb-table">
+        <div class="sb-col"><div class="sb-col-label">In</div><div class="sb-item"><span><span class="c">Rending Volley</span></span><span class="sb-qty">+2</span></div></div>
+        <div class="sb-col"><div class="sb-col-label">Out</div><div class="sb-item"><span><span class="c">Behold the Multiverse</span></span><span class="sb-qty">&minus;2</span></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="matchup-block">
+    <div class="matchup-header" onclick="toggle('mu-selesnya')"><h3>SELESNYA COMPANY</h3><span class="verdict verdict-even">Even</span></div>
+    <div id="mu-selesnya" class="matchup-body">
+      <p>Their wide board and CoCo refills outpace individual removal. Magma Opus tapping four permanents is your best play — it shuts off their entire board for one attack. Anger of the Gods (SB) exiles their MV-3-or-less creatures preventing CoCo recursion from GY. Thalia taxes your spells {1} each — answer her with Fiery Impulse before going off (Thalia makes Creativity cost {3RRR}{1} = {4RRR}).</p>
+      <p>Your Anger of the Gods exiles their entire board (Collected Company creatures die to 3 damage and are exiled â€” no Extraction Specialist recursion). Your Mystical Dispute counters Company for {U} (Company is green, not blue â€” Dispute doesn't get the discount). Board in Disdainful Stroke (MV â‰¥ 4) for Company. Win by answering Company on the stack, then deploying Narset to prevent their draw steps from refueling.</p>
+      <p class="sb-note">Disdainful Stroke counters Collected Company (MV 4) — it's your most efficient answer to Company.</p>
+      <div class="sb-table">
+        <div class="sb-col"><div class="sb-col-label">In</div><div class="sb-item"><span><span class="c">Anger of the Gods</span></span><span class="sb-qty">+1</span></div><div class="sb-item"><span><span class="c">Brotherhood's End</span></span><span class="sb-qty">+1</span></div></div>
+        <div class="sb-col"><div class="sb-col-label">Out</div><div class="sb-item"><span><span class="c">Make Disappear</span></span><span class="sb-qty">&minus;2</span></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+  <div class="matchup-block">
+    <div class="matchup-header" onclick="toggle('mu-selesnya2')">
+      <h3>SELESNYA COMPANY</h3><span class="verdict verdict-even">Even</span>
+    </div>
+    <div id="mu-selesnya2" class="matchup-body">
+      <p>Selesnya Company floods the board with creatures via Collected Company (4 mana instant, put two creatures into play). Your sweepers (if available) hit their board but Company rebuilds. The key: exile their GY to prevent Extraction Specialist recursion. Thoughtseize on turn 1 takes their Company or their key 2-drop lord.</p>
+      <p>Your Verdict on their wide board followed by Narset deploying locks their draw engine. Your Anger of the Gods exiles their Extraction Specialist before it can return a creature. You win in the mid-game: once their Company creatures are exiled and their hand is empty under Narset, your Hullbreaker Horror closes uncontested. Their Voice of Resurgence forces you to cast spells on your own turn â€” plan around this trigger.</p>
+      <p class="sb-note">Anger of the Gods exiles Extraction Specialist targets — their recursion engine shuts down under Anger.</p>
+      <div class="sb-table">
+        <div class="sb-col"><div class="sb-col-label">In</div><div class="sb-item"><span><span class="c">Soul-Guide Lantern</span></span><span class="sb-qty">+2</span></div><div class="sb-item"><span><span class="c">Fatal Push</span></span><span class="sb-qty">+1</span></div></div>
+        <div class="sb-col"><div class="sb-col-label">Out</div><div class="sb-item"><span><span class="c">Duress</span></span><span class="sb-qty">-2</span></div><div class="sb-item"><span><span class="c">Thoughtseize</span></span><span class="sb-qty">-1</span></div></div>
+      </div>
+      <p class="sb-note">Soul-Guide Lantern exiles Extraction Specialist targets from GY. Fatal Push kills their small lords at instant speed. Cut Duress (less effective against creature-based strategies) and a Thoughtseize.</p>
+    </div>
+  </div>
+
+  <div class="matchup-block">
+    <div class="matchup-header" onclick="toggle('mu-lotus2')">
+      <h3>LOTUS FIELD</h3><span class="verdict verdict-good">Favorable</span>
+    </div>
+    <div id="mu-lotus2" class="matchup-body">
+      <p>Lotus Field combos off with Lotus Field + Thespian's Stage + Hidden Strings by untapping Lotus repeatedly. Your discard (Thoughtseize, Duress) strips their key combo pieces or their Hidden Strings. Damping Sphere shuts off their mana multiplication entirely — they can't tap Lotus for more than {B} while Sphere is out.</p>
+      <p>Your Damping Sphere (SB) is your best answer â€” it locks Lotus Field (lands produce colorless). Board in Damping Sphere and Mystical Dispute. Their Mystical Dispute counters your Sphere for {U} â€” you need to protect Sphere with your own Dispute. Win by resolving Sphere on T2 before they have Dispute mana. If Sphere resolves, their deck cannot function and you win with any threat.</p>
+      <p class="sb-note">Damping Sphere on T2 before they have Mystical Dispute mana is your most efficient line.</p>
+      <div class="sb-table">
+        <div class="sb-col"><div class="sb-col-label">In</div><div class="sb-item"><span><span class="c">Damping Sphere</span></span><span class="sb-qty">+3</span></div><div class="sb-item"><span><span class="c">Duress</span></span><span class="sb-qty">+2</span></div></div>
+        <div class="sb-col"><div class="sb-col-label">Out</div><div class="sb-item"><span><span class="c">Fatal Push</span></span><span class="sb-qty">-2</span></div><div class="sb-item"><span><span class="c">Soul-Guide Lantern</span></span><span class="sb-qty">-2</span></div><div class="sb-item"><span><span class="c">Arashin Cleric</span></span><span class="sb-qty">-1</span></div></div>
+      </div>
+      <p class="sb-note">Damping Sphere is their hardest card to beat — their combo requires multiple taps of the same land. Duress strips Hidden Strings or Pore Over the Pages. Cut Fatal Push (no key creatures to kill) and other reactive pieces.</p>
+    </div>
+  </div>
+
+  <div class="matchup-block">
+    <div class="matchup-header" onclick="toggle('mu-niv2')">
+      <h3>NIV-MIZZET REBORN</h3><span class="verdict verdict-even">Even</span>
+    </div>
+    <div id="mu-niv2" class="matchup-body">
+      <p>Niv-Mizzet Reborn draws a card for each color combination among permanents you control when it enters — a massive card advantage engine. Your Thoughtseize strips their Niv or key multicolor spell. Their clock is slow (Niv costs {WUBRG} = 5 mana) giving you time to set up. Race with your own threats — if they resolve Niv without interaction you've likely lost.</p>
+      <p>Your Anger of the Gods (SB) deals 3 to each creature and exiles them â€” their Sylvan Caryatid (0/3 hexproof) survives Anger (0/3 has 3 toughness â€” Anger deals exactly 3, kills it). Wait, 3 damage kills exactly 3 toughness. Caryatid dies. Your Mystical Dispute counters Niv-Mizzet for {U} (Niv is blue) â€” one mana counter their 6-mana threat. Win by countering Niv and deploying your own threat. Their Deafening Clarion is your most dangerous card â€” respond with a counter.</p>
+      <p class="sb-note">Mystical Dispute counters Niv-Mizzet for {U} — it's blue, costs one mana to counter their 6-mana bomb.</p>
+      <div class="sb-table">
+        <div class="sb-col"><div class="sb-col-label">In</div><div class="sb-item"><span><span class="c">Thoughtseize</span></span><span class="sb-qty">+2</span></div><div class="sb-item"><span><span class="c">Duress</span></span><span class="sb-qty">+2</span></div></div>
+        <div class="sb-col"><div class="sb-col-label">Out</div><div class="sb-item"><span><span class="c">Soul-Guide Lantern</span></span><span class="sb-qty">-2</span></div><div class="sb-item"><span><span class="c">Arashin Cleric</span></span><span class="sb-qty">-2</span></div></div>
+      </div>
+      <p class="sb-note">Thoughtseize strips Niv or their key multicolor tutor. Duress hits their noncreature setup. Cut Lantern (no relevant GY) and Cleric (this is a midrange matchup not a racing one).</p>
+    </div>
+  </div>
+
+  <div class="matchup-block">
+    <div class="matchup-header" onclick="toggle('mu-arclight2')">
+      <h3>ARCLIGHT PHOENIX</h3><span class="verdict verdict-even">Even</span>
+    </div>
+    <div id="mu-arclight2" class="matchup-body">
+      <p>Arclight Phoenix returns from GY whenever you cast three instants/sorceries in one turn. Your Narset, Parter of Veils prevents them from drawing extra cards via their cantrips. Counter their key spells (Young Pyromancer, the Phoenix itself) rather than their cantrips. Rending Volley destroys Phoenix at instant speed.</p>
+      <p>Your Anger of the Gods exiles their Arclight Phoenix permanently (no GY recursion). Your Narset prevents their Artist's Talent extra draws. You win by exiling Phoenix early (before they refill their GY) and applying counter pressure on their Treasure Cruise. Once Phoenix is exiled and their GY is empty, they're a cantrip deck without a win condition. Deploy Hullbreaker Horror as your closing threat.</p>
+      <p class="sb-note">Anger exiles Arclight Phoenix permanently — their recursion engine is offline once Phoenix hits exile.</p>
+      <div class="sb-table">
+        <div class="sb-col"><div class="sb-col-label">In</div><div class="sb-item"><span><span class="c">Soul-Guide Lantern</span></span><span class="sb-qty">+2</span></div><div class="sb-item"><span><span class="c">Narset, Parter of Veils</span></span><span class="sb-qty">+1</span></div></div>
+        <div class="sb-col"><div class="sb-col-label">Out</div><div class="sb-item"><span><span class="c">Spell Pierce</span></span><span class="sb-qty">-2</span></div><div class="sb-item"><span><span class="c">Duress</span></span><span class="sb-qty">-1</span></div></div>
+      </div>
+      <p class="sb-note">Soul-Guide Lantern exiles their Phoenix from GY before it triggers back. Narset prevents their cantrips from drawing additional cards. Cut Spell Pierce (their spells cost more than 2) and Duress.</p>
+    </div>
+  </div>
+
+  <div class="matchup-block">
+    <div class="matchup-header" onclick="toggle('mu-rakdos2')">
+      <h3>RAKDOS MIDRANGE</h3><span class="verdict verdict-even">Even</span>
+    </div>
+    <div id="mu-rakdos2" class="matchup-body">
+      <p>Rakdos Midrange mirrors your discard-and-threats game plan. Thoughtseize trades 1-for-1 with their Thoughtseize. The matchup is decided by who runs out of resources first — your card quality matters more than your card quantity. Aim to kill their Vein Ripper or Kalitas before it generates too much value. Fatal Push with revolt kills most of their threats.</p>
+      <p>Your Thoughtseize (SB) and Duress (SB) strip their Sheoldred before T4 deploy. Your Anger of the Gods kills their earlier threats. You win the attrition battle: Narset vs their Sheoldred is your key race â€” get Narset down before Sheoldred and their draw steps cost them 2 life while your draw advantage compounds. Hullbreaker Horror closes after Sheoldred is answered.</p>
+      <p class="sb-note">Narset vs Sheoldred: Narset deployed first means their draw steps drain them — compound with your clock.</p>
+      <div class="sb-table">
+        <div class="sb-col"><div class="sb-col-label">In</div><div class="sb-item"><span><span class="c">Fatal Push</span></span><span class="sb-qty">+2</span></div><div class="sb-item"><span><span class="c">Collective Brutality</span></span><span class="sb-qty">+1</span></div></div>
+        <div class="sb-col"><div class="sb-col-label">Out</div><div class="sb-item"><span><span class="c">Duress</span></span><span class="sb-qty">-2</span></div><div class="sb-item"><span><span class="c">Soul-Guide Lantern</span></span><span class="sb-qty">-1</span></div></div>
+      </div>
+      <p class="sb-note">Fatal Push with revolt kills Vein Ripper and Kalitas cleanly. Collective Brutality handles their key threats while draining life. Cut Duress (they also have proactive threats — discard is less efficient) and Lantern (their GY recursion is minimal).</p>
+    </div>
+  </div>
+
+
+<!-- CH08 SIDEBOARD -->
+<div id="sideboard" class="section">
+<div class="content">
+  <span class="section-label">Chapter 08</span>
+  <h1>SIDEBOARD<br>GUIDE</h1>
+  <div class="mantra">"Hullbreaker vs control. Anger vs wide aggro. Rending Volley vs Greasefang. Narset vs midrange draw."</div>
+  <div class="card-grid card-grid-2">
+    <div class="card"><div class="card-label">P1 — vs Control</div><div class="card-title">Hullbreaker Horror ×2</div><div class="card-body">7-mana 7/8 with flash. Can't be countered by spells. Whenever you cast a spell, you may return target spell or permanent with MV ≤ 7 to its owner's hand. Against UW Control: Hullbreaker entered at flash speed bounces Teferi before it untaps. Every spell you cast after bounces another permanent. They can't keep anything in play. The uncounterable clause bypasses Dovin's Veto. Hard cast on T7 with mana from Magma Opus Treasures.</div></div>
+    <div class="card"><div class="card-label">P2 — vs Aggro Boards</div><div class="card-title">Brotherhood's End + Anger of Gods</div><div class="card-body">Brotherhood's End ({1RR}): deals 2 damage to each creature and each player, OR 3 damage to each artifact. Sweeps RDW's one-drops including Eidolon. Anger of the Gods ({1RR}): deals 3 damage to each creature with toughness 3 or less AND exiles them. No GY recursion. Hits Thalia, Llanowar Elves, Voice of Resurgence, Monastery Swiftspear, Kellan. Anger specifically prevents CoCo recursion via Extraction Specialist. Both cost {1RR} — playable on T3 after setting up Fable.</div></div>
+    <div class="card"><div class="card-label">P3 — vs Greasefang</div><div class="card-title">Rending Volley ×2</div><div class="card-body">{R} instant: destroy target white or blue creature. Can't be countered. Hits Greasefang (white/black 3/3 — wait, Greasefang is a rat which is BW). Actually Rending Volley hits white creatures — relevant vs Selesnya Company (Thalia, Voice of Resurgence, Knight of Autumn) and UW Control threats (Brimaz, Wandering Emperor tokens). For Greasefang specifically, Fiery Impulse at 3 damage (spell mastery) hits the 3/3. Rending Volley is your {R} instant-speed answer to white threats.</div></div>
+    <div class="card"><div class="card-label">P4 — vs Draw/Midrange</div><div class="card-title">Narset, Parter of Veils</div><div class="card-body">3-mana planeswalker: static ability — opponents can't draw more than one card per turn. Shuts off Treasure Cruise (a {U} spell drawing 3 becomes draw 1), Behold the Multiverse, Consider, Opt. Against UR Cutter and Arclight Phoenix, Narset counters their entire card advantage engine. Deploy alongside interaction — they must answer Narset before drawing any cards. Her -2 looks at top 4 cards and keeps a noncreature/land card.</div></div>
+    <div class="card"><div class="card-label">P5 â€” vs Counter Wars</div><div class="card-title">Spell Snare Ã—2</div><div class="card-body">{U} Instant: Counter target spell with MV exactly 2. Board in vs UW Control (counters their key 2-drops) and UR Cutter (counters their Curiosity or key 2-MV spells). One mana for a hard counter is extremely efficient when you can name their most important two-drop. Board it out in matchups where their key threats are MV â‰¥ 3.</div></div>
+    <div class="card"><div class="card-label">P6 â€” vs Big Mana</div><div class="card-title">Mystical Dispute Ã—2</div><div class="card-body">{2}{U} or {U} for blue spells: Counter target spell (or target blue spell for {U}). Board in vs UW Control (cheaply counters their blue spells) and UR Cutter (counters their key blue threats for one mana). Against non-blue decks this is {3} for a Dismiss â€” board it out. Against blue decks this is a one-mana hard counter.</div></div>
+    <div class="card"><div class="card-label">P7 â€” vs Combo</div><div class="card-title">Narset, Parter of Veils Ã—1</div><div class="card-body">{1}{U}{U} Planeswalker. Opponents can't draw extra cards. âˆ’2: Look at top 4, take a noncreature nonland. Board in vs Lotus Field (shuts off their Pore Over the Pages card draw â€” they can't draw extra cards while Narset is in play, which cripples their combo) and Niv-Mizzet Reborn (shuts off their Niv ETB draw effect).</div></div>
+    <div class="card"><div class="card-label">P8 â€” vs Creatures</div><div class="card-title">Anger of the Gods Ã—2</div><div class="card-body">{1}{R}{R} Sorcery: 3 damage to each creature. If a creature dealt damage this way would die, exile it instead. Board in vs Selesnya Company (exile kills prevent Extraction Specialist recursion) and RDW (exiles their board before they can recurse). The exile clause is critical â€” permanently removes their creatures from GY interaction.</div></div>
+
+  </div>
+</div>
+</div>
+
+<!-- CH09 HEURISTICS -->
+<div id="heuristics" class="section">
+<div class="content">
+  <span class="section-label">Chapter 09</span>
+  <h1>HEURISTICS</h1>
+  <div class="mantra">"Bait their countermagic. Use Creativity into empty mana. Fable Chapter 2 is how Opus enters the GY."</div>
+  <ol class="heuristic-list">
+    <li><span class="h-num">01</span><span class="h-text"><strong>Fable Chapter 2 is how you discard Magma Opus — use it immediately when available.</strong> Chapter 2's "discard a card and draw a card" is the primary way to put Magma Opus into your GY without paying its full 8-mana cost. Use this ability the turn it becomes available. Don't wait to find Creativity first — get Opus in the GY, then find Creativity.</span></li>
+    <li><span class="h-num">02</span><span class="h-text"><strong>The Treasure token is removal-proof — target it with Creativity, not the Goblin Shaman.</strong> Tokens from Fable Chapter 1 (the 2/2 Goblin Shaman) can be killed by removal. The Treasure token is an artifact — no creature removal hits it. Always target Treasures with Creativity. If you target Shaman and they kill it in response, Creativity has no legal targets and fizzles.</span></li>
+    <li><span class="h-num">03</span><span class="h-text"><strong>Fire Creativity into empty mana — never into open countermagic if possible.</strong> Indomitable Creativity can be countered by Dovin's Veto, No More Lies, or any hard counter. Wait for turns where they've tapped mana to deploy a threat or answer your spell. The best Creativity turns come when you bait their interaction and then fire with no mana available to respond.</span></li>
+    <li><span class="h-num">04</span><span class="h-text"><strong>Make Disappear Casualty 1 on the Goblin Shaman = hard counter.</strong> Sacrifice the 2/2 Shaman from Fable Chapter 1 to Casualty 1 on Make Disappear — the copy counters unconditionally. Reserve this for must-counter spells: Teferi, Greasefang, Emergent Ultimatum. Normal Make Disappear handles everything else.</span></li>
+    <li><span class="h-num">05</span><span class="h-text"><strong>Magma Opus tap-four targets: hit their best four permanents, not random ones.</strong> When Magma Opus resolves, tap up to four permanents. Target: the four creatures threatening to kill you next turn, their mana sources (especially if they need specific colors for an answer), or key planeswalkers before they can activate. Don't tap random lands — tap the blockers, attackers, or resources that matter.</span></li>
+    <li><span class="h-num">06</span><span class="h-text"><strong>Reflection of Kiki-Jiki + Torrential Gearhulk = two free Magma Opus casts.</strong> When Fable transforms into Reflection of Kiki-Jiki and you play Gearhulk (via Creativity or hardcast), Reflection immediately creates a haste token copy. The copy triggers Gearhulk's ETB — a second free Magma Opus. Plan for this line when Fable has transformed — a single Creativity generates two free Opus casts in that turn.</span></li>
+    <li><span class="h-num">07</span><span class="h-text"><strong>Divide by Zero bounces any nonland MV 3 or less — don't forget the Learn effect.</strong> Divide by Zero also lets you Learn: look at your sideboard and add a card to your hand. Your sideboard has Mascot Exhibition (tokens), Teachings of the Archaics (copy), Environmental Sciences (lands + life). In the mid-game when you're stable, using Divide by Zero defensively and taking a lesson card adds significant value.</span></li>
+    <li><span class="h-num">08</span><span class="h-text"><strong>Prismari Command has four modes — use all of them depending on the situation.</strong> Prismari Command: (1) deal 2 damage to any target, (2) counter target artifact or enchantment spell, (3) discard and draw, (4) create a Treasure. In aggro matchups: 2 damage mode kills a one-drop + 3 from impulse. In combo setup: discard Magma Opus and draw + create Treasure. Against Damping Sphere or Lotus Field: counter the artifact spell. Know all four modes before tapping mana.</span></li>
+    <li><span class="h-num">09</span><span class="h-text"><strong>Hardcasting Torrential Gearhulk at 6 mana is fine in long games.</strong> Don't treat Gearhulk as only a Creativity target. In long control games with 6 mana available, hardcasting Gearhulk and flashing back any instant or sorcery for free is a legitimate play. Flash back Make Disappear for a free counter. Flash back Fiery Impulse for free removal. A hardcast Gearhulk at 6 mana is still a 5/6 with an ETB.</span></li>
+    <li><span class="h-num">10</span><span class="h-text"><strong>Indomitable Creativity X=2 can target two non-creature tokens for two Gearhulks.</strong> If you have two Treasure tokens (or a Treasure and the Goblin Shaman), Creativity for X=2 targets both non-creature artifacts and hits two Gearhulks from the library. Wait — there's only one Gearhulk in play at a time, but if you have 2 Gearhulks in the library, X=2 finds both. More commonly: X=2 targeting a Treasure and an opponent's permanent removes their threat while getting your Gearhulk.</span></li>
+  </ol>
+</div>
+</div>
+
+<!-- CH10 TUNING -->
+<div id="tuning" class="section">
+<div class="content">
+  <span class="section-label">Chapter 10</span>
+  <h1>TUNING<br>NOTES</h1>
+  <div class="mantra">"4 Gearhulk, 4 Magma Opus, 4 Fable are the core. Interaction count adjusts to meta speed."</div>
+  <div class="card-grid card-grid-3">
+    <div class="card"><div class="card-label">Lock</div><div class="card-title">4 Torrential Gearhulk + 4 Magma Opus</div><div class="card-body">The combo requires Gearhulk in the library and Opus in the GY. 4 of each maximizes Creativity reliability (always hits) and ensures Opus is available for the flashback every game. Never cut any.</div></div>
+    <div class="card"><div class="card-label">Lock</div><div class="card-title">4 Fable of the Mirror-Breaker</div><div class="card-body">The primary Opus discard outlet AND the primary Treasure generator AND an alternate win condition. Fable is the reason the deck functions. 4 copies ensures you draw it consistently by T3.</div></div>
+    <div class="card"><div class="card-label">Flex 3–4</div><div class="card-title">Indomitable Creativity</div><div class="card-body">3 is reference. 4 in metas where firing the combo ASAP is critical. 3 in metas where the control shell can win without Creativity (via Reflection of Kiki-Jiki or Hullbreaker). The 3 copies ensure you draw it without the risk of redundant copies in the combo window.</div></div>
+    <div class="card"><div class="card-label">Flex 3–4</div><div class="card-title">Fiery Impulse + Volcanic Spite</div><div class="card-body">7 total removal spells is correct in most metas. In heavy aggro metas, go to 8-9. In control-heavy metas, trim to 5-6 and add more permission. The ratio between removal and counters adjusts to the expected threats.</div></div>
+    <div class="card"><div class="card-label">Flex 2–4</div><div class="card-title">Make Disappear</div><div class="card-body">4 in permission-heavy metas where you need redundant counters. 2-3 in aggro metas where you'd rather have more removal. Make Disappear is weakest against decks that can pay the {2} (control) and best vs combo and midrange.</div></div>
+    <div class="card"><div class="card-label">Meta Call</div><div class="card-title">Creature Lands</div><div class="card-body">Hall of Storm Giants (3/3 ward when attacking) and Den of the Bugbear (Goblin + Haste) provide resilient win conditions that bypass Creativity entirely. In control-heavy metas where Creativity gets countered, running 2-3 creature lands gives you alternate pressure that works through their interaction.</div></div>
+    <div class="card"><div class="card-label">Rule 01</div><div class="card-title">Counter Target Protocol</div><div class="card-body">You identify their top 3 threats before round 1 starts and assign the correct counter to each. UR Cutter: Rending Volley for Cutter creature. Greasefang: Dovin's Veto for Greasefang spell. Lotus Field: Damping Sphere before they assemble combo. You know your target before your opponent casts anything.</div></div>
+    <div class="card"><div class="card-label">Rule 02</div><div class="card-title">Anger of the Gods Threshold</div><div class="card-body">You cast Anger of the Gods when they have 3+ creatures, not 1-2. Against RDW: they commit 3 creatures by T3 — Anger on your T3 is correct. Against Selesnya Company: they commit after a Company resolution. You count creatures before casting and enforce the 3+ threshold.</div></div>
+    <div class="card"><div class="card-label">Rule 03</div><div class="card-title">Narset Deployment</div><div class="card-body">You deploy Narset when they're about to draw multiple cards. Against Lotus Field: before they tap Lotus for their cantrip chain. Against Niv-Mizzet: before they cast Niv (his ETB draws stop under Narset). Against UR Cutter: when they're about to chain cantrips. You protect Narset with Mystical Dispute.</div></div>
+    <div class="card"><div class="card-label">Rule 04</div><div class="card-title">Hullbreaker Sequence</div><div class="card-body">You deploy Hullbreaker Horror on T7+ when you have at least one instant available. Hullbreaker enters (uncounterable 7/8). You cast an instant (Spell Pierce, Mystical Dispute): bounce their most expensive permanent. You cast another instant next turn: bounce their next most expensive. Each spell bounces one permanent.</div></div>
+    <div class="card"><div class="card-label">Tune 01</div><div class="card-title">Anger vs Brotherhood's End</div><div class="card-body">You adjust your sweeper split based on the meta's creature toughness. Anger of the Gods exiles at 3 damage — hits 3-toughness or less AND prevents GY recursion (critical vs Greasefang). Brotherhood's End deals 2 damage — cheaper but misses 3-toughness creatures. You run Anger in GY-heavy metas, Brotherhood's in pure aggro metas.</div></div>
+    <div class="card"><div class="card-label">Tune 02</div><div class="card-title">Rending Volley vs Fatal Push</div><div class="card-body">Rending Volley destroys white or blue creatures at {R} — specifically answers Greasefang (white) and UR Cutter creatures (blue). Fatal Push destroys any creature at MV ≤ 2 (or ≤ 4 with revolt). You run Rending Volley when the meta has many white/blue creatures. You run Fatal Push when the threats are across all colors.</div></div>
+    <div class="card"><div class="card-label">Tune 03</div><div class="card-title">Mystical Dispute Count</div><div class="card-body">You add Mystical Dispute copies when blue decks dominate your meta. Dispute counters blue spells at {U} — free against UW Control and UR Cutter. You cut Dispute in non-blue heavy metas where it costs {3} instead of {U}. The Dispute count tracks inversely with your blue opponent percentage.</div></div>
+    <div class="card"><div class="card-label">Tune 04</div><div class="card-title">Hullbreaker Horror Count</div><div class="card-body">You run 1-2 Hullbreaker Horrors in metas with many control decks that go to the late game. Horror is uncounterable and bounces permanents — ideal vs tap-out control opponents. You cut Horror in aggro-heavy metas where you don't reach 7 mana reliably. Horror is a metagame call, not a staple.</div></div>
+    <div class="card"><div class="card-label">Tune 05</div><div class="card-title">Soul-Guide Lantern vs Graveyard Trespasser</div><div class="card-body">You run Soul-Guide Lantern (1-mana instant GY exile with cantrip) in light-GY-hate slots. You run Graveyard Trespasser (3/3 creature that exiles GY cards when something dies) in heavier-hate slots. Lantern: cheap and instant speed. Trespasser: body + continuous exile. You choose based on whether you need a threat or just a tool.</div></div>
+    <div class="card"><div class="card-label">Tune 06</div><div class="card-title">Narset vs Chandra, Torch of Defiance</div><div class="card-body">You run Narset, Parter of Veils when opponents draw many extra cards (Lotus Field combo, Niv-Mizzet). You run Chandra, Torch of Defiance when you need reach (Chandra's +1 deals 2 damage). In metas with heavy draw engines: Narset. In metas where you need extra damage: Chandra.</div></div>
+    <div class="card">
+      <div class="card-label">Tune 13</div>
+      <div class="card-title">Anger of the Gods Exile Clause</div>
+      <div class="card-body">Anger of the Gods exiles creatures that would die to it rather than destroying them. This prevents GY recursion: Flamewake Phoenix is exiled, not killed. Arclight Phoenix is exiled, not killed. Monstrous Rage targets die and are exiled. The exile clause is why Anger outperforms Brotherhood's End in GY-heavy metas.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Tune 11</div>
+      <div class="card-title">Spell Pierce vs Negate</div>
+      <div class="card-body">Spell Pierce ({U}: counter noncreature unless they pay {2}) is efficient early but falls off late. Negate ({1}{U}: counter noncreature unconditionally) is always relevant. You run Pierce for early counter wars (T1-3) and Negate for late-game insurance. The ratio shifts based on your expected game length.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Tune 12</div>
+      <div class="card-title">Jace, the Mind Sculptor</div>
+      <div class="card-body">Jace, the Mind Sculptor (4 mana planeswalker: +2 look at top 2; 0 draw 3 shuffle 2 back; −1 bounce; −12 win) is your most powerful draw engine in long games. You run 1-2 Jace in metas where you reliably reach 4 mana with the board under control.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Tune 07</div>
+      <div class="card-title">Abrade vs Fatal Push</div>
+      <div class="card-body">Abrade ({1}{R}: 3 damage or destroy artifact) answers artifacts specifically — Cori-Steel Cutter, Lotus vehicles, any artifact threat. Fatal Push ({B}: destroy MV ≤ 2 or ≤ 4 with revolt) handles small creatures. Your split depends on artifact vs creature density in the expected meta.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Tune 08</div>
+      <div class="card-title">Thing in the Ice Flip</div>
+      <div class="card-body">Thing in the Ice (1/4: remove ice counters by casting spells; when last removed, transforms into 7/8 that bounces all non-Horror creatures) is your surprise win condition. You deploy it on T2 and cast 4 spells to flip it. The bounce ETB clears their board when it transforms.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Tune 09</div>
+      <div class="card-title">Opt vs Consider</div>
+      <div class="card-body">Opt (scry 1 then draw) vs Consider (surveil 1 — mill or keep — then draw): Consider mills cards into your GY for Treasure Cruise fuel. Opt keeps cards on top for future draws. You run Consider in Cruise-heavy configurations and Opt in pure-control configurations.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Tune 10</div>
+      <div class="card-title">Negate Slot</div>
+      <div class="card-body">Negate ({1}{U}: counter noncreature spell) handles their board wipes, their planeswalkers, and their key enchantments. You run 1-2 Negate in metas where their win conditions are noncreature permanents. You cut Negate in creature-heavy metas.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Anger vs Brotherhood</div>
+      <div class="card-title">Exile vs Destroy</div>
+      <div class="card-body">Anger of the Gods exiles (prevents GY recursion). Brotherhood's End destroys (they go to GY). You run Anger when their GY matters (Greasefang's Parhelion in GY, Arclight Phoenix). You run Brotherhood's End when GY is irrelevant. Default: Anger for Pioneer's GY-heavy meta.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Rending Volley Priority</div>
+      <div class="card-title">T1 Instant vs White/Blue Threats</div>
+      <div class="card-body">Rending Volley destroys white or blue creatures at {R}. It's your most efficient answer to Greasefang (white) and UR Cutter creatures (blue). You hold {R} specifically for Rending Volley on T1-2 when you know their key threat is white or blue.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Mystical Dispute</div>
+      <div class="card-title">Your One-Mana Counter</div>
+      <div class="card-body">Mystical Dispute counters blue spells at {U}. Against UW Control and UR Cutter, you hold {U} open every turn you have Dispute in hand. You never tap your blue mana for development when Dispute is available and they have blue sources untapped.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Soul-Guide Lantern</div>
+      <div class="card-title">Never Dead</div>
+      <div class="card-body">Soul-Guide Lantern exiles their GY at instant speed. Even against non-GY decks: you crack it for {B} to draw a card. You deploy Lantern during their upkeep or in response to their GY trigger — never during your main phase when they might have responses.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Anger Threshold</div>
+      <div class="card-title">Three Creatures Always</div>
+      <div class="card-body">You cast Anger of the Gods when they have exactly 3 creatures with 3 or less toughness. Below 3: use cheaper answers. At 3: Anger sweeps their entire board while exiling to prevent recursion. You count toughness values before casting.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Narset Deployment Timing</div>
+      <div class="card-title">Before Their Draw Chain</div>
+      <div class="card-body">You deploy Narset when they're about to chain draw spells. Against Lotus Field: before Pore Over the Pages. Against Niv-Mizzet: before Niv ETB. Your goal: Narset resolves BEFORE they draw their key cards.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Mystical Dispute</div>
+      <div class="card-title">One Mana Counter for Blue</div>
+      <div class="card-body">Mystical Dispute costs {U} for blue spells. You hold {U} open on their turn when you have Dispute in hand and expect a blue spell. You never tap out when Dispute is in hand and their land base includes blue sources.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Counter Target Priority</div>
+      <div class="card-title">Identify Their Win Condition</div>
+      <div class="card-body">You identify their win condition before T1 and assign your counters accordingly. Greasefang: Dovin's Veto for Greasefang the creature spell. Lotus: Damping Sphere to shut their combo. UR Cutter: Rending Volley for their key blue attackers.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Brotherhood's End Mode</div>
+      <div class="card-title">Check Mode Before Casting</div>
+      <div class="card-body">You decide Brotherhood's End's mode before tapping mana: Mode A (2 damage each creature/planeswalker) or Mode B (destroy MV ≤ 3 artifacts). You commit to a mode based on their board state. You never cast Brotherhood's End without knowing which mode you're using.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Fatal Push Revolt</div>
+      <div class="card-title">Trigger Before Casting</div>
+      <div class="card-body">You crack a fetchland or sacrifice a Soul-Guide Lantern BEFORE casting Fatal Push to trigger revolt (MV ≤ 4 mode). Without revolt, Push only hits MV ≤ 2. With revolt: hits Kalitas, Sheoldred, most of their key threats.</div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- CH11 PREP -->
+<div id="prep" class="section">
+<div class="content">
+  <span class="section-label">Chapter 11</span>
+  <h1>EVENT<br>PREP</h1>
+  <div class="mantra">"Know when to fire the combo. Know what they can counter. Bait before firing."</div>
+  <div class="card-grid card-grid-2">
+    <div class="card"><div class="card-label">Know Cold</div><div class="card-title">The Bait-Before-Fire Protocol</div><div class="card-body">Against any deck with countermagic: (1) cast something expendable at end of their turn — Prismari Command, Behold the Multiverse, Divide by Zero. (2) Watch if they counter it. (3) If they counter: their mana is spent, untap, fire Creativity. (4) If they don't counter: the card drew you into Opus/Creativity, proceed. Never fire Creativity into open blue mana without knowing their hand or having bait resolved.</div></div>
+    <div class="card"><div class="card-label">Know Cold</div><div class="card-title">Magma Opus Four-Tap Priority</div><div class="card-body">When Magma Opus taps four permanents, it's often the most important decision in the game. Default priority: (1) their active threats attacking you next turn, (2) mana that enables their key answer, (3) planeswalkers before next activation, (4) anything with a relevant activated ability. Never tap random basics — tap the four things that win them the game if left untapped.</div></div>
+    <div class="card"><div class="card-label">Verify</div><div class="card-title">SB for Expected Field</div><div class="card-body">Heavy control (UW Control): Hullbreaker × 2 + Disdainful Stroke × 2 + Negate. Heavy aggro (RDW, Selesnya): Brotherhood's End + Anger of Gods. Heavy GY combo (Greasefang, Phoenix): Rending Volley + Narset. Confirm 15 cards map cleanly to expected matchups. Creativity's SB is highly flexible — 12 of 15 slots flex.</div></div>
+    <div class="card"><div class="card-label">Round 1 Tell</div><div class="card-title">T1 Land Read</div><div class="card-body">Mountain = RDW (board Anger of Gods G2). Steam Vents Island = UR Cutter (board Rending Volley + Disdainful Stroke). Godless Shrine = Greasefang (board Rending Volley; protect Divide by Zero for Greasefang bounce). Forest = Selesnya Company (board Anger of Gods + Brotherhood's End). Hallowed Fountain = UW Control (board Hullbreaker + counters). Cycling lands = Phoenix or Lotus Field (board accordingly).</div></div>
+  </div>
+
+  <button class="print-btn" onclick="window.print()">&#9113; Print Event Reference</button>
+  <div style="font-family:'DM Mono',monospace;font-size:11px;margin-top:16px;">
+    <div style="font-weight:500;margin-bottom:8px;">IZZET CREATIVITY — Event Reference · Pioneer April 2026</div>
+    <p style="font-size:11px;margin-bottom:8px;">Target Treasure (not Shaman) with Creativity | Bait counters before firing | Make Disappear Casualty = hard counter | Fable Ch2 discards Magma Opus | Reflection of Kiki-Jiki copies Gearhulk = 2 free Opus</p>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+      <div><strong>vs UR CUTTER (Even)</strong> — board Rending Volley + Disdainful Stroke</div>
+      <div><strong>vs RDW (Even)</strong> — answer Eidolon first, board Brotherhood's End</div>
+      <div><strong>vs UW CONTROL (Unfav)</strong> — bait Dovin's Veto, board Hullbreaker</div>
+      <div><strong>vs GREASEFANG (Fav)</strong> — Divide by Zero bounces Greasefang ETB</div>
+      <div><strong>vs SELESNYA (Even)</strong> — kill Thalia, board Anger of Gods</div>
+    </div>
+  </div>
+</div>
+
+  
+  <h2>20-Minute Crash Course</h2>
+  <p>If you're sitting down in 20 minutes, run through this in order:</p>
+  <ul class="checklist" id="crash-checklist">
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Mulligan rule:</strong> Keep any 7 with 2 islands + a counter OR 2 lands + a draw spell. Never keep a hand that can't interact by turn 2.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Temporal counter rule:</strong> Hold countermagic for their specific win condition, not their setup. Against Greasefang: counter Greasefang the creature (not their discard outlet). Against Lotus Field: counter Pore Over the Pages.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Narset rule:</strong> Narset, Parter of Veils shuts off all extra card draws. Against Lotus Field: their Pore Over the Pages draws 0 extra cards while Narset is in play. Deploy Narset when they're about to dig.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Draw engine rule:</strong> Hullbreaker Horror is uncounterable and bounces a permanent whenever you cast a spell. Cascade opponents into bouncing their board. Deploy when you have 7+ mana.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Board rule:</strong> Disdainful Stroke counters MV â‰¥ 4. Mystical Dispute counters any blue spell for {U}. Know which counter applies to their specific threat before sideboarding.</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>RDW rule:</strong> Against RDW: Anger of the Gods is your most important card. Deploy it when they have 3+ creatures to sweep their entire board. Don't cast it on 1-2 creatures.</span></li>
+  </ul>
+<div id="sb-print-zone">
+    <h2>Printable Sideboard Reference</h2>
+    <p>All matchup ins/outs on one sheet. Print and take to the event.</p>
+    <button class="print-btn" onclick="printSB()">&#x2259; Print SB Reference</button>
+    <div class="print-grid">
+    <div class="print-mu">
+      <div class="print-mu-name">UR CUTTER <span class="diff-even">Even</span></div>
+      <div class="print-cols">
+        <div><div class="print-col-label">In</div>
+          <div class="print-row"><span>Rending Volley</span><span class="print-qty">+2</span></div>
+          <div class="print-row"><span>Disdainful Stroke</span><span class="print-qty">+2</span></div>
+        </div>
+        <div><div class="print-col-label">Out</div>
+          <div class="print-row"><span>Behold the Multiverse</span><span class="print-qty">-2</span></div>
+          <div class="print-row"><span>Volcanic Spite</span><span class="print-qty">-2</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="print-mu">
+      <div class="print-mu-name">RED DECK WINS <span class="diff-even">Even</span></div>
+      <div class="print-cols">
+        <div><div class="print-col-label">In</div>
+          <div class="print-row"><span>Brotherhood's End</span><span class="print-qty">+1</span></div>
+          <div class="print-row"><span>Anger of the Gods</span><span class="print-qty">+1</span></div>
+        </div>
+        <div><div class="print-col-label">Out</div>
+          <div class="print-row"><span>Make Disappear</span><span class="print-qty">-2</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="print-mu">
+      <div class="print-mu-name">UW CONTROL <span class="diff-hard">Unfavorable</span></div>
+      <div class="print-cols">
+        <div><div class="print-col-label">In</div>
+          <div class="print-row"><span>Hullbreaker Horror</span><span class="print-qty">+2</span></div>
+          <div class="print-row"><span>Disdainful Stroke</span><span class="print-qty">+2</span></div>
+          <div class="print-row"><span>Negate</span><span class="print-qty">+1</span></div>
+        </div>
+        <div><div class="print-col-label">Out</div>
+          <div class="print-row"><span>Fiery Impulse</span><span class="print-qty">-3</span></div>
+          <div class="print-row"><span>Volcanic Spite</span><span class="print-qty">-2</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="print-mu">
+      <div class="print-mu-name">ORZHOV GREASEFANG <span class="diff-good">Favorable</span></div>
+      <div class="print-cols">
+        <div><div class="print-col-label">In</div>
+          <div class="print-row"><span>Rending Volley</span><span class="print-qty">+2</span></div>
+        </div>
+        <div><div class="print-col-label">Out</div>
+          <div class="print-row"><span>Behold the Multiverse</span><span class="print-qty">-2</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="print-mu">
+      <div class="print-mu-name">SELESNYA COMPANY <span class="diff-even">Even</span></div>
+      <div class="print-cols">
+        <div><div class="print-col-label">In</div>
+          <div class="print-row"><span>Anger of the Gods</span><span class="print-qty">+1</span></div>
+          <div class="print-row"><span>Brotherhood's End</span><span class="print-qty">+1</span></div>
+        </div>
+        <div><div class="print-col-label">Out</div>
+          <div class="print-row"><span>Make Disappear</span><span class="print-qty">-2</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="print-mu">
+      <div class="print-mu-name">SELESNYA COMPANY <span class="diff-even">Even</span></div>
+      <div class="print-cols">
+        <div><div class="print-col-label">In</div>
+          <div class="print-row"><span>Soul-Guide Lantern</span><span class="print-qty">+2</span></div>
+          <div class="print-row"><span>Fatal Push</span><span class="print-qty">+1</span></div>
+        </div>
+        <div><div class="print-col-label">Out</div>
+          <div class="print-row"><span>Duress</span><span class="print-qty">-2</span></div>
+          <div class="print-row"><span>Thoughtseize</span><span class="print-qty">-1</span></div>
+        </div>
+      </div>
+      <div class="print-needle">Soul-Guide Lantern exiles Extraction Specialist targets from GY. Fatal Push kills their sm</div>
+    </div>
+    <div class="print-mu">
+      <div class="print-mu-name">LOTUS FIELD <span class="diff-good">Favorable</span></div>
+      <div class="print-cols">
+        <div><div class="print-col-label">In</div>
+          <div class="print-row"><span>Damping Sphere</span><span class="print-qty">+3</span></div>
+          <div class="print-row"><span>Duress</span><span class="print-qty">+2</span></div>
+        </div>
+        <div><div class="print-col-label">Out</div>
+          <div class="print-row"><span>Fatal Push</span><span class="print-qty">-2</span></div>
+          <div class="print-row"><span>Soul-Guide Lantern</span><span class="print-qty">-2</span></div>
+          <div class="print-row"><span>Arashin Cleric</span><span class="print-qty">-1</span></div>
+        </div>
+      </div>
+      <div class="print-needle">Damping Sphere is their hardest card to beat — their combo requires multiple taps of the s</div>
+    </div>
+    <div class="print-mu">
+      <div class="print-mu-name">NIV-MIZZET REBORN <span class="diff-even">Even</span></div>
+      <div class="print-cols">
+        <div><div class="print-col-label">In</div>
+          <div class="print-row"><span>Thoughtseize</span><span class="print-qty">+2</span></div>
+          <div class="print-row"><span>Duress</span><span class="print-qty">+2</span></div>
+        </div>
+        <div><div class="print-col-label">Out</div>
+          <div class="print-row"><span>Soul-Guide Lantern</span><span class="print-qty">-2</span></div>
+          <div class="print-row"><span>Arashin Cleric</span><span class="print-qty">-2</span></div>
+        </div>
+      </div>
+      <div class="print-needle">Thoughtseize strips Niv or their key multicolor tutor. Duress hits their noncreature setup</div>
+    </div>
+    <div class="print-mu">
+      <div class="print-mu-name">ARCLIGHT PHOENIX <span class="diff-even">Even</span></div>
+      <div class="print-cols">
+        <div><div class="print-col-label">In</div>
+          <div class="print-row"><span>Soul-Guide Lantern</span><span class="print-qty">+2</span></div>
+          <div class="print-row"><span>Narset, Parter of Veils</span><span class="print-qty">+1</span></div>
+        </div>
+        <div><div class="print-col-label">Out</div>
+          <div class="print-row"><span>Spell Pierce</span><span class="print-qty">-2</span></div>
+          <div class="print-row"><span>Duress</span><span class="print-qty">-1</span></div>
+        </div>
+      </div>
+      <div class="print-needle">Soul-Guide Lantern exiles their Phoenix from GY before it triggers back. Narset prevents t</div>
+    </div>
+    <div class="print-mu">
+      <div class="print-mu-name">RAKDOS MIDRANGE <span class="diff-even">Even</span></div>
+      <div class="print-cols">
+        <div><div class="print-col-label">In</div>
+          <div class="print-row"><span>Fatal Push</span><span class="print-qty">+2</span></div>
+          <div class="print-row"><span>Collective Brutality</span><span class="print-qty">+1</span></div>
+        </div>
+        <div><div class="print-col-label">Out</div>
+          <div class="print-row"><span>Duress</span><span class="print-qty">-2</span></div>
+          <div class="print-row"><span>Soul-Guide Lantern</span><span class="print-qty">-1</span></div>
+        </div>
+      </div>
+      <div class="print-needle">Fatal Push with revolt kills Vein Ripper and Kalitas cleanly. Collective Brutality handles</div>
+    </div>
+    </div>
+  </div>
+
+  <h2>Testing Framework</h2>
+  <div class="card-grid">
+      <div class="card"><div class="card-label">Block 01</div><div class="card-title">Counter Target Drills</div><div class="card-body">Practice identifying the correct counter target by matchup. UR Cutter: counter Cutter. Greasefang: counter Greasefang. Lotus Field: counter Hidden Strings. Know without thinking.</div></div>
+      <div class="card"><div class="card-label">Block 02</div><div class="card-title">Narset Timing</div><div class="card-body">Practice deploying Narset at the right moment. Against Lotus: before they tap Lotus. Against Niv: before they cast Niv. Against cantrip decks: on turn 3 before their draw chain.</div></div>
+      <div class="card"><div class="card-label">Block 03</div><div class="card-title">Anger Timing</div><div class="card-body">Practice waiting for 3+ creatures before casting Anger. Against RDW: they commit 3 creatures by T3. Against Company: they commit after a Company resolution. Know the correct wait threshold.</div></div>
+      <div class="card"><div class="card-label">Block 04</div><div class="card-title">Hullbreaker Closing</div><div class="card-body">Practice the Hullbreaker closing sequence. Cast Hullbreaker, then cast a 1-mana spell to bounce their key permanent, then another to bounce something else. Each spell triggers a bounce.</div></div>
+  </div>
+
+  <h2>Matchday Routine</h2>
+  <ol class="heuristic-list">
+      <li><div class="heuristic-num">01</div><div class="heuristic-body">Know your counter targets by matchup before round 1. Print the matchup guide and memorize: Greasefang = counter Greasefang, Lotus = counter Pore Over.</div></li>
+      <li><div class="heuristic-num">02</div><div class="heuristic-body">Narset is your card advantage lockout vs cantrip-heavy decks. Deploy it the turn they're about to dig â€” timing is everything.</div></li>
+      <li><div class="heuristic-num">03</div><div class="heuristic-body">Anger of the Gods timing: wait for 3+ creatures. One creature at a time is too inefficient for a 3-mana sweeper.</div></li>
+      <li><div class="heuristic-num">04</div><div class="heuristic-body">Between rounds: identify how many times you countered the wrong spell. The most common mistake is countering their setup instead of their win condition.</div></li>
+      <li><div class="heuristic-num">05</div><div class="heuristic-body">Hullbreaker Horror: once it's in play, every spell bounces a permanent. Cast your cheapest spells first to bounce their most expensive permanents.</div></li>
+  </ol>
+
+</div>
+
+<footer style="border-top:1px solid var(--rule);padding:24px 80px;display:flex;justify-content:space-between;font-family:'DM Mono',monospace;font-size:10px;color:var(--mid);">
+  <span>Team Resolve &middot; Pioneer 2026</span>
+  <span>Izzet Blue &mdash; April 2026</span>
+  <span>Gearhulk Creativity · Metagame Reference April 2026</span>
+</footer>
+
+<script>
+function show(id){
+  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.nav-link').forEach(b=>b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  event.target.classList.add('active');
+  window.scrollTo(0,0);
+}
+function toggle(id){document.getElementById(id).classList.toggle('open');}
+</script>
+<script>
+(function(){
+  const TIP=document.createElement('div');TIP.className='card-tip';
+  TIP.innerHTML='<div class="card-tip-loading">loading...</div>';
+  document.body.appendChild(TIP);
+  const CACHE={};let hideTimer=null;const PAD=24,W=220,H=310;
+  function pos(e){let x=e.clientX+PAD,y=e.clientY-H/2;
+    if(x+W>window.innerWidth)x=e.clientX-W-PAD;if(y<8)y=8;
+    if(y+H>window.innerHeight)y=window.innerHeight-H-8;
+    TIP.style.left=x+'px';TIP.style.top=y+'px';}
+  async function showTip(name,e){
+    clearTimeout(hideTimer);TIP.innerHTML='<div class="card-tip-loading">loading...</div>';
+    TIP.classList.add('visible');pos(e);
+    if(CACHE[name]){TIP.innerHTML=`<img src="${CACHE[name]}" alt="${name}">`;return;}
+    try{const r=await fetch(`https://api.scryfall.com/cards/named?fuzzy=${encodeURIComponent(name)}`);
+      const d=await r.json();const img=d.image_uris?.normal||d.card_faces?.[0]?.image_uris?.normal;
+      if(!img){TIP.classList.remove('visible');return;}
+      CACHE[name]=img;TIP.innerHTML=`<img src="${img}" alt="${name}">`;}
+    catch(err){TIP.classList.remove('visible');}
+  }
+  function hide(){hideTimer=setTimeout(()=>TIP.classList.remove('visible'),80);}
+  document.addEventListener('mouseover',e=>{const el=e.target.closest('span.c');if(!el)return;showTip(el.textContent.trim(),e);});
+  document.addEventListener('mousemove',e=>{if(TIP.classList.contains('visible'))pos(e);});
+  document.addEventListener('mouseout',e=>{if(e.target.closest('span.c'))hide();});
+})();
+</script>
+</body>
+</html>
