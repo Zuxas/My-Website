@@ -1,5 +1,5 @@
 # CLAUDE.md — Team Resolve Project State
-*Last updated: April 9, 2026 — commit 33ceec6*
+*Last updated: April 9, 2026 — commit 06db9f9*
 
 > **Cross-project context:** See `E:\vscode ai project\ECOSYSTEM.md` for how this
 > project connects to mtg-sim, mtg-meta-analyzer, and Team Resolve operations.
@@ -68,12 +68,17 @@ Lotus Field 0.5%, Rakdos Midrange 0.5%, Mono-White Humans 0.3%,
 Niv-Mizzet Reborn 0.3%
 
 ## QUALITY — 44/44 PASSING ALL CRITERIA
+- CSS consistency audit: 15/15 checks passing across all 44 files
+- Standardized: Bebas Neue typography, hs-label header stats (Meta/Role/Colors/Speed),
+  responsive CSS, print CSS, card tooltips, engine-block, role-grid, sb-deep,
+  matchup-table, footer, nav scrollbar
 
 ## RECENT COMMITS
+06db9f9 — style: complete CSS standardization (responsive, print, tooltip, all components)
+729c967 — style: standardize header stats across all 44 playbooks
+b19980b — style: standardize typography across all 44 playbooks
 33ceec6 — meta: update all 11 Pioneer playbooks with April 2026 meta %
 f75e33f — meta: update all 17 Modern playbooks with April 2026 meta %
-ce110f5 — docs: add ECOSYSTEM.md cross-reference
-7b86f07 — refactor: reorganize all 44 playbooks into format folders
 
 ## TECHNICAL
 - Scripts: write _a.py, run via DC start_process powershell, delete after
