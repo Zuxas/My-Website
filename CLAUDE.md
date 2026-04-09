@@ -1,5 +1,5 @@
 # CLAUDE.md — Team Resolve Project State
-*Last updated: April 9, 2026 — commit e8a313d*
+*Last updated: April 9, 2026 — commit b6267fb*
 
 > **Cross-project context:** See `E:\vscode ai project\ECOSYSTEM.md` for how this
 > project connects to mtg-sim, mtg-meta-analyzer, and Team Resolve operations.
@@ -8,7 +8,7 @@
 - Live: https://zuxas.github.io/TeamResolve/
 - Repo: Zuxas/TeamResolve, branch: main
 - Local: E:\vscode ai project\My-Website\
-- Current commit: 7b86f07
+- Current commit: b6267fb
 
 ## FOLDER STRUCTURE (reorganized April 8, 2026)
 Root: index.html, deck-guides.html, meta.html, team.html, analyze.html,
@@ -80,13 +80,15 @@ Niv-Mizzet Reborn 0.3%
 - Nav-brand: deck name visible in nav bar (all 44)
 
 - Structural: zero orphaned matchup-blocks (13 Pioneer/Standard files repaired)
+- Encoding: zero BOM markers, zero mojibake artifacts across all 44
+- deck-guides.html: all 44 card meta % synced with playbooks, counter accurate
+- Links: 46/46 valid in deck-guides.html, 0 broken cross-links
 
 ## RECENT COMMITS
-e8a313d — fix: repair 13 files with orphaned matchup-blocks (verified + visually confirmed)
-d922c72 — revert: undo broken first orphan fix attempt
+b6267fb — fix: deep encoding cleanup (mojibake, BOM) from 26 files
+b5bfd6b — fix: sync deck-guides.html meta % with playbooks, counter 14→16
+e8a313d — fix: repair 13 files with orphaned matchup-blocks (visually confirmed)
 f7412dc — style: standardize header-labels, titles, nav-brand cleanup
-05e9d98 — fix: repair 4 broken Overview tabs + header-inner flex
-cf18c3d — style: standardize footer HTML across all 44 playbooks
 06db9f9 — style: complete CSS standardization (responsive, print, tooltip)
 729c967 — style: standardize header stats (Meta/Role/Colors/Speed)
 b19980b — style: standardize typography (Bebas Neue) across all 44
