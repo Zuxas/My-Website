@@ -1,5 +1,5 @@
 # CLAUDE.md — Team Resolve Project State
-*Last updated: April 9, 2026 — commit f75e33f*
+*Last updated: April 9, 2026 — commit 33ceec6*
 
 > **Cross-project context:** See `E:\vscode ai project\ECOSYSTEM.md` for how this
 > project connects to mtg-sim, mtg-meta-analyzer, and Team Resolve operations.
@@ -60,9 +60,17 @@ Jeskai Blink 5.4%, Domain Zoo 4.8%, Amulet Titan 3.4%, Dimir Oculus 3.4%,
 Living End 3.2%, Neoform 2.9%, Yawgmoth 2.6%, Goryo's Vengeance 2.5%,
 Izzet Prowess 2.5%, Humans 1.0%, UW Blink 1.0%, UW Control 0.8%, Glockulous 0.5%
 
+## PIONEER META % — UPDATED (April 9, 2026)
+All 11 Pioneer files updated with MTGGoldfish paper meta % (all decks):
+RDW 20.4%, UR Cutter 10.0%, Selesnya Company 9.4%, UW Control 9.2%,
+Orzhov Greasefang 5.3%, Arclight Phoenix 4.2%, Izzet Control 0.5%,
+Lotus Field 0.5%, Rakdos Midrange 0.5%, Mono-White Humans 0.3%,
+Niv-Mizzet Reborn 0.3%
+
 ## QUALITY — 44/44 PASSING ALL CRITERIA
 
 ## RECENT COMMITS
+33ceec6 — meta: update all 11 Pioneer playbooks with April 2026 meta %
 f75e33f — meta: update all 17 Modern playbooks with April 2026 meta %
 ce110f5 — docs: add ECOSYSTEM.md cross-reference
 7b86f07 — refactor: reorganize all 44 playbooks into format folders
