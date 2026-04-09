@@ -25,7 +25,7 @@ html{overflow-y:scroll;}
 }
 *{margin:0;padding:0;box-sizing:border-box;}
 body{background:var(--paper);color:var(--ink);font-family:'Crimson Pro',Georgia,serif;font-size:17px;line-height:1.6;}
-nav{position:sticky;top:0;z-index:100;background:var(--primary);border-bottom:2px solid var(--accent);display:flex;align-items:center;padding:0 32px;height:48px;gap:4px;}
+nav { position: sticky; top: 0; z-index: 100; background: var(--primary); border-bottom: 1px solid rgba(242,237,230,0.1); padding: 0 80px; display: flex; align-items: center; gap: 0; overflow-x: auto; scrollbar-width: none; }
 .nav-brand{font-family:'Bebas Neue',sans-serif;font-size:18px;color:var(--accent);letter-spacing:0.05em;margin-right:40px;white-space:nowrap;padding:16px 0;}
 .nav-link{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(248,250,252,0.55);background:none;border:none;border-bottom:2px solid transparent;padding:0 12px;height:48px;cursor:pointer;white-space:nowrap;display:flex;align-items:center;text-decoration:none;transition:color 0.15s,border-color 0.15s;}
 .nav-link:hover{color:rgba(248,250,252,0.85);}
@@ -43,7 +43,7 @@ nav{position:sticky;top:0;z-index:100;background:var(--primary);border-bottom:2p
 .section{display:none;animation:fadeIn 0.3s ease;}
 .section.active{display:block;}
 @keyframes fadeIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
-.content{max-width:1080px;margin:0 auto;padding:56px 80px 80px;}
+.page{max-width:1080px;margin:0 auto;padding:56px 80px 80px;}
 .section-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--mid);margin-bottom:8px;display:block;}
 h1 { font-family: 'Bebas Neue', sans-serif; font-size: 64px; line-height: 0.9; letter-spacing: 0.01em; color: var(--ink); margin-bottom: 40px; }
 h2 { font-family: 'Bebas Neue', sans-serif; font-size: 36px; letter-spacing: 0.02em; color: var(--ink); margin: 56px 0 20px; padding-bottom: 8px; border-bottom: 2px solid var(--ink); }
@@ -161,6 +161,9 @@ span.c:hover{border-bottom-style:solid;}
   .print-mu { background: var(--paper); padding: 16px; }
   .print-mu-name { font-family: 'Bebas Neue', sans-serif; font-size: 16px; letter-spacing: 0.03em; color: var(--ink); margin-bottom: 4px; display: flex; align-items: center; gap: 8px; }
   .print-mu-role { font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--mid); margin-bottom: 10px; }
+
+  footer { background: var(--ink); color: rgba(242,237,230,0.3); padding: 40px 80px; margin-top: 80px; display: flex; justify-content: space-between; align-items: center; }
+  footer span { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; }
 </style>
 </head>
 <body>
@@ -198,7 +201,7 @@ span.c:hover{border-bottom-style:solid;}
 
 <!-- CH01 IDENTITY -->
 <div id="identity" class="section active">
-<div class="content">
+<div class="page">
   <span class="section-label">Chapter 01</span>
   <h1>DECK<br>IDENTITY</h1>
   <div class="mantra">"Every creature flies. Every threat requires an immediate answer. You play bigger than aggro and faster than control."</div>
@@ -220,7 +223,7 @@ span.c:hover{border-bottom-style:solid;}
 
 <!-- CH02 DECKLIST -->
 <div id="decklist" class="section">
-<div class="content">
+<div class="page">
   <span class="section-label">Chapter 02</span>
   <h1>DECKLIST</h1>
   <div class="mantra">"magic.gg Traditional Standard Ranked — March 30, 2026 · RC Turin Top8 (11-2-2, 7th)"</div>
@@ -279,7 +282,7 @@ span.c:hover{border-bottom-style:solid;}
 
 <!-- CH03 GAME FLOW -->
 <div id="gameplan" class="section">
-<div class="content">
+<div class="page">
   <span class="section-label">Chapter 03</span>
   <h1>GAME<br>PLAN</h1>
   <div class="mantra">"T1 Momo. T2 Clarion taps their dork. T3 two more Dragons. They're dead before their engine goes online."</div>
@@ -294,7 +297,7 @@ span.c:hover{border-bottom-style:solid;}
 
 <!-- CH04 ENGINES -->
 <div id="engines" class="section">
-<div class="content">
+<div class="page">
   <span class="section-label">Chapter 04</span>
   <h1>CORE<br>ENGINES</h1>
   <div class="mantra">"Sarkhan attacks first. Always. The indestructible clause is the reason the deck wins combat."</div>
@@ -308,7 +311,7 @@ span.c:hover{border-bottom-style:solid;}
 
 <!-- CH05 LINES -->
 <div id="lines" class="section">
-<div class="content">
+<div class="page">
   <span class="section-label">Chapter 05</span>
   <h1>LINES &amp;<br>TACTICS</h1>
   <div class="mantra">"Always attack with Sarkhan before declaring other attackers. This is the #1 sequencing rule in the deck."</div>
@@ -321,7 +324,7 @@ span.c:hover{border-bottom-style:solid;}
 
 <!-- CH06 ROLES -->
 <div id="roles" class="section">
-<div class="content">
+<div class="page">
   <span class="section-label">Chapter 06</span>
   <h1>ROLE<br>ASSIGNMENT</h1>
   <div class="mantra">"You're bigger than aggro but faster than control. You occupy the exact middle ground that beats both."</div>
@@ -335,7 +338,7 @@ span.c:hover{border-bottom-style:solid;}
 
 <!-- CH07 MATCHUPS -->
 <div id="matchups" class="section">
-<div class="content">
+<div class="page">
   <span class="section-label">Chapter 07</span>
   <h1>MATCHUP<br>GUIDE</h1>
   <div class="mantra">"Clarion Conqueror tapping their Gene Pollinator on entry is free tempo. Always evaluate what tap target maximizes your damage."</div>
@@ -525,7 +528,7 @@ span.c:hover{border-bottom-style:solid;}
 
 <!-- CH08 SIDEBOARD -->
 <div id="sideboard" class="section">
-<div class="content">
+<div class="page">
   <span class="section-label">Chapter 08</span>
   <h1>SIDEBOARD<br>GUIDE</h1>
   <div class="mantra">"Torpor Orb shuts off every ETB in the format — Gene Pollinator, Clarion Conqueror, Floodpits Drowner. Name it vs any ETB-dependent deck."</div>
@@ -567,7 +570,7 @@ span.c:hover{border-bottom-style:solid;}
 
 <!-- CH09 HEURISTICS -->
 <div id="heuristics" class="section">
-<div class="content">
+<div class="page">
   <span class="section-label">Chapter 09</span>
   <h1>HEURISTICS</h1>
   <div class="mantra">"Attack with Sarkhan first every combat. This is the single most important sequencing rule in the deck."</div>
@@ -588,7 +591,7 @@ span.c:hover{border-bottom-style:solid;}
 
 <!-- CH10 TUNING -->
 <div id="tuning" class="section">
-<div class="content">
+<div class="page">
   <span class="section-label">Chapter 10</span>
   <h1>TUNING<br>NOTES</h1>
   <div class="mantra">"4 Momo + 4 Clarion + 4 Sarkhan + 4 Hellkites is the locked core. Everything flexes around it."</div>
@@ -631,7 +634,7 @@ span.c:hover{border-bottom-style:solid;}
 
 <!-- CH11 PREP -->
 <div id="prep" class="section">
-<div class="content">
+<div class="page">
   <span class="section-label">Chapter 11</span>
   <h1>EVENT<br>PREP</h1>
   <div class="mantra">"Know before you sit down: Sarkhan attacks first. Always. Indestructible ≠ exile protection."</div>

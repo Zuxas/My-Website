@@ -25,7 +25,7 @@ html{overflow-y:scroll;}
 }
 *{margin:0;padding:0;box-sizing:border-box;}
 body{background:var(--paper);color:var(--ink);font-family:'Crimson Pro',Georgia,serif;font-size:17px;line-height:1.6;}
-nav{position:sticky;top:0;z-index:100;background:var(--primary);border-bottom:2px solid var(--accent);display:flex;align-items:center;padding:0 32px;height:48px;gap:4px;}
+nav { position: sticky; top: 0; z-index: 100; background: var(--primary); border-bottom: 1px solid rgba(242,237,230,0.1); padding: 0 80px; display: flex; align-items: center; gap: 0; overflow-x: auto; scrollbar-width: none; }
 .nav-brand{font-family:'Bebas Neue',sans-serif;font-size:18px;color:var(--accent);letter-spacing:0.05em;margin-right:40px;white-space:nowrap;padding:16px 0;}
 .nav-link{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(248,250,252,0.55);background:none;border:none;border-bottom:2px solid transparent;padding:0 12px;height:48px;cursor:pointer;white-space:nowrap;display:flex;align-items:center;text-decoration:none;transition:color 0.15s,border-color 0.15s;}
 .nav-link:hover{color:rgba(248,250,252,0.85);}
@@ -43,7 +43,7 @@ nav{position:sticky;top:0;z-index:100;background:var(--primary);border-bottom:2p
 .section{display:none;animation:fadeIn 0.3s ease;}
 .section.active{display:block;}
 @keyframes fadeIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
-.content{max-width:1080px;margin:0 auto;padding:56px 80px 80px;}
+.page{max-width:1080px;margin:0 auto;padding:56px 80px 80px;}
 .section-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--mid);margin-bottom:8px;display:block;}
 h1 { font-family: 'Bebas Neue', sans-serif; font-size: 64px; line-height: 0.9; letter-spacing: 0.01em; color: var(--ink); margin-bottom: 40px; }
 h2 { font-family: 'Bebas Neue', sans-serif; font-size: 36px; letter-spacing: 0.02em; color: var(--ink); margin: 56px 0 20px; padding-bottom: 8px; border-bottom: 2px solid var(--ink); }
@@ -161,6 +161,9 @@ span.c:hover{border-bottom-style:solid;}
   .print-mu { background: var(--paper); padding: 16px; }
   .print-mu-name { font-family: 'Bebas Neue', sans-serif; font-size: 16px; letter-spacing: 0.03em; color: var(--ink); margin-bottom: 4px; display: flex; align-items: center; gap: 8px; }
   .print-mu-role { font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--mid); margin-bottom: 10px; }
+
+  footer { background: var(--ink); color: rgba(242,237,230,0.3); padding: 40px 80px; margin-top: 80px; display: flex; justify-content: space-between; align-items: center; }
+  footer span { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; }
 </style>
 </head>
 <body>
@@ -198,7 +201,7 @@ span.c:hover{border-bottom-style:solid;}
 
 <!-- CH01 IDENTITY -->
 <div id="identity" class="section active">
-<div class="content">
+<div class="page">
   <span class="section-label">Chapter 01</span>
   <h1>DECK<br>IDENTITY</h1>
   <div class="mantra">"Every card in this deck is either a threat or ramp. There is no interaction, no counters, no removal — just an unstoppable sequence of power cards."</div>
@@ -234,7 +237,7 @@ span.c:hover{border-bottom-style:solid;}
 
 <!-- CH02 DECKLIST -->
 <div id="decklist" class="section">
-<div class="content">
+<div class="page">
   <span class="section-label">Chapter 02</span>
   <h1>DECKLIST</h1>
   <div class="mantra">"MTGO Challenge builds (russell_wilson Top8 Mar 27 + Kizdar 5-0 Mar 3, 2026)"</div>
@@ -294,7 +297,7 @@ span.c:hover{border-bottom-style:solid;}
 
 <!-- CH03 GAME FLOW -->
 <div id="gameplan" class="section">
-<div class="content">
+<div class="page">
   <span class="section-label">Chapter 03</span>
   <h1>GAME<br>PLAN</h1>
   <div class="mantra">"T1 dork. T2 Nature's Rhythm. T3 Gene Pollinator. T4 Ouroboroid into 4/4s. T5 Craterhoof."</div>
@@ -314,7 +317,7 @@ span.c:hover{border-bottom-style:solid;}
 
 <!-- CH04 ENGINES -->
 <div id="engines" class="section">
-<div class="content">
+<div class="page">
   <span class="section-label">Chapter 04</span>
   <h1>CORE<br>ENGINES</h1>
   <div class="mantra">"Three engines running simultaneously by turn 4. None of them require permission to function."</div>
@@ -328,7 +331,7 @@ span.c:hover{border-bottom-style:solid;}
 
 <!-- CH05 LINES -->
 <div id="lines" class="section">
-<div class="content">
+<div class="page">
   <span class="section-label">Chapter 05</span>
   <h1>LINES &amp;<br>TACTICS</h1>
   <div class="mantra">"Know what Pollinator does and doesn't trigger. This is the most misunderstood card in the deck."</div>
@@ -345,7 +348,7 @@ span.c:hover{border-bottom-style:solid;}
 
 <!-- CH06 ROLES -->
 <div id="roles" class="section">
-<div class="content">
+<div class="page">
   <span class="section-label">Chapter 06</span>
   <h1>ROLE<br>ASSIGNMENT</h1>
   <div class="mantra">"You are always the bigger midrange deck. Their plan is good. Yours is better."</div>
@@ -359,7 +362,7 @@ span.c:hover{border-bottom-style:solid;}
 
 <!-- CH07 MATCHUPS -->
 <div id="matchups" class="section">
-<div class="content">
+<div class="page">
   <span class="section-label">Chapter 07</span>
   <h1>MATCHUP<br>GUIDE</h1>
   <div class="mantra">"No interaction means you're in a race every game. Know how fast you can kill and whether it's fast enough."</div>
@@ -556,7 +559,7 @@ span.c:hover{border-bottom-style:solid;}
 
 <!-- CH08 SIDEBOARD -->
 <div id="sideboard" class="section">
-<div class="content">
+<div class="page">
   <span class="section-label">Chapter 08</span>
   <h1>SIDEBOARD<br>GUIDE</h1>
   <div class="mantra">"Your SB is entirely interaction. Your main deck has none. The SB makes you a real deck in games 2 and 3."</div>
@@ -598,7 +601,7 @@ span.c:hover{border-bottom-style:solid;}
 
 <!-- CH09 HEURISTICS -->
 <div id="heuristics" class="section">
-<div class="content">
+<div class="page">
   <span class="section-label">Chapter 09</span>
   <h1>HEURISTICS</h1>
   <div class="mantra">"Know Pollinator's trigger condition by reflex. Most Simic Rhythm mistakes come from misunderstanding what it does."</div>
@@ -619,7 +622,7 @@ span.c:hover{border-bottom-style:solid;}
 
 <!-- CH10 TUNING -->
 <div id="tuning" class="section">
-<div class="content">
+<div class="page">
   <span class="section-label">Chapter 10</span>
   <h1>TUNING<br>NOTES</h1>
   <div class="mantra">"The core 8 dorks + 4 Rhythm + 4 Pollinator is locked. Everything else is adjustable."</div>
@@ -636,7 +639,7 @@ span.c:hover{border-bottom-style:solid;}
 
 <!-- CH11 PREP -->
 <div id="prep" class="section">
-<div class="content">
+<div class="page">
   <span class="section-label">Chapter 11</span>
   <h1>EVENT<br>PREP</h1>
   <div class="mantra">"You have no interaction. Accept it. Your job is to deploy the fastest, largest threats possible."</div>

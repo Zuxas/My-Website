@@ -21,7 +21,7 @@ html{overflow-y:scroll;}
 }
 *{margin:0;padding:0;box-sizing:border-box;}
 body{background:var(--paper);color:var(--ink);font-family:'Crimson Pro',Georgia,serif;font-size:17px;line-height:1.6;}
-nav{position:sticky;top:0;z-index:100;background:var(--primary);border-bottom:2px solid var(--accent);display:flex;align-items:center;padding:0 32px;height:48px;gap:4px;}
+nav { position: sticky; top: 0; z-index: 100; background: var(--primary); border-bottom: 1px solid rgba(242,237,230,0.1); padding: 0 80px; display: flex; align-items: center; gap: 0; overflow-x: auto; scrollbar-width: none; }
 .nav-brand{font-family:'Bebas Neue',sans-serif;font-size:18px;color:var(--accent);letter-spacing:0.05em;margin-right:40px;white-space:nowrap;padding:16px 0;}
 .nav-link{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(248,250,252,0.55);background:none;border:none;border-bottom:2px solid transparent;padding:0 12px;height:48px;cursor:pointer;white-space:nowrap;display:flex;align-items:center;text-decoration:none;transition:color 0.15s,border-color 0.15s;}
 .nav-link:hover{color:rgba(248,250,252,0.85);}
@@ -39,7 +39,7 @@ nav{position:sticky;top:0;z-index:100;background:var(--primary);border-bottom:2p
 .section{display:none;animation:fadeIn 0.3s ease;}
 .section.active{display:block;}
 @keyframes fadeIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
-.content{max-width:1080px;margin:0 auto;padding:56px 80px 80px;}
+.page{max-width:1080px;margin:0 auto;padding:56px 80px 80px;}
 .section-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--mid);margin-bottom:8px;display:block;}
 h1{font-family:'Bebas Neue',sans-serif;font-size:64px;line-height:0.9;letter-spacing:0.01em;color:var(--ink);margin-bottom:40px;}
 h2{font-family:'Bebas Neue',sans-serif;font-size:36px;letter-spacing:0.02em;color:var(--ink);margin:56px 0 20px;padding-bottom:8px;border-bottom:2px solid var(--ink);}
@@ -157,6 +157,9 @@ span.c:hover{border-bottom-style:solid;}
   .print-mu { background: var(--paper); padding: 16px; }
   .print-mu-name { font-family: 'Bebas Neue', sans-serif; font-size: 16px; letter-spacing: 0.03em; color: var(--ink); margin-bottom: 4px; display: flex; align-items: center; gap: 8px; }
   .print-mu-role { font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--mid); margin-bottom: 10px; }
+
+  footer { background: var(--ink); color: rgba(242,237,230,0.3); padding: 40px 80px; margin-top: 80px; display: flex; justify-content: space-between; align-items: center; }
+  footer span { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; }
 </style>
 </head>
 <body>
@@ -193,7 +196,7 @@ span.c:hover{border-bottom-style:solid;}
 
 <!-- CH01 IDENTITY -->
 <div id="identity" class="section active">
-<div class="content">
+<div class="page">
   <span class="section-label">Chapter 01</span>
   <h1>DECK<br>IDENTITY</h1>
   <div class="mantra">"The plan is simple: get Phoenixes in the graveyard early, cast three cheap spells in a single turn, and attack with 3/2 haste fliers that come back every turn. Your opponent needs exile effects. Your spells reload you faster than they can answer."</div>
@@ -215,7 +218,7 @@ span.c:hover{border-bottom-style:solid;}
 
 <!-- CH02 DECKLIST -->
 <div id="decklist" class="section">
-<div class="content">
+<div class="page">
   <span class="section-label">Chapter 02</span>
   <h1>DECKLIST</h1>
   <div class="mantra">"Metagame Mentor — Pioneer July 2025 · Reference list at 16.4% winner's metagame"</div>
@@ -278,7 +281,7 @@ span.c:hover{border-bottom-style:solid;}
 
 <!-- CH03 GAME FLOW -->
 <div id="gameplan" class="section">
-<div class="content">
+<div class="page">
   <span class="section-label">Chapter 03</span>
   <h1>GAME<br>FLOW</h1>
   <div class="mantra">"T1: cantrip, filter for Phoenix. T2: discard Phoenix to Talent or Lightning Axe. T3: three spells, Phoenix returns, attack for 3. They're at 17."</div>
@@ -293,7 +296,7 @@ span.c:hover{border-bottom-style:solid;}
 
 <!-- CH04 ENGINES -->
 <div id="engines" class="section">
-<div class="content">
+<div class="page">
   <span class="section-label">Chapter 04</span>
   <h1>CORE<br>ENGINES</h1>
   <div class="mantra">"Cantrip engine fills GY. Loot engine puts Phoenixes in GY. Recursion engine returns them. Cruise refuels everything."</div>
@@ -307,7 +310,7 @@ span.c:hover{border-bottom-style:solid;}
 
 <!-- CH05 LINES -->
 <div id="lines" class="section">
-<div class="content">
+<div class="page">
   <span class="section-label">Chapter 05</span>
   <h1>LINES &amp;<br>TACTICS</h1>
   <div class="mantra">"Discard Phoenixes early and often. Three spells is always the target. Never exile Phoenixes for Cruise."</div>
@@ -320,7 +323,7 @@ span.c:hover{border-bottom-style:solid;}
 
 <!-- CH06 ROLES -->
 <div id="roles" class="section">
-<div class="content">
+<div class="page">
   <span class="section-label">Chapter 06</span>
   <h1>ROLE<br>ASSIGNMENT</h1>
   <div class="mantra">"You're always the tempo deck. You apply threats and force them to answer. If they don't, you win. If they do, you come back."</div>
@@ -334,7 +337,7 @@ span.c:hover{border-bottom-style:solid;}
 
 <!-- CH07 MATCHUPS -->
 <div id="matchups" class="section">
-<div class="content">
+<div class="page">
   <span class="section-label">Chapter 07</span>
   <h1>MATCHUP<br>GUIDE</h1>
   <div class="mantra">"Your threats recur. Force them to have exile. Play around Rest in Peace specifically."</div>
@@ -519,7 +522,7 @@ span.c:hover{border-bottom-style:solid;}
 
 <!-- CH08 SIDEBOARD -->
 <div id="sideboard" class="section">
-<div class="content">
+<div class="page">
   <span class="section-label">Chapter 08</span>
   <h1>SIDEBOARD<br>GUIDE</h1>
   <div class="mantra">"Your sideboard adds permission and removal for matchup-specific threats. Never cut too many spells or Phoenix recursion breaks."</div>
@@ -540,7 +543,7 @@ span.c:hover{border-bottom-style:solid;}
 
 <!-- CH09 HEURISTICS -->
 <div id="heuristics" class="section">
-<div class="content">
+<div class="page">
   <span class="section-label">Chapter 09</span>
   <h1>HEURISTICS</h1>
   <div class="mantra">"Three spells is the target every turn. Discard Phoenixes early. Never exile Phoenixes for Cruise."</div>
@@ -561,7 +564,7 @@ span.c:hover{border-bottom-style:solid;}
 
 <!-- CH10 TUNING -->
 <div id="tuning" class="section">
-<div class="content">
+<div class="page">
   <span class="section-label">Chapter 10</span>
   <h1>TUNING<br>NOTES</h1>
   <div class="mantra">"4 Phoenix, 4 Cruise, 12 cantrips is the core. The removal suite adjusts to the meta."</div>
@@ -621,7 +624,7 @@ span.c:hover{border-bottom-style:solid;}
 
 <!-- CH11 PREP -->
 <div id="prep" class="section">
-<div class="content">
+<div class="page">
   <span class="section-label">Chapter 11</span>
   <h1>EVENT<br>PREP</h1>
   <div class="mantra">"Expect Rest in Peace. Know how to beat it. Plan for Anger of the Gods. Don't overcommit Phoenixes."</div>
