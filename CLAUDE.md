@@ -1,5 +1,5 @@
 # CLAUDE.md — Team Resolve Project State
-*Last updated: April 9, 2026 — commit f7412dc*
+*Last updated: April 9, 2026 — commit e8a313d*
 
 > **Cross-project context:** See `E:\vscode ai project\ECOSYSTEM.md` for how this
 > project connects to mtg-sim, mtg-meta-analyzer, and Team Resolve operations.
@@ -79,7 +79,11 @@ Niv-Mizzet Reborn 0.3%
 - Titles: all "{Deck Name} — Team Resolve Playbook", no HTML artifacts
 - Nav-brand: deck name visible in nav bar (all 44)
 
+- Structural: zero orphaned matchup-blocks (13 Pioneer/Standard files repaired)
+
 ## RECENT COMMITS
+e8a313d — fix: repair 13 files with orphaned matchup-blocks (verified + visually confirmed)
+d922c72 — revert: undo broken first orphan fix attempt
 f7412dc — style: standardize header-labels, titles, nav-brand cleanup
 05e9d98 — fix: repair 4 broken Overview tabs + header-inner flex
 cf18c3d — style: standardize footer HTML across all 44 playbooks
