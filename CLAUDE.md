@@ -1,5 +1,5 @@
 # CLAUDE.md — Team Resolve Project State
-*Last updated: April 9, 2026 — commit cf18c3d*
+*Last updated: April 9, 2026 — commit f7412dc*
 
 > **Cross-project context:** See `E:\vscode ai project\ECOSYSTEM.md` for how this
 > project connects to mtg-sim, mtg-meta-analyzer, and Team Resolve operations.
@@ -68,21 +68,24 @@ Lotus Field 0.5%, Rakdos Midrange 0.5%, Mono-White Humans 0.3%,
 Niv-Mizzet Reborn 0.3%
 
 ## QUALITY — 44/44 PASSING ALL CRITERIA
-- CSS consistency audit: 20/20 checks passing across all 44 files
+- CSS consistency audit: 25/25 checks passing across all 44 files
 - Typography: Bebas Neue h1/h2/nav-brand/card-title (all 44)
 - Header stats: Meta/Role/Colors/Speed in hs-label/hs-val (all 44)
+- Header layout: flex layout, standardized label "Team Resolve · Format · April 2026"
 - Component CSS: engine-block, role-grid, sb-deep, matchup-table, print-grid (all 44)
 - Layout: responsive @media, print @media, nav scrollbar, footer HTML (all 44)
 - Features: card-tooltips.js, card-tip CSS (all 44)
 - CSS variables: --danger, --gold, --paper-dark, --mid (all 44)
+- Titles: all "{Deck Name} — Team Resolve Playbook", no HTML artifacts
+- Nav-brand: deck name visible in nav bar (all 44)
 
 ## RECENT COMMITS
-cf18c3d — style: standardize footer HTML + CSS variables across all 44
+f7412dc — style: standardize header-labels, titles, nav-brand cleanup
+05e9d98 — fix: repair 4 broken Overview tabs + header-inner flex
+cf18c3d — style: standardize footer HTML across all 44 playbooks
 06db9f9 — style: complete CSS standardization (responsive, print, tooltip)
 729c967 — style: standardize header stats (Meta/Role/Colors/Speed)
 b19980b — style: standardize typography (Bebas Neue) across all 44
-33ceec6 — meta: update all 11 Pioneer playbooks with April 2026 meta %
-f75e33f — meta: update all 17 Modern playbooks with April 2026 meta %
 
 ## TECHNICAL
 - Scripts: write _a.py, run via DC start_process powershell, delete after
