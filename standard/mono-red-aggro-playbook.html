@@ -346,186 +346,93 @@ span.c:hover{border-bottom-style:solid;}
   <h1>MATCHUP<br>GUIDE</h1>
   <div class="mantra">"Know the kill turn for every matchup before the match starts. Mono-Red wins on math."</div>
 
-  <div class="matchup-block">
-    <div class="matchup-header" onclick="toggle('mu-monogreen')">
-      <h3>MONO-GREEN LANDFALL</h3><span class="verdict verdict-good">Favorable</span>
-    </div>
-    <div id="mu-monogreen" class="matchup-body">
-      <p>They're slower. T1-T3, they're ramping and setting up their engine. You're attacking for 8-10 damage. Sapling Nursery doesn't come online until T4-T5. By then you're presenting lethal or near-lethal through burn. Llanowar Elves and Badgermole Cub are 1/1 and 2/2 — Burst Lightning kills the Elves, your creatures trade with the Cub.</p>
+  <table class="matchup-table">
+<colgroup><col><col><col><col></colgroup>
+<thead><tr><th>Matchup</th><th>Role</th><th>Verdict</th><th>Key Play</th></tr></thead>
+<tbody>
+<tr onclick="toggle('mu-monogreen')"><td><strong>MONO-GREEN LANDFALL</strong></td><td>Combo</td><td><span class="verdict verdict-good">Favorable</span></td><td>They're slower.</td></tr>
+<tr><td colspan="4" class="matchup-detail" id="mu-monogreen">
+<p>They're slower. T1-T3, they're ramping and setting up their engine. You're attacking for 8-10 damage. Sapling Nursery doesn't come online until T4-T5. By then you're presenting lethal or near-lethal through burn. Llanowar Elves and Badgermole Cub are 1/1 and 2/2 — Burst Lightning kills the Elves, your creatures trade with the Cub.</p>
       <p><strong>Priority:</strong> Go face as early as possible. Burn does not kill their Mightform Harmonizer (8 toughness) — don't try. Kill their mana dorks (Burst Lightning on Llanowar Elves is always correct) to slow their engine and give yourself extra attack steps. Nova Hellkite's flying bypasses their ground creatures entirely.</p>
       <p><strong>Needle:</strong> Sunspine Lynx (SB) — if they're gaining life from Beza or other effects, Lynx shuts off lifegain. Twisted Fealty gives you control of their Mightform Harmonizer for a turn — attack with their 8/8 into their own board.</p>
       <div class="sb-table">
         <div class="sb-col"><div class="sb-col-label">In</div>
           <div class="sb-item"><span><span class="c">Twisted Fealty</span></span><span class="sb-qty">+2</span></div>
-          <div class="sb-item"><span><span class="c">Tersa Lightshatter</span></span><span class="sb-qty">+2</span></div>
-        </div>
-        <div class="sb-col"><div class="sb-col-label">Out</div>
-          <div class="sb-item"><span><span class="c">Stingerback Terror</span></span><span class="sb-qty">&minus;2</span></div>
-          <div class="sb-item"><span><span class="c">Raphael, the Nightwatcher</span></span><span class="sb-qty">&minus;2</span></div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="matchup-block">
-    <div class="matchup-header" onclick="toggle('mu-prowess')">
-      <h3>IZZET PROWESS</h3><span class="verdict verdict-even">Even</span>
-    </div>
-    <div id="mu-prowess" class="matchup-body">
-      <p>Near-mirror in terms of speed. They kill T3-T4 with Slickshot + cantrip chains. You kill T3-T4 with haste creatures + burn. The difference: they have flying threats (Slickshot, Elusive Otter) that dodge your ground creatures. Magebane Lizard (if it flies or has relevant ability) can block aerial threats. Track life totals every turn.</p>
+          <div class="sb-item"><span><span class="c">Tersa Lightshatter</span></span><span class="sb-qty">+2</span>
+</td></tr>
+<tr onclick="toggle('mu-prowess')"><td><strong>IZZET PROWESS</strong></td><td>Combo Race</td><td><span class="verdict verdict-even">Even</span></td><td>Near-mirror in terms of speed.</td></tr>
+<tr><td colspan="4" class="matchup-detail" id="mu-prowess">
+<p>Near-mirror in terms of speed. They kill T3-T4 with Slickshot + cantrip chains. You kill T3-T4 with haste creatures + burn. The difference: they have flying threats (Slickshot, Elusive Otter) that dodge your ground creatures. Magebane Lizard (if it flies or has relevant ability) can block aerial threats. Track life totals every turn.</p>
       <p><strong>Priority:</strong> Kill their Stormchaser's Talent if you can — it generates ongoing threats. Burst Lightning targeting their Elusive Otter before it pumps stops the prowess chain. Nova Hellkite's 2 ETB damage hits their face directly even if they have blockers. With Slagstorm in the SB, sweep their 1/1 Otter tokens for {1}{R}.</p>
       <p><strong>Needle:</strong> Slagstorm at sorcery speed kills all 1-toughness creatures — sweeps Otter tokens and Fanatical Firebrand on your side too. Plan carefully around your own Slagstorm. Sunspine Lynx hoses their lifelink if they have it.</p>
       <div class="sb-table">
         <div class="sb-col"><div class="sb-col-label">In</div>
           <div class="sb-item"><span><span class="c">Slagstorm</span></span><span class="sb-qty">+2</span></div>
-          <div class="sb-item"><span><span class="c">Gastal Thrillroller</span></span><span class="sb-qty">+2</span></div>
-        </div>
-        <div class="sb-col"><div class="sb-col-label">Out</div>
-          <div class="sb-item"><span><span class="c">Raphael, the Nightwatcher</span></span><span class="sb-qty">&minus;2</span></div>
-          <div class="sb-item"><span><span class="c">Stingerback Terror</span></span><span class="sb-qty">&minus;2</span></div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="matchup-block">
-    <div class="matchup-header" onclick="toggle('mu-lessons')">
-      <h3>IZZET LESSONS</h3><span class="verdict verdict-good">Favorable</span>
-    </div>
-    <div id="mu-lessons" class="matchup-body">
-      <p>Their plan is slow. Monument to Endurance only matters once they're alive to activate it — kill them before it becomes relevant. Gran-Gran and Accumulate Wisdom draw cards but don't stop your creatures from attacking. Their Abandon Attachments can remove your Magebane Lizard but costs them their turn. Race.</p>
+          <div class="sb-item"><span><span class="c">Gastal Thrillroller</span></span><span class="sb-qty">+2</span>
+</td></tr>
+<tr onclick="toggle('mu-lessons')"><td><strong>IZZET LESSONS</strong></td><td>Combo</td><td><span class="verdict verdict-good">Favorable</span></td><td>Their plan is slow.</td></tr>
+<tr><td colspan="4" class="matchup-detail" id="mu-lessons">
+<p>Their plan is slow. Monument to Endurance only matters once they're alive to activate it — kill them before it becomes relevant. Gran-Gran and Accumulate Wisdom draw cards but don't stop your creatures from attacking. Their Abandon Attachments can remove your Magebane Lizard but costs them their turn. Race.</p>
       <p><strong>Priority:</strong> Kill them before turn 5. Their Abandon Attachments is the one card that disrupts you (it can destroy non-basic lands via the Regrowth mode, or destroy your key enchantment). Keep burn for face unless you absolutely must clear a blocker. Nova Hellkite flying over their non-flying threats is often the game-winner.</p>
       <p><strong>Needle:</strong> Ghost Vacuum (SB) exiles their graveyard, cutting off Monument to Endurance's recursion engine. Sunspine Lynx shuts off Monument's life gain mode permanently.</p>
       <div class="sb-table">
         <div class="sb-col"><div class="sb-col-label">In</div>
           <div class="sb-item"><span><span class="c">Sunspine Lynx</span></span><span class="sb-qty">+3</span></div>
-          <div class="sb-item"><span><span class="c">Ghost Vacuum</span></span><span class="sb-qty">+2</span></div>
-        </div>
-        <div class="sb-col"><div class="sb-col-label">Out</div>
-          <div class="sb-item"><span><span class="c">Stingerback Terror</span></span><span class="sb-qty">&minus;2</span></div>
-          <div class="sb-item"><span><span class="c">Raphael, the Nightwatcher</span></span><span class="sb-qty">&minus;2</span></div>
-          <div class="sb-item"><span><span class="c">Inti, Seneschal of the Sun</span></span><span class="sb-qty">&minus;1</span></div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="matchup-block">
-    <div class="matchup-header" onclick="toggle('mu-azorius')">
-      <h3>AZORIUS FLASH</h3><span class="verdict verdict-hard">Unfavorable</span>
-    </div>
-    <div id="mu-azorius" class="matchup-body">
-      <p>Voice of Victory lifelink counters your damage math. Avatar's Wrath sweeps your board. High Noon limits you to one spell per turn. This is your worst matchup. Their life gain via Voice means you need 25+ damage worth of resources to kill them instead of 20. Plan accordingly.</p>
+          <div class="sb-item"><span><span class="c">Ghost Vacuum</span></span><span class="sb-qty">+2</span>
+</td></tr>
+<tr onclick="toggle('mu-azorius')"><td><strong>AZORIUS FLASH</strong></td><td>Flexible</td><td><span class="verdict verdict-hard">Unfavorable</span></td><td>Voice of Victory lifelink counters your damage math.</td></tr>
+<tr><td colspan="4" class="matchup-detail" id="mu-azorius">
+<p>Voice of Victory lifelink counters your damage math. Avatar's Wrath sweeps your board. High Noon limits you to one spell per turn. This is your worst matchup. Their life gain via Voice means you need 25+ damage worth of resources to kill them instead of 20. Plan accordingly.</p>
       <p><strong>Priority:</strong> Kill Voice of Victory on sight with burn — don't let it attack and gain life. Sunspine Lynx (SB) shuts off lifelink permanently, converting the matchup. Deploy Burnout Bashtronaut tokens after their Avatar's Wrath resolves — they board-wipe one turn, you refill the next. Raphael provides a 5/4 lifelink body to fight their lifelink strategy symmetrically.</p>
       <p><strong>Needle:</strong> Sunspine Lynx is mandatory here — must board 3 copies. With Lynx in play, Voice of Victory's lifelink is permanently disabled. Twisted Fealty can steal their Floodpits Drowner at a critical moment. Under High Noon, prioritize your one spell carefully — creature threats usually win over removal.</p>
       <div class="sb-table">
         <div class="sb-col"><div class="sb-col-label">In</div>
           <div class="sb-item"><span><span class="c">Sunspine Lynx</span></span><span class="sb-qty">+3</span></div>
-          <div class="sb-item"><span><span class="c">Raphael, the Nightwatcher</span></span><span class="sb-qty">&minus;0</span></div>
-        </div>
-        <div class="sb-col"><div class="sb-col-label">Out</div>
-          <div class="sb-item"><span><span class="c">Stingerback Terror</span></span><span class="sb-qty">&minus;2</span></div>
-          <div class="sb-item"><span><span class="c">Shock</span></span><span class="sb-qty">&minus;1</span></div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="matchup-block">
-    <div class="matchup-header" onclick="toggle('mu-dimir')">
-      <h3>DIMIR MIDRANGE</h3><span class="verdict verdict-even">Even</span>
-    </div>
-    <div id="mu-dimir" class="matchup-body">
-      <p>Their removal (Requiting Hex, Bitter Triumph) kills your creatures 1-for-1 but you're generating more threats than they have answers. Kaito, Bane of Nightmares is a clock for them but you're faster. Floodpits Drowner bouncing your creature is a tempo play, not permanent removal — it comes back next turn with haste.</p>
+          <div class="sb-item"><span><span class="c">Raphael, the Nightwatcher</span></span><span class="sb-qty">&minus;0</span>
+</td></tr>
+<tr onclick="toggle('mu-dimir')"><td><strong>DIMIR MIDRANGE</strong></td><td>Combo Race</td><td><span class="verdict verdict-even">Even</span></td><td>Their removal (Requiting Hex, Bitter Triumph) kills your creatures 1-for-1 bu...</td></tr>
+<tr><td colspan="4" class="matchup-detail" id="mu-dimir">
+<p>Their removal (Requiting Hex, Bitter Triumph) kills your creatures 1-for-1 but you're generating more threats than they have answers. Kaito, Bane of Nightmares is a clock for them but you're faster. Floodpits Drowner bouncing your creature is a tempo play, not permanent removal — it comes back next turn with haste.</p>
       <p><strong>Priority:</strong> Go wide with Burnout Bashtronaut tokens — they have more removal than you have creatures if you play 1-for-1, but tokens overwhelm their removal count. Sear kills their Cecil, Dark Knight and their Kaito. Burn Kaito before it gets to 4 loyalty. Nova Hellkite's ETB damage hits Kaito directly if needed.</p>
       <p><strong>Needle:</strong> Twisted Fealty steals Floodpits Drowner mid-turn — attack with their own Drowner, then it goes to your side. Ghost Vacuum exiles their graveyard, stopping any recursion strategies. Tersa Lightshatter (SB) — check oracle for specific interaction, but it provides an additional threat that might not die to their removal cleanly.</p>
       <div class="sb-table">
         <div class="sb-col"><div class="sb-col-label">In</div>
           <div class="sb-item"><span><span class="c">Twisted Fealty</span></span><span class="sb-qty">+2</span></div>
-          <div class="sb-item"><span><span class="c">Ghost Vacuum</span></span><span class="sb-qty">+2</span></div>
-        </div>
-        <div class="sb-col"><div class="sb-col-label">Out</div>
-          <div class="sb-item"><span><span class="c">Stingerback Terror</span></span><span class="sb-qty">&minus;2</span></div>
-          <div class="sb-item"><span><span class="c">Raphael, the Nightwatcher</span></span><span class="sb-qty">&minus;2</span></div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="matchup-block">
-    <div class="matchup-header" onclick="toggle('mu-excruciator')">
-      <h3>DIMIR EXCRUCIATOR</h3><span class="verdict verdict-even">Even</span>
-    </div>
-    <div id="mu-excruciator" class="matchup-body">
-      <p>Dimir Excruciator deploys Floodpits Drowner as a 2/3 flash blocker that bounces your biggest creature on ETB. Your burn still connects — Lightning Bolt and Burst Lightning to face races around their blockers. Their life total matters more than their board: if they're at 10 or less, point burn at face regardless of their board state.</p>
+          <div class="sb-item"><span><span class="c">Ghost Vacuum</span></span><span class="sb-qty">+2</span>
+</td></tr>
+<tr onclick="toggle('mu-excruciator')"><td><strong>DIMIR EXCRUCIATOR</strong></td><td>Combo Race</td><td><span class="verdict verdict-even">Even</span></td><td>Dimir Excruciator deploys Floodpits Drowner as a 2/3 flash blocker that bounc...</td></tr>
+<tr><td colspan="4" class="matchup-detail" id="mu-excruciator">
+<p>Dimir Excruciator deploys Floodpits Drowner as a 2/3 flash blocker that bounces your biggest creature on ETB. Your burn still connects — Lightning Bolt and Burst Lightning to face races around their blockers. Their life total matters more than their board: if they're at 10 or less, point burn at face regardless of their board state.</p>
       <div class="sb-table">
-        <div class="sb-col"><div class="sb-col-label">In</div><div class="sb-item"><span><span class="c">Roiling Vortex</span></span><span class="sb-qty">+2</span></div><div class="sb-item"><span><span class="c">Abrade</span></span><span class="sb-qty">+1</span></div></div>
-        <div class="sb-col"><div class="sb-col-label">Out</div><div class="sb-item"><span><span class="c">Swiftwater Cliffs</span></span><span class="sb-qty">-2</span></div><div class="sb-item"><span><span class="c">Sear</span></span><span class="sb-qty">-1</span></div></div>
-      </div>
-      <p class="sb-note">Roiling Vortex at {R} each turn stacks with your burn and prevents life gain. Abrade at {1R} kills their Floodpits Drowner or Kaito. Cut Swiftwater Cliffs (fewer lands needed) and a Sear (Abrade is cheaper).</p>
-    </div>
-  </div>
-
-  <div class="matchup-block">
-    <div class="matchup-header" onclick="toggle('mu-dimir')">
-      <h3>DIMIR MIDRANGE</h3><span class="verdict verdict-even">Even</span>
-    </div>
-    <div id="mu-dimir" class="matchup-body">
-      <p>Dimir Midrange uses Psychic Frog as both a blocker and win condition. Burn targeting Frog with Sear (2 damage at instant speed) or Burst Lightning kills it before it grows. Kaito (3/4 blocker) requires Burst Lightning kicked (4 damage) or two spells. Race: their life total drains faster than they can generate blockers if you apply early burn before they deploy Frog.</p>
+        <div class="sb-col"><div class="sb-col-label">In</div><div class="sb-item"><span><span class="c">Roiling Vortex</span></span><span class="sb-qty">+2</span></div><div class="sb-item"><span><span class="c">Abrade</span></span><span class="sb-qty">+1</span>
+</td></tr>
+<tr onclick="toggle('mu-dimir')"><td><strong>DIMIR MIDRANGE</strong></td><td>Combo Race</td><td><span class="verdict verdict-even">Even</span></td><td>Dimir Midrange uses Psychic Frog as both a blocker and win condition.</td></tr>
+<tr><td colspan="4" class="matchup-detail" id="mu-dimir">
+<p>Dimir Midrange uses Psychic Frog as both a blocker and win condition. Burn targeting Frog with Sear (2 damage at instant speed) or Burst Lightning kills it before it grows. Kaito (3/4 blocker) requires Burst Lightning kicked (4 damage) or two spells. Race: their life total drains faster than they can generate blockers if you apply early burn before they deploy Frog.</p>
       <div class="sb-table">
-        <div class="sb-col"><div class="sb-col-label">In</div><div class="sb-item"><span><span class="c">Roiling Vortex</span></span><span class="sb-qty">+2</span></div><div class="sb-item"><span><span class="c">Obliterating Bolt</span></span><span class="sb-qty">+1</span></div></div>
-        <div class="sb-col"><div class="sb-col-label">Out</div><div class="sb-item"><span><span class="c">Swiftwater Cliffs</span></span><span class="sb-qty">-2</span></div><div class="sb-item"><span><span class="c">Burst Lightning</span></span><span class="sb-qty">-1</span></div></div>
-      </div>
-      <p class="sb-note">Roiling Vortex stacks with burn and shuts off their life gain. Obliterating Bolt exiles Kaito (MV 4) at instant speed without leaving a body. Cut lands and a Burst Lightning (Bolt is more efficient at sorcery speed).</p>
-    </div>
-  </div>
-
-  <div class="matchup-block">
-    <div class="matchup-header" onclick="toggle('mu-simic')">
-      <h3>SIMIC RHYTHM</h3><span class="verdict verdict-good">Favorable</span>
-    </div>
-    <div id="mu-simic" class="matchup-body">
-      <p>Simic Rhythm has no interaction for your burn. Their Llanowar Elves is the must-kill target — Sear at {1R} kills it at instant speed before they can use the mana. Without Elves their curve is slow enough that your burn closes by T4. Earthbender Ascension buffs their ground creatures but can't block your direct damage to face.</p>
+        <div class="sb-col"><div class="sb-col-label">In</div><div class="sb-item"><span><span class="c">Roiling Vortex</span></span><span class="sb-qty">+2</span></div><div class="sb-item"><span><span class="c">Obliterating Bolt</span></span><span class="sb-qty">+1</span>
+</td></tr>
+<tr onclick="toggle('mu-simic')"><td><strong>SIMIC RHYTHM</strong></td><td>Combo</td><td><span class="verdict verdict-good">Favorable</span></td><td>Simic Rhythm has no interaction for your burn.</td></tr>
+<tr><td colspan="4" class="matchup-detail" id="mu-simic">
+<p>Simic Rhythm has no interaction for your burn. Their Llanowar Elves is the must-kill target — Sear at {1R} kills it at instant speed before they can use the mana. Without Elves their curve is slow enough that your burn closes by T4. Earthbender Ascension buffs their ground creatures but can't block your direct damage to face.</p>
       <div class="sb-table">
-        <div class="sb-col"><div class="sb-col-label">In</div><div class="sb-item"><span><span class="c">Roiling Vortex</span></span><span class="sb-qty">+2</span></div><div class="sb-item"><span><span class="c">Sear</span></span><span class="sb-qty">+1</span></div></div>
-        <div class="sb-col"><div class="sb-col-label">Out</div><div class="sb-item"><span><span class="c">Swiftwater Cliffs</span></span><span class="sb-qty">-2</span></div><div class="sb-item"><span><span class="c">Burst Lightning</span></span><span class="sb-qty">-1</span></div></div>
-      </div>
-      <p class="sb-note">Roiling Vortex stacks with burn. Extra Sear kills Llanowar Elves and Badgermole Cub at instant speed. Cut lands and a Burst Lightning — you need redundant 2-damage removal more than 4-damage reach in this matchup.</p>
-    </div>
-  </div>
-
-  <div class="matchup-block">
-    <div class="matchup-header" onclick="toggle('mu-jeskai')">
-      <h3>JESKAI CONTROL</h3><span class="verdict verdict-hard">Unfavorable</span>
-    </div>
-    <div id="mu-jeskai" class="matchup-body">
-      <p>Jeskai Control has Stormplain Detainment (taps all your creatures), Seam Rip (counters your key spells), and Voice of Victory generating a life buffer. Their Aven Interrupter flashed in counters your Sear or Burst Lightning at instant speed. Your best plan: deploy your lowest-cost threats and burn face before they deploy Stormplain. Roiling Vortex makes their life gain from Voice less impactful.</p>
+        <div class="sb-col"><div class="sb-col-label">In</div><div class="sb-item"><span><span class="c">Roiling Vortex</span></span><span class="sb-qty">+2</span></div><div class="sb-item"><span><span class="c">Sear</span></span><span class="sb-qty">+1</span>
+</td></tr>
+<tr onclick="toggle('mu-jeskai')"><td><strong>JESKAI CONTROL</strong></td><td>Flexible</td><td><span class="verdict verdict-hard">Unfavorable</span></td><td>Jeskai Control has Stormplain Detainment (taps all your creatures), Seam Rip ...</td></tr>
+<tr><td colspan="4" class="matchup-detail" id="mu-jeskai">
+<p>Jeskai Control has Stormplain Detainment (taps all your creatures), Seam Rip (counters your key spells), and Voice of Victory generating a life buffer. Their Aven Interrupter flashed in counters your Sear or Burst Lightning at instant speed. Your best plan: deploy your lowest-cost threats and burn face before they deploy Stormplain. Roiling Vortex makes their life gain from Voice less impactful.</p>
       <div class="sb-table">
-        <div class="sb-col"><div class="sb-col-label">In</div><div class="sb-item"><span><span class="c">Roiling Vortex</span></span><span class="sb-qty">+2</span></div><div class="sb-item"><span><span class="c">Rampaging Spiketail</span></span><span class="sb-qty">+2</span></div></div>
-        <div class="sb-col"><div class="sb-col-label">Out</div><div class="sb-item"><span><span class="c">Swiftwater Cliffs</span></span><span class="sb-qty">-2</span></div><div class="sb-item"><span><span class="c">Burst Lightning</span></span><span class="sb-qty">-2</span></div></div>
-      </div>
-      <p class="sb-note">Roiling Vortex negates their Voice of Victory life gain. Rampaging Spiketail provides an additional 1-drop threat. Cut Swiftwater Cliffs and Burst Lightning — they have flash creatures that make sorcery-speed 4-damage awkward.</p>
-    </div>
-  </div>
-
-  <div class="matchup-block">
-    <div class="matchup-header" onclick="toggle('mu-spellementals')">
-      <h3>IZZET SPELLEMENTALS</h3><span class="verdict verdict-good">Favorable</span>
-    </div>
-    <div id="mu-spellementals" class="matchup-body">
-      <p>Izzet Spellementals has a slow setup phase — they need to chain cantrips into Hearth Elemental before threatening anything. Your T1-T3 burn puts them on a clock before they can set up. Their Eddymurk Crab (0/4 flash blocker) is your primary obstacle — Sear kills it at instant speed. Kill Crab, then close through their cantrip chain with burn to face.</p>
+        <div class="sb-col"><div class="sb-col-label">In</div><div class="sb-item"><span><span class="c">Roiling Vortex</span></span><span class="sb-qty">+2</span></div><div class="sb-item"><span><span class="c">Rampaging Spiketail</span></span><span class="sb-qty">+2</span>
+</td></tr>
+<tr onclick="toggle('mu-spellementals')"><td><strong>IZZET SPELLEMENTALS</strong></td><td>Combo</td><td><span class="verdict verdict-good">Favorable</span></td><td>Izzet Spellementals has a slow setup phase — they need to chain cantrips into...</td></tr>
+<tr><td colspan="4" class="matchup-detail" id="mu-spellementals">
+<p>Izzet Spellementals has a slow setup phase — they need to chain cantrips into Hearth Elemental before threatening anything. Your T1-T3 burn puts them on a clock before they can set up. Their Eddymurk Crab (0/4 flash blocker) is your primary obstacle — Sear kills it at instant speed. Kill Crab, then close through their cantrip chain with burn to face.</p>
       <div class="sb-table">
-        <div class="sb-col"><div class="sb-col-label">In</div><div class="sb-item"><span><span class="c">Sear</span></span><span class="sb-qty">+2</span></div><div class="sb-item"><span><span class="c">Rampaging Spiketail</span></span><span class="sb-qty">+1</span></div></div>
-        <div class="sb-col"><div class="sb-col-label">Out</div><div class="sb-item"><span><span class="c">Swiftwater Cliffs</span></span><span class="sb-qty">-2</span></div><div class="sb-item"><span><span class="c">Obliterating Bolt</span></span><span class="sb-qty">-1</span></div></div>
-      </div>
-      <p class="sb-note">Extra Sear at {1R} kills Eddymurk Crab (0/4) and their Hearth Elemental (2/3). Spiketail provides another early threat. Cut Swiftwater Cliffs (fewer lands needed) and Obliterating Bolt (their threats are MV ≤3, Bolt is overkill).</p>
-    </div>
-  </div>
-
-
+        <div class="sb-col"><div class="sb-col-label">In</div><div class="sb-item"><span><span class="c">Sear</span></span><span class="sb-qty">+2</span></div><div class="sb-item"><span><span class="c">Rampaging Spiketail</span></span><span class="sb-qty">+1</span>
+</td></tr>
+</tbody>
+</table>
 </div>
-</div>
-
-<!-- CH08 SIDEBOARD -->
 <div id="sideboard" class="section">
 <div class="page">
   <span class="section-label">Chapter 08</span>
