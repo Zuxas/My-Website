@@ -91,6 +91,11 @@ span.c:hover{border-bottom-style:solid;}
 .card-tip.visible{opacity:1;}
 .card-tip img{width:220px;height:auto;display:block;}
 .card-tip-loading{width:220px;height:308px;display:flex;align-items:center;justify-content:center;color:#94a3b8;font-size:12px;font-family:monospace;background:#1e293b;}
+
+  .header-right { display: flex; flex-direction: column; gap: 8px; text-align: right; padding-bottom: 4px; }
+  .header-stat { display: flex; gap: 12px; align-items: center; justify-content: flex-end; }
+  .hs-label { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(242,237,230,0.3); }
+  .hs-val { font-family: 'DM Mono', monospace; font-size: 12px; color: var(--paper); }
 </style>
 </head>
 <body>
@@ -503,7 +508,12 @@ span.c:hover{border-bottom-style:solid;}
   <div id="sb-print-zone">
     <h2 style="font-family:'DM Mono',monospace;font-size:14px;margin-bottom:12px;">AZORIUS FLASH — SB Reference · 3.03% Standard April 2026</h2>
     <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:12px;font-size:11px;font-family:'DM Mono',monospace;">
-      <div><strong>vs IZZET PROWESS (Even)</strong><br>IN: +2 Avatar's Wrath, +2 Glen Elendra | OUT: −2 No More Lies, −2 Ajani</div>
+      <div class="header-right">
+      <div class="header-stat"><span class="hs-label">Meta</span><span class="hs-val">3.00%</span></div>
+      <div class="header-stat"><span class="hs-label">Role</span><span class="hs-val">Tempo</span></div>
+      <div class="header-stat"><span class="hs-label">Colors</span><span class="hs-val">W U</span></div>
+      <div class="header-stat"><span class="hs-label">Speed</span><span class="hs-val">4–6</span></div>
+    </div>
       <div><strong>vs IZZET LESSONS (Fav)</strong><br>IN: +2 Tidebinder, +2 Disdainful | OUT: −2 Avatar's Wrath, −1 Get Lost, −1 Elspeth</div>
       <div><strong>vs MONO-GREEN (Unfav)</strong><br>IN: +2 Tidebinder, +1 Raid, +2 Disdainful | OUT: −2 Snare, −2 High Noon, −1 Elspeth</div>
       <div><strong>vs DIMIR MIDRANGE (Even)</strong><br>IN: +1 Wan Shi Tong, +2 Glen Elendra | OUT: −2 Avatar's Wrath, −1 Get Lost</div>
