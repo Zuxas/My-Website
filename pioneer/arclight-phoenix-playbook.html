@@ -59,7 +59,7 @@ strong{font-weight:600;}
 .matchup-header{background:var(--paper-dark);padding:16px 20px;display:flex;align-items:center;justify-content:space-between;cursor:pointer;}
 .matchup-header h3{margin:0;font-size:11px;letter-spacing:0.15em;color:var(--ink);}
 .verdict{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.15em;text-transform:uppercase;padding:3px 10px;border-radius:2px;}
-.verdict-good{background:rgba(234,88,12,0.1);color:#9a3412;}
+.verdict-favor{background:rgba(234,88,12,0.1);color:#9a3412;}
 .verdict-even{background:rgba(90,82,72,0.12);color:var(--mid);}
 .verdict-hard{background:rgba(180,35,24,0.1);color:#991b1b;}
 .matchup-body{padding:20px;display:none;}
@@ -168,7 +168,35 @@ span.c:hover{border-bottom-style:solid;}
     .print-grid { position:fixed !important; top:0 !important; left:0 !important; width:100vw !important; height:auto !important; background:var(--rule) !important; border:none !important; display:grid !important; grid-template-columns:repeat(3,1fr) !important; gap:1px !important; }
     .print-mu { background:var(--paper) !important; padding:14px !important; }
   }
-</style></style>
+
+  .matchup-detail { display:none; border:1px solid var(--rule); background:var(--paper-dark); padding:32px 40px; margin:0 0 2px; animation:fadeIn 0.2s ease; }
+  .matchup-detail.open { display:block; }
+  .matchup-table tr:hover td { background:var(--card); cursor:pointer; }
+  .matchup-table th { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; padding:10px 16px; background:var(--primary); color:rgba(248,250,252,0.9); }
+  .matchup-table td { padding:12px 16px; border-bottom:1px solid var(--rule); font-size:15px; font-weight:300; }
+  .matchup-table { width:100%; border-collapse:collapse; margin:24px 0; table-layout:fixed; }
+  .matchup-table colgroup col:nth-child(1) { width:42%; }
+  .matchup-table colgroup col:nth-child(2) { width:16%; }
+  .matchup-table colgroup col:nth-child(3) { width:16%; }
+  .matchup-table colgroup col:nth-child(4) { width:26%; }
+  .verdict-dog { background:var(--danger-light); color:var(--danger); border-color:var(--danger); }
+  .verdict-favor { background:rgba(34,197,94,0.15); color:#22C55E; border-color:#22C55E; }
+
+</style>
+  .matchup-detail { display:none; border:1px solid var(--rule); background:var(--paper-dark); padding:32px 40px; margin:0 0 2px; animation:fadeIn 0.2s ease; }
+  .matchup-detail.open { display:block; }
+  .matchup-table tr:hover td { background:var(--card); cursor:pointer; }
+  .matchup-table th { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; padding:10px 16px; background:var(--primary); color:rgba(248,250,252,0.9); }
+  .matchup-table td { padding:12px 16px; border-bottom:1px solid var(--rule); font-size:15px; font-weight:300; }
+  .matchup-table { width:100%; border-collapse:collapse; margin:24px 0; table-layout:fixed; }
+  .matchup-table colgroup col:nth-child(1) { width:42%; }
+  .matchup-table colgroup col:nth-child(2) { width:16%; }
+  .matchup-table colgroup col:nth-child(3) { width:16%; }
+  .matchup-table colgroup col:nth-child(4) { width:26%; }
+  .verdict-dog { background:var(--danger-light); color:var(--danger); border-color:var(--danger); }
+  .verdict-favor { background:rgba(34,197,94,0.15); color:#22C55E; border-color:#22C55E; }
+
+</style>
 </head>
 <body>
 <nav>
@@ -369,7 +397,7 @@ span.c:hover{border-bottom-style:solid;}
         </div>
       </div>
 </td></tr>
-<tr onclick="toggle('mu-greasefang')"><td><strong>ORZHOV GREASEFANG</strong></td><td>Combo</td><td><span class="verdict verdict-good">Favorable</span></td><td>You're faster.</td></tr>
+<tr onclick="toggle('mu-greasefang')"><td><strong>ORZHOV GREASEFANG</strong></td><td>Combo</td><td><span class="verdict verdict-favor">Favorable</span></td><td>You're faster.</td></tr>
 <tr><td colspan="4" class="matchup-detail" id="mu-greasefang">
 <p>You're faster. Greasefang needs T3; you attack with Phoenix on T3. Into the Flood Maw bounces Greasefang when it enters — the ETB trigger that returns Parhelion II never resolves because Greasefang bounces before it resolves. Chandra's Defeat (SB) kills Greasefang cleanly at instant speed for {R}. Annul hits their Monument to Endurance (their best GY enabler).</p>
       <p><strong>Priority:</strong> Don't let Greasefang's ETB trigger resolve. Hold Into the Flood Maw and bounce it the moment they cast it, before the ETB. If it resolves, target the Phoenix trigger for Into the Flood Maw (the trigger that returns Parhelion II — bouncing Greasefang after the ETB resolves still prevents the attack by removing Parhelion's pilot). Annul destroys their Monument at {U}.</p>
@@ -419,7 +447,7 @@ span.c:hover{border-bottom-style:solid;}
         </div>
       </div>
 </td></tr>
-<tr onclick="toggle('mu-selesnya')"><td><strong>SELESNYA COMPANY</strong></td><td>Combo</td><td><span class="verdict verdict-good">Favorable</span></td><td>Selesnya's ground creatures can't block your flying Phoenixes.</td></tr>
+<tr onclick="toggle('mu-selesnya')"><td><strong>SELESNYA COMPANY</strong></td><td>Combo</td><td><span class="verdict verdict-favor">Favorable</span></td><td>Selesnya's ground creatures can't block your flying Phoenixes.</td></tr>
 <tr><td colspan="4" class="matchup-detail" id="mu-selesnya">
 <p>Selesnya's ground creatures can't block your flying Phoenixes. Their clock is T4-5; yours is T3. Thalia (2/1 first strike) taxes your spells {1} each — account for this by slowing slightly or using Into the Flood Maw to bounce Thalia. Lightning Axe kills Thalia at 5 damage cleanly. Anger of the Gods (SB) exiles their entire low-MV creature suite (Llanowar Elves, Elvish Mystic, Thalia, Voice of Resurgence).</p>
       <p><strong>Priority:</strong> Target Thalia with Lightning Axe early — she makes your three-spell chain cost more mana. Their CoCo refills the board but can't block Phoenixes. Anger of the Gods exiles creatures with toughness ≤ 3, hitting their entire early game including Voice of Resurgence (the Elemental token that Voice creates if they die is prevented by exile). Keep the air open for Phoenix attacks.</p>
@@ -443,7 +471,7 @@ span.c:hover{border-bottom-style:solid;}
       </div>
       <p class="sb-note">Soul-Guide Lantern exiles Extraction Specialist targets from GY. Fatal Push kills their small lords at instant speed. Cut Duress (less effective against creature-based strategies) and a Thoughtseize.</p>
 </td></tr>
-<tr onclick="toggle('mu-lotus2')"><td><strong>LOTUS FIELD</strong></td><td>Combo</td><td><span class="verdict verdict-good">Favorable</span></td><td>Lotus Field combos off with Lotus Field + Thespian's Stage + Hidden Strings b...</td></tr>
+<tr onclick="toggle('mu-lotus2')"><td><strong>LOTUS FIELD</strong></td><td>Combo</td><td><span class="verdict verdict-favor">Favorable</span></td><td>Lotus Field combos off with Lotus Field + Thespian's Stage + Hidden Strings b...</td></tr>
 <tr><td colspan="4" class="matchup-detail" id="mu-lotus2">
 <p>Lotus Field combos off with Lotus Field + Thespian's Stage + Hidden Strings by untapping Lotus repeatedly. Your discard (Thoughtseize, Duress) strips their key combo pieces or their Hidden Strings. Damping Sphere shuts off their mana multiplication entirely — they can't tap Lotus for more than {B} while Sphere is out.</p>
       <div class="sb-table">
@@ -461,7 +489,7 @@ span.c:hover{border-bottom-style:solid;}
       </div>
       <p class="sb-note">Thoughtseize strips Niv or their key multicolor tutor. Duress hits their noncreature setup. Cut Lantern (no relevant GY) and Cleric (this is a midrange matchup not a racing one).</p>
 </td></tr>
-<tr onclick="toggle('mu-creativity2')"><td><strong>IZZET CREATIVITY</strong></td><td>Combo</td><td><span class="verdict verdict-good">Favorable</span></td><td>Izzet Creativity uses Indomitable Creativity targeting their own token to put...</td></tr>
+<tr onclick="toggle('mu-creativity2')"><td><strong>IZZET CREATIVITY</strong></td><td>Combo</td><td><span class="verdict verdict-favor">Favorable</span></td><td>Izzet Creativity uses Indomitable Creativity targeting their own token to put...</td></tr>
 <tr><td colspan="4" class="matchup-detail" id="mu-creativity2">
 <p>Izzet Creativity uses Indomitable Creativity targeting their own token to put Atraxa (or similar) into play. Your Thoughtseize strips Creativity before it resolves. Their setup requires tapping out for Creativity — counter it or strip it. Duress on turn 1 is your best play if they keep a Creativity hand.</p>
       <div class="sb-table">

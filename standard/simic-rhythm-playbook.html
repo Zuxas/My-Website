@@ -63,7 +63,7 @@ strong{font-weight:600;}
 .matchup-header{background:var(--paper-dark);padding:16px 20px;display:flex;align-items:center;justify-content:space-between;cursor:pointer;}
 .matchup-header h3{margin:0;font-size:11px;letter-spacing:0.15em;color:var(--ink);}
 .verdict{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.15em;text-transform:uppercase;padding:3px 10px;border-radius:2px;}
-.verdict-good{background:rgba(8,145,178,0.12);color:#0369a1;}
+.verdict-favor{background:rgba(8,145,178,0.12);color:#0369a1;}
 .verdict-even{background:rgba(90,82,72,0.12);color:var(--mid);}
 .verdict-hard{background:rgba(143,26,26,0.12);color:#991b1b;}
 .matchup-body{padding:20px;display:none;}
@@ -172,7 +172,35 @@ span.c:hover{border-bottom-style:solid;}
     .print-grid { position:fixed !important; top:0 !important; left:0 !important; width:100vw !important; height:auto !important; background:var(--rule) !important; border:none !important; display:grid !important; grid-template-columns:repeat(3,1fr) !important; gap:1px !important; }
     .print-mu { background:var(--paper) !important; padding:14px !important; }
   }
-</style></style>
+
+  .matchup-detail { display:none; border:1px solid var(--rule); background:var(--paper-dark); padding:32px 40px; margin:0 0 2px; animation:fadeIn 0.2s ease; }
+  .matchup-detail.open { display:block; }
+  .matchup-table tr:hover td { background:var(--card); cursor:pointer; }
+  .matchup-table th { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; padding:10px 16px; background:var(--primary); color:rgba(248,250,252,0.9); }
+  .matchup-table td { padding:12px 16px; border-bottom:1px solid var(--rule); font-size:15px; font-weight:300; }
+  .matchup-table { width:100%; border-collapse:collapse; margin:24px 0; table-layout:fixed; }
+  .matchup-table colgroup col:nth-child(1) { width:42%; }
+  .matchup-table colgroup col:nth-child(2) { width:16%; }
+  .matchup-table colgroup col:nth-child(3) { width:16%; }
+  .matchup-table colgroup col:nth-child(4) { width:26%; }
+  .verdict-dog { background:var(--danger-light); color:var(--danger); border-color:var(--danger); }
+  .verdict-favor { background:rgba(34,197,94,0.15); color:#22C55E; border-color:#22C55E; }
+
+</style>
+  .matchup-detail { display:none; border:1px solid var(--rule); background:var(--paper-dark); padding:32px 40px; margin:0 0 2px; animation:fadeIn 0.2s ease; }
+  .matchup-detail.open { display:block; }
+  .matchup-table tr:hover td { background:var(--card); cursor:pointer; }
+  .matchup-table th { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; padding:10px 16px; background:var(--primary); color:rgba(248,250,252,0.9); }
+  .matchup-table td { padding:12px 16px; border-bottom:1px solid var(--rule); font-size:15px; font-weight:300; }
+  .matchup-table { width:100%; border-collapse:collapse; margin:24px 0; table-layout:fixed; }
+  .matchup-table colgroup col:nth-child(1) { width:42%; }
+  .matchup-table colgroup col:nth-child(2) { width:16%; }
+  .matchup-table colgroup col:nth-child(3) { width:16%; }
+  .matchup-table colgroup col:nth-child(4) { width:26%; }
+  .verdict-dog { background:var(--danger-light); color:var(--danger); border-color:var(--danger); }
+  .verdict-favor { background:rgba(34,197,94,0.15); color:#22C55E; border-color:#22C55E; }
+
+</style>
 </head>
 <body>
 <nav>
@@ -431,7 +459,7 @@ span.c:hover{border-bottom-style:solid;}
         </div>
       </div>
 </td></tr>
-<tr onclick="toggle('mu-dimir')"><td><strong>DIMIR MIDRANGE</strong></td><td>Combo</td><td><span class="verdict verdict-good">Favorable</span></td><td>Every removal spell they cast on your non-token creatures triggers Marang Riv...</td></tr>
+<tr onclick="toggle('mu-dimir')"><td><strong>DIMIR MIDRANGE</strong></td><td>Combo</td><td><span class="verdict verdict-favor">Favorable</span></td><td>Every removal spell they cast on your non-token creatures triggers Marang Riv...</td></tr>
 <tr><td colspan="4" class="matchup-detail" id="mu-dimir">
 <p>Every removal spell they cast on your non-token creatures triggers Marang River Regent for a 4/4 flier. Dimir Midrange runs 6-8 removal spells main deck — that's 6-8 potential 4/4 Dragon tokens. Their Floodpits Drowner bounces your permanents but they come back. Enduring Curiosity draws them cards but you have Quantum Riddler matching pace.</p>
       <p><strong>Priority:</strong> Get Marang River Regent down early. Every Llanowar Elves they Requiting Hex becomes a 4/4. Every Badgermole Cub they answer becomes a 4/4. Build a board with Pollinator + spider tokens that they have to sweep, not answer individually. After their sweep, Ouroboroid makes four 4/4s and Regent makes two more from the dead non-tokens.</p>
@@ -489,7 +517,7 @@ span.c:hover{border-bottom-style:solid;}
       </div>
       <p class="sb-note">Mossborn Hydra is uncounterable at 7+ lands — your primary late-game threat they can't interact with. Meltstrider's Resolve fights their Floodpits Drowner and grows Cub. Cut Spider Manifestation (flash 1/4 is too small) and Bounce Off (their threats are all creatures, not spells).</p>
 </td></tr>
-<tr onclick="toggle('mu-spellementals')"><td><strong>IZZET SPELLEMENTALS</strong></td><td>Combo</td><td><span class="verdict verdict-good">Favorable</span></td><td>Izzet Spellementals needs to chain cantrips into Hearth Elemental — a slow pr...</td></tr>
+<tr onclick="toggle('mu-spellementals')"><td><strong>IZZET SPELLEMENTALS</strong></td><td>Combo</td><td><span class="verdict verdict-favor">Favorable</span></td><td>Izzet Spellementals needs to chain cantrips into Hearth Elemental — a slow pr...</td></tr>
 <tr><td colspan="4" class="matchup-detail" id="mu-spellementals">
 <p>Izzet Spellementals needs to chain cantrips into Hearth Elemental — a slow process your board floods past. Your Mossborn Hydra (7/7 trample) attacks over their Hearth Elemental ground tokens. Badgermole Cub attacking into their 1/1 elemental tokens generates free +1/+1 counters via Earthbender Ascension. Their Sunderflock sweeper at 4-5 damage can clear your board — attack in, then rebuild with Spider Manifestation at instant speed after the sweep.</p>
       <div class="sb-table">

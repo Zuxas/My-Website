@@ -63,7 +63,7 @@ strong{font-weight:600;}
 .matchup-header{background:var(--paper-dark);padding:16px 20px;display:flex;align-items:center;justify-content:space-between;cursor:pointer;}
 .matchup-header h3{margin:0;font-size:11px;letter-spacing:0.15em;color:var(--ink);}
 .verdict{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.15em;text-transform:uppercase;padding:3px 10px;border-radius:2px;}
-.verdict-good{background:rgba(217,119,6,0.12);color:#92400e;}
+.verdict-favor{background:rgba(217,119,6,0.12);color:#92400e;}
 .verdict-even{background:rgba(90,82,72,0.12);color:var(--mid);}
 .verdict-hard{background:rgba(143,26,26,0.12);color:#991b1b;}
 .matchup-body{padding:20px;display:none;}
@@ -172,7 +172,35 @@ span.c:hover{border-bottom-style:solid;}
     .print-grid { position:fixed !important; top:0 !important; left:0 !important; width:100vw !important; height:auto !important; background:var(--rule) !important; border:none !important; display:grid !important; grid-template-columns:repeat(3,1fr) !important; gap:1px !important; }
     .print-mu { background:var(--paper) !important; padding:14px !important; }
   }
-</style></style>
+
+  .matchup-detail { display:none; border:1px solid var(--rule); background:var(--paper-dark); padding:32px 40px; margin:0 0 2px; animation:fadeIn 0.2s ease; }
+  .matchup-detail.open { display:block; }
+  .matchup-table tr:hover td { background:var(--card); cursor:pointer; }
+  .matchup-table th { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; padding:10px 16px; background:var(--primary); color:rgba(248,250,252,0.9); }
+  .matchup-table td { padding:12px 16px; border-bottom:1px solid var(--rule); font-size:15px; font-weight:300; }
+  .matchup-table { width:100%; border-collapse:collapse; margin:24px 0; table-layout:fixed; }
+  .matchup-table colgroup col:nth-child(1) { width:42%; }
+  .matchup-table colgroup col:nth-child(2) { width:16%; }
+  .matchup-table colgroup col:nth-child(3) { width:16%; }
+  .matchup-table colgroup col:nth-child(4) { width:26%; }
+  .verdict-dog { background:var(--danger-light); color:var(--danger); border-color:var(--danger); }
+  .verdict-favor { background:rgba(34,197,94,0.15); color:#22C55E; border-color:#22C55E; }
+
+</style>
+  .matchup-detail { display:none; border:1px solid var(--rule); background:var(--paper-dark); padding:32px 40px; margin:0 0 2px; animation:fadeIn 0.2s ease; }
+  .matchup-detail.open { display:block; }
+  .matchup-table tr:hover td { background:var(--card); cursor:pointer; }
+  .matchup-table th { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; padding:10px 16px; background:var(--primary); color:rgba(248,250,252,0.9); }
+  .matchup-table td { padding:12px 16px; border-bottom:1px solid var(--rule); font-size:15px; font-weight:300; }
+  .matchup-table { width:100%; border-collapse:collapse; margin:24px 0; table-layout:fixed; }
+  .matchup-table colgroup col:nth-child(1) { width:42%; }
+  .matchup-table colgroup col:nth-child(2) { width:16%; }
+  .matchup-table colgroup col:nth-child(3) { width:16%; }
+  .matchup-table colgroup col:nth-child(4) { width:26%; }
+  .verdict-dog { background:var(--danger-light); color:var(--danger); border-color:var(--danger); }
+  .verdict-favor { background:rgba(34,197,94,0.15); color:#22C55E; border-color:#22C55E; }
+
+</style>
 </head>
 <body>
 <nav>
@@ -355,7 +383,7 @@ span.c:hover{border-bottom-style:solid;}
 <colgroup><col><col><col><col></colgroup>
 <thead><tr><th>Matchup</th><th>Role</th><th>Verdict</th><th>Key Play</th></tr></thead>
 <tbody>
-<tr onclick="toggle('mu-monogreen')"><td><strong>SIMIC / BANT RHYTHM</strong></td><td>Combo</td><td><span class="verdict verdict-good">Favorable</span></td><td>This is Boros Dragons' best matchup.</td></tr>
+<tr onclick="toggle('mu-monogreen')"><td><strong>SIMIC / BANT RHYTHM</strong></td><td>Combo</td><td><span class="verdict verdict-favor">Favorable</span></td><td>This is Boros Dragons' best matchup.</td></tr>
 <tr><td colspan="4" class="matchup-detail" id="mu-monogreen">
 <p>This is Boros Dragons' best matchup. Their token strategy requires multiple creatures to function, and your removal plus tempo advantage disrupts the engine. Clarion Conqueror tapping Gene Pollinator means no token doubling that turn. Magmatic Hellkite's ETB disrupts their sequencing. Your Dragons all fly — their spider tokens don't block fliers efficiently.</p>
       <p><strong>Priority:</strong> T1 Momo → T2 Clarion tapping Gene Pollinator (if in play) or Badgermole Cub (before they tap it). Every tap sets back their combo by a full turn. Sarkhan makes your board indestructible vs their Craterhoof — they can't blow you out in combat with Hoof if your board is indestructible.</p>
@@ -389,7 +417,7 @@ span.c:hover{border-bottom-style:solid;}
         </div>
       </div>
 </td></tr>
-<tr onclick="toggle('mu-lessons')"><td><strong>IZZET LESSONS</strong></td><td>Combo</td><td><span class="verdict verdict-good">Favorable</span></td><td>Cavern of Souls naming Dragon makes all your Dragons uncounterable — their Sp...</td></tr>
+<tr onclick="toggle('mu-lessons')"><td><strong>IZZET LESSONS</strong></td><td>Combo</td><td><span class="verdict verdict-favor">Favorable</span></td><td>Cavern of Souls naming Dragon makes all your Dragons uncounterable — their Sp...</td></tr>
 <tr><td colspan="4" class="matchup-detail" id="mu-lessons">
 <p>Cavern of Souls naming Dragon makes all your Dragons uncounterable — their Spell Snare and It'll Quench Ya both fail. They have no flying defense against your 12+ flying power. Monument to Endurance is their key win condition in long games; Requisition Raid destroys it at instant speed.</p>
       <p><strong>Priority:</strong> Name Dragon on Cavern. Deploy freely knowing their counters can't stop you. Clarion Conqueror taps their Gran-Gran or Monument before it generates value. Dragonhawk deals 4+ face damage plus free spell every turn it's active. Their Abandon Attachments can destroy Maelstrom of the Spirit Dragon (enchantment) — don't over-rely on it.</p>
@@ -424,7 +452,7 @@ span.c:hover{border-bottom-style:solid;}
         </div>
       </div>
 </td></tr>
-<tr onclick="toggle('mu-mono-red')"><td><strong>MONO-RED AGGRO</strong></td><td>Combo</td><td><span class="verdict verdict-good">Favorable</span></td><td>You go bigger than them.</td></tr>
+<tr onclick="toggle('mu-mono-red')"><td><strong>MONO-RED AGGRO</strong></td><td>Combo</td><td><span class="verdict verdict-favor">Favorable</span></td><td>You go bigger than them.</td></tr>
 <tr><td colspan="4" class="matchup-detail" id="mu-mono-red">
 <p>You go bigger than them. Their Burst Lightning and Sear don't efficiently kill your 4/4+ Dragons. Sarkhan's indestructibility makes combat trades impossible. Momo and Voice of Victory lifelink means their burn damage is offset by your life gain. Nova Hellkite's ETB kills their small creatures. You stabilize on life while they run out of burn.</p>
       <p><strong>Priority:</strong> Trade efficiently in combat — your Dragons survive their burn (especially under Sarkhan). Get Nova Hellkite ETB damage on their key 2-toughness creatures. Once you have 3+ flying bodies, they can't race. Sunspine Lynx in the SB is for preventing your own lifelink (if you wanted that for some reason) — not relevant here. Instead bring Pyroclasm for their early tokens.</p>
@@ -467,7 +495,7 @@ span.c:hover{border-bottom-style:solid;}
       </div>
       <p class="sb-note">Worldsoul's Rage deals X to any target where X = lands in play — kills their key creatures at 6+ lands. Devastating Onslaught gives your dragon trample and +X/+X for the turn. Their ground-based strategy loses to your air assault — press the attack.</p>
 </td></tr>
-<tr onclick="toggle('mu-spellementals')"><td><strong>IZZET SPELLEMENTALS</strong></td><td>Combo</td><td><span class="verdict verdict-good">Favorable</span></td><td>Izzet Spellementals builds toward Hearth Elemental but your dragon pressure f...</td></tr>
+<tr onclick="toggle('mu-spellementals')"><td><strong>IZZET SPELLEMENTALS</strong></td><td>Combo</td><td><span class="verdict verdict-favor">Favorable</span></td><td>Izzet Spellementals builds toward Hearth Elemental but your dragon pressure f...</td></tr>
 <tr><td colspan="4" class="matchup-detail" id="mu-spellementals">
 <p>Izzet Spellementals builds toward Hearth Elemental but your dragon pressure forces them to use all their mana defensively. Dragonhawk attacks the turn it enters — they can't counter it if they're tapped for cantrips. Their Sunderflock sweeper is sorcery speed — attack before their turn, then rebuild with Dragonheart Escort after.</p>
       <div class="sb-table">

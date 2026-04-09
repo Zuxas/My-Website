@@ -63,7 +63,7 @@ strong{font-weight:600;}
 .matchup-header{background:var(--paper-dark);padding:16px 20px;display:flex;align-items:center;justify-content:space-between;cursor:pointer;}
 .matchup-header h3{margin:0;font-size:11px;letter-spacing:0.15em;color:var(--ink);}
 .verdict{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.15em;text-transform:uppercase;padding:3px 10px;border-radius:2px;}
-.verdict-good{background:rgba(6,182,212,0.1);color:#0e7490;}
+.verdict-favor{background:rgba(6,182,212,0.1);color:#0e7490;}
 .verdict-even{background:rgba(90,82,72,0.12);color:var(--mid);}
 .verdict-hard{background:rgba(143,26,26,0.12);color:#991b1b;}
 .matchup-body{padding:20px;display:none;}
@@ -172,7 +172,35 @@ span.c:hover{border-bottom-style:solid;}
     .print-grid { position:fixed !important; top:0 !important; left:0 !important; width:100vw !important; height:auto !important; background:var(--rule) !important; border:none !important; display:grid !important; grid-template-columns:repeat(3,1fr) !important; gap:1px !important; }
     .print-mu { background:var(--paper) !important; padding:14px !important; }
   }
-</style></style>
+
+  .matchup-detail { display:none; border:1px solid var(--rule); background:var(--paper-dark); padding:32px 40px; margin:0 0 2px; animation:fadeIn 0.2s ease; }
+  .matchup-detail.open { display:block; }
+  .matchup-table tr:hover td { background:var(--card); cursor:pointer; }
+  .matchup-table th { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; padding:10px 16px; background:var(--primary); color:rgba(248,250,252,0.9); }
+  .matchup-table td { padding:12px 16px; border-bottom:1px solid var(--rule); font-size:15px; font-weight:300; }
+  .matchup-table { width:100%; border-collapse:collapse; margin:24px 0; table-layout:fixed; }
+  .matchup-table colgroup col:nth-child(1) { width:42%; }
+  .matchup-table colgroup col:nth-child(2) { width:16%; }
+  .matchup-table colgroup col:nth-child(3) { width:16%; }
+  .matchup-table colgroup col:nth-child(4) { width:26%; }
+  .verdict-dog { background:var(--danger-light); color:var(--danger); border-color:var(--danger); }
+  .verdict-favor { background:rgba(34,197,94,0.15); color:#22C55E; border-color:#22C55E; }
+
+</style>
+  .matchup-detail { display:none; border:1px solid var(--rule); background:var(--paper-dark); padding:32px 40px; margin:0 0 2px; animation:fadeIn 0.2s ease; }
+  .matchup-detail.open { display:block; }
+  .matchup-table tr:hover td { background:var(--card); cursor:pointer; }
+  .matchup-table th { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; padding:10px 16px; background:var(--primary); color:rgba(248,250,252,0.9); }
+  .matchup-table td { padding:12px 16px; border-bottom:1px solid var(--rule); font-size:15px; font-weight:300; }
+  .matchup-table { width:100%; border-collapse:collapse; margin:24px 0; table-layout:fixed; }
+  .matchup-table colgroup col:nth-child(1) { width:42%; }
+  .matchup-table colgroup col:nth-child(2) { width:16%; }
+  .matchup-table colgroup col:nth-child(3) { width:16%; }
+  .matchup-table colgroup col:nth-child(4) { width:26%; }
+  .verdict-dog { background:var(--danger-light); color:var(--danger); border-color:var(--danger); }
+  .verdict-favor { background:rgba(34,197,94,0.15); color:#22C55E; border-color:#22C55E; }
+
+</style>
 </head>
 <body>
 <nav>
@@ -369,7 +397,7 @@ span.c:hover{border-bottom-style:solid;}
 <colgroup><col><col><col><col></colgroup>
 <thead><tr><th>Matchup</th><th>Role</th><th>Verdict</th><th>Key Play</th></tr></thead>
 <tbody>
-<tr onclick="toggle('mu-monogreen')"><td><strong>MONO-GREEN / SIMIC RHYTHM</strong></td><td>Combo</td><td><span class="verdict verdict-good">Favorable</span></td><td>Their board is exactly what Sunderflock wipes.</td></tr>
+<tr onclick="toggle('mu-monogreen')"><td><strong>MONO-GREEN / SIMIC RHYTHM</strong></td><td>Combo</td><td><span class="verdict verdict-favor">Favorable</span></td><td>Their board is exactly what Sunderflock wipes.</td></tr>
 <tr><td colspan="4" class="matchup-detail" id="mu-monogreen">
 <p>Their board is exactly what Sunderflock wipes. Their Gene Pollinator (3/3), Quantum Riddler (3/3), spider tokens (1/2), and mana dorks (1/1, 2/2) all die to 8 damage from Throne-doubled Sunderflock. Their Ouroboroid 4/4 tokens die. Their Badgermole Cub dies. Sunderflock ends their board state in one card.</p>
       <p><strong>Priority:</strong> Assemble 4 Elementals + Throne by T4-T5. Don't rush — taking a turn to play Deceit stripping their Pollinator or Sapling Nursery is correct. Wistfulness in Naturalize mode destroys Sapling Nursery (4 mana enchantment). Cast Sunderflock on their end step for maximum disruption.</p>
@@ -416,7 +444,7 @@ span.c:hover{border-bottom-style:solid;}
         </div>
       </div>
 </td></tr>
-<tr onclick="toggle('mu-dimir')"><td><strong>DIMIR MIDRANGE</strong></td><td>Combo</td><td><span class="verdict verdict-good">Favorable</span></td><td>Their removal (Requiting Hex hits MV ≤ 2 — doesn't hit your Roaming Throne at...</td></tr>
+<tr onclick="toggle('mu-dimir')"><td><strong>DIMIR MIDRANGE</strong></td><td>Combo</td><td><span class="verdict verdict-favor">Favorable</span></td><td>Their removal (Requiting Hex hits MV ≤ 2 — doesn't hit your Roaming Throne at...</td></tr>
 <tr><td colspan="4" class="matchup-detail" id="mu-dimir">
 <p>Their removal (Requiting Hex hits MV ≤ 2 — doesn't hit your Roaming Throne at MV 4). Their Floodpits Drowner bounces one creature — you replay it. Sunderflock kills their entire board including Cecil, Dark Knight and Kaito tokens. Cavern makes your threats uncounterable. You are heavily favored in this matchup.</p>
       <p><strong>Priority:</strong> Assemble freely — they can't counter your threats. Deceit strips their Enduring Curiosity or Floodpits Drowner from hand before play. Sunderflock wipes their whole board. After the wipe, your Flamebraider tokens and remaining Elementals close the game.</p>
@@ -457,7 +485,7 @@ span.c:hover{border-bottom-style:solid;}
       </div>
       <p class="sb-note">Spell Pierce counters Floodpits Drowner (forces them to pay 2 more on a 3-cost creature). Negate counters Counterspell and non-creature spells. Cut Broadside Barrage (7 mana) and Glacial Dragonhunt (their threats aren't dragons).</p>
 </td></tr>
-<tr onclick="toggle('mu-simic')"><td><strong>SIMIC RHYTHM</strong></td><td>Combo</td><td><span class="verdict verdict-good">Favorable</span></td><td>Simic Rhythm has no interaction for your instant-speed chains.</td></tr>
+<tr onclick="toggle('mu-simic')"><td><strong>SIMIC RHYTHM</strong></td><td>Combo</td><td><span class="verdict verdict-favor">Favorable</span></td><td>Simic Rhythm has no interaction for your instant-speed chains.</td></tr>
 <tr><td colspan="4" class="matchup-detail" id="mu-simic">
 <p>Simic Rhythm has no interaction for your instant-speed chains. Your Eddymurk Crab (0/4 flash) blocks their Badgermole Cub attacks indefinitely. Hearth Elemental (2/3 flying) attacks over their Cub tokens for 3 turns without being blocked. Deploy Hearth early and apply air pressure — their Earthbender Ascension makes their ground creatures huge but they can't fly.</p>
       <div class="sb-table">

@@ -59,7 +59,7 @@ strong{font-weight:600;}
 .matchup-header{background:var(--paper-dark);padding:16px 20px;display:flex;align-items:center;justify-content:space-between;cursor:pointer;}
 .matchup-header h3{margin:0;font-size:11px;letter-spacing:0.15em;color:var(--ink);}
 .verdict{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.15em;text-transform:uppercase;padding:3px 10px;border-radius:2px;}
-.verdict-good{background:rgba(22,163,74,0.12);color:#155724;}
+.verdict-favor{background:rgba(22,163,74,0.12);color:#155724;}
 .verdict-even{background:rgba(90,82,72,0.12);color:var(--mid);}
 .verdict-hard{background:rgba(180,35,24,0.1);color:#991b1b;}
 .matchup-body{padding:20px;display:none;}
@@ -168,7 +168,35 @@ span.c:hover{border-bottom-style:solid;}
     .print-grid { position:fixed !important; top:0 !important; left:0 !important; width:100vw !important; height:auto !important; background:var(--rule) !important; border:none !important; display:grid !important; grid-template-columns:repeat(3,1fr) !important; gap:1px !important; }
     .print-mu { background:var(--paper) !important; padding:14px !important; }
   }
-</style></style>
+
+  .matchup-detail { display:none; border:1px solid var(--rule); background:var(--paper-dark); padding:32px 40px; margin:0 0 2px; animation:fadeIn 0.2s ease; }
+  .matchup-detail.open { display:block; }
+  .matchup-table tr:hover td { background:var(--card); cursor:pointer; }
+  .matchup-table th { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; padding:10px 16px; background:var(--primary); color:rgba(248,250,252,0.9); }
+  .matchup-table td { padding:12px 16px; border-bottom:1px solid var(--rule); font-size:15px; font-weight:300; }
+  .matchup-table { width:100%; border-collapse:collapse; margin:24px 0; table-layout:fixed; }
+  .matchup-table colgroup col:nth-child(1) { width:42%; }
+  .matchup-table colgroup col:nth-child(2) { width:16%; }
+  .matchup-table colgroup col:nth-child(3) { width:16%; }
+  .matchup-table colgroup col:nth-child(4) { width:26%; }
+  .verdict-dog { background:var(--danger-light); color:var(--danger); border-color:var(--danger); }
+  .verdict-favor { background:rgba(34,197,94,0.15); color:#22C55E; border-color:#22C55E; }
+
+</style>
+  .matchup-detail { display:none; border:1px solid var(--rule); background:var(--paper-dark); padding:32px 40px; margin:0 0 2px; animation:fadeIn 0.2s ease; }
+  .matchup-detail.open { display:block; }
+  .matchup-table tr:hover td { background:var(--card); cursor:pointer; }
+  .matchup-table th { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; padding:10px 16px; background:var(--primary); color:rgba(248,250,252,0.9); }
+  .matchup-table td { padding:12px 16px; border-bottom:1px solid var(--rule); font-size:15px; font-weight:300; }
+  .matchup-table { width:100%; border-collapse:collapse; margin:24px 0; table-layout:fixed; }
+  .matchup-table colgroup col:nth-child(1) { width:42%; }
+  .matchup-table colgroup col:nth-child(2) { width:16%; }
+  .matchup-table colgroup col:nth-child(3) { width:16%; }
+  .matchup-table colgroup col:nth-child(4) { width:26%; }
+  .verdict-dog { background:var(--danger-light); color:var(--danger); border-color:var(--danger); }
+  .verdict-favor { background:rgba(34,197,94,0.15); color:#22C55E; border-color:#22C55E; }
+
+</style>
 </head>
 <body>
 <nav>
@@ -391,7 +419,7 @@ span.c:hover{border-bottom-style:solid;}
         </div>
       </div>
 </td></tr>
-<tr onclick="toggle('mu-control')"><td><strong>UW CONTROL</strong></td><td>Combo</td><td><span class="verdict verdict-good">Favorable</span></td><td>Your best matchup.</td></tr>
+<tr onclick="toggle('mu-control')"><td><strong>UW CONTROL</strong></td><td>Combo</td><td><span class="verdict verdict-favor">Favorable</span></td><td>Your best matchup.</td></tr>
 <tr><td colspan="4" class="matchup-detail" id="mu-control">
 <p>Your best matchup. Thalia taxes every counterspell and removal spell. Voice of Resurgence punishes their instants on your turn. CoCo at end of their turn refills through sweepers. They need 3-4 interactive spells to deal with one of your threats; you need one CoCo to replace them all. Shapers' Sanctuary (SB) draws a card every time they target one of your creatures, generating more card advantage than their cantrips.</p>
       <p><strong>Priority:</strong> Deploy Thalia early, then spread creatures 2 at a time. Never empty your hand. Hold CoCo for their end step after a sweeper. Kellan attacks and draws cards; Extraction Specialist rebuilds after each sweeper. Voice of Resurgence prevents them from casting instants on your turn without paying a token tax.</p>
@@ -419,7 +447,7 @@ span.c:hover{border-bottom-style:solid;}
         </div>
       </div>
 </td></tr>
-<tr onclick="toggle('mu-lotus2')"><td><strong>LOTUS FIELD</strong></td><td>Combo</td><td><span class="verdict verdict-good">Favorable</span></td><td>Damping Sphere prevents their mana multiplication.</td></tr>
+<tr onclick="toggle('mu-lotus2')"><td><strong>LOTUS FIELD</strong></td><td>Combo</td><td><span class="verdict verdict-favor">Favorable</span></td><td>Damping Sphere prevents their mana multiplication.</td></tr>
 <tr><td colspan="4" class="matchup-detail" id="mu-lotus2">
 <p>Damping Sphere prevents their mana multiplication. Thoughtseize strips Hidden Strings or key pieces before cast.</p>
       <div class="sb-table">
@@ -446,7 +474,7 @@ span.c:hover{border-bottom-style:solid;}
       </div>
       <p class="sb-note">Soul-Guide Lantern exiles Phoenix. Rending Volley destroys white/blue creatures. Cut discard.</p>
 </td></tr>
-<tr onclick="toggle('mu-creativity2')"><td><strong>IZZET CREATIVITY</strong></td><td>Combo</td><td><span class="verdict verdict-good">Favorable</span></td><td>Thoughtseize strips Creativity before it resolves.</td></tr>
+<tr onclick="toggle('mu-creativity2')"><td><strong>IZZET CREATIVITY</strong></td><td>Combo</td><td><span class="verdict verdict-favor">Favorable</span></td><td>Thoughtseize strips Creativity before it resolves.</td></tr>
 <tr><td colspan="4" class="matchup-detail" id="mu-creativity2">
 <p>Thoughtseize strips Creativity before it resolves. If Atraxa enters without interaction you've likely lost — strip it or counter it.</p>
       <div class="sb-table">

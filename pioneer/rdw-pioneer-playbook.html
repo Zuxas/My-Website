@@ -59,7 +59,7 @@ strong{font-weight:600;}
 .matchup-header{background:var(--paper-dark);padding:16px 20px;display:flex;align-items:center;justify-content:space-between;cursor:pointer;}
 .matchup-header h3{margin:0;font-size:11px;letter-spacing:0.15em;color:var(--ink);}
 .verdict{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.15em;text-transform:uppercase;padding:3px 10px;border-radius:2px;}
-.verdict-good{background:rgba(220,38,38,0.1);color:#9a1313;}
+.verdict-favor{background:rgba(220,38,38,0.1);color:#9a1313;}
 .verdict-even{background:rgba(90,82,72,0.12);color:var(--mid);}
 .verdict-hard{background:rgba(143,26,26,0.12);color:#991b1b;}
 .matchup-body{padding:20px;display:none;}
@@ -168,7 +168,35 @@ span.c:hover{border-bottom-style:solid;}
     .print-grid { position:fixed !important; top:0 !important; left:0 !important; width:100vw !important; height:auto !important; background:var(--rule) !important; border:none !important; display:grid !important; grid-template-columns:repeat(3,1fr) !important; gap:1px !important; }
     .print-mu { background:var(--paper) !important; padding:14px !important; }
   }
-</style></style>
+
+  .matchup-detail { display:none; border:1px solid var(--rule); background:var(--paper-dark); padding:32px 40px; margin:0 0 2px; animation:fadeIn 0.2s ease; }
+  .matchup-detail.open { display:block; }
+  .matchup-table tr:hover td { background:var(--card); cursor:pointer; }
+  .matchup-table th { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; padding:10px 16px; background:var(--primary); color:rgba(248,250,252,0.9); }
+  .matchup-table td { padding:12px 16px; border-bottom:1px solid var(--rule); font-size:15px; font-weight:300; }
+  .matchup-table { width:100%; border-collapse:collapse; margin:24px 0; table-layout:fixed; }
+  .matchup-table colgroup col:nth-child(1) { width:42%; }
+  .matchup-table colgroup col:nth-child(2) { width:16%; }
+  .matchup-table colgroup col:nth-child(3) { width:16%; }
+  .matchup-table colgroup col:nth-child(4) { width:26%; }
+  .verdict-dog { background:var(--danger-light); color:var(--danger); border-color:var(--danger); }
+  .verdict-favor { background:rgba(34,197,94,0.15); color:#22C55E; border-color:#22C55E; }
+
+</style>
+  .matchup-detail { display:none; border:1px solid var(--rule); background:var(--paper-dark); padding:32px 40px; margin:0 0 2px; animation:fadeIn 0.2s ease; }
+  .matchup-detail.open { display:block; }
+  .matchup-table tr:hover td { background:var(--card); cursor:pointer; }
+  .matchup-table th { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; padding:10px 16px; background:var(--primary); color:rgba(248,250,252,0.9); }
+  .matchup-table td { padding:12px 16px; border-bottom:1px solid var(--rule); font-size:15px; font-weight:300; }
+  .matchup-table { width:100%; border-collapse:collapse; margin:24px 0; table-layout:fixed; }
+  .matchup-table colgroup col:nth-child(1) { width:42%; }
+  .matchup-table colgroup col:nth-child(2) { width:16%; }
+  .matchup-table colgroup col:nth-child(3) { width:16%; }
+  .matchup-table colgroup col:nth-child(4) { width:26%; }
+  .verdict-dog { background:var(--danger-light); color:var(--danger); border-color:var(--danger); }
+  .verdict-favor { background:rgba(34,197,94,0.15); color:#22C55E; border-color:#22C55E; }
+
+</style>
 </head>
 <body>
 <nav>
@@ -372,7 +400,7 @@ span.c:hover{border-bottom-style:solid;}
         </div>
       </div>
 </td></tr>
-<tr onclick="toggle('mu-greasefang')"><td><strong>ORZHOV GREASEFANG</strong></td><td>Combo</td><td><span class="verdict verdict-good">Favorable</span></td><td>You're faster.</td></tr>
+<tr onclick="toggle('mu-greasefang')"><td><strong>ORZHOV GREASEFANG</strong></td><td>Combo</td><td><span class="verdict verdict-favor">Favorable</span></td><td>You're faster.</td></tr>
 <tr><td colspan="4" class="matchup-detail" id="mu-greasefang">
 <p>You're faster. Greasefang needs T3 for its combo; you kill them by T3. Eidolon taxes every discard outlet (Monument to Endurance, Cryptcaller Chariot, Seasoned Hallowblade) for 2 life each. Rampaging Ferocidon (SB) prevents lifegain and its static ability means they can't gain life off any source. Thoughtseize only costs them 2 more from Eidolon.</p>
       <p><strong>Priority:</strong> Don't slow down to interact with their combo. Kill them first. If they attack with Parhelion II on T3, calculate whether you can deal lethal on your next attack — often you can. Their 9/9 flying vigilance is irrelevant if they're at 0.</p>
@@ -420,7 +448,7 @@ span.c:hover{border-bottom-style:solid;}
         </div>
       </div>
 </td></tr>
-<tr onclick="toggle('mu-lotus')"><td><strong>LOTUS FIELD COMBO</strong></td><td>Combo</td><td><span class="verdict verdict-good">Favorable</span></td><td>Lotus Field combo goes off on T4-5 with Lotus Field + Thespian's Stage.</td></tr>
+<tr onclick="toggle('mu-lotus')"><td><strong>LOTUS FIELD COMBO</strong></td><td>Combo</td><td><span class="verdict verdict-favor">Favorable</span></td><td>Lotus Field combo goes off on T4-5 with Lotus Field + Thespian's Stage.</td></tr>
 <tr><td colspan="4" class="matchup-detail" id="mu-lotus">
 <p>Lotus Field combo goes off on T4-5 with Lotus Field + Thespian's Stage. You kill them by T3. Eidolon punishes their Hidden Strings, Pore Over the Pages, and every setup spell they cast. Roiling Vortex (SB) prevents the lifegain from Abandon Hope — their primary stall mechanism. They can't win before they die.</p>
       <p><strong>Priority:</strong> Kill them. Don't sideboard into interaction — your clock is the best answer. Roiling Vortex shuts off lifegain. Don't worry about understanding their combo — just kill them before they can execute it.</p>
@@ -433,7 +461,7 @@ span.c:hover{border-bottom-style:solid;}
         </div>
       </div>
 </td></tr>
-<tr onclick="toggle('mu-lotus2')"><td><strong>LOTUS FIELD</strong></td><td>Combo</td><td><span class="verdict verdict-good">Favorable</span></td><td>Damping Sphere prevents their mana multiplication.</td></tr>
+<tr onclick="toggle('mu-lotus2')"><td><strong>LOTUS FIELD</strong></td><td>Combo</td><td><span class="verdict verdict-favor">Favorable</span></td><td>Damping Sphere prevents their mana multiplication.</td></tr>
 <tr><td colspan="4" class="matchup-detail" id="mu-lotus2">
 <p>Damping Sphere prevents their mana multiplication. Thoughtseize strips Hidden Strings or key pieces before cast.</p>
       <div class="sb-table">
@@ -451,7 +479,7 @@ span.c:hover{border-bottom-style:solid;}
       </div>
       <p class="sb-note">Thoughtseize strips Niv or their tutor. Cut Lantern (no relevant GY) and Cleric.</p>
 </td></tr>
-<tr onclick="toggle('mu-greasefang2')"><td><strong>ORZHOV GREASEFANG</strong></td><td>Combo</td><td><span class="verdict verdict-good">Favorable</span></td><td>Soul-Guide Lantern exiling Parhelion II before Greasefang can crew it is a ne...</td></tr>
+<tr onclick="toggle('mu-greasefang2')"><td><strong>ORZHOV GREASEFANG</strong></td><td>Combo</td><td><span class="verdict verdict-favor">Favorable</span></td><td>Soul-Guide Lantern exiling Parhelion II before Greasefang can crew it is a ne...</td></tr>
 <tr><td colspan="4" class="matchup-detail" id="mu-greasefang2">
 <p>Soul-Guide Lantern exiling Parhelion II before Greasefang can crew it is a near-instant win — without Parhelion in GY their combo is offline.</p>
       <div class="sb-table">

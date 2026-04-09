@@ -59,7 +59,7 @@ strong{font-weight:600;}
 .matchup-header{background:var(--paper-dark);padding:16px 20px;display:flex;align-items:center;justify-content:space-between;cursor:pointer;}
 .matchup-header h3{margin:0;font-size:11px;letter-spacing:0.15em;color:var(--ink);}
 .verdict{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.15em;text-transform:uppercase;padding:3px 10px;border-radius:2px;}
-.verdict-good{background:rgba(217,119,6,0.1);color:#92400e;}
+.verdict-favor{background:rgba(217,119,6,0.1);color:#92400e;}
 .verdict-even{background:rgba(90,82,72,0.12);color:var(--mid);}
 .verdict-hard{background:rgba(180,35,24,0.1);color:#991b1b;}
 .matchup-body{padding:20px;display:none;}
@@ -168,7 +168,35 @@ span.c:hover{border-bottom-style:solid;}
     .print-grid { position:fixed !important; top:0 !important; left:0 !important; width:100vw !important; height:auto !important; background:var(--rule) !important; border:none !important; display:grid !important; grid-template-columns:repeat(3,1fr) !important; gap:1px !important; }
     .print-mu { background:var(--paper) !important; padding:14px !important; }
   }
-</style></style>
+
+  .matchup-detail { display:none; border:1px solid var(--rule); background:var(--paper-dark); padding:32px 40px; margin:0 0 2px; animation:fadeIn 0.2s ease; }
+  .matchup-detail.open { display:block; }
+  .matchup-table tr:hover td { background:var(--card); cursor:pointer; }
+  .matchup-table th { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; padding:10px 16px; background:var(--primary); color:rgba(248,250,252,0.9); }
+  .matchup-table td { padding:12px 16px; border-bottom:1px solid var(--rule); font-size:15px; font-weight:300; }
+  .matchup-table { width:100%; border-collapse:collapse; margin:24px 0; table-layout:fixed; }
+  .matchup-table colgroup col:nth-child(1) { width:42%; }
+  .matchup-table colgroup col:nth-child(2) { width:16%; }
+  .matchup-table colgroup col:nth-child(3) { width:16%; }
+  .matchup-table colgroup col:nth-child(4) { width:26%; }
+  .verdict-dog { background:var(--danger-light); color:var(--danger); border-color:var(--danger); }
+  .verdict-favor { background:rgba(34,197,94,0.15); color:#22C55E; border-color:#22C55E; }
+
+</style>
+  .matchup-detail { display:none; border:1px solid var(--rule); background:var(--paper-dark); padding:32px 40px; margin:0 0 2px; animation:fadeIn 0.2s ease; }
+  .matchup-detail.open { display:block; }
+  .matchup-table tr:hover td { background:var(--card); cursor:pointer; }
+  .matchup-table th { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; padding:10px 16px; background:var(--primary); color:rgba(248,250,252,0.9); }
+  .matchup-table td { padding:12px 16px; border-bottom:1px solid var(--rule); font-size:15px; font-weight:300; }
+  .matchup-table { width:100%; border-collapse:collapse; margin:24px 0; table-layout:fixed; }
+  .matchup-table colgroup col:nth-child(1) { width:42%; }
+  .matchup-table colgroup col:nth-child(2) { width:16%; }
+  .matchup-table colgroup col:nth-child(3) { width:16%; }
+  .matchup-table colgroup col:nth-child(4) { width:26%; }
+  .verdict-dog { background:var(--danger-light); color:var(--danger); border-color:var(--danger); }
+  .verdict-favor { background:rgba(34,197,94,0.15); color:#22C55E; border-color:#22C55E; }
+
+</style>
 </head>
 <body>
 <nav>
@@ -385,7 +413,7 @@ span.c:hover{border-bottom-style:solid;}
         <div class="sb-col"><div class="sb-col-label">Out</div><div class="sb-item"><span><span class="c">Hopeful Initiate</span></span><span class="sb-qty">&minus;1</span></div><div class="sb-item"><span><span class="c">Thalia, Guardian of Thraben</span></span><span class="sb-qty">&minus;2</span></div><div class="sb-item"><span><span class="c">Kytheon</span></span><span class="sb-qty">&minus;2</span></div></div>
       </div>
 </td></tr>
-<tr onclick="toggle('mu-greasefang')"><td><strong>ORZHOV GREASEFANG</strong></td><td>Combo</td><td><span class="verdict verdict-good">Favorable</span></td><td>You're faster.</td></tr>
+<tr onclick="toggle('mu-greasefang')"><td><strong>ORZHOV GREASEFANG</strong></td><td>Combo</td><td><span class="verdict verdict-favor">Favorable</span></td><td>You're faster.</td></tr>
 <tr><td colspan="4" class="matchup-detail" id="mu-greasefang">
 <p>You're faster. T1-T2-T3 Human curve kills by T4-T5; they combo on T3-4. Thalia taxes their discard outlets {1} extra per spell. Their Thoughtseize strips key pieces — target Brave the Elements from hand. Brave naming black blanks their targeted discard attempts from hand. Rest in Peace (SB) removes Parhelion II from GY permanently. Your wide human board attacks through their non-flying blockers; their 9/9 flying Angel doesn't block your creatures.</p>
       <p>Your Thalia taxes their discard outlets by {1} each — their combo setup becomes one turn slower. Your Meddling Mage naming Parhelion II or Greasefang hard-locks their win condition. Your clock (Thalia + Champion + Lieutenant) applies 8+ damage by T3 — they must combo before T4 or die. You protect your board with Guardian of Faith if they have a sweeper in hand.</p>
@@ -395,7 +423,7 @@ span.c:hover{border-bottom-style:solid;}
         <div class="sb-col"><div class="sb-col-label">Out</div><div class="sb-item"><span><span class="c">Declaration in Stone</span></span><span class="sb-qty">&minus;2</span></div><div class="sb-item"><span><span class="c">Fateful Absence</span></span><span class="sb-qty">&minus;2</span></div></div>
       </div>
 </td></tr>
-<tr onclick="toggle('mu-greasefang2')"><td><strong>ORZHOV GREASEFANG</strong></td><td>Combo</td><td><span class="verdict verdict-good">Favorable</span></td><td>Greasefang assembles Parhelion II in GY + Greasefang crew for a turn-3 kill.</td></tr>
+<tr onclick="toggle('mu-greasefang2')"><td><strong>ORZHOV GREASEFANG</strong></td><td>Combo</td><td><span class="verdict verdict-favor">Favorable</span></td><td>Greasefang assembles Parhelion II in GY + Greasefang crew for a turn-3 kill.</td></tr>
 <tr><td colspan="4" class="matchup-detail" id="mu-greasefang2">
 <p>Greasefang assembles Parhelion II in GY + Greasefang crew for a turn-3 kill. Soul-Guide Lantern exiling Parhelion before Greasefang can crew it is a near-instant win — without Parhelion in GY their deck has no win condition.</p>
       <p>Your Thalia + Meddling Mage locks their entire combo: Thalia taxes their outlets, Mage names their win condition. Your aggro clock forces them to combo into Mage's lock by T3 or die. Their Anguished Unmaking (exile Mage) costs them 3 life and {3}{W}{B} — your Thalia tax means it costs {4}{W}{B}. You hold Guardian of Faith for their rare sweeper backup plan.</p>
@@ -406,7 +434,7 @@ span.c:hover{border-bottom-style:solid;}
       </div>
       <p class="sb-note">Soul-Guide Lantern exiles Parhelion II — their combo is offline. Fatal Push kills Greasefang (3 MV, revolt triggers easily). Cut discard (exile GY is more efficient than hand disruption).</p>
 </td></tr>
-<tr onclick="toggle('mu-lotus2')"><td><strong>LOTUS FIELD</strong></td><td>Combo</td><td><span class="verdict verdict-good">Favorable</span></td><td>Lotus Field combos off with Hidden Strings + Lotus Field.</td></tr>
+<tr onclick="toggle('mu-lotus2')"><td><strong>LOTUS FIELD</strong></td><td>Combo</td><td><span class="verdict verdict-favor">Favorable</span></td><td>Lotus Field combos off with Hidden Strings + Lotus Field.</td></tr>
 <tr><td colspan="4" class="matchup-detail" id="mu-lotus2">
 <p>Lotus Field combos off with Hidden Strings + Lotus Field. Damping Sphere shuts off their mana multiplication. Thoughtseize strips Hidden Strings or Pore Over the Pages before they can cast it.</p>
       <p>Your Thalia taxes Hidden Strings to {3} total — their combo is one full turn slower. Your 8+ power attack by T3 kills them before they assemble Lotus + Stage + Hidden Strings. Your Meddling Mage naming Hidden Strings hard-locks their combo permanently. This matchup is your fastest kill — you apply 3-4 turns of pressure before they can tap Lotus for meaningful mana.</p>

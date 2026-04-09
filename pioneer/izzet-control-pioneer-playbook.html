@@ -59,7 +59,7 @@ strong{font-weight:600;}
 .matchup-header{background:var(--paper-dark);padding:16px 20px;display:flex;align-items:center;justify-content:space-between;cursor:pointer;}
 .matchup-header h3{margin:0;font-size:11px;letter-spacing:0.15em;color:var(--ink);}
 .verdict{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.15em;text-transform:uppercase;padding:3px 10px;border-radius:2px;}
-.verdict-good{background:rgba(14,165,233,0.1);color:#0369a1;}
+.verdict-favor{background:rgba(14,165,233,0.1);color:#0369a1;}
 .verdict-even{background:rgba(90,82,72,0.12);color:var(--mid);}
 .verdict-hard{background:rgba(180,35,24,0.1);color:#991b1b;}
 .matchup-body{padding:20px;display:none;}
@@ -171,7 +171,35 @@ span.c:hover{border-bottom-style:solid;}
     .print-grid { position:fixed !important; top:0 !important; left:0 !important; width:100vw !important; height:auto !important; background:var(--rule) !important; border:none !important; display:grid !important; grid-template-columns:repeat(3,1fr) !important; gap:1px !important; }
     .print-mu { background:var(--paper) !important; padding:14px !important; }
   }
-</style></style>
+
+  .matchup-detail { display:none; border:1px solid var(--rule); background:var(--paper-dark); padding:32px 40px; margin:0 0 2px; animation:fadeIn 0.2s ease; }
+  .matchup-detail.open { display:block; }
+  .matchup-table tr:hover td { background:var(--card); cursor:pointer; }
+  .matchup-table th { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; padding:10px 16px; background:var(--primary); color:rgba(248,250,252,0.9); }
+  .matchup-table td { padding:12px 16px; border-bottom:1px solid var(--rule); font-size:15px; font-weight:300; }
+  .matchup-table { width:100%; border-collapse:collapse; margin:24px 0; table-layout:fixed; }
+  .matchup-table colgroup col:nth-child(1) { width:42%; }
+  .matchup-table colgroup col:nth-child(2) { width:16%; }
+  .matchup-table colgroup col:nth-child(3) { width:16%; }
+  .matchup-table colgroup col:nth-child(4) { width:26%; }
+  .verdict-dog { background:var(--danger-light); color:var(--danger); border-color:var(--danger); }
+  .verdict-favor { background:rgba(34,197,94,0.15); color:#22C55E; border-color:#22C55E; }
+
+</style>
+  .matchup-detail { display:none; border:1px solid var(--rule); background:var(--paper-dark); padding:32px 40px; margin:0 0 2px; animation:fadeIn 0.2s ease; }
+  .matchup-detail.open { display:block; }
+  .matchup-table tr:hover td { background:var(--card); cursor:pointer; }
+  .matchup-table th { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; padding:10px 16px; background:var(--primary); color:rgba(248,250,252,0.9); }
+  .matchup-table td { padding:12px 16px; border-bottom:1px solid var(--rule); font-size:15px; font-weight:300; }
+  .matchup-table { width:100%; border-collapse:collapse; margin:24px 0; table-layout:fixed; }
+  .matchup-table colgroup col:nth-child(1) { width:42%; }
+  .matchup-table colgroup col:nth-child(2) { width:16%; }
+  .matchup-table colgroup col:nth-child(3) { width:16%; }
+  .matchup-table colgroup col:nth-child(4) { width:26%; }
+  .verdict-dog { background:var(--danger-light); color:var(--danger); border-color:var(--danger); }
+  .verdict-favor { background:rgba(34,197,94,0.15); color:#22C55E; border-color:#22C55E; }
+
+</style>
 </head>
 <body>
 <nav>
@@ -390,7 +418,7 @@ span.c:hover{border-bottom-style:solid;}
         <div class="sb-col"><div class="sb-col-label">Out</div><div class="sb-item"><span><span class="c">Fiery Impulse</span></span><span class="sb-qty">&minus;3</span></div><div class="sb-item"><span><span class="c">Volcanic Spite</span></span><span class="sb-qty">&minus;2</span></div></div>
       </div>
 </td></tr>
-<tr onclick="toggle('mu-greasefang')"><td><strong>ORZHOV GREASEFANG</strong></td><td>Combo</td><td><span class="verdict verdict-good">Favorable</span></td><td>Divide by Zero bounces Greasefang before its ETB resolves — the Parhelion II ...</td></tr>
+<tr onclick="toggle('mu-greasefang')"><td><strong>ORZHOV GREASEFANG</strong></td><td>Combo</td><td><span class="verdict verdict-favor">Favorable</span></td><td>Divide by Zero bounces Greasefang before its ETB resolves — the Parhelion II ...</td></tr>
 <tr><td colspan="4" class="matchup-detail" id="mu-greasefang">
 <p>Divide by Zero bounces Greasefang before its ETB resolves — the Parhelion II never returns. Make Disappear counters Monument to Endurance. Fiery Impulse kills Greasefang if you're tapped down. Rending Volley (SB) kills Greasefang at instant speed for {R} and can't be countered. Your combo kills faster than their T3-4 kill assuming you answer Greasefang once.</p>
       <p>Your Thoughtseize (board in) strips their Parhelion II or discard outlet on T1. Your Mystical Dispute counters Greasefang for {U} (it's not blue) — wait, Greasefang is Mardu colored, not blue. Use Dovin's Veto instead for non-blue spells. Your Anger of the Gods exiles Greasefang when it dies. Win by disrupting their hand T1-T2 and answering whatever they assemble. Their combo fails without Greasefang in play.</p>
@@ -421,7 +449,7 @@ span.c:hover{border-bottom-style:solid;}
       </div>
       <p class="sb-note">Soul-Guide Lantern exiles Extraction Specialist targets from GY. Fatal Push kills their small lords at instant speed. Cut Duress (less effective against creature-based strategies) and a Thoughtseize.</p>
 </td></tr>
-<tr onclick="toggle('mu-lotus2')"><td><strong>LOTUS FIELD</strong></td><td>Combo</td><td><span class="verdict verdict-good">Favorable</span></td><td>Lotus Field combos off with Lotus Field + Thespian's Stage + Hidden Strings b...</td></tr>
+<tr onclick="toggle('mu-lotus2')"><td><strong>LOTUS FIELD</strong></td><td>Combo</td><td><span class="verdict verdict-favor">Favorable</span></td><td>Lotus Field combos off with Lotus Field + Thespian's Stage + Hidden Strings b...</td></tr>
 <tr><td colspan="4" class="matchup-detail" id="mu-lotus2">
 <p>Lotus Field combos off with Lotus Field + Thespian's Stage + Hidden Strings by untapping Lotus repeatedly. Your discard (Thoughtseize, Duress) strips their key combo pieces or their Hidden Strings. Damping Sphere shuts off their mana multiplication entirely — they can't tap Lotus for more than {B} while Sphere is out.</p>
       <p>Your Damping Sphere (SB) is your best answer — it locks Lotus Field (lands produce colorless). Board in Damping Sphere and Mystical Dispute. Their Mystical Dispute counters your Sphere for {U} — you need to protect Sphere with your own Dispute. Win by resolving Sphere on T2 before they have Dispute mana. If Sphere resolves, their deck cannot function and you win with any threat.</p>

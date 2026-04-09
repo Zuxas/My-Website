@@ -52,7 +52,7 @@ strong{font-weight:600;}
 .matchup-header{background:var(--paper-dark);padding:16px 20px;display:flex;align-items:center;gap:12px;cursor:pointer;justify-content:space-between;}
 .matchup-header h3{margin:0;font-size:11px;letter-spacing:0.15em;color:var(--ink);}
 .verdict{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.15em;text-transform:uppercase;padding:3px 10px;border-radius:2px;}
-.verdict-good{background:rgba(22,163,74,0.15);color:#15803d;}
+.verdict-favor{background:rgba(22,163,74,0.15);color:#15803d;}
 .verdict-even{background:rgba(90,82,72,0.12);color:var(--mid);}
 .verdict-hard{background:rgba(143,26,26,0.12);color:#991b1b;}
 .matchup-body{padding:20px;display:none;}
@@ -161,7 +161,35 @@ span.c:hover{border-bottom-style:solid;}
     .print-grid { position:fixed !important; top:0 !important; left:0 !important; width:100vw !important; height:auto !important; background:var(--rule) !important; border:none !important; display:grid !important; grid-template-columns:repeat(3,1fr) !important; gap:1px !important; }
     .print-mu { background:var(--paper) !important; padding:14px !important; }
   }
-</style></style>
+
+  .matchup-detail { display:none; border:1px solid var(--rule); background:var(--paper-dark); padding:32px 40px; margin:0 0 2px; animation:fadeIn 0.2s ease; }
+  .matchup-detail.open { display:block; }
+  .matchup-table tr:hover td { background:var(--card); cursor:pointer; }
+  .matchup-table th { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; padding:10px 16px; background:var(--primary); color:rgba(248,250,252,0.9); }
+  .matchup-table td { padding:12px 16px; border-bottom:1px solid var(--rule); font-size:15px; font-weight:300; }
+  .matchup-table { width:100%; border-collapse:collapse; margin:24px 0; table-layout:fixed; }
+  .matchup-table colgroup col:nth-child(1) { width:42%; }
+  .matchup-table colgroup col:nth-child(2) { width:16%; }
+  .matchup-table colgroup col:nth-child(3) { width:16%; }
+  .matchup-table colgroup col:nth-child(4) { width:26%; }
+  .verdict-dog { background:var(--danger-light); color:var(--danger); border-color:var(--danger); }
+  .verdict-favor { background:rgba(34,197,94,0.15); color:#22C55E; border-color:#22C55E; }
+
+</style>
+  .matchup-detail { display:none; border:1px solid var(--rule); background:var(--paper-dark); padding:32px 40px; margin:0 0 2px; animation:fadeIn 0.2s ease; }
+  .matchup-detail.open { display:block; }
+  .matchup-table tr:hover td { background:var(--card); cursor:pointer; }
+  .matchup-table th { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; padding:10px 16px; background:var(--primary); color:rgba(248,250,252,0.9); }
+  .matchup-table td { padding:12px 16px; border-bottom:1px solid var(--rule); font-size:15px; font-weight:300; }
+  .matchup-table { width:100%; border-collapse:collapse; margin:24px 0; table-layout:fixed; }
+  .matchup-table colgroup col:nth-child(1) { width:42%; }
+  .matchup-table colgroup col:nth-child(2) { width:16%; }
+  .matchup-table colgroup col:nth-child(3) { width:16%; }
+  .matchup-table colgroup col:nth-child(4) { width:26%; }
+  .verdict-dog { background:var(--danger-light); color:var(--danger); border-color:var(--danger); }
+  .verdict-favor { background:rgba(34,197,94,0.15); color:#22C55E; border-color:#22C55E; }
+
+</style>
 </head>
 <body>
 <nav>
@@ -388,7 +416,7 @@ span.c:hover{border-bottom-style:solid;}
         </div>
       </div>
 </td></tr>
-<tr onclick="toggle('mu-dimir')"><td><strong>DIMIR MIDRANGE</strong></td><td>Combo</td><td><span class="verdict verdict-good">Favorable</span></td><td>Your Elementals are large enough to brick their ground threats.</td></tr>
+<tr onclick="toggle('mu-dimir')"><td><strong>DIMIR MIDRANGE</strong></td><td>Combo</td><td><span class="verdict verdict-favor">Favorable</span></td><td>Your Elementals are large enough to brick their ground threats.</td></tr>
 <tr><td colspan="4" class="matchup-detail" id="mu-dimir">
 <p>Your Elementals are large enough to brick their ground threats. Floodpits Drowner (the bounce spell on enter) can reset your Ashling but you get to re-enter triggers. Cavern of Souls naming Elemental bypasses their entire counterspell package. Sunderflock with Throne kills Kaito, their Drowners, and their Overlord of Balemurk in one shot.</p>
       <p><strong>Priority:</strong> Play through their interaction with Cavern. Cast Roaming Throne when they're at low mana. Sunderflock with 3 Elementals deals 6 damage to each creature — this kills almost their entire board. Ashling recursion with Bounce Off means they never permanently remove your engine. Keep Bounce Off to protect Ashling from Into the Flood Maw (which would bounce your whole board at sorcery speed).</p>
@@ -422,7 +450,7 @@ span.c:hover{border-bottom-style:solid;}
         </div>
       </div>
 </td></tr>
-<tr onclick="toggle('mu-boros')"><td><strong>BOROS AGGRO</strong></td><td>Combo</td><td><span class="verdict verdict-good">Favorable</span></td><td>Your 4-toughness Elementals block their entire creature base profitably.</td></tr>
+<tr onclick="toggle('mu-boros')"><td><strong>BOROS AGGRO</strong></td><td>Combo</td><td><span class="verdict verdict-favor">Favorable</span></td><td>Your 4-toughness Elementals block their entire creature base profitably.</td></tr>
 <tr><td colspan="4" class="matchup-detail" id="mu-boros">
 <p>Your 4-toughness Elementals block their entire creature base profitably. Hearth Elemental at 3/4 blocks Clarion Conqueror, Voice of Victory, and Nova Hellkite if needed. Sunderflock with even 2 Elementals deals 4 damage to each of their creatures — their 2-toughness creatures all die. Eddymurk Crab taps their best attackers at flash speed.</p>
       <p><strong>Priority:</strong> Establish blockers immediately. Don't race — stabilize and then take over. A single Sunderflock with Throne at 3 Elementals clears their whole board and leaves you ahead on board. Crab at flash speed on their attack step taps Ojer Axonil before it can double their damage pings.</p>
@@ -446,7 +474,7 @@ span.c:hover{border-bottom-style:solid;}
       </div>
       <p class="sb-note">Spell Pierce counters their Floodpits Drowner (MV 3, costs {2U} — Pierce at {U} forces them to pay 2 more). Disdainful Stroke hard-counters Sunderflock (MV 4+). Cut Broadside Barrage (too expensive) and Winternight Stories (their threats are too large for the counter).</p>
 </td></tr>
-<tr onclick="toggle('mu-simic')"><td><strong>SIMIC RHYTHM</strong></td><td>Combo</td><td><span class="verdict verdict-good">Favorable</span></td><td>Simic Rhythm has no interaction for your instant-speed chain.</td></tr>
+<tr onclick="toggle('mu-simic')"><td><strong>SIMIC RHYTHM</strong></td><td>Combo</td><td><span class="verdict verdict-favor">Favorable</span></td><td>Simic Rhythm has no interaction for your instant-speed chain.</td></tr>
 <tr><td colspan="4" class="matchup-detail" id="mu-simic">
 <p>Simic Rhythm has no interaction for your instant-speed chain. Their Earthbender Ascension generates counters but cannot answer a Sunderflock sweeper — deploy it when they've committed their board and cast Sunderflock at 4-5 damage to wipe their tokens and Cub simultaneously. Your Hearth Elemental (a free spell reducer via other elementals) comes online faster than their counter engine.</p>
       <div class="sb-table">

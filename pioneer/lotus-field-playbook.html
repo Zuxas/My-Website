@@ -59,7 +59,7 @@ strong{font-weight:600;}
 .matchup-header{background:var(--paper-dark);padding:16px 20px;display:flex;align-items:center;justify-content:space-between;cursor:pointer;}
 .matchup-header h3{margin:0;font-size:11px;letter-spacing:0.15em;color:var(--ink);}
 .verdict{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.15em;text-transform:uppercase;padding:3px 10px;border-radius:2px;}
-.verdict-good{background:rgba(124,58,237,0.1);color:#5b21b6;}
+.verdict-favor{background:rgba(124,58,237,0.1);color:#5b21b6;}
 .verdict-even{background:rgba(90,82,72,0.12);color:var(--mid);}
 .verdict-hard{background:rgba(180,35,24,0.1);color:#991b1b;}
 .matchup-body{padding:20px;display:none;}
@@ -168,7 +168,35 @@ span.c:hover{border-bottom-style:solid;}
     .print-grid { position:fixed !important; top:0 !important; left:0 !important; width:100vw !important; height:auto !important; background:var(--rule) !important; border:none !important; display:grid !important; grid-template-columns:repeat(3,1fr) !important; gap:1px !important; }
     .print-mu { background:var(--paper) !important; padding:14px !important; }
   }
-</style></style>
+
+  .matchup-detail { display:none; border:1px solid var(--rule); background:var(--paper-dark); padding:32px 40px; margin:0 0 2px; animation:fadeIn 0.2s ease; }
+  .matchup-detail.open { display:block; }
+  .matchup-table tr:hover td { background:var(--card); cursor:pointer; }
+  .matchup-table th { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; padding:10px 16px; background:var(--primary); color:rgba(248,250,252,0.9); }
+  .matchup-table td { padding:12px 16px; border-bottom:1px solid var(--rule); font-size:15px; font-weight:300; }
+  .matchup-table { width:100%; border-collapse:collapse; margin:24px 0; table-layout:fixed; }
+  .matchup-table colgroup col:nth-child(1) { width:42%; }
+  .matchup-table colgroup col:nth-child(2) { width:16%; }
+  .matchup-table colgroup col:nth-child(3) { width:16%; }
+  .matchup-table colgroup col:nth-child(4) { width:26%; }
+  .verdict-dog { background:var(--danger-light); color:var(--danger); border-color:var(--danger); }
+  .verdict-favor { background:rgba(34,197,94,0.15); color:#22C55E; border-color:#22C55E; }
+
+</style>
+  .matchup-detail { display:none; border:1px solid var(--rule); background:var(--paper-dark); padding:32px 40px; margin:0 0 2px; animation:fadeIn 0.2s ease; }
+  .matchup-detail.open { display:block; }
+  .matchup-table tr:hover td { background:var(--card); cursor:pointer; }
+  .matchup-table th { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; padding:10px 16px; background:var(--primary); color:rgba(248,250,252,0.9); }
+  .matchup-table td { padding:12px 16px; border-bottom:1px solid var(--rule); font-size:15px; font-weight:300; }
+  .matchup-table { width:100%; border-collapse:collapse; margin:24px 0; table-layout:fixed; }
+  .matchup-table colgroup col:nth-child(1) { width:42%; }
+  .matchup-table colgroup col:nth-child(2) { width:16%; }
+  .matchup-table colgroup col:nth-child(3) { width:16%; }
+  .matchup-table colgroup col:nth-child(4) { width:26%; }
+  .verdict-dog { background:var(--danger-light); color:var(--danger); border-color:var(--danger); }
+  .verdict-favor { background:rgba(34,197,94,0.15); color:#22C55E; border-color:#22C55E; }
+
+</style>
 </head>
 <body>
 <nav>
@@ -324,7 +352,7 @@ span.c:hover{border-bottom-style:solid;}
         <div class="sb-col"><div class="sb-col-label">Out</div><div class="sb-item"><span><span class="c">Behold the Beyond</span></span><span class="sb-qty">&minus;1</span></div><div class="sb-item"><span><span class="c">Dark Petition</span></span><span class="sb-qty">&minus;1</span></div></div>
       </div>
 </td></tr>
-<tr onclick="toggle('mu-selesnya')"><td><strong>SELESNYA COMPANY</strong></td><td>Combo</td><td><span class="verdict verdict-good">Favorable</span></td><td>Grazer blocks their elves.</td></tr>
+<tr onclick="toggle('mu-selesnya')"><td><strong>SELESNYA COMPANY</strong></td><td>Combo</td><td><span class="verdict verdict-favor">Favorable</span></td><td>Grazer blocks their elves.</td></tr>
 <tr><td colspan="4" class="matchup-detail" id="mu-selesnya">
 <p>Grazer blocks their elves. Lotus Field Hexproof means they can't target it. Thalia taxes your spells {1} each — remove her with Ritual of Soot (3 damage = kills Thalia 2/1). Their clock is T4-5; you combo T5. Their main threat G2: Damping Sphere. Destroy it via Blast Zone before comboing. Leyline Binding (SB) exiles Damping Sphere from the stack (instant, exile effect).</p>
       <p>Their Damping Sphere (SB) shuts off your Lotus Field — their lands produce colorless under Sphere. Your Leyline Binding ({W} with 5 basic types) exiles Sphere for {W} total. Board in Leyline Binding specifically for their Sphere. Win by exiling their hate piece immediately and comboing on the following turn. Their Company creatures don't threaten you before T4 — you have time to answer Sphere.</p>
@@ -344,7 +372,7 @@ span.c:hover{border-bottom-style:solid;}
         <div class="sb-col"><div class="sb-col-label">Out</div><div class="sb-item"><span><span class="c">Behold the Beyond</span></span><span class="sb-qty">&minus;1</span></div><div class="sb-item"><span><span class="c">Impulse</span></span><span class="sb-qty">&minus;1</span></div></div>
       </div>
 </td></tr>
-<tr onclick="toggle('mu-greasefang2')"><td><strong>ORZHOV GREASEFANG</strong></td><td>Combo</td><td><span class="verdict verdict-good">Favorable</span></td><td>Greasefang assembles Parhelion II in GY + Greasefang crew for a turn-3 kill.</td></tr>
+<tr onclick="toggle('mu-greasefang2')"><td><strong>ORZHOV GREASEFANG</strong></td><td>Combo</td><td><span class="verdict verdict-favor">Favorable</span></td><td>Greasefang assembles Parhelion II in GY + Greasefang crew for a turn-3 kill.</td></tr>
 <tr><td colspan="4" class="matchup-detail" id="mu-greasefang2">
 <p>Greasefang assembles Parhelion II in GY + Greasefang crew for a turn-3 kill. Soul-Guide Lantern exiling Parhelion before Greasefang can crew it is a near-instant win — without Parhelion in GY their deck has no win condition.</p>
       <p>Their Greasefang combo is faster than yours — T3 vs your T4. You must disrupt their T3 setup. Your Thoughtseize (board it in) strips their Parhelion II or discard outlet on T2. Win by landing Thoughtseize before their discard outlet resolves, then assembling your own combo before they find a second Greasefang from deck. Their clock is faster than yours in a pure race.</p>
@@ -377,7 +405,7 @@ span.c:hover{border-bottom-style:solid;}
       </div>
       <p class="sb-note">Soul-Guide Lantern exiles Phoenix before it triggers. Rending Volley destroys white or blue creatures at instant speed. Cut discard — exiling GY is more efficient.</p>
 </td></tr>
-<tr onclick="toggle('mu-creativity2')"><td><strong>IZZET CREATIVITY</strong></td><td>Combo</td><td><span class="verdict verdict-good">Favorable</span></td><td>Izzet Creativity uses Indomitable Creativity targeting their own token to che...</td></tr>
+<tr onclick="toggle('mu-creativity2')"><td><strong>IZZET CREATIVITY</strong></td><td>Combo</td><td><span class="verdict verdict-favor">Favorable</span></td><td>Izzet Creativity uses Indomitable Creativity targeting their own token to che...</td></tr>
 <tr><td colspan="4" class="matchup-detail" id="mu-creativity2">
 <p>Izzet Creativity uses Indomitable Creativity targeting their own token to cheat Atraxa into play. Thoughtseize strips Creativity before it resolves. Counter their Creativity or strip it from hand — if Atraxa enters without interaction you've likely lost.</p>
       <p>Their Creativity targets an artifact (their Shark Typhoon token or a 0/0 token) to put Atraxa into play. Your Mystical Dispute counters Creativity for {U} (it's blue). Your Dovin's Veto (SB) counters Creativity uncountably. Win by resolving your combo on T4 before they find Creativity on T5, or counter their Creativity attempt with your interaction suite. Their Dig Through Time (delve) is also blue — Mystical Dispute catches it too.</p>
@@ -441,7 +469,7 @@ span.c:hover{border-bottom-style:solid;}
         </div>
       </div>
 </td></tr>
-<tr onclick="toggle('mu-control')"><td><strong>UW CONTROL</strong></td><td>Combo</td><td><span class="verdict verdict-good">Favorable</span></td><td>UW Control's hate: Damping Sphere (prevents Lotus from tapping for more than ...</td></tr>
+<tr onclick="toggle('mu-control')"><td><strong>UW CONTROL</strong></td><td>Combo</td><td><span class="verdict verdict-favor">Favorable</span></td><td>UW Control's hate: Damping Sphere (prevents Lotus from tapping for more than ...</td></tr>
 <tr><td colspan="4" class="matchup-detail" id="mu-control">
 <p>UW Control's hate: Damping Sphere (prevents Lotus from tapping for more than one mana) and High Noon (stops your untap effects). Answer both with Boseiju (destroys any noncreature permanent without targeting) or Blast Zone (destroys same-MV permanents). Lier, Disciple of the Drowned makes your entire spell suite uncounterable and gives them flashback — once Lier resolves, their countermagic is irrelevant.</p>
       <p><strong>Priority:</strong> Identify their hate early. If they play Damping Sphere, respond with Granted + Boseiju before attempting the combo. With Lier active, tap out and loop freely — they can't counter anything. Field of Ruin (which they run) can destroy your Thespian's Stage (nonbasic) but NOT Lotus Field (hexproof). Protect Stage until you're ready to execute.</p>

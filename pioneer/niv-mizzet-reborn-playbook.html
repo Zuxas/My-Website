@@ -60,7 +60,7 @@ strong{font-weight:600;}
 .matchup-header{background:var(--paper-dark);padding:16px 20px;display:flex;align-items:center;justify-content:space-between;cursor:pointer;}
 .matchup-header h3{margin:0;font-size:11px;letter-spacing:0.15em;color:var(--ink);}
 .verdict{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.15em;text-transform:uppercase;padding:3px 10px;border-radius:2px;}
-.verdict-good{background:rgba(220,38,38,0.1);color:#9a1313;}
+.verdict-favor{background:rgba(220,38,38,0.1);color:#9a1313;}
 .verdict-even{background:rgba(90,82,72,0.12);color:var(--mid);}
 .verdict-hard{background:rgba(180,35,24,0.1);color:#991b1b;}
 .matchup-body{padding:20px;display:none;}
@@ -170,7 +170,35 @@ span.c:hover{border-bottom-style:solid;}
     .print-grid { position:fixed !important; top:0 !important; left:0 !important; width:100vw !important; height:auto !important; background:var(--rule) !important; border:none !important; display:grid !important; grid-template-columns:repeat(3,1fr) !important; gap:1px !important; }
     .print-mu { background:var(--paper) !important; padding:14px !important; }
   }
-</style></style>
+
+  .matchup-detail { display:none; border:1px solid var(--rule); background:var(--paper-dark); padding:32px 40px; margin:0 0 2px; animation:fadeIn 0.2s ease; }
+  .matchup-detail.open { display:block; }
+  .matchup-table tr:hover td { background:var(--card); cursor:pointer; }
+  .matchup-table th { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; padding:10px 16px; background:var(--primary); color:rgba(248,250,252,0.9); }
+  .matchup-table td { padding:12px 16px; border-bottom:1px solid var(--rule); font-size:15px; font-weight:300; }
+  .matchup-table { width:100%; border-collapse:collapse; margin:24px 0; table-layout:fixed; }
+  .matchup-table colgroup col:nth-child(1) { width:42%; }
+  .matchup-table colgroup col:nth-child(2) { width:16%; }
+  .matchup-table colgroup col:nth-child(3) { width:16%; }
+  .matchup-table colgroup col:nth-child(4) { width:26%; }
+  .verdict-dog { background:var(--danger-light); color:var(--danger); border-color:var(--danger); }
+  .verdict-favor { background:rgba(34,197,94,0.15); color:#22C55E; border-color:#22C55E; }
+
+</style>
+  .matchup-detail { display:none; border:1px solid var(--rule); background:var(--paper-dark); padding:32px 40px; margin:0 0 2px; animation:fadeIn 0.2s ease; }
+  .matchup-detail.open { display:block; }
+  .matchup-table tr:hover td { background:var(--card); cursor:pointer; }
+  .matchup-table th { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; padding:10px 16px; background:var(--primary); color:rgba(248,250,252,0.9); }
+  .matchup-table td { padding:12px 16px; border-bottom:1px solid var(--rule); font-size:15px; font-weight:300; }
+  .matchup-table { width:100%; border-collapse:collapse; margin:24px 0; table-layout:fixed; }
+  .matchup-table colgroup col:nth-child(1) { width:42%; }
+  .matchup-table colgroup col:nth-child(2) { width:16%; }
+  .matchup-table colgroup col:nth-child(3) { width:16%; }
+  .matchup-table colgroup col:nth-child(4) { width:26%; }
+  .verdict-dog { background:var(--danger-light); color:var(--danger); border-color:var(--danger); }
+  .verdict-favor { background:rgba(34,197,94,0.15); color:#22C55E; border-color:#22C55E; }
+
+</style>
 </head>
 <body>
 <nav>
@@ -393,7 +421,7 @@ span.c:hover{border-bottom-style:solid;}
         <div class="sb-col"><div class="sb-col-label">Out</div><div class="sb-item"><span><span class="c">Nicol Bolas</span></span><span class="sb-qty">&minus;1</span></div><div class="sb-item"><span><span class="c">Dovin's Veto</span></span><span class="sb-qty">&minus;2</span></div></div>
       </div>
 </td></tr>
-<tr onclick="toggle('mu-greasefang')"><td><strong>ORZHOV GREASEFANG</strong></td><td>Combo</td><td><span class="verdict verdict-good">Favorable</span></td><td>Thoughtseize G1 strips Parhelion II or Greasefang before they can set up.</td></tr>
+<tr onclick="toggle('mu-greasefang')"><td><strong>ORZHOV GREASEFANG</strong></td><td>Combo</td><td><span class="verdict verdict-favor">Favorable</span></td><td>Thoughtseize G1 strips Parhelion II or Greasefang before they can set up.</td></tr>
 <tr><td colspan="4" class="matchup-detail" id="mu-greasefang">
 <p>Thoughtseize G1 strips Parhelion II or Greasefang before they can set up. Dreadbore kills Greasefang at sorcery speed (instant removal via Kolaghan's Command hits it too). Rest in Peace (SB) completely answers their GY recursion engine. Bring to Light into Unmoored Ego naming Greasefang removes all four copies from the game. Your toolbox has multiple dedicated answers — they have one plan.</p>
       <p>Your critical window is T2: counter their discard outlet (Thoughtseize their T1, Mystical Dispute their T2 setup piece). If Parhelion reaches the GY, you need to exile it before T3. Your Unmoored Ego on T2 naming Parhelion II exiles all copies permanently. After Ego resolves, their deck has no win condition — you take the game from there with Niv-Mizzet + value.</p>
@@ -413,7 +441,7 @@ span.c:hover{border-bottom-style:solid;}
         <div class="sb-col"><div class="sb-col-label">Out</div><div class="sb-item"><span><span class="c">Deafening Clarion</span></span><span class="sb-qty">&minus;2</span></div><div class="sb-item"><span><span class="c">Abrupt Decay</span></span><span class="sb-qty">&minus;1</span></div></div>
       </div>
 </td></tr>
-<tr onclick="toggle('mu-lotus')"><td><strong>LOTUS FIELD</strong></td><td>Combo</td><td><span class="verdict verdict-good">Favorable</span></td><td>Bring to Light into Unmoored Ego naming Lotus Field exiles their entire engin...</td></tr>
+<tr onclick="toggle('mu-lotus')"><td><strong>LOTUS FIELD</strong></td><td>Combo</td><td><span class="verdict verdict-favor">Favorable</span></td><td>Bring to Light into Unmoored Ego naming Lotus Field exiles their entire engin...</td></tr>
 <tr><td colspan="4" class="matchup-detail" id="mu-lotus">
 <p>Bring to Light into Unmoored Ego naming Lotus Field exiles their entire engine from the game. Abrupt Decay destroys Thespian's Stage before it copies Lotus Field. Damping Sphere (SB) shuts their untap engine. Thoughtseize strips their key untap effect. Your deck has five dedicated hate pieces that Bring to Light can find mid-game. They cannot win if Lotus Field is named by Unmoored Ego.</p>
       <p>You win the race easily — your Bring to Light for Damping Sphere resolves on T3 before they have the mana to combo. Sphere shuts off Lotus Field entirely (their lands produce only colorless). Your secondary route: Unmoored Ego naming Hidden Strings permanently removes their only untapper. You apply clock with Niv-Mizzet after Sphere lands. Don't let them Pore Over the Pages past your Sphere.</p>
@@ -434,7 +462,7 @@ span.c:hover{border-bottom-style:solid;}
       </div>
       <p class="sb-note">Soul-Guide Lantern exiles Extraction Specialist targets. Fatal Push kills their lords. Cut Duress (less effective vs creature strategies) and Brutality.</p>
 </td></tr>
-<tr onclick="toggle('mu-lotus2')"><td><strong>LOTUS FIELD</strong></td><td>Combo</td><td><span class="verdict verdict-good">Favorable</span></td><td>Lotus Field combos off with Hidden Strings + Lotus Field.</td></tr>
+<tr onclick="toggle('mu-lotus2')"><td><strong>LOTUS FIELD</strong></td><td>Combo</td><td><span class="verdict verdict-favor">Favorable</span></td><td>Lotus Field combos off with Hidden Strings + Lotus Field.</td></tr>
 <tr><td colspan="4" class="matchup-detail" id="mu-lotus2">
 <p>Lotus Field combos off with Hidden Strings + Lotus Field. Damping Sphere shuts off their mana multiplication. Thoughtseize strips Hidden Strings or Pore Over the Pages before they can cast it.</p>
       <p>Your priority: counter Indomitable Creativity before it hits their artifact token. Your Mystical Dispute ({U} vs blue spells) hard counters Creativity for one mana. You apply pressure with Niv-Mizzet while holding Dispute mana. Their Shark Typhoon creates Shark tokens even if countered — always counter the Creativity, not the Shark mode. You win faster through Niv beats while they struggle to find a second Creativity.</p>
@@ -456,7 +484,7 @@ span.c:hover{border-bottom-style:solid;}
       </div>
       <p class="sb-note">Soul-Guide Lantern exiles Phoenix before it triggers. Rending Volley destroys white or blue creatures at instant speed. Cut discard — exiling GY is more efficient.</p>
 </td></tr>
-<tr onclick="toggle('mu-creativity2')"><td><strong>IZZET CREATIVITY</strong></td><td>Combo</td><td><span class="verdict verdict-good">Favorable</span></td><td>Izzet Creativity uses Indomitable Creativity targeting their own token to che...</td></tr>
+<tr onclick="toggle('mu-creativity2')"><td><strong>IZZET CREATIVITY</strong></td><td>Combo</td><td><span class="verdict verdict-favor">Favorable</span></td><td>Izzet Creativity uses Indomitable Creativity targeting their own token to che...</td></tr>
 <tr><td colspan="4" class="matchup-detail" id="mu-creativity2">
 <p>Izzet Creativity uses Indomitable Creativity targeting their own token to cheat Atraxa into play. Thoughtseize strips Creativity before it resolves. Counter their Creativity or strip it from hand — if Atraxa enters without interaction you've likely lost.</p>
       <p>Your Unmoored Ego naming Indomitable Creativity on T2 permanently removes their win condition. After Ego, they have no way to find Atraxa — their deck is a pile of draw spells. You apply pressure immediately after Ego resolves. Your secondary hate: Dovin's Veto counters Creativity on the stack (Veto is uncounterable). You need only one of these two answers to win.</p>

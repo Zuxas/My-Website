@@ -60,7 +60,7 @@ strong{font-weight:600;}
 .matchup-header{background:var(--paper-dark);padding:16px 20px;display:flex;align-items:center;justify-content:space-between;cursor:pointer;}
 .matchup-header h3{margin:0;font-size:11px;letter-spacing:0.15em;color:var(--ink);}
 .verdict{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.15em;text-transform:uppercase;padding:3px 10px;border-radius:2px;}
-.verdict-good{background:rgba(22,163,74,0.1);color:#14532d;}
+.verdict-favor{background:rgba(22,163,74,0.1);color:#14532d;}
 .verdict-even{background:rgba(90,82,72,0.12);color:var(--mid);}
 .verdict-hard{background:rgba(180,35,24,0.1);color:#991b1b;}
 .matchup-body{padding:20px;display:none;}
@@ -172,7 +172,35 @@ span.c:hover{border-bottom-style:solid;}
     .print-grid { position:fixed !important; top:0 !important; left:0 !important; width:100vw !important; height:auto !important; background:var(--rule) !important; border:none !important; display:grid !important; grid-template-columns:repeat(3,1fr) !important; gap:1px !important; }
     .print-mu { background:var(--paper) !important; padding:14px !important; }
   }
-</style></style>
+
+  .matchup-detail { display:none; border:1px solid var(--rule); background:var(--paper-dark); padding:32px 40px; margin:0 0 2px; animation:fadeIn 0.2s ease; }
+  .matchup-detail.open { display:block; }
+  .matchup-table tr:hover td { background:var(--card); cursor:pointer; }
+  .matchup-table th { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; padding:10px 16px; background:var(--primary); color:rgba(248,250,252,0.9); }
+  .matchup-table td { padding:12px 16px; border-bottom:1px solid var(--rule); font-size:15px; font-weight:300; }
+  .matchup-table { width:100%; border-collapse:collapse; margin:24px 0; table-layout:fixed; }
+  .matchup-table colgroup col:nth-child(1) { width:42%; }
+  .matchup-table colgroup col:nth-child(2) { width:16%; }
+  .matchup-table colgroup col:nth-child(3) { width:16%; }
+  .matchup-table colgroup col:nth-child(4) { width:26%; }
+  .verdict-dog { background:var(--danger-light); color:var(--danger); border-color:var(--danger); }
+  .verdict-favor { background:rgba(34,197,94,0.15); color:#22C55E; border-color:#22C55E; }
+
+</style>
+  .matchup-detail { display:none; border:1px solid var(--rule); background:var(--paper-dark); padding:32px 40px; margin:0 0 2px; animation:fadeIn 0.2s ease; }
+  .matchup-detail.open { display:block; }
+  .matchup-table tr:hover td { background:var(--card); cursor:pointer; }
+  .matchup-table th { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; padding:10px 16px; background:var(--primary); color:rgba(248,250,252,0.9); }
+  .matchup-table td { padding:12px 16px; border-bottom:1px solid var(--rule); font-size:15px; font-weight:300; }
+  .matchup-table { width:100%; border-collapse:collapse; margin:24px 0; table-layout:fixed; }
+  .matchup-table colgroup col:nth-child(1) { width:42%; }
+  .matchup-table colgroup col:nth-child(2) { width:16%; }
+  .matchup-table colgroup col:nth-child(3) { width:16%; }
+  .matchup-table colgroup col:nth-child(4) { width:26%; }
+  .verdict-dog { background:var(--danger-light); color:var(--danger); border-color:var(--danger); }
+  .verdict-favor { background:rgba(34,197,94,0.15); color:#22C55E; border-color:#22C55E; }
+
+</style>
 </head>
 <body>
 <nav>
@@ -408,7 +436,7 @@ span.c:hover{border-bottom-style:solid;}
         <div class="sb-col"><div class="sb-col-label">Out</div><div class="sb-item"><span><span class="c">Tannuk, Memorial Ensign</span></span><span class="sb-qty">&minus;2</span></div><div class="sb-item"><span><span class="c">Famished Worldsire</span></span><span class="sb-qty">&minus;1</span></div><div class="sb-item"><span><span class="c">Consult the Star Charts</span></span><span class="sb-qty">&minus;1</span></div><div class="sb-item"><span><span class="c">Seismic Sense</span></span><span class="sb-qty">&minus;1</span></div></div>
       </div>
 </td></tr>
-<tr onclick="toggle('mu-simic')"><td><strong>SIMIC RHYTHM</strong></td><td>Combo</td><td><span class="verdict verdict-good">Favorable</span></td><td>Simic Rhythm's Badgermole Cub + Earthbender Ascension engine is strong but sl...</td></tr>
+<tr onclick="toggle('mu-simic')"><td><strong>SIMIC RHYTHM</strong></td><td>Combo</td><td><span class="verdict verdict-favor">Favorable</span></td><td>Simic Rhythm's Badgermole Cub + Earthbender Ascension engine is strong but sl...</td></tr>
 <tr><td colspan="4" class="matchup-detail" id="mu-simic">
 <p>Simic Rhythm's Badgermole Cub + Earthbender Ascension engine is strong but slower than Lumra. Your 15/15 Lumra attacks into their 8/8 and wins. Worldsoul's Rage for 12 kills their Badgermole Cub. Pick Your Poison destroys Earthbender Ascension. Their lack of interaction means your Spelunking + Icetill setup resolves safely every game. The primary threat is them getting a very fast Earthbender Ascension on T2 into a wide board — Sear handles their mana dorks before Ascension gets big.</p>
       <p>You both run landfall engines — your Spelunking + Lumra is faster than their Pollinator token chain. Your Worldsoul's Rage at 8 lands deals 8 damage to their entire board simultaneously. Win by racing: your larger individual threats (Hydra, Lumra) outclass their wide token board, and Worldsoul's Rage resets their entire token chain in one sorcery.</p>
@@ -462,7 +490,7 @@ span.c:hover{border-bottom-style:solid;}
       </div>
       <p class="sb-note">Sazh's Chocobo provides haste pressure while you survive. Obliterating Bolt kills their key creature at instant speed. Cut card draw and setup — you need survival tools, not card selection.</p>
 </td></tr>
-<tr onclick="toggle('mu-spellementals')"><td><strong>IZZET SPELLEMENTALS</strong></td><td>Combo</td><td><span class="verdict verdict-good">Favorable</span></td><td>Izzet Spellementals builds slowly to Hearth Elemental — your Lumra fires faster.</td></tr>
+<tr onclick="toggle('mu-spellementals')"><td><strong>IZZET SPELLEMENTALS</strong></td><td>Combo</td><td><span class="verdict verdict-favor">Favorable</span></td><td>Izzet Spellementals builds slowly to Hearth Elemental — your Lumra fires faster.</td></tr>
 <tr><td colspan="4" class="matchup-detail" id="mu-spellementals">
 <p>Izzet Spellementals builds slowly to Hearth Elemental — your Lumra fires faster. Canyon Crab (0/4 flash) blocks their Hearth Elemental (2/3) indefinitely. Spelunking + Icetill + Lumra by T5 creates a board they cannot answer. Worldsoul's Rage at 10 lands kills Hearth and deals face damage simultaneously.</p>
       <p>Your Sunderflock (4-5 damage to all creatures) kills their 0/4 Eddymurk Crab and their other creatures simultaneously. Your Mossborn Hydra outclasses their Hearth Elemental in ground combat. Win by clearing their board with Sunderflock when they commit 3+ creatures, then applying Hydra beats. Their Spell Pierce counters Sunderflock if cast on curve — wait for their mana to be committed.</p>

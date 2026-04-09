@@ -59,7 +59,7 @@ strong{font-weight:600;}
 .matchup-header{background:var(--paper-dark);padding:16px 20px;display:flex;align-items:center;justify-content:space-between;cursor:pointer;}
 .matchup-header h3{margin:0;font-size:11px;letter-spacing:0.15em;color:var(--ink);}
 .verdict{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.15em;text-transform:uppercase;padding:3px 10px;border-radius:2px;}
-.verdict-good{background:rgba(37,99,235,0.1);color:#1e40af;}
+.verdict-favor{background:rgba(37,99,235,0.1);color:#1e40af;}
 .verdict-even{background:rgba(90,82,72,0.12);color:var(--mid);}
 .verdict-hard{background:rgba(180,35,24,0.1);color:#991b1b;}
 .matchup-body{padding:20px;display:none;}
@@ -168,7 +168,35 @@ span.c:hover{border-bottom-style:solid;}
     .print-grid { position:fixed !important; top:0 !important; left:0 !important; width:100vw !important; height:auto !important; background:var(--rule) !important; border:none !important; display:grid !important; grid-template-columns:repeat(3,1fr) !important; gap:1px !important; }
     .print-mu { background:var(--paper) !important; padding:14px !important; }
   }
-</style></style>
+
+  .matchup-detail { display:none; border:1px solid var(--rule); background:var(--paper-dark); padding:32px 40px; margin:0 0 2px; animation:fadeIn 0.2s ease; }
+  .matchup-detail.open { display:block; }
+  .matchup-table tr:hover td { background:var(--card); cursor:pointer; }
+  .matchup-table th { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; padding:10px 16px; background:var(--primary); color:rgba(248,250,252,0.9); }
+  .matchup-table td { padding:12px 16px; border-bottom:1px solid var(--rule); font-size:15px; font-weight:300; }
+  .matchup-table { width:100%; border-collapse:collapse; margin:24px 0; table-layout:fixed; }
+  .matchup-table colgroup col:nth-child(1) { width:42%; }
+  .matchup-table colgroup col:nth-child(2) { width:16%; }
+  .matchup-table colgroup col:nth-child(3) { width:16%; }
+  .matchup-table colgroup col:nth-child(4) { width:26%; }
+  .verdict-dog { background:var(--danger-light); color:var(--danger); border-color:var(--danger); }
+  .verdict-favor { background:rgba(34,197,94,0.15); color:#22C55E; border-color:#22C55E; }
+
+</style>
+  .matchup-detail { display:none; border:1px solid var(--rule); background:var(--paper-dark); padding:32px 40px; margin:0 0 2px; animation:fadeIn 0.2s ease; }
+  .matchup-detail.open { display:block; }
+  .matchup-table tr:hover td { background:var(--card); cursor:pointer; }
+  .matchup-table th { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; padding:10px 16px; background:var(--primary); color:rgba(248,250,252,0.9); }
+  .matchup-table td { padding:12px 16px; border-bottom:1px solid var(--rule); font-size:15px; font-weight:300; }
+  .matchup-table { width:100%; border-collapse:collapse; margin:24px 0; table-layout:fixed; }
+  .matchup-table colgroup col:nth-child(1) { width:42%; }
+  .matchup-table colgroup col:nth-child(2) { width:16%; }
+  .matchup-table colgroup col:nth-child(3) { width:16%; }
+  .matchup-table colgroup col:nth-child(4) { width:26%; }
+  .verdict-dog { background:var(--danger-light); color:var(--danger); border-color:var(--danger); }
+  .verdict-favor { background:rgba(34,197,94,0.15); color:#22C55E; border-color:#22C55E; }
+
+</style>
 </head>
 <body>
 <nav>
@@ -405,7 +433,7 @@ span.c:hover{border-bottom-style:solid;}
         </div>
       </div>
 </td></tr>
-<tr onclick="toggle('mu-greasefang')"><td><strong>ORZHOV GREASEFANG</strong></td><td>Combo</td><td><span class="verdict verdict-good">Favorable</span></td><td>Greasefang combo relies on: (1) discarding Parhelion II, (2) casting Greasefa...</td></tr>
+<tr onclick="toggle('mu-greasefang')"><td><strong>ORZHOV GREASEFANG</strong></td><td>Combo</td><td><span class="verdict verdict-favor">Favorable</span></td><td>Greasefang combo relies on: (1) discarding Parhelion II, (2) casting Greasefa...</td></tr>
 <tr><td colspan="4" class="matchup-detail" id="mu-greasefang">
 <p>Greasefang combo relies on: (1) discarding Parhelion II, (2) casting Greasefang, (3) reanimating Parhelion. Your counters stop any of these steps. March of Otherworldly Light exiles Greasefang before ETB resolves. Get Lost removes Greasefang at instant speed. Rest in Peace (SB) shuts the GY completely — no Parhelion II can be returned. Dovin's Veto is the nuclear button for their key spell.</p>
       <p><strong>Priority:</strong> Answer Greasefang on the stack before its ETB resolves. Rest in Peace on T2 alongside a land prevents them from setting up. If they've already discarded Parhelion II but haven't cast Greasefang yet, hold removal for when Greasefang enters. Their Angels (4/4 flying vigilance tokens from Parhelion II) are easy targets for Wandering Emperor -2 post-attack since they attack and become tapped.</p>
@@ -439,7 +467,7 @@ span.c:hover{border-bottom-style:solid;}
         </div>
       </div>
 </td></tr>
-<tr onclick="toggle('mu-lotus')"><td><strong>LOTUS FIELD</strong></td><td>Combo</td><td><span class="verdict verdict-good">Favorable</span></td><td>Lotus Field combo needs Lotus Field + Thespian's Stage to generate 6+ mana fo...</td></tr>
+<tr onclick="toggle('mu-lotus')"><td><strong>LOTUS FIELD</strong></td><td>Combo</td><td><span class="verdict verdict-favor">Favorable</span></td><td>Lotus Field combo needs Lotus Field + Thespian's Stage to generate 6+ mana fo...</td></tr>
 <tr><td colspan="4" class="matchup-detail" id="mu-lotus">
 <p>Lotus Field combo needs Lotus Field + Thespian's Stage to generate 6+ mana for Hidden Strings loops. Field of Ruin destroys either piece early. Get Lost and March of Otherworldly Light answer Thespian's Stage before it copies Lotus. High Noon (SB) prevents them from untapping their lands with Hidden Strings — their entire combo relies on untapping Lotus. With High Noon, their entire strategy is shut down.</p>
       <p><strong>Priority:</strong> Field of Ruin their Thespian's Stage before it can copy Lotus. If they have both, prioritize destroying Thespian's Stage over Lotus (Lotus without Stage can't loop). High Noon on T3-4 ends the game — they cannot use Hidden Strings to untap with Noon in play. Farewell is your reset if they somehow assemble the full combo — it exiles their lands if needed.</p>
@@ -455,7 +483,7 @@ span.c:hover{border-bottom-style:solid;}
         </div>
       </div>
 </td></tr>
-<tr onclick="toggle('mu-lotus2')"><td><strong>LOTUS FIELD</strong></td><td>Combo</td><td><span class="verdict verdict-good">Favorable</span></td><td>Damping Sphere prevents their mana multiplication.</td></tr>
+<tr onclick="toggle('mu-lotus2')"><td><strong>LOTUS FIELD</strong></td><td>Combo</td><td><span class="verdict verdict-favor">Favorable</span></td><td>Damping Sphere prevents their mana multiplication.</td></tr>
 <tr><td colspan="4" class="matchup-detail" id="mu-lotus2">
 <p>Damping Sphere prevents their mana multiplication. Thoughtseize strips Hidden Strings or key pieces before cast.</p>
       <div class="sb-table">
@@ -482,7 +510,7 @@ span.c:hover{border-bottom-style:solid;}
       </div>
       <p class="sb-note">Soul-Guide Lantern exiles Phoenix. Rending Volley destroys white/blue creatures. Cut discard.</p>
 </td></tr>
-<tr onclick="toggle('mu-creativity2')"><td><strong>IZZET CREATIVITY</strong></td><td>Combo</td><td><span class="verdict verdict-good">Favorable</span></td><td>Thoughtseize strips Creativity before it resolves.</td></tr>
+<tr onclick="toggle('mu-creativity2')"><td><strong>IZZET CREATIVITY</strong></td><td>Combo</td><td><span class="verdict verdict-favor">Favorable</span></td><td>Thoughtseize strips Creativity before it resolves.</td></tr>
 <tr><td colspan="4" class="matchup-detail" id="mu-creativity2">
 <p>Thoughtseize strips Creativity before it resolves. If Atraxa enters without interaction you've likely lost — strip it or counter it.</p>
       <div class="sb-table">

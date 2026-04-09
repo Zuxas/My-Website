@@ -63,7 +63,7 @@ strong{font-weight:600;}
 .matchup-header{background:var(--paper-dark);padding:16px 20px;display:flex;align-items:center;justify-content:space-between;cursor:pointer;}
 .matchup-header h3{margin:0;font-size:11px;letter-spacing:0.15em;color:var(--ink);}
 .verdict{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.15em;text-transform:uppercase;padding:3px 10px;border-radius:2px;}
-.verdict-good{background:rgba(239,68,68,0.1);color:#b91c1c;}
+.verdict-favor{background:rgba(239,68,68,0.1);color:#b91c1c;}
 .verdict-even{background:rgba(90,82,72,0.12);color:var(--mid);}
 .verdict-hard{background:rgba(143,26,26,0.12);color:#991b1b;}
 .matchup-body{padding:20px;display:none;}
@@ -172,7 +172,35 @@ span.c:hover{border-bottom-style:solid;}
     .print-grid { position:fixed !important; top:0 !important; left:0 !important; width:100vw !important; height:auto !important; background:var(--rule) !important; border:none !important; display:grid !important; grid-template-columns:repeat(3,1fr) !important; gap:1px !important; }
     .print-mu { background:var(--paper) !important; padding:14px !important; }
   }
-</style></style>
+
+  .matchup-detail { display:none; border:1px solid var(--rule); background:var(--paper-dark); padding:32px 40px; margin:0 0 2px; animation:fadeIn 0.2s ease; }
+  .matchup-detail.open { display:block; }
+  .matchup-table tr:hover td { background:var(--card); cursor:pointer; }
+  .matchup-table th { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; padding:10px 16px; background:var(--primary); color:rgba(248,250,252,0.9); }
+  .matchup-table td { padding:12px 16px; border-bottom:1px solid var(--rule); font-size:15px; font-weight:300; }
+  .matchup-table { width:100%; border-collapse:collapse; margin:24px 0; table-layout:fixed; }
+  .matchup-table colgroup col:nth-child(1) { width:42%; }
+  .matchup-table colgroup col:nth-child(2) { width:16%; }
+  .matchup-table colgroup col:nth-child(3) { width:16%; }
+  .matchup-table colgroup col:nth-child(4) { width:26%; }
+  .verdict-dog { background:var(--danger-light); color:var(--danger); border-color:var(--danger); }
+  .verdict-favor { background:rgba(34,197,94,0.15); color:#22C55E; border-color:#22C55E; }
+
+</style>
+  .matchup-detail { display:none; border:1px solid var(--rule); background:var(--paper-dark); padding:32px 40px; margin:0 0 2px; animation:fadeIn 0.2s ease; }
+  .matchup-detail.open { display:block; }
+  .matchup-table tr:hover td { background:var(--card); cursor:pointer; }
+  .matchup-table th { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; padding:10px 16px; background:var(--primary); color:rgba(248,250,252,0.9); }
+  .matchup-table td { padding:12px 16px; border-bottom:1px solid var(--rule); font-size:15px; font-weight:300; }
+  .matchup-table { width:100%; border-collapse:collapse; margin:24px 0; table-layout:fixed; }
+  .matchup-table colgroup col:nth-child(1) { width:42%; }
+  .matchup-table colgroup col:nth-child(2) { width:16%; }
+  .matchup-table colgroup col:nth-child(3) { width:16%; }
+  .matchup-table colgroup col:nth-child(4) { width:26%; }
+  .verdict-dog { background:var(--danger-light); color:var(--danger); border-color:var(--danger); }
+  .verdict-favor { background:rgba(34,197,94,0.15); color:#22C55E; border-color:#22C55E; }
+
+</style>
 </head>
 <body>
 <nav>
@@ -350,7 +378,7 @@ span.c:hover{border-bottom-style:solid;}
 <colgroup><col><col><col><col></colgroup>
 <thead><tr><th>Matchup</th><th>Role</th><th>Verdict</th><th>Key Play</th></tr></thead>
 <tbody>
-<tr onclick="toggle('mu-monogreen')"><td><strong>MONO-GREEN LANDFALL</strong></td><td>Combo</td><td><span class="verdict verdict-good">Favorable</span></td><td>They're slower.</td></tr>
+<tr onclick="toggle('mu-monogreen')"><td><strong>MONO-GREEN LANDFALL</strong></td><td>Combo</td><td><span class="verdict verdict-favor">Favorable</span></td><td>They're slower.</td></tr>
 <tr><td colspan="4" class="matchup-detail" id="mu-monogreen">
 <p>They're slower. T1-T3, they're ramping and setting up their engine. You're attacking for 8-10 damage. Sapling Nursery doesn't come online until T4-T5. By then you're presenting lethal or near-lethal through burn. Llanowar Elves and Badgermole Cub are 1/1 and 2/2 — Burst Lightning kills the Elves, your creatures trade with the Cub.</p>
       <p><strong>Priority:</strong> Go face as early as possible. Burn does not kill their Mightform Harmonizer (8 toughness) — don't try. Kill their mana dorks (Burst Lightning on Llanowar Elves is always correct) to slow their engine and give yourself extra attack steps. Nova Hellkite's flying bypasses their ground creatures entirely.</p>
@@ -382,7 +410,7 @@ span.c:hover{border-bottom-style:solid;}
         </div>
       </div>
 </td></tr>
-<tr onclick="toggle('mu-lessons')"><td><strong>IZZET LESSONS</strong></td><td>Combo</td><td><span class="verdict verdict-good">Favorable</span></td><td>Their plan is slow.</td></tr>
+<tr onclick="toggle('mu-lessons')"><td><strong>IZZET LESSONS</strong></td><td>Combo</td><td><span class="verdict verdict-favor">Favorable</span></td><td>Their plan is slow.</td></tr>
 <tr><td colspan="4" class="matchup-detail" id="mu-lessons">
 <p>Their plan is slow. Monument to Endurance only matters once they're alive to activate it — kill them before it becomes relevant. Gran-Gran and Accumulate Wisdom draw cards but don't stop your creatures from attacking. Their Abandon Attachments can remove your Magebane Lizard but costs them their turn. Race.</p>
       <p><strong>Priority:</strong> Kill them before turn 5. Their Abandon Attachments is the one card that disrupts you (it can destroy non-basic lands via the Regrowth mode, or destroy your key enchantment). Keep burn for face unless you absolutely must clear a blocker. Nova Hellkite flying over their non-flying threats is often the game-winner.</p>
@@ -449,7 +477,7 @@ span.c:hover{border-bottom-style:solid;}
       </div>
       <p class="sb-note">Roiling Vortex stacks with burn and shuts off their life gain. Obliterating Bolt exiles Kaito (MV 4) at instant speed without leaving a body. Cut lands and a Burst Lightning (Bolt is more efficient at sorcery speed).</p>
 </td></tr>
-<tr onclick="toggle('mu-simic')"><td><strong>SIMIC RHYTHM</strong></td><td>Combo</td><td><span class="verdict verdict-good">Favorable</span></td><td>Simic Rhythm has no interaction for your burn.</td></tr>
+<tr onclick="toggle('mu-simic')"><td><strong>SIMIC RHYTHM</strong></td><td>Combo</td><td><span class="verdict verdict-favor">Favorable</span></td><td>Simic Rhythm has no interaction for your burn.</td></tr>
 <tr><td colspan="4" class="matchup-detail" id="mu-simic">
 <p>Simic Rhythm has no interaction for your burn. Their Llanowar Elves is the must-kill target — Sear at {1R} kills it at instant speed before they can use the mana. Without Elves their curve is slow enough that your burn closes by T4. Earthbender Ascension buffs their ground creatures but can't block your direct damage to face.</p>
       <div class="sb-table">
@@ -467,7 +495,7 @@ span.c:hover{border-bottom-style:solid;}
       </div>
       <p class="sb-note">Roiling Vortex negates their Voice of Victory life gain. Rampaging Spiketail provides an additional 1-drop threat. Cut Swiftwater Cliffs and Burst Lightning — they have flash creatures that make sorcery-speed 4-damage awkward.</p>
 </td></tr>
-<tr onclick="toggle('mu-spellementals')"><td><strong>IZZET SPELLEMENTALS</strong></td><td>Combo</td><td><span class="verdict verdict-good">Favorable</span></td><td>Izzet Spellementals has a slow setup phase — they need to chain cantrips into...</td></tr>
+<tr onclick="toggle('mu-spellementals')"><td><strong>IZZET SPELLEMENTALS</strong></td><td>Combo</td><td><span class="verdict verdict-favor">Favorable</span></td><td>Izzet Spellementals has a slow setup phase — they need to chain cantrips into...</td></tr>
 <tr><td colspan="4" class="matchup-detail" id="mu-spellementals">
 <p>Izzet Spellementals has a slow setup phase — they need to chain cantrips into Hearth Elemental before threatening anything. Your T1-T3 burn puts them on a clock before they can set up. Their Eddymurk Crab (0/4 flash blocker) is your primary obstacle — Sear kills it at instant speed. Kill Crab, then close through their cantrip chain with burn to face.</p>
       <div class="sb-table">

@@ -84,7 +84,7 @@ strong{font-weight:600;}
 .matchup-header{background:var(--paper-dark);padding:16px 20px;display:flex;align-items:center;gap:12px;cursor:pointer;justify-content:space-between;}
 .matchup-header h3{margin:0;font-size:11px;letter-spacing:0.15em;color:var(--ink);}
 .verdict{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.15em;text-transform:uppercase;padding:3px 10px;border-radius:2px;}
-.verdict-good{background:rgba(22,163,74,0.15);color:#15803d;}
+.verdict-favor{background:rgba(22,163,74,0.15);color:#15803d;}
 .verdict-even{background:rgba(90,82,72,0.12);color:var(--mid);}
 .verdict-hard{background:rgba(143,26,26,0.12);color:#991b1b;}
 .matchup-body{padding:20px;display:none;}
@@ -219,7 +219,35 @@ span.c:hover{border-bottom-style:solid;}
     .print-grid { position:fixed !important; top:0 !important; left:0 !important; width:100vw !important; height:auto !important; background:var(--rule) !important; border:none !important; display:grid !important; grid-template-columns:repeat(3,1fr) !important; gap:1px !important; }
     .print-mu { background:var(--paper) !important; padding:14px !important; }
   }
-</style></style>
+
+  .matchup-detail { display:none; border:1px solid var(--rule); background:var(--paper-dark); padding:32px 40px; margin:0 0 2px; animation:fadeIn 0.2s ease; }
+  .matchup-detail.open { display:block; }
+  .matchup-table tr:hover td { background:var(--card); cursor:pointer; }
+  .matchup-table th { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; padding:10px 16px; background:var(--primary); color:rgba(248,250,252,0.9); }
+  .matchup-table td { padding:12px 16px; border-bottom:1px solid var(--rule); font-size:15px; font-weight:300; }
+  .matchup-table { width:100%; border-collapse:collapse; margin:24px 0; table-layout:fixed; }
+  .matchup-table colgroup col:nth-child(1) { width:42%; }
+  .matchup-table colgroup col:nth-child(2) { width:16%; }
+  .matchup-table colgroup col:nth-child(3) { width:16%; }
+  .matchup-table colgroup col:nth-child(4) { width:26%; }
+  .verdict-dog { background:var(--danger-light); color:var(--danger); border-color:var(--danger); }
+  .verdict-favor { background:rgba(34,197,94,0.15); color:#22C55E; border-color:#22C55E; }
+
+</style>
+  .matchup-detail { display:none; border:1px solid var(--rule); background:var(--paper-dark); padding:32px 40px; margin:0 0 2px; animation:fadeIn 0.2s ease; }
+  .matchup-detail.open { display:block; }
+  .matchup-table tr:hover td { background:var(--card); cursor:pointer; }
+  .matchup-table th { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; padding:10px 16px; background:var(--primary); color:rgba(248,250,252,0.9); }
+  .matchup-table td { padding:12px 16px; border-bottom:1px solid var(--rule); font-size:15px; font-weight:300; }
+  .matchup-table { width:100%; border-collapse:collapse; margin:24px 0; table-layout:fixed; }
+  .matchup-table colgroup col:nth-child(1) { width:42%; }
+  .matchup-table colgroup col:nth-child(2) { width:16%; }
+  .matchup-table colgroup col:nth-child(3) { width:16%; }
+  .matchup-table colgroup col:nth-child(4) { width:26%; }
+  .verdict-dog { background:var(--danger-light); color:var(--danger); border-color:var(--danger); }
+  .verdict-favor { background:rgba(34,197,94,0.15); color:#22C55E; border-color:#22C55E; }
+
+</style>
 </head>
 <body>
 
@@ -566,7 +594,7 @@ span.c:hover{border-bottom-style:solid;}
 <colgroup><col><col><col><col></colgroup>
 <thead><tr><th>Matchup</th><th>Role</th><th>Verdict</th><th>Key Play</th></tr></thead>
 <tbody>
-<tr onclick="toggle('mu-dimir')"><td><strong>DIMIR MIDRANGE</strong></td><td>Combo</td><td><span class="verdict verdict-good">Favorable</span></td><td>Their removal suite is mostly single-target.</td></tr>
+<tr onclick="toggle('mu-dimir')"><td><strong>DIMIR MIDRANGE</strong></td><td>Combo</td><td><span class="verdict verdict-favor">Favorable</span></td><td>Their removal suite is mostly single-target.</td></tr>
 <tr><td colspan="4" class="matchup-detail" id="mu-dimir">
 <p>Their removal suite is mostly single-target. Every spider token they spend removal on is a resource trade you win — your spells make 2-4 tokens, their removal handles one at a time. Their Kaito and Cecil engines are slow enough that you're already attacking with 6+ power before they stabilize.</p>
       <p><strong>What they're trying to do:</strong> Use Floodpits Drowner + Kaito to generate card advantage and block your ground assault. Cecil life-math can outrace aggro builds but struggles vs. multiple evasion threats.</p>
@@ -623,7 +651,7 @@ span.c:hover{border-bottom-style:solid;}
         </div>
       </div>
 </td></tr>
-<tr onclick="toggle('mu-boros')"><td><strong>BOROS AGGRO</strong></td><td>Combo</td><td><span class="verdict verdict-good">Favorable</span></td><td>Their creatures are individually powerful but you go wider.</td></tr>
+<tr onclick="toggle('mu-boros')"><td><strong>BOROS AGGRO</strong></td><td>Combo</td><td><span class="verdict verdict-favor">Favorable</span></td><td>Their creatures are individually powerful but you go wider.</td></tr>
 <tr><td colspan="4" class="matchup-detail" id="mu-boros">
 <p>Their creatures are individually powerful but you go wider. Spider tokens with reach block their fliers. Gene Pollinator + Manifestation creates more blockers than they have attackers. This is your best matchup in the Standard field.</p>
       <p><strong>What they're trying to do:</strong> Emberheart Challenger + Monstrous Rage for a fast kill. Get in for early damage and close with burn.</p>
@@ -701,7 +729,7 @@ span.c:hover{border-bottom-style:solid;}
       </div>
       <p class="sb-note">Oko converts your tokens into 3/3 Elks — bigger than their 2/2 Cub tokens. Vivien Reid fights their creatures directly. Gearhulk is too slow at 6 mana. Cut Resolve — they have no key enchantments to answer.</p>
 </td></tr>
-<tr onclick="toggle('mu-monored')"><td><strong>MONO-RED AGGRO</strong></td><td>Combo</td><td><span class="verdict verdict-good">Favorable</span></td><td>Mono-Red kills by turn 4 through burn and aggressive creatures.</td></tr>
+<tr onclick="toggle('mu-monored')"><td><strong>MONO-RED AGGRO</strong></td><td>Combo</td><td><span class="verdict verdict-favor">Favorable</span></td><td>Mono-Red kills by turn 4 through burn and aggressive creatures.</td></tr>
 <tr><td colspan="4" class="matchup-detail" id="mu-monored">
 <p>Mono-Red kills by turn 4 through burn and aggressive creatures. Your spider tokens (1/4 reach from Spider Manifestation) block their 2/2s indefinitely. Meltstrider's Resolve gains life and grows your creatures simultaneously — one Resolve when they're at 8-12 life can make the math impossible for them. Your ceiling is faster than they can race if you deploy a Pollinator on T3 with tokens ready to block.</p>
       <div class="sb-table">
