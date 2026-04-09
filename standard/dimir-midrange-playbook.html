@@ -142,6 +142,71 @@
   .edge-case-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:8px;font-weight:500;}
   .edge-case-body{font-size:14px;font-weight:300;color:var(--ink,#0e0e0e);line-height:1.65;}
   .edge-case-body strong{font-weight:600;}
+
+  /* ── Gold-standard component rules ── */
+  .decklist { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--rule); border: 1px solid var(--rule); margin: 24px 0; }
+  .dl-section { background: var(--paper); padding: 24px; }
+  .dl-section-label { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--mid); margin-bottom: 16px; }
+  .dl-group { margin-bottom: 20px; }
+  .dl-group-label { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--ink); background: var(--paper-dark); padding: 4px 8px; margin-bottom: 8px; display: inline-block; }
+  .dl-card-row { display: flex; justify-content: space-between; padding: 4px 0; border-bottom: 1px solid rgba(200,191,176,0.3); font-size: 15px; font-weight: 300; }
+  .dl-qty { font-family: 'DM Mono', monospace; font-size: 12px; color: var(--accent); }
+  .curve-strip { display: flex; gap: 1px; background: var(--rule); border: 1px solid var(--rule); margin: 24px 0; }
+  .curve-slot { flex: 1; background: var(--paper); padding: 16px 12px; text-align: center; }
+  .curve-cmc { font-family: 'Bebas Neue', sans-serif; font-size: 32px; color: var(--accent); line-height: 1; }
+  .curve-count { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--mid); letter-spacing: 0.1em; margin-top: 4px; }
+  .curve-bar { height: 4px; background: var(--accent); margin: 8px auto 0; border-radius: 2px; opacity: 0.5; }
+  .role-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--rule); border: 1px solid var(--rule); margin: 24px 0; }
+  .role-card { background: var(--paper); padding: 24px; }
+  .role-card:hover { background: var(--paper-dark); }
+  .role-name { font-family: 'Bebas Neue', sans-serif; font-size: 26px; letter-spacing: 0.03em; margin-bottom: 8px; }
+  .role-name-beatdown { color: #8f1a1a; }
+  .role-name-tempo { color: #8f6a1a; }
+  .role-name-mirror { color: #1a3a8f; }
+  .role-desc { font-size: 15px; font-weight: 300; color: var(--mid); line-height: 1.5; margin-bottom: 12px; }
+  .role-matchups { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.08em; color: rgba(14,14,14,0.4); }
+  .engine-block { border:1px solid var(--rule); margin:32px 0; }
+  .engine-header { background:var(--ink); color:var(--paper); padding:16px 24px; display:flex; align-items:center; gap:16px; }
+  .engine-letter { font-family:'Bebas Neue',sans-serif; font-size:40px; line-height:1; color:var(--accent); }
+  .engine-name { font-family:'Bebas Neue',sans-serif; font-size:24px; letter-spacing:0.03em; }
+  .engine-body { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--rule); }
+  .engine-step { background:var(--paper); padding:24px; }
+  .engine-step-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--mid); margin-bottom:8px; }
+  .engine-step-title { font-family:'Bebas Neue',sans-serif; font-size:20px; color:var(--ink); margin-bottom:8px; }
+  .engine-step-body { font-size:14px; font-weight:300; color:var(--mid); line-height:1.5; }
+  .matchup-table { width: 100%; border-collapse: collapse; margin: 24px 0; font-size: 15px; }
+  .matchup-table thead tr { background: var(--ink); color: var(--paper); }
+  .matchup-table th { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; padding: 12px 16px; text-align: left; font-weight: 400; }
+  .matchup-table td { padding: 12px 16px; border-bottom: 1px solid var(--rule); font-weight: 300; vertical-align: top; }
+  .matchup-table tr:hover td { background: var(--paper-dark); cursor: pointer; }
+  .diff-hard { font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.08em; text-transform:uppercase; color:#991b1b; background:rgba(180,35,24,0.1); padding:2px 8px; border-radius:2px; }
+  .diff-medium { font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.08em; text-transform:uppercase; color:#92400e; background:rgba(217,119,6,0.1); padding:2px 8px; border-radius:2px; }
+  .diff-even { font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.08em; text-transform:uppercase; color:#1a3a8f; background:#d6e0f7; padding:2px 8px; border-radius:2px; }
+  .diff-good { font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.08em; text-transform:uppercase; color:#1a6b1a; background:#d4f0d4; padding:2px 8px; border-radius:2px; }
+  .sb-deep { border: 1px solid var(--rule); margin: 12px 0; }
+  .sb-deep-header { display: flex; justify-content: space-between; align-items: center; padding: 16px 24px; background: var(--paper-dark); cursor: pointer; user-select: none; transition: background 0.15s; }
+  .sb-deep-header:hover { background: var(--rule); }
+  .sb-deep-title { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+  .sb-deep-name { font-family: 'Bebas Neue', sans-serif; font-size: 20px; letter-spacing: 0.03em; color: var(--ink); }
+  .sb-deep-meta { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--mid); }
+  .sb-deep-toggle { font-family: 'DM Mono', monospace; font-size: 18px; color: var(--mid); transition: transform 0.2s; line-height: 1; }
+  .sb-deep.open .sb-deep-toggle { transform: rotate(45deg); }
+  .sb-deep-body { display: none; padding: 32px; border-top: 1px solid var(--rule); animation: fadeIn 0.2s ease; }
+  .sb-deep.open .sb-deep-body { display: block; }
+  .sb-deep-mantra { font-family: 'Crimson Pro', serif; font-style: italic; font-size: 17px; color: var(--accent); border-left: 3px solid var(--accent); padding: 8px 16px; background: rgba(234,88,12,0.06); margin-bottom: 24px; }
+  .sb-deep-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+  .sb-deep-section-label { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--mid); margin-bottom: 10px; }
+  .sb-card-guide { border: 1px solid var(--rule); margin: 24px 0; }
+  .sb-guide-row { display: flex; gap: 0; border-bottom: 1px solid var(--rule); }
+  .sb-guide-row:last-child { border-bottom: none; }
+  .sb-guide-name { font-family: 'DM Mono', monospace; font-size: 12px; font-weight: 500; letter-spacing: 0.05em; color: var(--ink); background: var(--paper-dark); padding: 14px 20px; min-width: 200px; width: 200px; flex-shrink: 0; border-right: 1px solid var(--rule); display: flex; align-items: center; }
+  .sb-guide-body { padding: 14px 20px; font-size: 15px; font-weight: 300; line-height: 1.5; flex: 1; }
+  .print-btn { display: inline-flex; align-items: center; gap: 8px; font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; background: var(--ink); color: var(--paper); border: none; padding: 10px 20px; cursor: pointer; margin-bottom: 32px; transition: background 0.15s; }
+  .print-btn:hover { background: var(--accent); }
+  .print-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--rule); border: 1px solid var(--rule); }
+  .print-mu { background: var(--paper); padding: 16px; }
+  .print-mu-name { font-family: 'Bebas Neue', sans-serif; font-size: 16px; letter-spacing: 0.03em; color: var(--ink); margin-bottom: 4px; display: flex; align-items: center; gap: 8px; }
+  .print-mu-role { font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--mid); margin-bottom: 10px; }
 </style>
 </head>
 <body>
