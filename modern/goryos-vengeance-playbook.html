@@ -69,15 +69,15 @@
   .matchup-table colgroup col:nth-child(2) { width:16%; }
   .matchup-table colgroup col:nth-child(3) { width:16%; }
   .matchup-table colgroup col:nth-child(4) { width:26%; }
-  .matchup-table th { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; padding:10px 16px; background:var(--card); color:var(--mid); text-align:left; border-bottom:2px solid var(--rule); }
+  .matchup-table th { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; padding:10px 16px; background:var(--ink); color:rgba(248,250,252,0.9); text-align:left; border-bottom:2px solid var(--rule); }
   .matchup-table td { padding:12px 16px; border-bottom:1px solid var(--rule); font-size:15px; font-weight:300; }
   .matchup-table tr:hover td { background:var(--card); cursor:pointer; }
-  .mu-active td:not(:first-child) { opacity:0; pointer-events:none; }
-  .mu-active td:first-child { font-weight:600; color:var(--accent); border-bottom:none; }
+  
+  
   .matchup-detail { display:none; border:1px solid var(--rule); background:var(--paper-dark); padding:32px 40px; margin:0 0 2px; animation:fadeIn 0.2s ease; }
-  .mu-inner { display:grid; grid-template-columns:1fr 340px; gap:0; }
-  .mu-text { padding:28px 32px; }
-  .mu-sb { padding:28px 24px; border-left:1px solid var(--rule); background:rgba(0,0,0,0.1); }
+  
+  
+  
   .matchup-detail.open { display:block; }
   .verdict { display:inline-block; font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; padding:4px 10px; border:1px solid; }
   .verdict-dog { background:var(--danger-light); color:var(--danger); border-color:var(--danger); }
@@ -1504,13 +1504,11 @@ function toggle(id) {
   document.querySelectorAll('.matchup-detail.open').forEach(d => {
     d.classList.remove('open');
     const prev = d.parentElement.previousElementSibling;
-    if (prev) prev.classList.remove('mu-active');
-  });
+    if (prev) prev});
   if (!isOpen) {
     el.classList.add('open');
     const prev = el.parentElement.previousElementSibling;
-    if (prev) prev.classList.add('mu-active');
-  }
+    if (prev) prev}
 }
 </script>
 
