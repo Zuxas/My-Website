@@ -169,7 +169,7 @@ span.c:hover{border-bottom-style:solid;}
     .print-grid { position:fixed !important; top:0 !important; left:0 !important; width:100vw !important; height:auto !important; background:var(--rule) !important; border:none !important; display:grid !important; grid-template-columns:repeat(3,1fr) !important; gap:1px !important; }
     .print-mu { background:var(--paper) !important; padding:14px !important; }
   }
-</style>
+</style></style>
 </head>
 <body>
 <nav>
@@ -352,12 +352,13 @@ span.c:hover{border-bottom-style:solid;}
   <h1>MATCHUP<br>GUIDE</h1>
   <div class="mantra">"Game 1: They don't have GY hate. You combo them. Games 2-3: They do. You pivot to Zombies."</div>
 
-  <div class="matchup-block">
-    <div class="matchup-header" onclick="toggle('mu-urcutter')">
-      <h3>UR CUTTER (IZZET PROWESS)</h3><span class="verdict verdict-hard">Unfavorable</span>
-    </div>
-    <div id="mu-urcutter" class="matchup-body">
-      <p>They are faster than you on the draw. UR Cutter's T3 kill clock matches your T3 combo, but they're more resilient to disruption — 12 cantrips means stripping one threat isn't enough. Game 1 is a straight race. Parhelion II's first strike means it favorably trades or blocks their Monk tokens. The two 4/4 Angels are often bigger than everything they have.</p>
+  <table class="matchup-table">
+<colgroup><col><col><col><col></colgroup>
+<thead><tr><th>Matchup</th><th>Role</th><th>Verdict</th><th>Key Play</th></tr></thead>
+<tbody>
+<tr onclick="toggle('mu-urcutter')"><td><strong>UR CUTTER (IZZET PROWESS)</strong></td><td>Flexible</td><td><span class="verdict verdict-hard">Unfavorable</span></td><td>They are faster than you on the draw.</td></tr>
+<tr><td colspan="4" class="matchup-detail" id="mu-urcutter">
+<p>They are faster than you on the draw. UR Cutter's T3 kill clock matches your T3 combo, but they're more resilient to disruption — 12 cantrips means stripping one threat isn't enough. Game 1 is a straight race. Parhelion II's first strike means it favorably trades or blocks their Monk tokens. The two 4/4 Angels are often bigger than everything they have.</p>
       <p><strong>Priority:</strong> Maximize speed. Don't use Fatal Push on small Monks — only use it on their Vivi Ornitier or Stormchaser's Talent that would prevent you from attacking profitably. Aim for the T3 combo even if they have some board presence. Your 9/9 first strike flies over or tramples their board.</p>
       <p><strong>Needle:</strong> Reidane, God of the Worthy (SB) taxes noncreature spells costing 3 or less — hits all their cantrips and Treasure Cruise at instant speed. This single card completely disrupts their engine. Board it in immediately.</p>
       <div class="sb-table">
@@ -371,15 +372,10 @@ span.c:hover{border-bottom-style:solid;}
           <div class="sb-item"><span><span class="c">Sheltered by Ghosts</span></span><span class="sb-qty">&minus;2</span></div>
         </div>
       </div>
-    </div>
-  </div>
-
-  <div class="matchup-block">
-    <div class="matchup-header" onclick="toggle('mu-selesnya')">
-      <h3>SELESNYA COMPANY</h3><span class="verdict verdict-even">Even</span>
-    </div>
-    <div id="mu-selesnya" class="matchup-body">
-      <p>They go wide with creatures via Collected Company. You go tall with flying. Parhelion II's two 4/4 Angels block their ground army while Parhelion attacks in the air. Fatal Push hits their mana dorks to slow their CoCo clock. The race is close — their T3 CoCo can deploy 4+ creatures, but none of them have flying to block Parhelion.</p>
+</td></tr>
+<tr onclick="toggle('mu-selesnya')"><td><strong>SELESNYA COMPANY</strong></td><td>Combo Race</td><td><span class="verdict verdict-even">Even</span></td><td>They go wide with creatures via Collected Company.</td></tr>
+<tr><td colspan="4" class="matchup-detail" id="mu-selesnya">
+<p>They go wide with creatures via Collected Company. You go tall with flying. Parhelion II's two 4/4 Angels block their ground army while Parhelion attacks in the air. Fatal Push hits their mana dorks to slow their CoCo clock. The race is close — their T3 CoCo can deploy 4+ creatures, but none of them have flying to block Parhelion.</p>
       <p><strong>Priority:</strong> Kill their mana dorks (Llanowar Elves, Elvish Mystic) with Fatal Push before they CoCo. Your aerial attack path doesn't care about their ground board as long as they can't race your damage. Two 4/4 flying Angels invalidate most of their combat math.</p>
       <p><strong>Needle:</strong> Anguished Unmaking removes any permanent cleanly — answers their hate bears like Scavenging Ooze or Yasharn, Implacable Earth. Thoughtseize strips Collected Company before resolution.</p>
       <div class="sb-table">
@@ -393,15 +389,10 @@ span.c:hover{border-bottom-style:solid;}
           <div class="sb-item"><span><span class="c">Sheltered by Ghosts</span></span><span class="sb-qty">&minus;2</span></div>
         </div>
       </div>
-    </div>
-  </div>
-
-  <div class="matchup-block">
-    <div class="matchup-header" onclick="toggle('mu-rdw')">
-      <h3>RED DECK WINS</h3><span class="verdict verdict-hard">Unfavorable</span>
-    </div>
-    <div id="mu-rdw" class="matchup-body">
-      <p>They burn your creatures and go under your combo. Seasoned Hallowblade and Guardian of New Benalia die to Lightning Strike. Greasefang itself is often 2 for 1'd if they have Fiery Impulse. Your combo requires surviving to turn 3 with at least one outlet and Greasefang — against RDW's T1–T2 creatures, that's not guaranteed.</p>
+</td></tr>
+<tr onclick="toggle('mu-rdw')"><td><strong>RED DECK WINS</strong></td><td>Flexible</td><td><span class="verdict verdict-hard">Unfavorable</span></td><td>They burn your creatures and go under your combo.</td></tr>
+<tr><td colspan="4" class="matchup-detail" id="mu-rdw">
+<p>They burn your creatures and go under your combo. Seasoned Hallowblade and Guardian of New Benalia die to Lightning Strike. Greasefang itself is often 2 for 1'd if they have Fiery Impulse. Your combo requires surviving to turn 3 with at least one outlet and Greasefang — against RDW's T1–T2 creatures, that's not guaranteed.</p>
       <p><strong>Priority:</strong> Don't try to race them with life total. Instead: use Fatal Push to clear their best attacker. Block aggressively with your 2-drops. Parhelion's 9/9 first strike outclasses everything they have — survive to T3 and the combo kills them. Sheltered by Ghosts on Greasefang protects it from their red burn.</p>
       <p><strong>Needle:</strong> Reidane has a creature side (2/3 flying for {2}{W}) that trades with their threats. Thoughtseize rips their burn spell before they can finish you off. The goal post-board is to stabilize long enough to untap with a combo turn.</p>
       <div class="sb-table">
@@ -414,15 +405,10 @@ span.c:hover{border-bottom-style:solid;}
           <div class="sb-item"><span><span class="c">Cryptcaller Chariot</span></span><span class="sb-qty">&minus;2</span></div>
         </div>
       </div>
-    </div>
-  </div>
-
-  <div class="matchup-block">
-    <div class="matchup-header" onclick="toggle('mu-uwcontrol')">
-      <h3>UW CONTROL</h3><span class="verdict verdict-good">Favorable</span>
-    </div>
-    <div id="mu-uwcontrol" class="matchup-body">
-      <p>They counter Greasefang. You strip their counter first. Thoughtseize on T1 is the key play — see their hand, take their Absorb, Dovin's Veto, or Quench. A Greasefang that resolves is almost always lethal since they have no creatures to block the Parhelion attack. Sheltered by Ghosts on a resolved Greasefang makes it very difficult to remove post-ETB.</p>
+</td></tr>
+<tr onclick="toggle('mu-uwcontrol')"><td><strong>UW CONTROL</strong></td><td>Combo</td><td><span class="verdict verdict-good">Favorable</span></td><td>They counter Greasefang.</td></tr>
+<tr><td colspan="4" class="matchup-detail" id="mu-uwcontrol">
+<p>They counter Greasefang. You strip their counter first. Thoughtseize on T1 is the key play — see their hand, take their Absorb, Dovin's Veto, or Quench. A Greasefang that resolves is almost always lethal since they have no creatures to block the Parhelion attack. Sheltered by Ghosts on a resolved Greasefang makes it very difficult to remove post-ETB.</p>
       <p><strong>Priority:</strong> Use hand disruption to clear the path, then combo. Don't cast Greasefang into open countermagic. Hold Greasefang, Thoughtseize first, then deploy. Their sweepers don't hit vehicles — Parhelion in GY is safe from Supreme Verdict. After Greasefang resolves and attacks, they need multiple answers.</p>
       <p><strong>Needle:</strong> Duress and Go Blank strip their interaction before your combo turn. Waste Not generates card advantage when they discard — their removal spells become your resource.</p>
       <div class="sb-table">
@@ -437,15 +423,10 @@ span.c:hover{border-bottom-style:solid;}
           <div class="sb-item"><span><span class="c">Fleeting Spirit</span></span><span class="sb-qty">&minus;2</span></div>
         </div>
       </div>
-    </div>
-  </div>
-
-  <div class="matchup-block">
-    <div class="matchup-header" onclick="toggle('mu-rakdos')">
-      <h3>RAKDOS MIDRANGE</h3><span class="verdict verdict-even">Even</span>
-    </div>
-    <div id="mu-rakdos" class="matchup-body">
-      <p>They have Thoughtseize, Fatal Push, and Graveyard Trespasser. Their disruption hits your creatures (Greasefang) and your GY (Trespasser exiles). The race: you combo before they accumulate too much disruption. Sheltered by Ghosts naming black gives Greasefang protection from their entire removal suite (Fatal Push, Dreadbore, Thoughtseize). Their clock is slow — they don't kill you before T5–6 without Greasefang on their side.</p>
+</td></tr>
+<tr onclick="toggle('mu-rakdos')"><td><strong>RAKDOS MIDRANGE</strong></td><td>Combo Race</td><td><span class="verdict verdict-even">Even</span></td><td>They have Thoughtseize, Fatal Push, and Graveyard Trespasser.</td></tr>
+<tr><td colspan="4" class="matchup-detail" id="mu-rakdos">
+<p>They have Thoughtseize, Fatal Push, and Graveyard Trespasser. Their disruption hits your creatures (Greasefang) and your GY (Trespasser exiles). The race: you combo before they accumulate too much disruption. Sheltered by Ghosts naming black gives Greasefang protection from their entire removal suite (Fatal Push, Dreadbore, Thoughtseize). Their clock is slow — they don't kill you before T5–6 without Greasefang on their side.</p>
       <p><strong>Priority:</strong> Protect Greasefang with Sheltered by Ghosts. Strip their Thoughtseize and Graveyard Trespasser with your own discard. If Parhelion is exiled by Trespasser, pivot to Cryptcaller Chariot Zombies — they have limited answers to a board of 2/2s.</p>
       <p><strong>Needle:</strong> Thoughtseize strips their key disruption before your combo turn. Anguished Unmaking hits Graveyard Trespasser cleanly (exile effect).</p>
       <div class="sb-table">
@@ -459,78 +440,55 @@ span.c:hover{border-bottom-style:solid;}
           <div class="sb-item"><span><span class="c">Fleeting Spirit</span></span><span class="sb-qty">&minus;2</span></div>
         </div>
       </div>
-    </div>
-  </div>
-
-  <div class="matchup-block">
-    <div class="matchup-header" onclick="toggle('mu-lotus2')">
-      <h3>LOTUS FIELD</h3><span class="verdict verdict-good">Favorable</span>
-    </div>
-    <div id="mu-lotus2" class="matchup-body">
-      <p>Lotus Field combos off with Hidden Strings + Lotus Field. Damping Sphere shuts off their mana multiplication. Thoughtseize strips Hidden Strings or Pore Over the Pages before they can cast it.</p>
+</td></tr>
+<tr onclick="toggle('mu-lotus2')"><td><strong>LOTUS FIELD</strong></td><td>Combo</td><td><span class="verdict verdict-good">Favorable</span></td><td>Lotus Field combos off with Hidden Strings + Lotus Field.</td></tr>
+<tr><td colspan="4" class="matchup-detail" id="mu-lotus2">
+<p>Lotus Field combos off with Hidden Strings + Lotus Field. Damping Sphere shuts off their mana multiplication. Thoughtseize strips Hidden Strings or Pore Over the Pages before they can cast it.</p>
       <div class="sb-table">
         <div class="sb-col"><div class="sb-col-label">In</div><div class="sb-item"><span><span class="c">Damping Sphere</span></span><span class="sb-qty">+3</span></div><div class="sb-item"><span><span class="c">Duress</span></span><span class="sb-qty">+2</span></div></div>
         <div class="sb-col"><div class="sb-col-label">Out</div><div class="sb-item"><span><span class="c">Fatal Push</span></span><span class="sb-qty">-2</span></div><div class="sb-item"><span><span class="c">Soul-Guide Lantern</span></span><span class="sb-qty">-2</span></div><div class="sb-item"><span><span class="c">Arashin Cleric</span></span><span class="sb-qty">-1</span></div></div>
       </div>
       <p class="sb-note">Damping Sphere prevents multiple taps of Lotus. Duress strips their key combo pieces. Cut reactive removal — they win through casting spells not combat.</p>
-    </div>
-  </div>
-
-  <div class="matchup-block">
-    <div class="matchup-header" onclick="toggle('mu-niv2')">
-      <h3>NIV-MIZZET REBORN</h3><span class="verdict verdict-even">Even</span>
-    </div>
-    <div id="mu-niv2" class="matchup-body">
-      <p>Niv-Mizzet Reborn draws a card for each color pair when it enters. Thoughtseize strips Niv or their key multicolor setup. Their clock is slow (5 mana) giving you time. Strip their key enablers and race with your own threats.</p>
+</td></tr>
+<tr onclick="toggle('mu-niv2')"><td><strong>NIV-MIZZET REBORN</strong></td><td>Combo Race</td><td><span class="verdict verdict-even">Even</span></td><td>Niv-Mizzet Reborn draws a card for each color pair when it enters.</td></tr>
+<tr><td colspan="4" class="matchup-detail" id="mu-niv2">
+<p>Niv-Mizzet Reborn draws a card for each color pair when it enters. Thoughtseize strips Niv or their key multicolor setup. Their clock is slow (5 mana) giving you time. Strip their key enablers and race with your own threats.</p>
       <div class="sb-table">
         <div class="sb-col"><div class="sb-col-label">In</div><div class="sb-item"><span><span class="c">Thoughtseize</span></span><span class="sb-qty">+2</span></div><div class="sb-item"><span><span class="c">Duress</span></span><span class="sb-qty">+2</span></div></div>
         <div class="sb-col"><div class="sb-col-label">Out</div><div class="sb-item"><span><span class="c">Soul-Guide Lantern</span></span><span class="sb-qty">-2</span></div><div class="sb-item"><span><span class="c">Arashin Cleric</span></span><span class="sb-qty">-2</span></div></div>
       </div>
       <p class="sb-note">Thoughtseize strips Niv or their multicolor tutor. Cut Lantern (no relevant GY) and Cleric (racing is less important here).</p>
-    </div>
-  </div>
-
-  <div class="matchup-block">
-    <div class="matchup-header" onclick="toggle('mu-arclight2')">
-      <h3>ARCLIGHT PHOENIX</h3><span class="verdict verdict-even">Even</span>
-    </div>
-    <div id="mu-arclight2" class="matchup-body">
-      <p>Arclight Phoenix returns from GY whenever you cast three instants/sorceries in a turn. Soul-Guide Lantern exiles Phoenix from GY before it triggers. Counter their Young Pyromancer rather than their cantrips — Pyromancer generates too many tokens otherwise.</p>
+</td></tr>
+<tr onclick="toggle('mu-arclight2')"><td><strong>ARCLIGHT PHOENIX</strong></td><td>Combo Race</td><td><span class="verdict verdict-even">Even</span></td><td>Arclight Phoenix returns from GY whenever you cast three instants/sorceries i...</td></tr>
+<tr><td colspan="4" class="matchup-detail" id="mu-arclight2">
+<p>Arclight Phoenix returns from GY whenever you cast three instants/sorceries in a turn. Soul-Guide Lantern exiles Phoenix from GY before it triggers. Counter their Young Pyromancer rather than their cantrips — Pyromancer generates too many tokens otherwise.</p>
       <div class="sb-table">
         <div class="sb-col"><div class="sb-col-label">In</div><div class="sb-item"><span><span class="c">Soul-Guide Lantern</span></span><span class="sb-qty">+2</span></div><div class="sb-item"><span><span class="c">Rending Volley</span></span><span class="sb-qty">+1</span></div></div>
         <div class="sb-col"><div class="sb-col-label">Out</div><div class="sb-item"><span><span class="c">Duress</span></span><span class="sb-qty">-2</span></div><div class="sb-item"><span><span class="c">Thoughtseize</span></span><span class="sb-qty">-1</span></div></div>
       </div>
       <p class="sb-note">Soul-Guide Lantern exiles Phoenix before it triggers. Rending Volley destroys white or blue creatures at instant speed. Cut discard — exiling GY is more efficient.</p>
-    </div>
-  </div>
-
-  <div class="matchup-block">
-    <div class="matchup-header" onclick="toggle('mu-creativity2')">
-      <h3>IZZET CREATIVITY</h3><span class="verdict verdict-good">Favorable</span>
-    </div>
-    <div id="mu-creativity2" class="matchup-body">
-      <p>Izzet Creativity uses Indomitable Creativity targeting their own token to cheat Atraxa into play. Thoughtseize strips Creativity before it resolves. Counter their Creativity or strip it from hand — if Atraxa enters without interaction you've likely lost.</p>
+</td></tr>
+<tr onclick="toggle('mu-creativity2')"><td><strong>IZZET CREATIVITY</strong></td><td>Combo</td><td><span class="verdict verdict-good">Favorable</span></td><td>Izzet Creativity uses Indomitable Creativity targeting their own token to che...</td></tr>
+<tr><td colspan="4" class="matchup-detail" id="mu-creativity2">
+<p>Izzet Creativity uses Indomitable Creativity targeting their own token to cheat Atraxa into play. Thoughtseize strips Creativity before it resolves. Counter their Creativity or strip it from hand — if Atraxa enters without interaction you've likely lost.</p>
       <div class="sb-table">
         <div class="sb-col"><div class="sb-col-label">In</div><div class="sb-item"><span><span class="c">Duress</span></span><span class="sb-qty">+3</span></div><div class="sb-item"><span><span class="c">Thoughtseize</span></span><span class="sb-qty">+2</span></div></div>
         <div class="sb-col"><div class="sb-col-label">Out</div><div class="sb-item"><span><span class="c">Fatal Push</span></span><span class="sb-qty">-2</span></div><div class="sb-item"><span><span class="c">Soul-Guide Lantern</span></span><span class="sb-qty">-2</span></div><div class="sb-item"><span><span class="c">Arashin Cleric</span></span><span class="sb-qty">-1</span></div></div>
       </div>
       <p class="sb-note">Duress and Thoughtseize strip Creativity before cast. Cut removal — they win through spells not combat.</p>
-    </div>
-  </div>
-
-  <div class="matchup-block">
-    <div class="matchup-header" onclick="toggle('mu-rakdos2')">
-      <h3>RAKDOS MIDRANGE</h3><span class="verdict verdict-even">Even</span>
-    </div>
-    <div id="mu-rakdos2" class="matchup-body">
-      <p>Rakdos Midrange mirrors your discard plan. Thoughtseize trades 1-for-1. Kill their Vein Ripper or Kalitas before they generate value. Fatal Push with revolt handles most of their threats.</p>
+</td></tr>
+<tr onclick="toggle('mu-rakdos2')"><td><strong>RAKDOS MIDRANGE</strong></td><td>Combo Race</td><td><span class="verdict verdict-even">Even</span></td><td>Rakdos Midrange mirrors your discard plan.</td></tr>
+<tr><td colspan="4" class="matchup-detail" id="mu-rakdos2">
+<p>Rakdos Midrange mirrors your discard plan. Thoughtseize trades 1-for-1. Kill their Vein Ripper or Kalitas before they generate value. Fatal Push with revolt handles most of their threats.</p>
       <div class="sb-table">
         <div class="sb-col"><div class="sb-col-label">In</div><div class="sb-item"><span><span class="c">Fatal Push</span></span><span class="sb-qty">+2</span></div><div class="sb-item"><span><span class="c">Collective Brutality</span></span><span class="sb-qty">+1</span></div></div>
         <div class="sb-col"><div class="sb-col-label">Out</div><div class="sb-item"><span><span class="c">Duress</span></span><span class="sb-qty">-2</span></div><div class="sb-item"><span><span class="c">Soul-Guide Lantern</span></span><span class="sb-qty">-1</span></div></div>
       </div>
       <p class="sb-note">Fatal Push with revolt kills Vein Ripper and Kalitas. Brutality handles key threats while draining. Cut redundant discard and Lantern.</p>
-    </div>
-  </div>
+</td></tr>
+</tbody>
+</table>
+
 
 </div>
 </div>

@@ -168,7 +168,7 @@ span.c:hover{border-bottom-style:solid;}
     .print-grid { position:fixed !important; top:0 !important; left:0 !important; width:100vw !important; height:auto !important; background:var(--rule) !important; border:none !important; display:grid !important; grid-template-columns:repeat(3,1fr) !important; gap:1px !important; }
     .print-mu { background:var(--paper) !important; padding:14px !important; }
   }
-</style>
+</style></style>
 </head>
 <body>
 <nav>
@@ -367,12 +367,13 @@ span.c:hover{border-bottom-style:solid;}
   <h1>MATCHUP<br>GUIDE</h1>
   <div class="mantra">"Know which sweeper to cast, when to hold countermagic, and when Teferi is safe to deploy."</div>
 
-  <div class="matchup-block">
-    <div class="matchup-header" onclick="toggle('mu-cutter')">
-      <h3>UR CUTTER</h3><span class="verdict verdict-even">Even</span>
-    </div>
-    <div id="mu-cutter" class="matchup-body">
-      <p>UR Cutter plays fast through cantrips and Treasure Cruise. Temporary Lockdown clears all their Monk tokens and Cutter itself (MV 2). No More Lies counters Stormchaser's Talent (MV 3 after activation cost) — counter it on the stack. Their Treasure Cruise is devastating at instant speed; hold Dovin's Veto for their Cruise or Vivi Ornitier.</p>
+  <table class="matchup-table">
+<colgroup><col><col><col><col></colgroup>
+<thead><tr><th>Matchup</th><th>Role</th><th>Verdict</th><th>Key Play</th></tr></thead>
+<tbody>
+<tr onclick="toggle('mu-cutter')"><td><strong>UR CUTTER</strong></td><td>Combo Race</td><td><span class="verdict verdict-even">Even</span></td><td>UR Cutter plays fast through cantrips and Treasure Cruise.</td></tr>
+<tr><td colspan="4" class="matchup-detail" id="mu-cutter">
+<p>UR Cutter plays fast through cantrips and Treasure Cruise. Temporary Lockdown clears all their Monk tokens and Cutter itself (MV 2). No More Lies counters Stormchaser's Talent (MV 3 after activation cost) — counter it on the stack. Their Treasure Cruise is devastating at instant speed; hold Dovin's Veto for their Cruise or Vivi Ornitier.</p>
       <p><strong>Priority:</strong> Kill or exile their Cutter before the Otter token engine fires. Temporary Lockdown exiles the Monk tokens and the Cutter (if MV 2) in one sweep. If they've cracked Treasure Cruise, your hand needs to be all interaction — they've seen 3 cards of gas. Deploy Wandering Emperor to pressure their planeswalker loyalty while holding up countermagic.</p>
       <div class="sb-table">
         <div class="sb-col"><div class="sb-col-label">In</div>
@@ -385,15 +386,10 @@ span.c:hover{border-bottom-style:solid;}
           <div class="sb-item"><span><span class="c">Farewell</span></span><span class="sb-qty">&minus;1</span></div>
         </div>
       </div>
-    </div>
-  </div>
-
-  <div class="matchup-block">
-    <div class="matchup-header" onclick="toggle('mu-rdw')">
-      <h3>RED DECK WINS</h3><span class="verdict verdict-even">Even</span>
-    </div>
-    <div id="mu-rdw" class="matchup-body">
-      <p>RDW kills by T3-4. Your survival depends on Temporary Lockdown clearing their board before Eidolon of the Great Revel taxes your spells beyond reach. Each spell you cast while Eidolon is active costs 2 extra life — remove Eidolon before deploying your own spells if possible. Beza (SB) provides lifegain to stabilize outside burn range. Brimaz (SB) is a 3/3 first strike that blocks efficiently and generates tokens.</p>
+</td></tr>
+<tr onclick="toggle('mu-rdw')"><td><strong>RED DECK WINS</strong></td><td>Combo Race</td><td><span class="verdict verdict-even">Even</span></td><td>RDW kills by T3-4.</td></tr>
+<tr><td colspan="4" class="matchup-detail" id="mu-rdw">
+<p>RDW kills by T3-4. Your survival depends on Temporary Lockdown clearing their board before Eidolon of the Great Revel taxes your spells beyond reach. Each spell you cast while Eidolon is active costs 2 extra life — remove Eidolon before deploying your own spells if possible. Beza (SB) provides lifegain to stabilize outside burn range. Brimaz (SB) is a 3/3 first strike that blocks efficiently and generates tokens.</p>
       <p><strong>Priority:</strong> Kill Eidolon immediately — it's worth spending March of Otherworldly Light to clear it. Temporary Lockdown sweeps everything MV 2 or less including Swiftspear, Soul-Scar Mage, and Ghitu Lavarunner in one card. If you survive to T4 with 6+ life you win. Wandering Emperor -2 mode can exile a key attacking creature in combat when they try to go lethal.</p>
       <div class="sb-table">
         <div class="sb-col"><div class="sb-col-label">In</div>
@@ -408,15 +404,10 @@ span.c:hover{border-bottom-style:solid;}
           <div class="sb-item"><span><span class="c">Three Steps Ahead</span></span><span class="sb-qty">&minus;1</span></div>
         </div>
       </div>
-    </div>
-  </div>
-
-  <div class="matchup-block">
-    <div class="matchup-header" onclick="toggle('mu-greasefang')">
-      <h3>ORZHOV GREASEFANG</h3><span class="verdict verdict-good">Favorable</span>
-    </div>
-    <div id="mu-greasefang" class="matchup-body">
-      <p>Greasefang combo relies on: (1) discarding Parhelion II, (2) casting Greasefang, (3) reanimating Parhelion. Your counters stop any of these steps. March of Otherworldly Light exiles Greasefang before ETB resolves. Get Lost removes Greasefang at instant speed. Rest in Peace (SB) shuts the GY completely — no Parhelion II can be returned. Dovin's Veto is the nuclear button for their key spell.</p>
+</td></tr>
+<tr onclick="toggle('mu-greasefang')"><td><strong>ORZHOV GREASEFANG</strong></td><td>Combo</td><td><span class="verdict verdict-good">Favorable</span></td><td>Greasefang combo relies on: (1) discarding Parhelion II, (2) casting Greasefa...</td></tr>
+<tr><td colspan="4" class="matchup-detail" id="mu-greasefang">
+<p>Greasefang combo relies on: (1) discarding Parhelion II, (2) casting Greasefang, (3) reanimating Parhelion. Your counters stop any of these steps. March of Otherworldly Light exiles Greasefang before ETB resolves. Get Lost removes Greasefang at instant speed. Rest in Peace (SB) shuts the GY completely — no Parhelion II can be returned. Dovin's Veto is the nuclear button for their key spell.</p>
       <p><strong>Priority:</strong> Answer Greasefang on the stack before its ETB resolves. Rest in Peace on T2 alongside a land prevents them from setting up. If they've already discarded Parhelion II but haven't cast Greasefang yet, hold removal for when Greasefang enters. Their Angels (4/4 flying vigilance tokens from Parhelion II) are easy targets for Wandering Emperor -2 post-attack since they attack and become tapped.</p>
       <div class="sb-table">
         <div class="sb-col"><div class="sb-col-label">In</div>
@@ -430,15 +421,10 @@ span.c:hover{border-bottom-style:solid;}
           <div class="sb-item"><span><span class="c">Beza, the Bounding Spring</span></span><span class="sb-qty">&minus;1</span></div>
         </div>
       </div>
-    </div>
-  </div>
-
-  <div class="matchup-block">
-    <div class="matchup-header" onclick="toggle('mu-selesnya')">
-      <h3>SELESNYA COMPANY</h3><span class="verdict verdict-even">Even</span>
-    </div>
-    <div id="mu-selesnya" class="matchup-body">
-      <p>Selesnya goes wide quickly and refills at instant speed with CoCo. Temporary Lockdown sweeps their entire early board (all creatures MV 2 or less: Llanowar Elves, Elvish Mystic, Thalia, Voice of Resurgence, Kellan). Supreme Verdict kills the mid-game threats Lockdown misses. The key interaction: Collected Company at end of your turn creates creatures AFTER your sweeper resolves — always have another answer for the CoCo refill.</p>
+</td></tr>
+<tr onclick="toggle('mu-selesnya')"><td><strong>SELESNYA COMPANY</strong></td><td>Combo Race</td><td><span class="verdict verdict-even">Even</span></td><td>Selesnya goes wide quickly and refills at instant speed with CoCo.</td></tr>
+<tr><td colspan="4" class="matchup-detail" id="mu-selesnya">
+<p>Selesnya goes wide quickly and refills at instant speed with CoCo. Temporary Lockdown sweeps their entire early board (all creatures MV 2 or less: Llanowar Elves, Elvish Mystic, Thalia, Voice of Resurgence, Kellan). Supreme Verdict kills the mid-game threats Lockdown misses. The key interaction: Collected Company at end of your turn creates creatures AFTER your sweeper resolves — always have another answer for the CoCo refill.</p>
       <p><strong>Priority:</strong> Temporary Lockdown on T3 clears their board. They respond with CoCo end of their T3 — you have Supreme Verdict for whatever survives. Thalia taxes your spells — each interaction costs {1} more. This makes Dovin's Veto cost {W}{U}{1} through Thalia and No More Lies cost {1}{U}{1}. Kill Thalia first to restore mana efficiency. Brimaz and Regal Caracal outclass their remaining ground threats.</p>
       <div class="sb-table">
         <div class="sb-col"><div class="sb-col-label">In</div>
@@ -452,15 +438,10 @@ span.c:hover{border-bottom-style:solid;}
           <div class="sb-item"><span><span class="c">Stock Up</span></span><span class="sb-qty">&minus;1</span></div>
         </div>
       </div>
-    </div>
-  </div>
-
-  <div class="matchup-block">
-    <div class="matchup-header" onclick="toggle('mu-lotus')">
-      <h3>LOTUS FIELD</h3><span class="verdict verdict-good">Favorable</span>
-    </div>
-    <div id="mu-lotus" class="matchup-body">
-      <p>Lotus Field combo needs Lotus Field + Thespian's Stage to generate 6+ mana for Hidden Strings loops. Field of Ruin destroys either piece early. Get Lost and March of Otherworldly Light answer Thespian's Stage before it copies Lotus. High Noon (SB) prevents them from untapping their lands with Hidden Strings — their entire combo relies on untapping Lotus. With High Noon, their entire strategy is shut down.</p>
+</td></tr>
+<tr onclick="toggle('mu-lotus')"><td><strong>LOTUS FIELD</strong></td><td>Combo</td><td><span class="verdict verdict-good">Favorable</span></td><td>Lotus Field combo needs Lotus Field + Thespian's Stage to generate 6+ mana fo...</td></tr>
+<tr><td colspan="4" class="matchup-detail" id="mu-lotus">
+<p>Lotus Field combo needs Lotus Field + Thespian's Stage to generate 6+ mana for Hidden Strings loops. Field of Ruin destroys either piece early. Get Lost and March of Otherworldly Light answer Thespian's Stage before it copies Lotus. High Noon (SB) prevents them from untapping their lands with Hidden Strings — their entire combo relies on untapping Lotus. With High Noon, their entire strategy is shut down.</p>
       <p><strong>Priority:</strong> Field of Ruin their Thespian's Stage before it can copy Lotus. If they have both, prioritize destroying Thespian's Stage over Lotus (Lotus without Stage can't loop). High Noon on T3-4 ends the game — they cannot use Hidden Strings to untap with Noon in play. Farewell is your reset if they somehow assemble the full combo — it exiles their lands if needed.</p>
       <div class="sb-table">
         <div class="sb-col"><div class="sb-col-label">In</div>
@@ -473,78 +454,55 @@ span.c:hover{border-bottom-style:solid;}
           <div class="sb-item"><span><span class="c">No More Lies</span></span><span class="sb-qty">&minus;1</span></div>
         </div>
       </div>
-    </div>
-  </div>
-
-  <div class="matchup-block">
-    <div class="matchup-header" onclick="toggle('mu-lotus2')">
-      <h3>LOTUS FIELD</h3><span class="verdict verdict-good">Favorable</span>
-    </div>
-    <div id="mu-lotus2" class="matchup-body">
-      <p>Damping Sphere prevents their mana multiplication. Thoughtseize strips Hidden Strings or key pieces before cast.</p>
+</td></tr>
+<tr onclick="toggle('mu-lotus2')"><td><strong>LOTUS FIELD</strong></td><td>Combo</td><td><span class="verdict verdict-good">Favorable</span></td><td>Damping Sphere prevents their mana multiplication.</td></tr>
+<tr><td colspan="4" class="matchup-detail" id="mu-lotus2">
+<p>Damping Sphere prevents their mana multiplication. Thoughtseize strips Hidden Strings or key pieces before cast.</p>
       <div class="sb-table">
         <div class="sb-col"><div class="sb-col-label">In</div><div class="sb-item"><span><span class="c">Damping Sphere</span></span><span class="sb-qty">+3</span></div><div class="sb-item"><span><span class="c">Duress</span></span><span class="sb-qty">+2</span></div></div>
         <div class="sb-col"><div class="sb-col-label">Out</div><div class="sb-item"><span><span class="c">Fatal Push</span></span><span class="sb-qty">-2</span></div><div class="sb-item"><span><span class="c">Soul-Guide Lantern</span></span><span class="sb-qty">-2</span></div><div class="sb-item"><span><span class="c">Arashin Cleric</span></span><span class="sb-qty">-1</span></div></div>
       </div>
       <p class="sb-note">Damping Sphere stops their mana combo. Duress strips combo pieces. Cut reactive removal.</p>
-    </div>
-  </div>
-
-  <div class="matchup-block">
-    <div class="matchup-header" onclick="toggle('mu-niv2')">
-      <h3>NIV-MIZZET REBORN</h3><span class="verdict verdict-even">Even</span>
-    </div>
-    <div id="mu-niv2" class="matchup-body">
-      <p>Their clock is slow — 5 mana for Niv. Strip their key enablers with Thoughtseize and race with your threats.</p>
+</td></tr>
+<tr onclick="toggle('mu-niv2')"><td><strong>NIV-MIZZET REBORN</strong></td><td>Combo Race</td><td><span class="verdict verdict-even">Even</span></td><td>Their clock is slow — 5 mana for Niv.</td></tr>
+<tr><td colspan="4" class="matchup-detail" id="mu-niv2">
+<p>Their clock is slow — 5 mana for Niv. Strip their key enablers with Thoughtseize and race with your threats.</p>
       <div class="sb-table">
         <div class="sb-col"><div class="sb-col-label">In</div><div class="sb-item"><span><span class="c">Thoughtseize</span></span><span class="sb-qty">+2</span></div><div class="sb-item"><span><span class="c">Duress</span></span><span class="sb-qty">+2</span></div></div>
         <div class="sb-col"><div class="sb-col-label">Out</div><div class="sb-item"><span><span class="c">Soul-Guide Lantern</span></span><span class="sb-qty">-2</span></div><div class="sb-item"><span><span class="c">Arashin Cleric</span></span><span class="sb-qty">-2</span></div></div>
       </div>
       <p class="sb-note">Thoughtseize strips Niv or their tutor. Cut Lantern (no relevant GY) and Cleric.</p>
-    </div>
-  </div>
-
-  <div class="matchup-block">
-    <div class="matchup-header" onclick="toggle('mu-arclight2')">
-      <h3>ARCLIGHT PHOENIX</h3><span class="verdict verdict-even">Even</span>
-    </div>
-    <div id="mu-arclight2" class="matchup-body">
-      <p>Soul-Guide Lantern exiles Phoenix from GY before it triggers back. Counter their Young Pyromancer — it generates too many tokens.</p>
+</td></tr>
+<tr onclick="toggle('mu-arclight2')"><td><strong>ARCLIGHT PHOENIX</strong></td><td>Combo Race</td><td><span class="verdict verdict-even">Even</span></td><td>Soul-Guide Lantern exiles Phoenix from GY before it triggers back.</td></tr>
+<tr><td colspan="4" class="matchup-detail" id="mu-arclight2">
+<p>Soul-Guide Lantern exiles Phoenix from GY before it triggers back. Counter their Young Pyromancer — it generates too many tokens.</p>
       <div class="sb-table">
         <div class="sb-col"><div class="sb-col-label">In</div><div class="sb-item"><span><span class="c">Soul-Guide Lantern</span></span><span class="sb-qty">+2</span></div><div class="sb-item"><span><span class="c">Rending Volley</span></span><span class="sb-qty">+1</span></div></div>
         <div class="sb-col"><div class="sb-col-label">Out</div><div class="sb-item"><span><span class="c">Duress</span></span><span class="sb-qty">-2</span></div><div class="sb-item"><span><span class="c">Thoughtseize</span></span><span class="sb-qty">-1</span></div></div>
       </div>
       <p class="sb-note">Soul-Guide Lantern exiles Phoenix. Rending Volley destroys white/blue creatures. Cut discard.</p>
-    </div>
-  </div>
-
-  <div class="matchup-block">
-    <div class="matchup-header" onclick="toggle('mu-creativity2')">
-      <h3>IZZET CREATIVITY</h3><span class="verdict verdict-good">Favorable</span>
-    </div>
-    <div id="mu-creativity2" class="matchup-body">
-      <p>Thoughtseize strips Creativity before it resolves. If Atraxa enters without interaction you've likely lost — strip it or counter it.</p>
+</td></tr>
+<tr onclick="toggle('mu-creativity2')"><td><strong>IZZET CREATIVITY</strong></td><td>Combo</td><td><span class="verdict verdict-good">Favorable</span></td><td>Thoughtseize strips Creativity before it resolves.</td></tr>
+<tr><td colspan="4" class="matchup-detail" id="mu-creativity2">
+<p>Thoughtseize strips Creativity before it resolves. If Atraxa enters without interaction you've likely lost — strip it or counter it.</p>
       <div class="sb-table">
         <div class="sb-col"><div class="sb-col-label">In</div><div class="sb-item"><span><span class="c">Duress</span></span><span class="sb-qty">+3</span></div><div class="sb-item"><span><span class="c">Thoughtseize</span></span><span class="sb-qty">+2</span></div></div>
         <div class="sb-col"><div class="sb-col-label">Out</div><div class="sb-item"><span><span class="c">Fatal Push</span></span><span class="sb-qty">-2</span></div><div class="sb-item"><span><span class="c">Soul-Guide Lantern</span></span><span class="sb-qty">-2</span></div><div class="sb-item"><span><span class="c">Arashin Cleric</span></span><span class="sb-qty">-1</span></div></div>
       </div>
       <p class="sb-note">Duress and Thoughtseize strip Creativity. Cut removal — they win through spells.</p>
-    </div>
-  </div>
-
-  <div class="matchup-block">
-    <div class="matchup-header" onclick="toggle('mu-rakdos2')">
-      <h3>RAKDOS MIDRANGE</h3><span class="verdict verdict-even">Even</span>
-    </div>
-    <div id="mu-rakdos2" class="matchup-body">
-      <p>Thoughtseize trades 1-for-1. Kill Vein Ripper or Kalitas before they generate value. Fatal Push with revolt handles most of their threats.</p>
+</td></tr>
+<tr onclick="toggle('mu-rakdos2')"><td><strong>RAKDOS MIDRANGE</strong></td><td>Combo Race</td><td><span class="verdict verdict-even">Even</span></td><td>Thoughtseize trades 1-for-1.</td></tr>
+<tr><td colspan="4" class="matchup-detail" id="mu-rakdos2">
+<p>Thoughtseize trades 1-for-1. Kill Vein Ripper or Kalitas before they generate value. Fatal Push with revolt handles most of their threats.</p>
       <div class="sb-table">
         <div class="sb-col"><div class="sb-col-label">In</div><div class="sb-item"><span><span class="c">Fatal Push</span></span><span class="sb-qty">+2</span></div><div class="sb-item"><span><span class="c">Collective Brutality</span></span><span class="sb-qty">+1</span></div></div>
         <div class="sb-col"><div class="sb-col-label">Out</div><div class="sb-item"><span><span class="c">Duress</span></span><span class="sb-qty">-2</span></div><div class="sb-item"><span><span class="c">Soul-Guide Lantern</span></span><span class="sb-qty">-1</span></div></div>
       </div>
       <p class="sb-note">Fatal Push kills Vein Ripper and Kalitas. Cut redundant discard and Lantern.</p>
-    </div>
-  </div>
+</td></tr>
+</tbody>
+</table>
+
 
 </div>
 </div>

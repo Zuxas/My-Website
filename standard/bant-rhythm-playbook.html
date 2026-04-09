@@ -219,7 +219,7 @@ span.c:hover{border-bottom-style:solid;}
     .print-grid { position:fixed !important; top:0 !important; left:0 !important; width:100vw !important; height:auto !important; background:var(--rule) !important; border:none !important; display:grid !important; grid-template-columns:repeat(3,1fr) !important; gap:1px !important; }
     .print-mu { background:var(--paper) !important; padding:14px !important; }
   }
-</style>
+</style></style>
 </head>
 <body>
 
@@ -562,12 +562,13 @@ span.c:hover{border-bottom-style:solid;}
   <div class="mantra">"Most matchups come down to one question: can they deal with 8+ power across 4+ bodies on turn 5?"</div>
 
   <!-- DIMIR MIDRANGE -->
-  <div class="matchup-block">
-    <div class="matchup-header" onclick="toggle('mu-dimir')">
-      <h3>DIMIR MIDRANGE</h3><span class="verdict verdict-good">Favorable</span>
-    </div>
-    <div id="mu-dimir" class="matchup-body">
-      <p>Their removal suite is mostly single-target. Every spider token they spend removal on is a resource trade you win — your spells make 2-4 tokens, their removal handles one at a time. Their Kaito and Cecil engines are slow enough that you're already attacking with 6+ power before they stabilize.</p>
+  <table class="matchup-table">
+<colgroup><col><col><col><col></colgroup>
+<thead><tr><th>Matchup</th><th>Role</th><th>Verdict</th><th>Key Play</th></tr></thead>
+<tbody>
+<tr onclick="toggle('mu-dimir')"><td><strong>DIMIR MIDRANGE</strong></td><td>Combo</td><td><span class="verdict verdict-good">Favorable</span></td><td>Their removal suite is mostly single-target.</td></tr>
+<tr><td colspan="4" class="matchup-detail" id="mu-dimir">
+<p>Their removal suite is mostly single-target. Every spider token they spend removal on is a resource trade you win — your spells make 2-4 tokens, their removal handles one at a time. Their Kaito and Cecil engines are slow enough that you're already attacking with 6+ power before they stabilize.</p>
       <p><strong>What they're trying to do:</strong> Use Floodpits Drowner + Kaito to generate card advantage and block your ground assault. Cecil life-math can outrace aggro builds but struggles vs. multiple evasion threats.</p>
       <p><strong>What you do:</strong> Go wide immediately. Cast Pollinator ASAP. Use Spider Manifestation at end of their T3 to create a blocking wall that also attacks T4. Prioritize attacking with Quantum Riddler to generate card advantage that matches their engine.</p>
       <p><strong>Key threat to answer:</strong> Floodpits Drowner — it blocks your tokens indefinitely and untaps when they enter the battlefield. Into the Flood Maw bounces your whole board at sorcery speed. Protect against it with Seam Rip.</p>
@@ -585,16 +586,10 @@ span.c:hover{border-bottom-style:solid;}
           <div class="sb-item"><span><span class="c">Mockingbird</span></span><span class="sb-qty">&minus;1</span></div>
         </div>
       </div>
-    </div>
-  </div>
-
-  <!-- MONO-GREEN LANDFALL -->
-  <div class="matchup-block">
-    <div class="matchup-header" onclick="toggle('mu-monogreen')">
-      <h3>MONO-GREEN LANDFALL</h3><span class="verdict verdict-even">Even</span>
-    </div>
-    <div id="mu-monogreen" class="matchup-body">
-      <p>Both decks go wide with tokens. The difference is Mono-Green has Icetill Explorer combo kill and Sapling Nursery grind. You have Quantum Riddler card advantage and Craterhoof for the big swing. The matchup is decided by who gets ahead on board before the opponent's key combo pieces come online.</p>
+</td></tr>
+<tr onclick="toggle('mu-monogreen')"><td><strong>MONO-GREEN LANDFALL</strong></td><td>Combo Race</td><td><span class="verdict verdict-even">Even</span></td><td>Both decks go wide with tokens.</td></tr>
+<tr><td colspan="4" class="matchup-detail" id="mu-monogreen">
+<p>Both decks go wide with tokens. The difference is Mono-Green has Icetill Explorer combo kill and Sapling Nursery grind. You have Quantum Riddler card advantage and Craterhoof for the big swing. The matchup is decided by who gets ahead on board before the opponent's key combo pieces come online.</p>
       <p><strong>What they're trying to do:</strong> Ramp to Mightform Harmonizer + Icetill Explorer for the instant win, or Sapling Nursery for the grinding advantage.</p>
       <p><strong>What you do:</strong> Race. Your spiders have reach which blocks their Mightform Harmonizer fliers. Get Gene Pollinator down fast and flood the board with spiders. Their tokens don't have evasion; yours have reach and block effectively.</p>
       <div class="sb-table">
@@ -609,16 +604,10 @@ span.c:hover{border-bottom-style:solid;}
           <div class="sb-item"><span><span class="c">Ouroboroid</span></span><span class="sb-qty">&minus;1</span></div>
         </div>
       </div>
-    </div>
-  </div>
-
-  <!-- IZZET PROWESS -->
-  <div class="matchup-block">
-    <div class="matchup-header" onclick="toggle('mu-prowess')">
-      <h3>IZZET PROWESS</h3><span class="verdict verdict-even">Even</span>
-    </div>
-    <div id="mu-prowess" class="matchup-body">
-      <p>Prowess kills T3-4 with pump spells and Slickshot Show-Off. Your spider tokens with reach are actually good blockers against their aerial threats. The race is close — you can stabilize with 4+ spiders if you survive the initial burst.</p>
+</td></tr>
+<tr onclick="toggle('mu-prowess')"><td><strong>IZZET PROWESS</strong></td><td>Combo Race</td><td><span class="verdict verdict-even">Even</span></td><td>Prowess kills T3-4 with pump spells and Slickshot Show-Off.</td></tr>
+<tr><td colspan="4" class="matchup-detail" id="mu-prowess">
+<p>Prowess kills T3-4 with pump spells and Slickshot Show-Off. Your spider tokens with reach are actually good blockers against their aerial threats. The race is close — you can stabilize with 4+ spiders if you survive the initial burst.</p>
       <p><strong>What they're trying to do:</strong> Get a DRC or Swiftspear down early and chain spells. Every spell pumps multiple creatures.</p>
       <p><strong>What you do:</strong> T2 Nature's Rhythm for the spider is your most important survival play. Don't prioritize speed over blocking — put up the wall of reach spiders first, then go wide. Your ceiling is higher if the game goes long; their ceiling is higher if you die early.</p>
       <div class="sb-table">
@@ -633,16 +622,10 @@ span.c:hover{border-bottom-style:solid;}
           <div class="sb-item"><span><span class="c">Mockingbird</span></span><span class="sb-qty">&minus;1</span></div>
         </div>
       </div>
-    </div>
-  </div>
-
-  <!-- BOROS AGGRO -->
-  <div class="matchup-block">
-    <div class="matchup-header" onclick="toggle('mu-boros')">
-      <h3>BOROS AGGRO</h3><span class="verdict verdict-good">Favorable</span>
-    </div>
-    <div id="mu-boros" class="matchup-body">
-      <p>Their creatures are individually powerful but you go wider. Spider tokens with reach block their fliers. Gene Pollinator + Manifestation creates more blockers than they have attackers. This is your best matchup in the Standard field.</p>
+</td></tr>
+<tr onclick="toggle('mu-boros')"><td><strong>BOROS AGGRO</strong></td><td>Combo</td><td><span class="verdict verdict-good">Favorable</span></td><td>Their creatures are individually powerful but you go wider.</td></tr>
+<tr><td colspan="4" class="matchup-detail" id="mu-boros">
+<p>Their creatures are individually powerful but you go wider. Spider tokens with reach block their fliers. Gene Pollinator + Manifestation creates more blockers than they have attackers. This is your best matchup in the Standard field.</p>
       <p><strong>What they're trying to do:</strong> Emberheart Challenger + Monstrous Rage for a fast kill. Get in for early damage and close with burn.</p>
       <p><strong>What you do:</strong> Block aggressively. T2 Nature's Rhythm gives you a spider that blocks their T2 attacker. By T4, you have more bodies than they have damage. Their removal is inefficient against tokens. Race them with Pollinator doubling your spider count every turn.</p>
       <div class="sb-table">
@@ -655,16 +638,10 @@ span.c:hover{border-bottom-style:solid;}
           <div class="sb-item"><span><span class="c">Meltstrider's Resolve</span></span><span class="sb-qty">&minus;1</span></div>
         </div>
       </div>
-    </div>
-  </div>
-
-  <!-- JESKAI CONTROL -->
-  <div class="matchup-block">
-    <div class="matchup-header" onclick="toggle('mu-jeskai')">
-      <h3>JESKAI CONTROL</h3><span class="verdict verdict-even">Even</span>
-    </div>
-    <div id="mu-jeskai" class="matchup-body">
-      <p>Their sweepers (Day of Judgment, Sunfall) can undo your board instantly. Seam Rip is critical here — counter the sweeper. Play around Seam Rip by baiting with small threats first, then deploying Pollinator after they've used their counter or tapped out for a sweeper.</p>
+</td></tr>
+<tr onclick="toggle('mu-jeskai')"><td><strong>JESKAI CONTROL</strong></td><td>Combo Race</td><td><span class="verdict verdict-even">Even</span></td><td>Their sweepers (Day of Judgment, Sunfall) can undo your board instantly.</td></tr>
+<tr><td colspan="4" class="matchup-detail" id="mu-jeskai">
+<p>Their sweepers (Day of Judgment, Sunfall) can undo your board instantly. Seam Rip is critical here — counter the sweeper. Play around Seam Rip by baiting with small threats first, then deploying Pollinator after they've used their counter or tapped out for a sweeper.</p>
       <p><strong>What they're trying to do:</strong> Resolve a sweeper when you're fully committed, then establish Atraxa or Memory Deluge for the inevitable.</p>
       <p><strong>What you do:</strong> Never fully commit. Cast Pollinator when they're at 3 or fewer mana. Hold Manifestation as instant-speed rebuild after their sweeper. Use Ouroboroid post-sweeper as two 4/4s that must be answered immediately. Save Seam Rip specifically for sweepers, not for tempo counterspells.</p>
       <div class="sb-table">
@@ -679,16 +656,10 @@ span.c:hover{border-bottom-style:solid;}
           <div class="sb-item"><span><span class="c">Llanowar Elves</span></span><span class="sb-qty">&minus;2</span></div>
         </div>
       </div>
-    </div>
-  </div>
-
-  <!-- MIRROR -->
-  <div class="matchup-block">
-    <div class="matchup-header" onclick="toggle('mu-mirror')">
-      <h3>BANT RHYTHM MIRROR</h3><span class="verdict verdict-even">Even</span>
-    </div>
-    <div id="mu-mirror" class="matchup-body">
-      <p>First Gene Pollinator wins. The mirror is decided by who gets Pollinator down first and untapped. Both decks go wide at the same rate without Pollinator, but the first one to double their token production creates an insurmountable board advantage.</p>
+</td></tr>
+<tr onclick="toggle('mu-mirror')"><td><strong>BANT RHYTHM MIRROR</strong></td><td>Combo Race</td><td><span class="verdict verdict-even">Even</span></td><td>First Gene Pollinator wins.</td></tr>
+<tr><td colspan="4" class="matchup-detail" id="mu-mirror">
+<p>First Gene Pollinator wins. The mirror is decided by who gets Pollinator down first and untapped. Both decks go wide at the same rate without Pollinator, but the first one to double their token production creates an insurmountable board advantage.</p>
       <p><strong>What you do:</strong> Race to Pollinator. Use Seam Rip to counter their Pollinator if you're behind on tempo. Hold Craterhoof as the alpha swing after they've blocked everything.</p>
       <div class="sb-table">
         <div class="sb-col"><div class="sb-col-label">In</div>
@@ -701,65 +672,47 @@ span.c:hover{border-bottom-style:solid;}
           <div class="sb-item"><span><span class="c">Beza, the Bounding Spring</span></span><span class="sb-qty">&minus;1</span></div>
         </div>
       </div>
-    </div>
-  </div>
-
-  <!-- IZZET LESSONS -->
-  <div class="matchup-block">
-    <div class="matchup-header" onclick="toggle('mu-lessons')">
-      <h3>IZZET LESSONS</h3><span class="verdict verdict-hard">Unfavorable</span>
-    </div>
-    <div id="mu-lessons" class="matchup-body">
-      <p>Izzet Lessons has multiple answers to your token strategy. <span class="c">Abandon Attachments</span> can hit <span class="c">Gene Pollinator</span> if they have it (note: Pollinator is a creature, not an attachment — but their sweepers hit it). More importantly, their sheer card quantity through <span class="c">Accumulate Wisdom</span> and <span class="c">Gran-Gran</span> means they have more answers than you have threats in a long game.</p>
+</td></tr>
+<tr onclick="toggle('mu-lessons')"><td><strong>IZZET LESSONS</strong></td><td>Flexible</td><td><span class="verdict verdict-hard">Unfavorable</span></td><td>Izzet Lessons has multiple answers to your token strategy.</td></tr>
+<tr><td colspan="4" class="matchup-detail" id="mu-lessons">
+<p>Izzet Lessons has multiple answers to your token strategy. <span class="c">Abandon Attachments</span> can hit <span class="c">Gene Pollinator</span> if they have it (note: Pollinator is a creature, not an attachment — but their sweepers hit it). More importantly, their sheer card quantity through <span class="c">Accumulate Wisdom</span> and <span class="c">Gran-Gran</span> means they have more answers than you have threats in a long game.</p>
       <p><strong>Priority:</strong> Kill them by turn 5. Don't let the game go long. Deploy Pollinator early and flood the board — their sweepers are sorcery speed, so flash in Spider Manifestation at end of their turn to rebuild immediately after a wipe. Craterhoof is your best closer — it ends the game without giving them another draw step.</p>
       <p><strong>Needle:</strong> Hold Seam Rip for their sweeper, not their card draw. One counter on Pyroclasm or their board wipe is worth more than two counters on Accumulate Wisdom.</p>
       <div class="sb-table">
         <div class="sb-col"><div class="sb-col-label">In</div><div class="sb-item"><span><span class="c">Oko, Lorwyn Liege</span></span><span class="sb-qty">+2</span></div><div class="sb-item"><span><span class="c">Spider-Sense</span></span><span class="sb-qty">+2</span></div></div>
         <div class="sb-col"><div class="sb-col-label">Out</div><div class="sb-item"><span><span class="c">Bounce Off</span></span><span class="sb-qty">−1</span></div><div class="sb-item"><span><span class="c">Meltstrider's Resolve</span></span><span class="sb-qty">−1</span></div><div class="sb-item"><span><span class="c">Beza, the Bounding Spring</span></span><span class="sb-qty">−1</span></div><div class="sb-item"><span><span class="c">Brightglass Gearhulk</span></span><span class="sb-qty">−1</span></div></div>
       </div>
-    </div>
-  </div>
-  <div class="matchup-block">
-    <div class="matchup-header" onclick="toggle('mu-excruciator')">
-      <h3>DIMIR EXCRUCIATOR</h3><span class="verdict verdict-even">Even</span>
-    </div>
-    <div id="mu-excruciator" class="matchup-body">
-      <p>Dimir Excruciator counters your key spells — Seam Rip (your counterspell) answers their Floodpits Drowner bounce at {1U}. Your threats generate board presence faster than their answers can keep up. Pollinator Wasp creates tokens even through disruption — each token is another attacker they need to answer. Play around Harbinger of the Seas by not over-committing nonbasics into play.</p>
+</td></tr>
+<tr onclick="toggle('mu-excruciator')"><td><strong>DIMIR EXCRUCIATOR</strong></td><td>Combo Race</td><td><span class="verdict verdict-even">Even</span></td><td>Dimir Excruciator counters your key spells — Seam Rip (your counterspell) ans...</td></tr>
+<tr><td colspan="4" class="matchup-detail" id="mu-excruciator">
+<p>Dimir Excruciator counters your key spells — Seam Rip (your counterspell) answers their Floodpits Drowner bounce at {1U}. Your threats generate board presence faster than their answers can keep up. Pollinator Wasp creates tokens even through disruption — each token is another attacker they need to answer. Play around Harbinger of the Seas by not over-committing nonbasics into play.</p>
       <div class="sb-table">
         <div class="sb-col"><div class="sb-col-label">In</div><div class="sb-item"><span><span class="c">Oko, Lorwyn Liege</span></span><span class="sb-qty">+2</span></div><div class="sb-item"><span><span class="c">Seam Rip</span></span><span class="sb-qty">+2</span></div></div>
         <div class="sb-col"><div class="sb-col-label">Out</div><div class="sb-item"><span><span class="c">Meltstrider's Resolve</span></span><span class="sb-qty">-2</span></div><div class="sb-item"><span><span class="c">Bounce Off</span></span><span class="sb-qty">-2</span></div></div>
       </div>
       <p class="sb-note">Oko, Lorwyn Liege generates value every turn they spend answering your threats. Seam Rip counters their Floodpits Drowner bounce and Harbinger ETBs. Meltstrider's Resolve is weak — their counterspells answer it. Cut Bounce Off (their threats are too big to return efficiently).</p>
-    </div>
-  </div>
-
-  <div class="matchup-block">
-    <div class="matchup-header" onclick="toggle('mu-simic')">
-      <h3>SIMIC RHYTHM</h3><span class="verdict verdict-dog">Unfavorable</span>
-    </div>
-    <div id="mu-simic" class="matchup-body">
-      <p>Simic Rhythm mirrors your going-wide strategy but with Badgermole Cub generating counters faster than your spider tokens scale. Their Earthbender Ascension triggers stack with Cub attacks — they get 4-8 power on board by turn 3 while you're still building. Spider Manifestation (flash 1/4 reach + token) is your best defensive play. Craterhoof Behemoth is the only closer that can punish their tapped mana.</p>
+</td></tr>
+<tr onclick="toggle('mu-simic')"><td><strong>SIMIC RHYTHM</strong></td><td>Flexible</td><td><span class="verdict verdict-dog">Unfavorable</span></td><td>Simic Rhythm mirrors your going-wide strategy but with Badgermole Cub generat...</td></tr>
+<tr><td colspan="4" class="matchup-detail" id="mu-simic">
+<p>Simic Rhythm mirrors your going-wide strategy but with Badgermole Cub generating counters faster than your spider tokens scale. Their Earthbender Ascension triggers stack with Cub attacks — they get 4-8 power on board by turn 3 while you're still building. Spider Manifestation (flash 1/4 reach + token) is your best defensive play. Craterhoof Behemoth is the only closer that can punish their tapped mana.</p>
       <div class="sb-table">
         <div class="sb-col"><div class="sb-col-label">In</div><div class="sb-item"><span><span class="c">Oko, Lorwyn Liege</span></span><span class="sb-qty">+2</span></div><div class="sb-item"><span><span class="c">Vivien Reid</span></span><span class="sb-qty">+1</span></div></div>
         <div class="sb-col"><div class="sb-col-label">Out</div><div class="sb-item"><span><span class="c">Brightglass Gearhulk</span></span><span class="sb-qty">-2</span></div><div class="sb-item"><span><span class="c">Meltstrider's Resolve</span></span><span class="sb-qty">-1</span></div></div>
       </div>
       <p class="sb-note">Oko converts your tokens into 3/3 Elks — bigger than their 2/2 Cub tokens. Vivien Reid fights their creatures directly. Gearhulk is too slow at 6 mana. Cut Resolve — they have no key enchantments to answer.</p>
-    </div>
-  </div>
-
-  <div class="matchup-block">
-    <div class="matchup-header" onclick="toggle('mu-monored')">
-      <h3>MONO-RED AGGRO</h3><span class="verdict verdict-good">Favorable</span>
-    </div>
-    <div id="mu-monored" class="matchup-body">
-      <p>Mono-Red kills by turn 4 through burn and aggressive creatures. Your spider tokens (1/4 reach from Spider Manifestation) block their 2/2s indefinitely. Meltstrider's Resolve gains life and grows your creatures simultaneously — one Resolve when they're at 8-12 life can make the math impossible for them. Your ceiling is faster than they can race if you deploy a Pollinator on T3 with tokens ready to block.</p>
+</td></tr>
+<tr onclick="toggle('mu-monored')"><td><strong>MONO-RED AGGRO</strong></td><td>Combo</td><td><span class="verdict verdict-good">Favorable</span></td><td>Mono-Red kills by turn 4 through burn and aggressive creatures.</td></tr>
+<tr><td colspan="4" class="matchup-detail" id="mu-monored">
+<p>Mono-Red kills by turn 4 through burn and aggressive creatures. Your spider tokens (1/4 reach from Spider Manifestation) block their 2/2s indefinitely. Meltstrider's Resolve gains life and grows your creatures simultaneously — one Resolve when they're at 8-12 life can make the math impossible for them. Your ceiling is faster than they can race if you deploy a Pollinator on T3 with tokens ready to block.</p>
       <div class="sb-table">
         <div class="sb-col"><div class="sb-col-label">In</div><div class="sb-item"><span><span class="c">Meltstrider's Resolve</span></span><span class="sb-qty">+2</span></div><div class="sb-item"><span><span class="c">Beza, the Bounding Spring</span></span><span class="sb-qty">+2</span></div></div>
         <div class="sb-col"><div class="sb-col-label">Out</div><div class="sb-item"><span><span class="c">Oko, Lorwyn Liege</span></span><span class="sb-qty">-2</span></div><div class="sb-item"><span><span class="c">Seam Rip</span></span><span class="sb-qty">-2</span></div></div>
       </div>
       <p class="sb-note">Meltstrider's Resolve gains enough life to survive their burn finish while growing your blockers. Beza, the Bounding Spring gains 2 life on ETB and whenever you gain life — stacks with Resolve for massive life swings. Oko and Seam Rip are dead — no counterspells needed against all-in aggro.</p>
-    </div>
-  </div>
+</td></tr>
+</tbody>
+</table>
+
 
 
 </div>

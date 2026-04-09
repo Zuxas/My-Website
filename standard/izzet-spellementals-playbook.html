@@ -161,7 +161,7 @@ span.c:hover{border-bottom-style:solid;}
     .print-grid { position:fixed !important; top:0 !important; left:0 !important; width:100vw !important; height:auto !important; background:var(--rule) !important; border:none !important; display:grid !important; grid-template-columns:repeat(3,1fr) !important; gap:1px !important; }
     .print-mu { background:var(--paper) !important; padding:14px !important; }
   }
-</style>
+</style></style>
 </head>
 <body>
 <nav>
@@ -334,12 +334,13 @@ span.c:hover{border-bottom-style:solid;}
   <h1>MATCHUP<br>GUIDE</h1>
   <div class="mantra">"Throne resolves, you win. Throne doesn't resolve, fight for it with every counter in your hand."</div>
 
-  <div class="matchup-block">
-    <div class="matchup-header" onclick="toggle('mu-monogreen')">
-      <h3>MONO-GREEN LANDFALL</h3><span class="verdict verdict-even">Even</span>
-    </div>
-    <div id="mu-monogreen" class="matchup-body">
-      <p>Their Icetill combo can end the game before Sunderflock sets up. Your Sunderflock with Throne active deals damage equal to your Elemental count to each of their creatures — at 3 Elementals it's 6 damage to each. Their Mightform Harmonizer and Badgermole Cub both die. The race is who sets up first.</p>
+  <table class="matchup-table">
+<colgroup><col><col><col><col></colgroup>
+<thead><tr><th>Matchup</th><th>Role</th><th>Verdict</th><th>Key Play</th></tr></thead>
+<tbody>
+<tr onclick="toggle('mu-monogreen')"><td><strong>MONO-GREEN LANDFALL</strong></td><td>Combo Race</td><td><span class="verdict verdict-even">Even</span></td><td>Their Icetill combo can end the game before Sunderflock sets up.</td></tr>
+<tr><td colspan="4" class="matchup-detail" id="mu-monogreen">
+<p>Their Icetill combo can end the game before Sunderflock sets up. Your Sunderflock with Throne active deals damage equal to your Elemental count to each of their creatures — at 3 Elementals it's 6 damage to each. Their Mightform Harmonizer and Badgermole Cub both die. The race is who sets up first.</p>
       <p><strong>Priority:</strong> Get Roaming Throne down early and protect it. Once Throne is active, Sunderflock effectively resets their board. Counter their Earthbender Ascension if possible — if Ascension fully activates their engine speed doubles. Use Cavern of Souls naming Elemental so your threats can't be countered by their few interaction pieces.</p>
       <p><strong>Needle:</strong> Counter Sapling Nursery if they attempt it. A resolved Nursery means they're generating 3/4 reach tokens that block your Elementals. Bounce Off can handle Nursery if it resolves (return target nonland permanent MV ≤ 2... check Nursery's MV). Kill Badgermole Cub immediately — their ramp is their speed advantage.</p>
       <div class="sb-table">
@@ -352,15 +353,10 @@ span.c:hover{border-bottom-style:solid;}
           <div class="sb-item"><span><span class="c">Glacial Dragonhunt</span></span><span class="sb-qty">&minus;1</span></div>
         </div>
       </div>
-    </div>
-  </div>
-
-  <div class="matchup-block">
-    <div class="matchup-header" onclick="toggle('mu-prowess')">
-      <h3>IZZET PROWESS</h3><span class="verdict verdict-hard">Unfavorable</span>
-    </div>
-    <div id="mu-prowess" class="matchup-body">
-      <p>They kill on turn 3-4 and you set up on turn 4-5. Speed mismatch is the problem. Hearth Elemental (4 toughness) blocks Slickshot Show-Off effectively since Slickshot only has 2 base toughness and its power pump is temporary. Eddymurk Crab ETB taps their two biggest threats and buys you an extra turn.</p>
+</td></tr>
+<tr onclick="toggle('mu-prowess')"><td><strong>IZZET PROWESS</strong></td><td>Flexible</td><td><span class="verdict verdict-hard">Unfavorable</span></td><td>They kill on turn 3-4 and you set up on turn 4-5.</td></tr>
+<tr><td colspan="4" class="matchup-detail" id="mu-prowess">
+<p>They kill on turn 3-4 and you set up on turn 4-5. Speed mismatch is the problem. Hearth Elemental (4 toughness) blocks Slickshot Show-Off effectively since Slickshot only has 2 base toughness and its power pump is temporary. Eddymurk Crab ETB taps their two biggest threats and buys you an extra turn.</p>
       <p><strong>Priority:</strong> Survive to turn 5. Your Elementals all have 4 toughness which blocks most of their attackers. Cast Eddymurk Crab at their end step on turn 4 to tap their Slickshot + biggest Otter. Then Sunderflock on your turn kills their token flood. Cavern of Souls means your Crab and Sunderflock can't be countered with Spell Pierce or Get Out.</p>
       <p><strong>Needle:</strong> Burst Lightning kills Flamebraider (1/2) and Eddymurk Crab costs enough that it's usually your EOT bomb. The key line: hold open mana on their T3-T4, flash Crab at their EOT, tap their 2 biggest, untap and Sunderflock to sweep their smaller tokens.</p>
       <div class="sb-table">
@@ -374,15 +370,10 @@ span.c:hover{border-bottom-style:solid;}
           <div class="sb-item"><span><span class="c">Winternight Stories</span></span><span class="sb-qty">&minus;2</span></div>
         </div>
       </div>
-    </div>
-  </div>
-
-  <div class="matchup-block">
-    <div class="matchup-header" onclick="toggle('mu-lessons')">
-      <h3>IZZET LESSONS</h3><span class="verdict verdict-even">Even</span>
-    </div>
-    <div id="mu-lessons" class="matchup-body">
-      <p>Mirror-ish matchup of spell-heavy Izzet decks. They have Monument to Endurance for graveyard recursion and life gain; you have Sunderflock as a board wipe that doubles with Throne. Your Cavern of Souls naming Elemental makes your threats uncounterable, bypassing their It'll Quench Ya and Spell Snare.</p>
+</td></tr>
+<tr onclick="toggle('mu-lessons')"><td><strong>IZZET LESSONS</strong></td><td>Combo Race</td><td><span class="verdict verdict-even">Even</span></td><td>Mirror-ish matchup of spell-heavy Izzet decks.</td></tr>
+<tr><td colspan="4" class="matchup-detail" id="mu-lessons">
+<p>Mirror-ish matchup of spell-heavy Izzet decks. They have Monument to Endurance for graveyard recursion and life gain; you have Sunderflock as a board wipe that doubles with Throne. Your Cavern of Souls naming Elemental makes your threats uncounterable, bypassing their It'll Quench Ya and Spell Snare.</p>
       <p><strong>Priority:</strong> Cavern of Souls is your most important card. Name Elemental on Cavern. Now they can't counter your Ashling, Sunderflock, Hearth Elemental, or Flamebraider. Their Abandon Attachments can hit your Roaming Throne though — it's an artifact. Protect Throne with Bounce Off or Spell Snare (SB). Get Monument to Endurance out of the game with Soul-Guide Lantern (exiles their GY, stopping Monument's fuel).</p>
       <p><strong>Needle:</strong> Soul-Guide Lantern exiles their graveyard, cutting off Monument to Endurance's recursion engine. Board it in every game. Their hand disruption (Deceit/Distress mode) hits your Roaming Throne plan — cast Throne only when you can protect it.</p>
       <div class="sb-table">
@@ -396,15 +387,10 @@ span.c:hover{border-bottom-style:solid;}
           <div class="sb-item"><span><span class="c">Spell Pierce</span></span><span class="sb-qty">&minus;1</span></div>
         </div>
       </div>
-    </div>
-  </div>
-
-  <div class="matchup-block">
-    <div class="matchup-header" onclick="toggle('mu-dimir')">
-      <h3>DIMIR MIDRANGE</h3><span class="verdict verdict-good">Favorable</span>
-    </div>
-    <div id="mu-dimir" class="matchup-body">
-      <p>Your Elementals are large enough to brick their ground threats. Floodpits Drowner (the bounce spell on enter) can reset your Ashling but you get to re-enter triggers. Cavern of Souls naming Elemental bypasses their entire counterspell package. Sunderflock with Throne kills Kaito, their Drowners, and their Overlord of Balemurk in one shot.</p>
+</td></tr>
+<tr onclick="toggle('mu-dimir')"><td><strong>DIMIR MIDRANGE</strong></td><td>Combo</td><td><span class="verdict verdict-good">Favorable</span></td><td>Your Elementals are large enough to brick their ground threats.</td></tr>
+<tr><td colspan="4" class="matchup-detail" id="mu-dimir">
+<p>Your Elementals are large enough to brick their ground threats. Floodpits Drowner (the bounce spell on enter) can reset your Ashling but you get to re-enter triggers. Cavern of Souls naming Elemental bypasses their entire counterspell package. Sunderflock with Throne kills Kaito, their Drowners, and their Overlord of Balemurk in one shot.</p>
       <p><strong>Priority:</strong> Play through their interaction with Cavern. Cast Roaming Throne when they're at low mana. Sunderflock with 3 Elementals deals 6 damage to each creature — this kills almost their entire board. Ashling recursion with Bounce Off means they never permanently remove your engine. Keep Bounce Off to protect Ashling from Into the Flood Maw (which would bounce your whole board at sorcery speed).</p>
       <p><strong>Needle:</strong> Their Enduring Curiosity attached to Floodpits Drowner lets them draw whenever Drowner bounces a permanent — don't let Drowner resolve. Counter it or Bounce Off their Enduring Curiosity before it generates value. Deceit (discard mode) strips your Throne from hand — cast Throne the turn you draw it if possible.</p>
       <div class="sb-table">
@@ -418,15 +404,10 @@ span.c:hover{border-bottom-style:solid;}
           <div class="sb-item"><span><span class="c">Glacial Dragonhunt</span></span><span class="sb-qty">&minus;1</span></div>
         </div>
       </div>
-    </div>
-  </div>
-
-  <div class="matchup-block">
-    <div class="matchup-header" onclick="toggle('mu-jeskai')">
-      <h3>JESKAI CONTROL</h3><span class="verdict verdict-even">Even</span>
-    </div>
-    <div id="mu-jeskai" class="matchup-body">
-      <p>Cavern of Souls makes your threats uncounterable. Their sweepers (Day of Judgment, Avatar's Wrath) can answer your board, but Ashling bounces back. The game is decided by whether your Roaming Throne resolves — it's an artifact, so Cavern doesn't protect it. Cast Throne only when they're at 3 or fewer mana.</p>
+</td></tr>
+<tr onclick="toggle('mu-jeskai')"><td><strong>JESKAI CONTROL</strong></td><td>Combo Race</td><td><span class="verdict verdict-even">Even</span></td><td>Cavern of Souls makes your threats uncounterable.</td></tr>
+<tr><td colspan="4" class="matchup-detail" id="mu-jeskai">
+<p>Cavern of Souls makes your threats uncounterable. Their sweepers (Day of Judgment, Avatar's Wrath) can answer your board, but Ashling bounces back. The game is decided by whether your Roaming Throne resolves — it's an artifact, so Cavern doesn't protect it. Cast Throne only when they're at 3 or fewer mana.</p>
       <p><strong>Priority:</strong> Land Roaming Throne against their open mana window. Their No More Lies counters your Throne for {1}{U}{W} — wait for their T3-T4 tap-out. Once Throne resolves, your Sunderflock and Ashling generate 2x triggers per cast which outpaces their card draw. Bounce Off protects Throne from High Noon lock and exile effects.</p>
       <p><strong>Needle:</strong> High Noon (can only cast one spell per turn) significantly slows your multi-spell turns. Bounce Off targeting your own Ashling lets you re-cast it as your one spell for another round of enter triggers. Disdainful Stroke (SB) counters their expensive sweepers at 2 mana. Their Ajani, Outland Chaperone gains life — factor that into your kill clock.</p>
       <div class="sb-table">
@@ -440,15 +421,10 @@ span.c:hover{border-bottom-style:solid;}
           <div class="sb-item"><span><span class="c">Spider-Sense</span></span><span class="sb-qty">&minus;1</span></div>
         </div>
       </div>
-    </div>
-  </div>
-
-  <div class="matchup-block">
-    <div class="matchup-header" onclick="toggle('mu-boros')">
-      <h3>BOROS AGGRO</h3><span class="verdict verdict-good">Favorable</span>
-    </div>
-    <div id="mu-boros" class="matchup-body">
-      <p>Your 4-toughness Elementals block their entire creature base profitably. Hearth Elemental at 3/4 blocks Clarion Conqueror, Voice of Victory, and Nova Hellkite if needed. Sunderflock with even 2 Elementals deals 4 damage to each of their creatures — their 2-toughness creatures all die. Eddymurk Crab taps their best attackers at flash speed.</p>
+</td></tr>
+<tr onclick="toggle('mu-boros')"><td><strong>BOROS AGGRO</strong></td><td>Combo</td><td><span class="verdict verdict-good">Favorable</span></td><td>Your 4-toughness Elementals block their entire creature base profitably.</td></tr>
+<tr><td colspan="4" class="matchup-detail" id="mu-boros">
+<p>Your 4-toughness Elementals block their entire creature base profitably. Hearth Elemental at 3/4 blocks Clarion Conqueror, Voice of Victory, and Nova Hellkite if needed. Sunderflock with even 2 Elementals deals 4 damage to each of their creatures — their 2-toughness creatures all die. Eddymurk Crab taps their best attackers at flash speed.</p>
       <p><strong>Priority:</strong> Establish blockers immediately. Don't race — stabilize and then take over. A single Sunderflock with Throne at 3 Elementals clears their whole board and leaves you ahead on board. Crab at flash speed on their attack step taps Ojer Axonil before it can double their damage pings.</p>
       <p><strong>Needle:</strong> Kill Ojer Axonil immediately with Burst Lightning (2 damage... Ojer is a 4/4 so Burst Lightning doesn't kill it. Sear deals 4 damage which also doesn't kill Ojer at 4 toughness). Broadside Barrage (5 damage) or Sunderflock are your Ojer answers. Don't let Ojer + Sharpshooter sit on board simultaneously.</p>
       <div class="sb-table">
@@ -460,63 +436,46 @@ span.c:hover{border-bottom-style:solid;}
           <div class="sb-item"><span><span class="c">Winternight Stories</span></span><span class="sb-qty">&minus;2</span></div>
         </div>
       </div>
-    </div>
-  </div>
-  <div class="matchup-block">
-    <div class="matchup-header" onclick="toggle('mu-excruciator')">
-      <h3>DIMIR EXCRUCIATOR</h3><span class="verdict verdict-dog">Unfavorable</span>
-    </div>
-    <div id="mu-excruciator" class="matchup-body">
-      <p>Dimir Excruciator counters your Hearth Elemental with Spell Snare and bounces your permanents with Floodpits Drowner. Their interaction suite is dense: Counterspell, Spell Snare, Force of Negation (free). Your chain cantrips into Hearth Elemental game plan requires deploying Hearth when they're tapped — plot Hearth Elemental to avoid the counter window. Eddymurk Crab flashed in at instant speed taps their Floodpits Drowner before it can bounce your key piece.</p>
+</td></tr>
+<tr onclick="toggle('mu-excruciator')"><td><strong>DIMIR EXCRUCIATOR</strong></td><td>Flexible</td><td><span class="verdict verdict-dog">Unfavorable</span></td><td>Dimir Excruciator counters your Hearth Elemental with Spell Snare and bounces...</td></tr>
+<tr><td colspan="4" class="matchup-detail" id="mu-excruciator">
+<p>Dimir Excruciator counters your Hearth Elemental with Spell Snare and bounces your permanents with Floodpits Drowner. Their interaction suite is dense: Counterspell, Spell Snare, Force of Negation (free). Your chain cantrips into Hearth Elemental game plan requires deploying Hearth when they're tapped — plot Hearth Elemental to avoid the counter window. Eddymurk Crab flashed in at instant speed taps their Floodpits Drowner before it can bounce your key piece.</p>
       <div class="sb-table">
         <div class="sb-col"><div class="sb-col-label">In</div><div class="sb-item"><span><span class="c">Spell Pierce</span></span><span class="sb-qty">+2</span></div><div class="sb-item"><span><span class="c">Disdainful Stroke</span></span><span class="sb-qty">+1</span></div></div>
         <div class="sb-col"><div class="sb-col-label">Out</div><div class="sb-item"><span><span class="c">Broadside Barrage</span></span><span class="sb-qty">-2</span></div><div class="sb-item"><span><span class="c">Winternight Stories</span></span><span class="sb-qty">-1</span></div></div>
       </div>
       <p class="sb-note">Spell Pierce counters their Floodpits Drowner (MV 3, costs {2U} — Pierce at {U} forces them to pay 2 more). Disdainful Stroke hard-counters Sunderflock (MV 4+). Cut Broadside Barrage (too expensive) and Winternight Stories (their threats are too large for the counter).</p>
-    </div>
-  </div>
-
-  <div class="matchup-block">
-    <div class="matchup-header" onclick="toggle('mu-simic')">
-      <h3>SIMIC RHYTHM</h3><span class="verdict verdict-good">Favorable</span>
-    </div>
-    <div id="mu-simic" class="matchup-body">
-      <p>Simic Rhythm has no interaction for your instant-speed chain. Their Earthbender Ascension generates counters but cannot answer a Sunderflock sweeper — deploy it when they've committed their board and cast Sunderflock at 4-5 damage to wipe their tokens and Cub simultaneously. Your Hearth Elemental (a free spell reducer via other elementals) comes online faster than their counter engine.</p>
+</td></tr>
+<tr onclick="toggle('mu-simic')"><td><strong>SIMIC RHYTHM</strong></td><td>Combo</td><td><span class="verdict verdict-good">Favorable</span></td><td>Simic Rhythm has no interaction for your instant-speed chain.</td></tr>
+<tr><td colspan="4" class="matchup-detail" id="mu-simic">
+<p>Simic Rhythm has no interaction for your instant-speed chain. Their Earthbender Ascension generates counters but cannot answer a Sunderflock sweeper — deploy it when they've committed their board and cast Sunderflock at 4-5 damage to wipe their tokens and Cub simultaneously. Your Hearth Elemental (a free spell reducer via other elementals) comes online faster than their counter engine.</p>
       <div class="sb-table">
         <div class="sb-col"><div class="sb-col-label">In</div><div class="sb-item"><span><span class="c">Slagstorm</span></span><span class="sb-qty">+2</span></div><div class="sb-item"><span><span class="c">Into the Flood Maw</span></span><span class="sb-qty">+1</span></div></div>
         <div class="sb-col"><div class="sb-col-label">Out</div><div class="sb-item"><span><span class="c">Eddymurk Crab</span></span><span class="sb-qty">-2</span></div><div class="sb-item"><span><span class="c">Disdainful Stroke</span></span><span class="sb-qty">-1</span></div></div>
       </div>
       <p class="sb-note">Slagstorm sweeps their Cub token board at 3 damage — nothing they play early survives. Into the Flood Maw bounces their Earthbender Ascension before it triggers. Cut Crab (no threats to tap) and Disdainful Stroke (their spells are all low MV).</p>
-    </div>
-  </div>
-
-  <div class="matchup-block">
-    <div class="matchup-header" onclick="toggle('mu-dragons')">
-      <h3>BOROS DRAGONS</h3><span class="verdict verdict-even">Even</span>
-    </div>
-    <div id="mu-dragons" class="matchup-body">
-      <p>Boros Dragons presents large flying threats (Dragonhawk, Dragonheart Escort) that block your Hearth Elemental attacks. Your Eddymurk Crab flashed in at instant speed taps their largest dragon before it can attack. Sunderflock at 4-5 damage kills most of their support creatures (3 toughness or less). Race: your chain-spell engine generates cards faster than their incremental dragon advantage.</p>
+</td></tr>
+<tr onclick="toggle('mu-dragons')"><td><strong>BOROS DRAGONS</strong></td><td>Combo Race</td><td><span class="verdict verdict-even">Even</span></td><td>Boros Dragons presents large flying threats (Dragonhawk, Dragonheart Escort) ...</td></tr>
+<tr><td colspan="4" class="matchup-detail" id="mu-dragons">
+<p>Boros Dragons presents large flying threats (Dragonhawk, Dragonheart Escort) that block your Hearth Elemental attacks. Your Eddymurk Crab flashed in at instant speed taps their largest dragon before it can attack. Sunderflock at 4-5 damage kills most of their support creatures (3 toughness or less). Race: your chain-spell engine generates cards faster than their incremental dragon advantage.</p>
       <div class="sb-table">
         <div class="sb-col"><div class="sb-col-label">In</div><div class="sb-item"><span><span class="c">Slagstorm</span></span><span class="sb-qty">+2</span></div><div class="sb-item"><span><span class="c">Disdainful Stroke</span></span><span class="sb-qty">+1</span></div></div>
         <div class="sb-col"><div class="sb-col-label">Out</div><div class="sb-item"><span><span class="c">Winternight Stories</span></span><span class="sb-qty">-2</span></div><div class="sb-item"><span><span class="c">Burst Lightning</span></span><span class="sb-qty">-1</span></div></div>
       </div>
       <p class="sb-note">Slagstorm kills their smaller support creatures and clears the way for your Hearth attacks. Disdainful Stroke counters their large dragons (MV 4+). Cut Winternight Stories (card draw when you want sweepers) and a Burst Lightning (your damage outputs exceed their toughness anyway).</p>
-    </div>
-  </div>
-
-  <div class="matchup-block">
-    <div class="matchup-header" onclick="toggle('mu-monored')">
-      <h3>MONO-RED AGGRO</h3><span class="verdict verdict-dog">Unfavorable</span>
-    </div>
-    <div id="mu-monored" class="matchup-body">
-      <p>Mono-Red kills turn 3-4 and your cantrip chain is too slow. Your only defensive cards are Burst Lightning (kills their 1-drops) and Eddymurk Crab (0/4 flash blocker). Deploy Crab at instant speed on their T2 attack to block indefinitely. Your Slagstorm sweeps their entire board at 3 damage — cast it after they've deployed 3+ creatures for maximum value. Race by connecting with your first Hearth Elemental as fast as possible.</p>
+</td></tr>
+<tr onclick="toggle('mu-monored')"><td><strong>MONO-RED AGGRO</strong></td><td>Flexible</td><td><span class="verdict verdict-dog">Unfavorable</span></td><td>Mono-Red kills turn 3-4 and your cantrip chain is too slow.</td></tr>
+<tr><td colspan="4" class="matchup-detail" id="mu-monored">
+<p>Mono-Red kills turn 3-4 and your cantrip chain is too slow. Your only defensive cards are Burst Lightning (kills their 1-drops) and Eddymurk Crab (0/4 flash blocker). Deploy Crab at instant speed on their T2 attack to block indefinitely. Your Slagstorm sweeps their entire board at 3 damage — cast it after they've deployed 3+ creatures for maximum value. Race by connecting with your first Hearth Elemental as fast as possible.</p>
       <div class="sb-table">
         <div class="sb-col"><div class="sb-col-label">In</div><div class="sb-item"><span><span class="c">Slagstorm</span></span><span class="sb-qty">+2</span></div><div class="sb-item"><span><span class="c">Pyroclasm</span></span><span class="sb-qty">+1</span></div></div>
         <div class="sb-col"><div class="sb-col-label">Out</div><div class="sb-item"><span><span class="c">Winternight Stories</span></span><span class="sb-qty">-2</span></div><div class="sb-item"><span><span class="c">Into the Flood Maw</span></span><span class="sb-qty">-1</span></div></div>
       </div>
       <p class="sb-note">Slagstorm sweeps all their 3-toughness-or-less threats simultaneously. Pyroclasm at 2 damage hits their 1-drops. Cut Winternight Stories (5 mana in an aggro race is wrong) and Flood Maw (no key permanents to bounce).</p>
-    </div>
-  </div>
+</td></tr>
+</tbody>
+</table>
+
 
 
 </div>

@@ -168,7 +168,7 @@ span.c:hover{border-bottom-style:solid;}
     .print-grid { position:fixed !important; top:0 !important; left:0 !important; width:100vw !important; height:auto !important; background:var(--rule) !important; border:none !important; display:grid !important; grid-template-columns:repeat(3,1fr) !important; gap:1px !important; }
     .print-mu { background:var(--paper) !important; padding:14px !important; }
   }
-</style>
+</style></style>
 </head>
 <body>
 <nav>
@@ -353,12 +353,13 @@ span.c:hover{border-bottom-style:solid;}
   <h1>MATCHUP<br>GUIDE</h1>
   <div class="mantra">"G1 you race. G2–3 you apply Eidolon first and race second."</div>
 
-  <div class="matchup-block">
-    <div class="matchup-header" onclick="toggle('mu-cutter')">
-      <h3>UR CUTTER</h3><span class="verdict verdict-even">Even</span>
-    </div>
-    <div id="mu-cutter" class="matchup-body">
-      <p>Both decks kill on T3. The difference: UR Cutter scales harder with Treasure Cruise; RDW has more direct damage. Key: kill their Stormchaser's Talent before the Otter token generates value. Soul-Scar Mage shrinks the Monk tokens permanently via burn. Eidolon taxes all their cantrips — each Opt or Consider costs them 2 on top of your clock.</p>
+  <table class="matchup-table">
+<colgroup><col><col><col><col></colgroup>
+<thead><tr><th>Matchup</th><th>Role</th><th>Verdict</th><th>Key Play</th></tr></thead>
+<tbody>
+<tr onclick="toggle('mu-cutter')"><td><strong>UR CUTTER</strong></td><td>Combo Race</td><td><span class="verdict verdict-even">Even</span></td><td>Both decks kill on T3.</td></tr>
+<tr><td colspan="4" class="matchup-detail" id="mu-cutter">
+<p>Both decks kill on T3. The difference: UR Cutter scales harder with Treasure Cruise; RDW has more direct damage. Key: kill their Stormchaser's Talent before the Otter token generates value. Soul-Scar Mage shrinks the Monk tokens permanently via burn. Eidolon taxes all their cantrips — each Opt or Consider costs them 2 on top of your clock.</p>
       <p><strong>Priority:</strong> Kill the Cutter or the creatures enabling it. Don't let the Monk army accumulate. Trade creatures aggressively — your burn finishes the game; their creatures need multiple attacks. Searing Blood is clean removal vs their 1-toughness creatures and deals 2 more when the creature dies.</p>
       <div class="sb-table">
         <div class="sb-col"><div class="sb-col-label">In</div>
@@ -370,15 +371,10 @@ span.c:hover{border-bottom-style:solid;}
           <div class="sb-item"><span><span class="c">Bonecrusher Giant</span></span><span class="sb-qty">&minus;2</span></div>
         </div>
       </div>
-    </div>
-  </div>
-
-  <div class="matchup-block">
-    <div class="matchup-header" onclick="toggle('mu-greasefang')">
-      <h3>ORZHOV GREASEFANG</h3><span class="verdict verdict-good">Favorable</span>
-    </div>
-    <div id="mu-greasefang" class="matchup-body">
-      <p>You're faster. Greasefang needs T3 for its combo; you kill them by T3. Eidolon taxes every discard outlet (Monument to Endurance, Cryptcaller Chariot, Seasoned Hallowblade) for 2 life each. Rampaging Ferocidon (SB) prevents lifegain and its static ability means they can't gain life off any source. Thoughtseize only costs them 2 more from Eidolon.</p>
+</td></tr>
+<tr onclick="toggle('mu-greasefang')"><td><strong>ORZHOV GREASEFANG</strong></td><td>Combo</td><td><span class="verdict verdict-good">Favorable</span></td><td>You're faster.</td></tr>
+<tr><td colspan="4" class="matchup-detail" id="mu-greasefang">
+<p>You're faster. Greasefang needs T3 for its combo; you kill them by T3. Eidolon taxes every discard outlet (Monument to Endurance, Cryptcaller Chariot, Seasoned Hallowblade) for 2 life each. Rampaging Ferocidon (SB) prevents lifegain and its static ability means they can't gain life off any source. Thoughtseize only costs them 2 more from Eidolon.</p>
       <p><strong>Priority:</strong> Don't slow down to interact with their combo. Kill them first. If they attack with Parhelion II on T3, calculate whether you can deal lethal on your next attack — often you can. Their 9/9 flying vigilance is irrelevant if they're at 0.</p>
       <div class="sb-table">
         <div class="sb-col"><div class="sb-col-label">In</div>
@@ -391,15 +387,10 @@ span.c:hover{border-bottom-style:solid;}
           <div class="sb-item"><span><span class="c">Bonecrusher Giant</span></span><span class="sb-qty">&minus;2</span></div>
         </div>
       </div>
-    </div>
-  </div>
-
-  <div class="matchup-block">
-    <div class="matchup-header" onclick="toggle('mu-selesnya')">
-      <h3>SELESNYA COMPANY</h3><span class="verdict verdict-even">Even</span>
-    </div>
-    <div id="mu-selesnya" class="matchup-body">
-      <p>Their CoCo goes wide and generates lifelink creatures (Lathiel, Voice of the World-Tree) that can stabilize. Rampaging Ferocidon (SB) is the best card in the matchup — prevents ALL lifegain, so their lifelink creatures deal damage but restore nothing. Without lifegain their wide board doesn't reset their life total. Stomp's "prevent damage prevention" clause is critical here — their protection spells fail.</p>
+</td></tr>
+<tr onclick="toggle('mu-selesnya')"><td><strong>SELESNYA COMPANY</strong></td><td>Combo Race</td><td><span class="verdict verdict-even">Even</span></td><td>Their CoCo goes wide and generates lifelink creatures (Lathiel, Voice of the ...</td></tr>
+<tr><td colspan="4" class="matchup-detail" id="mu-selesnya">
+<p>Their CoCo goes wide and generates lifelink creatures (Lathiel, Voice of the World-Tree) that can stabilize. Rampaging Ferocidon (SB) is the best card in the matchup — prevents ALL lifegain, so their lifelink creatures deal damage but restore nothing. Without lifegain their wide board doesn't reset their life total. Stomp's "prevent damage prevention" clause is critical here — their protection spells fail.</p>
       <p><strong>Priority:</strong> Kill their mana dorks immediately on T2. A T2 Bonecrusher Stomp on their Llanowar Elves takes away their T3 CoCo. Rampaging Ferocidon shuts off their primary stabilize mechanism (lifegain). They can't go wide fast enough to survive a Swiftspear + Eidolon opening.</p>
       <div class="sb-table">
         <div class="sb-col"><div class="sb-col-label">In</div>
@@ -411,15 +402,10 @@ span.c:hover{border-bottom-style:solid;}
           <div class="sb-item"><span><span class="c">Light Up the Stage</span></span><span class="sb-qty">&minus;2</span></div>
         </div>
       </div>
-    </div>
-  </div>
-
-  <div class="matchup-block">
-    <div class="matchup-header" onclick="toggle('mu-control')">
-      <h3>UW CONTROL</h3><span class="verdict verdict-even">Even</span>
-    </div>
-    <div id="mu-control" class="matchup-body">
-      <p>They answer your threats one-for-one but Eidolon makes every answer cost 2 extra life. Supreme Verdict sweeps your board but you have burn to close from 6-8 life. Chandra, Torch of Defiance (SB) is the key threat — she generates {R} mana, deals 2 damage per activation, and can't be countered by their spell-based interaction. Roiling Vortex prevents their Teferi life loop.</p>
+</td></tr>
+<tr onclick="toggle('mu-control')"><td><strong>UW CONTROL</strong></td><td>Combo Race</td><td><span class="verdict verdict-even">Even</span></td><td>They answer your threats one-for-one but Eidolon makes every answer cost 2 ex...</td></tr>
+<tr><td colspan="4" class="matchup-detail" id="mu-control">
+<p>They answer your threats one-for-one but Eidolon makes every answer cost 2 extra life. Supreme Verdict sweeps your board but you have burn to close from 6-8 life. Chandra, Torch of Defiance (SB) is the key threat — she generates {R} mana, deals 2 damage per activation, and can't be countered by their spell-based interaction. Roiling Vortex prevents their Teferi life loop.</p>
       <p><strong>Priority:</strong> Stick Eidolon early and make them pay 2+ per answer. After their sweeper, deploy threats in multiples — if they sweep, cast three creatures next turn. Chandra ultimates from 0 loyalty in 4 activations. Don't tap out — hold burn to cast in their end step after mana is tapped down.</p>
       <div class="sb-table">
         <div class="sb-col"><div class="sb-col-label">In</div>
@@ -433,15 +419,10 @@ span.c:hover{border-bottom-style:solid;}
           <div class="sb-item"><span><span class="c">Bonecrusher Giant</span></span><span class="sb-qty">&minus;1</span></div>
         </div>
       </div>
-    </div>
-  </div>
-
-  <div class="matchup-block">
-    <div class="matchup-header" onclick="toggle('mu-lotus')">
-      <h3>LOTUS FIELD COMBO</h3><span class="verdict verdict-good">Favorable</span>
-    </div>
-    <div id="mu-lotus" class="matchup-body">
-      <p>Lotus Field combo goes off on T4-5 with Lotus Field + Thespian's Stage. You kill them by T3. Eidolon punishes their Hidden Strings, Pore Over the Pages, and every setup spell they cast. Roiling Vortex (SB) prevents the lifegain from Abandon Hope — their primary stall mechanism. They can't win before they die.</p>
+</td></tr>
+<tr onclick="toggle('mu-lotus')"><td><strong>LOTUS FIELD COMBO</strong></td><td>Combo</td><td><span class="verdict verdict-good">Favorable</span></td><td>Lotus Field combo goes off on T4-5 with Lotus Field + Thespian's Stage.</td></tr>
+<tr><td colspan="4" class="matchup-detail" id="mu-lotus">
+<p>Lotus Field combo goes off on T4-5 with Lotus Field + Thespian's Stage. You kill them by T3. Eidolon punishes their Hidden Strings, Pore Over the Pages, and every setup spell they cast. Roiling Vortex (SB) prevents the lifegain from Abandon Hope — their primary stall mechanism. They can't win before they die.</p>
       <p><strong>Priority:</strong> Kill them. Don't sideboard into interaction — your clock is the best answer. Roiling Vortex shuts off lifegain. Don't worry about understanding their combo — just kill them before they can execute it.</p>
       <div class="sb-table">
         <div class="sb-col"><div class="sb-col-label">In</div>
@@ -451,78 +432,55 @@ span.c:hover{border-bottom-style:solid;}
           <div class="sb-item"><span><span class="c">Soul-Scar Mage</span></span><span class="sb-qty">&minus;2</span></div>
         </div>
       </div>
-    </div>
-  </div>
-
-  <div class="matchup-block">
-    <div class="matchup-header" onclick="toggle('mu-lotus2')">
-      <h3>LOTUS FIELD</h3><span class="verdict verdict-good">Favorable</span>
-    </div>
-    <div id="mu-lotus2" class="matchup-body">
-      <p>Damping Sphere prevents their mana multiplication. Thoughtseize strips Hidden Strings or key pieces before cast.</p>
+</td></tr>
+<tr onclick="toggle('mu-lotus2')"><td><strong>LOTUS FIELD</strong></td><td>Combo</td><td><span class="verdict verdict-good">Favorable</span></td><td>Damping Sphere prevents their mana multiplication.</td></tr>
+<tr><td colspan="4" class="matchup-detail" id="mu-lotus2">
+<p>Damping Sphere prevents their mana multiplication. Thoughtseize strips Hidden Strings or key pieces before cast.</p>
       <div class="sb-table">
         <div class="sb-col"><div class="sb-col-label">In</div><div class="sb-item"><span><span class="c">Damping Sphere</span></span><span class="sb-qty">+3</span></div><div class="sb-item"><span><span class="c">Duress</span></span><span class="sb-qty">+2</span></div></div>
         <div class="sb-col"><div class="sb-col-label">Out</div><div class="sb-item"><span><span class="c">Fatal Push</span></span><span class="sb-qty">-2</span></div><div class="sb-item"><span><span class="c">Soul-Guide Lantern</span></span><span class="sb-qty">-2</span></div><div class="sb-item"><span><span class="c">Arashin Cleric</span></span><span class="sb-qty">-1</span></div></div>
       </div>
       <p class="sb-note">Damping Sphere stops their mana combo. Duress strips combo pieces. Cut reactive removal.</p>
-    </div>
-  </div>
-
-  <div class="matchup-block">
-    <div class="matchup-header" onclick="toggle('mu-niv2')">
-      <h3>NIV-MIZZET REBORN</h3><span class="verdict verdict-even">Even</span>
-    </div>
-    <div id="mu-niv2" class="matchup-body">
-      <p>Their clock is slow — 5 mana for Niv. Strip their key enablers with Thoughtseize and race with your threats.</p>
+</td></tr>
+<tr onclick="toggle('mu-niv2')"><td><strong>NIV-MIZZET REBORN</strong></td><td>Combo Race</td><td><span class="verdict verdict-even">Even</span></td><td>Their clock is slow — 5 mana for Niv.</td></tr>
+<tr><td colspan="4" class="matchup-detail" id="mu-niv2">
+<p>Their clock is slow — 5 mana for Niv. Strip their key enablers with Thoughtseize and race with your threats.</p>
       <div class="sb-table">
         <div class="sb-col"><div class="sb-col-label">In</div><div class="sb-item"><span><span class="c">Thoughtseize</span></span><span class="sb-qty">+2</span></div><div class="sb-item"><span><span class="c">Duress</span></span><span class="sb-qty">+2</span></div></div>
         <div class="sb-col"><div class="sb-col-label">Out</div><div class="sb-item"><span><span class="c">Soul-Guide Lantern</span></span><span class="sb-qty">-2</span></div><div class="sb-item"><span><span class="c">Arashin Cleric</span></span><span class="sb-qty">-2</span></div></div>
       </div>
       <p class="sb-note">Thoughtseize strips Niv or their tutor. Cut Lantern (no relevant GY) and Cleric.</p>
-    </div>
-  </div>
-
-  <div class="matchup-block">
-    <div class="matchup-header" onclick="toggle('mu-greasefang2')">
-      <h3>ORZHOV GREASEFANG</h3><span class="verdict verdict-good">Favorable</span>
-    </div>
-    <div id="mu-greasefang2" class="matchup-body">
-      <p>Soul-Guide Lantern exiling Parhelion II before Greasefang can crew it is a near-instant win — without Parhelion in GY their combo is offline.</p>
+</td></tr>
+<tr onclick="toggle('mu-greasefang2')"><td><strong>ORZHOV GREASEFANG</strong></td><td>Combo</td><td><span class="verdict verdict-good">Favorable</span></td><td>Soul-Guide Lantern exiling Parhelion II before Greasefang can crew it is a ne...</td></tr>
+<tr><td colspan="4" class="matchup-detail" id="mu-greasefang2">
+<p>Soul-Guide Lantern exiling Parhelion II before Greasefang can crew it is a near-instant win — without Parhelion in GY their combo is offline.</p>
       <div class="sb-table">
         <div class="sb-col"><div class="sb-col-label">In</div><div class="sb-item"><span><span class="c">Soul-Guide Lantern</span></span><span class="sb-qty">+3</span></div><div class="sb-item"><span><span class="c">Fatal Push</span></span><span class="sb-qty">+2</span></div></div>
         <div class="sb-col"><div class="sb-col-label">Out</div><div class="sb-item"><span><span class="c">Duress</span></span><span class="sb-qty">-3</span></div><div class="sb-item"><span><span class="c">Thoughtseize</span></span><span class="sb-qty">-2</span></div></div>
       </div>
       <p class="sb-note">Soul-Guide Lantern exiles Parhelion. Fatal Push kills Greasefang. Cut discard.</p>
-    </div>
-  </div>
-
-  <div class="matchup-block">
-    <div class="matchup-header" onclick="toggle('mu-arclight2')">
-      <h3>ARCLIGHT PHOENIX</h3><span class="verdict verdict-even">Even</span>
-    </div>
-    <div id="mu-arclight2" class="matchup-body">
-      <p>Soul-Guide Lantern exiles Phoenix from GY before it triggers back. Counter their Young Pyromancer — it generates too many tokens.</p>
+</td></tr>
+<tr onclick="toggle('mu-arclight2')"><td><strong>ARCLIGHT PHOENIX</strong></td><td>Combo Race</td><td><span class="verdict verdict-even">Even</span></td><td>Soul-Guide Lantern exiles Phoenix from GY before it triggers back.</td></tr>
+<tr><td colspan="4" class="matchup-detail" id="mu-arclight2">
+<p>Soul-Guide Lantern exiles Phoenix from GY before it triggers back. Counter their Young Pyromancer — it generates too many tokens.</p>
       <div class="sb-table">
         <div class="sb-col"><div class="sb-col-label">In</div><div class="sb-item"><span><span class="c">Soul-Guide Lantern</span></span><span class="sb-qty">+2</span></div><div class="sb-item"><span><span class="c">Rending Volley</span></span><span class="sb-qty">+1</span></div></div>
         <div class="sb-col"><div class="sb-col-label">Out</div><div class="sb-item"><span><span class="c">Duress</span></span><span class="sb-qty">-2</span></div><div class="sb-item"><span><span class="c">Thoughtseize</span></span><span class="sb-qty">-1</span></div></div>
       </div>
       <p class="sb-note">Soul-Guide Lantern exiles Phoenix. Rending Volley destroys white/blue creatures. Cut discard.</p>
-    </div>
-  </div>
-
-  <div class="matchup-block">
-    <div class="matchup-header" onclick="toggle('mu-rakdos2')">
-      <h3>RAKDOS MIDRANGE</h3><span class="verdict verdict-even">Even</span>
-    </div>
-    <div id="mu-rakdos2" class="matchup-body">
-      <p>Thoughtseize trades 1-for-1. Kill Vein Ripper or Kalitas before they generate value. Fatal Push with revolt handles most of their threats.</p>
+</td></tr>
+<tr onclick="toggle('mu-rakdos2')"><td><strong>RAKDOS MIDRANGE</strong></td><td>Combo Race</td><td><span class="verdict verdict-even">Even</span></td><td>Thoughtseize trades 1-for-1.</td></tr>
+<tr><td colspan="4" class="matchup-detail" id="mu-rakdos2">
+<p>Thoughtseize trades 1-for-1. Kill Vein Ripper or Kalitas before they generate value. Fatal Push with revolt handles most of their threats.</p>
       <div class="sb-table">
         <div class="sb-col"><div class="sb-col-label">In</div><div class="sb-item"><span><span class="c">Fatal Push</span></span><span class="sb-qty">+2</span></div><div class="sb-item"><span><span class="c">Collective Brutality</span></span><span class="sb-qty">+1</span></div></div>
         <div class="sb-col"><div class="sb-col-label">Out</div><div class="sb-item"><span><span class="c">Duress</span></span><span class="sb-qty">-2</span></div><div class="sb-item"><span><span class="c">Soul-Guide Lantern</span></span><span class="sb-qty">-1</span></div></div>
       </div>
       <p class="sb-note">Fatal Push kills Vein Ripper and Kalitas. Cut redundant discard and Lantern.</p>
-    </div>
-  </div>
+</td></tr>
+</tbody>
+</table>
+
 
 </div>
 </div>

@@ -168,7 +168,7 @@ span.c:hover{border-bottom-style:solid;}
     .print-grid { position:fixed !important; top:0 !important; left:0 !important; width:100vw !important; height:auto !important; background:var(--rule) !important; border:none !important; display:grid !important; grid-template-columns:repeat(3,1fr) !important; gap:1px !important; }
     .print-mu { background:var(--paper) !important; padding:14px !important; }
   }
-</style>
+</style></style>
 </head>
 <body>
 <nav>
@@ -350,12 +350,13 @@ span.c:hover{border-bottom-style:solid;}
   <h1>MATCHUP<br>GUIDE</h1>
   <div class="mantra">"Your threats recur. Force them to have exile. Play around Rest in Peace specifically."</div>
 
-  <div class="matchup-block">
-    <div class="matchup-header" onclick="toggle('mu-cutter')">
-      <h3>UR CUTTER (MIRROR-ADJACENT)</h3><span class="verdict verdict-even">Even</span>
-    </div>
-    <div id="mu-cutter" class="matchup-body">
-      <p>Both decks run similar cantrip + Cutter engines. The Phoenix version has the GY recursion angle but more vulnerable to Rest in Peace. Your Phoenix is actually BETTER than their Monk tokens in a race because it has 3 power and flies. Key difference: you can run Under their Cutter engine because your Phoenixes come back even after they interact.</p>
+  <table class="matchup-table">
+<colgroup><col><col><col><col></colgroup>
+<thead><tr><th>Matchup</th><th>Role</th><th>Verdict</th><th>Key Play</th></tr></thead>
+<tbody>
+<tr onclick="toggle('mu-cutter')"><td><strong>UR CUTTER (MIRROR-ADJACENT)</strong></td><td>Combo Race</td><td><span class="verdict verdict-even">Even</span></td><td>Both decks run similar cantrip + Cutter engines.</td></tr>
+<tr><td colspan="4" class="matchup-detail" id="mu-cutter">
+<p>Both decks run similar cantrip + Cutter engines. The Phoenix version has the GY recursion angle but more vulnerable to Rest in Peace. Your Phoenix is actually BETTER than their Monk tokens in a race because it has 3 power and flies. Key difference: you can run Under their Cutter engine because your Phoenixes come back even after they interact.</p>
       <p><strong>Priority:</strong> Don't cut Phoenixes for more removal. Your GY advantage is your edge. Side in Annul for their Cutter; their Cutter entering is the engine you need to answer (Annul hits the Equipment before it transforms). Chandra's Defeat handles their Phoenixes or planeswalkers they board in.</p>
       <div class="sb-table">
         <div class="sb-col"><div class="sb-col-label">In</div>
@@ -367,15 +368,10 @@ span.c:hover{border-bottom-style:solid;}
           <div class="sb-item"><span><span class="c">Into the Flood Maw</span></span><span class="sb-qty">&minus;2</span></div>
         </div>
       </div>
-    </div>
-  </div>
-
-  <div class="matchup-block">
-    <div class="matchup-header" onclick="toggle('mu-greasefang')">
-      <h3>ORZHOV GREASEFANG</h3><span class="verdict verdict-good">Favorable</span>
-    </div>
-    <div id="mu-greasefang" class="matchup-body">
-      <p>You're faster. Greasefang needs T3; you attack with Phoenix on T3. Into the Flood Maw bounces Greasefang when it enters — the ETB trigger that returns Parhelion II never resolves because Greasefang bounces before it resolves. Chandra's Defeat (SB) kills Greasefang cleanly at instant speed for {R}. Annul hits their Monument to Endurance (their best GY enabler).</p>
+</td></tr>
+<tr onclick="toggle('mu-greasefang')"><td><strong>ORZHOV GREASEFANG</strong></td><td>Combo</td><td><span class="verdict verdict-good">Favorable</span></td><td>You're faster.</td></tr>
+<tr><td colspan="4" class="matchup-detail" id="mu-greasefang">
+<p>You're faster. Greasefang needs T3; you attack with Phoenix on T3. Into the Flood Maw bounces Greasefang when it enters — the ETB trigger that returns Parhelion II never resolves because Greasefang bounces before it resolves. Chandra's Defeat (SB) kills Greasefang cleanly at instant speed for {R}. Annul hits their Monument to Endurance (their best GY enabler).</p>
       <p><strong>Priority:</strong> Don't let Greasefang's ETB trigger resolve. Hold Into the Flood Maw and bounce it the moment they cast it, before the ETB. If it resolves, target the Phoenix trigger for Into the Flood Maw (the trigger that returns Parhelion II — bouncing Greasefang after the ETB resolves still prevents the attack by removing Parhelion's pilot). Annul destroys their Monument at {U}.</p>
       <div class="sb-table">
         <div class="sb-col"><div class="sb-col-label">In</div>
@@ -388,15 +384,10 @@ span.c:hover{border-bottom-style:solid;}
           <div class="sb-item"><span><span class="c">Fiery Impulse</span></span><span class="sb-qty">&minus;2</span></div>
         </div>
       </div>
-    </div>
-  </div>
-
-  <div class="matchup-block">
-    <div class="matchup-header" onclick="toggle('mu-rdw')">
-      <h3>RED DECK WINS</h3><span class="verdict verdict-even">Even</span>
-    </div>
-    <div id="mu-rdw" class="matchup-body">
-      <p>RDW kills faster than your T3 Phoenix attack but your removal suite is excellent. Lightning Axe kills Eidolon of the Great Revel (5 damage, hits the 2/2). Fiery Impulse kills their one-drops with spell mastery. Brotherhood's End (SB) sweeps their entire board at {1RR}. The race: RDW deals 15+ damage by T4; you need to remove enough threats to survive to Cruise refuel.</p>
+</td></tr>
+<tr onclick="toggle('mu-rdw')"><td><strong>RED DECK WINS</strong></td><td>Combo Race</td><td><span class="verdict verdict-even">Even</span></td><td>RDW kills faster than your T3 Phoenix attack but your removal suite is excell...</td></tr>
+<tr><td colspan="4" class="matchup-detail" id="mu-rdw">
+<p>RDW kills faster than your T3 Phoenix attack but your removal suite is excellent. Lightning Axe kills Eidolon of the Great Revel (5 damage, hits the 2/2). Fiery Impulse kills their one-drops with spell mastery. Brotherhood's End (SB) sweeps their entire board at {1RR}. The race: RDW deals 15+ damage by T4; you need to remove enough threats to survive to Cruise refuel.</p>
       <p><strong>Priority:</strong> Kill Eidolon immediately — it taxes every spell you cast while active. Remove it first, then cantrip chain normally. Brotherhood's End at {1RR} deals 2 damage to each creature and each player, killing their one-drops and finishing off creatures at 2 toughness. Don't overload removal — keep three spells available for Phoenix recursion each turn.</p>
       <div class="sb-table">
         <div class="sb-col"><div class="sb-col-label">In</div>
@@ -410,15 +401,10 @@ span.c:hover{border-bottom-style:solid;}
           <div class="sb-item"><span><span class="c">Treasure Cruise</span></span><span class="sb-qty">&minus;1</span></div>
         </div>
       </div>
-    </div>
-  </div>
-
-  <div class="matchup-block">
-    <div class="matchup-header" onclick="toggle('mu-control')">
-      <h3>UW CONTROL</h3><span class="verdict verdict-hard">Unfavorable</span>
-    </div>
-    <div id="mu-control" class="matchup-body">
-      <p>UW Control's biggest weapons vs Phoenix: Rest in Peace (SB) exiles all GYs preventing Phoenix recursion, Temporary Lockdown exiles Artist's Talent and Cutter (MV 2), Supreme Verdict wipes your Prankster + Cutter board. Their exile answers specifically answer your recursion. Brazen Borrower (SB) bounces Teferi or RIP at instant speed. Negate answers Verdict. Spell Pierce answers early Lockdown.</p>
+</td></tr>
+<tr onclick="toggle('mu-control')"><td><strong>UW CONTROL</strong></td><td>Flexible</td><td><span class="verdict verdict-hard">Unfavorable</span></td><td>UW Control's biggest weapons vs Phoenix: Rest in Peace (SB) exiles all GYs pr...</td></tr>
+<tr><td colspan="4" class="matchup-detail" id="mu-control">
+<p>UW Control's biggest weapons vs Phoenix: Rest in Peace (SB) exiles all GYs preventing Phoenix recursion, Temporary Lockdown exiles Artist's Talent and Cutter (MV 2), Supreme Verdict wipes your Prankster + Cutter board. Their exile answers specifically answer your recursion. Brazen Borrower (SB) bounces Teferi or RIP at instant speed. Negate answers Verdict. Spell Pierce answers early Lockdown.</p>
       <p><strong>Priority:</strong> Always answer Rest in Peace before casting Treasure Cruise (Cruise exiles your GY, leaving nothing to recur after RIP is gone). Into the Flood Maw bounces RIP at end of their turn + cantrip chain = Phoenix returns. Brazen Borrower bounces Teferi mid-combat preventing its abilities. Never overextend into a Supreme Verdict — keep Phoenixes in GY rather than creatures on board.</p>
       <div class="sb-table">
         <div class="sb-col"><div class="sb-col-label">In</div>
@@ -432,15 +418,10 @@ span.c:hover{border-bottom-style:solid;}
           <div class="sb-item"><span><span class="c">Torch the Tower</span></span><span class="sb-qty">&minus;1</span></div>
         </div>
       </div>
-    </div>
-  </div>
-
-  <div class="matchup-block">
-    <div class="matchup-header" onclick="toggle('mu-selesnya')">
-      <h3>SELESNYA COMPANY</h3><span class="verdict verdict-good">Favorable</span>
-    </div>
-    <div id="mu-selesnya" class="matchup-body">
-      <p>Selesnya's ground creatures can't block your flying Phoenixes. Their clock is T4-5; yours is T3. Thalia (2/1 first strike) taxes your spells {1} each — account for this by slowing slightly or using Into the Flood Maw to bounce Thalia. Lightning Axe kills Thalia at 5 damage cleanly. Anger of the Gods (SB) exiles their entire low-MV creature suite (Llanowar Elves, Elvish Mystic, Thalia, Voice of Resurgence).</p>
+</td></tr>
+<tr onclick="toggle('mu-selesnya')"><td><strong>SELESNYA COMPANY</strong></td><td>Combo</td><td><span class="verdict verdict-good">Favorable</span></td><td>Selesnya's ground creatures can't block your flying Phoenixes.</td></tr>
+<tr><td colspan="4" class="matchup-detail" id="mu-selesnya">
+<p>Selesnya's ground creatures can't block your flying Phoenixes. Their clock is T4-5; yours is T3. Thalia (2/1 first strike) taxes your spells {1} each — account for this by slowing slightly or using Into the Flood Maw to bounce Thalia. Lightning Axe kills Thalia at 5 damage cleanly. Anger of the Gods (SB) exiles their entire low-MV creature suite (Llanowar Elves, Elvish Mystic, Thalia, Voice of Resurgence).</p>
       <p><strong>Priority:</strong> Target Thalia with Lightning Axe early — she makes your three-spell chain cost more mana. Their CoCo refills the board but can't block Phoenixes. Anger of the Gods exiles creatures with toughness ≤ 3, hitting their entire early game including Voice of Resurgence (the Elemental token that Voice creates if they die is prevented by exile). Keep the air open for Phoenix attacks.</p>
       <div class="sb-table">
         <div class="sb-col"><div class="sb-col-label">In</div>
@@ -452,78 +433,55 @@ span.c:hover{border-bottom-style:solid;}
           <div class="sb-item"><span><span class="c">Proft's Eidetic Memory</span></span><span class="sb-qty">&minus;1</span></div>
         </div>
       </div>
-    </div>
-  </div>
-
-  <div class="matchup-block">
-    <div class="matchup-header" onclick="toggle('mu-selesnya2')">
-      <h3>SELESNYA COMPANY</h3><span class="verdict verdict-even">Even</span>
-    </div>
-    <div id="mu-selesnya2" class="matchup-body">
-      <p>Selesnya Company floods the board with creatures via Collected Company (4 mana instant, put two creatures into play). Your sweepers (if available) hit their board but Company rebuilds. The key: exile their GY to prevent Extraction Specialist recursion. Thoughtseize on turn 1 takes their Company or their key 2-drop lord.</p>
+</td></tr>
+<tr onclick="toggle('mu-selesnya2')"><td><strong>SELESNYA COMPANY</strong></td><td>Combo Race</td><td><span class="verdict verdict-even">Even</span></td><td>Selesnya Company floods the board with creatures via Collected Company (4 man...</td></tr>
+<tr><td colspan="4" class="matchup-detail" id="mu-selesnya2">
+<p>Selesnya Company floods the board with creatures via Collected Company (4 mana instant, put two creatures into play). Your sweepers (if available) hit their board but Company rebuilds. The key: exile their GY to prevent Extraction Specialist recursion. Thoughtseize on turn 1 takes their Company or their key 2-drop lord.</p>
       <div class="sb-table">
         <div class="sb-col"><div class="sb-col-label">In</div><div class="sb-item"><span><span class="c">Soul-Guide Lantern</span></span><span class="sb-qty">+2</span></div><div class="sb-item"><span><span class="c">Fatal Push</span></span><span class="sb-qty">+1</span></div></div>
         <div class="sb-col"><div class="sb-col-label">Out</div><div class="sb-item"><span><span class="c">Duress</span></span><span class="sb-qty">-2</span></div><div class="sb-item"><span><span class="c">Thoughtseize</span></span><span class="sb-qty">-1</span></div></div>
       </div>
       <p class="sb-note">Soul-Guide Lantern exiles Extraction Specialist targets from GY. Fatal Push kills their small lords at instant speed. Cut Duress (less effective against creature-based strategies) and a Thoughtseize.</p>
-    </div>
-  </div>
-
-  <div class="matchup-block">
-    <div class="matchup-header" onclick="toggle('mu-lotus2')">
-      <h3>LOTUS FIELD</h3><span class="verdict verdict-good">Favorable</span>
-    </div>
-    <div id="mu-lotus2" class="matchup-body">
-      <p>Lotus Field combos off with Lotus Field + Thespian's Stage + Hidden Strings by untapping Lotus repeatedly. Your discard (Thoughtseize, Duress) strips their key combo pieces or their Hidden Strings. Damping Sphere shuts off their mana multiplication entirely — they can't tap Lotus for more than {B} while Sphere is out.</p>
+</td></tr>
+<tr onclick="toggle('mu-lotus2')"><td><strong>LOTUS FIELD</strong></td><td>Combo</td><td><span class="verdict verdict-good">Favorable</span></td><td>Lotus Field combos off with Lotus Field + Thespian's Stage + Hidden Strings b...</td></tr>
+<tr><td colspan="4" class="matchup-detail" id="mu-lotus2">
+<p>Lotus Field combos off with Lotus Field + Thespian's Stage + Hidden Strings by untapping Lotus repeatedly. Your discard (Thoughtseize, Duress) strips their key combo pieces or their Hidden Strings. Damping Sphere shuts off their mana multiplication entirely — they can't tap Lotus for more than {B} while Sphere is out.</p>
       <div class="sb-table">
         <div class="sb-col"><div class="sb-col-label">In</div><div class="sb-item"><span><span class="c">Damping Sphere</span></span><span class="sb-qty">+3</span></div><div class="sb-item"><span><span class="c">Duress</span></span><span class="sb-qty">+2</span></div></div>
         <div class="sb-col"><div class="sb-col-label">Out</div><div class="sb-item"><span><span class="c">Fatal Push</span></span><span class="sb-qty">-2</span></div><div class="sb-item"><span><span class="c">Soul-Guide Lantern</span></span><span class="sb-qty">-2</span></div><div class="sb-item"><span><span class="c">Arashin Cleric</span></span><span class="sb-qty">-1</span></div></div>
       </div>
       <p class="sb-note">Damping Sphere is their hardest card to beat — their combo requires multiple taps of the same land. Duress strips Hidden Strings or Pore Over the Pages. Cut Fatal Push (no key creatures to kill) and other reactive pieces.</p>
-    </div>
-  </div>
-
-  <div class="matchup-block">
-    <div class="matchup-header" onclick="toggle('mu-niv2')">
-      <h3>NIV-MIZZET REBORN</h3><span class="verdict verdict-even">Even</span>
-    </div>
-    <div id="mu-niv2" class="matchup-body">
-      <p>Niv-Mizzet Reborn draws a card for each color combination among permanents you control when it enters — a massive card advantage engine. Your Thoughtseize strips their Niv or key multicolor spell. Their clock is slow (Niv costs {WUBRG} = 5 mana) giving you time to set up. Race with your own threats — if they resolve Niv without interaction you've likely lost.</p>
+</td></tr>
+<tr onclick="toggle('mu-niv2')"><td><strong>NIV-MIZZET REBORN</strong></td><td>Combo Race</td><td><span class="verdict verdict-even">Even</span></td><td>Niv-Mizzet Reborn draws a card for each color combination among permanents yo...</td></tr>
+<tr><td colspan="4" class="matchup-detail" id="mu-niv2">
+<p>Niv-Mizzet Reborn draws a card for each color combination among permanents you control when it enters — a massive card advantage engine. Your Thoughtseize strips their Niv or key multicolor spell. Their clock is slow (Niv costs {WUBRG} = 5 mana) giving you time to set up. Race with your own threats — if they resolve Niv without interaction you've likely lost.</p>
       <div class="sb-table">
         <div class="sb-col"><div class="sb-col-label">In</div><div class="sb-item"><span><span class="c">Thoughtseize</span></span><span class="sb-qty">+2</span></div><div class="sb-item"><span><span class="c">Duress</span></span><span class="sb-qty">+2</span></div></div>
         <div class="sb-col"><div class="sb-col-label">Out</div><div class="sb-item"><span><span class="c">Soul-Guide Lantern</span></span><span class="sb-qty">-2</span></div><div class="sb-item"><span><span class="c">Arashin Cleric</span></span><span class="sb-qty">-2</span></div></div>
       </div>
       <p class="sb-note">Thoughtseize strips Niv or their key multicolor tutor. Duress hits their noncreature setup. Cut Lantern (no relevant GY) and Cleric (this is a midrange matchup not a racing one).</p>
-    </div>
-  </div>
-
-  <div class="matchup-block">
-    <div class="matchup-header" onclick="toggle('mu-creativity2')">
-      <h3>IZZET CREATIVITY</h3><span class="verdict verdict-good">Favorable</span>
-    </div>
-    <div id="mu-creativity2" class="matchup-body">
-      <p>Izzet Creativity uses Indomitable Creativity targeting their own token to put Atraxa (or similar) into play. Your Thoughtseize strips Creativity before it resolves. Their setup requires tapping out for Creativity — counter it or strip it. Duress on turn 1 is your best play if they keep a Creativity hand.</p>
+</td></tr>
+<tr onclick="toggle('mu-creativity2')"><td><strong>IZZET CREATIVITY</strong></td><td>Combo</td><td><span class="verdict verdict-good">Favorable</span></td><td>Izzet Creativity uses Indomitable Creativity targeting their own token to put...</td></tr>
+<tr><td colspan="4" class="matchup-detail" id="mu-creativity2">
+<p>Izzet Creativity uses Indomitable Creativity targeting their own token to put Atraxa (or similar) into play. Your Thoughtseize strips Creativity before it resolves. Their setup requires tapping out for Creativity — counter it or strip it. Duress on turn 1 is your best play if they keep a Creativity hand.</p>
       <div class="sb-table">
         <div class="sb-col"><div class="sb-col-label">In</div><div class="sb-item"><span><span class="c">Duress</span></span><span class="sb-qty">+3</span></div><div class="sb-item"><span><span class="c">Thoughtseize</span></span><span class="sb-qty">+2</span></div></div>
         <div class="sb-col"><div class="sb-col-label">Out</div><div class="sb-item"><span><span class="c">Fatal Push</span></span><span class="sb-qty">-2</span></div><div class="sb-item"><span><span class="c">Soul-Guide Lantern</span></span><span class="sb-qty">-2</span></div><div class="sb-item"><span><span class="c">Arashin Cleric</span></span><span class="sb-qty">-1</span></div></div>
       </div>
       <p class="sb-note">Duress strips Creativity before they can cast it. Thoughtseize takes Creativity or their Atraxa. Cut removal that doesn't apply — they win through casting spells, not combat.</p>
-    </div>
-  </div>
-
-  <div class="matchup-block">
-    <div class="matchup-header" onclick="toggle('mu-rakdos2')">
-      <h3>RAKDOS MIDRANGE</h3><span class="verdict verdict-even">Even</span>
-    </div>
-    <div id="mu-rakdos2" class="matchup-body">
-      <p>Rakdos Midrange mirrors your discard-and-threats game plan. Thoughtseize trades 1-for-1 with their Thoughtseize. The matchup is decided by who runs out of resources first — your card quality matters more than your card quantity. Aim to kill their Vein Ripper or Kalitas before it generates too much value. Fatal Push with revolt kills most of their threats.</p>
+</td></tr>
+<tr onclick="toggle('mu-rakdos2')"><td><strong>RAKDOS MIDRANGE</strong></td><td>Combo Race</td><td><span class="verdict verdict-even">Even</span></td><td>Rakdos Midrange mirrors your discard-and-threats game plan.</td></tr>
+<tr><td colspan="4" class="matchup-detail" id="mu-rakdos2">
+<p>Rakdos Midrange mirrors your discard-and-threats game plan. Thoughtseize trades 1-for-1 with their Thoughtseize. The matchup is decided by who runs out of resources first — your card quality matters more than your card quantity. Aim to kill their Vein Ripper or Kalitas before it generates too much value. Fatal Push with revolt kills most of their threats.</p>
       <div class="sb-table">
         <div class="sb-col"><div class="sb-col-label">In</div><div class="sb-item"><span><span class="c">Fatal Push</span></span><span class="sb-qty">+2</span></div><div class="sb-item"><span><span class="c">Collective Brutality</span></span><span class="sb-qty">+1</span></div></div>
         <div class="sb-col"><div class="sb-col-label">Out</div><div class="sb-item"><span><span class="c">Duress</span></span><span class="sb-qty">-2</span></div><div class="sb-item"><span><span class="c">Soul-Guide Lantern</span></span><span class="sb-qty">-1</span></div></div>
       </div>
       <p class="sb-note">Fatal Push with revolt kills Vein Ripper and Kalitas cleanly. Collective Brutality handles their key threats while draining life. Cut Duress (they also have proactive threats — discard is less efficient) and Lantern (their GY recursion is minimal).</p>
-    </div>
-  </div>
+</td></tr>
+</tbody>
+</table>
+
 
 </div>
 </div>

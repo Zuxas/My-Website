@@ -178,7 +178,7 @@ span.c:hover{border-bottom-style:solid;}
     .print-grid { position:fixed !important; top:0 !important; left:0 !important; width:100vw !important; height:auto !important; background:var(--rule) !important; border:none !important; display:grid !important; grid-template-columns:repeat(3,1fr) !important; gap:1px !important; }
     .print-mu { background:var(--paper) !important; padding:14px !important; }
   }
-</style>
+</style></style>
 </head>
 <body>
 <nav>
@@ -517,12 +517,13 @@ span.c:hover{border-bottom-style:solid;}
   <div class="mantra">"Every matchup has one question: can they disrupt Monument before you draw enough cards to rebuild?"</div>
 
   <!-- DIMIR MIDRANGE -->
-  <div class="matchup-block">
-    <div class="matchup-header" onclick="toggle('mu-dimir')">
-      <h3>DIMIR MIDRANGE</h3><span class="verdict verdict-good">Favorable</span>
-    </div>
-    <div id="mu-dimir" class="matchup-body">
-      <p>Their removal is creature-targeted (Shoot the Sheriff, Requiting Hex) — nearly useless against your 30+ noncreature spells. The only relevant hate is Kaito's discard effects and Deep-Cavern Bat stripping a card. Your engine generates so many resources that even a Bat clearing one card is irrelevant by T3.</p>
+  <table class="matchup-table">
+<colgroup><col><col><col><col></colgroup>
+<thead><tr><th>Matchup</th><th>Role</th><th>Verdict</th><th>Key Play</th></tr></thead>
+<tbody>
+<tr onclick="toggle('mu-dimir')"><td><strong>DIMIR MIDRANGE</strong></td><td>Combo</td><td><span class="verdict verdict-good">Favorable</span></td><td>Their removal is creature-targeted (Shoot the Sheriff, Requiting Hex) — nearl...</td></tr>
+<tr><td colspan="4" class="matchup-detail" id="mu-dimir">
+<p>Their removal is creature-targeted (Shoot the Sheriff, Requiting Hex) — nearly useless against your 30+ noncreature spells. The only relevant hate is Kaito's discard effects and Deep-Cavern Bat stripping a card. Your engine generates so many resources that even a Bat clearing one card is irrelevant by T3.</p>
       <p><strong>Key threat:</strong> <span class="c">Floodpits Drowner</span> bouncing Monument is their best play. Respond by holding Boomerang Basics — if they target Monument with Drowner, you Boomerang Monument first (return it to hand, Drowner has no target). Alternatively hold It'll Quench Ya for Drowner itself.</p>
       <p><strong>Plan:</strong> T1 Gran-Gran. T2 Abandon Attachments — bin 2 Lessons before Deep-Cavern Bat can strip them from hand. T3 full engine live. Deploy Monument when they tap for Kaito — they'll have no mana for Into the Flood Maw. Win on Monument damage by T6.</p>
       <div class="sb-table">
@@ -536,16 +537,10 @@ span.c:hover{border-bottom-style:solid;}
           <div class="sb-item"><span><span class="c">Boomerang Basics</span></span><span class="sb-qty">&minus;1</span></div>
         </div>
       </div>
-    </div>
-  </div>
-
-  <!-- IZZET PROWESS -->
-  <div class="matchup-block">
-    <div class="matchup-header" onclick="toggle('mu-prowess')">
-      <h3>IZZET PROWESS</h3><span class="verdict verdict-even">Even</span>
-    </div>
-    <div id="mu-prowess" class="matchup-body">
-      <p>They kill on T3-4 before Monument is active. This is your hardest aggro matchup. Gran-Gran's 1/3 body blocks Slickshot Show-Off (1/2 becomes 7/2 with spells — can't be blocked by 1-toughness). Your removal (Firebending Lesson at free) kills their 1-drops. Iroh's Demonstration at instant speed wipes their token board.</p>
+</td></tr>
+<tr onclick="toggle('mu-prowess')"><td><strong>IZZET PROWESS</strong></td><td>Combo Race</td><td><span class="verdict verdict-even">Even</span></td><td>They kill on T3-4 before Monument is active.</td></tr>
+<tr><td colspan="4" class="matchup-detail" id="mu-prowess">
+<p>They kill on T3-4 before Monument is active. This is your hardest aggro matchup. Gran-Gran's 1/3 body blocks Slickshot Show-Off (1/2 becomes 7/2 with spells — can't be blocked by 1-toughness). Your removal (Firebending Lesson at free) kills their 1-drops. Iroh's Demonstration at instant speed wipes their token board.</p>
       <p><strong>Priority:</strong> Survive to T4 with enough life to deploy Monument. Use Firebending Lesson and Combustion Technique as removal, not as GY fuel. Iroh's Demonstration is your sweeper — hold it until they have 2+ small creatures. Grand-Gran blocking means they have to commit more resources to kill it.</p>
       <p><strong>Post-board:</strong> Pyroclasm kills every 1-toughness creature they have for {1}{R}. Their entire board of Otters and Gran-Gran tokens dies to one spell. This is your most impactful SB card in this matchup.</p>
       <div class="sb-table">
@@ -560,16 +555,10 @@ span.c:hover{border-bottom-style:solid;}
           <div class="sb-item"><span><span class="c">Quantum Riddler</span></span><span class="sb-qty">&minus;1</span></div>
         </div>
       </div>
-    </div>
-  </div>
-
-  <!-- BOROS AGGRO -->
-  <div class="matchup-block">
-    <div class="matchup-header" onclick="toggle('mu-boros')">
-      <h3>BOROS AGGRO</h3><span class="verdict verdict-even">Even</span>
-    </div>
-    <div id="mu-boros" class="matchup-body">
-      <p>Similar to Prowess — they kill fast, but your removal suite handles their creatures efficiently. Firebending Lesson kills their 1-drops for free. Combustion Technique at full power (6 damage with 5 Lessons in GY) kills their 4-toughness threats. Gran-Gran's 1/3 holds off early pressure.</p>
+</td></tr>
+<tr onclick="toggle('mu-boros')"><td><strong>BOROS AGGRO</strong></td><td>Combo Race</td><td><span class="verdict verdict-even">Even</span></td><td>Similar to Prowess — they kill fast, but your removal suite handles their cre...</td></tr>
+<tr><td colspan="4" class="matchup-detail" id="mu-boros">
+<p>Similar to Prowess — they kill fast, but your removal suite handles their creatures efficiently. Firebending Lesson kills their 1-drops for free. Combustion Technique at full power (6 damage with 5 Lessons in GY) kills their 4-toughness threats. Gran-Gran's 1/3 holds off early pressure.</p>
       <p><strong>Priority:</strong> Don't let Ojer Axonil resolve unanswered. Combustion Technique with 3 Lessons in GY does 4 damage — enough to kill Ojer (4/4). Iroh's Demonstration clears token floods from Goblin Bombardment setups. Use Monument's Treasure mode to generate mana for casting multiple removal spells in one turn.</p>
       <div class="sb-table">
         <div class="sb-col"><div class="sb-col-label">In</div>
@@ -583,16 +572,10 @@ span.c:hover{border-bottom-style:solid;}
           <div class="sb-item"><span><span class="c">Negate</span> (SB)</span><span class="sb-qty">&minus;1</span></div>
         </div>
       </div>
-    </div>
-  </div>
-
-  <!-- MONO-GREEN LANDFALL -->
-  <div class="matchup-block">
-    <div class="matchup-header" onclick="toggle('mu-monogreen')">
-      <h3>MONO-GREEN LANDFALL</h3><span class="verdict verdict-good">Favorable</span>
-    </div>
-    <div id="mu-monogreen" class="matchup-body">
-      <p>Iroh's Demonstration is backbreaking in this matchup — it deals damage to EACH creature they control equal to Lessons in your GY. With 5 Lessons in GY, Iroh's does 5 damage to every creature. Their entire board dies. Their Sapling Nursery tokens, their Badgermole Cubs, their Icetill Explorers — all dead for {2}{R}{R} (or less with Gran-Gran).</p>
+</td></tr>
+<tr onclick="toggle('mu-monogreen')"><td><strong>MONO-GREEN LANDFALL</strong></td><td>Combo</td><td><span class="verdict verdict-good">Favorable</span></td><td>Iroh's Demonstration is backbreaking in this matchup — it deals damage to EAC...</td></tr>
+<tr><td colspan="4" class="matchup-detail" id="mu-monogreen">
+<p>Iroh's Demonstration is backbreaking in this matchup — it deals damage to EACH creature they control equal to Lessons in your GY. With 5 Lessons in GY, Iroh's does 5 damage to every creature. Their entire board dies. Their Sapling Nursery tokens, their Badgermole Cubs, their Icetill Explorers — all dead for {2}{R}{R} (or less with Gran-Gran).</p>
       <p><strong>Priority:</strong> Don't let the combo kill connect. Their Icetill Explorer + Mightform Harmonizer + Escape Tunnel is an instant win combo. Counter Escape Tunnel with It'll Quench Ya (they must pay {3} — likely can't afford it early). Use Iroh's Demonstration the turn before their combo turn. Monument's damage mode easily races their clock once their board is cleared.</p>
       <div class="sb-table">
         <div class="sb-col"><div class="sb-col-label">In</div>
@@ -604,16 +587,10 @@ span.c:hover{border-bottom-style:solid;}
           <div class="sb-item"><span><span class="c">Negate</span> (SB)</span><span class="sb-qty">&minus;2</span></div>
         </div>
       </div>
-    </div>
-  </div>
-
-  <!-- BANT RHYTHM -->
-  <div class="matchup-block">
-    <div class="matchup-header" onclick="toggle('mu-bant')">
-      <h3>BANT RHYTHM</h3><span class="verdict verdict-good">Favorable</span>
-    </div>
-    <div id="mu-bant" class="matchup-body">
-      <p>Iroh's Demonstration and Pyroclasm are both excellent here. Gene Pollinator doubles their token production — Iroh's Demonstration at 5 Lessons in GY deals 5 to every creature, killing everything including Gene Pollinator. Their Seam Rip can counter your Monument but you have 4 copies and It'll Quench Ya to force it through.</p>
+</td></tr>
+<tr onclick="toggle('mu-bant')"><td><strong>BANT RHYTHM</strong></td><td>Combo</td><td><span class="verdict verdict-good">Favorable</span></td><td>Iroh's Demonstration and Pyroclasm are both excellent here.</td></tr>
+<tr><td colspan="4" class="matchup-detail" id="mu-bant">
+<p>Iroh's Demonstration and Pyroclasm are both excellent here. Gene Pollinator doubles their token production — Iroh's Demonstration at 5 Lessons in GY deals 5 to every creature, killing everything including Gene Pollinator. Their Seam Rip can counter your Monument but you have 4 copies and It'll Quench Ya to force it through.</p>
       <p><strong>Priority:</strong> Kill Gene Pollinator before it doubles their board. Combustion Technique (scaling damage) or Iroh's Demonstration (board wipe) are your tools. Once their doubling engine is off, their token production drops to normal speed and you easily out-resource them through Accumulate Wisdom.</p>
       <div class="sb-table">
         <div class="sb-col"><div class="sb-col-label">In</div>
@@ -625,16 +602,10 @@ span.c:hover{border-bottom-style:solid;}
           <div class="sb-item"><span><span class="c">Negate</span> (SB)</span><span class="sb-qty">&minus;1</span></div>
         </div>
       </div>
-    </div>
-  </div>
-
-  <!-- IZZET LESSONS MIRROR -->
-  <div class="matchup-block">
-    <div class="matchup-header" onclick="toggle('mu-mirror')">
-      <h3>IZZET LESSONS MIRROR</h3><span class="verdict verdict-even">Even</span>
-    </div>
-    <div id="mu-mirror" class="matchup-body">
-      <p>First Monument wins. The entire mirror resolves around which player gets Monument to Endurance active first, protected, and generating damage. Use It'll Quench Ya to counter their Monument resolution. Use Abrade to destroy their resolved Monument. Annul from SB answers both Monument and Artist's Talent for {U}.</p>
+</td></tr>
+<tr onclick="toggle('mu-mirror')"><td><strong>IZZET LESSONS MIRROR</strong></td><td>Combo Race</td><td><span class="verdict verdict-even">Even</span></td><td>First Monument wins.</td></tr>
+<tr><td colspan="4" class="matchup-detail" id="mu-mirror">
+<p>First Monument wins. The entire mirror resolves around which player gets Monument to Endurance active first, protected, and generating damage. Use It'll Quench Ya to counter their Monument resolution. Use Abrade to destroy their resolved Monument. Annul from SB answers both Monument and Artist's Talent for {U}.</p>
       <p><strong>Priority:</strong> Don't tap out. Hold {U} for It'll Quench Ya every turn. Deploy Monument on their end step when they've tapped for spells. Use Boomerang Basics to bounce their Artist's Talent (resets the Level back to 1 and removes the discard trigger temporarily). Soul-Guide Lantern exiles their GY — removes all their Lesson discount and Accumulate Wisdom bonus.</p>
       <div class="sb-table">
         <div class="sb-col"><div class="sb-col-label">In</div>
@@ -649,16 +620,10 @@ span.c:hover{border-bottom-style:solid;}
           <div class="sb-item"><span><span class="c">Combustion Technique</span></span><span class="sb-qty">&minus;2</span></div>
         </div>
       </div>
-    </div>
-  </div>
-
-  <!-- JESKAI CONTROL -->
-  <div class="matchup-block">
-    <div class="matchup-header" onclick="toggle('mu-jeskai')">
-      <h3>JESKAI CONTROL</h3><span class="verdict verdict-even">Even</span>
-    </div>
-    <div id="mu-jeskai" class="matchup-body">
-      <p>Both decks generate card advantage and counter each other's key spells. You have more cards per turn (Accumulate Wisdom + Lessons) but they have Hard counters and High Noon (slows your spell chain). Monument wins if it resolves and they can't answer it. Their Wan Shi Tong generates advantage faster than your base rate — you must maintain pressure.</p>
+</td></tr>
+<tr onclick="toggle('mu-jeskai')"><td><strong>JESKAI CONTROL</strong></td><td>Combo Race</td><td><span class="verdict verdict-even">Even</span></td><td>Both decks generate card advantage and counter each other's key spells.</td></tr>
+<tr><td colspan="4" class="matchup-detail" id="mu-jeskai">
+<p>Both decks generate card advantage and counter each other's key spells. You have more cards per turn (Accumulate Wisdom + Lessons) but they have Hard counters and High Noon (slows your spell chain). Monument wins if it resolves and they can't answer it. Their Wan Shi Tong generates advantage faster than your base rate — you must maintain pressure.</p>
       <p><strong>Priority:</strong> Force them to use counters on setup spells before deploying Monument. Cast Artist's Talent first — they counter it? Now Monument resolves. They let Talent resolve? Now Monument is harder to stop (Talent Level 1 discards per spell, Monument pings from each). Use Quantum Riddler from SB — surveil 2 every turn it attacks, draws cards, demands an immediate answer.</p>
       <div class="sb-table">
         <div class="sb-col"><div class="sb-col-label">In</div>
@@ -671,49 +636,37 @@ span.c:hover{border-bottom-style:solid;}
           <div class="sb-item"><span><span class="c">Firebending Lesson</span></span><span class="sb-qty">&minus;2</span></div>
         </div>
       </div>
-    </div>
-  </div>
-  <div class="matchup-block">
-    <div class="matchup-header" onclick="toggle('mu-excruciator')">
-      <h3>DIMIR EXCRUCIATOR</h3><span class="verdict verdict-even">Even</span>
-    </div>
-    <div id="mu-excruciator" class="matchup-body">
-      <p>Dimir Excruciator counters your Lessons and bounces your permanents. Artist's Talent is your most important card — they must counter it or fall behind on cards permanently. Cast Artist's Talent when they're tapped. Accumulate Wisdom through open mana is fine — hold it until after they've tapped for removal. Their Floodpits Drowner bounce of your Talent or Stormchaser's is a huge tempo swing; have a second copy ready.</p>
+</td></tr>
+<tr onclick="toggle('mu-excruciator')"><td><strong>DIMIR EXCRUCIATOR</strong></td><td>Combo Race</td><td><span class="verdict verdict-even">Even</span></td><td>Dimir Excruciator counters your Lessons and bounces your permanents.</td></tr>
+<tr><td colspan="4" class="matchup-detail" id="mu-excruciator">
+<p>Dimir Excruciator counters your Lessons and bounces your permanents. Artist's Talent is your most important card — they must counter it or fall behind on cards permanently. Cast Artist's Talent when they're tapped. Accumulate Wisdom through open mana is fine — hold it until after they've tapped for removal. Their Floodpits Drowner bounce of your Talent or Stormchaser's is a huge tempo swing; have a second copy ready.</p>
       <div class="sb-table">
         <div class="sb-col"><div class="sb-col-label">In</div><div class="sb-item"><span><span class="c">Ral, Crackling Wit</span></span><span class="sb-qty">+2</span></div><div class="sb-item"><span><span class="c">Wan Shi Tong, Librarian</span></span><span class="sb-qty">+1</span></div></div>
         <div class="sb-col"><div class="sb-col-label">Out</div><div class="sb-item"><span><span class="c">Abandon Attachments</span></span><span class="sb-qty">-2</span></div><div class="sb-item"><span><span class="c">Broadside Barrage</span></span><span class="sb-qty">-1</span></div></div>
       </div>
       <p class="sb-note">Ral generates card advantage every spell you cast — their counterspells can't profitably trade one-for-one with Ral. Wan Shi Tong tutors for your key lessons when they've disrupted your Artist's Talent package. Abandon Attachments and Broadside Barrage are weak — they have few enchantments and their creatures outsize the damage.</p>
-    </div>
-  </div>
-
-  <div class="matchup-block">
-    <div class="matchup-header" onclick="toggle('mu-simic')">
-      <h3>SIMIC RHYTHM</h3><span class="verdict verdict-good">Favorable</span>
-    </div>
-    <div id="mu-simic" class="matchup-body">
-      <p>Simic Rhythm goes wide with Badgermole Cub tokens but has no interaction for your spells. Slagstorm at 3 damage sweeps their entire token board — Cub tokens are 1/1 and 2/2 at best. Accumulate Wisdom into a Slagstorm turn stabilizes the board completely. Gran-Gran (bouncing their biggest creature) combined with Slagstorm leaves them with nothing. Your lesson package generates too much card advantage for their creature strategy to keep up.</p>
+</td></tr>
+<tr onclick="toggle('mu-simic')"><td><strong>SIMIC RHYTHM</strong></td><td>Combo</td><td><span class="verdict verdict-good">Favorable</span></td><td>Simic Rhythm goes wide with Badgermole Cub tokens but has no interaction for ...</td></tr>
+<tr><td colspan="4" class="matchup-detail" id="mu-simic">
+<p>Simic Rhythm goes wide with Badgermole Cub tokens but has no interaction for your spells. Slagstorm at 3 damage sweeps their entire token board — Cub tokens are 1/1 and 2/2 at best. Accumulate Wisdom into a Slagstorm turn stabilizes the board completely. Gran-Gran (bouncing their biggest creature) combined with Slagstorm leaves them with nothing. Your lesson package generates too much card advantage for their creature strategy to keep up.</p>
       <div class="sb-table">
         <div class="sb-col"><div class="sb-col-label">In</div><div class="sb-item"><span><span class="c">Slagstorm</span></span><span class="sb-qty">+2</span></div><div class="sb-item"><span><span class="c">Flashfreeze</span></span><span class="sb-qty">+1</span></div></div>
         <div class="sb-col"><div class="sb-col-label">Out</div><div class="sb-item"><span><span class="c">Broadside Barrage</span></span><span class="sb-qty">-2</span></div><div class="sb-item"><span><span class="c">Disdainful Stroke</span></span><span class="sb-qty">-1</span></div></div>
       </div>
       <p class="sb-note">Slagstorm sweeps their Cub token board at 3 damage — nothing they play in the early game survives. Flashfreeze hard-counters any green or white spell for {1U}. Broadside Barrage is too expensive. Cut Disdainful Stroke (their big spells come too late to matter).</p>
-    </div>
-  </div>
-
-  <div class="matchup-block">
-    <div class="matchup-header" onclick="toggle('mu-monored')">
-      <h3>MONO-RED AGGRO</h3><span class="verdict verdict-dog">Unfavorable</span>
-    </div>
-    <div id="mu-monored" class="matchup-body">
-      <p>Mono-Red kills by T3-4 and your Lessons are too slow. Abandon Attachments is your best answer at {R} — instant speed, kills their key creature or enchantment. Stormchaser's Talent on T2 generates cantrip loops that let you cycle through your deck for interaction. The critical skill: use Accumulate Wisdom to chain into another Accumulate Wisdom rather than holding mana — you need to draw through your deck to find Sear and Pyroclasm.</p>
+</td></tr>
+<tr onclick="toggle('mu-monored')"><td><strong>MONO-RED AGGRO</strong></td><td>Flexible</td><td><span class="verdict verdict-dog">Unfavorable</span></td><td>Mono-Red kills by T3-4 and your Lessons are too slow.</td></tr>
+<tr><td colspan="4" class="matchup-detail" id="mu-monored">
+<p>Mono-Red kills by T3-4 and your Lessons are too slow. Abandon Attachments is your best answer at {R} — instant speed, kills their key creature or enchantment. Stormchaser's Talent on T2 generates cantrip loops that let you cycle through your deck for interaction. The critical skill: use Accumulate Wisdom to chain into another Accumulate Wisdom rather than holding mana — you need to draw through your deck to find Sear and Pyroclasm.</p>
       <div class="sb-table">
         <div class="sb-col"><div class="sb-col-label">In</div><div class="sb-item"><span><span class="c">Pyroclasm</span></span><span class="sb-qty">+2</span></div><div class="sb-item"><span><span class="c">Sear</span></span><span class="sb-qty">+1</span></div></div>
         <div class="sb-col"><div class="sb-col-label">Out</div><div class="sb-item"><span><span class="c">Wan Shi Tong, Librarian</span></span><span class="sb-qty">-2</span></div><div class="sb-item"><span><span class="c">Disdainful Stroke</span></span><span class="sb-qty">-1</span></div></div>
       </div>
       <p class="sb-note">Pyroclasm sweeps their 2-toughness threats simultaneously — kills their entire turn 1-2 board in one spell. Sear at {1R} deals 2 damage (kills 2-toughness threats) or 4 damage if kicked. Wan Shi Tong is too expensive. Disdainful Stroke misses their entire curve (everything is MV 1-3).</p>
-    </div>
-  </div>
+</td></tr>
+</tbody>
+</table>
+
 
 
 </div>
