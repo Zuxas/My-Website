@@ -1,5 +1,5 @@
 # CLAUDE.md — Team Resolve Project State
-*Last updated: April 9, 2026 — commit 7b86f07*
+*Last updated: April 9, 2026 — commit f75e33f*
 
 > **Cross-project context:** See `E:\vscode ai project\ECOSYSTEM.md` for how this
 > project connects to mtg-sim, mtg-meta-analyzer, and Team Resolve operations.
@@ -53,13 +53,19 @@ Simic Rhythm 4.11%, Azorius Flash 3.00%, Mono-Red 3.00%,
 Izzet Elementals 2.88%, Jeskai Control 2.48%, Boros Dragons 2.42%,
 Temur Landfall 2.11%, Bant Rhythm 1.92%, Rakdos Monument 1.20%, Boros Aggro 1.00%
 
+## MODERN META % — UPDATED (April 9, 2026)
+All 17 Modern files updated with MTGGoldfish paper meta % (all decks, 14-day):
+Boros Energy 17.3%, Ruby Storm 8.2%, Affinity 5.7%, Eldrazi Tron 5.6%,
+Jeskai Blink 5.4%, Domain Zoo 4.8%, Amulet Titan 3.4%, Dimir Oculus 3.4%,
+Living End 3.2%, Neoform 2.9%, Yawgmoth 2.6%, Goryo's Vengeance 2.5%,
+Izzet Prowess 2.5%, Humans 1.0%, UW Blink 1.0%, UW Control 0.8%, Glockulous 0.5%
+
 ## QUALITY — 44/44 PASSING ALL CRITERIA
 
 ## RECENT COMMITS
-7b86f07 — refactor: reorganize all 44 playbooks into format folders [CURRENT]
-28f1b1a — docs: CLAUDE.md audit complete
-75a9296 — index: fix inline style conclusion color + link to gold
-aba28d6 — index: fix footer + conclusion visibility
+f75e33f — meta: update all 17 Modern playbooks with April 2026 meta %
+ce110f5 — docs: add ECOSYSTEM.md cross-reference
+7b86f07 — refactor: reorganize all 44 playbooks into format folders
 
 ## TECHNICAL
 - Scripts: write _a.py, run via DC start_process powershell, delete after
