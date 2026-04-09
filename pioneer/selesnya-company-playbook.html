@@ -160,6 +160,14 @@ span.c:hover{border-bottom-style:solid;}
 
   footer { background: var(--ink); color: rgba(242,237,230,0.3); padding: 40px 80px; margin-top: 80px; display: flex; justify-content: space-between; align-items: center; }
   footer span { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; }
+
+  @media (max-width: 768px) { .header-inner, nav, .page, footer { padding-left: 24px; padding-right: 24px; } .header-right { display: none; } .decklist, .role-grid, .sb-table { grid-template-columns: 1fr; } .curve-strip { flex-wrap: wrap; } .sb-deep-grid { grid-template-columns: 1fr; } }
+  @media print {
+    * { visibility:hidden !important; }
+    .print-grid, .print-grid * { visibility:visible !important; }
+    .print-grid { position:fixed !important; top:0 !important; left:0 !important; width:100vw !important; height:auto !important; background:var(--rule) !important; border:none !important; display:grid !important; grid-template-columns:repeat(3,1fr) !important; gap:1px !important; }
+    .print-mu { background:var(--paper) !important; padding:14px !important; }
+  }
 </style>
 </head>
 <body>
