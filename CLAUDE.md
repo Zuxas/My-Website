@@ -25,7 +25,7 @@ standard/ (16): azorius-flash, bant-rhythm, boros-aggro, boros-dragons,
                 jeskai-control, mono-green-landfall, mono-red-aggro,
                 rakdos-monument, simic-rhythm, temur-landfall
 
-pioneer/ (11): arclight-phoenix, izzet-control-pioneer, lotus-field,
+pioneer/ (12): abzan-greasefang, arclight-phoenix, izzet-control-pioneer, lotus-field,
                mono-white-humans-pioneer, niv-mizzet-reborn,
                orzhov-greasefang, rakdos-midrange-pioneer, rdw-pioneer,
                selesnya-company, ur-cutter, uw-control-pioneer
