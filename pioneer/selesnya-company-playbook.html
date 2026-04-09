@@ -341,86 +341,176 @@ span.c:hover{border-bottom-style:solid;}
   <h1>MATCHUP<br>GUIDE</h1>
   <div class="mantra">"Thalia is your best card in 4 of 5 matchups. Protect her."</div>
 
-  <table class="matchup-table">
-<colgroup><col><col><col><col></colgroup>
-<thead><tr><th>Matchup</th><th>Role</th><th>Verdict</th><th>Key Play</th></tr></thead>
-<tbody>
-<tr onclick="toggle('mu-cutter')"><td><strong>UR CUTTER</strong></td><td>Combo Race</td><td><span class="verdict verdict-even">Even</span></td><td>UR Cutter is faster in the air (Vivi Ornitier flying Monk tokens) but your gr...</td></tr>
-<tr><td colspan="4" class="matchup-detail" id="mu-cutter">
-<p>UR Cutter is faster in the air (Vivi Ornitier flying Monk tokens) but your ground threats are larger. Thalia taxes every Stormchaser's Talent activation and cantrip, buying you time to develop your board. Your 2/1 first strike bodies block Monk tokens profitably. The key: kill or tax the Talent before the Otter token engine fires — if they're generating 1/1 fliers every turn you can't race on the ground.</p>
+  <div class="matchup-block">
+    <div class="matchup-header" onclick="toggle('mu-cutter')">
+      <h3>UR CUTTER</h3><span class="verdict verdict-even">Even</span>
+    </div>
+    <div id="mu-cutter" class="matchup-body">
+      <p>UR Cutter is faster in the air (Vivi Ornitier flying Monk tokens) but your ground threats are larger. Thalia taxes every Stormchaser's Talent activation and cantrip, buying you time to develop your board. Your 2/1 first strike bodies block Monk tokens profitably. The key: kill or tax the Talent before the Otter token engine fires — if they're generating 1/1 fliers every turn you can't race on the ground.</p>
       <p><strong>Priority:</strong> Kill their mana elves if they have Vivi Ornitier. Thalia makes Treasure Cruise cost {8} — don't remove Thalia just to attack for 2. CoCo at end of their turn into Extraction Specialist + Knight of Autumn is your strongest late-game sequence. Knight of Autumn's 4/3 body blocks and attacks profitably through their Monks.</p>
       <div class="sb-table">
         <div class="sb-col"><div class="sb-col-label">In</div>
           <div class="sb-item"><span><span class="c">Portable Hole</span></span><span class="sb-qty">+2</span></div>
-          <div class="sb-item"><span><span class="c">Shapers' Sanctuary</span></span><span class="sb-qty">+2</span>
-</td></tr>
-<tr onclick="toggle('mu-rdw')"><td><strong>RED DECK WINS</strong></td><td>Combo Race</td><td><span class="verdict verdict-even">Even</span></td><td>RDW kills you by T3-4 if you stumble.</td></tr>
-<tr><td colspan="4" class="matchup-detail" id="mu-rdw">
-<p>RDW kills you by T3-4 if you stumble. Your larger creatures (Voice of Resurgence 2/2, Thalia 2/1 first strike) block their one-drops efficiently. Knight of Autumn for 4 life is the key stabilization card — gaining 4 life mid-game often puts you out of burn range. Lathiel, the Bounding Dawn grows your board whenever you gain life, creating a resilient threat they can't race.</p>
+          <div class="sb-item"><span><span class="c">Shapers' Sanctuary</span></span><span class="sb-qty">+2</span></div>
+        </div>
+        <div class="sb-col"><div class="sb-col-label">Out</div>
+          <div class="sb-item"><span><span class="c">Lathiel, the Bounding Dawn</span></span><span class="sb-qty">&minus;2</span></div>
+          <div class="sb-item"><span><span class="c">Commune with Spirits</span></span><span class="sb-qty">&minus;2</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="matchup-block">
+    <div class="matchup-header" onclick="toggle('mu-rdw')">
+      <h3>RED DECK WINS</h3><span class="verdict verdict-even">Even</span>
+    </div>
+    <div id="mu-rdw" class="matchup-body">
+      <p>RDW kills you by T3-4 if you stumble. Your larger creatures (Voice of Resurgence 2/2, Thalia 2/1 first strike) block their one-drops efficiently. Knight of Autumn for 4 life is the key stabilization card — gaining 4 life mid-game often puts you out of burn range. Lathiel, the Bounding Dawn grows your board whenever you gain life, creating a resilient threat they can't race.</p>
       <p><strong>Priority:</strong> Keep mana dorks through turn 2 and deploy two creatures. Their Eidolon of the Great Revel taxes your spells — play around it by frontloading your creature deployment. Knight of Autumn hits gain-4 mode every time vs RDW. Stomp (Bonecrusher Giant's Adventure) ignores protection — don't rely on Skrelv to stop it.</p>
       <div class="sb-table">
         <div class="sb-col"><div class="sb-col-label">In</div>
           <div class="sb-item"><span><span class="c">Burrenton Forge-Tender</span></span><span class="sb-qty">+1</span></div>
-          <div class="sb-item"><span><span class="c">Skrelv, Defector Mite</span></span><span class="sb-qty">+2</span>
-</td></tr>
-<tr onclick="toggle('mu-greasefang')"><td><strong>ORZHOV GREASEFANG</strong></td><td>Combo Race</td><td><span class="verdict verdict-even">Even</span></td><td>Greasefang combo kills on T3-4.</td></tr>
-<tr><td colspan="4" class="matchup-detail" id="mu-greasefang">
-<p>Greasefang combo kills on T3-4. Your clock is T4-5. You need Thalia to delay their T3 Greasefang by taxing their discard outlets (Monument to Endurance costs {1} more, Cryptcaller Chariot costs {1} more). Rest in Peace (SB) completely answers the combo by exiling all GY cards — they can't return Parhelion II. Leyline of Sanctity (SB) prevents Thoughtseize from stripping your answers.</p>
+          <div class="sb-item"><span><span class="c">Skrelv, Defector Mite</span></span><span class="sb-qty">+2</span></div>
+        </div>
+        <div class="sb-col"><div class="sb-col-label">Out</div>
+          <div class="sb-item"><span><span class="c">Commune with Spirits</span></span><span class="sb-qty">&minus;2</span></div>
+          <div class="sb-item"><span><span class="c">Lathiel, the Bounding Dawn</span></span><span class="sb-qty">&minus;1</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="matchup-block">
+    <div class="matchup-header" onclick="toggle('mu-greasefang')">
+      <h3>ORZHOV GREASEFANG</h3><span class="verdict verdict-even">Even</span>
+    </div>
+    <div id="mu-greasefang" class="matchup-body">
+      <p>Greasefang combo kills on T3-4. Your clock is T4-5. You need Thalia to delay their T3 Greasefang by taxing their discard outlets (Monument to Endurance costs {1} more, Cryptcaller Chariot costs {1} more). Rest in Peace (SB) completely answers the combo by exiling all GY cards — they can't return Parhelion II. Leyline of Sanctity (SB) prevents Thoughtseize from stripping your answers.</p>
       <p><strong>Priority:</strong> Be aggressive and deploy Thalia on T2. Rest in Peace on T2 alongside a creature is often a complete lock. Their Parhelion II attack with a 9/9 is irrelevant if you win by attacking through their non-flying blockers, which you can do with a developed board.</p>
       <div class="sb-table">
         <div class="sb-col"><div class="sb-col-label">In</div>
           <div class="sb-item"><span><span class="c">Rest in Peace</span></span><span class="sb-qty">+2</span></div>
-          <div class="sb-item"><span><span class="c">Leyline of Sanctity</span></span><span class="sb-qty">+3</span>
-</td></tr>
-<tr onclick="toggle('mu-control')"><td><strong>UW CONTROL</strong></td><td>Combo</td><td><span class="verdict verdict-good">Favorable</span></td><td>Your best matchup.</td></tr>
-<tr><td colspan="4" class="matchup-detail" id="mu-control">
-<p>Your best matchup. Thalia taxes every counterspell and removal spell. Voice of Resurgence punishes their instants on your turn. CoCo at end of their turn refills through sweepers. They need 3-4 interactive spells to deal with one of your threats; you need one CoCo to replace them all. Shapers' Sanctuary (SB) draws a card every time they target one of your creatures, generating more card advantage than their cantrips.</p>
+          <div class="sb-item"><span><span class="c">Leyline of Sanctity</span></span><span class="sb-qty">+3</span></div>
+        </div>
+        <div class="sb-col"><div class="sb-col-label">Out</div>
+          <div class="sb-item"><span><span class="c">Lathiel, the Bounding Dawn</span></span><span class="sb-qty">&minus;2</span></div>
+          <div class="sb-item"><span><span class="c">Commune with Spirits</span></span><span class="sb-qty">&minus;2</span></div>
+          <div class="sb-item"><span><span class="c">Skrelv, Defector Mite</span></span><span class="sb-qty">&minus;1</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="matchup-block">
+    <div class="matchup-header" onclick="toggle('mu-control')">
+      <h3>UW CONTROL</h3><span class="verdict verdict-good">Favorable</span>
+    </div>
+    <div id="mu-control" class="matchup-body">
+      <p>Your best matchup. Thalia taxes every counterspell and removal spell. Voice of Resurgence punishes their instants on your turn. CoCo at end of their turn refills through sweepers. They need 3-4 interactive spells to deal with one of your threats; you need one CoCo to replace them all. Shapers' Sanctuary (SB) draws a card every time they target one of your creatures, generating more card advantage than their cantrips.</p>
       <p><strong>Priority:</strong> Deploy Thalia early, then spread creatures 2 at a time. Never empty your hand. Hold CoCo for their end step after a sweeper. Kellan attacks and draws cards; Extraction Specialist rebuilds after each sweeper. Voice of Resurgence prevents them from casting instants on your turn without paying a token tax.</p>
       <div class="sb-table">
         <div class="sb-col"><div class="sb-col-label">In</div>
           <div class="sb-item"><span><span class="c">Shapers' Sanctuary</span></span><span class="sb-qty">+2</span></div>
-          <div class="sb-item"><span><span class="c">Declaration in Stone</span></span><span class="sb-qty">+1</span>
-</td></tr>
-<tr onclick="toggle('mu-lotus')"><td><strong>LOTUS FIELD</strong></td><td>Combo Race</td><td><span class="verdict verdict-even">Even</span></td><td>Lotus Field combo goes off on T4-5.</td></tr>
-<tr><td colspan="4" class="matchup-detail" id="mu-lotus">
-<p>Lotus Field combo goes off on T4-5. You kill on T4-5. Damping Sphere (SB) is your best card — it shuts off Lotus Field's ability to produce more than one mana (Lotus taps for three, but Sphere says each additional land that taps for multiple mana costs {1} extra). This effectively prevents the explosive mana generation that powers Hidden Strings. Thalia taxes their setup spells. Knight of Autumn destroys Thespian's Stage.</p>
+          <div class="sb-item"><span><span class="c">Declaration in Stone</span></span><span class="sb-qty">+1</span></div>
+        </div>
+        <div class="sb-col"><div class="sb-col-label">Out</div>
+          <div class="sb-item"><span><span class="c">Lathiel, the Bounding Dawn</span></span><span class="sb-qty">&minus;2</span></div>
+          <div class="sb-item"><span><span class="c">Skrelv, Defector Mite</span></span><span class="sb-qty">&minus;1</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="matchup-block">
+    <div class="matchup-header" onclick="toggle('mu-lotus')">
+      <h3>LOTUS FIELD</h3><span class="verdict verdict-even">Even</span>
+    </div>
+    <div id="mu-lotus" class="matchup-body">
+      <p>Lotus Field combo goes off on T4-5. You kill on T4-5. Damping Sphere (SB) is your best card — it shuts off Lotus Field's ability to produce more than one mana (Lotus taps for three, but Sphere says each additional land that taps for multiple mana costs {1} extra). This effectively prevents the explosive mana generation that powers Hidden Strings. Thalia taxes their setup spells. Knight of Autumn destroys Thespian's Stage.</p>
       <p><strong>Priority:</strong> Get Damping Sphere into play on T2 before they set up. If you can't, Knight of Autumn targets Thespian's Stage — destroying it prevents Stage from copying Lotus Field. Apply clock pressure while disrupting their mana. They can't win without explosive mana; shut the mana off and race the rest.</p>
       <div class="sb-table">
         <div class="sb-col"><div class="sb-col-label">In</div>
-          <div class="sb-item"><span><span class="c">Damping Sphere</span></span><span class="sb-qty">+2</span>
-</td></tr>
-<tr onclick="toggle('mu-lotus2')"><td><strong>LOTUS FIELD</strong></td><td>Combo</td><td><span class="verdict verdict-good">Favorable</span></td><td>Damping Sphere prevents their mana multiplication.</td></tr>
-<tr><td colspan="4" class="matchup-detail" id="mu-lotus2">
-<p>Damping Sphere prevents their mana multiplication. Thoughtseize strips Hidden Strings or key pieces before cast.</p>
+          <div class="sb-item"><span><span class="c">Damping Sphere</span></span><span class="sb-qty">+2</span></div>
+        </div>
+        <div class="sb-col"><div class="sb-col-label">Out</div>
+          <div class="sb-item"><span><span class="c">Lathiel, the Bounding Dawn</span></span><span class="sb-qty">&minus;2</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="matchup-block">
+    <div class="matchup-header" onclick="toggle('mu-lotus2')">
+      <h3>LOTUS FIELD</h3><span class="verdict verdict-good">Favorable</span>
+    </div>
+    <div id="mu-lotus2" class="matchup-body">
+      <p>Damping Sphere prevents their mana multiplication. Thoughtseize strips Hidden Strings or key pieces before cast.</p>
       <div class="sb-table">
-        <div class="sb-col"><div class="sb-col-label">In</div><div class="sb-item"><span><span class="c">Damping Sphere</span></span><span class="sb-qty">+3</span></div><div class="sb-item"><span><span class="c">Duress</span></span><span class="sb-qty">+2</span>
-</td></tr>
-<tr onclick="toggle('mu-niv2')"><td><strong>NIV-MIZZET REBORN</strong></td><td>Combo Race</td><td><span class="verdict verdict-even">Even</span></td><td>Their clock is slow — 5 mana for Niv.</td></tr>
-<tr><td colspan="4" class="matchup-detail" id="mu-niv2">
-<p>Their clock is slow — 5 mana for Niv. Strip their key enablers with Thoughtseize and race with your threats.</p>
+        <div class="sb-col"><div class="sb-col-label">In</div><div class="sb-item"><span><span class="c">Damping Sphere</span></span><span class="sb-qty">+3</span></div><div class="sb-item"><span><span class="c">Duress</span></span><span class="sb-qty">+2</span></div></div>
+        <div class="sb-col"><div class="sb-col-label">Out</div><div class="sb-item"><span><span class="c">Fatal Push</span></span><span class="sb-qty">-2</span></div><div class="sb-item"><span><span class="c">Soul-Guide Lantern</span></span><span class="sb-qty">-2</span></div><div class="sb-item"><span><span class="c">Arashin Cleric</span></span><span class="sb-qty">-1</span></div></div>
+      </div>
+      <p class="sb-note">Damping Sphere stops their mana combo. Duress strips combo pieces. Cut reactive removal.</p>
+    </div>
+  </div>
+
+  <div class="matchup-block">
+    <div class="matchup-header" onclick="toggle('mu-niv2')">
+      <h3>NIV-MIZZET REBORN</h3><span class="verdict verdict-even">Even</span>
+    </div>
+    <div id="mu-niv2" class="matchup-body">
+      <p>Their clock is slow — 5 mana for Niv. Strip their key enablers with Thoughtseize and race with your threats.</p>
       <div class="sb-table">
-        <div class="sb-col"><div class="sb-col-label">In</div><div class="sb-item"><span><span class="c">Thoughtseize</span></span><span class="sb-qty">+2</span></div><div class="sb-item"><span><span class="c">Duress</span></span><span class="sb-qty">+2</span>
-</td></tr>
-<tr onclick="toggle('mu-arclight2')"><td><strong>ARCLIGHT PHOENIX</strong></td><td>Combo Race</td><td><span class="verdict verdict-even">Even</span></td><td>Soul-Guide Lantern exiles Phoenix from GY before it triggers back.</td></tr>
-<tr><td colspan="4" class="matchup-detail" id="mu-arclight2">
-<p>Soul-Guide Lantern exiles Phoenix from GY before it triggers back. Counter their Young Pyromancer — it generates too many tokens.</p>
+        <div class="sb-col"><div class="sb-col-label">In</div><div class="sb-item"><span><span class="c">Thoughtseize</span></span><span class="sb-qty">+2</span></div><div class="sb-item"><span><span class="c">Duress</span></span><span class="sb-qty">+2</span></div></div>
+        <div class="sb-col"><div class="sb-col-label">Out</div><div class="sb-item"><span><span class="c">Soul-Guide Lantern</span></span><span class="sb-qty">-2</span></div><div class="sb-item"><span><span class="c">Arashin Cleric</span></span><span class="sb-qty">-2</span></div></div>
+      </div>
+      <p class="sb-note">Thoughtseize strips Niv or their tutor. Cut Lantern (no relevant GY) and Cleric.</p>
+    </div>
+  </div>
+
+  <div class="matchup-block">
+    <div class="matchup-header" onclick="toggle('mu-arclight2')">
+      <h3>ARCLIGHT PHOENIX</h3><span class="verdict verdict-even">Even</span>
+    </div>
+    <div id="mu-arclight2" class="matchup-body">
+      <p>Soul-Guide Lantern exiles Phoenix from GY before it triggers back. Counter their Young Pyromancer — it generates too many tokens.</p>
       <div class="sb-table">
-        <div class="sb-col"><div class="sb-col-label">In</div><div class="sb-item"><span><span class="c">Soul-Guide Lantern</span></span><span class="sb-qty">+2</span></div><div class="sb-item"><span><span class="c">Rending Volley</span></span><span class="sb-qty">+1</span>
-</td></tr>
-<tr onclick="toggle('mu-creativity2')"><td><strong>IZZET CREATIVITY</strong></td><td>Combo</td><td><span class="verdict verdict-good">Favorable</span></td><td>Thoughtseize strips Creativity before it resolves.</td></tr>
-<tr><td colspan="4" class="matchup-detail" id="mu-creativity2">
-<p>Thoughtseize strips Creativity before it resolves. If Atraxa enters without interaction you've likely lost — strip it or counter it.</p>
+        <div class="sb-col"><div class="sb-col-label">In</div><div class="sb-item"><span><span class="c">Soul-Guide Lantern</span></span><span class="sb-qty">+2</span></div><div class="sb-item"><span><span class="c">Rending Volley</span></span><span class="sb-qty">+1</span></div></div>
+        <div class="sb-col"><div class="sb-col-label">Out</div><div class="sb-item"><span><span class="c">Duress</span></span><span class="sb-qty">-2</span></div><div class="sb-item"><span><span class="c">Thoughtseize</span></span><span class="sb-qty">-1</span></div></div>
+      </div>
+      <p class="sb-note">Soul-Guide Lantern exiles Phoenix. Rending Volley destroys white/blue creatures. Cut discard.</p>
+    </div>
+  </div>
+
+  <div class="matchup-block">
+    <div class="matchup-header" onclick="toggle('mu-creativity2')">
+      <h3>IZZET CREATIVITY</h3><span class="verdict verdict-good">Favorable</span>
+    </div>
+    <div id="mu-creativity2" class="matchup-body">
+      <p>Thoughtseize strips Creativity before it resolves. If Atraxa enters without interaction you've likely lost — strip it or counter it.</p>
       <div class="sb-table">
-        <div class="sb-col"><div class="sb-col-label">In</div><div class="sb-item"><span><span class="c">Duress</span></span><span class="sb-qty">+3</span></div><div class="sb-item"><span><span class="c">Thoughtseize</span></span><span class="sb-qty">+2</span>
-</td></tr>
-<tr onclick="toggle('mu-rakdos2')"><td><strong>RAKDOS MIDRANGE</strong></td><td>Combo Race</td><td><span class="verdict verdict-even">Even</span></td><td>Thoughtseize trades 1-for-1.</td></tr>
-<tr><td colspan="4" class="matchup-detail" id="mu-rakdos2">
-<p>Thoughtseize trades 1-for-1. Kill Vein Ripper or Kalitas before they generate value. Fatal Push with revolt handles most of their threats.</p>
+        <div class="sb-col"><div class="sb-col-label">In</div><div class="sb-item"><span><span class="c">Duress</span></span><span class="sb-qty">+3</span></div><div class="sb-item"><span><span class="c">Thoughtseize</span></span><span class="sb-qty">+2</span></div></div>
+        <div class="sb-col"><div class="sb-col-label">Out</div><div class="sb-item"><span><span class="c">Fatal Push</span></span><span class="sb-qty">-2</span></div><div class="sb-item"><span><span class="c">Soul-Guide Lantern</span></span><span class="sb-qty">-2</span></div><div class="sb-item"><span><span class="c">Arashin Cleric</span></span><span class="sb-qty">-1</span></div></div>
+      </div>
+      <p class="sb-note">Duress and Thoughtseize strip Creativity. Cut removal — they win through spells.</p>
+    </div>
+  </div>
+
+  <div class="matchup-block">
+    <div class="matchup-header" onclick="toggle('mu-rakdos2')">
+      <h3>RAKDOS MIDRANGE</h3><span class="verdict verdict-even">Even</span>
+    </div>
+    <div id="mu-rakdos2" class="matchup-body">
+      <p>Thoughtseize trades 1-for-1. Kill Vein Ripper or Kalitas before they generate value. Fatal Push with revolt handles most of their threats.</p>
       <div class="sb-table">
-        <div class="sb-col"><div class="sb-col-label">In</div><div class="sb-item"><span><span class="c">Fatal Push</span></span><span class="sb-qty">+2</span></div><div class="sb-item"><span><span class="c">Collective Brutality</span></span><span class="sb-qty">+1</span>
-</td></tr>
-</tbody>
-</table>
+        <div class="sb-col"><div class="sb-col-label">In</div><div class="sb-item"><span><span class="c">Fatal Push</span></span><span class="sb-qty">+2</span></div><div class="sb-item"><span><span class="c">Collective Brutality</span></span><span class="sb-qty">+1</span></div></div>
+        <div class="sb-col"><div class="sb-col-label">Out</div><div class="sb-item"><span><span class="c">Duress</span></span><span class="sb-qty">-2</span></div><div class="sb-item"><span><span class="c">Soul-Guide Lantern</span></span><span class="sb-qty">-1</span></div></div>
+      </div>
+      <p class="sb-note">Fatal Push kills Vein Ripper and Kalitas. Cut redundant discard and Lantern.</p>
+    </div>
+  </div>
+
+</div>
 </div>
 <div id="sideboard" class="section">
 <div class="page">

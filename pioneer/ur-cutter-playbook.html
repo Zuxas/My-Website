@@ -351,94 +351,188 @@ span.c:hover{border-bottom-style:solid;}
   <h1>MATCHUP<br>GUIDE</h1>
   <div class="mantra">"Most matchups are won before sideboard. Know your kill turn vs their kill turn."</div>
 
-  <table class="matchup-table">
-<colgroup><col><col><col><col></colgroup>
-<thead><tr><th>Matchup</th><th>Role</th><th>Verdict</th><th>Key Play</th></tr></thead>
-<tbody>
-<tr onclick="toggle('mu-greasefang')"><td><strong>ORZHOV GREASEFANG</strong></td><td>Combo</td><td><span class="verdict verdict-good">Favorable</span></td><td>Their combo kills on T3 — same as you.</td></tr>
-<tr><td colspan="4" class="matchup-detail" id="mu-greasefang">
-<p>Their combo kills on T3 — same as you. The difference: your clock is harder to disrupt. Thoughtseize and Duress can take your Cutter but not the cantrips that let you rebuild. Their game plan requires both Greasefang AND a vehicle in GY — multiple failure points. Your plan is more consistent.</p>
+  <div class="matchup-block">
+    <div class="matchup-header" onclick="toggle('mu-greasefang')">
+      <h3>ORZHOV GREASEFANG</h3><span class="verdict verdict-good">Favorable</span>
+    </div>
+    <div id="mu-greasefang" class="matchup-body">
+      <p>Their combo kills on T3 — same as you. The difference: your clock is harder to disrupt. Thoughtseize and Duress can take your Cutter but not the cantrips that let you rebuild. Their game plan requires both Greasefang AND a vehicle in GY — multiple failure points. Your plan is more consistent.</p>
       <p><strong>Priority:</strong> Just race. Don't slow down to interact with their setup. A T3 kill or near-lethal board means they have to stop answering and start blocking. If they attack with Parhelion II, check if you can deal lethal on your next turn regardless — often you can.</p>
       <p><strong>Needle:</strong> Unlicensed Hearse (SB) exiles their GY so Greasefang has no vehicle to reanimate. Board it in and activate aggressively. But honestly game 1 you just race.</p>
       <div class="sb-table">
         <div class="sb-col"><div class="sb-col-label">In</div>
           <div class="sb-item"><span><span class="c">Unlicensed Hearse</span></span><span class="sb-qty">+2</span></div>
-          <div class="sb-item"><span><span class="c">Spell Pierce</span></span><span class="sb-qty">+2</span>
-</td></tr>
-<tr onclick="toggle('mu-rdw')"><td><strong>RED DECK WINS</strong></td><td>Combo Race</td><td><span class="verdict verdict-even">Even</span></td><td>Mirror-ish in speed — they burn your creatures, you create more Monks.</td></tr>
-<tr><td colspan="4" class="matchup-detail" id="mu-rdw">
-<p>Mirror-ish in speed — they burn your creatures, you create more Monks. Key difference: they go face, you go face AND grow a board. Fiery Impulse kills their 1-drops cleanly. Your Monks are often larger than their burn targets by T3 due to prowess stacking. Treasure Cruise gives you more gas in the mid-game than they can handle.</p>
+          <div class="sb-item"><span><span class="c">Spell Pierce</span></span><span class="sb-qty">+2</span></div>
+        </div>
+        <div class="sb-col"><div class="sb-col-label">Out</div>
+          <div class="sb-item"><span><span class="c">Into the Flood Maw</span></span><span class="sb-qty">&minus;2</span></div>
+          <div class="sb-item"><span><span class="c">Monstrous Rage</span></span><span class="sb-qty">&minus;1</span></div>
+          <div class="sb-item"><span><span class="c">This Town Ain't Big Enough</span></span><span class="sb-qty">&minus;1</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="matchup-block">
+    <div class="matchup-header" onclick="toggle('mu-rdw')">
+      <h3>RED DECK WINS</h3><span class="verdict verdict-even">Even</span>
+    </div>
+    <div id="mu-rdw" class="matchup-body">
+      <p>Mirror-ish in speed — they burn your creatures, you create more Monks. Key difference: they go face, you go face AND grow a board. Fiery Impulse kills their 1-drops cleanly. Your Monks are often larger than their burn targets by T3 due to prowess stacking. Treasure Cruise gives you more gas in the mid-game than they can handle.</p>
       <p><strong>Priority:</strong> Kill their key threats (Monastery Swiftspear before it attacks, Eidolon of the Great Revel immediately — it taxes you). Don't trade Monks into their 1-drops; your Monks grow faster. Apply Fiery Impulse to their best attacker, not just any attacker.</p>
       <p><strong>Needle:</strong> Aether Gust on their red threats. Chandra's Defeat is a clean answer to their key cards for {R}. Don't bring in Annul — their deck is creature-heavy.</p>
       <div class="sb-table">
         <div class="sb-col"><div class="sb-col-label">In</div>
           <div class="sb-item"><span><span class="c">Aether Gust</span></span><span class="sb-qty">+1</span></div>
           <div class="sb-item"><span><span class="c">Chandra's Defeat</span></span><span class="sb-qty">+1</span></div>
-          <div class="sb-item"><span><span class="c">Torch the Tower</span></span><span class="sb-qty">+2</span>
-</td></tr>
-<tr onclick="toggle('mu-selesnya')"><td><strong>SELESNYA COMPANY</strong></td><td>Combo Race</td><td><span class="verdict verdict-even">Even</span></td><td>Their CoCo hits at instant speed and goes wide.</td></tr>
-<tr><td colspan="4" class="matchup-detail" id="mu-selesnya">
-<p>Their CoCo hits at instant speed and goes wide. Your Monks go wide faster. Key tension: their creatures have ETB effects that generate value even when removed; your Monks need to connect. Fiery Impulse kills their mana dorks (Llanowar Elves, Elvish Mystic) before they can accelerate.</p>
+          <div class="sb-item"><span><span class="c">Torch the Tower</span></span><span class="sb-qty">+2</span></div>
+        </div>
+        <div class="sb-col"><div class="sb-col-label">Out</div>
+          <div class="sb-item"><span><span class="c">Into the Flood Maw</span></span><span class="sb-qty">&minus;2</span></div>
+          <div class="sb-item"><span><span class="c">Treasure Cruise</span></span><span class="sb-qty">&minus;1</span></div>
+          <div class="sb-item"><span><span class="c">Astrologian's Planisphere</span></span><span class="sb-qty">&minus;1</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="matchup-block">
+    <div class="matchup-header" onclick="toggle('mu-selesnya')">
+      <h3>SELESNYA COMPANY</h3><span class="verdict verdict-even">Even</span>
+    </div>
+    <div id="mu-selesnya" class="matchup-body">
+      <p>Their CoCo hits at instant speed and goes wide. Your Monks go wide faster. Key tension: their creatures have ETB effects that generate value even when removed; your Monks need to connect. Fiery Impulse kills their mana dorks (Llanowar Elves, Elvish Mystic) before they can accelerate.</p>
       <p><strong>Priority:</strong> Kill their mana acceleration immediately — don't let them CoCo on T3. A T2 Fiery Impulse on their dork sets their clock back a full turn. Your Cutter generates enough tokens that their creature advantage doesn't matter. Attack into anything smaller than your Monks and let prowess math handle the rest.</p>
       <p><strong>Needle:</strong> Aether Gust counters green creatures at instant speed. Annul counters CoCo. The combination stops their combo turn cold.</p>
       <div class="sb-table">
         <div class="sb-col"><div class="sb-col-label">In</div>
           <div class="sb-item"><span><span class="c">Aether Gust</span></span><span class="sb-qty">+1</span></div>
-          <div class="sb-item"><span><span class="c">Annul</span></span><span class="sb-qty">+2</span>
-</td></tr>
-<tr onclick="toggle('mu-uw-control')"><td><strong>UW CONTROL</strong></td><td>Flexible</td><td><span class="verdict verdict-hard">Unfavorable</span></td><td>Supreme Verdict and Azorius Charm sweep your Monks.</td></tr>
-<tr><td colspan="4" class="matchup-detail" id="mu-uw-control">
-<p>Supreme Verdict and Azorius Charm sweep your Monks. Teferi, Hero of Dominaria answers everything. Their hand disruption plus sweepers creates a losing game pattern. Post-board Slickshot Show-Off survives sweepers by being cast AFTER them (Plot then deploy).</p>
+          <div class="sb-item"><span><span class="c">Annul</span></span><span class="sb-qty">+2</span></div>
+        </div>
+        <div class="sb-col"><div class="sb-col-label">Out</div>
+          <div class="sb-item"><span><span class="c">This Town Ain't Big Enough</span></span><span class="sb-qty">&minus;1</span></div>
+          <div class="sb-item"><span><span class="c">Into the Flood Maw</span></span><span class="sb-qty">&minus;2</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="matchup-block">
+    <div class="matchup-header" onclick="toggle('mu-uw-control')">
+      <h3>UW CONTROL</h3><span class="verdict verdict-hard">Unfavorable</span>
+    </div>
+    <div id="mu-uw-control" class="matchup-body">
+      <p>Supreme Verdict and Azorius Charm sweep your Monks. Teferi, Hero of Dominaria answers everything. Their hand disruption plus sweepers creates a losing game pattern. Post-board Slickshot Show-Off survives sweepers by being cast AFTER them (Plot then deploy).</p>
       <p><strong>Priority:</strong> Bait their sweeper with two Monks before deploying Slickshot. Into the Flood Maw bounces their Teferi at instant speed before -3 can answer your threats. Don't overcommit — max three creatures before forcing their sweeper. After sweeper resolves: Plot Slickshot, deploy, swing next turn.</p>
       <p><strong>Needle:</strong> Slickshot Show-Off can be Plotted and doesn't care about sweepers. Spell Pierce counters Teferi on T3. Annul counters enchantments and artifacts they might run.</p>
       <div class="sb-table">
         <div class="sb-col"><div class="sb-col-label">In</div>
           <div class="sb-item"><span><span class="c">Slickshot Show-Off</span></span><span class="sb-qty">+3</span></div>
           <div class="sb-item"><span><span class="c">Spell Pierce</span></span><span class="sb-qty">+2</span></div>
-          <div class="sb-item"><span><span class="c">Annul</span></span><span class="sb-qty">+2</span>
-</td></tr>
-<tr onclick="toggle('mu-rakdos')"><td><strong>RAKDOS MIDRANGE</strong></td><td>Combo Race</td><td><span class="verdict verdict-even">Even</span></td><td>Thoughtseize and Duress can strip Cutter from your hand.</td></tr>
-<tr><td colspan="4" class="matchup-detail" id="mu-rakdos">
-<p>Thoughtseize and Duress can strip Cutter from your hand. Their removal (Fatal Push, Dreadbore) answers your creatures one-for-one. Your Cutter token generation eventually outpaces their answers — they run out of removal, you still have Monks. Treasure Cruise completely reloads when they've stabilized at 6 life.</p>
+          <div class="sb-item"><span><span class="c">Annul</span></span><span class="sb-qty">+2</span></div>
+        </div>
+        <div class="sb-col"><div class="sb-col-label">Out</div>
+          <div class="sb-item"><span><span class="c">Fiery Impulse</span></span><span class="sb-qty">&minus;4</span></div>
+          <div class="sb-item"><span><span class="c">Torch the Tower</span></span><span class="sb-qty">&minus;2</span></div>
+          <div class="sb-item"><span><span class="c">Monstrous Rage</span></span><span class="sb-qty">&minus;1</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="matchup-block">
+    <div class="matchup-header" onclick="toggle('mu-rakdos')">
+      <h3>RAKDOS MIDRANGE</h3><span class="verdict verdict-even">Even</span>
+    </div>
+    <div id="mu-rakdos" class="matchup-body">
+      <p>Thoughtseize and Duress can strip Cutter from your hand. Their removal (Fatal Push, Dreadbore) answers your creatures one-for-one. Your Cutter token generation eventually outpaces their answers — they run out of removal, you still have Monks. Treasure Cruise completely reloads when they've stabilized at 6 life.</p>
       <p><strong>Priority:</strong> Lead with a threat before playing Cutter — if they Thoughtseize you, they see Cutter and take it. A deployed creature + one cantrip in hand is a harder decision for them. After they strip your key piece, deploy the next threat immediately. The 12-cantrip count means you find Cutter again faster than they find enough removal.</p>
       <p><strong>Needle:</strong> Abrade (SB) answers artifacts they might run (Graveyard hate, Unlicensed Hearse if mirroring). Into the Flood Maw bouncing their Kalitas or Graveyard Trespasser buys crucial turns.</p>
       <div class="sb-table">
         <div class="sb-col"><div class="sb-col-label">In</div>
           <div class="sb-item"><span><span class="c">Abrade</span></span><span class="sb-qty">+2</span></div>
-          <div class="sb-item"><span><span class="c">Slickshot Show-Off</span></span><span class="sb-qty">+2</span>
-</td></tr>
-<tr onclick="toggle('mu-lotus2')"><td><strong>LOTUS FIELD</strong></td><td>Combo</td><td><span class="verdict verdict-good">Favorable</span></td><td>Damping Sphere prevents their mana multiplication.</td></tr>
-<tr><td colspan="4" class="matchup-detail" id="mu-lotus2">
-<p>Damping Sphere prevents their mana multiplication. Thoughtseize strips Hidden Strings or key pieces before cast.</p>
+          <div class="sb-item"><span><span class="c">Slickshot Show-Off</span></span><span class="sb-qty">+2</span></div>
+        </div>
+        <div class="sb-col"><div class="sb-col-label">Out</div>
+          <div class="sb-item"><span><span class="c">Annul</span></span><span class="sb-qty">&minus;2</span></div>
+          <div class="sb-item"><span><span class="c">Monstrous Rage</span></span><span class="sb-qty">&minus;1</span></div>
+          <div class="sb-item"><span><span class="c">This Town Ain't Big Enough</span></span><span class="sb-qty">&minus;1</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="matchup-block">
+    <div class="matchup-header" onclick="toggle('mu-lotus2')">
+      <h3>LOTUS FIELD</h3><span class="verdict verdict-good">Favorable</span>
+    </div>
+    <div id="mu-lotus2" class="matchup-body">
+      <p>Damping Sphere prevents their mana multiplication. Thoughtseize strips Hidden Strings or key pieces before cast.</p>
       <div class="sb-table">
-        <div class="sb-col"><div class="sb-col-label">In</div><div class="sb-item"><span><span class="c">Damping Sphere</span></span><span class="sb-qty">+3</span></div><div class="sb-item"><span><span class="c">Duress</span></span><span class="sb-qty">+2</span>
-</td></tr>
-<tr onclick="toggle('mu-niv2')"><td><strong>NIV-MIZZET REBORN</strong></td><td>Combo Race</td><td><span class="verdict verdict-even">Even</span></td><td>Their clock is slow — 5 mana for Niv.</td></tr>
-<tr><td colspan="4" class="matchup-detail" id="mu-niv2">
-<p>Their clock is slow — 5 mana for Niv. Strip their key enablers with Thoughtseize and race with your threats.</p>
+        <div class="sb-col"><div class="sb-col-label">In</div><div class="sb-item"><span><span class="c">Damping Sphere</span></span><span class="sb-qty">+3</span></div><div class="sb-item"><span><span class="c">Duress</span></span><span class="sb-qty">+2</span></div></div>
+        <div class="sb-col"><div class="sb-col-label">Out</div><div class="sb-item"><span><span class="c">Fatal Push</span></span><span class="sb-qty">-2</span></div><div class="sb-item"><span><span class="c">Soul-Guide Lantern</span></span><span class="sb-qty">-2</span></div><div class="sb-item"><span><span class="c">Arashin Cleric</span></span><span class="sb-qty">-1</span></div></div>
+      </div>
+      <p class="sb-note">Damping Sphere stops their mana combo. Duress strips combo pieces. Cut reactive removal.</p>
+    </div>
+  </div>
+
+  <div class="matchup-block">
+    <div class="matchup-header" onclick="toggle('mu-niv2')">
+      <h3>NIV-MIZZET REBORN</h3><span class="verdict verdict-even">Even</span>
+    </div>
+    <div id="mu-niv2" class="matchup-body">
+      <p>Their clock is slow — 5 mana for Niv. Strip their key enablers with Thoughtseize and race with your threats.</p>
       <div class="sb-table">
-        <div class="sb-col"><div class="sb-col-label">In</div><div class="sb-item"><span><span class="c">Thoughtseize</span></span><span class="sb-qty">+2</span></div><div class="sb-item"><span><span class="c">Duress</span></span><span class="sb-qty">+2</span>
-</td></tr>
-<tr onclick="toggle('mu-arclight2')"><td><strong>ARCLIGHT PHOENIX</strong></td><td>Combo Race</td><td><span class="verdict verdict-even">Even</span></td><td>Soul-Guide Lantern exiles Phoenix from GY before it triggers back.</td></tr>
-<tr><td colspan="4" class="matchup-detail" id="mu-arclight2">
-<p>Soul-Guide Lantern exiles Phoenix from GY before it triggers back. Counter their Young Pyromancer — it generates too many tokens.</p>
+        <div class="sb-col"><div class="sb-col-label">In</div><div class="sb-item"><span><span class="c">Thoughtseize</span></span><span class="sb-qty">+2</span></div><div class="sb-item"><span><span class="c">Duress</span></span><span class="sb-qty">+2</span></div></div>
+        <div class="sb-col"><div class="sb-col-label">Out</div><div class="sb-item"><span><span class="c">Soul-Guide Lantern</span></span><span class="sb-qty">-2</span></div><div class="sb-item"><span><span class="c">Arashin Cleric</span></span><span class="sb-qty">-2</span></div></div>
+      </div>
+      <p class="sb-note">Thoughtseize strips Niv or their tutor. Cut Lantern (no relevant GY) and Cleric.</p>
+    </div>
+  </div>
+
+  <div class="matchup-block">
+    <div class="matchup-header" onclick="toggle('mu-arclight2')">
+      <h3>ARCLIGHT PHOENIX</h3><span class="verdict verdict-even">Even</span>
+    </div>
+    <div id="mu-arclight2" class="matchup-body">
+      <p>Soul-Guide Lantern exiles Phoenix from GY before it triggers back. Counter their Young Pyromancer — it generates too many tokens.</p>
       <div class="sb-table">
-        <div class="sb-col"><div class="sb-col-label">In</div><div class="sb-item"><span><span class="c">Soul-Guide Lantern</span></span><span class="sb-qty">+2</span></div><div class="sb-item"><span><span class="c">Rending Volley</span></span><span class="sb-qty">+1</span>
-</td></tr>
-<tr onclick="toggle('mu-creativity2')"><td><strong>IZZET CREATIVITY</strong></td><td>Combo</td><td><span class="verdict verdict-good">Favorable</span></td><td>Thoughtseize strips Creativity before it resolves.</td></tr>
-<tr><td colspan="4" class="matchup-detail" id="mu-creativity2">
-<p>Thoughtseize strips Creativity before it resolves. If Atraxa enters without interaction you've likely lost — strip it or counter it.</p>
+        <div class="sb-col"><div class="sb-col-label">In</div><div class="sb-item"><span><span class="c">Soul-Guide Lantern</span></span><span class="sb-qty">+2</span></div><div class="sb-item"><span><span class="c">Rending Volley</span></span><span class="sb-qty">+1</span></div></div>
+        <div class="sb-col"><div class="sb-col-label">Out</div><div class="sb-item"><span><span class="c">Duress</span></span><span class="sb-qty">-2</span></div><div class="sb-item"><span><span class="c">Thoughtseize</span></span><span class="sb-qty">-1</span></div></div>
+      </div>
+      <p class="sb-note">Soul-Guide Lantern exiles Phoenix. Rending Volley destroys white/blue creatures. Cut discard.</p>
+    </div>
+  </div>
+
+  <div class="matchup-block">
+    <div class="matchup-header" onclick="toggle('mu-creativity2')">
+      <h3>IZZET CREATIVITY</h3><span class="verdict verdict-good">Favorable</span>
+    </div>
+    <div id="mu-creativity2" class="matchup-body">
+      <p>Thoughtseize strips Creativity before it resolves. If Atraxa enters without interaction you've likely lost — strip it or counter it.</p>
       <div class="sb-table">
-        <div class="sb-col"><div class="sb-col-label">In</div><div class="sb-item"><span><span class="c">Duress</span></span><span class="sb-qty">+3</span></div><div class="sb-item"><span><span class="c">Thoughtseize</span></span><span class="sb-qty">+2</span>
-</td></tr>
-<tr onclick="toggle('mu-rakdos2')"><td><strong>RAKDOS MIDRANGE</strong></td><td>Combo Race</td><td><span class="verdict verdict-even">Even</span></td><td>Thoughtseize trades 1-for-1.</td></tr>
-<tr><td colspan="4" class="matchup-detail" id="mu-rakdos2">
-<p>Thoughtseize trades 1-for-1. Kill Vein Ripper or Kalitas before they generate value. Fatal Push with revolt handles most of their threats.</p>
+        <div class="sb-col"><div class="sb-col-label">In</div><div class="sb-item"><span><span class="c">Duress</span></span><span class="sb-qty">+3</span></div><div class="sb-item"><span><span class="c">Thoughtseize</span></span><span class="sb-qty">+2</span></div></div>
+        <div class="sb-col"><div class="sb-col-label">Out</div><div class="sb-item"><span><span class="c">Fatal Push</span></span><span class="sb-qty">-2</span></div><div class="sb-item"><span><span class="c">Soul-Guide Lantern</span></span><span class="sb-qty">-2</span></div><div class="sb-item"><span><span class="c">Arashin Cleric</span></span><span class="sb-qty">-1</span></div></div>
+      </div>
+      <p class="sb-note">Duress and Thoughtseize strip Creativity. Cut removal — they win through spells.</p>
+    </div>
+  </div>
+
+  <div class="matchup-block">
+    <div class="matchup-header" onclick="toggle('mu-rakdos2')">
+      <h3>RAKDOS MIDRANGE</h3><span class="verdict verdict-even">Even</span>
+    </div>
+    <div id="mu-rakdos2" class="matchup-body">
+      <p>Thoughtseize trades 1-for-1. Kill Vein Ripper or Kalitas before they generate value. Fatal Push with revolt handles most of their threats.</p>
       <div class="sb-table">
-        <div class="sb-col"><div class="sb-col-label">In</div><div class="sb-item"><span><span class="c">Fatal Push</span></span><span class="sb-qty">+2</span></div><div class="sb-item"><span><span class="c">Collective Brutality</span></span><span class="sb-qty">+1</span>
-</td></tr>
-</tbody>
-</table>
+        <div class="sb-col"><div class="sb-col-label">In</div><div class="sb-item"><span><span class="c">Fatal Push</span></span><span class="sb-qty">+2</span></div><div class="sb-item"><span><span class="c">Collective Brutality</span></span><span class="sb-qty">+1</span></div></div>
+        <div class="sb-col"><div class="sb-col-label">Out</div><div class="sb-item"><span><span class="c">Duress</span></span><span class="sb-qty">-2</span></div><div class="sb-item"><span><span class="c">Soul-Guide Lantern</span></span><span class="sb-qty">-1</span></div></div>
+      </div>
+      <p class="sb-note">Fatal Push kills Vein Ripper and Kalitas. Cut redundant discard and Lantern.</p>
+    </div>
+  </div>
+
+</div>
 </div>
 <div id="sideboard" class="section">
 <div class="page">

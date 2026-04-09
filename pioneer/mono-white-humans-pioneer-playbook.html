@@ -341,92 +341,151 @@ span.c:hover{border-bottom-style:solid;}
   <h1>MATCHUP<br>GUIDE</h1>
   <div class="mantra">"Brave the Elements is your answer to almost everything. Name the right color."</div>
 
-  <table class="matchup-table">
-<colgroup><col><col><col><col></colgroup>
-<thead><tr><th>Matchup</th><th>Role</th><th>Verdict</th><th>Key Play</th></tr></thead>
-<tbody>
-<tr onclick="toggle('mu-cutter')"><td><strong>UR CUTTER</strong></td><td>Combo Race</td><td><span class="verdict verdict-even">Even</span></td><td>Thalia taxes their cantrips and Stormchaser's Talent activations.</td></tr>
-<tr><td colspan="4" class="matchup-detail" id="mu-cutter">
-<p>Thalia taxes their cantrips and Stormchaser's Talent activations. Your ground Humans trade favorably with their Monk tokens (2/2 vs 1/1). Brave the Elements naming blue stops Into the Flood Maw from bouncing your key creatures. Their Treasure Cruise refuels — accept the 3-card refuel and maintain your board pressure. Coppercoat Vanguard's ward makes targeting your Humans expensive, forcing them to use Fiery Impulse or Fiery Impulse + extra mana.</p>
+  <div class="matchup-block">
+    <div class="matchup-header" onclick="toggle('mu-cutter')"><h3>UR CUTTER</h3><span class="verdict verdict-even">Even</span></div>
+    <div id="mu-cutter" class="matchup-body">
+      <p>Thalia taxes their cantrips and Stormchaser's Talent activations. Your ground Humans trade favorably with their Monk tokens (2/2 vs 1/1). Brave the Elements naming blue stops Into the Flood Maw from bouncing your key creatures. Their Treasure Cruise refuels — accept the 3-card refuel and maintain your board pressure. Coppercoat Vanguard's ward makes targeting your Humans expensive, forcing them to use Fiery Impulse or Fiery Impulse + extra mana.</p>
       <p>Your Thalia taxes their cantrips by {1} each — every Opt costs them {2} total. Your attack clock (Champion + Thalia + Lieutenant = 8+ power by T3) is faster than their Cutter setup. Your Guardian of Faith protects your board from their Into the Flood Maw bounce. You win before their Artist's Talent can generate enough loot advantage to outcard you.</p>
       <p class="sb-note">Thalia taxes every cantrip by {1} — their Cutter setup costs them extra mana and life total simultaneously.</p>
       <div class="sb-table">
-        <div class="sb-col"><div class="sb-col-label">In</div><div class="sb-item"><span><span class="c">Portable Hole</span></span><span class="sb-qty">+2</span></div><div class="sb-item"><span><span class="c">Ossification</span></span><span class="sb-qty">+2</span>
-</td></tr>
-<tr onclick="toggle('mu-rdw')"><td><strong>RED DECK WINS</strong></td><td>Combo Race</td><td><span class="verdict verdict-even">Even</span></td><td>Their Eidolon of the Great Revel costs them life too — your Humans cost 1-3 m...</td></tr>
-<tr><td colspan="4" class="matchup-detail" id="mu-rdw">
-<p>Their Eidolon of the Great Revel costs them life too — your Humans cost 1-3 mana and trigger Eidolon. Wait until you have Brave the Elements available before running out into their Eidolon. Brave naming red blanks Eidolon's trigger AND their burn spells for a full turn — you gain life from their Eidolon triggers on your opponents with protection from red. Their Rampaging Ferocidon (SB) prevents lifegain — note that Brave protection doesn't gain life, it just prevents damage.</p>
+        <div class="sb-col"><div class="sb-col-label">In</div><div class="sb-item"><span><span class="c">Portable Hole</span></span><span class="sb-qty">+2</span></div><div class="sb-item"><span><span class="c">Ossification</span></span><span class="sb-qty">+2</span></div></div>
+        <div class="sb-col"><div class="sb-col-label">Out</div><div class="sb-item"><span><span class="c">Hopeful Initiate</span></span><span class="sb-qty">&minus;1</span></div><div class="sb-item"><span><span class="c">Fateful Absence</span></span><span class="sb-qty">&minus;2</span></div><div class="sb-item"><span><span class="c">Declaration in Stone</span></span><span class="sb-qty">&minus;1</span></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="matchup-block">
+    <div class="matchup-header" onclick="toggle('mu-rdw')"><h3>RED DECK WINS</h3><span class="verdict verdict-even">Even</span></div>
+    <div id="mu-rdw" class="matchup-body">
+      <p>Their Eidolon of the Great Revel costs them life too — your Humans cost 1-3 mana and trigger Eidolon. Wait until you have Brave the Elements available before running out into their Eidolon. Brave naming red blanks Eidolon's trigger AND their burn spells for a full turn — you gain life from their Eidolon triggers on your opponents with protection from red. Their Rampaging Ferocidon (SB) prevents lifegain — note that Brave protection doesn't gain life, it just prevents damage.</p>
       <p>You race them off the board — your wide Human board outgrows their burn. Your Thalia taxes their burn spells by {1} each: their Lightning Bolt costs {2}R. Your Guardian of Faith (flash) exiles your board in response to their Anger of the Gods — your Humans return at EOT. You win through the Thalia tax making their burn math impossible and your creatures surviving what should have been lethal sweepers.</p>
       <p class="sb-note">Guardian of Faith at instant speed exiles your team through their Anger of the Gods — humans return at EOT.</p>
       <div class="sb-table">
-        <div class="sb-col"><div class="sb-col-label">In</div><div class="sb-item"><span><span class="c">Guardian of Faith</span></span><span class="sb-qty">+2</span>
-</td></tr>
-<tr onclick="toggle('mu-selesnya')"><td><strong>SELESNYA COMPANY (MIRROR-ADJACENT)</strong></td><td>Combo Race</td><td><span class="verdict verdict-even">Even</span></td><td>Their CoCo refills faster than your Recruitment Officer.</td></tr>
-<tr><td colspan="4" class="matchup-detail" id="mu-selesnya">
-<p>Their CoCo refills faster than your Recruitment Officer. Your threats are comparable in size but your lords (Lieutenant, Vanguard) make your entire team bigger. Brave the Elements gives you the attacking advantage in a stalled board — name green to make their blockers unable to block your white creatures. Their Thalia taxes YOUR Brave the Elements {1} extra — hold extra mana when you plan to Brave through their Thalia.</p>
+        <div class="sb-col"><div class="sb-col-label">In</div><div class="sb-item"><span><span class="c">Guardian of Faith</span></span><span class="sb-qty">+2</span></div></div>
+        <div class="sb-col"><div class="sb-col-label">Out</div><div class="sb-item"><span><span class="c">Hopeful Initiate</span></span><span class="sb-qty">&minus;1</span></div><div class="sb-item"><span><span class="c">Declaration in Stone</span></span><span class="sb-qty">&minus;1</span></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="matchup-block">
+    <div class="matchup-header" onclick="toggle('mu-selesnya')"><h3>SELESNYA COMPANY (MIRROR-ADJACENT)</h3><span class="verdict verdict-even">Even</span></div>
+    <div id="mu-selesnya" class="matchup-body">
+      <p>Their CoCo refills faster than your Recruitment Officer. Your threats are comparable in size but your lords (Lieutenant, Vanguard) make your entire team bigger. Brave the Elements gives you the attacking advantage in a stalled board — name green to make their blockers unable to block your white creatures. Their Thalia taxes YOUR Brave the Elements {1} extra — hold extra mana when you plan to Brave through their Thalia.</p>
       <p>Your Meddling Mage naming Collected Company shuts off their primary card advantage engine. Your Thalia's Lieutenant pump (all Humans +1/+1 on entry) makes your board wider faster. You attack with your full team every turn — their Company value doesn't generate the same immediate threat density as your Human chain. Your clock is faster than their value generation.</p>
       <p class="sb-note">Meddling Mage naming Collected Company is your lock piece — they draw blanks from their Company casts.</p>
       <div class="sb-table">
-        <div class="sb-col"><div class="sb-col-label">In</div><div class="sb-item"><span><span class="c">Portable Hole</span></span><span class="sb-qty">+2</span></div><div class="sb-item"><span><span class="c">Ossification</span></span><span class="sb-qty">+2</span>
-</td></tr>
-<tr onclick="toggle('mu-control')"><td><strong>UW CONTROL</strong></td><td>Flexible</td><td><span class="verdict verdict-hard">Unfavorable</span></td><td>Supreme Verdict (uncounterable) sweeps your entire board.</td></tr>
-<tr><td colspan="4" class="matchup-detail" id="mu-control">
-<p>Supreme Verdict (uncounterable) sweeps your entire board. Temporary Lockdown exiles all your MV-2 or less Humans. Their Teferi out-values your card advantage. Wedding Announcement (SB) survives sweepers — it generates bodies on each of its three chapter turns, meaning post-wrath you rebuild immediately. Reidane, God of the Worthy (SB) taxes their snow lands and prevents casting enchantments at less than sorcery speed, which disrupts their Temporary Lockdown timing.</p>
+        <div class="sb-col"><div class="sb-col-label">In</div><div class="sb-item"><span><span class="c">Portable Hole</span></span><span class="sb-qty">+2</span></div><div class="sb-item"><span><span class="c">Ossification</span></span><span class="sb-qty">+2</span></div></div>
+        <div class="sb-col"><div class="sb-col-label">Out</div><div class="sb-item"><span><span class="c">Fateful Absence</span></span><span class="sb-qty">&minus;2</span></div><div class="sb-item"><span><span class="c">Hopeful Initiate</span></span><span class="sb-qty">&minus;1</span></div><div class="sb-item"><span><span class="c">Kytheon</span></span><span class="sb-qty">&minus;1</span></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="matchup-block">
+    <div class="matchup-header" onclick="toggle('mu-control')"><h3>UW CONTROL</h3><span class="verdict verdict-hard">Unfavorable</span></div>
+    <div id="mu-control" class="matchup-body">
+      <p>Supreme Verdict (uncounterable) sweeps your entire board. Temporary Lockdown exiles all your MV-2 or less Humans. Their Teferi out-values your card advantage. Wedding Announcement (SB) survives sweepers — it generates bodies on each of its three chapter turns, meaning post-wrath you rebuild immediately. Reidane, God of the Worthy (SB) taxes their snow lands and prevents casting enchantments at less than sorcery speed, which disrupts their Temporary Lockdown timing.</p>
       <p>Your Reidane, God of the Worthy taxes their Supreme Verdict to {5} total — often they can't cast it on curve. Your Thalia taxes all their noncreature spells. Your Guardian of Faith response to their board wipe returns your entire Human army at EOT. You apply relentless pressure — they must spend 3+ answers on your threats before they stabilize. Your Meddling Mage naming Dovin's Veto removes their uncounterable answer.</p>
       <p class="sb-note">Reidane taxes their Supreme Verdict to {5} total — they often can't cast it on their normal curve.</p>
       <div class="sb-table">
-        <div class="sb-col"><div class="sb-col-label">In</div><div class="sb-item"><span><span class="c">Wedding Announcement</span></span><span class="sb-qty">+2</span></div><div class="sb-item"><span><span class="c">Reidane, God of the Worthy</span></span><span class="sb-qty">+1</span></div><div class="sb-item"><span><span class="c">Guardian of Faith</span></span><span class="sb-qty">+2</span>
-</td></tr>
-<tr onclick="toggle('mu-greasefang')"><td><strong>ORZHOV GREASEFANG</strong></td><td>Combo</td><td><span class="verdict verdict-good">Favorable</span></td><td>You're faster.</td></tr>
-<tr><td colspan="4" class="matchup-detail" id="mu-greasefang">
-<p>You're faster. T1-T2-T3 Human curve kills by T4-T5; they combo on T3-4. Thalia taxes their discard outlets {1} extra per spell. Their Thoughtseize strips key pieces — target Brave the Elements from hand. Brave naming black blanks their targeted discard attempts from hand. Rest in Peace (SB) removes Parhelion II from GY permanently. Your wide human board attacks through their non-flying blockers; their 9/9 flying Angel doesn't block your creatures.</p>
+        <div class="sb-col"><div class="sb-col-label">In</div><div class="sb-item"><span><span class="c">Wedding Announcement</span></span><span class="sb-qty">+2</span></div><div class="sb-item"><span><span class="c">Reidane, God of the Worthy</span></span><span class="sb-qty">+1</span></div><div class="sb-item"><span><span class="c">Guardian of Faith</span></span><span class="sb-qty">+2</span></div></div>
+        <div class="sb-col"><div class="sb-col-label">Out</div><div class="sb-item"><span><span class="c">Hopeful Initiate</span></span><span class="sb-qty">&minus;1</span></div><div class="sb-item"><span><span class="c">Thalia, Guardian of Thraben</span></span><span class="sb-qty">&minus;2</span></div><div class="sb-item"><span><span class="c">Kytheon</span></span><span class="sb-qty">&minus;2</span></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="matchup-block">
+    <div class="matchup-header" onclick="toggle('mu-greasefang')"><h3>ORZHOV GREASEFANG</h3><span class="verdict verdict-good">Favorable</span></div>
+    <div id="mu-greasefang" class="matchup-body">
+      <p>You're faster. T1-T2-T3 Human curve kills by T4-T5; they combo on T3-4. Thalia taxes their discard outlets {1} extra per spell. Their Thoughtseize strips key pieces — target Brave the Elements from hand. Brave naming black blanks their targeted discard attempts from hand. Rest in Peace (SB) removes Parhelion II from GY permanently. Your wide human board attacks through their non-flying blockers; their 9/9 flying Angel doesn't block your creatures.</p>
       <p>Your Thalia taxes their discard outlets by {1} each — their combo setup becomes one turn slower. Your Meddling Mage naming Parhelion II or Greasefang hard-locks their win condition. Your clock (Thalia + Champion + Lieutenant) applies 8+ damage by T3 — they must combo before T4 or die. You protect your board with Guardian of Faith if they have a sweeper in hand.</p>
       <p class="sb-note">Meddling Mage naming Parhelion II or Greasefang hard-locks their entire win condition.</p>
       <div class="sb-table">
-        <div class="sb-col"><div class="sb-col-label">In</div><div class="sb-item"><span><span class="c">Rest in Peace</span></span><span class="sb-qty">+2</span></div><div class="sb-item"><span><span class="c">Ossification</span></span><span class="sb-qty">+2</span>
-</td></tr>
-<tr onclick="toggle('mu-greasefang2')"><td><strong>ORZHOV GREASEFANG</strong></td><td>Combo</td><td><span class="verdict verdict-good">Favorable</span></td><td>Greasefang assembles Parhelion II in GY + Greasefang crew for a turn-3 kill.</td></tr>
-<tr><td colspan="4" class="matchup-detail" id="mu-greasefang2">
-<p>Greasefang assembles Parhelion II in GY + Greasefang crew for a turn-3 kill. Soul-Guide Lantern exiling Parhelion before Greasefang can crew it is a near-instant win — without Parhelion in GY their deck has no win condition.</p>
+        <div class="sb-col"><div class="sb-col-label">In</div><div class="sb-item"><span><span class="c">Rest in Peace</span></span><span class="sb-qty">+2</span></div><div class="sb-item"><span><span class="c">Ossification</span></span><span class="sb-qty">+2</span></div></div>
+        <div class="sb-col"><div class="sb-col-label">Out</div><div class="sb-item"><span><span class="c">Declaration in Stone</span></span><span class="sb-qty">&minus;2</span></div><div class="sb-item"><span><span class="c">Fateful Absence</span></span><span class="sb-qty">&minus;2</span></div></div>
+      </div>
+    </div>
+  </div>
+  <div class="matchup-block">
+    <div class="matchup-header" onclick="toggle('mu-greasefang2')">
+      <h3>ORZHOV GREASEFANG</h3><span class="verdict verdict-good">Favorable</span>
+    </div>
+    <div id="mu-greasefang2" class="matchup-body">
+      <p>Greasefang assembles Parhelion II in GY + Greasefang crew for a turn-3 kill. Soul-Guide Lantern exiling Parhelion before Greasefang can crew it is a near-instant win — without Parhelion in GY their deck has no win condition.</p>
       <p>Your Thalia + Meddling Mage locks their entire combo: Thalia taxes their outlets, Mage names their win condition. Your aggro clock forces them to combo into Mage's lock by T3 or die. Their Anguished Unmaking (exile Mage) costs them 3 life and {3}{W}{B} — your Thalia tax means it costs {4}{W}{B}. You hold Guardian of Faith for their rare sweeper backup plan.</p>
       <p class="sb-note">Your T3 board of 8+ power kills before they find their second Greasefang — apply pure aggression.</p>
       <div class="sb-table">
-        <div class="sb-col"><div class="sb-col-label">In</div><div class="sb-item"><span><span class="c">Soul-Guide Lantern</span></span><span class="sb-qty">+3</span></div><div class="sb-item"><span><span class="c">Fatal Push</span></span><span class="sb-qty">+2</span>
-</td></tr>
-<tr onclick="toggle('mu-lotus2')"><td><strong>LOTUS FIELD</strong></td><td>Combo</td><td><span class="verdict verdict-good">Favorable</span></td><td>Lotus Field combos off with Hidden Strings + Lotus Field.</td></tr>
-<tr><td colspan="4" class="matchup-detail" id="mu-lotus2">
-<p>Lotus Field combos off with Hidden Strings + Lotus Field. Damping Sphere shuts off their mana multiplication. Thoughtseize strips Hidden Strings or Pore Over the Pages before they can cast it.</p>
+        <div class="sb-col"><div class="sb-col-label">In</div><div class="sb-item"><span><span class="c">Soul-Guide Lantern</span></span><span class="sb-qty">+3</span></div><div class="sb-item"><span><span class="c">Fatal Push</span></span><span class="sb-qty">+2</span></div></div>
+        <div class="sb-col"><div class="sb-col-label">Out</div><div class="sb-item"><span><span class="c">Duress</span></span><span class="sb-qty">-3</span></div><div class="sb-item"><span><span class="c">Thoughtseize</span></span><span class="sb-qty">-2</span></div></div>
+      </div>
+      <p class="sb-note">Soul-Guide Lantern exiles Parhelion II — their combo is offline. Fatal Push kills Greasefang (3 MV, revolt triggers easily). Cut discard (exile GY is more efficient than hand disruption).</p>
+    </div>
+  </div>
+
+  <div class="matchup-block">
+    <div class="matchup-header" onclick="toggle('mu-lotus2')">
+      <h3>LOTUS FIELD</h3><span class="verdict verdict-good">Favorable</span>
+    </div>
+    <div id="mu-lotus2" class="matchup-body">
+      <p>Lotus Field combos off with Hidden Strings + Lotus Field. Damping Sphere shuts off their mana multiplication. Thoughtseize strips Hidden Strings or Pore Over the Pages before they can cast it.</p>
       <p>Your Thalia taxes Hidden Strings to {3} total — their combo is one full turn slower. Your 8+ power attack by T3 kills them before they assemble Lotus + Stage + Hidden Strings. Your Meddling Mage naming Hidden Strings hard-locks their combo permanently. This matchup is your fastest kill — you apply 3-4 turns of pressure before they can tap Lotus for meaningful mana.</p>
       <p class="sb-note">Meddling Mage naming Hidden Strings removes their only Lotus untapper — your aggro clock wins from there.</p>
       <div class="sb-table">
-        <div class="sb-col"><div class="sb-col-label">In</div><div class="sb-item"><span><span class="c">Damping Sphere</span></span><span class="sb-qty">+3</span></div><div class="sb-item"><span><span class="c">Duress</span></span><span class="sb-qty">+2</span>
-</td></tr>
-<tr onclick="toggle('mu-niv2')"><td><strong>NIV-MIZZET REBORN</strong></td><td>Combo Race</td><td><span class="verdict verdict-even">Even</span></td><td>Niv-Mizzet Reborn draws a card for each color pair when it enters.</td></tr>
-<tr><td colspan="4" class="matchup-detail" id="mu-niv2">
-<p>Niv-Mizzet Reborn draws a card for each color pair when it enters. Thoughtseize strips Niv or their key multicolor setup. Their clock is slow (5 mana) giving you time. Strip their key enablers and race with your own threats.</p>
+        <div class="sb-col"><div class="sb-col-label">In</div><div class="sb-item"><span><span class="c">Damping Sphere</span></span><span class="sb-qty">+3</span></div><div class="sb-item"><span><span class="c">Duress</span></span><span class="sb-qty">+2</span></div></div>
+        <div class="sb-col"><div class="sb-col-label">Out</div><div class="sb-item"><span><span class="c">Fatal Push</span></span><span class="sb-qty">-2</span></div><div class="sb-item"><span><span class="c">Soul-Guide Lantern</span></span><span class="sb-qty">-2</span></div><div class="sb-item"><span><span class="c">Arashin Cleric</span></span><span class="sb-qty">-1</span></div></div>
+      </div>
+      <p class="sb-note">Damping Sphere prevents multiple taps of Lotus. Duress strips their key combo pieces. Cut reactive removal — they win through casting spells not combat.</p>
+    </div>
+  </div>
+
+  <div class="matchup-block">
+    <div class="matchup-header" onclick="toggle('mu-niv2')">
+      <h3>NIV-MIZZET REBORN</h3><span class="verdict verdict-even">Even</span>
+    </div>
+    <div id="mu-niv2" class="matchup-body">
+      <p>Niv-Mizzet Reborn draws a card for each color pair when it enters. Thoughtseize strips Niv or their key multicolor setup. Their clock is slow (5 mana) giving you time. Strip their key enablers and race with your own threats.</p>
       <p>You race their Niv-Mizzet card advantage with pure speed. Your T3 board (Champion 4/4 + Thalia 3/3 + Lieutenant 2/2) attacks for 9 before they cast Niv. Your Meddling Mage naming Deafening Clarion removes their primary sweeper. Your Guardian of Faith protects your board from their removal. You win by closing before Niv's card advantage overwhelms your threat density.</p>
       <p class="sb-note">Your T3 attack of 9+ damage closes before Niv draws them 5+ cards — speed beats their value.</p>
       <div class="sb-table">
-        <div class="sb-col"><div class="sb-col-label">In</div><div class="sb-item"><span><span class="c">Thoughtseize</span></span><span class="sb-qty">+2</span></div><div class="sb-item"><span><span class="c">Duress</span></span><span class="sb-qty">+2</span>
-</td></tr>
-<tr onclick="toggle('mu-arclight2')"><td><strong>ARCLIGHT PHOENIX</strong></td><td>Combo Race</td><td><span class="verdict verdict-even">Even</span></td><td>Arclight Phoenix returns from GY whenever you cast three instants/sorceries i...</td></tr>
-<tr><td colspan="4" class="matchup-detail" id="mu-arclight2">
-<p>Arclight Phoenix returns from GY whenever you cast three instants/sorceries in a turn. Soul-Guide Lantern exiles Phoenix from GY before it triggers. Counter their Young Pyromancer rather than their cantrips — Pyromancer generates too many tokens otherwise.</p>
+        <div class="sb-col"><div class="sb-col-label">In</div><div class="sb-item"><span><span class="c">Thoughtseize</span></span><span class="sb-qty">+2</span></div><div class="sb-item"><span><span class="c">Duress</span></span><span class="sb-qty">+2</span></div></div>
+        <div class="sb-col"><div class="sb-col-label">Out</div><div class="sb-item"><span><span class="c">Soul-Guide Lantern</span></span><span class="sb-qty">-2</span></div><div class="sb-item"><span><span class="c">Arashin Cleric</span></span><span class="sb-qty">-2</span></div></div>
+      </div>
+      <p class="sb-note">Thoughtseize strips Niv or their multicolor tutor. Cut Lantern (no relevant GY) and Cleric (racing is less important here).</p>
+    </div>
+  </div>
+
+  <div class="matchup-block">
+    <div class="matchup-header" onclick="toggle('mu-arclight2')">
+      <h3>ARCLIGHT PHOENIX</h3><span class="verdict verdict-even">Even</span>
+    </div>
+    <div id="mu-arclight2" class="matchup-body">
+      <p>Arclight Phoenix returns from GY whenever you cast three instants/sorceries in a turn. Soul-Guide Lantern exiles Phoenix from GY before it triggers. Counter their Young Pyromancer rather than their cantrips — Pyromancer generates too many tokens otherwise.</p>
       <p>You ignore their GY entirely and race. Your T1-T3 clock (Swiftspear + Eidolon equivalent with Human bodies) attacks for 8+ before they assemble their Phoenix chain. Thalia taxes their cantrips — their GY fills slower. Your Meddling Mage naming Arclight Phoenix prevents Phoenix from entering the battlefield (it can't be cast, so it can't return). This is a race you win.</p>
       <p class="sb-note">Your clock (T3 attack for 8+) wins before their GY fills enough for Phoenix to matter.</p>
       <div class="sb-table">
-        <div class="sb-col"><div class="sb-col-label">In</div><div class="sb-item"><span><span class="c">Soul-Guide Lantern</span></span><span class="sb-qty">+2</span></div><div class="sb-item"><span><span class="c">Rending Volley</span></span><span class="sb-qty">+1</span>
-</td></tr>
-<tr onclick="toggle('mu-rakdos2')"><td><strong>RAKDOS MIDRANGE</strong></td><td>Combo Race</td><td><span class="verdict verdict-even">Even</span></td><td>Rakdos Midrange mirrors your discard plan.</td></tr>
-<tr><td colspan="4" class="matchup-detail" id="mu-rakdos2">
-<p>Rakdos Midrange mirrors your discard plan. Thoughtseize trades 1-for-1. Kill their Vein Ripper or Kalitas before they generate value. Fatal Push with revolt handles most of their threats.</p>
+        <div class="sb-col"><div class="sb-col-label">In</div><div class="sb-item"><span><span class="c">Soul-Guide Lantern</span></span><span class="sb-qty">+2</span></div><div class="sb-item"><span><span class="c">Rending Volley</span></span><span class="sb-qty">+1</span></div></div>
+        <div class="sb-col"><div class="sb-col-label">Out</div><div class="sb-item"><span><span class="c">Duress</span></span><span class="sb-qty">-2</span></div><div class="sb-item"><span><span class="c">Thoughtseize</span></span><span class="sb-qty">-1</span></div></div>
+      </div>
+      <p class="sb-note">Soul-Guide Lantern exiles Phoenix before it triggers. Rending Volley destroys white or blue creatures at instant speed. Cut discard — exiling GY is more efficient.</p>
+    </div>
+  </div>
+
+  <div class="matchup-block">
+    <div class="matchup-header" onclick="toggle('mu-rakdos2')">
+      <h3>RAKDOS MIDRANGE</h3><span class="verdict verdict-even">Even</span>
+    </div>
+    <div id="mu-rakdos2" class="matchup-body">
+      <p>Rakdos Midrange mirrors your discard plan. Thoughtseize trades 1-for-1. Kill their Vein Ripper or Kalitas before they generate value. Fatal Push with revolt handles most of their threats.</p>
       <p>Your aggro clock outpaces their Thoughtseize + Sheoldred plan. Their Thoughtseize takes one Human — you have 6 more. Your Thalia taxes their Sheoldred's removal spells. Your Guardian of Faith phases out your board when they cast Fatal Push (revolt). You win through pure threat density — they cannot answer your board one-for-one when you chain Humans every turn.</p>
       <p class="sb-note">Your Human chain outpaces Thoughtseize disruption — losing one card when you have 6 more is irrelevant.</p>
       <div class="sb-table">
-        <div class="sb-col"><div class="sb-col-label">In</div><div class="sb-item"><span><span class="c">Fatal Push</span></span><span class="sb-qty">+2</span></div><div class="sb-item"><span><span class="c">Collective Brutality</span></span><span class="sb-qty">+1</span>
-</td></tr>
-</tbody>
-</table>
+        <div class="sb-col"><div class="sb-col-label">In</div><div class="sb-item"><span><span class="c">Fatal Push</span></span><span class="sb-qty">+2</span></div><div class="sb-item"><span><span class="c">Collective Brutality</span></span><span class="sb-qty">+1</span></div></div>
+        <div class="sb-col"><div class="sb-col-label">Out</div><div class="sb-item"><span><span class="c">Duress</span></span><span class="sb-qty">-2</span></div><div class="sb-item"><span><span class="c">Soul-Guide Lantern</span></span><span class="sb-qty">-1</span></div></div>
+      </div>
+      <p class="sb-note">Fatal Push with revolt kills Vein Ripper and Kalitas. Brutality handles key threats while draining. Cut redundant discard and Lantern.</p>
+    </div>
+  </div>
+
+</div>
 </div>
 <div id="sideboard" class="section">
 <div class="page">
