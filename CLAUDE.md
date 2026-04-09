@@ -1,5 +1,8 @@
 # CLAUDE.md — Team Resolve Project State
-*Last updated: April 8, 2026 — commit 7b86f07*
+*Last updated: April 9, 2026 — commit 7b86f07*
+
+> **Cross-project context:** See `E:\vscode ai project\ECOSYSTEM.md` for how this
+> project connects to mtg-sim, mtg-meta-analyzer, and Team Resolve operations.
 
 ## PROJECT
 - Live: https://zuxas.github.io/TeamResolve/
