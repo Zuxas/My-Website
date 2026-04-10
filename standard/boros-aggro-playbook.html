@@ -56,10 +56,10 @@
   .dl-card-row:last-child { border-bottom:none; }
   .dl-qty { font-family:'DM Mono',monospace; font-size:12px; color:var(--mid); flex-shrink:0; margin-left:8px; }
   .matchup-table { width:100%; border-collapse:collapse; margin:24px 0; }
-  .matchup-table th { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; padding:10px 16px; background:var(--ink); color:rgba(242,237,230,0.6); text-align:left; }
+  .matchup-table th { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; padding:10px 16px; background:var(--ink); color:rgba(248,250,252,0.9); text-align:left; }
   .matchup-table td { padding:12px 16px; border-bottom:1px solid var(--rule); font-size:15px; font-weight:300; }
   .matchup-table tr:hover td { background:var(--paper-dark); cursor:pointer; }
-  .matchup-detail { display:none; background:var(--accent-light); border-left:4px solid var(--accent); padding:24px 32px; }
+    .matchup-detail { display:none; border:none; background:transparent; padding:20px 16px 32px; animation:fadeIn 0.2s ease; }
   .matchup-detail.open { display:table-cell; }
   .verdict { display:inline-block; font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; padding:4px 10px; border:1px solid; }
   .verdict-dog { background:var(--danger-light); color:var(--danger); border-color:var(--danger); }
@@ -187,7 +187,11 @@
   .print-mu { background: var(--paper); padding: 16px; }
   .print-mu-name { font-family: 'Bebas Neue', sans-serif; font-size: 16px; letter-spacing: 0.03em; color: var(--ink); margin-bottom: 4px; display: flex; align-items: center; gap: 8px; }
   .print-mu-role { font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--mid); margin-bottom: 10px; }
-</style>
+  .sb-col { flex:1; min-width:200px; }
+  .sb-col-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; color:var(--mid); margin-bottom:8px; }
+  .sb-item { padding:4px 0; display:flex; justify-content:space-between; border-bottom:1px solid var(--rule); font-size:14px; }
+  .matchup-writeup { margin:40px 0; padding:32px 0; border-top:1px solid var(--rule); }
+</style></style>
 </head>
 <body>
 <nav>
@@ -431,7 +435,7 @@
       </td></tr>
 
       <tr onclick="toggle('mu-monogreen')"><td><strong>Mono-Green Landfall</strong></td><td>Outrace Nursery</td><td><span class="verdict verdict-dog">Unfavorable (44%)</span></td><td>Your pings must accumulate 20 damage before their board stabilizes. Exorcise their enchantments and large threats.</td></tr>
-      <tr><td colspan="4" class="matchup-detail" id="mu-monogreen">
+      <tr><td colspan="4" class="matchup-writeup" id="mu-monogreen">
         <p>You lose if you let Sapling Nursery generate Treefolk tokens. A 3/4 reach token blocks your 1/1 and 2/2 Warriors cleanly, and once they have 4+ Treefolk, your attack math is negative — you're trading 1/1 Warriors into 3/4 reach that hits you back for 3 when you block. Your window to win: deal 20 damage via noncombat pings before Nursery resolves on their T3-4, or exile Nursery as fast as possible with Exorcise.</p>
         <p><strong>Your plan is noncombat first:</strong> Sharpshooter + Call pings happen on every creature ETB — including your own Mobilize Warriors. A Voice of Victory attack creating 2 Warriors while Sharpshooter + Call + Raphael + Ojer are all in play = 2 Warriors × 4 triggers × 4 damage (Ojer) = 32 noncombat damage in one attack step. They cannot survive that if Ojer is live. Get Ojer down on T4 and attack immediately.</p>
         <p><strong>Exorcise handles everything:</strong> Exorcise ({1}{W} sorcery) exiles target artifact, enchantment, or creature with power 4 or greater. This hits: Sapling Nursery (enchantment), Mightform Harmonizer (4/4 power), Leatherhead, Swamp Stalker (5/4 power), Mossborn Hydra (power 4+). Bring in both copies G2/G3.</p>
@@ -444,7 +448,7 @@
       </td></tr>
 
       <tr onclick="toggle('mu-prowess')"><td><strong>Izzet Prowess</strong></td><td>Noncombat Race</td><td><span class="verdict verdict-favor">Favorable</span></td><td>Magebane Lizard turns their cantrip chain into 10+ damage against themselves. Your noncombat damage ignores their prowess blockers.</td></tr>
-      <tr><td colspan="4" class="matchup-detail" id="mu-prowess">
+      <tr><td colspan="4" class="matchup-writeup" id="mu-prowess">
         <p>You win this matchup cleanly when Magebane Lizard (SB) resolves. Their plan requires casting 4+ cantrips per turn — Magebane deals cumulative damage to them equal to the cantrip count: first cantrip deals 1, second deals 2, third deals 3, fourth deals 4. Total: 10 damage to themselves from their own cantrip chain. With Ojer in play, each of those 1-damage Magebane triggers becomes 4 — four cantrips deals 4+8+12+16 = 40 damage. Their entire game plan kills them.</p>
         <p><strong>Without Magebane (G1):</strong> Your noncombat damage from Sharpshooter + Call still bypasses their prowess blockers entirely. Their Eddymurk Crab taps your board on entry — but it enters tapped on your turn, so it can't block. Flash Crab in on their end step taps their creatures, which is a problem — but Ojer's 4/4 body doesn't get tapped by Crab's "tap up to two target creatures" unless they target it. Ojer keeps attacking regardless.</p>
         <p><strong>Turn-by-turn plan:</strong> T1 Firebrand. T2 Sharpshooter. T3 Warleader's Call. T4 Ojer Axonil — now your setup is live. T5 attack: their Slickshot is a 1/2 that gets +2/+0 from spells — with Ojer active, every noncombat damage trigger from Sharpshooter goes to their face, not their Slickshot. Their 7/2 Slickshot attacking you is a concern: Burst Lightning (2 damage) doesn't kill it (2 toughness — actually Burst Lightning does 2 which exactly kills the 1/2). Yes, kill Slickshot with Burst Lightning before it attacks.</p>
@@ -456,7 +460,7 @@
       </td></tr>
 
       <tr onclick="toggle('mu-control')"><td><strong>Jeskai Control</strong></td><td>Noncombat Pressure</td><td><span class="verdict verdict-dog">Unfavorable</span></td><td>Ojer + Sharpshooter generates damage they can't counter. But Inevitable Defeat exiles Ojer uncounterable and Day of Judgment wipes your board.</td></tr>
-      <tr><td colspan="4" class="matchup-detail" id="mu-control">
+      <tr><td colspan="4" class="matchup-writeup" id="mu-control">
         <p>Control has the answers. Day of Judgment destroys your entire board of 1/1 Warriors and key creatures. Inevitable Defeat (uncounterable, instant) exiles Ojer Axonil before he amplifies your pings. Lightning Helix at 4 copies generates 24-point life swings against your early damage. Your path to winning: don't overextend into Day of Judgment, keep 2-3 key pieces rather than flooding the board, and close via Ojer + Sharpshooter noncombat damage that they cannot counter individually — pings resolve on the stack without requiring any spell to be on the stack themselves once Sharpshooter and ETBs are declared.</p>
         <p><strong>Voice of Victory is critical here:</strong> Voice prevents them from casting spells during your turn. When Voice attacks and creates Mobilize Warriors, they cannot cast Lightning Helix or Inevitable Defeat during your attack step. They must deploy all interaction before Voice attacks. Force them to either tap their mana before your attack step (leaving them with nothing for your pings) or hold their mana and take the damage.</p>
         <p><strong>What they can't stop:</strong> Your pings are triggered abilities, not spells. Once Sharpshooter is in play and a creature enters under your control, the ping trigger goes on the stack — they can't counter it with No More Lies or Spell Snare (those counter spells, not triggered abilities). They can kill Sharpshooter in response, but that costs them a card and your creature already entered. Keep the ping engine alive and the noncombat damage accumulates whether they like it or not.</p>
@@ -468,7 +472,7 @@
       </td></tr>
 
       <tr onclick="toggle('mu-mirror')"><td><strong>Boros Mirror</strong></td><td>Speed Race</td><td><span class="verdict verdict-even">Even</span></td><td>First Ojer + Sharpshooter stack wins. Warleader's Call as the first anthem doubles all your Warriors while halving theirs' effectiveness.</td></tr>
-      <tr><td colspan="4" class="matchup-detail" id="mu-mirror">
+      <tr><td colspan="4" class="matchup-writeup" id="mu-mirror">
         <p>Both players are assembling the same engine. The game goes to whoever establishes Ojer + Sharpshooter + Warleader's Call first. Their Sharpshooter triggers YOUR Call (both players' creatures entering deal damage to both players). Be aware: when their creature enters and your Sharpshooter triggers targeting YOU — their Sharpshooter also triggers, targeting THEM. The ping engine runs in both directions once both players have Sharpshooter in play.</p>
         <p><strong>The race within the race:</strong> Kill their Ojer Axonil before he amplifies their pings — Burst Lightning (2 damage) doesn't kill him (4 toughness), need Sear (4 damage) exactly. Stadium Headliner's sacrifice ability deals damage equal to your creature count — with 8 creatures and Ojer, sacrifice Stadium for 32 damage to their Ojer (kills it) or their Sharpshooter (way overkill for a 1/3).</p>
         <table class="sb-table"><thead><tr><th>Out</th><th>In</th></tr></thead><tbody>
@@ -477,7 +481,7 @@
         </tbody></table>
         <p class="sb-note"><strong>Needle:</strong> Sear kills Ojer (4/4) exactly at 4 damage. Keep it for Ojer specifically. Your Stadium Headliner sacrifice ability with 8+ creatures and Ojer in play deals 32+ damage to any single target — use it to kill their Ojer uncounterable, without entering combat, at instant speed.</p>
       </td></tr>    <tr onclick="toggle('mu-simic')"><td><strong>Simic Rhythm</strong></td><td>Race Them</td><td><span class="verdict verdict-even">Even</span></td><td>Simic Rhythm mirrors your going-wide strategy but with Badgermole Cub generating +1/+1 cou...</td></tr>
-    <tr><td colspan="5" class="matchup-detail" id="mu-simic">
+    <tr><td colspan="5" class="matchup-writeup" id="mu-simic">
         <p>Simic Rhythm mirrors your going-wide strategy but with Badgermole Cub generating +1/+1 counters on their entire board. Their Earthbender Ascension stacks with Cub attacks — they can generate 4-8 power on board by turn 3. Your Monstrous Rage on a key creature into unblockable via Escape Tunnel closes before they can go over your head. Prioritize killing Llanowar Elves on sight — without mana acceleration their curve is much slower.</p>
         <table class="sb-table"><thead><tr><th>Out</th><th>In</th></tr></thead><tbody>
           <tr><td class="sb-out">−2 Borrowed Time</td><td class="sb-in">+2 Sunfall</td></tr>
@@ -486,7 +490,7 @@
         <p class="sb-note">Sunfall at 4 damage kills their entire Cub token board and the Cub itself. Invasion of Gobakhan disrupts their hand before Ascension is deployed. Cut Borrowed Time (exile enchantment is too slow) and the flex slot.</p>
       </td></tr>
     <tr onclick="toggle('mu-excruciator')"><td><strong>Dimir Excruciator</strong></td><td>Apply Clock</td><td><span class="verdict verdict-dog">Unfavorable</span></td><td>Dimir Excruciator counters your key threats and bounces your permanents. Their Floodpits D...</td></tr>
-    <tr><td colspan="5" class="matchup-detail" id="mu-excruciator">
+    <tr><td colspan="5" class="matchup-writeup" id="mu-excruciator">
         <p>Dimir Excruciator counters your key threats and bounces your permanents. Their Floodpits Drowner (2/3 flash) bounces a creature on ETB — your small creatures get bounced back to hand indefinitely. The correct play: apply maximum early pressure and close by turn 4 before they stabilize. Monstrous Rage on your unblocked attacker into Escape Tunnel makes their interaction irrelevant if you can land lethal before turn 5.</p>
         <table class="sb-table"><thead><tr><th>Out</th><th>In</th></tr></thead><tbody>
           <tr><td class="sb-out">−2 Swamp // Plant</td><td class="sb-in">+2 Invasion of Gobakhan</td></tr>
@@ -495,7 +499,7 @@
         <p class="sb-note">Invasion of Gobakhan strips their counter from hand before they can use it. Sunfall clears their 2/3 flash blockers. Cut Swamp//Plant (too fair in this aggressive matchup) and Borrowed Time (they have few enchantments to answer).</p>
       </td></tr>
     <tr onclick="toggle('mu-spellementals')"><td><strong>Izzet Spellementals</strong></td><td>Be Faster</td><td><span class="verdict verdict-even">Even</span></td><td>Izzet Spellementals builds toward Hearth Elemental and Sunderflock as their payoffs — both...</td></tr>
-    <tr><td colspan="5" class="matchup-detail" id="mu-spellementals">
+    <tr><td colspan="5" class="matchup-writeup" id="mu-spellementals">
         <p>Izzet Spellementals builds toward Hearth Elemental and Sunderflock as their payoffs — both come online turns 3-5. Your clock is faster than their setup. Monstrous Rage into Escape Tunnel on turn 3-4 deals 8+ damage before they can Sunderflock. The critical decision: attack into their 1/1 instants rather than waiting for a perfect board — their Sunderflock sweeper ends games if you let them untap with mana.</p>
         <table class="sb-table"><thead><tr><th>Out</th><th>In</th></tr></thead><tbody>
           <tr><td class="sb-out">−1 Borrowed Time</td><td class="sb-in">+1 Invasion of Gobakhan</td></tr>
@@ -504,7 +508,7 @@
         <p class="sb-note">Invasion of Gobakhan strips the Sunderflock before they can cast it. Sunfall handles their Hearth Elemental. The core aggressive plan is unchanged — apply pressure early and close before their sweeper.</p>
       </td></tr>
     <tr onclick="toggle('mu-jeskai')"><td><strong>Jeskai Control</strong></td><td>Apply Maximum Pressure</td><td><span class="verdict verdict-dog">Unfavorable</span></td><td>Jeskai Control has sweepers, counterspells, and planeswalkers. Their Aven Interrupter coun...</td></tr>
-    <tr><td colspan="5" class="matchup-detail" id="mu-jeskai">
+    <tr><td colspan="5" class="matchup-writeup" id="mu-jeskai">
         <p>Jeskai Control has sweepers, counterspells, and planeswalkers. Their Aven Interrupter counters your key spells (Monstrous Rage, your sorcery-speed threats). High Noon prevents all sorcery-speed plays — your combat tricks still work. Your best path: deploy wide early (pre-High Noon), then attack into their life total before they stabilize with Stormplain Detainment. Every turn they don't have a sweeper is a gift — attack without hesitation.</p>
         <table class="sb-table"><thead><tr><th>Out</th><th>In</th></tr></thead><tbody>
           <tr><td class="sb-out">−2 Borrowed Time</td><td class="sb-in">+2 Invasion of Gobakhan</td></tr>

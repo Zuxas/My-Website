@@ -57,10 +57,10 @@
   .dl-card-row:last-child { border-bottom:none; }
   .dl-qty { font-family:'DM Mono',monospace; font-size:12px; color:var(--mid); flex-shrink:0; margin-left:8px; }
   .matchup-table { width:100%; border-collapse:collapse; margin:24px 0; }
-  .matchup-table th { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; padding:10px 16px; background:var(--ink); color:rgba(242,237,230,0.6); text-align:left; }
+  .matchup-table th { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; padding:10px 16px; background:var(--ink); color:rgba(248,250,252,0.9); text-align:left; }
   .matchup-table td { padding:12px 16px; border-bottom:1px solid var(--rule); font-size:15px; font-weight:300; }
   .matchup-table tr:hover td { background:var(--paper-dark); cursor:pointer; }
-  .matchup-detail { display:none; background:var(--accent-light); border-left:4px solid var(--accent); padding:24px 32px; margin:0; }
+    .matchup-detail { display:none; border:none; background:transparent; padding:20px 16px 32px; animation:fadeIn 0.2s ease; }
   .matchup-detail.open { display:table-cell; }
   .verdict { display:inline-block; font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; padding:4px 10px; border:1px solid; }
   .verdict-dog { background:var(--danger-light); color:var(--danger); border-color:var(--danger); }
@@ -207,7 +207,11 @@
   .print-mu { background: var(--paper); padding: 16px; }
   .print-mu-name { font-family: 'Bebas Neue', sans-serif; font-size: 16px; letter-spacing: 0.03em; color: var(--ink); margin-bottom: 4px; display: flex; align-items: center; gap: 8px; }
   .print-mu-role { font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--mid); margin-bottom: 10px; }
-</style>
+  .sb-col { flex:1; min-width:200px; }
+  .sb-col-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; color:var(--mid); margin-bottom:8px; }
+  .sb-item { padding:4px 0; display:flex; justify-content:space-between; border-bottom:1px solid var(--rule); font-size:14px; }
+  .matchup-writeup { margin:40px 0; padding:32px 0; border-top:1px solid var(--rule); }
+</style></style>
 </head>
 <body>
 
@@ -1140,7 +1144,7 @@
       </td></tr>
 
       <tr onclick="toggle('mu-monogreen')"><td><strong>Mono-Green Landfall</strong></td><td>Survival</td><td><span class="verdict verdict-dog">Hard Unfavorable (38%)</span></td><td>38% WR across 1,900 games. Don't bring Soul-Guide Lantern in. Cecil and Requiting Hex are your best cards.</td></tr>
-      <tr><td colspan="4" class="matchup-detail" id="mu-monogreen">
+      <tr><td colspan="4" class="matchup-writeup" id="mu-monogreen">
         <p>This is your worst common matchup at <strong>38% win rate across 1,900 games</strong> (Plat–Mythic BO3). Their large bodies outclass your individual removal cards when they get ahead on board. The key to winning is using your flash package <em>proactively and in the correct windows</em> — on the play, Drowner flashed in during their upkeep taps their Llanowar Elves before they can use it; on the draw, Spell Snare hard counters Badgermole Cub (MV 2) and Earthbender Ascension (MV 2) for one blue mana. Your Tidebinder counters their Fabled Passage activated ability after they sacrifice it (they lose the land AND the Passage), Escape Tunnel's unblockable mode, and Harmonizer's landfall trigger. <strong>See the Lines tab for full sequences and timing windows.</strong></p>
         <p><strong>Data-ranked card impact vs Mono-Green:</strong> Deep-Cavern Bat +14.7 pts (not in list — note for future testing), Cecil +14.3 pts, Requiting Hex +13.5 pts, Bitter Triumph +10.6 pts, Kaito +10.6 pts. Spyglass Siren is nearly irrelevant (+1.9 pts). Soulstone Sanctuary and Restless Reef are both negative — don't activate them here, just play lands.</p>
         <table class="sb-table"><thead><tr><th>Out</th><th>In</th></tr></thead><tbody>
@@ -1157,7 +1161,7 @@
       </td></tr>
 
       <tr onclick="toggle('mu-izzet')"><td><strong>Izzet Prowess</strong></td><td>Survival</td><td><span class="verdict verdict-dog">Unfavorable (44%)</span></td><td>44% WR, 1,400 games. Cecil +16.3 pts #1 card. Day of Black Sun best SB bring-in. Don't board Intimidation Tactics.</td></tr>
-      <tr><td colspan="4" class="matchup-detail" id="mu-izzet">
+      <tr><td colspan="4" class="matchup-writeup" id="mu-izzet">
         <p>Izzet Prowess (19% meta) wins through efficient spellslinging — cantrips pump their creatures and their burn reaches across the table. Your tempo tools are less effective here because they're not resolving ETBs worth countering. The matchup is won through early pressure (Cecil as a deathtouch wall that trades up) and having enough removal density to answer their threats before they go wide.</p>
         <p><strong>Data-ranked card impact vs Izzet Prowess (1,400 games):</strong> Cecil +16.3 pts, Requiting Hex +10.9 pts, Enduring Curiosity +10.7 pts, Wan Shi Tong +10.2 pts, Tishana's Tidebinder +8.5 pts. Deep-Cavern Bat is -1.1 pts (hurts — their prowess creatures don't care about hand disruption). Bitter Triumph is -1.2 pts and has a 60.2% SBOWR — take it out. Restless Reef is -4.1 pts — never activate vs Prowess.</p>
         <table class="sb-table"><thead><tr><th>Out</th><th>In</th></tr></thead><tbody>
@@ -1174,7 +1178,7 @@
       </td></tr>
 
       <tr onclick="toggle('mu-dimir-mirror')"><td><strong>Dimir Mirror</strong></td><td>Tempo</td><td><span class="verdict verdict-even">Even (50%)</span></td><td>Spyglass Siren +13.5 pts — the most impactful evasive threat in the mirror. Don't board Ghost Vacuum (-16 pts).</td></tr>
-      <tr><td colspan="4" class="matchup-detail" id="mu-dimir-mirror">
+      <tr><td colspan="4" class="matchup-writeup" id="mu-dimir-mirror">
         <p>The mirror is a tempo game decided by who deploys the most impactful threat first and protects it. The conventional wisdom ("first Curiosity wins") is supported but incomplete — the data shows Spyglass Siren (+13.5 pts) and Kaito (+11.9 pts) are just as decisive as Curiosity (+0.7 pts, surprisingly low). Enduring Curiosity is nearly neutral in the mirror because both players run it. The differentiating cards are the evasive threats that the mirror opponent can't easily answer.</p>
         <p><strong>Data-ranked card impact vs Dimir Mirror (1,300 games):</strong> Fountainport +15.5 pts (not in your list — worth noting), Spyglass Siren +13.5 pts, Kaito +11.9 pts, Wan Shi Tong +11.0 pts, Cecil +10.9 pts, Tishana's Tidebinder +9.4 pts. Requiting Hex +6.2 pts — still useful as a SB card (SBIWR 59.7%, SBOWR 64.0% — bring it back in). Enduring Curiosity only +0.7 pts in this matchup.</p>
         <table class="sb-table"><thead><tr><th>Out</th><th>In</th></tr></thead><tbody>
@@ -1192,7 +1196,7 @@
       </td></tr>
 
       <tr onclick="toggle('mu-control')"><td><strong>Azorius / Jeskai Control</strong></td><td>Beatdown</td><td><span class="verdict verdict-favor">Favorable (64%)</span></td><td>64% WR. Deploy threats before their countermagic is online. Long Goodbye bypasses their counters.</td></tr>
-      <tr><td colspan="4" class="matchup-detail" id="mu-control">
+      <tr><td colspan="4" class="matchup-writeup" id="mu-control">
         <p>You're the aggressor. Control decks have counterspells and sweepers but need time to set up. Spyglass Siren on turn 1 applies pressure before their Counterspell mana. Kaito on turn 3 has hexproof on your turn — they can't answer it while you're taking your turn. <span class="c">Long Goodbye</span> can't be countered — remove their key blockers through their counterspell shields. Enduring Curiosity as an enchantment survives their creature sweepers.</p>
         <p>Their primary answer to enchantments is bounce or exile. If they have no bounce, Curiosity generates enough card advantage to outgrind any control plan. Apply consistent pressure and don't let them stabilize.</p>
         <table class="sb-table"><thead><tr><th>Out</th><th>In</th></tr></thead><tbody>
@@ -1211,7 +1215,7 @@
       </td></tr>
 
       <tr onclick="toggle('mu-boros')"><td><strong>Boros Aggro</strong></td><td>Survival</td><td><span class="verdict verdict-dog">Unfavorable (44%)</span></td><td>44% WR. Removal density wins. Hex +15.6, Sheriff +15.2, Bitter Triumph +14.5. Strategic Betrayal best SB card.</td></tr>
-      <tr><td colspan="4" class="matchup-detail" id="mu-boros">
+      <tr><td colspan="4" class="matchup-writeup" id="mu-boros">
         <p>Boros Aggro applies two-color aggressive pressure with evasion and burn reach. The data is clear on what wins this matchup — removal density above everything else. Deep-Cavern Bat (+0.9 pts) is nearly irrelevant here; Floodpits Drowner (+1.1 pts) is also low-impact. This is a pure reactive matchup where your removal suite is your win condition.</p>
         <p><strong>Data-ranked card impact vs Boros Aggro (710 games):</strong> Requiting Hex +15.6 pts, Shoot the Sheriff +15.2 pts, Bitter Triumph +14.5 pts, Cecil +13.9 pts, Tishana's Tidebinder +12.7 pts, Enduring Curiosity +11.8 pts. Keep all removal. Floodpits Drowner +1.1 pts and Deep-Cavern Bat +0.9 pts — both barely relevant, don't prioritize them in your hand evaluation.</p>
         <table class="sb-table"><thead><tr><th>Out</th><th>In</th></tr></thead><tbody>
@@ -1227,7 +1231,7 @@
       </td></tr>
 
       <tr onclick="toggle('mu-excruciator')"><td><strong>Dimir Excruciator</strong></td><td>Beatdown</td><td><span class="verdict verdict-favor">Favorable (~57%)</span></td><td>Go under them with Kaito + Curiosity. No GY hate needed — Soul-Guide Lantern is a trap.</td></tr>
-      <tr><td colspan="4" class="matchup-detail" id="mu-excruciator">
+      <tr><td colspan="4" class="matchup-writeup" id="mu-excruciator">
         <p>Dimir Excruciator is a combo-control deck built around <span class="c">Doomsday Excruciator</span> — it exiles both libraries to six cards, then forces lethal draws with <span class="c">Insatiable Avarice</span>. The Pro Tour Lorwyn Eclipsed champion Christoffer Larsen piloted it to the title. Despite sharing your colors, the matchup plays completely differently from the Dimir mirror. Excruciator is slower, more controlling, and relies on assembling its combo. Your role is to go under them with cheap evasive threats and card advantage engines before they can set up.</p>
         <p>The critical insight (from the Pro Tour 10th-place finisher's guide): <strong>you don't need removal or graveyard hate here.</strong> They aren't a traditional Reanimator deck — they're a controlling one. Having reactive "do nothing" cards like Soul-Guide Lantern loses you games because they can get ahead on cards easily or use <span class="c">Deceit</span> to discard your action cards. Instead, deploy Kaito on curve, stick Enduring Curiosity, and force them to answer your card advantage engine while their combo pieces rot in hand.</p>
         <p><span class="c">Tishana's Tidebinder</span> is excellent here — counter the ETB of <span class="c">Superior Spider-Man</span> copying Excruciator, or counter <span class="c">Stock Up</span>'s triggered abilities. <span class="c">Floodpits Drowner</span> stuns their key blocker while you push through damage. <span class="c">Loch Mare</span> and countermagic round out your disruption — enough to punch holes in their combo sequencing while your clock counts down.</p>
@@ -1248,7 +1252,7 @@
       </td></tr>
 
       <tr onclick="toggle('mu-izzet-lessons')"><td><strong>Izzet Lessons</strong></td><td>Tempo</td><td><span class="verdict verdict-dog">Unfavorable (~45%)</span></td><td>Their efficient interaction and Learn/Lesson engine outgrinds you. Counter their key spells, protect Kaito.</td></tr>
-      <tr><td colspan="4" class="matchup-detail" id="mu-izzet-lessons">
+      <tr><td colspan="4" class="matchup-writeup" id="mu-izzet-lessons">
         <p>Izzet Lessons (9.81% meta share, Tier 1) is one of the format's dominant strategies — an interaction-heavy tempo deck that uses the Learn/Lesson mechanic to tutor answers from the sideboard mid-game. This gives them effective access to 22+ cards in games 2 and 3. Their removal suite is efficient and varied, making your individual threats vulnerable. The matchup is unfavorable because they can match your card advantage while having more flexible answers.</p>
         <p>Your win condition is sticking <span class="c">Kaito, Bane of Nightmares</span> early — his hexproof on your turn means they need instant-speed answers during their own turn, and most of their removal is sorcery-speed or damage-based (which Kaito's 4 toughness survives). <span class="c">Enduring Curiosity</span> as an enchantment is very hard for Izzet to answer — they typically don't run enchantment removal main. If both engines stick, you can grind through their Lesson advantage.</p>
         <p>The danger is their tempo: efficient cantrips keep their hand full while their removal picks off your creatures one-for-one. <span class="c">Into the Flood Maw</span> bouncing your key threat after you tapped out is devastating. Hold countermagic for their highest-impact spells and force them to trade down on mana when possible.</p>
@@ -1267,7 +1271,7 @@
       </td></tr>
 
       <tr onclick="toggle('mu-monowhite')"><td><strong>Mono-White Aggro</strong></td><td>Survival</td><td><span class="verdict verdict-dog">Hard Unfavorable (37%)</span></td><td>37% WR — your worst matchup. Removal only. Almost everything else No Data at 560 games.</td></tr>
-      <tr><td colspan="4" class="matchup-detail" id="mu-monowhite">
+      <tr><td colspan="4" class="matchup-writeup" id="mu-monowhite">
         <p>Mono-White Aggro is your hardest matchup at <strong>37% win rate across 560 games</strong> (Plat–Mythic BO3) — narrowly worse than Mono-Green Landfall. Their aggressive white creature package (1/1s with lifelink, Lords, anthem effects) creates a wide board faster than your removal can clear it. The sample size is smaller than Mono-Green, so some variance exists, but the overall WR is consistently sub-40%.</p>
         <p><strong>Data vs Mono-White Aggro (560 games):</strong> Shoot the Sheriff +10.0 pts, Requiting Hex +8.2 pts, Bitter Triumph +5.8 pts, Tishana's Tidebinder +4.8 pts, Floodpits Drowner +5.0 pts. Most other cards show No Data due to sample size limitations. Kaito is only +1.7 pts — their creatures outrace his 3/4 body. Many of your key cards are irrelevant here.</p>
         <table class="sb-table"><thead><tr><th>Out</th><th>In</th></tr></thead><tbody>

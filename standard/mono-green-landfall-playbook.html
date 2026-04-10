@@ -57,10 +57,10 @@
   .dl-card-row:last-child { border-bottom:none; }
   .dl-qty { font-family:'DM Mono',monospace; font-size:12px; color:var(--mid); flex-shrink:0; margin-left:8px; }
   .matchup-table { width:100%; border-collapse:collapse; margin:24px 0; }
-  .matchup-table th { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; padding:10px 16px; background:var(--ink); color:rgba(242,237,230,0.6); text-align:left; }
+  .matchup-table th { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; padding:10px 16px; background:var(--ink); color:rgba(248,250,252,0.9); text-align:left; }
   .matchup-table td { padding:12px 16px; border-bottom:1px solid var(--rule); font-size:15px; font-weight:300; }
   .matchup-table tr:hover td { background:var(--paper-dark); cursor:pointer; }
-  .matchup-detail { display:none; background:var(--accent-light); border-left:4px solid var(--accent); padding:24px 32px; margin:0; }
+    .matchup-detail { display:none; border:none; background:transparent; padding:20px 16px 32px; animation:fadeIn 0.2s ease; }
   .matchup-detail.open { display:table-cell; }
   .verdict { display:inline-block; font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; padding:4px 10px; border:1px solid; }
   .verdict-dog { background:var(--danger-light); color:var(--danger); border-color:var(--danger); }
@@ -205,7 +205,11 @@
   .print-mu { background: var(--paper); padding: 16px; }
   .print-mu-name { font-family: 'Bebas Neue', sans-serif; font-size: 16px; letter-spacing: 0.03em; color: var(--ink); margin-bottom: 4px; display: flex; align-items: center; gap: 8px; }
   .print-mu-role { font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--mid); margin-bottom: 10px; }
-</style>
+  .sb-col { flex:1; min-width:200px; }
+  .sb-col-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; color:var(--mid); margin-bottom:8px; }
+  .sb-item { padding:4px 0; display:flex; justify-content:space-between; border-bottom:1px solid var(--rule); font-size:14px; }
+  .matchup-writeup { margin:40px 0; padding:32px 0; border-top:1px solid var(--rule); }
+</style></style>
 </head>
 <body>
 
@@ -778,7 +782,7 @@
       </td></tr>
 
       <tr onclick="toggle('mu-izzet')"><td><strong>Izzet Prowess</strong></td><td>Race</td><td><span class="verdict verdict-even">Even (51%)</span></td><td>Race their spell chain with your faster clock. Mossborn Hydra grows faster than their prowess triggers.</td></tr>
-      <tr><td colspan="4" class="matchup-detail" id="mu-izzet">
+      <tr><td colspan="4" class="matchup-writeup" id="mu-izzet">
         <p>Izzet Prowess operates by chaining spells to pump small creatures and burn face. Your bodies are larger but their cantrips generate card advantage. The race is close. Sazh's Chocobo on T1 applies clock pressure before their prowess engine is online. Sapling Nursery reach tokens block their pumped fliers and chump 5/5 prowess attackers. The combo kill is fast enough — T5 one-shot before they can burn you from 20 to 0.</p>
         <table class="sb-table"><thead><tr><th>Out</th><th>In</th></tr></thead><tbody>
           <tr><td class="sb-out">−2 <span class="c">Sapling Nursery</span></td><td class="sb-in">+2 <span class="c">Mossborn Hydra</span></td></tr>
@@ -789,7 +793,7 @@
       </td></tr>
 
       <tr onclick="toggle('mu-mirror')"><td><strong>Mono-Green Mirror</strong></td><td>Mossborn Hydra</td><td><span class="verdict verdict-even">Even (50%)</span></td><td>First Mossborn Hydra that connects wins. Archdruid's Charm exile is your answer to their Hydra.</td></tr>
-      <tr><td colspan="4" class="matchup-detail" id="mu-mirror">
+      <tr><td colspan="4" class="matchup-writeup" id="mu-mirror">
         <p>The mirror is decided almost entirely by Mossborn Hydra. Both players are doing the same thing — whoever lands a Hydra first and protects it from Archdruid's Charm exile wins when the next land drop doubles it to an unstoppable size. Sapling Nursery treefolk are irrelevant in the mirror — a wall of 3/4 reach tokens does nothing against a 50-power trample Hydra. Recognize this and don't over-invest in the Nursery plan. Harmonizer doubling Harmonizer itself creates an interesting line: Harmonizer is 4 power, one double = 8, two = 16, three = 32. Faster than the Hydra plan with fewer pieces if you have multiple Harmonizers.</p>
         <table class="sb-table"><thead><tr><th>Out</th><th>In</th></tr></thead><tbody>
           <tr><td class="sb-out">−4 <span class="c">Sapling Nursery</span></td><td class="sb-in">+2 <span class="c">Mossborn Hydra</span></td></tr>
@@ -801,7 +805,7 @@
       </td></tr>
 
       <tr onclick="toggle('mu-control')"><td><strong>Jeskai / Azorius Control</strong></td><td>Grind</td><td><span class="verdict verdict-favor">Favorable (64%)</span></td><td>Sapling Nursery generates faster than they can sweep. Surrak can't be countered. Sandman recurs.</td></tr>
-      <tr><td colspan="4" class="matchup-detail" id="mu-control">
+      <tr><td colspan="4" class="matchup-writeup" id="mu-control">
         <p>Control has counterspells and sweepers but no clock. Sapling Nursery as an enchantment survives all creature-based sweepers. With Nursery active, every land drop creates a 3/4 Treefolk with reach — faster than they can spend removal. Their sweep kills the tokens but Nursery is still there to replace them. The indestructible activation protects even the tokens from the next sweep. Time Nursery activations to coincide with their sweeper timing.</p>
         <table class="sb-table"><thead><tr><th>Out</th><th>In</th></tr></thead><tbody>
           <tr><td class="sb-out">−2 <span class="c">Mossborn Hydra</span></td><td class="sb-in">+1 <span class="c">Surrak, Elusive Hunter</span></td></tr>
@@ -812,7 +816,7 @@
       </td></tr>
 
       <tr onclick="toggle('mu-boros')"><td><strong>Boros Aggro</strong></td><td>Survival</td><td><span class="verdict verdict-dog">Unfavorable (44%)</span></td><td>Their burn reach and evasion is faster than your engine. Meltstrider's Resolve blocks key threats.</td></tr>
-      <tr><td colspan="4" class="matchup-detail" id="mu-boros">
+      <tr><td colspan="4" class="matchup-writeup" id="mu-boros">
         <p>Boros Aggro applies two-color aggressive pressure with flying threats and burn reach. Your large bodies can't block their evasion efficiently, and their burn finishes games you thought you stabilized. The key is deploying Sapling Nursery early — reach tokens block their flying creatures. Fecund Greenshell's reach blocks their 6/6 Dragon. This matchup requires drawing your interaction (Meltstrider's Resolve, Archdruid's Charm fight mode) early.</p>
         <table class="sb-table"><thead><tr><th>Out</th><th>In</th></tr></thead><tbody>
           <tr><td class="sb-out">−2 <span class="c">Mossborn Hydra</span></td><td class="sb-in">+3 <span class="c">Meltstrider's Resolve</span></td></tr>
@@ -823,7 +827,7 @@
       </td></tr>
 
       <tr onclick="toggle('mu-monowhite')"><td><strong>Mono-White Aggro</strong></td><td>Survival</td><td><span class="verdict verdict-dog">Unfavorable (46%)</span></td><td>Their wide board with lifelink and anthem effects is hard to race. Nursery reach tokens are critical.</td></tr>
-      <tr><td colspan="4" class="matchup-detail" id="mu-monowhite">
+      <tr><td colspan="4" class="matchup-writeup" id="mu-monowhite">
         <p>Mono-White Aggro creates a wide board of lifelink creatures with Lords pumping them. Your individual threats trade down against their going-wide strategy. Sapling Nursery's 3/4 reach tokens are your best blockers — they wall off their 2/2 lifelinkers while growing the board for your attack. The combo kill is slower here because their lifelink gains negate some damage.</p>
         <table class="sb-table"><thead><tr><th>Out</th><th>In</th></tr></thead><tbody>
           <tr><td class="sb-out">−2 <span class="c">Mossborn Hydra</span></td><td class="sb-in">+3 <span class="c">Meltstrider's Resolve</span></td></tr>
@@ -833,7 +837,7 @@
         <p class="sb-note"><strong>Key needle:</strong> Their lifelink prevents the combo kill from working at full efficiency — you need to deal damage equal to their life total which may have been padded by 4-8 lifelink points. Aim to deal trample damage through their wider board rather than relying on the unblockable one-shot. Earthbender Ascension's trample grant turns your Treefolk tokens into threatening attackers that punch through their wide board.</p>
       </td></tr>
     <tr onclick="toggle('mu-excruciator')"><td><strong>Dimir Excruciator</strong></td><td>Land Fast</td><td><span class="verdict verdict-dog">Unfavorable</span></td><td>Dimir Excruciator counters your Earthbender Ascension and bounces your Badgermole Cub. Their Floodpi...</td></tr>
-    <tr><td colspan="5" class="matchup-detail" id="mu-excruciator">
+    <tr><td colspan="5" class="matchup-writeup" id="mu-excruciator">
         <p>Dimir Excruciator counters your Earthbender Ascension and bounces your Badgermole Cub. Their Floodpits Drowner (flash 2/3) blocks your ground attackers and bounces Cub on ETB — resetting your counters. Icetill Explorer is their most important target: it enables your double land-drop chains. Mossborn Hydra can't be countered once you have 7 lands — time its deployment accordingly.</p>
         <table class="sb-table"><thead><tr><th>Out</th><th>In</th></tr></thead><tbody>
           <tr><td class="sb-out">−2 <span class="c">Mossborn Hydra</span></td><td class="sb-in">+ 2 <span class="c">Vivien Reid</span></td></tr>
@@ -842,7 +846,7 @@
         <p class="sb-note">Vivien Reid fights their creatures (−X/−X) and searches your library for creatures — relevant for finding Icetill Explorer after they've bounced it. Meltstrider's Resolve answers their Floodpits Drowner and grows your creature simultaneously. Move Mossborn Hydra to when you hit 7+ lands reliably — its uncounterability matters then.</p>
       </td></tr>
     <tr onclick="toggle('mu-simic')"><td><strong>Simic Rhythm</strong></td><td>Win the Counter War</td><td><span class="verdict verdict-even">Even</span></td><td>Simic Rhythm plays the same Badgermole Cub + Earthbender Ascension engine you do, with Icetill Explo...</td></tr>
-    <tr><td colspan="5" class="matchup-detail" id="mu-simic">
+    <tr><td colspan="5" class="matchup-writeup" id="mu-simic">
         <p>Simic Rhythm plays the same Badgermole Cub + Earthbender Ascension engine you do, with Icetill Explorer also overlapping. The matchup is won by whoever lands Ascension with more lands already in play. Your Sapling Nursery generates 3/4 reach tokens that block their Chocobo (4/4) — use it as a defensive engine, not just offense. Mossborn Hydra as a 7/7 trample trumps their largest Cub. Get it into play first.</p>
         <table class="sb-table"><thead><tr><th>Out</th><th>In</th></tr></thead><tbody>
           <tr><td class="sb-out">−2 <span class="c">Earthbender Ascension</span></td><td class="sb-in">+ 3 <span class="c">Mossborn Hydra</span></td></tr>
@@ -851,7 +855,7 @@
         <p class="sb-note">Mossborn Hydra is the tiebreaker in the counter war — 7/7 trample beats their pumped Cub in combat. Cut one Ascension (you don't need multiples in the mirror where they know to answer it) and Harmonizer (combo kill is slow when they also have landfall pressure).</p>
       </td></tr>
     <tr onclick="toggle('mu-bant')"><td><strong>Bant Rhythm</strong></td><td>Race Their Tokens</td><td><span class="verdict verdict-dog">Slight Unfavorable</span></td><td>Bant Rhythm generates tokens with Pollinator Wasp and spider tokens from Spider Manifestation — goin...</td></tr>
-    <tr><td colspan="5" class="matchup-detail" id="mu-bant">
+    <tr><td colspan="5" class="matchup-writeup" id="mu-bant">
         <p>Bant Rhythm generates tokens with Pollinator Wasp and spider tokens from Spider Manifestation — going wide against your linear single-threat plan. Their Craterhoof Behemoth ends games instantly. Mossborn Hydra as a 7/7 blocker stalls Craterhoof math since you need 7 power to survive a Hoof attack. Origin of Metalbending destroys their Earthbender Ascension or Beza before it generates too many tokens.</p>
         <table class="sb-table"><thead><tr><th>Out</th><th>In</th></tr></thead><tbody>
           <tr><td class="sb-out">−2 <span class="c">Mightform Harmonizer</span></td><td class="sb-in">+ 2 <span class="c">Origin of Metalbending</span></td></tr>

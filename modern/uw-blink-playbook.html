@@ -357,18 +357,9 @@
   }
 
   /* ── MATCHUP DETAIL ── */
-  .matchup-detail {
-    display: none;
-    border: 1px solid var(--rule);
-    background: var(--paper-dark);
-    padding: 40px;
-    margin: 0 0 24px;
-    animation: fadeIn 0.2s ease;
-  }
+    .matchup-detail { display:none; border:none; background:transparent; padding:20px 16px 32px; animation:fadeIn 0.2s ease; }
 
-  .matchup-detail.open {
-    display: block;
-  }
+    .matchup-detail.open { display:table-cell; }
 
   .sb-table {
     display: grid;
@@ -1022,6 +1013,10 @@ span.c:hover { border-bottom-style:solid; }
   .engine-step-title { font-family:'Bebas Neue',sans-serif; font-size:20px; color:var(--ink); margin-bottom:8px; }
   .engine-step-body { font-size:14px; font-weight:300; color:var(--mid); line-height:1.5; }
   .matchup-writeup { margin:40px 0; padding:32px 0; border-top:1px solid var(--rule); }
+  .verdict { display:inline-block; font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; padding:4px 10px; border-radius:2px; border:1px solid; }
+  .verdict-dog { background:var(--danger-light); color:var(--danger); border-color:var(--danger); }
+  .verdict-even { background:var(--gold-light); color:var(--gold); border-color:var(--gold); }
+  .verdict-favor { background:rgba(34,197,94,0.15); color:#22C55E; border-color:#22C55E; }
 </style>
 <!-- updated 2026-03-31 -->
 </head>
