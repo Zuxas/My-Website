@@ -119,11 +119,6 @@
   .tuning-up::before { content:"▲ "; color:#1a6b1a; font-size:12px; }
   .tuning-down { font-size:14px; font-weight:300; margin-bottom:6px; }
   .tuning-down::before { content:"▼ "; color:var(--danger); font-size:12px; }
-  .heuristic-list { list-style:none; margin:0; padding:0; counter-reset:heuristic; }
-  .heuristic-list li { counter-increment:heuristic; display:grid; grid-template-columns:48px 1fr; gap:16px; padding:20px 0; border-bottom:1px solid var(--rule); align-items:start; }
-  .heuristic-list li:last-child { border-bottom:none; }
-  .heuristic-list li::before { content:counter(heuristic,decimal-leading-zero); font-family:'DM Mono',monospace; font-size:22px; color:var(--rule); font-weight:500; }
-  .heuristic-text strong { display:block; font-size:16px; font-weight:600; margin-bottom:4px; color:var(--ink); }
   .heuristic-text span { font-size:14px; font-weight:300; color:var(--mid); line-height:1.5; }
   .pd-grid { display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--rule); border:1px solid var(--rule); margin:16px 0; }
   .pd-col { background:var(--paper); padding:20px; }
@@ -212,6 +207,13 @@ span.c:hover { border-bottom-style:solid; }
   .sb-deep-grid { display:grid; grid-template-columns:1fr 1fr; gap:32px; }
   .sb-deep-section-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--mid); margin-bottom:10px; }
   .matchup-table thead tr { background: var(--ink); color: var(--paper); }
+
+  .heuristic-list { list-style:none; margin:0; padding:0; }
+  .heuristic-list li { display:grid; grid-template-columns:48px 1fr; gap:16px; padding:20px 0; border-bottom:1px solid var(--rule); align-items:start; }
+  .heuristic-list li:last-child { border-bottom:none; }
+  .heuristic-num { font-family:'DM Mono',monospace; font-size:22px; color:var(--rule); font-weight:500; }
+  .heuristic-body strong { display:block; font-size:16px; font-weight:600; margin-bottom:4px; color:var(--ink); }
+  .heuristic-body { font-size:14px; font-weight:300; color:var(--mid); line-height:1.5; }
 </style>
 </head>
 <body>
