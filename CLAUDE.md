@@ -1,5 +1,5 @@
 # CLAUDE.md — Team Resolve Project State
-*Last updated: April 9, 2026 — commit b6267fb*
+*Last updated: April 9, 2026 — commit f912b6c*
 
 > **Cross-project context:** See `E:\vscode ai project\ECOSYSTEM.md` for how this
 > project connects to mtg-sim, mtg-meta-analyzer, and Team Resolve operations.
@@ -79,19 +79,19 @@ Niv-Mizzet Reborn 0.3%
 - Titles: all "{Deck Name} — Team Resolve Playbook", no HTML artifacts
 - Nav-brand: deck name visible in nav bar (all 44)
 
+- Matchup format: all 45 use matchup-table (full-width detail, dark header, no bordered cards)
 - Structural: zero orphaned matchup-blocks (13 Pioneer/Standard files repaired)
 - Encoding: zero BOM markers, zero mojibake artifacts across all 44
 - deck-guides.html: all 44 card meta % synced with playbooks, counter accurate
 - Links: 46/46 valid in deck-guides.html, 0 broken cross-links
 
 ## RECENT COMMITS
+f912b6c — style: matchup detail full-width, remove border/background for clean layout
+4961e69 — style: matchup table header var(--ink) across all 45
+f7d4627 — feat: convert 23 matchup sections from accordion to table format
+e212e23 — fix: inject matchup-detail CSS + standardize verdict classes
+58f6c8b — fix: add EDGES tabs (11 files) + print buttons (5 files)
 b6267fb — fix: deep encoding cleanup (mojibake, BOM) from 26 files
-b5bfd6b — fix: sync deck-guides.html meta % with playbooks, counter 14→16
-e8a313d — fix: repair 13 files with orphaned matchup-blocks (visually confirmed)
-f7412dc — style: standardize header-labels, titles, nav-brand cleanup
-06db9f9 — style: complete CSS standardization (responsive, print, tooltip)
-729c967 — style: standardize header stats (Meta/Role/Colors/Speed)
-b19980b — style: standardize typography (Bebas Neue) across all 44
 
 ## TECHNICAL
 - Scripts: write _a.py, run via DC start_process powershell, delete after
