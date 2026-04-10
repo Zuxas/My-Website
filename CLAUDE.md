@@ -87,6 +87,12 @@ Niv-Mizzet Reborn 0.3%
 
 ## RECENT COMMITS
 f912b6c — style: matchup detail full-width, remove border/background for clean layout
+
+## PRIORITY STATUS (updated April 10, 2026)
+Website is backburner/filler — work on it when bored. Sim is primary focus.
+- Remaining Pioneer/Modern playbooks: low priority filler
+- Cross-project integration (sim data in playbooks): wait for sim maturity
+- Graphify: needs /graphify . run in Claude Code (P0 across all projects)
 4961e69 — style: matchup table header var(--ink) across all 45
 f7d4627 — feat: convert 23 matchup sections from accordion to table format
 e212e23 — fix: inject matchup-detail CSS + standardize verdict classes
