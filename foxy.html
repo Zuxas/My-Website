@@ -6,145 +6,171 @@
 <meta name="description" content="Foxy (John) — Team Resolve competitive MTG player. Red Aggro · Burn It Down.">
 <title>Foxy — Team Resolve</title>
 <link rel="icon" href="images/tab32.png" type="image/png">
-<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
 <style>
-html{overflow-y:scroll;}
 :root{
-  --primary:    #0a0f1a;
-  --ink:        #0e0e0e;
-  --paper:      #f2ede6;
-  --paper-dark: #e8e1d6;
-  --rule:       #c8bfb0;
-  --accent:     #5c1a1a;
-  --accent-light:rgba(92,26,26,0.10);
-  --accent-glow:#c4554d;
-  --mid:        #5a5248;
-  --card:       #ffffff;
+  --ink:#0e0e0e;
+  --paper:#f2ede6;
+  --paper-dark:#e8e1d6;
+  --rule:#c8bfb0;
+  --accent:#a83232;
+  --accent-light:#f4d4d4;
+  --mid:#5a5248;
 }
 *{margin:0;padding:0;box-sizing:border-box;}
+html{overflow-y:scroll;}
 body{background:var(--paper);color:var(--ink);font-family:'Crimson Pro',Georgia,serif;font-size:17px;line-height:1.6;}
-nav{position:sticky;top:0;z-index:100;background:var(--primary);border-bottom:2px solid var(--accent-glow);display:flex;align-items:center;padding:0 32px;height:48px;gap:4px;}
-.nav-brand{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent-glow);margin-right:16px;}
-.nav-link{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(248,250,252,0.55);text-decoration:none;padding:0 12px;height:48px;display:flex;align-items:center;border-bottom:2px solid transparent;transition:color 0.15s;}
-.nav-link:hover{color:rgba(248,250,252,0.85);}
-.header-band{background:var(--primary);border-bottom:3px solid var(--accent-glow);padding:56px 80px 48px;position:relative;overflow:hidden;}
-.header-band,.header-band *{color:#f1f5f9;}
-.header-band::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 15% 60%,rgba(196,85,77,0.18) 0%,transparent 65%);pointer-events:none;}
-.header-inner{max-width:960px;margin:0 auto;position:relative;display:grid;grid-template-columns:1fr auto;gap:48px;align-items:end;}
-.header-text{}
-.header-photo{width:220px;height:280px;object-fit:cover;object-position:center top;filter:grayscale(20%) contrast(1.05);border-bottom:3px solid var(--accent-glow);background:#5c1a1a;}
-.header-photo-placeholder{width:220px;height:280px;background:linear-gradient(135deg,#5c1a1a 0%,#0a0f1a 100%);border-bottom:3px solid var(--accent-glow);display:flex;align-items:center;justify-content:center;font-family:'DM Mono',monospace;font-size:64px;color:rgba(196,85,77,0.7);font-weight:500;letter-spacing:0.05em;}
-.header-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:rgba(248,250,252,0.38);margin-bottom:14px;}
-.header-name{font-family:'DM Mono',monospace;font-size:clamp(44px,6vw,76px);font-weight:500;letter-spacing:0.04em;line-height:1;text-transform:uppercase;}
-.header-name .accent{color:var(--accent-glow);}
-.header-sub{font-family:'DM Mono',monospace;font-size:13px;letter-spacing:0.12em;color:rgba(248,250,252,0.4);margin-top:10px;}
-.header-quote{font-size:22px;font-style:italic;color:rgba(248,250,252,0.75);margin-top:20px;max-width:520px;line-height:1.45;}
-.header-quote cite{display:block;font-family:'DM Mono',monospace;font-size:9px;font-style:normal;letter-spacing:0.16em;text-transform:uppercase;color:rgba(248,250,252,0.3);margin-top:10px;}
-.stat-row{display:flex;gap:32px;margin-top:36px;flex-wrap:wrap;}
-.stat{display:flex;flex-direction:column;gap:4px;}
-.stat-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.18em;text-transform:uppercase;color:rgba(248,250,252,0.32);}
-.stat-val{font-family:'DM Mono',monospace;font-size:13px;color:rgba(248,250,252,0.88);letter-spacing:0.05em;}
-.content{max-width:960px;margin:0 auto;padding:64px 80px 96px;}
-h2{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.22em;text-transform:uppercase;color:var(--accent-glow);margin:56px 0 18px;padding-bottom:8px;border-bottom:1px solid var(--rule);}
-p{font-size:16px;line-height:1.78;color:var(--ink);margin-bottom:14px;font-weight:300;}
-p strong{font-weight:600;}
-.qa-block{margin:0 0 32px;}
-.qa-q{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.18em;text-transform:uppercase;color:var(--mid);margin-bottom:8px;}
+
+.header-band{background:var(--ink);border-bottom:3px solid var(--accent);}
+.header-inner{max-width:1100px;margin:0 auto;padding:48px 80px;display:grid;grid-template-columns:1fr 240px;gap:48px;align-items:end;}
+.header-eyebrow{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(242,237,230,0.35);margin-bottom:8px;}
+.header-title{font-family:'Bebas Neue',sans-serif;font-size:84px;line-height:0.9;color:var(--paper);letter-spacing:0.02em;}
+.header-title span{color:var(--accent);}
+.header-sub{font-family:'Crimson Pro',serif;font-style:italic;font-size:17px;color:rgba(242,237,230,0.55);margin-top:14px;max-width:560px;line-height:1.5;}
+.header-photo{width:240px;height:300px;object-fit:cover;object-position:center top;filter:grayscale(15%) contrast(1.05);border:1px solid var(--accent);}
+.header-photo-placeholder{width:240px;height:300px;background:linear-gradient(135deg,var(--accent) 0%,#0a0f1a 110%);border:1px solid var(--accent);display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:96px;color:rgba(242,237,230,0.85);letter-spacing:0.02em;}
+.header-meta{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:rgba(242,237,230,0.4);margin-top:14px;text-align:right;}
+.header-meta strong{color:var(--accent);font-weight:500;}
+
+nav{position:sticky;top:0;z-index:100;background:var(--ink);border-bottom:1px solid rgba(242,237,230,0.1);padding:0 80px;display:flex;align-items:center;gap:0;overflow-x:auto;scrollbar-width:none;}
+nav::-webkit-scrollbar{display:none;}
+.nav-brand{font-family:'Bebas Neue',sans-serif;font-size:18px;color:var(--accent);letter-spacing:0.05em;margin-right:40px;white-space:nowrap;padding:16px 0;text-decoration:none;}
+.nav-link{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:rgba(242,237,230,0.4);padding:20px 16px;white-space:nowrap;border-bottom:2px solid transparent;transition:all 0.2s;text-decoration:none;display:inline-block;}
+.nav-link:hover{color:var(--paper);border-bottom-color:var(--accent);}
+
+.page{max-width:1100px;margin:0 auto;padding:80px 80px;}
+.section-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.25em;text-transform:uppercase;color:var(--mid);margin-bottom:8px;}
+h1{font-family:'Bebas Neue',sans-serif;font-size:64px;line-height:0.9;letter-spacing:0.01em;color:var(--ink);margin-bottom:40px;}
+h2{font-family:'Bebas Neue',sans-serif;font-size:36px;letter-spacing:0.02em;color:var(--ink);margin:64px 0 20px;padding-bottom:8px;border-bottom:2px solid var(--ink);}
+p{margin-bottom:16px;color:var(--ink);font-weight:300;}
+strong{font-weight:600;}
+em{font-style:italic;}
+a{color:var(--accent);}
+
+.mantra{border-left:4px solid var(--accent);padding:24px 32px;background:var(--accent-light);margin:32px 0;font-style:italic;font-size:20px;color:var(--ink);line-height:1.5;}
+.mantra cite{display:block;font-family:'DM Mono',monospace;font-size:10px;font-style:normal;letter-spacing:0.18em;text-transform:uppercase;color:var(--mid);margin-top:12px;}
+
+.stat-row{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule);margin:24px 0 40px;}
+.stat-cell{background:var(--paper);padding:28px 24px;text-align:center;}
+.stat-num{font-family:'Bebas Neue',sans-serif;font-size:44px;color:var(--accent);line-height:1;letter-spacing:0.02em;}
+.stat-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--mid);margin-top:6px;}
+
+.card-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule);margin:24px 0;}
+.card-grid-2{grid-template-columns:repeat(2,1fr) !important;}
+.card{background:var(--paper);padding:26px 28px;transition:background 0.15s;}
+.card:hover{background:var(--paper-dark);}
+.card-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--mid);margin-bottom:8px;}
+.card-title{font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:0.03em;color:var(--ink);margin-bottom:10px;line-height:1.1;}
+.card-body{font-size:15px;font-weight:300;color:var(--mid);line-height:1.6;}
+.card-body strong{color:var(--ink);font-weight:600;}
+
+.philosophy-list{list-style:none;margin:24px 0 40px;}
+.philosophy-list li{padding:20px 0;border-bottom:1px solid var(--rule);display:grid;grid-template-columns:170px 1fr;gap:32px;font-size:16px;font-weight:300;line-height:1.6;}
+.philosophy-list li:last-child{border-bottom:none;}
+.phil-word{font-family:'Bebas Neue',sans-serif;font-size:30px;color:var(--accent);letter-spacing:0.02em;line-height:1;}
+
+.cards-list{list-style:none;border:1px solid var(--rule);margin:24px 0;}
+.cards-list li{padding:14px 24px;border-bottom:1px solid var(--rule);font-size:16px;font-weight:300;display:flex;align-items:center;gap:14px;background:var(--paper);transition:background 0.15s;}
+.cards-list li:last-child{border-bottom:none;}
+.cards-list li::before{content:"\25B8";color:var(--accent);font-size:12px;}
+.cards-list li:hover{background:var(--paper-dark);}
+
+.qa-block{margin:0 0 28px;}
+.qa-q{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--mid);margin-bottom:8px;}
 .qa-a{font-size:17px;line-height:1.72;color:var(--ink);font-weight:300;}
 .qa-a strong{font-weight:600;}
-.pull-quote{background:var(--accent-light);border-left:3px solid var(--accent-glow);padding:22px 28px;margin:36px 0;font-style:italic;font-size:19px;color:var(--ink);line-height:1.55;}
-.pull-quote cite{display:block;font-family:'DM Mono',monospace;font-size:9px;font-style:normal;letter-spacing:0.14em;text-transform:uppercase;color:var(--mid);margin-top:10px;}
-.two-col{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--rule);border:1px solid var(--rule);margin:16px 0 40px;}
-.col-card{background:var(--card);padding:22px 24px;}
-.col-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.18em;text-transform:uppercase;color:var(--mid);margin-bottom:8px;}
-.col-val{font-size:15px;font-weight:300;line-height:1.65;color:var(--ink);}
-.col-val strong{font-weight:600;}
-.cards-list{list-style:none;border:1px solid var(--rule);margin:16px 0 32px;background:var(--card);}
-.cards-list li{padding:12px 20px;border-bottom:1px solid var(--rule);font-size:15px;font-weight:300;display:flex;align-items:center;gap:12px;}
-.cards-list li:last-child{border-bottom:none;}
-.cards-list li::before{content:"\25B8";color:var(--accent-glow);font-size:12px;}
-footer{border-top:1px solid var(--rule);padding:24px 80px;display:flex;justify-content:space-between;font-family:'DM Mono',monospace;font-size:10px;color:var(--mid);}
-@media(max-width:700px){
-  .header-band,.content{padding-left:24px;padding-right:24px;}
-  .header-inner{grid-template-columns:1fr;}
-  .header-photo,.header-photo-placeholder{width:100%;height:260px;order:-1;}
-  .two-col{grid-template-columns:1fr;}
-  footer{padding:20px 24px;flex-direction:column;gap:8px;}
+
+footer{background:var(--ink);color:rgba(242,237,230,0.3);padding:40px 80px;margin-top:80px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;}
+footer span{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;}
+
+@media(max-width:768px){
+  .header-inner,nav,.page,footer{padding-left:24px;padding-right:24px;}
+  .header-inner{grid-template-columns:1fr;gap:32px;}
+  .header-photo,.header-photo-placeholder{width:100%;height:280px;order:-1;}
+  .header-meta{text-align:left;}
+  .header-title{font-size:56px;}
+  .stat-row{grid-template-columns:repeat(2,1fr);}
+  .philosophy-list li{grid-template-columns:1fr;gap:8px;}
 }
 </style>
 </head>
 <body>
-<nav>
-  <div class="nav-brand">Team Resolve</div>
-  <a class="nav-link" href="index.html" style="text-decoration:none;">Home</a>
-  <a class="nav-link" href="meta.html" style="text-decoration:none;">Strategies</a>
-  <a class="nav-link" href="deckbuilding.html" style="text-decoration:none;">Deck Building</a>
-  <a class="nav-link" href="analyze.html" style="text-decoration:none;">Analyze</a>
-  <a class="nav-link" href="deck-guides.html" style="text-decoration:none;">Playbooks</a>
-  <a class="nav-link" href="team.html" style="text-decoration:none;">Team</a>
-</nav>
+
 <div class="header-band">
   <div class="header-inner">
-    <div class="header-text">
-    <div class="header-label">Team Resolve &mdash; Player Profile</div>
-    <div class="header-name">FO<span class="accent">XY</span></div>
-    <div class="header-sub">John &middot; Red Aggro &middot; Burn</div>
-    <div class="header-quote">
-      "Lightning Bolt you. Lightning Bolt you. Lightning Bolt you. Okay your turn I guess."
-      <cite>&mdash; Foxy</cite>
+    <div>
+      <div class="header-eyebrow">Team Resolve &middot; Player Profile</div>
+      <div class="header-title">FO<span>XY</span></div>
+      <div class="header-sub">John &middot; Red aggro &middot; burn. Lightning Bolt you. Lightning Bolt you. Okay your turn I guess.</div>
     </div>
-    <div class="stat-row">
-      <div class="stat"><span class="stat-label">Format</span><span class="stat-val">Any &middot; Red Available</span></div>
-      <div class="stat"><span class="stat-label">Archetype</span><span class="stat-val">Red Aggro &middot; Burn</span></div>
-      <div class="stat"><span class="stat-label">Game Plan</span><span class="stat-val">Turn 4 or Less</span></div>
-      <div class="stat"><span class="stat-label">Style</span><span class="stat-val">Proactive &middot; Aggressive</span></div>
-    </div><!-- .stat-row -->
-    </div><!-- .header-text -->
-    <div class="header-photo-placeholder">FX</div>
+    <div>
+      <div class="header-photo-placeholder">FX</div>
+      <div class="header-meta">John &middot; <strong>Red Aggro</strong></div>
+    </div>
   </div>
 </div>
 
-<div class="content">
+<nav>
+  <a class="nav-brand" href="index.html">Team Resolve</a>
+  <a class="nav-link" href="team.html">&#8592; Roster</a>
+  <a class="nav-link" href="zuxas.html">Zuxas</a>
+  <a class="nav-link" href="urbae.html">Urbae</a>
+  <a class="nav-link" href="tien.html">Tien</a>
+  <a class="nav-link" href="troubleshot.html">Troubleshot</a>
+  <a class="nav-link" href="deck-guides.html">Playbooks</a>
+</nav>
 
-  <h2>Background</h2>
+<div class="page">
 
-  <div class="qa-block">
-    <div class="qa-q">What do you play?</div>
-    <div class="qa-a">Red. When in doubt, red. When not in doubt, also red. The natural home is aggressive red-leaning decks where the game plan is simple, the execution window is small, and the opponent doesn't get a lot of turns to figure out what's happening.</div>
+  <div class="section-label">Player Profile</div>
+  <h1>Burn It Down</h1>
+
+  <div class="mantra">
+    "Lightning Bolt you. Lightning Bolt you. Lightning Bolt you. Okay your turn I guess."
+    <cite>&mdash; Foxy</cite>
   </div>
 
-  <div class="qa-block">
-    <div class="qa-q">Why red aggro?</div>
-    <div class="qa-a">It's not just the simplicity &mdash; it's <strong>the pressure</strong>. Foxy applies it from turn one and never lets up. Every point of damage is intentional. The deck looks easy from the outside, but the margin between a good red pilot and an average one is visible in every attack declaration.</div>
+  <p>John &mdash; Foxy &mdash; plays red. When in doubt, he plays red. When not in doubt, he also plays red. His natural home is aggressive red-leaning decks where the game plan is simple, the execution window is small, and the opponent doesn't get a lot of turns to figure out what's happening. The appeal of red aggro isn't just the simplicity &mdash; it's the pressure. Foxy applies it from turn one and never lets up. Every point of damage is intentional. He understands burn math, knows his outs, and plays combat steps precisely. The deck looks easy from the outside, but <strong>the margin between a good red pilot and an average one is visible in every attack declaration.</strong></p>
+
+  <h2>The Numbers</h2>
+
+  <div class="stat-row">
+    <div class="stat-cell"><div class="stat-num">R</div><div class="stat-label">Always Red</div></div>
+    <div class="stat-cell"><div class="stat-num">T4</div><div class="stat-label">Or Less</div></div>
+    <div class="stat-cell"><div class="stat-num">20</div><div class="stat-label">Damage Math</div></div>
+    <div class="stat-cell"><div class="stat-num">26</div><div class="stat-label">RC Grind &middot; 2026</div></div>
   </div>
 
-  <h2>Identity</h2>
+  <h2>The Philosophy</h2>
 
-  <p>The proactive game plan is the whole identity. Make them react. Never give them time to set up. Close before turn five. Burn math, hasty creatures, combat decisions made under a tight clock &mdash; that's the entire toolkit, and it's enough when piloted well.</p>
+  <ul class="philosophy-list">
+    <li><span class="phil-word">Pressure</span><span>From turn one. The opponent's first decision is whether they can survive long enough to play their game. <strong>Red doesn't lose to bad matchups. Red loses to bad pilots.</strong></span></li>
+    <li><span class="phil-word">Math</span><span>Burn math, not vibes. He knows the outs. He counts damage three turns ahead. The reach is calculated, not hoped for. The opponent's life total is just a clock.</span></li>
+    <li><span class="phil-word">Combat</span><span>Attack steps are where average red pilots leak equity. Foxy's attacks are <strong>where he gets paid.</strong> Every point of damage is intentional. Every decline-to-block is filed away for later.</span></li>
+  </ul>
 
-  <div class="pull-quote">
-    "Red doesn't lose to bad matchups. Red loses to bad pilots."
-    <cite>&mdash; The Foxy framework</cite>
-  </div>
+  <h2>The Approach</h2>
 
-  <h2>Approach</h2>
-
-  <div class="two-col">
-    <div class="col-card">
-      <div class="col-label">Aggressive</div>
-      <div class="col-val">Pressure from turn one. The opponent's first decision is whether they can survive long enough to play their game.</div>
+  <div class="card-grid">
+    <div class="card">
+      <div class="card-label">Aggressive</div>
+      <div class="card-title">Turn One</div>
+      <div class="card-body">No setup. No build-up. The first creature hits the table on turn one and the opponent is already on the back foot.</div>
     </div>
-    <div class="col-card">
-      <div class="col-label">Fast</div>
-      <div class="col-val">Burn spells, hasty creatures, efficient curves. Every mana spent moves the life total in the right direction.</div>
+    <div class="card">
+      <div class="card-label">Fast</div>
+      <div class="card-title">Efficient Curves</div>
+      <div class="card-body">Burn spells, hasty creatures, efficient curves. Every mana spent moves the life total <strong>in the right direction.</strong></div>
     </div>
-    <div class="col-card">
-      <div class="col-label">Burn Math</div>
-      <div class="col-val">Knows the outs. Counts damage three turns ahead. The reach is calculated, not hoped for.</div>
+    <div class="card">
+      <div class="card-label">Reach</div>
+      <div class="card-title">Burn Math</div>
+      <div class="card-body">Counts damage three turns ahead. Knows his outs. Plays around lifegain when it matters &mdash; ignores it when it doesn't.</div>
     </div>
-    <div class="col-card">
-      <div class="col-label">Combat Precision</div>
-      <div class="col-val">Attack steps are where average red pilots leak equity. Foxy's attacks are the part of the game where he gets paid.</div>
+    <div class="card">
+      <div class="card-label">Combat Precision</div>
+      <div class="card-title">The Edge</div>
+      <div class="card-body">Attack steps separate good red pilots from great ones. <strong>Foxy is great.</strong></div>
     </div>
   </div>
 
@@ -163,8 +189,8 @@ footer{border-top:1px solid var(--rule);padding:24px 80px;display:flex;justify-c
   <h2>2026 Season</h2>
 
   <div class="qa-block">
-    <div class="qa-q">Goal for the season?</div>
-    <div class="qa-a">Whatever red deck the format gives him &mdash; sleeve it up, attack with everything, and trust the math. The opponent's plan is irrelevant if they're at zero on turn four.</div>
+    <div class="qa-q">Goal?</div>
+    <div class="qa-a">Whatever red deck the format gives him &mdash; sleeve it up, attack with everything, and trust the math. <strong>The opponent's plan is irrelevant if they're at zero on turn four.</strong></div>
   </div>
 
 </div>

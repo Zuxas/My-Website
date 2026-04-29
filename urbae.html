@@ -3,182 +3,174 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Urbae (Garrison) — Team Resolve competitive MTG player. Control · Combo-Control · Best Deck of the Format · Reps Over Theory.">
+<meta name="description" content="Urbae (Garrison) — Team Resolve competitive MTG player. Control · Combo-Control · Best Deck Available · Reps Over Theory.">
 <title>Urbae — Team Resolve</title>
 <link rel="icon" href="images/tab32.png" type="image/png">
-<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
 <style>
-html{overflow-y:scroll;}
 :root{
-  --primary:    #0a0f1a;
-  --ink:        #0e0e0e;
-  --paper:      #f2ede6;
-  --paper-dark: #e8e1d6;
-  --rule:       #c8bfb0;
-  --accent:     #1a3a5c;
-  --accent-light:rgba(26,58,92,0.10);
-  --mid:        #5a5248;
-  --card:       #ffffff;
+  --ink:#0e0e0e;
+  --paper:#f2ede6;
+  --paper-dark:#e8e1d6;
+  --rule:#c8bfb0;
+  --accent:#1a3a5c;
+  --accent-light:#d4e4f4;
+  --mid:#5a5248;
 }
 *{margin:0;padding:0;box-sizing:border-box;}
+html{overflow-y:scroll;}
 body{background:var(--paper);color:var(--ink);font-family:'Crimson Pro',Georgia,serif;font-size:17px;line-height:1.6;}
-nav{position:sticky;top:0;z-index:100;background:var(--primary);border-bottom:2px solid var(--accent);display:flex;align-items:center;padding:0 32px;height:48px;gap:4px;}
-.nav-brand{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);margin-right:16px;}
-.nav-link{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(248,250,252,0.55);text-decoration:none;padding:0 12px;height:48px;display:flex;align-items:center;border-bottom:2px solid transparent;transition:color 0.15s;}
-.nav-link:hover{color:rgba(248,250,252,0.85);}
-.header-band{background:var(--primary);border-bottom:3px solid var(--accent);padding:56px 80px 48px;position:relative;overflow:hidden;}
-.header-band,.header-band *{color:#f1f5f9;}
-.header-band::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 15% 60%,rgba(111,163,212,0.12) 0%,transparent 65%);pointer-events:none;}
-.header-inner{max-width:960px;margin:0 auto;position:relative;display:grid;grid-template-columns:1fr auto;gap:48px;align-items:end;}
-.header-text{}
-.header-photo{width:220px;height:280px;object-fit:cover;object-position:center top;filter:grayscale(20%) contrast(1.05);border-bottom:3px solid var(--accent);}
-.header-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:rgba(248,250,252,0.38);margin-bottom:14px;}
-.header-name{font-family:'DM Mono',monospace;font-size:clamp(44px,6vw,76px);font-weight:500;letter-spacing:0.04em;line-height:1;text-transform:uppercase;}
-.header-name .accent{color:#6fa3d4;}
-.header-sub{font-family:'DM Mono',monospace;font-size:13px;letter-spacing:0.12em;color:rgba(248,250,252,0.4);margin-top:10px;}
-.header-quote{font-size:22px;font-style:italic;color:rgba(248,250,252,0.75);margin-top:20px;max-width:520px;line-height:1.45;}
-.header-quote cite{display:block;font-family:'DM Mono',monospace;font-size:9px;font-style:normal;letter-spacing:0.16em;text-transform:uppercase;color:rgba(248,250,252,0.3);margin-top:10px;}
-.stat-row{display:flex;gap:32px;margin-top:36px;flex-wrap:wrap;}
-.stat{display:flex;flex-direction:column;gap:4px;}
-.stat-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.18em;text-transform:uppercase;color:rgba(248,250,252,0.32);}
-.stat-val{font-family:'DM Mono',monospace;font-size:13px;color:rgba(248,250,252,0.88);letter-spacing:0.05em;}
-.content{max-width:960px;margin:0 auto;padding:64px 80px 96px;}
-h2{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.22em;text-transform:uppercase;color:var(--accent);margin:56px 0 18px;padding-bottom:8px;border-bottom:1px solid var(--rule);}
-p{font-size:16px;line-height:1.78;color:var(--ink);margin-bottom:14px;font-weight:300;}
-p strong{font-weight:600;}
-.qa-block{margin:0 0 32px;}
-.qa-q{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.18em;text-transform:uppercase;color:var(--mid);margin-bottom:8px;}
-.qa-a{font-size:17px;line-height:1.72;color:var(--ink);font-weight:300;}
-.qa-a strong{font-weight:600;}
-.pull-quote{background:var(--accent-light);border-left:3px solid var(--accent);padding:22px 28px;margin:36px 0;font-style:italic;font-size:19px;color:var(--ink);line-height:1.55;}
-.pull-quote cite{display:block;font-family:'DM Mono',monospace;font-size:9px;font-style:normal;letter-spacing:0.14em;text-transform:uppercase;color:var(--mid);margin-top:10px;}
-.two-col{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--rule);border:1px solid var(--rule);margin:16px 0 40px;}
-.col-card{background:var(--card);padding:22px 24px;}
-.col-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.18em;text-transform:uppercase;color:var(--mid);margin-bottom:8px;}
-.col-val{font-size:15px;font-weight:300;line-height:1.65;color:var(--ink);}
-.col-val strong{font-weight:600;}
-.cards-list{list-style:none;border:1px solid var(--rule);margin:16px 0 32px;background:var(--card);}
-.cards-list li{padding:12px 20px;border-bottom:1px solid var(--rule);font-size:15px;font-weight:300;display:flex;align-items:center;gap:12px;}
+
+.header-band{background:var(--ink);border-bottom:3px solid var(--accent);}
+.header-inner{max-width:1100px;margin:0 auto;padding:48px 80px;display:grid;grid-template-columns:1fr 240px;gap:48px;align-items:end;}
+.header-eyebrow{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(242,237,230,0.35);margin-bottom:8px;}
+.header-title{font-family:'Bebas Neue',sans-serif;font-size:84px;line-height:0.9;color:var(--paper);letter-spacing:0.02em;}
+.header-title span{color:var(--accent);}
+.header-sub{font-family:'Crimson Pro',serif;font-style:italic;font-size:17px;color:rgba(242,237,230,0.55);margin-top:14px;max-width:560px;line-height:1.5;}
+.header-photo{width:240px;height:300px;object-fit:cover;object-position:center top;filter:grayscale(15%) contrast(1.05);border:1px solid var(--accent);}
+.header-photo-placeholder{width:240px;height:300px;background:linear-gradient(135deg,var(--accent) 0%,#0a0f1a 110%);border:1px solid var(--accent);display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:96px;color:rgba(242,237,230,0.85);letter-spacing:0.02em;}
+.header-meta{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:rgba(242,237,230,0.4);margin-top:14px;text-align:right;}
+.header-meta strong{color:var(--accent);font-weight:500;}
+
+nav{position:sticky;top:0;z-index:100;background:var(--ink);border-bottom:1px solid rgba(242,237,230,0.1);padding:0 80px;display:flex;align-items:center;gap:0;overflow-x:auto;scrollbar-width:none;}
+nav::-webkit-scrollbar{display:none;}
+.nav-brand{font-family:'Bebas Neue',sans-serif;font-size:18px;color:var(--accent);letter-spacing:0.05em;margin-right:40px;white-space:nowrap;padding:16px 0;text-decoration:none;}
+.nav-link{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:rgba(242,237,230,0.4);padding:20px 16px;white-space:nowrap;border-bottom:2px solid transparent;transition:all 0.2s;text-decoration:none;display:inline-block;}
+.nav-link:hover{color:var(--paper);border-bottom-color:var(--accent);}
+
+.page{max-width:1100px;margin:0 auto;padding:80px 80px;}
+.section-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.25em;text-transform:uppercase;color:var(--mid);margin-bottom:8px;}
+h1{font-family:'Bebas Neue',sans-serif;font-size:64px;line-height:0.9;letter-spacing:0.01em;color:var(--ink);margin-bottom:40px;}
+h2{font-family:'Bebas Neue',sans-serif;font-size:36px;letter-spacing:0.02em;color:var(--ink);margin:64px 0 20px;padding-bottom:8px;border-bottom:2px solid var(--ink);}
+p{margin-bottom:16px;color:var(--ink);font-weight:300;}
+strong{font-weight:600;}
+em{font-style:italic;}
+a{color:var(--accent);}
+
+.mantra{border-left:4px solid var(--accent);padding:24px 32px;background:var(--accent-light);margin:32px 0;font-style:italic;font-size:20px;color:var(--ink);line-height:1.5;}
+.mantra cite{display:block;font-family:'DM Mono',monospace;font-size:10px;font-style:normal;letter-spacing:0.18em;text-transform:uppercase;color:var(--mid);margin-top:12px;}
+
+.stat-row{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule);margin:24px 0 40px;}
+.stat-cell{background:var(--paper);padding:28px 24px;text-align:center;}
+.stat-num{font-family:'Bebas Neue',sans-serif;font-size:44px;color:var(--accent);line-height:1;letter-spacing:0.02em;}
+.stat-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--mid);margin-top:6px;}
+
+.card-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule);margin:24px 0;}
+.card-grid-2{grid-template-columns:repeat(2,1fr) !important;}
+.card{background:var(--paper);padding:26px 28px;transition:background 0.15s;}
+.card:hover{background:var(--paper-dark);}
+.card-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--mid);margin-bottom:8px;}
+.card-title{font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:0.03em;color:var(--ink);margin-bottom:10px;line-height:1.1;}
+.card-body{font-size:15px;font-weight:300;color:var(--mid);line-height:1.6;}
+.card-body strong{color:var(--ink);font-weight:600;}
+
+.philosophy-list{list-style:none;margin:24px 0 40px;}
+.philosophy-list li{padding:20px 0;border-bottom:1px solid var(--rule);display:grid;grid-template-columns:170px 1fr;gap:32px;font-size:16px;font-weight:300;line-height:1.6;}
+.philosophy-list li:last-child{border-bottom:none;}
+.phil-word{font-family:'Bebas Neue',sans-serif;font-size:30px;color:var(--accent);letter-spacing:0.02em;line-height:1;}
+
+.cards-list{list-style:none;border:1px solid var(--rule);margin:24px 0;}
+.cards-list li{padding:14px 24px;border-bottom:1px solid var(--rule);font-size:16px;font-weight:300;display:flex;align-items:center;gap:14px;background:var(--paper);transition:background 0.15s;}
 .cards-list li:last-child{border-bottom:none;}
 .cards-list li::before{content:"\25B8";color:var(--accent);font-size:12px;}
-footer{border-top:1px solid var(--rule);padding:24px 80px;display:flex;justify-content:space-between;font-family:'DM Mono',monospace;font-size:10px;color:var(--mid);}
-@media(max-width:700px){
-  .header-band,.content{padding-left:24px;padding-right:24px;}
-  .header-inner{grid-template-columns:1fr;}
-  .header-photo{width:100%;height:260px;order:-1;}
-  .two-col{grid-template-columns:1fr;}
-  footer{padding:20px 24px;flex-direction:column;gap:8px;}
+.cards-list li:hover{background:var(--paper-dark);}
+
+.qa-block{margin:0 0 28px;}
+.qa-q{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--mid);margin-bottom:8px;}
+.qa-a{font-size:17px;line-height:1.72;color:var(--ink);font-weight:300;}
+.qa-a strong{font-weight:600;}
+
+footer{background:var(--ink);color:rgba(242,237,230,0.3);padding:40px 80px;margin-top:80px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;}
+footer span{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;}
+
+@media(max-width:768px){
+  .header-inner,nav,.page,footer{padding-left:24px;padding-right:24px;}
+  .header-inner{grid-template-columns:1fr;gap:32px;}
+  .header-photo,.header-photo-placeholder{width:100%;height:280px;order:-1;}
+  .header-meta{text-align:left;}
+  .header-title{font-size:56px;}
+  .stat-row{grid-template-columns:repeat(2,1fr);}
+  .philosophy-list li{grid-template-columns:1fr;gap:8px;}
 }
 </style>
 </head>
 <body>
-<nav>
-  <div class="nav-brand">Team Resolve</div>
-  <a class="nav-link" href="index.html" style="text-decoration:none;">Home</a>
-  <a class="nav-link" href="meta.html" style="text-decoration:none;">Strategies</a>
-  <a class="nav-link" href="deckbuilding.html" style="text-decoration:none;">Deck Building</a>
-  <a class="nav-link" href="analyze.html" style="text-decoration:none;">Analyze</a>
-  <a class="nav-link" href="deck-guides.html" style="text-decoration:none;">Playbooks</a>
-  <a class="nav-link" href="team.html" style="text-decoration:none;">Team</a>
-</nav>
+
 <div class="header-band">
   <div class="header-inner">
-    <div class="header-text">
-    <div class="header-label">Team Resolve &mdash; Player Profile</div>
-    <div class="header-name">URB<span class="accent">AE</span></div>
-    <div class="header-sub">Garrison &middot; Control &middot; Combo-Control</div>
-    <div class="header-quote">
-      "I have to know how to approach every possible matchup. That takes reps, not reading."
-      <cite>&mdash; Garrison</cite>
+    <div>
+      <div class="header-eyebrow">Team Resolve &middot; Player Profile</div>
+      <div class="header-title">URB<span>AE</span></div>
+      <div class="header-sub">Garrison &middot; Control. Combo-Control. The best deck of the format is always the right call.</div>
     </div>
-    <div class="stat-row">
-      <div class="stat"><span class="stat-label">Format</span><span class="stat-val">Any &middot; Lower Power Preferred</span></div>
-      <div class="stat"><span class="stat-label">Origin Set</span><span class="stat-val">Return to Ravnica</span></div>
-      <div class="stat"><span class="stat-label">First RC</span><span class="stat-val">24/25 Season &middot; Day 2</span></div>
-      <div class="stat"><span class="stat-label">Recent Result</span><span class="stat-val">Modern Challenge 32 &middot; 2nd</span></div>
-    </div><!-- .stat-row -->
-    </div><!-- .header-text -->
-    <img class="header-photo" src="images/garrison.jpg" alt="Garrison">
+    <div>
+      <img class="header-photo" src="images/garrison.jpg" alt="Garrison">
+      <div class="header-meta">Garrison &middot; <strong>Control</strong></div>
+    </div>
   </div>
 </div>
 
-<div class="content">
+<nav>
+  <a class="nav-brand" href="index.html">Team Resolve</a>
+  <a class="nav-link" href="team.html">&#8592; Roster</a>
+  <a class="nav-link" href="zuxas.html">Zuxas</a>
+  <a class="nav-link" href="tien.html">Tien</a>
+  <a class="nav-link" href="troubleshot.html">Troubleshot</a>
+  <a class="nav-link" href="foxy.html">Foxy</a>
+  <a class="nav-link" href="deck-guides.html">Playbooks</a>
+</nav>
 
-  <h2>Background</h2>
+<div class="page">
 
-  <div class="qa-block">
-    <div class="qa-q">When did control click?</div>
-    <div class="qa-a">The moment <em>Return to Ravnica</em> hit the table. Supreme Verdict resetting the board, Sphinx's Revelation refilling his hand at end-of-turn &mdash; the whole archetype just locked in, and it never let go. He grew up in southern Oregon in a local scene flooded with other control players, and the shop turned into a sub-game of who could build and pilot the cleanest blue-white pile. Mirror after mirror. The reps stacked up at a rate most players never log.</div>
+  <div class="section-label">Player Profile</div>
+  <h1>Reps Over<br>Theory</h1>
+
+  <div class="mantra">
+    "I have to know how to approach every possible matchup. That takes reps, not reading."
+    <cite>&mdash; Garrison</cite>
   </div>
 
-  <div class="qa-block">
-    <div class="qa-q">Who shaped your play?</div>
-    <div class="qa-a">Wafo-Tapa &mdash; via MTGO challenges on YouTube. The patron saint of measured, technically perfect control play. The lessons stuck: <strong>don't lose to your own sequencing, don't tap out unless you're closing the door, every land drop matters in the end-game.</strong> Years of reps without results, and then the 24/25 RCQ season hit, the work compounded, and Garrison qualified for his first Regional Championship and made Day 2.</div>
+  <p>Garrison &mdash; Urbae &mdash; found control the moment <em>Return to Ravnica</em> hit the table. Supreme Verdict resetting the board, Sphinx's Revelation refilling his hand at end-of-turn &mdash; the whole archetype clicked, and it never let go. He grew up in southern Oregon, in a local scene flooded with other control players, and the shop turned into a sub-game of who could build and pilot the cleanest blue-white pile. Iteration on iteration. Mirror after mirror. The reps stacked up at a rate most players never log.</p>
+
+  <p>The polish came from study, too. Garrison learned the deeper layers of the archetype watching Wafo-Tapa grind MTGO challenges on YouTube &mdash; the patron saint of measured, technically perfect control play. The lessons stuck: <strong>don't lose to your own sequencing, don't tap out unless you're closing the door, every land drop matters in the end-game.</strong> Years of reps without results. Then the 2024/2025 RCQ season hit, the work compounded, and Garrison qualified for his first Regional Championship &mdash; and made Day 2.</p>
+
+  <h2>The Numbers</h2>
+
+  <div class="stat-row">
+    <div class="stat-cell"><div class="stat-num">RTR</div><div class="stat-label">First Set</div></div>
+    <div class="stat-cell"><div class="stat-num">RC</div><div class="stat-label">First Qualification &middot; 24/25</div></div>
+    <div class="stat-cell"><div class="stat-num">D2</div><div class="stat-label">First RC Cut</div></div>
+    <div class="stat-cell"><div class="stat-num">2nd</div><div class="stat-label">Modern Challenge 32</div></div>
   </div>
 
-  <h2>Identity</h2>
+  <h2>The Philosophy</h2>
 
-  <p>Garrison is a control player at heart, but his strongest results have all come from <strong>combo-control hybrids</strong> &mdash; decks that fuse the inevitability of a control shell with a closer that ends games on his terms. Underworld Breach, Stock Up, Consult the Star Charts, Wandering Emperor, Jace's mill ultimate. The deck doesn't need to win the long game when it can win the right one.</p>
+  <ul class="philosophy-list">
+    <li><span class="phil-word">Reps</span><span><strong>Theory has a ceiling. Reps don't.</strong> To enter an event with confidence he has to <em>feel</em> how a matchup plays &mdash; what hands they keep, what mulligans they take, where the pivot points are, when the trap turns appear. That kind of knowledge can't be downloaded; it has to be grown.</span></li>
+    <li><span class="phil-word">Outplay</span><span>Lower-power formats are the home. When the cards aren't doing the heavy lifting, sequencing and strategy do. He doesn't want to win because his deck is two power levels above his opponent's. <strong>He wants to win because he saw the line two turns earlier than they did.</strong></span></li>
+    <li><span class="phil-word">Best Deck</span><span>No pet-deck loyalty. The best deck of the format is always the right call. If that means learning the mirror cold, he learns the mirror cold. There's no archetype romance &mdash; only edge.</span></li>
+  </ul>
 
-  <p>His philosophy on archetype selection is open and ruthless: <strong>the best deck of the format is always the right call.</strong> If that means learning the mirror cold, he learns the mirror cold. There's no pet-deck loyalty in his approach &mdash; only edge.</p>
+  <h2>The Approach</h2>
 
-  <div class="pull-quote">
+  <div class="mantra">
     "I need to harness the power of outplaying to gain edges."
-    <cite>&mdash; Garrison, on lower-power formats</cite>
+    <cite>&mdash; On lower-power formats</cite>
   </div>
 
-  <h2>Approach</h2>
+  <p>Control as a playstyle isn't passive. It's a series of active decisions to <em>not act yet</em>. Every turn he doesn't tap mana is a turn he's preserving optionality &mdash; and every one of those non-decisions is the most important card in his hand. The seven modes &mdash; psychological, analytical, adaptive, reflexive, reactive, patient, pensive &mdash; all route through the same through-line.</p>
 
-  <div class="qa-block">
-    <div class="qa-q">How do you prep for an event?</div>
-    <div class="qa-a"><strong>Reps over theory.</strong> Theory has a ceiling. Reps don't. To enter an event with confidence, he has to <em>feel</em> how a matchup plays &mdash; what hands they keep, what mulligans they take, where the pivot points are, when the trap turns appear. That kind of knowledge can't be downloaded; it has to be grown. While other players are reading sideboard guides, Garrison is on his third rep of the same matchup, finding the lines the guide never mentioned.</div>
-  </div>
+  <h2>The Modes</h2>
 
-  <div class="qa-block">
-    <div class="qa-q">Why lower-power formats?</div>
-    <div class="qa-a">When the cards aren't doing the heavy lifting for you, sequencing and strategy do &mdash; and that's where his edge lives. He doesn't want to win because his deck is two power levels above his opponent's. He wants to win because he saw the line two turns earlier than they did.</div>
-  </div>
-
-  <div class="qa-block">
-    <div class="qa-q">What does control mean to you?</div>
-    <div class="qa-a">Not passive. <strong>A series of active decisions to not act yet.</strong> Every turn he doesn't tap mana is a turn he's preserving optionality &mdash; and every one of those non-decisions is the most important card in his hand.</div>
-  </div>
-
-  <h2>Playstyle Modes</h2>
-
-  <div class="two-col">
-    <div class="col-card">
-      <div class="col-label">Psychological</div>
-      <div class="col-val">Reading opponent decisions &mdash; what they kept, what they fetched, what they're representing.</div>
-    </div>
-    <div class="col-card">
-      <div class="col-label">Analytical</div>
-      <div class="col-val">Evaluating board states with cold, mathematical accuracy. No vibes-based blocking.</div>
-    </div>
-    <div class="col-card">
-      <div class="col-label">Adaptive</div>
-      <div class="col-val">Game plan shifts mid-match. The deck he sideboards into is rarely the one he sleeved up.</div>
-    </div>
-    <div class="col-card">
-      <div class="col-label">Reflexive</div>
-      <div class="col-val">Trigger and timing windows. The plays that disappear if you stop to think about them.</div>
-    </div>
-    <div class="col-card">
-      <div class="col-label">Reactive</div>
-      <div class="col-val">Archetype and temperament. He plays the deck and the personality the matchup demands.</div>
-    </div>
-    <div class="col-card">
-      <div class="col-label">Patient</div>
-      <div class="col-val">When the right play is to do nothing, he does nothing. Most players can't.</div>
-    </div>
-    <div class="col-card">
-      <div class="col-label">Pensive</div>
-      <div class="col-val">When the right play is to think longer, he thinks longer. The clock is a resource, not a master.</div>
-    </div>
-    <div class="col-card">
-      <div class="col-label">The Through-Line</div>
-      <div class="col-val"><strong>Outplaying</strong>. Not out-carding. Not out-rolling. Outplaying.</div>
-    </div>
+  <div class="card-grid">
+    <div class="card"><div class="card-label">Psychological</div><div class="card-title">Read Decisions</div><div class="card-body">What they kept. What they fetched. What they're representing. The hand before the cards.</div></div>
+    <div class="card"><div class="card-label">Analytical</div><div class="card-title">Cold Math</div><div class="card-body">Board states evaluated with mathematical accuracy. No vibes-based blocking.</div></div>
+    <div class="card"><div class="card-label">Adaptive</div><div class="card-title">Plans Shift</div><div class="card-body">Mid-match. The deck he sideboards into is rarely the one he sleeved up.</div></div>
+    <div class="card"><div class="card-label">Reflexive</div><div class="card-title">Trigger Windows</div><div class="card-body">Timing windows. The plays that disappear if you stop to think about them.</div></div>
+    <div class="card"><div class="card-label">Reactive</div><div class="card-title">By Archetype</div><div class="card-body">Plays the deck and the personality the matchup demands.</div></div>
+    <div class="card"><div class="card-label">Patient</div><div class="card-title">Do Nothing</div><div class="card-body">When the right play is to do nothing, he does nothing. Most players can't.</div></div>
+    <div class="card"><div class="card-label">Pensive</div><div class="card-title">Think Longer</div><div class="card-body">When the right play is to think longer, he thinks longer. The clock is a resource, not a master.</div></div>
+    <div class="card"><div class="card-label">Through-Line</div><div class="card-title">Outplay</div><div class="card-body">Not out-carding. Not out-rolling. <strong>Outplaying.</strong></div></div>
   </div>
 
   <h2>The Cards</h2>
@@ -198,8 +190,8 @@ footer{border-top:1px solid var(--rule);padding:24px 80px;display:flex;justify-c
   <h2>Results</h2>
 
   <div class="qa-block">
-    <div class="qa-q">First RC qualification?</div>
-    <div class="qa-a"><strong>2024/2025 RCQ season.</strong> First Regional Championship appearance. Made Day 2. The competitive grind started compounding.</div>
+    <div class="qa-q">First RC?</div>
+    <div class="qa-a"><strong>2024/2025 RCQ season.</strong> First Regional Championship appearance. Made Day 2. The work started compounding visibly.</div>
   </div>
 
   <div class="qa-block">
@@ -210,8 +202,8 @@ footer{border-top:1px solid var(--rule);padding:24px 80px;display:flex;justify-c
   <h2>2026 Season</h2>
 
   <div class="qa-block">
-    <div class="qa-q">Goal for the season?</div>
-    <div class="qa-a">Whatever the best deck of the format is &mdash; sleeve it up, learn it cold, run it back. The reps are non-negotiable. The format is whatever the data says it should be. The edge is in the decisions everyone else is too tired to make on turn 14.</div>
+    <div class="qa-q">Goal?</div>
+    <div class="qa-a">Whatever the best deck of the format is &mdash; sleeve it up, learn it cold, run it back. The reps are non-negotiable. The format is whatever the data says it should be. <strong>The edge is in the decisions everyone else is too tired to make on turn 14.</strong></div>
   </div>
 
 </div>

@@ -3,155 +3,192 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Tien — Team Resolve competitive MTG player. Greedy combo. Mono-U Belcher. Just cut a land.">
 <title>Tien — Team Resolve</title>
 <link rel="icon" href="images/tab32.png" type="image/png">
-<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
 <style>
-html{overflow-y:scroll;}
 :root{
-  --primary:    #0a0f1a;
-  --ink:        #0e0e0e;
-  --paper:      #f2ede6;
-  --paper-dark: #e8e1d6;
-  --rule:       #c8bfb0;
-  --accent:     #6366f1;
-  --accent-light:rgba(99,102,241,0.10);
-  --mid:        #5a5248;
-  --card:       #ffffff;
+  --ink:#0e0e0e;
+  --paper:#f2ede6;
+  --paper-dark:#e8e1d6;
+  --rule:#c8bfb0;
+  --accent:#6366f1;
+  --accent-light:#e5e6fb;
+  --mid:#5a5248;
 }
 *{margin:0;padding:0;box-sizing:border-box;}
+html{overflow-y:scroll;}
 body{background:var(--paper);color:var(--ink);font-family:'Crimson Pro',Georgia,serif;font-size:17px;line-height:1.6;}
-nav{position:sticky;top:0;z-index:100;background:var(--primary);border-bottom:2px solid var(--accent);display:flex;align-items:center;padding:0 32px;height:48px;gap:4px;}
-.nav-brand{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);margin-right:16px;}
-.nav-link{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(248,250,252,0.55);text-decoration:none;padding:0 12px;height:48px;display:flex;align-items:center;border-bottom:2px solid transparent;transition:color 0.15s;}
-.nav-link:hover{color:rgba(248,250,252,0.85);}
-.header-band{background:var(--primary);border-bottom:3px solid var(--accent);padding:56px 80px 48px;position:relative;overflow:hidden;}
-.header-band,.header-band *{color:#f1f5f9;}
-.header-band::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 15% 60%,rgba(99,102,241,0.1) 0%,transparent 65%);pointer-events:none;}
-.header-inner{max-width:960px;margin:0 auto;position:relative;display:grid;grid-template-columns:1fr auto;gap:48px;align-items:end;}
-.header-text{}
-.header-photo{width:220px;height:280px;object-fit:cover;object-position:center top;filter:grayscale(20%) contrast(1.05);border-bottom:3px solid var(--accent);}
-.header-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:rgba(248,250,252,0.38);margin-bottom:14px;}
-.header-name{font-family:'DM Mono',monospace;font-size:clamp(44px,6vw,76px);font-weight:500;letter-spacing:0.04em;line-height:1;text-transform:uppercase;}
-.header-name .accent{color:var(--accent);}
-.header-sub{font-family:'DM Mono',monospace;font-size:13px;letter-spacing:0.12em;color:rgba(248,250,252,0.4);margin-top:10px;}
-.header-quote{font-size:22px;font-style:italic;color:rgba(248,250,252,0.75);margin-top:20px;max-width:520px;line-height:1.45;}
-.header-quote cite{display:block;font-family:'DM Mono',monospace;font-size:9px;font-style:normal;letter-spacing:0.16em;text-transform:uppercase;color:rgba(248,250,252,0.3);margin-top:10px;}
-.stat-row{display:flex;gap:32px;margin-top:36px;flex-wrap:wrap;}
-.stat{display:flex;flex-direction:column;gap:4px;}
-.stat-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.18em;text-transform:uppercase;color:rgba(248,250,252,0.32);}
-.stat-val{font-family:'DM Mono',monospace;font-size:13px;color:rgba(248,250,252,0.88);letter-spacing:0.05em;}
-.content{max-width:960px;margin:0 auto;padding:64px 80px 96px;}
-h2{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.22em;text-transform:uppercase;color:var(--accent);margin:56px 0 18px;padding-bottom:8px;border-bottom:1px solid var(--rule);}
-p{font-size:16px;line-height:1.78;color:var(--ink);margin-bottom:14px;font-weight:300;}
-p strong{font-weight:600;}
-.qa-block{margin:0 0 32px;}
-.qa-q{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.18em;text-transform:uppercase;color:var(--mid);margin-bottom:8px;}
+
+.header-band{background:var(--ink);border-bottom:3px solid var(--accent);}
+.header-inner{max-width:1100px;margin:0 auto;padding:48px 80px;display:grid;grid-template-columns:1fr 240px;gap:48px;align-items:end;}
+.header-eyebrow{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(242,237,230,0.35);margin-bottom:8px;}
+.header-title{font-family:'Bebas Neue',sans-serif;font-size:84px;line-height:0.9;color:var(--paper);letter-spacing:0.02em;}
+.header-title span{color:var(--accent);}
+.header-sub{font-family:'Crimson Pro',serif;font-style:italic;font-size:17px;color:rgba(242,237,230,0.55);margin-top:14px;max-width:560px;line-height:1.5;}
+.header-photo{width:240px;height:300px;object-fit:cover;object-position:center top;filter:grayscale(15%) contrast(1.05);border:1px solid var(--accent);}
+.header-photo-placeholder{width:240px;height:300px;background:linear-gradient(135deg,var(--accent) 0%,#0a0f1a 110%);border:1px solid var(--accent);display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:96px;color:rgba(242,237,230,0.85);letter-spacing:0.02em;}
+.header-meta{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:rgba(242,237,230,0.4);margin-top:14px;text-align:right;}
+.header-meta strong{color:var(--accent);font-weight:500;}
+
+nav{position:sticky;top:0;z-index:100;background:var(--ink);border-bottom:1px solid rgba(242,237,230,0.1);padding:0 80px;display:flex;align-items:center;gap:0;overflow-x:auto;scrollbar-width:none;}
+nav::-webkit-scrollbar{display:none;}
+.nav-brand{font-family:'Bebas Neue',sans-serif;font-size:18px;color:var(--accent);letter-spacing:0.05em;margin-right:40px;white-space:nowrap;padding:16px 0;text-decoration:none;}
+.nav-link{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:rgba(242,237,230,0.4);padding:20px 16px;white-space:nowrap;border-bottom:2px solid transparent;transition:all 0.2s;text-decoration:none;display:inline-block;}
+.nav-link:hover{color:var(--paper);border-bottom-color:var(--accent);}
+
+.page{max-width:1100px;margin:0 auto;padding:80px 80px;}
+.section-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.25em;text-transform:uppercase;color:var(--mid);margin-bottom:8px;}
+h1{font-family:'Bebas Neue',sans-serif;font-size:64px;line-height:0.9;letter-spacing:0.01em;color:var(--ink);margin-bottom:40px;}
+h2{font-family:'Bebas Neue',sans-serif;font-size:36px;letter-spacing:0.02em;color:var(--ink);margin:64px 0 20px;padding-bottom:8px;border-bottom:2px solid var(--ink);}
+p{margin-bottom:16px;color:var(--ink);font-weight:300;}
+strong{font-weight:600;}
+em{font-style:italic;}
+a{color:var(--accent);}
+
+.mantra{border-left:4px solid var(--accent);padding:24px 32px;background:var(--accent-light);margin:32px 0;font-style:italic;font-size:20px;color:var(--ink);line-height:1.5;}
+.mantra cite{display:block;font-family:'DM Mono',monospace;font-size:10px;font-style:normal;letter-spacing:0.18em;text-transform:uppercase;color:var(--mid);margin-top:12px;}
+
+.stat-row{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule);margin:24px 0 40px;}
+.stat-cell{background:var(--paper);padding:28px 24px;text-align:center;}
+.stat-num{font-family:'Bebas Neue',sans-serif;font-size:44px;color:var(--accent);line-height:1;letter-spacing:0.02em;}
+.stat-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--mid);margin-top:6px;}
+
+.card-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule);margin:24px 0;}
+.card-grid-2{grid-template-columns:repeat(2,1fr) !important;}
+.card{background:var(--paper);padding:26px 28px;transition:background 0.15s;}
+.card:hover{background:var(--paper-dark);}
+.card-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--mid);margin-bottom:8px;}
+.card-title{font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:0.03em;color:var(--ink);margin-bottom:10px;line-height:1.1;}
+.card-body{font-size:15px;font-weight:300;color:var(--mid);line-height:1.6;}
+.card-body strong{color:var(--ink);font-weight:600;}
+
+.philosophy-list{list-style:none;margin:24px 0 40px;}
+.philosophy-list li{padding:20px 0;border-bottom:1px solid var(--rule);display:grid;grid-template-columns:160px 1fr;gap:32px;font-size:16px;font-weight:300;line-height:1.6;}
+.philosophy-list li:last-child{border-bottom:none;}
+.phil-word{font-family:'Bebas Neue',sans-serif;font-size:30px;color:var(--accent);letter-spacing:0.02em;line-height:1;}
+
+.cards-list{list-style:none;border:1px solid var(--rule);margin:24px 0;}
+.cards-list li{padding:14px 24px;border-bottom:1px solid var(--rule);font-size:16px;font-weight:300;display:flex;align-items:center;gap:14px;background:var(--paper);transition:background 0.15s;}
+.cards-list li:last-child{border-bottom:none;}
+.cards-list li::before{content:"\25B8";color:var(--accent);font-size:12px;}
+.cards-list li:hover{background:var(--paper-dark);}
+
+.qa-block{margin:0 0 28px;}
+.qa-q{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--mid);margin-bottom:8px;}
 .qa-a{font-size:17px;line-height:1.72;color:var(--ink);font-weight:300;}
 .qa-a strong{font-weight:600;}
-.pull-quote{background:var(--accent-light);border-left:3px solid var(--accent);padding:22px 28px;margin:36px 0;font-style:italic;font-size:19px;color:var(--ink);line-height:1.55;}
-.pull-quote cite{display:block;font-family:'DM Mono',monospace;font-size:9px;font-style:normal;letter-spacing:0.14em;text-transform:uppercase;color:var(--mid);margin-top:10px;}
-.two-col{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--rule);border:1px solid var(--rule);margin:16px 0 40px;}
-.col-card{background:var(--card);padding:22px 24px;}
-.col-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.18em;text-transform:uppercase;color:var(--mid);margin-bottom:8px;}
-.col-val{font-size:15px;font-weight:300;line-height:1.65;color:var(--ink);}
-.col-val strong{font-weight:600;}
-footer{border-top:1px solid var(--rule);padding:24px 80px;display:flex;justify-content:space-between;font-family:'DM Mono',monospace;font-size:10px;color:var(--mid);}
-@media(max-width:700px){
-  .header-band,.content{padding-left:24px;padding-right:24px;}
-  .header-inner{grid-template-columns:1fr;}
-  .header-photo{width:100%;height:260px;order:-1;}
-  .two-col{grid-template-columns:1fr;}
-  footer{padding:20px 24px;flex-direction:column;gap:8px;}
+
+footer{background:var(--ink);color:rgba(242,237,230,0.3);padding:40px 80px;margin-top:80px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;}
+footer span{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;}
+
+@media(max-width:768px){
+  .header-inner,nav,.page,footer{padding-left:24px;padding-right:24px;}
+  .header-inner{grid-template-columns:1fr;gap:32px;}
+  .header-photo,.header-photo-placeholder{width:100%;height:280px;order:-1;}
+  .header-meta{text-align:left;}
+  .header-title{font-size:56px;}
+  .stat-row{grid-template-columns:repeat(2,1fr);}
+  .philosophy-list li{grid-template-columns:1fr;gap:8px;}
 }
 </style>
 </head>
 <body>
-<nav>
-  <div class="nav-brand">Team Resolve</div>
-  <a class="nav-link" href="index.html" style="text-decoration:none;">Home</a>
-  <a class="nav-link" href="meta.html" style="text-decoration:none;">Strategies</a>
-  <a class="nav-link" href="deckbuilding.html" style="text-decoration:none;">Deck Building</a>
-  <a class="nav-link" href="analyze.html" style="text-decoration:none;">Analyze</a>
-  <a class="nav-link" href="deck-guides.html" style="text-decoration:none;">Playbooks</a>
-  <a class="nav-link" href="team.html" style="text-decoration:none;">Team</a>
-</nav>
+
 <div class="header-band">
   <div class="header-inner">
-    <div class="header-text">
-    <div class="header-label">Team Resolve &mdash; Player Profile</div>
-    <div class="header-name">TI<span class="accent">EN</span></div>
-    <div class="header-sub">Started Feb 2022 &middot; Modern &middot; Pioneer</div>
-    <div class="header-quote">
-      "Just cut a land."
-      <cite>— Tien, probably</cite>
+    <div>
+      <div class="header-eyebrow">Team Resolve &middot; Player Profile</div>
+      <div class="header-title">TI<span>EN</span></div>
+      <div class="header-sub">Greedy combo player. Modern &amp; Pioneer specialist. Has not failed to qualify for a competitive season he has tried.</div>
     </div>
-    <div class="stat-row">
-      <div class="stat"><span class="stat-label">Playing Since</span><span class="stat-val">Feb 2022</span></div>
-      <div class="stat"><span class="stat-label">First Set</span><span class="stat-val">Neon Dynasty</span></div>
-      <div class="stat"><span class="stat-label">Signature Deck</span><span class="stat-val">Mono-U Belcher</span></div>
-      <div class="stat"><span class="stat-label">RCQ Record</span><span class="stat-val">Qualified Every Season</span></div>
-    </div><!-- .stat-row -->
-    </div><!-- .header-text -->
-    <img class="header-photo" src="images/tien.jpg" alt="Tien">
+    <div>
+      <img class="header-photo" src="images/tien.jpg" alt="Tien">
+      <div class="header-meta">Tien &middot; <strong>Combo</strong></div>
+    </div>
   </div>
 </div>
 
-<div class="content">
+<nav>
+  <a class="nav-brand" href="index.html">Team Resolve</a>
+  <a class="nav-link" href="team.html">&#8592; Roster</a>
+  <a class="nav-link" href="zuxas.html">Zuxas</a>
+  <a class="nav-link" href="urbae.html">Urbae</a>
+  <a class="nav-link" href="troubleshot.html">Troubleshot</a>
+  <a class="nav-link" href="foxy.html">Foxy</a>
+  <a class="nav-link" href="deck-guides.html">Playbooks</a>
+</nav>
 
-  <h2>Background</h2>
+<div class="page">
 
-  <div class="qa-block">
-    <div class="qa-q">How long have you been playing?</div>
-    <div class="qa-a">Since Neon Dynasty — February 2022. Less than four years ago. What's happened since then would take most players a decade to accomplish.</div>
+  <div class="section-label">Player Profile</div>
+  <h1>Just Cut<br>A Land</h1>
+
+  <div class="mantra">
+    "Just cut a land."
+    <cite>&mdash; Tien, probably</cite>
   </div>
 
-  <div class="qa-block">
-    <div class="qa-q">What got you into competitive play?</div>
-    <div class="qa-a">Couldn't lose at the kitchen table. His friends told him he needed a format with real restrictions. He picked Modern. Then proceeded to learn the game much faster than most people do and immediately wanted to grind.</div>
+  <p>Started playing during <em>Neon Dynasty</em> in February 2022. Less than four years ago. What's happened since would take most players a decade to accomplish. Couldn't lose at the kitchen table; his friends told him he needed a format with real restrictions, so he picked Modern. Then he proceeded to learn the game much faster than most people do, and immediately wanted to grind.</p>
+
+  <h2>The Numbers</h2>
+
+  <div class="stat-row">
+    <div class="stat-cell"><div class="stat-num">2022</div><div class="stat-label">Started Playing</div></div>
+    <div class="stat-cell"><div class="stat-num">NEO</div><div class="stat-label">First Set</div></div>
+    <div class="stat-cell"><div class="stat-num">100%</div><div class="stat-label">RCQ Conversion Rate</div></div>
+    <div class="stat-cell"><div class="stat-num">U</div><div class="stat-label">Mono-U Belcher</div></div>
+  </div>
+
+  <h2>The Philosophy</h2>
+
+  <ul class="philosophy-list">
+    <li><span class="phil-word">Greedy</span><span><strong>Not reckless &mdash; greedy.</strong> There's a difference. Reckless players take bad lines and lose to variance. Greedy players push margins that other pilots leave on the table, and know exactly which margins those are.</span></li>
+    <li><span class="phil-word">Calibrated</span><span>The "just cut a land" mentality isn't sloppiness. It's a calibrated read on what the deck actually needs versus what conventional wisdom says it needs. With Mono-U Belcher, he's right.</span></li>
+    <li><span class="phil-word">Pre-Solved</span><span>He knows his decklist cold. He can reconstruct the majority of his opponent's list from memory before seeing a card. <strong>The game is already partially solved before he sits down.</strong></span></li>
+  </ul>
+
+  <h2>The Framework</h2>
+
+  <div class="mantra">
+    "What do I die to. How do I win. What does a winning game look like. How do I thread the needle to steal the match."
+    <cite>&mdash; In order, every match, every game</cite>
+  </div>
+
+  <p>Four questions before anything else. The opening hand evaluation, the mulligan decision, the sequencing call on turn three &mdash; all of it gets routed through that framework. Most players don't have a clear model for when the situation forces them to go for it versus when they have margin to sculpt a better position. Tien does. He knows which turns are free and which aren't &mdash; and that creates decisions his opponents never see coming.</p>
+
+  <h2>The Decks</h2>
+
+  <div class="card-grid card-grid-2">
+    <div class="card">
+      <div class="card-label">The Deck He Always Returns To</div>
+      <div class="card-title">Mono-U Belcher</div>
+      <div class="card-body">Since <strong>MH3</strong>. Consistent combo that uses interaction and free spells to win on turn 4, but can drop into a draw-go control game when needed. Fitting deck for a pilot who wants to play fewer lands than everyone else and be right about it.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">How He Ended Up On Team Resolve</div>
+      <div class="card-title">Beat The Captain</div>
+      <div class="card-body">He kept beating Zuxas. Zuxas bought him a hat. The rest followed.</div>
+    </div>
   </div>
 
   <h2>Results</h2>
 
   <div class="qa-block">
     <div class="qa-q">Proudest result?</div>
-    <div class="qa-a">Winning his first RCQ after playing for just over a year. Then making it a pattern — he's qualified for every competitive season he's cared about in both Modern and Pioneer since. <strong>He has not failed to qualify for a season he's genuinely tried.</strong> That's not a streak that happens by accident.</div>
-  </div>
-
-  <h2>The Player</h2>
-
-  <p>Tien is a greedy combo player. Not reckless — greedy. There's a difference. Reckless players take bad lines and lose to variance. Greedy players push margins that other pilots leave on the table, and know exactly which margins those are. The "just cut a land" mentality isn't sloppiness. It's a calibrated read on what the deck actually needs versus what conventional wisdom says it needs. With Mono-U Belcher, he's right.</p>
-
-  <div class="pull-quote">
-    "What do I die to. How do I win. What does a winning game look like. How do I thread the needle to steal the match."
-    <cite>— His framework, in order</cite>
-  </div>
-
-  <div class="qa-block">
-    <div class="qa-q">How do you think at the table?</div>
-    <div class="qa-a">Four questions before anything else: <strong>What do I die to. How do I win. What does a winning game look like. How do I thread the needle.</strong> He knows his decklist cold. He can reconstruct a majority of his opponent's list from memory before seeing a card. The game is already partially solved before he sits down.</div>
+    <div class="qa-a">Winning his first RCQ after playing for just over a year. Then making it a pattern &mdash; he's qualified for every competitive season he's cared about in both Modern and Pioneer since. <strong>He has not failed to qualify for a season he's genuinely tried.</strong> That's not a streak that happens by accident.</div>
   </div>
 
   <div class="qa-block">
     <div class="qa-q">What do most players get wrong?</div>
-    <div class="qa-a"><strong>Pressure points.</strong> Most players don't have a clear model for when the situation forces them to go for it versus when they have margin to sculpt a better position. Tien does. He knows which turns are free and which aren't — and that creates decisions his opponents never see coming.</div>
-  </div>
-
-  <div class="two-col">
-    <div class="col-card">
-      <div class="col-label">The Deck He Always Returns To</div>
-      <div class="col-val"><strong>Mono-U Belcher</strong> — since MH3. Consistent combo that uses interaction and free spells to win on turn 4, but can drop into a draw-go control game when needed. Fitting deck for a pilot who wants to play fewer lands than everyone else and be right about it.</div>
-    </div>
-    <div class="col-card">
-      <div class="col-label">How He Ended Up on Team Resolve</div>
-      <div class="col-val">He kept beating Zuxas. Zuxas bought him a hat. The rest followed.</div>
-    </div>
+    <div class="qa-a"><strong>Pressure points.</strong> Most players don't have a clear model for when the situation forces them to go for it versus when they have margin to sculpt a better position. Tien does.</div>
   </div>
 
   <h2>2026 Season</h2>
 
   <div class="qa-block">
-    <div class="qa-q">Goal for this RC season?</div>
+    <div class="qa-q">Goal?</div>
     <div class="qa-a">Keep the streak. He hasn't failed to qualify for a competitive season he's tried yet. Based on everything above, that's not changing.</div>
   </div>
 
