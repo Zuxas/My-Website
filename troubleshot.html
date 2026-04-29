@@ -3,112 +3,155 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Troubleshot (Caleb) — Team Resolve competitive MTG player. Mono-Black Control · Standard Specialist." />
+<meta name="description" content="Troubleshot (Caleb) — Team Resolve competitive MTG player. Mono-Black Control · Standard Specialist.">
 <title>Troubleshot — Team Resolve</title>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<link rel="icon" href="images/tab32.png" type="image/png">
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-  :root { --ink:#0e0e0e; --paper:#f2ede6; --paper-dark:#e8e1d6; --rule:#c8bfb0; --accent:#1a1a2e; --accent-light:#d4d4e8; --mid:#5a5248; }
-  * { margin:0; padding:0; box-sizing:border-box; }
-  body { background:var(--paper); color:var(--ink); font-family:'Crimson Pro',Georgia,serif; font-size:17px; line-height:1.6; }
-  .header-band { background:var(--ink); border-bottom:3px solid var(--accent); }
-  .header-inner { max-width:1100px; margin:0 auto; padding:40px 80px; display:flex; justify-content:space-between; align-items:flex-end; gap:40px; }
-  .header-eyebrow { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:rgba(242,237,230,0.35); margin-bottom:8px; }
-  .header-title { font-family:'Bebas Neue',sans-serif; font-size:72px; line-height:0.9; color:#f2ede6; letter-spacing:0.02em; }
-  .header-title span { color:var(--accent); }
-  .header-sub { font-family:'Crimson Pro',serif; font-style:italic; font-size:16px; color:rgba(242,237,230,0.45); margin-top:10px; }
-  .header-right { text-align:right; padding-bottom:4px; }
-  .header-handle { font-family:'Bebas Neue',sans-serif; font-size:28px; color:var(--accent); letter-spacing:0.05em; }
-  .header-role { font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.15em; text-transform:uppercase; color:rgba(242,237,230,0.4); margin-top:4px; }
-  nav { position:sticky; top:0; z-index:100; background:var(--ink); border-bottom:1px solid rgba(242,237,230,0.1); padding:0 80px; display:flex; align-items:center; gap:0; overflow-x:auto; scrollbar-width:none; }
-  nav::-webkit-scrollbar { display:none; }
-  .nav-brand { font-family:'Bebas Neue',sans-serif; font-size:18px; color:var(--accent); letter-spacing:0.05em; margin-right:40px; white-space:nowrap; padding:16px 0; text-decoration:none; }
-  .nav-link { font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:rgba(242,237,230,0.4); padding:20px 16px; white-space:nowrap; border-bottom:2px solid transparent; transition:all 0.2s; text-decoration:none; display:inline-block; }
-  .nav-link:hover { color:#f2ede6; border-bottom-color:var(--accent); }
-  .page { max-width:1100px; margin:0 auto; padding:80px 80px; }
-  .section-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.25em; text-transform:uppercase; color:var(--mid); margin-bottom:8px; }
-  h1 { font-family:'Bebas Neue',sans-serif; font-size:64px; line-height:0.9; letter-spacing:0.01em; color:var(--ink); margin-bottom:40px; }
-  h2 { font-family:'Bebas Neue',sans-serif; font-size:36px; letter-spacing:0.02em; color:var(--ink); margin:56px 0 20px; padding-bottom:8px; border-bottom:2px solid var(--ink); }
-  p { margin-bottom:16px; color:var(--ink); font-weight:300; }
-  strong { font-weight:600; }
-  a { color:var(--accent); }
-  .mantra { border-left:4px solid var(--accent); padding:24px 32px; background:var(--accent-light); margin:32px 0; font-style:italic; font-size:20px; color:var(--accent); line-height:1.5; }
-  .card-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:1px; background:var(--rule); border:1px solid var(--rule); margin:24px 0; }
-  .card { background:var(--paper); padding:24px; }
-  .card:hover { background:var(--paper-dark); }
-  .card-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--mid); margin-bottom:8px; }
-  .card-title { font-family:'Bebas Neue',sans-serif; font-size:22px; letter-spacing:0.03em; color:var(--ink); margin-bottom:8px; }
-  .card-body { font-size:15px; font-weight:300; color:var(--mid); line-height:1.5; }
-  .cards-list { list-style:none; border:1px solid var(--rule); margin:24px 0; }
-  .cards-list li { padding:12px 20px; border-bottom:1px solid var(--rule); font-size:15px; font-weight:300; display:flex; align-items:center; gap:12px; }
-  .cards-list li:last-child { border-bottom:none; }
-  .cards-list li::before { content:"▸"; color:var(--accent); font-size:12px; }
-  .stat-row { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--rule); border:1px solid var(--rule); margin:24px 0; }
-  .stat-cell { background:var(--paper); padding:24px; text-align:center; }
-  .stat-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; color:var(--mid); margin-top:4px; }
-  .stat-val { font-family:'Bebas Neue',sans-serif; font-size:32px; color:var(--accent); line-height:1; }
-  .team-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(180px,1fr)); gap:1px; background:var(--rule); border:1px solid var(--rule); margin:24px 0; }
-  .team-card { background:var(--paper); padding:20px; text-decoration:none; display:block; }
-  .team-card:hover { background:var(--paper-dark); }
-  .team-handle { font-family:'Bebas Neue',sans-serif; font-size:24px; color:var(--ink); }
-  .team-role { font-family:'DM Mono',monospace; font-size:9px; letter-spacing:0.15em; text-transform:uppercase; color:var(--mid); margin-top:2px; }
-  footer { background:var(--ink); color:rgba(242,237,230,0.3); padding:40px 80px; display:flex; justify-content:space-between; align-items:center; }
-  footer span { font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.1em; text-transform:uppercase; }
-  @media (max-width:768px) { .header-inner, nav, .page, footer { padding-left:24px; padding-right:24px; } .header-title { font-size:48px; } .stat-row { grid-template-columns:1fr; } }
+html{overflow-y:scroll;}
+:root{
+  --primary:    #0a0f1a;
+  --ink:        #0e0e0e;
+  --paper:      #f2ede6;
+  --paper-dark: #e8e1d6;
+  --rule:       #c8bfb0;
+  --accent:     #1a1a2e;
+  --accent-light:rgba(26,26,46,0.10);
+  --accent-glow:#5a5a8e;
+  --mid:        #5a5248;
+  --card:       #ffffff;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--paper);color:var(--ink);font-family:'Crimson Pro',Georgia,serif;font-size:17px;line-height:1.6;}
+nav{position:sticky;top:0;z-index:100;background:var(--primary);border-bottom:2px solid var(--accent-glow);display:flex;align-items:center;padding:0 32px;height:48px;gap:4px;}
+.nav-brand{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent-glow);margin-right:16px;}
+.nav-link{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(248,250,252,0.55);text-decoration:none;padding:0 12px;height:48px;display:flex;align-items:center;border-bottom:2px solid transparent;transition:color 0.15s;}
+.nav-link:hover{color:rgba(248,250,252,0.85);}
+.header-band{background:var(--primary);border-bottom:3px solid var(--accent-glow);padding:56px 80px 48px;position:relative;overflow:hidden;}
+.header-band,.header-band *{color:#f1f5f9;}
+.header-band::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 15% 60%,rgba(90,90,142,0.15) 0%,transparent 65%);pointer-events:none;}
+.header-inner{max-width:960px;margin:0 auto;position:relative;display:grid;grid-template-columns:1fr auto;gap:48px;align-items:end;}
+.header-text{}
+.header-photo{width:220px;height:280px;object-fit:cover;object-position:center top;filter:grayscale(20%) contrast(1.05);border-bottom:3px solid var(--accent-glow);background:#1a1a2e;}
+.header-photo-placeholder{width:220px;height:280px;background:linear-gradient(135deg,#1a1a2e 0%,#0a0f1a 100%);border-bottom:3px solid var(--accent-glow);display:flex;align-items:center;justify-content:center;font-family:'DM Mono',monospace;font-size:64px;color:rgba(90,90,142,0.6);font-weight:500;letter-spacing:0.05em;}
+.header-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:rgba(248,250,252,0.38);margin-bottom:14px;}
+.header-name{font-family:'DM Mono',monospace;font-size:clamp(40px,5.5vw,68px);font-weight:500;letter-spacing:0.04em;line-height:1;text-transform:uppercase;}
+.header-name .accent{color:var(--accent-glow);}
+.header-sub{font-family:'DM Mono',monospace;font-size:13px;letter-spacing:0.12em;color:rgba(248,250,252,0.4);margin-top:10px;}
+.header-quote{font-size:22px;font-style:italic;color:rgba(248,250,252,0.75);margin-top:20px;max-width:520px;line-height:1.45;}
+.header-quote cite{display:block;font-family:'DM Mono',monospace;font-size:9px;font-style:normal;letter-spacing:0.16em;text-transform:uppercase;color:rgba(248,250,252,0.3);margin-top:10px;}
+.stat-row{display:flex;gap:32px;margin-top:36px;flex-wrap:wrap;}
+.stat{display:flex;flex-direction:column;gap:4px;}
+.stat-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.18em;text-transform:uppercase;color:rgba(248,250,252,0.32);}
+.stat-val{font-family:'DM Mono',monospace;font-size:13px;color:rgba(248,250,252,0.88);letter-spacing:0.05em;}
+.content{max-width:960px;margin:0 auto;padding:64px 80px 96px;}
+h2{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.22em;text-transform:uppercase;color:var(--accent-glow);margin:56px 0 18px;padding-bottom:8px;border-bottom:1px solid var(--rule);}
+p{font-size:16px;line-height:1.78;color:var(--ink);margin-bottom:14px;font-weight:300;}
+p strong{font-weight:600;}
+.qa-block{margin:0 0 32px;}
+.qa-q{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.18em;text-transform:uppercase;color:var(--mid);margin-bottom:8px;}
+.qa-a{font-size:17px;line-height:1.72;color:var(--ink);font-weight:300;}
+.qa-a strong{font-weight:600;}
+.pull-quote{background:var(--accent-light);border-left:3px solid var(--accent-glow);padding:22px 28px;margin:36px 0;font-style:italic;font-size:19px;color:var(--ink);line-height:1.55;}
+.pull-quote cite{display:block;font-family:'DM Mono',monospace;font-size:9px;font-style:normal;letter-spacing:0.14em;text-transform:uppercase;color:var(--mid);margin-top:10px;}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--rule);border:1px solid var(--rule);margin:16px 0 40px;}
+.col-card{background:var(--card);padding:22px 24px;}
+.col-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.18em;text-transform:uppercase;color:var(--mid);margin-bottom:8px;}
+.col-val{font-size:15px;font-weight:300;line-height:1.65;color:var(--ink);}
+.col-val strong{font-weight:600;}
+.cards-list{list-style:none;border:1px solid var(--rule);margin:16px 0 32px;background:var(--card);}
+.cards-list li{padding:12px 20px;border-bottom:1px solid var(--rule);font-size:15px;font-weight:300;display:flex;align-items:center;gap:12px;}
+.cards-list li:last-child{border-bottom:none;}
+.cards-list li::before{content:"\25B8";color:var(--accent-glow);font-size:12px;}
+footer{border-top:1px solid var(--rule);padding:24px 80px;display:flex;justify-content:space-between;font-family:'DM Mono',monospace;font-size:10px;color:var(--mid);}
+@media(max-width:700px){
+  .header-band,.content{padding-left:24px;padding-right:24px;}
+  .header-inner{grid-template-columns:1fr;}
+  .header-photo,.header-photo-placeholder{width:100%;height:260px;order:-1;}
+  .two-col{grid-template-columns:1fr;}
+  footer{padding:20px 24px;flex-direction:column;gap:8px;}
+}
 </style>
 </head>
 <body>
-
+<nav>
+  <div class="nav-brand">Team Resolve</div>
+  <a class="nav-link" href="index.html" style="text-decoration:none;">Home</a>
+  <a class="nav-link" href="meta.html" style="text-decoration:none;">Strategies</a>
+  <a class="nav-link" href="deckbuilding.html" style="text-decoration:none;">Deck Building</a>
+  <a class="nav-link" href="analyze.html" style="text-decoration:none;">Analyze</a>
+  <a class="nav-link" href="deck-guides.html" style="text-decoration:none;">Playbooks</a>
+  <a class="nav-link" href="team.html" style="text-decoration:none;">Team</a>
+</nav>
 <div class="header-band">
   <div class="header-inner">
-    <div>
-      <div class="header-eyebrow">Team Resolve · Player Profile · 2026</div>
-      <div class="header-title">Troubleshot</div>
-      <div class="header-sub">Mono-Black Control · Standard Specialist</div>
+    <div class="header-text">
+    <div class="header-label">Team Resolve &mdash; Player Profile</div>
+    <div class="header-name">TROUBLE<span class="accent">SHOT</span></div>
+    <div class="header-sub">Caleb &middot; Mono-Black Control &middot; Standard</div>
+    <div class="header-quote">
+      "Thoughtseize on one, Fatal Push on two. That's the whole plan. It's enough."
+      <cite>&mdash; Troubleshot</cite>
     </div>
-    <div class="header-right">
-      <div class="header-handle">Caleb</div>
-      <div class="header-role">Mono-Black Control</div>
-    </div>
+    <div class="stat-row">
+      <div class="stat"><span class="stat-label">Format</span><span class="stat-val">Standard</span></div>
+      <div class="stat"><span class="stat-label">Archetype</span><span class="stat-val">Mono-Black Control</span></div>
+      <div class="stat"><span class="stat-label">Style</span><span class="stat-val">Reactive &middot; One-for-One</span></div>
+      <div class="stat"><span class="stat-label">Season</span><span class="stat-val">2026 RC Grind</span></div>
+    </div><!-- .stat-row -->
+    </div><!-- .header-text -->
+    <div class="header-photo-placeholder">TS</div>
   </div>
 </div>
 
-<nav>
-  <a class="nav-brand" href="index.html">Team Resolve</a>
-  <a class="nav-link" href="team.html">&#8592; Roster</a>
-  <a class="nav-link" href="zuxas.html">Zuxas</a>
-  <a class="nav-link" href="deck-guides.html">Playbooks</a>
-</nav>
+<div class="content">
 
-<div class="page">
-  <div class="section-label">Player Profile</div>
-  <h1>Troubleshot</h1>
+  <h2>Background</h2>
 
-  <div class="mantra">"Thoughtseize on one, Fatal Push on two. That's the whole plan. It's enough."</div>
+  <div class="qa-block">
+    <div class="qa-q">What's the deck?</div>
+    <div class="qa-a">Mono-black control, through and through. The game plan starts with <strong>Thoughtseize</strong> stripping the opponent's best card and <strong>Fatal Push</strong> answering their best threat. Simple, clean, and deeply effective in the right field.</div>
+  </div>
 
-  <p>Caleb — Troubleshot — is a mono-black control mage through and through. His game plan starts with Thoughtseize stripping the opponent's best card and Fatal Push answering their best threat. Simple, clean, and deeply effective in the right field.</p>
-  <p>Standard is his preferred format and where his results live. The deliberate, reactive nature of black control rewards the kind of disciplined decision-making Caleb brings to every match — knowing when to strip a hand, when to push a threat, and when to let the opponent stumble on their own.</p>
+  <div class="qa-block">
+    <div class="qa-q">Why mono-black?</div>
+    <div class="qa-a">Standard is the preferred format and where the results live. The deliberate, reactive nature of black control rewards the kind of disciplined decision-making Caleb brings to every match &mdash; knowing when to strip a hand, when to push a threat, and when to let the opponent stumble on their own.</div>
+  </div>
 
-  <h2>Playstyle</h2>
-  <div class="card-grid" style="grid-template-columns:repeat(3,1fr);">
-    <div class="card">
-      <div class="card-label">Identity</div>
-      <div class="card-title">Mono-Black Control</div>
-      <div class="card-body">Thoughtseize and Fatal Push are the core of Caleb's game. One-for-one disruption backed by inevitability. He doesn't race opponents — he dismantles them. Every Thoughtseize is a read on their hand, every Push is precision removal. The pet deck is the correct deck when the meta rewards patience over speed.</div>
+  <h2>Identity</h2>
+
+  <p>Caleb doesn't race opponents &mdash; he <strong>dismantles</strong> them. Every Thoughtseize is a read on their hand. Every Push is precision removal. One-for-one disruption backed by inevitability. The pet deck is the correct deck when the meta rewards patience over speed.</p>
+
+  <div class="pull-quote">
+    "Standard is a format where the deliberate player wins. Black control is a deck where the deliberate player gets paid for it."
+    <cite>&mdash; The Troubleshot framework</cite>
+  </div>
+
+  <h2>Approach</h2>
+
+  <div class="two-col">
+    <div class="col-card">
+      <div class="col-label">Reactive</div>
+      <div class="col-val">Doesn't impose his game plan first. Lets the opponent commit, then dismantles what they put on the table.</div>
     </div>
-    <div class="card">
-      <div class="card-label">Format Preference</div>
-      <div class="card-title">Standard</div>
-      <div class="card-body">Primary format focus for the 2026 competitive season. The format where the reps are deepest and the results have been strongest.</div>
+    <div class="col-card">
+      <div class="col-label">Deliberate</div>
+      <div class="col-val">No wasted Thoughtseize. No mis-timed Push. The discard target and the removal target are decided before he taps the lands.</div>
     </div>
-    <div class="card">
-      <div class="card-label">Play Style</div>
-      <div class="card-title">Profile</div>
-      <div class="card-body">Reactive · Deliberate · One-for-One</div>
+    <div class="col-card">
+      <div class="col-label">One-for-One</div>
+      <div class="col-val">Trades cleanly. Card advantage in mono-black comes from inevitability, not card draw. The plan is to grind the opponent into bad decisions.</div>
+    </div>
+    <div class="col-card">
+      <div class="col-label">Standard-Native</div>
+      <div class="col-val">Knows the format cold. The format rotation favors players who study the new metas hardest &mdash; he does.</div>
     </div>
   </div>
 
   <h2>The Cards</h2>
-  <p>The cards that define the playstyle — the ones that show up in every list and that represent how Caleb approaches the game.</p>
+
+  <p>The pieces that define the deck and the playstyle.</p>
+
   <ul class="cards-list">
     <li>Thoughtseize</li>
     <li>Fatal Push</li>
@@ -117,20 +160,19 @@
     <li>Invoke Despair</li>
   </ul>
 
-  <h2>Team Resolve</h2>
-  <div class="team-grid">
-    <a class="team-card" href="zuxas.html"><div class="team-handle">Zuxas</div><div class="team-role">Captain</div></a>
-    <a class="team-card" href="troubleshot.html"><div class="team-handle">Troubleshot</div><div class="team-role">Caleb · Mono-Black Control</div></a>
-    <a class="team-card" href="urbae.html"><div class="team-handle">Urbae</div><div class="team-role">Garrison · Control</div></a>
-    <a class="team-card" href="tien.html"><div class="team-handle">Tien</div><div class="team-role">Tien · Combo</div></a>
-    <a class="team-card" href="foxy.html"><div class="team-handle">Foxy</div><div class="team-role">John · Red Aggro</div></a>
+  <h2>2026 Season</h2>
+
+  <div class="qa-block">
+    <div class="qa-q">Goal for the season?</div>
+    <div class="qa-a">RC qualification through the Standard RCQ circuit. Mono-black is in a good spot for the current Standard meta. The plan is reps, refinement, and conversion.</div>
   </div>
+
 </div>
 
 <footer>
-  <span>Team Resolve · Troubleshot</span>
-  <span>Mono-Black Control</span>
-  <span>Road to Pro Tour · 2026</span>
+  <span>Team Resolve &middot; Player Profile</span>
+  <span>Troubleshot &mdash; Mono-Black Control</span>
+  <span>"It's enough."</span>
 </footer>
 </body>
 </html>
