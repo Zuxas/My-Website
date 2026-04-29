@@ -246,24 +246,45 @@ footer span{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.1em;
     </div>
   </div>
 
-  <h2>The Hardware</h2>
+  <h2>The Whole Project</h2>
 
-  <div class="card-grid card-grid-3">
+  <p>The lab isn't four separate tools &mdash; it's a closed loop. Each layer feeds the next, and the next feeds back. <strong>The point isn't any single component. The point is what the system produces when all of it is running together.</strong></p>
+
+  <div class="card-grid card-grid-2">
     <div class="card">
-      <div class="card-label">CPU</div>
-      <div class="card-title">24 Cores</div>
-      <div class="card-body">Up to 24 cores available for parallel sim runs. The gauntlet runs full matchup matrices in the time most players spend reading one article.</div>
+      <div class="card-label">Step 1 &middot; Intake</div>
+      <div class="card-title">Meta Reads the Room</div>
+      <div class="card-body">The meta-analyzer scrapes tournament data, builds archetype distributions, and tracks the field over time. <strong>Online meta and paper meta are different fields</strong> &mdash; the analyzer separates them. Output: a real picture of what's in the room before the first round starts.</div>
     </div>
     <div class="card">
-      <div class="card-label">GPU</div>
-      <div class="card-title">RTX 3080</div>
-      <div class="card-body">10GB at 80% power for the ML pipeline. ML-tuned APLs identify swap candidates with measurable field-weighted winrate gains.</div>
+      <div class="card-label">Step 2 &middot; Playbooks</div>
+      <div class="card-title">Pilots Get the Doc</div>
+      <div class="card-body">For every relevant deck in the field, a pilot-perspective playbook lives on this site. <strong>Mulligan rules, sequencing trees, sideboard maps, edge-case interactions, individual card audits.</strong> The doc has to read like a teammate's notes, not a Wiki summary. If a teammate can't pilot the deck from the playbook alone, the playbook isn't done.</div>
     </div>
     <div class="card">
-      <div class="card-label">Stack</div>
-      <div class="card-title">Python &middot; SQLite</div>
-      <div class="card-body">Whole system written in Python. SQLite databases hold the meta data, the matchup matrices, the card embeddings, the prep history. Everything queryable.</div>
+      <div class="card-label">Step 3 &middot; Sim</div>
+      <div class="card-title">Gauntlet Runs the Loop</div>
+      <div class="card-body">The simulation engine plays APLs against the field at scale. The gauntlet produces matchup matrices, sideboard equity reports, and field-weighted winrates. <strong>What "feels right" gets tested. What survives the gauntlet ships.</strong> What doesn't survive gets cut.</div>
     </div>
+    <div class="card">
+      <div class="card-label">Step 4 &middot; Feedback</div>
+      <div class="card-title">Playbook Updates from Sim</div>
+      <div class="card-body">Sim findings feed back into the playbooks. New edge cases, swap candidates, sideboard plan revisions. Then the cycle restarts on the next batch of tournament data. <strong>The playbook from week 4 is not the playbook from week 1.</strong></div>
+    </div>
+    <div class="card">
+      <div class="card-label">Step 5 &middot; Team</div>
+      <div class="card-title">Discord Distribution</div>
+      <div class="card-body">A Discord bot ties the data layer to the team. Live meta percentages, latest gauntlet results, current playbook revisions, deck-check status. <strong>The team doesn't run on vibes &mdash; it runs on whatever the latest sim batch said.</strong> No one is left guessing.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Step 6 &middot; Tournament</div>
+      <div class="card-title">RC Result</div>
+      <div class="card-body">Five players walk into the room with the same prep stack, the same sim data, the same playbook. <strong>Five chances at the same edge.</strong> The RC qualifications and top 8s above came out of this loop. The 2026 ones are coming out of the same loop, refined.</div>
+    </div>
+  </div>
+
+  <div class="mantra">
+    "The point isn't to build tools. The point is to build a loop where every event makes the next event easier to win."
   </div>
 
   <h2>The Methodology</h2>
