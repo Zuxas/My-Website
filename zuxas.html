@@ -3,79 +3,125 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Zuxas — Jermey Wallace. Team Resolve captain, 5x RC qualifier, competitive Modern and Standard grinder. Road to Pro Tour." />
+<meta name="description" content="Zuxas — Jermey Wallace. Team Resolve captain, 5x RC qualifier, MTG infrastructure builder. Road to Pro Tour.">
 <title>Zuxas — Team Resolve</title>
+<link rel="icon" href="images/tab32.png" type="image/png">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
 <style>
-  :root { --ink:#0e0e0e; --paper:#f2ede6; --paper-dark:#e8e1d6; --rule:#c8bfb0; --accent:#C2851F; --accent-light:#fdf0dc; --danger:#8f1a1a; --danger-light:#f7d6d6; --gold:#8f6a1a; --gold-light:#f7ead6; --mid:#5a5248; }
-  * { margin:0; padding:0; box-sizing:border-box; }
-  body { background:var(--paper); color:var(--ink); font-family:'Crimson Pro',Georgia,serif; font-size:17px; line-height:1.6; }
-  .header-band { background:var(--ink); border-bottom:3px solid var(--accent); }
-  .header-inner { max-width:1100px; margin:0 auto; padding:40px 80px; display:flex; justify-content:space-between; align-items:flex-end; gap:40px; }
-  .header-eyebrow { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:rgba(242,237,230,0.35); margin-bottom:8px; }
-  .header-title { font-family:'Bebas Neue',sans-serif; font-size:72px; line-height:0.9; color:var(--paper); letter-spacing:0.02em; }
-  .header-title span { color:var(--accent); }
-  .header-sub { font-family:'Crimson Pro',serif; font-style:italic; font-size:16px; color:rgba(242,237,230,0.45); margin-top:10px; }
-  .header-right { text-align:right; padding-bottom:4px; }
-  .header-handle { font-family:'Bebas Neue',sans-serif; font-size:28px; color:var(--accent); letter-spacing:0.05em; }
-  .header-role { font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.15em; text-transform:uppercase; color:rgba(242,237,230,0.4); margin-top:4px; }
-  .header-links { display:flex; gap:16px; justify-content:flex-end; margin-top:12px; }
-  .header-link { font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--accent); text-decoration:none; border:1px solid rgba(194,133,31,0.4); padding:4px 12px; transition:all 0.2s; }
-  .header-link:hover { background:var(--accent); color:var(--ink); }
-  nav { position:sticky; top:0; z-index:100; background:var(--ink); border-bottom:1px solid rgba(242,237,230,0.1); padding:0 80px; display:flex; align-items:center; gap:0; overflow-x:auto; scrollbar-width:none; }
-  nav::-webkit-scrollbar { display:none; }
-  .nav-brand { font-family:'Bebas Neue',sans-serif; font-size:18px; color:var(--accent); letter-spacing:0.05em; margin-right:40px; white-space:nowrap; padding:16px 0; text-decoration:none; }
-  .nav-link { font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:rgba(242,237,230,0.4); padding:20px 16px; cursor:pointer; white-space:nowrap; border-bottom:2px solid transparent; transition:all 0.2s; background:none; border-top:none; border-left:none; border-right:none; text-decoration:none; display:inline-block; }
-  .nav-link:hover, .nav-link.active { color:var(--paper); border-bottom-color:var(--accent); }
-  .page { max-width:1100px; margin:0 auto; padding:80px 80px; }
-  .section { display:none; animation:fadeIn 0.3s ease; }
-  .section.active { display:block; }
-  @keyframes fadeIn { from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:translateY(0);} }
-  .section-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.25em; text-transform:uppercase; color:var(--mid); margin-bottom:8px; }
-  h1 { font-family:'Bebas Neue',sans-serif; font-size:64px; line-height:0.9; letter-spacing:0.01em; color:var(--ink); margin-bottom:40px; }
-  h2 { font-family:'Bebas Neue',sans-serif; font-size:36px; letter-spacing:0.02em; color:var(--ink); margin:56px 0 20px; padding-bottom:8px; border-bottom:2px solid var(--ink); }
-  h3 { font-family:'DM Mono',monospace; font-size:12px; letter-spacing:0.15em; text-transform:uppercase; color:var(--accent); margin:32px 0 12px; }
-  p { margin-bottom:16px; color:var(--ink); font-weight:300; }
-  strong { font-weight:600; }
-  a { color:var(--accent); }
-  .mantra { border-left:4px solid var(--accent); padding:24px 32px; background:var(--accent-light); margin:32px 0; font-style:italic; font-size:20px; color:var(--accent); line-height:1.5; }
-  .card-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); gap:1px; background:var(--rule); border:1px solid var(--rule); margin:24px 0; }
-  .card-grid-2 { grid-template-columns:repeat(2,1fr) !important; }
-  .card { background:var(--paper); padding:24px; }
-  .card:hover { background:var(--paper-dark); }
-  .card-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--mid); margin-bottom:8px; }
-  .card-title { font-family:'Bebas Neue',sans-serif; font-size:22px; letter-spacing:0.03em; color:var(--ink); margin-bottom:8px; }
-  .card-body { font-size:15px; font-weight:300; color:var(--mid); line-height:1.5; }
-  .stat-row { display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--rule); border:1px solid var(--rule); margin:24px 0; }
-  .stat-cell { background:var(--paper); padding:24px; text-align:center; }
-  .stat-num { font-family:'Bebas Neue',sans-serif; font-size:48px; color:var(--accent); line-height:1; }
-  .stat-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; color:var(--mid); margin-top:4px; }
-  .pet-deck-card { border:1px solid var(--rule); background:var(--paper); padding:40px; margin:32px 0; display:grid; grid-template-columns:1fr 240px; gap:40px; }
-  .pet-deck-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--accent); margin-bottom:8px; }
-  .pet-deck-title { font-family:'Bebas Neue',sans-serif; font-size:48px; color:var(--ink); line-height:0.95; margin-bottom:16px; }
-  .pet-deck-body { font-size:15px; font-weight:300; color:var(--mid); line-height:1.6; margin-bottom:20px; }
-  .pet-deck-link { display:inline-block; font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.12em; text-transform:uppercase; background:var(--ink); color:var(--paper); padding:12px 24px; text-decoration:none; transition:all 0.2s; }
-  .pet-deck-link:hover { background:var(--accent); color:var(--ink); }
-  .pet-deck-list { font-family:'DM Mono',monospace; font-size:12px; line-height:2; color:var(--mid); }
-  .pet-deck-list .qty { color:var(--accent); }
-  .journey-entry { border-left:3px solid var(--rule); padding:24px 32px; margin:24px 0; transition:border-color 0.2s; }
-  .journey-entry:hover { border-color:var(--accent); }
-  .journey-date { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; color:var(--mid); margin-bottom:6px; }
-  .journey-title { font-family:'Bebas Neue',sans-serif; font-size:28px; color:var(--ink); margin-bottom:8px; }
-  .journey-body { font-size:15px; font-weight:300; color:var(--mid); line-height:1.6; }
-  .journey-link { font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--accent); text-decoration:none; margin-top:10px; display:inline-block; }
-  .philosophy-list { list-style:none; margin:24px 0; }
-  .philosophy-list li { padding:16px 0; border-bottom:1px solid var(--rule); display:grid; grid-template-columns:120px 1fr; gap:24px; font-size:15px; font-weight:300; }
-  .philosophy-list li:last-child { border-bottom:none; }
-  .phil-word { font-family:'Bebas Neue',sans-serif; font-size:24px; color:var(--accent); }
-  .team-nav-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:1px; background:var(--rule); border:1px solid var(--rule); margin:24px 0; }
-  .team-nav-card { background:var(--paper); padding:24px; text-decoration:none; display:block; }
-  .team-nav-card:hover { background:var(--paper-dark); }
-  .team-nav-handle { font-family:'Bebas Neue',sans-serif; font-size:28px; color:var(--ink); }
-  .team-nav-role { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; color:var(--mid); margin-top:4px; }
-  footer { background:var(--ink); color:rgba(242,237,230,0.3); padding:40px 80px; margin-top:80px; display:flex; justify-content:space-between; align-items:center; }
-  footer span { font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.1em; text-transform:uppercase; }
-  @media (max-width:768px) { .header-inner, nav, .page, footer { padding-left:24px; padding-right:24px; } .header-title { font-size:48px; } .header-right { display:none; } .stat-row, .pet-deck-card { grid-template-columns:1fr; } }
+:root{
+  --ink:#0e0e0e;
+  --paper:#f2ede6;
+  --paper-dark:#e8e1d6;
+  --rule:#c8bfb0;
+  --accent:#C2851F;
+  --accent-light:#fdf0dc;
+  --accent-deep:#8f6a1a;
+  --mid:#5a5248;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{overflow-y:scroll;}
+body{background:var(--paper);color:var(--ink);font-family:'Crimson Pro',Georgia,serif;font-size:17px;line-height:1.6;}
+
+.header-band{background:var(--ink);border-bottom:3px solid var(--accent);}
+.header-inner{max-width:1100px;margin:0 auto;padding:48px 80px;display:grid;grid-template-columns:1fr 240px;gap:48px;align-items:end;}
+.header-eyebrow{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(242,237,230,0.35);margin-bottom:8px;}
+.header-title{font-family:'Bebas Neue',sans-serif;font-size:84px;line-height:0.9;color:var(--paper);letter-spacing:0.02em;}
+.header-title span{color:var(--accent);}
+.header-sub{font-family:'Crimson Pro',serif;font-style:italic;font-size:17px;color:rgba(242,237,230,0.55);margin-top:14px;max-width:560px;line-height:1.5;}
+.header-photo-placeholder{width:240px;height:300px;background:linear-gradient(135deg,var(--accent) 0%,#0a0f1a 110%);border:1px solid var(--accent);display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:96px;color:rgba(242,237,230,0.85);letter-spacing:0.02em;}
+.header-meta{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:rgba(242,237,230,0.4);margin-top:14px;text-align:right;}
+.header-meta strong{color:var(--accent);font-weight:500;}
+.header-links{display:flex;gap:8px;justify-content:flex-end;margin-top:14px;flex-wrap:wrap;}
+.header-link{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);text-decoration:none;border:1px solid rgba(194,133,31,0.4);padding:5px 11px;transition:all 0.2s;}
+.header-link:hover{background:var(--accent);color:var(--ink);}
+
+nav{position:sticky;top:0;z-index:100;background:var(--ink);border-bottom:1px solid rgba(242,237,230,0.1);padding:0 80px;display:flex;align-items:center;gap:0;overflow-x:auto;scrollbar-width:none;}
+nav::-webkit-scrollbar{display:none;}
+.nav-brand{font-family:'Bebas Neue',sans-serif;font-size:18px;color:var(--accent);letter-spacing:0.05em;margin-right:32px;white-space:nowrap;padding:16px 0;text-decoration:none;}
+.nav-link{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:rgba(242,237,230,0.4);padding:20px 14px;cursor:pointer;white-space:nowrap;border-bottom:2px solid transparent;transition:all 0.2s;background:none;border-top:none;border-left:none;border-right:none;text-decoration:none;display:inline-block;font-weight:500;}
+.nav-link:hover,.nav-link.active{color:var(--paper);border-bottom-color:var(--accent);}
+
+.page{max-width:1100px;margin:0 auto;padding:80px 80px;}
+.section{display:none;animation:fadeIn 0.3s ease;}
+.section.active{display:block;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:translateY(0);}}
+.section-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.25em;text-transform:uppercase;color:var(--mid);margin-bottom:8px;}
+h1{font-family:'Bebas Neue',sans-serif;font-size:64px;line-height:0.9;letter-spacing:0.01em;color:var(--ink);margin-bottom:40px;}
+h2{font-family:'Bebas Neue',sans-serif;font-size:36px;letter-spacing:0.02em;color:var(--ink);margin:64px 0 20px;padding-bottom:8px;border-bottom:2px solid var(--ink);}
+h3{font-family:'DM Mono',monospace;font-size:12px;letter-spacing:0.15em;text-transform:uppercase;color:var(--accent);margin:32px 0 12px;}
+p{margin-bottom:16px;color:var(--ink);font-weight:300;}
+strong{font-weight:600;}
+em{font-style:italic;}
+a{color:var(--accent);}
+
+.mantra{border-left:4px solid var(--accent);padding:24px 32px;background:var(--accent-light);margin:32px 0;font-style:italic;font-size:20px;color:var(--ink);line-height:1.5;}
+.mantra cite{display:block;font-family:'DM Mono',monospace;font-size:10px;font-style:normal;letter-spacing:0.18em;text-transform:uppercase;color:var(--mid);margin-top:12px;}
+
+.stat-row{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule);margin:24px 0 40px;}
+.stat-cell{background:var(--paper);padding:28px 24px;text-align:center;}
+.stat-num{font-family:'Bebas Neue',sans-serif;font-size:48px;color:var(--accent);line-height:1;letter-spacing:0.02em;}
+.stat-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--mid);margin-top:6px;}
+
+.card-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule);margin:24px 0;}
+.card-grid-2{grid-template-columns:repeat(2,1fr) !important;}
+.card-grid-3{grid-template-columns:repeat(3,1fr) !important;}
+.card{background:var(--paper);padding:26px 28px;transition:background 0.15s;}
+.card:hover{background:var(--paper-dark);}
+.card-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--mid);margin-bottom:8px;}
+.card-title{font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:0.03em;color:var(--ink);margin-bottom:10px;line-height:1.1;}
+.card-body{font-size:15px;font-weight:300;color:var(--mid);line-height:1.6;}
+.card-body strong{color:var(--ink);font-weight:600;}
+
+.philosophy-list{list-style:none;margin:24px 0 40px;}
+.philosophy-list li{padding:20px 0;border-bottom:1px solid var(--rule);display:grid;grid-template-columns:170px 1fr;gap:32px;font-size:16px;font-weight:300;line-height:1.6;}
+.philosophy-list li:last-child{border-bottom:none;}
+.phil-word{font-family:'Bebas Neue',sans-serif;font-size:32px;color:var(--accent);letter-spacing:0.02em;line-height:1;}
+
+.lab-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule);margin:24px 0 40px;}
+.lab-cell{background:var(--paper);padding:28px;}
+.lab-cell-name{font-family:'Bebas Neue',sans-serif;font-size:30px;color:var(--ink);line-height:1;letter-spacing:0.02em;margin-bottom:6px;}
+.lab-cell-tag{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);margin-bottom:12px;}
+.lab-cell-body{font-size:14px;font-weight:300;color:var(--mid);line-height:1.6;}
+.lab-cell-body strong{color:var(--ink);font-weight:600;}
+
+.pet-deck-card{border:1px solid var(--rule);background:var(--paper);padding:40px;margin:32px 0;display:grid;grid-template-columns:1fr 240px;gap:40px;}
+.pet-deck-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:8px;}
+.pet-deck-title{font-family:'Bebas Neue',sans-serif;font-size:48px;color:var(--ink);line-height:0.95;margin-bottom:16px;}
+.pet-deck-body{font-size:15px;font-weight:300;color:var(--mid);line-height:1.6;margin-bottom:20px;}
+.pet-deck-link{display:inline-block;font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;background:var(--ink);color:var(--paper);padding:12px 24px;text-decoration:none;transition:all 0.2s;}
+.pet-deck-link:hover{background:var(--accent);color:var(--ink);}
+.pet-deck-list{font-family:'DM Mono',monospace;font-size:12px;line-height:2;color:var(--mid);}
+.pet-deck-list .qty{color:var(--accent);font-weight:500;}
+
+.journey-entry{border-left:3px solid var(--rule);padding:24px 32px;margin:24px 0;transition:border-color 0.2s;}
+.journey-entry:hover{border-color:var(--accent);}
+.journey-date{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--mid);margin-bottom:6px;}
+.journey-title{font-family:'Bebas Neue',sans-serif;font-size:28px;color:var(--ink);margin-bottom:8px;line-height:1.05;}
+.journey-body{font-size:15px;font-weight:300;color:var(--mid);line-height:1.6;}
+.journey-link{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);text-decoration:none;margin-top:10px;display:inline-block;}
+.journey-link:hover{text-decoration:underline;}
+
+.team-nav-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule);margin:24px 0;}
+.team-nav-card{background:var(--paper);padding:24px;text-decoration:none;display:block;transition:background 0.15s;}
+.team-nav-card:hover{background:var(--paper-dark);}
+.team-nav-handle{font-family:'Bebas Neue',sans-serif;font-size:30px;color:var(--ink);letter-spacing:0.02em;}
+.team-nav-role{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--mid);margin-top:4px;}
+
+footer{background:var(--ink);color:rgba(242,237,230,0.3);padding:40px 80px;margin-top:80px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;}
+footer span{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;}
+
+@media(max-width:768px){
+  .header-inner,nav,.page,footer{padding-left:24px;padding-right:24px;}
+  .header-inner{grid-template-columns:1fr;gap:32px;}
+  .header-photo-placeholder{width:100%;height:280px;order:-1;}
+  .header-meta,.header-links{justify-content:flex-start;text-align:left;}
+  .header-title{font-size:56px;}
+  .stat-row{grid-template-columns:repeat(2,1fr);}
+  .philosophy-list li{grid-template-columns:1fr;gap:8px;}
+  .pet-deck-card{grid-template-columns:1fr;}
+  .lab-grid{grid-template-columns:1fr;}
+  .card-grid-2,.card-grid-3{grid-template-columns:1fr !important;}
+}
 </style>
 </head>
 <body>
@@ -83,13 +129,13 @@
 <div class="header-band">
   <div class="header-inner">
     <div>
-      <div class="header-eyebrow">Team Resolve · Captain · March 2026</div>
-      <div class="header-title">Jermey<br><span>Wallace</span></div>
-      <div class="header-sub">"The process is proven. The next step is a Pro Tour invitation."</div>
+      <div class="header-eyebrow">Team Resolve &middot; Captain &middot; April 2026</div>
+      <div class="header-title">JER<span>MEY</span><br>WALLACE</div>
+      <div class="header-sub">Five-time RC qualifier. Team captain. Navy veteran. Builder of the infrastructure Team Resolve trains on.</div>
     </div>
-    <div class="header-right">
-      <div class="header-handle">Zuxas</div>
-      <div class="header-role">Team Captain · Modern & Standard</div>
+    <div>
+      <div class="header-photo-placeholder">ZX</div>
+      <div class="header-meta">Zuxas &middot; <strong>Captain</strong></div>
       <div class="header-links">
         <a class="header-link" href="https://twitch.tv/zuxasLOL" target="_blank">Twitch</a>
         <a class="header-link" href="deck-guides.html">Playbooks</a>
@@ -100,13 +146,14 @@
 </div>
 
 <nav>
-  <div class="nav-brand">Team Resolve</div>
-  <a class="nav-link" href="team.html" style="text-decoration:none;">← Roster</a>
-  <button class="nav-link active" onclick="show('identity')">Player</button>
-  <button class="nav-link" onclick="show('results')">Results</button>
-  <button class="nav-link" onclick="show('petdeck')">Pet Deck</button>
-  <button class="nav-link" onclick="show('journey')">Journey</button>
-  <button class="nav-link" onclick="show('team')">Team</button>
+  <a class="nav-brand" href="index.html">Team Resolve</a>
+  <a class="nav-link" href="team.html">&#8592; Roster</a>
+  <button class="nav-link active" onclick="show('identity',event)">Player</button>
+  <button class="nav-link" onclick="show('lab',event)">The Lab</button>
+  <button class="nav-link" onclick="show('results',event)">Results</button>
+  <button class="nav-link" onclick="show('petdeck',event)">Pet Deck</button>
+  <button class="nav-link" onclick="show('journey',event)">Journey</button>
+  <button class="nav-link" onclick="show('team',event)">Team</button>
 </nav>
 
 <div class="page">
@@ -116,38 +163,120 @@
   <div class="section-label">Player Profile</div>
   <h1>Who I Am</h1>
 
-  <div class="mantra">"I approach competition the same way I approached my time as a Fire Controlman: structured, analytical, and focused on execution."</div>
+  <div class="mantra">
+    "I approach competition the same way I approached my time as a Fire Controlman: structured, analytical, and focused on execution."
+    <cite>&mdash; Jermey Wallace</cite>
+  </div>
 
-  <p>I'm Jermey Wallace — gamer handle <strong>Zuxas</strong>. Competitive Magic: The Gathering player, team captain of Team Resolve, Navy veteran, husband, and father of two daughters. Five Regional Championship qualifications. The grind is ongoing.</p>
+  <p>I'm Jermey Wallace &mdash; gamer handle <strong>Zuxas</strong>. Competitive Magic: The Gathering player, team captain of Team Resolve, Navy veteran, husband, and father of two daughters. Five Regional Championship qualifications and counting. The grind is ongoing &mdash; but I'm not just running it for myself anymore. I'm building the infrastructure my whole team trains on.</p>
 
-  <p>I served from 2012 to 2018 as a Fire Controlman working on advanced combat systems: TAS, MK23, SPQ-9B, NATO Seasparrow, and RAM. That background shaped how I think about preparation, systems, and performing under pressure — skills that translate directly to high-level competitive Magic.</p>
+  <p>I served from 2012 to 2018 as a Fire Controlman working on advanced combat systems: <strong>TAS, MK23, SPQ-9B, NATO Seasparrow, and RAM</strong>. That background shaped how I think about preparation, systems, and performing under pressure &mdash; skills that translate directly to high-level competitive Magic. The same discipline that got me through a watch rotation gets me through a 16-round RCQ.</p>
 
-  <p>Started playing during <em>Saviors of Kamigawa</em>. Deep competitive history across Pioneer, Modern, and Standard. I also built the MTG Meta Analyzer — a custom Python desktop tool that pulls tournament data from multiple sources, tracks archetype performance, and generates sideboard guides. It's part of how Team Resolve stays ahead of the field.</p>
+  <p>Started playing during <em>Saviors of Kamigawa</em>. Deep competitive history across Pioneer, Modern, and Standard. But what really separates how I prep from how most players prep is the rest of what I've built: a full simulation engine, a meta-analyzer pipeline, a gauntlet system, a 60+ playbook library on this site, and a Discord bot that ties it all together. The RC results are the visible part. The lab is where they come from.</p>
+
+  <h2>The Numbers</h2>
+
+  <div class="stat-row">
+    <div class="stat-cell"><div class="stat-num">5</div><div class="stat-label">RC Qualifications</div></div>
+    <div class="stat-cell"><div class="stat-num">23</div><div class="stat-label">Standard RCQ Top 8s</div></div>
+    <div class="stat-cell"><div class="stat-num">17</div><div class="stat-label">Modern RCQ Top 8s</div></div>
+    <div class="stat-cell"><div class="stat-num">PT</div><div class="stat-label">Next Target</div></div>
+  </div>
 
   <h2>The Philosophy</h2>
+
   <ul class="philosophy-list">
-    <li><span class="phil-word">Endure</span><span>Stay consistent through variance. Lose the right way and keep going. A bad beat is information. Process it and return to the table.</span></li>
-    <li><span class="phil-word">Adapt</span><span>Adjust to the meta faster than your opponents do. Deck selection is a skill. The player who reads the room correctly wins more than the player who pilots perfectly.</span></li>
-    <li><span class="phil-word">Delve</span><span>Go deeper than surface-level play. Surface-level loses to someone who studied. Every matchup has a correct Meddling Mage name, a correct Vial counter count, a correct attack sequence.</span></li>
+    <li><span class="phil-word">Endure</span><span><strong>Stay consistent through variance.</strong> Lose the right way and keep going. A bad beat is information. Process it and return to the table. The grind is long; the players who stop are the ones who never built a system that survives a losing weekend.</span></li>
+    <li><span class="phil-word">Adapt</span><span>Adjust to the meta faster than your opponents do. <strong>Deck selection is a skill.</strong> The player who reads the room correctly wins more than the player who pilots perfectly. The difference between online meta and paper meta is real, and the people who don't account for it lose to the people who do.</span></li>
+    <li><span class="phil-word">Delve</span><span>Go deeper than surface-level play. Surface-level loses to someone who studied. Every matchup has a correct Meddling Mage name, a correct Vial counter count, a correct attack sequence. <strong>The work is in the details that nobody else does.</strong></span></li>
   </ul>
 
   <h2>Other Gaming</h2>
   <div class="card-grid card-grid-2">
     <div class="card">
       <div class="card-label">World of Warcraft</div>
-      <div class="card-title">3k+ M+ Keys</div>
-      <div class="card-body">3,000+ Mythic+ keys completed since BFA Season 1. Started during Wrath of the Lich King. Still grinding keys alongside the MTG competitive calendar.</div>
+      <div class="card-title">3,000+ M+ Keys</div>
+      <div class="card-body">3,000+ Mythic+ keys completed since BFA Season 1. Started during Wrath of the Lich King. Still grinding keys alongside the MTG competitive calendar. Same grind muscles, different game.</div>
     </div>
     <div class="card">
       <div class="card-label">Summoners War</div>
       <div class="card-title">Gold 1 / Gold 2</div>
-      <div class="card-body">Gold 1 Arena and World Arena. Gold 2 Guilds. The same analytical approach that works for MTG deck selection applies here — know your matchups, build for consistency.</div>
+      <div class="card-body">Gold 1 Arena and World Arena. Gold 2 Guilds. Same analytical approach that works for MTG deck selection &mdash; know your matchups, build for consistency.</div>
     </div>
   </div>
 
   <h2>Connect</h2>
-  <p>Discord: <strong>zuxas</strong> &nbsp;·&nbsp; Twitch: <a href="https://twitch.tv/zuxasLOL" target="_blank">twitch.tv/zuxasLOL</a></p>
-  <p>Working toward the Pro Tour, building a competitive team, or just want to talk Modern — reach out. The door is always open for serious players who want to grind.</p>
+  <p>Discord: <strong>zuxas</strong> &nbsp;&middot;&nbsp; Twitch: <a href="https://twitch.tv/zuxasLOL" target="_blank">twitch.tv/zuxasLOL</a></p>
+  <p>Working toward the Pro Tour, building a competitive team, or just want to talk Modern &mdash; reach out. The door is always open for serious players who want to grind.</p>
+</div>
+
+<!-- ── LAB ── -->
+<div id="lab" class="section">
+  <div class="section-label">The R&amp;D Layer</div>
+  <h1>The Lab</h1>
+
+  <div class="mantra">
+    "The RC results are the visible part. The lab is where they come from."
+  </div>
+
+  <p>Most competitive players have a deck and a sideboard guide. I have a stack of integrated tools that do the prep, the testing, and the analysis at scale &mdash; and they all feed each other. <strong>Every result on the leaderboard above started with a tool I built.</strong> Here's the system.</p>
+
+  <h2>The Stack</h2>
+
+  <div class="lab-grid">
+    <div class="lab-cell">
+      <div class="lab-cell-name">Meta Analyzer</div>
+      <div class="lab-cell-tag">Python &middot; SQLite &middot; Card Embeddings</div>
+      <div class="lab-cell-body">Custom desktop tool that pulls tournament data from multiple sources, tracks archetype performance over time, and generates sideboard guides. <strong>Source of truth for meta percentages and tournament lists.</strong> Card embeddings let me search by mechanical similarity, not just text match.</div>
+    </div>
+    <div class="lab-cell">
+      <div class="lab-cell-name">Sim Engine</div>
+      <div class="lab-cell-tag">APLs &middot; Gauntlet Runner &middot; ML Pipeline</div>
+      <div class="lab-cell-body">Full simulation engine with action-priority lists for every deck, a gauntlet runner that pits configurations against each other, matchup job configs, and an ML pipeline that tunes from results. <strong>Boros Energy field-test loops feed back into list updates the same week.</strong></div>
+    </div>
+    <div class="lab-cell">
+      <div class="lab-cell-name">Playbook Site</div>
+      <div class="lab-cell-tag">60+ Playbooks &middot; Modern / Standard / Pioneer</div>
+      <div class="lab-cell-body">The site you're on. Every playbook is pilot-perspective, edge-case audited, and individually verified through gauntlet testing. <strong>The Boros Energy audit is the gold standard:</strong> 20 edge cases, 7 interaction lines, 500+ line audit doc.</div>
+    </div>
+    <div class="lab-cell">
+      <div class="lab-cell-name">Team Discord Bot</div>
+      <div class="lab-cell-tag">Internal Tooling &middot; Live Data</div>
+      <div class="lab-cell-body">Connects the team to the data layer. Live meta percentages, gauntlet results, deck checks, and prep status. The team doesn't run on vibes &mdash; <strong>it runs on whatever the latest sim batch said.</strong></div>
+    </div>
+  </div>
+
+  <h2>The Hardware</h2>
+
+  <div class="card-grid card-grid-3">
+    <div class="card">
+      <div class="card-label">CPU</div>
+      <div class="card-title">24 Cores</div>
+      <div class="card-body">Up to 24 cores available for parallel sim runs. The gauntlet runs full matchup matrices in the time most players spend reading one article.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">GPU</div>
+      <div class="card-title">RTX 3080</div>
+      <div class="card-body">10GB at 80% power for the ML pipeline. ML-tuned APLs identify swap candidates with measurable field-weighted winrate gains.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Stack</div>
+      <div class="card-title">Python &middot; SQLite</div>
+      <div class="card-body">Whole system written in Python. SQLite databases hold the meta data, the matchup matrices, the card embeddings, the prep history. Everything queryable.</div>
+    </div>
+  </div>
+
+  <h2>The Methodology</h2>
+
+  <p>Every deck APL goes through the same audit before it ships:</p>
+
+  <ul class="philosophy-list">
+    <li><span class="phil-word">Audit</span><span><strong>Full oracle text audit of the 75.</strong> Every card, every interaction, every weird corner. One wrong mana cost or missed trigger can swing matchups 5&ndash;10%.</span></li>
+    <li><span class="phil-word">Research</span><span>Competitive guide research for edge cases and interaction lines. The lines pros mention in passing on stream are the lines that win games.</span></li>
+    <li><span class="phil-word">Pilot+Opp</span><span>Card-by-card analysis from <strong>both seats.</strong> What does this card do for me? What does it do <em>against</em> me when they have it?</span></li>
+    <li><span class="phil-word">Simplify</span><span>Layman's-terms APL visualization. If a teammate can't read it and pilot it correctly, the doc isn't done.</span></li>
+    <li><span class="phil-word">Verify</span><span>Individually verified matchup testing in the gauntlet before the playbook is considered shipped.</span></li>
+  </ul>
 </div>
 
 <!-- ── RESULTS ── -->
@@ -167,31 +296,31 @@
     <div class="card">
       <div class="card-label">Last Standard Season</div>
       <div class="card-title">23 RCQ Top 8s</div>
-      <div class="card-body">Qualified on Dimir Midrange. Built and refined the deck through Team Resolve's gauntlet testing system over the course of the season. Consistent execution at the local and regional level.</div>
+      <div class="card-body">Qualified on Dimir Midrange. Built and refined the deck through Team Resolve's gauntlet testing system over the course of the season. <strong>Consistent execution at the local and regional level.</strong></div>
     </div>
     <div class="card">
       <div class="card-label">Last Modern Season</div>
       <div class="card-title">17 RCQ Top 8s</div>
-      <div class="card-body">Qualified on Boros Energy. Deep format knowledge developed through structured matchup preparation and repeated gauntlet reps. The 17 top 8s represent a proven, repeatable process.</div>
+      <div class="card-body">Qualified on Boros Energy. Deep format knowledge developed through structured matchup preparation and repeated gauntlet reps. <strong>17 top 8s represent a proven, repeatable process.</strong></div>
     </div>
     <div class="card">
       <div class="card-label">Career Total</div>
       <div class="card-title">5 RC Qualifications</div>
-      <div class="card-body">Five Regional Championship qualifications across formats. Each one built on the same framework: meticulous prep, deep matchup knowledge, and disciplined sideboard execution.</div>
+      <div class="card-body">Five Regional Championship qualifications across formats. Each one built on the same framework: <strong>meticulous prep, deep matchup knowledge, disciplined sideboard execution.</strong></div>
     </div>
     <div class="card">
       <div class="card-label">Current Season (2026)</div>
       <div class="card-title">Modern RC Grind</div>
-      <div class="card-body">Active testing across Boros Energy, Jeskai Blink, UW Control, Domain Zoo, and Izzet Affinity. Deck selection is the primary work. First RC of 2026 season is the target.</div>
+      <div class="card-body">Active testing across Boros Energy, Jeskai Blink, UW Control, Domain Zoo, and Izzet Affinity. Deck selection is the primary work. <strong>First RC of 2026 season is the target.</strong></div>
     </div>
   </div>
 
   <h2>Deck History</h2>
   <div class="card-grid">
-    <div class="card"><div class="card-label">Modern · Current</div><div class="card-title">Boros Energy</div><div class="card-body">Primary Modern weapon. 17 top 8s on this build. Full playbook available on the Guides page covering all matchups and sideboard lines.</div></div>
-    <div class="card"><div class="card-label">Standard · Last Season</div><div class="card-title">Dimir Midrange</div><div class="card-body">23 top 8 results. Aggressive midrange play backed by Thoughtseize-style disruption and efficient threats.</div></div>
-    <div class="card"><div class="card-label">Modern · Testing</div><div class="card-title">Jeskai Blink</div><div class="card-body">Deep dive in progress. White Orchid Phantom + Solitude interaction is one of the format's most powerful sequences. Strong in the expected meta.</div></div>
-    <div class="card"><div class="card-label">Always · Pet Deck</div><div class="card-title">5-Color Humans</div><div class="card-body">Not tier 1. Does not care. Aether Vial into Meddling Mage naming their win condition while Norin the Wary pumps Champion of the Parish for free every turn. This is the deck.</div></div>
+    <div class="card"><div class="card-label">Modern &middot; Current</div><div class="card-title">Boros Energy</div><div class="card-body">Primary Modern weapon. <strong>17 top 8s</strong> on this build. Full playbook on the Guides page covering all matchups and sideboard lines.</div></div>
+    <div class="card"><div class="card-label">Standard &middot; Last Season</div><div class="card-title">Dimir Midrange</div><div class="card-body"><strong>23 top 8 results.</strong> Aggressive midrange play backed by Thoughtseize-style disruption and efficient threats.</div></div>
+    <div class="card"><div class="card-label">Modern &middot; Testing</div><div class="card-title">Jeskai Blink</div><div class="card-body">Deep dive in progress. White Orchid Phantom + Solitude is one of the format's most powerful sequences. Strong in the expected meta.</div></div>
+    <div class="card"><div class="card-label">Always &middot; Pet Deck</div><div class="card-title">5-Color Humans</div><div class="card-body">Not tier 1. Does not care. Aether Vial into Meddling Mage naming their win condition while Norin pumps Champion of the Parish for free every turn. <strong>This is the deck.</strong></div></div>
   </div>
 </div>
 
@@ -200,18 +329,21 @@
   <div class="section-label">The Pet Deck</div>
   <h1>5-Color<br>Humans</h1>
 
-  <div class="mantra">"So you want to race, do you? Every creature is a question they have to answer. I have 37 of them."</div>
+  <div class="mantra">
+    "So you want to race, do you? Every creature is a question they have to answer. I have 37 of them."
+    <cite>&mdash; The 5C Humans pitch</cite>
+  </div>
 
-  <p>5-Color Humans is my personal pet deck — not tier 1, not the optimal choice for any given event, and absolutely the most fun deck to sleeve up in Modern. It combines an aggressive creature-based gameplan with a disruption package that breaks opponent's game plans simultaneously. Aether Vial makes the creatures uncounterable and deploys them at instant speed. Meddling Mage names their win condition. Lavinia stops their free spells. Norin the Wary generates free counter pumps on Champion of the Parish and Thalia's Lieutenant every single turn for zero mana. Satoru, the Infiltrator draws a card every time Vial cheats in a creature.</p>
+  <p>5-Color Humans is my personal pet deck &mdash; not tier 1, not the optimal choice for any given event, and absolutely the most fun deck to sleeve up in Modern. It combines an aggressive creature-based gameplan with a disruption package that breaks the opponent's game plan simultaneously. <strong>Aether Vial</strong> makes the creatures uncounterable and deploys them at instant speed. <strong>Meddling Mage</strong> names their win condition. <strong>Lavinia</strong> stops their free spells. <strong>Norin the Wary</strong> generates free counter pumps on Champion of the Parish and Thalia's Lieutenant every single turn for zero mana. <strong>Satoru, the Infiltrator</strong> draws a card every time Vial cheats in a creature.</p>
 
-  <p>I run it at local events. I recommend it to anyone who wants to play a deck that demands they know every interaction at the table — their own as much as their opponent's.</p>
+  <p>I run it at local events. I recommend it to anyone who wants to play a deck that demands they know every interaction at the table &mdash; their own as much as their opponent's.</p>
 
   <div class="pet-deck-card">
     <div>
-      <div class="pet-deck-label">Zuxas's 75 · Modern Legal</div>
+      <div class="pet-deck-label">Zuxas's 75 &middot; Modern Legal</div>
       <div class="pet-deck-title">5-Color<br>Humans</div>
-      <div class="pet-deck-body">37 creatures across all five colors. 4 Aether Vial. 19 lands (Cavern of Souls, Unclaimed Territory, Secluded Courtyard). The mana "shouldn't work" and yet it does. The deck's ceiling is enormous for pilots who learn every interaction — Jirina sacrificed in response to Supreme Verdict saves the entire board. Satoru + Vial replaces every card spent. Norin blinks for free counters every turn cycle.</div>
-      <a class="pet-deck-link" href="humans-playbook.html">Full Playbook →</a>
+      <div class="pet-deck-body">37 creatures across all five colors. 4 Aether Vial. 19 lands (Cavern of Souls, Unclaimed Territory, Secluded Courtyard). The mana <em>"shouldn't work"</em> and yet it does. The deck's ceiling is enormous for pilots who learn every interaction &mdash; Jirina sacrificed in response to Supreme Verdict saves the entire board. Satoru + Vial replaces every card spent. Norin blinks for free counters every turn cycle.</div>
+      <a class="pet-deck-link" href="modern/humans-playbook.html">Full Playbook &rarr;</a>
     </div>
     <div class="pet-deck-list">
       <div><span class="qty">4</span> Aether Vial</div>
@@ -228,7 +360,7 @@
       <div><span class="qty">2</span> Sylvan Safekeeper</div>
       <div><span class="qty">2</span> Unsettled Mariner</div>
       <div><span class="qty">2</span> Witch Enchanter</div>
-      <div style="margin-top:8px;color:var(--rule)">── 19 lands ──</div>
+      <div style="margin-top:8px;color:var(--rule)">&mdash;&mdash; 19 lands &mdash;&mdash;</div>
     </div>
   </div>
 
@@ -237,47 +369,47 @@
     <div class="card">
       <div class="card-label">The Core Loop</div>
       <div class="card-title">Norin + Champion + Lieutenant</div>
-      <div class="card-body">Norin exiles whenever any spell is cast or opponent attacks, returns at next end step. With Champion and Lieutenant in play: each Norin return = +1/+1 on both. Two full trigger cycles per round (their turn + your turn) = +2/+2 on each for zero mana investment. By turn 5 both can be 6/6+ without ever spending a card on them.</div>
+      <div class="card-body">Norin exiles whenever any spell is cast or opponent attacks, returns at next end step. With Champion and Lieutenant in play: <strong>each Norin return = +1/+1 on both.</strong> Two full trigger cycles per round (their turn + your turn) = +2/+2 on each for zero mana investment. By turn 5 both can be 6/6+ without spending a card.</div>
     </div>
     <div class="card">
       <div class="card-label">Card Draw Engine</div>
       <div class="card-title">Satoru + Vial</div>
-      <div class="card-body">Satoru draws when nontoken creatures enter if no mana was spent. Vial puts creatures onto the battlefield — no mana spent. Every Vial activation with Satoru in play replaces the card used. Instant-speed deployment at their end step = a draw. Their counterspells literally cannot interact. This is the deck's answer to the "you run out of gas" criticism.</div>
+      <div class="card-body">Satoru draws when nontoken creatures enter <em>if no mana was spent.</em> Vial puts creatures onto the battlefield &mdash; no mana spent. <strong>Every Vial activation with Satoru in play replaces the card used.</strong> Their counterspells literally cannot interact. This is the deck's answer to the "you run out of gas" criticism.</div>
     </div>
     <div class="card">
       <div class="card-label">Protection Package</div>
-      <div class="card-title">Jirina Sacrifice + Sylvan Safekeeper</div>
-      <div class="card-body">Jirina: sacrifice in response to sweeper → whole team gains hexproof and indestructible. Supreme Verdict resolves, does nothing. Sylvan Safekeeper: sacrifice a land → target creature gains shroud. Two completely independent protection axes mean Path to Exile, Supreme Verdict, and single-target removal all have answers available every turn.</div>
+      <div class="card-title">Jirina + Sylvan Safekeeper</div>
+      <div class="card-body">Jirina: sacrifice in response to a sweeper &rarr; whole team gains hexproof and indestructible. <strong>Supreme Verdict resolves, does nothing.</strong> Sylvan Safekeeper: sac a land &rarr; target creature gains shroud. Two independent protection axes mean Path, Verdict, and single-target removal all have answers available.</div>
     </div>
     <div class="card">
       <div class="card-label">Discard Synergy</div>
-      <div class="card-title">Razorkin + Territorial Opponents</div>
-      <div class="card-body">Razorkin Needlehead deals 1 damage whenever any opponent draws a card. Against card-draw-heavy decks (Satoru, Looting, UW Control's Snapcaster), Razorkin passively deals 3-6 damage over a game. First strike during your turn means it also wins most 2/2-or-less combat trades cleanly. An overlooked reach source.</div>
+      <div class="card-title">Razorkin Needlehead</div>
+      <div class="card-body">Razorkin deals 1 damage whenever any opponent draws a card. Against draw-heavy decks (Satoru, Looting, UW Snapcaster), <strong>passively deals 3&ndash;6 damage over a game.</strong> First strike during your turn wins most 2/2-or-less combat trades cleanly. An overlooked reach source.</div>
     </div>
     <div class="card">
       <div class="card-label">Wide Board Payoff</div>
-      <div class="card-title">Adeline + Guide of Souls Energy</div>
-      <div class="card-body">Adeline's power = number of creatures you control. On a board of 5 other creatures she attacks as a 6/4 and creates attacking Human tokens (one per opponent attacked). Each token triggers Guide of Souls for energy. Guide then converts energy into +1/+1 counters and flying on your largest attacker. Adeline deploys into a developed board; she's not a threat, she's a multiplier.</div>
+      <div class="card-title">Adeline + Guide of Souls</div>
+      <div class="card-body">Adeline's power = number of creatures you control. On a board of 5 other creatures she attacks as a 6/4 and creates attacking Human tokens. <strong>Each token triggers Guide of Souls for energy.</strong> Adeline isn't a threat, she's a multiplier &mdash; she deploys into a developed board.</div>
     </div>
     <div class="card">
       <div class="card-label">Instant-Speed Hate</div>
       <div class="card-title">Vial + Silver Bullets</div>
-      <div class="card-body">Vial at 2: flash Meddling Mage at their end step naming their combo piece — already named before their draw step. Vial at 3: flash Jirina to exile their GY before they reanimate. Vial at 4: flash Witch Enchanter to destroy their Blood Moon. Every tick count opens a new threat axis. The opponent never knows which answer is coming until it's already in play.</div>
+      <div class="card-body"><strong>Vial at 2:</strong> flash Meddling Mage at their end step naming their combo piece. <strong>Vial at 3:</strong> flash Jirina to exile their GY before they reanimate. <strong>Vial at 4:</strong> flash Witch Enchanter to destroy their Blood Moon. Every tick count opens a new threat axis.</div>
     </div>
     <div class="card">
       <div class="card-label">Counter Tax Layer</div>
       <div class="card-title">Unsettled Mariner</div>
-      <div class="card-body">Whenever you or a permanent you control becomes the target of a spell or ability, Mariner taxes it {1}. Every single targeted removal spell — Path to Exile, Fatal Push, Galvanic Discharge, Solitude — costs one extra mana. Against Boros Energy this makes Galvanic Discharge cost {1} more, slowing their removal math on turns 2-3. Against Control it compounds every answer they have to pay.</div>
+      <div class="card-body">Whenever you or a permanent you control becomes the target, Mariner taxes it {1}. Every targeted removal &mdash; <strong>Path, Push, Discharge, Solitude</strong> &mdash; costs one extra mana. Against Boros Energy this slows their removal math on turns 2&ndash;3. Against Control it compounds every answer they pay.</div>
     </div>
     <div class="card">
       <div class="card-label">Graveyard Hate Built-In</div>
-      <div class="card-title">Jirina ETB + Cavern Naming</div>
-      <div class="card-body">Jirina's ETB exiles target player's graveyard — this is your maindeck GY hate that also triggers Champion and Lieutenant. Against Living End: Vial Jirina at their end step before cascade, exile their cycled creature pile. Against Grixis Reanimator: exile Archon before they Persist or Goryo's. The key is timing — Vial her in at instant speed, not on your main phase.</div>
+      <div class="card-title">Jirina ETB</div>
+      <div class="card-body">Jirina's ETB exiles target player's graveyard &mdash; this is your maindeck GY hate that <em>also</em> triggers Champion and Lieutenant. <strong>Vial her in at instant speed before cascade.</strong> Against Living End: exile their cycled creature pile. Against Grixis Reanimator: exile Archon before Persist.</div>
     </div>
     <div class="card">
       <div class="card-label">Lavinia Lock</div>
       <div class="card-title">Free Spells Blanked</div>
-      <div class="card-body">Lavinia counters any spell cast without spending mana. Living End via Cascade = countered. Force of Negation = countered. Evoke Solitude = countered. Summoner's Pact = countered. A resolved Lavinia + Meddling Mage naming the opponent's primary win condition is a two-card soft lock for {W}{U} and {W}{U} respectively. Both are Vial-deployable at 2 counters.</div>
+      <div class="card-body">Lavinia counters any spell cast without spending mana. Living End via Cascade = countered. Force of Negation = countered. Evoke Solitude = countered. Summoner's Pact = countered. <strong>Lavinia + Meddling Mage naming their win con = two-card soft lock.</strong> Both are Vial-deployable at 2 counters.</div>
     </div>
   </div>
 </div>
@@ -285,25 +417,25 @@
 <!-- ── JOURNEY ── -->
 <div id="journey" class="section">
   <div class="section-label">The Grind Documented</div>
-  <h1>The<br>Journey</h1>
+  <h1>The Journey</h1>
 
-  <p>No highlight reel. Just what happened, what was tested, what was learned, and where the process is going. The road to Pro Tour documented honestly from the grind.</p>
+  <p>No highlight reel. Just what happened, what was tested, what was learned, and where the process is going. <strong>The road to Pro Tour documented honestly from the grind.</strong></p>
 
   <div class="journey-entry">
-    <div class="journey-date">March 2026 · Entry 002</div>
+    <div class="journey-date">March 2026 &middot; Entry 002</div>
     <div class="journey-title">Building the Workspace</div>
-    <div class="journey-body">Site overhaul, Team Resolve folder organization (95 files), MTG Meta Analyzer user preferences wired. Infrastructure work before the real RC grind starts. The preparation phase before preparation begins.</div>
-    <a class="journey-link" href="journey/2026-03-workspace-build.html">Read Full Entry →</a>
+    <div class="journey-body">Site overhaul, Team Resolve folder organization (95 files), MTG Meta Analyzer user preferences wired. <strong>Infrastructure work before the real RC grind starts.</strong> The preparation phase before preparation begins.</div>
+    <a class="journey-link" href="journey/2026-03-workspace-build.html">Read Full Entry &rarr;</a>
   </div>
 
   <div class="journey-entry">
-    <div class="journey-date">March 2026 · Entry 001</div>
-    <div class="journey-title">Season Start — Locking the Format</div>
-    <div class="journey-body">Deciding to commit fully to Modern for the 2026 RC season. The format is stable enough to reward deep preparation. Deck selection: Boros Energy as the primary weapon with Jeskai Blink under testing. 17 Modern RCQ top 8s in the previous season establishes the baseline. The goal is to beat that number and convert a qualification to a Pro Tour finish.</div>
-    <a class="journey-link" href="journey/2026-03-season-start.html">Read Full Entry →</a>
+    <div class="journey-date">March 2026 &middot; Entry 001</div>
+    <div class="journey-title">Season Start &mdash; Locking the Format</div>
+    <div class="journey-body">Deciding to commit fully to Modern for the 2026 RC season. The format is stable enough to reward deep preparation. Deck selection: Boros Energy as the primary weapon with Jeskai Blink under testing. <strong>17 Modern RCQ top 8s in the previous season establishes the baseline.</strong> The goal is to beat that number and convert a qualification to a Pro Tour finish.</div>
+    <a class="journey-link" href="journey/2026-03-season-start.html">Read Full Entry &rarr;</a>
   </div>
 
-  <div class="journey-entry" style="border-color:var(--rule);opacity:0.5;">
+  <div class="journey-entry" style="opacity:0.5;">
     <div class="journey-date">Coming Soon</div>
     <div class="journey-title">First RC of 2026</div>
     <div class="journey-body">Event recap, deck selection post-mortem, matchup data, and what we're changing for the next one. Watch this space.</div>
@@ -313,33 +445,36 @@
 <!-- ── TEAM ── -->
 <div id="team" class="section">
   <div class="section-label">Team Resolve</div>
-  <h1>The<br>Team</h1>
+  <h1>The Team</h1>
 
-  <p>Team Resolve is built around player development, structured testing, and long-term progression. The goal is Regional Championship participation and Pro Tour qualification — not just for one player, but for every player on the team. We run gauntlets, build full prep packages for each RC, track matchup data, and refine our processes each season.</p>
+  <p>Team Resolve is built around player development, structured testing, and long-term progression. The goal is Regional Championship participation and Pro Tour qualification &mdash; <strong>not just for one player, but for every player on the team.</strong> We run gauntlets, build full prep packages for each RC, track matchup data, and refine our processes each season.</p>
 
-  <div class="mantra">"Endure. Adapt. Delve."</div>
+  <div class="mantra">
+    "Endure. Adapt. Delve."
+    <cite>&mdash; The team motto</cite>
+  </div>
 
   <h2>Roster</h2>
   <div class="team-nav-grid">
     <a class="team-nav-card" href="zuxas.html">
       <div class="team-nav-handle">Zuxas</div>
-      <div class="team-nav-role">Captain · Modern & Standard</div>
-    </a>
-    <a class="team-nav-card" href="troubleshot.html">
-      <div class="team-nav-handle">Troubleshot</div>
-      <div class="team-nav-role">Player · Modern</div>
+      <div class="team-nav-role">Captain &middot; Modern &amp; Standard</div>
     </a>
     <a class="team-nav-card" href="urbae.html">
       <div class="team-nav-handle">Urbae</div>
-      <div class="team-nav-role">Player · Modern</div>
+      <div class="team-nav-role">Garrison &middot; Control</div>
     </a>
     <a class="team-nav-card" href="tien.html">
       <div class="team-nav-handle">Tien</div>
-      <div class="team-nav-role">Player · Modern</div>
+      <div class="team-nav-role">Tien &middot; Combo</div>
+    </a>
+    <a class="team-nav-card" href="troubleshot.html">
+      <div class="team-nav-handle">Troubleshot</div>
+      <div class="team-nav-role">Caleb &middot; MBC</div>
     </a>
     <a class="team-nav-card" href="foxy.html">
       <div class="team-nav-handle">Foxy</div>
-      <div class="team-nav-role">Player · Modern</div>
+      <div class="team-nav-role">John &middot; Red Aggro</div>
     </a>
   </div>
 </div>
@@ -347,17 +482,18 @@
 </div><!-- end .page -->
 
 <footer>
-  <span>Team Resolve · Zuxas Player Page</span>
-  <span>Jermey Wallace · Captain</span>
-  <span>Road to Pro Tour · 2026</span>
+  <span>Team Resolve &middot; Captain Profile</span>
+  <span>Jermey Wallace &middot; Zuxas</span>
+  <span>Road to Pro Tour &middot; 2026</span>
 </footer>
 
 <script>
-function show(id) {
+function show(id, evt) {
   document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
   document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
   document.getElementById(id).classList.add('active');
-  event.target.classList.add('active');
+  if (evt && evt.target) evt.target.classList.add('active');
+  window.scrollTo({top:0, behavior:'smooth'});
 }
 </script>
 </body>
